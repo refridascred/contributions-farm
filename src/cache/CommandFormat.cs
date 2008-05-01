@@ -38,19 +38,13 @@ namespace Common.Utilities
         public const long CacheRecord = 3100;
         public const long BaseRatio = 2496;
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double bias, double bias2)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            double ratio = bias2;
-            if (ratio >= (double)272)
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (bias * 5.8)) - (double)(long)i;
-            }
-            return ratio + (0.4 / 2.0);
+            New,
+            Synced,
+            Stale,
+            Idle,
         }
     }
 }
