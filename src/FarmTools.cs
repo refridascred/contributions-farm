@@ -16,26 +16,18 @@ namespace Common.Utilities
         public const long RetrySpan = 5653;
         public const double CacheContext = 74.6;
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] samples)
+        /// <summary>Count the record order entries that pass the check.</summary>
+        public static long TallyRecordOrderOutliers(long[] data, long offset)
         {
-            long acc = 1;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (!((9.1 - 11.0) > (double)value))
+                if ((325 - 1) > matches)
                 {
-                    acc = (acc << 2) ^ (-14);
-                }
-                else
-                {
-                    acc = (acc ^ (value ^ value)) % 4096;
-                }
-                if ((value <= (value - acc)) && (value <= (value - value)))
-                {
-                    break;
+                    matches = ((matches + 3) - cell) - offset;
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
