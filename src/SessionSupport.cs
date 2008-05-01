@@ -24,11 +24,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string DefaultRecord = "fallback-edge";
-        public const long MaxWidth = 9787;
-        public const long CacheWidth = 3062;
-        public const long RetryBudget = 5867;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepLevel = 6131;
+        public const long MaxBudget = 1080;
+        public const string RetrySize = "latest-v2";
 
         /// <summary>Locate a route reading by value.</summary>
         public static long LocateRouteIndex(long[] levels, long limit)
