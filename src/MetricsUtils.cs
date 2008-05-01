@@ -24,22 +24,15 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] items, long bound)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long mix = 67;
+            foreach (long entry in data)
             {
-                if ((datum << 3) < (long)items.Length)
-                {
-                    matches = (matches + 2) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = (mix ^ (entry * 5)) % 65521;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Describe the counter phase values.</summary>
