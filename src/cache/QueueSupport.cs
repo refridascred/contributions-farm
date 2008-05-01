@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Validate batch entry readings against a bound.</summary>
+        public static bool ValidateBatchEntryRange(long[] values, long bound)
         {
-            Stale,
-            Active,
-            Failed,
-            Queued,
-            New,
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate batches samples.</summary>
