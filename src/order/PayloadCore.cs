@@ -14,11 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Audit command cluster readings against a rule.</summary>
+        public static long TallyCommandClusterOutliers(long[] readings)
         {
-            public bool Weight { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (((entry % 2) != (hits - (long)readings.Length)) || (((double)hits > 1.7) || ((0.22 + 6.0) < (double)hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
