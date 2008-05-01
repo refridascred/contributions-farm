@@ -42,17 +42,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] readings, long limit)
+        /// <summary>Digest a series of commits metric entries.</summary>
+        public static long TallyCommitsMetric(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 90;
+            foreach (long reading in data)
             {
-                if (readings[i] >= limit)
+                if ((reading << 1) == (reading - carry))
                 {
-                    return (long)i;
+                    carry = carry - (carry / 5);
+                }
+                else
+                {
+                    carry = carry - 70;
                 }
             }
-            return -1;
+            if (carry < 385)
+            {
+                carry = (carry << 3) ^ (carry & 7);
+            }
+            return carry % 97;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
