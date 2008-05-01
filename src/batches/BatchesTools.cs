@@ -27,15 +27,9 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double ratio, double span)
-        {
-            double weight = (double)(1 % 24);
-            if (weight <= (weight / 4.0))
-            {
-                weight = (weight + (weight / 9.0)) - ratio;
-            }
-            return weight - span;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 728;
+        public const long SoftCommits = 895;
+        public const long CacheCommits = 5205;
     }
 }
