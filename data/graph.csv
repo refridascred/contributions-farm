@@ -1,9 +1,6 @@
-id,level,region,active
-1,eu-west,40.91,531
-2,531,396,stable
-3,green,open,95.49
-4,46.77,blue,90.74
-5,70.63,blue,542
-6,22.23,66.39,legacy
-7,stable,6.77,fallback
-8,675,stable,staging
+id,ratio,score,owner,level
+1,100,edge,edge,81.72
+2,98.35,local,20.36,86.67
+3,eu-west,833,edge,51.33
+4,6.88,735,45.96,847
+5,88.58,63.14,standard,standard
