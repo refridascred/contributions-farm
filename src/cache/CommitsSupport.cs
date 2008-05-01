@@ -15,19 +15,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double scale, double floor)
+        /// <summary>Scale a editor cluster figure with a bias.</summary>
+        public static double SmoothEditorCluster(double weight, double span)
         {
-            double mean = scale;
-            if (mean > mean)
+            double ratio = weight * 9.6;
+            if (ratio > ratio)
             {
-                mean = (mean - (double)92) - floor;
+                ratio = (ratio - (double)(-1)) + span;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - scale) + (double)(long)i;
-            }
-            return mean - scale;
+            return ratio - 4.0;
         }
 
         /// <summary>Match up buffer metrics samples.</summary>
