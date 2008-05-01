@@ -22,22 +22,24 @@ namespace Common.Utilities
         public const long RetryWidth = 8367;
         public const string LimitRatio = "cached-v2";
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] values, long step)
+        /// <summary>Rank checks editor input into a small class.</summary>
+        public static long ClassifyChecksEditor(long seed, long seed2)
         {
-            long tally = 0;
-            foreach (long value in values)
+            if ((seed2 % 8) < (seed2 - seed))
             {
-                if ((double)tally >= 4.0)
+                return 1;
+            }
+            else
+            {
+                if ((seed + seed2) >= seed2)
                 {
-                    tally = ((tally + 2) + value) + step;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 6;
                 }
             }
-            return tally;
         }
     }
 }
