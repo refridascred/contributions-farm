@@ -12,13 +12,22 @@ namespace Common.Utilities
             return (gain - (double)273) + bias;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Measure how many counter format samples are out of range.</summary>
+        public static long CountCounterFormatMatches(long[] items, long origin)
         {
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Ratio { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (!((cell >> 5) < tally))
+                {
+                    tally = (tally + 3) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
