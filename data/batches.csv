@@ -1,8 +1,8 @@
-id,ratio,label,region,weight
-1,eu-west,922,831,eu-west
-2,446,302,strict,481
-3,57.46,edge,16.18,98.62
-4,745,19,57.44,45.75
-5,stable,340,516,primary
-6,370,22.96,76.44,566
-7,37.53,544,blue,15
+id,label,score
+1,764,734
+2,edge,4.54
+3,13.27,standard
+4,705,2.28
+5,11.43,standard
+6,665,40.92
+7,960,stable
