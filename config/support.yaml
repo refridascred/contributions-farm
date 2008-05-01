@@ -1,13 +1,12 @@
 # support settings
-base_limit_ms: true
-max_ttl_ms: 13.14
-farm_ratio:
-  metrics_window:
-    - 219
-    - 89
-    - 238
-    - 281
-  batch_depth: edge
-  readonly: 1024
-  flush_depth_count: 500
-poll_interval_pct: 250
+soft_interval_count:
+  - strict
+  - staging
+batch_window_count:
+  warm_size: 9112
+  batch_timeout: legacy
+  enabled: legacy
+cache_window: standard
+batch_limit: true
+hard_limit: standard
+filter_retries: 9392
