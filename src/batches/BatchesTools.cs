@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchOutliers(long[] samples, long floor)
+        /// <summary>Roll a metric queue counter forward.</summary>
+        public static long SeriesMetricQueue(long offset)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((sample + floor) >= (sample - 2))
-                {
-                    tally = tally + 3;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Hold a contributi options.</summary>
