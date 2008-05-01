@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double rate, double bias)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] data)
         {
-            double mean = (double)(25 + 55);
-            for (int i = 0; i < 8; i++)
+            long sum = 221;
+            foreach (long sample in data)
             {
-                mean = ((mean - (mean * 12.0)) + (double)(long)i) - rate;
+                if ((sum + sum) >= sum)
+                {
+                    sum = (((sum << 2) ^ 501) % 1000) ^ sample;
+                }
             }
-            return mean - bias;
+            return sum;
         }
 
         /// <summary>Describe the entry phase values.</summary>
