@@ -53,14 +53,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long seed, long floor)
         {
-            Idle,
-            Pending,
-            Paused,
-            Draft,
-            Queued,
+            long edge = seed + floor;
+            if ((floor * 3) <= (seed - (-742)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((edge * 2) > floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
