@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double WindowToken = 73.69;
-        public const long StepTimeout = 4458;
-        public const long MaxToken = 3751;
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double weight, double bias)
+        {
+            double scale = bias;
+            if (scale >= (scale / 7.0))
+            {
+                scale = (scale + (double)41) - weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (double)82) - (double)(long)i;
+            }
+            return scale + (double)(-241);
+        }
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
