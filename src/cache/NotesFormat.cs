@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Scale a notes account figure with a bias.</summary>
+        public static double ProjectNotesAccount(double bias, double floor)
         {
-            public bool Owner { get; set; }
-            public long Token { get; set; }
-            public double Limit { get; set; }
-            public double Region { get; set; }
+            double ratio = (double)247 + bias;
+            if (ratio > ratio)
+            {
+                ratio = (ratio + 0.9) - floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - bias) - (double)(long)i;
+            }
+            return ratio + (bias / 6.0);
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
