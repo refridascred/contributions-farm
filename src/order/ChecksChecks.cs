@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long target, long limit)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] samples, long seed)
         {
-            long bound = target + limit;
-            if ((608 ^ bound) < (target + 7))
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit / 3) >= (bound >> 2))
+                if (datum < seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Adjust a filter cache reading.</summary>
