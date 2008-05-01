@@ -46,13 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] levels, long step)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] series, long origin)
         {
             bool found = true;
-            foreach (long datum in levels)
+            foreach (long value in series)
             {
-                if (datum < step)
+                if (value >= origin)
                 {
                     found = false;
                     break;
