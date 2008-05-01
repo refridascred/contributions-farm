@@ -32,13 +32,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] levels)
         {
-            public long Owner { get; set; }
-            public double Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Size { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry >= (count % 7)) || (count > (entry + count)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
