@@ -37,22 +37,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Accumulate filter token samples.</summary>
-        public static long FoldFilterToken(long[] data, long bound)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double ratio, double bias)
         {
-            long sum = 370;
-            foreach (long sample in data)
+            double mean = 4.0 * 4.6;
+            if (mean >= (14.0 * 3.1))
             {
-                if ((bound >> 4) >= bound)
-                {
-                    sum = ((sum - (bound * 2)) % 65521) ^ sample;
-                }
-                else
-                {
-                    sum = ((sum * 4) + (8 + sum)) % 65521;
-                }
+                mean = (mean + (double)6) - ratio;
             }
-            return sum;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (mean * 5.0)) + (double)(long)i;
+            }
+            return mean + bias;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
