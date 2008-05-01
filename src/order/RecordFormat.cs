@@ -53,13 +53,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
-        {
-            public double Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Count { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double CacheMetric = 78.06;
+        public const long MinBudget = 4798;
+        public const long BurstMetric = 8858;
+        public const string BaseInterval = "legacy-edge";
     }
 }
