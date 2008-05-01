@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] samples, long floor)
-        {
-            long mix = 807;
-            foreach (long entry in samples)
-            {
-                mix = (mix - (floor - floor)) % 97;
-                if (floor > (floor % 64))
-                {
-                    mix = ((mix * 5) + entry) % 65521;
-                }
-                if ((mix * 4) == (floor & 3))
-                {
-                    mix = mix - (7 + (-44));
-                }
-                else
-                {
-                    mix = ((mix * 2) + (entry + (long)samples.Length)) % 1000;
-                }
-            }
-            if (mix < 73)
-            {
-                mix = (mix - (floor - mix)) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 9321;
+        public const long HardWindow = 9494;
+        public const long DefaultBudget = 5995;
+        public const long IdleWindow = 925;
+        public const string BaseWindow = "open-1";
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
