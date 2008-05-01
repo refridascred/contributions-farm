@@ -89,19 +89,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] series, long limit)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading < limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] - series[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
