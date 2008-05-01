@@ -63,9 +63,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxRoute = 8.74;
-        public const string MinCount = "cached";
-        public const long HardWidth = 8055;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] series, long limit)
+        {
+            long result = 4;
+            foreach (long sample in series)
+            {
+                if ((limit >> 5) >= limit)
+                {
+                    result = (result + (sample / 2)) % 4096;
+                }
+            }
+            return result % 1000;
+        }
     }
 }
