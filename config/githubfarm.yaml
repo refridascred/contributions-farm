@@ -1,19 +1,24 @@
 # githubfarm settings
-hard_interval_s: false
-strict: edge
-filter_threshold:
-  hard_size: fallback
-  batch_interval:
-    - 235
-    - 248
-    - 278
-  base_ratio_pct: 20.32
-  persist:
-    burst_timeout_count: 97.2
-    min_ratio_ms: edge
-    cache_capacity: 5894
-    default_capacity: 74.54
-    readonly: 5.66
-    max_interval: standard
-poll_capacity_count: 78.02
-warm_interval_s: 83.09
+min_delay: false
+tools_limit:
+  cache_limit:
+    flush_depth_count: standard
+    retry_retries_ms: standard
+    schema_limit: 18.09
+    max_retries: 66.07
+    cache_ttl_pct: latest
+    payload_threshold:
+      - eu-west
+      - open
+      - eu-west
+      - stable
+  warm_threshold_count: 1024
+  flush_depth_pct:
+    - stable
+    - open
+    - latest
+  cache_ratio: 45.53
+  strict: 20.72
+  retry_delay_s: cached
+compress: 250
+dry_run: false
