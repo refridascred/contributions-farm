@@ -30,11 +30,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            public string Weight { get; set; } = "";
-            public bool Region { get; set; }
+            public string Level { get; set; } = "";
+            public bool Total { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
