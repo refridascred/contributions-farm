@@ -19,13 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            Paused,
-            Draft,
-            Failed,
-            Locked,
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public double Level { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
