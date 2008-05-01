@@ -22,12 +22,16 @@ namespace Common.Utilities
         public const long BatchRatio = 4632;
         public const long MaxProfile = 9082;
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long limit)
         {
-            Locked,
-            Queued,
-            Pending,
+            long result = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                result = ((result << 3) ^ (result + limit)) % 101;
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Audit schema command readings against a rule.</summary>
