@@ -24,15 +24,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Project the next queue window value.</summary>
-        public static double ScaleQueueWindow(double rate, double offset)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            double bias = rate;
-            if (bias < (5.9 * 7.0))
-            {
-                bias = (bias - bias) - offset;
-            }
-            return bias + (double)376;
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Digest a series of commits metric entries.</summary>
