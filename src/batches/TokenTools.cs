@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] data, long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] items, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 3;
+            foreach (long value in items)
             {
-                if (data[i] < step)
+                if (((double)sum == (18.0 * 3.62)) || ((origin + 846) < sum))
                 {
-                    return (long)i;
+                    sum = ((sum - sum) % 65521) - value;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a batch summary.</summary>
