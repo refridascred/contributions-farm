@@ -71,17 +71,14 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long bound)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long carry = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry * 5) + ((long)i / 5)) % 4096;
-                carry = carry - (72 + bound);
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Draft,
+            Closed,
+            Queued,
+            Done,
+            Stale,
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
