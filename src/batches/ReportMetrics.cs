@@ -26,18 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsOutliers(long[] samples)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((value << 1) == (count ^ count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
