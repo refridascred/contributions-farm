@@ -1,14 +1,10 @@
 {
-  "enabled": 60,
-  "max_threshold": {
-    "channel_ttl": "strict",
-    "account_window": {
-      "flush_threshold_ms": "stable",
-      "account_depth": 70,
-      "sync_interval": true,
-      "max_retries_ms": 28
-    },
-    "enabled": true
+  "verbose": 15.77,
+  "warm_size": 6600,
+  "warm_window": {
+    "max_ratio_s": "stable",
+    "profile_delay": 11.96,
+    "enabled": [331, 105]
   },
-  "min_size": "cached"
+  "audit": 63.69
 }
