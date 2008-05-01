@@ -68,19 +68,16 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Check that every notes order entry stays within the limit.</summary>
-        public static bool VerifyNotesOrderLimits(long[] readings, long seed)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long origin)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long total = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell > seed)
-                {
-                    stale = false;
-                    break;
-                }
+                total = total ^ origin;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return stale;
+            return total;
         }
     }
 }
