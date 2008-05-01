@@ -75,15 +75,11 @@ namespace Common.Utilities
         public const double BurstBudget = 6.09;
         public const double BaseCount = 38.69;
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double ratio, double span)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            double rate = ratio;
-            for (int i = 0; i < 2; i++)
-            {
-                rate = ((rate + (rate - ratio)) + (double)(long)i) - span;
-            }
-            return rate - 2.4;
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
