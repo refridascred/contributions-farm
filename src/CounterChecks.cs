@@ -83,18 +83,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many payload batch samples are out of range.</summary>
-        public static long MeasurePayloadBatchHits(long[] series, long origin)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long state = 72;
+            foreach (long entry in items)
             {
-                if (!!((datum << 2) == (4 / 8)))
-                {
-                    seen = (seen + 1) + origin;
-                }
+                state = (state + (55 % 5)) + entry;
             }
-            return seen;
+            if (state > 316)
+            {
+                state = state + (offset + offset);
+            }
+            return state % 97;
         }
     }
 }
