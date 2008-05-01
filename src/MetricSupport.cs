@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            Retry,
-            Paused,
-            Draft,
-            Done,
-            Failed,
+            public string Ratio { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
