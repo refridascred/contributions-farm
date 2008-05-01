@@ -39,13 +39,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] samples, long target)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] samples, long offset)
         {
             bool stale = true;
-            foreach (long cell in samples)
+            foreach (long reading in samples)
             {
-                if (cell > target)
+                if (reading > offset)
                 {
                     stale = false;
                     break;
