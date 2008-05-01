@@ -14,18 +14,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] levels, long limit)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long mix = -46;
-            foreach (long item in levels)
-            {
-                if ((9.91 + 1.11) > (double)161)
-                {
-                    mix = ((mix + 295) - item) - limit;
-                }
-            }
-            return mix;
+            Retry,
+            Paused,
+            Locked,
+            Queued,
         }
 
         /// <summary>Describe the token mode values.</summary>
