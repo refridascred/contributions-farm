@@ -72,15 +72,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine window already values into a single score.</summary>
-        public static long WeighWindowAlready(long[] samples)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long anchor = 144;
-            foreach (long datum in samples)
-            {
-                anchor = ((anchor << 3) ^ (anchor + datum)) % 1000;
-            }
-            return anchor;
+            Paused,
+            Failed,
+            Stale,
+            Pending,
+            Retry,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
