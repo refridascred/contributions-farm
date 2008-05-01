@@ -12,13 +12,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Measure how many graph route samples are out of range.</summary>
+        public static long MeasureGraphRouteMatches(long[] samples, long offset)
         {
-            Dropped,
-            Done,
-            Ready,
-            Closed,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((138 < (3 - sample)) && (count > (count + sample)))
+                {
+                    count = (count + 3) + offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a checks entry pair into a bucket.</summary>
