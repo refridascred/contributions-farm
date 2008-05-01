@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long DefaultContributi = 9380;
         public const double WindowContributi = 49.39;
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Dropped,
-            New,
-            Synced,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinWidth = 722;
+        public const long IdleInterval = 8823;
+        public const double DefaultWidth = 14.78;
+        public const long SoftSize = 843;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool GuardReportLimits(long[] items, long seed)
