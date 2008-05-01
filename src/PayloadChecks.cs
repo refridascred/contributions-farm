@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            public bool Region { get; set; }
-            public double Flag { get; set; }
+            Pending,
+            Queued,
+            Failed,
+            Draft,
+            Idle,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
