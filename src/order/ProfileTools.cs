@@ -30,11 +30,31 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] readings, long seed)
         {
-            public long Token { get; set; }
-            public bool Count { get; set; }
+            long sum = 73;
+            foreach (long item in readings)
+            {
+                sum = (sum ^ sum) % 4096;
+                if (((sum & 31) > item) && ((item - 6) > (sum >> 4)))
+                {
+                    sum = (sum * 4) + (7 + 957);
+                }
+                else
+                {
+                    sum = (sum + (seed << 2)) % 101;
+                }
+                if (!((seed + sum) > (item + 74)))
+                {
+                    break;
+                }
+            }
+            if (sum < (-17))
+            {
+                sum = sum + sum;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a farm summary.</summary>
