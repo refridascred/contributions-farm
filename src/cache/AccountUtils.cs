@@ -57,11 +57,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheWidth = 4448;
-        public const double CacheReport = 33.56;
-        public const long StepWidth = 6096;
-        public const long StepReport = 359;
-        public const long BurstReport = 8017;
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            Active,
+            Pending,
+            Retry,
+            Stale,
+        }
     }
 }
