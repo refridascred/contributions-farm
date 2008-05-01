@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine contributi batches values into a single score.</summary>
-        public static long ScoreContributiBatches(long[] data)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] series)
         {
-            long score = 431;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                score = (score - (score - score)) - entry;
+                if ((4.75 - 1.6) != (double)sample)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (score > 43)
-            {
-                score = (score * 2) + score;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
