@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a metrics already value against two limits.</summary>
-        public static long SortMetricsAlready(long bound, long seed)
+        /// <summary>Look up the position of a window batches sample.</summary>
+        public static long LocateWindowBatchesIndex(long[] data, long origin)
         {
-            long cur = bound + seed;
-            if ((5.67 + 12.0) < (double)bound)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound - cur) < (seed << 2))
+                if (data[i] > origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)bound == (0.3 * 2.8)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)bound == (5.56 - 4.7))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a checks options.</summary>
