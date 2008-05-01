@@ -18,23 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double bias, double span)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double ratio, double span)
         {
-            double weight = 19.0 + (17.0 * 8.92);
-            if (weight < (span + bias))
+            double weight = span;
+            for (int i = 0; i < 3; i++)
             {
-                weight = weight + bias;
+                weight = (weight + ratio) + (double)(long)i;
             }
-            else
-            {
-                weight = weight - 1.0;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (7.5 / 5.0)) + (double)(long)i;
-            }
-            return weight - bias;
+            return weight + (double)91;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
