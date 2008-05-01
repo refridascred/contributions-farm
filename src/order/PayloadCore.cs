@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MaxMetric = "cached-v2";
-        public const long MaxWidth = 599;
-        public const long BurstMetric = 3456;
-        public const long BaseDepth = 5722;
-        public const long MinBudget = 8131;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] samples)
+        {
+            long mark = 532;
+            foreach (long item in samples)
+            {
+                if ((mark * 3) < mark)
+                {
+                    mark = (mark ^ mark) % 255;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (item << 3);
+                }
+            }
+            if (mark < (-702))
+            {
+                mark = (mark + (mark << 1)) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool VerifyEditorRange(long[] levels, long floor)
