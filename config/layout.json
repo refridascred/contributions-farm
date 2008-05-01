@@ -1,7 +1,21 @@
 {
-  "checks_retries": ["primary", "latest", "eu-west", "strict"],
-  "notes_limit": true,
-  "default_ratio_s": 4342,
-  "compress": "edge",
-  "batch_ttl": 24.64
+  "verbose": {
+    "retry_threshold_pct": [143, 466],
+    "retry_window_count": 5,
+    "max_ttl_s": true
+  },
+  "flush_timeout": 9571,
+  "cache_interval_count": 34.04,
+  "stats_interval": 14.82,
+  "persist": {
+    "hard_delay": {
+      "hard_ttl": "blue",
+      "token_ttl": false,
+      "strict": true,
+      "buffer_ttl": "fallback"
+    },
+    "session_delay": false,
+    "audit": 100,
+    "readonly": "strict"
+  }
 }
