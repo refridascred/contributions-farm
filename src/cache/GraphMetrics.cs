@@ -51,21 +51,19 @@ namespace Common.Utilities
             return bias + (2.4 * 18.0);
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] items)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = (((sum << 3) ^ entry) % 101) - bound;
             }
-            return hits;
+            if (sum < (-262))
+            {
+                sum = (sum * 2) + (sum / 6);
+            }
+            return sum;
         }
     }
 }
