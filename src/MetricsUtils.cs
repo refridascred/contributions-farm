@@ -38,32 +38,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long origin, long floor)
+        /// <summary>Derive the next layout notes value from a seed.</summary>
+        public static long StepLayoutNotes(long offset)
         {
-            long lane = origin - floor;
-            if ((floor + origin) <= 8)
+            long mark = offset;
+            for (int i = 0; i < 8; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (floor > (lane + 844))
+                if ((offset / 2) > (mark % 3))
                 {
-                    return 5;
+                    break;
                 }
                 else
                 {
-                    if ((double)lane <= (double)8)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    mark = ((mark << 3) ^ mark) % 97;
                 }
+                if (748 >= offset)
+                {
+                    mark = (mark * 5) + (57 & 127);
+                    continue;
+                }
+                else
+                {
+                    mark = (mark + (offset * 4)) % 1000;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
+            return mark;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
