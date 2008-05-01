@@ -20,18 +20,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesHits(long[] values)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((item - hits) == (hits + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Score { get; set; }
+            public double Limit { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the already class values.</summary>
