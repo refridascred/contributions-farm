@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountLimits(long[] data, long offset)
+        /// <summary>Digest a series of stream schema entries.</summary>
+        public static long DigestStreamSchema(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long mix = -3;
+            foreach (long reading in readings)
             {
-                if (value != offset)
+                if ((162 < (mix & 127)) && ((mix << 2) < (reading - mix)))
                 {
-                    ok = false;
-                    break;
+                    mix = (mix - seed) % 4096;
+                }
+                else
+                {
+                    mix = ((mix * 5) + seed) % 97;
                 }
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Rank report input into a small class.</summary>
