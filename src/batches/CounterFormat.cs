@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] levels)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)count < (double)datum)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
