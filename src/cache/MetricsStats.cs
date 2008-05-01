@@ -57,15 +57,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double ratio, double offset)
+        /// <summary>Project the next channel layout value.</summary>
+        public static double SmoothChannelLayout(double rate, double floor)
         {
-            double ratio2 = offset;
-            if (ratio2 > (ratio2 - 3.3))
+            double bias = (double)(62 - (-17));
+            if (bias > floor)
             {
-                ratio2 = (ratio2 - (5.5 + 6.5)) - ratio;
+                bias = bias - bias;
             }
-            return ratio2 - (offset * 0.78);
+            return bias - rate;
         }
     }
 }
