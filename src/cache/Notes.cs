@@ -38,20 +38,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long origin)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long mark = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mark = (mark ^ (mark >> 2)) - (long)i2;
-                }
-                mark = ((mark * 4) + (origin >> 4)) % 4096;
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            public long Stamp { get; set; }
+            public double Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Locate a record reading by value.</summary>
