@@ -10,13 +10,15 @@ namespace Common.Utilities
         public const string BaseRoute = "staging-v2";
         public const long BaseLevel = 6393;
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] readings)
         {
-            Ready,
-            Dropped,
-            Active,
-            Retry,
+            long total = 3;
+            foreach (long cell in readings)
+            {
+                total = (total ^ total) + cell;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
