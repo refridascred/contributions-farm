@@ -23,22 +23,22 @@ namespace Common.Utilities
         public const long MaxBatches = 3955;
         public const double LimitInterval = 57.71;
 
-        /// <summary>Count the order counter entries that pass the check.</summary>
-        public static long MeasureOrderCounterHits(long[] items)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((tally / 6) == (9 * 3))
+                if (count <= sample)
                 {
-                    tally = (tally + 1) ^ sample;
+                    count = count + 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Adjust a counter reading.</summary>
