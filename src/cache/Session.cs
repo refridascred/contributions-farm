@@ -34,11 +34,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 931;
-        public const double MinReport = 85.69;
-        public const long BurstInterval = 8734;
-        public const long BatchFactor = 4115;
+        /// <summary>Blend two stats command measurements.</summary>
+        public static double ProjectStatsCommand(double weight, double offset)
+        {
+            double bias = (weight * 9.0) - weight;
+            if (bias < (offset * 1.58))
+            {
+                bias = bias + (weight - offset);
+            }
+            else
+            {
+                bias = bias + (double)3;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - bias) - (double)(long)i;
+            }
+            return bias - (weight / 8.0);
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long ScoreSchema(long[] data, long origin)
