@@ -32,11 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftDepth = 910;
-        public const long IdleScore = 554;
-        public const long StepFactor = 5768;
-        public const long DefaultSpan = 335;
-        public const string SoftTimeout = "standard-1";
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
+        {
+            public double Token { get; set; }
+            public bool Flag { get; set; }
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
+        }
     }
 }
