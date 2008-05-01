@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] samples, long limit)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileBounds(long[] levels, long step)
         {
-            long result = 491;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                result = ((result * 5) + (item + result)) - limit;
+                if (sample >= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result % 65521;
+            return flag;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
