@@ -63,18 +63,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamMatches(long[] items, long offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long total = 714;
+            foreach (long cell in values)
             {
-                if ((double)entry == (double)seen)
-                {
-                    seen = (seen + 1) - offset;
-                }
+                total = (total + (seed - seed)) + cell;
             }
-            return seen;
+            if (total > 63)
+            {
+                total = total - seed;
+            }
+            return total % 65521;
         }
     }
 }
