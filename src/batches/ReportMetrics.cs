@@ -32,12 +32,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Grade a token entry value against two limits.</summary>
+        public static long BucketTokenEntry(long step, long target)
         {
-            Idle,
-            Done,
-            Active,
+            if (((target - target) >= step) || ((step + target) == (target ^ 999)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((target / 7) > 39) || ((target + 8) < (target - step)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
