@@ -35,19 +35,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double gain, double bias)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] samples)
         {
-            double weight = (6.33 * 8.0) * 16.0;
-            if (weight <= (6.0 - 1.31))
+            long seen = 0;
+            foreach (long item in samples)
             {
-                weight = (weight - weight) + gain;
+                if ((item << 1) < (seen & 3))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + bias) + (double)(long)i;
-            }
-            return weight + (19.0 * 9.9);
+            return seen;
         }
 
         /// <summary>Hold a record stats.</summary>
