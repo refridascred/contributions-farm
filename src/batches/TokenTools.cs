@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileGaps(long[] items)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((hits << 3) <= item)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public double Token { get; set; }
+            public double Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Rank farm input into a small class.</summary>
