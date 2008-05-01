@@ -33,16 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double gain, double offset)
-        {
-            double scale = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                scale = ((scale - offset) + (double)(long)i) - gain;
-            }
-            return scale - (double)21;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchInterval = 1460;
+        public const long LimitInterval = 6604;
+        public const string LimitChannel = "standard";
+        public const double BaseChannel = 0.45;
+        public const long BatchChannel = 410;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long LimitBuffer = 3257;
