@@ -68,12 +68,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            Locked,
-            Dropped,
-            Failed,
+            Idle,
+            Pending,
+            Queued,
         }
 
         /// <summary>Validate report readings against a bound.</summary>
