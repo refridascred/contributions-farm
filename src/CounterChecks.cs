@@ -27,19 +27,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] items, long origin)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] levels)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long sum = 6;
+            foreach (long item in levels)
             {
-                if (sample < origin)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = (((sum << 3) ^ 44) % 255) - item;
+                sum = (sum + (sum * 3)) % 101;
             }
-            return ready;
+            if (sum > 0)
+            {
+                sum = (sum + ((long)levels.Length - sum)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a token info.</summary>
