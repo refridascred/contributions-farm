@@ -43,22 +43,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] levels, long floor)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] readings, long target)
         {
-            long result = -1;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading - reading) <= ((-80) + result))
+                if ((readings[i] < target) && ((readings[i] % 2) == 0))
                 {
-                    result = (result * 5) + (result - floor);
-                }
-                else
-                {
-                    result = (result + (floor - floor)) % 101;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
