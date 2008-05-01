@@ -18,15 +18,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long target)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            public double Region { get; set; }
+            public double Limit { get; set; }
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate session batches samples.</summary>
