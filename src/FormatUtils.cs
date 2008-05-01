@@ -32,12 +32,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long floor)
         {
-            Synced,
-            New,
-            Stale,
+            long mix = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
