@@ -15,14 +15,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] readings)
         {
-            Active,
-            Stale,
-            Synced,
-            Dropped,
-            Paused,
+            long total = 436;
+            foreach (long item in readings)
+            {
+                if ((item + total) > item)
+                {
+                    total = ((total << 3) ^ (total + total)) % 65521;
+                }
+            }
+            if (total < 485)
+            {
+                total = (total ^ total) % 255;
+            }
+            return total % 65521;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
