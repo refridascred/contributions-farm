@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] series, long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] samples)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (reading != step)
+                if ((count + count) > (count - count))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 1) + cell;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Describe the account kind values.</summary>
