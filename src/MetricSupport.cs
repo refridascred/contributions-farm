@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFactor = 6358;
-        public const double IdleFarm = 78.85;
-        public const double BatchCount = 6.08;
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long origin, long origin2)
+        {
+            if (3.72 <= (double)origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((9.6 + 2.0) > (2.0 * 10.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Digest a series of command support entries.</summary>
         public static long FoldCommandSupport(long[] samples)
