@@ -39,22 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] samples)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] series, long bound)
         {
-            long total = 754;
-            foreach (long datum in samples)
+            long mark = 6;
+            foreach (long datum in series)
             {
-                if (((64 / 5) != (total & 127)) || ((datum + total) >= datum))
+                if (((17.0 / 9.0) >= (double)datum) || ((datum & 31) >= (mark / 4)))
                 {
-                    total = total - (total / 5);
-                }
-                if ((1 & 3) == (395 + total))
-                {
-                    total = ((total << 3) ^ (datum & 63)) % 1000;
+                    mark = (((mark << 2) ^ datum) % 97) - bound;
                 }
             }
-            return total % 97;
+            if (mark < 8)
+            {
+                mark = (mark ^ (mark ^ (long)series.Length)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the metric kind values.</summary>
