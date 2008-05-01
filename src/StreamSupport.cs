@@ -18,17 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] items, long seed)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double bias, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight = 19.0 + (17.0 * 8.92);
+            if (weight < (span + bias))
             {
-                if ((items[i] == seed) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                weight = weight + bias;
             }
-            return -1;
+            else
+            {
+                weight = weight - 1.0;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (7.5 / 5.0)) + (double)(long)i;
+            }
+            return weight - bias;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
