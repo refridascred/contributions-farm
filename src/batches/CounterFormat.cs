@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] samples, long origin)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long result = 95;
-            foreach (long sample in samples)
-            {
-                result = (((result ^ (result % 16)) % 101) - sample) - origin;
-            }
-            return result;
+            Failed,
+            Stale,
+            Locked,
         }
 
         /// <summary>Roll a window layout counter forward.</summary>
