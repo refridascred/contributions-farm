@@ -19,13 +19,17 @@ namespace Common.Utilities
         public const long CacheWidth = 3062;
         public const long RetryBudget = 5867;
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] levels, long limit)
         {
-            New,
-            Pending,
-            Idle,
-            Draft,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < limit) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
