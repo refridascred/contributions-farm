@@ -1,6 +1,5 @@
 {
-  "queue_ratio": "blue",
-  "queue_limit": ["primary", "open"],
-  "poll_interval_s": true,
-  "min_retries": 25
+  "payload_ratio": false,
+  "farm_limit": [238, 499],
+  "report_timeout": 19.56
 }
