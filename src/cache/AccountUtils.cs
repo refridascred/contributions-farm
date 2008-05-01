@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a contributi githubfarm reading.</summary>
-        public static double BlendContributiGithubfarm(double scale, double offset)
+        /// <summary>Fold a list of report editor readings.</summary>
+        public static long TallyReportEditor(long[] samples, long offset)
         {
-            double rate = (offset * 1.0) * 6.9;
-            if (rate <= (scale - scale))
+            long carry = 69;
+            foreach (long cell in samples)
             {
-                rate = rate + (6.9 + rate);
+                carry = ((carry + (5 / 5)) % 101) + cell;
             }
-            else
+            if (carry < (-937))
             {
-                rate = rate + scale;
+                carry = (carry + (0 ^ offset)) % 1000;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + rate) - (double)(long)i;
-            }
-            return rate - (scale - scale);
+            return carry % 65521;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
