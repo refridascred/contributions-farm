@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] data, long offset)
+        /// <summary>Combine contributi batches values into a single score.</summary>
+        public static long ScoreContributiBatches(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 431;
+            foreach (long entry in data)
             {
-                if (data[i] == offset)
-                {
-                    return (long)i;
-                }
+                score = (score - (score - score)) - entry;
             }
-            return -1;
+            if (score > 43)
+            {
+                score = (score * 2) + score;
+            }
+            return score;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
