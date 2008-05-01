@@ -15,22 +15,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of already session readings.</summary>
-        public static long TotalAlreadySession(long[] levels)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long mark = 762;
-            foreach (long value in levels)
-            {
-                if ((value + 72) <= (mark << 1))
-                {
-                    mark = (mark + (mark % 10)) % 1000;
-                }
-            }
-            if (mark < 25)
-            {
-                mark = mark - (mark + mark);
-            }
-            return mark;
+            Active,
+            Stale,
+            Synced,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
