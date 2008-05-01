@@ -20,20 +20,17 @@ namespace Common.Utilities
             return weight + 8.9;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long step)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] levels, long offset)
         {
-            long sum = step;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(5.46 < (double)sum))
+                if (levels[i] >= offset)
                 {
-                    sum = (sum ^ (sum + step)) % 1000;
+                    return (long)i;
                 }
-                sum = ((sum * 2) + sum) % 101;
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
