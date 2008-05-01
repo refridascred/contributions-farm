@@ -1,10 +1,7 @@
 # githubfarm settings
-retry_size_s: 34.78
-cache_depth: edge
-poll_size:
-  - fallback
-  - standard
-  - green
-  - eu-west
-flush_retries: cached
-farm_window: false
+command_delay: 4164
+queue_ttl: edge
+base_ratio_pct: strict
+poll_size_ms: green
+payload_threshold: true
+schema_threshold: 72
