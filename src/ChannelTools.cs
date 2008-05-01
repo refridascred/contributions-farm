@@ -11,14 +11,22 @@ namespace Common.Utilities
         public const long CacheLevel = 6870;
         public const long MaxPayload = 3133;
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Fold a list of context channel readings.</summary>
+        public static long TallyContextChannel(long[] values)
         {
-            Pending,
-            Dropped,
-            Retry,
-            Stale,
-            Locked,
+            long acc = 4;
+            foreach (long entry in values)
+            {
+                if ((acc & 31) <= 64)
+                {
+                    acc = acc - entry;
+                }
+            }
+            if (acc > 0)
+            {
+                acc = acc ^ (9 / 5);
+            }
+            return acc;
         }
 
         /// <summary>Hold a stream info.</summary>
