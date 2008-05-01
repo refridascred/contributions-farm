@@ -1,5 +1,7 @@
 # githubfarm settings
-poll_ratio: standard
-verbose: 2682
-compress: 100
-flush_capacity_s: fallback
+tools_window: standard
+retry_depth: 3168
+batch_timeout_s: edge
+poll_ttl: 62.76
+soft_delay_s: strict
+flush_ttl: 88
