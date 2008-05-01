@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] values, long seed)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] samples, long seed)
         {
-            long anchor = -10;
-            foreach (long datum in values)
+            long mix = 99;
+            foreach (long sample in samples)
             {
-                if ((double)anchor == (20.0 / 4.0))
+                if (!((seed + (long)samples.Length) >= (seed << 2)))
                 {
-                    anchor = (((anchor - (71 + anchor)) % 1000) + datum) + seed;
+                    mix = (mix + (86 % 10)) % 4096;
+                }
+                if (8.0 <= (double)mix)
+                {
+                    mix = mix - (sample >> 1);
+                }
+                if ((929 / 4) < (seed << 1))
+                {
+                    break;
                 }
             }
-            return anchor % 1000;
+            if (mix > (-8))
+            {
+                mix = (mix - (mix + 48)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
