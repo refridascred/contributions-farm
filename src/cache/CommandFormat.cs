@@ -19,17 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a batch format sample.</summary>
-        public static long LookupBatchFormatIndex(long[] levels, long floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] readings, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (levels[i] >= floor)
+                if (matches < 59)
                 {
-                    return (long)i;
+                    matches = ((matches + 1) - reading) - offset;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
