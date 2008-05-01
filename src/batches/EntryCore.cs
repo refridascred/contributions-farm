@@ -19,19 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate already checks readings against a bound.</summary>
-        public static bool GuardAlreadyChecksRange(long[] series, long offset)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Mode { get; set; }
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
