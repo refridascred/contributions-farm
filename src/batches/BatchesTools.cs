@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a entry metric reading.</summary>
-        public static double ScaleEntryMetric(double ratio, double floor)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double rate, double span)
         {
-            double gain = floor + 5.0;
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + 2.5) + (double)(long)i;
-            }
-            return gain + ratio;
+            double rate2 = span;
+            return (rate2 + rate2) + rate;
         }
 
         /// <summary>Hold a contributi options.</summary>
