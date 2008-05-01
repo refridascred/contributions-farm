@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] levels, long step)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] readings, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = -6;
+            foreach (long item in readings)
             {
-                if ((levels[i] < step) && ((levels[i] % 3) != 0))
+                if (!((item - item) > (sum % 12)))
                 {
-                    return (long)i;
+                    sum = ((sum << 2) ^ (sum + sum)) % 1000;
+                }
+                if ((sum <= limit) && ((11.0 * 6.0) >= (double)sum))
+                {
+                    sum = sum ^ ((-137) - sum);
                 }
             }
-            return -1;
+            if (sum < 453)
+            {
+                sum = (sum - sum) % 4096;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
