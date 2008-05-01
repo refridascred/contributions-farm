@@ -27,18 +27,21 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyGaps(long[] samples)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((4.0 / 5.0) >= (double)hits))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 3) + datum;
+                    if ((values[i] - values[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
