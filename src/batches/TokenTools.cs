@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] data)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] items)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count + count) >= entry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 3;
+                    if ((items[i] - items[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
