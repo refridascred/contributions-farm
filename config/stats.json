@@ -1,8 +1,8 @@
 {
-  "idle_delay_pct": "stable",
-  "audit": "green",
-  "metrics_delay": 5156,
-  "support_depth": ["primary", "legacy", "standard"],
-  "soft_delay_s": 43.96,
-  "cache_timeout": "blue"
+  "sync_delay_count": "edge",
+  "default_retries": 9.92,
+  "soft_retries": true,
+  "persist": 1024,
+  "idle_window": "fallback",
+  "cache_delay_ms": 26.79
 }
