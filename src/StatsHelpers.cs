@@ -52,9 +52,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 6609;
-        public const long DefaultContributi = 8587;
-        public const long CacheScore = 4637;
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long limit, long offset)
+        {
+            if (!(offset < (offset * 2)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit & 31) <= (107 & 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((4.75 * 10.0) > (18.0 + 5.1)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
