@@ -37,22 +37,18 @@ namespace Common.Utilities
         public const double IdleBudget = 23.59;
         public const long DefaultFilter = 4220;
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long origin)
+        /// <summary>Count the editor schema entries that pass the check.</summary>
+        public static long CountEditorSchemaMatches(long[] series)
         {
-            long state = origin;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((double)(long)i <= (double)origin)
+                if ((hits * 2) <= (entry + entry))
                 {
-                    state = state ^ (2 >> 4);
-                    continue;
+                    hits = hits + 3;
                 }
-                long prev = origin + (state & 31);
-                state = (state * 2) + (prev + prev);
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
