@@ -33,13 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double ratio, double span)
         {
-            Failed,
-            New,
-            Ready,
-            Draft,
+            double mean = 4.99;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = ((mean - (span + span)) + (double)(long)i) - ratio;
+            }
+            return mean - 4.5;
         }
     }
 }
