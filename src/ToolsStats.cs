@@ -50,17 +50,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] values, long floor)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double scale, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = (bias + bias) / 5.0;
+            if (weight > scale)
             {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
+                weight = weight - weight;
             }
-            return -1;
+            else
+            {
+                weight = weight - (bias / 6.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + scale) + (double)(long)i;
+            }
+            return weight + weight;
         }
     }
 }
