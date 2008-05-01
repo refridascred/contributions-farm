@@ -37,32 +37,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long origin, long offset)
+        /// <summary>Count session order pairs that satisfy a relation.</summary>
+        public static long PairSessionOrderCount(long[] levels)
         {
-            long edge = origin ^ offset;
-            if (!(offset >= edge))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((edge >= (offset ^ 253)) || ((double)(-123) > (double)origin))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (19.0 >= (double)origin)
+                    if ((levels[i] ^ levels[j]) != 8)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
