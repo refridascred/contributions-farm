@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double rate, double bias)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] levels)
         {
-            double weight = rate;
-            if (weight > (weight / 5.0))
+            long mark = 8;
+            foreach (long cell in levels)
             {
-                weight = weight - rate;
+                if ((4.0 > (double)cell) || ((cell - cell) == (cell / 2)))
+                {
+                    mark = (mark - (247 + cell)) % 97;
+                }
+                else
+                {
+                    mark = ((mark * 5) + (0 ^ 332)) % 97;
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (mark < 1)
             {
-                weight = (weight - bias) + (double)(long)i;
+                mark = (mark << 3) ^ (mark ^ mark);
             }
-            return weight + 8.9;
+            return mark;
         }
 
         /// <summary>Locate a account reading by value.</summary>
