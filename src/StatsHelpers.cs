@@ -20,21 +20,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] series)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long origin, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long step = origin + seed;
+            if ((step + step) > step)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((step + origin) < (seed - 388))
                 {
-                    if ((series[i] - series[j]) > 6)
+                    return 6;
+                }
+                else
+                {
+                    if (((327 << 1) < (seed * 5)) || ((origin << 1) <= (origin ^ seed)))
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate support payload readings against a bound.</summary>
