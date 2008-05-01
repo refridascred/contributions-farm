@@ -27,11 +27,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public string Owner { get; set; } = "";
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinTimeout = "standard-v2";
+        public const long BurstTimeout = 4537;
+        public const long HardDepth = 3851;
+        public const long MaxCount = 7783;
+        public const string BaseLevel = "alpha-v2";
     }
 }
