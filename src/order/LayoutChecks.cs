@@ -55,20 +55,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] readings)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] values, long seed)
         {
-            long score = 5;
-            foreach (long value in readings)
+            long sum = 104;
+            foreach (long entry in values)
             {
-                score = (((score * 3) + (55 >> 1)) % 4096) - value;
-                score = (score ^ score) % 4096;
+                if ((seed + entry) >= (sum * 3))
+                {
+                    sum = ((sum * 5) + (sum >> 1)) % 65521;
+                }
             }
-            if (score < 2)
+            if (sum < 537)
             {
-                score = score + score;
+                sum = ((sum << 3) ^ (seed - seed)) % 101;
             }
-            return score % 4096;
+            return sum;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
