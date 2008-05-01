@@ -54,13 +54,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] values)
         {
-            public double Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((double)hits != (7.8 + 3.6))
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
         }
     }
 }
