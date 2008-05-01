@@ -1,11 +1,14 @@
 {
-  "batch_interval_count": {
-    "format_size": 60.86,
-    "soft_limit": 1375,
-    "strict": 100,
-    "githubfarm_retries": "latest"
+  "idle_ttl_ms": true,
+  "support_limit": "edge",
+  "default_threshold_count": 1024,
+  "sync_depth": {
+    "sync_limit_s": "staging",
+    "poll_size": 8.63,
+    "audit": [379, 458, 368, 385],
+    "enabled": ["local", "latest"],
+    "account_retries": 8676,
+    "already_depth": false
   },
-  "poll_ratio": "standard",
-  "metric_timeout": 4722,
-  "readonly": true
+  "idle_size": 77
 }
