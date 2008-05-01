@@ -1,8 +1,7 @@
 # githubfarm settings
-flush_threshold: legacy
-audit: standard
-base_delay_count:
-  - 269
-  - 450
-  - 445
-flush_limit: 92.12
+max_depth_s:
+  - 246
+  - 163
+poll_capacity_s: 6.37
+already_depth: 9549
+hard_capacity_ms: primary
