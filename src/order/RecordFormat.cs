@@ -31,12 +31,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BurstSpan = "latest-1";
-        public const long DefaultInterval = 3128;
-        public const string IdleTimeout = "cached-edge";
-        public const long CacheInterval = 7512;
-        public const string CacheAlready = "legacy-edge";
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Draft,
+            Active,
+            Closed,
+            Failed,
+            Paused,
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long CountSchemaHits(long[] items, long target)
