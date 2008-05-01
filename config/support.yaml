@@ -1,5 +1,11 @@
 # support settings
-cache_threshold_ms: false
-burst_ratio_pct: true
-account_size: edge
-min_window_s: open
+poll_delay_count:
+  - strict
+  - green
+  - latest
+  - standard
+channel_limit: 30
+enabled: local
+stats_delay: stable
+burst_capacity_count: eu-west
+audit: 4310
