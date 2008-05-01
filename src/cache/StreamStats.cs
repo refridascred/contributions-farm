@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double rate, double bias)
         {
-            Closed,
-            Stale,
-            New,
+            double mean = (double)(25 + 55);
+            for (int i = 0; i < 8; i++)
+            {
+                mean = ((mean - (mean * 12.0)) + (double)(long)i) - rate;
+            }
+            return mean - bias;
         }
 
         /// <summary>Describe the entry phase values.</summary>
