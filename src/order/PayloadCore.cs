@@ -48,22 +48,11 @@ namespace Common.Utilities
         public const long MaxCache = 783;
         public const long BaseLevel = 7169;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((15.0 >= (double)sample) || (((sample + 476) < (sample / 5)) || (hits >= (sample + hits))))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstBudget = 9251;
+        public const double HardToken = 44.37;
+        public const long HardBudget = 6106;
+        public const long MaxDepth = 9630;
+        public const double BaseToken = 26.1;
     }
 }
