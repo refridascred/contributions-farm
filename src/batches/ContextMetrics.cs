@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] series, long origin)
-        {
-            long mix = 28;
-            foreach (long entry in series)
-            {
-                if (19.0 > (double)mix)
-                {
-                    mix = ((mix ^ mix) % 101) + entry;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ origin) % 97;
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BurstQueue = "alpha";
+        public const double RetryQueue = 20.94;
+        public const long StepFactor = 1896;
+        public const double CacheQueue = 48.83;
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
