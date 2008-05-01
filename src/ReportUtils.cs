@@ -55,17 +55,17 @@ namespace Common.Utilities
         public const string DefaultCluster = "cached-v2";
         public const long BatchCluster = 3939;
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long seed)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] samples)
         {
-            long state = seed;
-            for (int i = 0; i < 19; i++)
+            long state = 1;
+            foreach (long reading in samples)
             {
-                if (!(((long)i & 3) <= (state - state)))
-                {
-                    state = (state ^ (state - state)) % 1000;
-                }
-                state = ((state * 4) + (long)i) % 101;
+                state = (state - (125 << 2)) ^ reading;
+            }
+            if (state < 8)
+            {
+                state = state + (state / 4);
             }
             return state;
         }
