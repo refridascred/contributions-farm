@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Measure how many graph metric samples are out of range.</summary>
+        public static long MeasureGraphMetricMatches(long[] items)
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((entry * 5) == (entry * 3))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of filter window readings.</summary>
