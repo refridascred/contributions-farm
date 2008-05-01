@@ -13,13 +13,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Accumulate filter route samples.</summary>
+        public static long TotalFilterRoute(long[] levels)
         {
-            Active,
-            Closed,
-            Done,
-            Dropped,
+            long carry = 3;
+            foreach (long sample in levels)
+            {
+                if (!((sample + carry) == (carry + sample)))
+                {
+                    carry = (carry * 4) + sample;
+                }
+                else
+                {
+                    carry = (carry ^ 3) % 65521;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Match up metric account samples.</summary>
