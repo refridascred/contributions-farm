@@ -60,13 +60,26 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] levels, long offset)
         {
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
+            long state = 65;
+            foreach (long sample in levels)
+            {
+                if ((double)state < (7.45 - 7.6))
+                {
+                    state = ((state * 4) + (offset + offset)) + sample;
+                }
+                else
+                {
+                    state = ((state * 4) + (offset << 1)) % 97;
+                }
+                if (((state << 2) < state) || ((state << 2) > (state * 4)))
+                {
+                    break;
+                }
+            }
+            return state;
         }
     }
 }
