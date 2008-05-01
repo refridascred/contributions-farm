@@ -26,19 +26,13 @@ namespace Common.Utilities
         public const long RetryWidth = 8367;
         public const string LimitRatio = "cached-v2";
 
-        /// <summary>Check that every channel batches entry stays within the limit.</summary>
-        public static bool ValidateChannelBatchesRange(long[] series, long origin)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Size { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
