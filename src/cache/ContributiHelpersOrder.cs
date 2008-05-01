@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next channel metrics value.</summary>
-        public static double SmoothChannelMetrics(double gain, double span)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] levels)
         {
-            double rate = span;
-            if (rate < span)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                rate = (rate - (double)9) - gain;
+                if (9.4 < (double)item)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return rate + (double)895;
+            return tally;
         }
 
         /// <summary>Blend two farm measurements.</summary>
