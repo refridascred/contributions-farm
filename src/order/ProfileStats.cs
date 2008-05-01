@@ -19,17 +19,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Look up the position of a entry window sample.</summary>
-        public static long LookupEntryWindowIndex(long[] items, long target)
+        /// <summary>Accumulate queue contributi samples.</summary>
+        public static long FoldQueueContributi(long[] data, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 9;
+            foreach (long value in data)
             {
-                if (items[i] <= target)
+                if ((64 + value) == (value & 7))
                 {
-                    return (long)i;
+                    carry = ((carry - (-341)) % 255) - target;
                 }
             }
-            return -1;
+            return carry % 65521;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
