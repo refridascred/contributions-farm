@@ -42,19 +42,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long limit)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long state = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!((limit >> 1) >= 97))
-                {
-                    state = ((state << 3) ^ (state + limit)) % 255;
-                }
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            public long Level { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the metric status values.</summary>
