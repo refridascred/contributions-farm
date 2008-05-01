@@ -29,12 +29,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double IdleFilter = 38.24;
-        public const long BurstFilter = 2647;
-        public const long BatchFilter = 3354;
-        public const double IdleBudget = 23.59;
-        public const long DefaultFilter = 4220;
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the editor schema entries that pass the check.</summary>
         public static long CountEditorSchemaMatches(long[] series)
