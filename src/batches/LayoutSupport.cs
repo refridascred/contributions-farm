@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 7860;
-        public const long MinSpan = 7505;
-        public const long RetrySpan = 1046;
-        public const string LimitFactor = "fallback-1";
-        public const long WindowSize = 5317;
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
+        {
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long FindBatchIndex(long[] items, long limit)
