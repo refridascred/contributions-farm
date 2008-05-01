@@ -46,18 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] levels)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (((item + count) <= count) && (((double)item < (2.2 / 6.0)) || ((4 * 5) != (count * 5))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Locked,
+            Retry,
+            Ready,
         }
 
         /// <summary>Measure how many already metrics samples are out of range.</summary>
