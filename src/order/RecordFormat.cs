@@ -41,19 +41,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] samples, long offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaOutliers(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (item < offset)
+                if ((limit - value) > (limit - seen))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Find the first entry stats entry that matches the target.</summary>
