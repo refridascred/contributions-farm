@@ -53,10 +53,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 6224;
-        public const double IdleRoute = 48.85;
-        public const string BatchRoute = "stable-edge";
+        /// <summary>Accumulate contributi notes samples.</summary>
+        public static long CombineContributiNotes(long[] readings, long bound)
+        {
+            long state = 511;
+            foreach (long datum in readings)
+            {
+                if ((datum >> 4) >= (state ^ bound))
+                {
+                    state = (state << 3) ^ (long)readings.Length;
+                }
+                else
+                {
+                    state = (state - (state * 2)) % 1000;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
