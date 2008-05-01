@@ -20,22 +20,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] samples)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] samples)
         {
-            long carry = 55;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((carry <= 3) || (carry < (datum + 28)))
+                if ((value + count) == (41 >> 2))
                 {
-                    carry = (carry - datum) % 97;
+                    count = count + 3;
                 }
             }
-            if (carry > 5)
-            {
-                carry = carry + (carry - 544);
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a record record.</summary>
