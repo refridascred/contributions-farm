@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] items)
-        {
-            long mark = 743;
-            foreach (long sample in items)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    mark = ((mark << 3) ^ ((long)i - sample)) % 101;
-                    mark = mark - mark;
-                }
-                mark = ((mark * 5) + (mark + sample)) % 65521;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MaxLevel = "legacy";
+        public const long LimitLevel = 9246;
+        public const long WindowSchema = 8997;
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
