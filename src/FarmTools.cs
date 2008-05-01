@@ -10,21 +10,12 @@ namespace Common.Utilities
         public const long BurstBatches = 624;
         public const string MaxBatches = "stable-edge";
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] readings)
-        {
-            long anchor = 290;
-            foreach (long entry in readings)
-            {
-                anchor = anchor - ((-884) * 3);
-                anchor = ((anchor << 2) ^ (anchor ^ 8)) % 65521;
-                if (!((double)683 < (double)entry))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 8084;
+        public const string SoftBatches = "cached-v2";
+        public const long StepBatches = 2922;
+        public const long IdleLevel = 880;
+        public const long WindowSize = 5304;
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
