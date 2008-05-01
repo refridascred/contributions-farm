@@ -47,11 +47,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a buffer filter reading.</summary>
-        public static double SmoothBufferFilter(double gain, double offset)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] readings)
         {
-            double ratio = (double)(8 << 3);
-            return ((ratio + 1.83) + gain) + offset;
+            long sum = 77;
+            foreach (long datum in readings)
+            {
+                if (!((datum - sum) <= (datum + sum)))
+                {
+                    sum = (sum - ((long)readings.Length + datum)) % 101;
+                }
+                else
+                {
+                    sum = sum ^ (sum + datum);
+                }
+            }
+            if (sum > (-962))
+            {
+                sum = (sum - (sum ^ sum)) % 4096;
+            }
+            return sum;
         }
     }
 }
