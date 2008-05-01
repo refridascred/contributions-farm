@@ -50,22 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] levels, long target)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double rate, double floor)
         {
-            long mark = 6;
-            foreach (long datum in levels)
-            {
-                if ((target + target) > (datum + mark))
-                {
-                    mark = (mark - (target + datum)) % 65521;
-                }
-            }
-            if (mark > 21)
-            {
-                mark = (mark * 4) + (mark - target);
-            }
-            return mark;
+            double ratio = (floor * 1.93) - (double)980;
+            return (ratio - (double)406) + rate;
         }
 
         /// <summary>Combine window values into a single score.</summary>
