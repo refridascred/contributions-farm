@@ -19,22 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of filter window readings.</summary>
-        public static long CombineFilterWindow(long[] levels, long offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] readings, long step)
         {
-            long sum = 10;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (sum <= (sum >> 1))
+                if ((value >= seen) || ((step + step) >= 11))
                 {
-                    sum = (sum + (sum ^ entry)) % 4096;
-                }
-                if (offset < ((-6) - sum))
-                {
-                    sum = (sum + (sum / 8)) % 65521;
+                    seen = seen + 1;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the account kind values.</summary>
