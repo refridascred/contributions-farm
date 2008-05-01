@@ -19,10 +19,15 @@ namespace Common.Utilities
         public const double DefaultContext = 63.77;
         public const long StepWidth = 2589;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string RetryFilter = "open";
-        public const long IdleWidth = 2936;
-        public const string RetryFactor = "standard-v2";
-        public const string DefaultFilter = "local-1";
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
     }
 }
