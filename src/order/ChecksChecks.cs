@@ -21,11 +21,26 @@ namespace Common.Utilities
         public const long IdleLevel = 2532;
         public const long LimitFarm = 3682;
 
-        /// <summary>Blend two checks layout measurements.</summary>
-        public static double ScaleChecksLayout(double weight, double span)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] readings)
         {
-            double rate = (double)(82 << 1);
-            return (rate - (weight / 4.0)) + span;
+            long carry = -867;
+            foreach (long cell in readings)
+            {
+                if (!(((cell + cell) < (cell >> 5)) && (8.63 < (double)carry)))
+                {
+                    carry = (carry << 3) ^ cell;
+                }
+                if (!((cell + 70) >= (1 / 6)))
+                {
+                    carry = carry + (cell - carry);
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (carry >> 1)) % 255;
+                }
+            }
+            return carry;
         }
     }
 }
