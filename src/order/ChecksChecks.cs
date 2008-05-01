@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const long CacheCounter = 9823;
         public const long CacheSpan = 8253;
 
-        /// <summary>Audit payload editor readings against a rule.</summary>
-        public static long TallyPayloadEditorGaps(long[] series, long offset)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long limit)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long mark = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((cell & 3) != (offset / 4)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Accumulate channel samples.</summary>
