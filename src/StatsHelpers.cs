@@ -37,13 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Validate support payload readings against a bound.</summary>
+        public static bool CheckSupportPayloadLimits(long[] data, long limit)
         {
-            public double Mode { get; set; }
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
-            public double Level { get; set; }
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Classify a contributi cache pair into a bucket.</summary>
