@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Measure how many layout channel samples are out of range.</summary>
+        public static long AuditLayoutChannelHits(long[] data, long limit)
         {
-            public long Weight { get; set; }
-            public double Token { get; set; }
-            public double Offset { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((double)limit != (7.97 - 13.0))
+                {
+                    matches = (matches + 2) - entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
