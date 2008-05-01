@@ -45,12 +45,17 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] values, long seed)
         {
-            Draft,
-            Pending,
-            Failed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= seed) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a graph session pair into a bucket.</summary>
