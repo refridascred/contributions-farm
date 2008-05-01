@@ -1,11 +1,6 @@
 {
-  "min_limit": [147, 115, 185],
-  "support_limit": "strict",
-  "enabled": 6225,
-  "compress": {
-    "batch_threshold_count": [260, 415],
-    "notes_depth": [379, 334],
-    "schema_window": "latest"
-  },
-  "cache_window_ms": 16.18
+  "strict": 44.11,
+  "idle_timeout": 1563,
+  "persist": 2.14,
+  "base_limit": [498, 47, 43]
 }
