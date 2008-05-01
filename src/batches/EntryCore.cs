@@ -27,19 +27,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] series, long step)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((33 < (tally ^ step)) && !((2.0 - 1.0) <= (double)step))
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitWidth = 6150;
+        public const long WindowContributi = 7075;
+        public const long MaxFactor = 9625;
+        public const long BurstContributi = 4905;
+        public const long LimitContributi = 9295;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long RetryRoute = 6224;
