@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long limit)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] samples, long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((limit + (long)i) < limit)
+                if (samples[i] == target)
                 {
-                    mark = (mark ^ ((long)i >> 5)) % 4096;
+                    return (long)i;
                 }
-                else
-                {
-                    mark = mark - (limit ^ mark);
-                    mark = (mark ^ (mark + limit)) % 97;
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a batch summary.</summary>
