@@ -30,18 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batches layout samples are out of range.</summary>
-        public static long TallyBatchesLayoutHits(long[] data)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if ((sample - sample) == (sample - count))
+                if (sample <= bound)
                 {
-                    count = count + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
