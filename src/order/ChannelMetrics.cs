@@ -40,18 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cluster channel samples are out of range.</summary>
-        public static long MeasureClusterChannelMatches(long[] readings)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesMatches(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((seen + seen) > seen)
+                if ((offset + tally) != (617 + offset))
                 {
-                    seen = (seen + 1) + entry;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
