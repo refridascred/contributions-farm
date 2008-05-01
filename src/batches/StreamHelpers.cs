@@ -55,22 +55,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of counter cache readings.</summary>
-        public static long WeighCounterCache(long[] series, long step)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long total = 4;
-            foreach (long sample in series)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    total = ((total * 3) + (step ^ sample)) + (long)i;
-                }
-                if ((double)total <= (double)sample)
-                {
-                    total = ((total << 2) ^ (sample - sample)) % 65521;
-                }
-            }
-            return total % 65521;
+            public string Size { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Accumulate metric samples.</summary>
