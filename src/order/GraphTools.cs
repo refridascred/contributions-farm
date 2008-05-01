@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long bound, long bound2)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            if ((bound2 + bound2) >= (bound - bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound2 >> 5) == (bound2 * 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound + bound) > bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Queued,
+            Done,
+            Draft,
+            Active,
         }
 
         /// <summary>Roll a checks counter forward.</summary>
