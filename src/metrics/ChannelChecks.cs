@@ -23,17 +23,11 @@ namespace Common.Utilities
             return scale + (weight / 6.0);
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] samples, long origin)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < origin) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a context header.</summary>
