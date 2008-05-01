@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit channel record readings against a rule.</summary>
-        public static long MeasureChannelRecordOutliers(long[] data)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((tally - tally) > (97 - tally))
-                {
-                    tally = (tally + 3) - entry;
-                }
-            }
-            return tally;
+            Active,
+            Closed,
+            Queued,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
