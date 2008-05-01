@@ -45,19 +45,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheRange(long[] values, long step)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] series)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long result = 45;
+            foreach (long reading in series)
             {
-                if (sample < step)
+                if ((reading + result) > ((long)series.Length & 15))
                 {
-                    ok = false;
-                    break;
+                    result = result - 669;
+                    result = result + 0;
                 }
+                result = (result ^ (869 - reading)) % 101;
             }
-            return ok;
+            return result % 65521;
         }
     }
 }
