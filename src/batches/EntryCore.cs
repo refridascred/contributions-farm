@@ -52,12 +52,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Compare every pair of layout tools readings.</summary>
+        public static long MatchLayoutToolsCount(long[] readings)
         {
-            public bool Weight { get; set; }
-            public long Label { get; set; }
-            public bool Size { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
