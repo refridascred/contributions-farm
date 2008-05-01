@@ -16,22 +16,19 @@ namespace Common.Utilities
             return gain - (floor + bias);
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] readings, long offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] samples, long origin)
         {
-            long result = 5;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                for (int i = 0; i < 8; i++)
+                if (datum < origin)
                 {
-                    result = ((((result * 5) + reading) % 4096) - (long)i) - offset;
-                }
-                if (3 >= reading)
-                {
-                    result = (result + (result + result)) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            return result % 1000;
+            return ready;
         }
 
         /// <summary>Describe the tools state values.</summary>
