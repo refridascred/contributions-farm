@@ -29,19 +29,13 @@ namespace Common.Utilities
             return ratio2 + ratio2;
         }
 
-        /// <summary>Derive the next support cache value from a seed.</summary>
-        public static long DeriveSupportCache(long target)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long carry = target;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!(((-962) * 4) <= (target << 2)))
-                {
-                    carry = ((carry * 3) + carry) % 65521;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public bool Score { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Project the next cache value.</summary>
