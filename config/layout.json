@@ -1,14 +1,8 @@
 {
-  "poll_capacity_count": {
-    "warm_ttl_s": "cached",
-    "sync_delay": [168, 139, 216, 124],
-    "compress": 30,
-    "graph_size": [281, 246, 383],
-    "burst_ratio_s": 41,
-    "cache_threshold": 21
-  },
-  "retry_depth": 4.25,
-  "default_limit_count": 17,
-  "batch_capacity": 36,
-  "batch_ttl_s": 30
+  "default_window_count": false,
+  "cache_ttl": [95, 256],
+  "hard_timeout_pct": false,
+  "readonly": "staging",
+  "record_timeout": 2844,
+  "commits_delay": "fallback"
 }
