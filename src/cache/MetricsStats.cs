@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] samples, long floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] series, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((samples[i] <= floor) && ((samples[i] % 3) != 0))
+                if ((floor + 8) < (value + value))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the notes status values.</summary>
