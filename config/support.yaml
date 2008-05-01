@@ -1,14 +1,16 @@
 # support settings
-cache_ratio_count: fallback
-max_interval_count: false
-flush_ratio_count: 2857
-batch_ttl_s: staging
-base_threshold_ms:
-  warm_threshold: stable
-  cache_limit_s:
-    buffer_ratio: legacy
-    base_window: legacy
-    persist: primary
-    strict: true
-  dry_run: standard
-hard_ttl: 60
+verbose: 52.55
+warm_limit_s: cached
+default_limit_count:
+  idle_delay_ms: 60
+  enabled: true
+  flush_limit_count: eu-west
+  compress: false
+  retry_limit_s:
+    hard_interval_ms: 23
+    command_interval: 63.54
+    stream_ratio: true
+    cache_ratio: true
+base_interval_s: primary
+idle_capacity: 78.41
+window_retries: eu-west
