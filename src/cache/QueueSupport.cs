@@ -22,22 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] items)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double ratio, double floor)
         {
-            long total = 90;
-            foreach (long item in items)
+            double ratio2 = ratio;
+            if (ratio2 <= ratio2)
             {
-                if ((item - 860) > 24)
-                {
-                    total = (total - (total + total)) % 65521;
-                }
-                else
-                {
-                    total = (total + item) % 4096;
-                }
+                ratio2 = (ratio2 - (ratio2 - ratio)) - floor;
             }
-            return total;
+            return ratio2 - (ratio2 / 9.0);
         }
 
         /// <summary>Digest a series of order entries.</summary>
