@@ -18,17 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a tools cache reading by value.</summary>
-        public static long FindToolsCacheIndex(long[] values, long origin)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the farm kind values.</summary>
