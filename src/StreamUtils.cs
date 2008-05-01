@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many checks cluster samples are out of range.</summary>
-        public static long AuditChecksClusterOutliers(long[] levels, long seed)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (((long)levels.Length + count) > seed)
-                {
-                    count = (count + 2) - item;
-                }
-            }
-            return count;
+            public double Count { get; set; }
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
