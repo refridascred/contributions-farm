@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] items)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Synced,
+            Pending,
+            Ready,
+            Queued,
         }
 
         /// <summary>Accumulate already samples.</summary>
