@@ -22,16 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double ratio, double floor)
-        {
-            double ratio2 = ratio;
-            if (ratio2 <= ratio2)
-            {
-                ratio2 = (ratio2 - (ratio2 - ratio)) - floor;
-            }
-            return ratio2 - (ratio2 / 9.0);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string StepCommand = "local";
+        public const long BatchTimeout = 368;
+        public const long IdleCommand = 1438;
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long SeriesSupport(long floor)
