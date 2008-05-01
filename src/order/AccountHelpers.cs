@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const long DefaultContributi = 9380;
         public const double WindowContributi = 49.39;
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Locate a stats entry reading by value.</summary>
+        public static long FindStatsEntryIndex(long[] values, long floor)
         {
-            Closed,
-            Synced,
-            Dropped,
-            Stale,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
