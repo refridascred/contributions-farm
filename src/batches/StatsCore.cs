@@ -11,32 +11,17 @@ namespace Common.Utilities
         public const long BaseSpan = 7470;
         public const long WindowRatio = 8417;
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long limit, long bound)
+        /// <summary>Find the first stats entry entry that matches the target.</summary>
+        public static long SeekStatsEntryIndex(long[] series, long limit)
         {
-            long prev = limit + bound;
-            if ((double)bound > 8.0)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(prev < limit))
+                if (series[i] == limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((6.85 - 3.05) <= (double)limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate format stats samples.</summary>
