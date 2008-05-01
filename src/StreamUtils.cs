@@ -89,21 +89,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] readings)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) < 14)
+                    if ((samples[i] - samples[j]) > 7)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
