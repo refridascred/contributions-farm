@@ -1,6 +1,7 @@
 {
-  "burst_ttl_pct": 976,
-  "base_depth_ms": 55,
-  "flush_threshold": "latest",
-  "idle_ratio": 35
+  "max_size": 832,
+  "checks_ttl": 55,
+  "counter_window": "open",
+  "counter_timeout": ["stable", "legacy"],
+  "record_ttl": "cached"
 }
