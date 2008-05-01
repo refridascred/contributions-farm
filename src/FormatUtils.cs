@@ -46,19 +46,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every window already entry stays within the limit.</summary>
-        public static bool CheckWindowAlreadyRange(long[] values, long origin)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Weight { get; set; }
+            public bool Token { get; set; }
+            public bool Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Blend two schema measurements.</summary>
