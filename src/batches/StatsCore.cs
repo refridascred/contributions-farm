@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long BaseSpan = 7470;
         public const long WindowRatio = 8417;
 
-        /// <summary>Find the first stats entry entry that matches the target.</summary>
-        public static long SeekStatsEntryIndex(long[] series, long limit)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowGaps(long[] data, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (series[i] == limit)
+                if ((seed & 15) != (83 * 5))
                 {
-                    return (long)i;
+                    hits = (hits + 2) - entry;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Accumulate format stats samples.</summary>
