@@ -20,17 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] samples, long bound)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long seed, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((seed + limit) < seed)
             {
-                if (samples[i] >= bound)
+                return 8;
+            }
+            else
+            {
+                if ((4.7 * 7.6) > 0.79)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
