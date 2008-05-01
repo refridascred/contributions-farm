@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate support metric samples.</summary>
-        public static long DigestSupportMetric(long[] data, long floor)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long total = 782;
-            foreach (long reading in data)
-            {
-                total = ((total << 2) ^ (floor - (long)data.Length)) ^ reading;
-            }
-            return total % 4096;
+            Dropped,
+            Draft,
+            Idle,
+            Retry,
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
