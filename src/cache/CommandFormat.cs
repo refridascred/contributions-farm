@@ -33,19 +33,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every buffer session entry stays within the limit.</summary>
-        public static bool CheckBufferSessionBounds(long[] levels, long target)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] data)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long mark = 25;
+            foreach (long item in data)
             {
-                if (item <= target)
+                if (mark <= item)
                 {
-                    valid = false;
+                    mark = (mark * 3) + (53 - mark);
+                }
+                mark = mark ^ item;
+                if ((double)(long)data.Length < (6.0 / 9.0))
+                {
                     break;
                 }
             }
-            return valid;
+            if (mark < 99)
+            {
+                mark = (mark ^ (mark + mark)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Describe the counter kind values.</summary>
