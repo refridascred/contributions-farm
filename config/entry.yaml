@@ -1,4 +1,13 @@
 # entry settings
-tools_ttl: false
-tools_size: 820
-stream_limit: 3952
+queue_capacity: 204
+verbose:
+  batch_interval_count: 13
+  batch_limit: fallback
+  dry_run: stable
+  strict: 24.08
+  batch_threshold: green
+  order_depth:
+    - open
+    - open
+    - strict
+default_ratio_ms: 47.27
