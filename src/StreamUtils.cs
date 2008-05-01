@@ -57,21 +57,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] data)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Adjust a farm buffer reading.</summary>
