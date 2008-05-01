@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double gain, double offset)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            double gain2 = offset;
-            if (gain2 >= gain)
-            {
-                gain2 = gain2 + gain2;
-            }
-            else
-            {
-                gain2 = gain2 - (double)31;
-            }
-            return gain2 + (double)7;
+            Ready,
+            Draft,
+            Idle,
         }
 
         /// <summary>Adjust a contributi filter reading.</summary>
