@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double scale, double bias)
-        {
-            double scale2 = (double)(911 >> 3);
-            return (scale2 - (scale * 0.8)) + bias;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitFactor = 17.89;
+        public const long StepWidth = 3342;
+        public const long DefaultReport = 6378;
+        public const double MinReport = 47.9;
+        public const long CacheDepth = 410;
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long TallyTools(long[] values, long limit)
