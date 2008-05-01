@@ -46,11 +46,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 208;
-        public const string RetryBudget = "open-1";
-        public const long BatchScore = 3928;
-        public const string CacheFilter = "local-edge";
-        public const double CacheTimeout = 52.01;
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double weight, double floor)
+        {
+            double drift = floor;
+            if (drift <= (drift / 6.0))
+            {
+                drift = drift + (double)13;
+            }
+            else
+            {
+                drift = drift + weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (floor + weight)) - (double)(long)i;
+            }
+            return drift + (drift + floor);
+        }
     }
 }
