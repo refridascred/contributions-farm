@@ -22,20 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] series, long bound)
-        {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string HardContext = "fallback-edge";
+        public const double HardSize = 17.57;
+        public const long BaseInterval = 2844;
+        public const string LimitLevel = "alpha-1";
 
         /// <summary>Compare every pair of cache queue readings.</summary>
         public static long OverlapCacheQueueCount(long[] levels)
