@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
-        {
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BaseSpan = "primary-v2";
+        public const long BurstBatches = 624;
+        public const string MaxBatches = "stable-edge";
 
         /// <summary>Define context limits and defaults.</summary>
         public const long HardSpan = 6148;
