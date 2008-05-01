@@ -54,23 +54,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double scale, double bias)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] levels)
         {
-            double weight = (bias + bias) / 5.0;
-            if (weight > scale)
+            long result = 9;
+            foreach (long datum in levels)
             {
-                weight = weight - weight;
+                if (870 <= datum)
+                {
+                    result = (result + result) % 101;
+                }
+                result = (result ^ (result + result)) % 4096;
+                if ((4.35 + 1.34) > (double)datum)
+                {
+                    result = (result * 4) + (result % 100);
+                }
+                if (((datum / 9) == (datum + datum)) || ((double)datum >= (double)result))
+                {
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - (bias / 6.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + scale) + (double)(long)i;
-            }
-            return weight + weight;
+            return result % 65521;
         }
     }
 }
