@@ -19,11 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 9133;
-        public const long WindowScore = 2149;
-        public const long BaseEditor = 3460;
-        public const long LimitEditor = 704;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] data, long bound)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((double)hits < (double)0)
+                {
+                    hits = ((hits + 3) ^ sample) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool VerifySchemaRange(long[] series, long bound)
