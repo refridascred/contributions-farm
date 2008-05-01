@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            public long Mode { get; set; }
-            public double Level { get; set; }
-            public bool Stamp { get; set; }
-            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public double Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Scale a editor cluster figure with a bias.</summary>
