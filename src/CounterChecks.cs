@@ -49,14 +49,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            Paused,
-            Synced,
             Draft,
-            Stale,
-            Retry,
+            Pending,
+            Failed,
         }
 
         /// <summary>Hold a stream options.</summary>
