@@ -41,18 +41,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileOutliers(long[] data, long bound)
+        /// <summary>Iterate the entry batch series from a seed.</summary>
+        public static long DeriveEntryBatch(long limit)
         {
-            long count = 0;
-            foreach (long value in data)
+            long result = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((bound << 3) < bound)
-                {
-                    count = (count + 3) + value;
-                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
