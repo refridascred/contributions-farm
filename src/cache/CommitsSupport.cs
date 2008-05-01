@@ -68,13 +68,11 @@ namespace Common.Utilities
             return scale + rate;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
-        {
-            public double Offset { get; set; }
-            public bool Region { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 9252;
+        public const string IdleTimeout = "open-1";
+        public const long SoftWidth = 5967;
+        public const long WindowTimeout = 2344;
 
         /// <summary>Fold a list of queue format readings.</summary>
         public static long CombineQueueFormat(long[] samples, long offset)
