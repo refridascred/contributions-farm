@@ -93,13 +93,19 @@ namespace Common.Utilities
         public const long SoftWidth = 5967;
         public const long WindowTimeout = 2344;
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double rate, double floor)
         {
-            public double Count { get; set; }
-            public bool Mode { get; set; }
-            public double Score { get; set; }
-            public long Limit { get; set; }
+            double bias = rate;
+            if (bias <= floor)
+            {
+                bias = bias - floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (bias - rate)) + (double)(long)i;
+            }
+            return bias + rate;
         }
     }
 }
