@@ -31,17 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] series, long step)
+        /// <summary>Adjust a cluster stream reading.</summary>
+        public static double BlendClusterStream(double scale, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = span;
+            if (drift >= 1.71)
             {
-                if ((series[i] <= step) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift + (double)8) - scale;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Accumulate already samples.</summary>
