@@ -49,13 +49,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public string Flag { get; set; } = "";
+            public long Count { get; set; }
+            public double Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Check that every notes order entry stays within the limit.</summary>
