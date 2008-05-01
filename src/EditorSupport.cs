@@ -32,22 +32,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] items)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long carry = 8;
-            foreach (long cell in items)
-            {
-                if (carry > cell)
-                {
-                    carry = carry - ((long)items.Length % 16);
-                }
-                if (((1.33 - 0.42) == (double)carry) || (cell < (776 & 1)))
-                {
-                    carry = carry + (cell + carry);
-                }
-            }
-            return carry;
+            Ready,
+            Paused,
+            Pending,
+            Draft,
+            Locked,
         }
 
         /// <summary>Hold a command stats.</summary>
