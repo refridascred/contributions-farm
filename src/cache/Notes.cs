@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyOutliers(long[] series, long seed)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((count + count) <= seed)
-                {
-                    count = (count + 3) + value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string IdleRecord = "stable";
+        public const long StepRecord = 1006;
+        public const long CacheRecord = 4962;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long HardLevel = 4961;
