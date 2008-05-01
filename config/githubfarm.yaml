@@ -1,7 +1,7 @@
 # githubfarm settings
-command_delay: 4164
-queue_ttl: edge
-base_ratio_pct: strict
-poll_size_ms: green
-payload_threshold: true
-schema_threshold: 72
+profile_retries: 95.25
+already_interval: 250
+poll_delay_ms: 22.34
+idle_interval:
+  - eu-west
+  - staging
