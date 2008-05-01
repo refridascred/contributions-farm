@@ -49,18 +49,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit layout window readings against a rule.</summary>
-        public static long MeasureLayoutWindowMatches(long[] samples)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double rate, double span)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            double scale = span;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)matches >= (19.0 * 9.0))
-                {
-                    matches = (matches + 3) ^ sample;
-                }
+                scale = (scale - scale) + (double)(long)i;
             }
-            return matches;
+            return scale + rate;
         }
 
         /// <summary>Hold a command entry.</summary>
