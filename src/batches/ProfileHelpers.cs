@@ -95,12 +95,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            public double Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Token { get; set; }
+            public bool Flag { get; set; }
+            public long Total { get; set; }
         }
     }
 }
