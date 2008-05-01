@@ -29,17 +29,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] levels, long offset)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] items, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if (levels[i] <= offset)
+                if (datum != seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Count the editor schema entries that pass the check.</summary>
