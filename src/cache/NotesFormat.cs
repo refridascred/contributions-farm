@@ -14,18 +14,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] values, long origin)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long floor, long step)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            if ((step << 3) > step)
             {
-                if ((tally + origin) == (5 << 2))
+                return 1;
+            }
+            else
+            {
+                if (((step >> 1) >= step) || (step > (47 + floor)))
                 {
-                    tally = (tally + 1) - datum;
+                    return 8;
+                }
+                else
+                {
+                    if (!(step <= (227 % 5)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Locate a support reading by value.</summary>
