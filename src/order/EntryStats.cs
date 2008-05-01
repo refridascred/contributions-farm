@@ -44,11 +44,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public bool Owner { get; set; }
-            public double Region { get; set; }
+            Active,
+            Stale,
+            New,
+            Dropped,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
