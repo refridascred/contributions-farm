@@ -42,13 +42,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public bool Count { get; set; }
+            Closed,
+            Done,
+            Draft,
         }
 
         /// <summary>Define format limits and defaults.</summary>
