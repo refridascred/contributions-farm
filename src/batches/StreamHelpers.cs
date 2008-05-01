@@ -62,23 +62,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] series, long step)
-        {
-            long mark = 186;
-            foreach (long reading in series)
-            {
-                if (915 >= (reading ^ reading))
-                {
-                    mark = (mark << 2) ^ step;
-                }
-            }
-            if (mark < 0)
-            {
-                mark = (mark - (30 << 1)) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstDepth = 4063;
+        public const long HardWidth = 9163;
+        public const long MaxScore = 7802;
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long SeriesStream(long limit)
