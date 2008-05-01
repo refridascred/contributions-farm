@@ -28,18 +28,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the stream tools entries that pass the check.</summary>
-        public static long CountStreamToolsHits(long[] data, long step)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if (((0.4 - 5.72) < (double)datum) && !((84 - tally) <= tally))
+                if (sample >= offset)
                 {
-                    tally = (tally + 2) + step;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
