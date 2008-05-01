@@ -23,20 +23,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long bound)
+        /// <summary>Grade a session tools value against two limits.</summary>
+        public static long GradeSessionTools(long origin, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 7; i++)
+            long edge = origin - offset;
+            if (((double)edge < (1.8 / 4.0)) || ((origin ^ offset) > offset))
             {
-                if (!((6 + anchor) > (56 + 127)))
-                {
-                    anchor = ((anchor << 2) ^ (bound / 6)) % 4096;
-                }
-                anchor = (anchor * 2) + anchor;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                return 8;
             }
-            return anchor;
+            else
+            {
+                if (offset <= (edge & 31))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)origin <= (4.7 * 9.37)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (origin >= (origin + offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
