@@ -68,9 +68,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepProfile = "stable-v2";
-        public const double HardProfile = 75.85;
-        public const long MinSpan = 3434;
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
+        {
+            public string Region { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public string Ratio { get; set; } = "";
+        }
     }
 }
