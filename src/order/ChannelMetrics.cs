@@ -30,17 +30,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseContributi = 38.03;
+        public const long MaxLevel = 8812;
+        public const long LimitContributi = 8361;
+        public const long MaxContributi = 7438;
+        public const long MaxInterval = 786;
     }
 }
