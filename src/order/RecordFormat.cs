@@ -41,18 +41,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaHits(long[] items, long target)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((double)count >= 6.8)
-                {
-                    count = ((count + 1) - value) - target;
-                }
-            }
-            return count;
+            Draft,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
