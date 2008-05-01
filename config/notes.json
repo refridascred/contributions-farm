@@ -1,13 +1,7 @@
 {
-  "persist": false,
-  "retry_delay_count": false,
-  "commits_threshold": 59.51,
-  "dry_run": {
-    "profile_size": false,
-    "cache_capacity_s": 1024,
-    "cache_capacity_count": [101, 292],
-    "persist": "blue",
-    "checks_ttl": [36, 132, 248, 1]
-  },
-  "default_retries": false
+  "batches_depth": true,
+  "default_interval_s": ["strict", "primary", "fallback", "local"],
+  "editor_window": 5930,
+  "queue_limit": 6616,
+  "profile_ttl": true
 }
