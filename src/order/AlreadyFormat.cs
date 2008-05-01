@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Count the session notes entries that pass the check.</summary>
+        public static long AuditSessionNotesMatches(long[] samples, long step)
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((tally & 63) >= (0 ^ datum))
+                {
+                    tally = (tally + 3) - step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a farm stats.</summary>
