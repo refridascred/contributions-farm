@@ -20,13 +20,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] values, long seed)
         {
-            Failed,
-            Active,
-            Done,
-            Closed,
+            long score = 74;
+            foreach (long sample in values)
+            {
+                if ((sample - seed) != (score * 5))
+                {
+                    score = (score << 3) ^ seed;
+                    score = ((score * 2) + (score % 24)) % 4096;
+                }
+                if (score <= (sample + sample))
+                {
+                    score = (score * 2) + (score + 39);
+                }
+                else
+                {
+                    score = score + (seed + sample);
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
