@@ -1,7 +1,11 @@
 {
-  "base_capacity_s": false,
-  "retry_ttl": 48,
-  "soft_threshold": 78.4,
-  "enabled": true,
-  "audit": ["staging", "legacy", "legacy"]
+  "profile_timeout": 7348,
+  "sync_window_count": {
+    "retry_interval": 9180,
+    "readonly": 9297,
+    "retry_retries_count": [116, 245],
+    "verbose": ["primary", "green", "legacy"]
+  },
+  "persist": false,
+  "default_timeout_ms": "stable"
 }
