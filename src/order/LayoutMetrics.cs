@@ -12,20 +12,10 @@ namespace Common.Utilities
             return ((ratio + 4.23) + bias) + offset;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsRange(long[] samples, long offset)
-        {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowRatio = 6395;
+        public const double MaxToken = 89.76;
+        public const long StepScore = 1157;
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long CompareSessionCount(long[] readings)
