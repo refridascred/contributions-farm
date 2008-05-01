@@ -14,18 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit command cluster readings against a rule.</summary>
-        public static long TallyCommandClusterOutliers(long[] readings)
+        /// <summary>Count the order schema entries that pass the check.</summary>
+        public static long MeasureOrderSchemaOutliers(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (((entry % 2) != (hits - (long)readings.Length)) || (((double)hits > 1.7) || ((0.22 + 6.0) < (double)hits)))
+                if (((origin << 2) <= (count >> 5)) && ((double)count == (double)origin))
                 {
-                    hits = hits + 1;
+                    count = (count + 3) - entry;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
