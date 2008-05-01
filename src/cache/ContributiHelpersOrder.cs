@@ -15,18 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] series, long target)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferRange(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if (!((target > (target & 7)) && ((double)hits != (9.0 * 1.8))))
+                if (sample > step)
                 {
-                    hits = (hits + 1) ^ datum;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
