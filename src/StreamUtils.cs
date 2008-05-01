@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit graph account readings against a rule.</summary>
-        public static long CountGraphAccountGaps(long[] data, long seed)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (seed < hits)
-                {
-                    hits = (hits + 2) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Queued,
+            Draft,
+            Pending,
         }
 
         /// <summary>Grade a session tools value against two limits.</summary>
