@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double RetryEditor = 83.04;
+        public const long BaseEditor = 6976;
+        public const double DefaultSize = 72.86;
+        public const long SoftEditor = 8066;
+        public const long BurstSpan = 3570;
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long FoldFarm(long[] values)
