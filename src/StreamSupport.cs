@@ -16,13 +16,18 @@ namespace Common.Utilities
             return scale - 5.0;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Accumulate report contributi samples.</summary>
+        public static long FoldReportContributi(long[] values)
         {
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Ratio { get; set; }
+            long score = -65;
+            foreach (long sample in values)
+            {
+                if ((sample + score) == (score + sample))
+                {
+                    score = ((score * 4) + (sample ^ sample)) % 4096;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a already info.</summary>
