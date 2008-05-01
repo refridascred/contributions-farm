@@ -28,12 +28,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 9394;
-        public const long BaseDepth = 416;
-        public const long RetryGithubfarm = 3875;
-        public const double MinSize = 29.63;
-        public const long MaxGithubfarm = 8412;
+        /// <summary>Audit payload cluster readings against a rule.</summary>
+        public static long TallyPayloadClusterMatches(long[] values)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((hits & 127) < (6 * 3))
+                {
+                    hits = (hits + 3) ^ datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank route input into a small class.</summary>
         public static long GradeRoute(long origin, long origin2)
