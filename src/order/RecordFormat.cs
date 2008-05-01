@@ -33,38 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long target, long target2)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatHits(long[] readings)
         {
-            if ((double)360 >= (double)target)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target - target2) >= (623 * 3))
+                if ((732 + seen) < (seen & 255))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)target2 != (double)target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target2 + 99) > target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = (seen + 1) ^ item;
                 }
             }
+            return seen;
         }
 
         /// <summary>Match up metric samples.</summary>
