@@ -21,13 +21,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] levels)
         {
-            Paused,
-            Ready,
-            Closed,
-            Dropped,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)count < (double)datum)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
