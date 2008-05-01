@@ -49,18 +49,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsMatches(long[] levels, long floor)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((floor + sample) != (sample + floor))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
