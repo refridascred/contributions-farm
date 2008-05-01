@@ -1,13 +1,12 @@
 {
-  "context_delay": 95.54,
-  "compress": 5,
-  "burst_ratio_ms": {
-    "cache_capacity_pct": "stable",
-    "dry_run": "eu-west",
-    "batches_interval": 250,
-    "idle_delay": false,
-    "cache_depth_count": ["eu-west", "fallback", "cached"],
-    "strict": 2964
+  "idle_timeout": 30,
+  "profile_threshold": 7.97,
+  "session_ttl": {
+    "strict": "legacy",
+    "retry_delay": 47.66,
+    "enabled": 30,
+    "channel_ttl": "stable"
   },
-  "poll_size_pct": 54.06
+  "poll_capacity_count": 30,
+  "persist": 38.22
 }
