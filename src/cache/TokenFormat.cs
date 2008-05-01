@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long step)
+        /// <summary>Check that every payload githubfarm entry stays within the limit.</summary>
+        public static bool CheckPayloadGithubfarmRange(long[] samples, long origin)
         {
-            long sum = step;
-            for (int i = 0; i < 14; i++)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                if (reading > origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
