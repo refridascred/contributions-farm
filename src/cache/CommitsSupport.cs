@@ -20,17 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] readings, long target)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= target) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Active,
+            Done,
+            Closed,
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
