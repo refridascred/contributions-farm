@@ -33,19 +33,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] items, long bound)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (sample <= bound)
+                if (!((9.53 + 6.9) <= (double)entry))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) - limit;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
