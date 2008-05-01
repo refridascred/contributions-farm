@@ -53,21 +53,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] levels)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] samples, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((samples[i] <= seed) && ((samples[i] % 5) == 0))
                 {
-                    if ((levels[i] + levels[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
