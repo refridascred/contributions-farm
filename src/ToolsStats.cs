@@ -69,22 +69,9 @@ namespace Common.Utilities
         public const string MinWidth = "cached-1";
         public const long CacheBatch = 9571;
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] samples)
-        {
-            long sum = 303;
-            foreach (long datum in samples)
-            {
-                if (((998 + 68) != (datum & 63)) || ((double)datum > (3.35 + 3.4)))
-                {
-                    sum = (sum * 3) + (datum + datum);
-                }
-                if (!((datum / 9) < (datum + datum)))
-                {
-                    sum = sum + (datum - datum);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultSize = 3671;
+        public const double BatchCounter = 96.5;
+        public const string DefaultCounter = "latest";
     }
 }
