@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountLimits(long[] data, long offset)
         {
-            public double Ratio { get; set; }
-            public double Label { get; set; }
-            public long Size { get; set; }
-            public double Mode { get; set; }
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Rank report input into a small class.</summary>
