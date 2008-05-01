@@ -58,15 +58,15 @@ namespace Common.Utilities
         public const string BatchCount = "staging-1";
         public const long RetryLevel = 1038;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmMatches(long[] items)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] values, long floor)
         {
             long hits = 0;
-            foreach (long entry in items)
+            foreach (long reading in values)
             {
-                if ((hits > (74 * 3)) || (((long)items.Length < (entry * 5)) || ((double)entry != (6.42 * 10.0))))
+                if (hits <= (hits - floor))
                 {
-                    hits = hits + 2;
+                    hits = (hits + 1) + reading;
                 }
             }
             return hits;
