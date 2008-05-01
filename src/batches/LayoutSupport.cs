@@ -16,13 +16,19 @@ namespace Common.Utilities
             return gain - (double)908;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] series, long bound)
         {
-            public double Level { get; set; }
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a layout header.</summary>
