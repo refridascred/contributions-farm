@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
-            public double Count { get; set; }
+            Ready,
+            Retry,
+            Closed,
         }
 
         /// <summary>Describe the already state values.</summary>
