@@ -16,18 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the layout metric entries that pass the check.</summary>
-        public static long AuditLayoutMetricMatches(long[] series)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((((entry & 31) <= seen) || ((double)entry < (double)9)) || ((double)entry < (7.95 / 6.0)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Stale,
+            Locked,
+            Done,
+            Failed,
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
