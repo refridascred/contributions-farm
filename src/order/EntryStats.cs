@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] values)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] data, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 1;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                anchor = (anchor - (seed + datum)) % 97;
+                if ((9.7 / 3.0) == (double)anchor)
                 {
-                    if ((values[i] + values[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor ^ (seed % 8)) % 101;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Iterate the report tools series from a seed.</summary>
