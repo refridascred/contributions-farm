@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] samples, long bound)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long sum = -45;
-            foreach (long sample in samples)
-            {
-                if (30 > (bound ^ (-494)))
-                {
-                    sum = sum + (sample + 10);
-                }
-            }
-            return sum;
+            Synced,
+            Retry,
+            Ready,
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
