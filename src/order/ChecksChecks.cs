@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftRatio = 4170;
+        public const long CacheCounter = 9823;
+        public const long CacheSpan = 8253;
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long MeasurePayloadGaps(long[] data, long target)
