@@ -52,18 +52,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit schema command readings against a rule.</summary>
-        public static long AuditSchemaCommandGaps(long[] series, long limit)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((entry % 12) >= entry)
-                {
-                    count = (count + 2) + limit;
-                }
-            }
-            return count;
+            Paused,
+            Stale,
+            Synced,
+            Closed,
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
