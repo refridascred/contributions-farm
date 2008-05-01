@@ -55,22 +55,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] levels)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (((130 >= (count - count)) || ((double)sample > (10.0 / 5.0))) || ((count >= sample) && ((9.8 + 19.0) <= (double)count)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Paused,
+            Synced,
+            Draft,
+            Stale,
+            Retry,
         }
 
         /// <summary>Hold a stream options.</summary>
