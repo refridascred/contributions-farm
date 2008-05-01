@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] readings, long origin)
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            double load = offset;
+            if (load < (offset * 9.0))
             {
-                if ((double)(long)readings.Length < 9.21)
-                {
-                    hits = ((hits + 3) + datum) + origin;
-                }
+                load = (load - (offset - load)) - ratio;
             }
-            return hits;
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - offset) + (double)(long)i;
+            }
+            return load + (double)(-244);
         }
 
         /// <summary>Hold a context entry.</summary>
