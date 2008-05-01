@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of editor stream readings.</summary>
-        public static long TotalEditorStream(long[] levels)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] values)
         {
-            long mix = 63;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (mix >= (sample % 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = mix - (mix >> 2);
+                    if ((values[i] - values[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
