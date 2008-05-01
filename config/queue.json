@@ -1,19 +1,7 @@
 {
-  "burst_limit_count": {
-    "poll_size": ["cached", "open"],
-    "audit": [491, 98],
-    "max_limit_s": "local",
-    "warm_limit_ms": 8941,
-    "verbose": 4218
-  },
-  "min_ttl": 53,
-  "burst_ttl": "legacy",
-  "persist": [228, 151],
-  "retry_depth": {
-    "hard_threshold_count": true,
-    "soft_capacity_count": "blue",
-    "stats_retries": 500,
-    "audit": 40.91
-  },
-  "enabled": 500
+  "soft_limit_ms": false,
+  "soft_depth": "eu-west",
+  "retry_limit_s": "standard",
+  "min_capacity_ms": true,
+  "strict": "staging"
 }
