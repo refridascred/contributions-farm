@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long origin)
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] values)
         {
-            long mark = origin;
-            for (int i = 0; i < 6; i++)
+            long mix = 7;
+            foreach (long datum in values)
             {
-                if (!((8.4 - 5.8) <= (double)(long)i))
+                if ((mix << 3) != (mix & 15))
                 {
-                    mark = (mark ^ 38) % 101;
+                    mix = mix - (datum - datum);
                 }
-                else
-                {
-                    mark = ((mark << 2) ^ (mark - origin)) % 97;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mark;
+            if (mix < 22)
+            {
+                mix = (mix * 3) + mix;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
