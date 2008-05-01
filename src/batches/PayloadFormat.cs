@@ -48,11 +48,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long floor)
         {
-            public bool Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            long acc = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    acc = (acc - floor) ^ (long)i2;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
