@@ -1,5 +1,12 @@
 {
-  "warm_timeout_count": true,
-  "soft_capacity_s": 2956,
-  "order_size": false
+  "compress": 68,
+  "sync_ratio_pct": 40.04,
+  "hard_retries_count": 9560,
+  "tools_size": {
+    "base_size_count": 500,
+    "warm_limit": "primary",
+    "sync_depth_ms": false,
+    "min_window_count": true
+  },
+  "warm_window_ms": 58.65
 }
