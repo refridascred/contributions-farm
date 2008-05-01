@@ -20,22 +20,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Compare every pair of cache profile readings.</summary>
-        public static long PairCacheProfileCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchCount = 7274;
+        public const long BaseSession = 4795;
+        public const long BatchSession = 6567;
+        public const long IdleSession = 6226;
+        public const long MaxCount = 2361;
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long DigestCluster(long[] values)
