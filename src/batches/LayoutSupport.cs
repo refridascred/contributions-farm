@@ -55,14 +55,9 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
-        {
-            Locked,
-            Dropped,
-            Closed,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinProfile = 76.96;
+        public const string BaseBudget = "cached-edge";
+        public const string MaxTimeout = "open-edge";
     }
 }
