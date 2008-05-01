@@ -18,16 +18,22 @@ namespace Common.Utilities
         public const long IdleRatio = 4695;
         public const double MinRecord = 5.66;
 
-        /// <summary>Iterate the report metric series from a seed.</summary>
-        public static long RollReportMetric(long limit)
+        /// <summary>Accumulate route checks samples.</summary>
+        public static long WeighRouteChecks(long[] readings)
         {
-            long sum = limit;
-            for (int i = 0; i < 13; i++)
+            long result = 97;
+            foreach (long value in readings)
             {
-                sum = (sum ^ (limit * 4)) % 97;
-                sum = ((sum * 4) + (long)i) % 1000;
+                if ((result + value) != (value + 30))
+                {
+                    result = ((result * 5) + value) % 101;
+                }
+                if (result > (value & 15))
+                {
+                    break;
+                }
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
