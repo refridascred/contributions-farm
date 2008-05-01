@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long target)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] items)
         {
-            long state = target;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                state = state - target;
-                state = ((state * 3) + (long)i) % 101;
+                if ((hits << 3) <= item)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
