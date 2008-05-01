@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long bound, long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionOutliers(long[] readings, long seed)
         {
-            long diff = bound + seed;
-            if ((diff ^ 46) < 889)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound + bound) <= (seed / 7))
+                if (((matches - entry) < (entry - matches)) || (matches < (entry + matches)))
                 {
-                    return 1;
+                    matches = (matches + 2) + seed;
                 }
                 else
                 {
-                    if ((bound ^ diff) != (bound / 6))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed - 365) < (diff << 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the account status values.</summary>
