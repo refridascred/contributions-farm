@@ -1,12 +1,5 @@
 # support settings
-idle_threshold:
-  - legacy
-  - eu-west
-  - cached
-persist: 21.19
-command_window: true
-hard_ratio:
-  - 274
-  - 311
-strict: stable
-soft_limit_s: 56
+idle_window: 15
+batch_timeout: 26.52
+enabled: 40
+base_window: 920
