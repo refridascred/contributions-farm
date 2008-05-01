@@ -64,17 +64,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first counter metric entry that matches the target.</summary>
-        public static long LocateCounterMetricIndex(long[] values, long origin)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 40;
+            foreach (long entry in series)
             {
-                if (values[i] < origin)
+                if ((854 / 3) == (entry % 24))
                 {
-                    return (long)i;
+                    total = (total ^ (total - entry)) % 255;
                 }
             }
-            return -1;
+            if (total > 6)
+            {
+                total = (total ^ (total + 358)) % 255;
+            }
+            return total % 1000;
         }
     }
 }
