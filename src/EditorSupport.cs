@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long offset, long step)
         {
-            public bool Mode { get; set; }
-            public string Weight { get; set; } = "";
+            if ((double)offset <= (double)step)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((8.7 * 12.0) != (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
