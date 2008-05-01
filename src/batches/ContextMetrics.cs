@@ -28,20 +28,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((seed & 1) < ((long)i ^ mix))
-                {
-                    mix = mix ^ ((-2) + seed);
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 8498;
+        public const string BatchFilter = "latest-edge";
+        public const double WindowFilter = 77.22;
 
         /// <summary>Count command counter pairs that satisfy a relation.</summary>
         public static long MatchCommandCounterCount(long[] readings)
