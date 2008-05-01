@@ -47,18 +47,14 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] readings)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long mark = 297;
-            foreach (long entry in readings)
-            {
-                if ((85 < (entry % 3)) || (((-571) << 3) == (entry / 9)))
-                {
-                    mark = ((mark << 3) ^ (mark + entry)) % 65521;
-                }
-            }
-            return mark % 1000;
+            Paused,
+            Locked,
+            Stale,
+            New,
+            Failed,
         }
     }
 }
