@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate report contributi samples.</summary>
-        public static long FoldReportContributi(long[] values)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] series)
         {
-            long score = -65;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((sample + score) == (score + sample))
+                if (!((sample << 1) < (802 ^ count)))
                 {
-                    score = ((score * 4) + (sample ^ sample)) % 4096;
+                    count = count + 2;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a already info.</summary>
