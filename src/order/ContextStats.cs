@@ -39,22 +39,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] series, long bound)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long mix = 3;
-            foreach (long entry in series)
-            {
-                if (!((bound << 2) != (entry % 64)))
-                {
-                    mix = ((mix << 2) ^ (mix + mix)) % 4096;
-                }
-            }
-            if (mix < 89)
-            {
-                mix = (mix - bound) % 4096;
-            }
-            return mix;
+            Done,
+            Queued,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Hold a editor entry.</summary>
