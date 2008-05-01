@@ -14,13 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            Synced,
-            Queued,
-            Idle,
-            New,
+            Dropped,
+            Done,
+            Ready,
+            Closed,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
