@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] data)
         {
-            Active,
-            Locked,
-            Stale,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((count + count) >= entry)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
