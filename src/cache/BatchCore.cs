@@ -26,17 +26,19 @@ namespace Common.Utilities
         public const string MaxSchema = "strict";
         public const double IdleSchema = 77.92;
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] items, long offset)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] series, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 803;
+            foreach (long item in series)
             {
-                if ((items[i] < offset) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                sum = (((sum << 2) ^ 681) % 255) - item;
             }
-            return -1;
+            if (sum > (-5))
+            {
+                sum = sum - (origin * 5);
+            }
+            return sum;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
