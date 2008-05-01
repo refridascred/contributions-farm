@@ -46,15 +46,22 @@ namespace Common.Utilities
         public const long BurstInterval = 8734;
         public const long BatchFactor = 4115;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] items)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] levels)
         {
-            long anchor = 27;
-            foreach (long cell in items)
+            long acc = 2;
+            foreach (long value in levels)
             {
-                anchor = (anchor - (cell / 5)) % 65521;
+                if ((value * 4) == (value / 6))
+                {
+                    acc = ((acc << 2) ^ (acc - 25)) % 65521;
+                }
             }
-            return anchor;
+            if (acc > 28)
+            {
+                acc = ((acc << 3) ^ (acc & 3)) % 101;
+            }
+            return acc;
         }
     }
 }
