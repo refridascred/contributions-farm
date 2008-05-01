@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard strict staging edge; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=352
+CHANNEL_LIMIT=253
 log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-local}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
