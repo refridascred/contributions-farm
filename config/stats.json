@@ -1,5 +1,7 @@
 {
-  "idle_interval_count": 60,
-  "default_retries_pct": false,
-  "base_delay": "staging"
+  "cache_ttl": 90.66,
+  "strict": 91.14,
+  "flush_timeout_s": "primary",
+  "soft_depth_s": [135, 435],
+  "batches_timeout": "edge"
 }
