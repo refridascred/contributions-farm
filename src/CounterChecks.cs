@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long bound)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long total = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            public string Total { get; set; } = "";
+            public double Weight { get; set; }
+            public long Size { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
