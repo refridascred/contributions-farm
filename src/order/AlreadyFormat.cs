@@ -39,19 +39,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate cache format readings against a bound.</summary>
-        public static bool VerifyCacheFormatRange(long[] levels, long floor)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Flag { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a report header.</summary>
