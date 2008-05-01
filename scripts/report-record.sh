@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached standard; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
 
-mode="${1:-strict}"
+mode="${1:-cached}"
 case "${mode}" in
-    latest)
+    cached)
         log "fast path"
         ;;
     *)
@@ -20,8 +22,5 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
+RECORD_LIMIT=205
+log "limit is ${RECORD_LIMIT}"
