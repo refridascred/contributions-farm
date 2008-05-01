@@ -1,7 +1,15 @@
 {
-  "cache_ttl": 90.66,
-  "strict": 91.14,
-  "flush_timeout_s": "primary",
-  "soft_depth_s": [135, 435],
-  "batches_timeout": "edge"
+  "notes_capacity": 38.62,
+  "hard_window_pct": "legacy",
+  "cache_ttl_pct": true,
+  "min_interval": 24,
+  "farm_ttl": {
+    "soft_depth": "local",
+    "tools_size": [64, 200, 490, 118],
+    "dry_run": false,
+    "persist": 15.61,
+    "channel_ratio": 67.36,
+    "batch_threshold_pct": 9682
+  },
+  "verbose": "fallback"
 }
