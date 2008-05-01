@@ -1,12 +1,14 @@
 # Command notes
 
-Defaults for metric live in the config folder and can be overridden per environment.
-The metric helpers are pure functions, so they are safe to call from any thread.
-Run the buffer check before changing any report limits.
+The support report groups every editor by filter.
+When a metric fails, the profile handler retries a few times before giving up.
+
+A stats that stays idle for too long is moved to the stream list.
+A already that stays idle for too long is moved to the order list.
 
 ## Guidelines
 
-- Document new queue fields
-- Keep report values small
-- Log every account change
-- Prefer format defaults
+- Keep order values small
+- Validate account input early
+- Log every stream change
+- Prefer checks defaults
