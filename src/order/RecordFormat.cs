@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchTimeout = 7165;
-        public const long MaxInterval = 6245;
-        public const long DefaultInterval = 2154;
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long limit, long floor)
+        {
+            if ((floor >> 5) <= floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((7.9 / 9.0) >= (double)limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (limit > (6 - floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit - 492) < (limit - floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long RollTools(long step)
