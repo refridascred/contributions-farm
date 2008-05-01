@@ -70,19 +70,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Adjust a farm buffer reading.</summary>
-        public static double AdjustFarmBuffer(double scale, double floor)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] readings)
         {
-            double scale2 = (double)(43 - 6);
-            if (scale2 > (floor + scale))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale2 = scale2 + floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = (scale2 + (scale2 + 3.6)) + (double)(long)i;
-            }
-            return scale2 + floor;
+            return count;
         }
     }
 }
