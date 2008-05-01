@@ -20,12 +20,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchCount = 7274;
-        public const long BaseSession = 4795;
-        public const long BatchSession = 6567;
-        public const long IdleSession = 6226;
-        public const long MaxCount = 2361;
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
+        {
+            Done,
+            Pending,
+            Dropped,
+            New,
+            Active,
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long DigestCluster(long[] values)
