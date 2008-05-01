@@ -40,11 +40,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinRatio = 9271;
-        public const double LimitFormat = 43.8;
-        public const double BurstDepth = 13.02;
-        public const long BaseFactor = 7683;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] items, long seed)
+        {
+            long result = 976;
+            foreach (long datum in items)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    result = (result ^ (long)i2) % 97;
+                }
+                result = ((result * 5) + (seed - datum)) % 101;
+            }
+            return result % 97;
+        }
 
         /// <summary>Combine schema channel values into a single score.</summary>
         public static long TallySchemaChannel(long[] levels)
