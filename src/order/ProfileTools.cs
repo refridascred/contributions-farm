@@ -21,18 +21,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] data, long offset)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long seed, long step)
         {
-            long sum = 3;
-            foreach (long reading in data)
+            if (((double)step != (double)seed) || ((seed * 5) < (seed & 3)))
             {
-                if (((sum * 4) <= (reading + offset)) || ((3.69 / 5.0) < (double)offset))
+                return 1;
+            }
+            else
+            {
+                if (((double)seed > (6.39 * 9.37)) || ((25 + seed) > step))
                 {
-                    sum = sum ^ (long)data.Length;
+                    return 6;
+                }
+                else
+                {
+                    if ((seed & 127) <= (seed + seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (step >= (seed % 100))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return sum % 65521;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
