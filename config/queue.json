@@ -1,5 +1,7 @@
 {
-  "warm_retries_pct": "cached",
-  "warm_threshold_ms": "primary",
-  "sync_limit_count": "legacy"
+  "retry_interval_ms": "green",
+  "idle_window": 7905,
+  "retry_ttl": [456, 187, 15],
+  "flush_retries": 500,
+  "cache_depth_count": "stable"
 }
