@@ -39,12 +39,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] readings)
         {
-            Stale,
-            Dropped,
-            Closed,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
