@@ -49,12 +49,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            Queued,
-            Stale,
-            Paused,
+            public bool Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
