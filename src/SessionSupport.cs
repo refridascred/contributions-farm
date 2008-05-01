@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double scale, double bias)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] data, long floor)
         {
-            double gain = scale - (double)885;
-            return (gain - (double)273) + bias;
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (!((entry - 2) == (352 * 4)))
+                {
+                    count = (count + 3) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank report input into a small class.</summary>
