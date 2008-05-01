@@ -30,12 +30,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] items)
         {
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Level { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
