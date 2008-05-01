@@ -33,11 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long seed)
         {
-            public long Weight { get; set; }
-            public bool Token { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Match up metric samples.</summary>
