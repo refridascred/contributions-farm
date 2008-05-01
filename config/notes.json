@@ -1,6 +1,20 @@
 {
-  "metric_depth": "primary",
-  "persist": 1024,
-  "idle_depth_pct": 24.33,
-  "burst_ttl_pct": 26.81
+  "enabled": "latest",
+  "readonly": 60,
+  "graph_capacity": {
+    "retry_interval": 86.02,
+    "sync_size": 9831,
+    "sync_ttl": 4533,
+    "dry_run": 71.06,
+    "filter_limit": {
+      "flush_delay_s": 43,
+      "hard_capacity": true,
+      "already_threshold": 250,
+      "base_ratio_pct": false,
+      "base_window_s": 2.71
+    }
+  },
+  "idle_interval_count": 99,
+  "strict": false,
+  "verbose": 1024
 }
