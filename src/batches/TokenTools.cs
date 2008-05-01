@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] items, long origin)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long sum = 3;
-            foreach (long value in items)
-            {
-                if (((double)sum == (18.0 * 3.62)) || ((origin + 846) < sum))
-                {
-                    sum = ((sum - sum) % 65521) - value;
-                }
-            }
-            return sum;
+            Done,
+            Idle,
+            Failed,
         }
 
         /// <summary>Hold a batch summary.</summary>
