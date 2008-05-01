@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Combine record batch values into a single score.</summary>
+        public static long TotalRecordBatch(long[] readings, long bound)
         {
-            Ready,
-            Retry,
-            Closed,
+            long acc = 0;
+            foreach (long sample in readings)
+            {
+                acc = (acc - (sample + sample)) % 97;
+                acc = acc ^ (bound - bound);
+                if ((double)5 < (double)acc)
+                {
+                    acc = (acc ^ ((long)readings.Length - 4)) % 4096;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
