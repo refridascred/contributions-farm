@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] values, long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] items)
         {
-            long acc = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (52 <= (acc + offset))
+                if (((double)reading != (double)348) && (((reading + reading) <= (reading >> 5)) && ((seen ^ 14) == (reading % 24))))
                 {
-                    acc = ((acc * 2) + (item >> 5)) % 65521;
-                    continue;
-                }
-                else
-                {
-                    acc = (acc * 2) + (item + item);
-                }
-                if ((item >> 1) == (454 / 6))
-                {
-                    acc = acc - acc;
+                    seen = seen + 2;
                 }
             }
-            return acc % 4096;
+            return seen;
         }
 
         /// <summary>Validate already checks readings against a bound.</summary>
