@@ -1,5 +1,8 @@
 {
-  "route_ratio": "local",
-  "notes_interval": "edge",
-  "batch_retries_pct": ["eu-west", "fallback", "standard"]
+  "base_delay_ms": 73.58,
+  "default_window_ms": 1024,
+  "audit": "standard",
+  "retry_capacity_s": 30,
+  "idle_limit_s": [218, 9, 331],
+  "commits_threshold": [17, 244]
 }
