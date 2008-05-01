@@ -53,18 +53,14 @@ namespace Common.Utilities
             return bias - (weight / 8.0);
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandOutliers(long[] levels, long floor)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (((matches >> 4) < reading) && (((reading - matches) >= floor) && (reading <= (matches + matches))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Dropped,
+            New,
+            Idle,
+            Stale,
+            Done,
         }
     }
 }
