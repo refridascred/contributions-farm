@@ -14,12 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            Synced,
+            Closed,
             Retry,
-            Dropped,
+            Pending,
         }
 
         /// <summary>Hold a token snapshot.</summary>
