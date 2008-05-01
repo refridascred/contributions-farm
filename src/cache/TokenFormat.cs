@@ -50,25 +50,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long target)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long offset, long seed)
         {
-            long mix = target;
-            for (int i = 0; i < 19; i++)
+            if ((seed << 3) != (offset << 1))
             {
-                long seen = 7 - mix;
-                if ((4.0 < (double)(long)i) && ((double)target == (double)(-7)))
+                return 5;
+            }
+            else
+            {
+                if (8.0 <= (double)seed)
                 {
-                    mix = (mix - (target ^ target)) % 65521;
+                    return 0;
                 }
                 else
                 {
-                    mix = (mix * 2) + (16 + seen);
-                    seen = (seen << 2) ^ ((long)i & 3);
+                    return 7;
                 }
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
         }
     }
 }
