@@ -21,18 +21,25 @@ namespace Common.Utilities
         public const long MaxAlready = 7235;
         public const long BurstDepth = 229;
 
-        /// <summary>Count the editor already entries that pass the check.</summary>
-        public static long AuditEditorAlreadyGaps(long[] samples)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long bound, long bound2)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long span = bound - bound2;
+            if ((85 + span) > (span * 4))
             {
-                if ((double)entry >= (7.4 + 11.0))
+                return 4;
+            }
+            else
+            {
+                if ((bound <= (bound / 3)) || ((bound & 1) == (span + 308)))
                 {
-                    matches = matches + 2;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
     }
 }
