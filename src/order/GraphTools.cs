@@ -37,12 +37,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            public bool Token { get; set; }
-            public long Label { get; set; }
-            public long Region { get; set; }
+            public string Size { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Fold a list of window stream readings.</summary>
