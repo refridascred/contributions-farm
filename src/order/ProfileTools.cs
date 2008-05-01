@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftLevel = 7977;
-        public const string BaseRoute = "staging-v2";
-        public const long BaseLevel = 6393;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Locked,
+            Draft,
+            Pending,
+            Idle,
+        }
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
