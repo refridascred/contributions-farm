@@ -59,19 +59,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorLimits(long[] readings, long bound)
+        /// <summary>Project the next support commits value.</summary>
+        public static double ProjectSupportCommits(double bias, double bias2)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            double rate = bias;
+            if (rate < bias2)
             {
-                if (value <= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = rate + bias;
             }
-            return stale;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (double)32) - (double)(long)i;
+            }
+            return rate - (rate - rate);
         }
     }
 }
