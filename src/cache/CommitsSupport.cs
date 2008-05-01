@@ -87,11 +87,22 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 9252;
-        public const string IdleTimeout = "open-1";
-        public const long SoftWidth = 5967;
-        public const long WindowTimeout = 2344;
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two batch measurements.</summary>
         public static double SmoothBatch(double rate, double floor)
