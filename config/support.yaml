@@ -1,6 +1,14 @@
 # support settings
-idle_limit: open
-sync_interval_pct: 7386
-retry_ttl_ms: cached
-filter_limit: 18.55
-burst_ratio: 10.71
+retry_threshold:
+  - 360
+  - 473
+  - 427
+  - 263
+base_ttl_s: latest
+account_limit: green
+window_ratio: 97.1
+route_threshold:
+  - staging
+  - open
+  - legacy
+dry_run: 84
