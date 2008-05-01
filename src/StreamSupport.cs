@@ -17,15 +17,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double ratio, double span)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] levels, long offset)
         {
-            double weight = span;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = (weight + ratio) + (double)(long)i;
+                if ((levels[i] >= offset) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight + (double)91;
+            return -1;
         }
 
         /// <summary>Describe the payload phase values.</summary>
