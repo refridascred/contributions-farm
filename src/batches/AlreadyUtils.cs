@@ -32,18 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsOutliers(long[] levels)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (((-6) - cell) > cell)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Ready,
+            Locked,
+            Pending,
+            Stale,
+            Active,
         }
 
         /// <summary>Iterate the farm notes series from a seed.</summary>
