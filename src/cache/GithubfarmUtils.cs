@@ -19,15 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long floor)
+        /// <summary>Audit window queue readings against a rule.</summary>
+        public static long MeasureWindowQueueHits(long[] values, long seed)
         {
-            long carry = floor;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                if (!(7 > (tally + seed)))
+                {
+                    tally = (tally + 2) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Hold a stats summary.</summary>
