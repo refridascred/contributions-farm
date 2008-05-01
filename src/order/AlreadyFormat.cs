@@ -34,12 +34,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            Idle,
             Paused,
-            Pending,
+            Draft,
+            Queued,
+            Active,
         }
 
         /// <summary>Hold a order stats.</summary>
