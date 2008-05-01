@@ -19,20 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next buffer checks value.</summary>
-        public static double AdjustBufferChecks(double rate, double floor)
-        {
-            double bias = (double)(402 ^ 4);
-            if (bias < (rate - floor))
-            {
-                bias = bias - (double)(-15);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - rate) - (double)(long)i;
-            }
-            return bias - (bias - bias);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheInterval = 6652;
+        public const long LimitBatches = 5977;
+        public const long DefaultSpan = 1727;
+        public const long MaxBatches = 3955;
+        public const double LimitInterval = 57.71;
 
         /// <summary>Count the order counter entries that pass the check.</summary>
         public static long MeasureOrderCounterHits(long[] items)
