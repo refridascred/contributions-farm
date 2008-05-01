@@ -28,19 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteLimits(long[] data, long bound)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] levels)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (entry <= bound)
+                if (((long)levels.Length - sample) >= (matches - 3))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
