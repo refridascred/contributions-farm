@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine route channel values into a single score.</summary>
-        public static long FoldRouteChannel(long[] data)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long anchor = 1;
-            foreach (long datum in data)
-            {
-                if ((datum - datum) <= (968 + datum))
-                {
-                    anchor = ((anchor << 2) ^ datum) % 4096;
-                }
-            }
-            return anchor;
+            Retry,
+            Queued,
+            Dropped,
+            Done,
         }
 
         /// <summary>Define already limits and defaults.</summary>
