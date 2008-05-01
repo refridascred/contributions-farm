@@ -25,10 +25,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstFactor = 8452;
-        public const double SoftWidth = 35.4;
-        public const string WindowEditor = "local";
-        public const long HardEditor = 6680;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] data, long offset)
+        {
+            long sum = 4;
+            foreach (long cell in data)
+            {
+                sum = ((sum ^ (offset + 31)) % 255) + cell;
+            }
+            if (sum > 7)
+            {
+                sum = sum + (7 ^ (-463));
+            }
+            return sum;
+        }
     }
 }
