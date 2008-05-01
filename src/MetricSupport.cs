@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchLayout = 0.48;
-        public const string WindowCount = "latest-edge";
-        public const long HardTimeout = 2360;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Active,
+            Failed,
+            Done,
+        }
 
         /// <summary>Match up support batch samples.</summary>
         public static long CompareSupportBatchCount(long[] items)
