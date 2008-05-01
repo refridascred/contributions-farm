@@ -31,11 +31,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 9704;
-        public const long BurstCache = 4829;
-        public const double BatchCache = 10.55;
-        public const long SoftSize = 9331;
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
+        {
+            Closed,
+            Ready,
+            Draft,
+            Stale,
+            Synced,
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long CountCommandGaps(long[] items, long target)
