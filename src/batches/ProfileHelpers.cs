@@ -46,13 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] values, long step)
         {
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public double Flag { get; set; }
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (!((5.0 * 5.4) != (double)tally))
+                {
+                    tally = ((tally + 1) + sample) - step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
