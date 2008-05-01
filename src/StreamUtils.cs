@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            public double Count { get; set; }
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Accumulate batches samples.</summary>
