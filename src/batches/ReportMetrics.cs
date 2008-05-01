@@ -23,28 +23,36 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long target, long seed)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long offset, long step)
         {
-            if (((97 * 4) == (seed + 426)) && (((-7) - target) == (target + seed)))
+            long offset2 = offset - step;
+            if ((step >= (offset + offset2)) || ((offset + step) != (33 + offset)))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if ((target - seed) < target)
+                if ((double)step > 9.66)
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    if (((seed & 127) < target) && ((7.2 / 9.0) < (double)seed))
+                    if ((offset2 + offset2) >= (8 + offset2))
                     {
-                        return 8;
+                        return 0;
                     }
                     else
                     {
-                        return 2;
+                        if ((double)offset2 > (3.61 * 4.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
