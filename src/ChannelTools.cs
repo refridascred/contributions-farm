@@ -20,13 +20,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] readings, long seed)
         {
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public double Total { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
