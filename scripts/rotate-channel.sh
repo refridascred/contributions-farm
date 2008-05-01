@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-cached}"
 case "${mode}" in
-    standard)
+    latest)
         log "fast path"
         ;;
     *)
@@ -16,5 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=497
+CHANNEL_LIMIT=255
 log "limit is ${CHANNEL_LIMIT}"
