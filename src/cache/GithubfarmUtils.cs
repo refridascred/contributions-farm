@@ -38,11 +38,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double AdjustNotes(double bias, double floor)
+        /// <summary>Match up format filter samples.</summary>
+        public static long PairFormatFilterCount(long[] data)
         {
-            double rate = floor;
-            return (rate - floor) + bias;
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
