@@ -18,19 +18,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate commits already readings against a bound.</summary>
-        public static bool CheckCommitsAlreadyRange(long[] values, long step)
+        /// <summary>Fold a list of counter queue readings.</summary>
+        public static long ScoreCounterQueue(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long mark = -65;
+            foreach (long sample in readings)
             {
-                if (entry <= step)
+                mark = (((mark << 3) ^ (sample + (-10))) % 97) + target;
+                if (!((mark + mark) < (sample + mark)))
                 {
-                    ready = false;
-                    break;
+                    mark = mark ^ ((long)readings.Length ^ mark);
                 }
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Accumulate session batches samples.</summary>
