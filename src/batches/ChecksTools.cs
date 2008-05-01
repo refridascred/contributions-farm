@@ -63,12 +63,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
-        {
-            Paused,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BaseGraph = "legacy-v2";
+        public const string BaseTimeout = "alpha-edge";
+        public const long LimitRatio = 7219;
     }
 }
