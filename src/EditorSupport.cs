@@ -63,17 +63,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] levels, long limit)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                score = score - 61;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
