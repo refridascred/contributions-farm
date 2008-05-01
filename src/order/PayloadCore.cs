@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] series)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (sample > (matches - matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
