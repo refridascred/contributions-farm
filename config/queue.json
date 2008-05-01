@@ -1,5 +1,18 @@
 {
-  "payload_ratio": false,
-  "farm_limit": [238, 499],
-  "report_timeout": 19.56
+  "soft_ratio_pct": 11,
+  "compress": "stable",
+  "max_limit_ms": 6096,
+  "poll_interval": true,
+  "readonly": {
+    "strict": ["legacy", "primary", "stable"],
+    "metrics_ratio": "legacy",
+    "batch_ratio": 500,
+    "flush_delay_pct": {
+      "max_timeout_pct": 29,
+      "sync_interval_count": [163, 325, 204, 188],
+      "channel_ttl": ["stable", "strict", "green", "fallback"]
+    },
+    "sync_threshold": ["primary", "latest", "primary", "blue"],
+    "idle_capacity_ms": 60
+  }
 }
