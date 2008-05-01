@@ -33,11 +33,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinLevel = 7221;
-        public const string DefaultSchema = "cached-1";
-        public const double BurstSchema = 91.42;
-        public const string StepSchema = "latest";
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] readings)
+        {
+            long state = 74;
+            foreach (long cell in readings)
+            {
+                state = ((state << 2) ^ (93 % 100)) % 1000;
+                if ((4.69 <= (double)cell) && ((cell - state) > cell))
+                {
+                    break;
+                }
+            }
+            if (state < 948)
+            {
+                state = (state ^ (state + state)) % 101;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Match up metric samples.</summary>
         public static long CompareMetricCount(long[] items)
