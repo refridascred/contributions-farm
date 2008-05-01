@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] values, long origin)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] samples, long limit)
         {
-            long result = 43;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (204 >= (long)values.Length)
+                if ((samples[i] > limit) && ((samples[i] % 2) == 0))
                 {
-                    result = (result - (9 + item)) % 4096;
-                }
-                else
-                {
-                    result = result ^ (origin + origin);
+                    return (long)i;
                 }
             }
-            if (result < 2)
-            {
-                result = result - 4;
-            }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
