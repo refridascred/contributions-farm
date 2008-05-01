@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Measure how many report counter samples are out of range.</summary>
+        public static long AuditReportCounterOutliers(long[] data)
         {
-            public long Label { get; set; }
-            public double Owner { get; set; }
-            public double Offset { get; set; }
-            public string Count { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (!((11 >> 4) > (datum >> 1)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a session profile value against two limits.</summary>
