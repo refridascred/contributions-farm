@@ -1,8 +1,13 @@
 # support settings
-stats_interval:
-  - 489
-  - 169
-  - 99
-  - 352
-burst_ratio: 60
-base_window_s: 99
+base_limit_ms: true
+max_ttl_ms: 13.14
+farm_ratio:
+  metrics_window:
+    - 219
+    - 89
+    - 238
+    - 281
+  batch_depth: edge
+  readonly: 1024
+  flush_depth_count: 500
+poll_interval_pct: 250
