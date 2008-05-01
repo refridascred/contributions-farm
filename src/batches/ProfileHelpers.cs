@@ -64,9 +64,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinLevel = 1549;
-        public const long BaseBudget = 2919;
-        public const double SoftDepth = 15.67;
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
+        {
+            public double Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Token { get; set; }
+        }
     }
 }
