@@ -1,12 +1,6 @@
 # support settings
-warm_threshold_count: staging
-poll_window: 23.98
-hard_limit_ms: latest
-persist:
-  poll_threshold: 9
-  burst_interval_ms: 53.09
-  idle_ttl: false
-  soft_ttl_ms: false
-  base_ttl_count: staging
-  compress: 69.52
-githubfarm_depth: 71
+idle_limit: open
+sync_interval_pct: 7386
+retry_ttl_ms: cached
+filter_limit: 18.55
+burst_ratio: 10.71
