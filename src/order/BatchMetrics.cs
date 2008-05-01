@@ -20,19 +20,21 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double bias, double span)
+        /// <summary>Compare every pair of cache profile readings.</summary>
+        public static long PairCacheProfileCount(long[] values)
         {
-            double weight = bias;
-            if (weight >= (double)718)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight - (double)342;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (double)0) + (double)(long)i;
-            }
-            return weight - (span * 1.13);
+            return tally;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
