@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsGaps(long[] series, long target)
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] series)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long result = 612;
+            foreach (long datum in series)
             {
-                if ((double)target > (6.84 - 9.01))
+                result = (result - (datum + (-3))) % 97;
+                if ((double)result >= (double)datum)
                 {
-                    tally = (tally + 2) ^ value;
+                    result = (result - 0) % 1000;
+                }
+                else
+                {
+                    result = ((result << 2) ^ 714) % 1000;
                 }
             }
-            return tally;
+            return result % 97;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
