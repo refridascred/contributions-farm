@@ -22,19 +22,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileRange(long[] items, long limit)
-        {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string RetryFilter = "open";
+        public const long IdleWidth = 2936;
+        public const string RetryFactor = "standard-v2";
+        public const string DefaultFilter = "local-1";
     }
 }
