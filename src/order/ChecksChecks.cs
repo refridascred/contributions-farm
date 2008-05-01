@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const long CacheCounter = 9823;
         public const long CacheSpan = 8253;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] data, long target)
+        /// <summary>Audit payload editor readings against a rule.</summary>
+        public static long TallyPayloadEditorGaps(long[] series, long offset)
         {
             long tally = 0;
-            foreach (long datum in data)
+            foreach (long cell in series)
             {
-                if ((target <= (datum % 7)) && (((target - target) != (datum ^ target)) || ((tally - datum) > 0)))
+                if (!((cell & 3) != (offset / 4)))
                 {
-                    tally = tally + 1;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
