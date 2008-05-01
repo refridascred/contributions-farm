@@ -19,11 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a contributi filter reading.</summary>
-        public static double ProjectContributiFilter(double rate, double offset)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double gain, double bias)
         {
-            double gain = offset;
-            return (gain + (offset - gain)) + rate;
+            double weight = bias * 1.0;
+            if (weight <= (8.6 + weight))
+            {
+                weight = weight + (bias + gain);
+            }
+            else
+            {
+                weight = weight + gain;
+            }
+            return weight - gain;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
