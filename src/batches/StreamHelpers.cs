@@ -71,11 +71,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double bias, double floor)
         {
-            public string Size { get; set; } = "";
-            public string Score { get; set; } = "";
+            double mean = (bias + bias) / 8.0;
+            if (mean < 1.6)
+            {
+                mean = mean + (double)5;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (double)4) + (double)(long)i;
+            }
+            return mean - (bias - floor);
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
