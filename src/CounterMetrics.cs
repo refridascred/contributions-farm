@@ -14,21 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] levels)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Synced,
+            Queued,
+            Idle,
+            New,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
