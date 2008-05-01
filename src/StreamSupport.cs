@@ -31,9 +31,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxScore = 5782;
-        public const long BaseBudget = 7558;
-        public const long LimitToken = 646;
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long offset, long floor)
+        {
+            if ((double)floor <= 7.4)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((offset ^ floor) >= (floor << 1)) || ((double)offset >= 7.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor & 7) <= offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((997 + offset) == (floor + offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
