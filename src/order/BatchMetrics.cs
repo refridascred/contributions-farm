@@ -46,21 +46,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count session support pairs that satisfy a relation.</summary>
-        public static long PairSessionSupportCount(long[] levels)
+        /// <summary>Classify a order batch pair into a bucket.</summary>
+        public static long BucketOrderBatch(long limit, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long lane = limit + origin;
+            if ((origin + origin) >= (1 + limit))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!((double)limit == (1.97 + 5.5)))
                 {
-                    if ((levels[i] ^ levels[j]) == 11)
+                    return 7;
+                }
+                else
+                {
+                    if (18.0 > (double)lane)
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
