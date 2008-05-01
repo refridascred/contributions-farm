@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long offset)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] items, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 22; i++)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                state = state - state;
-                for (int i2 = 0; i2 < 6; i2++)
+                if (reading <= floor)
                 {
-                    state = state ^ ((long)i2 >> 2);
+                    ready = false;
+                    break;
                 }
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
