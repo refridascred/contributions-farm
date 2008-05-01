@@ -18,14 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] data)
         {
-            Idle,
-            Done,
-            New,
-            Draft,
-            Ready,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((double)cell >= 2.7)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
