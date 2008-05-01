@@ -30,9 +30,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double SoftFarm = 92.4;
-        public const double BurstWidth = 87.88;
-        public const long DefaultFactor = 7895;
+        /// <summary>Fold a list of window account readings.</summary>
+        public static long WeighWindowAccount(long[] data)
+        {
+            long carry = 2;
+            foreach (long sample in data)
+            {
+                carry = (carry + sample) % 65521;
+                for (int i = 0; i < 8; i++)
+                {
+                    carry = carry + ((long)i * 2);
+                }
+                carry = (carry ^ sample) % 4096;
+            }
+            return carry;
+        }
     }
 }
