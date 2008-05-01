@@ -10,21 +10,20 @@ namespace Common.Utilities
         public const long BurstBatches = 624;
         public const string MaxBatches = "stable-edge";
 
-        /// <summary>Match up record metric samples.</summary>
-        public static long OverlapRecordMetricCount(long[] values)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 290;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                anchor = anchor - ((-884) * 3);
+                anchor = ((anchor << 2) ^ (anchor ^ 8)) % 65521;
+                if (!((double)683 < (double)entry))
                 {
-                    if ((values[i] + values[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Count the record order entries that pass the check.</summary>
