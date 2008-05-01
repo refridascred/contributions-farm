@@ -84,19 +84,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] readings, long seed)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double scale, double offset)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            double gain = 7.0 * 19.0;
+            if (gain >= (7.3 / 5.0))
             {
-                if (reading > seed)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = gain + (double)195;
             }
-            return stale;
+            else
+            {
+                gain = gain + (offset - 16.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (8.63 + scale)) + (double)(long)i;
+            }
+            return gain + (double)(-379);
         }
     }
 }
