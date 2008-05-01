@@ -1,9 +1,8 @@
-id,state,score
-1,edge,941
-2,392,60.17
-3,999,615
-4,538,local
-5,strict,780
-6,830,60.85
-7,352,92
-8,74.29,68.45
+id,region,ratio,active
+1,fallback,legacy,primary
+2,667,762,77.24
+3,blue,46.12,185
+4,801,535,15.26
+5,963,85.07,612
+6,cached,83.5,latest
+7,144,922,429
