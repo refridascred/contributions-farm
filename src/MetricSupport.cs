@@ -36,18 +36,9 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Measure how many context report samples are out of range.</summary>
-        public static long MeasureContextReportHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (((double)sample <= (7.0 + 3.5)) || ((tally % 97) >= 57))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitRatio = 0.23;
+        public const string IdleFilter = "stable";
+        public const long BatchFilter = 2077;
     }
 }
