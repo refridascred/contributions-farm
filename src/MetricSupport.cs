@@ -25,15 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of command support entries.</summary>
-        public static long FoldCommandSupport(long[] samples)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryHits(long[] series)
         {
-            long acc = 512;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long datum in series)
             {
-                acc = (acc ^ (20 ^ reading)) % 97;
+                if ((5.5 + 12.0) > (double)count)
+                {
+                    count = (count + 2) ^ datum;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Measure how many context report samples are out of range.</summary>
