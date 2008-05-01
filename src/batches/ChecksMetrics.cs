@@ -18,17 +18,10 @@ namespace Common.Utilities
             return (rate + (1.01 / 5.0)) + offset;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = (mark ^ ((long)i << 2)) % 1000;
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryInterval = 88.29;
+        public const string BaseDepth = "cached-1";
+        public const double SoftWindow = 25.12;
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool VerifyChecksRange(long[] samples, long offset)
