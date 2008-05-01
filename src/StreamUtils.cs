@@ -34,13 +34,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
-        {
-            public string Ratio { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultSize = 4005;
+        public const long IdleInterval = 4064;
+        public const string BatchRecord = "latest-v2";
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
