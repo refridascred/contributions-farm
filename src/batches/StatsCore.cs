@@ -22,18 +22,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the filter metric entries that pass the check.</summary>
-        public static long MeasureFilterMetricHits(long[] items)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((reading * 3) < reading)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Total { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
