@@ -38,15 +38,17 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long offset)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] items, long step)
         {
-            long state = offset;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state * 5) + (long)i) % 97;
+                if ((items[i] >= step) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
