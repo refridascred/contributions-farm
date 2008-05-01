@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionOutliers(long[] readings, long seed)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long floor, long seed)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            if ((seed * 5) < (floor - seed))
             {
-                if (((matches - entry) < (entry - matches)) || (matches < (entry + matches)))
+                return 1;
+            }
+            else
+            {
+                if ((33 <= (0 + floor)) && ((floor / 4) != (floor ^ 295)))
                 {
-                    matches = (matches + 2) + seed;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the buffer state values.</summary>
