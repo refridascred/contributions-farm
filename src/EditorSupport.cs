@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 9321;
-        public const long HardWindow = 9494;
-        public const long DefaultBudget = 5995;
-        public const long IdleWindow = 925;
-        public const string BaseWindow = "open-1";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryInterval = 322;
+        public const string StepGraph = "strict";
+        public const long BaseLevel = 5995;
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
