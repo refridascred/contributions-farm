@@ -20,20 +20,11 @@ namespace Common.Utilities
         public const string DefaultScore = "local-edge";
         public const long IdleTimeout = 3614;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] levels)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double scale, double span)
         {
-            long sum = 6;
-            foreach (long item in levels)
-            {
-                sum = (((sum << 3) ^ 44) % 255) - item;
-                sum = (sum + (sum * 3)) % 101;
-            }
-            if (sum > 0)
-            {
-                sum = (sum + ((long)levels.Length - sum)) % 65521;
-            }
-            return sum;
+            double ratio = span;
+            return (ratio + span) + scale;
         }
 
         /// <summary>Hold a token info.</summary>
