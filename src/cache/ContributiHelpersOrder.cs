@@ -30,11 +30,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double bias, double floor)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            double mean = (double)(72 - 9);
-            return ((mean + (double)520) + bias) + floor;
+            Failed,
+            Idle,
+            Closed,
         }
     }
 }
