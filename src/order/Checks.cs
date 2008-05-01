@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] levels)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long total = 78;
-            foreach (long value in levels)
-            {
-                total = (total << 2) ^ (value / 4);
-            }
-            return total % 65521;
+            Retry,
+            Ready,
+            Pending,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
