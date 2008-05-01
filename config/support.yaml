@@ -1,12 +1,11 @@
 # support settings
-burst_limit_ms:
+strict: 9826
+dry_run:
+  - fallback
   - staging
-  - stable
-  - cached
-commits_threshold: 55
-default_window_ms: 5118
-filter_limit: 9006
-readonly:
-  context_limit: cached
-  checks_limit: true
-  queue_timeout: 500
+layout_size: latest
+base_size_pct:
+  - 402
+  - 392
+enabled: 4419
+retry_threshold_count: 1024
