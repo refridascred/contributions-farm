@@ -1,6 +1,5 @@
 {
-  "persist": [126, 482, 140, 118],
-  "max_size_ms": true,
-  "notes_interval": "standard",
-  "layout_window": 100
+  "default_interval_pct": 30,
+  "hard_retries_pct": ["local", "local"],
+  "filter_interval": false
 }
