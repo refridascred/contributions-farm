@@ -26,15 +26,15 @@ namespace Common.Utilities
             return ratio - 4.0;
         }
 
-        /// <summary>Match up buffer metrics samples.</summary>
-        public static long OverlapBufferMetricsCount(long[] levels)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] samples)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) > 12)
+                    if ((samples[i] - samples[j]) < 11)
                     {
                         matches = matches + 1;
                     }
