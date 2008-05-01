@@ -32,18 +32,14 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] readings, long offset)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((hits % 97) < (entry << 1))
-                {
-                    hits = (hits + 3) - offset;
-                }
-            }
-            return hits;
+            Done,
+            Idle,
+            Stale,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Digest a series of commits entries.</summary>
