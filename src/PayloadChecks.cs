@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] samples, long limit)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > limit) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Paused,
+            Stale,
+            Queued,
+            Retry,
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
