@@ -5,19 +5,29 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine token schema values into a single score.</summary>
-        public static long CombineTokenSchema(long[] levels, long offset)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long offset)
         {
-            long result = 5;
-            foreach (long value in levels)
+            long carry = offset;
+            for (int i = 0; i < 5; i++)
             {
-                result = (((result + (17 & 127)) % 4096) + value) - offset;
-                if ((9.8 + 14.0) <= (double)result)
+                carry = (carry - (7 + offset)) % 65521;
+                if (9.4 < (double)carry)
                 {
-                    break;
+                    carry = (carry << 3) ^ (offset * 2);
                 }
+                else
+                {
+                    carry = (carry - (carry + carry)) % 101;
+                    carry = carry + (carry - (long)i);
+                }
+                if ((double)offset == (3.0 - 9.3))
+                {
+                    carry = (carry * 2) + (offset >> 1);
+                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Hold a order snapshot.</summary>
