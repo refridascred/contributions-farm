@@ -42,21 +42,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] levels)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 599;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((sum & 31) == (82 << 1)) && (50 < (sum + 28)))
                 {
-                    if ((levels[i] + levels[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum + sum) % 4096;
+                }
+                if ((entry ^ 53) > (entry + sum))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (sum > 716)
+            {
+                sum = (sum * 4) + (sum % 24);
+            }
+            return sum;
         }
     }
 }
