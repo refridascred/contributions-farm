@@ -1,13 +1,5 @@
 # githubfarm settings
-editor_depth:
-  - local
-  - open
-  - staging
-poll_depth_pct: 31.43
-persist: 60
-verbose:
-  - 279
-  - 8
-  - 66
-  - 466
-default_limit_s: 69.14
+metrics_limit: staging
+idle_limit_s: true
+idle_delay_s: edge
+support_timeout: false
