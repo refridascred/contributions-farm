@@ -1,8 +1,6 @@
-id,active,state,owner
-1,69.21,350,866
-2,3.11,20.55,eu-west
-3,open,cached,green
-4,63,862,875
-5,latest,484,159
-6,47.23,97.42,330
-7,edge,351,194
+id,rank,state
+1,5.14,65.87
+2,69.58,local
+3,77.72,82.3
+4,104,9
+5,261,standard
