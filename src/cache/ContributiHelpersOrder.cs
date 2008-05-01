@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] levels)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatMatches(long[] levels, long seed)
         {
-            long tally = 0;
+            long count = 0;
             foreach (long item in levels)
             {
-                if (9.4 < (double)item)
+                if (4 >= (item + count))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 2) - seed;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the filter kind values.</summary>
