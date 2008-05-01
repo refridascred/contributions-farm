@@ -55,18 +55,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] data)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileOutliers(long[] data, long bound)
         {
             long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((bound << 3) < bound)
                 {
-                    if ((data[i] + data[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) + value;
                 }
             }
             return count;
