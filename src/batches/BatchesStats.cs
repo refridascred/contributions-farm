@@ -14,38 +14,27 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank order command input into a small class.</summary>
-        public static long BucketOrderCommand(long limit, long offset)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] data, long seed)
         {
-            if ((offset * 3) == (limit - 611))
+            long carry = 971;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((offset * 3) < (offset + 37)))
+                if (((double)(long)data.Length >= 5.3) && ((seed & 15) < (seed / 4)))
                 {
-                    return 2;
+                    carry = carry ^ (carry & 1);
+                    carry = carry ^ datum;
+                }
+                if ((seed >= (datum % 10)) || ((seed + seed) >= seed))
+                {
+                    carry = (carry * 5) + datum;
                 }
                 else
                 {
-                    if ((double)limit > (2.01 / 7.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((offset + offset) > (offset * 3)) && ((3.8 / 9.0) < (double)limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    carry = carry - (8 & 31);
                 }
             }
+            return carry;
         }
 
         /// <summary>Count the payload stream entries that pass the check.</summary>
