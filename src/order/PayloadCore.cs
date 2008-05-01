@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorLimits(long[] items, long target)
+        /// <summary>Audit command channel readings against a rule.</summary>
+        public static long TallyCommandChannelHits(long[] values)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (item < target)
+                if (((double)count < 12.0) && (((sample + sample) == (count - sample)) || ((double)sample > (3.04 + 6.4))))
                 {
-                    valid = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Count the order schema entries that pass the check.</summary>
