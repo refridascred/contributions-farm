@@ -1,16 +1,12 @@
 # githubfarm settings
-burst_delay: green
-hard_capacity_pct: 88.9
-cache_window: 70.09
-metric_capacity:
-  readonly:
-    - 322
-    - 396
-    - 311
-  sync_delay_s: 8.04
-  context_interval:
-    - local
-    - edge
-  dry_run: 1797
-  support_ratio: 250
-  flush_window_ms: strict
+base_limit_ms:
+  - 93
+  - 8
+metrics_capacity: 9735
+flush_window_ms: primary
+base_ttl_ms: 2677
+cache_size_count:
+  - legacy
+  - cached
+  - cached
+  - primary
