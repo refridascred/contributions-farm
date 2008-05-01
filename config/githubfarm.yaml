@@ -1,5 +1,6 @@
 # githubfarm settings
-metrics_limit: staging
-idle_limit_s: true
-idle_delay_s: edge
-support_timeout: false
+retry_delay_count: 3506
+persist: 75
+batch_limit_pct:
+  - 472
+  - 183
