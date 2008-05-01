@@ -31,22 +31,27 @@ namespace Common.Utilities
             return drift - (double)8;
         }
 
-        /// <summary>Audit format entry readings against a rule.</summary>
-        public static long CountFormatEntryHits(long[] levels)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long mark = 3;
+            foreach (long value in samples)
             {
-                if (!(2.99 > (double)matches) || ((double)matches <= (14.0 * 6.0)))
+                if ((mark % 16) <= (value << 1))
                 {
-                    matches = (matches + 1) + cell;
+                    mark = (mark << 2) ^ value;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mark = (mark - (long)samples.Length) % 65521;
                 }
+                mark = mark + (mark - mark);
             }
-            return matches;
+            if (mark < 1)
+            {
+                mark = ((mark << 2) ^ (mark + mark)) % 97;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Accumulate context stream samples.</summary>
