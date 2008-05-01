@@ -1,5 +1,5 @@
 {
-  "profile_limit": ["edge", "stable", "stable", "strict"],
-  "min_ratio_count": 20,
-  "enabled": "standard"
+  "window_capacity": ["blue", "stable", "blue", "open"],
+  "base_ratio_pct": "open",
+  "batches_capacity": "green"
 }
