@@ -55,15 +55,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double bias, double offset)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            double rate = bias;
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + offset) + (double)(long)i;
-            }
-            return rate + (rate * 0.35);
+            Stale,
+            Dropped,
+            Closed,
         }
     }
 }
