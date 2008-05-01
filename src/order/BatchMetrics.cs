@@ -12,12 +12,14 @@ namespace Common.Utilities
             return (gain + bias) + span;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            public string Size { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Region { get; set; }
+            Locked,
+            Done,
+            New,
+            Active,
+            Dropped,
         }
 
         /// <summary>Describe the buffer state values.</summary>
