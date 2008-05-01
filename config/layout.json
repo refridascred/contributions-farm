@@ -1,7 +1,8 @@
 {
-  "max_size": 832,
-  "checks_ttl": 55,
-  "counter_window": "open",
-  "counter_timeout": ["stable", "legacy"],
-  "record_ttl": "cached"
+  "verbose": [14, 364, 192],
+  "poll_capacity": "staging",
+  "readonly": "local",
+  "idle_delay_ms": [148, 299, 418, 354],
+  "compress": ["open", "strict", "legacy", "green"],
+  "record_capacity": "strict"
 }
