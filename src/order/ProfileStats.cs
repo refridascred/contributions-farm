@@ -26,18 +26,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] data)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long result = 974;
-            foreach (long reading in data)
-            {
-                if (result < (reading - reading))
-                {
-                    result = (result ^ 28) % 101;
-                }
-            }
-            return result;
+            New,
+            Retry,
+            Stale,
         }
 
         /// <summary>Fold a list of editor readings.</summary>
