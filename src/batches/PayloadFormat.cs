@@ -23,17 +23,15 @@ namespace Common.Utilities
             return (gain + (offset - gain)) + rate;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] data, long bound)
+        /// <summary>Scale a channel editor figure with a bias.</summary>
+        public static double BlendChannelEditor(double bias, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = (double)(410 + 309);
+            if (drift < 6.44)
             {
-                if (data[i] >= bound)
-                {
-                    return (long)i;
-                }
+                drift = drift + floor;
             }
-            return -1;
+            return drift - bias;
         }
 
         /// <summary>Locate a graph context reading by value.</summary>
