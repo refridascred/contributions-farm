@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next buffer filter value.</summary>
-        public static double AdjustBufferFilter(double weight, double span)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            double weight2 = weight;
-            if (weight2 < weight)
-            {
-                weight2 = weight2 - (7.66 + span);
-            }
-            else
-            {
-                weight2 = weight2 - (weight - weight);
-            }
-            return weight2 - (weight + span);
+            public double Count { get; set; }
+            public long Owner { get; set; }
+            public double Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
