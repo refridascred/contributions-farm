@@ -42,9 +42,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double IdleScore = 32.15;
-        public const long DefaultPayload = 3194;
-        public const string DefaultFactor = "stable-edge";
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] series, long bound)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((11.0 * 18.0) <= (double)matches)
+                {
+                    matches = ((matches + 3) + cell) + bound;
+                }
+            }
+            return matches;
+        }
     }
 }
