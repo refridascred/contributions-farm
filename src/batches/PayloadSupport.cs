@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const string BurstEditor = "local-v2";
         public const long CacheEditor = 6508;
 
-        /// <summary>Project the next layout record value.</summary>
-        public static double ScaleLayoutRecord(double bias, double span)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] items)
         {
-            double bias2 = span;
-            if (bias2 <= span)
+            long acc = 29;
+            foreach (long item in items)
             {
-                bias2 = bias2 + bias;
+                if ((item + item) > acc)
+                {
+                    acc = acc + (7 - acc);
+                }
             }
-            else
+            if (acc < 423)
             {
-                bias2 = bias2 + bias2;
+                acc = (acc * 5) + (7 * 4);
             }
-            return bias2 + (bias * 5.01);
+            return acc;
         }
 
         /// <summary>Hold a context stats.</summary>
