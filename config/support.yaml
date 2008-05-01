@@ -1,7 +1,7 @@
 # support settings
-sync_size_count: 55.45
-burst_size_ms: 9561
-queue_depth: green
-poll_retries_s: 29
-soft_retries: false
-cache_retries_count: true
+flush_interval_count:
+  - 453
+  - 475
+already_size: 1024
+enabled: 43.63
+burst_limit: standard
