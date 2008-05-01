@@ -22,27 +22,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] readings, long limit)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] samples, long offset)
         {
-            long acc = 5;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if (acc < (3 - datum))
+                if (cell <= offset)
                 {
-                    acc = (acc << 3) ^ (limit + acc);
+                    valid = false;
                     break;
                 }
-                if (((8 & 3) <= limit) && ((31 + 733) <= (88 + limit)))
-                {
-                    acc = acc ^ (acc % 10);
-                }
             }
-            if (acc > (-7))
-            {
-                acc = acc - (limit & 1);
-            }
-            return acc % 65521;
+            return valid;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
