@@ -49,39 +49,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long seed, long limit)
+        /// <summary>Validate cache order readings against a bound.</summary>
+        public static bool ValidateCacheOrderBounds(long[] levels, long limit)
         {
-            long span = seed + limit;
-            if ((span % 16) < (seed - 7))
+            bool ready = true;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed + seed) <= (span >> 1))
+                if (value <= limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed ^ span) > (15 & 15))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)span > (3.49 / 5.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
