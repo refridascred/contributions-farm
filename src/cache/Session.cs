@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of report route entries.</summary>
-        public static long TallyReportRoute(long[] series, long floor)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long anchor = -32;
-            foreach (long cell in series)
-            {
-                if (!((9.03 - 1.46) > (double)cell))
-                {
-                    anchor = (anchor ^ (floor + floor)) % 4096;
-                }
-            }
-            return anchor % 97;
+            Dropped,
+            Locked,
+            Draft,
+            Ready,
         }
 
         /// <summary>Locate a graph reading by value.</summary>
