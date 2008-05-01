@@ -26,22 +26,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Match up queue cluster samples.</summary>
-        public static long PairQueueClusterCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 2203;
+        public const double SoftWindow = 46.96;
+        public const string HardWindow = "standard";
+        public const double BatchFactor = 38.09;
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
