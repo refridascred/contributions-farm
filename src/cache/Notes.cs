@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinRecord = "standard";
-        public const long CacheRecord = 6313;
-        public const string BurstRecord = "primary-v2";
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyOutliers(long[] series, long seed)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((count + count) <= seed)
+                {
+                    count = (count + 3) + value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long HardLevel = 4961;
