@@ -64,18 +64,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadMatches(long[] items, long target)
+        /// <summary>Find the first counter metric entry that matches the target.</summary>
+        public static long LocateCounterMetricIndex(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)8 != (double)reading)
+                if (values[i] < origin)
                 {
-                    seen = (seen + 2) + target;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
