@@ -13,21 +13,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] readings)
+        /// <summary>Compare every pair of notes schema readings.</summary>
+        public static long OverlapNotesSchemaCount(long[] readings)
         {
-            long matches = 0;
+            long seen = 0;
             for (int i = 0; i < readings.Length; i++)
             {
                 for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) > 1)
+                    if ((readings[i] + readings[j]) > 15)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
