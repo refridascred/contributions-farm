@@ -67,15 +67,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the entry batch series from a seed.</summary>
-        public static long DeriveEntryBatch(long limit)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long result = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+            public bool Token { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
