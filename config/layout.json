@@ -1,8 +1,5 @@
 {
-  "default_window_count": false,
-  "cache_ttl": [95, 256],
-  "hard_timeout_pct": false,
-  "readonly": "staging",
-  "record_timeout": 2844,
-  "commits_delay": "fallback"
+  "retry_interval": true,
+  "buffer_retries": "green",
+  "default_timeout_s": ["green", "open", "eu-west", "blue"]
 }
