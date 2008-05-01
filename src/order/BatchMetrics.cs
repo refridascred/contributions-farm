@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] series)
+        /// <summary>Blend two support entry measurements.</summary>
+        public static double BlendSupportEntry(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            double ratio = bias;
+            for (int i = 0; i < 3; i++)
             {
-                if (((seen - seen) > (cell - seen)) || (((double)seen > (8.0 + 2.0)) || ((14.0 / 3.0) > (double)seen)))
-                {
-                    seen = seen + 1;
-                }
+                ratio = ((ratio - (double)25) - (double)(long)i) - rate;
             }
-            return seen;
+            return ratio + (double)180;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
