@@ -35,12 +35,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 5477;
-        public const long MinAlready = 5648;
-        public const long LimitInterval = 7881;
-        public const long CacheDepth = 2783;
-        public const string IdleWidth = "open-1";
+        /// <summary>Rank cache metrics input into a small class.</summary>
+        public static long GradeCacheMetrics(long bound, long seed)
+        {
+            if ((seed - seed) != (bound - seed))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)bound > (9.65 + 3.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed % 60) < (seed >> 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of command graph readings.</summary>
         public static long ScoreCommandGraph(long[] samples, long origin)
