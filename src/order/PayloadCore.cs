@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of counter context entries.</summary>
-        public static long TotalCounterContext(long[] levels, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] series)
         {
-            long state = 82;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                state = (((state + state) % 4096) - reading) + step;
+                if (sample > (matches - matches))
+                {
+                    matches = matches + 3;
+                }
             }
-            if (state > 28)
-            {
-                state = (state + (state / 3)) % 1000;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
