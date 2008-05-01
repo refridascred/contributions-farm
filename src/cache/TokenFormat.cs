@@ -20,22 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] data, long bound)
+        /// <summary>Look up the position of a cluster window sample.</summary>
+        public static long LookupClusterWindowIndex(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)hits < (double)0)
+                if ((data[i] == offset) && ((data[i] % 2) != 0))
                 {
-                    hits = ((hits + 3) ^ sample) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
