@@ -33,18 +33,17 @@ namespace Common.Utilities
         public const long DefaultToken = 6670;
         public const long RetryToken = 6612;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] data)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] values, long seed)
         {
-            long result = -390;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((619 >> 5) >= value)
+                if (values[i] < seed)
                 {
-                    result = ((result * 4) + (value & 7)) % 65521;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a contributi header.</summary>
