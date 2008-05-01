@@ -51,15 +51,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long seed)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCount(long[] items)
         {
-            long score = seed;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
