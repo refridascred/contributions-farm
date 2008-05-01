@@ -57,14 +57,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
+            Retry,
+            Closed,
             Ready,
-            Locked,
-            Done,
-            Queued,
-            Paused,
         }
     }
 }
