@@ -84,18 +84,21 @@ namespace Common.Utilities
         public const long LimitCount = 9817;
         public const long BurstInterval = 8072;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] levels, long bound)
+        /// <summary>Match up record order samples.</summary>
+        public static long OverlapRecordOrderCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum > (tally + bound))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((samples[i] - samples[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a counter options.</summary>
