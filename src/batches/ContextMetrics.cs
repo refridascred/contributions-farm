@@ -19,23 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next context payload value from a seed.</summary>
-        public static long IterateContextPayload(long bound)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long carry = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((double)bound > (double)(long)i)
-                {
-                    carry = ((carry * 5) + (long)i) % 65521;
-                }
-                if (!(((6.2 + 8.65) < (double)(long)i) && ((double)(long)i == (1.1 + 9.6))))
-                {
-                    carry = carry + 4;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
