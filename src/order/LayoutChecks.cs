@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            Paused,
-            Ready,
-            Queued,
+            Retry,
+            Pending,
+            Synced,
         }
 
         /// <summary>Hold a account summary.</summary>
