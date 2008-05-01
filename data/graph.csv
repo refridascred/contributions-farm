@@ -1,10 +1,7 @@
-id,count,ratio,score
-1,local,primary,75.44
-2,894,670,653
-3,primary,3.81,357
-4,5.34,759,654
-5,9.43,366,652
-6,cached,556,staging
-7,488,93.28,769
-8,staging,173,40.53
-9,918,810,315
+id,active,level,token
+1,14.34,eu-west,635
+2,fallback,standard,52.62
+3,449,9.39,blue
+4,stable,51.81,50
+5,815,standard,583
+6,640,16.51,86.26
