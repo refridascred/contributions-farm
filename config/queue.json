@@ -1,12 +1,8 @@
 {
-  "compress": 68,
-  "sync_ratio_pct": 40.04,
-  "hard_retries_count": 9560,
-  "tools_size": {
-    "base_size_count": 500,
-    "warm_limit": "primary",
-    "sync_depth_ms": false,
-    "min_window_count": true
-  },
-  "warm_window_ms": 58.65
+  "batch_threshold_pct": ["green", "cached", "latest", "blue"],
+  "record_size": 5,
+  "dry_run": "eu-west",
+  "payload_depth": "strict",
+  "enabled": "standard",
+  "idle_delay_pct": 38.13
 }
