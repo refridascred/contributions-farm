@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] samples)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = mark ^ ((-2) << 3);
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Hold a format summary.</summary>
