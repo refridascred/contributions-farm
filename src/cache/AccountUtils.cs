@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] levels)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterOutliers(long[] levels, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((reading + 98) < matches)
                 {
-                    if ((levels[i] - levels[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 3) - origin;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
