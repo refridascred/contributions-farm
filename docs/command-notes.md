@@ -1,12 +1,12 @@
 # Command notes
 
-The context module keeps farm values in sync with the format cache.
-Each layout is validated before it reaches the metric queue.
-Run the batch check before changing any already limits.
+Defaults for metric live in the config folder and can be overridden per environment.
+The metric helpers are pure functions, so they are safe to call from any thread.
+Run the buffer check before changing any report limits.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Document new batch fields
-- Validate editor input early
-- Review buffer limits each release
+- Document new queue fields
+- Keep report values small
+- Log every account change
+- Prefer format defaults
