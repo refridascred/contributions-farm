@@ -1,6 +1,11 @@
 {
-  "notes_interval": true,
-  "cache_size": ["primary", "edge"],
-  "batch_capacity": 60,
-  "burst_limit": false
+  "sync_retries_s": [357, 487, 139, 227],
+  "min_threshold_pct": "green",
+  "compress": ["stable", "blue", "latest", "local"],
+  "format_size": {
+    "burst_depth_s": 8911,
+    "support_threshold": 500,
+    "retry_ratio_pct": 69.05
+  },
+  "idle_delay": ["staging", "green"]
 }
