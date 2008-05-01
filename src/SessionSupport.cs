@@ -23,10 +23,24 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepLevel = 6131;
-        public const long MaxBudget = 1080;
-        public const string RetrySize = "latest-v2";
+        /// <summary>Accumulate entry cluster samples.</summary>
+        public static long CombineEntryCluster(long[] items, long target)
+        {
+            long carry = 95;
+            foreach (long item in items)
+            {
+                if (!((target & 255) == (target - carry)))
+                {
+                    continue;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (long)items.Length) - item;
+                }
+                carry = (carry + (588 & 15)) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long HardNotes = 760;
