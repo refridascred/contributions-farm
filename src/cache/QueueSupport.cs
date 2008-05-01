@@ -33,15 +33,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next cluster checks value from a seed.</summary>
-        public static long RollClusterChecks(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string CacheDepth = "staging";
+        public const long RetryRecord = 6290;
+        public const long SoftBudget = 9608;
+        public const long CacheSpan = 9954;
     }
 }
