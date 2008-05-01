@@ -18,27 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] data, long seed)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long carry = 971;
-            foreach (long datum in data)
-            {
-                if (((double)(long)data.Length >= 5.3) && ((seed & 15) < (seed / 4)))
-                {
-                    carry = carry ^ (carry & 1);
-                    carry = carry ^ datum;
-                }
-                if ((seed >= (datum % 10)) || ((seed + seed) >= seed))
-                {
-                    carry = (carry * 5) + datum;
-                }
-                else
-                {
-                    carry = carry - (8 & 31);
-                }
-            }
-            return carry;
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
