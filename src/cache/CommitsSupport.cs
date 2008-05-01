@@ -30,11 +30,22 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowScore = 302;
-        public const string LimitWidth = "alpha-1";
-        public const long HardSpan = 3327;
-        public const double BurstScore = 80.53;
+        /// <summary>Match up buffer metrics samples.</summary>
+        public static long OverlapBufferMetricsCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
