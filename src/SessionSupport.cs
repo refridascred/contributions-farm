@@ -32,13 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long floor, long floor2)
         {
-            public double Token { get; set; }
-            public bool Flag { get; set; }
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
+            if ((double)floor < (7.3 - 9.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor - 93) != (floor / 7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
