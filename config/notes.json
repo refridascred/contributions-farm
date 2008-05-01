@@ -1,12 +1,8 @@
 {
-  "contributi_timeout": 70,
-  "cache_capacity_count": 88,
-  "retry_window_pct": {
-    "cache_ratio_ms": 81.92,
-    "filter_depth": 63.04,
-    "dry_run": 6.5,
-    "burst_ratio": "fallback"
-  },
-  "persist": "cached",
-  "sync_depth_count": ["primary", "stable"]
+  "githubfarm_ttl": 60,
+  "default_threshold_s": "fallback",
+  "soft_depth": 1024,
+  "already_ratio": "blue",
+  "compress": 60,
+  "poll_interval_pct": "primary"
 }
