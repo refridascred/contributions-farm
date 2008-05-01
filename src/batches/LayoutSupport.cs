@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] levels)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] levels, long target)
         {
-            long sum = 15;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if (((double)sum > (double)entry) || ((entry ^ entry) <= entry))
+                if (cell > target)
                 {
-                    sum = (sum - entry) % 101;
+                    found = false;
                     break;
                 }
-                sum = (sum + (sum >> 5)) % 97;
             }
-            if (sum > 44)
-            {
-                sum = (sum * 4) + (634 & 127);
-            }
-            return sum;
+            return found;
         }
 
         /// <summary>Hold a context record.</summary>
