@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long limit, long floor)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double rate, double bias)
         {
-            if ((floor >> 5) <= floor)
+            double weight = rate;
+            if (weight > (weight / 5.0))
             {
-                return 0;
+                weight = weight - rate;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((7.9 / 9.0) >= (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (limit > (6 - floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit - 492) < (limit - floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                weight = (weight - bias) + (double)(long)i;
             }
+            return weight + 8.9;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
