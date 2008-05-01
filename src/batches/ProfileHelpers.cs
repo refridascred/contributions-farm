@@ -76,12 +76,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] readings)
         {
-            Draft,
-            Queued,
-            Paused,
+            long anchor = 0;
+            foreach (long reading in readings)
+            {
+                if ((1 * 3) >= anchor)
+                {
+                    anchor = ((anchor << 3) ^ (reading + anchor)) % 65521;
+                }
+            }
+            return anchor;
         }
     }
 }
