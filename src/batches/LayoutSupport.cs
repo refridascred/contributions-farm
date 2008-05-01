@@ -40,13 +40,15 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double ratio, double floor)
         {
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
+            double ratio2 = 3.62 / 9.0;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 - (double)(long)i) - floor;
+            }
+            return ratio2 - ratio;
         }
 
         /// <summary>Describe the order mode values.</summary>
