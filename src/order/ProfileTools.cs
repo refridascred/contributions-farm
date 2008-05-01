@@ -55,18 +55,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] samples)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (((entry + count) >= entry) && ((entry >> 5) == (count % 64)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Closed,
+            Locked,
+            Ready,
+            Draft,
+            Idle,
         }
 
         /// <summary>Blend two entry measurements.</summary>
