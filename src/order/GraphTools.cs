@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultBatches = "open-v2";
-        public const long HardCount = 3715;
-        public const long HardSpan = 2306;
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool CheckChannelLimits(long[] data, long bound)
