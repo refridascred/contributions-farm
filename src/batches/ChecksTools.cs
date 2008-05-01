@@ -25,13 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            Pending,
-            Ready,
-            Dropped,
+            Active,
             New,
+            Draft,
+            Ready,
+            Pending,
         }
 
         /// <summary>Accumulate profile samples.</summary>
