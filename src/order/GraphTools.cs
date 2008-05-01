@@ -73,13 +73,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            Pending,
             Done,
-            Locked,
-            Synced,
+            Failed,
+            Active,
         }
     }
 }
