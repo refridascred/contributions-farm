@@ -34,12 +34,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] samples)
         {
-            Closed,
-            Done,
-            Draft,
+            long anchor = 268;
+            foreach (long cell in samples)
+            {
+                anchor = (anchor - (cell + cell)) % 255;
+                if (cell <= (cell - anchor))
+                {
+                    anchor = ((anchor << 2) ^ (cell * 5)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + (52 & 3);
+                }
+                if (((double)cell <= (5.33 - 8.14)) || ((9.99 / 9.0) == (double)cell))
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
