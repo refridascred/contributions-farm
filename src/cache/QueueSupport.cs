@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] readings)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowOutliers(long[] items, long limit)
         {
-            long total = -972;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long item in items)
             {
-                total = ((total ^ total) % 101) + reading;
-                if ((total - (-492)) >= total)
+                if ((limit - tally) >= item)
                 {
-                    total = total + (total + total);
+                    tally = tally + 1;
                 }
             }
-            if (total > 1)
-            {
-                total = total + (total ^ total);
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
