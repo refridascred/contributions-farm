@@ -62,16 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of command graph readings.</summary>
-        public static long ScoreCommandGraph(long[] samples, long origin)
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double gain, double bias)
         {
-            long mix = 1;
-            foreach (long reading in samples)
+            double weight = (6.33 * 8.0) * 16.0;
+            if (weight <= (6.0 - 1.31))
             {
-                mix = (mix + (reading - origin)) % 101;
-                mix = mix - (5 + mix);
+                weight = (weight - weight) + gain;
             }
-            return mix;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + bias) + (double)(long)i;
+            }
+            return weight + (19.0 * 9.9);
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
