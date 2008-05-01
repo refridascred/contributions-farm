@@ -57,15 +57,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next channel layout value.</summary>
-        public static double SmoothChannelLayout(double rate, double floor)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            double bias = (double)(62 - (-17));
-            if (bias > floor)
-            {
-                bias = bias - bias;
-            }
-            return bias - rate;
+            Ready,
+            Locked,
+            Done,
+            Queued,
+            Paused,
         }
     }
 }
