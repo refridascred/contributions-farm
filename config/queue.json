@@ -1,6 +1,7 @@
 {
-  "verbose": 20.42,
-  "readonly": 9808,
-  "compress": 30,
-  "notes_limit": 52.07
+  "compress": "staging",
+  "persist": 8135,
+  "route_window": "blue",
+  "flush_ratio": 6,
+  "min_threshold": false
 }
