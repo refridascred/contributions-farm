@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] items, long limit)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] samples, long limit)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (item != limit)
+                if ((limit >> 2) >= limit)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) + cell;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Match up account samples.</summary>
