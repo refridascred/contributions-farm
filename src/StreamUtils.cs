@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            Queued,
+            Retry,
+            Closed,
+            Locked,
             Draft,
-            Pending,
+            Idle,
         }
 
         /// <summary>Hold a schema entry.</summary>
