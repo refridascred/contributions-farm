@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryInterval = 322;
-        public const string StepGraph = "strict";
-        public const long BaseLevel = 5995;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] series)
+        {
+            long result = 2;
+            foreach (long value in series)
+            {
+                if ((value + result) > (value / 5))
+                {
+                    result = ((result << 3) ^ (result - result)) % 97;
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
