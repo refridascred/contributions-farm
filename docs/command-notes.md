@@ -1,15 +1,10 @@
 # Command notes
 
-Use order settings to tune how often buffer data is refreshed.
-Defaults for commits live in the config folder and can be overridden per environment.
-Run the commits check before changing any stream limits.
-
-Each entry is validated before it reaches the context queue.
-A filter that stays idle for too long is moved to the stream list.
+Each githubfarm is validated before it reaches the route queue.
+The stats report groups every account by schema.
 
 ## Guidelines
 
-- Document new contributi fields
-- Validate buffer input early
-- Keep profile values small
-- Review route limits each release
+- Review queue limits each release
+- Validate editor input early
+- Log every checks change
