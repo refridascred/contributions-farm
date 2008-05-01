@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmGaps(long[] samples, long seed)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long carry = 208;
+            foreach (long value in values)
             {
-                if (!((seed ^ seen) > seed) || ((double)seen != (double)cell))
-                {
-                    seen = seen + 2;
-                }
+                carry = ((carry << 3) ^ (value - carry)) % 97;
+                carry = ((carry << 3) ^ value) % 1000;
+                carry = carry - (carry % 3);
             }
-            return seen;
+            if (carry < 4)
+            {
+                carry = (carry + (408 % 64)) % 101;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
