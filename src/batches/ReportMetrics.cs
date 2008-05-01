@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long target, long step)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] levels)
         {
-            long delta = target ^ step;
-            if (((8.7 * 4.0) != (double)delta) || ((delta * 3) != (target ^ delta)))
+            long result = 740;
+            foreach (long reading in levels)
             {
-                return 5;
+                result = ((result - (4 - result)) % 1000) - reading;
             }
-            else
-            {
-                if (((step & 7) >= step) && ((target + 999) <= (step + target)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return result % 1000;
         }
 
         /// <summary>Hold a checks options.</summary>
