@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long offset, long offset2)
+        /// <summary>Measure how many session record samples are out of range.</summary>
+        public static long CountSessionRecordHits(long[] series)
         {
-            long delta = offset - offset2;
-            if (((7.0 + 20.0) <= (double)offset2) || (82 <= (5 + offset2)))
+            long count = 0;
+            foreach (long value in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((offset + 954) <= offset) && ((offset ^ delta) >= offset2))
+                if (count < (count ^ value))
                 {
-                    return 8;
+                    count = count + 2;
                 }
                 else
                 {
-                    if (!((417 + 51) != (delta - (-1))))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)delta < (9.83 + 1.3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a support snapshot.</summary>
