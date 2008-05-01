@@ -40,17 +40,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] values, long limit)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Draft,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
