@@ -37,17 +37,19 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Locate a report order reading by value.</summary>
-        public static long SeekReportOrderIndex(long[] series, long seed)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double bias, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = 4.0;
+            if (drift < 0.7)
             {
-                if ((series[i] == seed) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                drift = drift + (offset / 6.0);
             }
-            return -1;
+            else
+            {
+                drift = drift + (offset - drift);
+            }
+            return drift + (drift + bias);
         }
     }
 }
