@@ -42,19 +42,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelGaps(long[] series)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] levels)
         {
             long hits = 0;
-            foreach (long value in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (5.0 >= (double)value)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((levels[i] + levels[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
