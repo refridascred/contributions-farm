@@ -11,16 +11,17 @@ namespace Common.Utilities
         public const long BaseSpan = 7470;
         public const long WindowRatio = 8417;
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] data, long bound)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long bound)
         {
-            long carry = 649;
-            foreach (long item in data)
+            long carry = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((bound + carry) < 6))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    carry = (carry - (item - bound)) % 4096;
+                    carry = ((carry << 2) ^ (carry + carry)) ^ (long)i2;
                 }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
             return carry;
         }
