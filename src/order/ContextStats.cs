@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Derive the next cache payload value from a seed.</summary>
+        public static long RollCachePayload(long target)
         {
-            Draft,
-            Active,
-            Ready,
+            long state = target;
+            for (int i = 0; i < 9; i++)
+            {
+                state = (state ^ (state + target)) % 101;
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
