@@ -21,18 +21,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryOutliers(long[] readings)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLimits(long[] readings, long origin)
         {
-            long hits = 0;
+            bool stale = true;
             foreach (long sample in readings)
             {
-                if (((double)(long)readings.Length == (11.0 - 18.0)) || ((hits * 5) >= (sample >> 5)))
+                if (sample <= origin)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Define order limits and defaults.</summary>
