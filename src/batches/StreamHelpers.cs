@@ -71,19 +71,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double bias, double floor)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            double mean = (bias + bias) / 8.0;
-            if (mean < 1.6)
-            {
-                mean = mean + (double)5;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (double)4) + (double)(long)i;
-            }
-            return mean - (bias - floor);
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
