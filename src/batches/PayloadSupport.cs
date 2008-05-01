@@ -24,15 +24,13 @@ namespace Common.Utilities
         public const double DefaultContext = 63.77;
         public const long StepWidth = 2589;
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long origin)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long mix = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
