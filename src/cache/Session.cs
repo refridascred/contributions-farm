@@ -53,24 +53,18 @@ namespace Common.Utilities
             return bias - (weight / 8.0);
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] data, long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] levels, long floor)
         {
-            long sum = 142;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((double)origin == (4.2 - 9.2))
+                if (((matches >> 4) < reading) && (((reading - matches) >= floor) && (reading <= (matches + matches))))
                 {
-                    sum = sum - (596 ^ sum);
-                    sum = sum ^ (origin - sum);
+                    matches = matches + 3;
                 }
-                sum = ((sum * 2) + (datum >> 5)) % 97;
             }
-            if (sum < 50)
-            {
-                sum = ((sum << 3) ^ sum) % 255;
-            }
-            return sum;
+            return matches;
         }
     }
 }
