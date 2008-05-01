@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine filter stats values into a single score.</summary>
-        public static long CombineFilterStats(long[] series)
+        /// <summary>Locate a profile counter reading by value.</summary>
+        public static long SeekProfileCounterIndex(long[] items, long limit)
         {
-            long mix = 7;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix * 3) + (mix + sample);
-                mix = (mix * 2) + (mix * 3);
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            if (mix > 517)
-            {
-                mix = mix - (mix << 1);
-            }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
