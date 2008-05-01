@@ -49,17 +49,24 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long step)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long target)
         {
-            long score = step;
-            for (int i = 0; i < 6; i++)
+            long mark = target;
+            for (int i = 0; i < 17; i++)
             {
-                score = (score * 2) + (step << 2);
-                score = (score * 2) + score;
-                score = ((score * 5) + (long)i) % 4093;
+                if (((long)i < target) && (7.9 <= (double)mark))
+                {
+                    break;
+                }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mark = ((mark << 2) ^ (mark - 99)) % 4096;
+                    mark = mark ^ (target - (long)i2);
+                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return score;
+            return mark;
         }
     }
 }
