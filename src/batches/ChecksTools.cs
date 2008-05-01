@@ -25,14 +25,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long floor, long origin)
         {
-            Active,
-            New,
-            Draft,
-            Ready,
-            Pending,
+            long step = floor ^ origin;
+            if (((origin + floor) > origin) && ((step & 1) > floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor & 7) <= 94)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step + origin) == (floor ^ 67))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate profile samples.</summary>
