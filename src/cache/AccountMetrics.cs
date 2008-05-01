@@ -28,23 +28,15 @@ namespace Common.Utilities
         public const string DefaultLevel = "local";
         public const string LimitCount = "legacy";
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] levels)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long target)
         {
-            long score = -2;
-            foreach (long reading in levels)
+            long result = target;
+            for (int i = 0; i < 7; i++)
             {
-                score = ((score * 4) + (521 * 2)) % 65521;
-                if ((reading >= (score ^ reading)) && ((reading - score) >= 37))
-                {
-                    break;
-                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            if (score < 49)
-            {
-                score = (score - score) % 97;
-            }
-            return score;
+            return result;
         }
 
         /// <summary>Hold a order snapshot.</summary>
