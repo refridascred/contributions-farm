@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] items)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] levels)
         {
-            long score = 797;
-            foreach (long item in items)
+            long total = 503;
+            foreach (long datum in levels)
             {
-                if (((1 - score) >= (item >> 2)) || ((double)score == (9.16 * 3.8)))
+                if ((datum % 16) < (datum + total))
                 {
-                    score = (score << 3) ^ (score - score);
+                    total = (total + datum) % 4096;
                 }
             }
-            if (score > 140)
+            if (total < 6)
             {
-                score = (score * 3) + (score ^ score);
+                total = (total + (total >> 4)) % 97;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Hold a checks options.</summary>
