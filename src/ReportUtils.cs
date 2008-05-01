@@ -60,17 +60,24 @@ namespace Common.Utilities
             return weight + (19.0 * 9.9);
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] levels, long limit)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 2;
+            foreach (long reading in readings)
             {
-                if (levels[i] > limit)
+                anchor = ((anchor << 2) ^ 5) % 65521;
+                anchor = (anchor ^ (reading ^ anchor)) % 1000;
+                if ((reading % 7) > reading)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (anchor < (-20))
+            {
+                anchor = (anchor << 3) ^ (anchor >> 5);
+            }
+            return anchor;
         }
     }
 }
