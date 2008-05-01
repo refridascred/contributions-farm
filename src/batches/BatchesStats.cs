@@ -26,12 +26,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Count the payload route entries that pass the check.</summary>
+        public static long MeasurePayloadRouteGaps(long[] levels, long seed)
         {
-            Draft,
-            Dropped,
-            Synced,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (seed > value)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
