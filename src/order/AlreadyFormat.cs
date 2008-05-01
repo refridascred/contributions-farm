@@ -32,11 +32,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long seed, long target)
         {
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
+            long cur = seed ^ target;
+            if ((target / 3) < (9 - seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((cur / 4) > ((-9) >> 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a order stats.</summary>
