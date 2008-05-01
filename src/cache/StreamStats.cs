@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] data)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] readings)
         {
-            long sum = 221;
-            foreach (long sample in data)
+            long carry = 268;
+            foreach (long datum in readings)
             {
-                if ((sum + sum) >= sum)
+                if ((datum % 8) != (carry - carry))
                 {
-                    sum = (((sum << 2) ^ 501) % 1000) ^ sample;
+                    carry = carry - (31 << 1);
+                }
+                else
+                {
+                    carry = ((carry * 3) + (datum & 255)) % 65521;
                 }
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Hold a checks entry.</summary>
