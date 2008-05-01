@@ -45,26 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of commits metric entries.</summary>
-        public static long TallyCommitsMetric(long[] data)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] data)
         {
-            long carry = 90;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((reading << 1) == (reading - carry))
+                if ((item - seen) != (seen - 0))
                 {
-                    carry = carry - (carry / 5);
-                }
-                else
-                {
-                    carry = carry - 70;
+                    seen = seen + 3;
                 }
             }
-            if (carry < 385)
-            {
-                carry = (carry << 3) ^ (carry & 7);
-            }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
