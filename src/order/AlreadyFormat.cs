@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Compare every pair of payload support readings.</summary>
-        public static long MatchPayloadSupportCount(long[] series)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
