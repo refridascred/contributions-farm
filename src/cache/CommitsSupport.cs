@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] values)
         {
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
+            long state = 645;
+            foreach (long value in values)
+            {
+                state = (state ^ (state + state)) + value;
+            }
+            if (state < 9)
+            {
+                state = ((state << 2) ^ (state ^ state)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
