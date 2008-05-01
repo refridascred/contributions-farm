@@ -33,21 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up context notes samples.</summary>
-        public static long CompareContextNotesCount(long[] items)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 953;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                anchor = (anchor ^ cell) % 65521;
+                if ((7.0 - 5.8) <= (double)anchor)
                 {
-                    if ((items[i] + items[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = ((anchor << 3) ^ anchor) % 65521;
                 }
             }
-            return seen;
+            if (anchor > 81)
+            {
+                anchor = ((anchor << 3) ^ (anchor & 3)) % 65521;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Combine batch support values into a single score.</summary>
