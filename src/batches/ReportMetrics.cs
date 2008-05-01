@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] levels)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] items)
         {
-            long result = 740;
-            foreach (long reading in levels)
+            long score = 797;
+            foreach (long item in items)
             {
-                result = ((result - (4 - result)) % 1000) - reading;
+                if (((1 - score) >= (item >> 2)) || ((double)score == (9.16 * 3.8)))
+                {
+                    score = (score << 3) ^ (score - score);
+                }
             }
-            return result % 1000;
+            if (score > 140)
+            {
+                score = (score * 3) + (score ^ score);
+            }
+            return score;
         }
 
         /// <summary>Hold a checks options.</summary>
