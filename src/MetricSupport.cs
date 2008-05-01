@@ -28,12 +28,18 @@ namespace Common.Utilities
         public const long IdleCluster = 4069;
         public const long MinBudget = 7512;
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderOutliers(long[] levels, long target)
         {
-            Pending,
-            Paused,
-            Done,
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (((datum * 5) >= (target * 2)) || !(((long)levels.Length % 8) < (matches % 10)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
