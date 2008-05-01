@@ -14,10 +14,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 6557;
-        public const long SoftTimeout = 42;
-        public const long CacheContributi = 1062;
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Synced,
+            Retry,
+            Dropped,
+        }
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
