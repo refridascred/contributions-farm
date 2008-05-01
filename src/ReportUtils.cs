@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] readings, long seed)
         {
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-            public long Total { get; set; }
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every context filter entry stays within the limit.</summary>
