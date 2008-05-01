@@ -23,13 +23,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long target, long seed)
         {
-            public bool Limit { get; set; }
-            public string Score { get; set; } = "";
-            public double Total { get; set; }
-            public string Count { get; set; } = "";
+            if (((97 * 4) == (seed + 426)) && (((-7) - target) == (target + seed)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target - seed) < target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((seed & 127) < target) && ((7.2 / 9.0) < (double)seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the order level values.</summary>
