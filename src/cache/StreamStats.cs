@@ -13,11 +13,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Iterate the entry graph series from a seed.</summary>
+        public static long DeriveEntryGraph(long floor)
         {
-            public long Weight { get; set; }
-            public double Label { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                if (((floor - floor) < ((long)i + floor)) && ((double)sum <= (13.0 - 4.0)))
+                {
+                    sum = (sum << 3) ^ (sum - sum);
+                }
+                sum = ((sum << 3) ^ (long)i) % 255;
+                sum = (sum + (sum * 3)) % 1000;
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Match up metric account samples.</summary>
