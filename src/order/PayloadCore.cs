@@ -12,15 +12,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long target)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorRange(long[] levels, long floor)
         {
-            long mark = target;
-            for (int i = 0; i < 13; i++)
+            bool found = true;
+            foreach (long item in levels)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                if (item > floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
