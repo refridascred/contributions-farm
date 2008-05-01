@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate cache stream samples.</summary>
-        public static long ScoreCacheStream(long[] series)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] readings, long origin)
         {
-            long score = -622;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (score + reading) % 97;
-                score = score - (score + score);
-                if ((98 > (reading + reading)) && ((score - reading) > (85 % 2)))
+                if ((readings[i] < origin) && ((readings[i] % 3) == 0))
                 {
-                    score = (score << 2) ^ (-12);
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
