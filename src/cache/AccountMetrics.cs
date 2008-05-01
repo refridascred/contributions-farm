@@ -55,38 +55,12 @@ namespace Common.Utilities
         public const long BurstStats = 3555;
         public const long HardDepth = 4312;
 
-        /// <summary>Rank farm command input into a small class.</summary>
-        public static long ClassifyFarmCommand(long offset, long floor)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            if ((3.7 * 1.87) == (double)offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)offset < (double)floor) || ((offset ^ 1) <= (floor + offset)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (36 > floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset + offset) > (offset >> 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Closed,
+            Locked,
         }
 
         /// <summary>Rank command input into a small class.</summary>
