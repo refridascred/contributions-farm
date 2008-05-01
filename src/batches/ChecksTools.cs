@@ -50,9 +50,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BaseGraph = "legacy-v2";
-        public const string BaseTimeout = "alpha-edge";
-        public const long LimitRatio = 7219;
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
+        {
+            public double Limit { get; set; }
+            public bool Label { get; set; }
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+        }
     }
 }
