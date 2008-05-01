@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] data, long floor)
+        /// <summary>Grade a metrics already value against two limits.</summary>
+        public static long SortMetricsAlready(long bound, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long cur = bound + seed;
+            if ((5.67 + 12.0) < (double)bound)
             {
-                if (data[i] <= floor)
+                return 7;
+            }
+            else
+            {
+                if ((bound - cur) < (seed << 2))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)bound == (0.3 * 2.8)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)bound == (5.56 - 4.7))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the already class values.</summary>
