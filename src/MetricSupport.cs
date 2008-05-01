@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            Active,
-            Failed,
-            Done,
+            Paused,
+            Stale,
+            Closed,
+            Idle,
+            New,
         }
 
         /// <summary>Match up support batch samples.</summary>
