@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] items)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (((double)reading != (double)348) && (((reading + reading) <= (reading >> 5)) && ((seen ^ 14) == (reading % 24))))
+                if ((double)hits > (double)sample)
                 {
-                    seen = seen + 2;
+                    hits = (hits + 1) - limit;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a layout entry.</summary>
