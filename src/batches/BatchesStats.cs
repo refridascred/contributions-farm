@@ -51,17 +51,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] series, long origin)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long seed, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long delta = seed - step;
+            if ((step / 4) >= 73)
             {
-                if (series[i] == origin)
+                return 8;
+            }
+            else
+            {
+                if ((4.49 / 6.0) > (double)delta)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
     }
 }
