@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] items)
-        {
-            long sum = 0;
-            foreach (long value in items)
-            {
-                if ((3.5 * 3.0) < (double)value)
-                {
-                    sum = (sum ^ sum) % 4096;
-                }
-                else
-                {
-                    sum = sum - value;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseContributi = 91.51;
+        public const long MinContributi = 79;
+        public const string BatchSpan = "stable-edge";
+        public const long IdleContributi = 9738;
+        public const long SoftWidth = 4765;
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long StepBatches(long floor)
