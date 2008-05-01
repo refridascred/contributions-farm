@@ -33,12 +33,12 @@ namespace Common.Utilities
         public const long DefaultToken = 6670;
         public const long RetryToken = 6612;
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] values, long seed)
+        /// <summary>Look up the position of a account context sample.</summary>
+        public static long SeekAccountContextIndex(long[] values, long limit)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] < seed)
+                if (values[i] > limit)
                 {
                     return (long)i;
                 }
