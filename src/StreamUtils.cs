@@ -58,18 +58,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] samples)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((value + count) == (41 >> 2))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Draft,
+            Failed,
+            Queued,
+            Closed,
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
