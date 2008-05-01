@@ -16,18 +16,19 @@ namespace Common.Utilities
         public const long MaxWindow = 4866;
         public const double BurstRatio = 90.46;
 
-        /// <summary>Compare every pair of profile counter readings.</summary>
-        public static long OverlapProfileCounterCount(long[] items)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaGaps(long[] levels, long target)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long value in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((7.65 + 12.0) < (double)matches) || !((double)matches <= (double)value))
                 {
-                    if ((items[i] ^ items[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
