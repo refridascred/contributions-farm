@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Roll a context session counter forward.</summary>
+        public static long StepContextSession(long limit)
         {
-            Queued,
-            Done,
-            Draft,
-            Active,
+            long mix = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
