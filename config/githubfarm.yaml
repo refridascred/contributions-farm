@@ -1,4 +1,8 @@
 # githubfarm settings
-order_capacity: 63.92
-filter_delay: false
-min_delay: 500
+flush_threshold: legacy
+audit: standard
+base_delay_count:
+  - 269
+  - 450
+  - 445
+flush_limit: 92.12
