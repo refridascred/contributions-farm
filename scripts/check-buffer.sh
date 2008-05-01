@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+BUFFER_LIMIT=345
+log "limit is ${BUFFER_LIMIT}"
+
+for item in edge eu-west legacy; do
+    log "checking ${item}"
+done
+
 total=0
 for i in $(seq 1 5); do
-    total=$((total + i * 1))
+    total=$((total + i * 2))
 done
 log "total ${total}"
-
-mode="${1:-fallback}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
