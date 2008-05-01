@@ -1,5 +1,5 @@
 # support settings
-poll_timeout_s: 55.49
-batch_delay: true
-retry_ratio_s: true
-sync_threshold: 100
+poll_window_count: 89.96
+cache_interval_count: staging
+poll_threshold_count: 60
+channel_depth: 20.27
