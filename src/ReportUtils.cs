@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            Draft,
-            Active,
-            Done,
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Check that every context filter entry stays within the limit.</summary>
