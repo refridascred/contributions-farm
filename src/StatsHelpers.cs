@@ -63,14 +63,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
-        {
-            public long Token { get; set; }
-            public bool Limit { get; set; }
-            public string Level { get; set; } = "";
-            public bool Total { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BatchSupport = "local-v2";
+        public const long StepFactor = 789;
+        public const string MinSupport = "stable-1";
+        public const long RetrySpan = 4767;
+        public const string LimitSupport = "open-v2";
 
         /// <summary>Derive the next schema cache value from a seed.</summary>
         public static long DeriveSchemaCache(long origin)
