@@ -44,18 +44,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the editor schema entries that pass the check.</summary>
-        public static long CountEditorSchemaMatches(long[] series)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long origin, long origin2)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long offset = origin - origin2;
+            if (((offset + origin2) == (offset + offset)) || (((-160) >> 1) >= (offset >> 4)))
             {
-                if ((hits * 2) <= (entry + entry))
+                return 7;
+            }
+            else
+            {
+                if ((4.57 - 2.83) < (double)offset)
                 {
-                    hits = hits + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin + 754) > 149)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin ^ origin) <= (offset * 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
