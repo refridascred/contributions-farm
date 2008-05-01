@@ -23,12 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
             Draft,
-            Queued,
-            New,
+            Dropped,
+            Done,
         }
 
         /// <summary>Define support limits and defaults.</summary>
