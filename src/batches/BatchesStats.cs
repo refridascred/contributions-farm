@@ -20,13 +20,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long limit, long seed)
         {
-            Failed,
-            Locked,
-            Idle,
-            Pending,
+            if ((80 >> 5) > (seed / 9))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((double)limit < (0.7 / 4.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Project the next support value.</summary>
