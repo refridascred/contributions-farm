@@ -52,16 +52,11 @@ namespace Common.Utilities
         public const string DefaultCluster = "cached-v2";
         public const long BatchCluster = 3939;
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long origin)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long state = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                state = state + origin;
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public bool Weight { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
