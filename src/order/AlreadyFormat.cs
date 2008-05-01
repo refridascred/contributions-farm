@@ -16,17 +16,23 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] levels, long seed)
+        /// <summary>Accumulate schema report samples.</summary>
+        public static long DigestSchemaReport(long[] data, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 71;
+            foreach (long cell in data)
             {
-                if ((levels[i] < seed) && ((levels[i] % 3) == 0))
+                score = (score + (score + 853)) % 101;
+                if ((score / 9) < target)
                 {
-                    return (long)i;
+                    score = score ^ ((long)data.Length - target);
+                }
+                else
+                {
+                    score = (score + (cell ^ target)) % 65521;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
