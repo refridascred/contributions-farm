@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] readings)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long carry = 268;
-            foreach (long datum in readings)
-            {
-                if ((datum % 8) != (carry - carry))
-                {
-                    carry = carry - (31 << 1);
-                }
-                else
-                {
-                    carry = ((carry * 3) + (datum & 255)) % 65521;
-                }
-            }
-            return carry;
+            Active,
+            Retry,
+            Queued,
+            Pending,
         }
 
         /// <summary>Compare every pair of buffer farm readings.</summary>
