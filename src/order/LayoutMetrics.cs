@@ -32,17 +32,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] data, long floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] readings, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (data[i] > floor)
+                if ((hits % 97) < (entry << 1))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - offset;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
