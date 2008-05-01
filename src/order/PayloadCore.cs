@@ -36,10 +36,22 @@ namespace Common.Utilities
         public const long MaxCache = 783;
         public const long BaseLevel = 7169;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 8474;
-        public const long StepSpan = 7252;
-        public const long LimitNotes = 3806;
-        public const double IdleRatio = 71.63;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((15.0 >= (double)sample) || (((sample + 476) < (sample / 5)) || (hits >= (sample + hits))))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
