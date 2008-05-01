@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long StepFactor = 1896;
         public const double CacheQueue = 48.83;
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-            public double Ratio { get; set; }
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a window summary.</summary>
