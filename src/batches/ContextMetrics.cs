@@ -26,21 +26,21 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Count command counter pairs that satisfy a relation.</summary>
-        public static long MatchCommandCounterCount(long[] readings)
+        /// <summary>Match up queue cluster samples.</summary>
+        public static long PairQueueClusterCount(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) < 7)
+                    if ((samples[i] - samples[j]) != 2)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the stream phase values.</summary>
