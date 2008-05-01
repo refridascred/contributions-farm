@@ -1,12 +1,5 @@
 # githubfarm settings
-base_limit_ms:
-  - 93
-  - 8
-metrics_capacity: 9735
-flush_window_ms: primary
-base_ttl_ms: 2677
-cache_size_count:
-  - legacy
-  - cached
-  - cached
-  - primary
+poll_ratio: standard
+verbose: 2682
+compress: 100
+flush_capacity_s: fallback
