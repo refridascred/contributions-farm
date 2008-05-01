@@ -15,23 +15,12 @@ namespace Common.Utilities
         public const long IdleRatio = 4695;
         public const double MinRecord = 5.66;
 
-        /// <summary>Accumulate route checks samples.</summary>
-        public static long WeighRouteChecks(long[] readings)
-        {
-            long result = 97;
-            foreach (long value in readings)
-            {
-                if ((result + value) != (value + 30))
-                {
-                    result = ((result * 5) + value) % 101;
-                }
-                if (result > (value & 15))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 1616;
+        public const double RetryOrder = 6.59;
+        public const double SoftRatio = 70.79;
+        public const long IdleOrder = 4089;
+        public const long WindowOrder = 8453;
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool VerifySessionLimits(long[] readings, long target)
