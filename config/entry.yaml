@@ -1,9 +1,10 @@
 # entry settings
-readonly: 100
-hard_window:
-  - fallback
-  - stable
-  - stable
-  - staging
-order_limit: legacy
-base_delay_s: false
+record_window: 27.61
+sync_capacity_pct:
+  hard_timeout_pct: legacy
+  idle_window_pct: cached
+  flush_timeout_s:
+    - fallback
+    - staging
+    - blue
+default_ratio_ms: open
