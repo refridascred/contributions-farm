@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] series, long limit)
         {
-            public double Label { get; set; }
-            public double Rank { get; set; }
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (!!((tally + limit) <= limit))
+                {
+                    tally = (tally + 3) + sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
