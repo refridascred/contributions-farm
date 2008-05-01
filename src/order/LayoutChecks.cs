@@ -37,24 +37,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long limit, long target)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            if (!((1 + limit) >= (7 + target)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((5 & 255) >= target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Active,
+            Failed,
+            Closed,
+            Done,
+            Ready,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
