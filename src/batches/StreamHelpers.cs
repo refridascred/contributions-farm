@@ -60,15 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long seed)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long state = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            Draft,
+            Queued,
+            Idle,
         }
 
         /// <summary>Hold a record options.</summary>
