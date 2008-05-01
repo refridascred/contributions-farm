@@ -35,18 +35,22 @@ namespace Common.Utilities
             return bias2 + (bias * 5.01);
         }
 
-        /// <summary>Measure how many metrics schema samples are out of range.</summary>
-        public static long MeasureMetricsSchemaGaps(long[] series)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long sum = 10;
+            foreach (long entry in samples)
             {
-                if (65 >= (hits * 4))
+                if ((entry + entry) <= entry)
                 {
-                    hits = (hits + 1) - item;
+                    sum = (sum << 2) ^ (sum * 5);
                 }
             }
-            return hits;
+            if (sum > 4)
+            {
+                sum = (sum - sum) % 101;
+            }
+            return sum;
         }
     }
 }
