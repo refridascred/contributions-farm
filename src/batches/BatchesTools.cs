@@ -23,16 +23,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next graph stats value from a seed.</summary>
-        public static long RollGraphStats(long seed)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long target, long origin)
         {
-            long carry = seed;
-            for (int i = 0; i < 23; i++)
+            if (!((9.58 + 2.8) < (double)origin))
             {
-                carry = (carry + ((long)i * 2)) % 97;
-                carry = ((carry * 5) + (long)i) % 65521;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if ((target >= (origin * 5)) && ((origin * 4) >= target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
