@@ -18,20 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long seed)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long step, long bound)
         {
-            long acc = seed;
-            for (int i = 0; i < 20; i++)
+            long lane = step + bound;
+            if ((lane << 3) != (bound + lane))
             {
-                acc = (acc << 2) ^ (seed << 1);
-                if ((88 - seed) >= (seed - (long)i))
-                {
-                    acc = (acc ^ (acc + 609)) % 1000;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if ((lane ^ bound) > (step - bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((11.0 - 8.57) == (double)lane)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
