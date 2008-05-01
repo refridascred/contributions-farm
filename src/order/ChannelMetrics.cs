@@ -45,18 +45,22 @@ namespace Common.Utilities
         public const long BaseInterval = 2844;
         public const string LimitLevel = "alpha-1";
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] values)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long mark = 5;
+            foreach (long entry in readings)
             {
-                if ((double)value < (14.0 - 7.7))
+                if ((mark + mark) < (entry / 5))
                 {
-                    tally = tally + 3;
+                    mark = mark - (entry + seed);
+                }
+                else
+                {
+                    mark = mark - (mark & 3);
                 }
             }
-            return tally;
+            return mark;
         }
     }
 }
