@@ -36,17 +36,16 @@ namespace Common.Utilities
         public const long CacheDepth = 2783;
         public const string IdleWidth = "open-1";
 
-        /// <summary>Find the first channel account entry that matches the target.</summary>
-        public static long LookupChannelAccountIndex(long[] items, long seed)
+        /// <summary>Fold a list of command graph readings.</summary>
+        public static long ScoreCommandGraph(long[] samples, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 1;
+            foreach (long reading in samples)
             {
-                if ((items[i] < seed) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix + (reading - origin)) % 101;
+                mix = mix - (5 + mix);
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
