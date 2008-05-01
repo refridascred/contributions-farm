@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] readings, long origin)
         {
-            public bool Owner { get; set; }
-            public double Limit { get; set; }
-            public long Token { get; set; }
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
