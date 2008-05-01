@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            Failed,
-            Closed,
-            Ready,
-            Done,
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
