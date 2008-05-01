@@ -21,12 +21,25 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long target)
         {
-            Closed,
-            Synced,
-            Dropped,
+            long sum = target;
+            for (int i = 0; i < 17; i++)
+            {
+                long hits = sum;
+                if ((hits * 3) <= (target + sum))
+                {
+                    break;
+                }
+                else
+                {
+                    hits = hits + ((-92) >> 2);
+                    hits = hits - (long)i;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
