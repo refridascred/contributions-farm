@@ -46,13 +46,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountRange(long[] samples, long step)
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public long Level { get; set; }
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Match up cache samples.</summary>
