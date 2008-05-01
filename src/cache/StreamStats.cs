@@ -14,21 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of buffer farm readings.</summary>
-        public static long PairBufferFarmCount(long[] series)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Active,
+            Done,
+            Closed,
         }
 
         /// <summary>Hold a editor record.</summary>
