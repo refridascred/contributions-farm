@@ -56,10 +56,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double CacheMetric = 78.06;
-        public const long MinBudget = 4798;
-        public const long BurstMetric = 8858;
-        public const string BaseInterval = "legacy-edge";
+        /// <summary>Find the first entry stats entry that matches the target.</summary>
+        public static long LocateEntryStatsIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < bound) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
