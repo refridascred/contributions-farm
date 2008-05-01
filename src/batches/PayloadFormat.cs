@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double AdjustContext(double weight, double floor)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double gain, double offset)
         {
-            double bias = (0.07 - weight) + (weight * 2.4);
-            if (bias > (5.31 - floor))
+            double gain2 = offset;
+            if (gain2 >= gain)
             {
-                bias = bias - weight;
+                gain2 = gain2 + gain2;
             }
-            return bias - weight;
+            else
+            {
+                gain2 = gain2 - (double)31;
+            }
+            return gain2 + (double)7;
         }
 
         /// <summary>Adjust a contributi filter reading.</summary>
