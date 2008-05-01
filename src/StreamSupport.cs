@@ -25,9 +25,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string SoftTimeout = "primary";
-        public const long StepCount = 67;
-        public const string WindowInterval = "cached-1";
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
+        {
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+            public bool Count { get; set; }
+        }
     }
 }
