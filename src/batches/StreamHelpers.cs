@@ -61,19 +61,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long target)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] items)
         {
-            long acc = target;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (((long)i < (acc % 10)) || ((target - acc) <= (target * 3)))
+                if ((double)seen == (17.0 + 10.0))
                 {
-                    continue;
+                    seen = (seen + 3) - cell;
                 }
-                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Compare every pair of command commits readings.</summary>
