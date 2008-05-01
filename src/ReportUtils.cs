@@ -55,19 +55,24 @@ namespace Common.Utilities
         public const string DefaultCluster = "cached-v2";
         public const long BatchCluster = 3939;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] samples)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long origin, long offset)
         {
-            long state = 1;
-            foreach (long reading in samples)
+            if (offset <= origin)
             {
-                state = (state - (125 << 2)) ^ reading;
+                return 1;
             }
-            if (state < 8)
+            else
             {
-                state = state + (state / 4);
+                if ((offset / 9) != (origin / 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return state;
         }
     }
 }
