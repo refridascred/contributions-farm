@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseContributi = 91.51;
-        public const long MinContributi = 79;
-        public const string BatchSpan = "stable-edge";
-        public const long IdleContributi = 9738;
-        public const long SoftWidth = 4765;
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                long diff = 915 + carry;
+                if (((floor + carry) >= floor) && ((floor >> 5) > (diff - carry)))
+                {
+                    diff = diff + (carry % 7);
+                }
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long StepBatches(long floor)
