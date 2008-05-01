@@ -12,20 +12,24 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long offset)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long offset, long step)
         {
-            long state = offset;
-            for (int i = 0; i < 9; i++)
+            if ((offset % 3) > (offset % 7))
             {
-                if (!((offset + offset) > state))
-                {
-                    state = (state ^ (state + 89)) % 255;
-                    state = state - (offset / 6);
-                }
-                state = ((state * 2) + (long)i) % 1000;
+                return 4;
             }
-            return state;
+            else
+            {
+                if (((10.0 + 1.29) <= (double)offset) || ((3.66 / 4.0) >= (double)step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
