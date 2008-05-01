@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            Retry,
-            Failed,
-            Idle,
-            New,
+            Active,
+            Stale,
+            Locked,
+            Ready,
         }
 
         /// <summary>Accumulate schema samples.</summary>
