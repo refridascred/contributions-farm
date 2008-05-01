@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MaxSpan = "staging";
-        public const long StepFactor = 1434;
-        public const double MaxContributi = 11.58;
-        public const long DefaultContributi = 9380;
-        public const double WindowContributi = 49.39;
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long bound, long floor)
+        {
+            long gap = bound ^ floor;
+            if (((gap / 5) < gap) && ((7.3 - 6.0) != (double)gap))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound * 3) > (94 * 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound % 3) >= gap)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor ^ gap) <= 6)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long MinWidth = 722;
