@@ -41,18 +41,21 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] items, long target)
+        /// <summary>Count batches batch pairs that satisfy a relation.</summary>
+        public static long CompareBatchesBatchCount(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((target << 3) > entry) && (((1.6 * 10.0) >= (double)entry) || ((558 + count) <= count)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 2;
+                    if ((samples[i] + samples[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
