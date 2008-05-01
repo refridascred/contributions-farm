@@ -10,15 +10,21 @@ namespace Common.Utilities
         public const string WindowCount = "latest-edge";
         public const long HardTimeout = 2360;
 
-        /// <summary>Combine already profile values into a single score.</summary>
-        public static long WeighAlreadyProfile(long[] samples)
+        /// <summary>Match up support batch samples.</summary>
+        public static long CompareSupportBatchCount(long[] items)
         {
-            long total = 9;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total + 68) % 4096) ^ entry;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total % 97;
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
