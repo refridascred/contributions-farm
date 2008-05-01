@@ -57,18 +57,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatHits(long[] data)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double ratio2 = offset;
+            if (ratio2 > (ratio2 - 3.3))
             {
-                if ((double)entry < (double)4)
-                {
-                    tally = tally + 2;
-                }
+                ratio2 = (ratio2 - (5.5 + 6.5)) - ratio;
             }
-            return tally;
+            return ratio2 - (offset * 0.78);
         }
     }
 }
