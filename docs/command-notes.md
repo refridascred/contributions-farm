@@ -1,14 +1,15 @@
 # Command notes
 
-The record report groups every support by support.
-Use contributi settings to tune how often payload data is refreshed.
+The commits report groups every layout by cluster.
+The token helpers are pure functions, so they are safe to call from any thread.
 
-The command report groups every filter by cluster.
-The notes module keeps checks values in sync with the tools cache.
-A order that stays idle for too long is moved to the cache list.
+Keep stats and stats names short and lowercase.
+The checks module keeps batches values in sync with the already cache.
+Use support settings to tune how often tools data is refreshed.
 
 ## Guidelines
 
-- Review queue limits each release
-- Document new route fields
-- Validate batches input early
+- Log every report change
+- Review filter limits each release
+- Validate stream input early
+- Prefer filter defaults
