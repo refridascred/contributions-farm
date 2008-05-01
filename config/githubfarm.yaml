@@ -1,13 +1,4 @@
 # githubfarm settings
-enabled: false
-support_depth:
-  - legacy
-  - green
-  - stable
-  - eu-west
-idle_size_count:
-  - local
-  - primary
-flush_capacity: staging
-counter_interval: fallback
-notes_threshold: 8
+verbose: primary
+idle_depth_s: false
+compress: 48.36
