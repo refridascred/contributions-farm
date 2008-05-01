@@ -22,23 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] readings, long step)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long acc = 45;
-            foreach (long value in readings)
-            {
-                acc = (acc ^ (acc >> 4)) ^ value;
-                if (((double)step < 4.88) || ((step ^ 29) == (23 >> 3)))
-                {
-                    acc = ((acc << 3) ^ (acc / 4)) % 101;
-                }
-                else
-                {
-                    acc = (acc ^ ((long)readings.Length - acc)) % 1000;
-                }
-            }
-            return acc;
+            Ready,
+            Dropped,
+            Active,
+            Retry,
         }
 
         /// <summary>Fold a list of counter readings.</summary>
