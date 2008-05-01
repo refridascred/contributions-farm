@@ -22,12 +22,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Measure how many report context samples are out of range.</summary>
+        public static long CountReportContextGaps(long[] values, long target)
         {
-            public bool Flag { get; set; }
-            public double Region { get; set; }
-            public double Count { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((double)target < (double)23)
+                {
+                    matches = (matches + 2) - datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate already samples.</summary>
