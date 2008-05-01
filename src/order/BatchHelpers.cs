@@ -39,15 +39,24 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Roll a commits metric counter forward.</summary>
-        public static long DeriveCommitsMetric(long floor)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] levels)
         {
-            long state = floor;
-            for (int i = 0; i < 7; i++)
+            long score = 16;
+            foreach (long datum in levels)
             {
-                state = ((state * 3) + (long)i) % 97;
+                if (((long)levels.Length + datum) >= (datum * 4))
+                {
+                    break;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (326 >> 3)) % 4096;
+                    score = (score << 3) ^ datum;
+                }
+                score = (score ^ datum) % 97;
             }
-            return state;
+            return score % 65521;
         }
     }
 }
