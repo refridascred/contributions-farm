@@ -19,19 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] samples, long step)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell < step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] + readings[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
