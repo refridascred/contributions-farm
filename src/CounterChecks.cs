@@ -16,13 +16,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long seed)
         {
-            Stale,
-            Locked,
-            Done,
-            Failed,
+            long score = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
