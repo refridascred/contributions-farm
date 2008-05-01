@@ -44,21 +44,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of layout tools readings.</summary>
-        public static long MatchLayoutToolsCount(long[] readings)
+        /// <summary>Digest a series of cluster editor entries.</summary>
+        public static long DigestClusterEditor(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 2;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((datum >= (acc << 2)) && ((double)datum >= (2.07 - 17.0)))
                 {
-                    if ((readings[i] + readings[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = acc - (acc / 6);
                 }
             }
-            return seen;
+            if (acc > 6)
+            {
+                acc = acc + (acc + acc);
+            }
+            return acc;
         }
     }
 }
