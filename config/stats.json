@@ -1,8 +1,23 @@
 {
-  "base_delay_ms": 73.58,
-  "default_window_ms": 1024,
-  "audit": "standard",
-  "retry_capacity_s": 30,
-  "idle_limit_s": [218, 9, 331],
-  "commits_threshold": [17, 244]
+  "batches_limit": 91.16,
+  "window_capacity": {
+    "entry_ttl": {
+      "tools_capacity": [55, 111],
+      "payload_limit": [401, 19, 177],
+      "strict": "open",
+      "session_capacity": [94, 57, 112],
+      "account_window": 48.71
+    },
+    "retry_ratio_pct": "open",
+    "soft_capacity_s": 35,
+    "flush_interval_ms": 92
+  },
+  "editor_size": 61.06,
+  "compress": {
+    "sync_ratio_ms": "primary",
+    "base_delay_count": 34,
+    "cache_delay_ms": 68.95
+  },
+  "warm_threshold": "strict",
+  "retry_timeout_ms": 98
 }
