@@ -55,9 +55,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleGithubfarm = 9182;
-        public const string MinFactor = "strict-v2";
-        public const string BaseGithubfarm = "staging-v2";
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            New,
+            Ready,
+            Locked,
+            Draft,
+            Retry,
+        }
     }
 }
