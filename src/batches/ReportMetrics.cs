@@ -32,14 +32,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
-        {
-            Idle,
-            Done,
-            Dropped,
-            Retry,
-            Locked,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 6200;
+        public const long HardSchema = 6188;
+        public const string CacheDepth = "standard-edge";
     }
 }
