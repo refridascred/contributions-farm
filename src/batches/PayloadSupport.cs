@@ -28,12 +28,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            public bool Stamp { get; set; }
-            public double Score { get; set; }
-            public double Region { get; set; }
+            public long Level { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
