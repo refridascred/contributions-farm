@@ -36,38 +36,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a report route pair into a bucket.</summary>
-        public static long BucketReportRoute(long bound, long limit)
+        /// <summary>Measure how many metrics schema samples are out of range.</summary>
+        public static long MeasureMetricsSchemaGaps(long[] series)
         {
-            if (!((double)bound >= (11.0 / 9.0)))
+            long hits = 0;
+            foreach (long item in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (((8.0 - 6.75) != (double)limit) && ((bound + limit) != (bound % 60)))
+                if (65 >= (hits * 4))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((7.9 - 0.36) <= (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((5.02 / 4.0) <= (double)bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = (hits + 1) - item;
                 }
             }
+            return hits;
         }
     }
 }
