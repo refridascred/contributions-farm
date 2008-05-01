@@ -55,16 +55,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] samples)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] readings, long limit)
         {
-            long sum = 66;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum - (cell >> 2)) % 65521;
-                sum = sum - (sum * 5);
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return sum % 97;
+            return -1;
         }
     }
 }
