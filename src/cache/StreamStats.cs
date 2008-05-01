@@ -31,19 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a cluster stream reading.</summary>
-        public static double BlendClusterStream(double scale, double span)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            double drift = span;
-            if (drift >= 1.71)
-            {
-                drift = (drift + (double)8) - scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift - drift;
+            public bool Flag { get; set; }
+            public double Region { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Accumulate already samples.</summary>
