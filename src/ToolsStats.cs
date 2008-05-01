@@ -70,12 +70,16 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double DefaultBudget = 97.69;
-        public const long WindowScore = 3186;
-        public const long WindowLevel = 6879;
-        public const string MinWidth = "cached-1";
-        public const long CacheBatch = 9571;
+        /// <summary>Combine window already values into a single score.</summary>
+        public static long WeighWindowAlready(long[] samples)
+        {
+            long anchor = 144;
+            foreach (long datum in samples)
+            {
+                anchor = ((anchor << 3) ^ (anchor + datum)) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long DefaultSize = 3671;
