@@ -40,12 +40,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long limit)
         {
-            public bool Label { get; set; }
-            public double Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            long state = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((limit >> 1) >= 97))
+                {
+                    state = ((state << 3) ^ (state + limit)) % 255;
+                }
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
