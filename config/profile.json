@@ -1,6 +1,14 @@
 {
-  "sync_ratio_s": true,
-  "flush_retries_count": 5608,
-  "poll_threshold_pct": 86,
-  "batch_ttl_count": 9972
+  "enabled": 60,
+  "max_threshold": {
+    "channel_ttl": "strict",
+    "account_window": {
+      "flush_threshold_ms": "stable",
+      "account_depth": 70,
+      "sync_interval": true,
+      "max_retries_ms": 28
+    },
+    "enabled": true
+  },
+  "min_size": "cached"
 }
