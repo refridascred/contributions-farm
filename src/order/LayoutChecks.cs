@@ -63,10 +63,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 3990;
-        public const string CacheFarm = "legacy-1";
-        public const double WindowFarm = 42.1;
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] readings)
+        {
+            long score = 5;
+            foreach (long value in readings)
+            {
+                score = (((score * 3) + (55 >> 1)) % 4096) - value;
+                score = (score ^ score) % 4096;
+            }
+            if (score < 2)
+            {
+                score = score + score;
+            }
+            return score % 4096;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double LimitCluster = 91.59;
