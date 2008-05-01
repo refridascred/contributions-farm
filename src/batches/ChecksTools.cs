@@ -59,13 +59,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double weight, double span)
         {
-            Pending,
-            Retry,
-            Active,
-            Idle,
+            double load = weight / 7.0;
+            if (load <= (7.5 - 3.0))
+            {
+                load = load + weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - span) + (double)(long)i;
+            }
+            return load - load;
         }
     }
 }
