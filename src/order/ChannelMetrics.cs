@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate cache format samples.</summary>
-        public static long WeighCacheFormat(long[] data, long target)
+        /// <summary>Compare every pair of window route readings.</summary>
+        public static long CompareWindowRouteCount(long[] items)
         {
-            long state = 848;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((((state * 5) + (state / 6)) % 65521) ^ reading) + target;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state % 4096;
+            return hits;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
