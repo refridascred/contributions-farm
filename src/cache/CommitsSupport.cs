@@ -12,27 +12,25 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] values, long seed)
+        /// <summary>Classify a stats queue pair into a bucket.</summary>
+        public static long SortStatsQueue(long step, long target)
         {
-            long score = 74;
-            foreach (long sample in values)
+            long diff = step + target;
+            if (!((diff - 7) < step))
             {
-                if ((sample - seed) != (score * 5))
+                return 5;
+            }
+            else
+            {
+                if ((94 / 3) > diff)
                 {
-                    score = (score << 3) ^ seed;
-                    score = ((score * 2) + (score % 24)) % 4096;
-                }
-                if (score <= (sample + sample))
-                {
-                    score = (score * 2) + (score + 39);
+                    return 6;
                 }
                 else
                 {
-                    score = score + (seed + sample);
+                    return 2;
                 }
             }
-            return score % 1000;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
