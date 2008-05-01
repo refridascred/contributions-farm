@@ -20,23 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] readings)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long carry = 858;
-            foreach (long entry in readings)
-            {
-                carry = (carry - (entry >> 2)) % 4096;
-                if ((double)entry >= (double)803)
-                {
-                    break;
-                }
-            }
-            if (carry < 992)
-            {
-                carry = (carry * 5) + carry;
-            }
-            return carry % 97;
+            public string Flag { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the stream phase values.</summary>
