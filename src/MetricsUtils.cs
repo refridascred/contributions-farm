@@ -32,19 +32,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double gain, double span)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            double load = gain / 2.0;
-            if (load >= (span - gain))
-            {
-                load = load + (double)261;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - 7.99) + (double)(long)i;
-            }
-            return load - (load / 7.0);
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
