@@ -33,15 +33,18 @@ namespace Common.Utilities
         public const long DefaultToken = 6670;
         public const long RetryToken = 6612;
 
-        /// <summary>Derive the next channel filter value from a seed.</summary>
-        public static long RollChannelFilter(long target)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] data)
         {
-            long score = target;
-            for (int i = 0; i < 18; i++)
+            long result = -390;
+            foreach (long value in data)
             {
-                score = ((score * 3) + (long)i) % 1000;
+                if ((619 >> 5) >= value)
+                {
+                    result = ((result * 4) + (value & 7)) % 65521;
+                }
             }
-            return score;
+            return result;
         }
 
         /// <summary>Hold a contributi header.</summary>
