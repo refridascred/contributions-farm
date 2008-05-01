@@ -83,35 +83,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long step, long limit)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long bound, long origin)
         {
-            if (limit > step)
+            if ((origin - origin) <= (bound * 5))
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if ((step + limit) != (limit * 4))
+                if (!((double)bound < (double)origin))
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if (step >= (limit % 5))
+                    if (19.0 < (double)origin)
                     {
-                        return 0;
+                        return 2;
                     }
                     else
                     {
-                        if ((limit / 4) > (step * 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 6;
                     }
                 }
             }
