@@ -46,18 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] data)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] values)
         {
-            long total = 5;
-            foreach (long item in data)
+            long total = -173;
+            foreach (long sample in values)
             {
-                if (item >= (total % 97))
+                if (((long)values.Length + 650) <= (total + sample))
                 {
-                    total = total + (total << 2);
+                    total = (total << 2) ^ total;
                 }
             }
-            return total % 1000;
+            return total;
         }
     }
 }
