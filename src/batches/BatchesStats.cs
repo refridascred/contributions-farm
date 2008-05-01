@@ -59,25 +59,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long seed, long step)
+        /// <summary>Check that every payload layout entry stays within the limit.</summary>
+        public static bool GuardPayloadLayoutBounds(long[] items, long origin)
         {
-            long delta = seed - step;
-            if ((step / 4) >= 73)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((4.49 / 6.0) > (double)delta)
+                if (datum > origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
