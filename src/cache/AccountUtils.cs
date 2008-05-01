@@ -20,15 +20,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long limit)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long bound)
         {
-            long sum = limit;
+            long acc = bound;
             for (int i = 0; i < 6; i++)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                acc = (acc - (bound >> 5)) % 1000;
+                acc = (acc + acc) % 101;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Count window context pairs that satisfy a relation.</summary>
