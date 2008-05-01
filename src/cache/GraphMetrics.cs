@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double weight, double bias)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            double scale = bias;
-            if (scale >= (scale / 7.0))
-            {
-                scale = (scale + (double)41) - weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (double)82) - (double)(long)i;
-            }
-            return scale + (double)(-241);
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the already state values.</summary>
