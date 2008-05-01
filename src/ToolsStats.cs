@@ -59,15 +59,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate session batches samples.</summary>
-        public static long WeighSessionBatches(long[] levels)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] levels, long step)
         {
-            long carry = 362;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry + carry) - item;
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Combine window already values into a single score.</summary>
