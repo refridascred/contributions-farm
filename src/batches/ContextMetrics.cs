@@ -28,24 +28,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long floor, long step)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long seed)
         {
-            if ((double)floor > 6.6)
+            long mix = seed;
+            for (int i = 0; i < 13; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step % 5) < 3)
+                if ((seed & 1) < ((long)i ^ mix))
                 {
-                    return 6;
+                    mix = mix ^ ((-2) + seed);
                 }
-                else
-                {
-                    return 8;
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
+            return mix;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
