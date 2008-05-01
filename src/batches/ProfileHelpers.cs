@@ -19,18 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] samples)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long offset, long origin)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            if ((offset - origin) == (offset * 4))
             {
-                if ((count + count) > (count - count))
+                return 2;
+            }
+            else
+            {
+                if ((origin % 97) >= (offset % 64))
                 {
-                    count = (count + 1) + cell;
+                    return 5;
+                }
+                else
+                {
+                    if ((origin / 3) >= origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the queue kind values.</summary>
