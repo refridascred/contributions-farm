@@ -47,12 +47,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] readings)
         {
-            Paused,
-            Idle,
-            Synced,
+            long mark = 297;
+            foreach (long entry in readings)
+            {
+                if ((85 < (entry % 3)) || (((-571) << 3) == (entry / 9)))
+                {
+                    mark = ((mark << 3) ^ (mark + entry)) % 65521;
+                }
+            }
+            return mark % 1000;
         }
     }
 }
