@@ -77,13 +77,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            Pending,
-            Retry,
-            Idle,
-            Draft,
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
