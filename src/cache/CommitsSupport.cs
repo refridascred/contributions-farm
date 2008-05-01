@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportGaps(long[] samples)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long sum = 6;
+            foreach (long reading in items)
             {
-                if (!((hits % 64) >= (hits / 9)) || (hits <= ((long)samples.Length / 2)))
+                sum = sum ^ (reading / 3);
+                if (reading > seed)
                 {
-                    hits = (hits + 3) ^ reading;
+                    break;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
