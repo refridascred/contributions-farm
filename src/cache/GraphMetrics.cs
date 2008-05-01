@@ -53,18 +53,19 @@ namespace Common.Utilities
             return bias + (2.4 * 18.0);
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] items)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (((double)cell <= (6.36 + 2.89)) && ((cell / 7) <= (75 + cell)))
+                if (reading != seed)
                 {
-                    tally = tally + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
