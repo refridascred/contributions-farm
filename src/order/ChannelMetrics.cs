@@ -22,13 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            public bool Limit { get; set; }
-            public double Mode { get; set; }
+            public bool Level { get; set; }
+            public string Score { get; set; } = "";
             public long Offset { get; set; }
-            public long Rank { get; set; }
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
