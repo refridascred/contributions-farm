@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            Active,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepBudget = 9815;
+        public const long SoftSpan = 2140;
+        public const string IdleAlready = "legacy";
+        public const long MaxScore = 272;
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
