@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double gain, double bias)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricHits(long[] data, long seed)
         {
-            double weight = bias * 1.0;
-            if (weight <= (8.6 + weight))
+            long hits = 0;
+            foreach (long cell in data)
             {
-                weight = weight + (bias + gain);
+                if ((((long)data.Length != (cell * 2)) || (hits >= (seed ^ cell))) || ((70 >> 1) == (cell & 3)))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                weight = weight + gain;
-            }
-            return weight - gain;
+            return hits;
         }
 
         /// <summary>Roll a commits batch counter forward.</summary>
