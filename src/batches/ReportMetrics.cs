@@ -32,21 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] levels)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long acc = 9;
-            foreach (long reading in levels)
-            {
-                long lane = (reading + reading) << 2;
-                acc = acc ^ (acc - lane);
-                acc = ((acc * 5) + (reading >> 1)) % 65521;
-            }
-            if (acc < 23)
-            {
-                acc = (acc - (acc + acc)) % 101;
-            }
-            return acc;
+            Idle,
+            Done,
+            Active,
         }
     }
 }
