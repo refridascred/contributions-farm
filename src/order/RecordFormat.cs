@@ -28,14 +28,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            Draft,
-            Active,
-            Closed,
-            Failed,
-            Paused,
+            New,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Hold a commits summary.</summary>
