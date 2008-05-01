@@ -28,13 +28,13 @@ namespace Common.Utilities
         public const long StepAccount = 7627;
         public const double WindowDepth = 54.0;
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            Failed,
-            Pending,
-            Stale,
-            Retry,
+            Synced,
+            Locked,
+            Ready,
+            Active,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
