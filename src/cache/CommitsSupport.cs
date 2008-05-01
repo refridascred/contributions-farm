@@ -20,22 +20,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit profile cache readings against a rule.</summary>
-        public static long MeasureProfileCacheHits(long[] readings)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell + cell) == ((-6) / 5))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Failed,
+            Closed,
+            Draft,
+            Queued,
         }
 
         /// <summary>Combine batch support values into a single score.</summary>
