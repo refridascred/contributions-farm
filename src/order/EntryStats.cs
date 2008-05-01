@@ -22,27 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] values)
-        {
-            long acc = 6;
-            foreach (long sample in values)
-            {
-                if (((3.72 + 4.0) != (double)sample) || ((3 - acc) < sample))
-                {
-                    acc = ((acc * 3) + (acc + acc)) % 4096;
-                }
-                else
-                {
-                    acc = (acc * 4) + acc;
-                }
-            }
-            if (acc < 7)
-            {
-                acc = (acc - (acc & 3)) % 4096;
-            }
-            return acc;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCluster = 6743;
+        public const long MaxCluster = 422;
+        public const long MinCluster = 8559;
+        public const string WindowCluster = "alpha-v2";
+        public const string LimitBudget = "stable-edge";
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LocateProfileIndex(long[] readings, long offset)
