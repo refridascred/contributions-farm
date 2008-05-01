@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=416
-log "limit is ${COMMAND_LIMIT}"
-
-for item in stable green; do
+for item in open edge fallback cached; do
     log "checking ${item}"
 done
 
-mode="${1:-blue}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
