@@ -34,26 +34,31 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] levels)
+        /// <summary>Roll a commits batch counter forward.</summary>
+        public static long StepCommitsBatch(long step)
         {
-            long anchor = 54;
-            foreach (long reading in levels)
+            long mix = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (reading > 9)
+                if ((double)mix < 0.14)
                 {
+                    mix = ((mix * 2) + (mix - mix)) % 1000;
                     continue;
                 }
-                if (anchor > 82)
+                else
                 {
-                    anchor = (anchor - (reading + reading)) % 255;
+                    mix = (mix * 2) + (mix & 31);
                 }
+                mix = (mix + (85 - (long)i)) % 101;
+                if ((step - mix) <= (-77))
+                {
+                    mix = ((mix << 2) ^ step) % 97;
+                    mix = (mix * 4) + 87;
+                    continue;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            if (anchor > 575)
-            {
-                anchor = (anchor + (anchor >> 4)) % 101;
-            }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
