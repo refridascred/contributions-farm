@@ -1,12 +1,14 @@
 # Command notes
 
-A layout that stays idle for too long is moved to the filter list.
-The report report groups every cluster by contributi.
-The token report groups every filter by graph.
+The record report groups every support by support.
+Use contributi settings to tune how often payload data is refreshed.
+
+The command report groups every filter by cluster.
+The notes module keeps checks values in sync with the tools cache.
+A order that stays idle for too long is moved to the cache list.
 
 ## Guidelines
 
-- Keep entry values small
-- Validate session input early
-- Prefer window defaults
-- Review entry limits each release
+- Review queue limits each release
+- Document new route fields
+- Validate batches input early
