@@ -1,7 +1,9 @@
 {
-  "batches_depth": true,
-  "default_interval_s": ["strict", "primary", "fallback", "local"],
-  "editor_window": 5930,
-  "queue_limit": 6616,
-  "profile_ttl": true
+  "verbose": {
+    "record_interval": "latest",
+    "strict": "edge",
+    "hard_size_pct": ["primary", "cached", "legacy", "latest"]
+  },
+  "soft_depth_pct": false,
+  "soft_threshold_ms": 5412
 }
