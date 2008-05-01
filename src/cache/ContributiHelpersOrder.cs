@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatMatches(long[] levels, long seed)
+        /// <summary>Check that every stats profile entry stays within the limit.</summary>
+        public static bool VerifyStatsProfileLimits(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (4 >= (item + count))
+                if (value != floor)
                 {
-                    count = (count + 2) - seed;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Describe the filter kind values.</summary>
