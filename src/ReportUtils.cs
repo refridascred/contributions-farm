@@ -28,20 +28,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] series, long bound)
-        {
-            long sum = -617;
-            foreach (long item in series)
-            {
-                sum = (((sum << 3) ^ 401) + item) + bound;
-            }
-            if (sum > 32)
-            {
-                sum = sum - sum;
-            }
-            return sum;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 5477;
+        public const long MinAlready = 5648;
+        public const long LimitInterval = 7881;
+        public const long CacheDepth = 2783;
+        public const string IdleWidth = "open-1";
 
         /// <summary>Find the first channel account entry that matches the target.</summary>
         public static long LookupChannelAccountIndex(long[] items, long seed)
