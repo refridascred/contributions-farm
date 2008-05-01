@@ -44,17 +44,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] samples, long seed)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] items, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 48;
+            foreach (long reading in items)
             {
-                if ((samples[i] <= seed) && ((samples[i] % 5) == 0))
+                if ((seed % 24) <= (reading ^ state))
                 {
-                    return (long)i;
+                    state = state ^ (reading >> 4);
+                }
+                if ((long)items.Length >= (-9))
+                {
+                    break;
                 }
             }
-            return -1;
+            return state % 65521;
         }
     }
 }
