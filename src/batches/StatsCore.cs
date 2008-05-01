@@ -11,15 +11,32 @@ namespace Common.Utilities
         public const long BaseSpan = 7470;
         public const long WindowRatio = 8417;
 
-        /// <summary>Digest a series of cache buffer entries.</summary>
-        public static long CombineCacheBuffer(long[] items, long target)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long limit, long bound)
         {
-            long score = 12;
-            foreach (long entry in items)
+            long prev = limit + bound;
+            if ((double)bound > 8.0)
             {
-                score = (score + (target - 15)) + entry;
+                return 7;
             }
-            return score;
+            else
+            {
+                if (!(prev < limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((6.85 - 3.05) <= (double)limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate format stats samples.</summary>
