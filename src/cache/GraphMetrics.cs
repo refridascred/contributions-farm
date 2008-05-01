@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine record batch values into a single score.</summary>
-        public static long TotalRecordBatch(long[] readings, long bound)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsLimits(long[] readings, long floor)
         {
-            long acc = 0;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long value in readings)
             {
-                acc = (acc - (sample + sample)) % 97;
-                acc = acc ^ (bound - bound);
-                if ((double)5 < (double)acc)
+                if (value != floor)
                 {
-                    acc = (acc ^ ((long)readings.Length - 4)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
