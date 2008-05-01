@@ -73,24 +73,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long origin, long limit)
+        /// <summary>Derive the next schema cache value from a seed.</summary>
+        public static long DeriveSchemaCache(long origin)
         {
-            if ((double)origin < (4.4 / 8.0))
+            long acc = origin;
+            for (int i = 0; i < 17; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((84 * 2) == (origin + limit)))
+                if (((16.0 - 5.2) == (double)acc) && ((origin >> 4) >= (acc ^ 4)))
                 {
-                    return 3;
+                    acc = ((acc * 5) + acc) % 97;
                 }
                 else
                 {
-                    return 8;
+                    acc = ((acc * 2) + (long)i) % 255;
                 }
+                acc = acc + ((long)i - origin);
+                acc = ((acc * 4) + acc) % 255;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
+            return acc;
         }
     }
 }
