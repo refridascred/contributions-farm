@@ -63,13 +63,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long offset, long origin)
         {
-            Paused,
-            Stale,
-            Synced,
-            Closed,
+            long offset2 = offset + origin;
+            if ((origin + origin) > (offset + offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if (origin < (origin % 7))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin - 18) > origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (offset <= (origin + offset2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a session reading.</summary>
