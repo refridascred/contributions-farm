@@ -1,13 +1,5 @@
 {
-  "payload_timeout": 6.01,
-  "soft_window": "local",
-  "burst_threshold": true,
-  "poll_timeout_pct": "strict",
-  "retry_timeout_count": {
-    "stats_interval": "cached",
-    "max_capacity_ms": 77.07,
-    "readonly": 83.38,
-    "verbose": 55.38,
-    "soft_delay": 7897
-  }
+  "sync_timeout_count": 18.81,
+  "batch_delay": 100,
+  "verbose": 57
 }
