@@ -31,18 +31,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter metrics readings against a rule.</summary>
-        public static long TallyCounterMetricsMatches(long[] data, long offset)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (!((long)data.Length == (hits - hits)))
-                {
-                    hits = ((hits + 1) ^ cell) + offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxScore = 5782;
+        public const long BaseBudget = 7558;
+        public const long LimitToken = 646;
     }
 }
