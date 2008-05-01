@@ -1,14 +1,12 @@
 # support settings
-max_limit: 250
-cache_retries_ms:
-  - 166
-  - 449
-  - 489
-  - 457
-sync_ratio_pct: 5562
-commits_window: 9294
-profile_depth: staging
-compress:
+idle_threshold:
+  - legacy
+  - eu-west
   - cached
-  - local
-  - fallback
+persist: 21.19
+command_window: true
+hard_ratio:
+  - 274
+  - 311
+strict: stable
+soft_limit_s: 56
