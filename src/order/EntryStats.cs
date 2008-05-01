@@ -74,18 +74,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many commits filter samples are out of range.</summary>
-        public static long TallyCommitsFilterGaps(long[] readings, long offset)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((tally * 5) >= (tally / 9))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = ((tally + 3) - entry) + offset;
+                    if ((readings[i] + readings[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
