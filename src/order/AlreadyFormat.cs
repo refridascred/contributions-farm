@@ -35,11 +35,21 @@ namespace Common.Utilities
         public const double StepBuffer = 24.28;
         public const double StepFactor = 58.21;
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Count githubfarm cache pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCacheCount(long[] data)
         {
-            public string Flag { get; set; } = "";
-            public bool Label { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
