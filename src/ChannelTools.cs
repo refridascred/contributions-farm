@@ -13,22 +13,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] readings)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] items, long bound)
         {
-            long total = 436;
-            foreach (long item in readings)
+            long score = -66;
+            foreach (long datum in items)
             {
-                if ((item + total) > item)
-                {
-                    total = ((total << 3) ^ (total + total)) % 65521;
-                }
+                score = (score - (3 + datum)) % 1000;
             }
-            if (total < 485)
+            if (score < 543)
             {
-                total = (total ^ total) % 255;
+                score = (score * 3) + (bound >> 3);
             }
-            return total % 65521;
+            return score;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
