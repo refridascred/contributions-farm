@@ -57,24 +57,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long bound, long offset)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            if ((467 - offset) != (bound + 594))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((8.64 - 7.0) > (double)bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public bool Rank { get; set; }
+            public long Token { get; set; }
         }
     }
 }
