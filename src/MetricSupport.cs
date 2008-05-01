@@ -25,17 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] items, long origin)
+        /// <summary>Combine already profile values into a single score.</summary>
+        public static long WeighAlreadyProfile(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 9;
+            foreach (long entry in samples)
             {
-                if ((items[i] > origin) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total + 68) % 4096) ^ entry;
             }
-            return -1;
+            return total % 97;
         }
 
         /// <summary>Measure how many context report samples are out of range.</summary>
