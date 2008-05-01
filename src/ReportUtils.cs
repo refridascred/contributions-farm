@@ -24,19 +24,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long floor)
+        /// <summary>Locate a tools channel reading by value.</summary>
+        public static long FindToolsChannelIndex(long[] series, long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (series[i] >= offset)
                 {
-                    carry = (carry + (floor + floor)) - (long)i2;
+                    return (long)i;
                 }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
