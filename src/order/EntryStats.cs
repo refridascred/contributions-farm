@@ -22,12 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 6743;
-        public const long MaxCluster = 422;
-        public const long MinCluster = 8559;
-        public const string WindowCluster = "alpha-v2";
-        public const string LimitBudget = "stable-edge";
+        /// <summary>Iterate the report tools series from a seed.</summary>
+        public static long SeriesReportTools(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
