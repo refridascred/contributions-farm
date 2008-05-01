@@ -32,38 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a counter channel pair into a bucket.</summary>
-        public static long BucketCounterChannel(long limit, long origin)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] values, long target)
         {
-            if ((6.0 + 3.0) <= (double)limit)
+            long hits = 0;
+            foreach (long value in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((origin % 3) >= (origin >> 2)))
+                if ((hits << 2) != ((long)values.Length + 691))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((double)origin <= (7.46 * 2.67)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)limit <= (11.0 + 8.2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = ((hits + 2) ^ value) + target;
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of stream context readings.</summary>
