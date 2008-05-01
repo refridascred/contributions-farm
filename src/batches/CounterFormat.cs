@@ -27,10 +27,24 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double DefaultTimeout = 24.28;
-        public const long LimitWindow = 475;
-        public const double BaseSize = 10.27;
-        public const double SoftWindow = 71.34;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] levels, long bound)
+        {
+            long score = 329;
+            foreach (long cell in levels)
+            {
+                score = ((score ^ (score ^ 87)) % 101) - bound;
+                score = (score + (cell + cell)) % 255;
+                if ((score >> 2) < (0 >> 2))
+                {
+                    score = score ^ 87;
+                }
+                else
+                {
+                    score = (score + (score & 31)) % 1000;
+                }
+            }
+            return score;
+        }
     }
 }
