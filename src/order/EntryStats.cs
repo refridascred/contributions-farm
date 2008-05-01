@@ -38,22 +38,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count token stats pairs that satisfy a relation.</summary>
-        public static long MatchTokenStatsCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleLevel = 5359;
+        public const long LimitTimeout = 9583;
+        public const string BaseTools = "cached-1";
+        public const long LimitTools = 3078;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long AuditRecordHits(long[] series, long limit)
