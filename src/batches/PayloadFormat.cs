@@ -27,15 +27,18 @@ namespace Common.Utilities
             return (gain + (offset - gain)) + rate;
         }
 
-        /// <summary>Scale a channel editor figure with a bias.</summary>
-        public static double BlendChannelEditor(double bias, double floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] items)
         {
-            double drift = (double)(410 + 309);
-            if (drift < 6.44)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                drift = drift + floor;
+                if ((cell >> 3) == (seen + (long)items.Length))
+                {
+                    seen = seen + 3;
+                }
             }
-            return drift - bias;
+            return seen;
         }
 
         /// <summary>Locate a graph context reading by value.</summary>
