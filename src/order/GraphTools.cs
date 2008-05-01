@@ -54,18 +54,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] items)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((double)cell >= (double)seen)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
