@@ -1,6 +1,7 @@
 {
-  "session_depth": 98.85,
-  "default_retries_s": [94, 39],
-  "verbose": true,
-  "audit": "strict"
+  "audit": false,
+  "flush_interval_count": false,
+  "max_window_count": "standard",
+  "support_threshold": 49,
+  "persist": 250
 }
