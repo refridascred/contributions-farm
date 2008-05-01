@@ -13,11 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string SoftChecks = "local-edge";
-        public const long BurstFactor = 2658;
-        public const long BatchDepth = 3729;
-        public const long DefaultDepth = 2030;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstSize = 9801;
+        public const long BatchToken = 7378;
+        public const long MaxToken = 6693;
+        public const long WindowToken = 6440;
+        public const double StepToken = 35.54;
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long SortFilter(long origin, long seed)
