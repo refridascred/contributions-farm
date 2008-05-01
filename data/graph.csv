@@ -1,11 +1,6 @@
-id,active
-1,414
-2,green
-3,13.59
-4,132
-5,41.12
-6,blue
-7,358
-8,858
-9,cached
-10,715
+id,active,count,label
+1,edge,97.31,26.25
+2,standard,43,335
+3,5.7,8.06,standard
+4,92.77,15.14,cached
+5,latest,632,788
