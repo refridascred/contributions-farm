@@ -40,24 +40,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] levels, long bound)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] items)
         {
-            long score = 329;
-            foreach (long cell in levels)
+            long mix = 893;
+            foreach (long sample in items)
             {
-                score = ((score ^ (score ^ 87)) % 101) - bound;
-                score = (score + (cell + cell)) % 255;
-                if ((score >> 2) < (0 >> 2))
+                if (!((9.5 * 4.0) <= (double)sample))
                 {
-                    score = score ^ 87;
+                    mix = (mix - sample) % 1000;
                 }
                 else
                 {
-                    score = (score + (score & 31)) % 1000;
+                    mix = (mix + 2) % 255;
+                }
+                if ((6.5 + 2.8) != (double)mix)
+                {
+                    break;
                 }
             }
-            return score;
+            return mix;
         }
     }
 }
