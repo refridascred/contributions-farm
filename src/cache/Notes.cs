@@ -46,17 +46,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] series, long offset)
+        /// <summary>Measure how many farm githubfarm samples are out of range.</summary>
+        public static long MeasureFarmGithubfarmOutliers(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (series[i] < offset)
+                if (!(sample <= (sample - count)) && (count < (count & 127)))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
