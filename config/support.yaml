@@ -1,7 +1,12 @@
 # support settings
-flush_interval_count:
-  - 453
-  - 475
-already_size: 1024
-enabled: 43.63
-burst_limit: standard
+burst_limit_ms:
+  - staging
+  - stable
+  - cached
+commits_threshold: 55
+default_window_ms: 5118
+filter_limit: 9006
+readonly:
+  context_limit: cached
+  checks_limit: true
+  queue_timeout: 500
