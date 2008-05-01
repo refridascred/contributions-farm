@@ -1,9 +1,5 @@
 {
-  "verbose": {
-    "record_interval": "latest",
-    "strict": "edge",
-    "hard_size_pct": ["primary", "cached", "legacy", "latest"]
-  },
-  "soft_depth_pct": false,
-  "soft_threshold_ms": 5412
+  "cache_capacity": "fallback",
+  "session_interval": true,
+  "cluster_interval": 44.3
 }
