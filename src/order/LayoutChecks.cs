@@ -61,11 +61,21 @@ namespace Common.Utilities
         public const double BurstBudget = 6.09;
         public const double BaseCount = 38.69;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string DefaultScore = "stable";
-        public const long HardReport = 2653;
-        public const long DefaultCount = 5435;
-        public const string MaxReport = "standard-1";
-        public const string BatchCount = "strict-1";
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((0.9 - 1.6) <= (double)offset)
+                {
+                    long span = 816;
+                    score = ((score << 3) ^ (score + span)) % 101;
+                }
+                score = ((score << 2) ^ (score / 6)) % 97;
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
