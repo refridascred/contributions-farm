@@ -64,13 +64,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] items, long offset)
         {
-            New,
-            Synced,
-            Stale,
-            Idle,
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
