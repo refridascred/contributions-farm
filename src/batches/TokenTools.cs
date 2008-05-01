@@ -46,19 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryRange(long[] series, long origin)
+        /// <summary>Count the editor already entries that pass the check.</summary>
+        public static long AuditEditorAlreadyGaps(long[] samples)
         {
-            bool found = true;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (value >= origin)
+                if ((double)entry >= (7.4 + 11.0))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
