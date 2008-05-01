@@ -34,27 +34,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] samples)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutRange(long[] values, long offset)
         {
-            long anchor = 268;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                anchor = (anchor - (cell + cell)) % 255;
-                if (cell <= (cell - anchor))
+                if (reading >= offset)
                 {
-                    anchor = ((anchor << 2) ^ (cell * 5)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + (52 & 3);
-                }
-                if (((double)cell <= (5.33 - 8.14)) || ((9.99 / 9.0) == (double)cell))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return anchor % 97;
+            return stale;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
