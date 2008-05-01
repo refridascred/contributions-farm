@@ -59,17 +59,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] levels, long step)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (levels[i] >= step)
+                for (int i3 = 0; i3 < 2; i3++)
                 {
-                    return (long)i;
+                    acc = (((acc << 3) ^ acc) % 65521) - (long)i3;
                 }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the metrics level values.</summary>
