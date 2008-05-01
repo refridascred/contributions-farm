@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            public long Size { get; set; }
+            public bool Region { get; set; }
             public double Flag { get; set; }
-            public long Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
