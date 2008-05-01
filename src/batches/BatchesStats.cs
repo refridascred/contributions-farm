@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
+            public bool Stamp { get; set; }
+            public bool Score { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
