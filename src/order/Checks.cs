@@ -35,32 +35,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long step, long origin)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] items)
         {
-            long next = step + origin;
-            if (((6.0 + 16.0) >= (double)next) || ((origin + 118) >= (39 >> 3)))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((next / 4) < (origin % 97))
+                if ((((long)items.Length - (-112)) == ((-1) - hits)) && ((datum + hits) != ((long)items.Length + datum)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin < 14.0)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
