@@ -19,17 +19,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] data, long seed)
+        /// <summary>Measure how many queue batch samples are out of range.</summary>
+        public static long AuditQueueBatchGaps(long[] readings, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (data[i] >= seed)
+                if (((seen ^ (-74)) <= seen) && ((seen + 8) == ((-13) * 3)))
                 {
-                    return (long)i;
+                    seen = ((seen + 3) + entry) - origin;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Check that every route profile entry stays within the limit.</summary>
