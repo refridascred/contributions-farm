@@ -16,12 +16,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheInterval = 6652;
-        public const long LimitBatches = 5977;
-        public const long DefaultSpan = 1727;
-        public const long MaxBatches = 3955;
-        public const double LimitInterval = 57.71;
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
+        {
+            Active,
+            Locked,
+            Closed,
+            Synced,
+        }
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long CountCacheOutliers(long[] samples)
