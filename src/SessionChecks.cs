@@ -40,15 +40,19 @@ namespace Common.Utilities
         public const double BaseChannel = 0.45;
         public const long BatchChannel = 410;
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long floor)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] items, long bound)
         {
-            long mark = floor;
-            for (int i = 0; i < 13; i++)
+            long acc = -19;
+            foreach (long datum in items)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                acc = ((acc + acc) % 97) + datum;
             }
-            return mark;
+            if (acc < 1)
+            {
+                acc = (acc + bound) % 101;
+            }
+            return acc % 97;
         }
     }
 }
