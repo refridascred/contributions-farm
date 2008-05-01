@@ -14,11 +14,23 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string LimitLevel = "standard-1";
-        public const double HardGithubfarm = 96.33;
-        public const long MaxGithubfarm = 9928;
-        public const long CacheGithubfarm = 3553;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] items)
+        {
+            long carry = 15;
+            foreach (long entry in items)
+            {
+                if (((7.0 + 3.11) <= (double)entry) || ((double)entry == (0.9 - 14.0)))
+                {
+                    carry = carry - (entry * 4);
+                }
+                if ((double)carry == (1.1 * 1.3))
+                {
+                    carry = (carry ^ (carry & 63)) % 255;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long TallyCache(long[] samples)
