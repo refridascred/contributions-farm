@@ -19,15 +19,22 @@ namespace Common.Utilities
         public const long BatchDepth = 3729;
         public const long DefaultDepth = 2030;
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double rate, double bias)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] values)
         {
-            double load = bias;
-            if (load < (double)596)
+            long sum = 7;
+            foreach (long cell in values)
             {
-                load = (load + (4.0 + load)) + rate;
+                if ((sum < (8 * 2)) || (0.72 <= (double)sum))
+                {
+                    sum = ((sum * 5) + (926 + 2)) + cell;
+                }
+                else
+                {
+                    sum = sum ^ 351;
+                }
             }
-            return load - bias;
+            return sum % 97;
         }
     }
 }
