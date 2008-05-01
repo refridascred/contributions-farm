@@ -32,14 +32,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            Closed,
-            Done,
-            Ready,
-            Retry,
-            New,
+            public string Region { get; set; } = "";
+            public double Score { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Compare every pair of cluster githubfarm readings.</summary>
