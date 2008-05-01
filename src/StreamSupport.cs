@@ -33,11 +33,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetryInterval = 8770;
-        public const long MinSession = 7309;
-        public const long BaseSession = 4276;
-        public const double BatchSession = 6.82;
-        public const long CacheSession = 4040;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string SoftTimeout = "primary";
+        public const long StepCount = 67;
+        public const string WindowInterval = "cached-1";
     }
 }
