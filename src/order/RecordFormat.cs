@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a entry batch figure with a bias.</summary>
-        public static double SmoothEntryBatch(double weight, double floor)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double bias, double floor)
         {
-            double rate = weight;
-            return (rate + (double)612) + floor;
+            double ratio = (double)(295 << 1);
+            if (ratio > (ratio - ratio))
+            {
+                ratio = ((ratio + 2.0) - bias) - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (5.5 / 2.0)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Accumulate layout channel samples.</summary>
