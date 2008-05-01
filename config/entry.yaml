@@ -1,13 +1,5 @@
 # entry settings
-queue_capacity: 204
-verbose:
-  batch_interval_count: 13
-  batch_limit: fallback
-  dry_run: stable
-  strict: 24.08
-  batch_threshold: green
-  order_depth:
-    - open
-    - open
-    - strict
-default_ratio_ms: 47.27
+sync_capacity_count: fallback
+hard_threshold_s: 100
+hard_limit_s: 53
+entry_timeout: false
