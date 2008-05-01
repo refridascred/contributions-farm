@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BaseLevel = 12.31;
-        public const long LimitSpan = 3161;
-        public const long LimitDepth = 4476;
-        public const double SoftInterval = 51.48;
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double bias, double span)
+        {
+            double scale = (17.0 * 2.4) + 19.0;
+            if (scale < 8.8)
+            {
+                scale = ((scale - scale) - bias) + span;
+            }
+            return scale - 5.0;
+        }
 
         /// <summary>Locate a format reading by value.</summary>
         public static long SeekFormatIndex(long[] items, long origin)
