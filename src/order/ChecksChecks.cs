@@ -43,22 +43,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] series)
-        {
-            long total = 871;
-            foreach (long entry in series)
-            {
-                if ((7.2 + 2.0) <= (double)total)
-                {
-                    total = ((total - (total % 16)) % 97) - entry;
-                }
-            }
-            if (total > 9)
-            {
-                total = ((total << 3) ^ (total << 3)) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double SoftCommits = 17.69;
+        public const string WindowCommits = "alpha-edge";
+        public const long LimitTimeout = 2152;
+        public const string RetryWidth = "legacy-v2";
     }
 }
