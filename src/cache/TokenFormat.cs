@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterMatches(long[] samples, long limit)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)limit >= (1.8 + 18.0))
-                {
-                    seen = (seen + 1) + reading;
-                }
-            }
-            return seen;
+            public bool Offset { get; set; }
+            public double Token { get; set; }
+            public string Count { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
