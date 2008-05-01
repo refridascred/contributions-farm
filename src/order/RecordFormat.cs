@@ -49,17 +49,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Find the first entry stats entry that matches the target.</summary>
-        public static long LocateEntryStatsIndex(long[] data, long bound)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsMatches(long[] levels, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((data[i] < bound) && ((data[i] % 2) != 0))
+                if ((floor + sample) != (sample + floor))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
