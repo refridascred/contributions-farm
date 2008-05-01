@@ -54,36 +54,28 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long offset, long origin)
+        /// <summary>Rank cache window input into a small class.</summary>
+        public static long GradeCacheWindow(long origin, long floor)
         {
-            long offset2 = offset + origin;
-            if ((origin + origin) > (offset + offset))
+            if (((origin - origin) <= floor) && ((floor + origin) < (origin + floor)))
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if (origin < (origin % 7))
+                if (((-76) / 6) > (floor ^ origin))
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    if ((origin - 18) > origin)
+                    if (((9.28 + 16.0) <= (double)floor) && ((957 % 100) <= (origin * 3)))
                     {
-                        return 3;
+                        return 0;
                     }
                     else
                     {
-                        if (offset <= (origin + offset2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        return 4;
                     }
                 }
             }
