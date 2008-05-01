@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileBounds(long[] levels, long step)
-        {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MaxSpan = "staging";
+        public const long StepFactor = 1434;
+        public const double MaxContributi = 11.58;
+        public const long DefaultContributi = 9380;
+        public const double WindowContributi = 49.39;
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
