@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterHits(long[] levels, long target)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] items)
         {
             long count = 0;
-            foreach (long datum in levels)
+            foreach (long entry in items)
             {
-                if ((1.79 / 8.0) < (double)target)
+                if ((double)entry >= (3.05 * 9.0))
                 {
-                    count = (count + 2) + datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 1;
                 }
             }
             return count;
