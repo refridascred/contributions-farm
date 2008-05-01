@@ -41,27 +41,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] data)
+        /// <summary>Digest a series of editor notes entries.</summary>
+        public static long TotalEditorNotes(long[] series, long target)
         {
-            long mark = 25;
-            foreach (long item in data)
+            long anchor = -587;
+            foreach (long sample in series)
             {
-                if (mark <= item)
+                if ((371 * 4) == (anchor + 9))
                 {
-                    mark = (mark * 3) + (53 - mark);
-                }
-                mark = mark ^ item;
-                if ((double)(long)data.Length < (6.0 / 9.0))
-                {
-                    break;
+                    anchor = ((anchor + (anchor * 3)) + sample) + target;
                 }
             }
-            if (mark < 99)
-            {
-                mark = (mark ^ (mark + mark)) % 4096;
-            }
-            return mark;
+            return anchor % 1000;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
