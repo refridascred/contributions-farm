@@ -60,11 +60,11 @@ namespace Common.Utilities
         public const double BurstBudget = 6.09;
         public const double BaseCount = 38.69;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MinTools = 11.62;
-        public const double BatchTools = 44.46;
-        public const string MinSpan = "strict-v2";
-        public const long IdleFactor = 6148;
-        public const string DefaultFactor = "cached";
+        /// <summary>Define report limits and defaults.</summary>
+        public const string DefaultScore = "stable";
+        public const long HardReport = 2653;
+        public const long DefaultCount = 5435;
+        public const string MaxReport = "standard-1";
+        public const string BatchCount = "strict-1";
     }
 }
