@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] data, long origin)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long result = 7;
+            foreach (long item in data)
             {
-                if ((9 ^ hits) < (entry + origin))
+                if (!(item > result))
                 {
-                    hits = hits + 2;
+                    result = result - (item >> 1);
                 }
             }
-            return hits;
+            return result % 4096;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
