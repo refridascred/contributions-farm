@@ -66,19 +66,32 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] readings, long floor)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long origin, long floor)
         {
-            long acc = 613;
-            foreach (long cell in readings)
+            long bound = origin ^ floor;
+            if (bound > origin)
             {
-                for (int i = 0; i < 9; i++)
-                {
-                    acc = ((acc ^ (long)i) % 255) - floor;
-                }
-                acc = acc + (cell / 6);
+                return 1;
             }
-            return acc;
+            else
+            {
+                if ((floor + origin) < (bound * 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor / 9) > (floor % 10))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
