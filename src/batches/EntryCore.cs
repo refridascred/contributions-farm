@@ -19,17 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] items, long target)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandHits(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((items[i] >= target) && ((items[i] % 3) != 0))
+                if ((24 * 4) < (datum >> 5))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
