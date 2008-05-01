@@ -1,6 +1,11 @@
 {
-  "flush_window_count": 60,
-  "retry_capacity": "fallback",
-  "farm_timeout": "open",
-  "dry_run": 78.98
+  "batch_interval_count": {
+    "format_size": 60.86,
+    "soft_limit": 1375,
+    "strict": 100,
+    "githubfarm_retries": "latest"
+  },
+  "poll_ratio": "standard",
+  "metric_timeout": 4722,
+  "readonly": true
 }
