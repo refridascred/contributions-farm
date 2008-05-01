@@ -31,25 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long offset, long offset2)
+        /// <summary>Iterate the batches cache series from a seed.</summary>
+        public static long SeriesBatchesCache(long offset)
         {
-            long next = offset ^ offset2;
-            if (6.0 > (double)next)
+            long total = offset;
+            for (int i = 0; i < 18; i++)
             {
-                return 6;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if (next >= offset2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return total;
         }
     }
 }
