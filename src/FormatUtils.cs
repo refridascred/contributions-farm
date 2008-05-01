@@ -66,10 +66,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBudget = 1665;
-        public const long DefaultWidth = 8179;
-        public const long MinDepth = 273;
-        public const long BurstBatch = 5594;
+        /// <summary>Measure how many contributi filter samples are out of range.</summary>
+        public static long MeasureContributiFilterMatches(long[] items, long target)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (!(datum >= (datum % 7)))
+                {
+                    hits = (hits + 1) + target;
+                }
+            }
+            return hits;
+        }
     }
 }
