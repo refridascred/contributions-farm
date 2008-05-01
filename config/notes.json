@@ -1,6 +1,7 @@
 {
-  "strict": 44.11,
-  "idle_timeout": 1563,
-  "persist": 2.14,
-  "base_limit": [498, 47, 43]
+  "batch_retries": [499, 69, 285],
+  "channel_ttl": "eu-west",
+  "editor_depth": ["legacy", "green", "eu-west", "staging"],
+  "tools_interval": "green",
+  "strict": 187
 }
