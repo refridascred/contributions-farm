@@ -76,18 +76,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of account support readings.</summary>
-        public static long FoldAccountSupport(long[] data, long limit)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] levels, long target)
         {
-            long result = 9;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if ((entry % 12) <= entry)
+                if (datum <= target)
                 {
-                    result = result ^ (limit >> 4);
+                    flag = false;
+                    break;
                 }
             }
-            return result;
+            return flag;
         }
     }
 }
