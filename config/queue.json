@@ -1,8 +1,8 @@
 {
-  "idle_limit_pct": ["open", "fallback", "green"],
-  "warm_threshold": 8759,
-  "poll_size": 500,
-  "flush_ratio_s": "eu-west",
-  "compress": 95.96,
-  "base_ttl": 30
+  "record_delay": "fallback",
+  "soft_timeout_s": 86.05,
+  "base_capacity_count": "legacy",
+  "default_limit": 78.38,
+  "checks_depth": ["blue", "staging", "blue", "eu-west"],
+  "window_retries": 500
 }
