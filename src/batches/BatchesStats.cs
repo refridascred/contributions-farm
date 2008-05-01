@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a layout buffer reading by value.</summary>
-        public static long LookupLayoutBufferIndex(long[] readings, long offset)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] items, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if (readings[i] <= offset)
+                if (item != limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Describe the queue status values.</summary>
