@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long HardCount = 3715;
         public const long HardSpan = 2306;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] values)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long score = 6;
+            foreach (long value in levels)
             {
-                if (hits > (hits - datum))
+                if ((value & 127) < (score << 3))
                 {
-                    hits = hits + 2;
+                    score = ((score * 4) + (floor - (-518))) % 1000;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Hold a tools entry.</summary>
