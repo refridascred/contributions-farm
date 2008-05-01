@@ -19,25 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long limit)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long total = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((total + (long)i) > ((long)i >> 5)) || ((limit + limit) == ((long)i + (long)i)))
-                {
-                    total = (total + ((-520) + limit)) % 65521;
-                    total = (total + total) % 4096;
-                }
-                if ((double)total >= (9.76 / 7.0))
-                {
-                    long next = (limit ^ total) - total;
-                    total = (total ^ (next / 2)) % 4096;
-                }
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            public bool Rank { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
