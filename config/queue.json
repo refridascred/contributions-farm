@@ -1,7 +1,8 @@
 {
-  "compress": "staging",
-  "persist": 8135,
-  "route_window": "blue",
-  "flush_ratio": 6,
-  "min_threshold": false
+  "min_ratio_count": true,
+  "soft_threshold_s": "fallback",
+  "soft_capacity": 18,
+  "base_threshold": true,
+  "retry_ratio": "open",
+  "notes_retries": 69.88
 }
