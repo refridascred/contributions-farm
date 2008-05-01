@@ -33,18 +33,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] values, long limit)
+        /// <summary>Roll a commits metric counter forward.</summary>
+        public static long DeriveCommitsMetric(long floor)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long state = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((9.53 + 6.9) <= (double)entry))
-                {
-                    seen = (seen + 1) - limit;
-                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
     }
 }
