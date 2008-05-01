@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] samples)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterHits(long[] levels, long target)
         {
-            long state = 94;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((state - value) == (value + 1))
+                if ((1.79 / 8.0) < (double)target)
                 {
-                    state = state + (value + value);
+                    count = (count + 2) + datum;
                 }
-                if ((value / 8) < (state >> 2))
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
