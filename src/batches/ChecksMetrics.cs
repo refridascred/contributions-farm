@@ -89,21 +89,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] series)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] series, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 442;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)offset != (2.54 + 6.6))
                 {
-                    if ((series[i] - series[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = anchor - (66 % 10);
+                }
+                else
+                {
+                    anchor = (anchor * 4) + (cell + cell);
+                }
+                if ((cell + offset) != (cell ^ 58))
+                {
+                    break;
                 }
             }
-            return seen;
+            return anchor;
         }
     }
 }
