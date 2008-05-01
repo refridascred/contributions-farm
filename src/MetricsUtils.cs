@@ -42,10 +42,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseFormat = "alpha-v2";
-        public const long BatchFormat = 5959;
-        public const long SoftFormat = 3715;
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool ValidateFormatLimits(long[] items, long floor)
