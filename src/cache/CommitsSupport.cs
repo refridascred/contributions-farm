@@ -20,15 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a editor cluster figure with a bias.</summary>
-        public static double SmoothEditorCluster(double weight, double span)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportGaps(long[] samples)
         {
-            double ratio = weight * 9.6;
-            if (ratio > ratio)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                ratio = (ratio - (double)(-1)) + span;
+                if (!((hits % 64) >= (hits / 9)) || (hits <= ((long)samples.Length / 2)))
+                {
+                    hits = (hits + 3) ^ reading;
+                }
             }
-            return ratio - 4.0;
+            return hits;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
