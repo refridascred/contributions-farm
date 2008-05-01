@@ -1,8 +1,7 @@
 {
-  "account_threshold": "green",
-  "dry_run": 93,
-  "soft_delay": "local",
-  "warm_ratio_count": false,
-  "token_depth": "edge",
-  "layout_capacity": "eu-west"
+  "verbose": 82,
+  "readonly": 73,
+  "idle_limit_pct": 98.64,
+  "compress": [455, 253, 31, 459],
+  "max_depth": "legacy"
 }
