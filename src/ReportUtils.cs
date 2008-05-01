@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] readings, long seed)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Check that every context filter entry stays within the limit.</summary>
