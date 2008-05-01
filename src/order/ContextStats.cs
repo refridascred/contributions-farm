@@ -31,19 +31,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next channel session value from a seed.</summary>
-        public static long DeriveChannelSession(long floor)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double bias, double span)
         {
-            long state = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                if (((double)state < (double)243) || ((state + (long)i) > state))
-                {
-                    continue;
-                }
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            double ratio = span;
+            return (ratio + (double)62) + bias;
         }
     }
 }
