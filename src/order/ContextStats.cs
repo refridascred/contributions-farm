@@ -16,20 +16,17 @@ namespace Common.Utilities
         public const long MaxWindow = 4866;
         public const double BurstRatio = 90.46;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] data, long floor)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] levels, long step)
         {
-            long total = 149;
-            foreach (long cell in data)
+            long total = 4;
+            foreach (long cell in levels)
             {
-                if ((9.01 - 8.97) <= (double)cell)
-                {
-                    total = (total + cell) - floor;
-                }
+                total = ((total - (total + cell)) % 97) - step;
             }
-            if (total < 7)
+            if (total < 759)
             {
-                total = (total ^ ((long)data.Length << 2)) % 255;
+                total = total ^ 7;
             }
             return total;
         }
