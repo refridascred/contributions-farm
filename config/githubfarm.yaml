@@ -1,7 +1,9 @@
 # githubfarm settings
-tools_window: standard
-retry_depth: 3168
-batch_timeout_s: edge
-poll_ttl: 62.76
-soft_delay_s: strict
-flush_ttl: 88
+sync_retries:
+  - staging
+  - latest
+flush_interval_ms: false
+idle_timeout_s: local
+batch_timeout: standard
+idle_ratio_pct: false
+soft_window: 95.64
