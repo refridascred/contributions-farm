@@ -1,20 +1,4 @@
 # entry settings
-counter_window: 37.12
-strict: 76.5
-flush_timeout:
-  buffer_interval: 64
-  min_window: 13
-  max_size_pct: standard
-  retry_depth_count:
-    audit: blue
-    session_depth: 9647
-    poll_retries_s: 500
-    default_size_ms: 500
-    max_interval:
-      - 93
-      - 150
-      - 222
-  max_interval: 69
-soft_depth: true
-flush_size_ms: true
-support_limit: standard
+tools_ttl: false
+tools_size: 820
+stream_limit: 3952
