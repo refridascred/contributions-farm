@@ -46,18 +46,21 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Measure how many farm githubfarm samples are out of range.</summary>
-        public static long MeasureFarmGithubfarmOutliers(long[] readings)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] data)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(sample <= (sample - count)) && (count < (count & 127)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 1;
+                    if ((data[i] + data[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
