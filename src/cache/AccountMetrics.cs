@@ -89,12 +89,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long step, long limit)
         {
-            public string Total { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public string Weight { get; set; } = "";
+            if (limit > step)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step + limit) != (limit * 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (step >= (limit % 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit / 4) > (step * 4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
