@@ -38,21 +38,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Match up format filter samples.</summary>
-        public static long PairFormatFilterCount(long[] data)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = -158;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((anchor & 31) != (cell - cell))
                 {
-                    if ((data[i] - data[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = anchor + (anchor - cell);
                 }
             }
-            return seen;
+            if (anchor < 6)
+            {
+                anchor = (anchor - anchor) % 97;
+            }
+            return anchor;
         }
     }
 }
