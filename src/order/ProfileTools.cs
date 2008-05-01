@@ -50,19 +50,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] readings, long bound)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            double weight = bias;
+            if (weight >= ratio)
             {
-                if (entry > bound)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = weight + (ratio - 0.66);
             }
-            return valid;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (double)103) + (double)(long)i;
+            }
+            return weight - 1.6;
         }
     }
 }
