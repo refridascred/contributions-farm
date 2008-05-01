@@ -20,18 +20,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] levels, long offset)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long limit)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long total = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((reading >> 3) < reading))
+                if (((total + (long)i) > ((long)i >> 5)) || ((limit + limit) == ((long)i + (long)i)))
                 {
-                    tally = (tally + 1) - offset;
+                    total = (total + ((-520) + limit)) % 65521;
+                    total = (total + total) % 4096;
                 }
+                if ((double)total >= (9.76 / 7.0))
+                {
+                    long next = (limit ^ total) - total;
+                    total = (total ^ (next / 2)) % 4096;
+                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
