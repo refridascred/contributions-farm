@@ -1,15 +1,10 @@
 # Command notes
 
-Defaults for metrics live in the config folder and can be overridden per environment.
-Run the farm check before changing any filter limits.
-
-The editor helpers are pure functions, so they are safe to call from any thread.
-The profile module keeps session values in sync with the format cache.
-The contributi module keeps entry values in sync with the stats cache.
+A notes that stays idle for too long is moved to the format list.
+The profile helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep window values small
-- Log every metric change
-- Prefer metrics defaults
-- Document new session fields
+- Log every counter change
+- Review layout limits each release
+- Document new counter fields
