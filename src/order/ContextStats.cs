@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a filter order reading by value.</summary>
-        public static long LocateFilterOrderIndex(long[] readings, long floor)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Active,
+            Ready,
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
