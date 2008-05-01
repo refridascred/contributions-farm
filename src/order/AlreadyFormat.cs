@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] series, long bound)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 577;
+            foreach (long sample in data)
             {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
+                carry = (carry * 2) + (sample >> 4);
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
