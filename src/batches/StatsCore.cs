@@ -25,15 +25,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate format stats samples.</summary>
-        public static long TotalFormatStats(long[] items)
+        /// <summary>Audit token counter readings against a rule.</summary>
+        public static long TallyTokenCounterGaps(long[] samples)
         {
-            long mark = 90;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                mark = (mark + (63 / 2)) ^ entry;
+                if ((14.0 + 0.96) <= (double)hits)
+                {
+                    hits = (hits + 3) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Blend two cache channel measurements.</summary>
