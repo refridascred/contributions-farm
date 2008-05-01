@@ -1,4 +1,4 @@
 # githubfarm settings
-layout_window: 500
-poll_interval_s: primary
-buffer_ratio: standard
+strict: 10.31
+entry_interval: standard
+context_timeout: false
