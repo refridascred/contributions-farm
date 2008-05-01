@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of already session readings.</summary>
-        public static long PairAlreadySessionCount(long[] levels)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] values, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample < origin)
                 {
-                    if ((levels[i] - levels[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Measure how many context payload samples are out of range.</summary>
