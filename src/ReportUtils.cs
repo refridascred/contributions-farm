@@ -42,18 +42,19 @@ namespace Common.Utilities
         public const string DefaultCluster = "cached-v2";
         public const long BatchCluster = 3939;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] samples)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long seed)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long state = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (count >= (count % 16))
+                if (!(((long)i & 3) <= (state - state)))
                 {
-                    count = (count + 1) ^ entry;
+                    state = (state ^ (state - state)) % 1000;
                 }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
     }
 }
