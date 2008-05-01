@@ -1,14 +1,17 @@
 {
-  "warm_retries": "standard",
-  "min_delay_s": "standard",
-  "metrics_size": "primary",
-  "flush_limit": {
-    "metrics_retries": 8939,
-    "channel_timeout": 1429,
-    "batch_interval": 60,
-    "idle_window_s": 91,
-    "soft_size": [48, 190, 22],
-    "enabled": [483, 275, 3, 105]
+  "hard_ratio_count": {
+    "soft_ratio": true,
+    "verbose": 7.12,
+    "burst_retries_pct": 500
   },
-  "graph_retries": "local"
+  "flush_delay_s": false,
+  "hard_ttl_ms": {
+    "already_limit": "edge",
+    "report_ratio": [400, 29, 79, 79],
+    "account_window": false,
+    "sync_limit": 7235,
+    "retry_ttl_count": true
+  },
+  "strict": true,
+  "verbose": ["green", "blue"]
 }
