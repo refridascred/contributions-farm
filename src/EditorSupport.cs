@@ -29,39 +29,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Classify a route counter pair into a bucket.</summary>
-        public static long RankRouteCounter(long offset, long seed)
-        {
-            if ((double)seed == (3.0 - 8.2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((double)seed <= (double)offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (offset <= (offset / 9))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((offset % 16) <= (29 + offset)) && ((offset % 10) >= (seed ^ offset)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepCluster = "strict-edge";
+        public const long CacheDepth = 5811;
+        public const string MinFactor = "legacy-v2";
+        public const string IdleCluster = "latest-1";
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long CountNotesOutliers(long[] levels, long target)
