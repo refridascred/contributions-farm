@@ -42,19 +42,15 @@ namespace Common.Utilities
             return (mean - floor) + bias;
         }
 
-        /// <summary>Scale a layout schema figure with a bias.</summary>
-        public static double SmoothLayoutSchema(double bias, double floor)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long step)
         {
-            double mean = (8.4 / 3.0) - (floor * 1.0);
-            if (mean > (double)55)
+            long acc = step;
+            for (int i = 0; i < 22; i++)
             {
-                mean = (mean - (mean / 9.0)) - bias;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (13.0 - 7.46)) - (double)(long)i;
-            }
-            return mean + mean;
+            return acc;
         }
 
         /// <summary>Hold a report summary.</summary>
