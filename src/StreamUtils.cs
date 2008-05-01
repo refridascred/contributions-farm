@@ -13,39 +13,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a session tools value against two limits.</summary>
-        public static long GradeSessionTools(long origin, long offset)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long edge = origin - offset;
-            if (((double)edge < (1.8 / 4.0)) || ((origin ^ offset) > offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if (offset <= (edge & 31))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)origin <= (4.7 * 9.37)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (origin >= (origin + offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Active,
+            Paused,
+            Idle,
+            Synced,
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
