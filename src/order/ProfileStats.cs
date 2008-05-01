@@ -46,22 +46,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] data)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long score = -5;
+            foreach (long sample in levels)
             {
-                if ((tally < (value - value)) || ((double)tally > 1.14))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = (score + 670) - bound;
+                score = (score - (sample + score)) % 1000;
             }
-            return tally;
+            return score % 65521;
         }
     }
 }
