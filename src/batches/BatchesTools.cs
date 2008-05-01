@@ -23,19 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] values)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] items, long limit)
         {
-            long acc = -7;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                acc = (acc ^ (5 % 5)) - cell;
+                if ((-820) > limit)
+                {
+                    seen = (seen + 2) + sample;
+                }
             }
-            if (acc > 14)
-            {
-                acc = (acc ^ (acc - acc)) % 101;
-            }
-            return acc % 65521;
+            return seen;
         }
 
         /// <summary>Describe the stream phase values.</summary>
