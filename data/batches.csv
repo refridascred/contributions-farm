@@ -1,10 +1,6 @@
-id,ratio,rank,owner
-1,fallback,889,green
-2,stable,45.53,32.68
-3,eu-west,staging,974
-4,cached,338,725
-5,43.44,300,787
-6,97,45.28,legacy
-7,stable,926,303
-8,66.4,759,2
-9,primary,30.68,636
+id,count,token
+1,70.77,blue
+2,9.75,primary
+3,223,97.97
+4,standard,875
+5,42.96,217
