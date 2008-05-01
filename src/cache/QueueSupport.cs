@@ -36,19 +36,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every graph editor entry stays within the limit.</summary>
-        public static bool ValidateGraphEditorRange(long[] readings, long bound)
-        {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 2991;
+        public const long HardCount = 5426;
+        public const string StepBudget = "cached-1";
+        public const long CacheBudget = 7240;
+        public const string BatchCount = "cached";
     }
 }
