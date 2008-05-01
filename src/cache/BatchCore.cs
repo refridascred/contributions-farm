@@ -50,22 +50,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] series)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long seed)
         {
-            long total = 40;
-            foreach (long entry in series)
+            long score = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((854 / 3) == (entry % 24))
-                {
-                    total = (total ^ (total - entry)) % 255;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            if (total > 6)
-            {
-                total = (total ^ (total + 358)) % 255;
-            }
-            return total % 1000;
+            return score;
         }
     }
 }
