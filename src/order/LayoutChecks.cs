@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
-        {
-            public double Score { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepDepth = 8350;
+        public const long IdleRoute = 3445;
+        public const long BurstSpan = 4085;
+        public const long LimitRoute = 8267;
+        public const long CacheSize = 3768;
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
