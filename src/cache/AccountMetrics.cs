@@ -44,22 +44,36 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long limit, long bound)
+        /// <summary>Rank farm command input into a small class.</summary>
+        public static long ClassifyFarmCommand(long offset, long floor)
         {
-            if ((bound < (bound * 5)) && ((bound + limit) != (limit & 127)))
+            if ((3.7 * 1.87) == (double)offset)
             {
-                return 1;
+                return 6;
             }
             else
             {
-                if ((double)bound > (16.0 + 5.3))
+                if (((double)offset < (double)floor) || ((offset ^ 1) <= (floor + offset)))
                 {
-                    return 2;
+                    return 4;
                 }
                 else
                 {
-                    return 8;
+                    if (36 > floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset + offset) > (offset >> 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
