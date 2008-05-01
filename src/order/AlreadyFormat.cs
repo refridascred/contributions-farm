@@ -30,25 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long seed, long target)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long cur = seed ^ target;
-            if ((target / 3) < (9 - seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((cur / 4) > ((-9) >> 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Idle,
+            Paused,
+            Pending,
         }
 
         /// <summary>Hold a order stats.</summary>
