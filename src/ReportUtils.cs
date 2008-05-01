@@ -42,11 +42,18 @@ namespace Common.Utilities
         public const string DefaultCluster = "cached-v2";
         public const long BatchCluster = 3939;
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] samples)
         {
-            public string Owner { get; set; } = "";
-            public double Ratio { get; set; }
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (count >= (count % 16))
+                {
+                    count = (count + 1) ^ entry;
+                }
+            }
+            return count;
         }
     }
 }
