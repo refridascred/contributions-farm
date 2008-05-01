@@ -21,12 +21,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public double Offset { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            Ready,
+            Done,
+            Synced,
+            Retry,
         }
 
         /// <summary>Project the next cache value.</summary>
