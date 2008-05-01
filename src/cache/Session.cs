@@ -19,15 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaGaps(long[] samples)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmOutliers(long[] items)
         {
             long seen = 0;
-            foreach (long item in samples)
+            foreach (long value in items)
             {
-                if ((double)seen >= (double)57)
+                if (!(value < 9))
                 {
-                    seen = (seen + 1) - item;
+                    seen = seen + 2;
                 }
             }
             return seen;
