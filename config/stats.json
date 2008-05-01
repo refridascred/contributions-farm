@@ -1,17 +1,12 @@
 {
-  "max_capacity_pct": {
-    "flush_limit_count": "edge",
-    "flush_delay_pct": 30,
-    "idle_window": ["eu-west", "blue", "eu-west", "edge"]
+  "cache_limit_pct": "local",
+  "max_capacity": {
+    "flush_ratio": 15,
+    "batches_timeout": "open",
+    "sync_window_s": 95,
+    "dry_run": "open",
+    "base_size": "primary"
   },
-  "record_depth": {
-    "soft_depth_ms": ["local", "legacy", "legacy"],
-    "burst_timeout": 5041,
-    "sync_threshold": [496, 221],
-    "max_depth_count": "cached"
-  },
-  "burst_limit": "local",
-  "hard_capacity_s": 4184,
-  "base_ttl_pct": "strict",
-  "schema_limit": 58.76
+  "sync_interval_s": ["blue", "edge", "edge"],
+  "persist": true
 }
