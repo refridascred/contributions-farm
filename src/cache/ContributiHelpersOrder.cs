@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] levels, long floor)
         {
-            Ready,
-            Stale,
-            Done,
-            Draft,
-            Closed,
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
