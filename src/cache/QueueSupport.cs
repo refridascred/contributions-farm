@@ -33,26 +33,13 @@ namespace Common.Utilities
             return ratio2 - (ratio2 / 9.0);
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] items)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long sum = 599;
-            foreach (long entry in items)
-            {
-                if (((sum & 31) == (82 << 1)) && (50 < (sum + 28)))
-                {
-                    sum = (sum + sum) % 4096;
-                }
-                if ((entry ^ 53) > (entry + sum))
-                {
-                    break;
-                }
-            }
-            if (sum > 716)
-            {
-                sum = (sum * 4) + (sum % 24);
-            }
-            return sum;
+            public long Count { get; set; }
+            public double Mode { get; set; }
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
