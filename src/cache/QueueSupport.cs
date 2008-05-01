@@ -34,10 +34,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string CacheDepth = "staging";
-        public const long RetryRecord = 6290;
-        public const long SoftBudget = 9608;
-        public const long CacheSpan = 9954;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 4888;
+        public const string WindowScore = "stable-1";
+        public const string SoftBatch = "fallback";
+        public const long MaxDepth = 9658;
+        public const long BurstCount = 4591;
     }
 }
