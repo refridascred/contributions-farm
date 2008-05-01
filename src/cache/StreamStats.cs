@@ -47,19 +47,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long target)
+        /// <summary>Look up the position of a editor metrics sample.</summary>
+        public static long LookupEditorMetricsIndex(long[] readings, long origin)
         {
-            long total = target;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (readings[i] < origin)
                 {
-                    total = ((total + (target % 16)) % 97) ^ (long)i2;
+                    return (long)i;
                 }
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
     }
 }
