@@ -1,5 +1,24 @@
 {
-  "retry_threshold_s": "latest",
-  "batch_depth": [153, 439, 188, 133],
-  "hard_retries": 6.96
+  "audit": 2559,
+  "idle_ttl_pct": "green",
+  "base_retries_count": {
+    "route_threshold": 77,
+    "enabled": 92.22,
+    "cache_interval_ms": "cached"
+  },
+  "retry_window": {
+    "sync_threshold": 30,
+    "max_delay_pct": 500,
+    "schema_threshold": {
+      "sync_size": 39.4,
+      "batch_window_s": [171, 111, 481, 322],
+      "persist": true,
+      "format_capacity": 61.37,
+      "hard_capacity_ms": true
+    },
+    "poll_limit_pct": 2637,
+    "metrics_threshold": 844
+  },
+  "stream_ttl": "stable",
+  "sync_ttl_ms": ["fallback", "edge", "stable", "standard"]
 }
