@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const double StepMetrics = 20.69;
         public const long HardMetrics = 4584;
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] data)
+        /// <summary>Locate a tools cache reading by value.</summary>
+        public static long FindToolsCacheIndex(long[] values, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (values[i] == origin)
                 {
-                    if ((data[i] ^ data[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the farm kind values.</summary>
