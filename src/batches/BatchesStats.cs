@@ -20,22 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] series, long step)
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] readings)
         {
-            long score = 52;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)score == (double)entry)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    continue;
-                }
-                if ((step - entry) != (entry + entry))
-                {
-                    score = ((score * 3) + (step % 10)) % 1000;
+                    if ((readings[i] - readings[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score % 1000;
+            return count;
         }
 
         /// <summary>Count the batch command entries that pass the check.</summary>
