@@ -1,14 +1,5 @@
 # route settings
-entry_limit: true
-stream_window:
-  cache_window: 47.89
-  readonly: false
-  githubfarm_capacity:
-    - fallback
-    - stable
-  default_interval_s: false
-  batch_size: 3974
-readonly:
-  report_depth: true
-  strict: 3408
-  compress: latest
+default_interval: primary
+buffer_delay: fallback
+retry_size: 8805
+cache_delay: 1024
