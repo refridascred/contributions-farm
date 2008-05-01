@@ -40,22 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate contributi notes samples.</summary>
-        public static long CombineContributiNotes(long[] readings, long bound)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesOutliers(long[] samples, long origin)
         {
-            long state = 511;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((datum >> 4) >= (state ^ bound))
+                if ((sample - origin) < sample)
                 {
-                    state = (state << 3) ^ (long)readings.Length;
-                }
-                else
-                {
-                    state = (state - (state * 2)) % 1000;
+                    seen = seen + 3;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
