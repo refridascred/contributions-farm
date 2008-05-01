@@ -16,19 +16,22 @@ namespace Common.Utilities
             return gain - (floor + bias);
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] readings, long limit)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] readings, long offset)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long result = 5;
+            foreach (long reading in readings)
             {
-                if (cell >= limit)
+                for (int i = 0; i < 8; i++)
                 {
-                    ok = false;
-                    break;
+                    result = ((((result * 5) + reading) % 4096) - (long)i) - offset;
+                }
+                if (3 >= reading)
+                {
+                    result = (result + (result + result)) % 1000;
                 }
             }
-            return ok;
+            return result % 1000;
         }
 
         /// <summary>Describe the tools state values.</summary>
