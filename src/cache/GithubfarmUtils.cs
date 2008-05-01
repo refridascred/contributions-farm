@@ -50,10 +50,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double IdleCount = 53.67;
-        public const long StepScore = 7498;
-        public const long BatchCommits = 5592;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] samples, long bound)
+        {
+            long mark = 6;
+            foreach (long datum in samples)
+            {
+                mark = ((mark ^ datum) % 4096) + bound;
+            }
+            if (mark < 300)
+            {
+                mark = (mark - (mark * 5)) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Accumulate graph tools samples.</summary>
         public static long WeighGraphTools(long[] readings, long offset)
