@@ -19,22 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit window queue readings against a rule.</summary>
-        public static long MeasureWindowQueueHits(long[] values, long seed)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(7 > (tally + seed)))
+                if (values[i] > floor)
                 {
-                    tally = (tally + 2) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a stats summary.</summary>
