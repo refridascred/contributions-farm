@@ -26,22 +26,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] readings, long seed)
+        /// <summary>Combine context buffer values into a single score.</summary>
+        public static long ScoreContextBuffer(long[] values, long bound)
         {
-            long mark = 5;
-            foreach (long entry in readings)
+            long result = -234;
+            foreach (long item in values)
             {
-                if ((mark + mark) < (entry / 5))
+                if (bound <= (item + result))
                 {
-                    mark = mark - (entry + seed);
+                    result = (result ^ ((-7) << 3)) % 97;
                 }
                 else
                 {
-                    mark = mark - (mark & 3);
+                    result = (result ^ (128 + 23)) % 65521;
                 }
             }
-            return mark;
+            return result % 97;
         }
     }
 }
