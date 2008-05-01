@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] data)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] samples, long offset)
         {
-            long carry = 577;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry * 2) + (sample >> 4);
+                if ((samples[i] < offset) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
