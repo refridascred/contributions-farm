@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a filter cache counter forward.</summary>
-        public static long StepFilterCache(long origin)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long sum = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((double)sum >= (16.0 * 8.0)))
-                {
-                    sum = ((sum * 4) + ((long)i ^ 3)) % 101;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            public long Owner { get; set; }
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Project the next layout record value.</summary>
