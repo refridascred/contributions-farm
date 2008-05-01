@@ -1,8 +1,6 @@
 {
-  "audit": 62.9,
-  "tools_ttl": 8,
-  "default_size_ms": 84.2,
-  "payload_limit": 5853,
-  "warm_threshold_count": 74,
-  "idle_depth_pct": 4749
+  "burst_ttl_pct": 976,
+  "base_depth_ms": 55,
+  "flush_threshold": "latest",
+  "idle_ratio": 35
 }
