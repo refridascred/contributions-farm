@@ -18,23 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate entry cluster samples.</summary>
-        public static long CombineEntryCluster(long[] items, long target)
+        /// <summary>Combine checks layout values into a single score.</summary>
+        public static long ScoreChecksLayout(long[] samples, long limit)
         {
-            long carry = 95;
-            foreach (long item in items)
+            long anchor = 656;
+            foreach (long value in samples)
             {
-                if (!((target & 255) == (target - carry)))
-                {
-                    continue;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (long)items.Length) - item;
-                }
-                carry = (carry + (588 & 15)) % 1000;
+                anchor = ((anchor - (limit + anchor)) % 4096) ^ value;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
