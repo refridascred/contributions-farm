@@ -1,8 +1,11 @@
 # support settings
-flush_ttl_ms: 62
-enabled:
-  - blue
-  - blue
-  - stable
-  - primary
-idle_depth_s: 7311
+cache_ttl: false
+session_threshold:
+  - open
+  - strict
+  - fallback
+warm_ttl_s:
+  - 171
+  - 242
+  - 11
+  - 225
