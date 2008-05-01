@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double bias, double bias2)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] values, long seed)
         {
-            double scale = bias2;
-            for (int i = 0; i < 7; i++)
+            long anchor = -10;
+            foreach (long datum in values)
             {
-                scale = ((scale - 15.0) + (double)(long)i) + bias;
+                if ((double)anchor == (20.0 / 4.0))
+                {
+                    anchor = (((anchor - (71 + anchor)) % 1000) + datum) + seed;
+                }
             }
-            return scale - scale;
+            return anchor % 1000;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
