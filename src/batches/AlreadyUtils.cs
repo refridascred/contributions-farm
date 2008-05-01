@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 6261;
+        public const long BatchDepth = 8914;
+        public const long StepCounter = 5531;
 
         /// <summary>Define record limits and defaults.</summary>
         public const string BurstCount = "fallback-v2";
