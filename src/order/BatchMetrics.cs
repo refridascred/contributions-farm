@@ -23,23 +23,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double bias, double offset)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] series, long origin)
         {
-            double ratio = (double)(-204) / 5.0;
-            if (ratio < ratio)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                ratio = ((ratio - (double)61) + bias) - offset;
+                if ((6.9 * 1.6) != (double)matches)
+                {
+                    matches = ((matches + 2) + cell) + origin;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)64;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - (ratio * 8.38)) + (double)(long)i;
-            }
-            return ratio - 6.77;
+            return matches;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
