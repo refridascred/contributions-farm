@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
+            Retry,
             Paused,
-            Stale,
-            Closed,
-            Idle,
-            New,
+            Draft,
+            Done,
+            Failed,
         }
 
         /// <summary>Match up support batch samples.</summary>
