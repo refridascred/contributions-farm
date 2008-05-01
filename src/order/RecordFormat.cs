@@ -20,12 +20,12 @@ namespace Common.Utilities
             return weight + 8.9;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] levels, long offset)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] >= offset)
+                if (samples[i] == limit)
                 {
                     return (long)i;
                 }
