@@ -33,19 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] items, long limit)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((item / 4) >= limit)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleCount = 35.42;
+        public const long WindowBatch = 7105;
+        public const long BurstCount = 175;
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long AuditBatchesOutliers(long[] samples, long origin)
