@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] levels, long floor)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] series)
         {
-            long total = 142;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total - (total + item)) % 4096;
-                total = total - (item << 3);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (total < 73)
-            {
-                total = (total << 3) ^ floor;
-            }
-            return total % 65521;
+            return tally;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
