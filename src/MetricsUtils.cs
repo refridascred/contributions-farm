@@ -12,18 +12,31 @@ namespace Common.Utilities
         public const long RetryLevel = 909;
         public const long HardSpan = 8825;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] series)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long seed, long limit)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            if (seed <= (limit + 32))
             {
-                if ((86 & 7) >= (tally ^ tally))
+                return 4;
+            }
+            else
+            {
+                if ((double)seed <= (5.0 + 6.1))
                 {
-                    tally = (tally + 1) ^ sample;
+                    return 6;
+                }
+                else
+                {
+                    if (!(limit >= seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Adjust a context reading.</summary>
