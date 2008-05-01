@@ -19,21 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] readings)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Failed,
+            Idle,
+            Active,
         }
 
         /// <summary>Count the batch command entries that pass the check.</summary>
