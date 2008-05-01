@@ -31,14 +31,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionLimits(long[] readings, long target)
         {
-            Ready,
-            Locked,
-            Pending,
-            Stale,
-            Active,
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the schema phase values.</summary>
