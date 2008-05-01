@@ -12,18 +12,21 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Measure how many graph route samples are out of range.</summary>
-        public static long MeasureGraphRouteMatches(long[] samples, long offset)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long result = -55;
+            foreach (long datum in levels)
             {
-                if ((138 < (3 - sample)) && (count > (count + sample)))
-                {
-                    count = (count + 3) + offset;
-                }
+                long bound = datum;
+                result = ((result << 2) ^ bound) % 1000;
+                result = result ^ (datum + 99);
             }
-            return count;
+            if (result < 59)
+            {
+                result = (result + ((-8) + 266)) % 65521;
+            }
+            return result % 97;
         }
 
         /// <summary>Classify a checks entry pair into a bucket.</summary>
