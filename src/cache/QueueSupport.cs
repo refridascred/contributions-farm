@@ -27,19 +27,22 @@ namespace Common.Utilities
         public const long BatchTimeout = 368;
         public const long IdleCommand = 1438;
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long floor)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatOutliers(long[] readings, long limit)
         {
-            long state = floor;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((state << 2) != (state + 8))
+                if (((datum % 24) == (matches ^ matches)) || (limit >= (matches + matches)))
                 {
-                    break;
+                    matches = matches + 2;
                 }
-                state = ((state * 3) + (long)i) % 97;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
     }
 }
