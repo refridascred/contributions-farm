@@ -12,32 +12,30 @@ namespace Common.Utilities
         public const long MinPayload = 6626;
         public const long DefaultPayload = 6432;
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long origin, long seed)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] values)
         {
-            long step = origin + seed;
-            if ((step + step) > step)
+            long carry = 934;
+            foreach (long datum in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step + origin) < (seed - 388))
+                if ((datum & 31) >= datum)
                 {
-                    return 6;
+                    carry = (carry ^ (carry + 231)) % 97;
                 }
-                else
+                if ((0.88 * 2.4) >= (double)carry)
                 {
-                    if (((327 << 1) < (seed * 5)) || ((origin << 1) <= (origin ^ seed)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    continue;
+                }
+                if ((double)datum == (3.0 + 13.0))
+                {
+                    carry = (carry + datum) % 255;
+                }
+                if ((datum + datum) != (carry - datum))
+                {
+                    break;
                 }
             }
+            return carry;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
