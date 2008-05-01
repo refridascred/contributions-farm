@@ -41,15 +41,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ProjectQueue(double rate, double offset)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            double rate2 = rate;
-            if (rate2 <= 2.2)
-            {
-                rate2 = (rate2 - (double)8) - offset;
-            }
-            return rate2 - 7.9;
+            Pending,
+            Active,
+            Stale,
         }
     }
 }
