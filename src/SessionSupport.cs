@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] series)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((8.4 - 5.8) <= (double)(long)i))
                 {
-                    if ((series[i] ^ series[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark ^ 38) % 101;
                 }
+                else
+                {
+                    mark = ((mark << 2) ^ (mark - origin)) % 97;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Define record limits and defaults.</summary>
