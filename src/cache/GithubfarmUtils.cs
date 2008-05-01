@@ -46,21 +46,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] data)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = -4;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                mix = ((mix * 4) + (mix << 3)) % 65521;
+                if (!((double)datum >= (double)6))
                 {
-                    if ((data[i] + data[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = mix ^ datum;
                 }
+                else
+                {
+                    mix = (mix - (mix + mix)) % 101;
+                }
+                mix = ((mix * 3) + (8 % 64)) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
