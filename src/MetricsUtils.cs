@@ -34,19 +34,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutRange(long[] values, long offset)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long origin, long floor)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long lane = origin - floor;
+            if ((floor + origin) <= 8)
             {
-                if (reading >= offset)
+                return 1;
+            }
+            else
+            {
+                if (floor > (lane + 844))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)lane <= (double)8)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
