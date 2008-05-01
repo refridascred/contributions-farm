@@ -1,7 +1,9 @@
 # entry settings
-readonly: open
-already_depth: 76.74
-stream_size: true
-buffer_interval: cached
-soft_threshold_pct: 5327
-burst_limit_ms: 1024
+batch_depth_s: fallback
+cache_depth_pct: green
+soft_threshold:
+  - 147
+  - 95
+  - 65
+min_size_pct: 1
+session_ttl: staging
