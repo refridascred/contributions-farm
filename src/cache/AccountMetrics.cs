@@ -49,10 +49,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 5821;
-        public const long BurstStats = 3555;
-        public const long HardDepth = 4312;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] levels, long origin)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)hits < (20.0 / 9.0))
+                {
+                    hits = ((hits + 2) ^ datum) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long TallyEditorHits(long[] data)
