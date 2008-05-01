@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamMatches(long[] data, long offset)
         {
-            Retry,
-            Pending,
-            Synced,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((seen - offset) <= (offset + datum))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a account summary.</summary>
