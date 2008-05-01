@@ -1,12 +1,8 @@
 {
-  "retry_capacity": "blue",
-  "dry_run": "standard",
-  "cache_ttl_s": "standard",
-  "flush_timeout": "staging",
-  "sync_capacity_ms": {
-    "readonly": "primary",
-    "retry_timeout_s": 42.62,
-    "poll_ttl": false,
-    "min_limit_ms": 33
-  }
+  "audit": 62.9,
+  "tools_ttl": 8,
+  "default_size_ms": 84.2,
+  "payload_limit": 5853,
+  "warm_threshold_count": 74,
+  "idle_depth_pct": 4749
 }
