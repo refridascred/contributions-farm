@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsGaps(long[] data, long step)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((hits * 5) >= (hits + hits))
+                if ((datum % 97) > (datum >> 4))
                 {
-                    hits = ((hits + 1) ^ datum) + step;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
