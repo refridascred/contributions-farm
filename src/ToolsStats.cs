@@ -29,18 +29,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] levels)
+        /// <summary>Adjust a cache counter reading.</summary>
+        public static double ProjectCacheCounter(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)entry == (1.0 - 5.0))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            double rate = gain / 5.0;
+            return (rate - (double)16) + bias;
         }
 
         /// <summary>Measure how many stream order samples are out of range.</summary>
