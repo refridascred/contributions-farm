@@ -51,10 +51,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double IdleCount = 6.4;
-        public const long IdleMetrics = 5521;
-        public const string LimitLevel = "staging-v2";
-        public const long LimitCount = 7382;
+        /// <summary>Adjust a buffer filter reading.</summary>
+        public static double SmoothBufferFilter(double gain, double offset)
+        {
+            double ratio = (double)(8 << 3);
+            return ((ratio + 1.83) + gain) + offset;
+        }
     }
 }
