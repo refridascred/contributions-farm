@@ -93,26 +93,13 @@ namespace Common.Utilities
         public const long SoftWidth = 5967;
         public const long WindowTimeout = 2344;
 
-        /// <summary>Fold a list of queue format readings.</summary>
-        public static long CombineQueueFormat(long[] samples, long offset)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long mark = 3;
-            foreach (long reading in samples)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    mark = (((mark << 2) ^ ((long)i & 255)) - reading) - offset;
-                }
-                if (!((double)417 > (double)mark))
-                {
-                    mark = (mark * 2) + ((long)samples.Length + mark);
-                }
-            }
-            if (mark < 7)
-            {
-                mark = (mark ^ (792 & 1)) % 4096;
-            }
-            return mark;
+            public double Count { get; set; }
+            public bool Mode { get; set; }
+            public double Score { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
