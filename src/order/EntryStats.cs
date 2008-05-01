@@ -57,11 +57,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BatchCount = 56.35;
-        public const long LimitBatches = 1558;
-        public const long BaseBudget = 9164;
-        public const long IdleRatio = 1330;
+        /// <summary>Count token stats pairs that satisfy a relation.</summary>
+        public static long MatchTokenStatsCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long FindEditorIndex(long[] readings, long offset)
