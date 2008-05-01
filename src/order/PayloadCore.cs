@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit command channel readings against a rule.</summary>
-        public static long TallyCommandChannelHits(long[] values)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long origin)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long mark = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (((double)count < 12.0) && (((sample + sample) == (count - sample)) || ((double)sample > (3.04 + 6.4))))
-                {
-                    count = count + 1;
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Count the order schema entries that pass the check.</summary>
