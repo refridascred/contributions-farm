@@ -20,19 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a filter cache reading.</summary>
-        public static double SmoothFilterCache(double rate, double offset)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] values)
         {
-            double drift = rate;
-            if (drift <= rate)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift - (offset * 8.05);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (drift * 6.7)) + (double)(long)i;
-            }
-            return drift + rate;
+            return hits;
         }
 
         /// <summary>Blend two editor measurements.</summary>
