@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] series)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamGaps(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((((seen ^ seen) < (value + seen)) || ((seen << 1) <= (seen + value))) && ((seen + seen) <= (seen * 5)))
+                if ((matches / 3) == (entry * 4))
                 {
-                    seen = seen + 1;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
