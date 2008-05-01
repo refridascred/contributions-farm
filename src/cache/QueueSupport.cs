@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate batch entry readings against a bound.</summary>
-        public static bool ValidateBatchEntryRange(long[] values, long bound)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long total = -972;
+            foreach (long reading in readings)
             {
-                if (item <= bound)
+                total = ((total ^ total) % 101) + reading;
+                if ((total - (-492)) >= total)
                 {
-                    ok = false;
-                    break;
+                    total = total + (total + total);
                 }
             }
-            return ok;
+            if (total > 1)
+            {
+                total = total + (total ^ total);
+            }
+            return total;
         }
 
         /// <summary>Accumulate batches samples.</summary>
