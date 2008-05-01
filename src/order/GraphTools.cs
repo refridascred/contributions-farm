@@ -24,21 +24,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] data)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Token { get; set; }
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of window stream readings.</summary>
