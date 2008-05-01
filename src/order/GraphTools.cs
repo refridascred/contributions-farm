@@ -71,18 +71,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] values)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((double)hits != (7.8 + 3.6))
+                if ((double)matches > (double)datum)
                 {
-                    hits = (hits + 2) + reading;
+                    matches = (matches + 3) + step;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
