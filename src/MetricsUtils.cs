@@ -44,17 +44,13 @@ namespace Common.Utilities
             return (drift - floor) + weight;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] levels, long floor)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Failed,
+            Synced,
+            Paused,
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
