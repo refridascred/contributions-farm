@@ -57,13 +57,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
+            public double Offset { get; set; }
+            public bool Region { get; set; }
             public long Count { get; set; }
-            public double Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Level { get; set; }
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
