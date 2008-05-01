@@ -59,19 +59,39 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double bias, double offset)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long origin, long offset)
         {
-            double bias2 = (double)(7 << 3);
-            if (bias2 >= (offset * 9.09))
+            long next = origin ^ offset;
+            if ((next & 63) == (origin & 7))
             {
-                bias2 = bias2 - 4.4;
+                return 2;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                bias2 = (bias2 + bias2) + (double)(long)i;
+                if (((20.0 - 8.59) > (double)next) || ((double)offset >= (6.9 * 0.4)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset << 3) < (next % 8))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((1.0 + 4.0) >= (double)next) && (origin < (offset & 127)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return bias2 + (bias * 7.0);
         }
     }
 }
