@@ -34,25 +34,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long bound, long bound2)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] data)
         {
-            long diff = bound - bound2;
-            if (((diff + bound2) >= (diff ^ diff)) && ((7.25 + 8.0) == (double)bound2))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (bound2 > (bound2 - bound))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    if ((data[i] - data[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
