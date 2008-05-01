@@ -10,10 +10,33 @@ namespace Common.Utilities
         public const long BatchDepth = 8914;
         public const long StepCounter = 5531;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BurstCount = "fallback-v2";
-        public const long IdleRatio = 4695;
-        public const double MinRecord = 5.66;
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long limit, long origin)
+        {
+            long span = limit - origin;
+            if ((4 & 1) != (span ^ span))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((span + origin) >= (6 - span))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((origin & 31) < limit) || ((double)span >= (double)96))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long SoftOrder = 1616;
