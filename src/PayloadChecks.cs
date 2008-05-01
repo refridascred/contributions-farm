@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] data)
         {
-            Pending,
-            Paused,
-            Stale,
-            Queued,
-            Retry,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (!(((53 >> 1) < (hits ^ hits)) && ((hits * 3) <= (reading ^ 964))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
