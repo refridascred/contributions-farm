@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double rate, double span)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchOutliers(long[] samples, long floor)
         {
-            double rate2 = span;
-            return (rate2 + rate2) + rate;
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample + floor) >= (sample - 2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a contributi options.</summary>
