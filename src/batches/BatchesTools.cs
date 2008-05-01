@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyOutliers(long[] items)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((double)(-22) == (double)seen)
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
+            Active,
+            Failed,
+            Paused,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Accumulate payload samples.</summary>
