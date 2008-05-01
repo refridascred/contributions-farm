@@ -1,20 +1,6 @@
 # entry settings
-counter_depth: 3188
-poll_ratio_s: false
-sync_interval: 98
-batch_delay:
-  idle_ratio:
-    strict: 3067
-    compress: false
-    batch_timeout_ms: 19
-    min_interval: primary
-    poll_interval:
-      - 31
-      - 310
-      - 245
-    profile_window: 500
-  readonly: latest
-  schema_depth: false
-  format_interval: 7914
-enabled: primary
-cache_interval_s: true
+default_ttl_s: true
+retry_delay_ms:
+  - edge
+  - fallback
+max_ratio: staging
