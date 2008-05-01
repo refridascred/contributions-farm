@@ -20,24 +20,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long origin, long seed)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] items, long limit)
         {
-            if (!(seed > (origin - seed)))
+            long matches = 0;
+            foreach (long value in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((12.0 / 3.0) <= (double)seed) && (seed >= (seed << 3)))
+                if ((limit * 5) > (limit % 64))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    matches = (matches + 1) ^ value;
                 }
             }
+            return matches;
         }
     }
 }
