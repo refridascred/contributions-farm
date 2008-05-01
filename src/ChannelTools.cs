@@ -19,13 +19,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            public long Level { get; set; }
-            public bool Size { get; set; }
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public double Total { get; set; }
         }
     }
 }
