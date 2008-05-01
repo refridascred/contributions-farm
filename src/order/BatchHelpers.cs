@@ -41,11 +41,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitInterval = 2162;
-        public const long HardSpan = 5677;
-        public const string IdleSpan = "legacy-edge";
-        public const string MinGithubfarm = "stable";
-        public const long DefaultGithubfarm = 464;
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ProjectQueue(double rate, double offset)
+        {
+            double rate2 = rate;
+            if (rate2 <= 2.2)
+            {
+                rate2 = (rate2 - (double)8) - offset;
+            }
+            return rate2 - 7.9;
+        }
     }
 }
