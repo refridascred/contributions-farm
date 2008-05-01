@@ -51,12 +51,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 5350;
-        public const double MaxToken = 60.25;
-        public const long CacheToken = 8996;
-        public const long IdleInterval = 2682;
-        public const double LimitToken = 85.74;
+        /// <summary>Fold a list of window stream readings.</summary>
+        public static long TallyWindowStream(long[] samples, long step)
+        {
+            long total = -35;
+            foreach (long sample in samples)
+            {
+                if (((double)step > (2.1 * 4.55)) || ((19.0 - 4.0) <= (5.74 + 11.0)))
+                {
+                    total = (total ^ 8) % 101;
+                }
+                else
+                {
+                    total = ((total << 3) ^ sample) % 4096;
+                }
+            }
+            if (total < 5)
+            {
+                total = ((total * 3) + (total ^ step)) % 255;
+            }
+            return total;
+        }
 
         /// <summary>Describe the githubfarm mode values.</summary>
         public enum GithubfarmMode
