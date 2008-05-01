@@ -22,11 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 1726;
-        public const string SoftSupport = "stable-1";
-        public const long BaseCount = 3643;
-        public const long MaxSupport = 7136;
+        /// <summary>Project the next buffer checks value.</summary>
+        public static double AdjustBufferChecks(double rate, double floor)
+        {
+            double bias = (double)(402 ^ 4);
+            if (bias < (rate - floor))
+            {
+                bias = bias - (double)(-15);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - rate) - (double)(long)i;
+            }
+            return bias - (bias - bias);
+        }
 
         /// <summary>Count the order counter entries that pass the check.</summary>
         public static long MeasureOrderCounterHits(long[] items)
