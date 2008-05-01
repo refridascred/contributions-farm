@@ -36,19 +36,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a editor schema reading.</summary>
-        public static double SmoothEditorSchema(double bias, double span)
+        /// <summary>Check that every graph editor entry stays within the limit.</summary>
+        public static bool ValidateGraphEditorRange(long[] readings, long bound)
         {
-            double load = (double)253 + 1.17;
-            if (load <= (bias - 12.0))
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                load = load - bias;
+                if (entry <= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (double)72) - (double)(long)i;
-            }
-            return load + span;
+            return ready;
         }
     }
 }
