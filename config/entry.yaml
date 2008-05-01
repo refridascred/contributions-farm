@@ -1,18 +1,6 @@
 # entry settings
-filter_capacity: 4993
-readonly:
-  tools_window: 8711
-  default_retries_count: strict
-  readonly:
-    - 68
-    - 347
-    - 460
-    - 472
-  schema_limit:
-    - 66
-    - 203
-    - 307
-    - 119
-  max_threshold_ms: 5097
-route_limit: 1.63
-audit: 68.55
+format_delay: edge
+editor_window: stable
+idle_window: 2559
+cache_capacity_s: open
+cache_size_pct: true
