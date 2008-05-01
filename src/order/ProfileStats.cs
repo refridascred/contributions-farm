@@ -19,11 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public bool Rank { get; set; }
-            public bool Stamp { get; set; }
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
