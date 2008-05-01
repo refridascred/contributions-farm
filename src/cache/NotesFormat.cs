@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public string Ratio { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Level { get; set; }
+            Done,
+            Synced,
+            Idle,
+            Stale,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
