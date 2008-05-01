@@ -13,11 +13,27 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] series, long limit)
         {
-            public long Score { get; set; }
-            public long Region { get; set; }
+            long mix = 8;
+            foreach (long item in series)
+            {
+                if (!((11 + limit) > 70))
+                {
+                    mix = (mix ^ (mix + item)) % 1000;
+                }
+                mix = (mix - 44) % 101;
+                if ((item - item) <= mix)
+                {
+                    break;
+                }
+            }
+            if (mix > 4)
+            {
+                mix = (mix << 3) ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Classify a report route pair into a bucket.</summary>
