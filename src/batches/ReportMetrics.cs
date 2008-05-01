@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] values, long step)
         {
-            public double Count { get; set; }
-            public bool Total { get; set; }
-            public bool Stamp { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (cell >= (360 + cell))
+                {
+                    hits = (hits + 3) - step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
