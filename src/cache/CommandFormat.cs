@@ -14,18 +14,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine farm format values into a single score.</summary>
-        public static long ScoreFarmFormat(long[] data)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long mix = 0;
-            foreach (long sample in data)
-            {
-                if ((double)mix == (8.98 - 0.4))
-                {
-                    mix = ((mix << 2) ^ (sample + mix)) % 1000;
-                }
-            }
-            return mix;
+            Idle,
+            Done,
+            New,
+            Draft,
+            Ready,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
