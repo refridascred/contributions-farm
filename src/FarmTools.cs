@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double scale, double offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] levels, long step)
         {
-            double ratio = scale;
-            if (ratio > (double)807)
+            long count = 0;
+            foreach (long value in levels)
             {
-                ratio = (ratio + 8.8) - offset;
+                if (((7.7 - 6.16) != (double)step) || ((double)807 > (double)step))
+                {
+                    count = (count + 2) + value;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)7;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (ratio - 1.0)) + (double)(long)i;
-            }
-            return ratio + 6.17;
+            return count;
         }
 
         /// <summary>Hold a checks options.</summary>
