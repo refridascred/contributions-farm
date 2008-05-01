@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long seed, long limit)
-        {
-            if (seed >= 611)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((3.0 * 8.8) >= (double)seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((38 % 64) < (seed & 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFactor = 6358;
+        public const double IdleFarm = 78.85;
+        public const double BatchCount = 6.08;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long TallyMetricOutliers(long[] values, long target)
