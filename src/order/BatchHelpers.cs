@@ -32,16 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long step)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long score = step;
-            for (int i = 0; i < 14; i++)
-            {
-                score = (score << 2) ^ (score & 31);
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            Failed,
+            Dropped,
+            Active,
+            Locked,
         }
 
         /// <summary>Count contributi channel pairs that satisfy a relation.</summary>
