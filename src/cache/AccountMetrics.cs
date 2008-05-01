@@ -78,18 +78,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] items, long origin)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((double)origin <= (double)value)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Total { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
