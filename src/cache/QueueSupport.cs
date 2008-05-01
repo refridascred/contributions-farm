@@ -24,15 +24,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] series)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] items)
         {
-            long mark = 3;
-            foreach (long value in series)
+            long total = 90;
+            foreach (long item in items)
             {
-                mark = ((mark - (mark % 64)) % 65521) + value;
+                if ((item - 860) > 24)
+                {
+                    total = (total - (total + total)) % 65521;
+                }
+                else
+                {
+                    total = (total + item) % 4096;
+                }
             }
-            return mark % 97;
+            return total;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
