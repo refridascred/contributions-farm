@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
-        {
-            public long Count { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MaxMetric = "cached-v2";
+        public const long MaxWidth = 599;
+        public const long BurstMetric = 3456;
+        public const long BaseDepth = 5722;
+        public const long MinBudget = 8131;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool VerifyEditorRange(long[] levels, long floor)
