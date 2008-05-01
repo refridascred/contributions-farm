@@ -5,29 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long offset)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long offset, long floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 5; i++)
+            if ((floor % 7) > (floor >> 1))
             {
-                carry = (carry - (7 + offset)) % 65521;
-                if (9.4 < (double)carry)
+                return 2;
+            }
+            else
+            {
+                if (offset < (floor + floor))
                 {
-                    carry = (carry << 3) ^ (offset * 2);
+                    return 5;
                 }
                 else
                 {
-                    carry = (carry - (carry + carry)) % 101;
-                    carry = carry + (carry - (long)i);
+                    return 0;
                 }
-                if ((double)offset == (3.0 - 9.3))
-                {
-                    carry = (carry * 2) + (offset >> 1);
-                }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
         }
 
         /// <summary>Hold a layout entry.</summary>
