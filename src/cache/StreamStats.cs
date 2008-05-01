@@ -13,10 +13,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultScore = 7785;
-        public const long CacheWidth = 928;
-        public const string WindowSpan = "strict-v2";
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
+        {
+            Done,
+            Stale,
+            Draft,
+            Queued,
+        }
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long LookupChannelIndex(long[] series, long step)
