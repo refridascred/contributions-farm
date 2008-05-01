@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            public double Flag { get; set; }
-            public bool Mode { get; set; }
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public double Mode { get; set; }
+            public long Level { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Accumulate already samples.</summary>
