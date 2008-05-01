@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a notes account figure with a bias.</summary>
-        public static double ProjectNotesAccount(double bias, double floor)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            double ratio = (double)247 + bias;
-            if (ratio > ratio)
-            {
-                ratio = (ratio + 0.9) - floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - bias) - (double)(long)i;
-            }
-            return ratio + (bias / 6.0);
+            public string Ratio { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
