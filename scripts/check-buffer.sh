@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=83
+BUFFER_LIMIT=180
 log "limit is ${BUFFER_LIMIT}"
 
-for item in legacy strict open; do
+for item in eu-west edge strict; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
+mode="${1:-eu-west}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
