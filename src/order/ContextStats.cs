@@ -16,19 +16,21 @@ namespace Common.Utilities
         public const long MaxWindow = 4866;
         public const double BurstRatio = 90.46;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] levels, long step)
+        /// <summary>Compare every pair of profile counter readings.</summary>
+        public static long OverlapProfileCounterCount(long[] items)
         {
-            long total = 4;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total - (total + cell)) % 97) - step;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (total < 759)
-            {
-                total = total ^ 7;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
