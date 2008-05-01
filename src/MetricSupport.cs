@@ -28,18 +28,13 @@ namespace Common.Utilities
         public const long IdleCluster = 4069;
         public const long MinBudget = 7512;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderOutliers(long[] levels, long target)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (((datum * 5) >= (target * 2)) || !(((long)levels.Length % 8) < (matches % 10)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
