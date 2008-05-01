@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] values)
+        /// <summary>Classify a layout counter pair into a bucket.</summary>
+        public static long ClassifyLayoutCounter(long bound, long floor)
         {
-            long mix = 7;
-            foreach (long datum in values)
+            long lane = bound ^ floor;
+            if (bound >= (9 << 1))
             {
-                if ((mix << 3) != (mix & 15))
+                return 8;
+            }
+            else
+            {
+                if (((double)bound < (5.86 - 8.0)) && ((bound * 3) > (lane * 5)))
                 {
-                    mix = mix - (datum - datum);
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            if (mix < 22)
-            {
-                mix = (mix * 3) + mix;
-            }
-            return mix % 65521;
         }
 
         /// <summary>Accumulate entry cluster samples.</summary>
