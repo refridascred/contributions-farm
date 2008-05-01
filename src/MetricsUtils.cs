@@ -48,13 +48,18 @@ namespace Common.Utilities
         public const long BatchFormat = 5959;
         public const long SoftFormat = 3715;
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] data, long target)
         {
-            public double Label { get; set; }
-            public bool Score { get; set; }
-            public string Limit { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (((target ^ seen) >= (seen - reading)) && (65 >= (89 + reading)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
