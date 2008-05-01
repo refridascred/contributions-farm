@@ -1,25 +1,6 @@
 {
-  "audit": 8049,
-  "cache_delay_count": {
-    "audit": 8,
-    "buffer_retries": {
-      "dry_run": "blue",
-      "warm_retries_count": "eu-west",
-      "burst_ttl": 250
-    },
-    "cache_ratio_count": "legacy",
-    "commits_timeout": {
-      "poll_window_count": [136, 134],
-      "already_threshold": 60,
-      "hard_size": ["fallback", "open"]
-    },
-    "checks_timeout": {
-      "editor_size": 93,
-      "poll_interval_s": 3.06,
-      "schema_capacity": ["standard", "cached", "edge"]
-    },
-    "burst_capacity": 250
-  },
-  "max_ttl": 4.95,
-  "poll_limit_ms": 60
+  "retry_depth": 3259,
+  "batch_interval_count": [40, 320, 285],
+  "commits_threshold": "fallback",
+  "account_size": 38.29
 }
