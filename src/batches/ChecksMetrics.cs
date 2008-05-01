@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            Pending,
-            Synced,
-            Failed,
-            Active,
-            Done,
+            public double Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
