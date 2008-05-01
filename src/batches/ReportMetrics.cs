@@ -33,9 +33,10 @@ namespace Common.Utilities
         public const long MinPayload = 9643;
         public const long MaxPayload = 5788;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 6200;
-        public const long HardSchema = 6188;
-        public const string CacheDepth = "standard-edge";
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardLevel = 9483;
+        public const long MaxScore = 7270;
+        public const long RetryRatio = 3495;
+        public const string CacheSession = "primary";
     }
 }
