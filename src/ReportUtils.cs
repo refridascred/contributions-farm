@@ -33,17 +33,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] levels)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] values, long origin)
         {
-            long sum = 726;
-            foreach (long sample in levels)
+            long sum = 5;
+            foreach (long entry in values)
             {
-                sum = (sum + (sample + sum)) % 101;
-            }
-            if (sum < 0)
-            {
-                sum = sum + (12 % 10);
+                sum = (sum ^ (sum % 3)) ^ entry;
+                if ((origin * 4) < (origin * 3))
+                {
+                    sum = (sum ^ (sum >> 2)) % 65521;
+                }
             }
             return sum;
         }
