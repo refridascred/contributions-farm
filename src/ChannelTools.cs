@@ -22,17 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] values, long seed)
+        /// <summary>Measure how many context payload samples are out of range.</summary>
+        public static long MeasureContextPayloadHits(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((values[i] < seed) && ((values[i] % 5) != 0))
+                if (((-98) ^ hits) >= (hits & 7))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + entry;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
