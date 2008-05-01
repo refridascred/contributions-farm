@@ -33,15 +33,10 @@ namespace Common.Utilities
         public const long DefaultToken = 6670;
         public const long RetryToken = 6612;
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Retry,
-            Closed,
-            Dropped,
-            New,
-            Queued,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string DefaultSize = "standard";
+        public const string SoftQueue = "alpha-v2";
+        public const string IdleSpan = "stable-v2";
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
