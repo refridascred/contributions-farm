@@ -1,15 +1,12 @@
 # Command notes
 
-Run the schema check before changing any commits limits.
-Use graph settings to tune how often support data is refreshed.
-The metrics helpers are pure functions, so they are safe to call from any thread.
-
-Keep report and cache names short and lowercase.
-Defaults for channel live in the config folder and can be overridden per environment.
-Use profile settings to tune how often metrics data is refreshed.
+The context module keeps farm values in sync with the format cache.
+Each layout is validated before it reaches the metric queue.
+Run the batch check before changing any already limits.
 
 ## Guidelines
 
-- Review command limits each release
-- Validate already input early
-- Prefer layout defaults
+- Prefer cache defaults
+- Document new batch fields
+- Validate editor input early
+- Review buffer limits each release
