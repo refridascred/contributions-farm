@@ -27,15 +27,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long floor)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Count command counter pairs that satisfy a relation.</summary>
