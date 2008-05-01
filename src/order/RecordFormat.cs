@@ -31,13 +31,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public bool Flag { get; set; }
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BurstSpan = "latest-1";
+        public const long DefaultInterval = 3128;
+        public const string IdleTimeout = "cached-edge";
+        public const long CacheInterval = 7512;
+        public const string CacheAlready = "legacy-edge";
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long CountSchemaHits(long[] items, long target)
