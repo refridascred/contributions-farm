@@ -36,11 +36,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 2991;
-        public const long HardCount = 5426;
-        public const string StepBudget = "cached-1";
-        public const long CacheBudget = 7240;
-        public const string BatchCount = "cached";
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] series, long step)
+        {
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
