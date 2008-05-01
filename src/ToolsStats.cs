@@ -84,9 +84,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultSize = 3671;
-        public const double BatchCounter = 96.5;
-        public const string DefaultCounter = "latest";
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] readings, long seed)
+        {
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
