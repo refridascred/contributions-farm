@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            Active,
-            Closed,
-            Queued,
+            public double Total { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Roll a payload counter forward.</summary>
