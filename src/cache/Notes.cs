@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const long CacheRecord = 6313;
         public const string BurstRecord = "primary-v2";
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardLevel = 4961;
+        public const double HardProfile = 21.37;
+        public const long BatchRatio = 4632;
+        public const long MaxProfile = 9082;
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool GuardBatchLimits(long[] readings, long step)
