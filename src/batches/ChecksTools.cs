@@ -70,13 +70,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
+            Pending,
+            Retry,
+            Active,
+            Idle,
         }
     }
 }
