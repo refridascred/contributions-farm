@@ -42,12 +42,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] items, long bound)
         {
-            New,
-            Retry,
-            Stale,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((cell / 2) == (cell >> 4))
+                {
+                    seen = (seen + 2) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
