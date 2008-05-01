@@ -20,17 +20,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] readings, long seed)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] readings, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (readings[i] <= seed)
+                if ((entry << 1) >= matches)
                 {
-                    return (long)i;
+                    matches = (matches + 1) + floor;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
