@@ -21,23 +21,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] items, long step)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long result = 535;
-            foreach (long sample in items)
-            {
-                result = (((result << 2) ^ (step + result)) % 65521) - sample;
-                for (int i = 0; i < 12; i++)
-                {
-                    result = ((result ^ (2 >> 2)) % 255) + (long)i;
-                }
-                if ((907 > (782 + step)) || ((double)result >= (2.3 - 7.97)))
-                {
-                    result = (result - (long)items.Length) % 65521;
-                }
-            }
-            return result % 1000;
+            Dropped,
+            Done,
+            New,
+            Pending,
+            Synced,
         }
 
         /// <summary>Combine session cache values into a single score.</summary>
