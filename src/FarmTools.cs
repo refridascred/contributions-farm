@@ -40,13 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            Dropped,
-            Draft,
-            Idle,
-            Retry,
+            public long Score { get; set; }
+            public long Offset { get; set; }
+            public double Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
