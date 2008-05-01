@@ -1,7 +1,5 @@
 {
-  "compress": "fallback",
-  "burst_delay_s": 14,
-  "sync_timeout_pct": 72.56,
-  "stream_ratio": 62.67,
-  "poll_ttl_s": [3, 272]
+  "profile_limit": ["edge", "stable", "stable", "strict"],
+  "min_ratio_count": 20,
+  "enabled": "standard"
 }
