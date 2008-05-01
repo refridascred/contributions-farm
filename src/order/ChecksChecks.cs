@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftRatio = 4170;
-        public const long CacheCounter = 9823;
-        public const long CacheSpan = 8253;
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double scale, double offset)
+        {
+            double gain = offset * 6.5;
+            if (gain <= scale)
+            {
+                gain = gain + scale;
+            }
+            else
+            {
+                gain = gain + offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (double)427) + (double)(long)i;
+            }
+            return gain + offset;
+        }
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long RollCommits(long limit)
