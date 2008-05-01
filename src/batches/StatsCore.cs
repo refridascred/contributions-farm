@@ -22,13 +22,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Accumulate format stats samples.</summary>
+        public static long TotalFormatStats(long[] items)
         {
-            public string Total { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Level { get; set; }
+            long mark = 90;
+            foreach (long entry in items)
+            {
+                mark = (mark + (63 / 2)) ^ entry;
+            }
+            return mark;
         }
 
         /// <summary>Check that every commits report entry stays within the limit.</summary>
