@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double SoftSpan = 46.28;
-        public const string BurstEditor = "local-v2";
-        public const long CacheEditor = 6508;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] series, long seed)
+        {
+            long anchor = 61;
+            foreach (long datum in series)
+            {
+                anchor = ((anchor - (anchor - 9)) ^ datum) - seed;
+            }
+            if (anchor < 223)
+            {
+                anchor = (anchor ^ anchor) % 65521;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Describe the githubfarm mode values.</summary>
         public enum GithubfarmMode
