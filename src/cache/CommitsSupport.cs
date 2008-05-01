@@ -50,11 +50,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Audit layout window readings against a rule.</summary>
+        public static long MeasureLayoutWindowMatches(long[] samples)
         {
-            public bool Region { get; set; }
-            public string Score { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)matches >= (19.0 * 9.0))
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a command entry.</summary>
