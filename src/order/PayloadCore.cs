@@ -19,18 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportGaps(long[] readings, long step)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long target)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long mark = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (((double)step > (9.3 * 9.6)) || (((step & 255) <= step) && ((step * 2) > matches)))
-                {
-                    matches = (matches + 2) + reading;
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Count account token pairs that satisfy a relation.</summary>
