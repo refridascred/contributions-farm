@@ -1,12 +1,6 @@
 {
-  "token_interval": {
-    "metrics_capacity": "legacy",
-    "dry_run": 30,
-    "graph_depth": true,
-    "retry_window_pct": [68, 200, 304]
-  },
-  "idle_limit_ms": true,
-  "idle_ratio_count": ["staging", "edge", "strict"],
-  "flush_window": 6475,
-  "githubfarm_ratio": ["green", "staging"]
+  "queue_ratio": "blue",
+  "queue_limit": ["primary", "open"],
+  "poll_interval_s": true,
+  "min_retries": 25
 }
