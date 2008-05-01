@@ -20,11 +20,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinWidth = 4069;
-        public const long StepGraph = 8252;
-        public const long CacheDepth = 3967;
-        public const double StepInterval = 14.67;
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
+        {
+            public long Score { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Count window context pairs that satisfy a relation.</summary>
         public static long OverlapWindowContextCount(long[] samples)
