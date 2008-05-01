@@ -1,7 +1,21 @@
 {
-  "burst_limit_count": 26.88,
-  "compress": "primary",
-  "idle_timeout_s": 30,
-  "warm_delay_pct": "open",
-  "max_ratio": 30
+  "cache_limit": "standard",
+  "cluster_ratio": "stable",
+  "cache_window": false,
+  "sync_capacity": {
+    "hard_window_ms": 250,
+    "session_depth": 30,
+    "batch_threshold_ms": {
+      "payload_size": 27,
+      "metrics_retries": 2454,
+      "batch_ratio": "open"
+    },
+    "audit": {
+      "profile_delay": 9,
+      "sync_window_s": [227, 402, 189, 484],
+      "default_ratio_s": true
+    },
+    "base_limit_ms": 30
+  },
+  "strict": 30
 }
