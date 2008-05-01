@@ -47,18 +47,14 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] readings)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (!((double)count < (15.0 + 9.35)))
-                {
-                    count = (count + 1) + entry;
-                }
-            }
-            return count;
+            Locked,
+            Dropped,
+            Closed,
+            Synced,
+            Pending,
         }
     }
 }
