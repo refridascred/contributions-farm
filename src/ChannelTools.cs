@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            Locked,
-            Retry,
-            Ready,
-            Synced,
-            Dropped,
+            public string Token { get; set; } = "";
+            public double Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Combine cache values into a single score.</summary>
