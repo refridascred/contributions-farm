@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MinRoute = 76.16;
-        public const long SoftCount = 7460;
-        public const long HardRoute = 4624;
-        public const long RetryRoute = 1449;
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long StepCache(long limit)
