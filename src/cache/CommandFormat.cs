@@ -33,12 +33,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepRecord = "primary-edge";
-        public const double BurstSpan = 34.92;
-        public const long BaseWidth = 4413;
-        public const long CacheRecord = 3100;
-        public const long BaseRatio = 2496;
+        /// <summary>Check that every buffer session entry stays within the limit.</summary>
+        public static bool CheckBufferSessionBounds(long[] levels, long target)
+        {
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
