@@ -1,17 +1,7 @@
 {
-  "hard_ratio_count": {
-    "soft_ratio": true,
-    "verbose": 7.12,
-    "burst_retries_pct": 500
-  },
-  "flush_delay_s": false,
-  "hard_ttl_ms": {
-    "already_limit": "edge",
-    "report_ratio": [400, 29, 79, 79],
-    "account_window": false,
-    "sync_limit": 7235,
-    "retry_ttl_count": true
-  },
-  "strict": true,
-  "verbose": ["green", "blue"]
+  "cache_window_count": 1.58,
+  "soft_capacity": "fallback",
+  "min_depth_pct": 7847,
+  "commits_depth": false,
+  "warm_size_s": 500
 }
