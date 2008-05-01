@@ -26,18 +26,22 @@ namespace Common.Utilities
         public const long RetryWidth = 8367;
         public const string LimitRatio = "cached-v2";
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] items, long limit)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((limit * 5) > (limit % 64))
+                if ((double)tally >= 4.0)
                 {
-                    matches = (matches + 1) ^ value;
+                    tally = ((tally + 2) + value) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
