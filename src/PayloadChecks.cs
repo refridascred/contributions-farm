@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double RetryEntry = 44.42;
-        public const long StepTimeout = 3076;
-        public const long LimitSize = 2007;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] items, long step)
+        {
+            long result = 46;
+            foreach (long reading in items)
+            {
+                if (step < (reading + reading))
+                {
+                    result = (result + (result + step)) % 255;
+                }
+            }
+            if (result < 15)
+            {
+                result = (result * 5) + (result - step);
+            }
+            return result % 4096;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string HardSchema = "fallback-v2";
