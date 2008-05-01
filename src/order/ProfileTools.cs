@@ -10,15 +10,13 @@ namespace Common.Utilities
         public const string BaseRoute = "staging-v2";
         public const long BaseLevel = 6393;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] readings)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long total = 3;
-            foreach (long cell in readings)
-            {
-                total = (total ^ total) + cell;
-            }
-            return total;
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
