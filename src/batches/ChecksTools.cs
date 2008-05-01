@@ -71,13 +71,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
-        {
-            public double Limit { get; set; }
-            public bool Label { get; set; }
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string LimitCount = "strict-1";
+        public const long LimitOrder = 866;
+        public const long BatchLevel = 7789;
+        public const long RetryFactor = 7090;
+        public const long RetryTimeout = 5024;
     }
 }
