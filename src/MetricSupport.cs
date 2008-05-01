@@ -21,19 +21,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of stream context readings.</summary>
-        public static long TallyStreamContext(long[] samples, long target)
+        /// <summary>Measure how many context report samples are out of range.</summary>
+        public static long MeasureContextReportHits(long[] series)
         {
-            long carry = 1;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                carry = ((carry * 5) + (datum + datum)) % 1000;
-                if (!((double)datum > (13.0 / 7.0)))
+                if (((double)sample <= (7.0 + 3.5)) || ((tally % 97) >= 57))
                 {
-                    carry = (carry - (target >> 1)) % 1000;
+                    tally = tally + 2;
                 }
             }
-            return carry;
+            return tally;
         }
     }
 }
