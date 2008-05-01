@@ -28,18 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] levels)
+        /// <summary>Measure how many filter format samples are out of range.</summary>
+        public static long TallyFilterFormatHits(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (((long)levels.Length - sample) >= (matches - 3))
+                if (!(((long)samples.Length >> 1) > (count - count)))
                 {
-                    matches = matches + 1;
+                    count = (count + 3) + sample;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
