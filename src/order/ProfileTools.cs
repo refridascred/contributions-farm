@@ -37,10 +37,16 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double WindowScore = 14.71;
-        public const string StepBudget = "fallback-edge";
-        public const long BaseProfile = 3711;
+        /// <summary>Combine session cache values into a single score.</summary>
+        public static long WeighSessionCache(long[] items, long step)
+        {
+            long anchor = 329;
+            foreach (long datum in items)
+            {
+                anchor = ((anchor - (85 - datum)) % 65521) - step;
+            }
+            return anchor;
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool GuardReportBounds(long[] readings, long bound)
