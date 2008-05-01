@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long bound, long floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] data, long bound)
         {
-            long gap = bound ^ floor;
-            if (((gap / 5) < gap) && ((7.3 - 6.0) != (double)gap))
+            long matches = 0;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound * 3) > (94 * 2))
+                if (!((matches + 270) >= reading))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound % 3) >= gap)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor ^ gap) <= 6)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = (matches + 3) - bound;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
