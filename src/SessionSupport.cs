@@ -12,22 +12,24 @@ namespace Common.Utilities
             return (gain - (double)273) + bias;
         }
 
-        /// <summary>Measure how many counter format samples are out of range.</summary>
-        public static long CountCounterFormatMatches(long[] items, long origin)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long offset, long limit)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            if (((limit % 2) > (offset & 7)) && ((limit + offset) <= 0))
             {
-                if (!((cell >> 5) < tally))
+                return 0;
+            }
+            else
+            {
+                if (122 < (offset + offset))
                 {
-                    tally = (tally + 3) - origin;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
