@@ -27,12 +27,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitWidth = 6150;
-        public const long WindowContributi = 7075;
-        public const long MaxFactor = 9625;
-        public const long BurstContributi = 4905;
-        public const long LimitContributi = 9295;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((4 ^ item) == (tally * 4))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long RetryRoute = 6224;
