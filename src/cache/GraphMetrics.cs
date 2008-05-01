@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsLimits(long[] readings, long floor)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Synced,
+            Retry,
+            Done,
         }
 
         /// <summary>Compare every pair of route readings.</summary>
