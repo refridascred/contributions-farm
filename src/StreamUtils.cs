@@ -40,10 +40,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultSize = 4005;
-        public const long IdleInterval = 4064;
-        public const string BatchRecord = "latest-v2";
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Draft,
+            Closed,
+            Retry,
+        }
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
