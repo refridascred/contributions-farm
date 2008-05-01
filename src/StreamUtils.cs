@@ -20,19 +20,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Adjust a batch counter reading.</summary>
-        public static double ProjectBatchCounter(double ratio, double offset)
+        /// <summary>Fold a list of command editor readings.</summary>
+        public static long FoldCommandEditor(long[] samples, long origin)
         {
-            double gain = 7.8;
-            if (gain >= (ratio - ratio))
+            long total = 36;
+            foreach (long value in samples)
             {
-                gain = gain + 0.3;
+                total = ((total * 5) + (origin + value)) % 255;
             }
-            else
-            {
-                gain = gain + offset;
-            }
-            return gain + (gain / 2.0);
+            return total;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
