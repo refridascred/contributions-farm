@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] series, long seed)
+        /// <summary>Project the next buffer filter value.</summary>
+        public static double AdjustBufferFilter(double weight, double span)
         {
-            long anchor = 61;
-            foreach (long datum in series)
+            double weight2 = weight;
+            if (weight2 < weight)
             {
-                anchor = ((anchor - (anchor - 9)) ^ datum) - seed;
+                weight2 = weight2 - (7.66 + span);
             }
-            if (anchor < 223)
+            else
             {
-                anchor = (anchor ^ anchor) % 65521;
+                weight2 = weight2 - (weight - weight);
             }
-            return anchor % 1000;
+            return weight2 - (weight + span);
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
