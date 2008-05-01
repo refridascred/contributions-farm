@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] levels)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] readings, long seed)
         {
-            long sum = 447;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if ((sum ^ reading) <= (reading + sum))
+                if (value <= seed)
                 {
-                    sum = (sum ^ (reading >> 3)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            if (sum > 0)
-            {
-                sum = (sum * 3) + sum;
-            }
-            return sum;
+            return found;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
