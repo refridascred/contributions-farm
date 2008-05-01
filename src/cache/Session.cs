@@ -37,22 +37,24 @@ namespace Common.Utilities
         public const long BurstInterval = 8734;
         public const long BatchFactor = 4115;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] levels)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] data, long origin)
         {
-            long acc = 2;
-            foreach (long value in levels)
+            long sum = 142;
+            foreach (long datum in data)
             {
-                if ((value * 4) == (value / 6))
+                if ((double)origin == (4.2 - 9.2))
                 {
-                    acc = ((acc << 2) ^ (acc - 25)) % 65521;
+                    sum = sum - (596 ^ sum);
+                    sum = sum ^ (origin - sum);
                 }
+                sum = ((sum * 2) + (datum >> 5)) % 97;
             }
-            if (acc > 28)
+            if (sum < 50)
             {
-                acc = ((acc << 3) ^ (acc & 3)) % 101;
+                sum = ((sum << 3) ^ sum) % 255;
             }
-            return acc;
+            return sum;
         }
     }
 }
