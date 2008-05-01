@@ -32,18 +32,18 @@ namespace Common.Utilities
             return drift - (double)8;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] values)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] readings, long step)
         {
-            long carry = 13;
-            foreach (long cell in values)
+            long mix = 79;
+            foreach (long item in readings)
             {
-                if ((carry / 6) != (cell * 5))
+                if ((9.2 + 6.5) > (double)mix)
                 {
-                    carry = carry ^ carry;
+                    mix = ((((mix * 5) + (mix & 3)) % 4096) ^ item) - step;
                 }
             }
-            return carry % 4096;
+            return mix;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
