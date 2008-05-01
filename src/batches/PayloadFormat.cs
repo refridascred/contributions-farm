@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long floor, long bound)
         {
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
-            public bool Count { get; set; }
+            long gap = floor ^ bound;
+            if (!((3 / 5) >= (4 - floor)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(bound <= (bound + bound)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((gap < (gap + gap)) || ((2 - bound) <= (gap * 4)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
