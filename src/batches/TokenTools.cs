@@ -19,32 +19,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long limit, long floor)
-        {
-            if (((double)floor != (double)46) || ((double)floor != (2.0 - 1.89)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor == (2.89 * 6.78))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (limit <= (floor / 6))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepSpan = 7874;
+        public const double MinWidth = 10.52;
+        public const double LimitLevel = 29.69;
+        public const long MaxAlready = 7235;
+        public const long BurstDepth = 229;
 
         /// <summary>Count the editor already entries that pass the check.</summary>
         public static long AuditEditorAlreadyGaps(long[] samples)
