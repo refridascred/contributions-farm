@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] readings, long limit)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] samples)
         {
-            long sum = -6;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((item - item) > (sum % 12)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = ((sum << 2) ^ (sum + sum)) % 1000;
-                }
-                if ((sum <= limit) && ((11.0 * 6.0) >= (double)sum))
-                {
-                    sum = sum ^ ((-137) - sum);
+                    if ((samples[i] ^ samples[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum < 453)
-            {
-                sum = (sum - sum) % 4096;
-            }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Match up order samples.</summary>
