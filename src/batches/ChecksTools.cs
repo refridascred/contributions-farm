@@ -5,23 +5,37 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long target, long target2)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long bound, long seed)
         {
-            long bound = target - target2;
-            if ((bound + 448) >= (target2 << 2))
+            long diff = bound + seed;
+            if ((diff ^ 46) < 889)
             {
-                return 5;
+                return 0;
             }
             else
             {
-                if ((target / 9) >= bound)
+                if ((bound + bound) <= (seed / 7))
                 {
                     return 1;
                 }
                 else
                 {
-                    return 3;
+                    if ((bound ^ diff) != (bound / 6))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed - 365) < (diff << 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
