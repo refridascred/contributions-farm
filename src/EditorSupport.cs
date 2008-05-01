@@ -19,11 +19,18 @@ namespace Common.Utilities
         public const double WindowReport = 72.26;
         public const long BurstScore = 5581;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardFactor = 2589;
-        public const long StepBuffer = 5420;
-        public const long DefaultBudget = 9257;
-        public const long LimitFactor = 9776;
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string StepCluster = "strict-edge";
