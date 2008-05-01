@@ -1,6 +1,20 @@
 # entry settings
-default_ttl_s: true
-retry_delay_ms:
-  - edge
-  - fallback
-max_ratio: staging
+batch_retries_ms: primary
+enabled:
+  - 154
+  - 355
+  - 203
+  - 13
+compress:
+  warm_window_count: true
+  soft_depth_count: 66
+  window_depth: staging
+  cache_interval: open
+  sync_ttl:
+    - 222
+    - 156
+    - 153
+  warm_size_ms: stable
+idle_size: legacy
+cache_window_count: false
+soft_threshold: 42.25
