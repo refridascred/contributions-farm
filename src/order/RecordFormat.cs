@@ -44,11 +44,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
+            public long Rank { get; set; }
+            public double Score { get; set; }
         }
     }
 }
