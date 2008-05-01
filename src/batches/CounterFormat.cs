@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteLimits(long[] items, long floor)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] samples, long origin)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long result = 95;
+            foreach (long sample in samples)
             {
-                if (reading <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                result = (((result ^ (result % 16)) % 101) - sample) - origin;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Rank account input into a small class.</summary>
