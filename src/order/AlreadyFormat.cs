@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] series)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double weight, double floor)
         {
-            long mark = 62;
-            foreach (long value in series)
+            double rate = weight;
+            if (rate <= floor)
             {
-                if ((value + mark) != (value + value))
-                {
-                    mark = ((mark * 3) + 63) % 101;
-                }
+                rate = rate + floor;
             }
-            if (mark < 9)
-            {
-                mark = (mark - (mark % 3)) % 101;
-            }
-            return mark % 4096;
+            return rate + (floor + rate);
         }
 
         /// <summary>Describe the queue class values.</summary>
