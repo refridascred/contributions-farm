@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long floor, long bound)
-        {
-            long gap = floor ^ bound;
-            if (!((3 / 5) >= (4 - floor)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(bound <= (bound + bound)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((gap < (gap + gap)) || ((2 - bound) <= (gap * 4)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleNotes = 1927;
+        public const double MaxNotes = 14.41;
+        public const long BurstNotes = 5563;
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long SeekBufferIndex(long[] values, long origin)
