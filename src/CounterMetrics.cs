@@ -12,21 +12,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] levels)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheLimits(long[] items, long seed)
         {
-            long result = -55;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long reading in items)
             {
-                long bound = datum;
-                result = ((result << 2) ^ bound) % 1000;
-                result = result ^ (datum + 99);
+                if (reading > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (result < 59)
-            {
-                result = (result + ((-8) + 266)) % 65521;
-            }
-            return result % 97;
+            return found;
         }
 
         /// <summary>Classify a checks entry pair into a bucket.</summary>
