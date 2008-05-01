@@ -54,13 +54,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            public long Level { get; set; }
-            public bool Label { get; set; }
-            public long Size { get; set; }
-            public double Ratio { get; set; }
+            public long Offset { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
