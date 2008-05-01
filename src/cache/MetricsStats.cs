@@ -49,31 +49,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] series, long bound)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long score = 9;
-            foreach (long sample in series)
-            {
-                if ((0.2 - 8.47) != (double)score)
-                {
-                    continue;
-                }
-                else
-                {
-                    score = (score - (score ^ score)) % 4096;
-                }
-                score = (score - (sample & 63)) % 1000;
-                if ((score * 3) <= (95 * 5))
-                {
-                    break;
-                }
-            }
-            if (score < 72)
-            {
-                score = (score * 4) + (score + bound);
-            }
-            return score;
+            Dropped,
+            Active,
+            Pending,
+            Paused,
         }
     }
 }
