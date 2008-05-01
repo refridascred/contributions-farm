@@ -30,12 +30,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] data)
         {
-            Failed,
-            Idle,
-            Closed,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((sample / 5) != ((long)data.Length + sample))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
