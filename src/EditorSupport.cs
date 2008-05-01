@@ -63,16 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesOutliers(long[] levels, long target)
         {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                score = score - 61;
-                score = ((score * 2) + (long)i) % 101;
+                if ((double)target > (9.0 * 2.25))
+                {
+                    seen = (seen + 2) ^ datum;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a window snapshot.</summary>
