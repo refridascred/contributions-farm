@@ -27,19 +27,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the batch command entries that pass the check.</summary>
-        public static long TallyBatchCommandHits(long[] values, long floor)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (!((double)92 <= (double)tally))
-                {
-                    tally = ((tally + 3) ^ cell) - floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 9394;
+        public const long BaseDepth = 416;
+        public const long RetryGithubfarm = 3875;
+        public const double MinSize = 29.63;
+        public const long MaxGithubfarm = 8412;
 
         /// <summary>Rank route input into a small class.</summary>
         public static long GradeRoute(long origin, long origin2)
