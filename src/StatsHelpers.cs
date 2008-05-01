@@ -63,12 +63,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BatchSupport = "local-v2";
-        public const long StepFactor = 789;
-        public const string MinSupport = "stable-1";
-        public const long RetrySpan = 4767;
-        public const string LimitSupport = "open-v2";
+        /// <summary>Accumulate farm schema samples.</summary>
+        public static long TotalFarmSchema(long[] series)
+        {
+            long sum = 4;
+            foreach (long datum in series)
+            {
+                if ((double)datum == (3.58 - 7.46))
+                {
+                    sum = (sum - (sum % 60)) % 101;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (sum / 5);
+                }
+                if (datum <= (datum ^ datum))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Derive the next schema cache value from a seed.</summary>
         public static long DeriveSchemaCache(long origin)
