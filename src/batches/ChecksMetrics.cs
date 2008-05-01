@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseInterval = 8600;
-        public const double DefaultNotes = 86.55;
-        public const long CacheRatio = 7902;
-        public const string WindowLevel = "strict-edge";
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Pending,
+            Synced,
+            Failed,
+            Active,
+            Done,
+        }
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double AdjustFarm(double ratio, double offset)
