@@ -26,22 +26,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit token counter readings against a rule.</summary>
-        public static long TallyTokenCounterGaps(long[] samples)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long limit)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long score = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((14.0 + 0.96) <= (double)hits)
-                {
-                    hits = (hits + 3) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = ((score << 3) ^ ((long)i >> 2)) % 65521;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Describe the order kind values.</summary>
