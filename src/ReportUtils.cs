@@ -52,24 +52,16 @@ namespace Common.Utilities
         public const string DefaultCluster = "cached-v2";
         public const long BatchCluster = 3939;
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long origin, long offset)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long origin)
         {
-            if (offset <= origin)
+            long state = origin;
+            for (int i = 0; i < 18; i++)
             {
-                return 1;
+                state = state + origin;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((offset / 9) != (origin / 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return state;
         }
     }
 }
