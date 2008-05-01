@@ -39,19 +39,22 @@ namespace Common.Utilities
             return mean - 11.0;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiBounds(long[] series, long target)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextOutliers(long[] samples)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (entry < target)
+                if (!((double)matches > (3.47 / 6.0)) && ((-759) > sample))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Hold a entry record.</summary>
