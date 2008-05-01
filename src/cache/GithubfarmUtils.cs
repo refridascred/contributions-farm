@@ -63,12 +63,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Paused,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BaseSupport = 32.7;
+        public const string BaseBudget = "cached-edge";
+        public const double MaxSupport = 84.43;
+        public const double IdleSize = 97.79;
+        public const long MaxSpan = 7400;
     }
 }
