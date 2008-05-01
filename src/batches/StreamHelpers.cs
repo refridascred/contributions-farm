@@ -77,13 +77,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
-        {
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 696;
+        public const long DefaultRatio = 238;
+        public const string DefaultDepth = "staging-edge";
+        public const long LimitCount = 9817;
+        public const long BurstInterval = 8072;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long TallyProfileMatches(long[] levels, long bound)
