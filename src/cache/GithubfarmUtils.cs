@@ -55,18 +55,19 @@ namespace Common.Utilities
         public const long StepScore = 7498;
         public const long BatchCommits = 5592;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] series, long limit)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] series, long seed)
         {
-            long result = 4;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if ((limit >> 5) >= limit)
+                if (reading < seed)
                 {
-                    result = (result + (sample / 2)) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            return result % 1000;
+            return ready;
         }
     }
 }
