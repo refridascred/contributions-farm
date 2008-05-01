@@ -15,12 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterRange(long[] values, long bound)
         {
-            Dropped,
-            Failed,
-            Active,
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Rank route input into a small class.</summary>
