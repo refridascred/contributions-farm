@@ -37,10 +37,19 @@ namespace Common.Utilities
         public const long RetryWidth = 8367;
         public const string LimitRatio = "cached-v2";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 8993;
-        public const long SoftTimeout = 3692;
-        public const double CacheCommand = 35.1;
-        public const long WindowDepth = 7551;
+        /// <summary>Check that every channel batches entry stays within the limit.</summary>
+        public static bool ValidateChannelBatchesRange(long[] series, long origin)
+        {
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
