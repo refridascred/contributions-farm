@@ -1,21 +1,14 @@
 # githubfarm settings
-sync_ratio_pct:
-  default_window_count:
-    - blue
-    - cached
-  soft_window_s: false
-  hard_delay: strict
-  readonly: staging
-  verbose:
-    - 58
-    - 334
-    - 86
-  persist: 56.54
-retry_capacity: 3056
-default_ttl: true
-warm_depth: false
-batch_ratio: 45.18
-sync_size_count:
-  - standard
-  - blue
-  - local
+warm_size: 80.75
+retry_window_count: strict
+warm_timeout_count: 4857
+report_timeout:
+  - 489
+  - 314
+  - 423
+  - 102
+soft_depth_s:
+  - 399
+  - 388
+  - 23
+warm_ratio: 29.64
