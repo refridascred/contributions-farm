@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] levels, long floor)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] levels)
         {
+            long seen = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] > floor) && ((levels[i] % 5) == 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
