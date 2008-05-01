@@ -24,13 +24,24 @@ namespace Common.Utilities
             return ratio + bias2;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long limit)
         {
-            public double Offset { get; set; }
-            public string Level { get; set; } = "";
-            public bool Limit { get; set; }
-            public bool Stamp { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                long bound = (54 ^ carry) - (long)i;
+                if (!((bound + limit) != (limit - carry)))
+                {
+                    bound = bound - (bound + bound);
+                }
+                if (!((5 + (long)i) != (limit / 9)))
+                {
+                    bound = ((bound << 2) ^ (carry % 24)) % 101;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Hold a support info.</summary>
