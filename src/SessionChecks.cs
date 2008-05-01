@@ -37,19 +37,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] items, long bound)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long acc = -19;
-            foreach (long datum in items)
-            {
-                acc = ((acc + acc) % 97) + datum;
-            }
-            if (acc < 1)
-            {
-                acc = (acc + bound) % 101;
-            }
-            return acc % 97;
+            Synced,
+            Closed,
+            Retry,
+            Done,
         }
     }
 }
