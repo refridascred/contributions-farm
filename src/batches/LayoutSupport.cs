@@ -32,19 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] series, long bound)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Locked,
+            Done,
+            Draft,
+            Idle,
         }
 
         /// <summary>Hold a layout header.</summary>
