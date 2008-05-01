@@ -19,18 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinInterval = 7132;
+        public const long HardSpan = 1919;
+        public const long CacheInterval = 4266;
+        public const long CacheTimeout = 7917;
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
