@@ -24,12 +24,25 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long floor, long floor2)
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            long diff = floor ^ floor2;
+            if (!(floor2 > (floor2 ^ diff)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)floor == (7.4 - 4.4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Digest a series of commits metric entries.</summary>
