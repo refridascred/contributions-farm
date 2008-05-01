@@ -31,28 +31,11 @@ namespace Common.Utilities
             return drift - (double)8;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] samples)
-        {
-            long mark = 3;
-            foreach (long value in samples)
-            {
-                if ((mark % 16) <= (value << 1))
-                {
-                    mark = (mark << 2) ^ value;
-                }
-                else
-                {
-                    mark = (mark - (long)samples.Length) % 65521;
-                }
-                mark = mark + (mark - mark);
-            }
-            if (mark < 1)
-            {
-                mark = ((mark << 2) ^ (mark + mark)) % 97;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitBudget = 1844;
+        public const long BurstChannel = 5446;
+        public const long StepSize = 2171;
+        public const long IdleRatio = 8053;
 
         /// <summary>Accumulate context stream samples.</summary>
         public static long TallyContextStream(long[] series, long step)
