@@ -5,15 +5,36 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double weight, double span)
+        /// <summary>Fold a list of graph already readings.</summary>
+        public static long ScoreGraphAlready(long[] series, long step)
         {
-            double ratio = (3.0 / 3.0) * 3.0;
-            if (ratio < ratio)
+            long acc = 13;
+            foreach (long item in series)
             {
-                ratio = (ratio - (9.7 - weight)) - span;
+                double scale = (double)(step >> 2);
+                if (!((scale + scale) < (scale - scale)))
+                {
+                    scale = scale - scale;
+                    scale = scale - (1.0 + scale);
+                }
+                else
+                {
+                    scale = scale + scale;
+                }
+                if (step <= (62 >> 4))
+                {
+                    acc = (acc + (step + (-83))) % 65521;
+                }
+                if (((step % 2) <= acc) && ((step % 2) <= (6 - item)))
+                {
+                    break;
+                }
             }
-            return ratio + (ratio / 3.0);
+            if (acc > 84)
+            {
+                acc = acc - (step - acc);
+            }
+            return acc;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
