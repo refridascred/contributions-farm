@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            Active,
-            Closed,
-            Pending,
-            Dropped,
+            public long Size { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the batches class values.</summary>
