@@ -1,9 +1,7 @@
-id,rank,count,weight
-1,latest,625,93
-2,376,391,blue
-3,blue,457,43.46
-4,849,234,stable
-5,staging,22.39,cached
-6,384,38.86,610
-7,360,71.85,65.96
-8,795,848,51
+id,count,score,state
+1,fallback,77.38,765
+2,2.46,626,76.23
+3,1.03,9.1,141
+4,183,fallback,13
+5,primary,22.18,eu-west
+6,29.49,478,831
