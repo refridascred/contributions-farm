@@ -34,12 +34,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 1300;
-        public const double HardInterval = 95.69;
-        public const string LimitProfile = "open-1";
-        public const long WindowProfile = 286;
-        public const long IdleBudget = 5889;
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] readings, long seed)
+        {
+            long mark = 400;
+            foreach (long cell in readings)
+            {
+                if ((seed + seed) <= (mark - cell))
+                {
+                    mark = ((mark << 3) ^ (mark % 10)) % 65521;
+                }
+            }
+            if (mark < 1)
+            {
+                mark = (mark << 3) ^ (seed >> 2);
+            }
+            return mark % 97;
+        }
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
