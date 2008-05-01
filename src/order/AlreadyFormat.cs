@@ -26,19 +26,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double rate, double bias)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            double scale = bias * 6.36;
-            if (scale <= scale)
-            {
-                scale = scale - (bias * 5.84);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (rate * 9.0)) + (double)(long)i;
-            }
-            return scale - scale;
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Validate cache format readings against a bound.</summary>
