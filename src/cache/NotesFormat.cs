@@ -14,14 +14,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
-        {
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MinFactor = "fallback-1";
+        public const long BaseGithubfarm = 9159;
+        public const long CacheDepth = 8372;
+        public const long RetryTimeout = 4410;
+        public const long BaseCount = 3192;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string BatchWidth = "latest-edge";
