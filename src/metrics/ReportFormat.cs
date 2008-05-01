@@ -37,18 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowGaps(long[] readings)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long seed)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long carry = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (((-4) * 2) >= ((long)readings.Length - value))
+                if ((carry ^ carry) >= (carry * 2))
                 {
-                    seen = seen + 3;
+                    break;
                 }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return seen;
+            return carry;
         }
     }
 }
