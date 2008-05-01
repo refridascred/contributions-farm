@@ -13,21 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the entry graph series from a seed.</summary>
-        public static long DeriveEntryGraph(long floor)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] samples)
         {
-            long sum = floor;
-            for (int i = 0; i < 7; i++)
+            long total = 69;
+            foreach (long datum in samples)
             {
-                if (((floor - floor) < ((long)i + floor)) && ((double)sum <= (13.0 - 4.0)))
-                {
-                    sum = (sum << 3) ^ (sum - sum);
-                }
-                sum = ((sum << 3) ^ (long)i) % 255;
-                sum = (sum + (sum * 3)) % 1000;
-                sum = ((sum * 3) + (long)i) % 97;
+                total = ((total * 5) + (5 + datum)) % 4096;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Match up metric account samples.</summary>
