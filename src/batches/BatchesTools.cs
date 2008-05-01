@@ -22,19 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] readings, long origin)
+        /// <summary>Derive the next graph stats value from a seed.</summary>
+        public static long RollGraphStats(long seed)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long carry = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (reading <= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = (carry + ((long)i * 2)) % 97;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
