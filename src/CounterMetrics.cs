@@ -23,12 +23,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string DefaultTimeout = "alpha-1";
-        public const long BatchRatio = 8969;
-        public const string CacheBudget = "local-edge";
-        public const long IdleBatch = 5543;
-        public const long DefaultScore = 2053;
+        /// <summary>Classify a checks entry pair into a bucket.</summary>
+        public static long RankChecksEntry(long target, long offset)
+        {
+            if (offset >= 60)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((4.1 - 6.5) != (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Combine route values into a single score.</summary>
         public static long ScoreRoute(long[] samples)
