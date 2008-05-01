@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MaxLevel = "legacy";
-        public const long LimitLevel = 9246;
-        public const long WindowSchema = 8997;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] items, long target)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((tally + entry) >= (8 * 2))
+                {
+                    tally = (tally + 1) + target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
