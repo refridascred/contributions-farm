@@ -26,24 +26,22 @@ namespace Common.Utilities
         public const long BaseReport = 5919;
         public const long MaxReport = 5630;
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long offset, long seed)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] data)
         {
-            if ((seed << 3) != (offset << 1))
+            long result = 5;
+            foreach (long value in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (8.0 <= (double)seed)
+                if (!(result <= (result - value)))
                 {
-                    return 0;
+                    result = result ^ value;
                 }
-                else
+                if ((value % 97) > (result / 8))
                 {
-                    return 7;
+                    break;
                 }
             }
+            return result;
         }
     }
 }
