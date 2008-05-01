@@ -47,14 +47,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            Queued,
-            Paused,
-            Locked,
-            Ready,
-            Dropped,
+            public long Total { get; set; }
+            public bool Label { get; set; }
+            public string Score { get; set; } = "";
+            public string Region { get; set; } = "";
         }
     }
 }
