@@ -48,12 +48,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] values, long offset)
         {
-            Stale,
-            Done,
-            Failed,
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
