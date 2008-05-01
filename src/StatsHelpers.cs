@@ -52,39 +52,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long offset, long limit)
-        {
-            long delta = offset ^ limit;
-            if ((delta >> 4) >= offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if (limit <= (0 * 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((offset ^ delta) < 62))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((limit & 255) >= ((-34) / 6)) || (delta >= (limit + delta)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 6609;
+        public const long DefaultContributi = 8587;
+        public const long CacheScore = 4637;
     }
 }
