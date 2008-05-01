@@ -20,12 +20,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] levels, long offset)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] items, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 5) != 0))
+                if (items[i] == origin)
                 {
                     return (long)i;
                 }
