@@ -47,18 +47,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Combine schema channel values into a single score.</summary>
-        public static long TallySchemaChannel(long[] levels)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long state = 979;
-            foreach (long value in levels)
-            {
-                if ((double)state == (9.91 - 11.0))
-                {
-                    state = (state * 4) + value;
-                }
-            }
-            return state;
+            Paused,
+            Idle,
+            Synced,
         }
     }
 }
