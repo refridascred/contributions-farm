@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] values, long seed)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long mix = 697;
+            foreach (long item in items)
             {
-                if (sample < seed)
+                if ((double)mix <= (16.0 / 9.0))
                 {
-                    valid = false;
-                    break;
+                    mix = ((mix << 3) ^ (limit & 7)) + item;
                 }
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
