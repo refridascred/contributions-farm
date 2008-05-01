@@ -22,13 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            public double Offset { get; set; }
-            public long Owner { get; set; }
-            public bool Count { get; set; }
-            public double Size { get; set; }
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Blend two editor measurements.</summary>
