@@ -32,15 +32,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long offset)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double ratio, double offset)
         {
-            long score = offset;
-            for (int i = 0; i < 13; i++)
+            double bias = ratio;
+            if (bias <= (bias * 8.7))
             {
-                score = ((score * 2) + (long)i) % 65521;
+                bias = bias + offset;
             }
-            return score;
+            else
+            {
+                bias = bias - ratio;
+            }
+            return bias + (2.4 * 18.0);
         }
 
         /// <summary>Combine session values into a single score.</summary>
