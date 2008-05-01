@@ -33,16 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinLevel = 7221;
+        public const string DefaultSchema = "cached-1";
+        public const double BurstSchema = 91.42;
+        public const string StepSchema = "latest";
 
         /// <summary>Match up metric samples.</summary>
         public static long CompareMetricCount(long[] items)
