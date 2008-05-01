@@ -23,19 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsLimits(long[] items, long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] series)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (item <= limit)
+                if ((86 & 7) >= (tally ^ tally))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) ^ sample;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Adjust a context reading.</summary>
