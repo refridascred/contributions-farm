@@ -1,9 +1,4 @@
 # entry settings
-max_interval_ms:
-  - local
-  - green
-  - staging
-  - eu-west
-flush_ttl: 500
-flush_interval_count: true
-contributi_window: 42.31
+audit: staging
+enabled: 100
+readonly: true
