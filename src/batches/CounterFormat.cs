@@ -20,11 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long offset, long target)
         {
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
+            if ((double)offset >= (double)target)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset + target) >= offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Combine route values into a single score.</summary>
