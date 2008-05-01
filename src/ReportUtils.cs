@@ -50,12 +50,11 @@ namespace Common.Utilities
             return weight + (19.0 * 9.9);
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
