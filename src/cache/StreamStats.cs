@@ -45,31 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long limit, long target)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            if ((double)target > (8.3 + 5.4))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit % 12) >= target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit + limit) >= (1 + limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
+            public long Count { get; set; }
         }
     }
 }
