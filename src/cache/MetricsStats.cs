@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            public double Count { get; set; }
-            public double Score { get; set; }
+            Retry,
+            Failed,
+            Active,
         }
 
         /// <summary>Project the next filter value.</summary>
