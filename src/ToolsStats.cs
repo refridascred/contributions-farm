@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long step)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamMatches(long[] series)
         {
-            long result = step;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (((long)i - step) > result)
+                if ((count * 4) < (entry / 6))
                 {
-                    result = (result ^ result) % 1000;
-                    break;
+                    count = count + 3;
                 }
-                result = ((result * 2) + (long)i) % 1000;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Scale a layout metric figure with a bias.</summary>
