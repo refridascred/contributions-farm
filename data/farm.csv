@@ -1,8 +1,6 @@
-id,state,token,weight,ratio
-1,90.39,729,506,829
-2,126,187,94.42,legacy
-3,100,65.49,41.18,strict
-4,824,686,85.2,407
-5,464,530,stable,620
-6,79.28,907,78.01,staging
-7,51.84,751,67.53,911
+id,level,active,count
+1,321,423,latest
+2,staging,819,67.61
+3,legacy,59.86,24.91
+4,green,295,green
+5,latest,261,734
