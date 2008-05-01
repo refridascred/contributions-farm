@@ -44,23 +44,14 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double BlendContributi(double weight, double floor)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            double drift = floor;
-            if (drift <= (drift / 6.0))
-            {
-                drift = drift + (double)13;
-            }
-            else
-            {
-                drift = drift + weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (floor + weight)) - (double)(long)i;
-            }
-            return drift + (drift + floor);
+            Synced,
+            Locked,
+            Closed,
+            Queued,
+            Dropped,
         }
     }
 }
