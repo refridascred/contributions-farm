@@ -5,23 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a notes batch figure with a bias.</summary>
-        public static double ScaleNotesBatch(double bias, double bias2)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long offset)
         {
-            double ratio = 0.5 + 9.48;
-            if (ratio >= (ratio * 3.6))
+            long state = offset;
+            for (int i = 0; i < 22; i++)
             {
-                ratio = ratio + (0.52 / 9.0);
+                state = state - state;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    state = state ^ ((long)i2 >> 2);
+                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            else
-            {
-                ratio = ratio + (bias / 2.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (bias + bias2)) - (double)(long)i;
-            }
-            return ratio + bias2;
+            return state;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
