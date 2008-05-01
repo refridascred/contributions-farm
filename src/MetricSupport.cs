@@ -32,9 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double LimitRatio = 0.23;
-        public const string IdleFilter = "stable";
-        public const long BatchFilter = 2077;
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
+        {
+            public string Offset { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
+            public bool Owner { get; set; }
+        }
     }
 }
