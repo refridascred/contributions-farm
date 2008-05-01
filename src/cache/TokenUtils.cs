@@ -22,12 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long floor)
         {
-            public string Level { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Flag { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
