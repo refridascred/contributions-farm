@@ -1,34 +1,8 @@
 # support settings
-channel_interval: 3994
-idle_delay:
-  idle_size:
-    - eu-west
-    - eu-west
-  min_window_ms: 100
-  soft_limit_s: staging
-  poll_retries_pct:
-    retry_ratio: 3338
-    poll_size_s:
-      - 298
-      - 494
-      - 284
-      - 150
-    verbose: true
-  cache_capacity: 32
-max_timeout_count:
-  retry_window_count:
-    compress: 48
-    base_ratio: 30
-    token_ttl: 2037
-    checks_retries: 15
-    warm_size_ms: 250
-    hard_size_count: 60
-  poll_threshold_ms: 17
-  format_size:
-    - 402
-    - 18
-    - 351
-    - 371
-  strict: 5074
-  cache_ttl_ms: cached
-burst_delay_s: 23.3
+stats_interval:
+  - 489
+  - 169
+  - 99
+  - 352
+burst_ratio: 60
+base_window_s: 99
