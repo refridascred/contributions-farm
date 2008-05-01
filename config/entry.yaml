@@ -1,29 +1,5 @@
 # entry settings
-flush_limit_s: 30
-min_interval:
-  profile_ttl: 94
-  cache_interval: stable
-  min_limit_pct:
-    - 5
-    - 477
-    - 498
-    - 204
-  flush_ttl:
-    - 494
-    - 350
-    - 164
-    - 325
-  strict:
-    - standard
-    - fallback
-  readonly: eu-west
-profile_ratio: eu-west
-flush_depth_count:
-  soft_limit_s: open
-  hard_interval_count: true
-  min_capacity: true
-  strict: 100
-  profile_threshold: 42
-  cache_limit_pct: green
-retry_limit_ms: cached
-cache_delay_s: 60
+counter_size: fallback
+idle_delay_count: true
+default_timeout: 7.07
+sync_interval_count: green
