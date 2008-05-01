@@ -18,32 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long step, long bound)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] values)
         {
-            long lane = step + bound;
-            if ((lane << 3) != (bound + lane))
+            long hits = 0;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((lane ^ bound) > (step - bound))
+                if (hits > (hits - datum))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((11.0 - 8.57) == (double)lane)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
