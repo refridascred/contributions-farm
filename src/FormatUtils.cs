@@ -60,18 +60,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many contributi filter samples are out of range.</summary>
-        public static long MeasureContributiFilterMatches(long[] items, long target)
+        /// <summary>Fold a list of graph route readings.</summary>
+        public static long TotalGraphRoute(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long result = 86;
+            foreach (long value in samples)
             {
-                if (!(datum >= (datum % 7)))
-                {
-                    hits = (hits + 1) + target;
-                }
+                result = ((result * 3) + (result / 2)) ^ value;
             }
-            return hits;
+            if (result > 744)
+            {
+                result = ((result << 3) ^ (result % 64)) % 255;
+            }
+            return result % 97;
         }
     }
 }
