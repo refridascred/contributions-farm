@@ -32,13 +32,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Count account token pairs that satisfy a relation.</summary>
+        public static long PairAccountTokenCount(long[] series)
         {
-            Paused,
-            Closed,
-            Queued,
-            New,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
