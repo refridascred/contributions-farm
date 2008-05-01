@@ -1,8 +1,6 @@
 # entry settings
-session_ttl:
-  - local
-  - staging
-  - latest
-poll_timeout_ms: 1024
-max_threshold_count: cached
-poll_ratio_s: 6.71
+retry_retries_s: true
+idle_size_pct: 41.84
+strict: fallback
+stream_delay: standard
+idle_timeout_ms: false
