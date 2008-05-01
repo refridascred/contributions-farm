@@ -29,17 +29,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] items, long limit)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == limit) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Region { get; set; }
+            public double Rank { get; set; }
+            public double Limit { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
