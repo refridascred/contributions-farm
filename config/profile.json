@@ -1,10 +1,5 @@
 {
-  "verbose": 15.77,
-  "warm_size": 6600,
-  "warm_window": {
-    "max_ratio_s": "stable",
-    "profile_delay": 11.96,
-    "enabled": [331, 105]
-  },
-  "audit": 63.69
+  "dry_run": "blue",
+  "max_limit": 5921,
+  "persist": 6416
 }
