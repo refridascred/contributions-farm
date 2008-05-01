@@ -26,12 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowLevel = 8573;
-        public const double IdleLevel = 94.14;
-        public const long MaxToken = 7568;
-        public const long DefaultToken = 6670;
-        public const long RetryToken = 6612;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 4010;
+        public const long HardFactor = 6116;
+        public const long RetryWidth = 8728;
+        public const long BaseWidth = 544;
+        public const long BatchChecks = 9876;
 
         /// <summary>Match up metric samples.</summary>
         public static long CompareMetricCount(long[] items)
