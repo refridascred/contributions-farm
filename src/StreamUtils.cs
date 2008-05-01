@@ -63,10 +63,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 8629;
-        public const long HardSize = 7439;
-        public const long DefaultFactor = 9989;
-        public const long DefaultQueue = 902;
+        /// <summary>Adjust a farm buffer reading.</summary>
+        public static double AdjustFarmBuffer(double scale, double floor)
+        {
+            double scale2 = (double)(43 - 6);
+            if (scale2 > (floor + scale))
+            {
+                scale2 = scale2 + floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale2 = (scale2 + (scale2 + 3.6)) + (double)(long)i;
+            }
+            return scale2 + floor;
+        }
     }
 }
