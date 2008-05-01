@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next cache payload value from a seed.</summary>
-        public static long RollCachePayload(long target)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] data, long target)
         {
-            long state = target;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                state = (state ^ (state + target)) % 101;
-                state = ((state * 3) + (long)i) % 65521;
+                if ((0.1 / 7.0) >= (double)target)
+                {
+                    tally = (tally + 2) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
