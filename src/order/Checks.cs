@@ -54,13 +54,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public bool Region { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 5091;
+        public const double MaxRatio = 53.22;
+        public const long BaseCluster = 2335;
     }
 }
