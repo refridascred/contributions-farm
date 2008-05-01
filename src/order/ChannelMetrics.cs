@@ -30,22 +30,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine context buffer values into a single score.</summary>
-        public static long ScoreContextBuffer(long[] values, long bound)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] samples)
         {
-            long result = -234;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (bound <= (item + result))
+                if ((tally % 2) < (value - value))
                 {
-                    result = (result ^ ((-7) << 3)) % 97;
-                }
-                else
-                {
-                    result = (result ^ (128 + 23)) % 65521;
+                    tally = tally + 3;
                 }
             }
-            return result % 97;
+            return tally;
         }
     }
 }
