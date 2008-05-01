@@ -26,12 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            public long Region { get; set; }
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
+            public bool Limit { get; set; }
+            public string Score { get; set; } = "";
+            public double Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define session limits and defaults.</summary>
