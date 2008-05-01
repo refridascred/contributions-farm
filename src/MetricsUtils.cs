@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphHits(long[] items)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((double)entry >= (3.05 * 9.0))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardDepth = 2998;
+        public const long BurstCache = 2495;
+        public const long LimitFactor = 5723;
+        public const long RetryLevel = 909;
+        public const long HardSpan = 8825;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long TallyBufferOutliers(long[] series)
