@@ -44,18 +44,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] values, long seed)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (seed < (seed + seed))
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public bool Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the cluster level values.</summary>
