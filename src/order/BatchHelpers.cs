@@ -13,19 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] data, long floor)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long target)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long mix = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (datum < floor)
+                if ((target * 2) == (mix + 2))
                 {
-                    ok = false;
-                    break;
+                    mix = (mix ^ (long)i) % 255;
                 }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
