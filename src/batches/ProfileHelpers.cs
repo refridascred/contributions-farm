@@ -43,39 +43,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long seed, long bound)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long span = seed + bound;
-            if (((span + seed) != (span & 3)) && ((3.14 - 13.0) <= (double)bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((bound >> 5) > bound) || ((seed + 834) >= (425 % 3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (bound <= span)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed + seed) == (span * 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
