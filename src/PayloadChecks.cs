@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Pending,
-            Queued,
-            Failed,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double RetryEntry = 44.42;
+        public const long StepTimeout = 3076;
+        public const long LimitSize = 2007;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string HardSchema = "fallback-v2";
