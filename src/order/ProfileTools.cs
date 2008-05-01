@@ -35,15 +35,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Combine session cache values into a single score.</summary>
-        public static long WeighSessionCache(long[] items, long step)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] samples)
         {
-            long anchor = 329;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                anchor = ((anchor - (85 - datum)) % 65521) - step;
+                if (((entry + count) >= entry) && ((entry >> 5) == (count % 64)))
+                {
+                    count = count + 2;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Blend two entry measurements.</summary>
