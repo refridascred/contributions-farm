@@ -79,19 +79,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] items, long floor)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long floor, long origin)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long delta = floor ^ origin;
+            if (!(floor >= (delta ^ origin)))
             {
-                if (reading != floor)
+                return 1;
+            }
+            else
+            {
+                if ((double)origin >= (17.0 / 9.0))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return flag;
         }
     }
 }
