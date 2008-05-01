@@ -43,11 +43,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double gain, double span)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            double scale = gain / 2.0;
-            return (scale - gain) + span;
+            Queued,
+            Paused,
+            Locked,
+            Ready,
+            Dropped,
         }
     }
 }
