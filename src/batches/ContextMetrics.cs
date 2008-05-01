@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] series, long limit)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long state = 99;
+            foreach (long sample in data)
             {
-                if (!!((tally + limit) <= limit))
+                if ((double)origin != (3.1 + 7.07))
                 {
-                    tally = (tally + 3) + sample;
+                    state = state ^ sample;
                 }
             }
-            return tally;
+            return state % 65521;
         }
 
         /// <summary>Hold a batch entry.</summary>
