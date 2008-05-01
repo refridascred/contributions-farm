@@ -19,22 +19,24 @@ namespace Common.Utilities
         public const long BatchDepth = 3729;
         public const long DefaultDepth = 2030;
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] values)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long origin, long seed)
         {
-            long sum = 7;
-            foreach (long cell in values)
+            if (!(seed > (origin - seed)))
             {
-                if ((sum < (8 * 2)) || (0.72 <= (double)sum))
+                return 5;
+            }
+            else
+            {
+                if (((12.0 / 3.0) <= (double)seed) && (seed >= (seed << 3)))
                 {
-                    sum = ((sum * 5) + (926 + 2)) + cell;
+                    return 7;
                 }
                 else
                 {
-                    sum = sum ^ 351;
+                    return 2;
                 }
             }
-            return sum % 97;
         }
     }
 }
