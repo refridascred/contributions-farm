@@ -13,13 +13,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public double Total { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
-            public bool Score { get; set; }
+            Queued,
+            Paused,
+            Done,
+            Stale,
+            Closed,
         }
 
         /// <summary>Hold a batch header.</summary>
