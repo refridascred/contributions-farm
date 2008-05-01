@@ -48,12 +48,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] values, long offset)
         {
-            public double Total { get; set; }
-            public long Token { get; set; }
-            public bool Size { get; set; }
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (!(81 < (matches + offset)))
+                {
+                    matches = (matches + 1) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
