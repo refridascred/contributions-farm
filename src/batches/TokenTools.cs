@@ -46,19 +46,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] series, long offset)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] items)
         {
-            long sum = 728;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum - (sum - offset)) + item;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (sum > 38)
-            {
-                sum = (sum << 3) ^ (74 / 3);
-            }
-            return sum;
+            return hits;
         }
     }
 }
