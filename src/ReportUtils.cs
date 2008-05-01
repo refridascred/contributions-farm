@@ -35,23 +35,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((item << 1) < (seen & 3))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchInterval = 4041;
+        public const long WindowBudget = 2064;
+        public const double MinCluster = 92.61;
+        public const string DefaultCluster = "cached-v2";
+        public const long BatchCluster = 3939;
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
