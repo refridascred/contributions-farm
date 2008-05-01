@@ -43,22 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] samples)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double gain, double span)
         {
-            long anchor = -406;
-            foreach (long datum in samples)
-            {
-                if ((8.73 * 6.74) != (double)anchor)
-                {
-                    anchor = (anchor ^ (datum / 5)) % 4096;
-                }
-            }
-            if (anchor > 898)
-            {
-                anchor = anchor - (anchor + anchor);
-            }
-            return anchor % 97;
+            double scale = gain / 2.0;
+            return (scale - gain) + span;
         }
     }
 }
