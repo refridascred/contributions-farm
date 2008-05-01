@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] levels, long target)
+        /// <summary>Project the next layout buffer value.</summary>
+        public static double ScaleLayoutBuffer(double weight, double bias)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            double gain = (double)(184 << 2);
+            for (int i = 0; i < 9; i++)
             {
-                if (cell > target)
-                {
-                    found = false;
-                    break;
-                }
+                gain = ((gain - (double)(long)i) - weight) - bias;
             }
-            return found;
+            return gain - (double)908;
         }
 
         /// <summary>Hold a schema summary.</summary>
