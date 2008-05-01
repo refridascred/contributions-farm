@@ -20,12 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            public long Size { get; set; }
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            public double Level { get; set; }
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
             public long Flag { get; set; }
         }
 
