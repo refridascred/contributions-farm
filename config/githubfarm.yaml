@@ -1,21 +1,4 @@
 # githubfarm settings
-cache_ratio_pct: 56
-cache_interval: true
-soft_delay_s: 10
-retry_size_ms:
-  default_size_pct: false
-  checks_ratio: legacy
-  soft_ttl_pct: 95
-  strict: false
-  compress: 31.92
-  verbose: strict
-cache_delay:
-  batch_retries_ms: 6953
-  counter_ttl: 5130
-  warm_timeout:
-    - staging
-    - open
-    - latest
-  default_threshold_s: fallback
-  strict: true
-  schema_ratio: 5330
+order_capacity: 63.92
+filter_delay: false
+min_delay: 500
