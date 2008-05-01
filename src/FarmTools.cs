@@ -26,18 +26,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the record order entries that pass the check.</summary>
-        public static long TallyRecordOrderOutliers(long[] data, long offset)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((325 - 1) > matches)
-                {
-                    matches = ((matches + 3) - cell) - offset;
-                }
-            }
-            return matches;
+            Ready,
+            Dropped,
+            Failed,
+            Synced,
+            Queued,
         }
     }
 }
