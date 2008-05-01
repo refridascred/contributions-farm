@@ -48,11 +48,24 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long limit, long bound)
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            if ((bound < (bound * 5)) && ((bound + limit) != (limit & 127)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)bound > (16.0 + 5.3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a session options.</summary>
