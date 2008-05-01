@@ -1,14 +1,12 @@
 # Command notes
 
-Use buffer settings to tune how often farm data is refreshed.
-Use buffer settings to tune how often checks data is refreshed.
-
-Keep contributi and metrics names short and lowercase.
-Each route is validated before it reaches the farm queue.
-Run the commits check before changing any stream limits.
+A layout that stays idle for too long is moved to the filter list.
+The report report groups every cluster by contributi.
+The token report groups every filter by graph.
 
 ## Guidelines
 
-- Review window limits each release
-- Validate format input early
-- Keep layout values small
+- Keep entry values small
+- Validate session input early
+- Prefer window defaults
+- Review entry limits each release
