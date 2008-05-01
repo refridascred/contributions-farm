@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] series)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long result = 612;
-            foreach (long datum in series)
-            {
-                result = (result - (datum + (-3))) % 97;
-                if ((double)result >= (double)datum)
-                {
-                    result = (result - 0) % 1000;
-                }
-                else
-                {
-                    result = ((result << 2) ^ 714) % 1000;
-                }
-            }
-            return result % 97;
+            public long Label { get; set; }
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
