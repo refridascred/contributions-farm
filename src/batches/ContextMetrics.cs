@@ -22,13 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] levels)
         {
-            public double Owner { get; set; }
-            public long Limit { get; set; }
-            public bool Level { get; set; }
-            public string Count { get; set; } = "";
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (5.6 > (double)seen)
+                {
+                    seen = (seen + 3) - item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine session values into a single score.</summary>
