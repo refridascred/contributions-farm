@@ -23,19 +23,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatHits(long[] readings, long target)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)matches <= (2.8 * 5.5))
-                {
-                    matches = ((matches + 1) - reading) - target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string DefaultTimeout = "alpha-1";
+        public const long BatchRatio = 8969;
+        public const string CacheBudget = "local-edge";
+        public const long IdleBatch = 5543;
+        public const long DefaultScore = 2053;
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
