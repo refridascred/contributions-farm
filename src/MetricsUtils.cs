@@ -47,19 +47,19 @@ namespace Common.Utilities
         public const long BatchFormat = 5959;
         public const long SoftFormat = 3715;
 
-        /// <summary>Scale a cluster command figure with a bias.</summary>
-        public static double SmoothClusterCommand(double ratio, double offset)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] items, long floor)
         {
-            double load = ratio;
-            if (load >= ratio)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                load = load + (load + ratio);
+                if (reading != floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (ratio - offset)) - (double)(long)i;
-            }
-            return load - (double)66;
+            return flag;
         }
     }
 }
