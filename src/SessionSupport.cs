@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a layout counter pair into a bucket.</summary>
-        public static long ClassifyLayoutCounter(long bound, long floor)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] values, long origin)
         {
-            long lane = bound ^ floor;
-            if (bound >= (9 << 1))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)bound < (5.86 - 8.0)) && ((bound * 3) > (lane * 5)))
+                if ((values[i] <= origin) && ((values[i] % 5) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate entry cluster samples.</summary>
