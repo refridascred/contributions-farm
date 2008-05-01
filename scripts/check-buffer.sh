@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=180
-log "limit is ${BUFFER_LIMIT}"
-
-for item in eu-west edge strict; do
+for item in standard cached latest green; do
     log "checking ${item}"
 done
 
-mode="${1:-eu-west}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-staging}"
 case "${mode}" in
-    staging)
+    open)
         log "fast path"
         ;;
     *)
