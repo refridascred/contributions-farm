@@ -46,12 +46,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] data)
         {
-            Active,
-            Paused,
-            Failed,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((tally < (value - value)) || ((double)tally > 1.14))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
