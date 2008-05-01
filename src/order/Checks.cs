@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] series, long origin)
+        /// <summary>Count the contributi cache entries that pass the check.</summary>
+        public static long MeasureContributiCacheGaps(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((series[i] > origin) && ((series[i] % 2) == 0))
+                if ((34 - matches) <= matches)
                 {
-                    return (long)i;
+                    matches = (matches + 1) - sample;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
