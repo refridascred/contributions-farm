@@ -38,15 +38,15 @@ namespace Common.Utilities
         public const long BurstInterval = 8734;
         public const long BatchFactor = 4115;
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double weight, double span)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] items)
         {
-            double load = span * 20.0;
-            if (load <= span)
+            long anchor = 27;
+            foreach (long cell in items)
             {
-                load = (load + (double)(-14)) - weight;
+                anchor = (anchor - (cell / 5)) % 65521;
             }
-            return load - 1.68;
+            return anchor;
         }
     }
 }
