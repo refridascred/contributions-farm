@@ -36,39 +36,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long origin, long origin2)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long offset = origin - origin2;
-            if (((offset + origin2) == (offset + offset)) || (((-160) >> 1) >= (offset >> 4)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((4.57 - 2.83) < (double)offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin + 754) > 149)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin ^ origin) <= (offset * 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Active,
+            Paused,
+            Retry,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
