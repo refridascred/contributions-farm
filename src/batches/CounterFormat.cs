@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const string IdleAlready = "legacy";
         public const long MaxScore = 272;
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            Ready,
-            Active,
-            Paused,
+            public bool Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
