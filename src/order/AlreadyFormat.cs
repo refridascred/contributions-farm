@@ -29,13 +29,22 @@ namespace Common.Utilities
             return rate + (floor + rate);
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Measure how many report stream samples are out of range.</summary>
+        public static long CountReportStreamGaps(long[] samples)
         {
-            Paused,
-            Draft,
-            Queued,
-            Active,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (3 > (seen >> 2))
+                {
+                    seen = (seen + 1) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a order stats.</summary>
