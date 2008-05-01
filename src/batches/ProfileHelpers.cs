@@ -64,10 +64,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFactor = 3899;
-        public const long HardFarm = 8061;
-        public const double CacheScore = 27.22;
-        public const long DefaultFarm = 7374;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinLevel = 1549;
+        public const long BaseBudget = 2919;
+        public const double SoftDepth = 15.67;
     }
 }
