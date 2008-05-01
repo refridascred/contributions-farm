@@ -38,23 +38,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double weight, double bias)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelGaps(long[] series)
         {
-            double scale = (double)(143 & 255);
-            if (scale >= (scale / 2.0))
+            long hits = 0;
+            foreach (long value in series)
             {
-                scale = scale + 1.2;
+                if (5.0 >= (double)value)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                scale = scale - (scale / 2.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale + (bias - weight);
+            return hits;
         }
     }
 }
