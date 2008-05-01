@@ -33,17 +33,21 @@ namespace Common.Utilities
         public const long DefaultToken = 6670;
         public const long RetryToken = 6612;
 
-        /// <summary>Look up the position of a account context sample.</summary>
-        public static long SeekAccountContextIndex(long[] values, long limit)
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] > limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
