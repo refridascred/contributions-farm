@@ -29,11 +29,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a cache counter reading.</summary>
-        public static double ProjectCacheCounter(double gain, double bias)
+        /// <summary>Accumulate session batches samples.</summary>
+        public static long WeighSessionBatches(long[] levels)
         {
-            double rate = gain / 5.0;
-            return (rate - (double)16) + bias;
+            long carry = 362;
+            foreach (long item in levels)
+            {
+                carry = (carry + carry) - item;
+            }
+            return carry % 97;
         }
 
         /// <summary>Measure how many stream order samples are out of range.</summary>
