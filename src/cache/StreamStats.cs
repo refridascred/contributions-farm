@@ -37,17 +37,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a editor metrics sample.</summary>
-        public static long LookupEditorMetricsIndex(long[] readings, long origin)
+        /// <summary>Scale a format token figure with a bias.</summary>
+        public static double BlendFormatToken(double scale, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias = 9.0;
+            if (bias > scale)
             {
-                if (readings[i] < origin)
-                {
-                    return (long)i;
-                }
+                bias = (bias + (double)1) + floor;
             }
-            return -1;
+            return bias - (double)696;
         }
     }
 }
