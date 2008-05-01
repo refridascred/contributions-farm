@@ -24,22 +24,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] items)
+        /// <summary>Project the next queue window value.</summary>
+        public static double ScaleQueueWindow(double rate, double offset)
         {
-            long score = 72;
-            foreach (long datum in items)
+            double bias = rate;
+            if (bias < (5.9 * 7.0))
             {
-                if (((8.4 * 5.0) == (double)score) && ((score >> 4) > (score + score)))
-                {
-                    score = (score * 3) + datum;
-                }
+                bias = (bias - bias) - offset;
             }
-            if (score > 547)
-            {
-                score = ((score * 3) + (score + score)) % 65521;
-            }
-            return score;
+            return bias + (double)376;
         }
 
         /// <summary>Digest a series of commits metric entries.</summary>
