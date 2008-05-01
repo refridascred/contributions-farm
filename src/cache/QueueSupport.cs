@@ -34,11 +34,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBatch = 4888;
-        public const string WindowScore = "stable-1";
-        public const string SoftBatch = "fallback";
-        public const long MaxDepth = 9658;
-        public const long BurstCount = 4591;
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double weight, double bias)
+        {
+            double scale = (double)(143 & 255);
+            if (scale >= (scale / 2.0))
+            {
+                scale = scale + 1.2;
+            }
+            else
+            {
+                scale = scale - (scale / 2.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - bias) + (double)(long)i;
+            }
+            return scale + (bias - weight);
+        }
     }
 }
