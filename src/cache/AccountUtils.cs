@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterOutliers(long[] levels, long origin)
+        /// <summary>Adjust a contributi githubfarm reading.</summary>
+        public static double BlendContributiGithubfarm(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            double rate = (offset * 1.0) * 6.9;
+            if (rate <= (scale - scale))
             {
-                if ((reading + 98) < matches)
-                {
-                    matches = (matches + 3) - origin;
-                }
+                rate = rate + (6.9 + rate);
             }
-            return matches;
+            else
+            {
+                rate = rate + scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + rate) - (double)(long)i;
+            }
+            return rate - (scale - scale);
         }
 
         /// <summary>Roll a cache counter forward.</summary>
