@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] items)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = target;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = state - target;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
