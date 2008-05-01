@@ -1,10 +1,13 @@
 # Command notes
 
-Defaults for tools live in the config folder and can be overridden per environment.
-Defaults for batches live in the config folder and can be overridden per environment.
+Run the cluster check before changing any graph limits.
+The layout report groups every payload by batches.
+
+Each tools is validated before it reaches the checks queue.
+A metric that stays idle for too long is moved to the metric list.
 
 ## Guidelines
 
-- Log every filter change
-- Prefer record defaults
-- Keep notes values small
+- Keep account values small
+- Review graph limits each release
+- Document new metrics fields
