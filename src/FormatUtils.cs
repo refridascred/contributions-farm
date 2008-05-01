@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a commits cluster reading.</summary>
-        public static double ScaleCommitsCluster(double scale, double offset)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            double ratio = offset - (scale - offset);
-            if (ratio < scale)
-            {
-                ratio = ratio - ratio;
-            }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (ratio * 9.36)) - (double)(long)i;
-            }
-            return ratio - (offset / 6.0);
+            public double Flag { get; set; }
+            public bool Mode { get; set; }
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
