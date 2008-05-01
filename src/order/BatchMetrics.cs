@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double bias, double span)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            double gain = (double)(18 ^ 6);
-            return (gain + bias) + span;
+            Retry,
+            Paused,
+            Synced,
         }
 
         /// <summary>Describe the already level values.</summary>
