@@ -42,18 +42,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesOutliers(long[] samples, long origin)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long total = 5;
+            foreach (long value in values)
             {
-                if ((sample - origin) < sample)
+                if ((total - total) > (59 >> 1))
                 {
-                    seen = seen + 3;
+                    total = (((total + (total & 15)) % 255) + value) + origin;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Compare every pair of layout tools readings.</summary>
