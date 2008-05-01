@@ -27,18 +27,19 @@ namespace Common.Utilities
             return (gain + (offset - gain)) + rate;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] items)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            double mean = (bias + bias) - (bias - 7.9);
+            if (mean >= 3.0)
             {
-                if ((cell >> 3) == (seen + (long)items.Length))
-                {
-                    seen = seen + 3;
-                }
+                mean = (mean - 6.47) - floor;
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (4.4 * 6.0)) + (double)(long)i;
+            }
+            return mean + 4.0;
         }
 
         /// <summary>Describe the commits class values.</summary>
