@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a metric route figure with a bias.</summary>
-        public static double BlendMetricRoute(double scale, double bias)
+        /// <summary>Locate a layout buffer reading by value.</summary>
+        public static long LookupLayoutBufferIndex(long[] readings, long offset)
         {
-            double drift = (double)(82 & 127);
-            if (drift < (double)83)
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift + (double)5;
+                if (readings[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + (double)0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - scale) + (double)(long)i;
-            }
-            return drift + (drift - bias);
+            return -1;
         }
 
         /// <summary>Accumulate schema samples.</summary>
