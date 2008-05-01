@@ -1,8 +1,8 @@
 {
-  "record_delay": "fallback",
-  "soft_timeout_s": 86.05,
-  "base_capacity_count": "legacy",
-  "default_limit": 78.38,
-  "checks_depth": ["blue", "staging", "blue", "eu-west"],
-  "window_retries": 500
+  "soft_timeout": true,
+  "audit": 88.31,
+  "buffer_window": 1024,
+  "default_ratio": "latest",
+  "sync_retries": "fallback",
+  "sync_retries_s": true
 }
