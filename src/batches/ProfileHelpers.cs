@@ -80,18 +80,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] readings)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long target)
         {
-            long anchor = 0;
-            foreach (long reading in readings)
+            long result = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((1 * 3) >= anchor)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    anchor = ((anchor << 3) ^ (reading + anchor)) % 65521;
+                    result = (result ^ (target + target)) ^ (long)i2;
                 }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return anchor;
+            return result;
         }
     }
 }
