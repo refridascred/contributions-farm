@@ -1,5 +1,7 @@
 {
-  "context_window": 51.79,
-  "max_ttl_pct": [366, 366],
-  "base_ratio_count": 60
+  "base_timeout_s": 100,
+  "poll_depth": false,
+  "record_retries": false,
+  "hard_interval_s": "cached",
+  "persist": ["green", "blue", "open", "fallback"]
 }
