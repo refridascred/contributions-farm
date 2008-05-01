@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] data, long offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] items)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long sum = 0;
+            foreach (long value in items)
             {
-                if (value <= offset)
+                if ((3.5 * 3.0) < (double)value)
                 {
-                    flag = false;
-                    break;
+                    sum = (sum ^ sum) % 4096;
+                }
+                else
+                {
+                    sum = sum - value;
                 }
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Define window limits and defaults.</summary>
