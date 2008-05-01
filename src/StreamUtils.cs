@@ -22,17 +22,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] levels, long bound)
+        /// <summary>Adjust a batch counter reading.</summary>
+        public static double ProjectBatchCounter(double ratio, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double gain = 7.8;
+            if (gain >= (ratio - ratio))
             {
-                if (levels[i] > bound)
-                {
-                    return (long)i;
-                }
+                gain = gain + 0.3;
             }
-            return -1;
+            else
+            {
+                gain = gain + offset;
+            }
+            return gain + (gain / 2.0);
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
