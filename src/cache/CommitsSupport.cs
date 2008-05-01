@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] items, long seed)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] readings, long target)
         {
-            long sum = 6;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = sum ^ (reading / 3);
-                if (reading > seed)
+                if ((readings[i] >= target) && ((readings[i] % 2) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
