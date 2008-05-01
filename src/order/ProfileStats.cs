@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long target)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] data, long seed)
         {
-            long state = target;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (!((target + (long)i) >= state))
+                if ((seed * 5) >= (47 + count))
                 {
-                    state = state - (long)i;
+                    count = (count + 2) ^ item;
                 }
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
