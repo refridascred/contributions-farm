@@ -45,15 +45,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a format token figure with a bias.</summary>
-        public static double BlendFormatToken(double scale, double floor)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long limit, long target)
         {
-            double bias = 9.0;
-            if (bias > scale)
+            if ((double)target > (8.3 + 5.4))
             {
-                bias = (bias + (double)1) + floor;
+                return 7;
             }
-            return bias - (double)696;
+            else
+            {
+                if ((limit % 12) >= target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit + limit) >= (1 + limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
