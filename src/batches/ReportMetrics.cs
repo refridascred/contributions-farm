@@ -26,12 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstTimeout = 8079;
-        public const long BaseDepth = 3570;
-        public const double SoftWidth = 23.22;
-        public const long MinPayload = 9643;
-        public const long MaxPayload = 5788;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((value << 1) == (count ^ count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long HardLevel = 9483;
