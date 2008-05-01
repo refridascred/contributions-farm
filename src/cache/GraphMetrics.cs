@@ -65,12 +65,19 @@ namespace Common.Utilities
             return bias + (2.4 * 18.0);
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Check that every already support entry stays within the limit.</summary>
+        public static bool CheckAlreadySupportRange(long[] samples, long bound)
         {
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
-            public double Score { get; set; }
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
