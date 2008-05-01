@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long origin, long seed)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] items, long step)
         {
-            if ((origin * 5) <= (29 >> 5))
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((1 < origin) || (origin <= (origin - seed)))
+                if ((datum / 5) > datum)
                 {
-                    return 6;
+                    count = (count + 2) + step;
                 }
                 else
                 {
-                    if ((seed + seed) > (seed + 70))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)origin == (3.5 * 18.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
