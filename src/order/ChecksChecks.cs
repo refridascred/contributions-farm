@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            public string Count { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
+            public double Level { get; set; }
+            public long Label { get; set; }
+            public bool Size { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
