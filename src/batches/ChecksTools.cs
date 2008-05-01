@@ -49,18 +49,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] items, long bound)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (hits > (entry + entry))
-                {
-                    hits = (hits + 3) - bound;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public double Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
