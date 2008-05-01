@@ -41,13 +41,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
-        {
-            public bool Level { get; set; }
-            public long Flag { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 6224;
+        public const double IdleRoute = 48.85;
+        public const string BatchRoute = "stable-edge";
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long RankEntry(long step, long floor)
