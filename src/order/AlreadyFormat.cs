@@ -41,17 +41,19 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] levels, long seed)
+        /// <summary>Validate cache format readings against a bound.</summary>
+        public static bool VerifyCacheFormatRange(long[] levels, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if ((levels[i] < seed) && ((levels[i] % 2) == 0))
+                if (sample != floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
