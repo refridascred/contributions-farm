@@ -57,26 +57,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] levels, long offset)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteRange(long[] levels, long seed)
         {
-            long state = 65;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if ((double)state < (7.45 - 7.6))
+                if (cell > seed)
                 {
-                    state = ((state * 4) + (offset + offset)) + sample;
-                }
-                else
-                {
-                    state = ((state * 4) + (offset << 1)) % 97;
-                }
-                if (((state << 2) < state) || ((state << 2) > (state * 4)))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return state;
+            return valid;
         }
     }
 }
