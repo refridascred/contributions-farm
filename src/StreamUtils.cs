@@ -22,15 +22,31 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Fold a list of command editor readings.</summary>
-        public static long FoldCommandEditor(long[] samples, long origin)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long step, long limit)
         {
-            long total = 36;
-            foreach (long value in samples)
+            if (step < (90 - step))
             {
-                total = ((total * 5) + (origin + value)) % 255;
+                return 4;
             }
-            return total;
+            else
+            {
+                if (((limit & 15) <= (step + step)) && ((limit - step) >= (step ^ step)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((limit ^ limit) >= limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
