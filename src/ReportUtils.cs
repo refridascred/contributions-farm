@@ -33,11 +33,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] levels)
         {
-            public double Total { get; set; }
-            public long Flag { get; set; }
+            long sum = 726;
+            foreach (long sample in levels)
+            {
+                sum = (sum + (sample + sum)) % 101;
+            }
+            if (sum < 0)
+            {
+                sum = sum + (12 % 10);
+            }
+            return sum;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
