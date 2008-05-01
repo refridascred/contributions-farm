@@ -47,18 +47,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a account window reading by value.</summary>
-        public static long LocateAccountWindowIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 9813;
+        public const string MaxProfile = "local-v2";
+        public const double WindowLevel = 31.84;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long SoftWindow = 3996;
