@@ -1,21 +1,21 @@
 # githubfarm settings
-flush_interval_ms: 1024
-account_ratio:
-  tools_ttl: false
-  githubfarm_size:
-    warm_window:
-      - legacy
-      - strict
-      - local
-    warm_timeout: fallback
-    min_threshold: 4689
-    batch_ttl_ms: 9629
-    command_depth: false
-  burst_capacity_count: 3
-  soft_retries_pct: 7791
-batch_interval: blue
-flush_threshold_pct:
-  soft_ttl_s: eu-west
-  soft_ttl: cached
-  batch_capacity: true
-  soft_depth_pct: 57.24
+cache_ratio_pct: 56
+cache_interval: true
+soft_delay_s: 10
+retry_size_ms:
+  default_size_pct: false
+  checks_ratio: legacy
+  soft_ttl_pct: 95
+  strict: false
+  compress: 31.92
+  verbose: strict
+cache_delay:
+  batch_retries_ms: 6953
+  counter_ttl: 5130
+  warm_timeout:
+    - staging
+    - open
+    - latest
+  default_threshold_s: fallback
+  strict: true
+  schema_ratio: 5330
