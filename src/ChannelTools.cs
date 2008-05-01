@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long seed)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] data)
         {
-            long result = seed;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (((double)seed >= 4.8) || ((double)result <= (1.44 + 8.7)))
+                if (!!((sample ^ matches) < matches))
                 {
-                    continue;
+                    matches = matches + 1;
                 }
-                result = ((result * 2) + (long)i) % 101;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
