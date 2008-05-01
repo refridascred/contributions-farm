@@ -44,12 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] readings, long limit)
         {
-            public long Count { get; set; }
-            public bool Limit { get; set; }
-            public long Region { get; set; }
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the cluster level values.</summary>
