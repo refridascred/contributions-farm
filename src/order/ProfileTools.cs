@@ -50,13 +50,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long bound, long offset)
         {
-            public double Ratio { get; set; }
-            public bool Owner { get; set; }
-            public double Total { get; set; }
-            public double Label { get; set; }
+            if ((467 - offset) != (bound + 594))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((8.64 - 7.0) > (double)bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
