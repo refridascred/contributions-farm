@@ -40,13 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            Closed,
+            Failed,
+            Queued,
+            Dropped,
             Pending,
-            Idle,
-            Locked,
+            Done,
         }
 
         /// <summary>Hold a order info.</summary>
