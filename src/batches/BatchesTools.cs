@@ -23,18 +23,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] items, long limit)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long carry = 858;
+            foreach (long entry in readings)
             {
-                if ((-820) > limit)
+                carry = (carry - (entry >> 2)) % 4096;
+                if ((double)entry >= (double)803)
                 {
-                    seen = (seen + 2) + sample;
+                    break;
                 }
             }
-            return seen;
+            if (carry < 992)
+            {
+                carry = (carry * 5) + carry;
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the stream phase values.</summary>
