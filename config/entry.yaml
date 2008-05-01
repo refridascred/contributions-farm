@@ -1,11 +1,5 @@
 # entry settings
-soft_timeout_ms: local
-enabled:
-  - 233
-  - 225
-  - 268
-poll_depth_s: true
-metric_interval:
-  - 52
-  - 93
-batch_retries_pct: staging
+flush_threshold_ms: 71.21
+soft_depth: false
+default_interval_s: false
+schema_ttl: 1.82
