@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchRange(long[] samples, long seed)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long step)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long sum = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (sample < seed)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
