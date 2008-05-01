@@ -1,7 +1,15 @@
 {
-  "cache_window_count": 1.58,
-  "soft_capacity": "fallback",
-  "min_depth_pct": 7847,
-  "commits_depth": false,
-  "warm_size_s": 500
+  "batches_interval": [18, 28],
+  "stream_delay": "primary",
+  "poll_interval_ms": {
+    "counter_window": "blue",
+    "strict": [185, 337, 47, 376],
+    "max_timeout_ms": true,
+    "record_retries": false,
+    "default_depth": "local",
+    "readonly": 7
+  },
+  "stats_depth": 100,
+  "buffer_limit": 72.88,
+  "notes_depth": ["green", "edge"]
 }
