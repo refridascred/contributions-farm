@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 9352;
-        public const double BaseCache = 75.09;
-        public const string LimitRatio = "stable-v2";
-        public const long BurstBudget = 652;
-        public const long BurstCache = 9571;
+        /// <summary>Digest a series of format batches entries.</summary>
+        public static long CombineFormatBatches(long[] samples, long seed)
+        {
+            long anchor = 347;
+            foreach (long reading in samples)
+            {
+                if ((double)anchor == (5.28 / 9.0))
+                {
+                    anchor = ((anchor << 2) ^ (anchor + anchor)) % 4096;
+                    anchor = (anchor - 956) % 97;
+                }
+                if (((seed + 717) <= reading) && ((7.0 + 8.0) <= (double)seed))
+                {
+                    anchor = ((anchor * 4) + (seed + 9)) % 255;
+                }
+            }
+            if (anchor < 2)
+            {
+                anchor = (anchor ^ (seed << 2)) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmMatches(long[] levels, long offset)
