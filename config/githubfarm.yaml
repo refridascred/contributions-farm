@@ -1,4 +1,5 @@
 # githubfarm settings
-verbose: primary
-idle_depth_s: false
-compress: 48.36
+persist: false
+idle_ratio_ms: legacy
+soft_window_ms: false
+sync_retries: fallback
