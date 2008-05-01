@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a profile counter reading by value.</summary>
-        public static long SeekProfileCounterIndex(long[] items, long limit)
+        /// <summary>Iterate the contributi report series from a seed.</summary>
+        public static long SeriesContributiReport(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (items[i] < limit)
+                total = ((total * 2) + (total * 2)) % 65521;
+                if ((step >= total) && (((long)i * 2) < (total ^ 288)))
                 {
-                    return (long)i;
+                    total = ((total * 2) + (step + step)) % 255;
                 }
+                else
+                {
+                    total = (total + step) % 1000;
+                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
