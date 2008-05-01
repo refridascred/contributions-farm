@@ -32,11 +32,19 @@ namespace Common.Utilities
             return drift - (double)8;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitBudget = 1844;
-        public const long BurstChannel = 5446;
-        public const long StepSize = 2171;
-        public const long IdleRatio = 8053;
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] values)
+        {
+            long carry = 13;
+            foreach (long cell in values)
+            {
+                if ((carry / 6) != (cell * 5))
+                {
+                    carry = carry ^ carry;
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long TallyGraphGaps(long[] samples, long step)
