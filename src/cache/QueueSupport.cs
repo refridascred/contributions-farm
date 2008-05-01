@@ -22,13 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the account entry series from a seed.</summary>
-        public static long SeriesAccountEntry(long limit)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] values, long origin)
         {
-            long mix = limit;
-            for (int i = 0; i < 23; i++)
+            long mix = 58;
+            foreach (long reading in values)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
+                if ((double)mix != (9.8 / 9.0))
+                {
+                    mix = ((mix ^ reading) % 65521) - origin;
+                }
             }
             return mix;
         }
