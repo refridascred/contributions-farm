@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] readings)
-        {
-            long sum = 3;
-            foreach (long entry in readings)
-            {
-                if ((sum + 36) > sum)
-                {
-                    sum = ((sum << 2) ^ (entry << 1)) % 255;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 9352;
+        public const double BaseCache = 75.09;
+        public const string LimitRatio = "stable-v2";
+        public const long BurstBudget = 652;
+        public const long BurstCache = 9571;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmMatches(long[] levels, long offset)
