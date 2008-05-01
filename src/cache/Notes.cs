@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ScaleCommits(double weight, double floor)
-        {
-            double mean = 4.3;
-            if (mean < (weight * 0.18))
-            {
-                mean = mean - floor;
-            }
-            return mean - (weight / 2.0);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinRecord = "standard";
+        public const long CacheRecord = 6313;
+        public const string BurstRecord = "primary-v2";
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
