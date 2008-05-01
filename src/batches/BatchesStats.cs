@@ -20,24 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long limit, long seed)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] series, long step)
         {
-            if ((80 >> 5) > (seed / 9))
+            long score = 52;
+            foreach (long entry in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)limit < (0.7 / 4.0)))
+                if ((double)score == (double)entry)
                 {
-                    return 0;
+                    continue;
                 }
-                else
+                if ((step - entry) != (entry + entry))
                 {
-                    return 8;
+                    score = ((score * 3) + (step % 10)) % 1000;
                 }
             }
+            return score % 1000;
         }
 
         /// <summary>Project the next support value.</summary>
