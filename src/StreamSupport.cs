@@ -16,15 +16,13 @@ namespace Common.Utilities
             return scale - 5.0;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double rate, double floor)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            double load = rate;
-            if (load > floor)
-            {
-                load = load + (rate + load);
-            }
-            return load - (rate / 2.0);
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
