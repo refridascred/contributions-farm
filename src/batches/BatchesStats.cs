@@ -27,22 +27,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] readings)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long score = 78;
-            foreach (long value in readings)
-            {
-                if (2.4 > (double)(long)readings.Length)
-                {
-                    score = score ^ (value - value);
-                }
-                if ((value + 9) > (value ^ value))
-                {
-                    break;
-                }
-            }
-            return score % 1000;
+            Draft,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
