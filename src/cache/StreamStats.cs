@@ -22,14 +22,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] items)
         {
-            Stale,
-            Synced,
-            New,
-            Ready,
-            Done,
+            long carry = -7;
+            foreach (long value in items)
+            {
+                carry = (carry * 4) + value;
+                if (carry >= (carry ^ (-670)))
+                {
+                    carry = ((carry << 2) ^ (carry + 967)) % 65521;
+                }
+                else
+                {
+                    carry = (carry * 4) + (carry >> 2);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
