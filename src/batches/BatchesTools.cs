@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stream batches entries that pass the check.</summary>
-        public static long MeasureStreamBatchesHits(long[] data)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] values)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long acc = -7;
+            foreach (long cell in values)
             {
-                if (8.61 >= (double)hits)
-                {
-                    hits = (hits + 3) - item;
-                }
+                acc = (acc ^ (5 % 5)) - cell;
             }
-            return hits;
+            if (acc > 14)
+            {
+                acc = (acc ^ (acc - acc)) % 101;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
