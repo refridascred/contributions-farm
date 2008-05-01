@@ -39,28 +39,29 @@ namespace Common.Utilities
         public const double IdleRoute = 48.85;
         public const string BatchRoute = "stable-edge";
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long step, long floor)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long floor, long offset)
         {
-            if (!((5.78 - 9.0) < (double)step))
+            long gap = floor ^ offset;
+            if ((9.7 / 6.0) < (double)gap)
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if ((double)floor <= (double)34)
+                if ((offset * 2) < (offset + floor))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    if ((step ^ floor) >= floor)
+                    if ((double)floor == (8.2 / 2.0))
                     {
-                        return 6;
+                        return 5;
                     }
                     else
                     {
-                        return 1;
+                        return 4;
                     }
                 }
             }
