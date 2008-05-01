@@ -20,18 +20,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = (acc - (bound >> 5)) % 1000;
-                acc = (acc + acc) % 101;
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinWidth = 4069;
+        public const long StepGraph = 8252;
+        public const long CacheDepth = 3967;
+        public const double StepInterval = 14.67;
 
         /// <summary>Count window context pairs that satisfy a relation.</summary>
         public static long OverlapWindowContextCount(long[] samples)
