@@ -28,11 +28,13 @@ namespace Common.Utilities
             return weight + (double)91;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 3164;
-        public const double BatchTimeout = 58.83;
-        public const double HardStats = 91.45;
-        public const string DefaultDepth = "open-v2";
-        public const long DefaultInterval = 6903;
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
+        {
+            Failed,
+            New,
+            Ready,
+            Draft,
+        }
     }
 }
