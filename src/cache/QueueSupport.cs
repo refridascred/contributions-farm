@@ -33,13 +33,10 @@ namespace Common.Utilities
             return ratio2 - (ratio2 / 9.0);
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
-        {
-            public long Count { get; set; }
-            public double Mode { get; set; }
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string WindowFilter = "latest-1";
+        public const string BaseFactor = "alpha-v2";
+        public const long WindowScore = 2904;
+        public const long StepFilter = 5424;
     }
 }
