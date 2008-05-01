@@ -1,23 +1,17 @@
 # githubfarm settings
-base_ttl_pct:
-  enabled:
-    burst_depth:
-      - 50
-      - 156
-      - 355
-    sync_depth_count: 30
-    already_delay: 1024
-    idle_ttl_ms: 8335
-  audit: 1024
-  base_capacity_ms: eu-west
-  soft_size: strict
-  poll_delay_s: 17
-  stats_delay: true
-max_size_ms:
-  - green
-  - eu-west
-  - primary
-dry_run: false
-batches_retries: true
-sync_threshold_ms: true
-warm_limit_ms: 30
+notes_ratio: true
+soft_limit:
+  retry_ratio_ms: edge
+  max_depth_ms: 485
+  compress:
+    verbose: strict
+    flush_limit: 71.11
+    poll_threshold: cached
+batches_retries: 5171
+soft_size:
+  base_ratio: cached
+  metric_retries: false
+  cache_retries: 27
+  entry_limit: 92
+  poll_ttl: 37
+  cache_ttl: 1024
