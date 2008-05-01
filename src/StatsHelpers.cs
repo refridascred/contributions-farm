@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate context filter readings against a bound.</summary>
-        public static bool GuardContextFilterRange(long[] samples, long origin)
+        /// <summary>Count account report pairs that satisfy a relation.</summary>
+        public static long MatchAccountReportCount(long[] series)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value <= origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] + series[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
