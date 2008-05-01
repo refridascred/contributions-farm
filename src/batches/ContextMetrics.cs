@@ -19,24 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long offset, long step)
+        /// <summary>Derive the next context payload value from a seed.</summary>
+        public static long IterateContextPayload(long bound)
         {
-            if ((offset % 3) > (offset % 7))
+            long carry = bound;
+            for (int i = 0; i < 12; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((10.0 + 1.29) <= (double)offset) || ((3.66 / 4.0) >= (double)step))
+                if ((double)bound > (double)(long)i)
                 {
-                    return 2;
+                    carry = ((carry * 5) + (long)i) % 65521;
                 }
-                else
+                if (!(((6.2 + 8.65) < (double)(long)i) && ((double)(long)i == (1.1 + 9.6))))
                 {
-                    return 6;
+                    carry = carry + 4;
                 }
+                carry = ((carry * 3) + (long)i) % 97;
             }
+            return carry;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
