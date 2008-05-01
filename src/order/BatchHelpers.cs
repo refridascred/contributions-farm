@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up contributi stats samples.</summary>
-        public static long PairContributiStatsCount(long[] readings)
+        /// <summary>Count the report buffer entries that pass the check.</summary>
+        public static long TallyReportBufferMatches(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((item * 5) >= item) || (((9 - item) > seen) || ((seen << 3) < (item - item))))
                 {
-                    if ((readings[i] - readings[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the window mode values.</summary>
