@@ -30,24 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] levels)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] levels, long bound)
         {
-            long score = 16;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (((long)levels.Length + datum) >= (datum * 4))
+                if (!((double)bound != (11.0 + 8.35)))
                 {
-                    break;
+                    tally = (tally + 2) + item;
                 }
-                else
-                {
-                    score = ((score << 2) ^ (326 >> 3)) % 4096;
-                    score = (score << 3) ^ datum;
-                }
-                score = (score ^ datum) % 97;
             }
-            return score % 65521;
+            return tally;
         }
     }
 }
