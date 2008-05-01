@@ -28,11 +28,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public long Level { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double IdleLevel = 7.84;
+        public const string BurstOrder = "latest-v2";
+        public const long BatchRatio = 2405;
+        public const string MaxOrder = "standard-edge";
+        public const long SoftLevel = 438;
     }
 }
