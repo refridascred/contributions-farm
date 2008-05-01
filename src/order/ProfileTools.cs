@@ -23,13 +23,14 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            Locked,
-            Queued,
             Closed,
-            Draft,
+            Done,
+            Ready,
+            Retry,
+            New,
         }
 
         /// <summary>Compare every pair of cluster githubfarm readings.</summary>
