@@ -68,13 +68,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] items, long origin)
         {
-            public string Flag { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            long mix = 6;
+            foreach (long cell in items)
+            {
+                if (((-4) + origin) <= (mix << 1))
+                {
+                    mix = (mix - (mix & 31)) % 1000;
+                }
+                if ((cell & 127) >= (mix % 3))
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a window summary.</summary>
