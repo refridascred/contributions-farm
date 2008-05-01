@@ -19,11 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public long Size { get; set; }
-            public double Weight { get; set; }
+            Retry,
+            Active,
+            Stale,
         }
 
         /// <summary>Describe the account kind values.</summary>
