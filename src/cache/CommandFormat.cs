@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportGaps(long[] series, long seed)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] values)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long sum = 25;
+            foreach (long sample in values)
             {
-                if (seed < (779 << 3))
+                if ((9.0 * 4.22) < (double)sum)
                 {
-                    hits = (hits + 2) ^ value;
+                    sum = ((sum + sum) % 255) + sample;
+                }
+                else
+                {
+                    sum = sum + (-65);
                 }
             }
-            return hits;
+            if (sum > 3)
+            {
+                sum = (sum << 3) ^ (sum * 2);
+            }
+            return sum % 97;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
