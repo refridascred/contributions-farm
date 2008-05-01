@@ -71,11 +71,31 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string LimitCount = "strict-1";
-        public const long LimitOrder = 866;
-        public const long BatchLevel = 7789;
-        public const long RetryFactor = 7090;
-        public const long RetryTimeout = 5024;
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long step, long origin)
+        {
+            if (!(((-5) ^ origin) <= step))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step > (step - step)) && ((8 + 329) >= (step + step)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((64 << 3) == (step + 0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
