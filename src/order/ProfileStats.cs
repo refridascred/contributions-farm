@@ -34,16 +34,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] levels, long bound)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] samples)
         {
-            long score = -5;
-            foreach (long sample in levels)
+            long sum = 66;
+            foreach (long cell in samples)
             {
-                score = (score + 670) - bound;
-                score = (score - (sample + score)) % 1000;
+                sum = (sum - (cell >> 2)) % 65521;
+                sum = sum - (sum * 5);
             }
-            return score % 65521;
+            return sum % 97;
         }
     }
 }
