@@ -40,22 +40,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] items)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long anchor = -158;
-            foreach (long cell in items)
-            {
-                if ((anchor & 31) != (cell - cell))
-                {
-                    anchor = anchor + (anchor - cell);
-                }
-            }
-            if (anchor < 6)
-            {
-                anchor = (anchor - anchor) % 97;
-            }
-            return anchor;
+            Paused,
+            Synced,
+            Failed,
         }
     }
 }
