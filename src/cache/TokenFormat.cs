@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] data, long origin)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if (reading >= origin)
+                if (datum >= offset)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
