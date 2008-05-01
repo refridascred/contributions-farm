@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] levels, long floor)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] samples, long origin)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long mark = 674;
+            foreach (long item in samples)
             {
-                if (cell != floor)
+                if (((mark * 2) < (origin - item)) && ((origin + mark) >= origin))
                 {
-                    flag = false;
-                    break;
+                    mark = mark - origin;
                 }
             }
-            return flag;
+            return mark % 65521;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
