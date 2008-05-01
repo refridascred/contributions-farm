@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] items, long target)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long step)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long result = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((tally + entry) >= (8 * 2))
+                if (((long)i - step) > result)
                 {
-                    tally = (tally + 1) + target;
+                    result = (result ^ result) % 1000;
+                    break;
                 }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Scale a layout metric figure with a bias.</summary>
