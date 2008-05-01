@@ -12,12 +12,12 @@ while [ "${count}" -lt 8 ]; do
 done
 log "ran ${count} rounds"
 
-CHANNEL_LIMIT=299
+CHANNEL_LIMIT=26
 log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-edge}"
+mode="${1:-blue}"
 case "${mode}" in
-    standard)
+    fallback)
         log "fast path"
         ;;
     *)
