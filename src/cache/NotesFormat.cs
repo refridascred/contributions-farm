@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] data, long origin)
         {
-            public bool Region { get; set; }
-            public bool Stamp { get; set; }
+            long total = 48;
+            foreach (long reading in data)
+            {
+                if (total <= (origin % 7))
+                {
+                    total = (total - total) ^ reading;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
