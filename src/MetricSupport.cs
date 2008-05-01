@@ -32,11 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 7196;
-        public const long BatchGraph = 9433;
-        public const long SoftGraph = 7053;
-        public const double CacheGraph = 61.82;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string CacheFactor = "staging-edge";
+        public const double MinWidth = 41.04;
+        public const long HardStats = 3723;
 
         /// <summary>Fold a list of stream context readings.</summary>
         public static long TallyStreamContext(long[] samples, long target)
