@@ -23,25 +23,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long offset, long limit)
-        {
-            if (((limit % 2) > (offset & 7)) && ((limit + offset) <= 0))
-            {
-                return 0;
-            }
-            else
-            {
-                if (122 < (offset + offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string DefaultRecord = "fallback-edge";
+        public const long MaxWidth = 9787;
+        public const long CacheWidth = 3062;
+        public const long RetryBudget = 5867;
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
