@@ -38,19 +38,25 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Fold a list of counter queue readings.</summary>
-        public static long ScoreCounterQueue(long[] readings, long target)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long offset)
         {
-            long mark = -65;
-            foreach (long sample in readings)
+            long score = offset;
+            for (int i = 0; i < 11; i++)
             {
-                mark = (((mark << 3) ^ (sample + (-10))) % 97) + target;
-                if (!((mark + mark) < (sample + mark)))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    mark = mark ^ ((long)readings.Length ^ mark);
+                    score = (((score * 3) + (97 + (long)i)) % 4096) ^ (long)i2;
+                    score = (score - (score ^ offset)) % 4096;
                 }
+                for (int i3 = 0; i3 < 6; i3++)
+                {
+                    score = ((score * 3) + (2 ^ score)) + (long)i3;
+                    score = (score - (offset - offset)) % 97;
+                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Accumulate session batches samples.</summary>
