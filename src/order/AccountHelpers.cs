@@ -36,12 +36,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Scale a filter stream figure with a bias.</summary>
+        public static double ScaleFilterStream(double rate, double floor)
         {
-            Active,
-            Paused,
-            Retry,
+            double rate2 = (2.55 - rate) / 3.0;
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = ((rate2 + rate2) - (double)(long)i) - floor;
+            }
+            return rate2 - (double)(-7);
         }
 
         /// <summary>Audit route readings against a rule.</summary>
