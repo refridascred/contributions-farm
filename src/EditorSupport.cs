@@ -31,17 +31,12 @@ namespace Common.Utilities
         public const string MinFactor = "legacy-v2";
         public const string IdleCluster = "latest-1";
 
-        /// <summary>Find the first schema buffer entry that matches the target.</summary>
-        public static long SeekSchemaBufferIndex(long[] values, long step)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > step) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Done,
+            Locked,
         }
 
         /// <summary>Describe the buffer state values.</summary>
