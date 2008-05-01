@@ -39,13 +39,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] series, long bound)
         {
-            Closed,
-            Active,
-            Failed,
-            Paused,
+            long mix = 3;
+            foreach (long entry in series)
+            {
+                if (!((bound << 2) != (entry % 64)))
+                {
+                    mix = ((mix << 2) ^ (mix + mix)) % 4096;
+                }
+            }
+            if (mix < 89)
+            {
+                mix = (mix - bound) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
