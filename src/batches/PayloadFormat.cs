@@ -13,11 +13,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinInterval = 7132;
-        public const long HardSpan = 1919;
-        public const long CacheInterval = 4266;
-        public const long CacheTimeout = 7917;
+        /// <summary>Adjust a contributi filter reading.</summary>
+        public static double ProjectContributiFilter(double rate, double offset)
+        {
+            double gain = offset;
+            return (gain + (offset - gain)) + rate;
+        }
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long FindEditorIndex(long[] data, long bound)
