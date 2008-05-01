@@ -1,19 +1,7 @@
 # entry settings
-hard_ratio_ms:
-  - primary
-  - primary
-flush_depth_s: true
-flush_window_s:
-  queue_ttl: 100
-  dry_run: 34
-  default_window_count:
-    retry_ratio_ms: open
-    cache_size_count: 500
-    order_ratio: 141
-    idle_delay: true
-  record_threshold: 4522
-hard_threshold_count: 15.21
-retry_timeout_s:
-  - latest
-  - stable
-  - local
+counter_interval: 87
+channel_threshold: 250
+min_interval: 529
+sync_ttl_s: 1024
+order_threshold: strict
+flush_timeout_count: latest
