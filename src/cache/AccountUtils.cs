@@ -38,21 +38,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count window context pairs that satisfy a relation.</summary>
-        public static long OverlapWindowContextCount(long[] samples)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
     }
 }
