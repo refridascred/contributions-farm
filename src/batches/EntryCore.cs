@@ -36,18 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] data)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphLimits(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if ((4 ^ item) == (tally * 4))
+                if (item <= offset)
                 {
-                    tally = tally + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Define route limits and defaults.</summary>
