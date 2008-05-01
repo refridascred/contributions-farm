@@ -41,13 +41,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            Active,
-            Pending,
             Retry,
-            Stale,
+            Paused,
+            Draft,
+            Idle,
+            Dropped,
         }
     }
 }
