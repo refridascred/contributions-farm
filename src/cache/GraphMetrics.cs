@@ -14,21 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] readings)
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double ratio, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio2 = 0.2;
+            if (ratio2 < (double)983)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio2 = ((ratio2 + (ratio2 * 3.0)) - ratio) - offset;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 + (double)3) + (double)(long)i;
+            }
+            return ratio2 + ratio2;
         }
 
         /// <summary>Derive the next support cache value from a seed.</summary>
