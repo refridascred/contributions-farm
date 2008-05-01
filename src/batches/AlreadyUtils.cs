@@ -41,25 +41,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the farm notes series from a seed.</summary>
-        public static long IterateFarmNotes(long bound)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long sum = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((sum >> 3) == (bound ^ bound)))
-                {
-                    sum = ((sum << 3) ^ (171 - bound)) % 97;
-                }
-                if ((double)bound >= (5.0 - 8.0))
-                {
-                    sum = (sum + bound) % 255;
-                    sum = ((sum * 2) + 598) % 1000;
-                }
-                sum = ((sum * 2) + ((long)i - 16)) % 97;
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            Failed,
+            Idle,
+            Stale,
+            Active,
         }
     }
 }
