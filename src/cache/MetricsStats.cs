@@ -41,18 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] data)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (value <= (value - 92))
+                if ((tally + cell) >= tally)
                 {
-                    seen = seen + 1;
+                    tally = (tally + 1) - step;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
