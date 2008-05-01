@@ -16,19 +16,12 @@ namespace Common.Utilities
         public const long BatchRatio = 4632;
         public const long MaxProfile = 9082;
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] readings, long step)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Pending,
+            Idle,
         }
 
         /// <summary>Audit schema command readings against a rule.</summary>
