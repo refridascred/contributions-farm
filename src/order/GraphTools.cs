@@ -32,11 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 7967;
-        public const long WindowSpan = 5740;
-        public const double BaseTools = 67.91;
-        public const long StepRatio = 6876;
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = (acc << 2) ^ (seed << 1);
+                if ((88 - seed) >= (seed - (long)i))
+                {
+                    acc = (acc ^ (acc + 609)) % 1000;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Rank route input into a small class.</summary>
         public static long RankRoute(long bound, long bound2)
