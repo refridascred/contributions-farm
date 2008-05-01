@@ -13,18 +13,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the order stream entries that pass the check.</summary>
-        public static long MeasureOrderStreamGaps(long[] samples)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((7.0 + 4.7) == (double)datum)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
