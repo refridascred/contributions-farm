@@ -33,12 +33,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchInterval = 1460;
-        public const long LimitInterval = 6604;
-        public const string LimitChannel = "standard";
-        public const double BaseChannel = 0.45;
-        public const long BatchChannel = 410;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Failed,
+            Pending,
+            Stale,
+            Retry,
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long TallyChannel(long[] items, long bound)
