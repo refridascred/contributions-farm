@@ -16,23 +16,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Accumulate schema report samples.</summary>
-        public static long DigestSchemaReport(long[] data, long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] items)
         {
-            long score = 71;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                score = (score + (score + 853)) % 101;
-                if ((score / 9) < target)
+                if ((hits >> 4) < (hits ^ 715))
                 {
-                    score = score ^ ((long)data.Length - target);
-                }
-                else
-                {
-                    score = (score + (cell ^ target)) % 65521;
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
