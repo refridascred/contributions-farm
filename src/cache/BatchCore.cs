@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] series, long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] data, long origin)
         {
             long matches = 0;
-            foreach (long cell in series)
+            foreach (long sample in data)
             {
-                if (!((double)932 >= (1.23 + 9.08)))
+                if ((matches >> 1) <= origin)
                 {
-                    matches = ((matches + 3) + cell) + offset;
+                    matches = (matches + 3) ^ sample;
                 }
             }
             return matches;
