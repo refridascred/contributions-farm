@@ -51,14 +51,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            Dropped,
-            New,
-            Idle,
-            Stale,
-            Done,
+            Active,
+            Failed,
+            Retry,
+            Paused,
         }
     }
 }
