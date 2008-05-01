@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a filter queue pair into a bucket.</summary>
-        public static long GradeFilterQueue(long offset, long floor)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] samples, long seed)
         {
-            long next = offset ^ floor;
-            if (((next << 3) <= next) || ((740 ^ offset) >= (offset >> 1)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset ^ floor) < (floor + offset))
+                if ((samples[i] < seed) && ((samples[i] % 2) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)floor < (2.9 - 2.86))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
