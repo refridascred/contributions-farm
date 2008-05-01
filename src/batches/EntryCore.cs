@@ -20,21 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] readings)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double bias, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = floor;
+            if (mean > bias)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean + (bias - 9.4);
             }
-            return hits;
+            else
+            {
+                mean = mean - (mean * 3.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - floor) + (double)(long)i;
+            }
+            return mean - (mean - floor);
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
