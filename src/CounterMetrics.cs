@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] items, long seed)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if (reading > seed)
+                if (reading != floor)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Classify a checks entry pair into a bucket.</summary>
