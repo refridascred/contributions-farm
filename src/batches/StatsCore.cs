@@ -53,11 +53,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
+            public double Score { get; set; }
+            public long Token { get; set; }
         }
     }
 }
