@@ -68,18 +68,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] series)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (!((2.3 > (double)cell) && ((double)52 <= (double)cell)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the cache mode values.</summary>
