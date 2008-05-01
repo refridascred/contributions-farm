@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] data, long target)
         {
-            Queued,
-            Draft,
-            Locked,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((target <= (datum % 7)) && (((target - target) != (datum ^ target)) || ((tally - datum) > 0)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a command info.</summary>
