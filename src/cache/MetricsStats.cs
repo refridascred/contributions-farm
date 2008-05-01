@@ -48,22 +48,29 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] data)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] series, long bound)
         {
-            long score = 101;
-            foreach (long entry in data)
+            long score = 9;
+            foreach (long sample in series)
             {
-                score = (score + (715 >> 2)) % 1000;
-                score = ((score << 2) ^ (score + score)) % 1000;
-                if ((score / 3) != (8 - entry))
+                if ((0.2 - 8.47) != (double)score)
                 {
-                    score = ((score << 2) ^ (entry & 127)) % 97;
+                    continue;
                 }
                 else
                 {
-                    score = ((score * 5) + entry) % 1000;
+                    score = (score - (score ^ score)) % 4096;
                 }
+                score = (score - (sample & 63)) % 1000;
+                if ((score * 3) <= (95 * 5))
+                {
+                    break;
+                }
+            }
+            if (score < 72)
+            {
+                score = (score * 4) + (score + bound);
             }
             return score;
         }
