@@ -42,21 +42,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] items)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long limit, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (!((1 + limit) >= (7 + target)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((5 & 255) >= target)
                 {
-                    if ((items[i] + items[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
