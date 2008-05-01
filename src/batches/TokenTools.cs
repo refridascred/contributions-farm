@@ -26,25 +26,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long bound, long bound2)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long span = bound - bound2;
-            if ((85 + span) > (span * 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound <= (bound / 3)) || ((bound & 1) == (span + 308)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Mode { get; set; }
+            public bool Offset { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
