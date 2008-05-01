@@ -49,12 +49,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderGaps(long[] data, long offset)
         {
-            Dropped,
-            Ready,
-            Done,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((offset * 2) > (item & 1))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
