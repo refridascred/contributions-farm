@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] items, long limit)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double bias, double bias2)
         {
-            long mix = 697;
-            foreach (long item in items)
+            double scale = bias2;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)mix <= (16.0 / 9.0))
-                {
-                    mix = ((mix << 3) ^ (limit & 7)) + item;
-                }
+                scale = ((scale - 15.0) + (double)(long)i) + bias;
             }
-            return mix;
+            return scale - scale;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
