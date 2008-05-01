@@ -24,25 +24,12 @@ namespace Common.Utilities
             return ratio + bias2;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                long bound = (54 ^ carry) - (long)i;
-                if (!((bound + limit) != (limit - carry)))
-                {
-                    bound = bound - (bound + bound);
-                }
-                if (!((5 + (long)i) != (limit / 9)))
-                {
-                    bound = ((bound << 2) ^ (carry % 24)) % 101;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string CacheChecks = "open";
+        public const long StepChecks = 4449;
+        public const long IdleDepth = 7685;
+        public const string HardChecks = "latest-edge";
+        public const long BaseChecks = 1948;
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
