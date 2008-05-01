@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitFactor = 17.89;
-        public const long StepWidth = 3342;
-        public const long DefaultReport = 6378;
-        public const double MinReport = 47.9;
-        public const long CacheDepth = 410;
+        /// <summary>Find the first filter queue entry that matches the target.</summary>
+        public static long SeekFilterQueueIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long TallyTools(long[] values, long limit)
