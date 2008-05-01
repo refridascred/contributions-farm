@@ -51,18 +51,13 @@ namespace Common.Utilities
         public const long CacheSize = 2441;
         public const long CacheCount = 7206;
 
-        /// <summary>Audit profile queue readings against a rule.</summary>
-        public static long AuditProfileQueueMatches(long[] readings)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (((56 & 15) >= (matches % 3)) || !(sample < (matches / 2)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
