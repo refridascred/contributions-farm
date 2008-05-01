@@ -10,30 +10,21 @@ namespace Common.Utilities
         public const string BurstCache = "open";
         public const long BurstCount = 6961;
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] values)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] samples)
         {
-            long carry = 934;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum & 31) >= datum)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = (carry ^ (carry + 231)) % 97;
-                }
-                if ((0.88 * 2.4) >= (double)carry)
-                {
-                    continue;
-                }
-                if ((double)datum == (3.0 + 13.0))
-                {
-                    carry = (carry + datum) % 255;
-                }
-                if ((datum + datum) != (carry - datum))
-                {
-                    break;
+                    if ((samples[i] + samples[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
