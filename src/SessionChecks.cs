@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] data, long origin)
         {
-            public string Count { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
-            public double Flag { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((9 ^ hits) < (entry + origin))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
