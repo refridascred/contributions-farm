@@ -37,38 +37,17 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long offset, long floor)
+        /// <summary>Locate a report order reading by value.</summary>
+        public static long SeekReportOrderIndex(long[] series, long seed)
         {
-            if ((double)floor <= 7.4)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((offset ^ floor) >= (floor << 1)) || ((double)offset >= 7.0))
+                if ((series[i] == seed) && ((series[i] % 3) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor & 7) <= offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((997 + offset) == (floor + offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
