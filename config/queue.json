@@ -1,8 +1,5 @@
 {
-  "batch_threshold_pct": ["green", "cached", "latest", "blue"],
-  "record_size": 5,
-  "dry_run": "eu-west",
-  "payload_depth": "strict",
-  "enabled": "standard",
-  "idle_delay_pct": 38.13
+  "warm_retries_pct": "cached",
+  "warm_threshold_ms": "primary",
+  "sync_limit_count": "legacy"
 }
