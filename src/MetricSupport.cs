@@ -32,10 +32,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string CacheFactor = "staging-edge";
-        public const double MinWidth = 41.04;
-        public const long HardStats = 3723;
+        /// <summary>Classify a counter channel pair into a bucket.</summary>
+        public static long BucketCounterChannel(long limit, long origin)
+        {
+            if ((6.0 + 3.0) <= (double)limit)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((origin % 3) >= (origin >> 2)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)origin <= (7.46 * 2.67)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)limit <= (11.0 + 8.2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of stream context readings.</summary>
         public static long TallyStreamContext(long[] samples, long target)
