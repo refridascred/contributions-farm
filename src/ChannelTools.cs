@@ -13,19 +13,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] items, long bound)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] items, long offset)
         {
-            long score = -66;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score - (3 + datum)) % 1000;
+                if (items[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            if (score < 543)
-            {
-                score = (score * 3) + (bound >> 3);
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
