@@ -1,7 +1,5 @@
 {
-  "notes_depth": "blue",
-  "enabled": 9463,
-  "warm_ratio_ms": "edge",
-  "strict": 25,
-  "session_depth": true
+  "warm_timeout_count": true,
+  "soft_capacity_s": 2956,
+  "order_size": false
 }
