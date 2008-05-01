@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchTools = 13.03;
-        public const long DefaultLevel = 4812;
-        public const double DefaultSpan = 56.34;
-        public const long BurstLevel = 7056;
+        /// <summary>Locate a filter order reading by value.</summary>
+        public static long LocateFilterOrderIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long OverlapCommandCount(long[] levels)
