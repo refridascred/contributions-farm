@@ -41,22 +41,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaOutliers(long[] series, long limit)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((limit - value) > (limit - seen))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Find the first entry stats entry that matches the target.</summary>
