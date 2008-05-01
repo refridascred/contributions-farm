@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandHits(long[] series)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((24 * 4) < (datum >> 5))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
