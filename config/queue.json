@@ -1,24 +1,12 @@
 {
-  "compress": 100,
-  "default_timeout_count": {
-    "flush_capacity_ms": 24.88,
-    "format_threshold": 80,
-    "warm_limit": "fallback",
-    "burst_window_count": [477, 225, 217]
+  "token_interval": {
+    "metrics_capacity": "legacy",
+    "dry_run": 30,
+    "graph_depth": true,
+    "retry_window_pct": [68, 200, 304]
   },
-  "stream_ratio": {
-    "min_retries_count": false,
-    "base_capacity": false,
-    "verbose": ["open", "blue"],
-    "burst_depth_ms": {
-      "route_delay": false,
-      "strict": 2,
-      "checks_depth": 95,
-      "payload_ratio": 81.58,
-      "readonly": "cached"
-    },
-    "dry_run": [310, 316]
-  },
-  "retry_depth_pct": "staging",
-  "base_retries": "standard"
+  "idle_limit_ms": true,
+  "idle_ratio_count": ["staging", "edge", "strict"],
+  "flush_window": 6475,
+  "githubfarm_ratio": ["green", "staging"]
 }
