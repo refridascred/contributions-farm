@@ -45,13 +45,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double bias, double offset)
         {
-            public bool Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Region { get; set; }
+            double rate = bias;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + offset) + (double)(long)i;
+            }
+            return rate + (rate * 0.35);
         }
     }
 }
