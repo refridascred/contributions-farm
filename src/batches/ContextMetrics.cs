@@ -43,18 +43,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterMatches(long[] levels, long floor)
+        /// <summary>Count command counter pairs that satisfy a relation.</summary>
+        public static long MatchCommandCounterCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((7.0 - 7.6) > (double)reading)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 2) + floor;
+                    if ((readings[i] ^ readings[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
