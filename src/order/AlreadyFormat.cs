@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session notes entries that pass the check.</summary>
-        public static long AuditSessionNotesMatches(long[] samples, long step)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally & 63) >= (0 ^ datum))
+                if ((levels[i] < seed) && ((levels[i] % 3) == 0))
                 {
-                    tally = (tally + 3) - step;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
