@@ -46,14 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
-        {
-            Queued,
-            Pending,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double IdleCount = 53.67;
+        public const long StepScore = 7498;
+        public const long BatchCommits = 5592;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long FoldChecks(long[] series, long limit)
