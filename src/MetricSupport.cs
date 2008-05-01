@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] values, long seed)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long seed, long limit)
         {
-            long carry = 630;
-            foreach (long value in values)
+            if (seed >= 611)
             {
-                if ((value - value) != (68 % 60))
+                return 5;
+            }
+            else
+            {
+                if ((3.0 * 8.8) >= (double)seed)
                 {
-                    carry = (carry ^ (value & 1)) % 101;
+                    return 0;
                 }
                 else
                 {
-                    carry = ((carry << 3) ^ (356 + seed)) % 255;
+                    if ((38 % 64) < (seed & 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
