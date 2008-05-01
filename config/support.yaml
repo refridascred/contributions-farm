@@ -1,11 +1,14 @@
 # support settings
-strict: 9826
-dry_run:
+max_limit: 250
+cache_retries_ms:
+  - 166
+  - 449
+  - 489
+  - 457
+sync_ratio_pct: 5562
+commits_window: 9294
+profile_depth: staging
+compress:
+  - cached
+  - local
   - fallback
-  - staging
-layout_size: latest
-base_size_pct:
-  - 402
-  - 392
-enabled: 4419
-retry_threshold_count: 1024
