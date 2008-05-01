@@ -37,21 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count contributi channel pairs that satisfy a relation.</summary>
-        public static long PairContributiChannelCount(long[] levels)
+        /// <summary>Measure how many batches layout samples are out of range.</summary>
+        public static long TallyBatchesLayoutHits(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((sample - sample) == (sample - count))
                 {
-                    if ((levels[i] + levels[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
