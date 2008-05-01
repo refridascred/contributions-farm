@@ -21,12 +21,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string CacheChecks = "open";
-        public const long StepChecks = 4449;
-        public const long IdleDepth = 7685;
-        public const string HardChecks = "latest-edge";
-        public const long BaseChecks = 1948;
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Paused,
+            Ready,
+            Closed,
+            Dropped,
+        }
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
