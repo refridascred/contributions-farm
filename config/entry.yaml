@@ -1,16 +1,12 @@
 # entry settings
-enabled: 66.6
-session_ratio: latest
-hard_ttl: stable
-soft_timeout_pct:
-  warm_retries_s: 250
-  min_threshold:
-    - 35
-    - 26
-    - 134
-    - 229
-  entry_threshold: false
-  githubfarm_interval: eu-west
-  cache_ratio: true
-  format_retries: 67
-min_depth_s: local
+verbose: true
+enabled: green
+idle_delay_s: primary
+payload_window: legacy
+compress:
+  default_window_s: 67
+  enabled:
+    - green
+    - primary
+  min_limit_pct: 106
+min_capacity_s: 45.57
