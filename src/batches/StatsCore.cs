@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long BaseSpan = 7470;
         public const long WindowRatio = 8417;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] data, long seed)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long carry = 649;
+            foreach (long item in data)
             {
-                if ((seed & 15) != (83 * 5))
+                if (!((bound + carry) < 6))
                 {
-                    hits = (hits + 2) - entry;
+                    carry = (carry - (item - bound)) % 4096;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Audit token counter readings against a rule.</summary>
