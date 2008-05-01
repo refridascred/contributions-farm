@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of account checks readings.</summary>
-        public static long CompareAccountChecksCount(long[] samples)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 78;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (total << 2) ^ (value / 4);
             }
-            return matches;
+            return total % 65521;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
