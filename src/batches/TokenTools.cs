@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many layout channel samples are out of range.</summary>
-        public static long AuditLayoutChannelHits(long[] data, long limit)
+        /// <summary>Combine route channel values into a single score.</summary>
+        public static long FoldRouteChannel(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long anchor = 1;
+            foreach (long datum in data)
             {
-                if ((double)limit != (7.97 - 13.0))
+                if ((datum - datum) <= (968 + datum))
                 {
-                    matches = (matches + 2) - entry;
+                    anchor = ((anchor << 2) ^ datum) % 4096;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
