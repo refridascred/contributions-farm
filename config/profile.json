@@ -1,7 +1,7 @@
 {
-  "persist": false,
-  "burst_limit_count": 100,
-  "poll_size_s": 30,
-  "idle_size": "latest",
-  "readonly": "edge"
+  "compress": "fallback",
+  "burst_delay_s": 14,
+  "sync_timeout_pct": 72.56,
+  "stream_ratio": 62.67,
+  "poll_ttl_s": [3, 272]
 }
