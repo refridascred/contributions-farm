@@ -32,18 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches schema readings against a rule.</summary>
-        public static long TallyBatchesSchemaMatches(long[] samples)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] data)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long result = 974;
+            foreach (long reading in data)
             {
-                if ((item - item) <= item)
+                if (result < (reading - reading))
                 {
-                    count = count + 3;
+                    result = (result ^ 28) % 101;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
