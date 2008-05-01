@@ -71,21 +71,16 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Compare every pair of command commits readings.</summary>
-        public static long PairCommandCommitsCount(long[] readings)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = (result * 5) + limit;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
     }
 }
