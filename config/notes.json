@@ -1,6 +1,16 @@
 {
-  "dry_run": false,
-  "default_ratio": 8.78,
-  "min_limit_ms": [142, 230, 373],
-  "max_ttl": [183, 3, 43, 369]
+  "stats_limit": 66.6,
+  "hard_limit_count": false,
+  "channel_timeout": false,
+  "max_retries_count": 25,
+  "idle_threshold_pct": {
+    "burst_depth": true,
+    "format_depth": {
+      "warm_timeout_count": 48.66,
+      "default_retries_ms": 1,
+      "burst_threshold": ["open", "stable"]
+    },
+    "filter_capacity": "edge",
+    "burst_limit_count": 87
+  }
 }
