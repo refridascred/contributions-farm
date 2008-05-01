@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] samples, long target)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long sum = -45;
+            foreach (long sample in samples)
             {
-                if (entry >= target)
+                if (30 > (bound ^ (-494)))
                 {
-                    ready = false;
-                    break;
+                    sum = sum + (sample + 10);
                 }
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
