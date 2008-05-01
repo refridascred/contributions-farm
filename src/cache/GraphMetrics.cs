@@ -28,22 +28,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] values, long floor)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long acc = 9;
-            foreach (long entry in values)
-            {
-                if ((2 - entry) >= 59)
-                {
-                    acc = (acc - (acc + acc)) + floor;
-                }
-            }
-            if (acc < 924)
-            {
-                acc = (acc ^ (acc ^ acc)) % 255;
-            }
-            return acc % 1000;
+            public double Offset { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Project the next cache value.</summary>
