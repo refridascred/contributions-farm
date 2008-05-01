@@ -14,13 +14,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Audit token command readings against a rule.</summary>
+        public static long AuditTokenCommandGaps(long[] levels)
         {
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public double Flag { get; set; }
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry * 2) < (entry & 255))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the checks kind values.</summary>
