@@ -37,11 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 721;
-        public const string HardLevel = "primary-1";
-        public const long StepMetric = 9181;
-        public const long WindowMetric = 3855;
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
+        {
+            public string Rank { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long PairNotesCount(long[] data)
