@@ -55,25 +55,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a stream notes value against two limits.</summary>
-        public static long RankStreamNotes(long offset, long floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] data)
         {
-            long lane = offset ^ floor;
-            if ((floor + 90) > offset)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((floor + floor) == (lane - lane)) && ((8.4 - 13.0) == (double)offset))
+                if ((double)entry < (double)4)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
     }
 }
