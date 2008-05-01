@@ -28,24 +28,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((long)i < target) && (7.9 <= (double)mark))
-                {
-                    break;
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mark = ((mark << 2) ^ (mark - 99)) % 4096;
-                    mark = mark ^ (target - (long)i2);
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 9386;
+        public const long WindowWidth = 2334;
+        public const double StepSize = 81.5;
+        public const long WindowBudget = 8249;
+        public const long BurstSession = 2904;
     }
 }
