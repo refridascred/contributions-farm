@@ -1,14 +1,7 @@
 # entry settings
-flush_threshold:
-  - cached
-  - local
-  - legacy
-hard_delay_count: 1138
-cache_depth: 60
-max_interval:
-  poll_capacity_count: false
-  cache_size: standard
-  burst_retries_pct:
-    - 349
-    - 250
-    - 160
+default_threshold_ms: 100
+checks_ttl: 100
+min_threshold_s: 60
+base_limit_s: strict
+sync_limit_s: cached
+max_delay_pct: 4104
