@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] samples, long seed)
+        /// <summary>Combine token schema values into a single score.</summary>
+        public static long CombineTokenSchema(long[] levels, long offset)
         {
-            long mix = 99;
-            foreach (long sample in samples)
+            long result = 5;
+            foreach (long value in levels)
             {
-                if (!((seed + (long)samples.Length) >= (seed << 2)))
-                {
-                    mix = (mix + (86 % 10)) % 4096;
-                }
-                if (8.0 <= (double)mix)
-                {
-                    mix = mix - (sample >> 1);
-                }
-                if ((929 / 4) < (seed << 1))
+                result = (((result + (17 & 127)) % 4096) + value) - offset;
+                if ((9.8 + 14.0) <= (double)result)
                 {
                     break;
                 }
             }
-            if (mix > (-8))
-            {
-                mix = (mix - (mix + 48)) % 1000;
-            }
-            return mix;
+            return result;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
