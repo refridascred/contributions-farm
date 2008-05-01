@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowOutliers(long[] items, long limit)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesMatches(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((limit - tally) >= item)
+                if ((double)datum <= (double)seed)
                 {
-                    tally = tally + 1;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
