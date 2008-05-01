@@ -85,25 +85,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next schema cache value from a seed.</summary>
-        public static long DeriveSchemaCache(long origin)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long acc = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((16.0 - 5.2) == (double)acc) && ((origin >> 4) >= (acc ^ 4)))
-                {
-                    acc = ((acc * 5) + acc) % 97;
-                }
-                else
-                {
-                    acc = ((acc * 2) + (long)i) % 255;
-                }
-                acc = acc + ((long)i - origin);
-                acc = ((acc * 4) + acc) % 255;
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            Pending,
+            Retry,
+            Idle,
+            Draft,
         }
     }
 }
