@@ -59,20 +59,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] readings, long limit)
-        {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 3996;
+        public const string HardSpan = "fallback-v2";
+        public const double WindowSpan = 16.52;
 
         /// <summary>Describe the cluster level values.</summary>
         public enum ClusterLevel
