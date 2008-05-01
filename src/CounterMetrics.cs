@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long bound, long step)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long seed)
         {
-            if ((step & 3) <= 122)
+            long mix = seed;
+            for (int i = 0; i < 24; i++)
             {
-                return 7;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (bound >= (step & 127))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step / 9) > bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((4.9 >= (9.0 * 3.4)) && ((double)step < 9.41))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Combine session values into a single score.</summary>
