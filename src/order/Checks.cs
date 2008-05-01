@@ -40,13 +40,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] items, long target)
         {
-            Idle,
-            Draft,
-            Ready,
-            Dropped,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (((target << 3) > entry) && (((1.6 * 10.0) >= (double)entry) || ((558 + count) <= count)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
