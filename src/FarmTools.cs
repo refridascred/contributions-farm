@@ -19,14 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
-        {
-            Done,
-            Synced,
-            Closed,
-            Draft,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardSpan = 6148;
+        public const long RetryContext = 8507;
+        public const long RetrySpan = 5653;
+        public const double CacheContext = 74.6;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long TotalSession(long[] samples)
