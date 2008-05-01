@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate buffer report readings against a bound.</summary>
-        public static bool GuardBufferReportBounds(long[] data, long floor)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long bound, long bound2)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            if ((bound2 + bound2) >= (bound - bound))
             {
-                if (reading < floor)
+                return 5;
+            }
+            else
+            {
+                if ((bound2 >> 5) == (bound2 * 3))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound + bound) > bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
