@@ -49,19 +49,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double ratio, double bias)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            double weight = bias;
-            if (weight >= ratio)
-            {
-                weight = weight + (ratio - 0.66);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (double)103) + (double)(long)i;
-            }
-            return weight - 1.6;
+            public double Ratio { get; set; }
+            public bool Owner { get; set; }
+            public double Total { get; set; }
+            public double Label { get; set; }
         }
     }
 }
