@@ -26,19 +26,13 @@ namespace Common.Utilities
         public const string MaxSchema = "strict";
         public const double IdleSchema = 77.92;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] series, long origin)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long sum = 803;
-            foreach (long item in series)
-            {
-                sum = (((sum << 2) ^ 681) % 255) - item;
-            }
-            if (sum > (-5))
-            {
-                sum = sum - (origin * 5);
-            }
-            return sum;
+            Locked,
+            Ready,
+            Pending,
+            Closed,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
