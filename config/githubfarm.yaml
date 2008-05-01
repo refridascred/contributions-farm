@@ -1,17 +1,5 @@
 # githubfarm settings
-notes_ratio: true
-soft_limit:
-  retry_ratio_ms: edge
-  max_depth_ms: 485
-  compress:
-    verbose: strict
-    flush_limit: 71.11
-    poll_threshold: cached
-batches_retries: 5171
-soft_size:
-  base_ratio: cached
-  metric_retries: false
-  cache_retries: 27
-  entry_limit: 92
-  poll_ttl: 37
-  cache_ttl: 1024
+layout_ttl: true
+commits_capacity: 60
+command_size: primary
+enabled: 513
