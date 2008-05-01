@@ -30,19 +30,15 @@ namespace Common.Utilities
         public const double DefaultSize = 91.68;
         public const double BurstFactor = 79.21;
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] series, long origin)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double weight, double span)
         {
-            bool valid = true;
-            foreach (long value in series)
+            double mean = 2.6;
+            for (int i = 0; i < 8; i++)
             {
-                if (value != origin)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = ((mean - (span / 9.0)) + (double)(long)i) - weight;
             }
-            return valid;
+            return mean - 11.0;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
