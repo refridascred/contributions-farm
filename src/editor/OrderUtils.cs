@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Order utils helpers.</summary>
     public static class OrderUtils
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public long Rank { get; set; }
-            public double Owner { get; set; }
-            public long Count { get; set; }
+            Synced,
+            Pending,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Adjust a counter reading.</summary>
