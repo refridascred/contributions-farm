@@ -24,18 +24,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] values, long origin)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] series)
         {
-            long mix = 58;
-            foreach (long reading in values)
+            long mark = 3;
+            foreach (long value in series)
             {
-                if ((double)mix != (9.8 / 9.0))
-                {
-                    mix = ((mix ^ reading) % 65521) - origin;
-                }
+                mark = ((mark - (mark % 64)) % 65521) + value;
             }
-            return mix;
+            return mark % 97;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
