@@ -27,12 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Check that every route profile entry stays within the limit.</summary>
+        public static bool ValidateRouteProfileRange(long[] series, long target)
         {
-            Ready,
-            Draft,
-            Failed,
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
