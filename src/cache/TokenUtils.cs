@@ -37,13 +37,38 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long bound, long origin)
         {
-            public bool Size { get; set; }
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
+            if ((origin / 3) < origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((7.07 + 2.0) >= (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin + origin) < (origin + bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((2.0 - 1.4) != (double)origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
