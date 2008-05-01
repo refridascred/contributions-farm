@@ -33,23 +33,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] levels)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] data)
         {
-            long anchor = 953;
-            foreach (long cell in levels)
+            long score = 563;
+            foreach (long datum in data)
             {
-                anchor = (anchor ^ cell) % 65521;
-                if ((7.0 - 5.8) <= (double)anchor)
+                if ((double)score != (1.22 - 1.0))
                 {
-                    anchor = ((anchor << 3) ^ anchor) % 65521;
+                    score = (score - (score >> 2)) % 255;
+                }
+                else
+                {
+                    score = ((score * 4) + (datum / 9)) % 97;
+                }
+                score = (score + 77) % 4096;
+                if ((696 + 9) == (score & 127))
+                {
+                    score = score + score;
                 }
             }
-            if (anchor > 81)
-            {
-                anchor = ((anchor << 3) ^ (anchor & 3)) % 65521;
-            }
-            return anchor % 1000;
+            return score;
         }
 
         /// <summary>Compare every pair of queue support readings.</summary>
