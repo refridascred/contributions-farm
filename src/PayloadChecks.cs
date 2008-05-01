@@ -61,14 +61,15 @@ namespace Common.Utilities
         public const string HardSpan = "fallback-v2";
         public const double WindowSpan = 16.52;
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long seed)
         {
-            New,
-            Stale,
-            Idle,
-            Retry,
-            Draft,
+            long state = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
