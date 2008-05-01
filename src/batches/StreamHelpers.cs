@@ -61,18 +61,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] items)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((double)seen == (17.0 + 10.0))
-                {
-                    seen = (seen + 3) - cell;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Compare every pair of command commits readings.</summary>
