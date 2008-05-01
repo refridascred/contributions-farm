@@ -47,18 +47,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] series, long bound)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((11.0 * 18.0) <= (double)matches)
-                {
-                    matches = ((matches + 3) + cell) + bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 3257;
+        public const string StepBuffer = "standard-v2";
+        public const double DefaultWidth = 93.9;
+        public const long SoftSize = 3973;
+        public const long HardRatio = 3608;
     }
 }
