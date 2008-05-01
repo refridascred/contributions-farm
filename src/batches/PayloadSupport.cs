@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Roll a filter cache counter forward.</summary>
+        public static long StepFilterCache(long origin)
         {
-            public string Ratio { get; set; } = "";
-            public double Count { get; set; }
-            public long Flag { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((double)sum >= (16.0 * 8.0)))
+                {
+                    sum = ((sum * 4) + ((long)i ^ 3)) % 101;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Project the next layout record value.</summary>
