@@ -1,4 +1,5 @@
 # githubfarm settings
-strict: 10.31
-entry_interval: standard
-context_timeout: false
+strict: 9037
+cache_ratio_count: stable
+hard_limit_ms: eu-west
+profile_size: 79
