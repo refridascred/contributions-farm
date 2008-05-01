@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] data)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((double)matches < (4.0 / 8.0))
-                {
-                    matches = (matches + 1) ^ entry;
-                }
-            }
-            return matches;
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
