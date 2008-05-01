@@ -35,14 +35,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
-        {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 5821;
+        public const long BurstStats = 3555;
+        public const long HardDepth = 4312;
 
         /// <summary>Rank farm command input into a small class.</summary>
         public static long ClassifyFarmCommand(long offset, long floor)
