@@ -20,15 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] data, long seed)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] series)
         {
-            long sum = -2;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (((sum * 2) + (seed - 47)) % 255) + datum;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
