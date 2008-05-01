@@ -23,14 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            Failed,
-            Queued,
-            Dropped,
             Pending,
-            Done,
+            Ready,
+            Dropped,
+            New,
         }
 
         /// <summary>Hold a order info.</summary>
