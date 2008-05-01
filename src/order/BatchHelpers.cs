@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first filter queue entry that matches the target.</summary>
-        public static long SeekFilterQueueIndex(long[] values, long seed)
+        /// <summary>Audit channel record readings against a rule.</summary>
+        public static long MeasureChannelRecordOutliers(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (values[i] > seed)
+                if ((tally - tally) > (97 - tally))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - entry;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
