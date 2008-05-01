@@ -1,11 +1,8 @@
 {
-  "enabled": "staging",
-  "dry_run": "latest",
-  "cache_timeout_count": {
-    "verbose": 17.65,
-    "persist": [405, 30, 167],
-    "notes_window": "standard",
-    "retry_ratio": 54
-  },
-  "sync_limit_ms": false
+  "hard_delay": 60,
+  "soft_delay": true,
+  "editor_limit": "eu-west",
+  "sync_size_pct": [361, 275, 350],
+  "burst_delay": false,
+  "enabled": 3964
 }
