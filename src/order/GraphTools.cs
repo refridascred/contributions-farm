@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long HardCount = 3715;
         public const long HardSpan = 2306;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] levels, long floor)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelLimits(long[] data, long bound)
         {
-            long score = 6;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if ((value & 127) < (score << 3))
+                if (cell <= bound)
                 {
-                    score = ((score * 4) + (floor - (-518))) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Hold a tools entry.</summary>
