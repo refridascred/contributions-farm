@@ -57,19 +57,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double ratio, double span)
-        {
-            double ratio2 = ratio;
-            if (ratio2 >= 2.83)
-            {
-                ratio2 = ratio2 + (span - span);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio2 = ratio2 + (double)(long)i;
-            }
-            return ratio2 + (ratio * 1.0);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBudget = 1665;
+        public const long DefaultWidth = 8179;
+        public const long MinDepth = 273;
+        public const long BurstBatch = 5594;
     }
 }
