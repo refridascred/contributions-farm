@@ -1,25 +1,5 @@
 # support settings
-farm_interval: strict
-warm_limit_pct: 76
-readonly: false
-default_limit: false
-dry_run:
-  batch_depth_s:
-    - 82
-    - 191
-    - 158
-    - 77
-  burst_retries: 34.0
-  persist: 9012
-  window_interval: 82.82
-  idle_threshold_ms:
-    payload_threshold:
-      - 124
-      - 454
-    idle_timeout_count:
-      - eu-west
-      - legacy
-    metric_depth: primary
-    idle_ratio: legacy
-    poll_capacity_count: 5826
-base_limit: 67.27
+poll_timeout_s: 55.49
+batch_delay: true
+retry_ratio_s: true
+sync_threshold: 100
