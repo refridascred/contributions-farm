@@ -1,13 +1,4 @@
 # githubfarm settings
-enabled:
-  persist: staging
-  compress: edge
-  max_ratio_ms: 53
-  max_threshold_pct: 16.2
-verbose: false
-support_ratio: true
-strict:
-  soft_capacity_pct: 100
-  already_size: true
-  enabled: false
-  githubfarm_ratio: 1024
+layout_window: 500
+poll_interval_s: primary
+buffer_ratio: standard
