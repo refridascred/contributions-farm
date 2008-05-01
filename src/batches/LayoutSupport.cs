@@ -47,22 +47,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] readings)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((seen & 31) != (seen ^ 138))
+                if (!((double)count < (15.0 + 9.35)))
                 {
-                    seen = (seen + 3) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 1) + entry;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
