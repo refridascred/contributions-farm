@@ -52,9 +52,39 @@ namespace Common.Utilities
         public const long BatchFormat = 5959;
         public const long SoftFormat = 3715;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 8220;
-        public const double HardMetrics = 67.0;
-        public const long DefaultWidth = 4875;
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long bound, long origin)
+        {
+            long edge = bound + origin;
+            if ((double)origin != (0.09 * 9.5))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(origin > (bound << 1)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (origin > (edge % 64))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((349 ^ origin) > origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
