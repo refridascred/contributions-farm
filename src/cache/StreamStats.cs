@@ -23,13 +23,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Compare every pair of buffer farm readings.</summary>
+        public static long PairBufferFarmCount(long[] series)
         {
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
