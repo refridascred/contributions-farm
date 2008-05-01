@@ -30,19 +30,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] values, long origin)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long floor)
         {
-            long sum = 5;
-            foreach (long entry in values)
+            long carry = floor;
+            for (int i = 0; i < 19; i++)
             {
-                sum = (sum ^ (sum % 3)) ^ entry;
-                if ((origin * 4) < (origin * 3))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    sum = (sum ^ (sum >> 2)) % 65521;
+                    carry = (carry + (floor + floor)) - (long)i2;
                 }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
