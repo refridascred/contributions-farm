@@ -18,17 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] levels, long seed)
+        /// <summary>Iterate the account entry series from a seed.</summary>
+        public static long SeriesAccountEntry(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Iterate the batches cache series from a seed.</summary>
