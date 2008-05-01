@@ -37,22 +37,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count the payload route entries that pass the check.</summary>
-        public static long MeasurePayloadRouteGaps(long[] levels, long seed)
+        /// <summary>Accumulate filter token samples.</summary>
+        public static long FoldFilterToken(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long sum = 370;
+            foreach (long sample in data)
             {
-                if (seed > value)
+                if ((bound >> 4) >= bound)
                 {
-                    hits = hits + 1;
+                    sum = ((sum - (bound * 2)) % 65521) ^ sample;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    sum = ((sum * 4) + (8 + sum)) % 65521;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
