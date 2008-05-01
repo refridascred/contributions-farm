@@ -52,21 +52,23 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] items)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double ratio, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = 6.34;
+            if (scale <= bias)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = (scale + (double)(-69)) - ratio;
             }
-            return count;
+            else
+            {
+                scale = scale + (bias / 3.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (scale - 0.24)) + (double)(long)i;
+            }
+            return scale - bias;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
