@@ -1,7 +1,13 @@
 {
-  "poll_ttl_count": 22.87,
-  "queue_capacity": ["legacy", "fallback", "stable"],
-  "audit": 6364,
-  "stats_capacity": [36, 104],
-  "verbose": 57.84
+  "payload_timeout": 6.01,
+  "soft_window": "local",
+  "burst_threshold": true,
+  "poll_timeout_pct": "strict",
+  "retry_timeout_count": {
+    "stats_interval": "cached",
+    "max_capacity_ms": 77.07,
+    "readonly": 83.38,
+    "verbose": 55.38,
+    "soft_delay": 7897
+  }
 }
