@@ -31,22 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report stream samples are out of range.</summary>
-        public static long CountReportStreamGaps(long[] samples)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryLimits(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if (3 > (seen >> 2))
+                if (datum <= target)
                 {
-                    seen = (seen + 1) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Hold a order stats.</summary>
