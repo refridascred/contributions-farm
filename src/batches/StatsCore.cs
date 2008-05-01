@@ -54,10 +54,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultLevel = 6703;
-        public const string BatchCount = "staging-1";
-        public const long RetryLevel = 1038;
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
+        {
+            public long Level { get; set; }
+            public bool Label { get; set; }
+            public long Size { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long MeasureCommitsOutliers(long[] values, long floor)
