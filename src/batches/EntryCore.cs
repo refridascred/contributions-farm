@@ -51,15 +51,12 @@ namespace Common.Utilities
         public const double IdleRoute = 48.85;
         public const string BatchRoute = "stable-edge";
 
-        /// <summary>Blend two tools metric measurements.</summary>
-        public static double AdjustToolsMetric(double bias, double offset)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            double load = 8.8;
-            if (load >= load)
-            {
-                load = (load + (load + bias)) - offset;
-            }
-            return load - (double)394;
+            public bool Weight { get; set; }
+            public long Label { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
