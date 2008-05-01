@@ -64,15 +64,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double gain, double offset)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            double ratio = 9.3;
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ((ratio + offset) - (double)(long)i) - gain;
-            }
-            return ratio - (double)(-45);
+            Closed,
+            Pending,
+            Queued,
+            Draft,
         }
     }
 }
