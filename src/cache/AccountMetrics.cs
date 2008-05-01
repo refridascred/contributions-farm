@@ -73,31 +73,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long bound, long origin)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] samples, long offset)
         {
-            if ((origin - origin) <= (bound * 5))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)bound < (double)origin))
+                if (samples[i] <= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (19.0 < (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
