@@ -31,31 +31,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long origin, long step)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] samples, long floor)
         {
-            if ((step + origin) >= step)
+            long score = 761;
+            foreach (long value in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (step >= (origin - origin))
+                if ((value > 700) && ((double)value < (double)floor))
                 {
-                    return 5;
+                    score = score - value;
                 }
                 else
                 {
-                    if ((16.0 / 6.0) >= (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    score = ((score * 4) + ((-78) % 100)) % 255;
                 }
             }
+            return score;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
