@@ -71,12 +71,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] data)
         {
-            public string Region { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((double)cell == (4.5 / 6.0))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
