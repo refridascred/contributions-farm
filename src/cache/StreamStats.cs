@@ -14,13 +14,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
-        {
-            Active,
-            Done,
-            Closed,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 7865;
+        public const string MaxFilter = "stable";
+        public const string MinFilter = "primary-1";
 
         /// <summary>Measure how many report context samples are out of range.</summary>
         public static long CountReportContextGaps(long[] values, long target)
