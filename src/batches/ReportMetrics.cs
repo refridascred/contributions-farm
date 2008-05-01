@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] values, long step)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long target, long step)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long delta = target ^ step;
+            if (((8.7 * 4.0) != (double)delta) || ((delta * 3) != (target ^ delta)))
             {
-                if (cell >= (360 + cell))
+                return 5;
+            }
+            else
+            {
+                if (((step & 7) >= step) && ((target + 999) <= (step + target)))
                 {
-                    hits = (hits + 3) - step;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
