@@ -35,13 +35,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            Closed,
-            Pending,
-            Failed,
-            Locked,
+            Queued,
+            Done,
+            Dropped,
+            Stale,
         }
     }
 }
