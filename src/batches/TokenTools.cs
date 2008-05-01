@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long limit)
         {
-            Done,
-            Idle,
-            Failed,
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((limit + (long)i) < limit)
+                {
+                    mark = (mark ^ ((long)i >> 5)) % 4096;
+                }
+                else
+                {
+                    mark = mark - (limit ^ mark);
+                    mark = (mark ^ (mark + limit)) % 97;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Hold a batch summary.</summary>
