@@ -59,19 +59,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Check that every payload layout entry stays within the limit.</summary>
-        public static bool GuardPayloadLayoutBounds(long[] items, long origin)
-        {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 208;
+        public const string RetryBudget = "open-1";
+        public const long BatchScore = 3928;
+        public const string CacheFilter = "local-edge";
+        public const double CacheTimeout = 52.01;
     }
 }
