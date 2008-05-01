@@ -53,15 +53,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double rate, double span)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] readings)
         {
-            double scale = span;
-            for (int i = 0; i < 8; i++)
+            long mix = -37;
+            foreach (long value in readings)
             {
-                scale = (scale - scale) + (double)(long)i;
+                if (!((double)mix != (3.16 / 6.0)))
+                {
+                    mix = ((mix * 3) + value) % 255;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (mix + 6);
+                }
             }
-            return scale + rate;
+            if (mix < 796)
+            {
+                mix = (mix - (mix / 7)) % 97;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Define context limits and defaults.</summary>
