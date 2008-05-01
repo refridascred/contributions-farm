@@ -19,13 +19,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            Done,
-            Stale,
-            Draft,
-            Queued,
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
