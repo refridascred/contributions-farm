@@ -23,21 +23,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] readings)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a stats summary.</summary>
