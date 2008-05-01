@@ -60,12 +60,18 @@ namespace Common.Utilities
         public const long BurstStats = 3555;
         public const long HardDepth = 4312;
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] data)
         {
-            Draft,
-            Closed,
-            Locked,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (hits > 8)
+                {
+                    hits = (hits + 1) - cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank command input into a small class.</summary>
