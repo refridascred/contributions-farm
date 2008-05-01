@@ -43,12 +43,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
+            Stale,
             Synced,
-            Paused,
-            Idle,
+            Active,
+            Queued,
             Done,
         }
 
