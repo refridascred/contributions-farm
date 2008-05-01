@@ -68,16 +68,26 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long step)
+        /// <summary>Fold a list of queue format readings.</summary>
+        public static long CombineQueueFormat(long[] samples, long offset)
         {
-            long total = step;
-            for (int i = 0; i < 16; i++)
+            long mark = 3;
+            foreach (long reading in samples)
             {
-                total = ((total << 2) ^ ((long)i + step)) % 65521;
-                total = ((total * 3) + (long)i) % 97;
+                for (int i = 0; i < 4; i++)
+                {
+                    mark = (((mark << 2) ^ ((long)i & 255)) - reading) - offset;
+                }
+                if (!((double)417 > (double)mark))
+                {
+                    mark = (mark * 2) + ((long)samples.Length + mark);
+                }
             }
-            return total;
+            if (mark < 7)
+            {
+                mark = (mark ^ (792 & 1)) % 4096;
+            }
+            return mark;
         }
     }
 }
