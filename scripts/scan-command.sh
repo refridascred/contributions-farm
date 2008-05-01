@@ -6,18 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
+for i in $(seq 1 5); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
+
+for item in cached edge fallback eu-west; do
+    log "checking ${item}"
+done
