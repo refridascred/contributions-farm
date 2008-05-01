@@ -45,13 +45,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            Failed,
-            Idle,
             Stale,
-            Active,
+            Done,
+            Failed,
         }
     }
 }
