@@ -42,11 +42,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            public double Mode { get; set; }
-            public string Offset { get; set; } = "";
+            public bool Region { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a route entry.</summary>
