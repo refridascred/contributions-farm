@@ -19,21 +19,38 @@ namespace Common.Utilities
             return (rate + (1.01 / 5.0)) + offset;
         }
 
-        /// <summary>Iterate the editor tools series from a seed.</summary>
-        public static long IterateEditorTools(long origin)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long seed, long seed2)
         {
-            long state = origin;
-            for (int i = 0; i < 22; i++)
+            if ((seed + 6) == (4 + seed2))
             {
-                state = (state - (state + origin)) % 1000;
-                if (((state << 1) != (origin - (long)i)) && ((double)origin < 14.0))
-                {
-                    state = state + (origin + state);
-                    break;
-                }
-                state = ((state * 4) + (long)i) % 1000;
+                return 2;
             }
-            return state;
+            else
+            {
+                if (((seed & 255) > (6 & 255)) || ((seed2 / 9) < seed2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)seed2 == (5.1 * 20.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)seed2 > (double)seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
