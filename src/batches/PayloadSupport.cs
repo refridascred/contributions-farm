@@ -14,13 +14,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
-        {
-            Retry,
-            New,
-            Paused,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double SoftFactor = 97.28;
+        public const double DefaultContext = 63.77;
+        public const long StepWidth = 2589;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string RetryFilter = "open";
