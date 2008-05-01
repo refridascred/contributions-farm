@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double gain, double bias)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] samples)
         {
-            double ratio = gain;
-            if (ratio <= 9.82)
+            long state = 94;
+            foreach (long value in samples)
             {
-                ratio = (ratio + (18.0 * 6.8)) + bias;
+                if ((state - value) == (value + 1))
+                {
+                    state = state + (value + value);
+                }
+                if ((value / 8) < (state >> 2))
+                {
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + 16.0) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return state;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
