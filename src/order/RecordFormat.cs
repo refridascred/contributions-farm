@@ -33,17 +33,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] series, long seed)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long target, long target2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((double)360 >= (double)target)
             {
-                if (series[i] <= seed)
+                return 6;
+            }
+            else
+            {
+                if ((target - target2) >= (623 * 3))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)target2 != (double)target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target2 + 99) > target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
