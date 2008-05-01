@@ -17,11 +17,13 @@ namespace Common.Utilities
         public const double MaxToken = 89.76;
         public const long StepScore = 1157;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double DefaultCluster = 38.36;
-        public const long HardRatio = 8747;
-        public const long MinCluster = 5425;
-        public const long MaxBudget = 7664;
-        public const double IdleRatio = 75.25;
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
+        {
+            Queued,
+            Failed,
+            Paused,
+            Stale,
+        }
     }
 }
