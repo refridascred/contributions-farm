@@ -28,18 +28,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many filter format samples are out of range.</summary>
-        public static long TallyFilterFormatHits(long[] samples)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] series)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long total = 871;
+            foreach (long entry in series)
             {
-                if (!(((long)samples.Length >> 1) > (count - count)))
+                if ((7.2 + 2.0) <= (double)total)
                 {
-                    count = (count + 3) + sample;
+                    total = ((total - (total % 16)) % 97) - entry;
                 }
             }
-            return count;
+            if (total > 9)
+            {
+                total = ((total << 3) ^ (total << 3)) % 97;
+            }
+            return total;
         }
     }
 }
