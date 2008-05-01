@@ -54,14 +54,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] levels, long offset)
         {
-            Closed,
-            Ready,
-            Draft,
-            Stale,
-            Synced,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < offset) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
