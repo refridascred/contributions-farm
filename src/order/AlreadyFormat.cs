@@ -16,18 +16,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmHits(long[] items)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long mark = 62;
+            foreach (long value in series)
             {
-                if ((hits >> 4) < (hits ^ 715))
+                if ((value + mark) != (value + value))
                 {
-                    hits = (hits + 2) ^ datum;
+                    mark = ((mark * 3) + 63) % 101;
                 }
             }
-            return hits;
+            if (mark < 9)
+            {
+                mark = (mark - (mark % 3)) % 101;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Describe the cache kind values.</summary>
