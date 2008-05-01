@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long origin, long origin2)
-        {
-            if (3.72 <= (double)origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((9.6 + 2.0) > (2.0 * 10.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchLayout = 0.48;
+        public const string WindowCount = "latest-edge";
+        public const long HardTimeout = 2360;
 
         /// <summary>Combine already profile values into a single score.</summary>
         public static long WeighAlreadyProfile(long[] samples)
