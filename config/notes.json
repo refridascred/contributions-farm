@@ -1,7 +1,6 @@
 {
-  "batch_retries": [499, 69, 285],
-  "channel_ttl": "eu-west",
-  "editor_depth": ["legacy", "green", "eu-west", "staging"],
-  "tools_interval": "green",
-  "strict": 187
+  "retry_timeout_ms": "stable",
+  "retry_threshold": 7870,
+  "cache_threshold_pct": true,
+  "batch_limit": 32
 }
