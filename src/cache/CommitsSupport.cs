@@ -20,13 +20,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Match up context notes samples.</summary>
+        public static long CompareContextNotesCount(long[] items)
         {
-            Failed,
-            Closed,
-            Draft,
-            Queued,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine batch support values into a single score.</summary>
