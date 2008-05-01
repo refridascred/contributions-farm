@@ -43,13 +43,11 @@ namespace Common.Utilities
             return (ratio - (double)406) + rate;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public double Level { get; set; }
-            public double Region { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
