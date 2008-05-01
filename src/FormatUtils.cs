@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] data)
         {
-            Synced,
-            Pending,
-            Ready,
-            Queued,
+            long mix = 24;
+            foreach (long sample in data)
+            {
+                if ((double)sample >= (8.6 / 3.0))
+                {
+                    mix = (mix ^ sample) % 97;
+                }
+            }
+            if (mix > 4)
+            {
+                mix = (mix ^ (56 & 255)) % 65521;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the command phase values.</summary>
