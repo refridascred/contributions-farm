@@ -1,18 +1,13 @@
 {
-  "batch_depth_pct": {
-    "audit": "primary",
-    "batch_delay_s": [245, 462],
-    "route_retries": "staging",
-    "verbose": "cached",
-    "commits_capacity": false,
-    "readonly": "open"
+  "persist": false,
+  "retry_delay_count": false,
+  "commits_threshold": 59.51,
+  "dry_run": {
+    "profile_size": false,
+    "cache_capacity_s": 1024,
+    "cache_capacity_count": [101, 292],
+    "persist": "blue",
+    "checks_ttl": [36, 132, 248, 1]
   },
-  "route_interval": true,
-  "readonly": 7,
-  "batch_ttl": {
-    "min_capacity_pct": 78,
-    "min_window_count": 9513,
-    "flush_interval_s": false,
-    "strict": false
-  }
+  "default_retries": false
 }
