@@ -26,11 +26,32 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 2203;
-        public const double SoftWindow = 46.96;
-        public const string HardWindow = "standard";
-        public const double BatchFactor = 38.09;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long bound, long step)
+        {
+            if (((3 << 2) <= (step + step)) || ((double)step != (6.0 - 17.0)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (step >= (4 >> 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((bound << 1) >= (0 - step)) || ((step << 3) >= (bound + step)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
