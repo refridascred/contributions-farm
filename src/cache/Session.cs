@@ -19,15 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] data, long origin)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] samples)
         {
-            long state = 8;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                state = ((((state << 3) ^ state) % 1000) + entry) + origin;
+                if ((double)seen >= (double)57)
+                {
+                    seen = (seen + 1) - item;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Digest a series of session entries.</summary>
