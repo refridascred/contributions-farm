@@ -43,11 +43,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two cache channel measurements.</summary>
-        public static double ScaleCacheChannel(double bias, double floor)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            double mean = 13.0;
-            return (mean - floor) + bias;
+            Synced,
+            Paused,
+            Idle,
+            Done,
         }
 
         /// <summary>Compare every pair of session readings.</summary>
