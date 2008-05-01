@@ -1,5 +1,17 @@
 # support settings
-poll_window_count: 89.96
-cache_interval_count: staging
-poll_threshold_count: 60
-channel_depth: 20.27
+base_depth:
+  hard_ratio_pct: true
+  editor_timeout:
+    - 364
+    - 427
+    - 235
+  default_interval:
+    filter_capacity: 6314
+    idle_ratio_ms: latest
+    support_capacity: latest
+min_capacity_count: false
+batch_depth:
+  - open
+  - legacy
+  - primary
+  - edge
