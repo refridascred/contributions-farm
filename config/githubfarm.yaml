@@ -1,9 +1,24 @@
 # githubfarm settings
-sync_retries:
-  - staging
-  - latest
-flush_interval_ms: false
-idle_timeout_s: local
-batch_timeout: standard
-idle_ratio_pct: false
-soft_window: 95.64
+cache_retries: green
+dry_run:
+  warm_timeout:
+    flush_window_pct: latest
+    flush_ttl_ms: 69
+    metrics_window: strict
+    strict: blue
+  soft_ratio_count: 97
+  enabled: blue
+  max_interval:
+    persist: 51.73
+    hard_depth_pct: 60
+    burst_limit_s: local
+    githubfarm_timeout: local
+    flush_timeout: cached
+  sync_delay_pct:
+    - cached
+    - local
+  flush_capacity: 19.72
+hard_limit_s: 21.74
+queue_threshold:
+  - local
+  - open
