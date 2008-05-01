@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] values)
+        /// <summary>Grade a entry report value against two limits.</summary>
+        public static long RankEntryReport(long seed, long bound)
         {
-            long state = 645;
-            foreach (long value in values)
+            long offset = seed ^ bound;
+            if ((1.0 - 2.0) != (double)seed)
             {
-                state = (state ^ (state + state)) + value;
+                return 2;
             }
-            if (state < 9)
+            else
             {
-                state = ((state << 2) ^ (state ^ state)) % 65521;
+                if ((seed - seed) == (offset / 6))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((5.6 * 2.9) > (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return state;
         }
 
         /// <summary>Match up context notes samples.</summary>
