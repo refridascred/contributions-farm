@@ -35,22 +35,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionOutliers(long[] levels, long bound)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long limit)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long mix = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((tally + 3) == (102 + value))
-                {
-                    tally = (tally + 3) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = (mix - limit) % 101;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the context kind values.</summary>
