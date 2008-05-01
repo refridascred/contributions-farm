@@ -1,9 +1,8 @@
-id,active,label
-1,latest,75.2
-2,7.27,staging
-3,84.99,8.2
-4,507,52.67
-5,stable,81.12
-6,658,local
-7,154,42.59
-8,163,78.93
+id,owner,weight
+1,staging,staging
+2,blue,6.88
+3,91.44,589
+4,primary,14
+5,286,local
+6,87.76,705
+7,edge,stable
