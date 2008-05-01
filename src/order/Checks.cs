@@ -29,18 +29,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] items)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((((long)items.Length - (-112)) == ((-1) - hits)) && ((datum + hits) != ((long)items.Length + datum)))
+                if (sample <= step)
                 {
-                    hits = hits + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
