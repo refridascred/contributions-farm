@@ -76,39 +76,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long origin, long offset)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] series, long limit)
         {
-            long next = origin ^ offset;
-            if ((next & 63) == (origin & 7))
+            bool ok = true;
+            foreach (long reading in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((20.0 - 8.59) > (double)next) || ((double)offset >= (6.9 * 0.4)))
+                if (reading < limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset << 3) < (next % 8))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((1.0 + 4.0) >= (double)next) && (origin < (offset & 127)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
