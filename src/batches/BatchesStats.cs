@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] samples, long limit)
+        /// <summary>Validate batch contributi readings against a bound.</summary>
+        public static bool VerifyBatchContributiLimits(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if ((limit >> 2) >= limit)
+                if (cell != step)
                 {
-                    seen = (seen + 1) + cell;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Describe the queue status values.</summary>
