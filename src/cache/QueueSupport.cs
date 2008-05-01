@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BatchCount = 27.65;
-        public const long BurstSpan = 2059;
-        public const long MinBudget = 2339;
-        public const long StepAlready = 7646;
-        public const string WindowAlready = "open-1";
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
         public static long GradeBatches(long offset, long offset2)
