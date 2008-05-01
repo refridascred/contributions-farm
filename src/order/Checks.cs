@@ -18,13 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            Retry,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 722;
+        public const long HardSpan = 7823;
+        public const string MinSession = "standard-edge";
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
