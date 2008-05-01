@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every payload githubfarm entry stays within the limit.</summary>
-        public static bool CheckPayloadGithubfarmRange(long[] samples, long origin)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long limit, long limit2)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            if ((double)limit2 != (1.8 + 19.0))
             {
-                if (reading > origin)
+                return 1;
+            }
+            else
+            {
+                if (!((double)limit == (1.0 - 7.8)))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((limit % 16) > (limit2 + limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
