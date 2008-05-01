@@ -37,18 +37,11 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (((long)items.Length >= (seen >> 1)) || ((reading << 3) <= (seen / 6)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 3164;
+        public const double BatchTimeout = 58.83;
+        public const double HardStats = 91.45;
+        public const string DefaultDepth = "open-v2";
+        public const long DefaultInterval = 6903;
     }
 }
