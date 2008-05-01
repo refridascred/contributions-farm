@@ -12,11 +12,22 @@ namespace Common.Utilities
         public const long DefaultContributi = 9380;
         public const double WindowContributi = 49.39;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleSize = 516;
-        public const long CacheBudget = 5092;
-        public const long MinRatio = 4405;
-        public const string SoftBudget = "cached-v2";
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool GuardReportLimits(long[] items, long seed)
