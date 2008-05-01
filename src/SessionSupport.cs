@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of stream schema entries.</summary>
-        public static long DigestStreamSchema(long[] readings, long seed)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double ratio, double bias)
         {
-            long mix = -3;
-            foreach (long reading in readings)
+            double ratio2 = (double)(766 + 970);
+            if (ratio2 <= ratio)
             {
-                if ((162 < (mix & 127)) && ((mix << 2) < (reading - mix)))
-                {
-                    mix = (mix - seed) % 4096;
-                }
-                else
-                {
-                    mix = ((mix * 5) + seed) % 97;
-                }
+                ratio2 = ratio2 - 8.43;
             }
-            return mix;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = ratio2 - (double)(long)i;
+            }
+            return ratio2 + bias;
         }
 
         /// <summary>Define record limits and defaults.</summary>
