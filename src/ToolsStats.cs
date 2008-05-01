@@ -23,15 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a report session counter forward.</summary>
-        public static long StepReportSession(long origin)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long state = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            public string Rank { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Roll a stats counter forward.</summary>
