@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] values)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double bias, double offset)
         {
-            long carry = 208;
-            foreach (long value in values)
-            {
-                carry = ((carry << 3) ^ (value - carry)) % 97;
-                carry = ((carry << 3) ^ value) % 1000;
-                carry = carry - (carry % 3);
-            }
-            if (carry < 4)
-            {
-                carry = (carry + (408 % 64)) % 101;
-            }
-            return carry % 4096;
+            double ratio = (double)67 * 19.0;
+            return ((ratio + 4.23) + bias) + offset;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
