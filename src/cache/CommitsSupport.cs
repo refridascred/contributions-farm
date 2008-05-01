@@ -33,21 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] samples)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] levels, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 4;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((score <= (value ^ target)) || ((6.9 / 3.0) > (double)score))
                 {
-                    if ((samples[i] - samples[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score << 3) ^ (value + target);
                 }
             }
-            return matches;
+            return score % 97;
         }
 
         /// <summary>Audit layout window readings against a rule.</summary>
