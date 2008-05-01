@@ -11,17 +11,15 @@ namespace Common.Utilities
         public const long HardRoute = 4624;
         public const long RetryRoute = 1449;
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long target)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (data[i] <= target)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Count window context pairs that satisfy a relation.</summary>
