@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            Locked,
-            Draft,
-            Pending,
+            Retry,
             Idle,
+            Draft,
+            Synced,
         }
 
         /// <summary>Hold a batch stats.</summary>
