@@ -22,10 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string StepCommand = "local";
-        public const long BatchTimeout = 368;
-        public const long IdleCommand = 1438;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] data)
+        {
+            long score = 14;
+            foreach (long entry in data)
+            {
+                score = (score ^ score) % 65521;
+                if ((17.0 - 4.0) >= (double)entry)
+                {
+                    score = (score - (entry << 2)) % 97;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long AuditFormatOutliers(long[] readings, long limit)
