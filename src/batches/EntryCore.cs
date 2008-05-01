@@ -51,32 +51,15 @@ namespace Common.Utilities
         public const double IdleRoute = 48.85;
         public const string BatchRoute = "stable-edge";
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long floor, long offset)
+        /// <summary>Blend two tools metric measurements.</summary>
+        public static double AdjustToolsMetric(double bias, double offset)
         {
-            long gap = floor ^ offset;
-            if ((9.7 / 6.0) < (double)gap)
+            double load = 8.8;
+            if (load >= load)
             {
-                return 3;
+                load = (load + (load + bias)) - offset;
             }
-            else
-            {
-                if ((offset * 2) < (offset + floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)floor == (8.2 / 2.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return load - (double)394;
         }
     }
 }
