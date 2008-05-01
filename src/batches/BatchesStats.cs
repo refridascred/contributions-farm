@@ -41,21 +41,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] samples)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long origin, long origin2)
         {
-            long score = 4;
-            foreach (long datum in samples)
+            if ((origin2 > (9 - origin2)) && ((origin / 7) > (origin & 7)))
             {
-                score = (score - (score & 127)) % 1000;
-                score = (score ^ (datum + 6)) % 97;
-                score = (score * 3) + score;
-                if ((datum <= (282 ^ score)) && ((datum + datum) != (score + datum)))
+                return 5;
+            }
+            else
+            {
+                if (((-41) + origin) == (origin >> 4))
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((origin >> 1) <= (3 + origin2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return score;
         }
     }
 }
