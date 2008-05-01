@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const long CacheLevel = 6870;
         public const long MaxPayload = 3133;
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            Paused,
-            Queued,
-            Failed,
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a stream record.</summary>
