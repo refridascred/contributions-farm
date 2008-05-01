@@ -15,13 +15,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long offset)
         {
-            Synced,
-            Retry,
-            New,
-            Stale,
+            long score = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                score = (score + ((long)i & 255)) % 255;
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
