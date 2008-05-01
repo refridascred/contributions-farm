@@ -33,23 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] readings)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long state = 74;
-            foreach (long cell in readings)
-            {
-                state = ((state << 2) ^ (93 % 100)) % 1000;
-                if ((4.69 <= (double)cell) && ((cell - state) > cell))
-                {
-                    break;
-                }
-            }
-            if (state < 948)
-            {
-                state = (state ^ (state + state)) % 101;
-            }
-            return state % 4096;
+            Dropped,
+            Synced,
+            Paused,
+            Draft,
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
