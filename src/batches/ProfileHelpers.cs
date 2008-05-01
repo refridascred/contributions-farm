@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many graph metric samples are out of range.</summary>
-        public static long MeasureGraphMetricMatches(long[] items)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((entry * 5) == (entry * 3))
+                if ((double)seed == (2.0 - 2.4))
                 {
-                    tally = tally + 3;
+                    matches = (matches + 3) ^ cell;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
