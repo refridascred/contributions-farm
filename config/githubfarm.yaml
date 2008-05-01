@@ -1,21 +1,4 @@
 # githubfarm settings
-window_threshold: 5792
-burst_ttl_s: true
-cache_delay_count: blue
-retry_depth_count:
-  metrics_depth: false
-  flush_timeout_count: 1024
-  schema_capacity:
-    - 55
-    - 85
-    - 469
-  max_ratio:
-    - 302
-    - 254
-    - 253
-    - 469
-  persist: 1011
-dry_run: 67.58
-hard_limit_ms:
-  - 476
-  - 355
+warm_limit_pct: edge
+sync_retries: 79
+tools_capacity: true
