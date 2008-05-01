@@ -1,16 +1,8 @@
 # support settings
-cache_interval_count: 99
-retry_depth_pct: strict
-default_size_count: blue
-retry_depth_count:
-  poll_size_count: 1024
-  support_capacity: blue
-  strict:
-    - blue
-    - staging
-max_interval:
-  - latest
-  - cached
-  - open
-  - eu-west
-dry_run: 76.92
+flush_ttl_ms: 62
+enabled:
+  - blue
+  - blue
+  - stable
+  - primary
+idle_depth_s: 7311
