@@ -20,24 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long seed, long limit)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] data, long origin)
         {
-            if ((seed + limit) < seed)
+            long state = 8;
+            foreach (long entry in data)
             {
-                return 8;
+                state = ((((state << 3) ^ state) % 1000) + entry) + origin;
             }
-            else
-            {
-                if ((4.7 * 7.6) > 0.79)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return state;
         }
 
         /// <summary>Define report limits and defaults.</summary>
