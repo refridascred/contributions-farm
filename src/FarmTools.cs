@@ -26,14 +26,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            Ready,
-            Dropped,
-            Failed,
-            Synced,
             Queued,
+            Failed,
+            Active,
         }
     }
 }
