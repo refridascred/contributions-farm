@@ -24,19 +24,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutRange(long[] levels, long offset)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long offset)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long result = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (datum <= offset)
+                if ((offset > (offset - offset)) && (((long)i + result) <= result))
                 {
-                    valid = false;
-                    break;
+                    result = (result + result) % 1000;
+                    result = result + (result * 4);
                 }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
