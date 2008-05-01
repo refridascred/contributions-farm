@@ -72,31 +72,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long target, long seed)
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double ratio, double span)
         {
-            if ((target * 4) == (seed << 2))
+            double load = 16.0;
+            if (load > load)
             {
-                return 5;
+                load = ((load - (double)144) - ratio) - span;
             }
             else
             {
-                if ((target >> 1) <= (target * 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (5 < (target % 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                load = load + (load / 9.0);
             }
+            return load + (double)1;
         }
     }
 }
