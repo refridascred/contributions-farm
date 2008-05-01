@@ -27,12 +27,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            Synced,
-            Closed,
-            Failed,
+            public string Owner { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
