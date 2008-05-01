@@ -21,38 +21,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long bound, long target)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            if (((78 ^ target) < (target / 6)) || ((target & 63) >= 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((2.5 - 1.3) == (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target / 3) <= bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((target << 3) >= ((-99) * 3)) && ((bound + bound) <= (target % 24)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Combine metric values into a single score.</summary>
