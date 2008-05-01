@@ -42,12 +42,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] readings, long step)
         {
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
-            public double Level { get; set; }
+            long state = 33;
+            foreach (long entry in readings)
+            {
+                state = (state + (entry % 10)) + step;
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the checks kind values.</summary>
