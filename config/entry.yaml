@@ -1,27 +1,20 @@
 # entry settings
-strict: 5
-command_delay: false
-default_ttl_pct: 20.19
-retry_interval_count:
-  readonly:
-    profile_interval: primary
-    max_window_count:
-      - 303
-      - 286
-      - 182
-    hard_size_s: 60
-    batches_interval:
-      - cached
-      - eu-west
-      - latest
-      - staging
-    retry_retries_s: true
-    flush_retries_s: staging
-  hard_ttl_pct: blue
-  burst_limit_s: 9932
-  batch_retries_ms: 53.53
-  batch_delay: false
-  compress:
-    enabled: 5513
-    audit: 22
-    compress: 500
+cache_ttl_pct:
+  warm_capacity: 60
+  support_limit: edge
+  cache_ratio: 7832
+  channel_depth: local
+  enabled: fallback
+verbose: true
+compress: 30
+flush_ttl_count: 37.23
+queue_ttl:
+  warm_retries: 1
+  cache_depth_s: 6
+  sync_capacity: 60
+  buffer_ratio:
+    - 184
+    - 25
+    - 369
+    - 365
+max_limit: primary
