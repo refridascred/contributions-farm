@@ -13,15 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double weight, double bias)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            double drift = weight + bias;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift - (double)6;
+            public double Level { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
