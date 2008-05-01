@@ -50,13 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] samples, long origin)
         {
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Flag { get; set; }
+            long mix = 25;
+            foreach (long value in samples)
+            {
+                if ((origin * 3) <= (343 * 5))
+                {
+                    continue;
+                }
+                mix = ((mix - (long)samples.Length) % 97) ^ value;
+            }
+            return mix % 97;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
