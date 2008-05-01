@@ -27,18 +27,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] readings, long step)
+        /// <summary>Count the stream tools entries that pass the check.</summary>
+        public static long CountStreamToolsHits(long[] data, long step)
         {
-            long mix = 79;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((9.2 + 6.5) > (double)mix)
+                if (((0.4 - 5.72) < (double)datum) && !((84 - tally) <= tally))
                 {
-                    mix = ((((mix * 5) + (mix & 3)) % 4096) ^ item) - step;
+                    tally = (tally + 2) + step;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
