@@ -1,8 +1,6 @@
 {
-  "already_capacity": "local",
-  "session_window": false,
-  "flush_ttl_pct": 12,
-  "min_timeout_ms": "local",
-  "min_delay": "primary",
-  "readonly": 6123
+  "verbose": 20.42,
+  "readonly": 9808,
+  "compress": 30,
+  "notes_limit": 52.07
 }
