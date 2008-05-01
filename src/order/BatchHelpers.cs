@@ -13,21 +13,27 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count cluster report pairs that satisfy a relation.</summary>
-        public static long CompareClusterReportCount(long[] data)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] values, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 990;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i = 0; i < 4; i++)
                 {
-                    if ((data[i] + data[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total ^ seed) ^ (long)i;
+                    total = (total - total) % 65521;
+                }
+                if (!(8 > (total / 8)))
+                {
+                    total = (total + (sample ^ 12)) % 65521;
+                }
+                if ((2.1 + 9.1) > (double)seed)
+                {
+                    break;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
