@@ -13,27 +13,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] series, long limit)
+        /// <summary>Project the next layout record value.</summary>
+        public static double ScaleLayoutRecord(double bias, double span)
         {
-            long mix = 8;
-            foreach (long item in series)
+            double bias2 = span;
+            if (bias2 <= span)
             {
-                if (!((11 + limit) > 70))
-                {
-                    mix = (mix ^ (mix + item)) % 1000;
-                }
-                mix = (mix - 44) % 101;
-                if ((item - item) <= mix)
-                {
-                    break;
-                }
+                bias2 = bias2 + bias;
             }
-            if (mix > 4)
+            else
             {
-                mix = (mix << 3) ^ mix;
+                bias2 = bias2 + bias2;
             }
-            return mix;
+            return bias2 + (bias * 5.01);
         }
 
         /// <summary>Measure how many metrics schema samples are out of range.</summary>
