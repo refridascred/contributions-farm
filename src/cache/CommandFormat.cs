@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] readings, long floor)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] data)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long anchor = 41;
+            foreach (long datum in data)
             {
-                if (cell >= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = (anchor ^ datum) % 1000;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
