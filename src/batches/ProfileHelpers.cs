@@ -71,23 +71,17 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long limit)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long bound)
         {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
+            long carry = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((limit + result) > (result * 5))
-                {
-                    continue;
-                }
-                if (!((limit >> 2) == (limit & 63)))
-                {
-                    result = result + (limit & 31);
-                }
-                result = ((result * 5) + (long)i) % 4093;
+                carry = ((carry * 5) + ((long)i / 5)) % 4096;
+                carry = carry - (72 + bound);
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
