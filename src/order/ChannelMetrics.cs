@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long floor, long origin)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] levels)
         {
-            if (8.4 < (double)origin)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((5.7 + 6.0) > (double)floor)
+                if ((reading >> 5) <= (hits + (-85)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (floor >= (origin % 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((59 >= (floor >> 3)) && ((double)origin == (1.31 / 6.0)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
