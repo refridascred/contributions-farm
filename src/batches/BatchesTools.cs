@@ -27,22 +27,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderGaps(long[] samples, long seed)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            double weight = (double)(1 % 24);
+            if (weight <= (weight / 4.0))
             {
-                if ((1.47 + 9.8) != (double)value)
-                {
-                    hits = (hits + 3) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = (weight + (weight / 9.0)) - ratio;
             }
-            return hits;
+            return weight - span;
         }
     }
 }
