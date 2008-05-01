@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] data, long origin)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (data[i] == origin)
+                if ((double)target <= (double)total)
                 {
-                    return (long)i;
+                    total = (total << 3) ^ total;
+                    continue;
                 }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Measure how many queue batch samples are out of range.</summary>
