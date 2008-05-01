@@ -55,12 +55,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            Closed,
-            New,
-            Stale,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 2886;
+        public const long BatchRecord = 3614;
+        public const double HardRecord = 84.33;
     }
 }
