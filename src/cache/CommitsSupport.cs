@@ -72,32 +72,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long origin, long floor)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long step)
         {
-            long bound = origin ^ floor;
-            if (bound > origin)
+            long total = step;
+            for (int i = 0; i < 16; i++)
             {
-                return 1;
+                total = ((total << 2) ^ ((long)i + step)) % 65521;
+                total = ((total * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((floor + origin) < (bound * 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor / 9) > (floor % 10))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return total;
         }
     }
 }
