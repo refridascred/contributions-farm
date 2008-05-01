@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] readings, long step)
         {
-            public double Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
