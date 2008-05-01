@@ -1,6 +1,6 @@
 {
-  "retry_timeout_ms": "stable",
-  "retry_threshold": 7870,
-  "cache_threshold_pct": true,
-  "batch_limit": 32
+  "max_retries": "latest",
+  "poll_retries": "staging",
+  "record_size": "standard",
+  "counter_window": 500
 }
