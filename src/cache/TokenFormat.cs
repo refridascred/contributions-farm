@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Idle,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseWidth = 3076;
+        public const long IdleContributi = 3203;
+        public const long MinSize = 5012;
+        public const long DefaultTimeout = 8611;
+        public const long BatchContributi = 7020;
 
         /// <summary>Grade a batch value against two limits.</summary>
         public static long SortBatch(long offset, long seed)
