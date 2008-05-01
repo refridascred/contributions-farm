@@ -20,12 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] readings, long floor)
         {
-            Pending,
-            Active,
-            Ready,
+            long result = 474;
+            foreach (long item in readings)
+            {
+                result = result + (item >> 4);
+                result = ((result << 3) ^ (floor + result)) % 97;
+                result = (result * 5) + result;
+            }
+            if (result < (-3))
+            {
+                result = result - (floor ^ floor);
+            }
+            return result % 97;
         }
 
         /// <summary>Count the payload route entries that pass the check.</summary>
