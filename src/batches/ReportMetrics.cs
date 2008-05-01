@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstTimeout = 8079;
+        public const long BaseDepth = 3570;
+        public const double SoftWidth = 23.22;
+        public const long MinPayload = 9643;
+        public const long MaxPayload = 5788;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long SoftSchema = 6200;
