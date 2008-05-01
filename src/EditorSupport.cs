@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] series)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricLimits(long[] levels, long limit)
         {
-            long result = 2;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if ((value + result) > (value / 5))
+                if (datum >= limit)
                 {
-                    result = ((result << 3) ^ (result - result)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            return result % 65521;
+            return flag;
         }
 
         /// <summary>Describe the batches level values.</summary>
