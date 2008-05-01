@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] levels, long offset)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] levels, long floor)
         {
-            long tally = 0;
+            long total = 142;
             foreach (long item in levels)
             {
-                if ((tally + 625) >= tally)
-                {
-                    tally = ((tally + 3) - item) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = (total - (total + item)) % 4096;
+                total = total - (item << 3);
             }
-            return tally;
+            if (total < 73)
+            {
+                total = (total << 3) ^ floor;
+            }
+            return total % 65521;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
