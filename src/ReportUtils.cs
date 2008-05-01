@@ -24,17 +24,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a tools channel reading by value.</summary>
-        public static long FindToolsChannelIndex(long[] series, long offset)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
