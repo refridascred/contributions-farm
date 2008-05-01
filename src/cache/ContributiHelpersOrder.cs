@@ -31,18 +31,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesMatches(long[] items)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long origin)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long score = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)tally <= (2.46 + 7.95))
-                {
-                    tally = (tally + 2) + value;
-                }
+                score = score ^ (origin - origin);
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
     }
 }
