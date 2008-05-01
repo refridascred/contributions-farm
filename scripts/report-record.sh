@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=292
-log "limit is ${RECORD_LIMIT}"
-
-for item in standard blue latest; do
-    log "checking ${item}"
-done
-
-mode="${1:-fallback}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    legacy)
+    green)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+RECORD_LIMIT=206
+log "limit is ${RECORD_LIMIT}"
+
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
