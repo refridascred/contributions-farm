@@ -20,15 +20,12 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Accumulate layout channel samples.</summary>
-        public static long DigestLayoutChannel(long[] values, long step)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long acc = 331;
-            foreach (long cell in values)
-            {
-                acc = ((acc - (acc * 5)) ^ cell) - step;
-            }
-            return acc;
+            Draft,
+            Closed,
+            Idle,
         }
 
         /// <summary>Describe the metric state values.</summary>
