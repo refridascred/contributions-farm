@@ -78,12 +78,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] levels, long bound)
         {
-            Failed,
-            Queued,
-            Active,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (datum > (tally + bound))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
