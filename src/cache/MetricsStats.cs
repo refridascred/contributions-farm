@@ -24,16 +24,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] series, long step)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutRange(long[] levels, long offset)
         {
-            long acc = -418;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                acc = ((acc + acc) % 101) ^ sample;
-                acc = (acc + (step - acc)) % 1000;
+                if (datum <= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
