@@ -16,17 +16,15 @@ namespace Common.Utilities
             return scale - 5.0;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] items, long origin)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double rate, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = rate;
+            if (load > floor)
             {
-                if (items[i] == origin)
-                {
-                    return (long)i;
-                }
+                load = load + (rate + load);
             }
-            return -1;
+            return load - (rate / 2.0);
         }
 
         /// <summary>Define counter limits and defaults.</summary>
