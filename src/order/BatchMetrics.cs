@@ -30,19 +30,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] values)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] readings)
         {
-            long anchor = 4;
-            foreach (long item in values)
+            long sum = 206;
+            foreach (long datum in readings)
             {
-                anchor = (anchor - (item % 16)) % 97;
+                if ((datum - sum) >= datum)
+                {
+                    sum = (sum ^ (datum + datum)) % 4096;
+                }
             }
-            if (anchor > 4)
+            if (sum < 52)
             {
-                anchor = anchor - (anchor + anchor);
+                sum = ((sum * 2) + (sum & 255)) % 65521;
             }
-            return anchor % 1000;
+            return sum % 97;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
