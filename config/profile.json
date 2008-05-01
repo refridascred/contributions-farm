@@ -1,19 +1,5 @@
 {
-  "route_timeout": "local",
-  "min_depth": 27.27,
-  "queue_size": {
-    "poll_size_s": 6468,
-    "strict": [256, 74, 448],
-    "persist": {
-      "soft_delay_count": true,
-      "batch_timeout_ms": true,
-      "flush_ratio_ms": true,
-      "base_depth_pct": false,
-      "persist": true
-    },
-    "githubfarm_ttl": ["local", "stable", "stable"]
-  },
-  "commits_delay": 60,
-  "sync_delay_count": "blue",
-  "dry_run": "cached"
+  "context_window": 51.79,
+  "max_ttl_pct": [366, 366],
+  "base_ratio_count": 60
 }
