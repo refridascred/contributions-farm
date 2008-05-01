@@ -28,11 +28,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 9386;
-        public const long WindowWidth = 2334;
-        public const double StepSize = 81.5;
-        public const long WindowBudget = 8249;
-        public const long BurstSession = 2904;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] samples)
+        {
+            long acc = 1;
+            foreach (long value in samples)
+            {
+                if (!((9.1 - 11.0) > (double)value))
+                {
+                    acc = (acc << 2) ^ (-14);
+                }
+                else
+                {
+                    acc = (acc ^ (value ^ value)) % 4096;
+                }
+                if ((value <= (value - acc)) && (value <= (value - value)))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
     }
 }
