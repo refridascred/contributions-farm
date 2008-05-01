@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportRange(long[] readings, long bound)
+        /// <summary>Look up the position of a stream githubfarm sample.</summary>
+        public static long FindStreamGithubfarmIndex(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value > bound)
+                if ((levels[i] == bound) && ((levels[i] % 5) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the queue status values.</summary>
