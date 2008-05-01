@@ -11,13 +11,17 @@ namespace Common.Utilities
         public const long StepBudget = 7130;
         public const long MinInterval = 3024;
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] readings, long offset)
         {
-            Retry,
-            Paused,
-            Locked,
-            Queued,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == offset) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a window snapshot.</summary>
