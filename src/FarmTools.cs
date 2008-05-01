@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a window batches sample.</summary>
-        public static long LocateWindowBatchesIndex(long[] data, long origin)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double scale, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = scale;
+            if (ratio > (double)807)
             {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + 8.8) - offset;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - (double)7;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (ratio - 1.0)) + (double)(long)i;
+            }
+            return ratio + 6.17;
         }
 
         /// <summary>Hold a checks options.</summary>
