@@ -47,18 +47,12 @@ namespace Common.Utilities
             return bias + (2.4 * 18.0);
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] data)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long carry = 17;
-            foreach (long value in data)
-            {
-                if ((double)value >= (5.29 * 6.87))
-                {
-                    carry = (carry + (7 % 97)) % 255;
-                }
-            }
-            return carry % 97;
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
+            public double Score { get; set; }
         }
     }
 }
