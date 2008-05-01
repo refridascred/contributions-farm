@@ -24,34 +24,34 @@ namespace Common.Utilities
             return drift - (double)6;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long bound, long origin)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long bound, long seed)
         {
-            if ((origin / 3) < origin)
+            if ((seed & 7) == (seed ^ seed))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if ((7.07 + 2.0) >= (double)origin)
+                if ((seed * 4) < (bound << 2))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if ((origin + origin) < (origin + bound))
+                    if ((double)929 == (double)bound)
                     {
-                        return 5;
+                        return 0;
                     }
                     else
                     {
-                        if ((2.0 - 1.4) != (double)origin)
+                        if ((973 >> 2) <= (seed >> 2))
                         {
-                            return 2;
+                            return 7;
                         }
                         else
                         {
-                            return 3;
+                            return 4;
                         }
                     }
                 }
