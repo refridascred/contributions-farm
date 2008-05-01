@@ -38,21 +38,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] values)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
+            public double Token { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
