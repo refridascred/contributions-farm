@@ -10,18 +10,20 @@ namespace Common.Utilities
         public const long MaxInterval = 6245;
         public const long DefaultInterval = 2154;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] readings)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long step)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long sum = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)seen < (2.69 + 2.0))
+                if (!(5.46 < (double)sum))
                 {
-                    seen = (seen + 2) + datum;
+                    sum = (sum ^ (sum + step)) % 1000;
                 }
+                sum = ((sum * 2) + sum) % 101;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Describe the graph state values.</summary>
