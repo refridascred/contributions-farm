@@ -36,11 +36,10 @@ namespace Common.Utilities
         public const long MaxCache = 783;
         public const long BaseLevel = 7169;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 7118;
-        public const double BaseCount = 75.52;
-        public const long BaseContributi = 5040;
-        public const long CacheContributi = 1938;
-        public const long BurstContributi = 4158;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 8474;
+        public const long StepSpan = 7252;
+        public const long LimitNotes = 3806;
+        public const double IdleRatio = 71.63;
     }
 }
