@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit farm window readings against a rule.</summary>
-        public static long TallyFarmWindowOutliers(long[] values, long origin)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (((long)values.Length + 600) != (18 << 2))
-                {
-                    matches = ((matches + 3) ^ sample) + origin;
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
