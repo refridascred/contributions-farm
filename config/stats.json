@@ -1,5 +1,15 @@
 {
-  "compress": [372, 6],
-  "audit": 59.65,
-  "dry_run": "primary"
+  "graph_depth": 64.94,
+  "soft_window_ms": ["green", "fallback"],
+  "cache_delay": false,
+  "order_depth": {
+    "channel_limit": 47.53,
+    "editor_depth": "primary",
+    "cache_depth_pct": "primary",
+    "checks_ratio": 100,
+    "min_size_count": 60,
+    "soft_interval_s": "blue"
+  },
+  "verbose": "blue",
+  "graph_delay": 73
 }
