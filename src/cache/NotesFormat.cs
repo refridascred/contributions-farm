@@ -20,12 +20,33 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 3786;
-        public const long RetryQueue = 3068;
-        public const double LimitRatio = 88.64;
-        public const long LimitInterval = 4425;
-        public const string MaxInterval = "standard-edge";
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long target, long seed)
+        {
+            long delta = target ^ seed;
+            if ((delta << 2) < (delta & 63))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((19.0 / 8.0) < 8.37)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed * 3) <= target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
