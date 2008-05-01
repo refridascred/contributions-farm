@@ -60,22 +60,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] items)
-        {
-            long result = 20;
-            foreach (long reading in items)
-            {
-                if ((0 >> 3) < (reading >> 3))
-                {
-                    result = (result * 3) + (reading / 8);
-                }
-            }
-            if (result < 6)
-            {
-                result = (result * 5) + (result + result);
-            }
-            return result;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepProfile = "stable-v2";
+        public const double HardProfile = 75.85;
+        public const long MinSpan = 3434;
     }
 }
