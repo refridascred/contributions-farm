@@ -1,13 +1,15 @@
 # Command notes
 
-Run the cluster check before changing any graph limits.
-The layout report groups every payload by batches.
+Defaults for metrics live in the config folder and can be overridden per environment.
+Run the farm check before changing any filter limits.
 
-Each tools is validated before it reaches the checks queue.
-A metric that stays idle for too long is moved to the metric list.
+The editor helpers are pure functions, so they are safe to call from any thread.
+The profile module keeps session values in sync with the format cache.
+The contributi module keeps entry values in sync with the stats cache.
 
 ## Guidelines
 
-- Keep account values small
-- Review graph limits each release
-- Document new metrics fields
+- Keep window values small
+- Log every metric change
+- Prefer metrics defaults
+- Document new session fields
