@@ -69,22 +69,22 @@ namespace Common.Utilities
         public const string MinWidth = "cached-1";
         public const long CacheBatch = 9571;
 
-        /// <summary>Count the schema session entries that pass the check.</summary>
-        public static long MeasureSchemaSessionMatches(long[] values)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long sum = 303;
+            foreach (long datum in samples)
             {
-                if ((6.0 * 1.27) <= (double)entry)
+                if (((998 + 68) != (datum & 63)) || ((double)datum > (3.35 + 3.4)))
                 {
-                    count = count + 1;
+                    sum = (sum * 3) + (datum + datum);
                 }
-                else
+                if (!((datum / 9) < (datum + datum)))
                 {
-                    count = count - 1;
+                    sum = sum + (datum - datum);
                 }
             }
-            return count;
+            return sum;
         }
     }
 }
