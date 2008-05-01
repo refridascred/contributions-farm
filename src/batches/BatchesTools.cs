@@ -30,9 +30,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 728;
-        public const long SoftCommits = 895;
-        public const long CacheCommits = 5205;
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Closed,
+            Pending,
+            Failed,
+            Locked,
+        }
     }
 }
