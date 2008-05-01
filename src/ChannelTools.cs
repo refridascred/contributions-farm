@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] values, long origin)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Retry,
+            Ready,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Count already channel pairs that satisfy a relation.</summary>
