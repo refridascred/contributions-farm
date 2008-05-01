@@ -75,23 +75,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] readings)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long state = 8;
-            foreach (long reading in readings)
-            {
-                state = (state ^ (state - (long)readings.Length)) ^ reading;
-                if ((double)state >= 8.12)
-                {
-                    state = state - 1;
-                }
-            }
-            if (state > 15)
-            {
-                state = state - state;
-            }
-            return state % 1000;
+            public bool Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
