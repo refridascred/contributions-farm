@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Compare every pair of payload support readings.</summary>
+        public static long MatchPayloadSupportCount(long[] series)
         {
-            public string Offset { get; set; } = "";
-            public bool Count { get; set; }
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
