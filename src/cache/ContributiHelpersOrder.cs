@@ -30,19 +30,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double weight, double floor)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double bias, double floor)
         {
-            double ratio = 7.94;
-            if (ratio < floor)
-            {
-                ratio = ratio - weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + weight) + (double)(long)i;
-            }
-            return ratio + (double)71;
+            double mean = (double)(72 - 9);
+            return ((mean + (double)520) + bias) + floor;
         }
     }
 }
