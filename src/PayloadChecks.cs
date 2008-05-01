@@ -18,17 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] levels, long limit)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long offset, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long next = offset - seed;
+            if (((offset & 7) >= (offset % 100)) && ((offset << 3) != (seed % 5)))
             {
-                if (levels[i] == limit)
+                return 7;
+            }
+            else
+            {
+                if ((892 - seed) > offset)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((seed % 60) > (next - offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a account window reading by value.</summary>
