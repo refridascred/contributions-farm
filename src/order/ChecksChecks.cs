@@ -41,10 +41,19 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double SoftCommits = 17.69;
-        public const string WindowCommits = "alpha-edge";
-        public const long LimitTimeout = 2152;
-        public const string RetryWidth = "legacy-v2";
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double rate, double bias)
+        {
+            double scale = (double)(2 & 3);
+            if (scale < (3.2 + 17.0))
+            {
+                scale = (scale - (rate * 18.0)) + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale + (double)(-355);
+        }
     }
 }
