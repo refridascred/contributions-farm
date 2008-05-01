@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxRatio = 20.86;
-        public const double MaxTimeout = 34.59;
-        public const long BatchRatio = 6349;
-        public const string SoftProfile = "fallback-v2";
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Locked,
+            Paused,
+            Active,
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long CountFormatHits(long[] data, long bound)
