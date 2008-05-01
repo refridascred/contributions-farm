@@ -16,16 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstTimeout = "standard-1";
+        public const string RetryCounter = "standard-v2";
+        public const string DefaultScore = "local-edge";
+        public const long IdleTimeout = 3614;
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long FoldEditor(long[] levels)
