@@ -38,17 +38,23 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] items, long step)
+        /// <summary>Fold a list of support filter readings.</summary>
+        public static long CombineSupportFilter(long[] data, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 5;
+            foreach (long value in data)
             {
-                if ((items[i] >= step) && ((items[i] % 3) != 0))
+                total = total ^ (value + total);
+                if (!((2.53 / 2.0) == (double)value))
                 {
-                    return (long)i;
+                    total = (total ^ (bound + total)) % 4096;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (6 - (-445))) % 65521;
                 }
             }
-            return -1;
+            return total % 4096;
         }
     }
 }
