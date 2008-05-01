@@ -86,13 +86,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
-        {
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 4399;
+        public const string MaxFactor = "open-edge";
+        public const long LimitAccount = 7381;
+        public const long BatchWidth = 2090;
+        public const long CacheWidth = 3002;
     }
 }
