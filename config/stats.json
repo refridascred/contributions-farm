@@ -1,15 +1,14 @@
 {
-  "stream_threshold": [62, 238, 124],
-  "schema_capacity": "latest",
-  "enabled": 65,
-  "base_window_pct": {
-    "compress": "cached",
-    "hard_depth_count": [488, 479, 114, 219],
-    "sync_threshold_count": 4562,
-    "idle_depth": 44.24,
-    "retry_window": "blue",
-    "flush_depth": 7
+  "warm_retries": "standard",
+  "min_delay_s": "standard",
+  "metrics_size": "primary",
+  "flush_limit": {
+    "metrics_retries": 8939,
+    "channel_timeout": 1429,
+    "batch_interval": 60,
+    "idle_window_s": 91,
+    "soft_size": [48, 190, 22],
+    "enabled": [483, 275, 3, 105]
   },
-  "base_ttl_count": 98,
-  "soft_delay_ms": ["standard", "strict", "fallback"]
+  "graph_retries": "local"
 }
