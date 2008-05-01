@@ -23,19 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a layout metric figure with a bias.</summary>
-        public static double SmoothLayoutMetric(double scale, double floor)
+        /// <summary>Roll a report session counter forward.</summary>
+        public static long StepReportSession(long origin)
         {
-            double load = (double)10 + (scale - scale);
-            if (load >= scale)
+            long state = origin;
+            for (int i = 0; i < 22; i++)
             {
-                load = (load + (double)26) - floor;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + load) - (double)(long)i;
-            }
-            return load - scale;
+            return state;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
