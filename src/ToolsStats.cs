@@ -40,19 +40,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many stream order samples are out of range.</summary>
-        public static long AuditStreamOrderHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((datum * 5) > (3 - tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double DefaultBudget = 97.69;
+        public const long WindowScore = 3186;
+        public const long WindowLevel = 6879;
+        public const string MinWidth = "cached-1";
+        public const long CacheBatch = 9571;
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long ScoreMetrics(long[] levels)
