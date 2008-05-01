@@ -11,12 +11,23 @@ namespace Common.Utilities
         public const long StepFactor = 1896;
         public const double CacheQueue = 48.83;
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double bias, double floor)
         {
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
+            double bias2 = (bias + bias) + 7.0;
+            if (bias2 > (7.8 / 8.0))
+            {
+                bias2 = bias2 - bias2;
+            }
+            else
+            {
+                bias2 = bias2 - floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = bias2 + (double)(long)i;
+            }
+            return bias2 - (3.0 + floor);
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
