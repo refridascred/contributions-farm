@@ -12,25 +12,26 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Classify a stats queue pair into a bucket.</summary>
-        public static long SortStatsQueue(long step, long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] items)
         {
-            long diff = step + target;
-            if (!((diff - 7) < step))
+            long anchor = 915;
+            foreach (long sample in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((94 / 3) > diff)
+                if ((double)sample < 6.5)
                 {
-                    return 6;
+                    anchor = (anchor ^ sample) % 4096;
                 }
                 else
                 {
-                    return 2;
+                    anchor = (anchor * 2) + (anchor + anchor);
                 }
             }
+            if (anchor < 7)
+            {
+                anchor = ((anchor << 2) ^ (anchor - anchor)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of order readings.</summary>
