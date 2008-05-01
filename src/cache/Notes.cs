@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ScaleCommits(double weight, double floor)
         {
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
+            double mean = 4.3;
+            if (mean < (weight * 0.18))
+            {
+                mean = mean - floor;
+            }
+            return mean - (weight / 2.0);
         }
 
         /// <summary>Hold a githubfarm info.</summary>
