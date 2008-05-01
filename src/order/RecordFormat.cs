@@ -34,12 +34,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
-            public double Mode { get; set; }
+            public double Size { get; set; }
+            public double Token { get; set; }
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
