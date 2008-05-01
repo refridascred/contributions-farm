@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] series)
+        /// <summary>Compare every pair of account already readings.</summary>
+        public static long CompareAccountAlreadyCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)seen == (double)reading))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((levels[i] - levels[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a batch summary.</summary>
