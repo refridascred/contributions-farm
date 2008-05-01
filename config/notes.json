@@ -1,17 +1,13 @@
 {
-  "warm_retries": 6030,
-  "editor_timeout": true,
-  "context_ttl": {
-    "audit": {
-      "strict": ["staging", "strict", "fallback", "cached"],
-      "max_ratio_count": false,
-      "notes_window": "open",
-      "retry_threshold": 88.67
-    },
-    "verbose": ["open", "primary"],
-    "already_ratio": 7.29,
-    "min_retries_pct": "edge",
-    "cache_timeout_count": false
+  "metrics_size": 3992,
+  "idle_interval_s": "blue",
+  "cache_retries": 9888,
+  "strict": 500,
+  "session_interval": {
+    "verbose": "primary",
+    "githubfarm_capacity": "local",
+    "window_threshold": "fallback",
+    "max_delay_count": "fallback"
   },
-  "soft_timeout_ms": 7417
+  "channel_interval": 37.24
 }
