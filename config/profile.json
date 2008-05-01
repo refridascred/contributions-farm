@@ -1,9 +1,5 @@
 {
-  "cache_capacity_s": [85, 206],
-  "base_threshold_pct": {
-    "checks_size": [380, 9, 178],
-    "batch_capacity": 6.57,
-    "idle_window_s": 60
-  },
-  "audit": 44.72
+  "contributi_delay": "eu-west",
+  "flush_threshold_count": 7,
+  "poll_limit_pct": 4738
 }
