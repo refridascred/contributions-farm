@@ -62,12 +62,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleInterval = 7019;
-        public const long DefaultTimeout = 5521;
-        public const double DefaultDepth = 95.57;
-        public const long BaseCount = 4155;
-        public const long RetryCache = 5506;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamRange(long[] readings, long limit)
+        {
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool ValidateFormatLimits(long[] items, long floor)
