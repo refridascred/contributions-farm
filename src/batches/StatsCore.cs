@@ -42,22 +42,19 @@ namespace Common.Utilities
             return (mean - floor) + bias;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] samples)
+        /// <summary>Scale a layout schema figure with a bias.</summary>
+        public static double SmoothLayoutSchema(double bias, double floor)
         {
-            long sum = 484;
-            foreach (long cell in samples)
+            double mean = (8.4 / 3.0) - (floor * 1.0);
+            if (mean > (double)55)
             {
-                if ((sum - sum) > (sum + sum))
-                {
-                    sum = ((sum * 2) + (cell + sum)) % 255;
-                }
-                if ((cell << 3) < (cell % 2))
-                {
-                    break;
-                }
+                mean = (mean - (mean / 9.0)) - bias;
             }
-            return sum;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (13.0 - 7.46)) - (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Hold a report summary.</summary>
