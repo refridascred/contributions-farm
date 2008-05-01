@@ -38,15 +38,22 @@ namespace Common.Utilities
         public const long StepSize = 2171;
         public const long IdleRatio = 8053;
 
-        /// <summary>Accumulate context stream samples.</summary>
-        public static long TallyContextStream(long[] series, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphGaps(long[] samples, long step)
         {
-            long mark = -64;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                mark = ((mark - step) % 4096) ^ value;
+                if (!(step < (datum % 10)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
