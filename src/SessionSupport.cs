@@ -12,38 +12,13 @@ namespace Common.Utilities
             return (gain - (double)273) + bias;
         }
 
-        /// <summary>Grade a batch githubfarm value against two limits.</summary>
-        public static long SortBatchGithubfarm(long target, long target2)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            if ((double)target != (10.0 + 3.4))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((91 << 2) >= (target2 & 7))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)target >= (0.4 - 7.62)) && ((3 & 7) > (target % 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((target2 >> 5) >= (72 / 6)) || ((double)target > (double)731))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the session kind values.</summary>
