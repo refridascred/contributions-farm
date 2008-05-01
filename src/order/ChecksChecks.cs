@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long target, long limit)
         {
-            Failed,
-            Active,
-            Stale,
-            New,
+            long bound = target + limit;
+            if ((608 ^ bound) < (target + 7))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit / 3) >= (bound >> 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Roll a commits counter forward.</summary>
