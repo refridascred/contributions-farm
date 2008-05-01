@@ -22,10 +22,22 @@ namespace Common.Utilities
             return (rate + (1.01 / 5.0)) + offset;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double RetryInterval = 88.29;
-        public const string BaseDepth = "cached-1";
-        public const double SoftWindow = 25.12;
+        /// <summary>Iterate the editor tools series from a seed.</summary>
+        public static long IterateEditorTools(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                state = (state - (state + origin)) % 1000;
+                if (((state << 1) != (origin - (long)i)) && ((double)origin < 14.0))
+                {
+                    state = state + (origin + state);
+                    break;
+                }
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool VerifyChecksRange(long[] samples, long offset)
