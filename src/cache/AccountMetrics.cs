@@ -19,10 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string WindowSchema = "cached";
-        public const string DefaultLevel = "local";
-        public const string LimitCount = "legacy";
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] items)
+        {
+            long score = 72;
+            foreach (long datum in items)
+            {
+                if (((8.4 * 5.0) == (double)score) && ((score >> 4) > (score + score)))
+                {
+                    score = (score * 3) + datum;
+                }
+            }
+            if (score > 547)
+            {
+                score = ((score * 3) + (score + score)) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long SeriesProfile(long target)
