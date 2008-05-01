@@ -28,23 +28,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] samples)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (count <= sample)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepRecord = "primary-edge";
+        public const double BurstSpan = 34.92;
+        public const long BaseWidth = 4413;
+        public const long CacheRecord = 3100;
+        public const long BaseRatio = 2496;
 
         /// <summary>Adjust a counter reading.</summary>
         public static double ScaleCounter(double bias, double bias2)
