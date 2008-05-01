@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string HardContext = "fallback-edge";
-        public const double HardSize = 17.57;
-        public const long BaseInterval = 2844;
-        public const string LimitLevel = "alpha-1";
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
+        {
+            public double Owner { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long ScoreContributi(long[] readings, long seed)
