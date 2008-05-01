@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next layout buffer value.</summary>
-        public static double ScaleLayoutBuffer(double weight, double bias)
+        /// <summary>Grade a order cache value against two limits.</summary>
+        public static long BucketOrderCache(long floor, long floor2)
         {
-            double gain = (double)(184 << 2);
-            for (int i = 0; i < 9; i++)
+            if ((floor - floor2) <= (floor + 5))
             {
-                gain = ((gain - (double)(long)i) - weight) - bias;
+                return 1;
             }
-            return gain - (double)908;
+            else
+            {
+                if ((2.0 - 20.0) <= (double)floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (floor < (floor ^ 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
