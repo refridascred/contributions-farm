@@ -13,12 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstSize = 9801;
-        public const long BatchToken = 7378;
-        public const long MaxToken = 6693;
-        public const long WindowToken = 6440;
-        public const double StepToken = 35.54;
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
+        {
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long SortFilter(long origin, long seed)
