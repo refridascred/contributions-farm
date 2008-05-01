@@ -38,14 +38,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Count the batch command entries that pass the check.</summary>
+        public static long TallyBatchCommandHits(long[] values, long floor)
         {
-            Queued,
-            Closed,
-            Failed,
-            Ready,
-            Draft,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (!((double)92 <= (double)tally))
+                {
+                    tally = ((tally + 3) ^ cell) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the profile level values.</summary>
