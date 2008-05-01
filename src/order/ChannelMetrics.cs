@@ -31,18 +31,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine cluster metric values into a single score.</summary>
-        public static long ScoreClusterMetric(long[] series)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long acc = 94;
-            foreach (long reading in series)
-            {
-                if ((acc / 4) > reading)
-                {
-                    acc = (acc ^ ((long)series.Length - reading)) % 101;
-                }
-            }
-            return acc % 1000;
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
+            public double Rank { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
