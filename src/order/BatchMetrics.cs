@@ -16,18 +16,17 @@ namespace Common.Utilities
             return ratio + (double)180;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] series)
+        /// <summary>Find the first layout metric entry that matches the target.</summary>
+        public static long LookupLayoutMetricIndex(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (tally >= (sample + 60))
+                if (samples[i] >= step)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the layout level values.</summary>
