@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long offset, long seed)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] series)
         {
-            if ((offset % 60) <= (44 - (-47)))
+            long seen = 0;
+            foreach (long cell in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed + seed) <= seed)
+                if (((seen - seen) > (cell - seen)) || (((double)seen > (8.0 + 2.0)) || ((14.0 / 3.0) > (double)seen)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)seed == (7.1 / 3.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
