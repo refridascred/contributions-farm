@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesMatches(long[] items, long seed)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)datum <= (double)seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] ^ samples[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
