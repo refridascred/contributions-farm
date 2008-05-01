@@ -65,26 +65,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate farm schema samples.</summary>
-        public static long TotalFarmSchema(long[] series)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] series)
         {
-            long sum = 4;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((double)datum == (3.58 - 7.46))
+                if (!((2.3 > (double)cell) && ((double)52 <= (double)cell)))
                 {
-                    sum = (sum - (sum % 60)) % 101;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (sum / 5);
-                }
-                if (datum <= (datum ^ datum))
-                {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Describe the cache mode values.</summary>
