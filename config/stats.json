@@ -1,5 +1,6 @@
 {
-  "batch_retries": [262, 88, 382],
-  "batch_depth": "stable",
-  "cache_depth": false
+  "idle_delay": "latest",
+  "warm_limit_ms": "legacy",
+  "counter_threshold": 500,
+  "flush_limit_s": "green"
 }
