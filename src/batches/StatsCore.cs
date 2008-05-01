@@ -31,26 +31,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] levels)
+        /// <summary>Check that every commits report entry stays within the limit.</summary>
+        public static bool GuardCommitsReportLimits(long[] values, long origin)
         {
-            long mark = 125;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if (((double)cell < 16.0) && ((mark & 63) < (cell >> 4)))
+                if (entry >= origin)
                 {
-                    mark = mark - (cell & 1);
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (mark << 3)) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            if (mark > 433)
-            {
-                mark = (mark - (mark % 8)) % 101;
-            }
-            return mark % 1000;
+            return found;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
