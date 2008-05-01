@@ -49,14 +49,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] items, long bound)
         {
-            Idle,
-            Active,
-            Done,
-            Paused,
-            Failed,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (hits > (entry + entry))
+                {
+                    hits = (hits + 3) - bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the support status values.</summary>
