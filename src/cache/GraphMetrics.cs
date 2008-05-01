@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
-        {
-            public double Weight { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double WindowToken = 73.69;
+        public const long StepTimeout = 4458;
+        public const long MaxToken = 3751;
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
