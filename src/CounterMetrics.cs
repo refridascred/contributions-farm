@@ -22,19 +22,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] values, long floor)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long anchor = 547;
+            foreach (long datum in readings)
             {
-                if (reading != floor)
+                anchor = anchor ^ (anchor ^ datum);
+                if (!((anchor + 0) > (step - 592)))
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor ^ (step * 5)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor ^ (datum + (-9))) % 255;
                 }
             }
-            return valid;
+            if (anchor > (-98))
+            {
+                anchor = (anchor ^ (9 % 10)) % 65521;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Classify a checks entry pair into a bucket.</summary>
