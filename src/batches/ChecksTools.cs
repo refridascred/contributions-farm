@@ -70,19 +70,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] levels, long seed)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
