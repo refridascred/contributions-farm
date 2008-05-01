@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double gain, double bias)
         {
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
-            public double Offset { get; set; }
-            public bool Rank { get; set; }
+            double ratio = gain;
+            if (ratio <= 9.82)
+            {
+                ratio = (ratio + (18.0 * 6.8)) + bias;
+            }
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + 16.0) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
