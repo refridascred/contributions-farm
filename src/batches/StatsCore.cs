@@ -38,14 +38,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double weight, double floor)
         {
-            Stale,
-            Synced,
-            Active,
-            Queued,
-            Done,
+            double mean = (double)7 / 6.0;
+            if (mean <= mean)
+            {
+                mean = ((mean - (mean - mean)) + weight) + floor;
+            }
+            return mean - mean;
         }
 
         /// <summary>Hold a account record.</summary>
