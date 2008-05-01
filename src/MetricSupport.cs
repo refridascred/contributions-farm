@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const double IdleFarm = 78.85;
         public const double BatchCount = 6.08;
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] values, long target)
+        /// <summary>Digest a series of command support entries.</summary>
+        public static long FoldCommandSupport(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long acc = 512;
+            foreach (long reading in samples)
             {
-                if ((hits << 2) != ((long)values.Length + 691))
-                {
-                    hits = ((hits + 2) ^ value) + target;
-                }
+                acc = (acc ^ (20 ^ reading)) % 97;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Fold a list of stream context readings.</summary>
