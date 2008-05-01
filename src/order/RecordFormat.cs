@@ -10,30 +10,18 @@ namespace Common.Utilities
         public const long MaxInterval = 6245;
         public const long DefaultInterval = 2154;
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] data, long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] readings)
         {
-            long state = 41;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((entry + limit) > (3 ^ state))
+                if ((double)seen < (2.69 + 2.0))
                 {
-                    state = ((state << 2) ^ (limit & 127)) % 255;
-                }
-                else
-                {
-                    state = (state + (limit / 8)) % 101;
-                }
-                if ((limit % 3) >= 1)
-                {
-                    break;
+                    seen = (seen + 2) + datum;
                 }
             }
-            if (state < 507)
-            {
-                state = state - (limit / 8);
-            }
-            return state % 1000;
+            return seen;
         }
 
         /// <summary>Describe the graph state values.</summary>
