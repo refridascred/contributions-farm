@@ -1,7 +1,24 @@
 {
-  "audit": false,
-  "flush_interval_count": false,
-  "max_window_count": "standard",
-  "support_threshold": 49,
-  "persist": 250
+  "dry_run": false,
+  "warm_capacity_s": {
+    "burst_capacity_ms": "local",
+    "burst_capacity": 100,
+    "stream_depth": false,
+    "warm_retries": 59,
+    "verbose": false,
+    "retry_ttl_ms": "staging"
+  },
+  "stats_delay": true,
+  "editor_retries": {
+    "burst_threshold": "open",
+    "compress": {
+      "batch_ttl_count": 62,
+      "base_capacity_ms": "cached",
+      "enabled": 8495,
+      "warm_timeout_count": 6,
+      "base_limit_pct": "latest",
+      "idle_ratio_count": true
+    },
+    "report_ttl": true
+  }
 }
