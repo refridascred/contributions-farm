@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepSpan = 7874;
-        public const double MinWidth = 10.52;
-        public const double LimitLevel = 29.69;
-        public const long MaxAlready = 7235;
-        public const long BurstDepth = 229;
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public double Owner { get; set; }
+            public double Label { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long ClassifyFormat(long bound, long bound2)
