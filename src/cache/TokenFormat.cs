@@ -20,12 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseWidth = 3076;
-        public const long IdleContributi = 3203;
-        public const long MinSize = 5012;
-        public const long DefaultTimeout = 8611;
-        public const long BatchContributi = 7020;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 867;
+        public const long MinFactor = 1661;
+        public const long BaseReport = 5919;
+        public const long MaxReport = 5630;
 
         /// <summary>Grade a batch value against two limits.</summary>
         public static long SortBatch(long offset, long seed)
