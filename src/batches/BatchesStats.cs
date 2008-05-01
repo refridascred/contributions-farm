@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Scale a metric route figure with a bias.</summary>
+        public static double BlendMetricRoute(double scale, double bias)
         {
-            Active,
-            Stale,
-            Locked,
-            Ready,
+            double drift = (double)(82 & 127);
+            if (drift < (double)83)
+            {
+                drift = drift + (double)5;
+            }
+            else
+            {
+                drift = drift + (double)0;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - scale) + (double)(long)i;
+            }
+            return drift + (drift - bias);
         }
 
         /// <summary>Accumulate schema samples.</summary>
