@@ -31,12 +31,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 4010;
-        public const long HardFactor = 6116;
-        public const long RetryWidth = 8728;
-        public const long BaseWidth = 544;
-        public const long BatchChecks = 9876;
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
+        {
+            Synced,
+            Pending,
+            New,
+            Done,
+        }
 
         /// <summary>Match up metric samples.</summary>
         public static long CompareMetricCount(long[] items)
