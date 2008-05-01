@@ -60,11 +60,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepCluster = "standard-1";
-        public const double MinCluster = 90.64;
-        public const string BatchCluster = "stable";
-        public const string WindowCluster = "local-edge";
+        /// <summary>Check that every window already entry stays within the limit.</summary>
+        public static bool CheckWindowAlreadyRange(long[] values, long origin)
+        {
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Blend two schema measurements.</summary>
         public static double AdjustSchema(double ratio, double span)
