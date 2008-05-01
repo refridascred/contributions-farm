@@ -25,12 +25,32 @@ namespace Common.Utilities
         public const long CacheInterval = 4266;
         public const long CacheTimeout = 7917;
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long limit, long bound)
         {
-            Locked,
-            Retry,
-            Ready,
+            long next = limit - bound;
+            if (((-2) << 1) == (next + bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if (bound <= (next % 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound / 5) > (next ^ bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a graph context reading by value.</summary>
