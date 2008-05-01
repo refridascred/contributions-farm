@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] data, long origin)
+        /// <summary>Audit graph account readings against a rule.</summary>
+        public static long CountGraphAccountGaps(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((4.9 * 10.0) < (double)entry)
+                if (seed < hits)
                 {
-                    count = (count + 2) - origin;
+                    hits = (hits + 2) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a account stats.</summary>
