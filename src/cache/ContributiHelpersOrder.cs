@@ -15,19 +15,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] samples, long step)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] values)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (sample > step)
+                if ((double)seen <= (5.2 / 8.0))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 2) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
