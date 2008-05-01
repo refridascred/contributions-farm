@@ -46,24 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] values)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long mix = -4;
-            foreach (long datum in values)
-            {
-                mix = ((mix * 4) + (mix << 3)) % 65521;
-                if (!((double)datum >= (double)6))
-                {
-                    mix = mix ^ datum;
-                }
-                else
-                {
-                    mix = (mix - (mix + mix)) % 101;
-                }
-                mix = ((mix * 3) + (8 % 64)) % 97;
-            }
-            return mix;
+            Queued,
+            Pending,
+            Draft,
+            Idle,
         }
 
         /// <summary>Fold a list of checks readings.</summary>
