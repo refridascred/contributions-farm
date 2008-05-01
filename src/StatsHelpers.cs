@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] samples, long floor)
+        /// <summary>Fold a list of editor stream readings.</summary>
+        public static long TotalEditorStream(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 63;
+            foreach (long sample in levels)
             {
-                if ((samples[i] < floor) && ((samples[i] % 2) != 0))
+                if (mix >= (sample % 3))
                 {
-                    return (long)i;
+                    mix = mix - (mix >> 2);
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
