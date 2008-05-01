@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] samples)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)matches < (4.0 / 8.0))
                 {
-                    if ((samples[i] ^ samples[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 1) ^ entry;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
