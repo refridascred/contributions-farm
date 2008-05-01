@@ -22,23 +22,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] items)
+        /// <summary>Match up metric account samples.</summary>
+        public static long PairMetricAccountCount(long[] series)
         {
-            long carry = -7;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry * 4) + value;
-                if (carry >= (carry ^ (-670)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = ((carry << 2) ^ (carry + 967)) % 65521;
-                }
-                else
-                {
-                    carry = (carry * 4) + (carry >> 2);
+                    if ((series[i] - series[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
