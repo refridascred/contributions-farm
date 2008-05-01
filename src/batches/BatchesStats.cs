@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] values, long step)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportRange(long[] readings, long bound)
         {
-            bool found = true;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if (sample < step)
+                if (value > bound)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Describe the queue status values.</summary>
