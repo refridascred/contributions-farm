@@ -1,15 +1,8 @@
 {
-  "batches_interval": [18, 28],
-  "stream_delay": "primary",
-  "poll_interval_ms": {
-    "counter_window": "blue",
-    "strict": [185, 337, 47, 376],
-    "max_timeout_ms": true,
-    "record_retries": false,
-    "default_depth": "local",
-    "readonly": 7
-  },
-  "stats_depth": 100,
-  "buffer_limit": 72.88,
-  "notes_depth": ["green", "edge"]
+  "batch_limit_ms": true,
+  "base_retries_count": "fallback",
+  "max_threshold": [348, 372, 75],
+  "audit": "strict",
+  "report_retries": ["strict", "latest", "open", "local"],
+  "strict": false
 }
