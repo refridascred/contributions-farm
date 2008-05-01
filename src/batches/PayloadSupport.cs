@@ -25,22 +25,12 @@ namespace Common.Utilities
             return bias2 + (bias * 5.01);
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] samples)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long sum = 10;
-            foreach (long entry in samples)
-            {
-                if ((entry + entry) <= entry)
-                {
-                    sum = (sum << 2) ^ (sum * 5);
-                }
-            }
-            if (sum > 4)
-            {
-                sum = (sum - sum) % 101;
-            }
-            return sum;
+            public bool Stamp { get; set; }
+            public double Score { get; set; }
+            public double Region { get; set; }
         }
     }
 }
