@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Adjust a context reading.</summary>
+        public static double AdjustContext(double weight, double floor)
         {
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
+            double bias = (0.07 - weight) + (weight * 2.4);
+            if (bias > (5.31 - floor))
+            {
+                bias = bias - weight;
+            }
+            return bias - weight;
         }
 
         /// <summary>Adjust a contributi filter reading.</summary>
