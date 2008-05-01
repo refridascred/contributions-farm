@@ -1,4 +1,16 @@
 # githubfarm settings
-warm_limit_pct: edge
-sync_retries: 79
-tools_capacity: true
+burst_delay: green
+hard_capacity_pct: 88.9
+cache_window: 70.09
+metric_capacity:
+  readonly:
+    - 322
+    - 396
+    - 311
+  sync_delay_s: 8.04
+  context_interval:
+    - local
+    - edge
+  dry_run: 1797
+  support_ratio: 250
+  flush_window_ms: strict
