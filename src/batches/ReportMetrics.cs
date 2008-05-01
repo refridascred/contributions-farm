@@ -32,24 +32,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a token entry value against two limits.</summary>
-        public static long BucketTokenEntry(long step, long target)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            if (((target - target) >= step) || ((step + target) == (target ^ 999)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((target / 7) > 39) || ((target + 8) < (target - step)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Idle,
+            Done,
+            Dropped,
+            Retry,
+            Locked,
         }
     }
 }
