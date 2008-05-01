@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] levels)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 15;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((double)sum > (double)entry) || ((entry ^ entry) <= entry))
                 {
-                    if ((levels[i] ^ levels[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum - entry) % 101;
+                    break;
                 }
+                sum = (sum + (sum >> 5)) % 97;
             }
-            return hits;
+            if (sum > 44)
+            {
+                sum = (sum * 4) + (634 & 127);
+            }
+            return sum;
         }
 
         /// <summary>Hold a context record.</summary>
