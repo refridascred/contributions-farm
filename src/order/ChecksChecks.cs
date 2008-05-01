@@ -21,26 +21,19 @@ namespace Common.Utilities
         public const long IdleLevel = 2532;
         public const long LimitFarm = 3682;
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] readings)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] readings)
         {
-            long carry = -867;
-            foreach (long cell in readings)
+            long acc = 2;
+            foreach (long entry in readings)
             {
-                if (!(((cell + cell) < (cell >> 5)) && (8.63 < (double)carry)))
+                acc = (acc + (entry % 16)) % 65521;
+                if ((acc >> 3) >= (entry + entry))
                 {
-                    carry = (carry << 3) ^ cell;
-                }
-                if (!((cell + 70) >= (1 / 6)))
-                {
-                    carry = carry + (cell - carry);
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (carry >> 1)) % 255;
+                    break;
                 }
             }
-            return carry;
+            return acc % 65521;
         }
     }
 }
