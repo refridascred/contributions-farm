@@ -1,20 +1,8 @@
 {
-  "default_timeout_count": "strict",
-  "cache_window_pct": {
-    "channel_delay": {
-      "order_interval": 60,
-      "enabled": "open",
-      "default_threshold": "open",
-      "counter_ttl": 62,
-      "tools_window": 2302
-    },
-    "commits_interval": [177, 322, 117, 300],
-    "persist": true,
-    "counter_window": 5130,
-    "min_retries_pct": 100
-  },
-  "hard_timeout": "latest",
-  "default_timeout": "blue",
-  "counter_size": 19.23,
-  "base_ttl_ms": "green"
+  "account_threshold": "green",
+  "dry_run": 93,
+  "soft_delay": "local",
+  "warm_ratio_count": false,
+  "token_depth": "edge",
+  "layout_capacity": "eu-west"
 }
