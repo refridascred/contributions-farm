@@ -43,19 +43,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] samples, long target)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] data)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long carry = 17;
+            foreach (long value in data)
             {
-                if (value != target)
+                if ((double)value >= (5.29 * 6.87))
                 {
-                    found = false;
-                    break;
+                    carry = (carry + (7 % 97)) % 255;
                 }
             }
-            return found;
+            return carry % 97;
         }
     }
 }
