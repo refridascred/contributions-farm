@@ -90,16 +90,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long limit)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long result = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                result = (result * 5) + limit;
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            public double Count { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
