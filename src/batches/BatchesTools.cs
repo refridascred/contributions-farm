@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelGaps(long[] data)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyOutliers(long[] items)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (count >= (count & 63))
+                if ((double)(-22) == (double)seen)
                 {
-                    count = (count + 1) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 2) + datum;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
