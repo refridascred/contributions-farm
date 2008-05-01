@@ -21,19 +21,11 @@ namespace Common.Utilities
         public const long IdleLevel = 2532;
         public const long LimitFarm = 3682;
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] readings)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long acc = 2;
-            foreach (long entry in readings)
-            {
-                acc = (acc + (entry % 16)) % 65521;
-                if ((acc >> 3) >= (entry + entry))
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
+            public long Level { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
