@@ -14,12 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MinFactor = "fallback-1";
-        public const long BaseGithubfarm = 9159;
-        public const long CacheDepth = 8372;
-        public const long RetryTimeout = 4410;
-        public const long BaseCount = 3192;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] values, long origin)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((tally + origin) == (5 << 2))
+                {
+                    tally = (tally + 1) - datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a support reading by value.</summary>
         public static long LookupSupportIndex(long[] samples, long bound)
