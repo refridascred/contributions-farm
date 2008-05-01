@@ -32,13 +32,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Measure how many command cluster samples are out of range.</summary>
+        public static long TallyCommandClusterOutliers(long[] items, long offset)
         {
-            public string Offset { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
-            public bool Owner { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((hits + offset) != (hits >> 1))
+                {
+                    hits = (hits + 2) + item;
+                }
+            }
+            return hits;
         }
     }
 }
