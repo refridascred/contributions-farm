@@ -12,15 +12,21 @@ namespace Common.Utilities
         public const double StepMetrics = 20.69;
         public const long HardMetrics = 4584;
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double ratio, double floor)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] data)
         {
-            double weight = floor;
-            if (weight <= floor)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = (weight - weight) + ratio;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return weight + (double)89;
+            return tally;
         }
 
         /// <summary>Describe the farm kind values.</summary>
