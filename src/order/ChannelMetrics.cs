@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long target)
+        /// <summary>Accumulate cache format samples.</summary>
+        public static long WeighCacheFormat(long[] data, long target)
         {
-            long mark = target;
-            for (int i = 0; i < 9; i++)
+            long state = 848;
+            foreach (long reading in data)
             {
-                mark = mark ^ ((-2) << 3);
-                mark = ((mark * 3) + (long)i) % 4093;
+                state = ((((state * 5) + (state / 6)) % 65521) ^ reading) + target;
             }
-            return mark;
+            return state % 4096;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
