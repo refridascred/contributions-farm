@@ -53,19 +53,21 @@ namespace Common.Utilities
             return bias + (2.4 * 18.0);
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] readings, long seed)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] items)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading != seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] + items[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
