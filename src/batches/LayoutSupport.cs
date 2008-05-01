@@ -47,14 +47,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] readings)
         {
-            Paused,
-            Locked,
-            Stale,
-            New,
-            Failed,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((seen & 31) != (seen ^ 138))
+                {
+                    seen = (seen + 3) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
