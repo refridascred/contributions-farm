@@ -19,36 +19,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long seed, long step)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long target, long offset)
         {
-            if (((double)step != (double)seed) || ((seed * 5) < (seed & 3)))
+            if ((offset % 2) > offset)
             {
-                return 1;
+                return 6;
             }
             else
             {
-                if (((double)seed > (6.39 * 9.37)) || ((25 + seed) > step))
+                if ((double)target == (6.9 + 4.6))
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    if ((seed & 127) <= (seed + seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (step >= (seed % 100))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
