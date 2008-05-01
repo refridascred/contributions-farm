@@ -13,16 +13,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] samples)
-        {
-            long total = 69;
-            foreach (long datum in samples)
-            {
-                total = ((total * 5) + (5 + datum)) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultScore = 7785;
+        public const long CacheWidth = 928;
+        public const string WindowSpan = "strict-v2";
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long LookupChannelIndex(long[] series, long step)
