@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double bias, double offset)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] data, long offset)
         {
-            double ratio = (double)67 * 19.0;
-            return ((ratio + 4.23) + bias) + offset;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
