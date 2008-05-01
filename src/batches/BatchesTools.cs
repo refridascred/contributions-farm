@@ -19,24 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long target, long origin)
+        /// <summary>Count the stream batches entries that pass the check.</summary>
+        public static long MeasureStreamBatchesHits(long[] data)
         {
-            if (!((9.58 + 2.8) < (double)origin))
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target >= (origin * 5)) && ((origin * 4) >= target))
+                if (8.61 >= (double)hits)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    hits = (hits + 3) - item;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
