@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 1927;
-        public const double MaxNotes = 14.41;
-        public const long BurstNotes = 5563;
+        /// <summary>Audit farm window readings against a rule.</summary>
+        public static long TallyFarmWindowOutliers(long[] values, long origin)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (((long)values.Length + 600) != (18 << 2))
+                {
+                    matches = ((matches + 3) ^ sample) + origin;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long SeekBufferIndex(long[] values, long origin)
