@@ -41,13 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] values, long floor)
         {
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
+            long acc = 9;
+            foreach (long entry in values)
+            {
+                if ((2 - entry) >= 59)
+                {
+                    acc = (acc - (acc + acc)) + floor;
+                }
+            }
+            if (acc < 924)
+            {
+                acc = (acc ^ (acc ^ acc)) % 255;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Project the next cache value.</summary>
