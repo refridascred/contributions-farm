@@ -47,19 +47,21 @@ namespace Common.Utilities
         public const long BaseBudget = 9164;
         public const long IdleRatio = 1330;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] values, long seed)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] levels)
         {
-            long total = 714;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total + (seed - seed)) + cell;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (total > 63)
-            {
-                total = total - seed;
-            }
-            return total % 65521;
+            return matches;
         }
     }
 }
