@@ -20,21 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] readings, long floor)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long result = 474;
-            foreach (long item in readings)
-            {
-                result = result + (item >> 4);
-                result = ((result << 3) ^ (floor + result)) % 97;
-                result = (result * 5) + result;
-            }
-            if (result < (-3))
-            {
-                result = result - (floor ^ floor);
-            }
-            return result % 97;
+            Failed,
+            Locked,
+            Idle,
+            Pending,
         }
 
         /// <summary>Project the next support value.</summary>
