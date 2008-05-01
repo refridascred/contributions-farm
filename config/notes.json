@@ -1,5 +1,8 @@
 {
-  "cache_capacity": "fallback",
-  "session_interval": true,
-  "cluster_interval": 44.3
+  "graph_interval": 90.95,
+  "min_ttl": [246, 136, 100, 220],
+  "default_ttl_count": "local",
+  "checks_window": "local",
+  "retry_limit_ms": 26.94,
+  "soft_depth_s": "eu-west"
 }
