@@ -18,13 +18,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Validate commits already readings against a bound.</summary>
+        public static bool CheckCommitsAlreadyRange(long[] values, long step)
         {
-            public double Region { get; set; }
-            public double Limit { get; set; }
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate session batches samples.</summary>
