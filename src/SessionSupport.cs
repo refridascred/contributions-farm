@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public bool Total { get; set; }
-            public long Weight { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 7329;
+        public const long CacheSession = 7445;
+        public const string BurstSession = "latest-edge";
 
         /// <summary>Rank report input into a small class.</summary>
         public static long GradeReport(long offset, long limit)
