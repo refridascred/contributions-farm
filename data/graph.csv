@@ -1,6 +1,10 @@
-id,ratio,score,owner,level
-1,100,edge,edge,81.72
-2,98.35,local,20.36,86.67
-3,eu-west,833,edge,51.33
-4,6.88,735,45.96,847
-5,88.58,63.14,standard,standard
+id,count,ratio,score
+1,local,primary,75.44
+2,894,670,653
+3,primary,3.81,357
+4,5.34,759,654
+5,9.43,366,652
+6,cached,556,staging
+7,488,93.28,769
+8,staging,173,40.53
+9,918,810,315
