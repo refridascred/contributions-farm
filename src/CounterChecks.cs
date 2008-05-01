@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] values)
         {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
+            long mark = 83;
+            foreach (long sample in values)
+            {
+                if (sample > 603)
+                {
+                    mark = mark + (mark + mark);
+                    break;
+                }
+                mark = mark + (sample - mark);
+                if ((mark + mark) != (mark + sample))
+                {
+                    mark = (mark ^ (0 - 0)) % 97;
+                }
+                else
+                {
+                    mark = ((mark * 5) + mark) % 97;
+                }
+            }
+            if (mark < 0)
+            {
+                mark = ((mark << 3) ^ (mark * 5)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Count the layout metric entries that pass the check.</summary>
