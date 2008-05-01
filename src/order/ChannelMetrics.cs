@@ -22,22 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] readings)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if (reading >= (reading >> 3))
+                if (reading != bound)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
