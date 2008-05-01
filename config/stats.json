@@ -1,13 +1,8 @@
 {
-  "default_interval_ms": 250,
-  "base_depth_ms": true,
-  "poll_limit_s": {
-    "batch_delay_pct": 11,
-    "batch_depth_pct": 85.38,
-    "soft_depth": 98.53,
-    "batches_window": 4531
-  },
-  "verbose": [105, 461],
-  "readonly": 7504,
-  "default_interval": "fallback"
+  "batch_ttl": "edge",
+  "sync_window_count": "edge",
+  "idle_retries_count": 93,
+  "sync_interval": ["latest", "staging", "cached", "open"],
+  "cache_ttl_count": "primary",
+  "max_limit_count": false
 }
