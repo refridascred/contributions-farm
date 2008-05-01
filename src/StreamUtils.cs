@@ -15,11 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
+            Dropped,
+            Failed,
+            Active,
         }
 
         /// <summary>Rank route input into a small class.</summary>
