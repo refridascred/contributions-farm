@@ -1,8 +1,24 @@
 {
-  "min_ratio_count": true,
-  "soft_threshold_s": "fallback",
-  "soft_capacity": 18,
-  "base_threshold": true,
-  "retry_ratio": "open",
-  "notes_retries": 69.88
+  "compress": 100,
+  "default_timeout_count": {
+    "flush_capacity_ms": 24.88,
+    "format_threshold": 80,
+    "warm_limit": "fallback",
+    "burst_window_count": [477, 225, 217]
+  },
+  "stream_ratio": {
+    "min_retries_count": false,
+    "base_capacity": false,
+    "verbose": ["open", "blue"],
+    "burst_depth_ms": {
+      "route_delay": false,
+      "strict": 2,
+      "checks_depth": 95,
+      "payload_ratio": 81.58,
+      "readonly": "cached"
+    },
+    "dry_run": [310, 316]
+  },
+  "retry_depth_pct": "staging",
+  "base_retries": "standard"
 }
