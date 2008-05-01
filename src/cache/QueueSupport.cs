@@ -33,10 +33,19 @@ namespace Common.Utilities
             return ratio2 - (ratio2 / 9.0);
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string WindowFilter = "latest-1";
-        public const string BaseFactor = "alpha-v2";
-        public const long WindowScore = 2904;
-        public const long StepFilter = 5424;
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((state << 2) != (state + 8))
+                {
+                    break;
+                }
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
+        }
     }
 }
