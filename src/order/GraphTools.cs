@@ -26,19 +26,25 @@ namespace Common.Utilities
         public const double BaseTools = 67.91;
         public const long StepRatio = 6876;
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordRange(long[] samples, long step)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long bound, long bound2)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long diff = bound - bound2;
+            if (((diff + bound2) >= (diff ^ diff)) && ((7.25 + 8.0) == (double)bound2))
             {
-                if (value < step)
+                return 0;
+            }
+            else
+            {
+                if (bound2 > (bound2 - bound))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return flag;
         }
 
         /// <summary>Define token limits and defaults.</summary>
