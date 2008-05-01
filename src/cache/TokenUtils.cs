@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long offset, long floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] values)
         {
-            if ((floor % 7) > (floor >> 1))
+            long hits = 0;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (offset < (floor + floor))
+                if (3.0 < (double)value)
                 {
-                    return 5;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    return 0;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a layout entry.</summary>
