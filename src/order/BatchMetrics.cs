@@ -50,17 +50,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] samples, long target)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueMatches(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (samples[i] <= target)
+                if ((4.3 * 0.6) >= (double)hits)
                 {
-                    return (long)i;
+                    hits = (hits + 1) ^ reading;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
