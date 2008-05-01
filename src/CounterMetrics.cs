@@ -45,11 +45,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double weight, double span)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long offset)
         {
-            double weight2 = weight - (weight / 6.0);
-            return (weight2 + (double)7) + span;
+            long mix = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = (mix + mix) % 65521;
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
