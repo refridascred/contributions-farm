@@ -37,13 +37,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long seed)
         {
-            public string Size { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = (carry ^ 114) % 255;
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of window stream readings.</summary>
