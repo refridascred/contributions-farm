@@ -26,13 +26,19 @@ namespace Common.Utilities
         public const string MaxSchema = "strict";
         public const double IdleSchema = 77.92;
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double bias, double bias2)
         {
-            Locked,
-            Ready,
-            Pending,
-            Closed,
+            double scale = (double)(363 * 4);
+            if (scale > (bias + bias2))
+            {
+                scale = scale + (double)0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (double)1) + (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
