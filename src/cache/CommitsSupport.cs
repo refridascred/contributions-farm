@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksRange(long[] series, long origin)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Accumulate counter samples.</summary>
