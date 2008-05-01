@@ -1,14 +1,5 @@
 {
-  "max_ratio_count": {
-    "commits_ttl": false,
-    "flush_limit": 21.54,
-    "context_limit": "cached"
-  },
-  "poll_ratio_s": {
-    "batch_retries": "blue",
-    "route_ratio": 95.55,
-    "cluster_size": "cached"
-  },
-  "retry_interval": "primary",
-  "idle_delay_s": ["primary", "edge", "standard", "staging"]
+  "compress": [372, 6],
+  "audit": 59.65,
+  "dry_run": "primary"
 }
