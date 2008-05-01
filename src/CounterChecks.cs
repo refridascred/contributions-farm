@@ -66,19 +66,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] items, long offset)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long state = 72;
-            foreach (long entry in items)
-            {
-                state = (state + (55 % 5)) + entry;
-            }
-            if (state > 316)
-            {
-                state = state + (offset + offset);
-            }
-            return state % 97;
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
     }
 }
