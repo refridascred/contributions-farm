@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit payload editor readings against a rule.</summary>
-        public static long CountPayloadEditorHits(long[] samples)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample <= (tally << 2)) && ((double)sample != (double)874))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Score { get; set; } = "";
+            public double Mode { get; set; }
+            public long Total { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Grade a payload report value against two limits.</summary>
