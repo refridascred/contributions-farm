@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 1910;
-        public const long BatchInterval = 2155;
-        public const long StepPayload = 5329;
-        public const long MinPayload = 6626;
-        public const long DefaultPayload = 6432;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double RetryCache = 35.94;
+        public const string BurstCache = "open";
+        public const long BurstCount = 6961;
 
         /// <summary>Accumulate stream samples.</summary>
         public static long DigestStream(long[] values)
