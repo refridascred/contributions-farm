@@ -20,15 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
-        {
-            Ready,
-            Paused,
-            Pending,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 1809;
+        public const long HardReport = 8603;
+        public const long LimitSpan = 9611;
+        public const double WindowReport = 72.26;
+        public const long BurstScore = 5581;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long HardFactor = 2589;
