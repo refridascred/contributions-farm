@@ -32,20 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every layout channel entry stays within the limit.</summary>
-        public static bool ValidateLayoutChannelLimits(long[] items, long limit)
-        {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 7196;
+        public const long BatchGraph = 9433;
+        public const long SoftGraph = 7053;
+        public const double CacheGraph = 61.82;
 
         /// <summary>Fold a list of stream context readings.</summary>
         public static long TallyStreamContext(long[] samples, long target)
