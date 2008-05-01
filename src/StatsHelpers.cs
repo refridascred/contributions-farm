@@ -43,11 +43,22 @@ namespace Common.Utilities
             return (ratio - (double)406) + rate;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Count the batches route entries that pass the check.</summary>
+        public static long MeasureBatchesRouteGaps(long[] series, long bound)
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (!((double)bound > 11.0))
+                {
+                    hits = (hits + 2) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
