@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double bias, double span)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] items)
         {
-            double scale = (17.0 * 2.4) + 19.0;
-            if (scale < 8.8)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = ((scale - scale) - bias) + span;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return scale - 5.0;
+            return hits;
         }
 
         /// <summary>Accumulate report contributi samples.</summary>
