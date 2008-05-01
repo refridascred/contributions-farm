@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every stats profile entry stays within the limit.</summary>
-        public static bool VerifyStatsProfileLimits(long[] items, long floor)
+        /// <summary>Accumulate cache stream samples.</summary>
+        public static long ScoreCacheStream(long[] series)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long score = -622;
+            foreach (long reading in series)
             {
-                if (value != floor)
+                score = (score + reading) % 97;
+                score = score - (score + score);
+                if ((98 > (reading + reading)) && ((score - reading) > (85 % 2)))
                 {
-                    flag = false;
-                    break;
+                    score = (score << 2) ^ (-12);
                 }
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
