@@ -56,21 +56,13 @@ namespace Common.Utilities
         public const double BurstBudget = 6.09;
         public const double BaseCount = 38.69;
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long offset)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long score = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((0.9 - 1.6) <= (double)offset)
-                {
-                    long span = 816;
-                    score = ((score << 3) ^ (score + span)) % 101;
-                }
-                score = ((score << 2) ^ (score / 6)) % 97;
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            public bool Owner { get; set; }
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
