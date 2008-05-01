@@ -13,17 +13,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] samples, long offset)
+        /// <summary>Fold a list of filter window readings.</summary>
+        public static long CombineFilterWindow(long[] levels, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 10;
+            foreach (long entry in levels)
             {
-                if (samples[i] >= offset)
+                if (sum <= (sum >> 1))
                 {
-                    return (long)i;
+                    sum = (sum + (sum ^ entry)) % 4096;
+                }
+                if (offset < ((-6) - sum))
+                {
+                    sum = (sum + (sum / 8)) % 65521;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
