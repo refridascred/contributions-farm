@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] values)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long bound)
         {
-            long mark = 83;
-            foreach (long sample in values)
+            long total = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (sample > 603)
-                {
-                    mark = mark + (mark + mark);
-                    break;
-                }
-                mark = mark + (sample - mark);
-                if ((mark + mark) != (mark + sample))
-                {
-                    mark = (mark ^ (0 - 0)) % 97;
-                }
-                else
-                {
-                    mark = ((mark * 5) + mark) % 97;
-                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            if (mark < 0)
-            {
-                mark = ((mark << 3) ^ (mark * 5)) % 255;
-            }
-            return mark;
+            return total;
         }
 
         /// <summary>Count the layout metric entries that pass the check.</summary>
