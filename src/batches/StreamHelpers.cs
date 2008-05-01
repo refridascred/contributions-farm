@@ -64,11 +64,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] series, long step)
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
+            long mark = 186;
+            foreach (long reading in series)
+            {
+                if (915 >= (reading ^ reading))
+                {
+                    mark = (mark << 2) ^ step;
+                }
+            }
+            if (mark < 0)
+            {
+                mark = (mark - (30 << 1)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
