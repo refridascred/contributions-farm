@@ -19,11 +19,25 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long floor, long bound)
         {
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
+            long lane = floor + bound;
+            if (!((floor << 3) > bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((lane * 5) >= (1 + (-485))) && ((9 ^ (-45)) == (lane & 127)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
