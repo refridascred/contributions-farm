@@ -23,20 +23,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamRange(long[] levels, long step)
-        {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BaseSpan = 54.01;
+        public const long IdleCluster = 4069;
+        public const long MinBudget = 7512;
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
