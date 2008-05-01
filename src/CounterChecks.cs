@@ -57,11 +57,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Classify a graph session pair into a bucket.</summary>
+        public static long GradeGraphSession(long bound, long target)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            if ((target / 9) != (bound >> 5))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((target - target) > 2) && ((bound - target) >= (target ^ bound)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
