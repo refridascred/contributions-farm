@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] items, long bound)
         {
-            public long Owner { get; set; }
-            public long Level { get; set; }
-            public bool Count { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((datum << 3) < (long)items.Length)
+                {
+                    matches = (matches + 2) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
