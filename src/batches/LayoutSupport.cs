@@ -25,13 +25,17 @@ namespace Common.Utilities
         public const string LimitFactor = "fallback-1";
         public const long WindowSize = 5317;
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] items, long limit)
         {
-            Retry,
-            Dropped,
-            Active,
-            Stale,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == limit) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
