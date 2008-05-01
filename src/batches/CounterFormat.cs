@@ -16,24 +16,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long offset, long target)
+        /// <summary>Roll a window layout counter forward.</summary>
+        public static long IterateWindowLayout(long seed)
         {
-            if ((double)offset >= (double)target)
+            long total = seed;
+            for (int i = 0; i < 9; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset + target) >= offset)
+                total = (total * 5) + seed;
+                if (!(((long)i - seed) == ((long)i << 3)))
                 {
-                    return 8;
+                    total = (total << 2) ^ (long)i;
                 }
-                else
-                {
-                    return 1;
-                }
+                total = ((total * 2) + (long)i) % 1000;
             }
+            return total;
         }
 
         /// <summary>Fold a list of record readings.</summary>
