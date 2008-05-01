@@ -30,12 +30,17 @@ namespace Common.Utilities
         public const long IdleBatch = 5543;
         public const long DefaultScore = 2053;
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] samples, long offset)
         {
-            Closed,
-            Stale,
-            Done,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < offset) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
