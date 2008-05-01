@@ -41,17 +41,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a graph context reading by value.</summary>
-        public static long FindGraphContextIndex(long[] data, long target)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long offset, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long cur = offset - target;
+            if ((double)offset < (10.0 - 4.0))
             {
-                if (data[i] > target)
+                return 7;
+            }
+            else
+            {
+                if (((target % 97) < (target + offset)) || ((169 / 8) >= (offset / 8)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((cur + cur) > (offset - cur))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((7 <= (5 + cur)) && ((5.0 * 9.7) > (double)target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
