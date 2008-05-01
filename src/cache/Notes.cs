@@ -22,12 +22,12 @@ namespace Common.Utilities
         public const long BatchRatio = 4632;
         public const long MaxProfile = 9082;
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            Closed,
+            Locked,
+            Queued,
             Pending,
-            Idle,
         }
 
         /// <summary>Audit schema command readings against a rule.</summary>
