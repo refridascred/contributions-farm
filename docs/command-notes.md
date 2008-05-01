@@ -1,12 +1,15 @@
 # Command notes
 
-The context helpers are pure functions, so they are safe to call from any thread.
-The profile report groups every tools by session.
-Each editor is validated before it reaches the format queue.
+Use order settings to tune how often buffer data is refreshed.
+Defaults for commits live in the config folder and can be overridden per environment.
+Run the commits check before changing any stream limits.
+
+Each entry is validated before it reaches the context queue.
+A filter that stays idle for too long is moved to the stream list.
 
 ## Guidelines
 
-- Keep counter values small
-- Log every checks change
-- Prefer format defaults
-- Document new channel fields
+- Document new contributi fields
+- Validate buffer input early
+- Keep profile values small
+- Review route limits each release
