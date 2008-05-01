@@ -60,19 +60,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long floor)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] samples, long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
+            long mix = 187;
+            foreach (long value in samples)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    acc = (acc - floor) ^ (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
+                mix = ((mix + (value % 3)) % 4096) - offset;
             }
-            return acc;
+            return mix % 4096;
         }
     }
 }
