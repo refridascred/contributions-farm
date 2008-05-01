@@ -20,19 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] samples, long seed)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphBounds(long[] values, long offset)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if (item != seed)
+                if (sample < offset)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Describe the token mode values.</summary>
