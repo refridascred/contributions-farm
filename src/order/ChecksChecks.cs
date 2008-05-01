@@ -21,11 +21,11 @@ namespace Common.Utilities
         public const long IdleLevel = 2532;
         public const long LimitFarm = 3682;
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Blend two checks layout measurements.</summary>
+        public static double ScaleChecksLayout(double weight, double span)
         {
-            public double Rank { get; set; }
-            public string Offset { get; set; } = "";
+            double rate = (double)(82 << 1);
+            return (rate - (weight / 4.0)) + span;
         }
     }
 }
