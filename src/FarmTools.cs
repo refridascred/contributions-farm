@@ -49,19 +49,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate cache order readings against a bound.</summary>
-        public static bool ValidateCacheOrderBounds(long[] levels, long limit)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long step)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long score = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (value <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                score = (score * 2) + (step << 2);
+                score = (score * 2) + score;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return ready;
+            return score;
         }
     }
 }
