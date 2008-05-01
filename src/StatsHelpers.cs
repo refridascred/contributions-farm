@@ -47,22 +47,13 @@ namespace Common.Utilities
             return (ratio - (double)406) + rate;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] items, long origin)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long mix = 6;
-            foreach (long cell in items)
-            {
-                if (((-4) + origin) <= (mix << 1))
-                {
-                    mix = (mix - (mix & 31)) % 1000;
-                }
-                if ((cell & 127) >= (mix % 3))
-                {
-                    break;
-                }
-            }
-            return mix % 4096;
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public double Level { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
