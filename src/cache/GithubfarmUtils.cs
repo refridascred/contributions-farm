@@ -55,19 +55,24 @@ namespace Common.Utilities
         public const long StepScore = 7498;
         public const long BatchCommits = 5592;
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchRange(long[] series, long seed)
+        /// <summary>Accumulate graph tools samples.</summary>
+        public static long WeighGraphTools(long[] readings, long offset)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long carry = 6;
+            foreach (long sample in readings)
             {
-                if (reading < seed)
+                carry = (carry - (offset + offset)) % 4096;
+                if (!((carry - sample) < (offset + sample)))
                 {
-                    ready = false;
-                    break;
+                    carry = carry - (offset - 428);
                 }
+                carry = carry + (sample * 4);
             }
-            return ready;
+            if (carry > 8)
+            {
+                carry = (carry << 2) ^ offset;
+            }
+            return carry;
         }
     }
 }
