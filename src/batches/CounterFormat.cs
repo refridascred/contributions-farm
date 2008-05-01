@@ -13,12 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public string Mode { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
+            Ready,
+            Active,
+            Paused,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
