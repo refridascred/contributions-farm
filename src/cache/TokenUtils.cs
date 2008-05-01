@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] values)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (3.0 < (double)value)
+                if ((3.0 * 17.0) == (double)value)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a layout entry.</summary>
