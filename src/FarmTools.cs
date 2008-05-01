@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 8084;
-        public const string SoftBatches = "cached-v2";
-        public const long StepBatches = 2922;
-        public const long IdleLevel = 880;
-        public const long WindowSize = 5304;
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public string Rank { get; set; } = "";
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
