@@ -1,14 +1,7 @@
 {
-  "layout_depth": 60,
-  "max_interval_pct": 9845,
-  "cache_ttl_s": 75.6,
-  "compress": 80,
-  "retry_limit_ms": {
-    "persist": 6709,
-    "warm_depth_ms": 94.49,
-    "sync_limit": "open",
-    "buffer_ttl": 46,
-    "retry_capacity": "stable"
-  },
-  "readonly": "legacy"
+  "burst_limit_count": 26.88,
+  "compress": "primary",
+  "idle_timeout_s": 30,
+  "warm_delay_pct": "open",
+  "max_ratio": 30
 }
