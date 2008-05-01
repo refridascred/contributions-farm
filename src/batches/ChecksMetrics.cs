@@ -59,19 +59,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksRange(long[] samples, long offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] items, long bound)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long item in items)
             {
-                if (reading > offset)
+                if (item <= bound)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
