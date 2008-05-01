@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long DefaultContributi = 9380;
         public const double WindowContributi = 49.39;
 
-        /// <summary>Locate a stats entry reading by value.</summary>
-        public static long FindStatsEntryIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleSize = 516;
+        public const long CacheBudget = 5092;
+        public const long MinRatio = 4405;
+        public const string SoftBudget = "cached-v2";
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool GuardReportLimits(long[] items, long seed)
