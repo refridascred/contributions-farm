@@ -22,38 +22,9 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long bound, long seed)
-        {
-            if ((seed & 7) == (seed ^ seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed * 4) < (bound << 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)929 == (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((973 >> 2) <= (seed >> 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardCount = 8966;
+        public const long SoftRatio = 9520;
+        public const long WindowQueue = 5018;
     }
 }
