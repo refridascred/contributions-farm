@@ -27,19 +27,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorRange(long[] levels, long floor)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Token { get; set; }
+            public bool Total { get; set; }
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
