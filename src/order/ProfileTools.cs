@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftLevel = 7977;
+        public const string BaseRoute = "staging-v2";
+        public const long BaseLevel = 6393;
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
