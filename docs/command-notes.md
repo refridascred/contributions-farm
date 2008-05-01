@@ -1,10 +1,12 @@
 # Command notes
 
-A account that stays idle for too long is moved to the record list.
-Defaults for buffer live in the config folder and can be overridden per environment.
+Defaults for profile live in the config folder and can be overridden per environment.
+Each metric is validated before it reaches the batches queue.
+The window report groups every tools by window.
 
 ## Guidelines
 
-- Keep format values small
-- Validate batches input early
-- Review report limits each release
+- Keep contributi values small
+- Validate editor input early
+- Log every contributi change
+- Document new counter fields
