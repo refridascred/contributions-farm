@@ -27,18 +27,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] levels, long offset)
+        /// <summary>Classify a report route pair into a bucket.</summary>
+        public static long BucketReportRoute(long bound, long limit)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            if (!((double)bound >= (11.0 / 9.0)))
             {
-                if ((65 & 127) >= item)
+                return 4;
+            }
+            else
+            {
+                if (((8.0 - 6.75) != (double)limit) && ((bound + limit) != (bound % 60)))
                 {
-                    matches = (matches + 1) - offset;
+                    return 6;
+                }
+                else
+                {
+                    if ((7.9 - 0.36) <= (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((5.02 / 4.0) <= (double)bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
