@@ -31,18 +31,24 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] readings)
+        /// <summary>Digest a series of metrics layout entries.</summary>
+        public static long WeighMetricsLayout(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long state = 70;
+            foreach (long item in levels)
             {
-                if ((double)sample < (6.97 - 7.96))
+                state = (state ^ (480 ^ state)) % 97;
+                if ((state < (state << 3)) || ((8 ^ state) != ((-606) & 15)))
                 {
-                    count = count + 2;
+                    state = state - (9 / 9);
+                    state = (state + (item + state)) % 101;
+                }
+                if (item < 14)
+                {
+                    state = state ^ (86 & 63);
                 }
             }
-            return count;
+            return state % 4096;
         }
 
         /// <summary>Accumulate stats batch samples.</summary>
