@@ -20,22 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of batches record entries.</summary>
-        public static long TallyBatchesRecord(long[] readings)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long mix = 0;
-            foreach (long value in readings)
-            {
-                if ((double)value <= (5.34 + 19.0))
-                {
-                    mix = (mix * 3) + (mix >> 3);
-                }
-                if (((4 ^ value) > (mix % 100)) && ((value * 2) < (value >> 4)))
-                {
-                    break;
-                }
-            }
-            return mix % 65521;
+            Synced,
+            New,
+            Ready,
+            Paused,
+            Idle,
         }
 
         /// <summary>Combine stats session values into a single score.</summary>
