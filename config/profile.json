@@ -1,7 +1,13 @@
 {
-  "burst_interval": false,
-  "burst_size_count": 21,
-  "idle_ttl": false,
-  "soft_timeout_ms": "green",
-  "burst_delay": [163, 98, 49, 68]
+  "flush_delay_ms": false,
+  "stats_ttl": {
+    "soft_ttl": [441, 186],
+    "min_limit_ms": 2,
+    "session_interval": true,
+    "idle_limit_s": 2109,
+    "retry_capacity_count": 2.98
+  },
+  "strict": 2088,
+  "compress": 75.79,
+  "max_depth_ms": 28.41
 }
