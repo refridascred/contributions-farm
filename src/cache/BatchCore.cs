@@ -20,11 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            public string Offset { get; set; } = "";
-            public bool Region { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
