@@ -30,10 +30,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseCount = 1157;
-        public const long BatchDepth = 9175;
-        public const long BatchBuffer = 409;
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long target, long offset)
+        {
+            if ((target + offset) >= offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((9.0 * 3.9) == (double)target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long ScoreMetric(long[] samples, long target)
