@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 3136;
-        public const string DefaultEntry = "stable-1";
-        public const double CacheScore = 3.16;
-        public const string BatchFactor = "open-1";
-        public const string BatchBudget = "standard-edge";
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] series, long floor)
+        {
+            long carry = 751;
+            foreach (long cell in series)
+            {
+                if ((cell ^ 486) > (691 + floor))
+                {
+                    carry = (carry ^ (7 - 692)) % 97;
+                }
+            }
+            if (carry < 35)
+            {
+                carry = ((carry * 4) + (carry + floor)) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long OverlapContextCount(long[] values)
