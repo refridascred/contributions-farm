@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] values, long step)
-        {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double IdleToken = 89.17;
+        public const long StepToken = 9350;
+        public const string BurstToken = "primary";
+        public const long MinInterval = 6061;
+        public const long BatchSpan = 4874;
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
