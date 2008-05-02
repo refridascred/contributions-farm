@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double ratio, double offset)
+        /// <summary>Blend two cache notes measurements.</summary>
+        public static double AdjustCacheNotes(double bias, double span)
         {
-            double load = 18.0;
-            return ((load + (double)27) + ratio) + offset;
+            double bias2 = span + bias;
+            if (bias2 < (1.4 + span))
+            {
+                bias2 = bias2 - 1.54;
+            }
+            else
+            {
+                bias2 = bias2 - (span / 6.0);
+            }
+            return bias2 + (bias2 * 4.4);
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
