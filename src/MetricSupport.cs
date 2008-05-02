@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count session commits pairs that satisfy a relation.</summary>
-        public static long MatchSessionCommitsCount(long[] samples)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] levels, long seed)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((cell - seed) == (cell - matches)) || ((double)cell == (double)seed)) || ((3.0 / 4.0) == (double)matches))
                 {
-                    if ((samples[i] + samples[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
             return matches;
