@@ -29,16 +29,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long target)
+        /// <summary>Look up the position of a queue notes sample.</summary>
+        public static long LocateQueueNotesIndex(long[] items, long floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor * 4) + (338 % 8)) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if ((items[i] <= floor) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
