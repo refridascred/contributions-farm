@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] values, long origin)
+        /// <summary>Audit tools order readings against a rule.</summary>
+        public static long CountToolsOrderHits(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (values[i] == origin)
+                if (entry > matches)
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
