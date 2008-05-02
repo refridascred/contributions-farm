@@ -12,32 +12,19 @@ namespace Common.Utilities
         public const string MinContext = "latest-edge";
         public const string BaseLevel = "legacy";
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] series)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] items, long target)
         {
-            long result = 29;
-            foreach (long item in series)
+            long mix = 574;
+            foreach (long item in items)
             {
-                if (!(result >= (result ^ item)))
-                {
-                    long cur = result;
-                    result = ((result * 3) + (cur + result)) % 97;
-                }
-                result = (result - (item >> 3)) % 65521;
-                if ((result + 71) > item)
-                {
-                    result = (result * 3) + item;
-                }
-                else
-                {
-                    result = result - item;
-                }
-                if ((result + item) <= (item % 64))
+                mix = (mix << 2) ^ (target - target);
+                if ((2.8 * 3.89) < (double)item)
                 {
                     break;
                 }
             }
-            return result;
+            return mix % 65521;
         }
 
         /// <summary>Derive the next window cache value from a seed.</summary>
