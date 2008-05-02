@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long target, long target2)
-        {
-            if ((target2 + target) <= target)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target - target) != (2 << 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target2 + target2) == (target >> 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target << 3) > (target2 % 7))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheSize = 6966;
+        public const string MinLevel = "staging-v2";
+        public const double MinScore = 7.34;
+        public const long DefaultCount = 9833;
+        public const long CacheLevel = 684;
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double AdjustToken(double ratio, double offset)
