@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long origin)
+        /// <summary>Count contributi account pairs that satisfy a relation.</summary>
+        public static long PairContributiAccountCount(long[] levels)
         {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark * 4) + 620;
-                long tally = ((long)i << 3) * 5;
-                if (tally <= (tally & 31))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally * 4) + (origin << 3);
-                    mark = (mark << 3) ^ (889 ^ (long)i);
+                    if ((levels[i] - levels[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a stats summary.</summary>
