@@ -13,13 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Failed,
-            Idle,
-            Dropped,
-            Done,
+            public bool Label { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
