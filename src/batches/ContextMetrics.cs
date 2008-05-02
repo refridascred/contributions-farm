@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double bias, double floor)
+        /// <summary>Compare every pair of queue account readings.</summary>
+        public static long MatchQueueAccountCount(long[] samples)
         {
-            double gain = (double)(6 % 16);
-            if (gain > 7.68)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = (gain + floor) - bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - (double)4;
-            }
-            return gain + (gain - gain);
+            return seen;
         }
 
         /// <summary>Validate notes farm readings against a bound.</summary>
