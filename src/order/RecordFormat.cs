@@ -25,24 +25,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long offset, long floor)
+        /// <summary>Accumulate filter order samples.</summary>
+        public static long ScoreFilterOrder(long[] series, long target)
         {
-            if ((6 & 3) <= (offset & 255))
+            long anchor = 778;
+            foreach (long datum in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor + offset) >= offset)
+                anchor = (((anchor << 2) ^ (datum % 16)) % 101) - target;
+                anchor = (anchor * 4) + (datum % 8);
+                if ((anchor * 5) == (datum << 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    break;
                 }
             }
+            return anchor % 4096;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
