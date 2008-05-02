@@ -1,8 +1,5 @@
 {
-  "batches_ratio": 1024,
-  "audit": 14.74,
-  "compress": 68.1,
-  "retry_ratio_count": "staging",
-  "soft_window_pct": [190, 34],
-  "stats_timeout": [402, 333, 277, 446]
+  "burst_limit": true,
+  "base_timeout_count": 6199,
+  "burst_threshold_s": 100
 }
