@@ -1,5 +1,9 @@
 # support settings
-soft_limit: 250
-warm_retries: stable
-idle_interval_count: 92.39
-idle_limit_count: 59
+warm_threshold: stable
+batch_capacity: eu-west
+batch_retries_ms:
+  - 399
+  - 436
+  - 228
+readonly: 1024
+burst_limit_pct: false
