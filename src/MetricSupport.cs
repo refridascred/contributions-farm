@@ -19,18 +19,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] series)
+        /// <summary>Audit stream notes readings against a rule.</summary>
+        public static long MeasureStreamNotesGaps(long[] samples)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading > (seen >> 3))
                 {
-                    if ((series[i] + series[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
