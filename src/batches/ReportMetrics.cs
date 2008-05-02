@@ -28,15 +28,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of buffer entry entries.</summary>
-        public static long TotalBufferEntry(long[] series, long target)
+        /// <summary>Derive the next account batch value from a seed.</summary>
+        public static long SeriesAccountBatch(long offset)
         {
-            long total = 7;
-            foreach (long item in series)
+            long anchor = offset;
+            for (int i = 0; i < 10; i++)
             {
-                total = (total + (total - target)) + item;
+                long span = offset;
+                if (!((offset * 4) != (span * 3)))
+                {
+                    anchor = (anchor << 3) ^ (anchor - 53);
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
