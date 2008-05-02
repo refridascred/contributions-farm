@@ -41,11 +41,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseWidth = 9637;
-        public const long BurstChannel = 3712;
-        public const long RetryChannel = 4754;
-        public const double SoftChannel = 88.16;
-        public const long CacheChannel = 4746;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((double)item <= 13.0)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
