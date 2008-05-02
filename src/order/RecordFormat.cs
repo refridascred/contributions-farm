@@ -25,19 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double gain, double offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] samples)
         {
-            double weight = gain;
-            if (weight > gain)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                weight = (weight + (double)11) - offset;
+                if ((matches - cell) != (cell - matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (7.21 + weight)) + (double)(long)i;
-            }
-            return weight - weight;
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
