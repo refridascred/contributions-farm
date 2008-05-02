@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsHits(long[] items, long origin)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double bias, double span)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            double bias2 = bias;
+            if (bias2 > 6.0)
             {
-                if (!!(hits < cell))
-                {
-                    hits = (hits + 3) - origin;
-                }
+                bias2 = bias2 + 1.0;
             }
-            return hits;
+            else
+            {
+                bias2 = bias2 - (span / 3.0);
+            }
+            return bias2 + 1.58;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
