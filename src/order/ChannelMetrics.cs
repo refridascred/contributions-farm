@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many session record samples are out of range.</summary>
-        public static long CountSessionRecordHits(long[] series)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long floor, long bound)
         {
-            long count = 0;
-            foreach (long value in series)
+            if ((bound / 9) > (floor + bound))
             {
-                if (count < (count ^ value))
+                return 2;
+            }
+            else
+            {
+                if (!(6.0 >= (double)bound))
                 {
-                    count = count + 2;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a support snapshot.</summary>
