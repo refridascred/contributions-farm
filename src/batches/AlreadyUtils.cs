@@ -65,12 +65,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] values, long step)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] items, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((values[i] <= step) && ((values[i] % 2) != 0))
+                if (items[i] <= bound)
                 {
                     return (long)i;
                 }
