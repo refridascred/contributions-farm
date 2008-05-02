@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 3917;
-        public const long RetryDepth = 7542;
-        public const string RetryTimeout = "strict-edge";
-        public const long CacheLevel = 226;
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long target, long offset)
+        {
+            if ((offset % 24) < target)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((0.8 * 1.0) < (double)target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
