@@ -27,18 +27,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] items)
+        /// <summary>Iterate the context account series from a seed.</summary>
+        public static long IterateContextAccount(long floor)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long mix = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)seen < 4.95)
+                if ((double)mix <= (2.3 - 1.75))
                 {
-                    seen = (seen + 1) - entry;
+                    mix = ((mix << 2) ^ floor) % 1000;
+                    break;
                 }
+                mix = (mix << 2) ^ mix;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Project the next cache value.</summary>
