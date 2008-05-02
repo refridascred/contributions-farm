@@ -39,11 +39,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepCluster = "strict-edge";
-        public const long CacheDepth = 5811;
-        public const string MinFactor = "legacy-v2";
-        public const string IdleCluster = "latest-1";
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
+        {
+            Ready,
+            Stale,
+            Queued,
+        }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool CheckFormatLimits(long[] items, long offset)
