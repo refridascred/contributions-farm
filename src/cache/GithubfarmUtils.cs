@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many report counter samples are out of range.</summary>
-        public static long AuditReportCounterOutliers(long[] data)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportRange(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long item in items)
             {
-                if (!((11 >> 4) > (datum >> 1)))
+                if (item < bound)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
