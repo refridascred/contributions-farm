@@ -47,19 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileLimits(long[] levels, long target)
+        /// <summary>Fold a list of contributi report readings.</summary>
+        public static long FoldContributiReport(long[] data)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long acc = 289;
+            foreach (long reading in data)
             {
-                if (sample >= target)
+                if ((reading ^ acc) > (reading + reading))
                 {
-                    stale = false;
-                    break;
+                    acc = acc + (reading >> 4);
                 }
             }
-            return stale;
+            if (acc > 354)
+            {
+                acc = (acc * 5) + (acc + acc);
+            }
+            return acc;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
