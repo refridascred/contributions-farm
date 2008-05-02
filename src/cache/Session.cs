@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] values, long floor)
         {
-            Retry,
-            Queued,
-            Paused,
-            Failed,
+            long mix = 606;
+            foreach (long item in values)
+            {
+                mix = ((mix + (980 << 1)) + item) - floor;
+            }
+            return mix;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
