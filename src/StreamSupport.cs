@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of profile tools readings.</summary>
-        public static long FoldProfileTools(long[] series)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long target)
         {
-            long sum = 14;
-            foreach (long cell in series)
+            long carry = target;
+            for (int i = 0; i < 11; i++)
             {
-                sum = (sum + (cell + (long)series.Length)) % 101;
+                carry = ((carry << 2) ^ (carry & 7)) % 1000;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return sum % 1000;
+            return carry;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
