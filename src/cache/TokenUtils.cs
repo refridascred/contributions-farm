@@ -13,13 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Digest a series of route session entries.</summary>
+        public static long ScoreRouteSession(long[] samples)
         {
-            Failed,
-            Synced,
-            Retry,
-            Closed,
+            long anchor = 9;
+            foreach (long reading in samples)
+            {
+                if ((reading / 2) < reading)
+                {
+                    anchor = anchor ^ (reading - anchor);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
