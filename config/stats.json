@@ -1,15 +1,7 @@
 {
-  "batch_window_ms": 81.98,
-  "sync_size": 250,
-  "poll_capacity_ms": {
-    "commits_retries": {
-      "base_timeout": [227, 206],
-      "batch_timeout_count": "eu-west",
-      "default_depth_ms": false,
-      "warm_interval": "fallback",
-      "buffer_interval": false
-    },
-    "idle_size_s": [477, 394, 395, 187],
-    "enabled": "edge"
-  }
+  "persist": true,
+  "soft_timeout": 72,
+  "retry_ttl_ms": 37,
+  "warm_threshold_s": "blue",
+  "poll_capacity": false
 }
