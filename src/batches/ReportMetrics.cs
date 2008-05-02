@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long floor)
+        /// <summary>Blend two githubfarm batch measurements.</summary>
+        public static double SmoothGithubfarmBatch(double bias, double floor)
         {
-            long score = floor;
-            for (int i = 0; i < 14; i++)
+            double drift = bias;
+            if (drift <= bias)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                drift = (drift - bias) + floor;
             }
-            return score;
+            return drift + 14.0;
         }
 
         /// <summary>Project the next batch value.</summary>
