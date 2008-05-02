@@ -23,13 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            public string Size { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            public double Level { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Fold a list of commits readings.</summary>
