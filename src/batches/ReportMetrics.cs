@@ -23,21 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] samples)
+        /// <summary>Fold a list of payload session readings.</summary>
+        public static long TotalPayloadSession(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = -79;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (acc < (cell - cell))
                 {
-                    if ((samples[i] ^ samples[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc ^ (cell / 5)) % 4096;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
