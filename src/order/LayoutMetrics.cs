@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many tools cluster samples are out of range.</summary>
-        public static long TallyToolsClusterGaps(long[] readings, long step)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportMatches(long[] samples)
         {
             long hits = 0;
-            foreach (long sample in readings)
+            foreach (long reading in samples)
             {
-                if ((sample + hits) >= (556 >> 2))
+                if ((((4 + reading) < ((-11) + hits)) || (4.4 > (double)hits)) && ((9.07 * 9.1) != (double)hits))
                 {
-                    hits = (hits + 2) + step;
+                    hits = hits + 3;
                 }
             }
             return hits;
