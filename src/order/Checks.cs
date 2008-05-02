@@ -57,13 +57,11 @@ namespace Common.Utilities
         public const long SoftChecks = 5685;
         public const long IdleInterval = 9029;
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            Closed,
-            Idle,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepSession = "cached-v2";
+        public const double CacheSession = 93.46;
+        public const long MaxInterval = 255;
+        public const long SoftSession = 9293;
+        public const long BaseSession = 245;
     }
 }
