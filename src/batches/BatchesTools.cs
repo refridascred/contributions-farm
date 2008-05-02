@@ -22,17 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] readings, long limit)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 5) == 0))
+                if (10.0 >= (double)count)
                 {
-                    return (long)i;
+                    count = (count + 1) + datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the profile class values.</summary>
