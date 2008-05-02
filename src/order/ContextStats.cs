@@ -27,32 +27,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long bound, long limit)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long bound2 = bound - limit;
-            if ((39 + bound2) >= (bound + bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((bound2 & 31) <= limit) && (7 >= bound2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((-3) - bound) <= bound2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public string Label { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a cache entry.</summary>
