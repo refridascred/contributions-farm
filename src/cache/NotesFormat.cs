@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            public bool Token { get; set; }
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            Locked,
+            Draft,
+            Stale,
+            Ready,
+            Failed,
         }
 
         /// <summary>Define record limits and defaults.</summary>
