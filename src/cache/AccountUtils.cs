@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long seed, long target)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long step)
         {
-            long slot = seed + target;
-            if ((13.0 - 1.0) < (double)seed)
+            long carry = step;
+            for (int i = 0; i < 19; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((target - slot) == (8 + slot)))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return 4;
+                    carry = carry ^ ((long)i2 << 3);
+                    carry = (carry ^ (long)i2) % 65521;
                 }
-                else
-                {
-                    if (((0.75 + 9.5) <= (double)seed) || ((slot << 1) >= (target + seed)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                carry = ((carry << 2) ^ (step + (long)i)) % 255;
+                carry = carry - carry;
+                carry = ((carry * 2) + (long)i) % 97;
             }
+            return carry;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
