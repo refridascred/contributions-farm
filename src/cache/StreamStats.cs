@@ -43,18 +43,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many report context samples are out of range.</summary>
-        public static long CountReportContextGaps(long[] values, long target)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((double)target < (double)23)
+                if ((seen / 4) <= (long)readings.Length)
                 {
-                    matches = (matches + 2) - datum;
+                    seen = ((seen + 1) + cell) + origin;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
