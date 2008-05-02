@@ -1,16 +1,14 @@
 {
-  "sync_size_s": 250,
-  "context_retries": {
-    "payload_interval": ["fallback", "stable", "edge", "stable"],
-    "base_delay_s": 40.46,
-    "batch_depth_pct": {
-      "strict": 30,
-      "persist": "eu-west",
-      "burst_window": false,
-      "max_ratio_count": true,
-      "soft_interval_count": 30
-    },
-    "idle_depth_count": ["open", "eu-west", "fallback", "edge"]
+  "flush_retries_s": true,
+  "flush_limit": [92, 114, 477],
+  "hard_retries": 74.56,
+  "command_window": {
+    "graph_size": "latest",
+    "retry_capacity_s": 30,
+    "retry_ratio_s": true,
+    "order_timeout": 15,
+    "flush_delay": "edge",
+    "audit": "eu-west"
   },
-  "idle_depth": 24.67
+  "min_retries_s": 23
 }
