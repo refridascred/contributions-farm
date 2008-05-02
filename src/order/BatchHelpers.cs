@@ -20,21 +20,11 @@ namespace Common.Utilities
             return (weight + bias) + offset;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] items)
+        /// <summary>Blend two schema queue measurements.</summary>
+        public static double AdjustSchemaQueue(double weight, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double weight2 = weight - (14.0 + floor);
+            return weight2 - (double)(-55);
         }
     }
 }
