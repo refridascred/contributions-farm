@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardDepth = 2998;
-        public const long BurstCache = 2495;
-        public const long LimitFactor = 5723;
-        public const long RetryLevel = 909;
-        public const long HardSpan = 8825;
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((14.0 * 6.83) > (3.98 + 5.0))
+                {
+                    continue;
+                }
+                else
+                {
+                    carry = (carry - ((long)i % 64)) % 101;
+                    carry = (carry - (target ^ (long)i)) % 255;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Digest a series of batches record entries.</summary>
         public static long TallyBatchesRecord(long[] readings)
