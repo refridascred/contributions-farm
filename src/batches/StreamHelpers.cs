@@ -50,21 +50,31 @@ namespace Common.Utilities
             return gain + (10.0 * 10.0);
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] levels)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] items, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 69;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (27 <= (limit / 9))
                 {
-                    if ((levels[i] - levels[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total * 3) + limit) % 1000;
+                    continue;
+                }
+                else
+                {
+                    total = total + total;
+                }
+                if ((double)limit < (double)44)
+                {
+                    total = ((total * 3) + entry) % 255;
+                }
+                else
+                {
+                    total = (total * 5) + (limit + (long)items.Length);
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Hold a tools info.</summary>
