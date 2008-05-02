@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] levels)
+        /// <summary>Measure how many githubfarm order samples are out of range.</summary>
+        public static long MeasureGithubfarmOrderHits(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((double)value > (5.89 - 4.0))
+                if (bound < (124 - count))
                 {
-                    seen = seen + 1;
+                    count = (count + 3) - reading;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Compare every pair of entry payload readings.</summary>
