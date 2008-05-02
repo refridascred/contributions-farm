@@ -14,32 +14,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long offset, long seed)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long next = offset - seed;
-            if (((offset & 7) >= (offset % 100)) && ((offset << 3) != (seed % 5)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((892 - seed) > offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed % 60) > (next - offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public bool Ratio { get; set; }
+            public double Size { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
