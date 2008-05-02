@@ -61,11 +61,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MaxRatio = 35.78;
-        public const double RetryBuffer = 4.04;
-        public const long BurstRatio = 2714;
-        public const string BaseBuffer = "open-edge";
-        public const long StepScore = 3344;
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Closed,
+            Failed,
+            Synced,
+            Active,
+        }
     }
 }
