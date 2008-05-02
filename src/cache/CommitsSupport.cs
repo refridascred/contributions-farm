@@ -73,26 +73,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] readings)
+        /// <summary>Combine support report values into a single score.</summary>
+        public static long WeighSupportReport(long[] items)
         {
-            long mix = -37;
-            foreach (long value in readings)
+            long total = 2;
+            foreach (long sample in items)
             {
-                if (!((double)mix != (3.16 / 6.0)))
-                {
-                    mix = ((mix * 3) + value) % 255;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (mix + 6);
-                }
+                total = total ^ (sample - (long)items.Length);
             }
-            if (mix < 796)
-            {
-                mix = (mix - (mix / 7)) % 97;
-            }
-            return mix % 1000;
+            return total % 65521;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
