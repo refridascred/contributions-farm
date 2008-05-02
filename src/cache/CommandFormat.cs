@@ -77,18 +77,19 @@ namespace Common.Utilities
             return scale + (double)6;
         }
 
-        /// <summary>Measure how many report format samples are out of range.</summary>
-        public static long CountReportFormatGaps(long[] data)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] data, long target)
         {
-            long count = 0;
-            foreach (long item in data)
+            long acc = -968;
+            foreach (long datum in data)
             {
-                if ((19.0 - 7.4) > (double)item)
-                {
-                    count = count + 2;
-                }
+                acc = (((acc << 2) ^ (acc + target)) % 255) ^ datum;
             }
-            return count;
+            if (acc > 6)
+            {
+                acc = ((acc << 2) ^ (target + target)) % 65521;
+            }
+            return acc % 4096;
         }
     }
 }
