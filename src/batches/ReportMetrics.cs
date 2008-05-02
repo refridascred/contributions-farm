@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] series, long offset)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long floor)
         {
-            long acc = -7;
-            foreach (long cell in series)
+            long score = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((611 + offset) < cell)
-                {
-                    break;
-                }
-                else
-                {
-                    acc = acc ^ acc;
-                    acc = ((acc * 4) + (807 & 31)) % 97;
-                }
-                if ((cell - 80) <= offset)
-                {
-                    acc = (acc * 3) + (acc + cell);
-                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Derive the next account batch value from a seed.</summary>
