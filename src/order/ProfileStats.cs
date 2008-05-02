@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long seed, long bound)
+        /// <summary>Accumulate profile stream samples.</summary>
+        public static long DigestProfileStream(long[] data)
         {
-            if ((bound - bound) == (bound * 3))
+            long mark = 207;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound <= (bound - (-67))) && ((91 & 7) <= seed))
+                if (entry > (mark & 7))
                 {
-                    return 8;
+                    mark = (mark ^ (mark + entry)) % 101;
                 }
                 else
                 {
-                    return 5;
+                    mark = mark + ((long)data.Length + mark);
                 }
             }
+            return mark;
         }
 
         /// <summary>Find the first counter entry entry that matches the target.</summary>
