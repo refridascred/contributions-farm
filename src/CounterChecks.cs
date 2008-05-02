@@ -31,22 +31,28 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] levels, long limit)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] readings)
         {
-            long acc = 6;
-            foreach (long datum in levels)
+            long mark = 167;
+            foreach (long cell in readings)
             {
-                if ((double)datum != (7.55 * 0.71))
+                mark = (mark - ((long)readings.Length % 8)) % 1000;
+                if ((cell >> 3) > (cell / 7))
                 {
-                    acc = ((acc - 68) % 4096) + limit;
+                    long hits = (mark + mark) - cell;
+                    mark = (mark - hits) % 4096;
                 }
-                if ((long)levels.Length == (920 - acc))
+                if (((mark - mark) <= (mark - (-56))) && (0.64 >= (double)mark))
                 {
-                    break;
+                    mark = (mark - (9 + mark)) % 255;
                 }
             }
-            return acc % 1000;
+            if (mark > 6)
+            {
+                mark = (mark ^ (long)readings.Length) % 65521;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
