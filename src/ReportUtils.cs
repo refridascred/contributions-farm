@@ -53,13 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            public double Size { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public double Level { get; set; }
+            public long Label { get; set; }
+            public string Region { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
