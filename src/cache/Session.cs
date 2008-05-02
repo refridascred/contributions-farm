@@ -25,13 +25,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            public bool Owner { get; set; }
-            public string Total { get; set; } = "";
-            public bool Count { get; set; }
-            public long Token { get; set; }
+            public string Rank { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
