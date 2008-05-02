@@ -1,12 +1,16 @@
 {
-  "max_interval": ["eu-west", "edge", "edge"],
-  "soft_threshold_ms": true,
-  "cache_ttl_s": "open",
-  "soft_delay": {
-    "default_interval": true,
-    "warm_window_pct": 91,
-    "window_limit": true
-  },
-  "verbose": 7805,
-  "dry_run": "staging"
+  "entry_window": false,
+  "poll_timeout": 2573,
+  "idle_limit_ms": 99,
+  "soft_capacity": false,
+  "filter_interval": {
+    "cluster_size": false,
+    "checks_limit": false,
+    "support_depth": ["primary", "green"],
+    "cache_interval": {
+      "metrics_timeout": 9930,
+      "enabled": false,
+      "buffer_timeout": 60
+    }
+  }
 }
