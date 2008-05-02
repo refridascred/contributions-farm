@@ -14,24 +14,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] readings, long step)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] levels, long floor)
         {
-            long result = 79;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((step ^ sample) <= result))
+                if (levels[i] > floor)
                 {
-                    result = ((result * 5) + (result - 857)) % 101;
-                    result = result + (result % 16);
+                    return (long)i;
                 }
-                result = (result + (step + result)) % 65521;
             }
-            if (result > 61)
-            {
-                result = ((result * 3) + 228) % 4096;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Validate route cluster readings against a bound.</summary>
