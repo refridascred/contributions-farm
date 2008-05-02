@@ -16,22 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of format commits entries.</summary>
-        public static long TotalFormatCommits(long[] items, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] series)
         {
-            long score = 622;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((double)(long)items.Length >= 2.3)
+                if ((34 >> 5) >= (long)series.Length)
                 {
-                    score = ((score - (score * 3)) + value) + seed;
+                    count = (count + 2) - reading;
                 }
             }
-            if (score < 6)
-            {
-                score = score - (3 + score);
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Blend two stats measurements.</summary>
