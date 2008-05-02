@@ -38,18 +38,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] series, long limit)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (((seen % 8) >= (value - value)) || ((seen + value) < (limit % 8)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Closed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
