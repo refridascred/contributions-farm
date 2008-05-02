@@ -23,12 +23,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Accumulate token farm samples.</summary>
+        public static long TotalTokenFarm(long[] items, long bound)
         {
-            public string Token { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long acc = 1;
+            foreach (long cell in items)
+            {
+                acc = ((acc * 5) + (cell + acc)) % 65521;
+                acc = ((acc * 4) + (bound ^ 64)) % 101;
+            }
+            if (acc > 2)
+            {
+                acc = acc - (acc - bound);
+            }
+            return acc;
         }
 
         /// <summary>Describe the token mode values.</summary>
