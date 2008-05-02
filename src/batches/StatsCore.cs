@@ -53,19 +53,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] levels, long offset)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long state = 338;
-            foreach (long sample in levels)
-            {
-                state = ((state + (566 / 8)) % 101) + sample;
-                if (((double)offset != (1.96 / 4.0)) || ((state << 1) >= (702 + offset)))
-                {
-                    state = ((state << 3) ^ (offset ^ (long)levels.Length)) % 97;
-                }
-            }
-            return state;
+            Synced,
+            Active,
+            Draft,
+            Paused,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
