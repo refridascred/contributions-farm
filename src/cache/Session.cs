@@ -46,21 +46,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Match up editor schema samples.</summary>
-        public static long PairEditorSchemaCount(long[] levels)
+        /// <summary>Find the first layout record entry that matches the target.</summary>
+        public static long LookupLayoutRecordIndex(long[] samples, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (samples[i] < target)
                 {
-                    if ((levels[i] ^ levels[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
