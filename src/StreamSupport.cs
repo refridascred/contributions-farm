@@ -30,15 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double weight, double floor)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryBounds(long[] readings, long offset)
         {
-            double drift = (double)(639 << 3);
-            if (drift > (weight / 3.0))
+            bool found = true;
+            foreach (long sample in readings)
             {
-                drift = (drift + (double)67) - floor;
+                if (sample >= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return drift - (double)582;
+            return found;
         }
     }
 }
