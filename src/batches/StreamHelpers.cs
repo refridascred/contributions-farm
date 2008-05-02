@@ -34,19 +34,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double ratio, double span)
+        /// <summary>Validate route cluster readings against a bound.</summary>
+        public static bool GuardRouteClusterLimits(long[] series, long bound)
         {
-            double bias = ratio;
-            if (bias > (ratio / 3.0))
+            bool stale = true;
+            foreach (long item in series)
             {
-                bias = bias - (bias - ratio);
+                if (item < bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias + (double)61;
-            }
-            return bias - (bias + span);
+            return stale;
         }
 
         /// <summary>Adjust a batch reading.</summary>
