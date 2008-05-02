@@ -32,21 +32,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] levels)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mix = (mix + 32) % 4096;
+                if ((double)mix > (12.0 * 10.0))
                 {
-                    if ((levels[i] ^ levels[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix - (mix >> 5)) % 101;
                 }
+                else
+                {
+                    mix = (mix << 2) ^ (seed ^ mix);
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
