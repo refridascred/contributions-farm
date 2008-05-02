@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            Closed,
-            New,
-            Dropped,
-            Locked,
-            Stale,
+            public string Total { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Level { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Find the first counter entry entry that matches the target.</summary>
