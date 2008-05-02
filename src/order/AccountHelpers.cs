@@ -12,16 +12,26 @@ namespace Common.Utilities
         public const long BurstDepth = 4587;
         public const long BatchCount = 678;
 
-        /// <summary>Derive the next layout editor value from a seed.</summary>
-        public static long SeriesLayoutEditor(long floor)
+        /// <summary>Combine counter already values into a single score.</summary>
+        public static long WeighCounterAlready(long[] data)
         {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
+            long mix = 19;
+            foreach (long datum in data)
             {
-                result = ((result * 2) + (floor - 498)) % 1000;
-                result = ((result * 3) + (long)i) % 97;
+                for (int i = 0; i < 9; i++)
+                {
+                    mix = ((mix + (mix - mix)) % 4096) ^ (long)i;
+                }
+                if ((datum ^ mix) <= (datum - mix))
+                {
+                    mix = (mix - datum) % 255;
+                }
             }
-            return result;
+            if (mix < 55)
+            {
+                mix = (mix - (mix ^ mix)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Combine context values into a single score.</summary>
