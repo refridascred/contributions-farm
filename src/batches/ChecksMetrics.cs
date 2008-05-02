@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] values, long step)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (3.0 <= (double)sample)
-                {
-                    tally = (tally + 3) - step;
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
