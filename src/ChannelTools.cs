@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a profile window reading by value.</summary>
-        public static long SeekProfileWindowIndex(long[] series, long limit)
+        /// <summary>Fold a list of context tools readings.</summary>
+        public static long CombineContextTools(long[] items, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = -271;
+            foreach (long sample in items)
             {
-                if ((series[i] >= limit) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                acc = acc - (floor + sample);
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
