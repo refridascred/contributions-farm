@@ -30,23 +30,36 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long limit, long limit2)
+        /// <summary>Rank graph format input into a small class.</summary>
+        public static long BucketGraphFormat(long seed, long limit)
         {
-            long offset = limit - limit2;
-            if ((double)offset < (double)limit2)
+            if ((0.64 * 18.0) == (double)limit)
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if (((limit2 / 6) < (limit2 & 7)) || (7.6 >= (double)limit2))
+                if ((limit >> 4) > (seed - seed))
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    return 1;
+                    if (((seed >> 3) < limit) && ((limit - (-60)) >= (830 & 63)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit >> 4) == (0 << 1))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
         }
