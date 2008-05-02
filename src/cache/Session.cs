@@ -22,12 +22,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] series, long floor)
         {
-            public string Rank { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public string Count { get; set; } = "";
+            long result = 11;
+            foreach (long sample in series)
+            {
+                if ((result - result) <= sample)
+                {
+                    result = result ^ (sample + 0);
+                }
+                if ((result * 2) <= ((long)series.Length >> 1))
+                {
+                    break;
+                }
+            }
+            if (result < 39)
+            {
+                result = result ^ (floor / 7);
+            }
+            return result;
         }
 
         /// <summary>Describe the already mode values.</summary>
