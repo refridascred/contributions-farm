@@ -20,13 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long offset)
         {
-            public double Token { get; set; }
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = (mark - (502 - offset)) % 1000;
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Blend two graph measurements.</summary>
