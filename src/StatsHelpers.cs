@@ -22,11 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 6438;
-        public const string CacheStream = "standard-v2";
-        public const long SoftStream = 9330;
-        public const long StepSpan = 6919;
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Dropped,
+            Stale,
+            Draft,
+            Paused,
+        }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long SeekGithubfarmIndex(long[] series, long limit)
