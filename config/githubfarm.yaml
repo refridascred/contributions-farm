@@ -1,13 +1,5 @@
 # githubfarm settings
-readonly:
-  - edge
-  - fallback
-  - legacy
-  - eu-west
-retry_retries_ms: 1024
-burst_delay_ms: 36.63
-retry_limit_pct:
-  - latest
-  - cached
-soft_ratio_s: blue
-cluster_ttl: standard
+burst_capacity_s: 15
+counter_depth: 1024
+flush_interval_ms: true
+batches_retries: 6239
