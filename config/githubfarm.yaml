@@ -1,4 +1,4 @@
 # githubfarm settings
-dry_run: 7544
-stream_window: cached
-flush_interval_s: local
+base_window: false
+base_limit_ms: green
+default_threshold_ms: true
