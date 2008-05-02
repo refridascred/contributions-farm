@@ -1,11 +1,11 @@
 -- Create the layout_items table.
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
-    created_at TIMESTAMP,
-    active INTEGER NOT NULL DEFAULT 1,
-    token TEXT
+    owner TEXT NOT NULL,
+    weight REAL,
+    region TEXT,
+    label TEXT,
+    rank INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_active ON layout_items (active);
-
-INSERT INTO layout_items (active, token) VALUES (23, 'eu-west');
+CREATE INDEX IF NOT EXISTS idx_layout_items_owner ON layout_items (owner);
