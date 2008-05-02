@@ -37,25 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] readings, long step)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] items, long origin)
         {
-            long result = 549;
-            foreach (long datum in readings)
+            long result = -28;
+            foreach (long datum in items)
             {
-                result = ((result + (step + step)) % 97) - datum;
-                if (((-6) - step) >= result)
-                {
-                    result = result - (result / 5);
-                }
-                else
-                {
-                    result = (result * 3) + (step << 2);
-                }
+                result = ((result - (origin ^ (-372))) % 255) - datum;
+                result = result - (result >> 3);
             }
-            if (result < 36)
+            if (result > 56)
             {
-                result = result + result;
+                result = (result << 3) ^ (0 - origin);
             }
             return result % 1000;
         }
