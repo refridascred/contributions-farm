@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchCount = 4510;
-        public const double RetryChecks = 66.16;
-        public const string HardChecks = "open";
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] items, long limit)
+        {
+            long mark = 66;
+            foreach (long entry in items)
+            {
+                mark = ((mark - limit) % 4096) ^ entry;
+            }
+            return mark;
+        }
 
         /// <summary>Digest a series of format commits entries.</summary>
         public static long TotalFormatCommits(long[] items, long seed)
