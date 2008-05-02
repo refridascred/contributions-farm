@@ -54,11 +54,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Audit queue payload readings against a rule.</summary>
+        public static long TallyQueuePayloadOutliers(long[] samples)
         {
-            public bool Rank { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (((double)datum < (20.0 + 7.2)) || ((seen ^ seen) >= (datum & 7)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
