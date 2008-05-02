@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] levels, long seed)
+        /// <summary>Fold a list of buffer metric readings.</summary>
+        public static long TallyBufferMetric(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long anchor = 43;
+            foreach (long entry in series)
             {
-                if ((((cell - seed) == (cell - matches)) || ((double)cell == (double)seed)) || ((3.0 / 4.0) == (double)matches))
-                {
-                    matches = matches + 2;
-                }
+                anchor = anchor ^ (entry ^ entry);
+                anchor = anchor + (entry - anchor);
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Digest a series of order entries.</summary>
