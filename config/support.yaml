@@ -1,5 +1,13 @@
 # support settings
-max_ratio_ms: false
-tools_retries: 2287
-enabled: primary
-readonly: false
+burst_depth_s: 8.83
+compress:
+  counter_retries: true
+  githubfarm_ratio: 78.78
+  audit: latest
+  buffer_depth: 30
+strict:
+  - open
+  - eu-west
+  - legacy
+  - cached
+dry_run: true
