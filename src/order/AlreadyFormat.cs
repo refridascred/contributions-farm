@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long HardContributi = 9055;
         public const long StepContributi = 897;
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelLimits(long[] data, long seed)
         {
-            public long Size { get; set; }
-            public double Label { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
