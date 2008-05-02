@@ -1,13 +1,6 @@
 {
-  "order_depth": false,
-  "base_retries_s": 55,
-  "sync_depth": false,
-  "record_ratio": false,
-  "tools_size": true,
-  "soft_limit": {
-    "warm_size_ms": "local",
-    "flush_retries_count": 30,
-    "hard_limit": 24.35,
-    "min_threshold_ms": "fallback"
-  }
+  "profile_timeout": ["latest", "fallback", "eu-west", "latest"],
+  "hard_ttl_ms": true,
+  "warm_retries_s": "standard",
+  "strict": 100
 }
