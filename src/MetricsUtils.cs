@@ -22,14 +22,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long floor, long limit)
         {
-            Synced,
-            New,
-            Ready,
-            Paused,
-            Idle,
+            if (!((floor << 2) <= (floor & 31)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)24 >= (double)limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit * 2) <= (8 + 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine stats session values into a single score.</summary>
