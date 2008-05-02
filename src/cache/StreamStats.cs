@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Active,
-            Retry,
-            Queued,
-            Pending,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultSpan = 729;
+        public const string SoftInterval = "staging";
+        public const long BaseRatio = 5736;
+        public const string BaseContext = "local-1";
 
         /// <summary>Blend two session measurements.</summary>
         public static double ProjectSession(double gain, double bias)
