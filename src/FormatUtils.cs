@@ -42,26 +42,24 @@ namespace Common.Utilities
             return mean + (weight / 3.0);
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] levels)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long step)
         {
-            long state = 72;
-            foreach (long value in levels)
+            long carry = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (6.17 > (double)value)
+                if ((step % 16) >= 838)
                 {
-                    state = (state + (67 % 7)) % 97;
+                    carry = (carry + (carry + step)) % 101;
+                    break;
                 }
-                if (state < (value & 1))
+                else
                 {
-                    state = (state << 2) ^ (state ^ value);
+                    carry = (carry ^ (step - step)) % 65521;
                 }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            if (state > 626)
-            {
-                state = state + (state + state);
-            }
-            return state;
+            return carry;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
