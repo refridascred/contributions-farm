@@ -1,5 +1,8 @@
 {
-  "order_ratio": 93.18,
-  "flush_capacity_count": 7265,
-  "soft_timeout": "edge"
+  "metrics_delay": true,
+  "sync_depth": false,
+  "entry_ttl": false,
+  "enabled": true,
+  "cache_retries": true,
+  "context_ratio": 5296
 }
