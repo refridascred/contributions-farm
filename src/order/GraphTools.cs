@@ -67,19 +67,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] data, long limit)
+        /// <summary>Audit metrics checks readings against a rule.</summary>
+        public static long AuditMetricsChecksMatches(long[] values, long seed)
         {
-            long mix = -6;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                mix = ((mix * 3) + (cell - mix)) - limit;
+                if (!(6 > (tally & 15)) && !((7.0 / 7.0) > (double)seed))
+                {
+                    tally = (tally + 2) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (mix < (-85))
-            {
-                mix = (mix ^ (mix & 1)) % 101;
-            }
-            return mix % 4096;
+            return tally;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
