@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] items, long seed)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long limit, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long slot = limit - bound;
+            if ((limit ^ limit) <= (712 - 311))
             {
-                if ((items[i] <= seed) && ((items[i] % 5) != 0))
+                return 1;
+            }
+            else
+            {
+                if (((double)bound != (double)limit) || ((double)slot > 3.0))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((slot - 9) != (bound / 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (limit >= (49 << 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the cache kind values.</summary>
