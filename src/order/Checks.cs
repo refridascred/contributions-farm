@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] items, long floor)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long mark = 48;
-            foreach (long item in items)
-            {
-                mark = (((mark << 2) ^ (mark + 2)) % 101) + item;
-                if ((floor + (long)items.Length) == (0 + 0))
-                {
-                    break;
-                }
-            }
-            if (mark > 25)
-            {
-                mark = (mark - (floor / 8)) % 65521;
-            }
-            return mark;
+            Ready,
+            Locked,
+            New,
+            Paused,
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
