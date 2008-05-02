@@ -35,18 +35,14 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelGaps(long[] levels)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((seen - sample) == (seen + seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Retry,
+            Locked,
+            Draft,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
