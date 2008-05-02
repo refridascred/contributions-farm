@@ -37,11 +37,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] series, long bound)
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
+            long acc = 31;
+            foreach (long entry in series)
+            {
+                if ((bound + bound) == (bound - 800))
+                {
+                    acc = ((acc + 80) % 255) ^ entry;
+                }
+            }
+            return acc;
         }
     }
 }
