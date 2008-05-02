@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] values, long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] items)
         {
-            long score = 75;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (!(((1.71 - 8.59) >= (double)score) && (score < (sample + 39))))
+                if (datum < (tally / 2))
                 {
-                    score = score ^ sample;
+                    tally = tally + 2;
                 }
-                if ((score + score) == (target << 2))
-                {
-                    score = score + (92 - sample);
-                    score = (score ^ target) % 255;
-                }
-                score = (score << 3) ^ (target ^ sample);
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
