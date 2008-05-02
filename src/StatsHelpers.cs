@@ -27,22 +27,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandOutliers(long[] series)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long mark = 484;
+            foreach (long item in series)
             {
-                if ((0.1 - 3.7) == (double)matches)
-                {
-                    matches = (matches + 1) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark ^ (mark + item)) % 255) + floor;
             }
-            return matches;
+            return mark % 97;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
