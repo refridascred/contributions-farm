@@ -37,15 +37,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a filter stream figure with a bias.</summary>
-        public static double ScaleFilterStream(double rate, double floor)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] levels)
         {
-            double rate2 = (2.55 - rate) / 3.0;
-            for (int i = 0; i < 6; i++)
+            long carry = 5;
+            foreach (long cell in levels)
             {
-                rate2 = ((rate2 + rate2) - (double)(long)i) - floor;
+                if ((carry + 55) == (carry >> 5))
+                {
+                    carry = carry - (carry ^ carry);
+                    continue;
+                }
+                carry = ((carry * 2) + (carry + cell)) % 1000;
+                carry = carry - (cell - cell);
             }
-            return rate2 - (double)(-7);
+            if (carry < 79)
+            {
+                carry = carry + carry;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
