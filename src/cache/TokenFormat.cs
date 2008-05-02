@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long step)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long state = step;
-            for (int i = 0; i < 14; i++)
-            {
-                state = (state ^ (564 & 63)) % 65521;
-                state = (state << 3) ^ (state / 2);
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            Failed,
+            Retry,
+            Pending,
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
