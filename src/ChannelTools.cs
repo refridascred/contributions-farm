@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long floor, long bound)
+        /// <summary>Locate a profile window reading by value.</summary>
+        public static long SeekProfileWindowIndex(long[] series, long limit)
         {
-            if (floor <= (bound & 63))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((bound >> 1) <= floor))
+                if ((series[i] >= limit) && ((series[i] % 2) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound << 1) > floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (bound > 15)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next command value.</summary>
