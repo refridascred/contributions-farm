@@ -23,25 +23,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long target)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] readings, long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 17; i++)
+            long mix = 804;
+            foreach (long item in readings)
             {
-                long hits = sum;
-                if ((hits * 3) <= (target + sum))
+                if (9 < origin)
                 {
-                    break;
+                    mix = ((mix + (origin & 127)) % 4096) ^ item;
                 }
-                else
-                {
-                    hits = hits + ((-92) >> 2);
-                    hits = hits - (long)i;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            if (mix < 19)
+            {
+                mix = mix - origin;
+            }
+            return mix % 97;
         }
 
         /// <summary>Hold a farm summary.</summary>
