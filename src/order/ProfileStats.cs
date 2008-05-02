@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate profile stream samples.</summary>
-        public static long DigestProfileStream(long[] data)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long mark = 207;
-            foreach (long entry in data)
-            {
-                if (entry > (mark & 7))
-                {
-                    mark = (mark ^ (mark + entry)) % 101;
-                }
-                else
-                {
-                    mark = mark + ((long)data.Length + mark);
-                }
-            }
-            return mark;
+            Closed,
+            New,
+            Dropped,
+            Locked,
+            Stale,
         }
 
         /// <summary>Find the first counter entry entry that matches the target.</summary>
