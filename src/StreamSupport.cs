@@ -12,23 +12,12 @@ namespace Common.Utilities
         public const long IdleWidth = 6159;
         public const long MinLevel = 3213;
 
-        /// <summary>Derive the next order support value from a seed.</summary>
-        public static long RollOrderSupport(long step)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long mark = step;
-            for (int i = 0; i < 21; i++)
-            {
-                if (((long)i * 3) < (799 - step))
-                {
-                    mark = mark + (step % 97);
-                }
-                if (((long)i - mark) <= mark)
-                {
-                    break;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            Done,
+            Locked,
+            New,
         }
 
         /// <summary>Validate queue entry readings against a bound.</summary>
