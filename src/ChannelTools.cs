@@ -5,29 +5,35 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a commits cluster pair into a bucket.</summary>
-        public static long ClassifyCommitsCluster(long target, long offset)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long floor, long bound)
         {
-            long delta = target - offset;
-            if (target > (offset + delta))
+            if (floor <= (bound & 63))
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if ((target * 2) <= offset)
+                if (!((bound >> 1) <= floor))
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    if (((target / 9) >= (3 + target)) || (((-3) + delta) > ((-9) - target)))
+                    if ((bound << 1) > floor)
                     {
-                        return 1;
+                        return 7;
                     }
                     else
                     {
-                        return 8;
+                        if (bound > 15)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
