@@ -10,25 +10,19 @@ namespace Common.Utilities
         public const string IdleCommits = "latest";
         public const long BatchCommits = 9190;
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long target, long target2)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long floor)
         {
-            long gap = target ^ target2;
-            if (gap < 30)
+            long carry = floor;
+            for (int i = 0; i < 10; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target2 < (36 - gap)) || ((double)target < (double)442))
+                if (!((901 % 3) >= ((long)i & 1)))
                 {
-                    return 8;
+                    carry = (carry - (floor % 64)) % 101;
                 }
-                else
-                {
-                    return 7;
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
