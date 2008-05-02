@@ -20,18 +20,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] values, long origin)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((97 + cell) <= cell)
-                {
-                    count = (count + 3) + origin;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
+            public double Count { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
