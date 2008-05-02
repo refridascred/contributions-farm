@@ -61,13 +61,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            public string Limit { get; set; } = "";
-            public double Size { get; set; }
-            public double Region { get; set; }
-            public long Total { get; set; }
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
