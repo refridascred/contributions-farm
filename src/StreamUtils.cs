@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long bound, long seed)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] levels, long offset)
         {
-            if ((bound < (94 + seed)) && ((bound - seed) > (bound - bound)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (bound >= seed)
+                if (levels[i] == offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)seed >= (8.97 / 4.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((double)bound > 7.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the githubfarm entry series from a seed.</summary>
