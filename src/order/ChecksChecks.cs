@@ -29,12 +29,16 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long seed)
         {
-            Stale,
-            Locked,
-            Ready,
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = ((carry << 3) ^ (seed / 6)) % 255;
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
