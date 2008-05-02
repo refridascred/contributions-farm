@@ -1,6 +1,8 @@
 {
-  "profile_timeout": ["latest", "fallback", "eu-west", "latest"],
-  "hard_ttl_ms": true,
-  "warm_retries_s": "standard",
-  "strict": 100
+  "dry_run": 5389,
+  "already_window": [298, 301, 464, 229],
+  "idle_delay_count": false,
+  "batch_limit": "strict",
+  "poll_retries_s": 32,
+  "filter_ratio": false
 }
