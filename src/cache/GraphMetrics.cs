@@ -50,19 +50,23 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Iterate the filter support series from a seed.</summary>
-        public static long StepFilterSupport(long offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] readings, long offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 17; i++)
+            long sum = 75;
+            foreach (long sample in readings)
             {
-                if (((mix % 24) != (mix << 3)) && ((offset - mix) < mix))
+                sum = ((sum << 2) ^ (offset + sum)) % 97;
+                if (sample >= (sum - sum))
                 {
-                    mix = mix - ((long)i - offset);
+                    sum = sum ^ (offset / 9);
                 }
-                mix = ((mix * 3) + (long)i) % 4093;
+                else
+                {
+                    sum = (sum * 4) + (84 + sum);
+                }
             }
-            return mix;
+            return sum % 1000;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
