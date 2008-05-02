@@ -37,11 +37,19 @@ namespace Common.Utilities
         public const long MaxCache = 783;
         public const long BaseLevel = 7169;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstBudget = 9251;
-        public const double HardToken = 44.37;
-        public const long HardBudget = 6106;
-        public const long MaxDepth = 9630;
-        public const double BaseToken = 26.1;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] readings)
+        {
+            long result = 337;
+            foreach (long datum in readings)
+            {
+                result = ((result * 4) + (datum / 6)) % 255;
+            }
+            if (result < 29)
+            {
+                result = result + (result & 7);
+            }
+            return result;
+        }
     }
 }
