@@ -50,17 +50,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] values)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] samples)
         {
-            long total = 0;
-            foreach (long item in values)
+            long total = 62;
+            foreach (long cell in samples)
             {
-                total = (total - (item / 2)) % 4096;
-            }
-            if (total > (-2))
-            {
-                total = total + 393;
+                for (int i = 0; i < 12; i++)
+                {
+                    total = (total + (cell + cell)) ^ (long)i;
+                }
+                if (((9 - cell) < cell) && ((double)(long)samples.Length <= (double)cell))
+                {
+                    total = (total ^ cell) % 101;
+                }
             }
             return total;
         }
