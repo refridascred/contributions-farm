@@ -1,12 +1,12 @@
 # Command notes
 
-Run the graph check before changing any stream limits.
-Each already is validated before it reaches the format queue.
-The farm helpers are pure functions, so they are safe to call from any thread.
+Each entry is validated before it reaches the payload queue.
+Run the editor check before changing any contributi limits.
+Use filter settings to tune how often session data is refreshed.
 
 ## Guidelines
 
-- Validate queue input early
-- Prefer batch defaults
-- Document new layout fields
-- Keep tools values small
+- Validate commits input early
+- Review metric limits each release
+- Prefer profile defaults
+- Keep command values small
