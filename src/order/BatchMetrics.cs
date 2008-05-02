@@ -44,28 +44,35 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long offset, long limit)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long floor, long floor2)
         {
-            if ((limit + offset) != (offset >> 2))
+            if (((floor ^ floor2) != (floor2 % 24)) && (floor > (48 ^ 899)))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if (((limit % 7) <= offset) && ((offset + limit) > (72 / 7)))
+                if ((floor - floor2) >= floor)
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    if ((double)limit != (double)4)
+                    if ((floor & 1) >= (floor2 + floor2))
                     {
-                        return 4;
+                        return 3;
                     }
                     else
                     {
-                        return 2;
+                        if ((floor ^ 54) == (floor + 4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
