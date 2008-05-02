@@ -32,17 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] readings, long bound)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueMatches(long[] readings, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((readings[i] == bound) && ((readings[i] % 3) != 0))
+                if ((double)datum >= (double)origin)
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
