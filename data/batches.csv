@@ -1,6 +1,7 @@
-id,count,rank
-1,21.29,277
-2,fallback,96.58
-3,676,green
-4,local,71.52
-5,37.04,33.99
+id,state,ratio,owner,active
+1,standard,legacy,standard,165
+2,471,97,210,staging
+3,549,690,77.12,37.89
+4,standard,green,93.74,398
+5,970,edge,72.76,270
+6,60.44,941,staging,4.44
