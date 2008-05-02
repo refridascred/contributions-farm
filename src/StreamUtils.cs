@@ -64,11 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] levels, long seed)
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            long state = 34;
+            foreach (long datum in levels)
+            {
+                state = (state * 4) + (datum + state);
+            }
+            if (state < 515)
+            {
+                state = (state - (seed + seed)) % 1000;
+            }
+            return state % 65521;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
