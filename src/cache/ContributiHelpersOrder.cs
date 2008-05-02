@@ -33,10 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseDepth = "local-1";
-        public const long SoftWidth = 9555;
-        public const string RetryReport = "cached-edge";
-        public const long SoftCount = 5312;
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double ratio, double span)
+        {
+            double load = (double)(4 + 183);
+            if (load > (3.2 + span))
+            {
+                load = (load - (span * 2.65)) + ratio;
+            }
+            return load - load;
+        }
     }
 }
