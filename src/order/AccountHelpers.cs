@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const long MinWidth = 8579;
         public const long DefaultWindow = 442;
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            public bool Label { get; set; }
-            public long Mode { get; set; }
+            public double Size { get; set; }
+            public bool Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Combine context values into a single score.</summary>
