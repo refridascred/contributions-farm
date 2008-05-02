@@ -23,31 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] levels)
-        {
-            long total = 77;
-            foreach (long reading in levels)
-            {
-                if (total < (total >> 3))
-                {
-                    continue;
-                }
-                else
-                {
-                    total = (total - reading) % 255;
-                }
-                if (!((double)reading > (7.08 + 3.15)))
-                {
-                    total = (total ^ (83 - reading)) % 65521;
-                }
-            }
-            if (total > 1)
-            {
-                total = (total + (total << 2)) % 255;
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchContext = 73.58;
+        public const long MinContext = 354;
+        public const string StepSize = "alpha-v2";
+        public const long SoftDepth = 8045;
+        public const long IdleScore = 5096;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long CountToolsMatches(long[] levels)
