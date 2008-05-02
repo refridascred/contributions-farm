@@ -37,18 +37,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] series, long bound)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long target, long origin)
         {
-            long acc = 31;
-            foreach (long entry in series)
+            if ((target << 3) >= (origin * 2))
             {
-                if ((bound + bound) == (bound - 800))
+                return 2;
+            }
+            else
+            {
+                if ((origin + 96) < (target + origin))
                 {
-                    acc = ((acc + 80) % 255) ^ entry;
+                    return 0;
+                }
+                else
+                {
+                    if ((origin - target) != (target * 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return acc;
         }
     }
 }
