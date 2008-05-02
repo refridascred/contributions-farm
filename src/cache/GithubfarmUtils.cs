@@ -34,11 +34,15 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitCount = 1570;
-        public const long BaseContext = 5072;
-        public const double BatchTimeout = 30.34;
-        public const long MaxWidth = 952;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Idle,
+            Ready,
+            Dropped,
+            Synced,
+            Draft,
+        }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
         public static double BlendBuffer(double ratio, double span)
