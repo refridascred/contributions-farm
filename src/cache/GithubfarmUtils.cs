@@ -29,21 +29,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] levels)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 91;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((acc + acc) < cell)
                 {
-                    if ((levels[i] + levels[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc << 3) ^ (cell ^ acc);
                 }
             }
-            return matches;
+            return acc % 4096;
         }
 
         /// <summary>Describe the entry phase values.</summary>
