@@ -14,24 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] values)
-        {
-            long anchor = -10;
-            foreach (long datum in values)
-            {
-                anchor = anchor - (anchor & 1);
-                if (((long)values.Length >> 1) != (datum % 24))
-                {
-                    anchor = (anchor ^ (anchor ^ anchor)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + anchor;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleCount = 5460;
+        public const string BurstLevel = "latest-edge";
+        public const long WindowScore = 228;
+        public const double SoftFarm = 81.14;
+        public const long HardFarm = 884;
 
         /// <summary>Accumulate session samples.</summary>
         public static long DigestSession(long[] readings)
