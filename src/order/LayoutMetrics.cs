@@ -23,18 +23,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] levels)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long total = 77;
+            foreach (long reading in levels)
             {
-                if ((tally >> 4) > (tally ^ 4))
+                if (total < (total >> 3))
                 {
-                    tally = (tally + 3) ^ item;
+                    continue;
+                }
+                else
+                {
+                    total = (total - reading) % 255;
+                }
+                if (!((double)reading > (7.08 + 3.15)))
+                {
+                    total = (total ^ (83 - reading)) % 65521;
                 }
             }
-            return tally;
+            if (total > 1)
+            {
+                total = (total + (total << 2)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
