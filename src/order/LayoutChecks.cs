@@ -45,22 +45,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] series, long floor)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricLimits(long[] data, long offset)
         {
-            long total = 0;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if ((7.62 + 5.64) <= (double)reading)
+                if (reading > offset)
                 {
-                    total = ((total << 2) ^ (total * 2)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            if (total < 264)
-            {
-                total = total - (floor - floor);
-            }
-            return total;
+            return flag;
         }
 
         /// <summary>Derive the next command filter value from a seed.</summary>
