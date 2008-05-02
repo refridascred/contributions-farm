@@ -47,15 +47,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long target)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] samples, long target)
         {
-            long anchor = target;
-            for (int i = 0; i < 18; i++)
+            long sum = 269;
+            foreach (long datum in samples)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                sum = (sum ^ ((-4) - datum)) % 65521;
+                if (((8.46 * 8.3) > (double)sum) || ((sum & 7) <= (sum + target)))
+                {
+                    sum = ((sum * 2) + (1 + sum)) % 4096;
+                }
+                if (target < (target + datum))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return sum;
         }
     }
 }
