@@ -1,7 +1,7 @@
 {
-  "farm_window": "cached",
-  "max_delay_s": false,
-  "batch_limit_pct": ["cached", "blue"],
-  "batch_capacity": "local",
-  "enabled": 1150
+  "idle_depth_s": true,
+  "cache_retries": 70,
+  "tools_interval": ["open", "open"],
+  "batch_window_s": 500,
+  "route_capacity": [371, 85, 145, 445]
 }
