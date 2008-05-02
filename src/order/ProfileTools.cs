@@ -19,18 +19,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count the tools stream entries that pass the check.</summary>
-        public static long TallyToolsStreamGaps(long[] items, long offset)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((offset & 15) > seen)
-                {
-                    seen = (seen + 3) - sample;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Roll a graph counter forward.</summary>
