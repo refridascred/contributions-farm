@@ -33,21 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] items)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return seen;
+            return anchor;
         }
     }
 }
