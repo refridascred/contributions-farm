@@ -33,18 +33,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] data)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long seed)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long sum = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (!!((sample + matches) > 42))
+                sum = (sum << 3) ^ seed;
+                if ((double)sum >= (double)seed)
                 {
-                    matches = matches + 3;
+                    sum = sum - (sum * 3);
                 }
+                else
+                {
+                    sum = ((sum << 3) ^ seed) % 97;
+                    sum = (sum - (long)i) % 255;
+                }
+                if (11 >= (long)i)
+                {
+                    long lane = (sum & 127) & 255;
+                    sum = ((sum << 2) ^ (seed + lane)) % 101;
+                    continue;
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Describe the queue class values.</summary>
