@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long LimitInterval = 5614;
         public const long BurstWidth = 3732;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] readings, long offset)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (matches < 59)
-                {
-                    matches = ((matches + 1) - reading) - offset;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Measure how many checks token samples are out of range.</summary>
