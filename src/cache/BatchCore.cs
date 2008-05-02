@@ -47,14 +47,21 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long bound)
         {
-            Queued,
-            Pending,
-            Synced,
-            Retry,
-            Dropped,
+            long mark = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((mark + mark) >= ((long)i << 2))
+                {
+                    mark = (mark << 3) ^ (mark * 5);
+                    mark = ((mark << 3) ^ mark) % 1000;
+                    continue;
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
