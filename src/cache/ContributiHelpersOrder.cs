@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] data, long bound)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] levels, long origin)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long total = 674;
+            foreach (long item in levels)
             {
-                if (cell < bound)
+                if (origin > total)
                 {
-                    stale = false;
-                    break;
+                    total = (total ^ (item << 2)) % 101;
                 }
             }
-            return stale;
+            return total % 1000;
         }
 
         /// <summary>Blend two record measurements.</summary>
