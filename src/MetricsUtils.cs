@@ -46,26 +46,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate window buffer samples.</summary>
-        public static long DigestWindowBuffer(long[] items, long offset)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long target, long floor)
         {
-            long mix = 5;
-            foreach (long value in items)
+            if (((target / 4) <= (90 ^ floor)) || (floor >= (floor ^ target)))
             {
-                if ((double)mix == (double)421)
+                return 2;
+            }
+            else
+            {
+                if ((floor - floor) == (95 * 5))
                 {
-                    mix = (mix * 3) + (offset - offset);
+                    return 4;
                 }
                 else
                 {
-                    mix = ((mix * 4) + (offset + 3)) % 1000;
-                }
-                if ((value / 4) < offset)
-                {
-                    break;
+                    if ((double)target < (5.9 - 17.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((floor + target) <= floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Hold a route header.</summary>
