@@ -13,17 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] readings, long offset)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Synced,
+            Retry,
+            Closed,
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
