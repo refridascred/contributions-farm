@@ -14,19 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double ratio, double offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] readings, long origin)
         {
-            double ratio2 = 0.2;
-            if (ratio2 < (double)983)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                ratio2 = ((ratio2 + (ratio2 * 3.0)) - ratio) - offset;
+                if ((4.0 - 0.8) < (double)(long)readings.Length)
+                {
+                    count = ((count + 3) + datum) + origin;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 + (double)3) + (double)(long)i;
-            }
-            return ratio2 + ratio2;
+            return count;
         }
 
         /// <summary>Hold a buffer info.</summary>
