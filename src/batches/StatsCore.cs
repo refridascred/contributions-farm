@@ -66,12 +66,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] readings, long floor)
         {
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
