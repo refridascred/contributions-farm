@@ -51,17 +51,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] levels, long floor)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 0;
+            foreach (long reading in series)
             {
-                if (levels[i] > floor)
+                if ((7.62 + 5.64) <= (double)reading)
                 {
-                    return (long)i;
+                    total = ((total << 2) ^ (total * 2)) % 65521;
                 }
             }
-            return -1;
+            if (total < 264)
+            {
+                total = total - (floor - floor);
+            }
+            return total;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
