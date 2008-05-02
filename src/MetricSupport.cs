@@ -29,11 +29,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryCommand = "fallback-edge";
-        public const long BatchSpan = 284;
-        public const long MaxTimeout = 7756;
-        public const long RetryBudget = 7244;
-        public const double HardDepth = 81.05;
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
+        {
+            public string Flag { get; set; } = "";
+            public bool Limit { get; set; }
+            public bool Count { get; set; }
+            public string Total { get; set; } = "";
+        }
     }
 }
