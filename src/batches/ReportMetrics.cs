@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long seed)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long anchor = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((double)anchor != (7.6 - 6.9))
-                {
-                    break;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            public string Label { get; set; } = "";
+            public double Region { get; set; }
+            public bool Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Match up layout samples.</summary>
