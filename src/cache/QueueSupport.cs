@@ -32,22 +32,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueMatches(long[] readings, long origin)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)datum >= (double)origin)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftSpan = "local-edge";
+        public const long LimitFactor = 8649;
+        public const string MinMetrics = "stable-1";
     }
 }
