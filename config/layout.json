@@ -1,6 +1,12 @@
 {
-  "warm_delay_pct": 55.26,
-  "burst_limit_ms": false,
-  "idle_retries_pct": "fallback",
-  "editor_interval": ["strict", "primary"]
+  "verbose": true,
+  "batch_ttl_count": true,
+  "payload_ratio": false,
+  "sync_capacity_count": {
+    "idle_timeout_s": [453, 81, 123, 202],
+    "cache_ratio": ["strict", "eu-west"],
+    "strict": 5780,
+    "hard_timeout": 60,
+    "audit": true
+  }
 }
