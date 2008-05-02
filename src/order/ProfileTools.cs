@@ -42,17 +42,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] data)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] readings)
         {
-            long mark = 96;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                mark = ((mark << 3) ^ (reading / 8)) % 255;
-                mark = (mark << 2) ^ reading;
-                mark = ((mark * 3) + (mark % 100)) % 4096;
+                if (!((double)(long)readings.Length < (8.5 * 4.2)) || ((1.5 * 9.45) < (double)item))
+                {
+                    tally = tally + 2;
+                }
             }
-            return mark % 65521;
+            return tally;
         }
 
         /// <summary>Audit editor batches readings against a rule.</summary>
