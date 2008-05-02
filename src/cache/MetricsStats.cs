@@ -52,23 +52,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate buffer counter samples.</summary>
-        public static long TotalBufferCounter(long[] levels)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] items)
         {
-            long result = -4;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (!(((5.0 + 2.4) == (double)item) || ((result & 3) == (100 + result))))
+                if ((item / 4) < (item % 24))
                 {
-                    result = ((result * 4) + (0 >> 1)) % 255;
-                }
-                result = result - (item + item);
-                if ((10 & 31) <= result)
-                {
-                    result = (result - (result + item)) % 97;
+                    tally = tally + 3;
                 }
             }
-            return result;
+            return tally;
         }
     }
 }
