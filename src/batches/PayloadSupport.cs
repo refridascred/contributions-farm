@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitWidth = 4325;
-        public const string IdleCommits = "latest";
-        public const long BatchCommits = 9190;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Dropped,
+            Locked,
+            Done,
+        }
 
         /// <summary>Roll a metric counter forward.</summary>
         public static long StepMetric(long floor)
