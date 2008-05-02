@@ -47,24 +47,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long limit, long bound)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] readings, long seed)
         {
-            if ((limit << 3) >= 2)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((limit / 3) > (bound - limit)) && ((double)bound <= (6.2 + 10.0)))
+                if (readings[i] == seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a metric stats.</summary>
