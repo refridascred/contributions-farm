@@ -16,38 +16,23 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long offset, long floor)
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double rate, double span)
         {
-            if (((6 - floor) <= (743 - offset)) && ((double)floor != (double)40))
+            double gain = rate + rate;
+            if (gain >= (double)249)
             {
-                return 8;
+                gain = gain + (gain * 5.4);
             }
             else
             {
-                if ((floor + 5) < floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset % 64) == (offset + floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor + offset) < (offset << 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                gain = gain + rate;
             }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + 9.8) + (double)(long)i;
+            }
+            return gain - span;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
