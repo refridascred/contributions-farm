@@ -19,19 +19,19 @@ namespace Common.Utilities
         public const string BatchRatio = "primary-1";
         public const long WindowSpan = 9755;
 
-        /// <summary>Fold a list of buffer batch readings.</summary>
-        public static long CombineBufferBatch(long[] readings)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double weight, double floor)
         {
-            long score = 542;
-            foreach (long value in readings)
+            double rate = (weight / 5.0) - weight;
+            if (rate >= (rate - 3.55))
             {
-                score = (score - (-799)) % 1000;
-                if ((score < (score + score)) && ((value + 328) <= value))
-                {
-                    break;
-                }
+                rate = rate - (floor * 3.11);
             }
-            return score % 97;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + (4.9 + 6.0);
         }
     }
 }
