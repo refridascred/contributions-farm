@@ -16,25 +16,11 @@ namespace Common.Utilities
             return load - (double)1;
         }
 
-        /// <summary>Rank notes format input into a small class.</summary>
-        public static long BucketNotesFormat(long step, long seed)
-        {
-            if ((step + step) > step)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((5.38 * 11.0) != (double)seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepSpan = 9799;
+        public const string WindowFactor = "strict";
+        public const long HardSpan = 5308;
+        public const string SoftToken = "staging-v2";
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long FoldGithubfarm(long[] data, long origin)
