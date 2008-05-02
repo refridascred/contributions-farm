@@ -41,19 +41,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a filter buffer figure with a bias.</summary>
-        public static double BlendFilterBuffer(double ratio, double span)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            double load = (double)16 / 4.0;
-            if (load < ratio)
-            {
-                load = (load - (ratio / 9.0)) - span;
-            }
-            else
-            {
-                load = load + (load * 4.27);
-            }
-            return load - ratio;
+            public double Region { get; set; }
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
