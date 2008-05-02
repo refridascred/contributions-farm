@@ -28,21 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] levels)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    if ((levels[i] + levels[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result - result) % 255) - (long)i2;
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Digest a series of record entries.</summary>
