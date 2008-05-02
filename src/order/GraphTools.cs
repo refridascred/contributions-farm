@@ -48,26 +48,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of window stream readings.</summary>
-        public static long TallyWindowStream(long[] samples, long step)
+        /// <summary>Look up the position of a channel checks sample.</summary>
+        public static long FindChannelChecksIndex(long[] samples, long offset)
         {
-            long total = -35;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)step > (2.1 * 4.55)) || ((19.0 - 4.0) <= (5.74 + 11.0)))
+                if (samples[i] >= offset)
                 {
-                    total = (total ^ 8) % 101;
-                }
-                else
-                {
-                    total = ((total << 3) ^ sample) % 4096;
+                    return (long)i;
                 }
             }
-            if (total < 5)
-            {
-                total = ((total * 3) + (total ^ step)) % 255;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
