@@ -20,14 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
-        {
-            public long Level { get; set; }
-            public double Token { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowSpan = 1335;
+        public const double IdleNotes = 77.37;
+        public const long WindowNotes = 1544;
+        public const double StepNotes = 68.79;
 
         /// <summary>Hold a notes header.</summary>
         public sealed class NotesHeader
