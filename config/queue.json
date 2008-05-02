@@ -1,7 +1,8 @@
 {
-  "max_ttl_pct": [102, 161, 48],
-  "stats_interval": [164, 245, 13],
-  "cache_capacity": "eu-west",
-  "hard_interval_ms": 2.96,
-  "warm_interval_pct": 6997
+  "payload_threshold": 1323,
+  "queue_limit": false,
+  "hard_limit_s": "primary",
+  "compress": 40,
+  "retry_threshold_count": 7671,
+  "editor_retries": "latest"
 }
