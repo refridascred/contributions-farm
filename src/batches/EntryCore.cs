@@ -33,11 +33,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double DefaultRatio = 75.04;
-        public const double BatchSpan = 1.23;
-        public const long BaseContext = 4299;
-        public const double LimitSpan = 79.2;
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool ValidateFormatRange(long[] values, long seed)
