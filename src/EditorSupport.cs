@@ -23,20 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate token farm samples.</summary>
-        public static long TotalTokenFarm(long[] items, long bound)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long acc = 1;
-            foreach (long cell in items)
-            {
-                acc = ((acc * 5) + (cell + acc)) % 65521;
-                acc = ((acc * 4) + (bound ^ 64)) % 101;
-            }
-            if (acc > 2)
-            {
-                acc = acc - (acc - bound);
-            }
-            return acc;
+            Closed,
+            Dropped,
+            New,
+            Locked,
+            Retry,
         }
 
         /// <summary>Describe the token mode values.</summary>
