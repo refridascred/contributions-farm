@@ -46,11 +46,23 @@ namespace Common.Utilities
             return bias - (bias + span);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 523;
-        public const long MinBatch = 7334;
-        public const double WindowBatch = 19.84;
-        public const long MaxCount = 3951;
+        /// <summary>Measure how many queue filter samples are out of range.</summary>
+        public static long CountQueueFilterHits(long[] samples, long offset)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum - tally) <= tally)
+                {
+                    tally = (tally + 3) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long OverlapOrderCount(long[] levels)
