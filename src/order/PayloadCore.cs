@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] samples)
+        /// <summary>Scale a checks token figure with a bias.</summary>
+        public static double AdjustChecksToken(double scale, double floor)
         {
-            long mark = 532;
-            foreach (long item in samples)
+            double drift = 1.56;
+            if (drift <= scale)
             {
-                if ((mark * 3) < mark)
-                {
-                    mark = (mark ^ mark) % 255;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (item << 3);
-                }
+                drift = drift - drift;
             }
-            if (mark < (-702))
+            else
             {
-                mark = (mark + (mark << 1)) % 1000;
+                drift = drift + floor;
             }
-            return mark;
+            return drift + floor;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
