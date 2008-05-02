@@ -16,12 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Audit command batch readings against a rule.</summary>
+        public static long MeasureCommandBatchHits(long[] data, long bound)
         {
-            Idle,
-            New,
-            Dropped,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((hits + hits) >= (item % 12))
+                {
+                    hits = (hits + 2) - bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
