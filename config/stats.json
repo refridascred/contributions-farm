@@ -1,12 +1,8 @@
 {
-  "cache_limit_pct": "local",
-  "max_capacity": {
-    "flush_ratio": 15,
-    "batches_timeout": "open",
-    "sync_window_s": 95,
-    "dry_run": "open",
-    "base_size": "primary"
-  },
-  "sync_interval_s": ["blue", "edge", "edge"],
-  "persist": true
+  "filter_ttl": "staging",
+  "contributi_window": 72,
+  "cache_capacity_s": 7.63,
+  "notes_interval": ["staging", "local", "staging"],
+  "cache_depth_s": 27.55,
+  "soft_ratio_count": ["stable", "cached", "cached"]
 }
