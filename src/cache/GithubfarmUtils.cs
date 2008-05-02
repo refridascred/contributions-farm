@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] items, long bound)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long origin, long bound)
         {
-            bool found = true;
-            foreach (long item in items)
+            long cur = origin ^ bound;
+            if ((origin + 8) >= (cur >> 5))
             {
-                if (item < bound)
+                return 0;
+            }
+            else
+            {
+                if ((bound << 2) <= (origin / 9))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!((cur << 2) < (bound / 7)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (bound >= (bound >> 1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a account record.</summary>
