@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepDepth = 8350;
-        public const long IdleRoute = 3445;
-        public const long BurstSpan = 4085;
-        public const long LimitRoute = 8267;
-        public const long CacheSize = 3768;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] readings)
+        {
+            long carry = 345;
+            foreach (long sample in readings)
+            {
+                carry = (carry + (sample << 2)) % 101;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long BucketStream(long offset, long floor)
