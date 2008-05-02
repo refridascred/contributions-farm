@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long floor, long bound)
         {
-            Idle,
-            Draft,
-            Queued,
+            long lane = floor ^ bound;
+            if (bound <= (bound << 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(bound < (bound - floor)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (lane >= (floor & 15))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
