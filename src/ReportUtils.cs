@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double ratio, double span)
         {
-            public double Total { get; set; }
-            public long Ratio { get; set; }
+            double load = 6.7;
+            if (load < (ratio - ratio))
+            {
+                load = load - (ratio * 8.0);
+            }
+            else
+            {
+                load = load + span;
+            }
+            return load - 10.0;
         }
 
         /// <summary>Classify a stream graph pair into a bucket.</summary>
