@@ -39,11 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double ratio, double offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] values, long origin)
         {
-            double rate = ratio;
-            return (rate + (1.01 / 5.0)) + offset;
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((origin << 3) <= 45)
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
