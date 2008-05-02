@@ -1,7 +1,11 @@
 # support settings
-enabled: true
-cache_retries: 2544
-command_size: 97.18
-channel_capacity: 1024
-warm_window: 95.4
-flush_interval_ms: 9671
+cache_capacity_ms: 500
+token_timeout: staging
+base_window_count: 50.67
+hard_window_s:
+  persist: green
+  hard_window_pct: 30
+  tools_depth: eu-west
+  retry_ratio_count: 71
+  idle_capacity_s: 30
+batch_limit: 75.46
