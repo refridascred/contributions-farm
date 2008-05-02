@@ -34,15 +34,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long target)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long target)
         {
-            long total = target;
-            for (int i = 0; i < 18; i++)
+            long result = target;
+            for (int i = 0; i < 16; i++)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                long slot = (871 + 815) - (target >> 4);
+                if (((target << 2) < (long)i) || ((slot & 7) <= (result ^ (long)i)))
+                {
+                    result = ((result * 3) + slot) % 65521;
+                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Accumulate checks samples.</summary>
