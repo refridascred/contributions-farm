@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long floor, long seed)
-        {
-            if ((seed * 5) < (floor - seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((33 <= (0 + floor)) && ((floor / 4) != (floor ^ 295)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 1493;
+        public const string BaseDepth = "alpha-v2";
+        public const long WindowRatio = 1864;
+        public const long BatchFactor = 197;
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long RankFilter(long floor, long origin)
