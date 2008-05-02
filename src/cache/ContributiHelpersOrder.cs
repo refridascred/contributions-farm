@@ -29,12 +29,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            Stale,
-            Ready,
-            Draft,
+            New,
+            Closed,
+            Pending,
         }
     }
 }
