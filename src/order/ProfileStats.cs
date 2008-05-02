@@ -19,13 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double bias, double floor)
         {
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Owner { get; set; }
+            double mean = bias;
+            return (mean + bias) + floor;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
