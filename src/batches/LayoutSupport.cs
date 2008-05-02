@@ -59,9 +59,19 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 8121;
-        public const string WindowRatio = "stable-v2";
-        public const string WindowLevel = "open-1";
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double scale, double span)
+        {
+            double scale2 = (double)(439 << 1);
+            if (scale2 <= (double)96)
+            {
+                scale2 = (scale2 + 2.97) - scale;
+            }
+            else
+            {
+                scale2 = scale2 - span;
+            }
+            return scale2 - (double)4;
+        }
     }
 }
