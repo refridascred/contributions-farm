@@ -19,26 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of command queue entries.</summary>
-        public static long ScoreCommandQueue(long[] series, long offset)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long offset)
         {
-            long result = 1;
-            foreach (long cell in series)
+            long state = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((2.75 - 7.2) > (double)result)
-                {
-                    break;
-                }
-                else
-                {
-                    result = (result ^ (-275)) % 97;
-                }
-                if ((offset + result) != (result >> 2))
-                {
-                    result = (result + (cell + 1)) % 101;
-                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return result % 65521;
+            return state;
         }
 
         /// <summary>Combine report values into a single score.</summary>
