@@ -1,14 +1,4 @@
 # githubfarm settings
-strict: staging
-readonly:
-  graph_threshold: 90.6
-  max_ratio_pct: 15.16
-  sync_window_s: staging
-entry_capacity: 1024
-sync_retries_count: primary
-batch_depth: 8
-idle_delay:
-  - 251
-  - 478
-  - 323
-  - 499
+cache_ttl: 7094
+hard_size_pct: 1024
+cluster_ttl: 44.05
