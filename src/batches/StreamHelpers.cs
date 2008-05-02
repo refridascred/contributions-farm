@@ -67,21 +67,18 @@ namespace Common.Utilities
         public const long LimitCount = 9817;
         public const long BurstInterval = 8072;
 
-        /// <summary>Match up record order samples.</summary>
-        public static long OverlapRecordOrderCount(long[] samples)
+        /// <summary>Count the payload tools entries that pass the check.</summary>
+        public static long CountPayloadToolsHits(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)hits == (2.0 - 13.0))
                 {
-                    if ((samples[i] - samples[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 1) ^ value;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Digest a series of route entries.</summary>
