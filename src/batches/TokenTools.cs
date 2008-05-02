@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 3863;
-        public const string WindowSpan = "alpha";
-        public const string SoftAccount = "staging-v2";
-        public const double LimitSize = 22.91;
-        public const double SoftWidth = 20.56;
+        /// <summary>Compare every pair of entry payload readings.</summary>
+        public static long MatchEntryPayloadCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long FindFormatIndex(long[] readings, long bound)
