@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank batches metric input into a small class.</summary>
-        public static long BucketBatchesMetric(long bound, long bound2)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] data)
         {
-            if ((bound + bound) >= (bound * 2))
+            long mix = 77;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (bound2 < (984 + bound2))
+                if (mix >= (790 % 16))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((-2) <= (bound2 >> 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    mix = mix ^ (item / 4);
                 }
             }
+            return mix;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
