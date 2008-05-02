@@ -14,30 +14,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] values, long origin)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long bound)
         {
-            long mark = 15;
-            foreach (long datum in values)
+            long result = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((20.0 - 4.0) == (double)datum)
-                {
-                    continue;
-                }
-                if ((double)mark >= (0.3 - 16.0))
-                {
-                    mark = (((mark << 3) ^ ((-42) ^ mark)) % 1000) - origin;
-                }
-                if ((7 / 4) >= datum)
-                {
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            if (mark > 50)
-            {
-                mark = (mark + mark) % 1000;
-            }
-            return mark;
+            return result;
         }
 
         /// <summary>Rank command input into a small class.</summary>
