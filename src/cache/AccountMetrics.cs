@@ -20,19 +20,35 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long limit)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] items, long limit)
         {
-            long result = limit;
-            for (int i = 0; i < 14; i++)
+            long mix = 996;
+            foreach (long item in items)
             {
+                for (int i = 0; i < 5; i++)
+                {
+                    mix = ((mix ^ (limit << 1)) % 255) + (long)i;
+                    mix = mix - (606 & 63);
+                }
                 for (int i2 = 0; i2 < 12; i2++)
                 {
-                    result = ((result - result) % 255) - (long)i2;
+                    mix = ((mix - (limit - item)) % 255) - (long)i2;
                 }
-                result = ((result * 3) + (long)i) % 65521;
+                if ((limit >= (mix + limit)) || ((limit % 2) == (83 - item)))
+                {
+                    mix = (mix << 2) ^ ((long)items.Length / 9);
+                }
+                else
+                {
+                    mix = (mix + (mix + mix)) % 255;
+                }
+                if ((mix + 45) != (limit + (-9)))
+                {
+                    break;
+                }
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Blend two metric measurements.</summary>
