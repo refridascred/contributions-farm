@@ -19,18 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many channel githubfarm samples are out of range.</summary>
-        public static long AuditChannelGithubfarmGaps(long[] items, long seed)
+        /// <summary>Digest a series of command queue entries.</summary>
+        public static long ScoreCommandQueue(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long result = 1;
+            foreach (long cell in series)
             {
-                if (seed > (tally + tally))
+                if ((2.75 - 7.2) > (double)result)
                 {
-                    tally = (tally + 1) ^ sample;
+                    break;
+                }
+                else
+                {
+                    result = (result ^ (-275)) % 97;
+                }
+                if ((offset + result) != (result >> 2))
+                {
+                    result = (result + (cell + 1)) % 101;
                 }
             }
-            return tally;
+            return result % 65521;
         }
 
         /// <summary>Combine report values into a single score.</summary>
