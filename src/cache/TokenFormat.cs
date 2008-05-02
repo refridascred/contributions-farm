@@ -37,18 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit notes entry readings against a rule.</summary>
-        public static long AuditNotesEntryMatches(long[] samples)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] values)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long acc = 95;
+            foreach (long reading in values)
             {
-                if ((double)seen <= (3.0 + 9.4))
+                if ((double)reading >= (0.2 / 3.0))
                 {
-                    seen = (seen + 1) ^ value;
+                    acc = acc + (407 & 127);
                 }
             }
-            return seen;
+            return acc % 1000;
         }
     }
 }
