@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BurstQueue = 47.92;
-        public const long BaseSpan = 1071;
-        public const long BurstInterval = 8730;
-        public const long WindowQueue = 4734;
-        public const string LimitQueue = "latest-v2";
+        /// <summary>Count the githubfarm window entries that pass the check.</summary>
+        public static long TallyGithubfarmWindowMatches(long[] data, long offset)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((double)seen >= (8.67 + 3.1))
+                {
+                    seen = ((seen + 1) + item) + offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long SeekAccountIndex(long[] samples, long limit)
