@@ -29,21 +29,18 @@ namespace Common.Utilities
         public const long BurstSchema = 2832;
         public const long LimitBudget = 567;
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] values)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportOutliers(long[] items, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((matches ^ seed) >= (seed & 255))
                 {
-                    if ((values[i] + values[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 2) + reading;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
