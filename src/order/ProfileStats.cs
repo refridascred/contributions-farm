@@ -28,21 +28,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up notes account samples.</summary>
-        public static long OverlapNotesAccountCount(long[] samples)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Check that every farm stats entry stays within the limit.</summary>
