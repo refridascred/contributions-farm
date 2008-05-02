@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Classify a commits cluster pair into a bucket.</summary>
+        public static long ClassifyCommitsCluster(long target, long offset)
         {
-            public string Level { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
+            long delta = target - offset;
+            if (target > (offset + delta))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target * 2) <= offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((target / 9) >= (3 + target)) || (((-3) + delta) > ((-9) - target)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next command value.</summary>
