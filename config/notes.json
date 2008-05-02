@@ -1,6 +1,7 @@
 {
-  "flush_depth": "open",
-  "idle_ttl": ["primary", "local"],
-  "batch_limit_count": 2647,
-  "persist": [393, 87]
+  "cache_capacity": ["fallback", "strict", "latest"],
+  "flush_timeout_ms": 500,
+  "max_ttl_count": true,
+  "base_retries_pct": "legacy",
+  "buffer_threshold": 6181
 }
