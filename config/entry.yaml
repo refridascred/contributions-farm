@@ -1,6 +1,6 @@
 # entry settings
-batches_interval: strict
-buffer_timeout: true
-format_timeout: 46.53
-verbose: primary
-token_delay: 250
+idle_capacity_s: 1024
+commits_interval: 32.38
+default_capacity_s: standard
+strict: latest
+min_capacity_count: false
