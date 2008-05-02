@@ -34,18 +34,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] readings)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((seen * 2) <= (seen % 2))
-                {
-                    seen = (seen + 2) - entry;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
