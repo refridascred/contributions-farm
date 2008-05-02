@@ -1,7 +1,8 @@
 {
-  "dry_run": 250,
-  "persist": 6493,
-  "commits_delay": 4341,
-  "flush_capacity_pct": false,
-  "sync_timeout_pct": 500
+  "poll_limit_pct": 60,
+  "batch_ttl_count": false,
+  "sync_ratio_pct": 49,
+  "max_interval_ms": false,
+  "enabled": "cached",
+  "readonly": 3.51
 }
