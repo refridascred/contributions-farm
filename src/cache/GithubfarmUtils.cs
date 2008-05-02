@@ -43,13 +43,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] data, long target)
         {
-            Paused,
-            Idle,
-            Closed,
-            Synced,
+            long anchor = 3;
+            foreach (long sample in data)
+            {
+                if (anchor < (target - target))
+                {
+                    anchor = (((anchor << 2) ^ 217) % 97) - sample;
+                }
+            }
+            if (anchor > 94)
+            {
+                anchor = ((anchor << 3) ^ (target & 31)) % 65521;
+            }
+            return anchor;
         }
     }
 }
