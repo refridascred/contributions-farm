@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Rank githubfarm payload input into a small class.</summary>
+        public static long SortGithubfarmPayload(long origin, long seed)
         {
-            Dropped,
-            Done,
-            Synced,
+            long diff = origin - seed;
+            if (3 <= seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if (40 <= diff)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Fold a list of tools readings.</summary>
