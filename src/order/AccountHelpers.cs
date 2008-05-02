@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((7.0 / 3.0) >= (double)sample)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double LimitBudget = 89.95;
+        public const long SoftTools = 2380;
+        public const long BaseTimeout = 8739;
+        public const long BurstDepth = 4587;
+        public const long BatchCount = 678;
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
