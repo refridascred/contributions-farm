@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] levels)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] values, long bound)
         {
-            long total = -38;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long value in values)
             {
-                total = ((total * 5) + (total ^ 518)) % 101;
-                if ((double)cell > (6.98 / 4.0))
+                if (((356 - seen) <= (bound + 513)) && ((seen >= (334 % 64)) || ((bound + seen) == (value + value))))
                 {
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (total < 2)
-            {
-                total = (total - total) % 97;
-            }
-            return total % 65521;
+            return seen;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
