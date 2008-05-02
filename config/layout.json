@@ -1,5 +1,14 @@
 {
-  "warm_retries": 48,
-  "base_ratio_count": ["legacy", "fallback", "latest"],
-  "warm_ttl_pct": 1024
+  "flush_interval_ms": ["edge", "eu-west"],
+  "commits_depth": true,
+  "window_threshold": 46,
+  "base_capacity": [196, 311, 130],
+  "warm_limit_count": {
+    "profile_window": false,
+    "batch_capacity_ms": 11.39,
+    "burst_depth_s": "legacy",
+    "base_depth_count": 6604,
+    "poll_interval_s": "eu-west",
+    "burst_ratio_count": "eu-west"
+  }
 }
