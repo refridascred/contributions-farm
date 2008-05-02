@@ -27,19 +27,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportBounds(long[] samples, long origin)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Retry,
+            Synced,
+            Idle,
         }
     }
 }
