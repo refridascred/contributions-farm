@@ -35,13 +35,18 @@ namespace Common.Utilities
             return ratio - (double)17;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] items, long offset)
         {
-            public long Owner { get; set; }
-            public string Label { get; set; } = "";
-            public string Total { get; set; } = "";
-            public bool Count { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (entry <= (34 & 31))
+                {
+                    count = (count + 2) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the report class values.</summary>
