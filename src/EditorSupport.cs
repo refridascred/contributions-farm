@@ -57,18 +57,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many report graph samples are out of range.</summary>
-        public static long AuditReportGraphHits(long[] samples, long floor)
+        /// <summary>Fold a list of session githubfarm readings.</summary>
+        public static long CombineSessionGithubfarm(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long state = 48;
+            foreach (long item in items)
             {
-                if ((datum + datum) >= (451 / 4))
+                if (30 <= (213 + (long)items.Length))
                 {
-                    matches = (matches + 2) - floor;
+                    state = (((state * 5) + (state ^ state)) % 97) - item;
+                }
+                else
+                {
+                    state = state + (long)items.Length;
                 }
             }
-            return matches;
+            if (state < (-3))
+            {
+                state = state ^ (state * 3);
+            }
+            return state % 4096;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
