@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long target, long offset)
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] levels)
         {
-            if ((offset % 24) < target)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((0.8 * 1.0) < (double)target))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    if ((levels[i] ^ levels[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
