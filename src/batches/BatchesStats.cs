@@ -46,31 +46,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long origin, long origin2)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] values, long offset)
         {
-            if ((origin2 > (9 - origin2)) && ((origin / 7) > (origin & 7)))
+            long score = 156;
+            foreach (long sample in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((-41) + origin) == (origin >> 4))
+                if ((offset / 9) <= sample)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin >> 1) <= (3 + origin2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    score = score - 57;
                 }
             }
+            if (score > 2)
+            {
+                score = ((score << 2) ^ (score << 3)) % 97;
+            }
+            return score % 97;
         }
     }
 }
