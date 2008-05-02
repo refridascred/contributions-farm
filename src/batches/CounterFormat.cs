@@ -35,10 +35,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchSpan = 128;
-        public const double RetryQueue = 95.0;
-        public const string CacheInterval = "open-edge";
-        public const long BaseWidth = 5520;
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitDepth = 93.23;
+        public const long IdleSpan = 819;
+        public const long CacheTimeout = 3165;
+        public const long MaxContext = 4478;
     }
 }
