@@ -47,13 +47,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double scale, double span)
         {
-            Draft,
-            Synced,
-            Paused,
-            Ready,
+            double scale2 = 4.0;
+            for (int i = 0; i < 3; i++)
+            {
+                scale2 = ((scale2 + scale2) + (double)(long)i) + span;
+            }
+            return scale2 - (scale * 5.32);
         }
 
         /// <summary>Describe the stream phase values.</summary>
