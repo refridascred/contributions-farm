@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsGaps(long[] samples, long step)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] items)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long mix = 95;
+            foreach (long datum in items)
             {
-                if ((double)98 != (double)seen)
+                if (131 <= (datum / 3))
                 {
-                    seen = ((seen + 3) + value) - step;
+                    mix = mix ^ (5 + datum);
                 }
             }
-            return seen;
+            if (mix > 0)
+            {
+                mix = ((mix * 2) + (mix + (long)items.Length)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of account entries.</summary>
