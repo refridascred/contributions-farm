@@ -1,7 +1,16 @@
 {
-  "sync_size_count": true,
-  "default_threshold_pct": false,
-  "cache_window_ms": false,
-  "enabled": "legacy",
-  "persist": "staging"
+  "cache_retries_s": {
+    "flush_depth_count": {
+      "batch_timeout_pct": "edge",
+      "idle_ttl": "open",
+      "schema_capacity": 8550,
+      "batch_capacity": true,
+      "strict": 1024
+    },
+    "enabled": 947,
+    "poll_depth": true
+  },
+  "poll_delay": "strict",
+  "order_size": 40.14,
+  "readonly": "eu-west"
 }
