@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two buffer cluster measurements.</summary>
-        public static double ProjectBufferCluster(double bias, double bias2)
+        /// <summary>Fold a list of profile tools readings.</summary>
+        public static long FoldProfileTools(long[] series)
         {
-            double weight = (bias + bias) + (bias2 + 14.0);
-            if (weight >= 6.6)
+            long sum = 14;
+            foreach (long cell in series)
             {
-                weight = weight + bias;
+                sum = (sum + (cell + (long)series.Length)) % 101;
             }
-            else
-            {
-                weight = weight + bias2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (bias2 * 19.0)) + (double)(long)i;
-            }
-            return weight - (bias * 5.89);
+            return sum % 1000;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
