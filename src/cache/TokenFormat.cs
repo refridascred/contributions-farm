@@ -29,20 +29,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] readings)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long target)
         {
-            long mark = 893;
-            foreach (long datum in readings)
+            long result = target;
+            for (int i = 0; i < 11; i++)
             {
-                mark = mark ^ (datum + mark);
-                if (((435 ^ 707) > ((-8) - mark)) || ((mark & 63) >= (-903)))
-                {
-                    break;
-                }
-                mark = mark + (datum / 2);
+                result = result + (target << 3);
+                result = (result - (target >> 2)) % 4096;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return mark % 4096;
+            return result;
         }
     }
 }
