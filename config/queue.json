@@ -1,11 +1,14 @@
 {
-  "strict": 9039,
-  "soft_retries_s": {
-    "sync_depth_s": "latest",
-    "dry_run": false,
-    "order_ratio": false
+  "command_ratio": 57,
+  "readonly": {
+    "verbose": true,
+    "order_size": 53.19,
+    "burst_threshold_pct": 25.27,
+    "idle_timeout": true,
+    "min_timeout": 100,
+    "flush_size": "fallback"
   },
-  "farm_delay": 86,
-  "retry_limit": 4071,
-  "checks_ttl": "fallback"
+  "githubfarm_window": "cached",
+  "base_window_s": 7.55,
+  "poll_limit_count": "standard"
 }
