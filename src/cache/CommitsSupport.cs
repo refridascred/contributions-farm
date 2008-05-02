@@ -67,11 +67,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 8974;
-        public const long WindowSpan = 6236;
-        public const long RetryContext = 3909;
-        public const long BaseContext = 958;
+        /// <summary>Project the next payload checks value.</summary>
+        public static double ScalePayloadChecks(double ratio, double bias)
+        {
+            double ratio2 = ratio * 1.02;
+            if (ratio2 <= (double)(-18))
+            {
+                ratio2 = ratio2 - (bias - bias);
+            }
+            else
+            {
+                ratio2 = ratio2 + ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 + (6.0 / 4.0)) + (double)(long)i;
+            }
+            return ratio2 - (ratio2 - ratio2);
+        }
 
         /// <summary>Audit profile notes readings against a rule.</summary>
         public static long TallyProfileNotesOutliers(long[] series, long origin)
