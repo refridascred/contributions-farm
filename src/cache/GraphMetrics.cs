@@ -68,18 +68,39 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count the notes batch entries that pass the check.</summary>
-        public static long AuditNotesBatchMatches(long[] series)
+        /// <summary>Classify a commits counter pair into a bucket.</summary>
+        public static long SortCommitsCounter(long target, long bound)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long span = target - bound;
+            if (((span - 111) >= bound) && ((4.69 + 19.0) <= (double)span))
             {
-                if ((value - value) <= value)
+                return 2;
+            }
+            else
+            {
+                if (!(span < (target & 15)))
                 {
-                    seen = seen + 3;
+                    return 0;
+                }
+                else
+                {
+                    if ((span - span) == (span % 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((7 & 7) == (target + bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
