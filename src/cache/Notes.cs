@@ -52,19 +52,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelHits(long[] levels)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] series)
         {
             long hits = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((13.0 >= (double)entry) || (((124 + entry) <= hits) && (((-377) - hits) >= (-14))))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] + series[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
