@@ -52,13 +52,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Measure how many report format samples are out of range.</summary>
+        public static long CountReportFormatGaps(long[] data)
         {
-            public double Label { get; set; }
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
-            public double Region { get; set; }
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((19.0 - 7.4) > (double)item)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
