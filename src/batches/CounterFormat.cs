@@ -22,13 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] series, long limit)
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public double Weight { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
