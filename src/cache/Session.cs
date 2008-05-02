@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string CacheMetric = "alpha";
-        public const long StepMetric = 5966;
-        public const double BatchMetric = 27.89;
-        public const long MinMetric = 9;
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
+        {
+            public bool Size { get; set; }
+            public long Token { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long CountFarmOutliers(long[] items)
