@@ -57,19 +57,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsLimits(long[] readings, long limit)
+        /// <summary>Match up channel stats samples.</summary>
+        public static long MatchChannelStatsCount(long[] values)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell < limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] ^ values[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Hold a already stats.</summary>
