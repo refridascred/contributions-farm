@@ -1,6 +1,5 @@
 {
-  "burst_size": "fallback",
-  "warm_delay": "latest",
-  "compress": 95,
-  "filter_window": "legacy"
+  "persist": "primary",
+  "commits_capacity": 100,
+  "default_window": 54
 }
