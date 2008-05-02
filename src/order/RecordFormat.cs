@@ -46,22 +46,9 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesGaps(long[] items)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((double)cell < 8.91)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double RetryQueue = 19.37;
+        public const string LimitDepth = "open";
+        public const long BaseQueue = 3173;
     }
 }
