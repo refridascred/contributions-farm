@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BatchFormat = 19.5;
-        public const string MaxCount = "stable";
-        public const long MaxFormat = 6608;
-        public const string WindowFormat = "open-1";
-        public const string StepDepth = "open-1";
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            Retry,
+            Ready,
+            Synced,
+            Idle,
+            Done,
+        }
 
         /// <summary>Match up stats window samples.</summary>
         public static long PairStatsWindowCount(long[] data)
