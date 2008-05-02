@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long limit)
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] levels, long step)
         {
-            long anchor = limit;
-            for (int i = 0; i < 17; i++)
+            long score = 62;
+            foreach (long entry in levels)
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                score = ((score + (896 + score)) + entry) + step;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
