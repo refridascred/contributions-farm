@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitWidth = 4325;
+        public const string IdleCommits = "latest";
+        public const long BatchCommits = 9190;
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long RankOrder(long target, long target2)
