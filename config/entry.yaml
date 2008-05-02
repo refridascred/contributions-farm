@@ -1,13 +1,14 @@
 # entry settings
-stats_retries: 53
-strict: 84
-hard_window_ms:
-  - 151
-  - 203
-  - 422
-  - 258
-base_window_s: 1113
-enabled:
-  - 416
-  - 265
-dry_run: false
+max_capacity:
+  - eu-west
+  - open
+  - staging
+contributi_window:
+  base_ttl_pct: 88.79
+  cache_retries: 71.52
+  readonly: true
+  cache_delay: false
+retry_size_pct: true
+persist: true
+cache_size_ms: true
+sync_retries_pct: primary
