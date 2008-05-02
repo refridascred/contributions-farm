@@ -1,6 +1,13 @@
 {
-  "burst_delay": "standard",
-  "max_depth_pct": 52,
-  "min_size_pct": "green",
-  "enabled": ["blue", "strict"]
+  "compress": [469, 296],
+  "dry_run": ["open", "green", "standard", "local"],
+  "account_window": {
+    "cluster_capacity": ["edge", "edge", "green", "local"],
+    "base_limit_ms": 40.02,
+    "filter_retries": false,
+    "max_depth_count": 1024
+  },
+  "channel_timeout": 5806,
+  "record_timeout": false,
+  "hard_ttl_s": true
 }
