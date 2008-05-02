@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] readings, long origin)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long carry = 456;
+            foreach (long sample in values)
             {
-                if (sample <= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry - sample) % 65521) - target;
             }
-            return stale;
+            if (carry > 78)
+            {
+                carry = carry + (carry & 63);
+            }
+            return carry;
         }
 
         /// <summary>Define order limits and defaults.</summary>
