@@ -20,12 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Count the tools stream entries that pass the check.</summary>
+        public static long TallyToolsStreamGaps(long[] items, long offset)
         {
-            Closed,
-            Retry,
-            Pending,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((offset & 15) > seen)
+                {
+                    seen = (seen + 3) - sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a token snapshot.</summary>
