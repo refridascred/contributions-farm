@@ -47,18 +47,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token metrics samples are out of range.</summary>
-        public static long TallyTokenMetricsMatches(long[] levels)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long floor)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long mark = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (matches < (matches << 1))
-                {
-                    matches = (matches + 2) + sample;
-                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
