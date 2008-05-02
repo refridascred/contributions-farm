@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] data, long origin)
+        /// <summary>Check that every graph filter entry stays within the limit.</summary>
+        public static bool VerifyGraphFilterLimits(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if ((matches >> 1) <= origin)
+                if (datum >= target)
                 {
-                    matches = (matches + 3) ^ sample;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Describe the commits class values.</summary>
