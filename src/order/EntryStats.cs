@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Measure how many context session samples are out of range.</summary>
+        public static long TallyContextSessionHits(long[] values, long step)
         {
-            Dropped,
-            Paused,
-            Draft,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((double)count <= (5.56 + 8.0))
+                {
+                    count = ((count + 2) + cell) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a metrics summary.</summary>
