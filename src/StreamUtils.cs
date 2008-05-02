@@ -59,21 +59,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] series)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public double Weight { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the farm level values.</summary>
