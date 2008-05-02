@@ -63,10 +63,14 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitEntry = "standard-edge";
-        public const string BatchSpan = "staging";
-        public const double BurstWidth = 61.94;
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Queued,
+            Synced,
+            Idle,
+            Locked,
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long TallyBatchesGaps(long[] data)
