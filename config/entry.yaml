@@ -1,5 +1,7 @@
 # entry settings
-graph_ratio: 5664
-idle_retries: 80.08
-burst_ratio_count: 84
-enabled: false
+strict: 92.43
+cache_ratio_count: stable
+idle_depth:
+  - 250
+  - 429
+  - 457
