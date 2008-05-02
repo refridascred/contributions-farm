@@ -36,18 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already tools entries that pass the check.</summary>
-        public static long TallyAlreadyToolsHits(long[] series, long limit)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((item - item) <= (count & 15))
-                {
-                    count = (count + 3) - limit;
-                }
-            }
-            return count;
+            Stale,
+            Closed,
+            Ready,
         }
 
         /// <summary>Describe the filter class values.</summary>
