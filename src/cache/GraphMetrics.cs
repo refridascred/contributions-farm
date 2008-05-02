@@ -68,21 +68,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] levels)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double BlendToken(double scale, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = scale;
+            if (drift < drift)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = (drift - drift) - floor;
             }
-            return matches;
+            return drift - (drift * 6.3);
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
