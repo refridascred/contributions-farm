@@ -13,25 +13,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Rank queue stream input into a small class.</summary>
-        public static long BucketQueueStream(long step, long origin)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] series)
         {
-            long diff = step + origin;
-            if ((step / 2) > (diff & 15))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((5 * 5) < (step ^ origin)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    if ((series[i] ^ series[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Adjust a support buffer reading.</summary>
