@@ -70,12 +70,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] readings, long step)
         {
-            Failed,
-            Queued,
-            Done,
+            long result = 549;
+            foreach (long datum in readings)
+            {
+                result = ((result + (step + step)) % 97) - datum;
+                if (((-6) - step) >= result)
+                {
+                    result = result - (result / 5);
+                }
+                else
+                {
+                    result = (result * 3) + (step << 2);
+                }
+            }
+            if (result < 36)
+            {
+                result = result + result;
+            }
+            return result % 1000;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
