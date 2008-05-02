@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            public double Rank { get; set; }
-            public long Label { get; set; }
+            Ready,
+            Locked,
+            Stale,
+            Queued,
+            Active,
         }
 
         /// <summary>Describe the checks class values.</summary>
