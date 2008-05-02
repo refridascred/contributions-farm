@@ -66,13 +66,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] series)
         {
-            Ready,
-            Failed,
-            Synced,
-            Paused,
+            long result = 6;
+            foreach (long cell in series)
+            {
+                result = (result + (result / 5)) ^ cell;
+            }
+            return result;
         }
 
         /// <summary>Hold a route header.</summary>
