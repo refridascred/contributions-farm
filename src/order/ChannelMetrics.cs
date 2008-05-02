@@ -20,19 +20,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatRange(long[] samples, long bound)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] values, long origin)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (value != bound)
+                if ((97 + cell) <= cell)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) + origin;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
