@@ -32,11 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultCount = 965;
-        public const double BatchInterval = 12.22;
-        public const long BurstFactor = 3020;
-        public const double SoftBudget = 2.09;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowBudget = 9575;
+        public const long IdleSize = 8597;
+        public const double WindowChannel = 50.47;
+        public const string DefaultChannel = "stable";
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long SeekSupportIndex(long[] readings, long seed)
