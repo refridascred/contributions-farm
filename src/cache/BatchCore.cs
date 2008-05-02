@@ -27,15 +27,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double ratio, double floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] readings)
         {
-            double drift = floor;
-            if (drift <= (double)57)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                drift = drift - drift;
+                if (!(((reading - reading) > (seen >> 3)) && ((seen % 8) == (710 ^ seen))))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return drift - (ratio + floor);
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
