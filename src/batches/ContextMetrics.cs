@@ -51,19 +51,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every queue cache entry stays within the limit.</summary>
-        public static bool CheckQueueCacheRange(long[] samples, long limit)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Weight { get; set; } = "";
+            public bool Size { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
