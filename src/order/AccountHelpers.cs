@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string CacheWindow = "fallback-1";
-        public const double BatchWindow = 52.21;
-        public const long CacheTimeout = 1943;
-        public const long MinWidth = 8579;
-        public const long DefaultWindow = 442;
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
+        {
+            public long Mode { get; set; }
+            public double Owner { get; set; }
+            public double Level { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
