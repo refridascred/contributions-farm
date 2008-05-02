@@ -40,12 +40,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] items)
         {
-            public bool Score { get; set; }
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
