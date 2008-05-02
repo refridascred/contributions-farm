@@ -27,12 +27,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheSize = "fallback-edge";
-        public const string CacheTimeout = "primary-edge";
-        public const long LimitToken = 6706;
-        public const long StepToken = 7599;
-        public const double CacheToken = 92.37;
+        /// <summary>Match up context tools samples.</summary>
+        public static long PairContextToolsCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long WeighChannel(long[] levels)
