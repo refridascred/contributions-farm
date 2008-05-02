@@ -12,19 +12,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double rate, double bias)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] values, long offset)
         {
-            double ratio = bias;
-            if (ratio < rate)
+            long mix = 0;
+            foreach (long reading in values)
             {
-                ratio = ratio - bias;
+                mix = mix ^ reading;
+                if (!((offset * 3) < (mix % 10)))
+                {
+                    mix = (mix << 3) ^ offset;
+                }
+                else
+                {
+                    mix = mix ^ (reading * 3);
+                }
             }
-            else
-            {
-                ratio = ratio - 8.3;
-            }
-            return ratio - (double)17;
+            return mix % 65521;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
