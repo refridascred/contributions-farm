@@ -31,10 +31,40 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 5236;
-        public const string MaxContext = "stable-1";
-        public const double MinRatio = 93.73;
+        /// <summary>Classify a layout stats pair into a bucket.</summary>
+        public static long ClassifyLayoutStats(long offset, long seed)
+        {
+            long step = offset ^ seed;
+            if ((78 / 5) > (step ^ 18))
+            {
+                return 6;
+            }
+            else
+            {
+                if (step > (seed - 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed >> 2) == (seed % 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((-791) + 0) >= (step + seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool CheckStatsLimits(long[] readings, long limit)
