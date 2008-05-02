@@ -1,7 +1,9 @@
-id,level,rank,state
-1,30.23,668,336
-2,666,legacy,strict
-3,48.63,255,246
-4,206,93.92,fallback
-5,green,801,cached
-6,16.78,311,643
+id,label
+1,683
+2,staging
+3,72.72
+4,304
+5,292
+6,cached
+7,47.54
+8,fallback
