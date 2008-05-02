@@ -1,8 +1,7 @@
 {
-  "poll_timeout_s": 30,
-  "verbose": false,
-  "cache_ratio": true,
-  "min_retries_s": "latest",
-  "retry_ttl_pct": [340, 82, 445, 158],
-  "commits_timeout": "eu-west"
+  "hard_window": "standard",
+  "readonly": "blue",
+  "cache_window": false,
+  "session_limit": "legacy",
+  "notes_timeout": false
 }
