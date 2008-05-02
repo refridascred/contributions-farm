@@ -31,10 +31,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 8031;
-        public const long MinFactor = 3958;
-        public const string DefaultInterval = "legacy-edge";
-        public const string BaseTimeout = "local";
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] values, long target)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((0 - target) == (758 ^ target))
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
+        }
     }
 }
