@@ -19,15 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] readings)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] samples, long floor)
         {
-            long acc = 13;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc + (acc + item)) % 255;
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Measure how many schema payload samples are out of range.</summary>
