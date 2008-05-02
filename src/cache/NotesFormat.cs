@@ -40,26 +40,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] readings, long target)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long total = 10;
-            foreach (long datum in readings)
-            {
-                if (total < (datum - datum))
-                {
-                    total = (total + total) - target;
-                }
-                else
-                {
-                    total = (total - 2) % 4096;
-                }
-            }
-            if (total < 909)
-            {
-                total = (total * 3) + (275 / 2);
-            }
-            return total;
+            Queued,
+            Draft,
+            Ready,
+            Active,
+            Retry,
         }
     }
 }
