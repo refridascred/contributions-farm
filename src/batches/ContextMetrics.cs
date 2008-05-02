@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Compare every pair of queue account readings.</summary>
-        public static long MatchQueueAccountCount(long[] samples)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long origin, long origin2)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (199 <= origin)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((origin2 + origin) < (7 >> 4)) && (3.23 >= (double)origin))
                 {
-                    if ((samples[i] ^ samples[j]) > 16)
+                    return 2;
+                }
+                else
+                {
+                    if (origin < (origin >> 2))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate notes cache samples.</summary>
