@@ -26,18 +26,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double CacheInterval = 78.76;
+        public const long IdleInterval = 1125;
+        public const double MaxSize = 2.51;
+        public const long BaseAccount = 1459;
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool ValidateFormatRange(long[] values, long seed)
