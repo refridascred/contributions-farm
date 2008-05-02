@@ -14,22 +14,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit already layout readings against a rule.</summary>
-        public static long TallyAlreadyLayoutMatches(long[] readings)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long mark = 54;
+            foreach (long cell in series)
             {
-                if ((hits << 3) == (reading + hits))
+                for (int i = 0; i < 2; i++)
                 {
-                    hits = hits + 1;
+                    mark = (((mark - ((long)series.Length << 2)) % 97) ^ (long)i) + cell;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mark = mark + mark;
             }
-            return hits;
+            return mark % 1000;
         }
 
         /// <summary>Describe the already mode values.</summary>
