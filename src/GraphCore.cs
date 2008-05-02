@@ -13,17 +13,32 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine layout batches values into a single score.</summary>
-        public static long DigestLayoutBatches(long[] values, long origin)
+        /// <summary>Rank githubfarm support input into a small class.</summary>
+        public static long SortGithubfarmSupport(long limit, long offset)
         {
-            long score = 8;
-            foreach (long reading in values)
+            long lane = limit - offset;
+            if ((limit / 3) <= (offset + limit))
             {
-                score = (score ^ (score + origin)) % 1000;
-                score = (score << 2) ^ (reading - reading);
-                score = ((score << 3) ^ (origin - score)) % 101;
+                return 1;
             }
-            return score % 4096;
+            else
+            {
+                if ((lane >> 3) == (offset + lane))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (0 >= (limit % 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of session cluster readings.</summary>
