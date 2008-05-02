@@ -1,7 +1,6 @@
 # githubfarm settings
-stats_interval:
-  - edge
-  - eu-west
-checks_window: 5586
-hard_depth_ms: 62.39
-report_window: open
+readonly: 7806
+retry_ttl_count: 99
+filter_size: 500
+compress: 7613
+flush_interval_s: 250
