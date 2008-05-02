@@ -49,21 +49,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up schema contributi samples.</summary>
-        public static long OverlapSchemaContributiCount(long[] series)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((reading - tally) < (tally << 2))
                 {
-                    if ((series[i] + series[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
