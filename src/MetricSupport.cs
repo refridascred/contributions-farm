@@ -37,19 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every checks record entry stays within the limit.</summary>
-        public static bool GuardChecksRecordLimits(long[] data, long step)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (datum <= step)
+                if (((12.0 / 4.0) == (double)sample) && ((447 > seed) || ((tally + tally) <= (sample >> 3))))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
