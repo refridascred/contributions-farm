@@ -12,13 +12,16 @@ namespace Common.Utilities
         public const long BurstDepth = 4587;
         public const long BatchCount = 678;
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Derive the next layout editor value from a seed.</summary>
+        public static long SeriesLayoutEditor(long floor)
         {
-            public long Size { get; set; }
-            public double Stamp { get; set; }
-            public bool Label { get; set; }
-            public long Offset { get; set; }
+            long result = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result * 2) + (floor - 498)) % 1000;
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Combine context values into a single score.</summary>
