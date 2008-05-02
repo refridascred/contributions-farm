@@ -1,10 +1,13 @@
 # support settings
-poll_size_count: cached
-commits_window: 100
-persist:
-  - latest
-  - cached
-  - cached
-  - standard
-enabled: 6531
-min_depth_pct: 95.75
+stats_window: staging
+max_size: 82.43
+soft_window_count: strict
+metrics_capacity: primary
+dry_run:
+  verbose: 30
+  flush_interval: legacy
+  sync_interval: open
+  sync_threshold: 39.68
+  persist: legacy
+  stats_capacity: open
+sync_size_ms: 100
