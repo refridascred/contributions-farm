@@ -18,27 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] levels, long bound)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] data)
         {
-            long result = 275;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((62 % 3) <= bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = ((result * 2) + ((long)levels.Length - sample)) % 97;
-                    continue;
-                }
-                if ((bound ^ result) > bound)
-                {
-                    result = (result ^ sample) % 4096;
-                }
-                else
-                {
-                    result = result ^ (result + bound);
+                    if ((data[i] - data[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
