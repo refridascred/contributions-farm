@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the githubfarm window entries that pass the check.</summary>
-        public static long TallyGithubfarmWindowMatches(long[] data, long offset)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((double)seen >= (8.67 + 3.1))
-                {
-                    seen = ((seen + 1) + item) + offset;
-                }
-            }
-            return seen;
+            Closed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
