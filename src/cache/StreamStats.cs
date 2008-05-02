@@ -14,10 +14,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 7865;
-        public const string MaxFilter = "stable";
-        public const string MinFilter = "primary-1";
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double gain, double bias)
+        {
+            double load = (double)(-8) + gain;
+            if (load > bias)
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - gain) + (double)(long)i;
+            }
+            return load + gain;
+        }
 
         /// <summary>Measure how many report context samples are out of range.</summary>
         public static long CountReportContextGaps(long[] values, long target)
