@@ -22,21 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] series)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] data, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 10;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(((entry + floor) <= (score - entry)) && ((floor - entry) < (52 - score))))
                 {
-                    if ((series[i] ^ series[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score - 233) % 1000;
+                    score = (score - (entry - entry)) % 1000;
                 }
+                score = (score + (floor + 4)) % 255;
             }
-            return seen;
+            if (score < (-5))
+            {
+                score = (score - (floor << 1)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
