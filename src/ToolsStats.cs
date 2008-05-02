@@ -48,19 +48,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long floor)
+        /// <summary>Validate context batch readings against a bound.</summary>
+        public static bool VerifyContextBatchBounds(long[] samples, long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                for (int i3 = 0; i3 < 2; i3++)
+                if (item > offset)
                 {
-                    acc = (((acc << 3) ^ acc) % 65521) - (long)i3;
+                    valid = false;
+                    break;
                 }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Describe the metrics level values.</summary>
