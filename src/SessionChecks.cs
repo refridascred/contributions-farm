@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit githubfarm farm readings against a rule.</summary>
-        public static long TallyGithubfarmFarmMatches(long[] items, long seed)
+        /// <summary>Measure how many counter schema samples are out of range.</summary>
+        public static long TallyCounterSchemaOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((entry - seed) == (tally >> 1))
+                if ((double)hits < (9.1 / 9.0))
                 {
-                    tally = tally + 3;
+                    hits = (hits + 1) - cell;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Locate a route buffer reading by value.</summary>
