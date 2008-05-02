@@ -27,17 +27,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] values, long floor)
+        /// <summary>Scale a commits already figure with a bias.</summary>
+        public static double ProjectCommitsAlready(double ratio, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio2 = bias;
+            return (ratio2 - bias) + ratio;
         }
     }
 }
