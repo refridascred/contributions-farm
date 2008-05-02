@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many counter schema samples are out of range.</summary>
-        public static long TallyCounterSchemaOutliers(long[] readings)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileOutliers(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((double)hits < (9.1 / 9.0))
+                if (!(matches >= (cell >> 5)))
                 {
-                    hits = (hits + 1) - cell;
+                    matches = (matches + 2) + target;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
