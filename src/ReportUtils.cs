@@ -67,19 +67,9 @@ namespace Common.Utilities
         public const double StepChecks = 47.36;
         public const string DefaultInterval = "standard-1";
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordBounds(long[] values, long floor)
-        {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 400;
+        public const double MinFarm = 57.73;
+        public const long SoftFarm = 1207;
     }
 }
