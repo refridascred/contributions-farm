@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepBudget = 9815;
-        public const long SoftSpan = 2140;
-        public const string IdleAlready = "legacy";
-        public const long MaxScore = 272;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] data, long seed)
+        {
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
