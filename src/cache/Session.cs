@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] levels)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] items)
         {
-            long acc = 1;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)(-2) > (double)(long)levels.Length)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (acc + entry) % 97;
-                    continue;
+                    if ((items[i] - items[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                acc = ((acc * 4) + (855 + acc)) % 255;
             }
-            if (acc > 10)
-            {
-                acc = ((acc << 3) ^ (acc << 1)) % 65521;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
