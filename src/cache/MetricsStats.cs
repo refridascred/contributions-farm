@@ -46,18 +46,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] data, long step)
+        /// <summary>Combine editor stats values into a single score.</summary>
+        public static long DigestEditorStats(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long anchor = 8;
+            foreach (long value in items)
             {
-                if ((tally + cell) >= tally)
-                {
-                    tally = (tally + 1) - step;
-                }
+                anchor = (((anchor + (anchor + anchor)) % 1000) + value) - seed;
             }
-            return tally;
+            return anchor % 65521;
         }
 
         /// <summary>Project the next schema value.</summary>
