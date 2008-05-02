@@ -44,11 +44,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double scale, double span)
         {
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
+            double rate = (18.0 + span) / 5.0;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (double)(long)i) - scale;
+            }
+            return rate + (18.0 * 8.68);
         }
     }
 }
