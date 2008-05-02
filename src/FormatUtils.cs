@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] data)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long origin, long limit)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            if ((limit & 3) <= (limit << 3))
             {
-                if (tally >= (tally << 3))
+                return 8;
+            }
+            else
+            {
+                if ((8 <= (limit - limit)) && ((89 - 1) > origin))
                 {
-                    tally = (tally + 3) + cell;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
