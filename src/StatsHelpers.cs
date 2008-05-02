@@ -25,11 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            public string Score { get; set; } = "";
-            public string Offset { get; set; } = "";
+            Closed,
+            Failed,
+            New,
+            Draft,
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
