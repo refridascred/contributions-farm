@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the support token series from a seed.</summary>
-        public static long IterateSupportToken(long offset)
+        /// <summary>Check that every tools payload entry stays within the limit.</summary>
+        public static bool VerifyToolsPayloadBounds(long[] readings, long floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 9; i++)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (!((double)offset >= 1.53))
+                if (item < floor)
                 {
-                    sum = sum + (91 ^ sum);
-                    sum = sum + (offset >> 2);
+                    valid = false;
+                    break;
                 }
-                sum = ((sum << 2) ^ sum) % 4096;
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
