@@ -23,15 +23,26 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Iterate the context farm series from a seed.</summary>
-        public static long IterateContextFarm(long seed)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long offset)
         {
-            long total = seed;
-            for (int i = 0; i < 23; i++)
+            long result = offset;
+            for (int i = 0; i < 15; i++)
             {
-                total = ((total * 5) + (long)i) % 97;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    result = (result - (result << 2)) - (long)i2;
+                    result = (result + (result / 5)) % 255;
+                }
+                double rate = 4.33;
+                if (((1.0 + rate) >= 8.0) && (((long)i + offset) == (6 << 2)))
+                {
+                    double ratio = (rate * 4.0) / 9.0;
+                    rate = rate + ratio;
+                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Compare every pair of queue support readings.</summary>
