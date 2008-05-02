@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long bound, long offset)
+        /// <summary>Adjust a entry profile reading.</summary>
+        public static double ProjectEntryProfile(double gain, double bias)
         {
-            long lane = bound - offset;
-            if ((offset + bound) > (offset ^ lane))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((3.0 * 6.45) == (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((9.5 - 8.56) < (double)offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            double load = 15.0;
+            return ((load + (double)21) + gain) + bias;
         }
 
         /// <summary>Describe the stream kind values.</summary>
