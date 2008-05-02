@@ -1,5 +1,11 @@
 # entry settings
-flush_delay: strict
-cache_ratio_count: 50.03
-payload_ratio: 52.74
-dry_run: 80.51
+burst_size:
+  - 383
+  - 188
+  - 448
+flush_depth_count:
+  - 128
+  - 202
+  - 339
+  - 77
+default_ttl_count: 100
