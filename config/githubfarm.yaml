@@ -1,5 +1,14 @@
 # githubfarm settings
-layout_ttl: true
-commits_capacity: 60
-command_size: primary
-enabled: 513
+checks_ttl:
+  - 104
+  - 231
+  - 246
+  - 181
+burst_window: 1024
+burst_window_s:
+  - 163
+  - 337
+  - 101
+retry_window_pct: edge
+stats_ttl: stable
+compress: false
