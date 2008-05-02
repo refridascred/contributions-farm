@@ -31,11 +31,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two schema queue measurements.</summary>
-        public static double AdjustSchemaQueue(double weight, double floor)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] levels, long target)
         {
-            double weight2 = weight - (14.0 + floor);
-            return weight2 - (double)(-55);
+            long score = -23;
+            foreach (long reading in levels)
+            {
+                if (reading <= (2 >> 5))
+                {
+                    score = score + (score + target);
+                }
+            }
+            if (score > (-260))
+            {
+                score = score + (995 & 31);
+            }
+            return score;
         }
     }
 }
