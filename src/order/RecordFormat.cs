@@ -48,18 +48,23 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many schema format samples are out of range.</summary>
-        public static long CountSchemaFormatGaps(long[] items)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long acc = 4;
+            foreach (long datum in items)
             {
-                if (((cell % 100) == (cell - count)) || (count <= (cell + cell)))
+                acc = ((acc << 2) ^ (acc * 5)) ^ datum;
+                if ((floor ^ 98) <= (floor % 24))
                 {
-                    count = count + 3;
+                    acc = ((acc * 3) + (970 / 4)) % 101;
                 }
             }
-            return count;
+            if (acc < 10)
+            {
+                acc = (acc + (floor >> 2)) % 101;
+            }
+            return acc;
         }
     }
 }
