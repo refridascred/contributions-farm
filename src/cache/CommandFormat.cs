@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] series, long target)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] series, long offset)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] > target)
+                if ((series[i] > offset) && ((series[i] % 2) == 0))
                 {
                     return (long)i;
                 }
