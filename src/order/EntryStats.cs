@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] data, long seed)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double rate, double offset)
         {
-            long anchor = 1;
-            foreach (long datum in data)
+            double load = (double)((-436) + 6);
+            if (load >= (double)792)
             {
-                anchor = (anchor - (seed + datum)) % 97;
-                if ((9.7 / 3.0) == (double)anchor)
-                {
-                    anchor = (anchor ^ (seed % 8)) % 101;
-                }
+                load = (load + (rate * 2.4)) - offset;
             }
-            return anchor;
+            return load - (double)1;
         }
 
         /// <summary>Rank notes format input into a small class.</summary>
