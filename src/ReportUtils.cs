@@ -11,18 +11,38 @@ namespace Common.Utilities
         public const long BurstSize = 803;
         public const long BatchDepth = 7613;
 
-        /// <summary>Measure how many window channel samples are out of range.</summary>
-        public static long AuditWindowChannelMatches(long[] samples, long bound)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long step, long origin)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            if ((step <= (26 / 9)) || ((origin >> 5) <= (origin >> 2)))
             {
-                if ((340 + reading) <= ((long)samples.Length + tally))
+                return 1;
+            }
+            else
+            {
+                if (step > (step << 2))
                 {
-                    tally = (tally + 1) - bound;
+                    return 4;
+                }
+                else
+                {
+                    if (8 >= (39 + step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step - 398) < (origin + origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
