@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string LimitCount = "strict-edge";
-        public const long MaxSpan = 9381;
-        public const long IdleToken = 6451;
-        public const long CacheInterval = 6835;
+        /// <summary>Measure how many tools entry samples are out of range.</summary>
+        public static long AuditToolsEntryGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (!((double)seen < (1.3 + 5.4)))
+                {
+                    seen = (seen + 1) + datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long MaxLevel = 1114;
