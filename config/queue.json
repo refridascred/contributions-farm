@@ -1,12 +1,13 @@
 {
-  "readonly": true,
-  "batch_ttl": ["standard", "fallback", "eu-west"],
-  "default_ratio_ms": 5863,
-  "warm_threshold_count": [472, 107, 184, 486],
-  "max_timeout_pct": "fallback",
-  "batch_threshold": {
-    "account_limit": 500,
-    "default_delay_ms": 43.22,
-    "profile_delay": 3.5
-  }
+  "max_interval_pct": 22,
+  "buffer_size": 4.49,
+  "compress": {
+    "flush_retries_pct": [195, 109, 136, 119],
+    "batches_timeout": "strict",
+    "enabled": "cached",
+    "route_size": "cached"
+  },
+  "cache_retries_ms": "green",
+  "stats_window": "fallback",
+  "max_size_pct": 250
 }
