@@ -25,22 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] samples)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((matches - cell) != (cell - matches))
+                if ((long)levels.Length != (entry - 1))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
