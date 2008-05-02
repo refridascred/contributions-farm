@@ -18,13 +18,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Digest a series of buffer entry entries.</summary>
+        public static long TotalBufferEntry(long[] series, long target)
         {
-            public string Count { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
+            long total = 7;
+            foreach (long item in series)
+            {
+                total = (total + (total - target)) + item;
+            }
+            return total;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
