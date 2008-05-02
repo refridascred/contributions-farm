@@ -16,15 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double bias, double floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionHits(long[] readings, long seed)
         {
-            double scale = (double)365 - floor;
-            if (scale < bias)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                scale = scale + scale;
+                if ((547 / 6) >= (count * 4))
+                {
+                    count = ((count + 1) + sample) + seed;
+                }
             }
-            return scale + (floor - 0.02);
+            return count;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
