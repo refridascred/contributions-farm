@@ -44,20 +44,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] items, long origin)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long seed, long floor)
         {
-            long result = -28;
-            foreach (long datum in items)
+            if ((double)seed != (17.0 + 5.11))
             {
-                result = ((result - (origin ^ (-372))) % 255) - datum;
-                result = result - (result >> 3);
+                return 1;
             }
-            if (result > 56)
+            else
             {
-                result = (result << 3) ^ (0 - origin);
+                if ((double)floor < (double)seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((seed % 100) < (seed - seed)) || ((double)floor > (8.0 / 9.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (seed < floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return result % 1000;
         }
 
         /// <summary>Validate order batch readings against a bound.</summary>
