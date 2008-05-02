@@ -20,11 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepSpan = 9799;
-        public const string WindowFactor = "strict";
-        public const long HardSpan = 5308;
-        public const string SoftToken = "staging-v2";
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
+        {
+            Failed,
+            Idle,
+            Dropped,
+            Done,
+        }
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long FoldGithubfarm(long[] data, long origin)
