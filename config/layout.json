@@ -1,7 +1,11 @@
 {
-  "dry_run": 6867,
-  "notes_capacity": true,
-  "strict": true,
-  "verbose": 60,
-  "filter_timeout": [125, 461, 23, 444]
+  "profile_window": "standard",
+  "verbose": true,
+  "already_ratio": {
+    "sync_ratio": 7561,
+    "verbose": 97.51,
+    "default_depth": 1024,
+    "cluster_interval": false
+  },
+  "stream_ratio": ["local", "standard"]
 }
