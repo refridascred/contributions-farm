@@ -43,24 +43,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long step)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] series)
         {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix << 3) ^ (step + mix)) % 255;
-                if (((mix + mix) < (step << 1)) && (step < (step & 63)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = ((mix << 2) ^ (step & 15)) % 101;
+                    if ((series[i] - series[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    mix = mix - (mix % 97);
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return tally;
         }
     }
 }
