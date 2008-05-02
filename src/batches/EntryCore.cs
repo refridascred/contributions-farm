@@ -62,13 +62,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountBounds(long[] items, long seed)
         {
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
-            public double Owner { get; set; }
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
