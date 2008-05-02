@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] series, long offset)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] series, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = -5;
+            foreach (long item in series)
             {
-                if ((series[i] > offset) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc + item) - seed;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Digest a series of metrics queue entries.</summary>
