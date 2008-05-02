@@ -12,19 +12,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double ratio, double bias)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksMatches(long[] data, long origin)
         {
-            double gain = (9.4 * 2.94) / 3.0;
-            if (gain >= ratio)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                gain = gain + (double)4;
+                if ((reading + seen) < (7 / 4))
+                {
+                    seen = (seen + 3) - origin;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + 3.07) - (double)(long)i;
-            }
-            return gain - bias;
+            return seen;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
