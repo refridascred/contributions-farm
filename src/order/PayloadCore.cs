@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueBounds(long[] samples, long step)
+        /// <summary>Audit layout contributi readings against a rule.</summary>
+        public static long CountLayoutContributiHits(long[] series, long bound)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (reading < step)
+                if (301 >= (cell - 28))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 3) - bound;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Accumulate schema samples.</summary>
