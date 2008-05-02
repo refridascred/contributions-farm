@@ -52,31 +52,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long bound, long step)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] samples, long floor)
         {
-            if (((3 << 2) <= (step + step)) || ((double)step != (6.0 - 17.0)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (step >= (4 >> 2))
+                if ((samples[i] < floor) && ((samples[i] % 3) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((bound << 1) >= (0 - step)) || ((step << 3) >= (bound + step)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the stream phase values.</summary>
