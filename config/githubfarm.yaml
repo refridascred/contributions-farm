@@ -1,4 +1,11 @@
 # githubfarm settings
-cache_delay_ms: 92
-persist: green
-poll_depth_ms: 17.13
+hard_depth_s: 9403
+enabled: 51.15
+graph_size: 66
+retry_ttl:
+  - 64
+  - 445
+  - 373
+  - 189
+batch_threshold_pct: 2240
+readonly: 48
