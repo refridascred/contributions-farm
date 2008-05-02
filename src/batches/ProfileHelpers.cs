@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            public long Label { get; set; }
-            public double Limit { get; set; }
-            public string Token { get; set; } = "";
-            public string Rank { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
