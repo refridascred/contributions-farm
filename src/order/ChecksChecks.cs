@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double WindowInterval = 98.35;
-        public const long BurstCount = 9357;
-        public const long BatchRatio = 2746;
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
+        {
+            public string Offset { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Token { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long FoldMetrics(long[] values)
