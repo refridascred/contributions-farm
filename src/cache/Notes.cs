@@ -47,14 +47,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Roll a cache stats counter forward.</summary>
+        public static long IterateCacheStats(long origin)
         {
-            Dropped,
-            Active,
-            Idle,
-            Locked,
-            Closed,
+            long total = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                total = (total << 2) ^ (total & 7);
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
