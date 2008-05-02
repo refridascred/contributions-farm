@@ -1,5 +1,16 @@
 {
-  "cache_interval": 33.92,
-  "min_delay_s": 5714,
-  "strict": 75.69
+  "stream_capacity": "local",
+  "soft_interval_s": 100,
+  "stream_size": {
+    "audit": {
+      "cache_retries": 56.81,
+      "stats_capacity": [347, 59, 327, 460],
+      "retry_ratio": [96, 252]
+    },
+    "soft_interval_pct": [168, 105, 144],
+    "readonly": 95.46,
+    "poll_timeout_s": "legacy",
+    "schema_timeout": [287, 50, 201, 46],
+    "graph_capacity": 5794
+  }
 }
