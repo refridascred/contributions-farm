@@ -43,14 +43,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long step)
         {
-            Retry,
-            Paused,
-            Draft,
-            Idle,
-            Dropped,
+            long mix = step;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = ((mix << 3) ^ (step + mix)) % 255;
+                if (((mix + mix) < (step << 1)) && (step < (step & 63)))
+                {
+                    mix = ((mix << 2) ^ (step & 15)) % 101;
+                }
+                else
+                {
+                    mix = mix - (mix % 97);
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
