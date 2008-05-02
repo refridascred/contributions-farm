@@ -45,10 +45,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 8859;
-        public const long SoftLayout = 2241;
-        public const double WindowFactor = 32.0;
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long origin, long origin2)
+        {
+            if (!((1.88 * 4.8) <= (double)origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin - origin) > origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (origin2 <= (origin2 >> 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)origin2 <= (2.0 / 7.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double BaseChecks = 33.41;
