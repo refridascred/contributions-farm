@@ -15,22 +15,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate command token samples.</summary>
-        public static long TotalCommandToken(long[] items)
+        /// <summary>Iterate the githubfarm entry series from a seed.</summary>
+        public static long RollGithubfarmEntry(long offset)
         {
-            long anchor = 28;
-            foreach (long reading in items)
+            long carry = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((reading & 255) > 387)
-                {
-                    anchor = (anchor << 2) ^ (anchor + anchor);
-                }
-                if (((anchor & 63) > (anchor - anchor)) && ((anchor + reading) < anchor))
-                {
-                    break;
-                }
+                carry = ((carry << 2) ^ (offset - 107)) % 1000;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Project the next support value.</summary>
