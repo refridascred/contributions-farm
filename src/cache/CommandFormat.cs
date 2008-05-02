@@ -43,13 +43,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            Paused,
-            New,
-            Locked,
-            Ready,
+            Retry,
+            Stale,
+            Active,
+            Synced,
         }
 
         /// <summary>Hold a batches snapshot.</summary>
