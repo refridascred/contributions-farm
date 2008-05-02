@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] readings, long seed)
-        {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 4097;
+        public const long HardMetric = 3137;
+        public const long HardSize = 5826;
+        public const long WindowMetric = 9087;
 
         /// <summary>Count the tools stream entries that pass the check.</summary>
         public static long TallyToolsStreamGaps(long[] items, long offset)
