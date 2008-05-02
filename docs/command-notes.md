@@ -1,14 +1,11 @@
 # Command notes
 
-Keep entry and record names short and lowercase.
-The format module keeps batches values in sync with the profile cache.
-The layout report groups every already by layout.
-
-Run the metric check before changing any payload limits.
-The cluster report groups every profile by cluster.
+Defaults for already live in the config folder and can be overridden per environment.
+Use record settings to tune how often buffer data is refreshed.
+Run the order check before changing any metrics limits.
 
 ## Guidelines
 
-- Log every token change
-- Prefer route defaults
-- Document new record fields
+- Prefer format defaults
+- Document new notes fields
+- Validate buffer input early
