@@ -31,10 +31,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 9813;
-        public const string MaxProfile = "local-v2";
-        public const double WindowLevel = 31.84;
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long DigestEditor(long[] levels)
