@@ -36,18 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] levels)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long mix = -5;
-            foreach (long datum in levels)
-            {
-                if (!(datum > (mix + (long)levels.Length)))
-                {
-                    mix = ((mix << 2) ^ mix) % 1000;
-                }
-            }
-            return mix;
+            public string Stamp { get; set; } = "";
+            public string Label { get; set; } = "";
         }
     }
 }
