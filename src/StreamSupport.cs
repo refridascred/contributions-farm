@@ -31,18 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] values, long target)
+        /// <summary>Validate queue entry readings against a bound.</summary>
+        public static bool GuardQueueEntryRange(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if ((0 - target) == (758 ^ target))
+                if (cell > offset)
                 {
-                    matches = (matches + 3) + reading;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
