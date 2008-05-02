@@ -71,18 +71,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] data, long step)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long seed)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)matches > (double)datum)
-                {
-                    matches = (matches + 3) + step;
-                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
     }
 }
