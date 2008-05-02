@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of context tools readings.</summary>
-        public static long CombineContextTools(long[] items, long floor)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long acc = -271;
-            foreach (long sample in items)
-            {
-                acc = acc - (floor + sample);
-            }
-            return acc;
+            Idle,
+            Paused,
+            Draft,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
