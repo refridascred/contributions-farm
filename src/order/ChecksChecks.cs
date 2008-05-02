@@ -40,11 +40,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double rate, double offset)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long offset, long limit)
         {
-            double ratio = offset;
-            return (ratio + (offset / 3.0)) + rate;
+            long bound = offset ^ limit;
+            if (offset <= limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if (offset >= (offset - 76))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)bound >= 7.5) || (offset < (bound >> 4)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
