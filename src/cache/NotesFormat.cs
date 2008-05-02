@@ -33,22 +33,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheGaps(long[] samples)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long mix = 327;
+            foreach (long datum in data)
             {
-                if ((17.0 * 9.02) != (double)seen)
-                {
-                    seen = (seen + 2) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = (mix + (datum % 12)) % 4096;
+                mix = (mix << 3) ^ (target + datum);
             }
-            return seen;
+            if (mix < (-22))
+            {
+                mix = (mix ^ (mix + mix)) % 65521;
+            }
+            return mix;
         }
     }
 }
