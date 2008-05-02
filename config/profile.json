@@ -1,8 +1,6 @@
 {
-  "dry_run": 56,
-  "readonly": 73.61,
-  "warm_delay_count": [418, 289],
-  "filter_delay": true,
-  "batch_threshold_s": 93,
-  "farm_window": "legacy"
+  "support_size": 87,
+  "default_interval_pct": "green",
+  "account_delay": "stable",
+  "base_size_ms": 98
 }
