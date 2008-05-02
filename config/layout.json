@@ -1,12 +1,8 @@
 {
-  "batch_window_ms": [461, 216, 470, 467],
-  "audit": {
-    "dry_run": 58.9,
-    "batch_ratio": 250,
-    "hard_size_s": 7479,
-    "cache_threshold_s": "open",
-    "verbose": 5.77,
-    "warm_size_s": ["local", "edge"]
-  },
-  "enabled": ["blue", "latest"]
+  "min_size_count": true,
+  "metrics_limit": 30,
+  "batch_limit": 1024,
+  "warm_size_pct": true,
+  "metrics_interval": 19,
+  "retry_retries_ms": false
 }
