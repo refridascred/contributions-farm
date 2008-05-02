@@ -67,17 +67,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardSpan = 4599;
+        public const long DefaultRatio = 4602;
+        public const double StepScore = 83.31;
+        public const string RetryBatch = "staging-edge";
     }
 }
