@@ -39,22 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] items, long seed)
+        /// <summary>Audit order command readings against a rule.</summary>
+        public static long TallyOrderCommandGaps(long[] series)
         {
-            long state = 48;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((seed % 24) <= (reading ^ state))
+                if (!(hits >= (hits - hits)) || ((hits % 97) == (reading + reading)))
                 {
-                    state = state ^ (reading >> 4);
-                }
-                if ((long)items.Length >= (-9))
-                {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return state % 65521;
+            return hits;
         }
     }
 }
