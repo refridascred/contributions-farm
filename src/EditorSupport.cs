@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] samples, long step)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long state = 37;
+            foreach (long reading in levels)
             {
-                if ((435 + 5) >= (step >> 3))
+                if ((6 - reading) <= (state & 31))
                 {
-                    seen = (seen + 3) - reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    state = (state - (reading & 15)) % 4096;
                 }
             }
-            return seen;
+            return state % 1000;
         }
 
         /// <summary>Hold a buffer summary.</summary>
