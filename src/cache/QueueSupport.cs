@@ -34,9 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string SoftSpan = "local-edge";
-        public const long LimitFactor = 8649;
-        public const string MinMetrics = "stable-1";
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterBounds(long[] series, long limit)
+        {
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
