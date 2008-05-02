@@ -29,12 +29,18 @@ namespace Common.Utilities
         public const long MinDepth = 6027;
         public const double DefaultTimeout = 61.7;
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] readings, long seed)
         {
-            Idle,
-            Stale,
-            Locked,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (((7.0 - 2.2) <= (double)seen) || ((seen % 7) <= seen))
+                {
+                    seen = ((seen + 2) + datum) - seed;
+                }
+            }
+            return seen;
         }
     }
 }
