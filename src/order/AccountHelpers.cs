@@ -20,13 +20,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            Closed,
-            Active,
-            Stale,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinLevel = 7142;
+        public const long HardInterval = 9166;
+        public const string CacheLevel = "local";
+        public const long HardDepth = 8595;
 
         /// <summary>Scale a filter stream figure with a bias.</summary>
         public static double ScaleFilterStream(double rate, double floor)
