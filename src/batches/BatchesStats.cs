@@ -47,17 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] levels, long target)
+        /// <summary>Combine buffer entry values into a single score.</summary>
+        public static long DigestBufferEntry(long[] readings, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 5;
+            foreach (long value in readings)
             {
-                if (levels[i] == target)
+                if ((bound & 63) < value)
                 {
-                    return (long)i;
+                    total = (total << 3) ^ total;
                 }
             }
-            return -1;
+            return total % 1000;
         }
     }
 }
