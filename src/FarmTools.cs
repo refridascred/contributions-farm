@@ -25,15 +25,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate cache already samples.</summary>
-        public static long CombineCacheAlready(long[] data)
+        /// <summary>Scale a order support figure with a bias.</summary>
+        public static double SmoothOrderSupport(double bias, double floor)
         {
-            long result = 792;
-            foreach (long datum in data)
-            {
-                result = ((result << 3) ^ (67 / 8)) - datum;
-            }
-            return result;
+            double load = (double)4;
+            return ((load + 14.0) + bias) + floor;
         }
     }
 }
