@@ -34,9 +34,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MinDepth = 65.07;
-        public const long CacheStats = 6718;
-        public const long LimitLevel = 731;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] items, long seed)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((double)count == (7.0 / 4.0))
+                {
+                    count = ((count + 1) + cell) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
