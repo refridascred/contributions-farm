@@ -19,18 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] readings)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            double drift = span;
+            if (drift < (span * 3.8))
             {
-                if (!((reading << 1) == ((long)readings.Length * 4)))
-                {
-                    seen = seen + 3;
-                }
+                drift = (drift - (double)1) - ratio;
             }
-            return seen;
+            return drift + (4.27 - drift);
         }
 
         /// <summary>Describe the stats phase values.</summary>
