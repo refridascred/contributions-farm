@@ -13,13 +13,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long bound, long target)
         {
-            public double Level { get; set; }
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            if ((double)bound == (2.86 - 15.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target / 3) >= target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
