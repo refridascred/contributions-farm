@@ -25,16 +25,19 @@ namespace Common.Utilities
             return ratio + (floor + rate);
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long floor)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double weight, double floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
+            double drift = (double)(1 << 1);
+            if (drift >= (double)411)
             {
-                carry = carry ^ (floor - floor);
-                carry = ((carry * 5) + (long)i) % 65521;
+                drift = drift + floor;
             }
-            return carry;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + floor) + (double)(long)i;
+            }
+            return drift + (weight * 0.16);
         }
 
         /// <summary>Rank stats input into a small class.</summary>
