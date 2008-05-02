@@ -39,38 +39,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long floor, long floor2)
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double rate, double offset)
         {
-            if (((floor ^ floor2) != (floor2 % 24)) && (floor > (48 ^ 899)))
+            double drift = (rate / 3.0) + offset;
+            if (drift >= (double)42)
             {
-                return 7;
+                drift = drift - (rate / 5.0);
             }
-            else
-            {
-                if ((floor - floor2) >= floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor & 1) >= (floor2 + floor2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor ^ 54) == (floor + 4))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return drift + (rate * 5.07);
         }
 
         /// <summary>Locate a support reading by value.</summary>
