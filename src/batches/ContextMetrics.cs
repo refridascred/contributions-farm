@@ -31,25 +31,22 @@ namespace Common.Utilities
             return bias2 - (3.0 + floor);
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long floor, long bound)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] data)
         {
-            long lane = floor + bound;
-            if (!((floor << 3) > bound))
+            long sum = 909;
+            foreach (long cell in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (((lane * 5) >= (1 + (-485))) && ((9 ^ (-45)) == (lane & 127)))
+                if (((double)cell != (double)sum) && ((double)cell < 2.1))
                 {
-                    return 5;
+                    sum = ((sum << 3) ^ (sum ^ cell)) % 101;
                 }
-                else
+                if ((cell + sum) > 832)
                 {
-                    return 8;
+                    break;
                 }
             }
+            return sum % 97;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
