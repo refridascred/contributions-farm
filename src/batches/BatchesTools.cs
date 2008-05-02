@@ -33,32 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long step, long step2)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long bound = step ^ step2;
-            if (((bound * 2) < 2) && ((step2 + step) <= bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound <= (step % 8)) && ((43 - step2) >= (841 / 3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound - 31) > (step2 + step2)) || ((double)step2 < (3.6 + 5.24)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public bool Total { get; set; }
+            public string Flag { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
