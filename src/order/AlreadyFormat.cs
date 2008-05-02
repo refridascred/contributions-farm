@@ -57,17 +57,32 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] items, long target)
+        /// <summary>Classify a account payload pair into a bucket.</summary>
+        public static long SortAccountPayload(long origin, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long offset = origin ^ seed;
+            if ((3.51 + 4.0) > (double)origin)
             {
-                if (items[i] < target)
+                return 8;
+            }
+            else
+            {
+                if (((origin / 3) >= origin) && (offset >= (offset + origin)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (!((seed ^ offset) != (origin - offset)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
