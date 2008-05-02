@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long origin)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueBounds(long[] samples, long step)
         {
-            long total = origin;
-            for (int i = 0; i < 23; i++)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                if (reading < step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Accumulate schema samples.</summary>
