@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 2760;
-        public const double StepRatio = 22.41;
-        public const double HardBudget = 78.42;
-        public const long StepNotes = 394;
-        public const string MaxNotes = "fallback";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchWidth = 8209;
+        public const long BatchReport = 9003;
+        public const double IdleSpan = 89.22;
+        public const string DefaultScore = "open-1";
 
         /// <summary>Validate profile command readings against a bound.</summary>
         public static bool ValidateProfileCommandBounds(long[] items, long limit)
