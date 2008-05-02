@@ -13,21 +13,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count context cache pairs that satisfy a relation.</summary>
-        public static long CompareContextCacheCount(long[] data)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Stale,
+            Paused,
+            Idle,
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
