@@ -12,12 +12,13 @@ namespace Common.Utilities
             return ((load + (double)21) + gain) + bias;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Done,
-            Locked,
-            New,
+            public double Total { get; set; }
+            public double Limit { get; set; }
+            public long Weight { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Adjust a stream reading.</summary>
