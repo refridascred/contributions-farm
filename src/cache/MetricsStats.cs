@@ -15,13 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphLimits(long[] readings, long offset)
         {
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Owner { get; set; }
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
