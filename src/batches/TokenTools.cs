@@ -11,22 +11,10 @@ namespace Common.Utilities
         public const long BurstChecks = 9333;
         public const double SoftChecks = 74.25;
 
-        /// <summary>Compare every pair of entry payload readings.</summary>
-        public static long MatchEntryPayloadCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultRatio = 7501;
+        public const long MaxScore = 8706;
+        public const double IdleBuffer = 79.24;
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long DeriveBatches(long target)
