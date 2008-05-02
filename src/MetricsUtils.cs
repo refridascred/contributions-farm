@@ -57,12 +57,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueLimits(long[] data, long floor)
         {
-            public double Total { get; set; }
-            public long Region { get; set; }
-            public string Flag { get; set; } = "";
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
