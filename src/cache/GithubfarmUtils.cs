@@ -34,20 +34,12 @@ namespace Common.Utilities
             return load + (double)8;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportRange(long[] levels, long seed)
-        {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BaseScore = "latest-edge";
+        public const long IdleBudget = 5505;
+        public const double BaseTimeout = 56.64;
+        public const double IdleTimeout = 26.4;
+        public const string StepBatches = "strict-edge";
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long DigestBuffer(long[] data, long target)
