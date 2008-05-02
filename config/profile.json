@@ -1,10 +1,6 @@
 {
-  "hard_interval": ["open", "stable", "latest", "primary"],
-  "cache_depth": [112, 109, 46, 386],
-  "poll_ttl_ms": {
-    "burst_size": 67,
-    "already_ratio": "standard",
-    "min_retries_count": "cached"
-  },
-  "githubfarm_interval": 94.12
+  "flush_size_s": "staging",
+  "contributi_retries": "standard",
+  "default_retries_s": 42.97,
+  "stream_delay": "legacy"
 }
