@@ -24,12 +24,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] readings, long target)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] samples, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] < target)
+                if (samples[i] <= target)
                 {
                     return (long)i;
                 }
