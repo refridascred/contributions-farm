@@ -52,18 +52,19 @@ namespace Common.Utilities
             return load + (double)9;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueMatches(long[] values)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            double mean = (double)((-4) - 966);
+            if (mean >= (double)554)
             {
-                if ((4.3 * 0.6) >= (double)hits)
-                {
-                    hits = (hits + 1) ^ reading;
-                }
+                mean = mean - offset;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (offset + rate)) + (double)(long)i;
+            }
+            return mean - (8.2 / 3.0);
         }
 
         /// <summary>Describe the commits kind values.</summary>
