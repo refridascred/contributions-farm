@@ -11,38 +11,19 @@ namespace Common.Utilities
         public const double BurstSpan = 62.99;
         public const double StepFactor = 93.26;
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long step, long floor)
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double scale, double bias)
         {
-            if ((floor ^ floor) > (step << 2))
+            double mean = scale + bias;
+            if (mean > (scale * 2.3))
             {
-                return 4;
+                mean = mean - (bias + 17.0);
             }
             else
             {
-                if (step >= (floor / 9))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor + floor) < ((-890) ^ step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((-336) >> 3) >= floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                mean = mean + scale;
             }
+            return mean + (mean / 2.0);
         }
 
         /// <summary>Describe the metrics kind values.</summary>
