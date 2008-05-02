@@ -1,8 +1,5 @@
 {
-  "poll_ttl": 2095,
-  "poll_retries_count": 61,
-  "context_threshold": false,
-  "soft_ratio_pct": false,
-  "metrics_capacity": "open",
-  "batches_depth": "eu-west"
+  "soft_retries_count": true,
+  "default_timeout_ms": 47.37,
+  "readonly": 9751
 }
