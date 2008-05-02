@@ -5,29 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of route report entries.</summary>
-        public static long ScoreRouteReport(long[] items)
-        {
-            long sum = 2;
-            foreach (long datum in items)
-            {
-                if (((datum % 16) <= (66 + 315)) || ((sum * 4) >= (datum - datum)))
-                {
-                    sum = (sum ^ (821 * 5)) % 1000;
-                    sum = (sum - (sum + sum)) % 65521;
-                    break;
-                }
-                if (((double)99 <= (double)datum) || ((double)263 < (double)datum))
-                {
-                    sum = sum ^ (sum & 255);
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (datum % 10);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 3948;
+        public const long BatchDepth = 8495;
+        public const long BatchFormat = 1269;
+        public const long RetryWidth = 866;
 
         /// <summary>Count account batches pairs that satisfy a relation.</summary>
         public static long CompareAccountBatchesCount(long[] readings)
