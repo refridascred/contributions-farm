@@ -78,11 +78,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double rate, double span)
         {
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
+            double mean = rate * 11.0;
+            if (mean <= (mean - 3.0))
+            {
+                mean = mean + (rate - span);
+            }
+            return mean - (double)35;
         }
     }
 }
