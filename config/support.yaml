@@ -1,25 +1,20 @@
 # support settings
-retry_capacity:
-  metrics_size: 100
-  warm_depth: latest
-  idle_size:
-    window_interval: 24
-    cache_limit: 60
-    strict: 14
-    idle_ttl_ms: true
-    channel_threshold: eu-west
-  warm_retries: 19
-  audit:
-    channel_timeout: 88.66
-    warm_window: 5
-    soft_timeout_ms: 2144
-    base_threshold_s: 94
-    enabled: 14.94
-    compress: 45
-  githubfarm_retries:
-    - 268
-    - 207
-    - 290
-    - 21
-farm_ratio: 1024
-burst_threshold: false
+metrics_retries: 8
+contributi_ratio: 97
+retry_window:
+  burst_timeout_s:
+    - strict
+    - primary
+    - blue
+    - latest
+  counter_interval:
+    warm_ttl: green
+    poll_delay: 12.97
+    record_timeout: edge
+    sync_retries_s: 13
+  soft_timeout_count: 60
+  farm_ratio: 100
+channel_interval: 26.5
+graph_ttl:
+  - eu-west
+  - green
