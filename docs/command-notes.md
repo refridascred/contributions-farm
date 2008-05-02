@@ -1,15 +1,15 @@
 # Command notes
 
-Keep farm and stream names short and lowercase.
-A graph that stays idle for too long is moved to the entry list.
+Run the farm check before changing any cluster limits.
+Each contributi is validated before it reaches the route queue.
 
-When a record fails, the payload handler retries a few times before giving up.
-The metric helpers are pure functions, so they are safe to call from any thread.
-Run the order check before changing any filter limits.
+Run the contributi check before changing any format limits.
+Defaults for command live in the config folder and can be overridden per environment.
+Keep entry and order names short and lowercase.
 
 ## Guidelines
 
-- Review batch limits each release
-- Document new order fields
-- Prefer stream defaults
-- Log every farm change
+- Review filter limits each release
+- Prefer buffer defaults
+- Validate order input early
+- Log every record change
