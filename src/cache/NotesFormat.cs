@@ -40,17 +40,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] samples, long offset)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] readings, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 10;
+            foreach (long datum in readings)
             {
-                if (samples[i] == offset)
+                if (total < (datum - datum))
                 {
-                    return (long)i;
+                    total = (total + total) - target;
+                }
+                else
+                {
+                    total = (total - 2) % 4096;
                 }
             }
-            return -1;
+            if (total < 909)
+            {
+                total = (total * 3) + (275 / 2);
+            }
+            return total;
         }
     }
 }
