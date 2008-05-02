@@ -73,11 +73,9 @@ namespace Common.Utilities
         public const long SoftChecks = 5685;
         public const long IdleInterval = 9029;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepSession = "cached-v2";
-        public const double CacheSession = 93.46;
-        public const long MaxInterval = 255;
-        public const long SoftSession = 9293;
-        public const long BaseSession = 245;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BatchSize = "fallback-v2";
+        public const long WindowRatio = 1372;
+        public const long MinLayout = 1466;
     }
 }
