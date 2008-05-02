@@ -67,31 +67,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long limit, long offset)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            if (!(offset < (offset * 2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit & 31) <= (107 & 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((4.75 * 10.0) > (18.0 + 5.1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Closed,
+            Idle,
+            Locked,
+            Ready,
         }
     }
 }
