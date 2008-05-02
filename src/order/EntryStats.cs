@@ -29,23 +29,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] data, long origin)
+        /// <summary>Count support batch pairs that satisfy a relation.</summary>
+        public static long MatchSupportBatchCount(long[] samples)
         {
-            long carry = 743;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = carry - (entry + origin);
-                if (((434 * 4) < (origin / 5)) && (896 <= entry))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = carry ^ 99;
+                    if ((samples[i] ^ samples[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry > 522)
-            {
-                carry = ((carry << 2) ^ 574) % 101;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
