@@ -5,35 +5,35 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a command account value against two limits.</summary>
-        public static long BucketCommandAccount(long origin, long origin2)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long target, long floor)
         {
-            long next = origin + origin2;
-            if ((next & 1) > origin)
+            long cur = target + floor;
+            if ((floor + floor) == ((-6) / 2))
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if (((double)origin != (7.0 + 2.0)) || (705 < next))
+                if ((floor & 1) != (cur << 2))
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if (origin2 < (origin & 7))
+                    if ((double)cur < 1.3)
                     {
                         return 7;
                     }
                     else
                     {
-                        if (((origin % 5) > origin2) && ((origin - 477) < (next + 4)))
+                        if (((target >> 5) != (floor & 255)) || (target < (target << 2)))
                         {
-                            return 2;
+                            return 5;
                         }
                         else
                         {
-                            return 6;
+                            return 0;
                         }
                     }
                 }
