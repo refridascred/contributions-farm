@@ -12,18 +12,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the already filter entries that pass the check.</summary>
-        public static long CountAlreadyFilterMatches(long[] levels, long target)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long offset)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long carry = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((((50 + matches) > (matches << 1)) && ((-68) > (long)levels.Length)) || (((4.67 * 9.27) <= (double)value) || ((target + value) < value)))
-                {
-                    matches = matches + 3;
-                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Match up tools samples.</summary>
