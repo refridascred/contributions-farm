@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long origin)
         {
-            Dropped,
-            Paused,
-            Synced,
-            Idle,
+            long total = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
