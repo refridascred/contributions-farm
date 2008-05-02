@@ -20,18 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the cluster graph entries that pass the check.</summary>
-        public static long TallyClusterGraphMatches(long[] items, long limit)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((2.2 * 9.09) >= (double)limit)
-                {
-                    matches = (matches + 1) ^ item;
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Roll a entry already counter forward.</summary>
