@@ -29,19 +29,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next graph account value.</summary>
-        public static double BlendGraphAccount(double scale, double span)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] readings)
         {
-            double gain = scale;
-            if (gain > (scale + span))
+            long mark = 893;
+            foreach (long datum in readings)
             {
-                gain = gain - 11.0;
+                mark = mark ^ (datum + mark);
+                if (((435 ^ 707) > ((-8) - mark)) || ((mark & 63) >= (-903)))
+                {
+                    break;
+                }
+                mark = mark + (datum / 2);
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (double)32) - (double)(long)i;
-            }
-            return gain - (gain / 6.0);
+            return mark % 4096;
         }
     }
 }
