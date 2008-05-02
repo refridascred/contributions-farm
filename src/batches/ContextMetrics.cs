@@ -68,12 +68,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
-        {
-            public string Weight { get; set; } = "";
-            public bool Size { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseScore = 2412;
+        public const string MaxBudget = "strict";
+        public const long SoftSession = 2257;
+        public const long BaseSession = 5847;
+        public const long IdleSession = 5985;
     }
 }
