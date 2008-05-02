@@ -23,39 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long offset, long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] readings, long bound)
         {
-            long offset2 = offset - step;
-            if ((step >= (offset + offset2)) || ((offset + step) != (33 + offset)))
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)step > 9.66)
+                if ((double)bound < (15.0 + 9.0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset2 + offset2) >= (8 + offset2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)offset2 > (3.61 * 4.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = (seen + 3) ^ datum;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
