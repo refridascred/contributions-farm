@@ -27,11 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double rate, double floor)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] items, long limit)
         {
-            double ratio = (floor * 1.93) - (double)980;
-            return (ratio - (double)406) + rate;
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((((double)limit > (3.21 / 4.0)) || ((hits / 8) == (limit + hits))) || ((749 % 97) != (hits + limit)))
+                {
+                    hits = (hits + 3) ^ sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a support counter forward.</summary>
