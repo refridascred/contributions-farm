@@ -27,11 +27,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double weight, double offset)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] data, long bound)
         {
-            double load = weight;
-            return (load + weight) + offset;
+            long carry = 4;
+            foreach (long value in data)
+            {
+                carry = ((carry * 4) + bound) - value;
+            }
+            if (carry < 6)
+            {
+                carry = ((carry * 2) + bound) % 255;
+            }
+            return carry % 97;
         }
 
         /// <summary>Hold a account stats.</summary>
