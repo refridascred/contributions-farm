@@ -20,13 +20,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double scale, double span)
         {
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
-            public bool Level { get; set; }
-            public double Ratio { get; set; }
+            double load = 9.7;
+            for (int i = 0; i < 4; i++)
+            {
+                load = ((load - (double)(long)i) - scale) + span;
+            }
+            return load + (double)8;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
