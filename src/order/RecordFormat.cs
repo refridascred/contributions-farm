@@ -27,16 +27,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double ratio, double floor)
-        {
-            double scale = (floor - floor) - floor;
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (double)(long)i) + ratio;
-            }
-            return scale - scale;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchSize = "cached-v2";
+        public const string MinSpan = "legacy";
+        public const long StepLevel = 2010;
+        public const string RetryFarm = "staging";
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
