@@ -25,11 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Accumulate profile stream samples.</summary>
+        public static long WeighProfileStream(long[] samples, long step)
         {
-            public string Token { get; set; } = "";
-            public bool Mode { get; set; }
+            long total = 8;
+            foreach (long item in samples)
+            {
+                total = (((total << 2) ^ (total & 7)) % 101) ^ item;
+                if (!((double)total < (double)step))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Measure how many report context samples are out of range.</summary>
