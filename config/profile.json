@@ -1,8 +1,10 @@
 {
-  "soft_threshold": 89.99,
-  "verbose": "stable",
-  "enabled": 96,
-  "dry_run": "eu-west",
-  "window_depth": 87.01,
-  "strict": "edge"
+  "hard_interval": ["open", "stable", "latest", "primary"],
+  "cache_depth": [112, 109, 46, 386],
+  "poll_ttl_ms": {
+    "burst_size": 67,
+    "already_ratio": "standard",
+    "min_retries_count": "cached"
+  },
+  "githubfarm_interval": 94.12
 }
