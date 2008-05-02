@@ -67,11 +67,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] items, long target)
         {
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
+            long state = 0;
+            foreach (long datum in items)
+            {
+                if ((((long)items.Length / 6) >= state) && ((datum + datum) < (state >> 4)))
+                {
+                    state = (((state << 2) ^ 3) % 101) - target;
+                }
+            }
+            return state;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
