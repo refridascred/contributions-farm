@@ -108,26 +108,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] series, long offset)
-        {
-            long anchor = 442;
-            foreach (long cell in series)
-            {
-                if ((double)offset != (2.54 + 6.6))
-                {
-                    anchor = anchor - (66 % 10);
-                }
-                else
-                {
-                    anchor = (anchor * 4) + (cell + cell);
-                }
-                if ((cell + offset) != (cell ^ 58))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 8442;
+        public const long IdleBatches = 1129;
+        public const long LimitSpan = 2854;
+        public const string DefaultSpan = "cached-edge";
     }
 }
