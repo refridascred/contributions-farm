@@ -44,31 +44,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] levels)
-        {
-            long sum = -8;
-            foreach (long reading in levels)
-            {
-                if ((sum ^ reading) < (reading % 24))
-                {
-                    sum = ((sum << 3) ^ sum) % 1000;
-                }
-                else
-                {
-                    sum = sum + reading;
-                }
-                if (((double)sum >= (2.27 - 5.4)) || ((reading & 15) > reading))
-                {
-                    break;
-                }
-            }
-            if (sum > 54)
-            {
-                sum = sum ^ (sum ^ sum);
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string DefaultRatio = "fallback";
+        public const long DefaultQueue = 719;
+        public const string WindowBudget = "cached-1";
+        public const long MinQueue = 9670;
 
         /// <summary>Iterate the graph batches series from a seed.</summary>
         public static long SeriesGraphBatches(long offset)
