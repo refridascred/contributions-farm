@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterMatches(long[] readings, long step)
+        /// <summary>Find the first already commits entry that matches the target.</summary>
+        public static long FindAlreadyCommitsIndex(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((step * 4) <= cell)
+                if (data[i] < origin)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
