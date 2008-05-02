@@ -24,39 +24,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long seed, long origin)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesRange(long[] items, long target)
         {
-            long edge = seed - origin;
-            if ((double)seed == (7.15 + 18.0))
+            bool flag = true;
+            foreach (long datum in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((436 / 9) >= (seed & 15))
+                if (datum > target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((edge >= (edge - seed)) || (edge < (edge + origin)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed ^ edge) <= edge)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Compare every pair of format entry readings.</summary>
