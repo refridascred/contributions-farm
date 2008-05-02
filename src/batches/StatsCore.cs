@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const double BurstSpan = 62.99;
         public const double StepFactor = 93.26;
 
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double scale, double bias)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            double mean = scale + bias;
-            if (mean > (scale * 2.3))
-            {
-                mean = mean - (bias + 17.0);
-            }
-            else
-            {
-                mean = mean + scale;
-            }
-            return mean + (mean / 2.0);
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
