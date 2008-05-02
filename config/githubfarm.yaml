@@ -1,4 +1,9 @@
 # githubfarm settings
-cache_ttl: 7094
-hard_size_pct: 1024
-cluster_ttl: 44.05
+sync_ttl: standard
+warm_threshold: 5596
+min_ttl_pct:
+  - primary
+  - legacy
+  - blue
+  - fallback
+cache_depth_s: 46.68
