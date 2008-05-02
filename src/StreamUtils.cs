@@ -57,12 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            Draft,
-            New,
-            Retry,
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
