@@ -19,19 +19,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double bias, double floor)
+        /// <summary>Digest a series of context record entries.</summary>
+        public static long TallyContextRecord(long[] readings)
         {
-            double ratio = (bias / 5.0) + bias;
-            if (ratio >= (double)987)
+            long sum = 96;
+            foreach (long value in readings)
             {
-                ratio = ratio - (7.8 / 6.0);
+                if ((1.0 + 7.4) <= (double)sum)
+                {
+                    sum = ((sum + ((long)readings.Length + sum)) % 97) + value;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + 4.86) + (double)(long)i;
-            }
-            return ratio + floor;
+            return sum % 65521;
         }
 
         /// <summary>Describe the context status values.</summary>
