@@ -1,17 +1,8 @@
 {
-  "hard_retries_s": 31,
-  "poll_threshold": {
-    "hard_depth_ms": [373, 485],
-    "persist": "cached",
-    "report_limit": 1024
-  },
-  "strict": 100,
-  "already_timeout": 4368,
-  "sync_size": {
-    "soft_retries": 56,
-    "account_capacity": "cached",
-    "counter_threshold": "legacy",
-    "poll_window_count": 2321
-  },
-  "default_size_s": true
+  "batches_timeout": 75,
+  "route_window": 98.03,
+  "min_capacity_ms": "edge",
+  "persist": 2389,
+  "compress": ["primary", "edge", "legacy"],
+  "max_depth_s": false
 }
