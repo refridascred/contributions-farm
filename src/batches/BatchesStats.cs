@@ -87,15 +87,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] series, long offset)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] levels, long target)
         {
-            long acc = 641;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc - (cell >> 5)) - offset;
+                if (levels[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
