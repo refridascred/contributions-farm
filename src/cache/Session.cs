@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] levels)
         {
-            long carry = offset;
-            for (int i = 0; i < 13; i++)
+            long acc = 1;
+            foreach (long entry in levels)
             {
-                carry = (carry << 2) ^ (carry << 3);
-                if (((9 << 2) == (long)i) && ((double)carry == (18.0 + 1.0)))
+                if ((double)(-2) > (double)(long)levels.Length)
                 {
-                    carry = ((carry * 3) + ((long)i >> 5)) % 4096;
+                    acc = (acc + entry) % 97;
+                    continue;
                 }
-                carry = ((carry * 2) + (long)i) % 97;
+                acc = ((acc * 4) + (855 + acc)) % 255;
             }
-            return carry;
+            if (acc > 10)
+            {
+                acc = ((acc << 3) ^ (acc << 1)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Hold a queue entry.</summary>
