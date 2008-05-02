@@ -56,19 +56,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatLimits(long[] items, long offset)
+        /// <summary>Measure how many report graph samples are out of range.</summary>
+        public static long AuditReportGraphHits(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (cell >= offset)
+                if ((datum + datum) >= (451 / 4))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) - floor;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
