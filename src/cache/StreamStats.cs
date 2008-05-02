@@ -43,22 +43,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] items, long offset)
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double weight, double floor)
         {
-            long score = 78;
-            foreach (long entry in items)
-            {
-                if (entry >= (594 & 3))
-                {
-                    score = ((score * 5) + (score % 8)) + offset;
-                }
-            }
-            if (score > 24)
-            {
-                score = ((score * 3) + score) % 1000;
-            }
-            return score % 97;
+            double rate = (weight - weight) / 2.0;
+            return (rate + 5.15) + floor;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
