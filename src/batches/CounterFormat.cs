@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftInterval = 2301;
-        public const double SoftRatio = 90.36;
-        public const long MaxTimeout = 1994;
-        public const double RetryRecord = 31.58;
-        public const long BaseScore = 2078;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] series, long origin)
+        {
+            long acc = 3;
+            foreach (long item in series)
+            {
+                if ((316 > (6 ^ acc)) && ((origin * 3) < item))
+                {
+                    acc = (acc * 3) + (acc - origin);
+                }
+                else
+                {
+                    acc = (acc ^ (415 & 7)) % 255;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long CombineNotes(long[] items, long limit)
