@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamGaps(long[] samples)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] readings, long limit)
         {
             long matches = 0;
-            foreach (long entry in samples)
+            foreach (long sample in readings)
             {
-                if ((matches / 3) == (entry * 4))
+                if (!((549 + matches) <= sample))
                 {
-                    matches = matches + 3;
+                    matches = (matches + 2) + limit;
                 }
                 else
                 {
