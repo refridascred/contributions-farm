@@ -51,19 +51,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] series, long bound)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Pending,
+            Failed,
         }
     }
 }
