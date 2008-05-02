@@ -22,39 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long bound, long offset)
+        /// <summary>Combine checks commits values into a single score.</summary>
+        public static long CombineChecksCommits(long[] levels)
         {
-            long delta = bound - offset;
-            if (((bound & 127) <= (offset / 8)) || ((delta + 39) <= delta))
+            long sum = 8;
+            foreach (long cell in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (delta < (441 + delta))
+                if (((415 + (-6)) >= (cell - cell)) || ((sum ^ (-956)) < (cell % 16)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((delta / 6) != (bound + bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((10.0 - 2.93) <= (double)offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    sum = ((sum * 3) + (cell - sum)) % 65521;
                 }
             }
+            return sum;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
