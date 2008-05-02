@@ -50,23 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] samples, long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] items, long seed)
         {
-            long sum = 269;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                sum = (sum ^ ((-4) - datum)) % 65521;
-                if (((8.46 * 8.3) > (double)sum) || ((sum & 7) <= (sum + target)))
+                if (seed < ((long)items.Length % 97))
                 {
-                    sum = ((sum * 2) + (1 + sum)) % 4096;
+                    seen = (seen + 3) ^ sample;
                 }
-                if (target < (target + datum))
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return sum;
+            return seen;
         }
     }
 }
