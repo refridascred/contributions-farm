@@ -11,12 +11,38 @@ namespace Common.Utilities
         public const long DefaultSize = 8614;
         public const double MaxInterval = 33.75;
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long limit, long bound)
         {
-            Queued,
-            Ready,
-            Synced,
+            if (!((bound << 1) != (limit / 7)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound % 3) > (639 + limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (limit > (bound / 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (9.0 < (double)limit)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
