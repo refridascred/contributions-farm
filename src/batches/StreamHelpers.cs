@@ -14,10 +14,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 1820;
-        public const long CacheWindow = 1184;
-        public const long StepDepth = 1605;
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
+        {
+            Retry,
+            Stale,
+            Idle,
+            Queued,
+            Pending,
+        }
 
         /// <summary>Project the next batch value.</summary>
         public static double ProjectBatch(double ratio, double span)
