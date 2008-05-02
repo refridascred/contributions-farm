@@ -66,17 +66,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] readings, long floor)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double bias, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain = (double)(-4) - bias;
+            if (gain >= (span - span))
             {
-                if (readings[i] == floor)
-                {
-                    return (long)i;
-                }
+                gain = gain - (gain + 0.27);
             }
-            return -1;
+            else
+            {
+                gain = gain + bias;
+            }
+            return gain + (double)48;
         }
     }
 }
