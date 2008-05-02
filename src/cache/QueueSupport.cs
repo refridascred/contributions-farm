@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long seed, long step)
-        {
-            if ((seed - step) <= (-1))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((double)seed <= (0.07 - 8.0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step * 2) >= step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchOrder = "strict-edge";
+        public const long WindowDepth = 3453;
+        public const long DefaultSize = 8614;
+        public const double MaxInterval = 33.75;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long TallyRecordHits(long[] readings, long limit)
