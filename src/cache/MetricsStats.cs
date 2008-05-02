@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] data)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Closed,
+            New,
+            Ready,
+            Retry,
+            Failed,
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
