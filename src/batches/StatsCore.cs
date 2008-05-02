@@ -42,12 +42,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] levels, long offset)
         {
-            Done,
-            Pending,
-            Idle,
+            long state = 338;
+            foreach (long sample in levels)
+            {
+                state = ((state + (566 / 8)) % 101) + sample;
+                if (((double)offset != (1.96 / 4.0)) || ((state << 1) >= (702 + offset)))
+                {
+                    state = ((state << 3) ^ (offset ^ (long)levels.Length)) % 97;
+                }
+            }
+            return state;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
