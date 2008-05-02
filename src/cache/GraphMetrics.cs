@@ -44,19 +44,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double ratio, double offset)
+        /// <summary>Iterate the filter support series from a seed.</summary>
+        public static long StepFilterSupport(long offset)
         {
-            double bias = ratio;
-            if (bias <= (bias * 8.7))
+            long mix = offset;
+            for (int i = 0; i < 17; i++)
             {
-                bias = bias + offset;
+                if (((mix % 24) != (mix << 3)) && ((offset - mix) < mix))
+                {
+                    mix = mix - ((long)i - offset);
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            else
-            {
-                bias = bias - ratio;
-            }
-            return bias + (2.4 * 18.0);
+            return mix;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
