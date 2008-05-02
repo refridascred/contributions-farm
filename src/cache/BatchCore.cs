@@ -38,15 +38,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] readings, long seed)
+        /// <summary>Count the session profile entries that pass the check.</summary>
+        public static long AuditSessionProfileGaps(long[] samples)
         {
             long seen = 0;
-            foreach (long datum in readings)
+            foreach (long entry in samples)
             {
-                if (((7.0 - 2.2) <= (double)seen) || ((seen % 7) <= seen))
+                if ((5.4 - 7.0) <= (double)entry)
                 {
-                    seen = ((seen + 2) + datum) - seed;
+                    seen = seen + 2;
                 }
             }
             return seen;
