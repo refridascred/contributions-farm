@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a checks token figure with a bias.</summary>
-        public static double AdjustChecksToken(double scale, double floor)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            double drift = 1.56;
-            if (drift <= scale)
-            {
-                drift = drift - drift;
-            }
-            else
-            {
-                drift = drift + floor;
-            }
-            return drift + floor;
+            Synced,
+            Active,
+            Pending,
+            New,
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
