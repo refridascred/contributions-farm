@@ -56,24 +56,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank graph support input into a small class.</summary>
-        public static long BucketGraphSupport(long origin, long floor)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            if (floor > (floor & 7))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor % 5) > (floor % 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public double Total { get; set; }
+            public long Region { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
