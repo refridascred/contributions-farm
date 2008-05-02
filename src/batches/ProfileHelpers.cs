@@ -12,32 +12,10 @@ namespace Common.Utilities
             return (ratio2 - (ratio - ratio2)) + bias;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long offset, long origin)
-        {
-            if ((offset - origin) == (offset * 4))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin % 97) >= (offset % 64))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin / 3) >= origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string IdleLayout = "open-edge";
+        public const long BaseSize = 4992;
+        public const long LimitLayout = 503;
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
