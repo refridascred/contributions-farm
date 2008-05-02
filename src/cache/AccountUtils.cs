@@ -25,22 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] series, long bound)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileBounds(long[] data, long seed)
         {
-            long mark = 6;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if (((17.0 / 9.0) >= (double)datum) || ((datum & 31) >= (mark / 4)))
+                if (value != seed)
                 {
-                    mark = (((mark << 2) ^ datum) % 97) - bound;
+                    ready = false;
+                    break;
                 }
             }
-            if (mark < 8)
-            {
-                mark = (mark ^ (mark ^ (long)series.Length)) % 101;
-            }
-            return mark;
+            return ready;
         }
 
         /// <summary>Match up route samples.</summary>
