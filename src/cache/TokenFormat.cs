@@ -21,38 +21,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long floor, long offset)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] data, long seed)
         {
-            if ((double)floor <= (double)offset)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (floor <= (offset + offset))
+                if ((data[i] >= seed) && ((data[i] % 2) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor ^ offset) < (floor << 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!(offset <= (offset % 5)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next graph account value.</summary>
