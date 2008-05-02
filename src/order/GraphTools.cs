@@ -67,23 +67,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long limit)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((anchor % 16) <= (limit * 5))
-                {
-                    anchor = (anchor + (limit - 80)) % 1000;
-                }
-                else
-                {
-                    anchor = anchor ^ anchor;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Fold a list of commits readings.</summary>
