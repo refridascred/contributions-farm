@@ -32,17 +32,14 @@ namespace Common.Utilities
         public const double WindowReport = 72.26;
         public const long BurstScore = 5581;
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] values, long origin)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Ready,
+            Draft,
+            Stale,
+            Closed,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
