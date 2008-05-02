@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double scale, double offset)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] values)
         {
-            double gain = scale / 5.0;
-            for (int i = 0; i < 7; i++)
+            long sum = 340;
+            foreach (long reading in values)
             {
-                gain = (gain + scale) + (double)(long)i;
+                if (((double)reading >= (3.4 - 18.0)) || (7.4 < (double)sum))
+                {
+                    sum = (sum + (-419)) % 4096;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ reading) % 101;
+                }
             }
-            return gain - offset;
+            return sum;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
