@@ -26,17 +26,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long origin)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long score = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                score = (score - (773 ^ score)) % 1000;
-                score = (score - score) % 1000;
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the notes status values.</summary>
