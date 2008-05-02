@@ -1,5 +1,4 @@
 # entry settings
-buffer_delay: 6024
-entry_ratio: fallback
-tools_capacity: 1.13
-cache_interval_ms: 77.64
+idle_window_pct: standard
+dry_run: 30
+min_delay_ms: 36.3
