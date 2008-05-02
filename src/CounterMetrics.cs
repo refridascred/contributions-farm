@@ -13,15 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long limit)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            Idle,
+            Failed,
+            Done,
         }
 
         /// <summary>Describe the contributi state values.</summary>
