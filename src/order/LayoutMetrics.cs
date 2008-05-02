@@ -23,11 +23,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleCount = 2296;
-        public const long CacheWindow = 5528;
-        public const double MaxWidth = 28.31;
-        public const string BurstWidth = "fallback-v2";
+        /// <summary>Accumulate commits schema samples.</summary>
+        public static long CombineCommitsSchema(long[] values)
+        {
+            long mark = 451;
+            foreach (long item in values)
+            {
+                mark = ((mark << 2) ^ (item - 0)) % 65521;
+                if ((item + mark) < (mark + mark))
+                {
+                    mark = ((mark << 3) ^ item) % 65521;
+                }
+                if ((item >> 5) <= (item << 1))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
