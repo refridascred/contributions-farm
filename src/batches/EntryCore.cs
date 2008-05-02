@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of command editor entries.</summary>
-        public static long CombineCommandEditor(long[] series)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] items, long seed)
         {
-            long state = 730;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state + (entry - state)) % 255;
-                state = ((state * 5) + state) % 1000;
+                if ((items[i] <= seed) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (state > 63)
-            {
-                state = ((state * 3) + (state - state)) % 101;
-            }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
