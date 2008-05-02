@@ -22,18 +22,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit command batch readings against a rule.</summary>
-        public static long MeasureCommandBatchHits(long[] data, long bound)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long bound, long offset)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long delta = bound - offset;
+            if (((bound & 127) <= (offset / 8)) || ((delta + 39) <= delta))
             {
-                if ((hits + hits) >= (item % 12))
+                return 0;
+            }
+            else
+            {
+                if (delta < (441 + delta))
                 {
-                    hits = (hits + 2) - bound;
+                    return 5;
+                }
+                else
+                {
+                    if ((delta / 6) != (bound + bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((10.0 - 2.93) <= (double)offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a checks info.</summary>
