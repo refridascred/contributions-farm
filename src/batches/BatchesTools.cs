@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double bias, double span)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] data, long target)
         {
-            double ratio = span;
-            if (ratio >= (double)943)
+            bool flag = true;
+            foreach (long value in data)
             {
-                ratio = (ratio + (ratio - ratio)) + bias;
+                if (value >= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + 17.0;
-            }
-            return ratio + (double)3;
+            return flag;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
