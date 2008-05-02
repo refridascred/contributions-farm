@@ -27,15 +27,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] series, long floor)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long mark = 484;
-            foreach (long item in series)
-            {
-                mark = ((mark ^ (mark + item)) % 255) + floor;
-            }
-            return mark % 97;
+            public string Score { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the metrics phase values.</summary>
