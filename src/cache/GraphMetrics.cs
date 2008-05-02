@@ -33,21 +33,23 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Iterate the context account series from a seed.</summary>
-        public static long IterateContextAccount(long floor)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] readings, long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 17; i++)
+            long mark = 87;
+            foreach (long reading in readings)
             {
-                if ((double)mix <= (2.3 - 1.75))
+                mark = (mark - (origin + mark)) % 101;
+                if ((origin + reading) == (origin & 255))
                 {
-                    mix = ((mix << 2) ^ floor) % 1000;
+                    mark = (mark * 2) + (mark - reading);
+                }
+                if ((reading % 97) != (reading + mark))
+                {
                     break;
                 }
-                mix = (mix << 2) ^ mix;
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return mark % 97;
         }
 
         /// <summary>Iterate the filter support series from a seed.</summary>
