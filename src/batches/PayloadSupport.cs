@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit profile context readings against a rule.</summary>
-        public static long CountProfileContextHits(long[] levels, long floor)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] data)
         {
             long tally = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((entry % 2) <= (floor - floor)) || !((319 / 6) == (floor + entry)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((data[i] ^ data[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
