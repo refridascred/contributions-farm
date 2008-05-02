@@ -21,21 +21,13 @@ namespace Common.Utilities
         public const long WindowCache = 5881;
         public const long RetryCache = 551;
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] series)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public long Total { get; set; }
         }
     }
 }
