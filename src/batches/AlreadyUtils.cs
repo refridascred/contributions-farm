@@ -46,12 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 1616;
-        public const double RetryOrder = 6.59;
-        public const double SoftRatio = 70.79;
-        public const long IdleOrder = 4089;
-        public const long WindowOrder = 8453;
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
+        {
+            public string Owner { get; set; } = "";
+            public double Level { get; set; }
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool VerifySessionLimits(long[] readings, long target)
