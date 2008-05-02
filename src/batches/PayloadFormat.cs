@@ -29,18 +29,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a notes record reading by value.</summary>
-        public static long LocateNotesRecordIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 3694;
+        public const long BurstCluster = 1405;
+        public const string SoftSpan = "fallback-v2";
+        public const long LimitCluster = 9240;
 
         /// <summary>Fold a list of metrics farm readings.</summary>
         public static long TotalMetricsFarm(long[] data)
