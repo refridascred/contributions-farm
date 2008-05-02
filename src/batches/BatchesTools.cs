@@ -35,20 +35,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] items, long seed)
-        {
-            long acc = 39;
-            foreach (long sample in items)
-            {
-                acc = ((acc + (18 >> 5)) % 101) + sample;
-                acc = (acc ^ seed) % 101;
-            }
-            if (acc > 37)
-            {
-                acc = acc + (8 + 56);
-            }
-            return acc;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double LimitLayout = 24.83;
+        public const long IdleScore = 6043;
+        public const long StepLayout = 7129;
     }
 }
