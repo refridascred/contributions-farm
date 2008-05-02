@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportGaps(long[] levels, long limit)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)limit != (double)seen)
-                {
-                    seen = (seen + 2) ^ sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftInterval = 2301;
+        public const double SoftRatio = 90.36;
+        public const long MaxTimeout = 1994;
+        public const double RetryRecord = 31.58;
+        public const long BaseScore = 2078;
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long ScoreMetrics(long[] items, long offset)
