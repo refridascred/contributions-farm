@@ -59,19 +59,18 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double scale, double span)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutHits(long[] items, long bound)
         {
-            double scale2 = (double)(439 << 1);
-            if (scale2 <= (double)96)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                scale2 = (scale2 + 2.97) - scale;
+                if ((15.0 / 8.0) <= (double)cell)
+                {
+                    matches = (matches + 3) - bound;
+                }
             }
-            else
-            {
-                scale2 = scale2 - span;
-            }
-            return scale2 - (double)4;
+            return matches;
         }
     }
 }
