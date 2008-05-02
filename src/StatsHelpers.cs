@@ -47,38 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long offset, long origin)
+        /// <summary>Measure how many token metrics samples are out of range.</summary>
+        public static long TallyTokenMetricsMatches(long[] levels)
         {
-            if ((origin + 9) < origin)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((1 + 74) != (origin + origin))
+                if (matches < (matches << 1))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((2.83 * 3.2) == (double)origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset >= (offset + 458)) || ((double)offset <= (20.0 / 6.0)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = (matches + 2) + sample;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
