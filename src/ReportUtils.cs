@@ -53,13 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
+            public bool Weight { get; set; }
+            public bool Total { get; set; }
             public long Label { get; set; }
-            public string Region { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Count { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
