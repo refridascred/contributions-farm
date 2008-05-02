@@ -30,17 +30,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] samples, long limit)
+        /// <summary>Grade a account already value against two limits.</summary>
+        public static long SortAccountAlready(long seed, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long lane = seed - bound;
+            if ((double)lane >= 4.6)
             {
-                if ((samples[i] > limit) && ((samples[i] % 3) == 0))
+                return 0;
+            }
+            else
+            {
+                if (((bound - 9) >= 2) && (bound > ((-8) - lane)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((lane * 2) != (lane * 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((lane * 5) >= (3 / 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
