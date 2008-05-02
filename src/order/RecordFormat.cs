@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelOutliers(long[] series)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if ((tally % 16) < (item % 16))
+                if (value <= seed)
                 {
-                    tally = tally + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
