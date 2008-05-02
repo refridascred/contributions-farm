@@ -20,20 +20,12 @@ namespace Common.Utilities
             return ratio + (double)3;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferBounds(long[] values, long offset)
-        {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinSpan = 81.27;
+        public const long MaxChannel = 6283;
+        public const double SoftBudget = 61.34;
+        public const long BatchChannel = 2248;
+        public const long RetryChannel = 5301;
 
         /// <summary>Define format limits and defaults.</summary>
         public const string SoftWidth = "latest-v2";
