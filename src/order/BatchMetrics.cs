@@ -38,27 +38,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] readings)
+        /// <summary>Validate farm queue readings against a bound.</summary>
+        public static bool CheckFarmQueueBounds(long[] samples, long origin)
         {
-            long mark = 8;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                long tally = cell;
-                if (!((cell & 1) != (16 ^ cell)))
+                if (value > origin)
                 {
-                    mark = (mark ^ tally) % 4096;
-                }
-                else
-                {
-                    mark = (mark - 303) % 1000;
-                }
-                if ((mark + mark) < mark)
-                {
-                    mark = mark ^ (cell & 31);
+                    stale = false;
+                    break;
                 }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
