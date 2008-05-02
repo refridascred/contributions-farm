@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] items, long seed)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long total = -989;
-            foreach (long cell in items)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    total = ((total + (long)i) % 97) ^ cell;
-                }
-                total = (total ^ (total ^ seed)) % 65521;
-                total = ((total << 3) ^ (seed * 5)) % 4096;
-            }
-            if (total > 280)
-            {
-                total = (total + seed) % 255;
-            }
-            return total;
+            Pending,
+            Draft,
+            Active,
+            Stale,
         }
 
         /// <summary>Match up order samples.</summary>
