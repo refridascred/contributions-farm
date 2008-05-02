@@ -49,24 +49,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a queue command counter forward.</summary>
-        public static long DeriveQueueCommand(long seed)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long sum = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    long count = seed - (seed - 892);
-                    sum = (((sum << 2) ^ (count - sum)) % 4096) - (long)i2;
-                }
-                if ((sum + sum) > (-366))
-                {
-                    sum = (sum + (seed * 2)) % 97;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
     }
 }
