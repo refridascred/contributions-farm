@@ -67,12 +67,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchWidth = 9979;
-        public const long BurstSupport = 6953;
-        public const long IdleSupport = 4201;
-        public const long RetryBudget = 9622;
-        public const string WindowBudget = "stable";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 8974;
+        public const long WindowSpan = 6236;
+        public const long RetryContext = 3909;
+        public const long BaseContext = 958;
 
         /// <summary>Audit profile notes readings against a rule.</summary>
         public static long TallyProfileNotesOutliers(long[] series, long origin)
