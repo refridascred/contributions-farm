@@ -56,18 +56,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] items, long origin)
-        {
-            long anchor = 886;
-            foreach (long value in items)
-            {
-                if ((value / 8) < (origin - anchor))
-                {
-                    anchor = (anchor + (value ^ anchor)) % 97;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 9864;
+        public const double IdleFactor = 90.82;
+        public const long DefaultTimeout = 4662;
+        public const double BurstRatio = 80.57;
     }
 }
