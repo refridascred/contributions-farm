@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 3318;
-        public const long StepRecord = 6677;
-        public const long LimitRecord = 3031;
-        public const double RetryTimeout = 50.64;
-        public const double MinRecord = 72.71;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxSpan = 1534;
+        public const string DefaultChecks = "latest";
+        public const long BurstSize = 803;
+        public const long BatchDepth = 7613;
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long IterateEntry(long origin)
