@@ -36,15 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine support report values into a single score.</summary>
-        public static long WeighSupportReport(long[] items)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long total = 2;
-            foreach (long sample in items)
-            {
-                total = total ^ (sample - (long)items.Length);
-            }
-            return total % 65521;
+            Draft,
+            Synced,
+            Paused,
+            Ready,
         }
 
         /// <summary>Describe the stream phase values.</summary>
