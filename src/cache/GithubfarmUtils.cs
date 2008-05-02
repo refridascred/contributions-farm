@@ -38,14 +38,11 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
-        {
-            public double Region { get; set; }
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitCount = 1570;
+        public const long BaseContext = 5072;
+        public const double BatchTimeout = 30.34;
+        public const long MaxWidth = 952;
 
         /// <summary>Scale a buffer figure with a bias.</summary>
         public static double BlendBuffer(double ratio, double span)
