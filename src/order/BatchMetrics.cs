@@ -51,19 +51,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a cluster already figure with a bias.</summary>
-        public static double AdjustClusterAlready(double rate, double offset)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long CompareClusterCount(long[] samples)
         {
-            double load = (rate - offset) + (offset + offset);
-            if (load <= load)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load + offset;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - (rate / 2.0);
-            }
-            return load + (double)9;
+            return tally;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
