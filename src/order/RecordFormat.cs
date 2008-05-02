@@ -45,20 +45,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] series)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesGaps(long[] items)
         {
-            long mix = 582;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                mix = mix ^ 4;
-                mix = ((mix << 2) ^ (mix ^ reading)) % 4096;
-                if (((long)series.Length + reading) >= 3)
+                if ((double)cell < 8.91)
                 {
-                    mix = ((mix * 4) + (77 << 1)) % 101;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return mix;
+            return hits;
         }
     }
 }
