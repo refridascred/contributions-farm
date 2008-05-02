@@ -28,13 +28,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            public double Weight { get; set; }
+            public string Offset { get; set; } = "";
             public long Ratio { get; set; }
-            public double Count { get; set; }
-            public double Stamp { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
