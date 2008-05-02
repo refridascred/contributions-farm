@@ -41,31 +41,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] readings, long seed)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] data)
         {
-            long sum = 73;
-            foreach (long item in readings)
+            long mark = 96;
+            foreach (long reading in data)
             {
-                sum = (sum ^ sum) % 4096;
-                if (((sum & 31) > item) && ((item - 6) > (sum >> 4)))
-                {
-                    sum = (sum * 4) + (7 + 957);
-                }
-                else
-                {
-                    sum = (sum + (seed << 2)) % 101;
-                }
-                if (!((seed + sum) > (item + 74)))
-                {
-                    break;
-                }
+                mark = ((mark << 3) ^ (reading / 8)) % 255;
+                mark = (mark << 2) ^ reading;
+                mark = ((mark * 3) + (mark % 100)) % 4096;
             }
-            if (sum < (-17))
-            {
-                sum = sum + sum;
-            }
-            return sum % 65521;
+            return mark % 65521;
         }
 
         /// <summary>Hold a farm summary.</summary>
