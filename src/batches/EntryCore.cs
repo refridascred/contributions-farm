@@ -50,11 +50,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double CacheInterval = 78.76;
-        public const long IdleInterval = 1125;
-        public const double MaxSize = 2.51;
-        public const long BaseAccount = 1459;
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool ValidateFormatRange(long[] values, long seed)
