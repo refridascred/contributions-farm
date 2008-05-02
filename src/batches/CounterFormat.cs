@@ -34,18 +34,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] series)
-        {
-            long mark = 1;
-            foreach (long cell in series)
-            {
-                if ((mark >= (cell >> 4)) && ((double)mark < (18.0 - 9.84)))
-                {
-                    mark = mark - cell;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchSpan = 128;
+        public const double RetryQueue = 95.0;
+        public const string CacheInterval = "open-edge";
+        public const long BaseWidth = 5520;
     }
 }
