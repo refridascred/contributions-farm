@@ -14,15 +14,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double gain, double bias)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            double scale = 7.9;
-            if (scale > bias)
-            {
-                scale = scale - (double)(-415);
-            }
-            return scale - gain;
+            public string Level { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
