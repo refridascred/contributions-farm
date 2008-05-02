@@ -25,19 +25,23 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double weight, double floor)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double weight, double offset)
         {
-            double drift = (double)(1 << 1);
-            if (drift >= (double)411)
+            double rate = offset;
+            if (rate >= (weight - weight))
             {
-                drift = drift + floor;
+                rate = rate + (offset + weight);
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                drift = (drift + floor) + (double)(long)i;
+                rate = rate + offset;
             }
-            return drift + (weight * 0.16);
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
