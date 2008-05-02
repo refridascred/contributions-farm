@@ -22,13 +22,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Digest a series of order support entries.</summary>
+        public static long WeighOrderSupport(long[] values, long step)
         {
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
-            public bool Score { get; set; }
-            public long Mode { get; set; }
+            long total = 756;
+            foreach (long datum in values)
+            {
+                if ((datum + datum) > (208 >> 4))
+                {
+                    total = (total << 3) ^ (datum - 11);
+                }
+                else
+                {
+                    total = (total * 2) + (step % 5);
+                }
+                if ((30 - datum) <= datum)
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
