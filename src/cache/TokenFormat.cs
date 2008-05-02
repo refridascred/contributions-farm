@@ -33,22 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] data, long target)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long target)
         {
-            long carry = 8;
-            foreach (long cell in data)
+            long mark = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell <= target)
-                {
-                    carry = (carry ^ (carry + carry)) % 65521;
-                }
-                else
-                {
-                    carry = (carry + (cell % 2)) % 97;
-                }
+                mark = (mark - (target << 1)) % 101;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
