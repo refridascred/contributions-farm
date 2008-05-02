@@ -37,32 +37,20 @@ namespace Common.Utilities
         public const double LimitCount = 31.23;
         public const long BaseGraph = 6549;
 
-        /// <summary>Classify a account payload pair into a bucket.</summary>
-        public static long SortAccountPayload(long origin, long seed)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] levels)
         {
-            long offset = origin ^ seed;
-            if ((3.51 + 4.0) > (double)origin)
+            long total = 52;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((origin / 3) >= origin) && (offset >= (offset + origin)))
+                if (89 > (total - reading))
                 {
-                    return 1;
+                    total = (total + 31) % 97;
                 }
-                else
-                {
-                    if (!((seed ^ offset) != (origin - offset)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                total = ((total << 3) ^ (reading * 4)) % 4096;
+                total = ((total << 3) ^ total) % 97;
             }
+            return total;
         }
     }
 }
