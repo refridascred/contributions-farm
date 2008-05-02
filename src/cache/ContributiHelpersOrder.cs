@@ -5,27 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] values)
+        /// <summary>Grade a queue already value against two limits.</summary>
+        public static long RankQueueAlready(long seed, long limit)
         {
-            long mix = 5;
-            foreach (long item in values)
+            long prev = seed + limit;
+            if (prev <= (limit / 5))
             {
-                mix = mix ^ (mix + mix);
-                if ((double)mix >= (6.6 - 8.7))
+                return 0;
+            }
+            else
+            {
+                if ((prev + seed) <= prev)
                 {
-                    mix = ((mix * 4) + (mix ^ mix)) % 1000;
+                    return 6;
                 }
                 else
                 {
-                    mix = (mix ^ (mix ^ mix)) % 4096;
-                }
-                if ((mix + item) == (mix + 94))
-                {
-                    break;
+                    return 4;
                 }
             }
-            return mix % 65521;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
