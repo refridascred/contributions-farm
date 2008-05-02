@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] data, long floor)
+        /// <summary>Count session commits pairs that satisfy a relation.</summary>
+        public static long MatchSessionCommitsCount(long[] samples)
         {
-            long acc = 19;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (floor > 83)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = ((acc + (855 + acc)) % 97) - sample;
-                }
-                else
-                {
-                    acc = (acc ^ (655 - 388)) % 65521;
+                    if ((samples[i] + samples[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Describe the editor phase values.</summary>
