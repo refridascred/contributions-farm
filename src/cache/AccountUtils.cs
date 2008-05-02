@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Pending,
-            Draft,
-            Active,
-            Stale,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftInterval = 9397;
+        public const long HardDepth = 9982;
+        public const string StepSize = "legacy-1";
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long TallyAlreadyMatches(long[] series)
