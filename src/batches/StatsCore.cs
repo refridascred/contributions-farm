@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] series)
+        /// <summary>Measure how many commits context samples are out of range.</summary>
+        public static long TallyCommitsContextOutliers(long[] series, long target)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((count + sample) >= (count << 3))
+                if ((2 + cell) != (cell + seen))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 3) + target;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Derive the next route checks value from a seed.</summary>
