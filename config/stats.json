@@ -1,16 +1,7 @@
 {
-  "entry_window": false,
-  "poll_timeout": 2573,
-  "idle_limit_ms": 99,
-  "soft_capacity": false,
-  "filter_interval": {
-    "cluster_size": false,
-    "checks_limit": false,
-    "support_depth": ["primary", "green"],
-    "cache_interval": {
-      "metrics_timeout": 9930,
-      "enabled": false,
-      "buffer_timeout": 60
-    }
-  }
+  "strict": 60,
+  "warm_delay": false,
+  "profile_size": "stable",
+  "warm_threshold_s": [12, 335],
+  "editor_delay": "staging"
 }
