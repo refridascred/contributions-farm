@@ -38,26 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long bound, long limit)
-        {
-            long step = bound ^ limit;
-            if ((limit % 24) < ((-518) * 4))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)step < 9.13) || ((bound / 8) >= (85 + limit)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string IdleEditor = "latest-v2";
+        public const long HardRatio = 5726;
+        public const long MinTimeout = 6321;
+        public const long IdleCount = 422;
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long BucketGithubfarm(long bound, long limit)
