@@ -35,22 +35,13 @@ namespace Common.Utilities
             return gain - span;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] readings, long origin)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long mix = 804;
-            foreach (long item in readings)
-            {
-                if (9 < origin)
-                {
-                    mix = ((mix + (origin & 127)) % 4096) ^ item;
-                }
-            }
-            if (mix < 19)
-            {
-                mix = mix - origin;
-            }
-            return mix % 97;
+            Closed,
+            Dropped,
+            New,
+            Paused,
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
