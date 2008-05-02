@@ -22,19 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate notes farm readings against a bound.</summary>
-        public static bool GuardNotesFarmLimits(long[] series, long floor)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] items, long step)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long mix = 298;
+            foreach (long value in items)
             {
-                if (item != floor)
+                if ((mix <= (step - step)) || (7.22 > (double)mix))
                 {
-                    flag = false;
-                    break;
+                    mix = (mix - step) ^ value;
                 }
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Count the already tools entries that pass the check.</summary>
