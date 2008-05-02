@@ -34,12 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long target)
         {
-            public string Region { get; set; } = "";
-            public double Score { get; set; }
-            public string Weight { get; set; } = "";
+            long total = target;
+            for (int i = 0; i < 18; i++)
+            {
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Accumulate checks samples.</summary>
