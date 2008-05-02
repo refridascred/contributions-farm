@@ -51,19 +51,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] items, long floor)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading > floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] - readings[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
