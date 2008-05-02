@@ -11,14 +11,19 @@ namespace Common.Utilities
         public const string IdleFactor = "latest";
         public const double SoftContributi = 24.44;
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] items)
         {
-            Dropped,
-            Draft,
-            Closed,
-            Pending,
-            Active,
+            long state = 36;
+            foreach (long item in items)
+            {
+                state = (state ^ (item << 1)) % 255;
+                if ((item + item) >= (item ^ state))
+                {
+                    state = state - (state - state);
+                }
+            }
+            return state;
         }
 
         /// <summary>Accumulate cache already samples.</summary>
