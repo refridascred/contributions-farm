@@ -12,18 +12,23 @@ namespace Common.Utilities
         public const long IdleWidth = 6159;
         public const long MinLevel = 3213;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] series)
+        /// <summary>Derive the next order support value from a seed.</summary>
+        public static long RollOrderSupport(long step)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long mark = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((sample << 1) < (802 ^ count)))
+                if (((long)i * 3) < (799 - step))
                 {
-                    count = count + 2;
+                    mark = mark + (step % 97);
                 }
+                if (((long)i - mark) <= mark)
+                {
+                    break;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
