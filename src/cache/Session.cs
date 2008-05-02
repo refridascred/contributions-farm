@@ -46,17 +46,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Find the first layout record entry that matches the target.</summary>
-        public static long LookupLayoutRecordIndex(long[] samples, long target)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (samples[i] < target)
-                {
-                    return (long)i;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
     }
 }
