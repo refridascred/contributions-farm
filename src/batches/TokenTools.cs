@@ -30,13 +30,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
-        {
-            Ready,
-            Retry,
-            Locked,
-            Done,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double WindowTimeout = 52.64;
+        public const string StepStats = "fallback-edge";
+        public const double CacheBudget = 5.35;
+        public const long WindowRatio = 8936;
+        public const long MinStats = 3133;
     }
 }
