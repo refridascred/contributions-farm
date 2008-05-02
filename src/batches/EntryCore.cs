@@ -40,15 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metric metrics series from a seed.</summary>
-        public static long StepMetricMetrics(long offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] samples, long target)
         {
-            long total = offset;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                total = ((total * 2) + (long)i) % 65521;
+                if (((894 / 5) >= (target - cell)) || (target > (cell ^ seen)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
