@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank githubfarm payload input into a small class.</summary>
-        public static long SortGithubfarmPayload(long origin, long seed)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long diff = origin - seed;
-            if (3 <= seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if (40 <= diff)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Fold a list of tools readings.</summary>
