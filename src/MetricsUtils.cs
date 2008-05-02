@@ -43,17 +43,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] values, long limit)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (values[i] > limit)
+                if ((matches - matches) < (cell - 62))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a account stats.</summary>
