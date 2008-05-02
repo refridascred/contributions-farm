@@ -1,6 +1,7 @@
-id,region,token,ratio
-1,87.43,stable,245
-2,cached,738,local
-3,43.15,446,928
-4,strict,staging,58
-5,189,cached,919
+id,active,state
+1,open,40.69
+2,85.91,465
+3,57.46,48.95
+4,33.07,cached
+5,4.27,91.76
+6,strict,94.36
