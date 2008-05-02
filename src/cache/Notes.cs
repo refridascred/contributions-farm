@@ -46,21 +46,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] series)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long target, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (seed < (10 << 1))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((target + 27) > (seed / 6))
                 {
-                    if ((series[i] + series[j]) != 2)
+                    return 6;
+                }
+                else
+                {
+                    if (((seed / 5) > (target - seed)) || ((double)seed != (1.74 + 19.0)))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the entry phase values.</summary>
