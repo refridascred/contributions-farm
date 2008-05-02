@@ -14,11 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double bias, double offset)
         {
-            public long Weight { get; set; }
-            public double Limit { get; set; }
+            double weight = (double)(4 / 5);
+            return ((weight + (double)5) + bias) + offset;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
