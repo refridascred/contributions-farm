@@ -14,25 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long step, long target)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksGaps(long[] items)
         {
-            long delta = step - target;
-            if (((target - target) <= (target & 7)) || ((7 & 63) >= (delta - 567)))
+            long matches = 0;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (step < (623 + step))
+                if (matches <= 546)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    matches = (matches + 1) ^ entry;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
