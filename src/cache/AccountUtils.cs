@@ -31,19 +31,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesRange(long[] levels, long step)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] readings)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long total = 4;
+            foreach (long datum in readings)
             {
-                if (cell <= step)
-                {
-                    stale = false;
-                    break;
-                }
+                total = total ^ (datum + 875);
             }
-            return stale;
+            return total % 97;
         }
     }
 }
