@@ -24,13 +24,39 @@ namespace Common.Utilities
             return load + (double)(-244);
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long offset, long offset2)
         {
-            Closed,
-            Retry,
-            New,
-            Failed,
+            long delta = offset - offset2;
+            if ((offset ^ offset2) >= (703 / 7))
+            {
+                return 8;
+            }
+            else
+            {
+                if (1.7 >= (double)offset2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((delta % 5) < 79)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((3 ^ 55) < offset2)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a order record.</summary>
