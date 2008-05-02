@@ -46,20 +46,12 @@ namespace Common.Utilities
         public const double DefaultWidth = 14.78;
         public const long SoftSize = 843;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] series)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long mark = 5;
-            foreach (long datum in series)
-            {
-                if (((datum + mark) > ((-609) * 3)) || ((datum - mark) < (mark * 3)))
-                {
-                    mark = (mark - (mark - mark)) % 65521;
-                    break;
-                }
-                mark = (mark * 3) + (datum + mark);
-            }
-            return mark;
+            Closed,
+            Active,
+            Stale,
         }
 
         /// <summary>Scale a filter stream figure with a bias.</summary>
