@@ -22,19 +22,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterRange(long[] items, long seed)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long target, long bound)
         {
-            bool valid = true;
-            foreach (long item in items)
+            if (((bound + bound) > 8) && ((357 - bound) == (550 % 8)))
             {
-                if (item > seed)
+                return 1;
+            }
+            else
+            {
+                if ((target % 100) < (5 >> 2))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)bound < (19.0 * 13.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Roll a context counter forward.</summary>
