@@ -22,17 +22,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long bound)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                total = total - (264 + total);
-                total = total - (total + bound);
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            Active,
+            Locked,
+            Paused,
+            Failed,
         }
 
         /// <summary>Locate a channel reading by value.</summary>
