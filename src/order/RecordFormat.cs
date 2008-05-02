@@ -41,12 +41,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string RetryGraph = "stable-1";
-        public const long MaxGraph = 6246;
-        public const double StepGraph = 15.94;
-        public const long MinRatio = 5472;
-        public const long WindowScore = 496;
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the order profile entries that pass the check.</summary>
         public static long CountOrderProfileGaps(long[] levels)
