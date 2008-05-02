@@ -1,8 +1,7 @@
 {
-  "dry_run": 5389,
-  "already_window": [298, 301, 464, 229],
-  "idle_delay_count": false,
-  "batch_limit": "strict",
-  "poll_retries_s": 32,
-  "filter_ratio": false
+  "batch_depth_count": "edge",
+  "notes_limit": "blue",
+  "default_ratio_ms": "strict",
+  "max_depth_pct": true,
+  "dry_run": "eu-west"
 }
