@@ -31,13 +31,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamMatches(long[] series)
         {
-            Dropped,
-            Ready,
-            Synced,
-            Locked,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((((6.1 / 4.0) <= (double)tally) || (706 < (tally + sample))) || ((sample ^ sample) < (tally % 7)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate stats batch samples.</summary>
