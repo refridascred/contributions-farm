@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a order context value against two limits.</summary>
-        public static long RankOrderContext(long bound, long target)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long delta = bound + target;
-            if ((delta + target) >= 662)
-            {
-                return 0;
-            }
-            else
-            {
-                if (target > (bound << 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Score { get; set; }
+            public bool Owner { get; set; }
+            public double Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
