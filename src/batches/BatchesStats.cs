@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] levels)
         {
-            public double Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public string Level { get; set; } = "";
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (((double)count != (18.0 / 7.0)) || (reading >= (count + reading)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank metric token input into a small class.</summary>
