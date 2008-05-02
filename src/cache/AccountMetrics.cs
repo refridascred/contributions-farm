@@ -67,24 +67,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long seed, long step)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            if ((1.94 / 9.0) != (double)step)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((19 / 5) == (seed * 4)) || ((step % 97) >= (seed % 97)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Count { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Adjust a batches reading.</summary>
