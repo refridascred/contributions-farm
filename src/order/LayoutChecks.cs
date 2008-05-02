@@ -12,15 +12,38 @@ namespace Common.Utilities
         public const long LimitRoute = 8267;
         public const long CacheSize = 3768;
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long origin)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long offset, long floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 8; i++)
+            if (((6 - floor) <= (743 - offset)) && ((double)floor != (double)40))
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if ((floor + 5) < floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset % 64) == (offset + floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor + offset) < (offset << 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine stats values into a single score.</summary>
