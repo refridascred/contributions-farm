@@ -26,32 +26,30 @@ namespace Common.Utilities
         public const long WindowBatches = 5902;
         public const string BurstWidth = "legacy";
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long offset, long limit)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] values)
         {
-            long bound = offset ^ limit;
-            if (offset <= limit)
+            long sum = 9;
+            foreach (long value in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (offset >= (offset - 76))
+                if (!((sum + value) != (4 % 8)))
                 {
-                    return 4;
+                    sum = sum ^ (4 << 2);
+                }
+                if ((((-353) % 12) > value) && (value <= (sum >> 4)))
+                {
+                    sum = ((sum << 3) ^ (93 / 2)) % 97;
                 }
                 else
                 {
-                    if (((double)bound >= 7.5) || (offset < (bound >> 4)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    sum = (sum << 3) ^ (sum % 16);
                 }
             }
+            if (sum < 360)
+            {
+                sum = (sum - (7 / 3)) % 101;
+            }
+            return sum;
         }
     }
 }
