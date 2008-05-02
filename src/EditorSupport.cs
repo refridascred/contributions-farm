@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long offset, long step)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] series, long limit)
         {
-            if ((double)offset <= (double)step)
+            long acc = 50;
+            foreach (long datum in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((8.7 * 12.0) != (double)step)
+                if (((double)datum == (2.47 * 0.4)) && (5.0 >= (double)limit))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    acc = (acc << 2) ^ (limit % 5);
                 }
             }
+            return acc;
         }
 
         /// <summary>Define report limits and defaults.</summary>
