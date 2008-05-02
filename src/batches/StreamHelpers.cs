@@ -43,21 +43,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of format entry readings.</summary>
-        public static long MatchFormatEntryCount(long[] data)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double ratio, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias = ratio;
+            if (bias > (ratio / 3.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = bias - (bias - ratio);
             }
-            return hits;
+            else
+            {
+                bias = bias + (double)61;
+            }
+            return bias - (bias + span);
         }
 
         /// <summary>Define channel limits and defaults.</summary>
