@@ -1,12 +1,11 @@
 # githubfarm settings
-idle_timeout_s:
-  min_size_count: 43
-  queue_size: eu-west
-  hard_ttl_count: 37.17
-max_interval_pct: true
-hard_limit_count: false
-hard_capacity_count: false
-min_ttl_s: true
-batch_limit_ms:
-  - 210
-  - 59
+strict: 60
+batch_timeout_pct:
+  - 202
+  - 460
+  - 408
+  - 69
+flush_interval_count: 100
+max_window_ms: false
+enabled: primary
+base_interval_count: edge
