@@ -23,12 +23,16 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowWidth = 2726;
-        public const string BurstBuffer = "local-edge";
-        public const string HardBuffer = "standard";
-        public const string SoftSize = "stable-edge";
-        public const long MinBuffer = 8164;
+        /// <summary>Iterate the context farm series from a seed.</summary>
+        public static long IterateContextFarm(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Compare every pair of queue support readings.</summary>
         public static long PairQueueSupportCount(long[] levels)
