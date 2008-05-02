@@ -20,11 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseLevel = 9204;
-        public const double MaxBuffer = 26.48;
-        public const string IdleLevel = "cached-edge";
-        public const long SoftCount = 6402;
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
+        {
+            public long Level { get; set; }
+            public double Token { get; set; }
+            public long Flag { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long ClassifyProfile(long target, long origin)
