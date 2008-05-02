@@ -45,21 +45,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] values)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 18;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((result % 3) <= (cell >> 3)) || ((double)cell >= (5.0 * 0.7)))
                 {
-                    if ((values[i] + values[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = result ^ (0 & 127);
                 }
             }
-            return hits;
+            if (result > (-654))
+            {
+                result = ((result * 5) + (result % 97)) % 65521;
+            }
+            return result % 1000;
         }
     }
 }
