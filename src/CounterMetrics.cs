@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
             Dropped,
-            Retry,
-            Queued,
+            New,
+            Ready,
+            Failed,
+            Closed,
         }
 
         /// <summary>Describe the order state values.</summary>
