@@ -72,18 +72,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordGaps(long[] values, long limit)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((limit + limit) > (-56))
-                {
-                    matches = (matches + 1) ^ item;
-                }
-            }
-            return matches;
+            double drift = weight;
+            return (drift - weight) + floor;
         }
     }
 }
