@@ -22,21 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] values)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry < origin)
                 {
-                    if ((values[i] - values[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
