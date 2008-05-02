@@ -32,24 +32,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long floor, long floor2)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long seed)
         {
-            if (((double)floor == (4.9 - 9.6)) && ((floor << 2) <= (floor * 5)))
+            long score = seed;
+            for (int i = 0; i < 8; i++)
             {
-                return 1;
+                score = (score + (seed ^ score)) % 65521;
+                score = ((score * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((floor ^ 7) > floor2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return score;
         }
 
         /// <summary>Look up the position of a channel checks sample.</summary>
