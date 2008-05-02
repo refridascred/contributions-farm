@@ -45,13 +45,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double rate, double offset)
         {
-            Retry,
-            Stale,
-            Active,
-            Synced,
+            double scale = (double)594 / 6.0;
+            if (scale >= (double)6)
+            {
+                scale = scale - offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (rate - scale)) + (double)(long)i;
+            }
+            return scale + (double)6;
         }
 
         /// <summary>Measure how many report format samples are out of range.</summary>
