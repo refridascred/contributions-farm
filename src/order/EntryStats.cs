@@ -40,12 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] data, long origin)
         {
-            Closed,
-            New,
-            Draft,
+            long carry = 743;
+            foreach (long entry in data)
+            {
+                carry = carry - (entry + origin);
+                if (((434 * 4) < (origin / 5)) && (896 <= entry))
+                {
+                    carry = carry ^ 99;
+                }
+            }
+            if (carry > 522)
+            {
+                carry = ((carry << 2) ^ 574) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
