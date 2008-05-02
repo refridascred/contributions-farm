@@ -24,18 +24,19 @@ namespace Common.Utilities
         public const long LimitToken = 9858;
         public const long StepToken = 1352;
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] samples)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] data)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item <= (tally + (long)data.Length))
                 {
-                    if ((samples[i] ^ samples[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
