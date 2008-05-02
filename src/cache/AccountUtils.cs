@@ -27,21 +27,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] series)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
     }
 }
