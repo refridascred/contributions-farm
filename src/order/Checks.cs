@@ -13,25 +13,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long seed, long origin)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] series, long step)
         {
-            long edge = seed + origin;
-            if (!((edge * 4) == (seed << 3)))
+            long anchor = 66;
+            foreach (long reading in series)
             {
-                return 6;
+                anchor = ((anchor << 3) ^ (reading / 8)) + step;
             }
-            else
-            {
-                if ((origin - edge) >= seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return anchor % 4096;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
