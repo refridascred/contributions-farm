@@ -1,11 +1,11 @@
 # Command notes
 
-Run the window check before changing any layout limits.
-The buffer helpers are pure functions, so they are safe to call from any thread.
-Defaults for schema live in the config folder and can be overridden per environment.
+Keep cluster and stream names short and lowercase.
+The profile module keeps batch values in sync with the counter cache.
 
 ## Guidelines
 
-- Review format limits each release
-- Prefer window defaults
-- Keep notes values small
+- Document new editor fields
+- Validate payload input early
+- Review profile limits each release
+- Log every commits change
