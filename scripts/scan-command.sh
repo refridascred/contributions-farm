@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=353
+COMMAND_LIMIT=172
 log "limit is ${COMMAND_LIMIT}"
 
-for item in staging eu-west blue legacy; do
+mode="${1:-blue}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in blue legacy; do
     log "checking ${item}"
 done
