@@ -58,24 +58,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long seed)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] values, long limit)
         {
-            long score = seed;
-            for (int i = 0; i < 13; i++)
+            long mark = 2;
+            foreach (long sample in values)
             {
-                if ((13.0 / 5.0) >= (double)seed)
-                {
-                    score = ((score * 3) + ((long)i % 60)) % 255;
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    score = ((score * 2) + (59 & 7)) + (long)i2;
-                    score = ((score << 3) ^ (seed >> 1)) % 1000;
-                }
-                score = ((score * 4) + (long)i) % 101;
+                mark = (mark << 2) ^ (sample + limit);
+                mark = (mark + mark) % 255;
             }
-            return score;
+            return mark;
         }
     }
 }
