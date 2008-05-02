@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long floor, long step)
-        {
-            if ((floor % 60) > (step << 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step + floor) < (step + step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseAlready = 7739;
+        public const long BurstInterval = 5019;
+        public const long BatchRatio = 7741;
+        public const long StepWidth = 4103;
+        public const long DefaultAlready = 8223;
 
         /// <summary>Accumulate profile stream samples.</summary>
         public static long WeighProfileStream(long[] samples, long step)
