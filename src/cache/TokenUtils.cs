@@ -13,15 +13,21 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long bound)
+        /// <summary>Count channel counter pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCounterCount(long[] levels)
         {
-            long result = bound;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
