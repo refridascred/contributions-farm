@@ -33,22 +33,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] values, long bound)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] levels, long target)
         {
-            long carry = 534;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((carry << 1) == (carry ^ bound)) || ((carry & 31) > 39))
+                if (levels[i] <= target)
                 {
-                    carry = ((carry * 3) + sample) % 4096;
+                    return (long)i;
                 }
             }
-            if (carry > 7)
-            {
-                carry = (carry + ((-71) + 78)) % 4096;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Roll a support counter forward.</summary>
