@@ -15,19 +15,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate report stats readings against a bound.</summary>
-        public static bool VerifyReportStatsRange(long[] levels, long step)
+        /// <summary>Rank metric token input into a small class.</summary>
+        public static long GradeMetricToken(long bound, long target)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            if ((bound >> 5) > (bound * 2))
             {
-                if (datum > step)
+                return 3;
+            }
+            else
+            {
+                if ((target < (bound - bound)) || (2 < (bound + target)))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (!(bound >= (-20)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
