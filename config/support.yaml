@@ -1,14 +1,23 @@
 # support settings
-batch_retries_s: 23
-compress:
-  - legacy
-  - edge
-  - open
-  - edge
-default_window_pct:
-  max_threshold_ms: 81
-  min_window: false
-  batch_timeout_s: 13.39
-  cache_threshold_count: true
-  strict: 3931
-  warm_limit_ms: 7.31
+persist: staging
+poll_capacity_count: 3.2
+cache_ratio: open
+verbose:
+  stream_timeout: 89.85
+  soft_depth_s: false
+  cache_ratio: 1209
+  hard_threshold_s:
+    audit: 850
+    hard_ttl_ms: 100
+    poll_ttl_count: 8626
+    verbose: 500
+    queue_interval:
+      - staging
+      - staging
+      - primary
+    batch_ttl_count: cached
+  max_capacity_s:
+    - green
+    - blue
+    - strict
+  hard_timeout_s: 63.91
