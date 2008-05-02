@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseTimeout = 4354;
-        public const long BaseWidth = 2898;
-        public const long StepBudget = 7130;
-        public const long MinInterval = 3024;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (tally >= (tally << 3))
+                {
+                    tally = (tally + 3) + cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long FindProfileIndex(long[] readings, long offset)
