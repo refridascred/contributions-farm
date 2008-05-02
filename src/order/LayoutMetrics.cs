@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count batches checks pairs that satisfy a relation.</summary>
-        public static long MatchBatchesChecksCount(long[] series)
+        /// <summary>Measure how many tools cluster samples are out of range.</summary>
+        public static long TallyToolsClusterGaps(long[] readings, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((sample + hits) >= (556 >> 2))
                 {
-                    if ((series[i] ^ series[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 2) + step;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
