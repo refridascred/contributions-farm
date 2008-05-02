@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Done,
-            Synced,
-            Idle,
-            Stale,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetryTools = "open";
+        public const double SoftSpan = 46.96;
+        public const long BatchWidth = 2244;
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long BucketBuffer(long limit, long offset)
