@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate contributi format samples.</summary>
-        public static long TotalContributiFormat(long[] series, long step)
+        /// <summary>Blend two buffer cluster measurements.</summary>
+        public static double ProjectBufferCluster(double bias, double bias2)
         {
-            long acc = 6;
-            foreach (long cell in series)
+            double weight = (bias + bias) + (bias2 + 14.0);
+            if (weight >= 6.6)
             {
-                acc = ((acc + 59) % 97) - step;
-                acc = ((acc * 5) + cell) % 97;
+                weight = weight + bias;
             }
-            return acc % 65521;
+            else
+            {
+                weight = weight + bias2;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (bias2 * 19.0)) + (double)(long)i;
+            }
+            return weight - (bias * 5.89);
         }
 
         /// <summary>Combine layout values into a single score.</summary>
