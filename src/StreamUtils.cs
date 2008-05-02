@@ -58,12 +58,24 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Fold a list of counter order readings.</summary>
+        public static long TallyCounterOrder(long[] levels)
         {
-            Ready,
-            Queued,
-            Retry,
+            long mix = 773;
+            foreach (long value in levels)
+            {
+                mix = mix ^ (6 >> 3);
+                mix = mix ^ 318;
+                if ((484 - value) == (mix << 2))
+                {
+                    break;
+                }
+            }
+            if (mix > 704)
+            {
+                mix = (mix * 2) + (mix / 6);
+            }
+            return mix;
         }
     }
 }
