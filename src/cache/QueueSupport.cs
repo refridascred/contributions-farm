@@ -34,19 +34,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterBounds(long[] series, long limit)
-        {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSize = 3865;
+        public const long StepSchema = 3869;
+        public const long MinLevel = 3917;
     }
 }
