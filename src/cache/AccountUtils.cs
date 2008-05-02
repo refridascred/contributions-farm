@@ -21,15 +21,13 @@ namespace Common.Utilities
         public const double SoftFarm = 81.14;
         public const long HardFarm = 884;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] readings)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long total = 4;
-            foreach (long datum in readings)
-            {
-                total = total ^ (datum + 875);
-            }
-            return total % 97;
+            public string Limit { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
     }
 }
