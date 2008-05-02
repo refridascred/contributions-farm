@@ -77,12 +77,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Validate cluster format readings against a bound.</summary>
+        public static bool CheckClusterFormatBounds(long[] series, long origin)
         {
-            Done,
-            Failed,
-            Active,
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
