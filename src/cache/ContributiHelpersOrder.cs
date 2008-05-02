@@ -19,22 +19,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] values)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] series)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((double)seen <= (5.2 / 8.0))
+                if ((double)matches >= 4.53)
                 {
-                    seen = (seen + 2) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
