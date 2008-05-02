@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] series)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((4.75 - 1.6) != (double)sample)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Pending,
+            Ready,
+            Draft,
+            Closed,
         }
 
         /// <summary>Define context limits and defaults.</summary>
