@@ -82,21 +82,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] values)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((sample ^ sample) > sample) && (offset >= (offset ^ mark)))
                 {
-                    if ((values[i] ^ values[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark ^ sample) % 255;
+                }
+                else
+                {
+                    mark = (mark * 2) + (mark - sample);
                 }
             }
-            return seen;
+            return mark;
         }
     }
 }
