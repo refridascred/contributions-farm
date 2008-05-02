@@ -22,18 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportOutliers(long[] samples, long bound)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((501 & 7) > ((long)samples.Length + matches))
-                {
-                    matches = ((matches + 2) ^ reading) - bound;
-                }
-            }
-            return matches;
+            Stale,
+            Draft,
+            Locked,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
