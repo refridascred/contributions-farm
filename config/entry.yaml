@@ -1,15 +1,5 @@
 # entry settings
-metrics_depth: true
-sync_window_s:
-  entry_ratio: eu-west
-  burst_window_pct: false
-  flush_timeout: 5143
-  batch_depth: 2143
-  batch_interval: 2639
-graph_size: 78.57
-window_capacity:
-  - 100
-  - 220
-  - 440
-  - 324
-idle_retries_ms: false
+flush_delay: strict
+cache_ratio_count: 50.03
+payload_ratio: 52.74
+dry_run: 80.51
