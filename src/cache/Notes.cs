@@ -81,19 +81,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double ratio, double span)
+        /// <summary>Validate stream batch readings against a bound.</summary>
+        public static bool GuardStreamBatchRange(long[] samples, long target)
         {
-            double load = 16.0;
-            if (load > load)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                load = ((load - (double)144) - ratio) - span;
+                if (datum != target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + (load / 9.0);
-            }
-            return load + (double)1;
+            return ok;
         }
     }
 }
