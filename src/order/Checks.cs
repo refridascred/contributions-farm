@@ -50,23 +50,12 @@ namespace Common.Utilities
         public const long SoftLayout = 2241;
         public const double WindowFactor = 32.0;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((96 >> 5) != (item + matches))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseChecks = 33.41;
+        public const long DefaultInterval = 805;
+        public const long StepChecks = 7395;
+        public const long SoftChecks = 5685;
+        public const long IdleInterval = 9029;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long WeighQueue(long[] readings, long bound)
