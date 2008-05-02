@@ -69,18 +69,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cluster session samples.</summary>
-        public static long ScoreClusterSession(long[] values)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] items, long limit)
         {
-            long anchor = 58;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if (2.0 >= (double)item)
+                if (reading > limit)
                 {
-                    anchor = ((anchor * 3) + (336 & 63)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return anchor % 4096;
+            return stale;
         }
     }
 }
