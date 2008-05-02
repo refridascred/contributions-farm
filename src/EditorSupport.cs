@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] levels)
+        /// <summary>Compare every pair of queue record readings.</summary>
+        public static long CompareQueueRecordCount(long[] data)
         {
-            long state = 37;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((6 - reading) <= (state & 31))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state - (reading & 15)) % 4096;
+                    if ((data[i] ^ data[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state % 1000;
+            return matches;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
