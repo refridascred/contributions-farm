@@ -1,5 +1,5 @@
 {
-  "warm_depth_ms": ["legacy", "stable", "primary", "edge"],
-  "filter_ttl": 9629,
-  "burst_depth_count": ["open", "cached"]
+  "audit": "fallback",
+  "verbose": 25.25,
+  "batch_delay": 59
 }
