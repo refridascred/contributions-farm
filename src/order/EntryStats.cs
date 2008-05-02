@@ -46,22 +46,10 @@ namespace Common.Utilities
         public const string BaseTools = "cached-1";
         public const long LimitTools = 3078;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] series, long limit)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((matches * 2) == (matches & 15))
-                {
-                    matches = ((matches + 2) ^ datum) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstRatio = 3619;
+        public const long IdleSchema = 4099;
+        public const long DefaultSchema = 4755;
+        public const string BaseLevel = "open";
     }
 }
