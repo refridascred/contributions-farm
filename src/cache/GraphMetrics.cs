@@ -67,11 +67,22 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutGaps(long[] data)
         {
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((tally + cell) <= (cell / 2))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
