@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] items, long origin)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long carry = 35;
+            foreach (long cell in samples)
             {
-                if ((17.0 >= (double)origin) && ((sample >> 3) >= (84 << 2)))
-                {
-                    hits = hits + 3;
-                }
+                carry = ((carry << 2) ^ (cell + 1)) + step;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define already limits and defaults.</summary>
