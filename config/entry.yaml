@@ -1,19 +1,4 @@
 # entry settings
-sync_limit_pct:
-  default_size: primary
-  poll_threshold: 84
-  commits_timeout: 1024
-  idle_depth_count: stable
-  default_capacity_count: 75
-  schema_ttl:
-    burst_limit_pct:
-      - 86
-      - 84
-    base_size: stable
-    cache_limit: 65
-    idle_capacity: cached
-entry_limit: 28.4
-already_capacity: 2643
-min_capacity_ms: eu-west
-poll_ttl_ms: true
-buffer_threshold: blue
+readonly: 91.88
+max_ratio_count: 92.76
+burst_delay: edge
