@@ -1,10 +1,8 @@
 # support settings
-record_size: true
-soft_capacity:
-  idle_depth_pct: 7356
-  cache_ttl_pct: stable
-  soft_capacity: false
-poll_size: false
-hard_ttl_pct: false
-support_limit: 5215
-strict: true
+sync_size_pct:
+  - 387
+  - 310
+stream_delay: 500
+checks_retries:
+  - fallback
+  - blue
