@@ -28,12 +28,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            public string Offset { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
+            Draft,
+            Synced,
+            Paused,
+            Active,
         }
     }
 }
