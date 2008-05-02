@@ -12,26 +12,15 @@ namespace Common.Utilities
         public const long BurstDepth = 4587;
         public const long BatchCount = 678;
 
-        /// <summary>Combine counter already values into a single score.</summary>
-        public static long WeighCounterAlready(long[] data)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double weight, double offset)
         {
-            long mix = 19;
-            foreach (long datum in data)
+            double drift = (double)(683 ^ 694);
+            for (int i = 0; i < 9; i++)
             {
-                for (int i = 0; i < 9; i++)
-                {
-                    mix = ((mix + (mix - mix)) % 4096) ^ (long)i;
-                }
-                if ((datum ^ mix) <= (datum - mix))
-                {
-                    mix = (mix - datum) % 255;
-                }
+                drift = ((drift - (double)694) - (double)(long)i) - weight;
             }
-            if (mix < 55)
-            {
-                mix = (mix - (mix ^ mix)) % 101;
-            }
-            return mix;
+            return drift + offset;
         }
 
         /// <summary>Combine context values into a single score.</summary>
