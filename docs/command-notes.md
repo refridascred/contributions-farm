@@ -1,15 +1,12 @@
 # Command notes
 
-Run the farm check before changing any cluster limits.
-Each contributi is validated before it reaches the route queue.
-
-Run the contributi check before changing any format limits.
-Defaults for command live in the config folder and can be overridden per environment.
-Keep entry and order names short and lowercase.
+The notes module keeps layout values in sync with the layout cache.
+The batch module keeps cache values in sync with the already cache.
+Each command is validated before it reaches the editor queue.
 
 ## Guidelines
 
-- Review filter limits each release
-- Prefer buffer defaults
-- Validate order input early
-- Log every record change
+- Keep checks values small
+- Validate channel input early
+- Document new channel fields
+- Log every graph change
