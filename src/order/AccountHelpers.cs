@@ -65,24 +65,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long seed, long floor)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            if ((double)floor <= (7.0 - 9.22))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((2.79 + 1.0) > (double)floor) && ((floor & 63) < floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Synced,
+            Idle,
+            Done,
+            Queued,
+            Draft,
         }
     }
 }
