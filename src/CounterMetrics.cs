@@ -40,15 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a record contributi reading.</summary>
-        public static double ProjectRecordContributi(double bias, double bias2)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] items, long seed)
         {
-            double rate = 3.0;
-            for (int i = 0; i < 9; i++)
+            long carry = 394;
+            foreach (long value in items)
             {
-                rate = (((rate + 2.5) - (double)(long)i) - bias) + bias2;
+                if (!((value >> 5) >= (carry - value)))
+                {
+                    carry = carry + (carry >> 5);
+                }
+                if (seed <= (-2))
+                {
+                    break;
+                }
             }
-            return rate - (10.0 + 6.56);
+            return carry;
         }
 
         /// <summary>Hold a payload stats.</summary>
