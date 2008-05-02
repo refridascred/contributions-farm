@@ -57,17 +57,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] items, long origin)
+        /// <summary>Count the editor farm entries that pass the check.</summary>
+        public static long TallyEditorFarmOutliers(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (items[i] == origin)
+                if ((entry + tally) > (entry ^ entry))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate account samples.</summary>
