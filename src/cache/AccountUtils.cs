@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long step)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] items, long seed)
         {
-            long carry = step;
-            for (int i = 0; i < 19; i++)
+            long total = -989;
+            foreach (long cell in items)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                for (int i = 0; i < 7; i++)
                 {
-                    carry = carry ^ ((long)i2 << 3);
-                    carry = (carry ^ (long)i2) % 65521;
+                    total = ((total + (long)i) % 97) ^ cell;
                 }
-                carry = ((carry << 2) ^ (step + (long)i)) % 255;
-                carry = carry - carry;
-                carry = ((carry * 2) + (long)i) % 97;
+                total = (total ^ (total ^ seed)) % 65521;
+                total = ((total << 3) ^ (seed * 5)) % 4096;
             }
-            return carry;
+            if (total > 280)
+            {
+                total = (total + seed) % 255;
+            }
+            return total;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
