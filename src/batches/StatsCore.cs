@@ -30,11 +30,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double LimitFactor = 14.18;
-        public const long LimitSupport = 3787;
-        public const long BurstSupport = 7437;
-        public const long IdleSupport = 5620;
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
+        {
+            New,
+            Retry,
+            Dropped,
+        }
 
         /// <summary>Fold a list of report profile readings.</summary>
         public static long WeighReportProfile(long[] levels)
