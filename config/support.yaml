@@ -1,8 +1,10 @@
 # support settings
-compress: 250
-dry_run:
-  audit: 8099
-  poll_limit_s: 67
-  hard_timeout_pct: standard
-  base_capacity_pct: latest
-poll_retries: 250
+poll_size_count: cached
+commits_window: 100
+persist:
+  - latest
+  - cached
+  - cached
+  - standard
+enabled: 6531
+min_depth_pct: 95.75
