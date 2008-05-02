@@ -40,18 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] data)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long result = 752;
-            foreach (long entry in data)
-            {
-                if ((result + result) >= result)
-                {
-                    result = (result << 2) ^ (entry - entry);
-                }
-            }
-            return result;
+            Closed,
+            New,
+            Draft,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
