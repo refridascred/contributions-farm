@@ -53,21 +53,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] samples)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
