@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double HardReport = 10.57;
-        public const long MinReport = 573;
-        public const long CacheLevel = 9854;
-        public const string HardBudget = "staging";
+        /// <summary>Compare every pair of commits queue readings.</summary>
+        public static long PairCommitsQueueCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of stats report entries.</summary>
         public static long WeighStatsReport(long[] series)
