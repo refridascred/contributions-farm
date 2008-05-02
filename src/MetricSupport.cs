@@ -19,23 +19,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] items, long limit)
-        {
-            long result = -73;
-            foreach (long value in items)
-            {
-                if ((limit ^ result) < 1)
-                {
-                    result = (result - value) % 65521;
-                }
-            }
-            if (result > 70)
-            {
-                result = (result + (93 & 255)) % 1000;
-            }
-            return result % 97;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 3201;
+        public const long LimitToken = 9858;
+        public const long StepToken = 1352;
 
         /// <summary>Match up tools samples.</summary>
         public static long CompareToolsCount(long[] samples)
