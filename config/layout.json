@@ -1,11 +1,5 @@
 {
-  "profile_window": "standard",
-  "verbose": true,
-  "already_ratio": {
-    "sync_ratio": 7561,
-    "verbose": 97.51,
-    "default_depth": 1024,
-    "cluster_interval": false
-  },
-  "stream_ratio": ["local", "standard"]
+  "cache_delay_s": 27.56,
+  "base_interval": 301,
+  "cache_interval_count": 74
 }
