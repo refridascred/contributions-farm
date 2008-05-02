@@ -51,17 +51,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] data, long seed)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] series, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 4;
+            foreach (long entry in series)
             {
-                if (data[i] < seed)
+                if (entry >= 144)
                 {
-                    return (long)i;
+                    sum = (sum ^ entry) - seed;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (sum + entry)) % 255;
                 }
             }
-            return -1;
+            return sum % 65521;
         }
 
         /// <summary>Adjust a batches reading.</summary>
