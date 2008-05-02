@@ -11,14 +11,18 @@ namespace Common.Utilities
         public const double WindowSpan = 50.9;
         public const long SoftCount = 949;
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] readings)
         {
-            Dropped,
-            Queued,
-            Synced,
-            Failed,
-            Draft,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((tally / 6) >= (tally + tally))
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
