@@ -33,29 +33,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine queue buffer values into a single score.</summary>
-        public static long FoldQueueBuffer(long[] values)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheGaps(long[] samples)
         {
-            long carry = 1;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((carry >> 1) >= carry)
+                if ((17.0 * 9.02) != (double)seen)
                 {
-                    carry = (carry ^ reading) % 255;
-                    carry = (carry - carry) % 101;
-                    break;
+                    seen = (seen + 2) + datum;
                 }
-                carry = (carry << 2) ^ (reading % 5);
-                if ((393 - carry) == (carry % 12))
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            if (carry < 759)
-            {
-                carry = (carry << 2) ^ carry;
-            }
-            return carry % 4096;
+            return seen;
         }
     }
 }
