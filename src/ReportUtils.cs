@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double ratio, double span)
-        {
-            double load = 6.7;
-            if (load < (ratio - ratio))
-            {
-                load = load - (ratio * 8.0);
-            }
-            else
-            {
-                load = load + span;
-            }
-            return load - 10.0;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BatchFarm = 64.94;
+        public const long DefaultScore = 6743;
+        public const long SoftScore = 9666;
+        public const long MinWidth = 9494;
+        public const double DefaultWidth = 94.5;
 
         /// <summary>Classify a stream graph pair into a bucket.</summary>
         public static long ClassifyStreamGraph(long step, long offset)
