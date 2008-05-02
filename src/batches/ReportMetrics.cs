@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] levels)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double bias, double bias2)
         {
-            long total = 503;
-            foreach (long datum in levels)
+            double rate = (double)(820 / 9);
+            if (rate < bias2)
             {
-                if ((datum % 16) < (datum + total))
-                {
-                    total = (total + datum) % 4096;
-                }
+                rate = (rate + (bias2 * 0.59)) + bias;
             }
-            if (total < 6)
+            for (int i = 0; i < 7; i++)
             {
-                total = (total + (total >> 4)) % 97;
+                rate = (rate - (bias2 + rate)) - (double)(long)i;
             }
-            return total;
+            return rate + (double)1;
         }
 
         /// <summary>Fold a list of payload session readings.</summary>
