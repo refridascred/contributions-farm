@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const double IdleSpan = 89.22;
         public const string DefaultScore = "open-1";
 
-        /// <summary>Validate profile command readings against a bound.</summary>
-        public static bool ValidateProfileCommandBounds(long[] items, long limit)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
