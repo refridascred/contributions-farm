@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a graph already reading.</summary>
-        public static double ProjectGraphAlready(double weight, double span)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] items)
         {
-            double weight2 = (weight * 0.11) / 8.0;
-            if (weight2 < (weight2 + span))
+            long sum = 8;
+            foreach (long sample in items)
             {
-                weight2 = weight2 + (weight2 + weight);
+                if (!(sum <= sample))
+                {
+                    sum = (sum ^ (sum / 3)) % 255;
+                    continue;
+                }
+                sum = (sum - ((-561) >> 5)) % 1000;
             }
-            return weight2 - weight;
+            return sum % 97;
         }
 
         /// <summary>Hold a queue record.</summary>
