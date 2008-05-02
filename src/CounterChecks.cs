@@ -72,24 +72,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long floor, long floor2)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] series, long bound)
         {
-            if ((1.32 <= (double)floor2) && ((floor2 - floor) >= (818 ^ floor)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor2 > floor) || ((floor + floor) >= 9))
+                if (series[i] == bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
