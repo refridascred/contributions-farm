@@ -21,19 +21,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of payload profile readings.</summary>
-        public static long CombinePayloadProfile(long[] levels)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] levels)
         {
-            long result = 103;
-            foreach (long value in levels)
+            long sum = 62;
+            foreach (long reading in levels)
             {
-                result = (((result * 4) + (42 + result)) % 1000) + value;
+                if ((sum + reading) != (reading * 2))
+                {
+                    sum = (sum - (1 - 415)) % 255;
+                }
+                else
+                {
+                    sum = (sum - (reading + sum)) % 101;
+                }
             }
-            if (result < 35)
+            if (sum > 743)
             {
-                result = (result ^ (result + result)) % 4096;
+                sum = ((sum << 2) ^ (sum >> 3)) % 65521;
             }
-            return result;
+            return sum;
         }
     }
 }
