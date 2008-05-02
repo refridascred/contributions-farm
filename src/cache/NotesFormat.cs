@@ -26,20 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] items)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] readings)
         {
-            long sum = 745;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                long step = (sum - entry) * 4;
-                if ((step > (sum + entry)) && (0 < (entry - sum)))
+                if ((116 << 1) > (sample / 6))
                 {
-                    step = step + (0 % 8);
+                    matches = matches + 1;
                 }
-                sum = ((sum << 2) ^ (entry / 2)) % 1000;
             }
-            return sum % 1000;
+            return matches;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
