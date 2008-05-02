@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] series, long floor)
-        {
-            long result = 6;
-            foreach (long datum in series)
-            {
-                if ((double)result > (double)(-28))
-                {
-                    result = result ^ datum;
-                }
-                else
-                {
-                    result = ((result * 4) + result) % 255;
-                }
-            }
-            if (result > 678)
-            {
-                result = ((result << 3) ^ floor) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 3917;
+        public const long RetryDepth = 7542;
+        public const string RetryTimeout = "strict-edge";
+        public const long CacheLevel = 226;
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
