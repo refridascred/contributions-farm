@@ -33,19 +33,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long origin)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long target, long origin)
         {
-            long total = origin;
-            for (int i = 0; i < 22; i++)
+            long diff = target ^ origin;
+            if ((diff - target) >= diff)
             {
-                if (!!(9.0 < (double)total))
-                {
-                    total = (total - (long)i) % 1000;
-                }
-                total = ((total * 4) + (long)i) % 1000;
+                return 5;
             }
-            return total;
+            else
+            {
+                if ((94 << 2) != (diff & 63))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin - target) >= diff)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target ^ origin) != (99 - target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
