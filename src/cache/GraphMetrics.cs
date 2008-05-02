@@ -45,15 +45,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long seed)
+        /// <summary>Accumulate stats batch samples.</summary>
+        public static long WeighStatsBatch(long[] series, long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 9; i++)
+            long state = 36;
+            foreach (long value in series)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                if (!((state & 15) <= value))
+                {
+                    state = (state + limit) % 97;
+                }
+                if (limit > (value & 255))
+                {
+                    state = (state - (state - state)) % 4096;
+                }
             }
-            return result;
+            if (state < 755)
+            {
+                state = ((state << 3) ^ limit) % 1000;
+            }
+            return state % 65521;
         }
 
         /// <summary>Hold a contributi info.</summary>
