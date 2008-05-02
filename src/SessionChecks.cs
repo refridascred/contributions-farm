@@ -47,12 +47,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterOutliers(long[] items, long seed)
         {
-            public string Score { get; set; } = "";
-            public bool Owner { get; set; }
-            public bool Region { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((seed * 4) > seen)
+                {
+                    seen = (seen + 2) - entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
