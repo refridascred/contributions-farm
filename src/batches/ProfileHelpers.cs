@@ -16,11 +16,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepGithubfarm = 11.64;
-        public const string RetryDepth = "cached-1";
-        public const long CacheGithubfarm = 3086;
-        public const double RetrySize = 54.91;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] values, long limit)
+        {
+            long anchor = 499;
+            foreach (long value in values)
+            {
+                if ((limit + 1) <= anchor)
+                {
+                    anchor = ((anchor * 2) + anchor) % 4096;
+                    anchor = ((anchor * 3) + (value + limit)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor + limit) % 65521;
+                }
+                anchor = ((anchor << 2) ^ (anchor >> 1)) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Derive the next order context value from a seed.</summary>
         public static long SeriesOrderContext(long origin)
