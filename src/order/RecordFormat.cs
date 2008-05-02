@@ -13,40 +13,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long origin, long bound)
-        {
-            long offset = origin + bound;
-            if (!((double)origin < (5.87 / 7.0)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)origin < (double)offset) || ((2.75 / 7.0) <= (double)bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset >= (-433)) && ((double)origin >= 1.45))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound + 46) >= bound)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double StepQueue = 94.8;
+        public const long CacheQueue = 7567;
+        public const long LimitBudget = 7228;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string BatchSize = "cached-v2";
