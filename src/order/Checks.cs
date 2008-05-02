@@ -50,11 +50,23 @@ namespace Common.Utilities
         public const long SoftLayout = 2241;
         public const double WindowFactor = 32.0;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 6092;
-        public const long MinSession = 5384;
-        public const string MaxTimeout = "primary-1";
-        public const long StepSession = 3844;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((96 >> 5) != (item + matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long WeighQueue(long[] readings, long bound)
