@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west open primary; do
+for item in staging latest; do
     log "checking ${item}"
 done
 
-mode="${1:-standard}"
+mode="${1:-primary}"
 case "${mode}" in
-    latest)
+    blue)
         log "fast path"
         ;;
     *)
@@ -20,8 +20,8 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
