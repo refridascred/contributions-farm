@@ -42,23 +42,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] samples)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long mix = 6;
-            foreach (long sample in samples)
-            {
-                mix = (mix ^ (sample * 5)) % 65521;
-                if ((sample + (long)samples.Length) <= (sample & 3))
-                {
-                    mix = (mix + (mix % 8)) % 65521;
-                }
-                if ((sample + mix) == (sample * 2))
-                {
-                    break;
-                }
-            }
-            return mix;
+            Locked,
+            New,
+            Draft,
         }
 
         /// <summary>Describe the metrics kind values.</summary>
