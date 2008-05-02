@@ -45,10 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double LimitTools = 55.31;
-        public const string SoftFactor = "standard-1";
-        public const long CacheSpan = 7312;
-        public const double MinTools = 17.09;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 4701;
+        public const long StepLevel = 854;
+        public const long IdleSession = 7675;
+        public const long StepSession = 5942;
+        public const long SoftBudget = 8878;
     }
 }
