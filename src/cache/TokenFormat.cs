@@ -20,21 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count metrics account pairs that satisfy a relation.</summary>
-        public static long CompareMetricsAccountCount(long[] levels)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] data, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 8;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (cell <= target)
                 {
-                    if ((levels[i] - levels[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry ^ (carry + carry)) % 65521;
+                }
+                else
+                {
+                    carry = (carry + (cell % 2)) % 97;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Accumulate commits samples.</summary>
