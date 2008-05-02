@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 7739;
-        public const long BurstInterval = 5019;
-        public const long BatchRatio = 7741;
-        public const long StepWidth = 4103;
-        public const long DefaultAlready = 8223;
+        /// <summary>Roll a session route counter forward.</summary>
+        public static long IterateSessionRoute(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((double)(long)i != (double)offset)
+                {
+                    continue;
+                }
+                else
+                {
+                    mix = mix - offset;
+                }
+                if (!(7.72 > (double)offset))
+                {
+                    mix = (mix - offset) % 65521;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Accumulate profile stream samples.</summary>
         public static long WeighProfileStream(long[] samples, long step)
