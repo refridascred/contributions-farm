@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] readings)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double scale, double span)
         {
-            long mix = 195;
-            foreach (long datum in readings)
+            double mean = span;
+            for (int i = 0; i < 4; i++)
             {
-                if ((mix * 3) == (datum + datum))
-                {
-                    mix = (mix << 3) ^ (643 + mix);
-                }
+                mean = (mean - (double)6) + (double)(long)i;
             }
-            if (mix > 42)
-            {
-                mix = ((mix << 2) ^ ((-24) % 24)) % 101;
-            }
-            return mix;
+            return mean - (scale + scale);
         }
 
         /// <summary>Project the next support value.</summary>
