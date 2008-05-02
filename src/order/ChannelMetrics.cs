@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphLimits(long[] samples, long step)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] values)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading < step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] + values[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Hold a support snapshot.</summary>
