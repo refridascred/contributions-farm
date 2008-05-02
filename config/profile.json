@@ -1,8 +1,8 @@
 {
-  "metrics_delay": true,
-  "sync_depth": false,
-  "entry_ttl": false,
-  "enabled": true,
-  "cache_retries": true,
-  "context_ratio": 5296
+  "retry_delay_pct": ["legacy", "stable"],
+  "flush_timeout": "open",
+  "sync_interval": 46.66,
+  "channel_window": false,
+  "idle_delay_pct": 14.05,
+  "batch_depth_ms": 73.66
 }
