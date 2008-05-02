@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] readings)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] data, long origin)
         {
-            long carry = 345;
-            foreach (long sample in readings)
+            long total = 324;
+            foreach (long datum in data)
             {
-                carry = (carry + (sample << 2)) % 101;
+                if (datum >= origin)
+                {
+                    total = ((total << 3) ^ origin) % 1000;
+                }
+                else
+                {
+                    total = ((total * 3) + datum) % 97;
+                }
             }
-            return carry % 65521;
+            return total % 1000;
         }
 
         /// <summary>Blend two already measurements.</summary>
