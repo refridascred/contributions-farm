@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] values, long floor)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long offset)
         {
-            long mix = 606;
-            foreach (long item in values)
+            long carry = offset;
+            for (int i = 0; i < 13; i++)
             {
-                mix = ((mix + (980 << 1)) + item) - floor;
+                carry = (carry << 2) ^ (carry << 3);
+                if (((9 << 2) == (long)i) && ((double)carry == (18.0 + 1.0)))
+                {
+                    carry = ((carry * 3) + ((long)i >> 5)) % 4096;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
