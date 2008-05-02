@@ -28,13 +28,16 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long floor)
         {
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = ((sum * 5) + (sum + sum)) % 65521;
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
