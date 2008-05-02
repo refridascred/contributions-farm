@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] values, long step)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long floor, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long cur = floor - seed;
+            if ((seed + seed) == (cur << 2))
             {
-                if ((values[i] == step) && ((values[i] % 2) == 0))
+                return 2;
+            }
+            else
+            {
+                if (((seed & 15) <= (seed << 3)) || ((1.0 / 8.0) == (double)seed))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((4.28 + 6.0) <= (double)cur)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate account samples.</summary>
