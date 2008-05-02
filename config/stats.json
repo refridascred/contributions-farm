@@ -1,13 +1,22 @@
 {
-  "burst_ttl_pct": "edge",
-  "min_ttl_ms": "staging",
-  "hard_capacity": 76,
-  "warm_ratio": 6088,
-  "dry_run": {
-    "readonly": 100,
-    "report_capacity": ["legacy", "standard", "green"],
-    "soft_ttl": 94.32,
-    "cluster_interval": 100,
-    "idle_interval": 90.35
-  }
+  "account_ratio": {
+    "poll_ttl": "edge",
+    "readonly": "legacy",
+    "warm_retries_ms": 76,
+    "account_size": ["latest", "stable", "latest"],
+    "sync_ttl": "stable",
+    "dry_run": {
+      "soft_ratio": [427, 61],
+      "hard_ttl": "legacy",
+      "idle_ratio": false,
+      "idle_capacity_s": "fallback",
+      "soft_ttl": "open",
+      "sync_retries": 40
+    }
+  },
+  "audit": true,
+  "flush_capacity_count": 2742,
+  "batch_limit_pct": 82,
+  "enabled": 3195,
+  "sync_window": ["edge", "local", "local", "stable"]
 }
