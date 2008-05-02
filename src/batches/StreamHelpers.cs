@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] samples, long origin)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long limit, long offset)
         {
-            long state = 44;
-            foreach (long reading in samples)
+            long delta = limit - offset;
+            if ((delta % 3) <= (offset << 1))
             {
-                state = (state - 4) % 65521;
-                if (((state * 2) > (state + reading)) || ((double)(long)samples.Length == (double)origin))
+                return 7;
+            }
+            else
+            {
+                if (((3.0 / 6.0) != (double)offset) && ((8.25 + 1.14) > (double)limit))
                 {
-                    state = (state << 2) ^ (reading & 15);
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            if (state < 65)
-            {
-                state = state ^ (state >> 1);
-            }
-            return state;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
