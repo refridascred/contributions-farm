@@ -31,20 +31,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next order context value from a seed.</summary>
-        public static long SeriesOrderContext(long origin)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] series, long offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry << 2) ^ (796 + origin)) % 255;
-                if (!((carry << 2) < ((long)i >> 2)))
+                if (series[i] > offset)
                 {
-                    break;
+                    return (long)i;
                 }
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a queue entry.</summary>
