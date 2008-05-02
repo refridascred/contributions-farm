@@ -41,31 +41,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long target, long origin)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            if ((target << 3) >= (origin * 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin + 96) < (target + origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin - target) != (target * 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Failed,
+            Paused,
+            Ready,
         }
     }
 }
