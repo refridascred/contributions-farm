@@ -31,12 +31,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] levels, long seed)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 3) != 0))
+                if (samples[i] <= origin)
                 {
                     return (long)i;
                 }
