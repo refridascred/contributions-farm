@@ -14,19 +14,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (!(value < 9))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitBudget = 3991;
+        public const long SoftStats = 9714;
+        public const long RetryStats = 1687;
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double AdjustCommits(double gain, double bias)
