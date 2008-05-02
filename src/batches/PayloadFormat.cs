@@ -26,12 +26,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string RetryCount = "legacy-1";
-        public const long IdleSize = 274;
-        public const long BaseMetric = 702;
-        public const long BatchScore = 7116;
-        public const long BurstMetric = 1105;
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
+        {
+            public string Offset { get; set; } = "";
+            public bool Token { get; set; }
+        }
 
         /// <summary>Match up session samples.</summary>
         public static long PairSessionCount(long[] readings)
