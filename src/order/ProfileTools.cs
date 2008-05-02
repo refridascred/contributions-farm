@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate channel account samples.</summary>
-        public static long TallyChannelAccount(long[] series, long seed)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] items, long bound)
         {
-            long sum = 9;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((cell >> 1) != (cell + cell))
+                if ((bound + bound) <= (matches + 0))
                 {
-                    sum = ((sum ^ (cell >> 3)) % 255) + seed;
+                    matches = (matches + 1) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return sum % 4096;
+            return matches;
         }
 
         /// <summary>Hold a payload header.</summary>
