@@ -84,22 +84,10 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string LimitEntry = "standard-edge";
+        public const string BatchSpan = "staging";
+        public const double BurstWidth = 61.94;
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
