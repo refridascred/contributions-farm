@@ -34,16 +34,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the report cluster series from a seed.</summary>
-        public static long RollReportCluster(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 5236;
+        public const string MaxContext = "stable-1";
+        public const double MinRatio = 93.73;
 
         /// <summary>Count the farm metric entries that pass the check.</summary>
         public static long TallyFarmMetricOutliers(long[] series)
