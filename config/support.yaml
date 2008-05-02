@@ -1,9 +1,6 @@
 # support settings
-warm_threshold: stable
-batch_capacity: eu-west
-batch_retries_ms:
-  - 399
-  - 436
-  - 228
-readonly: 1024
-burst_limit_pct: false
+batch_retries: green
+burst_depth: primary
+cache_limit: false
+dry_run: false
+burst_delay_s: 54.87
