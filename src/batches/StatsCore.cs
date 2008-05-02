@@ -62,18 +62,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmOutliers(long[] readings)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (sample <= (count & 7))
+                if ((datum << 1) > (datum ^ datum))
                 {
-                    count = count + 2;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a report snapshot.</summary>
