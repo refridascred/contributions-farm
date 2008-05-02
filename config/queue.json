@@ -1,8 +1,7 @@
 {
-  "payload_threshold": 1323,
-  "queue_limit": false,
-  "hard_limit_s": "primary",
-  "compress": 40,
-  "retry_threshold_count": 7671,
-  "editor_retries": "latest"
+  "compress": 5765,
+  "dry_run": 35.4,
+  "min_threshold_count": ["local", "primary", "fallback"],
+  "command_retries": false,
+  "default_limit_pct": 14.57
 }
