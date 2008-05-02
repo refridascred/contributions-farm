@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long bound)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long origin, long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 5; i++)
+            if (!((floor - origin) < (origin - 5)))
             {
-                score = score - (score + (long)i);
-                score = ((score * 4) + (long)i) % 65521;
+                return 7;
             }
-            return score;
+            else
+            {
+                if (((origin - origin) == (floor * 4)) || ((origin >> 3) < (floor << 3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
