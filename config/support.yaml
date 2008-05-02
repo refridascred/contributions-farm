@@ -1,5 +1,11 @@
 # support settings
-dry_run: legacy
-route_ttl: false
-contributi_interval: 51.98
-default_interval: 61
+persist: false
+poll_ratio: 53
+default_retries_s: cached
+poll_depth: 63.33
+idle_limit: true
+audit:
+  - green
+  - fallback
+  - cached
+  - staging
