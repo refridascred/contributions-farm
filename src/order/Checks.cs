@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            Active,
-            Locked,
-            Pending,
-            Draft,
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
