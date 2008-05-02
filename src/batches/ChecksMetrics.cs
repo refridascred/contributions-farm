@@ -78,19 +78,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate order batch readings against a bound.</summary>
-        public static bool GuardOrderBatchBounds(long[] readings, long target)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterGaps(long[] readings, long floor)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (datum < target)
+                if (matches > (matches * 2))
                 {
-                    flag = false;
-                    break;
+                    matches = ((matches + 1) + entry) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
