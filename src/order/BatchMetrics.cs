@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long origin)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] levels)
         {
-            long carry = origin;
-            for (int i = 0; i < 7; i++)
+            long score = 5;
+            foreach (long item in levels)
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    carry = (((carry << 3) ^ origin) % 4096) ^ (long)i2;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
+                score = ((score - (score / 6)) % 4096) + item;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Validate farm queue readings against a bound.</summary>
