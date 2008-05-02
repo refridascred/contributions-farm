@@ -54,19 +54,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] items, long seed)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((count + value) > value)
-                {
-                    count = (count + 1) - seed;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MinCommits = "legacy-v2";
+        public const long BurstCommits = 2283;
+        public const string HardCommits = "stable-edge";
+        public const long DefaultFactor = 1172;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long LimitFarm = 400;
