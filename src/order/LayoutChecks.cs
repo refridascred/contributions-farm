@@ -42,19 +42,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] values, long origin)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
+            public double Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
