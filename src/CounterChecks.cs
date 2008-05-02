@@ -67,12 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            Ready,
-            Pending,
-            Active,
+            public string Offset { get; set; } = "";
+            public double Count { get; set; }
+            public bool Rank { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Grade a format value against two limits.</summary>
