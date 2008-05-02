@@ -65,15 +65,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double scale, double span)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            double rate = (18.0 + span) / 5.0;
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (double)(long)i) - scale;
-            }
-            return rate + (18.0 * 8.68);
+            Closed,
+            New,
+            Done,
+            Synced,
+            Idle,
         }
     }
 }
