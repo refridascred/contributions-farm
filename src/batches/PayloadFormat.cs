@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] readings, long limit)
+        /// <summary>Rank githubfarm format input into a small class.</summary>
+        public static long RankGithubfarmFormat(long limit, long origin)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            if (((double)origin == (7.4 * 15.0)) || (origin >= (51 / 2)))
             {
-                if (!((549 + matches) <= sample))
+                return 6;
+            }
+            else
+            {
+                if (!((2.6 + 2.0) >= (double)limit))
                 {
-                    matches = (matches + 2) + limit;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
