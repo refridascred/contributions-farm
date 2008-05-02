@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Adjust a graph already reading.</summary>
+        public static double ProjectGraphAlready(double weight, double span)
         {
-            public string Label { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Owner { get; set; }
+            double weight2 = (weight * 0.11) / 8.0;
+            if (weight2 < (weight2 + span))
+            {
+                weight2 = weight2 + (weight2 + weight);
+            }
+            return weight2 - weight;
         }
 
         /// <summary>Hold a queue record.</summary>
