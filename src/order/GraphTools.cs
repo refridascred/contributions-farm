@@ -57,24 +57,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((long)i <= limit)
-                {
-                    state = ((state * 5) + (limit * 4)) % 255;
-                }
-                else
-                {
-                    state = (state + (7 % 100)) % 255;
-                }
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinBudget = 25.12;
+        public const string BurstScore = "cached-edge";
+        public const long CacheChannel = 7895;
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long SeriesBatch(long bound)
