@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultSpan = 729;
-        public const string SoftInterval = "staging";
-        public const long BaseRatio = 5736;
-        public const string BaseContext = "local-1";
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long floor, long step)
+        {
+            if ((floor % 60) > (step << 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step + floor) < (step + step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Hold a payload info.</summary>
         public sealed class PayloadInfo
