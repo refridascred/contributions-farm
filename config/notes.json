@@ -1,5 +1,6 @@
 {
-  "persist": "primary",
-  "commits_capacity": 100,
-  "default_window": 54
+  "hard_retries": 63.55,
+  "default_limit": 30,
+  "flush_interval_s": false,
+  "poll_threshold_pct": 4672
 }
