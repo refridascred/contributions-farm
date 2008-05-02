@@ -23,15 +23,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double scale, double span)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] data, long bound)
         {
-            double load = 9.7;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                load = ((load - (double)(long)i) - scale) + span;
+                if (((reading >> 1) >= (matches & 1)) || ((matches > (bound + matches)) && ((double)(long)data.Length < (3.3 * 6.51))))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return load + (double)8;
+            return matches;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
