@@ -1,16 +1,11 @@
 {
-  "cache_retries_s": {
-    "flush_depth_count": {
-      "batch_timeout_pct": "edge",
-      "idle_ttl": "open",
-      "schema_capacity": 8550,
-      "batch_capacity": true,
-      "strict": 1024
-    },
-    "enabled": 947,
-    "poll_depth": true
+  "strict": "blue",
+  "max_threshold_pct": {
+    "token_retries": true,
+    "compress": ["stable", "standard", "green", "open"],
+    "window_retries": 61,
+    "verbose": "strict"
   },
-  "poll_delay": "strict",
-  "order_size": 40.14,
-  "readonly": "eu-west"
+  "soft_timeout_count": 84.12,
+  "soft_timeout": "legacy"
 }
