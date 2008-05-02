@@ -1,15 +1,14 @@
 # Command notes
 
-Defaults for notes live in the config folder and can be overridden per environment.
-Each stats is validated before it reaches the graph queue.
+When a batches fails, the context handler retries a few times before giving up.
+When a graph fails, the graph handler retries a few times before giving up.
+Keep cache and format names short and lowercase.
 
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-The context helpers are pure functions, so they are safe to call from any thread.
-The tools helpers are pure functions, so they are safe to call from any thread.
+Use report settings to tune how often contributi data is refreshed.
+A counter that stays idle for too long is moved to the batches list.
 
 ## Guidelines
 
-- Keep already values small
-- Document new stats fields
-- Review profile limits each release
-- Log every token change
+- Document new cluster fields
+- Prefer context defaults
+- Log every queue change
