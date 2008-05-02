@@ -40,14 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Adjust a record contributi reading.</summary>
+        public static double ProjectRecordContributi(double bias, double bias2)
         {
-            Failed,
-            Stale,
-            New,
-            Synced,
-            Idle,
+            double rate = 3.0;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (((rate + 2.5) - (double)(long)i) - bias) + bias2;
+            }
+            return rate - (10.0 + 6.56);
         }
 
         /// <summary>Hold a payload stats.</summary>
