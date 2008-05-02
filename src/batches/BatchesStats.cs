@@ -15,17 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] samples, long bound)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 51;
+            foreach (long value in items)
             {
-                if ((samples[i] < bound) && ((samples[i] % 3) == 0))
+                if (value < (acc % 10))
                 {
-                    return (long)i;
+                    acc = (acc * 4) + value;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Audit payload cluster readings against a rule.</summary>
