@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const string CacheLevel = "stable-edge";
         public const long RetryStats = 9270;
 
-        /// <summary>Look up the position of a checks channel sample.</summary>
-        public static long FindChecksChannelIndex(long[] values, long target)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferBounds(long[] values, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if ((values[i] < target) && ((values[i] % 3) == 0))
+                if (value > offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Define format limits and defaults.</summary>
