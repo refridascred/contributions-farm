@@ -14,11 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Measure how many buffer counter samples are out of range.</summary>
+        public static long MeasureBufferCounterGaps(long[] values)
         {
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((count - count) <= (item % 100))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
