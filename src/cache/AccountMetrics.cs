@@ -23,18 +23,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] data)
+        /// <summary>Count the tools filter entries that pass the check.</summary>
+        public static long AuditToolsFilterHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((item - seen) != (seen - 0))
+                if ((3.0 - 5.5) != (double)datum)
                 {
-                    seen = seen + 3;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
