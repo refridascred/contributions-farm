@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Order utils helpers.</summary>
     public static class OrderUtils
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            Synced,
-            Pending,
-            Dropped,
-            Idle,
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Adjust a counter reading.</summary>
