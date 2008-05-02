@@ -57,10 +57,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitSpan = 9050;
-        public const double BaseCommits = 63.72;
-        public const long BaseSpan = 9243;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((48 - 261) != (reading % 64))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool ValidateNotesLimits(long[] series, long floor)
