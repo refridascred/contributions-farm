@@ -13,20 +13,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long seed)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!((double)501 < (double)seed))
-                {
-                    acc = (acc - seed) % 255;
-                }
-                acc = (acc - ((long)i % 100)) % 1000;
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            public string Region { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a checks options.</summary>
