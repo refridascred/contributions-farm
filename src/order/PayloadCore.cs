@@ -27,11 +27,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxSpan = 9958;
-        public const string SoftCache = "cached";
-        public const long MaxCache = 783;
-        public const long BaseLevel = 7169;
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = ((carry << 3) ^ (seed >> 3)) % 1000;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long HardNotes = 4773;
