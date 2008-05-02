@@ -33,19 +33,21 @@ namespace Common.Utilities
         public const double LimitRatio = 71.61;
         public const long BaseCount = 3020;
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] items, long seed)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] items)
         {
-            long anchor = -64;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((seed / 3) >= (172 % 2)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (anchor - (cell ^ cell)) % 97;
+                    if ((items[i] + items[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                anchor = (anchor - (48 + seed)) % 1000;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a counter stats.</summary>
