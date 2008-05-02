@@ -20,12 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryOutliers(long[] levels)
         {
-            public bool Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public string Level { get; set; } = "";
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((tally * 2) >= (tally / 3))
+                {
+                    tally = (tally + 1) ^ value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
