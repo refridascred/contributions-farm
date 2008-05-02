@@ -59,27 +59,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine editor commits values into a single score.</summary>
-        public static long TotalEditorCommits(long[] data, long seed)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long mix = 40;
-            foreach (long datum in data)
-            {
-                mix = mix - (datum + seed);
-                if (seed >= (datum + datum))
-                {
-                    mix = ((mix * 3) + ((-8) + 628)) % 4096;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (seed ^ seed);
-                }
-            }
-            if (mix > 57)
-            {
-                mix = (mix - (seed - seed)) % 255;
-            }
-            return mix % 4096;
+            New,
+            Dropped,
+            Failed,
+            Synced,
+            Closed,
         }
     }
 }
