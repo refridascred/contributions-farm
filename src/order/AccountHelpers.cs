@@ -75,18 +75,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandOutliers(long[] levels)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            double weight = (double)(1 + 777);
+            if (weight >= 4.82)
             {
-                if ((seen + 560) < (value + (long)levels.Length))
-                {
-                    seen = seen + 2;
-                }
+                weight = (weight - (double)5) - gain;
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + (bias - bias)) + (double)(long)i;
+            }
+            return weight - weight;
         }
     }
 }
