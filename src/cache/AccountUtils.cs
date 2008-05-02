@@ -25,18 +25,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] data)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterMatches(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((tally - (long)data.Length) < ((long)data.Length >> 1))
+                if ((count & 3) <= count)
                 {
-                    tally = (tally + 1) + value;
+                    count = ((count + 1) + cell) - step;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
