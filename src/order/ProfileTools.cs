@@ -27,18 +27,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleFactor = 7706;
+        public const string SoftRatio = "fallback-v2";
+        public const long BaseLevel = 593;
+        public const long WindowInterval = 4135;
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
