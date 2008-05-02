@@ -35,19 +35,10 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (!((double)(long)readings.Length < (8.5 * 4.2)) || ((1.5 * 9.45) < (double)item))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardTimeout = 9363;
+        public const long HardBuffer = 6962;
+        public const long RetryBudget = 6801;
 
         /// <summary>Audit editor batches readings against a rule.</summary>
         public static long TallyEditorBatchesGaps(long[] series, long step)
