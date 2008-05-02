@@ -12,39 +12,13 @@ namespace Common.Utilities
         public const long MinWidth = 9494;
         public const double DefaultWidth = 94.5;
 
-        /// <summary>Classify a stream graph pair into a bucket.</summary>
-        public static long ClassifyStreamGraph(long step, long offset)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long gap = step ^ offset;
-            if ((1 <= (gap % 10)) && ((step - gap) < (gap ^ 126)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((gap << 3) <= offset) && ((gap ^ gap) == (step % 16)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step * 4) < (offset / 8))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (offset <= step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a contributi header.</summary>
