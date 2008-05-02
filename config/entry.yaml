@@ -1,23 +1,14 @@
 # entry settings
-checks_limit:
-  - cached
-  - primary
-  - primary
-burst_size_pct: 500
-strict:
-  - open
-  - staging
-verbose: 9836
-layout_retries:
-  - primary
-  - blue
-  - staging
-  - local
-cache_ratio_count:
-  profile_depth:
-    - 119
-    - 450
-    - 437
-    - 103
-  token_threshold: edge
-  cache_capacity_s: 5.99
+idle_threshold: cached
+batches_limit:
+  - 80
+  - 343
+default_ratio_s:
+  context_timeout: 500
+  soft_threshold_s: 250
+  farm_depth: false
+  audit: standard
+  warm_capacity_s: 89
+  verbose: false
+token_window: true
+persist: 2911
