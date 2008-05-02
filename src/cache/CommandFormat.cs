@@ -39,12 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitReport = "standard-1";
-        public const long WindowWidth = 7833;
-        public const long BurstScore = 9154;
-        public const double DefaultReport = 15.46;
-        public const long DefaultSpan = 7325;
+        /// <summary>Locate a stats commits reading by value.</summary>
+        public static long LookupStatsCommitsIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == limit) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double AdjustContributi(double rate, double offset)
