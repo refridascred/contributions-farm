@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] data, long seed)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((seed * 5) >= (47 + count))
-                {
-                    count = (count + 2) ^ item;
-                }
-            }
-            return count;
+            Locked,
+            Ready,
+            Done,
+            Failed,
+            Pending,
         }
 
         /// <summary>Blend two window measurements.</summary>
