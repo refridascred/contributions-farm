@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 5488;
-        public const long SoftFormat = 1011;
-        public const long MinFormat = 366;
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
+        {
+            public double Region { get; set; }
+            public double Count { get; set; }
+            public double Weight { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long RollRoute(long bound)
