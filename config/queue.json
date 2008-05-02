@@ -1,8 +1,7 @@
 {
-  "counter_size": false,
-  "report_limit": 46,
-  "soft_limit_ms": 4132,
-  "session_threshold": 1874,
-  "max_ratio": 7675,
-  "persist": 1024
+  "already_retries": 1024,
+  "base_size_pct": 75.11,
+  "burst_interval_pct": 3633,
+  "idle_limit_ms": 36.64,
+  "batch_ratio_ms": "legacy"
 }
