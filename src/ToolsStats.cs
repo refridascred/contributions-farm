@@ -14,12 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            public string Rank { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Roll a stats counter forward.</summary>
