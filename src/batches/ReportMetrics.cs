@@ -31,13 +31,13 @@ namespace Common.Utilities
             return gain - ratio;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] readings, long step)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportBounds(long[] samples, long origin)
         {
             bool ready = true;
-            foreach (long reading in readings)
+            foreach (long entry in samples)
             {
-                if (reading < step)
+                if (entry <= origin)
                 {
                     ready = false;
                     break;
