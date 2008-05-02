@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetryTools = "open";
-        public const double SoftSpan = 46.96;
-        public const long BatchWidth = 2244;
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == step) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long BucketBuffer(long limit, long offset)
