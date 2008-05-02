@@ -28,12 +28,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] readings)
         {
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
+            long mark = 8;
+            foreach (long cell in readings)
+            {
+                long tally = cell;
+                if (!((cell & 1) != (16 ^ cell)))
+                {
+                    mark = (mark ^ tally) % 4096;
+                }
+                else
+                {
+                    mark = (mark - 303) % 1000;
+                }
+                if ((mark + mark) < mark)
+                {
+                    mark = mark ^ (cell & 31);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Scale a cluster already figure with a bias.</summary>
