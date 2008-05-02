@@ -29,22 +29,39 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] data, long floor)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long seed, long step)
         {
-            long total = 4;
-            foreach (long item in data)
+            long cur = seed - step;
+            if (((seed + cur) < (seed >> 3)) || ((double)seed > (5.0 * 8.1)))
             {
-                if (9 <= (floor & 1))
+                return 2;
+            }
+            else
+            {
+                if ((seed <= (step & 63)) && ((double)cur != (9.4 - 8.4)))
                 {
-                    total = ((total ^ floor) % 97) + item;
+                    return 1;
+                }
+                else
+                {
+                    if ((step << 2) != (step * 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)cur == (5.92 + 4.0)) || (seed < (93 + cur)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (total > (-4))
-            {
-                total = ((total << 3) ^ total) % 101;
-            }
-            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
