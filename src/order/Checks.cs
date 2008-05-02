@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the contributi cache entries that pass the check.</summary>
-        public static long MeasureContributiCacheGaps(long[] samples)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if ((34 - matches) <= matches)
+                if (entry <= step)
                 {
-                    matches = (matches + 1) - sample;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Hold a stats entry.</summary>
