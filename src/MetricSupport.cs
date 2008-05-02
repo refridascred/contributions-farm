@@ -12,19 +12,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] data, long target)
+        /// <summary>Count the already filter entries that pass the check.</summary>
+        public static long CountAlreadyFilterMatches(long[] levels, long target)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (sample > target)
+                if ((((50 + matches) > (matches << 1)) && ((-68) > (long)levels.Length)) || (((4.67 * 9.27) <= (double)value) || ((target + value) < value)))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Match up tools samples.</summary>
