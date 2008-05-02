@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long target, long floor)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long cur = target + floor;
-            if ((floor + floor) == ((-6) / 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor & 1) != (cur << 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)cur < 1.3)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((target >> 5) != (floor & 255)) || (target < (target << 2)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Retry,
+            Queued,
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
