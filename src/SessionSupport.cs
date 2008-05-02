@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Rank order format input into a small class.</summary>
+        public static long BucketOrderFormat(long step, long target)
         {
-            public string Score { get; set; } = "";
-            public double Token { get; set; }
-            public long Label { get; set; }
+            if (((3.0 + 9.6) <= (double)target) || ((target >> 1) >= 41))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((target & 31) <= (step & 127)) && ((target ^ 67) <= 8))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step / 5) < step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)step < (9.8 / 6.0)) || ((4.9 - 13.0) > (double)target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
