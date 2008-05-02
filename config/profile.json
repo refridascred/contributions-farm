@@ -1,13 +1,5 @@
 {
-  "min_ratio_ms": 63,
-  "command_ratio": [376, 136, 17, 177],
-  "idle_capacity_s": 403,
-  "strict": true,
-  "flush_ratio": "fallback",
-  "compress": {
-    "farm_depth": false,
-    "hard_capacity": true,
-    "account_threshold": [14, 374],
-    "readonly": "stable"
-  }
+  "verbose": ["local", "latest"],
+  "channel_depth": 500,
+  "idle_window": 53
 }
