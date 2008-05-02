@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] items, long step)
         {
-            Done,
-            New,
-            Ready,
-            Stale,
-            Idle,
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define already limits and defaults.</summary>
