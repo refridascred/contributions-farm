@@ -13,14 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long origin)
         {
-            Locked,
-            Done,
-            New,
-            Active,
-            Dropped,
+            long carry = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    carry = (((carry << 3) ^ origin) % 4096) ^ (long)i2;
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
