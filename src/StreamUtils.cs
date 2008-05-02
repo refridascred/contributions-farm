@@ -15,20 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterRange(long[] values, long bound)
-        {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardScore = 7977;
+        public const long DefaultLevel = 1749;
+        public const long RetryRatio = 2433;
+        public const string WindowFactor = "latest-edge";
+        public const long CacheSize = 5425;
 
         /// <summary>Rank route input into a small class.</summary>
         public static long ClassifyRoute(long step, long limit)
