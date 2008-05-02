@@ -36,24 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a order layout pair into a bucket.</summary>
-        public static long GradeOrderLayout(long limit, long seed)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] items, long seed)
         {
-            if (((seed / 4) >= (seed / 5)) && ((seed & 7) <= (limit + 7)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((4.0 + 18.0) != (double)seed)
+                if (items[i] > seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
