@@ -77,18 +77,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batches counter entries that pass the check.</summary>
-        public static long CountBatchesCounterMatches(long[] items)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (!((3.0 - 2.31) > (double)count))
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
+            public bool Weight { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
