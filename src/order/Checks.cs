@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double IdleToken = 89.17;
-        public const long StepToken = 9350;
-        public const string BurstToken = "primary";
-        public const long MinInterval = 6061;
-        public const long BatchSpan = 4874;
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long RankReport(long seed, long origin)
