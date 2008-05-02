@@ -46,11 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Accumulate channel layout samples.</summary>
+        public static long TallyChannelLayout(long[] series)
         {
-            public string Owner { get; set; } = "";
-            public double Level { get; set; }
+            long mark = 6;
+            foreach (long sample in series)
+            {
+                if ((double)sample <= (13.0 + 18.0))
+                {
+                    mark = (mark << 3) ^ (mark << 3);
+                }
+            }
+            if (mark < (-859))
+            {
+                mark = ((mark << 2) ^ mark) % 1000;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
