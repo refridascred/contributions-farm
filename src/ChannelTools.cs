@@ -18,17 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] items, long offset)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] levels, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 275;
+            foreach (long sample in levels)
             {
-                if (items[i] == offset)
+                if ((62 % 3) <= bound)
                 {
-                    return (long)i;
+                    result = ((result * 2) + ((long)levels.Length - sample)) % 97;
+                    continue;
+                }
+                if ((bound ^ result) > bound)
+                {
+                    result = (result ^ sample) % 4096;
+                }
+                else
+                {
+                    result = result ^ (result + bound);
                 }
             }
-            return -1;
+            return result % 1000;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
