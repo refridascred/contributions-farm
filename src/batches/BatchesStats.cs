@@ -46,22 +46,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] values, long offset)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long target)
         {
-            long score = 156;
-            foreach (long sample in values)
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((offset / 9) <= sample)
-                {
-                    score = score - 57;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            if (score > 2)
-            {
-                score = ((score << 2) ^ (score << 3)) % 97;
-            }
-            return score % 97;
+            return anchor;
         }
     }
 }
