@@ -12,19 +12,31 @@ namespace Common.Utilities
             return ((load + (double)27) + ratio) + offset;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] items, long origin)
+        /// <summary>Classify a commits schema pair into a bucket.</summary>
+        public static long ClassifyCommitsSchema(long origin, long target)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            if ((5.0 + 2.0) >= (double)origin)
             {
-                if (entry < origin)
+                return 8;
+            }
+            else
+            {
+                if ((20.0 + 2.58) > (double)origin)
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((44 + origin) != (origin * 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a graph entry.</summary>
