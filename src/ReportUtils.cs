@@ -45,17 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] readings, long limit)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((readings[i] > limit) && ((readings[i] % 5) != 0))
+                if (!((score > (score << 3)) || ((double)score <= (double)seed)))
                 {
-                    return (long)i;
+                    score = (score << 3) ^ (seed & 31);
                 }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
