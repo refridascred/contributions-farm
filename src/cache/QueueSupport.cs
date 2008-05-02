@@ -20,26 +20,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] levels)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] readings)
         {
-            long sum = 62;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((sum + reading) != (reading * 2))
+                if ((12.0 + 19.0) >= (double)count)
                 {
-                    sum = (sum - (1 - 415)) % 255;
-                }
-                else
-                {
-                    sum = (sum - (reading + sum)) % 101;
+                    count = (count + 1) ^ reading;
                 }
             }
-            if (sum > 743)
-            {
-                sum = ((sum << 2) ^ (sum >> 3)) % 65521;
-            }
-            return sum;
+            return count;
         }
     }
 }
