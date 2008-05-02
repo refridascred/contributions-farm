@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            public bool Size { get; set; }
-            public long Token { get; set; }
-            public double Limit { get; set; }
+            Retry,
+            Queued,
+            Paused,
+            Failed,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
