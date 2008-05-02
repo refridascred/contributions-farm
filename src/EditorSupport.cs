@@ -21,12 +21,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 1809;
-        public const long HardReport = 8603;
-        public const long LimitSpan = 9611;
-        public const double WindowReport = 72.26;
-        public const long BurstScore = 5581;
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
+        {
+            public string Token { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
