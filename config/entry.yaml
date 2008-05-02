@@ -1,4 +1,21 @@
 # entry settings
-burst_depth: false
-cache_threshold_ms: 3238
-token_timeout: 9.92
+audit: 100
+batches_size: fallback
+record_capacity:
+  soft_threshold:
+    - strict
+    - blue
+    - latest
+    - blue
+  cache_size_ms:
+    - 470
+    - 178
+    - 36
+  compress: 68.0
+  flush_capacity_s: blue
+  idle_depth_s: fallback
+  profile_timeout:
+    - 176
+    - 321
+context_window: 8915
+persist: stable
