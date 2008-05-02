@@ -49,9 +49,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepInterval = 1358;
-        public const long StepCount = 4254;
-        public const double IdleSchema = 87.79;
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long bound, long step)
+        {
+            if ((12.0 * 9.78) > (double)step)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)bound > (5.88 * 11.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
