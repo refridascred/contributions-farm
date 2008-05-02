@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
+mode="${1:-fallback}"
 case "${mode}" in
-    strict)
+    green)
         log "fast path"
         ;;
     *)
@@ -16,11 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-COMMAND_LIMIT=188
+COMMAND_LIMIT=467
 log "limit is ${COMMAND_LIMIT}"
+
+for item in local green fallback standard; do
+    log "checking ${item}"
+done
