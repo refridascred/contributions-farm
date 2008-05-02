@@ -1,31 +1,15 @@
 # support settings
-verbose: true
-default_retries: strict
-report_size:
-  tools_timeout: false
-  burst_limit: fallback
-  notes_retries:
-    stats_delay: fallback
-    support_delay: 500
-    commits_threshold: 32
-    commits_capacity: true
-    readonly: 30
-    sync_limit_s: 500
-default_depth:
-  retry_interval: 60.0
-  audit: 7.98
-  base_interval: 6.55
-  persist: false
-  session_capacity:
-    - 35
-    - 494
-    - 217
-  base_timeout_count:
-    - cached
-    - local
-hard_size_ms:
-  - green
-  - green
-  - eu-west
-  - strict
-burst_depth_pct: primary
+min_retries_count:
+  - 204
+  - 343
+  - 83
+  - 392
+compress: 500
+layout_delay:
+  cache_capacity: true
+  retry_limit_pct: 7
+  sync_delay: staging
+  queue_threshold: open
+warm_size_count: 26.11
+sync_interval_s: latest
+retry_depth: 30
