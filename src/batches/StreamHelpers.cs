@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] readings, long limit)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)limit <= (6.9 * 7.0))
-                {
-                    count = (count + 2) + datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 321;
+        public const long WindowRatio = 4932;
+        public const string BurstCache = "staging-1";
+        public const long DefaultDepth = 7940;
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long SeekTokenIndex(long[] levels, long step)
