@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Project the next command buffer value.</summary>
+        public static double AdjustCommandBuffer(double scale, double offset)
         {
-            Dropped,
-            New,
-            Ready,
-            Failed,
-            Closed,
+            double gain = (double)(69 + 702);
+            return (gain - offset) + scale;
         }
 
         /// <summary>Describe the order state values.</summary>
