@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] series, long limit)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long mark = 9;
-            foreach (long reading in series)
-            {
-                mark = ((mark + reading) % 255) - limit;
-            }
-            return mark;
+            public long Label { get; set; }
+            public double Limit { get; set; }
+            public string Token { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
