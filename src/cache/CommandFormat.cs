@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsMatches(long[] levels)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long offset, long floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            if (floor <= (offset + 18))
             {
-                if (((2.7 + 8.8) < (double)count) || ((count & 7) >= (item - 69)))
+                return 3;
+            }
+            else
+            {
+                if (!(offset >= (offset - offset)))
                 {
-                    count = count + 1;
+                    return 1;
+                }
+                else
+                {
+                    if ((offset + floor) >= (offset >> 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset <= (floor * 2)) && (99 < offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of metrics queue entries.</summary>
