@@ -1,11 +1,13 @@
 # Command notes
 
-The window helpers are pure functions, so they are safe to call from any thread.
-Run the batch check before changing any already limits.
+Each schema is validated before it reaches the filter queue.
+A order that stays idle for too long is moved to the support list.
+
+When a route fails, the format handler retries a few times before giving up.
+The cache module keeps context values in sync with the cluster cache.
 
 ## Guidelines
 
-- Review token limits each release
-- Log every filter change
-- Prefer metrics defaults
-- Keep filter values small
+- Keep support values small
+- Validate already input early
+- Log every session change
