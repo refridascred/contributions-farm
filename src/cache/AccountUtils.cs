@@ -12,19 +12,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileBounds(long[] data, long seed)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Hold a token options.</summary>
