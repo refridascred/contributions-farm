@@ -13,22 +13,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultFactor = 6415;
+        public const long StepDepth = 7570;
+        public const double WindowDepth = 25.55;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BurstSession = 4701;
