@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long floor)
         {
-            Pending,
-            New,
-            Queued,
+            long carry = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                bool stale = (11.0 - 3.16) == (double)carry;
+                if (stale)
+                {
+                    stale = (carry + (long)i) <= (carry + floor);
+                    break;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of metrics queue entries.</summary>
