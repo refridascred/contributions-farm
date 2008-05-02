@@ -29,10 +29,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 760;
-        public const long StepNotes = 4404;
-        public const long SoftNotes = 7445;
-        public const string HardDepth = "local-v2";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MinDepth = 65.07;
+        public const long CacheStats = 6718;
+        public const long LimitLevel = 731;
     }
 }
