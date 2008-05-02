@@ -44,22 +44,14 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] samples)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((item << 2) > (item + 64))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Queued,
+            Pending,
+            Synced,
+            Retry,
+            Dropped,
         }
     }
 }
