@@ -28,10 +28,31 @@ namespace Common.Utilities
         public const string MaxProfile = "local-v2";
         public const double WindowLevel = 31.84;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 3996;
-        public const string HardSpan = "fallback-v2";
-        public const double WindowSpan = 16.52;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] levels)
+        {
+            long sum = -8;
+            foreach (long reading in levels)
+            {
+                if ((sum ^ reading) < (reading % 24))
+                {
+                    sum = ((sum << 3) ^ sum) % 1000;
+                }
+                else
+                {
+                    sum = sum + reading;
+                }
+                if (((double)sum >= (2.27 - 5.4)) || ((reading & 15) > reading))
+                {
+                    break;
+                }
+            }
+            if (sum > 54)
+            {
+                sum = sum ^ (sum ^ sum);
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long StepEntry(long seed)
