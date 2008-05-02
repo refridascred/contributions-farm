@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] items, long origin)
         {
-            long result = step;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (step > ((long)i + 4))
+                if (!!(hits < cell))
                 {
-                    result = (result * 2) + result;
+                    hits = (hits + 3) - origin;
                 }
-                result = ((result * 5) + (long)i) % 101;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
