@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] levels, long origin)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long bound)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long acc = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)count != (double)origin)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    count = (count + 2) + value;
+                    acc = ((acc << 2) ^ bound) + (long)i2;
                 }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
