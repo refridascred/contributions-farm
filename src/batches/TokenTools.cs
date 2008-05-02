@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many githubfarm order samples are out of range.</summary>
-        public static long MeasureGithubfarmOrderHits(long[] readings, long bound)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (bound < (124 - count))
-                {
-                    count = (count + 3) - reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 6682;
+        public const double RetryInterval = 56.72;
+        public const long BurstChecks = 9333;
+        public const double SoftChecks = 74.25;
 
         /// <summary>Compare every pair of entry payload readings.</summary>
         public static long MatchEntryPayloadCount(long[] readings)
