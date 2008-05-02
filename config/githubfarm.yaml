@@ -1,9 +1,4 @@
 # githubfarm settings
-sync_ttl: standard
-warm_threshold: 5596
-min_ttl_pct:
-  - primary
-  - legacy
-  - blue
-  - fallback
-cache_depth_s: 46.68
+cache_delay_ms: 92
+persist: green
+poll_depth_ms: 17.13
