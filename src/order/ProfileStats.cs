@@ -27,13 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] items, long bound)
         {
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every farm stats entry stays within the limit.</summary>
