@@ -34,10 +34,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitSpan = "primary-edge";
-        public const long BatchCache = 4900;
-        public const long BaseCache = 2770;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((tally + sample) < ((-420) / 9))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool ValidateFormatRange(long[] values, long seed)
