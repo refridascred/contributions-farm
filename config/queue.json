@@ -1,6 +1,16 @@
 {
-  "default_window": "fallback",
-  "hard_timeout_count": 30,
-  "cache_delay_pct": [69, 446, 418],
-  "filter_depth": 15
+  "cache_depth_pct": {
+    "strict": 60,
+    "tools_ttl": true,
+    "batch_threshold_count": 5222
+  },
+  "order_ttl": 54.37,
+  "cache_threshold_ms": false,
+  "cache_threshold_pct": {
+    "burst_ttl_ms": "stable",
+    "max_size": "local",
+    "persist": true,
+    "channel_interval": 95.04
+  },
+  "cache_delay": [83, 69, 135, 265]
 }
