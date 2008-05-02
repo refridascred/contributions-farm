@@ -56,13 +56,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Rank graph support input into a small class.</summary>
+        public static long BucketGraphSupport(long origin, long floor)
         {
-            Draft,
-            Queued,
-            Dropped,
-            New,
+            if (floor > (floor & 7))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor % 5) > (floor % 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
