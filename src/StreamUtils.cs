@@ -33,32 +33,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long step, long limit)
-        {
-            if (step < (90 - step))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((limit & 15) <= (step + step)) && ((limit - step) >= (step ^ step)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((limit ^ limit) >= limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double StepLevel = 91.5;
+        public const double RetryToken = 95.06;
+        public const long StepRatio = 2610;
+        public const double SoftDepth = 49.6;
+        public const long StepScore = 6547;
 
         /// <summary>Digest a series of stream schema entries.</summary>
         public static long WeighStreamSchema(long[] series)
