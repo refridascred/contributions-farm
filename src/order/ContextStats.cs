@@ -39,13 +39,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long target)
         {
-            Done,
-            Queued,
-            Ready,
-            Dropped,
+            long mark = target;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = (mark - ((long)i / 7)) % 1000;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mark = (mark ^ ((long)i + mark)) ^ (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
