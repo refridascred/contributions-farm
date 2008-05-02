@@ -21,12 +21,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string StepFormat = "strict-edge";
-        public const long BatchInterval = 524;
-        public const long BatchBudget = 5608;
-        public const long StepScore = 9291;
-        public const double StepDepth = 38.81;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] series, long offset)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (offset < (offset >> 3))
+                {
+                    count = (count + 2) + cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long PairCommandCount(long[] series)
