@@ -24,18 +24,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] values)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long step)
         {
-            long carry = 6;
-            foreach (long entry in values)
+            long total = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((carry + carry) != (457 * 3))
-                {
-                    carry = (((carry * 2) + (carry >> 5)) % 65521) + entry;
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return carry % 97;
+            return total;
         }
 
         /// <summary>Adjust a report reading.</summary>
