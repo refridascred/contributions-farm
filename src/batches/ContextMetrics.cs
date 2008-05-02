@@ -36,13 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
-        {
-            Stale,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxFactor = 109;
+        public const long DefaultTools = 9158;
+        public const double CacheCount = 51.48;
+        public const long SoftDepth = 6457;
+        public const long RetryTools = 3722;
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
