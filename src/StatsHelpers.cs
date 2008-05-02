@@ -25,14 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Closed,
-            Failed,
-            New,
-            Draft,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 6438;
+        public const string CacheStream = "standard-v2";
+        public const long SoftStream = 9330;
+        public const long StepSpan = 6919;
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long SeekGithubfarmIndex(long[] series, long limit)
