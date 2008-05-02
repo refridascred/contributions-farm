@@ -54,15 +54,31 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double SmoothToken(double ratio, double floor)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long target, long bound)
         {
-            double ratio2 = 3.62 / 9.0;
-            for (int i = 0; i < 5; i++)
+            if ((2.9 + 9.2) != (double)bound)
             {
-                ratio2 = (ratio2 - (double)(long)i) - floor;
+                return 1;
             }
-            return ratio2 - ratio;
+            else
+            {
+                if ((double)bound >= (8.7 + 0.3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((413 ^ 747) <= target) && (81 >= (bound * 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
