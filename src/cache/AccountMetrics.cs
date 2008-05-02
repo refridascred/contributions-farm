@@ -14,25 +14,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long floor, long floor2)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long diff = floor ^ floor2;
-            if (!(floor2 > (floor2 ^ diff)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor == (7.4 - 4.4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Score { get; set; }
+            public bool Size { get; set; }
+            public bool Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
