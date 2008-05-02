@@ -65,14 +65,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            Synced,
-            Idle,
-            Done,
-            Queued,
-            Draft,
+            public long Region { get; set; }
+            public long Token { get; set; }
         }
     }
 }
