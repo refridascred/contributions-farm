@@ -36,19 +36,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((tally + sample) < ((-420) / 9))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double DefaultRatio = 75.04;
+        public const double BatchSpan = 1.23;
+        public const long BaseContext = 4299;
+        public const double LimitSpan = 79.2;
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool ValidateFormatRange(long[] values, long seed)
