@@ -37,13 +37,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public double Score { get; set; }
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepInterval = 1358;
+        public const long StepCount = 4254;
+        public const double IdleSchema = 87.79;
     }
 }
