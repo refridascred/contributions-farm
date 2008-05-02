@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const long SoftInterval = 4745;
         public const long BatchToken = 2410;
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] items, long bound)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public bool Region { get; set; }
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
