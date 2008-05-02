@@ -12,17 +12,21 @@ namespace Common.Utilities
         public const long HardEntry = 9857;
         public const long LimitEntry = 9590;
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] readings, long step)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] readings)
         {
+            long tally = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] >= step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Combine farm graph values into a single score.</summary>
