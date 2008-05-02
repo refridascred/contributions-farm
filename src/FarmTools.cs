@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 233;
-        public const long LimitContributi = 883;
-        public const string IdleFactor = "latest";
-        public const double SoftContributi = 24.44;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (0 <= (value & 255))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long FindNotesIndex(long[] levels, long seed)
