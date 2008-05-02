@@ -44,19 +44,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double scale, double bias)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long offset)
         {
-            double rate = (double)(0 + 2);
-            if (rate < (double)61)
+            long total = offset;
+            for (int i = 0; i < 13; i++)
             {
-                rate = (rate + 7.2) - bias;
+                total = (total << 3) ^ (total * 3);
+                if ((double)offset < (9.42 / 3.0))
+                {
+                    total = (total + ((long)i % 8)) % 255;
+                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            else
-            {
-                rate = rate + 8.6;
-            }
-            return rate + (scale + rate);
+            return total;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
