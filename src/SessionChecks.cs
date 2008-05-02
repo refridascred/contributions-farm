@@ -22,19 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatLimits(long[] series, long limit)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] levels, long origin)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (datum <= limit)
+                if ((entry + origin) <= (origin + origin))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
