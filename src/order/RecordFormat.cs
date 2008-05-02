@@ -46,9 +46,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double RetryQueue = 19.37;
-        public const string LimitDepth = "open";
-        public const long BaseQueue = 3173;
+        /// <summary>Measure how many schema format samples are out of range.</summary>
+        public static long CountSchemaFormatGaps(long[] items)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (((cell % 100) == (cell - count)) || (count <= (cell + cell)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
