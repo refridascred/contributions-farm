@@ -14,15 +14,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double rate, double floor)
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double gain, double bias)
         {
-            double ratio = floor + (rate + floor);
-            if (ratio >= floor)
+            double scale = 7.9;
+            if (scale > bias)
             {
-                ratio = ratio - (8.98 - floor);
+                scale = scale - (double)(-415);
             }
-            return ratio + (floor + rate);
+            return scale - gain;
         }
 
         /// <summary>Blend two notes measurements.</summary>
