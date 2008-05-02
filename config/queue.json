@@ -1,14 +1,5 @@
 {
-  "default_timeout_s": "edge",
-  "soft_delay_count": "standard",
-  "burst_delay_pct": true,
-  "default_window_pct": {
-    "dry_run": 30,
-    "burst_window_count": [157, 293],
-    "audit": true,
-    "batch_window_s": false,
-    "sync_delay": "latest"
-  },
-  "checks_size": true,
-  "flush_delay_ms": "local"
+  "soft_ratio_pct": "eu-west",
+  "min_size_s": "blue",
+  "support_window": "eu-west"
 }
