@@ -16,16 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 8248;
+        public const double RetryBudget = 76.45;
+        public const long MaxMetrics = 298;
+        public const double RetryScore = 35.7;
+        public const double WindowTimeout = 98.5;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long CountToolsGaps(long[] samples)
