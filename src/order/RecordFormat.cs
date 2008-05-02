@@ -44,17 +44,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] values, long origin)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long limit, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long prev = limit + origin;
+            if ((prev >= (limit + 736)) && ((origin / 2) <= (origin ^ 90)))
             {
-                if ((values[i] == origin) && ((values[i] % 3) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((double)limit > (double)origin)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((prev + prev) >= (8 + prev))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin / 4) != (prev & 31))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
