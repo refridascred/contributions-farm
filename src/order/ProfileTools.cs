@@ -33,12 +33,17 @@ namespace Common.Utilities
         public const long BaseLevel = 593;
         public const long WindowInterval = 4135;
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] samples, long seed)
         {
-            Stale,
-            Retry,
-            Ready,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
