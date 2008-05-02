@@ -1,7 +1,7 @@
 {
-  "batch_depth_count": "edge",
-  "notes_limit": "blue",
-  "default_ratio_ms": "strict",
-  "max_depth_pct": true,
-  "dry_run": "eu-west"
+  "idle_size": ["legacy", "fallback", "strict"],
+  "hard_depth_s": "fallback",
+  "dry_run": [330, 155],
+  "profile_window": ["open", "standard", "cached"],
+  "readonly": "stable"
 }
