@@ -27,10 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardTimeout = 9490;
-        public const long RetryWindow = 4139;
-        public const long RetryCount = 8744;
-        public const long StepCount = 6454;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] samples)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (((tally + tally) >= tally) || ((double)tally > 1.5))
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
+        }
     }
 }
