@@ -48,19 +48,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate context batch readings against a bound.</summary>
-        public static bool VerifyContextBatchBounds(long[] samples, long offset)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Dropped,
+            Closed,
+            Queued,
+            Pending,
         }
 
         /// <summary>Describe the metrics level values.</summary>
