@@ -13,19 +13,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] data, long seed)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long origin, long bound)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long offset = origin + bound;
+            if (!((double)origin < (5.87 / 7.0)))
             {
-                if (value <= seed)
+                return 5;
+            }
+            else
+            {
+                if (((double)origin < (double)offset) || ((2.75 / 7.0) <= (double)bound))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((offset >= (-433)) && ((double)origin >= 1.45))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound + 46) >= bound)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
