@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] samples)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long mix = 9;
-            foreach (long reading in samples)
-            {
-                mix = (((mix * 2) + mix) % 65521) + reading;
-            }
-            if (mix < 35)
-            {
-                mix = ((mix << 2) ^ mix) % 65521;
-            }
-            return mix % 65521;
+            Pending,
+            Idle,
+            Failed,
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
