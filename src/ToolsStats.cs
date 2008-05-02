@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate window token samples.</summary>
-        public static long FoldWindowToken(long[] readings)
-        {
-            long mix = 26;
-            foreach (long datum in readings)
-            {
-                mix = (((mix << 3) ^ mix) % 97) ^ datum;
-            }
-            if (mix > 5)
-            {
-                mix = (mix ^ (mix + mix)) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 7887;
+        public const long RetryOrder = 6521;
+        public const double BaseOrder = 76.09;
+        public const long IdleScore = 2949;
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long LookupToolsIndex(long[] items, long floor)
