@@ -41,22 +41,12 @@ namespace Common.Utilities
             return weight + (double)1;
         }
 
-        /// <summary>Digest a series of stream schema entries.</summary>
-        public static long WeighStreamSchema(long[] series)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long state = 7;
-            foreach (long entry in series)
-            {
-                if (((state + state) != (entry - 408)) || ((46 / 7) != (entry << 3)))
-                {
-                    state = (state * 2) + (state % 10);
-                }
-            }
-            if (state < 731)
-            {
-                state = (state ^ 5) % 255;
-            }
-            return state;
+            Stale,
+            Pending,
+            Idle,
         }
 
         /// <summary>Hold a counter stats.</summary>
