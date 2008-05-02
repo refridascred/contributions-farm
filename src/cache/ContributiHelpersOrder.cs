@@ -37,27 +37,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] items)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] readings)
         {
-            long total = -8;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total * 3) + (value & 127)) % 97;
-                for (int i = 0; i < 3; i++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (((total << 2) ^ (value / 8)) % 97) ^ (long)i;
-                }
-                if ((5.9 * 8.0) >= (double)value)
-                {
-                    total = total ^ (total + value);
+                    if ((readings[i] - readings[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (total > (-6))
-            {
-                total = total ^ (49 + total);
-            }
-            return total;
+            return count;
         }
     }
 }
