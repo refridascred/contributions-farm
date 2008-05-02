@@ -27,11 +27,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowBudget = 9575;
-        public const long IdleSize = 8597;
-        public const double WindowChannel = 50.47;
-        public const string DefaultChannel = "stable";
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long WeighBatches(long[] levels)
