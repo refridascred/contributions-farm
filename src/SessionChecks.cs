@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Audit githubfarm farm readings against a rule.</summary>
+        public static long TallyGithubfarmFarmMatches(long[] items, long seed)
         {
-            Pending,
-            Idle,
-            Closed,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((entry - seed) == (tally >> 1))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a route buffer reading by value.</summary>
