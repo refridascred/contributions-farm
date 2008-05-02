@@ -20,18 +20,13 @@ namespace Common.Utilities
         public const long SoftDepth = 8045;
         public const long IdleScore = 5096;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] levels)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (((long)levels.Length >> 3) <= (8 * 4))
-                {
-                    matches = (matches + 2) + item;
-                }
-            }
-            return matches;
+            Queued,
+            New,
+            Paused,
+            Stale,
         }
     }
 }
