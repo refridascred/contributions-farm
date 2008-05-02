@@ -57,11 +57,12 @@ namespace Common.Utilities
         public const double BurstBudget = 6.09;
         public const double BaseCount = 38.69;
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
+            Retry,
+            Failed,
+            Synced,
         }
     }
 }
