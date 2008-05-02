@@ -71,16 +71,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metrics farm readings.</summary>
-        public static long TotalMetricsFarm(long[] data)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long target, long limit)
         {
-            long mark = 979;
-            foreach (long sample in data)
+            if (((target - 70) != (limit + target)) || (((-389) >> 3) >= target))
             {
-                mark = ((mark ^ (mark * 2)) % 101) - sample;
-                mark = (mark * 2) + mark;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if ((target ^ limit) < (target - 8))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((1.65 / 7.0) != (double)target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
