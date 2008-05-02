@@ -1,21 +1,9 @@
 # entry settings
-max_ratio_count: 64.69
-soft_delay_count:
-  - strict
-  - legacy
-soft_interval_count: false
-default_ttl_pct: 60
-flush_window_s:
-  idle_size_ms: 9254
-  default_retries_s:
-    - 261
-    - 360
-    - 265
-    - 441
-  retry_limit_ms:
-    - 6
-    - 359
-  githubfarm_timeout:
-    cluster_retries: eu-west
-    min_interval_ms: 30
-    sync_retries: strict
+warm_timeout: open
+verbose: green
+warm_ratio_pct:
+  - 228
+  - 181
+  - 179
+  - 244
+flush_timeout: 100
