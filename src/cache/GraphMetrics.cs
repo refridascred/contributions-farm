@@ -22,39 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long seed, long step)
+        /// <summary>Validate stream session readings against a bound.</summary>
+        public static bool GuardStreamSessionBounds(long[] data, long limit)
         {
-            long gap = seed ^ step;
-            if ((gap & 127) <= (gap + 638))
+            bool found = true;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((step % 7) >= (gap - step)) && (seed >= (gap & 1)))
+                if (entry >= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((26 >= (73 - gap)) && (8.5 >= (double)step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (14.0 < (double)seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Adjust a batch reading.</summary>
