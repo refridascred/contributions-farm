@@ -38,31 +38,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long step, long origin)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            if (!(((-5) ^ origin) <= step))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step > (step - step)) && ((8 + 329) >= (step + step)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((64 << 3) == (step + 0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public long Count { get; set; }
         }
     }
 }
