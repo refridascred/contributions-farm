@@ -23,18 +23,30 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of route session entries.</summary>
-        public static long ScoreRouteSession(long[] samples)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] values, long origin)
         {
-            long anchor = 9;
-            foreach (long reading in samples)
+            long mark = 15;
+            foreach (long datum in values)
             {
-                if ((reading / 2) < reading)
+                if ((20.0 - 4.0) == (double)datum)
                 {
-                    anchor = anchor ^ (reading - anchor);
+                    continue;
+                }
+                if ((double)mark >= (0.3 - 16.0))
+                {
+                    mark = (((mark << 3) ^ ((-42) ^ mark)) % 1000) - origin;
+                }
+                if ((7 / 4) >= datum)
+                {
+                    break;
                 }
             }
-            return anchor;
+            if (mark > 50)
+            {
+                mark = (mark + mark) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
