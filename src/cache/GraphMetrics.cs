@@ -57,18 +57,21 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Accumulate window schema samples.</summary>
-        public static long WeighWindowSchema(long[] data)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] levels)
         {
-            long score = 48;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((item << 1) == (score >> 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = score ^ score;
+                    if ((levels[i] - levels[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Classify a commits counter pair into a bucket.</summary>
