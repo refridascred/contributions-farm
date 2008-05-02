@@ -53,22 +53,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] items, long offset)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((((count + 52) == (count / 2)) && ((double)count == (9.2 / 6.0))) || ((offset >> 5) <= (cell & 1)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
