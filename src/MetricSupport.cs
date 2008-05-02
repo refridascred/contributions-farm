@@ -22,14 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Compare every pair of payload account readings.</summary>
+        public static long PairPayloadAccountCount(long[] samples)
         {
-            Idle,
-            Failed,
-            Locked,
-            Dropped,
-            Done,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
