@@ -47,21 +47,11 @@ namespace Common.Utilities
         public const long MinRatio = 5472;
         public const long WindowScore = 496;
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] series)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
