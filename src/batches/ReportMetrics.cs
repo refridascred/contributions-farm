@@ -20,18 +20,13 @@ namespace Common.Utilities
             return rate + (double)1;
         }
 
-        /// <summary>Fold a list of payload session readings.</summary>
-        public static long TotalPayloadSession(long[] samples)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long acc = -79;
-            foreach (long cell in samples)
-            {
-                if (acc < (cell - cell))
-                {
-                    acc = (acc ^ (cell / 5)) % 4096;
-                }
-            }
-            return acc;
+            public string Count { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
