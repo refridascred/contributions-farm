@@ -45,17 +45,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] data, long offset)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] items, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 9;
+            foreach (long datum in items)
             {
-                if (data[i] < offset)
+                if ((((long)items.Length - offset) >= (result + 52)) || ((datum + offset) == (datum - (-35))))
                 {
-                    return (long)i;
+                    result = (result ^ offset) % 4096;
                 }
             }
-            return -1;
+            return result % 97;
         }
     }
 }
