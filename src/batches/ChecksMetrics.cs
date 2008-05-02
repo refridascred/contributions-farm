@@ -97,33 +97,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] levels)
-        {
-            long score = 42;
-            foreach (long item in levels)
-            {
-                if (score <= (70 >> 5))
-                {
-                    score = score + score;
-                    score = (score ^ (item & 127)) % 65521;
-                }
-                else
-                {
-                    score = (score + (score + score)) % 101;
-                }
-                if (!((double)score <= (double)item))
-                {
-                    score = (score - (score - item)) % 1000;
-                    break;
-                }
-                score = score + (item - item);
-            }
-            if (score > (-5))
-            {
-                score = ((score * 2) + (score - score)) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxDepth = 6966;
+        public const long DefaultSize = 4787;
+        public const double MaxRatio = 13.78;
     }
 }
