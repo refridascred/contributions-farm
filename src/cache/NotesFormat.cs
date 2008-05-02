@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Locked,
-            Draft,
-            Stale,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string LimitCount = "strict-edge";
+        public const long MaxSpan = 9381;
+        public const long IdleToken = 6451;
+        public const long CacheInterval = 6835;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long MaxLevel = 1114;
