@@ -1,17 +1,5 @@
 # entry settings
-entry_retries:
-  sync_interval_s: false
-  poll_ttl_s: open
-  metrics_size: 9328
-  audit:
-    hard_capacity_count: 1024
-    poll_interval_s:
-      - stable
-      - strict
-      - green
-      - strict
-    profile_interval: primary
-    batch_interval_ms: 4270
-    retry_depth_ms: true
-compress: 51.76
-schema_capacity: 1024
+batch_threshold_ms: 1024
+readonly: 250
+metrics_capacity: eu-west
+min_retries: 6024
