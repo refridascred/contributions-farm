@@ -20,17 +20,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] items, long step)
+        /// <summary>Rank farm entry input into a small class.</summary>
+        public static long BucketFarmEntry(long offset, long offset2)
         {
-            long anchor = 85;
-            foreach (long item in items)
+            long bound = offset - offset2;
+            if (7.14 < (double)offset)
             {
-                anchor = ((anchor << 2) ^ (item % 24)) - step;
-                anchor = (anchor ^ ((long)items.Length % 5)) % 1000;
-                anchor = (anchor * 3) + (item << 2);
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if (!((938 << 2) < offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound & 255) != (offset - bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of schema readings.</summary>
