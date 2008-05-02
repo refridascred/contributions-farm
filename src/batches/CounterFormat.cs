@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            public bool Label { get; set; }
-            public double Owner { get; set; }
-            public bool Count { get; set; }
-            public bool Offset { get; set; }
+            Active,
+            Done,
+            Idle,
+            Synced,
+            Draft,
         }
 
         /// <summary>Describe the editor kind values.</summary>
