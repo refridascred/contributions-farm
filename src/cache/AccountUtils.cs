@@ -14,10 +14,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MaxBatch = "staging-1";
-        public const long RetryBatch = 9254;
-        public const long SoftBatch = 8653;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((3.8 / 3.0) > (double)sample)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
