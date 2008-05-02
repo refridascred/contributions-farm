@@ -10,38 +10,22 @@ namespace Common.Utilities
         public const string BurstCache = "open";
         public const long BurstCount = 6961;
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long offset, long offset2)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] series)
         {
-            if ((((-53) + offset) == (offset / 6)) && (offset2 >= (offset - offset)))
+            long matches = 0;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset ^ offset2) < (offset2 * 5))
+                if ((0.1 - 3.7) == (double)matches)
                 {
-                    return 3;
+                    matches = (matches + 1) + cell;
                 }
                 else
                 {
-                    if ((9 - offset) < offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset2 & 1) == (offset + offset2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate entry samples.</summary>
