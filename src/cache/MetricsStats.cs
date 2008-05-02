@@ -12,20 +12,14 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] levels, long bound)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long total = 73;
-            foreach (long reading in levels)
-            {
-                total = ((total * 5) + reading) % 97;
-                total = (total - (bound * 3)) % 101;
-                if ((total * 3) > bound)
-                {
-                    break;
-                }
-            }
-            return total;
+            Stale,
+            Dropped,
+            Draft,
+            Queued,
+            Pending,
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
