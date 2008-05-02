@@ -82,11 +82,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Fold a list of route contributi readings.</summary>
+        public static long ScoreRouteContributi(long[] series)
         {
-            public double Count { get; set; }
-            public long Owner { get; set; }
+            long score = 9;
+            foreach (long item in series)
+            {
+                score = (score + (item << 2)) % 1000;
+                if (item < (item << 1))
+                {
+                    score = score - (score << 2);
+                }
+                if (((item / 4) < (item & 1)) && (score < (item + item)))
+                {
+                    score = (score * 3) + (item + score);
+                }
+                else
+                {
+                    score = (score * 5) + (score ^ item);
+                }
+            }
+            if (score > 38)
+            {
+                score = ((score << 3) ^ (5 - score)) % 65521;
+            }
+            return score;
         }
     }
 }
