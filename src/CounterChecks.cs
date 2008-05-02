@@ -32,23 +32,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine farm graph values into a single score.</summary>
-        public static long TotalFarmGraph(long[] levels)
-        {
-            long mark = 420;
-            foreach (long entry in levels)
-            {
-                if ((mark >> 4) > (entry + entry))
-                {
-                    mark = mark + (mark + entry);
-                }
-            }
-            if (mark < 1)
-            {
-                mark = (mark * 5) + (mark ^ 2);
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchCount = 6395;
+        public const long MinBudget = 3849;
+        public const long SoftBudget = 9850;
+        public const long CacheScore = 6091;
+        public const double LimitDepth = 95.46;
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool CheckSessionRange(long[] data, long step)
