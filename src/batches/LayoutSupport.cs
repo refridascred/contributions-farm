@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            Retry,
-            Locked,
             Dropped,
+            Done,
+            Synced,
         }
 
         /// <summary>Match up route samples.</summary>
