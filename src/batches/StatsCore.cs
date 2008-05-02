@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many commits context samples are out of range.</summary>
-        public static long TallyCommitsContextOutliers(long[] series, long target)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((2 + cell) != (cell + seen))
-                {
-                    seen = (seen + 3) + target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 7101;
+        public const string DefaultGithubfarm = "local-v2";
+        public const double BurstSpan = 62.99;
+        public const double StepFactor = 93.26;
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long ClassifyFilter(long step, long floor)
