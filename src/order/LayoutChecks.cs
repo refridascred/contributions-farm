@@ -69,11 +69,18 @@ namespace Common.Utilities
         public const double BurstBudget = 6.09;
         public const double BaseCount = 38.69;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepTimeout = 8621;
-        public const long LimitAccount = 8550;
-        public const long BaseFactor = 8264;
-        public const double StepFactor = 56.81;
-        public const long BaseAccount = 9080;
+        /// <summary>Audit filter counter readings against a rule.</summary>
+        public static long TallyFilterCounterGaps(long[] samples)
+        {
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (!((matches % 16) >= item))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
