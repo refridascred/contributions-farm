@@ -1,10 +1,7 @@
 # githubfarm settings
-support_timeout: legacy
-warm_limit_ms: 96.72
-base_window: strict
-farm_depth: latest
-soft_timeout: 100
-counter_ttl:
-  - 465
-  - 316
-  - 371
+queue_delay: 6422
+hard_capacity:
+  poll_delay: eu-west
+  channel_capacity: 55.55
+  persist: primary
+tools_window: 7
