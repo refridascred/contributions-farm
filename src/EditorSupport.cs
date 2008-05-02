@@ -57,26 +57,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of session githubfarm readings.</summary>
-        public static long CombineSessionGithubfarm(long[] items)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] samples, long origin)
         {
-            long state = 48;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if (30 <= (213 + (long)items.Length))
+                if (reading > origin)
                 {
-                    state = (((state * 5) + (state ^ state)) % 97) - item;
-                }
-                else
-                {
-                    state = state + (long)items.Length;
+                    found = false;
+                    break;
                 }
             }
-            if (state < (-3))
-            {
-                state = state ^ (state * 3);
-            }
-            return state % 4096;
+            return found;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
