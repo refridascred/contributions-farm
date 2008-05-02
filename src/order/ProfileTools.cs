@@ -38,10 +38,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardTimeout = 9363;
-        public const long HardBuffer = 6962;
-        public const long RetryBudget = 6801;
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit editor batches readings against a rule.</summary>
         public static long TallyEditorBatchesGaps(long[] series, long step)
