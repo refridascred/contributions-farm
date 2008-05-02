@@ -30,10 +30,13 @@ namespace Common.Utilities
             return mean + (weight / 3.0);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxWidth = 9890;
-        public const string MinProfile = "standard-1";
-        public const double SoftProfile = 14.02;
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public double Weight { get; set; }
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long FoldMetrics(long[] samples)
