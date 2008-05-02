@@ -59,10 +59,14 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BatchBuffer = 45.45;
-        public const long LimitBuffer = 799;
-        public const long BaseSize = 2869;
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
+        {
+            public double Owner { get; set; }
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long StepContributi(long bound)
