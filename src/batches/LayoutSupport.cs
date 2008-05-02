@@ -76,21 +76,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] levels)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                long next = acc;
+                long next2 = next;
+                if (!((acc ^ next2) > (next2 % 60)))
                 {
-                    if ((levels[i] - levels[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    long tally = 4 << 2;
+                    acc = ((acc << 3) ^ (tally + next)) % 1000;
                 }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
     }
 }
