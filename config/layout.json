@@ -1,12 +1,11 @@
 {
-  "soft_size_s": false,
-  "burst_window_count": 2537,
-  "retry_ttl_ms": {
-    "base_ratio_s": "open",
-    "stats_ratio": 28.68,
-    "min_window_pct": true,
-    "strict": "latest",
-    "batch_threshold": "legacy"
+  "dry_run": 250,
+  "counter_depth": {
+    "default_timeout": 60.88,
+    "max_threshold": false,
+    "stream_retries": "eu-west",
+    "dry_run": 19.0
   },
-  "sync_depth_pct": 250
+  "poll_window": 96,
+  "cache_delay_pct": "local"
 }
