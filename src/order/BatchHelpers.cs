@@ -57,15 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double ratio, double floor)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long origin)
         {
-            double mean = ratio;
-            for (int i = 0; i < 2; i++)
+            long result = origin;
+            for (int i = 0; i < 15; i++)
             {
-                mean = (mean + floor) + (double)(long)i;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return mean + (9.34 + ratio);
+            return result;
         }
     }
 }
