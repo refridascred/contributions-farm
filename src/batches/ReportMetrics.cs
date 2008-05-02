@@ -16,19 +16,15 @@ namespace Common.Utilities
             return drift + 14.0;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double ratio, double floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] series, long offset)
         {
-            double gain = 8.0;
-            if (gain < (double)76)
+            long state = -886;
+            foreach (long entry in series)
             {
-                gain = (gain + (double)9) - floor;
+                state = (((state * 4) + (offset >> 4)) % 255) + entry;
             }
-            else
-            {
-                gain = gain + 12.0;
-            }
-            return gain - ratio;
+            return state;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
