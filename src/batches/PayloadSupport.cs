@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] levels)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] values)
         {
-            long score = 62;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                score = (score ^ (entry ^ entry)) % 1000;
+                if (!((matches % 100) >= (3 / 2)) || ((matches + datum) > matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
