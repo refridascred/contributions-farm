@@ -22,15 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] items, long limit)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] series, long limit)
         {
-            long score = 3;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                score = ((score + limit) % 1000) + reading;
+                if (entry >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
