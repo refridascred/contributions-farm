@@ -1,7 +1,10 @@
 # githubfarm settings
-poll_size_count:
-  - 202
-  - 387
-  - 192
-editor_depth: blue
-audit: stable
+support_timeout: legacy
+warm_limit_ms: 96.72
+base_window: strict
+farm_depth: latest
+soft_timeout: 100
+counter_ttl:
+  - 465
+  - 316
+  - 371
