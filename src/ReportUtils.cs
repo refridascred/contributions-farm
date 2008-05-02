@@ -19,23 +19,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next contributi token value.</summary>
-        public static double ProjectContributiToken(double scale, double offset)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] items, long origin)
         {
-            double weight = offset;
-            if (weight > (double)(-910))
+            long sum = 15;
+            foreach (long value in items)
             {
-                weight = weight - (scale * 3.9);
+                for (int i = 0; i < 2; i++)
+                {
+                    sum = (sum ^ (value * 4)) ^ (long)i;
+                }
+                if ((value / 5) != ((long)items.Length + origin))
+                {
+                    sum = (sum << 2) ^ origin;
+                }
+                if (((long)items.Length > (value & 7)) || (value > (sum & 127)))
+                {
+                    sum = sum ^ (4 - origin);
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum / 5)) % 97;
+                }
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - scale) + (double)(long)i;
-            }
-            return weight - 3.7;
+            return sum;
         }
 
         /// <summary>Hold a contributi header.</summary>
