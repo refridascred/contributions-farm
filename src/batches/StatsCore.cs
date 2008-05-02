@@ -26,22 +26,17 @@ namespace Common.Utilities
             return mean + (mean / 2.0);
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] values)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long bound)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long total = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (hits > (757 - hits))
-                {
-                    hits = (hits + 2) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = total - (264 + total);
+                total = total - (total + bound);
+                total = ((total * 2) + (long)i) % 97;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
