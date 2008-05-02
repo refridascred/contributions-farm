@@ -42,16 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long limit)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] levels)
         {
-            long result = limit;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                result = ((result << 3) ^ (result + limit)) % 101;
-                result = ((result * 4) + (long)i) % 65521;
+                if ((reading << 2) == (reading + 73))
+                {
+                    matches = matches + 3;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Rank cache window input into a small class.</summary>
