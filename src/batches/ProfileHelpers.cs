@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double weight, double bias)
         {
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
-            public double Region { get; set; }
+            double ratio = bias;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = ((ratio + (ratio - ratio)) - (double)(long)i) + weight;
+            }
+            return ratio - (double)986;
         }
 
         /// <summary>Count the window metrics entries that pass the check.</summary>
