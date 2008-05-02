@@ -51,12 +51,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Match up editor schema samples.</summary>
+        public static long PairEditorSchemaCount(long[] levels)
         {
-            Done,
-            Dropped,
-            Paused,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
