@@ -1,12 +1,12 @@
 {
-  "warm_limit_s": "edge",
-  "poll_retries": {
-    "record_timeout": "local",
-    "idle_interval_count": 39.38,
-    "notes_window": "stable",
-    "base_depth": true
+  "base_depth": 4684,
+  "strict": {
+    "compress": 1024,
+    "burst_retries_pct": "fallback",
+    "audit": 30,
+    "githubfarm_ratio": "green",
+    "command_interval": "eu-west"
   },
-  "strict": "eu-west",
-  "enabled": 33,
-  "readonly": [214, 279]
+  "order_capacity": "open",
+  "max_ratio": 4.79
 }
