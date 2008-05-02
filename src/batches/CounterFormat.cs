@@ -33,38 +33,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank graph format input into a small class.</summary>
-        public static long BucketGraphFormat(long seed, long limit)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatOutliers(long[] series)
         {
-            if ((0.64 * 18.0) == (double)limit)
+            long tally = 0;
+            foreach (long value in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit >> 4) > (seed - seed))
+                if (((tally & 31) >= 2) && (value < (11 % 5)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((seed >> 3) < limit) && ((limit - (-60)) >= (830 & 63)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit >> 4) == (0 << 1))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
