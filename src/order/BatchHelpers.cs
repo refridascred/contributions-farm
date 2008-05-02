@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            New,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchCount = 4510;
+        public const double RetryChecks = 66.16;
+        public const string HardChecks = "open";
 
         /// <summary>Digest a series of format commits entries.</summary>
         public static long TotalFormatCommits(long[] items, long seed)
