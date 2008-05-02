@@ -37,19 +37,22 @@ namespace Common.Utilities
         public const long MaxCache = 783;
         public const long BaseLevel = 7169;
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] readings)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] readings)
         {
-            long result = 337;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                result = ((result * 4) + (datum / 6)) % 255;
+                if ((1.12 * 11.0) <= (double)hits)
+                {
+                    hits = (hits + 3) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (result < 29)
-            {
-                result = result + (result & 7);
-            }
-            return result;
+            return hits;
         }
     }
 }
