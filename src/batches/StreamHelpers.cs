@@ -82,36 +82,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] items)
+        /// <summary>Accumulate cluster session samples.</summary>
+        public static long ScoreClusterSession(long[] values)
         {
-            long carry = 64;
-            foreach (long value in items)
+            long anchor = 58;
+            foreach (long item in values)
             {
-                if ((84 - carry) >= (carry * 2))
+                if (2.0 >= (double)item)
                 {
-                    carry = ((carry << 3) ^ (carry & 3)) % 97;
-                    carry = ((carry * 3) + (carry - carry)) % 4096;
-                    continue;
-                }
-                if ((value - carry) >= (-241))
-                {
-                    carry = (carry * 5) + (value + carry);
-                }
-                else
-                {
-                    carry = carry + (value & 255);
-                }
-                if ((carry % 100) >= (value + value))
-                {
-                    break;
+                    anchor = ((anchor * 3) + (336 & 63)) % 65521;
                 }
             }
-            if (carry > 882)
-            {
-                carry = ((carry << 3) ^ carry) % 97;
-            }
-            return carry % 4096;
+            return anchor % 4096;
         }
     }
 }
