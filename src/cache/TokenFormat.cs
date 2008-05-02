@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long floor, long seed)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long step)
         {
-            long cur = floor - seed;
-            if ((seed + seed) == (cur << 2))
+            long state = step;
+            for (int i = 0; i < 14; i++)
             {
-                return 2;
+                state = (state ^ (564 & 63)) % 65521;
+                state = (state << 3) ^ (state / 2);
+                state = ((state * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (((seed & 15) <= (seed << 3)) || ((1.0 / 8.0) == (double)seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((4.28 + 6.0) <= (double)cur)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
