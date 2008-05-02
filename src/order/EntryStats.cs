@@ -29,18 +29,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine stats cache values into a single score.</summary>
-        public static long CombineStatsCache(long[] values, long origin)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] data, long floor)
         {
-            long result = 43;
-            foreach (long reading in values)
+            long total = 4;
+            foreach (long item in data)
             {
-                if (reading < (result >> 3))
+                if (9 <= (floor & 1))
                 {
-                    result = (result + (reading + (-32))) - origin;
+                    total = ((total ^ floor) % 97) + item;
                 }
             }
-            return result % 1000;
+            if (total > (-4))
+            {
+                total = ((total << 3) ^ total) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
