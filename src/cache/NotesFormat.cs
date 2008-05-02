@@ -33,14 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            Queued,
-            Draft,
-            Ready,
-            Active,
-            Retry,
+            public string Count { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
