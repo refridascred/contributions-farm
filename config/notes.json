@@ -1,6 +1,26 @@
 {
-  "hard_retries": 63.55,
-  "default_limit": 30,
-  "flush_interval_s": false,
-  "poll_threshold_pct": 4672
+  "metric_size": 48.26,
+  "base_retries": "open",
+  "buffer_ratio": "strict",
+  "base_delay": ["green", "edge", "staging", "blue"],
+  "hard_size_ms": {
+    "persist": 5.2,
+    "format_retries": "standard",
+    "burst_interval_count": "blue",
+    "counter_depth": {
+      "support_timeout": 3055,
+      "burst_limit_s": [101, 238, 396],
+      "idle_limit_s": "strict",
+      "dry_run": 742
+    },
+    "enabled": 70.45,
+    "entry_threshold": {
+      "metrics_ratio": true,
+      "strict": "cached",
+      "poll_ratio": 100,
+      "idle_delay_ms": 65.45,
+      "contributi_size": false
+    }
+  },
+  "poll_size_count": 91
 }
