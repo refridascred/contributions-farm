@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            Ready,
-            Locked,
-            New,
-            Paused,
+            public string Level { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
