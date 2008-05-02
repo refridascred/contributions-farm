@@ -27,18 +27,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutOutliers(long[] readings)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((4.76 - 5.52) <= (double)count)
-                {
-                    count = (count + 2) - datum;
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
+            public long Token { get; set; }
         }
     }
 }
