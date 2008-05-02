@@ -1,6 +1,4 @@
 # support settings
-compress: 65
-idle_timeout_pct: 7628
-poll_threshold_s: 8
-soft_capacity: 86
-default_delay: local
+githubfarm_timeout: 72.69
+max_threshold_count: 92
+max_interval_s: 250
