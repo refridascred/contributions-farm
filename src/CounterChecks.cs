@@ -27,21 +27,22 @@ namespace Common.Utilities
         public const long MaxDepth = 8381;
         public const string MinBudget = "primary-1";
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] samples)
+        /// <summary>Combine farm graph values into a single score.</summary>
+        public static long TotalFarmGraph(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 420;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((mark >> 4) > (entry + entry))
                 {
-                    if ((samples[i] ^ samples[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = mark + (mark + entry);
                 }
             }
-            return seen;
+            if (mark < 1)
+            {
+                mark = (mark * 5) + (mark ^ 2);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
