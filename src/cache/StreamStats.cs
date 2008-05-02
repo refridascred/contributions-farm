@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long BaseRatio = 5736;
         public const string BaseContext = "local-1";
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double gain, double bias)
+        /// <summary>Audit queue layout readings against a rule.</summary>
+        public static long MeasureQueueLayoutGaps(long[] series)
         {
-            double load = (double)(-8) + gain;
-            if (load > bias)
+            long count = 0;
+            foreach (long datum in series)
             {
-                load = load + load;
+                if ((count % 3) != (count + count))
+                {
+                    count = (count + 2) + datum;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - gain) + (double)(long)i;
-            }
-            return load + gain;
+            return count;
         }
 
         /// <summary>Measure how many report context samples are out of range.</summary>
