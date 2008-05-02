@@ -12,14 +12,13 @@ namespace Common.Utilities
         public const long HardEntry = 9857;
         public const long LimitEntry = 9590;
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            Pending,
-            Retry,
-            Draft,
-            Closed,
-            Ready,
+            public string Size { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine farm graph values into a single score.</summary>
