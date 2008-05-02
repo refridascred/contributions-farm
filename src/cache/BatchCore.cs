@@ -32,15 +32,12 @@ namespace Common.Utilities
         public const long MinDepth = 6027;
         public const double DefaultTimeout = 61.7;
 
-        /// <summary>Iterate the account checks series from a seed.</summary>
-        public static long RollAccountChecks(long bound)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long result = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            Idle,
+            Stale,
+            Locked,
         }
     }
 }
