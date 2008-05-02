@@ -16,22 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] levels)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] values)
         {
-            long sum = 4;
-            foreach (long datum in levels)
+            long carry = -863;
+            foreach (long item in values)
             {
-                if ((sum + datum) > (sum ^ sum))
+                carry = (carry ^ carry) % 255;
+                if (item >= ((long)values.Length << 3))
                 {
-                    sum = sum ^ (sum & 127);
-                }
-                if ((5 / 6) > datum)
-                {
-                    break;
+                    carry = ((carry << 2) ^ (carry + carry)) % 1000;
                 }
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Blend two stats measurements.</summary>
