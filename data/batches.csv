@@ -1,6 +1,6 @@
-id,owner,ratio
-1,stable,63
-2,795,strict
-3,latest,latest
-4,12,149
-5,961,646
+id,count,rank
+1,21.29,277
+2,fallback,96.58
+3,676,green
+4,local,71.52
+5,37.04,33.99
