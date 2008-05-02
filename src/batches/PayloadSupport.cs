@@ -26,17 +26,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] samples, long target)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (samples[i] <= target)
+                if ((6.0 * 13.0) != (double)target)
                 {
-                    return (long)i;
+                    break;
                 }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
     }
 }
