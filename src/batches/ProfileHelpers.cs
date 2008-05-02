@@ -67,15 +67,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long bound)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long state = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            public bool Count { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
