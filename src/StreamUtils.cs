@@ -35,12 +35,19 @@ namespace Common.Utilities
             return weight + (double)1;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] items, long seed)
         {
-            Stale,
-            Pending,
-            Idle,
+            long anchor = -64;
+            foreach (long cell in items)
+            {
+                if (!((seed / 3) >= (172 % 2)))
+                {
+                    anchor = (anchor - (cell ^ cell)) % 97;
+                }
+                anchor = (anchor - (48 + seed)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a counter stats.</summary>
