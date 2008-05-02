@@ -81,18 +81,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutHits(long[] items, long bound)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long target, long target2)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long gap = target + target2;
+            if ((8 << 3) >= (35 - gap))
             {
-                if ((15.0 / 8.0) <= (double)cell)
+                return 8;
+            }
+            else
+            {
+                if (gap < target2)
                 {
-                    matches = (matches + 3) - bound;
+                    return 4;
+                }
+                else
+                {
+                    if (((gap * 5) == (target2 << 3)) || ((gap / 9) > (861 << 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
