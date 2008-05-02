@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many entry channel samples are out of range.</summary>
-        public static long CountEntryChannelGaps(long[] values, long seed)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (((99 + seed) >= seed) && ((count % 64) == ((long)values.Length + value)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Synced,
+            New,
+            Draft,
+            Failed,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
