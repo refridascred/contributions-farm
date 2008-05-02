@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two githubfarm batch measurements.</summary>
-        public static double SmoothGithubfarmBatch(double bias, double floor)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long seed)
         {
-            double drift = bias;
-            if (drift <= bias)
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
             {
-                drift = (drift - bias) + floor;
+                if ((double)anchor != (7.6 - 6.9))
+                {
+                    break;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return drift + 14.0;
+            return anchor;
         }
 
         /// <summary>Accumulate farm samples.</summary>
