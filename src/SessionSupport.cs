@@ -46,13 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Check that every session batches entry stays within the limit.</summary>
+        public static bool VerifySessionBatchesBounds(long[] data, long target)
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
