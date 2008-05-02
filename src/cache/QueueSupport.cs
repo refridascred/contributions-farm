@@ -11,18 +11,14 @@ namespace Common.Utilities
         public const long DefaultSize = 8614;
         public const double MaxInterval = 33.75;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordHits(long[] readings, long limit)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell * 4) == (cell + cell))
-                {
-                    tally = (tally + 1) - limit;
-                }
-            }
-            return tally;
+            Active,
+            Draft,
+            Stale,
+            Locked,
+            Ready,
         }
 
         /// <summary>Fold a list of payload profile readings.</summary>
