@@ -1,5 +1,7 @@
 {
-  "retry_interval": true,
-  "buffer_retries": "green",
-  "default_timeout_s": ["green", "open", "eu-west", "blue"]
+  "hard_ratio_pct": 51.3,
+  "flush_window": 2319,
+  "dry_run": 43.26,
+  "enabled": 5208,
+  "graph_interval": ["stable", "primary", "open", "green"]
 }
