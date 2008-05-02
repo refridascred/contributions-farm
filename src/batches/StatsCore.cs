@@ -26,12 +26,22 @@ namespace Common.Utilities
             return mean + (mean / 2.0);
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] values)
         {
-            New,
-            Retry,
-            Dropped,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (hits > (757 - hits))
+                {
+                    hits = (hits + 2) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
