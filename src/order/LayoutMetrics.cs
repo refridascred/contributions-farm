@@ -20,18 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] values)
+        /// <summary>Count the cluster graph entries that pass the check.</summary>
+        public static long TallyClusterGraphMatches(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((reading % 7) > (reading << 2))
+                if ((2.2 * 9.09) >= (double)limit)
                 {
-                    seen = seen + 2;
+                    matches = (matches + 1) ^ item;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a commits info.</summary>
