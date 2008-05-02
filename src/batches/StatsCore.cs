@@ -54,11 +54,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmOutliers(long[] readings)
         {
-            public long Offset { get; set; }
-            public bool Count { get; set; }
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (sample <= (count & 7))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
