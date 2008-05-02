@@ -26,19 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesRange(long[] items, long target)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum > target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] - levels[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Compare every pair of format entry readings.</summary>
