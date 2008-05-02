@@ -28,19 +28,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsHits(long[] values, long seed)
+        /// <summary>Count the contributi tools entries that pass the check.</summary>
+        public static long CountContributiToolsMatches(long[] items, long step)
         {
             long tally = 0;
-            foreach (long datum in values)
+            foreach (long cell in items)
             {
-                if (tally < (523 ^ tally))
+                if (cell <= (cell - tally))
                 {
-                    tally = ((tally + 3) ^ datum) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 1) - step;
                 }
             }
             return tally;
