@@ -39,15 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double weight, double offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] series, long bound)
         {
-            double drift = (double)(683 ^ 694);
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                drift = ((drift - (double)694) - (double)(long)i) - weight;
+                if ((double)bound >= 6.7)
+                {
+                    tally = (tally + 2) + entry;
+                }
             }
-            return drift + offset;
+            return tally;
         }
 
         /// <summary>Combine context values into a single score.</summary>
