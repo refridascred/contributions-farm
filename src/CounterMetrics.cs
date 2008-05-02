@@ -51,12 +51,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
+            Locked,
+            Queued,
+            Ready,
+            Stale,
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
