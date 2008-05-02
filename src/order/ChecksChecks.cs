@@ -30,30 +30,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] values)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long sum = 9;
-            foreach (long value in values)
-            {
-                if (!((sum + value) != (4 % 8)))
-                {
-                    sum = sum ^ (4 << 2);
-                }
-                if ((((-353) % 12) > value) && (value <= (sum >> 4)))
-                {
-                    sum = ((sum << 3) ^ (93 / 2)) % 97;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (sum % 16);
-                }
-            }
-            if (sum < 360)
-            {
-                sum = (sum - (7 / 3)) % 101;
-            }
-            return sum;
+            Retry,
+            Closed,
+            Synced,
         }
     }
 }
