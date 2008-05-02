@@ -12,21 +12,14 @@ namespace Common.Utilities
         public const long HardEntry = 9857;
         public const long LimitEntry = 9590;
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] readings)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Retry,
+            Draft,
+            Closed,
+            Ready,
         }
 
         /// <summary>Combine farm graph values into a single score.</summary>
