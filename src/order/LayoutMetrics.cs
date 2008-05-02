@@ -20,13 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] values)
         {
-            Stale,
-            Locked,
-            Idle,
-            Done,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((reading % 7) > (reading << 2))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a commits info.</summary>
