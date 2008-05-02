@@ -16,21 +16,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] readings)
+        /// <summary>Combine layout filter values into a single score.</summary>
+        public static long TallyLayoutFilter(long[] levels, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 22;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)floor >= 9.0)
                 {
-                    if ((readings[i] - readings[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = ((score << 3) ^ (reading ^ 8)) % 4096;
+                }
+                score = ((score * 3) + floor) % 255;
+                if (316 <= (44 + reading))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (score > 6)
+            {
+                score = (score + (floor * 4)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Match up payload samples.</summary>
