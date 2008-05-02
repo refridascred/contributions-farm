@@ -30,39 +30,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a account already value against two limits.</summary>
-        public static long SortAccountAlready(long seed, long bound)
-        {
-            long lane = seed - bound;
-            if ((double)lane >= 4.6)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((bound - 9) >= 2) && (bound > ((-8) - lane)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((lane * 2) != (lane * 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((lane * 5) >= (3 / 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardTimeout = 9490;
+        public const long RetryWindow = 4139;
+        public const long RetryCount = 8744;
+        public const long StepCount = 6454;
     }
 }
