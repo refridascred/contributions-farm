@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] items)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterMatches(long[] readings, long step)
         {
-            long mix = 76;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (7.6 <= (double)mix)
+                if ((step * 4) <= cell)
                 {
-                    mix = (mix - (reading - reading)) % 65521;
-                }
-                else
-                {
-                    mix = (mix - mix) % 65521;
+                    tally = tally + 3;
                 }
             }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
