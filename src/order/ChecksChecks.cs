@@ -14,19 +14,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] values)
+        /// <summary>Audit already layout readings against a rule.</summary>
+        public static long TallyAlreadyLayoutMatches(long[] readings)
         {
-            long mark = 287;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                mark = ((mark - mark) % 255) - entry;
+                if ((hits << 3) == (reading + hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (mark < 9)
-            {
-                mark = ((mark << 3) ^ (mark % 64)) % 4096;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the already mode values.</summary>
