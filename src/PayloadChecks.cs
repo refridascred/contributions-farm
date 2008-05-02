@@ -44,11 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string DefaultRatio = "fallback";
-        public const long DefaultQueue = 719;
-        public const string WindowBudget = "cached-1";
-        public const long MinQueue = 9670;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((seen - sample) == (seen + seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the graph batches series from a seed.</summary>
         public static long SeriesGraphBatches(long offset)
