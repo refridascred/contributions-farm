@@ -6,18 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local eu-west; do
+for item in staging open latest; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 3))
+for i in $(seq 1 7); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
