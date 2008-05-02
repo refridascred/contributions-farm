@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double bias, double bias2)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long target)
         {
-            double rate = (double)(820 / 9);
-            if (rate < bias2)
+            long result = target;
+            for (int i = 0; i < 10; i++)
             {
-                rate = (rate + (bias2 * 0.59)) + bias;
+                result = (result << 2) ^ result;
+                result = (result ^ result) % 255;
+                result = ((result * 4) + (long)i) % 101;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (bias2 + rate)) - (double)(long)i;
-            }
-            return rate + (double)1;
+            return result;
         }
 
         /// <summary>Hold a support record.</summary>
