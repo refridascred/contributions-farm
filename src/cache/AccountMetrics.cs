@@ -41,18 +41,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] readings)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            double gain = weight * 17.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (((matches & 31) != (cell >> 3)) && ((double)matches < (double)cell))
-                {
-                    matches = matches + 1;
-                }
+                gain = (gain + gain) + (double)(long)i;
             }
-            return matches;
+            return gain - (weight + offset);
         }
 
         /// <summary>Check that every command session entry stays within the limit.</summary>
