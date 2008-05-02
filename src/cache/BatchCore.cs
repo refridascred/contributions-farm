@@ -20,15 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double bias, double offset)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            double weight = (double)(24 - 4);
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - (bias * 2.1)) + (double)(long)i;
-            }
-            return weight + offset;
+            public double Token { get; set; }
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Blend two graph measurements.</summary>
