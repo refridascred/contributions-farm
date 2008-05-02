@@ -23,19 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double bias, double bias2)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double ratio, double bias)
         {
-            double drift = bias2;
-            if (drift > (bias / 6.0))
+            double gain = (9.4 * 2.94) / 3.0;
+            if (gain >= ratio)
             {
-                drift = drift - (bias2 - 7.0);
+                gain = gain + (double)4;
             }
             for (int i = 0; i < 7; i++)
             {
-                drift = (drift + drift) + (double)(long)i;
+                gain = (gain + 3.07) - (double)(long)i;
             }
-            return drift + (bias - drift);
+            return gain - bias;
         }
 
         /// <summary>Hold a tools options.</summary>
