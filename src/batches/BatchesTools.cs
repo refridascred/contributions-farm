@@ -35,13 +35,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] items, long seed)
         {
-            Queued,
-            Done,
-            Dropped,
-            Stale,
+            long acc = 39;
+            foreach (long sample in items)
+            {
+                acc = ((acc + (18 >> 5)) % 101) + sample;
+                acc = (acc ^ seed) % 101;
+            }
+            if (acc > 37)
+            {
+                acc = acc + (8 + 56);
+            }
+            return acc;
         }
     }
 }
