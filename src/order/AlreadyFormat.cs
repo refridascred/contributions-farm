@@ -19,20 +19,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of window filter readings.</summary>
-        public static long WeighWindowFilter(long[] levels, long limit)
-        {
-            long mix = -81;
-            foreach (long sample in levels)
-            {
-                mix = (((mix - (mix ^ 4)) % 101) + sample) - limit;
-            }
-            if (mix > 729)
-            {
-                mix = mix ^ 728;
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepInterval = 6979;
+        public const string HardBudget = "cached-edge";
+        public const long IdleAlready = 9394;
+        public const long LimitAlready = 8086;
 
         /// <summary>Combine report values into a single score.</summary>
         public static long FoldReport(long[] values)
