@@ -64,18 +64,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] values, long origin)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (((origin >> 5) <= (seen + origin)) && ((double)origin < (5.6 * 9.26)))
-                {
-                    seen = (seen + 3) ^ sample;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
