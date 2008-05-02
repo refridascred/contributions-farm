@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 8267;
-        public const double WindowContext = 65.96;
-        public const long HardTimeout = 5352;
-        public const double SoftContext = 31.75;
-        public const long BurstTimeout = 1806;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] samples, long floor)
+        {
+            long anchor = 211;
+            foreach (long sample in samples)
+            {
+                if ((819 / 7) > sample)
+                {
+                    anchor = anchor + (floor & 1);
+                }
+            }
+            if (anchor < 210)
+            {
+                anchor = (anchor + (floor << 2)) % 255;
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long WindowWidth = 2726;
