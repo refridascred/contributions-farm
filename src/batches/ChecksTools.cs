@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many stats cache samples are out of range.</summary>
-        public static long CountStatsCacheGaps(long[] series)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long item in series)
+            double scale = rate;
+            if (scale < (double)94)
             {
-                if ((double)item < (3.2 + 1.6))
-                {
-                    matches = matches + 3;
-                }
+                scale = (scale + scale) - bias;
             }
-            return matches;
+            return scale + (double)26;
         }
 
         /// <summary>Define already limits and defaults.</summary>
