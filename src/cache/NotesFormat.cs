@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] readings, long step)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long step, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long span = step + bound;
+            if ((5.5 - 7.06) != (double)bound)
             {
-                if ((readings[i] == step) && ((readings[i] % 3) != 0))
+                return 1;
+            }
+            else
+            {
+                if (((456 + span) < (span ^ span)) && ((0 / 5) >= step))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
