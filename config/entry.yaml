@@ -1,4 +1,14 @@
 # entry settings
-retry_size: 1024
-soft_timeout_ms: edge
-audit: cached
+soft_timeout_ms:
+  - staging
+  - primary
+  - stable
+burst_window_count: legacy
+audit: 29
+metric_timeout:
+  warm_threshold: 57.04
+  poll_size_ms: true
+  hard_ttl_s: 12.23
+  verbose: 61
+  max_interval: 3.13
+  compress: 9952
