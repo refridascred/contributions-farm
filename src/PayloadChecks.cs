@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
-        {
-            Paused,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheTimeout = 7600;
+        public const string BaseStream = "latest-v2";
+        public const long WindowWidth = 5757;
 
         /// <summary>Fold a list of checks buffer readings.</summary>
         public static long TallyChecksBuffer(long[] data, long origin)
