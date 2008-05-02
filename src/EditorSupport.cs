@@ -22,18 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] series, long seed)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((reading & 15) == ((-759) & 31))
-                {
-                    matches = (matches + 1) - seed;
-                }
-            }
-            return matches;
+            double gain = floor;
+            return gain + rate;
         }
 
         /// <summary>Describe the token mode values.</summary>
