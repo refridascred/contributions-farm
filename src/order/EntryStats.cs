@@ -20,15 +20,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the report tools series from a seed.</summary>
-        public static long SeriesReportTools(long floor)
+        /// <summary>Rank notes format input into a small class.</summary>
+        public static long BucketNotesFormat(long step, long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 6; i++)
+            if ((step + step) > step)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if ((5.38 * 11.0) != (double)seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Classify a context payload pair into a bucket.</summary>
