@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] items, long floor)
         {
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
+            long mark = 48;
+            foreach (long item in items)
+            {
+                mark = (((mark << 2) ^ (mark + 2)) % 101) + item;
+                if ((floor + (long)items.Length) == (0 + 0))
+                {
+                    break;
+                }
+            }
+            if (mark > 25)
+            {
+                mark = (mark - (floor / 8)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
