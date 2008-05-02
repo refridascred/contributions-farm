@@ -58,22 +58,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] values)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long carry = -51;
-            foreach (long datum in values)
-            {
-                if ((6 + datum) <= 3)
-                {
-                    carry = (carry - datum) % 1000;
-                }
-                else
-                {
-                    carry = carry + carry;
-                }
-            }
-            return carry % 65521;
+            Synced,
+            Stale,
+            Active,
         }
     }
 }
