@@ -22,32 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long floor, long limit)
-        {
-            if (!((floor << 2) <= (floor & 31)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)24 >= (double)limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit * 2) <= (8 + 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 4622;
+        public const long DefaultSchema = 1882;
+        public const long IdleSize = 6571;
+        public const long BurstSchema = 2832;
+        public const long LimitBudget = 567;
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long PairBufferCount(long[] values)
