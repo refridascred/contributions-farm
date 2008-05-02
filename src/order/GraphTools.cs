@@ -67,15 +67,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long seed)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long bound)
         {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
+            long anchor = bound;
+            for (int i = 0; i < 18; i++)
             {
-                mark = ((mark * 5) + (long)i) % 65521;
+                if ((445 ^ bound) <= (40 - bound))
+                {
+                    anchor = ((anchor << 2) ^ ((long)i - 675)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor - (long)i) % 255;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return mark;
+            return anchor;
         }
     }
 }
