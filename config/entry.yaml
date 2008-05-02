@@ -1,4 +1,4 @@
 # entry settings
-readonly: 91.88
-max_ratio_count: 92.76
-burst_delay: edge
+burst_ratio_count: 3431
+strict: 18.24
+idle_limit_ms: 60
