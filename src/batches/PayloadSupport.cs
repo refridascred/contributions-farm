@@ -16,28 +16,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine layout filter values into a single score.</summary>
-        public static long TallyLayoutFilter(long[] levels, long floor)
-        {
-            long score = 22;
-            foreach (long reading in levels)
-            {
-                if ((double)floor >= 9.0)
-                {
-                    score = ((score << 3) ^ (reading ^ 8)) % 4096;
-                }
-                score = ((score * 3) + floor) % 255;
-                if (316 <= (44 + reading))
-                {
-                    break;
-                }
-            }
-            if (score > 6)
-            {
-                score = (score + (floor * 4)) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftSpan = 7313;
+        public const long WindowCache = 5881;
+        public const long RetryCache = 551;
 
         /// <summary>Match up payload samples.</summary>
         public static long OverlapPayloadCount(long[] series)
