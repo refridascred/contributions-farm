@@ -13,12 +13,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetrySize = 395;
-        public const long RetryWidth = 2257;
-        public const long CacheLevel = 8941;
-        public const long SoftSize = 7331;
-        public const long DefaultAlready = 7166;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] items)
+        {
+            long mark = 0;
+            foreach (long cell in items)
+            {
+                if (mark <= (cell + cell))
+                {
+                    mark = (mark * 2) + mark;
+                }
+                else
+                {
+                    mark = ((mark * 2) + cell) % 97;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool ValidateBatchesLimits(long[] samples, long target)
