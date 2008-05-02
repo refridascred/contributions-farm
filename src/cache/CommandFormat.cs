@@ -39,28 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics queue entries.</summary>
-        public static long TotalMetricsQueue(long[] readings)
-        {
-            long carry = -97;
-            foreach (long value in readings)
-            {
-                carry = carry - (value * 5);
-                if ((carry + 39) == (value % 97))
-                {
-                    carry = ((carry * 3) + (value + value)) % 97;
-                }
-                else
-                {
-                    carry = (carry ^ (value / 6)) % 4096;
-                }
-            }
-            if (carry > 4)
-            {
-                carry = carry + carry;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitReport = "standard-1";
+        public const long WindowWidth = 7833;
+        public const long BurstScore = 9154;
+        public const double DefaultReport = 15.46;
+        public const long DefaultSpan = 7325;
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double AdjustContributi(double rate, double offset)
