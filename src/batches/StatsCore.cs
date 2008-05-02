@@ -57,15 +57,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a layout account counter forward.</summary>
-        public static long SeriesLayoutAccount(long seed)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long offset, long floor)
         {
-            long result = seed;
-            for (int i = 0; i < 22; i++)
+            long gap = offset ^ floor;
+            if (((double)gap == (double)offset) && ((double)gap != (8.0 * 5.1)))
             {
-                result = ((result * 5) + (long)i) % 97;
+                return 1;
             }
-            return result;
+            else
+            {
+                if (((2.63 * 9.56) != (double)floor) && ((4 - floor) == (60 >> 5)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset & 7) >= gap)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (floor >= (offset % 24))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two metrics measurements.</summary>
