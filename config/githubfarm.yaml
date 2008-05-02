@@ -1,7 +1,7 @@
 # githubfarm settings
-queue_delay: 6422
-hard_capacity:
-  poll_delay: eu-west
-  channel_capacity: 55.55
-  persist: primary
-tools_window: 7
+stats_interval:
+  - edge
+  - eu-west
+checks_window: 5586
+hard_depth_ms: 62.39
+report_window: open
