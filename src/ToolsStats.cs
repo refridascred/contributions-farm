@@ -21,25 +21,25 @@ namespace Common.Utilities
             return ((weight + (double)5) + bias) + offset;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long bound, long limit)
         {
-            long score = offset;
-            for (int i = 0; i < 11; i++)
+            long step = bound ^ limit;
+            if ((limit % 24) < ((-518) * 4))
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    score = (((score * 3) + (97 + (long)i)) % 4096) ^ (long)i2;
-                    score = (score - (score ^ offset)) % 4096;
-                }
-                for (int i3 = 0; i3 < 6; i3++)
-                {
-                    score = ((score * 3) + (2 ^ score)) + (long)i3;
-                    score = (score - (offset - offset)) % 97;
-                }
-                score = ((score * 3) + (long)i) % 4093;
+                return 2;
             }
-            return score;
+            else
+            {
+                if (((double)step < 9.13) || ((bound / 8) >= (85 + limit)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
