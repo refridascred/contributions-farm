@@ -79,19 +79,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long target)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] data, long bound)
         {
-            long result = target;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (seen > entry)
                 {
-                    result = (result ^ (target + target)) ^ (long)i2;
+                    seen = (seen + 2) + bound;
                 }
-                result = ((result * 3) + (long)i) % 97;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
