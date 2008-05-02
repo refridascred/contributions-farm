@@ -19,17 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] levels, long seed)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double weight, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = weight;
+            return (load + weight) + offset;
         }
 
         /// <summary>Hold a account stats.</summary>
