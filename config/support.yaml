@@ -1,13 +1,14 @@
 # support settings
-soft_interval: true
-readonly:
-  - green
-  - local
-  - local
-  - staging
-already_ttl:
-  - open
-  - fallback
+batch_retries_s: 23
+compress:
   - legacy
-farm_depth: 250
-command_depth: 11
+  - edge
+  - open
+  - edge
+default_window_pct:
+  max_threshold_ms: 81
+  min_window: false
+  batch_timeout_s: 13.39
+  cache_threshold_count: true
+  strict: 3931
+  warm_limit_ms: 7.31
