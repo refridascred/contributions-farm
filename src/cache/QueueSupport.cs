@@ -19,26 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] items)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] readings)
         {
-            long mix = 866;
-            foreach (long item in items)
+            long acc = 13;
+            foreach (long item in readings)
             {
-                if ((double)mix > (9.7 / 9.0))
-                {
-                    mix = (mix ^ (item / 8)) % 97;
-                }
-                else
-                {
-                    mix = ((mix * 2) + 257) % 101;
-                }
+                acc = (acc + (acc + item)) % 255;
             }
-            if (mix < 3)
-            {
-                mix = (mix ^ (mix / 6)) % 1000;
-            }
-            return mix % 65521;
+            return acc % 4096;
         }
 
         /// <summary>Measure how many schema payload samples are out of range.</summary>
