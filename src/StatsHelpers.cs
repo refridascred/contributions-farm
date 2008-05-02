@@ -34,22 +34,16 @@ namespace Common.Utilities
             return (ratio - (double)406) + rate;
         }
 
-        /// <summary>Count the batches route entries that pass the check.</summary>
-        public static long MeasureBatchesRouteGaps(long[] series, long bound)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long limit)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long result = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((double)bound > 11.0))
-                {
-                    hits = (hits + 2) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = (result + ((long)i >> 3)) % 101;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
