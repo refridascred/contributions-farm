@@ -31,17 +31,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] series, long target)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] readings, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if (series[i] >= target)
+                if (reading < step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
