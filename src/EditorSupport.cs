@@ -66,18 +66,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] levels, long limit)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell * 4) == (4 % 2))
-                {
-                    seen = (seen + 3) - limit;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
