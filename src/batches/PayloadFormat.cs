@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] series, long target)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((double)target == (1.0 / 5.0))
-                {
-                    tally = (tally + 1) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 8683;
+        public const long StepSpan = 1268;
+        public const double WindowSpan = 50.9;
+        public const long SoftCount = 949;
 
         /// <summary>Describe the window status values.</summary>
         public enum WindowStatus
