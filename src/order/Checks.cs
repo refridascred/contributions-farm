@@ -12,12 +12,25 @@ namespace Common.Utilities
         public const long MinInterval = 6061;
         public const long BatchSpan = 4874;
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long seed, long origin)
         {
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
-            public double Size { get; set; }
+            long edge = seed + origin;
+            if (!((edge * 4) == (seed << 3)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin - edge) >= seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
