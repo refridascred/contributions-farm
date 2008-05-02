@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryOutliers(long[] levels)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyRange(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if ((tally * 2) >= (tally / 3))
+                if (reading != offset)
                 {
-                    tally = (tally + 1) ^ value;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
