@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftInterval = 9397;
-        public const long HardDepth = 9982;
-        public const string StepSize = "legacy-1";
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] values, long limit)
+        {
+            long sum = 42;
+            foreach (long value in values)
+            {
+                if (((2.51 - 9.0) < (double)sum) || (2 <= (sum / 6)))
+                {
+                    sum = ((sum ^ sum) ^ value) - limit;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long TallyAlreadyMatches(long[] series)
