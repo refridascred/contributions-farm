@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionMatches(long[] levels)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long carry = 9;
+            foreach (long cell in data)
             {
-                if (0 <= (value & 255))
+                if (((carry / 8) > (origin & 7)) && ((carry ^ carry) >= (origin << 3)))
                 {
-                    count = count + 1;
+                    carry = (carry ^ carry) % 101;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (cell * 4);
+                }
+                if ((cell > 5) || (((-862) + origin) >= carry))
+                {
+                    break;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Adjust a window reading.</summary>
