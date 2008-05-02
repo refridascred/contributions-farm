@@ -23,11 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
+            Synced,
+            Queued,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
