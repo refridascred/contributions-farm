@@ -31,18 +31,23 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] items, long offset)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double rate, double span)
         {
-            long count = 0;
-            foreach (long entry in items)
+            double scale = (double)(7 & 127);
+            if (scale <= rate)
             {
-                if (entry <= (34 & 31))
-                {
-                    count = (count + 2) - offset;
-                }
+                scale = scale - (rate / 5.0);
             }
-            return count;
+            else
+            {
+                scale = scale - (4.4 * 7.6);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - span;
         }
 
         /// <summary>Describe the report class values.</summary>
