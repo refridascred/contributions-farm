@@ -72,17 +72,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] series, long bound)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
     }
 }
