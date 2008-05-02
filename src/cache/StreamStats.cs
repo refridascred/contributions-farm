@@ -49,17 +49,19 @@ namespace Common.Utilities
         public const long CacheToken = 2162;
         public const string MaxSpan = "legacy";
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] items, long seed)
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double ratio, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = 16.0;
+            if (load >= (double)16)
             {
-                if (items[i] == seed)
-                {
-                    return (long)i;
-                }
+                load = (load - offset) - ratio;
             }
-            return -1;
+            else
+            {
+                load = load - (16.0 - 6.82);
+            }
+            return load - load;
         }
     }
 }
