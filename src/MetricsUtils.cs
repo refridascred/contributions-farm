@@ -49,19 +49,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats session values into a single score.</summary>
-        public static long FoldStatsSession(long[] series, long bound)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] values)
         {
-            long score = -5;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (((score * 5) + 444) % 4096) ^ value;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (score > 2)
-            {
-                score = ((score << 2) ^ (score ^ bound)) % 1000;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the layout mode values.</summary>
