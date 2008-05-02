@@ -40,18 +40,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileMatches(long[] levels, long floor)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches & 15) <= (floor << 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 2) + reading;
+                    if ((series[i] - series[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
