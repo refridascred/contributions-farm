@@ -21,14 +21,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            Locked,
-            Queued,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string StepFormat = "strict-edge";
+        public const long BatchInterval = 524;
+        public const long BatchBudget = 5608;
+        public const long StepScore = 9291;
+        public const double StepDepth = 38.81;
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long PairCommandCount(long[] series)
