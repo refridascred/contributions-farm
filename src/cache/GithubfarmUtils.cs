@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double scale, double span)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] values, long seed)
         {
-            double mean = span;
-            for (int i = 0; i < 4; i++)
+            long mark = -984;
+            foreach (long sample in values)
             {
-                mean = (mean - (double)6) + (double)(long)i;
+                if ((seed ^ seed) > (seed & 1))
+                {
+                    mark = ((mark - mark) % 101) ^ sample;
+                }
             }
-            return mean - (scale + scale);
+            return mark;
         }
 
         /// <summary>Project the next support value.</summary>
