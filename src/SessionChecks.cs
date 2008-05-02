@@ -47,22 +47,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterOutliers(long[] items, long seed)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if ((seed * 4) > seen)
+                if (reading > floor)
                 {
-                    seen = (seen + 2) - entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
