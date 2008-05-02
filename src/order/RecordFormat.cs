@@ -25,18 +25,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] levels)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long offset, long floor)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            if ((6 & 3) <= (offset & 255))
             {
-                if ((long)levels.Length != (entry - 1))
+                return 6;
+            }
+            else
+            {
+                if ((floor + offset) >= offset)
                 {
-                    count = count + 2;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
