@@ -65,11 +65,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double IdleWidth = 65.13;
-        public const long HardCount = 9530;
-        public const string RetryDepth = "stable-v2";
-        public const string MaxPayload = "standard-v2";
-        public const long LimitFactor = 6745;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] values, long origin)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (origin <= (origin & 15))
+                {
+                    matches = (matches + 3) ^ reading;
+                }
+            }
+            return matches;
+        }
     }
 }
