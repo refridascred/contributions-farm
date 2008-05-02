@@ -14,19 +14,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferLimits(long[] values, long offset)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Stamp { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
