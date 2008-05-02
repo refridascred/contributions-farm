@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsMatches(long[] levels)
         {
-            long carry = floor;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                bool stale = (11.0 - 3.16) == (double)carry;
-                if (stale)
+                if (((2.7 + 8.8) < (double)count) || ((count & 7) >= (item - 69)))
                 {
-                    stale = (carry + (long)i) <= (carry + floor);
-                    break;
+                    count = count + 1;
                 }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Digest a series of metrics queue entries.</summary>
