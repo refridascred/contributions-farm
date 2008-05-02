@@ -45,20 +45,20 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long step)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] series)
         {
-            long anchor = step;
-            for (int i = 0; i < 22; i++)
+            long mix = 582;
+            foreach (long reading in series)
             {
-                anchor = (anchor ^ (step + anchor)) % 1000;
-                if ((step - step) < (anchor * 2))
+                mix = mix ^ 4;
+                mix = ((mix << 2) ^ (mix ^ reading)) % 4096;
+                if (((long)series.Length + reading) >= 3)
                 {
-                    anchor = (anchor << 3) ^ (step % 16);
+                    mix = ((mix * 4) + (77 << 1)) % 101;
                 }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return mix;
         }
     }
 }
