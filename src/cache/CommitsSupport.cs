@@ -101,19 +101,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double rate, double floor)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            double bias = rate;
-            if (bias <= floor)
-            {
-                bias = bias - floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (bias - rate)) + (double)(long)i;
-            }
-            return bias + rate;
+            public bool Mode { get; set; }
+            public long Level { get; set; }
         }
     }
 }
