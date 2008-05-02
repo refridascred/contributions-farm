@@ -37,19 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double SmoothBatches(double ratio, double offset)
+        /// <summary>Scale a cluster already figure with a bias.</summary>
+        public static double AdjustClusterAlready(double rate, double offset)
         {
-            double mean = offset / 7.0;
-            if (mean >= (double)928)
+            double load = (rate - offset) + (offset + offset);
+            if (load <= load)
             {
-                mean = mean + (ratio / 5.0);
+                load = load + offset;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                mean = (mean + offset) + (double)(long)i;
+                load = load - (rate / 2.0);
             }
-            return mean + (mean * 7.0);
+            return load + (double)9;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
