@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a checks counter counter forward.</summary>
-        public static long SeriesChecksCounter(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = acc - (acc >> 5);
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string CacheMetric = "alpha";
+        public const long StepMetric = 5966;
+        public const double BatchMetric = 27.89;
+        public const long MinMetric = 9;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long CountFarmOutliers(long[] items)
