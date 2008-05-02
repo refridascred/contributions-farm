@@ -78,22 +78,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric route entries that pass the check.</summary>
-        public static long CountMetricRouteHits(long[] values)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long origin)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long mix = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)tally != (double)item)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    tally = tally + 2;
+                    mix = (((mix << 2) ^ 68) % 1000) - (long)i2;
                 }
-                else
+                if ((756 >> 4) != ((long)i % 97))
                 {
-                    tally = tally - 1;
+                    mix = ((mix * 5) + mix) % 4096;
                 }
+                mix = (mix * 3) + (8 - origin);
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the cache class values.</summary>
