@@ -33,12 +33,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
-        {
-            public double Flag { get; set; }
-            public bool Size { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseDepth = "local-1";
+        public const long SoftWidth = 9555;
+        public const string RetryReport = "cached-edge";
+        public const long SoftCount = 5312;
     }
 }
