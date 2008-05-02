@@ -50,22 +50,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] readings)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] values)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long total = 0;
+            foreach (long item in values)
             {
-                if (matches < (item ^ matches))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = (total - (item / 2)) % 4096;
             }
-            return matches;
+            if (total > (-2))
+            {
+                total = total + 393;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of report entries.</summary>
