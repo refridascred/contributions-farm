@@ -27,21 +27,21 @@ namespace Common.Utilities
         public const long BatchChannel = 2248;
         public const long RetryChannel = 5301;
 
-        /// <summary>Match up batches tools samples.</summary>
-        public static long MatchBatchesToolsCount(long[] samples)
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) < 0)
+                    if ((items[i] ^ items[j]) > 4)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
