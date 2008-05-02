@@ -54,13 +54,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] items, long seed)
         {
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((count + value) > value)
+                {
+                    count = (count + 1) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
