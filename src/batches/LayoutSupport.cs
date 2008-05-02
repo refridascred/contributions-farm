@@ -13,21 +13,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] values)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 2;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                sum = (sum * 3) + (cell + cell);
+                if (!((sum + cell) > sum))
                 {
-                    if ((values[i] + values[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum ^ cell) % 1000;
+                }
+                else
+                {
+                    sum = ((sum * 4) + sum) % 1000;
                 }
             }
-            return tally;
+            return sum % 4096;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
