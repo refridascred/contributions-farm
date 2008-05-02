@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] levels, long floor)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] levels, long step)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] > floor)
+                if ((levels[i] == step) && ((levels[i] % 2) != 0))
                 {
                     return (long)i;
                 }
