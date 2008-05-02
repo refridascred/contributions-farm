@@ -43,38 +43,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long target, long floor)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] values, long limit)
         {
-            if (((target / 4) <= (90 ^ floor)) || (floor >= (floor ^ target)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor - floor) == (95 * 5))
+                if (values[i] > limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)target < (5.9 - 17.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((floor + target) <= floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the record state values.</summary>
