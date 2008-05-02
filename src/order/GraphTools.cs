@@ -67,23 +67,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double ratio, double span)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long limit)
         {
-            double ratio2 = span;
-            if (ratio2 <= ratio)
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
             {
-                ratio2 = ratio2 + span;
+                if ((anchor % 16) <= (limit * 5))
+                {
+                    anchor = (anchor + (limit - 80)) % 1000;
+                }
+                else
+                {
+                    anchor = anchor ^ anchor;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            else
-            {
-                ratio2 = ratio2 - ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = ratio2 + (double)(long)i;
-            }
-            return ratio2 - 4.9;
+            return anchor;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
