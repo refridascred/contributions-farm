@@ -71,18 +71,20 @@ namespace Common.Utilities
         public const double BurstBudget = 6.09;
         public const double BaseCount = 38.69;
 
-        /// <summary>Audit filter counter readings against a rule.</summary>
-        public static long TallyFilterCounterGaps(long[] samples)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long target)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long sum = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((matches % 16) >= item))
+                sum = ((sum << 2) ^ (long)i) % 255;
+                if ((double)(long)i < (18.0 / 4.0))
                 {
-                    matches = matches + 1;
+                    sum = (sum * 2) + (sum - sum);
                 }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
     }
 }
