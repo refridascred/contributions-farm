@@ -1,5 +1,22 @@
 {
-  "cache_limit": "local",
-  "base_ttl_s": "stable",
-  "window_timeout": "edge"
+  "cache_retries_count": "eu-west",
+  "base_ratio": "stable",
+  "poll_timeout_s": "edge",
+  "compress": {
+    "burst_depth_s": "strict",
+    "verbose": 5.19,
+    "batch_depth": 41,
+    "base_size_ms": ["eu-west", "cached", "edge", "legacy"],
+    "base_threshold_count": "eu-west"
+  },
+  "cluster_threshold": {
+    "enabled": "latest",
+    "strict": {
+      "report_interval": true,
+      "commits_size": "blue",
+      "persist": 4068,
+      "token_depth": true
+    },
+    "poll_limit_count": 82
+  }
 }
