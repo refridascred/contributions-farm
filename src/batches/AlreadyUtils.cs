@@ -44,21 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] series)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double scale, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = (double)(0 + 2);
+            if (rate < (double)61)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = (rate + 7.2) - bias;
             }
-            return matches;
+            else
+            {
+                rate = rate + 8.6;
+            }
+            return rate + (scale + rate);
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
