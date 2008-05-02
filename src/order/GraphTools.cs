@@ -67,10 +67,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MinBudget = 25.12;
-        public const string BurstScore = "cached-edge";
-        public const long CacheChannel = 7895;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] data, long limit)
+        {
+            long mix = -6;
+            foreach (long cell in data)
+            {
+                mix = ((mix * 3) + (cell - mix)) - limit;
+            }
+            if (mix < (-85))
+            {
+                mix = (mix ^ (mix & 1)) % 101;
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Match up tools samples.</summary>
         public static long OverlapToolsCount(long[] values)
