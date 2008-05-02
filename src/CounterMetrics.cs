@@ -21,22 +21,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadMatches(long[] series, long offset)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double weight, double span)
         {
-            long count = 0;
-            foreach (long cell in series)
+            double bias = span - weight;
+            if (bias <= (double)(-49))
             {
-                if (offset < (offset >> 3))
-                {
-                    count = (count + 2) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                bias = bias + weight;
             }
-            return count;
+            return bias + (double)(-8);
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
