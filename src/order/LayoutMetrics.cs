@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] series, long step)
-        {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 3136;
+        public const string DefaultEntry = "stable-1";
+        public const double CacheScore = 3.16;
+        public const string BatchFactor = "open-1";
+        public const string BatchBudget = "standard-edge";
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long OverlapContextCount(long[] values)
