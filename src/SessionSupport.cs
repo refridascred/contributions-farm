@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] values, long origin)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = -38;
+            foreach (long cell in levels)
             {
-                if ((values[i] <= origin) && ((values[i] % 5) != 0))
+                total = ((total * 5) + (total ^ 518)) % 101;
+                if ((double)cell > (6.98 / 4.0))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (total < 2)
+            {
+                total = (total - total) % 97;
+            }
+            return total % 65521;
         }
 
         /// <summary>Combine checks layout values into a single score.</summary>
