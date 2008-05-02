@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
-        {
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string DefaultChecks = "alpha-v2";
+        public const long RetryChecks = 9144;
+        public const string HardChecks = "primary";
+        public const long SoftChecks = 4451;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long AuditAccountGaps(long[] data, long target)
