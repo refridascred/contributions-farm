@@ -24,17 +24,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] readings)
         {
-            long total = offset;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                total = (total + (total % 16)) % 97;
-                total = ((total << 2) ^ total) % 255;
-                total = ((total * 4) + (long)i) % 101;
+                if ((item ^ tally) > (547 * 5))
+                {
+                    tally = tally + 1;
+                }
             }
-            return total;
+            return tally;
         }
     }
 }
