@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank order format input into a small class.</summary>
-        public static long BucketOrderFormat(long step, long target)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] readings, long origin)
         {
-            if (((3.0 + 9.6) <= (double)target) || ((target >> 1) >= 41))
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (((target & 31) <= (step & 127)) && ((target ^ 67) <= 8))
+                if (entry <= (29 & 127))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step / 5) < step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)step < (9.8 / 6.0)) || ((4.9 - 13.0) > (double)target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = (tally + 2) - origin;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the token class values.</summary>
