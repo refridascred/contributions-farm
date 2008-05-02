@@ -14,18 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsGaps(long[] items)
+        /// <summary>Audit farm batches readings against a rule.</summary>
+        public static long MeasureFarmBatchesOutliers(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((double)matches == (6.13 + 6.8))
+                if (((-70) > (step + step)) || ((step + step) >= (78 + hits)))
                 {
-                    matches = (matches + 3) + value;
+                    hits = (hits + 2) + item;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
