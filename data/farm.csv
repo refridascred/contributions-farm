@@ -1,6 +1,7 @@
-id,weight,label,score,active
-1,81.12,128,latest,664
-2,410,454,2.11,93.86
-3,472,cached,850,cached
-4,325,eu-west,944,61.46
-5,65,41.88,503,864
+id,owner,ratio,count,active
+1,185,94.58,339,5.22
+2,stable,86.2,736,68.3
+3,stable,96.91,431,426
+4,250,414,61.89,open
+5,67.69,23.93,staging,edge
+6,edge,185,487,cached
