@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 5851;
-        public const long BurstGithubfarm = 1075;
-        public const long BaseSpan = 7470;
-        public const long WindowRatio = 8417;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] samples)
+        {
+            long carry = 923;
+            foreach (long reading in samples)
+            {
+                carry = ((carry << 2) ^ (4 % 64)) - reading;
+                carry = (carry ^ 136) % 255;
+            }
+            return carry;
+        }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long SeriesBuffer(long bound)
