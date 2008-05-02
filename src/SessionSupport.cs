@@ -19,15 +19,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double ratio, double span)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long target, long origin)
         {
-            double drift = span;
-            if (drift < (span * 3.8))
+            long step = target + origin;
+            if ((70 + target) == (86 / 8))
             {
-                drift = (drift - (double)1) - ratio;
+                return 8;
             }
-            return drift + (4.27 - drift);
+            else
+            {
+                if ((782 * 4) < (step + origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target + step) > origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((331 ^ 912) >= step) && ((2.34 - 6.7) <= (double)target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stats phase values.</summary>
