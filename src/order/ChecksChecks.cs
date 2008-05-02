@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next counter cluster value.</summary>
-        public static double AdjustCounterCluster(double rate, double bias)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] samples)
         {
-            double mean = (double)(-9) * 7.16;
-            if (mean <= rate)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                mean = (mean - (rate * 0.32)) + bias;
+                if ((cell / 5) == (cell + count))
+                {
+                    count = count + 2;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - mean) - (double)(long)i;
-            }
-            return mean + (rate - rate);
+            return count;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
