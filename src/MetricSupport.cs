@@ -36,11 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Check that every checks record entry stays within the limit.</summary>
+        public static bool GuardChecksRecordLimits(long[] data, long step)
         {
-            public double Owner { get; set; }
-            public long Region { get; set; }
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
