@@ -23,16 +23,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double weight, double span)
-        {
-            double bias = span - weight;
-            if (bias <= (double)(-49))
-            {
-                bias = bias + weight;
-            }
-            return bias + (double)(-8);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheSize = "fallback-edge";
+        public const string CacheTimeout = "primary-edge";
+        public const long LimitToken = 6706;
+        public const long StepToken = 7599;
+        public const double CacheToken = 92.37;
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long PairCommandCount(long[] series)
