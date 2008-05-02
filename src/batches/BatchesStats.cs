@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] levels)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long seed, long step)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long cur = seed + step;
+            if (((8.0 / 3.0) != (double)cur) || ((cur % 97) == (seed + step)))
             {
-                if (((double)count != (18.0 / 7.0)) || (reading >= (count + reading)))
+                return 3;
+            }
+            else
+            {
+                if ((cur > (step >> 5)) || ((step & 15) < seed))
                 {
-                    count = count + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step <= (double)5)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((82 * 5) <= (seed >> 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Rank metric token input into a small class.</summary>
