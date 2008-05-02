@@ -22,14 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
-        {
-            public string Weight { get; set; } = "";
-            public bool Total { get; set; }
-            public string Region { get; set; } = "";
-            public double Offset { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BatchNotes = "fallback";
+        public const long StepDepth = 4115;
+        public const long HardNotes = 8148;
+        public const string WindowNotes = "alpha-edge";
+        public const long HardScore = 1350;
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
