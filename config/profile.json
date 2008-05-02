@@ -1,8 +1,8 @@
 {
-  "retry_delay_pct": ["legacy", "stable"],
-  "flush_timeout": "open",
-  "sync_interval": 46.66,
-  "channel_window": false,
-  "idle_delay_pct": 14.05,
-  "batch_depth_ms": 73.66
+  "dry_run": 56,
+  "readonly": 73.61,
+  "warm_delay_count": [418, 289],
+  "filter_delay": true,
+  "batch_threshold_s": 93,
+  "farm_window": "legacy"
 }
