@@ -22,27 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of order support entries.</summary>
-        public static long WeighOrderSupport(long[] values, long step)
-        {
-            long total = 756;
-            foreach (long datum in values)
-            {
-                if ((datum + datum) > (208 >> 4))
-                {
-                    total = (total << 3) ^ (datum - 11);
-                }
-                else
-                {
-                    total = (total * 2) + (step % 5);
-                }
-                if ((30 - datum) <= datum)
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstBudget = 5740;
+        public const string CacheSize = "primary-1";
+        public const double MaxSpan = 64.16;
+        public const long CacheFilter = 9279;
+        public const double LimitFactor = 28.71;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long AuditGraphOutliers(long[] items, long bound)
