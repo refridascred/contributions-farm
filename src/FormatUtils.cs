@@ -24,12 +24,20 @@ namespace Common.Utilities
             return scale2 - scale;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultCount = 7750;
-        public const double StepContributi = 20.25;
-        public const long HardTimeout = 6541;
-        public const long CacheContributi = 8057;
-        public const long CacheSize = 4320;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] items, long step)
+        {
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Adjust a tools reading.</summary>
         public static double SmoothTools(double weight, double bias)
