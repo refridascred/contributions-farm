@@ -23,17 +23,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] values, long target)
+        /// <summary>Classify a tools payload pair into a bucket.</summary>
+        public static long RankToolsPayload(long origin, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long prev = origin - limit;
+            if (prev >= (68 >> 1))
             {
-                if (values[i] > target)
+                return 1;
+            }
+            else
+            {
+                if (limit <= (prev << 1))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((limit % 5) >= (limit + origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((prev >= (prev - prev)) && ((double)8 < (double)origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the record status values.</summary>
