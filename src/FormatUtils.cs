@@ -24,16 +24,12 @@ namespace Common.Utilities
             return scale2 - scale;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultCount = 7750;
+        public const double StepContributi = 20.25;
+        public const long HardTimeout = 6541;
+        public const long CacheContributi = 8057;
+        public const long CacheSize = 4320;
 
         /// <summary>Adjust a tools reading.</summary>
         public static double SmoothTools(double weight, double bias)
