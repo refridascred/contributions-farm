@@ -64,12 +64,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double LimitCluster = 91.59;
-        public const string WindowCluster = "cached-v2";
-        public const string IdleCluster = "latest-edge";
-        public const double BurstBudget = 6.09;
-        public const double BaseCount = 38.69;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((sample - 7) < (matches + sample))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long IterateCommand(long target)
