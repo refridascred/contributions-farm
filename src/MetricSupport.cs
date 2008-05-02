@@ -22,21 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of payload account readings.</summary>
-        public static long PairPayloadAccountCount(long[] samples)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] values, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = -62;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((score + score) < (-6))
                 {
-                    if ((samples[i] - samples[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = ((score + (sample - sample)) % 255) - limit;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
