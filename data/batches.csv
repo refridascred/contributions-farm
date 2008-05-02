@@ -1,8 +1,8 @@
-id,region,label,token
-1,860,fallback,primary
-2,green,217,4.25
-3,primary,42.46,94.29
-4,staging,open,827
-5,fallback,351,947
-6,latest,111,1.05
-7,656,54.66,963
+id,active,token,owner,ratio
+1,935,191,27.87,legacy
+2,local,92.14,96.34,18.87
+3,767,282,519,eu-west
+4,staging,575,blue,primary
+5,67.8,19.44,1.29,561
+6,local,94.83,145,300
+7,484,112,96.5,24.44
