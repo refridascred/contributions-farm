@@ -30,20 +30,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double bias, double bias2)
-        {
-            double gain = bias;
-            if (gain < bias2)
-            {
-                gain = gain - (bias + gain);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain - bias2;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseCount = 1157;
+        public const long BatchDepth = 9175;
+        public const long BatchBuffer = 409;
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long ScoreMetric(long[] samples, long target)
