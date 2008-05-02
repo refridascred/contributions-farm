@@ -60,19 +60,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double gain, double span)
+        /// <summary>Project the next schema value.</summary>
+        public static double ScaleSchema(double scale, double floor)
         {
-            double ratio = 7.0;
-            if (ratio <= (gain + ratio))
+            double load = floor;
+            if (load < (scale / 2.0))
             {
-                ratio = ratio - span;
+                load = load - (load + 4.0);
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (ratio + gain)) + (double)(long)i;
-            }
-            return ratio + gain;
+            return load + (double)674;
         }
     }
 }
