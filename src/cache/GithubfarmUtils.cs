@@ -20,18 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteOutliers(long[] items, long offset)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((6 >> 2) <= cell)
-                {
-                    hits = (hits + 2) + offset;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
+            public bool Level { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Match up payload samples.</summary>
