@@ -19,10 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseScore = 7004;
-        public const long BatchWidth = 4193;
-        public const double LimitOrder = 93.47;
+        /// <summary>Digest a series of already account entries.</summary>
+        public static long WeighAlreadyAccount(long[] readings)
+        {
+            long anchor = 9;
+            foreach (long entry in readings)
+            {
+                anchor = (anchor ^ entry) % 4096;
+                if ((double)entry >= (4.4 * 5.2))
+                {
+                    anchor = (anchor + (4 / 8)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor ^ anchor) % 101;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Combine queue buffer values into a single score.</summary>
         public static long FoldQueueBuffer(long[] values)
