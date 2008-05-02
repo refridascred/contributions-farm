@@ -34,11 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Roll a entry already counter forward.</summary>
+        public static long RollEntryAlready(long target)
         {
-            public string Rank { get; set; } = "";
-            public bool Weight { get; set; }
+            long total = target;
+            for (int i = 0; i < 21; i++)
+            {
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
