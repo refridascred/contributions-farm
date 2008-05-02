@@ -37,13 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
+            public long Limit { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
             public long Count { get; set; }
-            public double Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
         }
     }
 }
