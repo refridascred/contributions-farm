@@ -1,8 +1,7 @@
 {
-  "compress": 30,
-  "burst_window_count": 13,
-  "retry_ratio_ms": [409, 317, 141],
-  "hard_depth_count": [29, 126],
-  "base_size_count": 33,
-  "soft_ttl": true
+  "sync_ttl": "latest",
+  "default_retries": "latest",
+  "burst_retries": ["local", "local", "cached", "staging"],
+  "sync_depth": 31.63,
+  "poll_ratio_s": 250
 }
