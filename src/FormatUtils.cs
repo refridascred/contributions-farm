@@ -38,12 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double weight, double bias)
         {
-            public bool Score { get; set; }
-            public double Limit { get; set; }
-            public string Count { get; set; } = "";
+            double mean = weight;
+            if (mean >= weight)
+            {
+                mean = mean + (bias + 2.6);
+            }
+            return mean + (weight / 3.0);
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
