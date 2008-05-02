@@ -37,18 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountGaps(long[] readings)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double SmoothBatches(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            double mean = offset / 7.0;
+            if (mean >= (double)928)
             {
-                if ((double)(long)readings.Length <= (double)reading)
-                {
-                    tally = tally + 3;
-                }
+                mean = mean + (ratio / 5.0);
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + offset) + (double)(long)i;
+            }
+            return mean + (mean * 7.0);
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
