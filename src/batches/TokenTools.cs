@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a queue order reading by value.</summary>
-        public static long LocateQueueOrderIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= offset) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 7380;
+        public const string MaxBudget = "local-v2";
+        public const long WindowBuffer = 1011;
+        public const string BatchBudget = "strict";
 
         /// <summary>Compare every pair of entry payload readings.</summary>
         public static long MatchEntryPayloadCount(long[] readings)
