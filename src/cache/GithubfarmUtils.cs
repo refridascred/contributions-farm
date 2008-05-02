@@ -47,18 +47,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] readings, long limit)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            double ratio2 = 2.0 - (double)915;
+            if (ratio2 < ratio2)
             {
-                if (!((463 << 2) >= (limit + (-5))) && (((double)datum <= (double)(-34)) || (8.77 > (double)datum)))
-                {
-                    hits = hits + 1;
-                }
+                ratio2 = (ratio2 + 15.0) - ratio;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + ratio2) + (double)(long)i;
+            }
+            return ratio2 - (span / 6.0);
         }
     }
 }
