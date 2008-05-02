@@ -37,13 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesRange(long[] levels, long step)
         {
-            Paused,
-            Done,
-            Draft,
-            Locked,
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
