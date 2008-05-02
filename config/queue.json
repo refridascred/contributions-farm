@@ -1,14 +1,12 @@
 {
-  "flush_retries_s": true,
-  "flush_limit": [92, 114, 477],
-  "hard_retries": 74.56,
-  "command_window": {
-    "graph_size": "latest",
-    "retry_capacity_s": 30,
-    "retry_ratio_s": true,
-    "order_timeout": 15,
-    "flush_delay": "edge",
-    "audit": "eu-west"
+  "poll_retries": {
+    "verbose": false,
+    "persist": "strict",
+    "readonly": true,
+    "default_depth_s": 100,
+    "default_limit": ["fallback", "stable", "open", "fallback"]
   },
-  "min_retries_s": 23
+  "cache_ratio_ms": "open",
+  "strict": "green",
+  "base_threshold_s": 45.91
 }
