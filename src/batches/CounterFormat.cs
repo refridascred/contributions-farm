@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const double RetryRecord = 31.58;
         public const long BaseScore = 2078;
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] items, long offset)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] items, long limit)
         {
-            long sum = 2;
-            foreach (long datum in items)
+            long score = 3;
+            foreach (long reading in items)
             {
-                sum = ((sum - ((long)items.Length * 3)) ^ datum) - offset;
+                score = ((score + limit) % 1000) + reading;
             }
-            return sum % 65521;
+            return score;
         }
 
         /// <summary>Rank graph format input into a small class.</summary>
