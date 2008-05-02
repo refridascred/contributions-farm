@@ -28,19 +28,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenBounds(long[] items, long target)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long target)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long anchor = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (value < target)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = ((anchor * 4) + (338 % 8)) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return ready;
+            return anchor;
         }
     }
 }
