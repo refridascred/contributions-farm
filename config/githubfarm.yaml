@@ -1,15 +1,13 @@
 # githubfarm settings
-dry_run:
+flush_limit_count: false
+stats_capacity:
+  - stable
+  - latest
   - fallback
-  - primary
-  - open
-verbose: 2.46
-min_retries_s: local
-soft_ttl_count: false
-support_capacity: true
-readonly:
-  sync_size_pct: 75.22
-  warm_window: 6896
-  context_limit: 8847
-  verbose: true
-  report_ttl: 34.97
+tools_threshold: 10.99
+layout_retries: 7.33
+audit: legacy
+retry_depth_ms:
+  - 298
+  - 168
+  - 462
