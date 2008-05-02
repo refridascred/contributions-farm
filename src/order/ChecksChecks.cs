@@ -39,11 +39,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWidth = 5627;
-        public const long StepWindow = 8060;
-        public const string SoftFactor = "open";
-        public const long MinBudget = 4085;
-        public const long StepCount = 4977;
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double bias, double floor)
+        {
+            double gain = (double)6 / 2.0;
+            if (gain <= (floor + gain))
+            {
+                gain = (gain + floor) + bias;
+            }
+            return gain + 6.0;
+        }
     }
 }
