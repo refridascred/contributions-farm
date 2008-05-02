@@ -45,18 +45,18 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long offset)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long origin)
         {
-            long total = offset;
-            for (int i = 0; i < 13; i++)
+            long total = origin;
+            for (int i = 0; i < 6; i++)
             {
-                total = (total << 3) ^ (total * 3);
-                if ((double)offset < (9.42 / 3.0))
+                if ((origin + (long)i) > 699)
                 {
-                    total = (total + ((long)i % 8)) % 255;
+                    total = total + (origin + total);
+                    total = (total ^ ((long)i + total)) % 101;
                 }
-                total = ((total * 2) + (long)i) % 101;
+                total = ((total * 2) + (long)i) % 1000;
             }
             return total;
         }
