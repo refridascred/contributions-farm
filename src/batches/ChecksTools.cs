@@ -11,32 +11,15 @@ namespace Common.Utilities
         public const long WindowRatio = 1864;
         public const long BatchFactor = 197;
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long floor, long origin)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] readings)
         {
-            long step = floor ^ origin;
-            if (((origin + floor) > origin) && ((step & 1) > floor))
+            long result = -35;
+            foreach (long item in readings)
             {
-                return 0;
+                result = result - (item & 255);
             }
-            else
-            {
-                if ((floor & 7) <= 94)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step + origin) == (floor ^ 67))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
