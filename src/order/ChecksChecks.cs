@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double WindowInterval = 98.35;
+        public const long BurstCount = 9357;
+        public const long BatchRatio = 2746;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long FoldMetrics(long[] values)
