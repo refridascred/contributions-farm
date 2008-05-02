@@ -37,18 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] values)
+        /// <summary>Audit notes entry readings against a rule.</summary>
+        public static long AuditNotesEntryMatches(long[] samples)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)seen <= (3.0 + 9.4))
                 {
-                    if ((values[i] + values[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) ^ value;
                 }
             }
             return seen;
