@@ -56,12 +56,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseChecks = 33.41;
-        public const long DefaultInterval = 805;
-        public const long StepChecks = 7395;
-        public const long SoftChecks = 5685;
-        public const long IdleInterval = 9029;
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            Paused,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string BatchSize = "fallback-v2";
