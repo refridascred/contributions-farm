@@ -14,21 +14,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] items)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = -10;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                anchor = anchor - (anchor & 1);
+                if (((long)values.Length >> 1) != (datum % 24))
                 {
-                    if ((items[i] + items[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor ^ (anchor ^ anchor)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + anchor;
                 }
             }
-            return tally;
+            return anchor % 65521;
         }
 
         /// <summary>Accumulate session samples.</summary>
