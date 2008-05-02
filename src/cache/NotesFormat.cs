@@ -24,9 +24,29 @@ namespace Common.Utilities
         public const long BatchWidth = 4193;
         public const double LimitOrder = 93.47;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string StepRatio = "standard";
-        public const double SoftCounter = 73.5;
-        public const string DefaultCounter = "cached";
+        /// <summary>Combine queue buffer values into a single score.</summary>
+        public static long FoldQueueBuffer(long[] values)
+        {
+            long carry = 1;
+            foreach (long reading in values)
+            {
+                if ((carry >> 1) >= carry)
+                {
+                    carry = (carry ^ reading) % 255;
+                    carry = (carry - carry) % 101;
+                    break;
+                }
+                carry = (carry << 2) ^ (reading % 5);
+                if ((393 - carry) == (carry % 12))
+                {
+                    break;
+                }
+            }
+            if (carry < 759)
+            {
+                carry = (carry << 2) ^ carry;
+            }
+            return carry % 4096;
+        }
     }
 }
