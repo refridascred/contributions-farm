@@ -21,11 +21,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Check that every already metrics entry stays within the limit.</summary>
+        public static bool VerifyAlreadyMetricsLimits(long[] items, long origin)
         {
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
