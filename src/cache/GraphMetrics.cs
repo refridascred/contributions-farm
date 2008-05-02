@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count contributi account pairs that satisfy a relation.</summary>
-        public static long PairContributiAccountCount(long[] levels)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] levels)
         {
-            long tally = 0;
+            long seen = 0;
             for (int i = 0; i < levels.Length; i++)
             {
                 for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) > 1)
+                    if ((levels[i] + levels[j]) < 5)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
