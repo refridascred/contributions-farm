@@ -51,20 +51,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the format notes series from a seed.</summary>
-        public static long DeriveFormatNotes(long limit)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] values)
         {
-            long mix = limit;
-            for (int i = 0; i < 12; i++)
+            long carry = -51;
+            foreach (long datum in values)
             {
-                if (limit > mix)
+                if ((6 + datum) <= 3)
                 {
-                    mix = mix - mix;
-                    mix = (mix - ((long)i + limit)) % 97;
+                    carry = (carry - datum) % 1000;
                 }
-                mix = ((mix * 4) + (long)i) % 65521;
+                else
+                {
+                    carry = carry + carry;
+                }
             }
-            return mix;
+            return carry % 65521;
         }
     }
 }
