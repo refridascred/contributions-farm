@@ -21,18 +21,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionHits(long[] readings, long seed)
+        /// <summary>Measure how many support tools samples are out of range.</summary>
+        public static long MeasureSupportToolsGaps(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((547 / 6) >= (count * 4))
+                if ((matches - 594) <= (reading * 3))
                 {
-                    count = ((count + 1) + sample) + seed;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
