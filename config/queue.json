@@ -1,12 +1,15 @@
 {
-  "poll_retries": {
-    "verbose": false,
-    "persist": "strict",
-    "readonly": true,
-    "default_depth_s": 100,
-    "default_limit": ["fallback", "stable", "open", "fallback"]
+  "schema_ttl": "cached",
+  "compress": "green",
+  "flush_window_s": {
+    "cache_retries": false,
+    "cache_interval_ms": "eu-west",
+    "verbose": ["fallback", "edge", "staging", "primary"],
+    "graph_window": "primary",
+    "compress": 12.93,
+    "readonly": 60
   },
-  "cache_ratio_ms": "open",
-  "strict": "green",
-  "base_threshold_s": 45.91
+  "stats_size": ["stable", "staging", "staging", "fallback"],
+  "persist": 91.39,
+  "cache_threshold_count": 88.48
 }
