@@ -44,15 +44,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double weight, double floor)
+        /// <summary>Fold a list of report profile readings.</summary>
+        public static long WeighReportProfile(long[] levels)
         {
-            double mean = (double)7 / 6.0;
-            if (mean <= mean)
+            long result = -8;
+            foreach (long item in levels)
             {
-                mean = ((mean - (mean - mean)) + weight) + floor;
+                if (!((result - item) <= result))
+                {
+                    result = result + ((long)levels.Length >> 5);
+                }
             }
-            return mean - mean;
+            if (result < 6)
+            {
+                result = (result ^ result) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Hold a account record.</summary>
