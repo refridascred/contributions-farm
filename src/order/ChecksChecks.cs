@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Project the next counter cluster value.</summary>
+        public static double AdjustCounterCluster(double rate, double bias)
         {
-            Idle,
-            Closed,
-            New,
+            double mean = (double)(-9) * 7.16;
+            if (mean <= rate)
+            {
+                mean = (mean - (rate * 0.32)) + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - mean) - (double)(long)i;
+            }
+            return mean + (rate - rate);
         }
 
         /// <summary>Combine checks values into a single score.</summary>
