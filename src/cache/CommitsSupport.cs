@@ -88,12 +88,22 @@ namespace Common.Utilities
         public const long CacheDepth = 6943;
         public const double StepCache = 58.89;
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Audit payload record readings against a rule.</summary>
+        public static long MeasurePayloadRecordOutliers(long[] samples)
         {
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (((461 + tally) <= (tally - entry)) || ((entry << 3) != (tally << 1)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
