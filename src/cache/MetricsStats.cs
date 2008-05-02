@@ -15,16 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long offset)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] items, long origin)
         {
-            long score = offset;
-            for (int i = 0; i < 11; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                score = (score + ((long)i & 255)) % 255;
-                score = ((score * 5) + (long)i) % 65521;
+                if (datum != origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
