@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] series, long origin)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] samples)
         {
-            long acc = 3;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((316 > (6 ^ acc)) && ((origin * 3) < item))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc * 3) + (acc - origin);
-                }
-                else
-                {
-                    acc = (acc ^ (415 & 7)) % 255;
+                    if ((samples[i] + samples[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
