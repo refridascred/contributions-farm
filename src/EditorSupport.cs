@@ -41,12 +41,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] items, long bound)
         {
-            Ready,
-            Stale,
-            Queued,
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
