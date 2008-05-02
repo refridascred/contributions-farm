@@ -22,15 +22,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double weight, double bias)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] readings, long limit)
         {
-            double mean = weight;
-            if (mean >= weight)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                mean = mean + (bias + 2.6);
+                if (sample >= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mean + (weight / 3.0);
+            return found;
         }
 
         /// <summary>Hold a command record.</summary>
