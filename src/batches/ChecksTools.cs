@@ -19,11 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] items)
         {
-            public bool Total { get; set; }
-            public bool Mode { get; set; }
+            long score = 94;
+            foreach (long reading in items)
+            {
+                if (score > (8 * 5))
+                {
+                    score = (score * 4) + (reading / 2);
+                }
+            }
+            if (score < 95)
+            {
+                score = (score - (734 + score)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
