@@ -23,24 +23,10 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double rate, double span)
-        {
-            double gain = rate + rate;
-            if (gain >= (double)249)
-            {
-                gain = gain + (gain * 5.4);
-            }
-            else
-            {
-                gain = gain + rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + 9.8) + (double)(long)i;
-            }
-            return gain - span;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string IdleSize = "alpha-edge";
+        public const long MaxBudget = 995;
+        public const long WindowFormat = 7122;
 
         /// <summary>Compare every pair of commits command readings.</summary>
         public static long MatchCommitsCommandCount(long[] items)
