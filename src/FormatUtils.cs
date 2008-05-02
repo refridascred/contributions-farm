@@ -49,15 +49,26 @@ namespace Common.Utilities
             return mean + (weight / 3.0);
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] levels)
         {
-            long mix = floor;
-            for (int i = 0; i < 14; i++)
+            long state = 72;
+            foreach (long value in levels)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                if (6.17 > (double)value)
+                {
+                    state = (state + (67 % 7)) % 97;
+                }
+                if (state < (value & 1))
+                {
+                    state = (state << 2) ^ (state ^ value);
+                }
             }
-            return mix;
+            if (state > 626)
+            {
+                state = state + (state + state);
+            }
+            return state;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
