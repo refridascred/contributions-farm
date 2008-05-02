@@ -14,23 +14,24 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] samples, long seed)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] readings, long step)
         {
-            long carry = 657;
-            foreach (long entry in samples)
+            long result = 79;
+            foreach (long sample in readings)
             {
-                carry = (carry << 3) ^ (carry - (long)samples.Length);
-                if (!((2.0 - 7.0) <= (double)entry))
+                if (!((step ^ sample) <= result))
                 {
-                    break;
+                    result = ((result * 5) + (result - 857)) % 101;
+                    result = result + (result % 16);
                 }
+                result = (result + (step + result)) % 65521;
             }
-            if (carry < 4)
+            if (result > 61)
             {
-                carry = (carry * 2) + (seed + seed);
+                result = ((result * 3) + 228) % 4096;
             }
-            return carry % 97;
+            return result;
         }
 
         /// <summary>Project the next batch value.</summary>
