@@ -26,15 +26,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double scale, double offset)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long bound)
         {
-            double drift = (double)46 * 4.0;
-            if (drift < (double)431)
+            long total = bound;
+            for (int i = 0; i < 20; i++)
             {
-                drift = (drift - (offset * 16.0)) - scale;
+                total = total - total;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return drift + (drift / 8.0);
+            return total;
         }
     }
 }
