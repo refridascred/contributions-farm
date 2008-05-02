@@ -27,21 +27,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count githubfarm format pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmFormatCount(long[] items)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            New,
+            Failed,
+            Idle,
+            Stale,
         }
 
         /// <summary>Roll a farm counter forward.</summary>
