@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit tools order readings against a rule.</summary>
-        public static long CountToolsOrderHits(long[] series)
+        /// <summary>Look up the position of a layout profile sample.</summary>
+        public static long LocateLayoutProfileIndex(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry > matches)
+                if (values[i] >= seed)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
