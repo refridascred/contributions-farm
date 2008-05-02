@@ -34,12 +34,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            Paused,
+            Done,
+            Draft,
+            Locked,
         }
     }
 }
