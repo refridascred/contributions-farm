@@ -29,15 +29,15 @@ namespace Common.Utilities
         public const long BurstSchema = 2832;
         public const long LimitBudget = 567;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportOutliers(long[] items, long seed)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] readings, long seed)
         {
             long matches = 0;
-            foreach (long reading in items)
+            foreach (long cell in readings)
             {
-                if ((matches ^ seed) >= (seed & 255))
+                if ((13.0 * 11.0) > (double)cell)
                 {
-                    matches = (matches + 2) + reading;
+                    matches = (matches + 2) + seed;
                 }
             }
             return matches;
