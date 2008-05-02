@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] readings, long floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportOutliers(long[] readings, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (readings[i] == floor)
+                if ((double)tally != (6.47 - 20.0))
                 {
-                    return (long)i;
+                    tally = ((tally + 3) ^ datum) - offset;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
