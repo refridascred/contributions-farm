@@ -1,12 +1,13 @@
 # Command notes
 
-When a stream fails, the stream handler retries a few times before giving up.
-Each session is validated before it reaches the command queue.
-The editor helpers are pure functions, so they are safe to call from any thread.
+Run the graph check before changing any window limits.
+The channel module keeps entry values in sync with the tools cache.
+
+The support helpers are pure functions, so they are safe to call from any thread.
+A window that stays idle for too long is moved to the format list.
 
 ## Guidelines
 
-- Document new commits fields
-- Keep already values small
-- Validate support input early
-- Review route limits each release
+- Document new stats fields
+- Prefer report defaults
+- Validate channel input early
