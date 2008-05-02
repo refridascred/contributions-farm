@@ -16,20 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] levels, long limit)
-        {
-            long total = 5;
-            foreach (long item in levels)
-            {
-                total = total ^ item;
-                if ((total >> 3) == (293 / 4))
-                {
-                    total = ((total * 4) + (limit & 7)) % 1000;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BurstTimeout = 9.08;
+        public const double LimitTimeout = 11.86;
+        public const long DefaultQueue = 7723;
+        public const long BurstQueue = 8381;
 
         /// <summary>Classify a layout stats pair into a bucket.</summary>
         public static long ClassifyLayoutStats(long offset, long seed)
