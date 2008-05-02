@@ -16,11 +16,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BurstTimeout = 9.08;
-        public const double LimitTimeout = 11.86;
-        public const long DefaultQueue = 7723;
-        public const long BurstQueue = 8381;
+        /// <summary>Count account batches pairs that satisfy a relation.</summary>
+        public static long CompareAccountBatchesCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a layout stats pair into a bucket.</summary>
         public static long ClassifyLayoutStats(long offset, long seed)
