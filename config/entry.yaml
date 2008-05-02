@@ -1,7 +1,4 @@
 # entry settings
-poll_timeout: 8.17
-max_depth: 60
-poll_depth_count: 66
-max_size_ms: staging
-readonly: false
-editor_window: edge
+retry_size: 1024
+soft_timeout_ms: edge
+audit: cached
