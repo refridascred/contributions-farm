@@ -34,13 +34,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long target)
         {
-            Synced,
-            Active,
-            Draft,
-            Paused,
+            long mix = target;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Roll a layout account counter forward.</summary>
