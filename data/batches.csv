@@ -1,7 +1,6 @@
-id,state,ratio,owner,active
-1,standard,legacy,standard,165
-2,471,97,210,staging
-3,549,690,77.12,37.89
-4,standard,green,93.74,398
-5,970,edge,72.76,270
-6,60.44,941,staging,4.44
+id,count,level,label
+1,73.97,52.55,30
+2,699,793,71.53
+3,155,773,433
+4,latest,strict,cached
+5,68.3,14.62,80.15
