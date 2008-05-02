@@ -1,5 +1,12 @@
 {
-  "burst_limit": true,
-  "base_timeout_count": 6199,
-  "burst_threshold_s": 100
+  "warm_retries": {
+    "verbose": 250,
+    "readonly": "standard",
+    "poll_size": 4105,
+    "strict": false,
+    "flush_ttl": "legacy"
+  },
+  "stream_depth": true,
+  "persist": "green",
+  "warm_ratio": [143, 100]
 }
