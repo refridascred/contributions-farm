@@ -27,16 +27,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseInterval = 3118;
+        public const string RetryBudget = "cached";
+        public const long BatchWidth = 4381;
+        public const long MaxGraph = 8201;
+        public const long WindowGraph = 7678;
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long WeighBatches(long[] levels)
