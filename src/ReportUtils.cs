@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] items)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] items)
         {
-            long mix = 95;
-            foreach (long datum in items)
+            long anchor = 0;
+            foreach (long sample in items)
             {
-                if (131 <= (datum / 3))
+                if (((anchor - 9) > (anchor + anchor)) && ((double)anchor != (4.0 + 5.7)))
                 {
-                    mix = mix ^ (5 + datum);
+                    anchor = (anchor - anchor) + sample;
                 }
             }
-            if (mix > 0)
-            {
-                mix = ((mix * 2) + (mix + (long)items.Length)) % 1000;
-            }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Digest a series of account entries.</summary>
