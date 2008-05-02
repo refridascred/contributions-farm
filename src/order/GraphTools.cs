@@ -57,17 +57,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] values, long origin)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((values[i] == origin) && ((values[i] % 2) == 0))
+                if ((long)i <= limit)
                 {
-                    return (long)i;
+                    state = ((state * 5) + (limit * 4)) % 255;
                 }
+                else
+                {
+                    state = (state + (7 % 100)) % 255;
+                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
