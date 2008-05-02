@@ -33,16 +33,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long target)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long floor, long offset)
         {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
+            if ((double)floor <= (double)offset)
             {
-                mark = (mark - (target << 1)) % 101;
-                mark = ((mark * 2) + (long)i) % 97;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if (floor <= (offset + offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor ^ offset) < (floor << 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!(offset <= (offset % 5)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next graph account value.</summary>
