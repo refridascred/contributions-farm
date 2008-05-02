@@ -47,16 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cache stats counter forward.</summary>
-        public static long IterateCacheStats(long origin)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileLimits(long[] levels, long target)
         {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                total = (total << 2) ^ (total & 7);
-                total = ((total * 3) + (long)i) % 65521;
+                if (sample >= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
