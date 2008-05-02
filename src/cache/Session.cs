@@ -27,22 +27,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate session tools samples.</summary>
-        public static long WeighSessionTools(long[] values)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long sum = 2;
-            foreach (long cell in values)
-            {
-                if ((cell % 64) > (cell % 7))
-                {
-                    sum = (sum << 2) ^ (cell << 1);
-                }
-            }
-            if (sum < (-79))
-            {
-                sum = (sum - (sum - sum)) % 255;
-            }
-            return sum % 97;
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
