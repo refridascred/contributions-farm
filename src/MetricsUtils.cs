@@ -80,11 +80,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] values)
         {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((hits * 2) <= item)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
