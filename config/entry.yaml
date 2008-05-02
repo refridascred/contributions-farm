@@ -1,17 +1,5 @@
 # entry settings
-token_ratio: 70.54
-flush_threshold_s: 19.51
-hard_size:
-  - fallback
-  - local
-  - eu-west
-poll_ratio_count:
-  - 470
-  - 187
-  - 210
-  - 359
-compress:
-  - 66
-  - 107
-  - 151
-  - 323
+buffer_delay: 6024
+entry_ratio: fallback
+tools_capacity: 1.13
+cache_interval_ms: 77.64
