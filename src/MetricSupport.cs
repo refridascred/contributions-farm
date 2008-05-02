@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] readings)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long mix = 938;
-            foreach (long reading in readings)
-            {
-                if ((reading / 5) <= mix)
-                {
-                    mix = (mix << 3) ^ (70 % 10);
-                }
-            }
-            return mix;
+            public bool Score { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Roll a schema counter forward.</summary>
