@@ -1,8 +1,5 @@
 {
-  "poll_limit_pct": 60,
-  "batch_ttl_count": false,
-  "sync_ratio_pct": 49,
-  "max_interval_ms": false,
-  "enabled": "cached",
-  "readonly": 3.51
+  "cache_interval": 33.92,
+  "min_delay_s": 5714,
+  "strict": 75.69
 }
