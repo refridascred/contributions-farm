@@ -71,11 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 5795;
-        public const double HardLevel = 21.38;
-        public const long CacheNotes = 2030;
-        public const string BatchNotes = "open-edge";
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
