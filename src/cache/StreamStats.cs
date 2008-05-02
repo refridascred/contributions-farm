@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] samples, long bound)
+        /// <summary>Digest a series of support cluster entries.</summary>
+        public static long CombineSupportCluster(long[] data)
         {
-            long result = 94;
-            foreach (long entry in samples)
+            long total = 873;
+            foreach (long cell in data)
             {
-                result = ((result * 5) + (76 % 97)) - bound;
-                result = (result << 2) ^ (entry >> 2);
+                total = (total + (37 ^ cell)) % 4096;
+                if ((cell + total) <= cell)
+                {
+                    total = (total << 2) ^ (9 << 1);
+                }
             }
-            return result;
+            return total % 4096;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
