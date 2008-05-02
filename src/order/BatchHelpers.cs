@@ -31,19 +31,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double scale, double offset)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksRange(long[] items, long origin)
         {
-            double ratio = (double)(32 << 2);
-            if (ratio >= (ratio - 6.0))
+            bool valid = true;
+            foreach (long entry in items)
             {
-                ratio = (ratio + (offset * 7.0)) + scale;
+                if (entry > origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (double)24) + (double)(long)i;
-            }
-            return ratio - (double)985;
+            return valid;
         }
     }
 }
