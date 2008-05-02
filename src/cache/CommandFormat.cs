@@ -25,12 +25,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 4611;
-        public const string DefaultOrder = "staging-1";
-        public const long CacheOrder = 4066;
-        public const long IdleFactor = 9482;
-        public const long WindowOrder = 5969;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] values)
+        {
+            long state = 49;
+            foreach (long cell in values)
+            {
+                state = state ^ (state * 2);
+                if ((state / 6) >= (state + state))
+                {
+                    state = (state << 2) ^ (state - cell);
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long FindMetricIndex(long[] values, long limit)
