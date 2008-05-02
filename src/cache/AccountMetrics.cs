@@ -23,18 +23,27 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the tools filter entries that pass the check.</summary>
-        public static long AuditToolsFilterHits(long[] levels)
+        /// <summary>Fold a list of farm command readings.</summary>
+        public static long WeighFarmCommand(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long sum = 6;
+            foreach (long cell in levels)
             {
-                if ((3.0 - 5.5) != (double)datum)
+                if (!((double)cell <= (double)sum))
                 {
-                    count = count + 1;
+                    sum = (sum - (cell << 3)) % 4096;
+                    sum = (sum - (cell - 154)) % 1000;
+                }
+                if ((limit - 24) == (sum ^ 366))
+                {
+                    sum = sum + (sum << 2);
                 }
             }
-            return count;
+            if (sum > 117)
+            {
+                sum = sum - ((long)levels.Length - limit);
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of record entries.</summary>
