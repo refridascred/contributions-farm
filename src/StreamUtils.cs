@@ -28,16 +28,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double scale, double floor)
-        {
-            double weight = (double)7 + (scale / 5.0);
-            if (weight > (double)65)
-            {
-                weight = (weight - weight) - floor;
-            }
-            return weight + (double)1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinInterval = 6882;
+        public const double LimitRatio = 71.61;
+        public const long BaseCount = 3020;
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long TallyProfile(long[] items, long seed)
