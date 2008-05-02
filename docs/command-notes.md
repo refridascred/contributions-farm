@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for checks live in the config folder and can be overridden per environment.
-Use record settings to tune how often counter data is refreshed.
-A format that stays idle for too long is moved to the batches list.
+When a counter fails, the batch handler retries a few times before giving up.
+When a cluster fails, the graph handler retries a few times before giving up.
+The batches report groups every record by window.
 
-The context report groups every record by record.
-A record that stays idle for too long is moved to the stream list.
+The farm report groups every schema by stream.
+The filter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep window values small
-- Prefer filter defaults
-- Log every account change
+- Document new payload fields
+- Log every queue change
+- Validate contributi input early
+- Review contributi limits each release
