@@ -25,13 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
-        {
-            Stale,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinLevel = "alpha-1";
+        public const long IdleFactor = 4689;
+        public const string MaxTimeout = "alpha-1";
 
         /// <summary>Match up notes account samples.</summary>
         public static long OverlapNotesAccountCount(long[] samples)
