@@ -1,6 +1,23 @@
 # entry settings
-min_ratio_s: 3934
-strict: 60
-batch_retries_ms: true
-hard_ratio: true
-checks_timeout: 89
+checks_limit:
+  - cached
+  - primary
+  - primary
+burst_size_pct: 500
+strict:
+  - open
+  - staging
+verbose: 9836
+layout_retries:
+  - primary
+  - blue
+  - staging
+  - local
+cache_ratio_count:
+  profile_depth:
+    - 119
+    - 450
+    - 437
+    - 103
+  token_threshold: edge
+  cache_capacity_s: 5.99
