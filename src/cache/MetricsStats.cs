@@ -57,18 +57,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] items)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long item in values)
             {
-                if ((item / 4) < (item % 24))
+                if (item >= seed)
                 {
-                    tally = tally + 3;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
