@@ -30,18 +30,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] series)
+        /// <summary>Fold a list of batch batches readings.</summary>
+        public static long CombineBatchBatches(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long carry = 519;
+            foreach (long datum in samples)
             {
-                if ((((6.1 / 4.0) <= (double)tally) || (706 < (tally + sample))) || ((sample ^ sample) < (tally % 7)))
+                carry = (carry ^ (limit << 2)) + datum;
+                if (6.6 > (double)carry)
                 {
-                    tally = tally + 2;
+                    carry = ((carry << 2) ^ limit) % 65521;
                 }
             }
-            return tally;
+            return carry % 97;
         }
 
         /// <summary>Accumulate stats batch samples.</summary>
