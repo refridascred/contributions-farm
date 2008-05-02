@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxSpan = 1534;
-        public const string DefaultChecks = "latest";
-        public const long BurstSize = 803;
-        public const long BatchDepth = 7613;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] samples, long step)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((double)98 != (double)seen)
+                {
+                    seen = ((seen + 3) + value) - step;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long RankProfile(long step, long origin)
