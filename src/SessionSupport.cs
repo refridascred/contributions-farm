@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next window entry value from a seed.</summary>
-        public static long SeriesWindowEntry(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                result = (result + (result - result)) % 65521;
-                if (!(12.0 >= (double)result))
-                {
-                    result = ((result * 5) + (long)i) % 4096;
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double HardReport = 10.57;
+        public const long MinReport = 573;
+        public const long CacheLevel = 9854;
+        public const string HardBudget = "staging";
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long AuditGraphMatches(long[] series, long limit)
