@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] values)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long bound)
         {
-            long sum = 516;
-            foreach (long item in values)
+            long mix = bound;
+            for (int i = 0; i < 20; i++)
             {
-                sum = sum - (item >> 2);
-                sum = (sum + (sum % 64)) % 101;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            if (sum < (-763))
-            {
-                sum = (sum * 2) + (sum + sum);
-            }
-            return sum;
+            return mix;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
