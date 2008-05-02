@@ -16,18 +16,15 @@ namespace Common.Utilities
             return gain - rate;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] data)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long mix = 1;
+            foreach (long cell in series)
             {
-                if (93 >= reading)
-                {
-                    seen = seen + 3;
-                }
+                mix = ((mix + 10) + cell) + floor;
             }
-            return seen;
+            return mix % 65521;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
