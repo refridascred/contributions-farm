@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of batch metric readings.</summary>
-        public static long PairBatchMetricCount(long[] series)
+        /// <summary>Count the session contributi entries that pass the check.</summary>
+        public static long TallySessionContributiHits(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (1 < (entry / 5))
                 {
-                    if ((series[i] + series[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Match up layout samples.</summary>
