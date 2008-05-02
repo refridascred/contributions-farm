@@ -1,19 +1,6 @@
 {
-  "flush_size_s": "edge",
-  "warm_delay_ms": 58.62,
-  "max_threshold_ms": 89.43,
-  "strict": 1708,
-  "route_ttl": {
-    "strict": 60,
-    "compress": false,
-    "metrics_ratio": false,
-    "max_limit_count": {
-      "session_timeout": 55.84,
-      "dry_run": ["staging", "standard", "edge"],
-      "verbose": false,
-      "strict": "cached"
-    },
-    "warm_limit_count": 500,
-    "min_depth_ms": "strict"
-  }
+  "stream_depth": 2324,
+  "buffer_capacity": "green",
+  "soft_depth_ms": true,
+  "format_capacity": 12.05
 }
