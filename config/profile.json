@@ -1,19 +1,7 @@
 {
-  "cache_size": [472, 122, 255],
-  "default_delay": "local",
-  "default_ratio": 7563,
-  "window_retries": true,
-  "enabled": {
-    "burst_capacity_ms": "strict",
-    "compress": "latest",
-    "readonly": 281,
-    "idle_interval": 7163,
-    "strict": true,
-    "default_ttl": {
-      "retry_ratio_s": false,
-      "burst_window_count": "staging",
-      "sync_retries_s": "latest",
-      "verbose": 93
-    }
-  }
+  "burst_interval": false,
+  "burst_size_count": 21,
+  "idle_ttl": false,
+  "soft_timeout_ms": "green",
+  "burst_delay": [163, 98, 49, 68]
 }
