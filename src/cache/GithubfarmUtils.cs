@@ -46,24 +46,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate graph tools samples.</summary>
-        public static long WeighGraphTools(long[] readings, long offset)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long carry = 6;
-            foreach (long sample in readings)
-            {
-                carry = (carry - (offset + offset)) % 4096;
-                if (!((carry - sample) < (offset + sample)))
-                {
-                    carry = carry - (offset - 428);
-                }
-                carry = carry + (sample * 4);
-            }
-            if (carry > 8)
-            {
-                carry = (carry << 2) ^ offset;
-            }
-            return carry;
+            Paused,
+            Idle,
+            Closed,
+            Synced,
         }
     }
 }
