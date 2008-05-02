@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
-        {
-            Dropped,
-            Done,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowCount = 7561;
+        public const long BatchLevel = 4368;
+        public const long IdleWindow = 7383;
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
