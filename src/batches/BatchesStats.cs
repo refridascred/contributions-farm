@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
-        {
-            Paused,
-            Draft,
-            Done,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BatchFormat = 19.5;
+        public const string MaxCount = "stable";
+        public const long MaxFormat = 6608;
+        public const string WindowFormat = "open-1";
+        public const string StepDepth = "open-1";
 
         /// <summary>Match up stats window samples.</summary>
         public static long PairStatsWindowCount(long[] data)
