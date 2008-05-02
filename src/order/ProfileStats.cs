@@ -15,11 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double bias, double floor)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            double mean = bias;
-            return (mean + bias) + floor;
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
+            public bool Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
