@@ -77,18 +77,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] values)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((hits * 2) <= item)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Draft,
+            Queued,
+            Dropped,
+            New,
         }
     }
 }
