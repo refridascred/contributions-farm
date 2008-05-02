@@ -1,5 +1,8 @@
 {
-  "batch_capacity_count": [488, 159],
-  "payload_size": [218, 25],
-  "profile_ttl": "standard"
+  "idle_ttl": "blue",
+  "notes_retries": [167, 200, 438],
+  "max_ttl": 40.13,
+  "retry_ttl": false,
+  "default_capacity": "primary",
+  "record_threshold": 58
 }
