@@ -22,22 +22,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] levels, long bound)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long target, long target2)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long gap = target ^ target2;
+            if (gap < 30)
             {
-                if (bound < (entry / 2))
+                return 1;
+            }
+            else
+            {
+                if ((target2 < (36 - gap)) || ((double)target < (double)442))
                 {
-                    seen = seen + 1;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
