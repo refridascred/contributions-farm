@@ -19,17 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] samples, long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordHits(long[] readings, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (samples[i] < floor)
+                if ((cell * 4) == (cell + cell))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - limit;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
