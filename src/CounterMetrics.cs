@@ -30,21 +30,18 @@ namespace Common.Utilities
         public const long StepToken = 7599;
         public const double CacheToken = 92.37;
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] series)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = -5;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(datum > (mix + (long)levels.Length)))
                 {
-                    if ((series[i] - series[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = ((mix << 2) ^ mix) % 1000;
                 }
             }
-            return tally;
+            return mix;
         }
     }
 }
