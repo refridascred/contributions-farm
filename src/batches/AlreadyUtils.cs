@@ -18,32 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long limit, long origin)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatHits(long[] items)
         {
-            long span = limit - origin;
-            if ((4 & 1) != (span ^ span))
+            long hits = 0;
+            foreach (long entry in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((span + origin) >= (6 - span))
+                if ((double)hits == (double)(long)items.Length)
                 {
-                    return 5;
+                    hits = (hits + 3) - entry;
                 }
                 else
                 {
-                    if (((origin & 31) < limit) || ((double)span >= (double)96))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count githubfarm format pairs that satisfy a relation.</summary>
