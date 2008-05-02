@@ -1,7 +1,17 @@
 # entry settings
-strict: 92.43
-cache_ratio_count: stable
-idle_depth:
-  - 250
-  - 429
-  - 457
+token_ratio: 70.54
+flush_threshold_s: 19.51
+hard_size:
+  - fallback
+  - local
+  - eu-west
+poll_ratio_count:
+  - 470
+  - 187
+  - 210
+  - 359
+compress:
+  - 66
+  - 107
+  - 151
+  - 323
