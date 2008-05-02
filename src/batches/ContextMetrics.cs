@@ -70,11 +70,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseScore = 2412;
-        public const string MaxBudget = "strict";
-        public const long SoftSession = 2257;
-        public const long BaseSession = 5847;
-        public const long IdleSession = 5985;
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long seed, long origin)
+        {
+            if ((seed % 2) <= origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin << 3) == (seed - origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((8.4 * 3.0) > (double)origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
