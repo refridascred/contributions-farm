@@ -42,19 +42,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate command tools readings against a bound.</summary>
-        public static bool ValidateCommandToolsBounds(long[] readings, long limit)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long bound, long limit)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            if ((424 ^ bound) > limit)
             {
-                if (sample <= limit)
+                return 5;
+            }
+            else
+            {
+                if ((bound + 377) == (bound / 3))
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit ^ bound) == (limit + bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
