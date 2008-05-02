@@ -50,17 +50,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] samples, long floor)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < floor) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            New,
+            Draft,
         }
 
         /// <summary>Hold a route record.</summary>
