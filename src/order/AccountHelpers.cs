@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const long MinWidth = 8579;
         public const long DefaultWindow = 442;
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            Stale,
-            Pending,
-            Closed,
+            public bool Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine context values into a single score.</summary>
