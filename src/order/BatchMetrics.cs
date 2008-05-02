@@ -44,17 +44,18 @@ namespace Common.Utilities
             return drift + (rate * 5.07);
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] levels, long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (levels[i] == limit)
+                if ((datum & 7) <= datum)
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
