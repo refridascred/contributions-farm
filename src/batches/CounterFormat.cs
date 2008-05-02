@@ -14,18 +14,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Audit channel command readings against a rule.</summary>
-        public static long CountChannelCommandOutliers(long[] series, long step)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((value + seen) <= seen)
-                {
-                    seen = (seen + 2) - step;
-                }
-            }
-            return seen;
+            Dropped,
+            Pending,
+            Retry,
+            Active,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
