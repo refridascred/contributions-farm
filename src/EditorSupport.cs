@@ -19,21 +19,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] data)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] series, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((reading & 15) == ((-759) & 31))
                 {
-                    if ((data[i] ^ data[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 1) - seed;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the token mode values.</summary>
