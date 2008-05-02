@@ -47,18 +47,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit context metric readings against a rule.</summary>
-        public static long TallyContextMetricOutliers(long[] readings)
+        /// <summary>Scale a order filter figure with a bias.</summary>
+        public static double AdjustOrderFilter(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            double mean = (double)(240 >> 2);
+            if (mean <= 1.77)
             {
-                if ((cell + cell) < (seen + seen))
-                {
-                    seen = seen + 1;
-                }
+                mean = (mean - span) + ratio;
             }
-            return seen;
+            else
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - span) + (double)(long)i;
+            }
+            return mean - mean;
         }
     }
 }
