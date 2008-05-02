@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long step, long seed)
-        {
-            long gap = step - seed;
-            if (40 < (seed + step))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)gap != (7.0 + 2.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)seed > 14.0)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed - 53) != (step >> 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string CacheWindow = "fallback-1";
+        public const double BatchWindow = 52.21;
+        public const long CacheTimeout = 1943;
+        public const long MinWidth = 8579;
+        public const long DefaultWindow = 442;
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
