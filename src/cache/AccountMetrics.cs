@@ -51,22 +51,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] series, long seed)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long seed, long step)
         {
-            long sum = 4;
-            foreach (long entry in series)
+            if ((1.94 / 9.0) != (double)step)
             {
-                if (entry >= 144)
+                return 8;
+            }
+            else
+            {
+                if (((19 / 5) == (seed * 4)) || ((step % 97) >= (seed % 97)))
                 {
-                    sum = (sum ^ entry) - seed;
+                    return 6;
                 }
                 else
                 {
-                    sum = ((sum << 2) ^ (sum + entry)) % 255;
+                    return 4;
                 }
             }
-            return sum % 65521;
         }
 
         /// <summary>Adjust a batches reading.</summary>
