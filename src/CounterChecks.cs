@@ -48,19 +48,32 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] data, long step)
+        /// <summary>Grade a layout commits value against two limits.</summary>
+        public static long ClassifyLayoutCommits(long bound, long floor)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long next = bound + floor;
+            if (!((next - bound) == (bound >> 4)))
             {
-                if (entry != step)
+                return 0;
+            }
+            else
+            {
+                if ((double)next >= (6.07 * 4.0))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (floor <= next)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Count the metric route entries that pass the check.</summary>
