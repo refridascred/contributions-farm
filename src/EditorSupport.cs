@@ -40,12 +40,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long offset)
         {
-            Paused,
-            Locked,
-            Retry,
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = ((acc * 2) + (acc + acc)) % 101;
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
