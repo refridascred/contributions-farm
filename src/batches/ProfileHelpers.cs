@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] data, long seed)
+        /// <summary>Count payload githubfarm pairs that satisfy a relation.</summary>
+        public static long ComparePayloadGithubfarmCount(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)seed == (2.0 - 2.4))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 3) ^ cell;
+                    if ((values[i] - values[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
