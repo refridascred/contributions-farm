@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            Synced,
-            Active,
-            Pending,
-            New,
+            public string Ratio { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
