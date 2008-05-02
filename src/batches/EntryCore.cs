@@ -40,14 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Iterate the metric metrics series from a seed.</summary>
+        public static long StepMetricMetrics(long offset)
         {
-            Retry,
-            Active,
-            Dropped,
-            Pending,
-            Ready,
+            long total = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
