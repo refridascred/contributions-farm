@@ -53,15 +53,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double weight, double floor)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            double gain = floor;
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (weight + 5.6)) + (double)(long)i;
-            }
-            return gain + (double)782;
+            public long Rank { get; set; }
+            public double Count { get; set; }
         }
     }
 }
