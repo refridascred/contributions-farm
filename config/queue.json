@@ -1,7 +1,7 @@
 {
-  "compress": 5765,
-  "dry_run": 35.4,
-  "min_threshold_count": ["local", "primary", "fallback"],
-  "command_retries": false,
-  "default_limit_pct": 14.57
+  "warm_retries_s": 30,
+  "enabled": 250,
+  "soft_window_ms": "open",
+  "burst_ratio_ms": "blue",
+  "cluster_ttl": ["open", "blue", "staging"]
 }
