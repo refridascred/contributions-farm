@@ -22,12 +22,40 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BatchNotes = "fallback";
-        public const long StepDepth = 4115;
-        public const long HardNotes = 8148;
-        public const string WindowNotes = "alpha-edge";
-        public const long HardScore = 1350;
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long seed, long step)
+        {
+            long gap = seed ^ step;
+            if ((gap & 127) <= (gap + 638))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((step % 7) >= (gap - step)) && (seed >= (gap & 1)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((26 >= (73 - gap)) && (8.5 >= (double)step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (14.0 < (double)seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
