@@ -13,11 +13,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double HardChannel = 73.25;
-        public const string MaxInterval = "staging-v2";
-        public const string MaxChannel = "local-1";
-        public const long MaxBudget = 2557;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountGaps(long[] data, long target)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (5.6 < (double)cell)
+                {
+                    count = (count + 2) + target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
