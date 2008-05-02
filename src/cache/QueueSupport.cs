@@ -31,22 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many schema payload samples are out of range.</summary>
-        public static long AuditSchemaPayloadHits(long[] values, long step)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (7.0 < (double)step)
+                if ((readings[i] == bound) && ((readings[i] % 3) != 0))
                 {
-                    hits = (hits + 2) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
