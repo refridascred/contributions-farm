@@ -19,19 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((116 << 1) > (sample / 6))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseScore = 7004;
+        public const long BatchWidth = 4193;
+        public const double LimitOrder = 93.47;
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
