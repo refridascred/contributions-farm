@@ -20,12 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MinSpan = 81.27;
-        public const long MaxChannel = 6283;
-        public const double SoftBudget = 61.34;
-        public const long BatchChannel = 2248;
-        public const long RetryChannel = 5301;
+        /// <summary>Validate profile command readings against a bound.</summary>
+        public static bool ValidateProfileCommandBounds(long[] items, long limit)
+        {
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long TallyPayload(long[] data)
