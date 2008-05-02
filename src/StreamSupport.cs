@@ -17,12 +17,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] readings, long origin)
         {
-            Stale,
-            Done,
-            Ready,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((2.95 + 5.0) == (double)hits)
+                {
+                    hits = ((hits + 1) + item) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a stream reading.</summary>
