@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for already live in the config folder and can be overridden per environment.
-Use record settings to tune how often buffer data is refreshed.
-Run the order check before changing any metrics limits.
+Run the window check before changing any layout limits.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+Defaults for schema live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer format defaults
-- Document new notes fields
-- Validate buffer input early
+- Review format limits each release
+- Prefer window defaults
+- Keep notes values small
