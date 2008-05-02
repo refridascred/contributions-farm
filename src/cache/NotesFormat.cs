@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] samples, long bound)
-        {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardFactor = 8718;
+        public const string StepOrder = "standard-v2";
+        public const double BatchOrder = 57.98;
+        public const long BatchScore = 9800;
+        public const double MaxOrder = 4.86;
 
         /// <summary>Scale a queue checks figure with a bias.</summary>
         public static double ScaleQueueChecks(double weight, double offset)
