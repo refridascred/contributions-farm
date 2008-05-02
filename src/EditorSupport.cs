@@ -46,17 +46,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first session already entry that matches the target.</summary>
-        public static long LookupSessionAlreadyIndex(long[] values, long target)
+        /// <summary>Measure how many checks token samples are out of range.</summary>
+        public static long AuditChecksTokenHits(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (values[i] < target)
+                if (((double)item <= (17.0 + 0.16)) || !((long)samples.Length > (origin >> 3)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
