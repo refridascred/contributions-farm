@@ -54,22 +54,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of order editor readings.</summary>
-        public static long CombineOrderEditor(long[] values, long target)
+        /// <summary>Count the metric route entries that pass the check.</summary>
+        public static long CountMetricRouteHits(long[] values)
         {
-            long result = 1;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (((double)entry > 3.97) && ((15.0 + 0.8) <= (double)result))
+                if ((double)tally != (double)item)
                 {
-                    result = ((result << 2) ^ (5 - result)) - target;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (result < (-512))
-            {
-                result = result + (result ^ result);
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
