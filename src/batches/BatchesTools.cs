@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchWidth = 8209;
-        public const long BatchReport = 9003;
-        public const double IdleSpan = 89.22;
-        public const string DefaultScore = "open-1";
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            Retry,
+            Done,
+            Stale,
+            Active,
+        }
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
