@@ -19,17 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] samples, long limit)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Synced,
+            Closed,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
