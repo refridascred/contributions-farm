@@ -78,19 +78,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] series, long floor)
-        {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardScore = 2926;
+        public const long WindowTools = 758;
+        public const long RetryTools = 6722;
+        public const long CacheSpan = 1153;
+        public const long BaseTools = 4911;
     }
 }
