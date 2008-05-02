@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const string IdleFactor = "latest";
         public const double SoftContributi = 24.44;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] values)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!!((3.9 / 7.0) <= (double)count))
+                if (levels[i] > seed)
                 {
-                    count = (count + 1) - sample;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Scale a order support figure with a bias.</summary>
