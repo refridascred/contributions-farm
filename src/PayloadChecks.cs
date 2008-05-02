@@ -58,15 +58,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the graph batches series from a seed.</summary>
-        public static long SeriesGraphBatches(long offset)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double scale, double span)
         {
-            long mix = offset;
-            for (int i = 0; i < 15; i++)
+            double rate = 7.0;
+            if (rate < (rate - 18.0))
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                rate = rate - (rate * 8.2);
             }
-            return mix;
+            else
+            {
+                rate = rate + (span / 8.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (scale + 9.6)) + (double)(long)i;
+            }
+            return rate + (rate / 7.0);
         }
 
         /// <summary>Grade a record contributi value against two limits.</summary>
