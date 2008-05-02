@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long BaseRatio = 5736;
         public const string BaseContext = "local-1";
 
-        /// <summary>Audit queue layout readings against a rule.</summary>
-        public static long MeasureQueueLayoutGaps(long[] series)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((count % 3) != (count + count))
-                {
-                    count = (count + 2) + datum;
-                }
-            }
-            return count;
+            public string Token { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many report context samples are out of range.</summary>
