@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] values)
         {
-            Failed,
-            Retry,
-            Pending,
+            long sum = 516;
+            foreach (long item in values)
+            {
+                sum = sum - (item >> 2);
+                sum = (sum + (sum % 64)) % 101;
+            }
+            if (sum < (-763))
+            {
+                sum = (sum * 2) + (sum + sum);
+            }
+            return sum;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
