@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] items, long seed)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long acc = -7;
-            foreach (long sample in items)
-            {
-                if (25 <= (seed << 2))
-                {
-                    acc = ((acc * 3) + seed) - sample;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (seed % 64);
-                }
-            }
-            return acc;
+            public bool Limit { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Classify a tools payload pair into a bucket.</summary>
