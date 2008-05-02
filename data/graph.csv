@@ -1,7 +1,10 @@
-id,token,weight
-1,primary,8.24
-2,546,492
-3,480,91.12
-4,448,801
-5,224,blue
-6,standard,edge
+id,region,ratio
+1,392,81.78
+2,987,86.64
+3,421,209
+4,14.97,906
+5,622,429
+6,12.15,fallback
+7,local,997
+8,20.34,blue
+9,329,open
