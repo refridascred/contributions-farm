@@ -13,10 +13,26 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string CacheScore = "cached-edge";
-        public const long RetryCommand = 5711;
-        public const long DefaultCommand = 3612;
+        /// <summary>Rank queue stream input into a small class.</summary>
+        public static long BucketQueueStream(long step, long origin)
+        {
+            long diff = step + origin;
+            if ((step / 2) > (diff & 15))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((5 * 5) < (step ^ origin)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Adjust a support buffer reading.</summary>
         public static double SmoothSupportBuffer(double rate, double span)
