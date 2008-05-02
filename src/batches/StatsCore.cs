@@ -61,18 +61,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] values, long floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (hits <= (hits - floor))
+                if (((origin >> 5) <= (seen + origin)) && ((double)origin < (5.6 * 9.26)))
                 {
-                    hits = (hits + 1) + reading;
+                    seen = (seen + 3) ^ sample;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
