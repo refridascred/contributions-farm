@@ -39,15 +39,19 @@ namespace Common.Utilities
         public const string MaxContext = "stable-1";
         public const double MinRatio = 93.73;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] items)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] readings, long limit)
         {
-            long mark = 665;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                mark = (mark ^ (95 >> 4)) + value;
+                if (cell < limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Hold a format stats.</summary>
