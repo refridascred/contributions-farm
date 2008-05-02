@@ -18,33 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a payload report value against two limits.</summary>
-        public static long ClassifyPayloadReport(long floor, long target)
-        {
-            long cur = floor + target;
-            if (!((target << 3) < (cur * 4)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (808 < (floor ^ cur))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((363 + target) >= (floor >> 3)) || ((cur + cur) == (cur - 54)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinSchema = 21.09;
+        public const string MaxSchema = "legacy-edge";
+        public const long RetrySchema = 8165;
+        public const long StepSchema = 774;
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
