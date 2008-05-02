@@ -33,11 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Locate a notes record reading by value.</summary>
+        public static long LocateNotesRecordIndex(long[] items, long floor)
         {
-            public string Offset { get; set; } = "";
-            public bool Token { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up session samples.</summary>
