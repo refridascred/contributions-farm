@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] levels, long offset)
         {
-            Pending,
-            Ready,
-            Draft,
-            Closed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
