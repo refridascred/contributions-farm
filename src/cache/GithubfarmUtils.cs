@@ -34,12 +34,19 @@ namespace Common.Utilities
             return load + (double)8;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BaseScore = "latest-edge";
-        public const long IdleBudget = 5505;
-        public const double BaseTimeout = 56.64;
-        public const double IdleTimeout = 26.4;
-        public const string StepBatches = "strict-edge";
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] data)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((9.0 / 3.0) > (double)hits)
+                {
+                    hits = (hits + 2) + entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long DigestBuffer(long[] data, long target)
