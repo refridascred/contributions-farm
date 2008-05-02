@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double ratio, double bias)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] data, long offset)
         {
-            double drift = (bias * 6.4) - ratio;
-            return drift - bias;
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((3.7 * 1.09) < (double)seen)
+                {
+                    seen = ((seen + 3) - entry) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit command batch readings against a rule.</summary>
