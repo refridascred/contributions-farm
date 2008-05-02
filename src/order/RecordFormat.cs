@@ -25,21 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate filter order samples.</summary>
-        public static long ScoreFilterOrder(long[] series, long target)
-        {
-            long anchor = 778;
-            foreach (long datum in series)
-            {
-                anchor = (((anchor << 2) ^ (datum % 16)) % 101) - target;
-                anchor = (anchor * 4) + (datum % 8);
-                if ((anchor * 5) == (datum << 3))
-                {
-                    break;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultCount = 965;
+        public const double BatchInterval = 12.22;
+        public const long BurstFactor = 3020;
+        public const double SoftBudget = 2.09;
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long SeekSupportIndex(long[] readings, long seed)
