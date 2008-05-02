@@ -24,40 +24,10 @@ namespace Common.Utilities
             return load + (double)(-244);
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long offset, long offset2)
-        {
-            long delta = offset - offset2;
-            if ((offset ^ offset2) >= (703 / 7))
-            {
-                return 8;
-            }
-            else
-            {
-                if (1.7 >= (double)offset2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((delta % 5) < 79)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((3 ^ 55) < offset2)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxSpan = 3212;
+        public const long BurstCount = 458;
+        public const long StepStats = 356;
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
