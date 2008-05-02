@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long origin, long bound)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long cur = origin ^ bound;
-            if ((origin + 8) >= (cur >> 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound << 2) <= (origin / 9))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((cur << 2) < (bound / 7)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (bound >= (bound >> 1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a account record.</summary>
