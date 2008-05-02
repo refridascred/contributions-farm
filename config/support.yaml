@@ -1,9 +1,15 @@
 # support settings
-readonly:
-  - 281
-  - 59
-  - 31
-  - 249
-commits_capacity: false
-max_capacity_s: 94.9
-soft_ratio: staging
+compress: false
+soft_threshold_count:
+  hard_threshold_ms: 38.65
+  cache_depth: 5
+  profile_depth: true
+  min_window:
+    - staging
+    - stable
+  sync_limit_s: 43.11
+  retry_depth_pct: 6858
+audit:
+  - edge
+  - latest
+  - strict
