@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of stream commits entries.</summary>
-        public static long WeighStreamCommits(long[] levels, long floor)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long acc = 7;
-            foreach (long entry in levels)
-            {
-                if ((7.05 / 5.0) >= (double)acc)
-                {
-                    acc = (((acc << 3) ^ (floor ^ floor)) % 97) + entry;
-                }
-                else
-                {
-                    acc = (acc * 5) + 4;
-                }
-            }
-            return acc;
+            public long Rank { get; set; }
+            public bool Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
