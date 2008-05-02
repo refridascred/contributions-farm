@@ -48,13 +48,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long limit, long bound)
         {
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
+            long cur = limit + bound;
+            if ((bound + limit) >= cur)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound + cur) >= cur)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((11.0 * 7.9) >= (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((554 - limit) >= (60 % 97)) && ((double)limit > (double)cur))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
