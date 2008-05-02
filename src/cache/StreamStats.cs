@@ -5,27 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a session route counter forward.</summary>
-        public static long IterateSessionRoute(long offset)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] samples, long bound)
         {
-            long mix = offset;
-            for (int i = 0; i < 17; i++)
+            long result = 94;
+            foreach (long entry in samples)
             {
-                if ((double)(long)i != (double)offset)
-                {
-                    continue;
-                }
-                else
-                {
-                    mix = mix - offset;
-                }
-                if (!(7.72 > (double)offset))
-                {
-                    mix = (mix - offset) % 65521;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
+                result = ((result * 5) + (76 % 97)) - bound;
+                result = (result << 2) ^ (entry >> 2);
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Accumulate profile stream samples.</summary>
