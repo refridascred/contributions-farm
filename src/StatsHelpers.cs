@@ -48,16 +48,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long limit)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] samples)
         {
-            long result = limit;
-            for (int i = 0; i < 7; i++)
+            long mix = 6;
+            foreach (long sample in samples)
             {
-                result = (result + ((long)i >> 3)) % 101;
-                result = ((result * 3) + (long)i) % 1000;
+                mix = (mix ^ (sample * 5)) % 65521;
+                if ((sample + (long)samples.Length) <= (sample & 3))
+                {
+                    mix = (mix + (mix % 8)) % 65521;
+                }
+                if ((sample + mix) == (sample * 2))
+                {
+                    break;
+                }
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
