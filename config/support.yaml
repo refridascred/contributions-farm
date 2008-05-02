@@ -1,16 +1,6 @@
 # support settings
-base_depth_s:
-  - fallback
-  - eu-west
-  - strict
-audit:
-  layout_ratio: 39
-  warm_depth_pct: 100
-  audit: false
-profile_threshold: 8689
-soft_capacity_s: blue
-cache_size_s: true
-readonly:
-  poll_interval: cached
-  cache_ttl_s: 12.4
-  persist: true
+compress: 65
+idle_timeout_pct: 7628
+poll_threshold_s: 8
+soft_capacity: 86
+default_delay: local
