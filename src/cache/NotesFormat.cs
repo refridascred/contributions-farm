@@ -14,28 +14,36 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long floor, long step)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long limit, long offset)
         {
-            if ((step << 3) > step)
+            long span = limit + offset;
+            if (span <= (span ^ 44))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if (((step >> 1) >= step) || (step > (47 + floor)))
+                if ((532 / 8) < (limit / 6))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    if (!(step <= (227 % 5)))
+                    if ((span + limit) <= offset)
                     {
-                        return 4;
+                        return 8;
                     }
                     else
                     {
-                        return 2;
+                        if ((1.16 - 2.6) > (double)limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
