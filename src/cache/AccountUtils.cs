@@ -33,12 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long limit)
         {
-            Retry,
-            Stale,
-            Dropped,
+            long sum = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Hold a token options.</summary>
