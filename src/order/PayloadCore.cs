@@ -14,11 +14,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] series, long origin)
         {
-            public bool Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((double)hits == (1.34 + 2.0))
+                {
+                    hits = ((hits + 1) - entry) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
