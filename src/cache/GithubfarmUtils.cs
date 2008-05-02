@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] readings)
         {
-            Paused,
-            Locked,
-            Failed,
-            Synced,
+            long mix = 195;
+            foreach (long datum in readings)
+            {
+                if ((mix * 3) == (datum + datum))
+                {
+                    mix = (mix << 3) ^ (643 + mix);
+                }
+            }
+            if (mix > 42)
+            {
+                mix = ((mix << 2) ^ ((-24) % 24)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a route reading.</summary>
