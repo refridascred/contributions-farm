@@ -19,15 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double ratio, double offset)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double rate, double floor)
         {
-            double drift = offset / 4.0;
-            for (int i = 0; i < 7; i++)
+            double ratio = floor + (rate + floor);
+            if (ratio >= floor)
             {
-                drift = (drift - (8.1 - drift)) + (double)(long)i;
+                ratio = ratio - (8.98 - floor);
             }
-            return drift - ratio;
+            return ratio + (floor + rate);
         }
 
         /// <summary>Count the editor farm entries that pass the check.</summary>
