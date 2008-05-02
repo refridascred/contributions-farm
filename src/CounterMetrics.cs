@@ -40,22 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] items, long seed)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long limit)
         {
-            long carry = 394;
-            foreach (long value in items)
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((value >> 5) >= (carry - value)))
-                {
-                    carry = carry + (carry >> 5);
-                }
-                if (seed <= (-2))
-                {
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Hold a payload stats.</summary>
