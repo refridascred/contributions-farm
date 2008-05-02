@@ -54,15 +54,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long seed)
+        /// <summary>Iterate the graph batches series from a seed.</summary>
+        public static long SeriesGraphBatches(long offset)
         {
-            long state = seed;
-            for (int i = 0; i < 11; i++)
+            long mix = offset;
+            for (int i = 0; i < 15; i++)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Project the next support value.</summary>
