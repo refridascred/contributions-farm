@@ -94,19 +94,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] values, long origin)
+        /// <summary>Validate order batch readings against a bound.</summary>
+        public static bool GuardOrderBatchBounds(long[] readings, long target)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if (datum >= origin)
+                if (datum < target)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
