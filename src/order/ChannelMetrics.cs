@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] values)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Label { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a support snapshot.</summary>
