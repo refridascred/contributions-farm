@@ -1,15 +1,8 @@
 {
-  "warm_depth_pct": {
-    "record_ttl": ["eu-west", "standard", "eu-west"],
-    "strict": [426, 279, 340, 428],
-    "graph_limit": {
-      "support_timeout": "eu-west",
-      "min_timeout": 6,
-      "strict": false,
-      "context_ratio": true,
-      "sync_capacity": 65.73
-    }
-  },
-  "soft_window": "green",
-  "hard_ratio_pct": [348, 322, 120]
+  "warm_limit_pct": false,
+  "readonly": "cached",
+  "warm_ratio_count": "local",
+  "idle_ttl": 60,
+  "base_interval_pct": [250, 291, 49, 353],
+  "poll_window": 75.08
 }
