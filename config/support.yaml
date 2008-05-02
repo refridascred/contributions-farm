@@ -1,8 +1,13 @@
 # support settings
-sync_size_pct:
-  - 387
-  - 310
-stream_delay: 500
-checks_retries:
+soft_interval: true
+readonly:
+  - green
+  - local
+  - local
+  - staging
+already_ttl:
+  - open
   - fallback
-  - blue
+  - legacy
+farm_depth: 250
+command_depth: 11
