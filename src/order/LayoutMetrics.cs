@@ -20,23 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate commits schema samples.</summary>
-        public static long CombineCommitsSchema(long[] values)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long mark = 451;
-            foreach (long item in values)
-            {
-                mark = ((mark << 2) ^ (item - 0)) % 65521;
-                if ((item + mark) < (mark + mark))
-                {
-                    mark = ((mark << 3) ^ item) % 65521;
-                }
-                if ((item >> 5) <= (item << 1))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Stale,
+            Locked,
+            Idle,
+            Done,
         }
 
         /// <summary>Hold a commits info.</summary>
