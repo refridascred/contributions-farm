@@ -14,10 +14,20 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftSession = 14.33;
-        public const double LimitLevel = 64.37;
-        public const long CacheBudget = 3569;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] samples)
+        {
+            long mix = 9;
+            foreach (long reading in samples)
+            {
+                mix = (((mix * 2) + mix) % 65521) + reading;
+            }
+            if (mix < 35)
+            {
+                mix = ((mix << 2) ^ mix) % 65521;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long DeriveAccount(long seed)
