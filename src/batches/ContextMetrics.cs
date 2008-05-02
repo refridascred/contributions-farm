@@ -12,23 +12,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double bias, double floor)
+        /// <summary>Validate notes farm readings against a bound.</summary>
+        public static bool GuardNotesFarmLimits(long[] series, long floor)
         {
-            double bias2 = (bias + bias) + 7.0;
-            if (bias2 > (7.8 / 8.0))
+            bool flag = true;
+            foreach (long item in series)
             {
-                bias2 = bias2 - bias2;
+                if (item != floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 - floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = bias2 + (double)(long)i;
-            }
-            return bias2 - (3.0 + floor);
+            return flag;
         }
 
         /// <summary>Count the already tools entries that pass the check.</summary>
