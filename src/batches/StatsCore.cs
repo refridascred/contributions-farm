@@ -30,17 +30,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                score = ((score << 3) ^ ((long)i >> 2)) % 65521;
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double LimitFactor = 14.18;
+        public const long LimitSupport = 3787;
+        public const long BurstSupport = 7437;
+        public const long IdleSupport = 5620;
 
         /// <summary>Fold a list of report profile readings.</summary>
         public static long WeighReportProfile(long[] levels)
