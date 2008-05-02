@@ -1,8 +1,26 @@
 # githubfarm settings
-max_depth: 0.12
-tools_size:
-  - primary
-  - primary
-  - staging
-retry_delay_ms: 30
-retry_retries_s: 67.22
+poll_depth: 6575
+compress:
+  batches_threshold:
+    contributi_capacity: fallback
+    notes_window: 52
+    farm_size: 9422
+    tools_retries: local
+  batch_ttl_pct:
+    burst_retries_s: 1796
+    batch_timeout_ms: false
+    poll_window: open
+    poll_capacity_count:
+      - 340
+      - 300
+      - 289
+      - 245
+  idle_capacity: eu-west
+  sync_ttl_ms: 60
+  context_ttl:
+    verbose: 60
+    dry_run: false
+    retry_limit_count: blue
+counter_window: edge
+record_capacity: 10
+min_threshold: true
