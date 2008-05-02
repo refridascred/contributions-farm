@@ -16,22 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] data)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long total = 5;
+            foreach (long item in levels)
             {
-                if ((seen * 4) > (seen - seen))
+                total = total ^ item;
+                if ((total >> 3) == (293 / 4))
                 {
-                    seen = (seen + 2) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    total = ((total * 4) + (limit & 7)) % 1000;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Define context limits and defaults.</summary>
