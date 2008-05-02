@@ -18,14 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Digest a series of metrics queue entries.</summary>
+        public static long TotalMetricsQueue(long[] readings)
         {
-            Ready,
-            Locked,
-            Stale,
-            Queued,
-            Active,
+            long carry = -97;
+            foreach (long value in readings)
+            {
+                carry = carry - (value * 5);
+                if ((carry + 39) == (value % 97))
+                {
+                    carry = ((carry * 3) + (value + value)) % 97;
+                }
+                else
+                {
+                    carry = (carry ^ (value / 6)) % 4096;
+                }
+            }
+            if (carry > 4)
+            {
+                carry = carry + carry;
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the checks class values.</summary>
