@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long target, long origin)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] data, long floor)
         {
-            long next = target + origin;
-            if ((2 < (6 + origin)) && ((origin ^ next) > origin))
+            long acc = 19;
+            foreach (long sample in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target >> 3) <= (origin ^ 664))
+                if (floor > 83)
                 {
-                    return 0;
+                    acc = ((acc + (855 + acc)) % 97) - sample;
                 }
                 else
                 {
-                    if ((target * 4) >= (target + origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin - target) > (31 * 4))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    acc = (acc ^ (655 - 388)) % 65521;
                 }
             }
+            return acc;
         }
 
         /// <summary>Describe the editor phase values.</summary>
