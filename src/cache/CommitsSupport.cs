@@ -68,13 +68,18 @@ namespace Common.Utilities
             return scale2 - (scale * 5.32);
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Audit profile notes readings against a rule.</summary>
+        public static long TallyProfileNotesOutliers(long[] series, long origin)
         {
-            Queued,
-            Synced,
-            Idle,
-            Locked,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((0 < (count >> 3)) || ((origin + count) > count))
+                {
+                    count = (count + 3) ^ sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
