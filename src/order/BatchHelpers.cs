@@ -16,19 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a checks counter figure with a bias.</summary>
-        public static double ScaleChecksCounter(double gain, double bias)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] items, long step)
         {
-            double bias2 = gain;
-            if (bias2 >= gain)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                bias2 = bias2 + (bias + bias);
+                if ((long)items.Length == (81 + hits))
+                {
+                    hits = ((hits + 3) + cell) + step;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - (15.0 * 4.56)) + (double)(long)i;
-            }
-            return bias2 - bias2;
+            return hits;
         }
 
         /// <summary>Blend two stats measurements.</summary>
