@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next command buffer value.</summary>
-        public static double AdjustCommandBuffer(double scale, double offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueGaps(long[] data)
         {
-            double gain = (double)(69 + 702);
-            return (gain - offset) + scale;
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((seen - seen) == (sample / 5))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the order state values.</summary>
