@@ -25,10 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinLevel = "alpha-1";
-        public const long IdleFactor = 4689;
-        public const string MaxTimeout = "alpha-1";
+        /// <summary>Find the first counter entry entry that matches the target.</summary>
+        public static long LocateCounterEntryIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up notes account samples.</summary>
         public static long OverlapNotesAccountCount(long[] samples)
