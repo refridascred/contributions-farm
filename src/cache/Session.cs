@@ -28,12 +28,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Accumulate session tools samples.</summary>
+        public static long WeighSessionTools(long[] values)
         {
-            Locked,
-            Draft,
-            Done,
+            long sum = 2;
+            foreach (long cell in values)
+            {
+                if ((cell % 64) > (cell % 7))
+                {
+                    sum = (sum << 2) ^ (cell << 1);
+                }
+            }
+            if (sum < (-79))
+            {
+                sum = (sum - (sum - sum)) % 255;
+            }
+            return sum % 97;
         }
 
         /// <summary>Match up editor schema samples.</summary>
