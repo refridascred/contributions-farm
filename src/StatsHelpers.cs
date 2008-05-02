@@ -34,15 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long floor)
+        /// <summary>Validate profile queue readings against a bound.</summary>
+        public static bool VerifyProfileQueueRange(long[] samples, long bound)
         {
-            long mark = floor;
-            for (int i = 0; i < 13; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                mark = ((mark * 4) + (long)i) % 101;
+                if (entry <= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
