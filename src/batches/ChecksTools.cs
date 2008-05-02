@@ -13,22 +13,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] items)
+        /// <summary>Locate a notes schema reading by value.</summary>
+        public static long LookupNotesSchemaIndex(long[] series, long bound)
         {
-            long mark = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (mark <= (cell + cell))
+                if (series[i] < bound)
                 {
-                    mark = (mark * 2) + mark;
-                }
-                else
-                {
-                    mark = ((mark * 2) + cell) % 97;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
