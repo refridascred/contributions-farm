@@ -44,18 +44,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] items, long limit)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long carry = 534;
+            foreach (long sample in values)
             {
-                if ((((double)limit > (3.21 / 4.0)) || ((hits / 8) == (limit + hits))) || ((749 % 97) != (hits + limit)))
+                if (((carry << 1) == (carry ^ bound)) || ((carry & 31) > 39))
                 {
-                    hits = (hits + 3) ^ sample;
+                    carry = ((carry * 3) + sample) % 4096;
                 }
             }
-            return hits;
+            if (carry > 7)
+            {
+                carry = (carry + ((-71) + 78)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Roll a support counter forward.</summary>
