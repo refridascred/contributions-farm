@@ -32,16 +32,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long seed)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] levels)
         {
-            long score = seed;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score + (seed ^ score)) % 65521;
-                score = ((score * 5) + (long)i) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Look up the position of a channel checks sample.</summary>
