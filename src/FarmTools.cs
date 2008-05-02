@@ -20,21 +20,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] samples)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] samples, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((long)samples.Length + 65) != (value % 10))
                 {
-                    if ((samples[i] + samples[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 3) + seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a token record.</summary>
