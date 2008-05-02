@@ -45,17 +45,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] levels, long target)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Idle,
+            Done,
+            Queued,
+            Locked,
         }
 
         /// <summary>Roll a support counter forward.</summary>
