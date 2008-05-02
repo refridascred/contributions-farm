@@ -57,19 +57,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsRange(long[] items, long step)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value > step)
+                if ((values[i] == origin) && ((values[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
