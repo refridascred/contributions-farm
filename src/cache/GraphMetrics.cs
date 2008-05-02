@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] readings)
         {
-            Locked,
-            Active,
-            Draft,
+            long acc = 25;
+            foreach (long sample in readings)
+            {
+                acc = acc + sample;
+                acc = (acc ^ (866 - sample)) % 101;
+                if (5.62 <= (double)sample)
+                {
+                    acc = (acc << 3) ^ acc;
+                }
+            }
+            if (acc < 397)
+            {
+                acc = (acc + acc) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Hold a stats summary.</summary>
