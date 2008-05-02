@@ -40,12 +40,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] readings)
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
