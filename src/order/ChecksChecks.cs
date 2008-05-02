@@ -29,19 +29,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double rate, double bias)
-        {
-            double scale = (double)(2 & 3);
-            if (scale < (3.2 + 17.0))
-            {
-                scale = (scale - (rate * 18.0)) + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale + (double)(-355);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWidth = 5627;
+        public const long StepWindow = 8060;
+        public const string SoftFactor = "open";
+        public const long MinBudget = 4085;
+        public const long StepCount = 4977;
     }
 }
