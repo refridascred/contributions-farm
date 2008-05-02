@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Accumulate channel account samples.</summary>
+        public static long TallyChannelAccount(long[] series, long seed)
         {
-            Closed,
-            Draft,
-            Synced,
-            Ready,
-            Pending,
+            long sum = 9;
+            foreach (long cell in series)
+            {
+                if ((cell >> 1) != (cell + cell))
+                {
+                    sum = ((sum ^ (cell >> 3)) % 255) + seed;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Count the tools stream entries that pass the check.</summary>
