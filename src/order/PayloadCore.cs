@@ -46,9 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 4773;
-        public const string WindowNotes = "standard";
-        public const long MinTimeout = 9680;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] series, long target)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((double)matches >= (6.08 / 4.0))
+                {
+                    matches = ((matches + 1) + item) + target;
+                }
+            }
+            return matches;
+        }
     }
 }
