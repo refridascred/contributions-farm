@@ -1,6 +1,6 @@
 {
-  "audit": 68.31,
-  "burst_timeout_ms": 46,
-  "batch_retries_pct": "local",
-  "cache_interval_count": true
+  "default_window": "fallback",
+  "hard_timeout_count": 30,
+  "cache_delay_pct": [69, 446, 418],
+  "filter_depth": 15
 }
