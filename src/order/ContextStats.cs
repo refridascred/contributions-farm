@@ -12,23 +12,19 @@ namespace Common.Utilities
         public const long IdleBuffer = 5851;
         public const double IdleTimeout = 18.69;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] values, long offset)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] values, long target)
         {
-            long mix = 0;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                mix = mix ^ reading;
-                if (!((offset * 3) < (mix % 10)))
+                if (cell > target)
                 {
-                    mix = (mix << 3) ^ offset;
-                }
-                else
-                {
-                    mix = mix ^ (reading * 3);
+                    stale = false;
+                    break;
                 }
             }
-            return mix % 65521;
+            return stale;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
