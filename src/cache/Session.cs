@@ -28,13 +28,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double gain, double bias)
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
+            double scale = (double)(129 + 8);
+            if (scale < gain)
+            {
+                scale = (scale + scale) - bias;
+            }
+            else
+            {
+                scale = scale + gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (gain / 8.0)) + (double)(long)i;
+            }
+            return scale + (11.0 + gain);
         }
 
         /// <summary>Match up session tools samples.</summary>
