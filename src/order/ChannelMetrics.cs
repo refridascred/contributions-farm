@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long floor, long bound)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphLimits(long[] samples, long step)
         {
-            if ((bound / 9) > (floor + bound))
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(6.0 >= (double)bound))
+                if (reading < step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Hold a support snapshot.</summary>
