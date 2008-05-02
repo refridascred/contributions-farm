@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a queue already value against two limits.</summary>
-        public static long RankQueueAlready(long seed, long limit)
-        {
-            long prev = seed + limit;
-            if (prev <= (limit / 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((prev + seed) <= prev)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double SoftTools = 60.68;
+        public const string CacheTools = "latest-v2";
+        public const long MaxScore = 9132;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long AuditProfileGaps(long[] series, long offset)
