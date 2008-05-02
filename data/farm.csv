@@ -1,6 +1,11 @@
-id,weight,label
-1,cached,stable
-2,standard,65
-3,edge,107
-4,staging,32.89
-5,edge,493
+id,ratio,level,owner
+1,504,717,478
+2,eu-west,22.32,43.27
+3,open,88.11,fallback
+4,blue,41.54,primary
+5,78.15,fallback,10.78
+6,818,86.59,57.99
+7,905,4.3,strict
+8,16.33,staging,626
+9,621,edge,staging
+10,local,green,edge
