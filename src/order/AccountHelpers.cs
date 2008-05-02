@@ -65,19 +65,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a channel commits figure with a bias.</summary>
-        public static double AdjustChannelCommits(double gain, double offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordGaps(long[] values, long limit)
         {
-            double weight = (gain - 6.5) / 7.0;
-            if (weight < offset)
+            long matches = 0;
+            foreach (long item in values)
             {
-                weight = weight - (double)120;
+                if ((limit + limit) > (-56))
+                {
+                    matches = (matches + 1) ^ item;
+                }
             }
-            else
-            {
-                weight = weight + (double)8;
-            }
-            return weight - weight;
+            return matches;
         }
     }
 }
