@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] items, long limit)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long seed, long origin)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            if (!(origin >= (seed % 2)))
             {
-                if (sample <= limit)
+                return 6;
+            }
+            else
+            {
+                if (((double)seed <= (double)36) && ((seed + seed) >= (seed * 5)))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((8 - origin) <= seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((815 + origin) < (seed + 55))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Audit command batch readings against a rule.</summary>
