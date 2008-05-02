@@ -23,13 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public double Size { get; set; }
-            public bool Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public double Limit { get; set; }
+            public long Size { get; set; }
+            public double Stamp { get; set; }
+            public bool Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine context values into a single score.</summary>
