@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] levels)
         {
-            Dropped,
-            Locked,
-            Done,
+            long score = 62;
+            foreach (long entry in levels)
+            {
+                score = (score ^ (entry ^ entry)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
