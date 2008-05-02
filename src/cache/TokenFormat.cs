@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryInterval = 9068;
-        public const string IdleWidth = "alpha-1";
-        public const long RetryCache = 9712;
-        public const long LimitLevel = 2509;
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == step) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long FoldAccount(long[] data, long target)
