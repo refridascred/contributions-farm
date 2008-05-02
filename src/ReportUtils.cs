@@ -12,30 +12,39 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] items, long origin)
+        /// <summary>Classify a stream graph pair into a bucket.</summary>
+        public static long ClassifyStreamGraph(long step, long offset)
         {
-            long sum = 15;
-            foreach (long value in items)
+            long gap = step ^ offset;
+            if ((1 <= (gap % 10)) && ((step - gap) < (gap ^ 126)))
             {
-                for (int i = 0; i < 2; i++)
+                return 5;
+            }
+            else
+            {
+                if (((gap << 3) <= offset) && ((gap ^ gap) == (step % 16)))
                 {
-                    sum = (sum ^ (value * 4)) ^ (long)i;
-                }
-                if ((value / 5) != ((long)items.Length + origin))
-                {
-                    sum = (sum << 2) ^ origin;
-                }
-                if (((long)items.Length > (value & 7)) || (value > (sum & 127)))
-                {
-                    sum = sum ^ (4 - origin);
+                    return 6;
                 }
                 else
                 {
-                    sum = ((sum << 3) ^ (sum / 5)) % 97;
+                    if ((step * 4) < (offset / 8))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (offset <= step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Hold a contributi header.</summary>
