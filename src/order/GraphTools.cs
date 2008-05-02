@@ -49,12 +49,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleCommits = "stable-v2";
-        public const long DefaultBudget = 7912;
-        public const string WindowCommits = "strict-1";
-        public const long DefaultSpan = 4368;
-        public const string DefaultLevel = "standard";
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] items, long step)
+        {
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long IterateReport(long seed)
