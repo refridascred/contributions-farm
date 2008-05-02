@@ -14,22 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] values, long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsGaps(long[] items)
         {
-            long count = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((double)value < (7.63 * 4.9))
+                if ((double)matches == (6.13 + 6.8))
                 {
-                    count = (count + 2) + seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 3) + value;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
