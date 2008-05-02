@@ -67,22 +67,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutGaps(long[] data)
+        /// <summary>Count the notes batch entries that pass the check.</summary>
+        public static long AuditNotesBatchMatches(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((tally + cell) <= (cell / 2))
+                if ((value - value) <= value)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
