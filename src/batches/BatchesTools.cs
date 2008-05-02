@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            Retry,
             Closed,
-            Dropped,
-            Ready,
-            Done,
+            New,
+            Queued,
+            Pending,
         }
 
         /// <summary>Look up the position of a checks channel sample.</summary>
