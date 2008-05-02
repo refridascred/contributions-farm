@@ -1,14 +1,8 @@
 {
-  "flush_interval_ms": ["edge", "eu-west"],
-  "commits_depth": true,
-  "window_threshold": 46,
-  "base_capacity": [196, 311, 130],
-  "warm_limit_count": {
-    "profile_window": false,
-    "batch_capacity_ms": 11.39,
-    "burst_depth_s": "legacy",
-    "base_depth_count": 6604,
-    "poll_interval_s": "eu-west",
-    "burst_ratio_count": "eu-west"
-  }
+  "burst_timeout_s": 30,
+  "max_capacity_count": 4802,
+  "compress": 68.65,
+  "base_window": 35.66,
+  "hard_ttl_pct": 25,
+  "burst_window": [500, 261]
 }
