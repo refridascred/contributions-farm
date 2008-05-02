@@ -24,18 +24,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] readings)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((item ^ tally) > (547 * 5))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
