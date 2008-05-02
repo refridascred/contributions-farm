@@ -34,13 +34,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
-        {
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepSize = 5707;
+        public const long MinChecks = 7621;
+        public const long StepScore = 5540;
+        public const long IdleChecks = 9922;
+        public const long MaxDepth = 4803;
     }
 }
