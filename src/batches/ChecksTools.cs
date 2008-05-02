@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] items)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (datum < (tally / 2))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Pending,
+            Closed,
+            Active,
+            Paused,
+            Synced,
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
