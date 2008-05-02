@@ -26,11 +26,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 8902;
-        public const string BaseFormat = "fallback";
-        public const string HardTimeout = "stable-v2";
-        public const long BurstSize = 8636;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 4611;
+        public const string DefaultOrder = "staging-1";
+        public const long CacheOrder = 4066;
+        public const long IdleFactor = 9482;
+        public const long WindowOrder = 5969;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long CombineOrder(long[] samples)
