@@ -23,19 +23,38 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate queue entry readings against a bound.</summary>
-        public static bool GuardQueueEntryRange(long[] levels, long offset)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long origin, long offset)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            if ((origin <= (600 ^ origin)) || ((offset - origin) < origin))
             {
-                if (cell > offset)
+                return 3;
+            }
+            else
+            {
+                if ((offset + offset) < (origin + origin))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((9.23 - 9.54) < (double)offset) && ((79 / 4) != (origin / 2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((8.0 + 4.48) >= (double)offset)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
