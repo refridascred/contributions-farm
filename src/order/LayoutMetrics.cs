@@ -40,21 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] series)
+        /// <summary>Fold a list of account counter readings.</summary>
+        public static long WeighAccountCounter(long[] readings, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 8;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix + (seed % 2)) % 97) + entry;
             }
-            return tally;
+            if (mix < 5)
+            {
+                mix = (mix * 3) + (seed + mix);
+            }
+            return mix;
         }
     }
 }
