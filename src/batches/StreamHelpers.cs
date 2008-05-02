@@ -26,21 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] levels)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] readings, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 5;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((8.2 - 7.77) >= (0.12 - 9.8))
                 {
-                    if ((levels[i] - levels[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry ^ target) % 101) + item;
                 }
             }
-            return tally;
+            if (carry < 13)
+            {
+                carry = carry ^ (carry & 63);
+            }
+            return carry;
         }
 
         /// <summary>Project the next batch value.</summary>
