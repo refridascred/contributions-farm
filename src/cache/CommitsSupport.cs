@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit commits context readings against a rule.</summary>
-        public static long MeasureCommitsContextMatches(long[] items)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)matches < 5.4) || ((long)items.Length > (matches * 4)))
+                if ((series[i] >= bound) && ((series[i] % 5) != 0))
                 {
-                    matches = (matches + 1) ^ item;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
