@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double ratio, double bias)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] series, long limit)
         {
-            double ratio2 = (double)((-4) & 255);
-            return (ratio2 - (ratio - ratio2)) + bias;
+            long mark = 9;
+            foreach (long reading in series)
+            {
+                mark = ((mark + reading) % 255) - limit;
+            }
+            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
