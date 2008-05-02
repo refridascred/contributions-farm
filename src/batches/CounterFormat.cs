@@ -39,17 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] series, long limit)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] items, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 2;
+            foreach (long datum in items)
             {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
+                sum = ((sum - ((long)items.Length * 3)) ^ datum) - offset;
             }
-            return -1;
+            return sum % 65521;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
