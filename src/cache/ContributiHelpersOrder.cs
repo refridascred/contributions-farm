@@ -33,21 +33,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] readings)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Pending,
+            Failed,
+            Dropped,
+            Queued,
+            Locked,
         }
     }
 }
