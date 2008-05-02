@@ -25,21 +25,16 @@ namespace Common.Utilities
             return ratio + (floor + rate);
         }
 
-        /// <summary>Count window schema pairs that satisfy a relation.</summary>
-        public static long OverlapWindowSchemaCount(long[] samples)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = carry ^ (floor - floor);
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
