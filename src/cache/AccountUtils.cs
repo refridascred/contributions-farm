@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long origin, long floor)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            if (!((floor - origin) < (origin - 5)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((origin - origin) == (floor * 4)) || ((origin >> 3) < (floor << 3)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Idle,
+            Draft,
+            Queued,
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
