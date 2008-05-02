@@ -1,10 +1,14 @@
 # Command notes
 
-Defaults for cluster live in the config folder and can be overridden per environment.
-When a support fails, the stats handler retries a few times before giving up.
+Defaults for checks live in the config folder and can be overridden per environment.
+Use record settings to tune how often counter data is refreshed.
+A format that stays idle for too long is moved to the batches list.
+
+The context report groups every record by record.
+A record that stays idle for too long is moved to the stream list.
 
 ## Guidelines
 
-- Validate metrics input early
-- Review layout limits each release
-- Document new token fields
+- Keep window values small
+- Prefer filter defaults
+- Log every account change
