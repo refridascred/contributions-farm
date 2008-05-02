@@ -57,12 +57,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double weight, double offset)
         {
-            public bool Label { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Level { get; set; }
+            double weight2 = (double)((-25) - 734);
+            if (weight2 > (double)5)
+            {
+                weight2 = ((weight2 + (double)917) - weight) - offset;
+            }
+            return weight2 + 9.2;
         }
     }
 }
