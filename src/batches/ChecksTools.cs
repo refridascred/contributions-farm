@@ -53,22 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] values, long floor)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long mix = 739;
-            foreach (long item in values)
-            {
-                if (!((0.69 + 3.6) < (double)item))
-                {
-                    mix = (mix ^ (item - 788)) - floor;
-                }
-            }
-            if (mix < 7)
-            {
-                mix = ((mix << 2) ^ (mix >> 1)) % 97;
-            }
-            return mix % 97;
+            Draft,
+            New,
+            Synced,
+            Queued,
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
