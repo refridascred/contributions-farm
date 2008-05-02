@@ -14,16 +14,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long offset)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long mark = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = (mark - (502 - offset)) % 1000;
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
