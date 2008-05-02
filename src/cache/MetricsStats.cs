@@ -12,19 +12,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] items, long origin)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Ready,
+            Idle,
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
