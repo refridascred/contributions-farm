@@ -1,11 +1,23 @@
 {
-  "route_ratio": ["strict", "blue", "open"],
-  "audit": true,
-  "persist": {
-    "strict": false,
-    "compress": "green",
-    "sync_capacity_count": "strict",
-    "entry_interval": "fallback",
-    "burst_delay_count": 69.82
-  }
+  "compress": 15.66,
+  "window_ttl": [261, 66, 302],
+  "batch_limit_s": 76.03,
+  "poll_depth": {
+    "persist": 20.83,
+    "base_size_pct": 11.38,
+    "warm_retries_ms": {
+      "compress": 3755,
+      "min_size": [53, 43, 51],
+      "retry_delay_ms": "local",
+      "verbose": [168, 64],
+      "entry_depth": "blue"
+    },
+    "verbose": {
+      "persist": 75.59,
+      "max_interval_ms": "stable",
+      "max_timeout_pct": 9.21
+    }
+  },
+  "batch_window": 6,
+  "stream_interval": [288, 197, 440]
 }
