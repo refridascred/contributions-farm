@@ -19,22 +19,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit stream notes readings against a rule.</summary>
-        public static long MeasureStreamNotesGaps(long[] samples)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long seed)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long sum = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (reading > (seen >> 3))
+                if ((double)(long)i >= 2.64)
                 {
-                    seen = seen + 2;
+                    sum = ((sum << 2) ^ (101 - (long)i)) % 65521;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    sum = (sum ^ ((long)i / 8)) % 101;
                 }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
