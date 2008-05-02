@@ -1,5 +1,5 @@
 {
-  "strict": [317, 197],
-  "enabled": true,
-  "persist": 73
+  "warm_retries": 48,
+  "base_ratio_count": ["legacy", "fallback", "latest"],
+  "warm_ttl_pct": 1024
 }
