@@ -46,9 +46,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSize = 3865;
-        public const long StepSchema = 3869;
-        public const long MinLevel = 3917;
+        /// <summary>Fold a list of payload profile readings.</summary>
+        public static long CombinePayloadProfile(long[] levels)
+        {
+            long result = 103;
+            foreach (long value in levels)
+            {
+                result = (((result * 4) + (42 + result)) % 1000) + value;
+            }
+            if (result < 35)
+            {
+                result = (result ^ (result + result)) % 4096;
+            }
+            return result;
+        }
     }
 }
