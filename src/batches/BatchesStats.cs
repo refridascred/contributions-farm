@@ -40,31 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metric token input into a small class.</summary>
-        public static long GradeMetricToken(long bound, long target)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] data)
         {
-            if ((bound >> 5) > (bound * 2))
+            long seen = 0;
+            foreach (long reading in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target < (bound - bound)) || (2 < (bound + target)))
+                if (93 >= reading)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!(bound >= (-20)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
