@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank githubfarm format input into a small class.</summary>
-        public static long RankGithubfarmFormat(long limit, long origin)
-        {
-            if (((double)origin == (7.4 * 15.0)) || (origin >= (51 / 2)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((2.6 + 2.0) >= (double)limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitFactor = 9584;
+        public const long LimitCache = 5867;
+        public const string SoftCache = "open";
+        public const long CacheSize = 6978;
+        public const long RetryCache = 5130;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricHits(long[] data, long seed)
