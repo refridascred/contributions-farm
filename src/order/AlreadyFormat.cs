@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 3948;
-        public const long BatchDepth = 8495;
-        public const long BatchFormat = 1269;
-        public const long RetryWidth = 866;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitBudget = 86.42;
+        public const long HardContributi = 9055;
+        public const long StepContributi = 897;
 
         /// <summary>Hold a channel summary.</summary>
         public sealed class ChannelSummary
