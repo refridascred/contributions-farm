@@ -49,14 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] readings)
         {
-            Ready,
-            Idle,
-            Locked,
-            Queued,
-            Done,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (((matches & 31) != (cell >> 3)) && ((double)matches < (double)cell))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
