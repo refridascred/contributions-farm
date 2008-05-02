@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double LimitBudget = 89.95;
-        public const long SoftTools = 2380;
-        public const long BaseTimeout = 8739;
-        public const long BurstDepth = 4587;
-        public const long BatchCount = 678;
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long seed, long target)
+        {
+            if (((target << 3) == (seed + target)) || ((6.37 / 8.0) > (double)target))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((seed - seed) > seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target <= 3.0)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed - target) > (target % 7))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a batches reading.</summary>
         public static double ProjectBatches(double weight, double offset)
