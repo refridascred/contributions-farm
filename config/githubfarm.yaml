@@ -1,5 +1,4 @@
 # githubfarm settings
-sync_limit: false
-default_timeout_count: fallback
-min_size_s: 9193
-batch_limit: local
+enabled: false
+batch_timeout: 373
+flush_retries_pct: staging
