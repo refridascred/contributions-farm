@@ -56,31 +56,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank cache window input into a small class.</summary>
-        public static long GradeCacheWindow(long origin, long floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelHits(long[] levels)
         {
-            if (((origin - origin) <= floor) && ((floor + origin) < (origin + floor)))
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((-76) / 6) > (floor ^ origin))
+                if ((13.0 >= (double)entry) || (((124 + entry) <= hits) && (((-377) - hits) >= (-14))))
                 {
-                    return 2;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if (((9.28 + 16.0) <= (double)floor) && ((957 % 100) <= (origin * 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Iterate the format notes series from a seed.</summary>
