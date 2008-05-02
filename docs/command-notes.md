@@ -1,15 +1,15 @@
 # Command notes
 
-The window report groups every stats by tools.
-The record report groups every report by checks.
-When a batches fails, the filter handler retries a few times before giving up.
+Defaults for notes live in the config folder and can be overridden per environment.
+Each stats is validated before it reaches the graph queue.
 
-When a report fails, the batches handler retries a few times before giving up.
-Keep metric and order names short and lowercase.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+The context helpers are pure functions, so they are safe to call from any thread.
+The tools helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review support limits each release
-- Keep batches values small
-- Document new record fields
-- Validate metric input early
+- Keep already values small
+- Document new stats fields
+- Review profile limits each release
+- Log every token change
