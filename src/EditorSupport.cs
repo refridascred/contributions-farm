@@ -41,19 +41,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] items, long bound)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Locked,
+            Retry,
         }
 
         /// <summary>Measure how many report graph samples are out of range.</summary>
