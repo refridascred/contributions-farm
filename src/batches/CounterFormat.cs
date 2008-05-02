@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] levels)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long target, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((target + offset) > offset)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((10.0 - 12.0) <= (double)offset)
                 {
-                    if ((levels[i] - levels[j]) != 19)
+                    return 5;
+                }
+                else
+                {
+                    if ((double)target == (double)offset)
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset <= (54 + target)) || ((936 - target) <= offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
