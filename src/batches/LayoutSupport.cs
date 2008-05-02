@@ -45,21 +45,20 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] readings)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)mix > 1.0)
                 {
-                    if ((readings[i] - readings[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    mix = mix ^ (mix - 25);
+                    continue;
                 }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
