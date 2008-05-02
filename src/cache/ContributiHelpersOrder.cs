@@ -37,18 +37,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] levels, long limit)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (620 > (count - count))
-                {
-                    count = ((count + 3) - datum) - limit;
-                }
-            }
-            return count;
+            Stale,
+            Ready,
+            Draft,
         }
     }
 }
