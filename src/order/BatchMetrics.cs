@@ -78,22 +78,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountMatches(long[] data, long seed)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (tally > (6 / 4))
-                {
-                    tally = ((tally + 3) + cell) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 7754;
+        public const long HardStream = 245;
+        public const string WindowStream = "latest-1";
+        public const double MaxBudget = 78.52;
     }
 }
