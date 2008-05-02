@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 7887;
-        public const long RetryOrder = 6521;
-        public const double BaseOrder = 76.09;
-        public const long IdleScore = 2949;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchSize = 5728;
+        public const string MaxBatch = "strict-edge";
+        public const long BurstBatch = 3880;
+        public const string RetryCount = "staging";
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long DeriveStats(long target)
