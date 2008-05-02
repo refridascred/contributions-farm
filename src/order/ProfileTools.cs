@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            Failed,
-            Idle,
-            Retry,
+            Closed,
+            Draft,
+            Synced,
+            Ready,
+            Pending,
         }
 
         /// <summary>Count the tools stream entries that pass the check.</summary>
