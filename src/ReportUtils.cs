@@ -62,12 +62,10 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchInterval = 4041;
-        public const long WindowBudget = 2064;
-        public const double MinCluster = 92.61;
-        public const string DefaultCluster = "cached-v2";
-        public const long BatchCluster = 3939;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BatchChecks = "open-1";
+        public const double StepChecks = 47.36;
+        public const string DefaultInterval = "standard-1";
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool CheckRecordBounds(long[] values, long floor)
