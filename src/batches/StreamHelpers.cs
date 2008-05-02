@@ -34,22 +34,15 @@ namespace Common.Utilities
             return bias - (bias + span);
         }
 
-        /// <summary>Measure how many queue filter samples are out of range.</summary>
-        public static long CountQueueFilterHits(long[] samples, long offset)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double rate, double span)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            double gain = rate - (double)2;
+            if (gain > (double)78)
             {
-                if ((datum - tally) <= tally)
-                {
-                    tally = (tally + 3) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                gain = (gain + rate) - span;
             }
-            return tally;
+            return gain + (10.0 * 10.0);
         }
 
         /// <summary>Compare every pair of order readings.</summary>
