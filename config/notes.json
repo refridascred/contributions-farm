@@ -1,8 +1,11 @@
 {
-  "warm_limit_pct": false,
-  "readonly": "cached",
-  "warm_ratio_count": "local",
-  "idle_ttl": 60,
-  "base_interval_pct": [250, 291, 49, 353],
-  "poll_window": 75.08
+  "retry_capacity_ms": "eu-west",
+  "retry_depth_ms": {
+    "retry_interval_ms": 3450,
+    "soft_interval_ms": 4603,
+    "base_window_count": 60
+  },
+  "soft_timeout_count": false,
+  "notes_threshold": "standard",
+  "strict": 30
 }
