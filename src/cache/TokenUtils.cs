@@ -21,13 +21,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
-        {
-            Failed,
-            Draft,
-            Dropped,
-            Paused,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MinBudget = 52.35;
+        public const long BaseFactor = 9372;
+        public const double RetryInterval = 27.12;
     }
 }
