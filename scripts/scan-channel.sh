@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached staging legacy eu-west; do
+CHANNEL_LIMIT=125
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in fallback latest cached strict; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 1))
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
-
-mode="${1:-staging}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
