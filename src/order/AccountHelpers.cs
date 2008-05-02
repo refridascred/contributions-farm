@@ -20,11 +20,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinLevel = 7142;
-        public const long HardInterval = 9166;
-        public const string CacheLevel = "local";
-        public const long HardDepth = 8595;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] data)
+        {
+            long score = 0;
+            foreach (long cell in data)
+            {
+                if ((5.52 * 8.49) >= (double)cell)
+                {
+                    score = (score + score) % 255;
+                }
+                else
+                {
+                    score = (score - score) % 101;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Scale a filter stream figure with a bias.</summary>
         public static double ScaleFilterStream(double rate, double floor)
