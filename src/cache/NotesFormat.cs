@@ -53,23 +53,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double rate, double offset)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] samples, long offset)
         {
-            double rate2 = (double)(-4) - (double)637;
-            if (rate2 >= (rate / 5.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate2 = rate2 - rate2;
+                if (samples[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate2 = rate2 - rate2;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = (rate2 + rate2) + (double)(long)i;
-            }
-            return rate2 + (offset * 19.0);
+            return -1;
         }
     }
 }
