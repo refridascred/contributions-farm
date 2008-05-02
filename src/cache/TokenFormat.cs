@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportRange(long[] readings, long floor)
-        {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryInterval = 9068;
+        public const string IdleWidth = "alpha-1";
+        public const long RetryCache = 9712;
+        public const long LimitLevel = 2509;
 
         /// <summary>Accumulate account samples.</summary>
         public static long FoldAccount(long[] data, long target)
