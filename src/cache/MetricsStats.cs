@@ -54,15 +54,23 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double scale, double floor)
+        /// <summary>Accumulate buffer counter samples.</summary>
+        public static long TotalBufferCounter(long[] levels)
         {
-            double load = floor;
-            if (load < (scale / 2.0))
+            long result = -4;
+            foreach (long item in levels)
             {
-                load = load - (load + 4.0);
+                if (!(((5.0 + 2.4) == (double)item) || ((result & 3) == (100 + result))))
+                {
+                    result = ((result * 4) + (0 >> 1)) % 255;
+                }
+                result = result - (item + item);
+                if ((10 & 31) <= result)
+                {
+                    result = (result - (result + item)) % 97;
+                }
             }
-            return load + (double)674;
+            return result;
         }
     }
 }
