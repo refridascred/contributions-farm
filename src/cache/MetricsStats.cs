@@ -12,12 +12,20 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] levels, long bound)
         {
-            Failed,
-            Ready,
-            Idle,
+            long total = 73;
+            foreach (long reading in levels)
+            {
+                total = ((total * 5) + reading) % 97;
+                total = (total - (bound * 3)) % 101;
+                if ((total * 3) > bound)
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
