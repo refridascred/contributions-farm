@@ -19,15 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long offset)
+        /// <summary>Count the format graph entries that pass the check.</summary>
+        public static long MeasureFormatGraphMatches(long[] levels, long bound)
         {
-            long state = offset;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                if ((double)item < (0.58 / 3.0))
+                {
+                    tally = (tally + 3) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Describe the account status values.</summary>
