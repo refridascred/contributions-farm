@@ -37,12 +37,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            Retry,
             Closed,
-            Synced,
+            Draft,
+            Paused,
         }
     }
 }
