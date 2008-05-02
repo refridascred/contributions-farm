@@ -25,19 +25,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] items, long offset)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading < offset)
+                if ((levels[i] <= seed) && ((levels[i] % 3) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
