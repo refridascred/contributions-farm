@@ -12,15 +12,22 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long offset)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] items, long limit)
         {
-            long carry = offset;
-            for (int i = 0; i < 15; i++)
+            long result = -73;
+            foreach (long value in items)
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                if ((limit ^ result) < 1)
+                {
+                    result = (result - value) % 65521;
+                }
             }
-            return carry;
+            if (result > 70)
+            {
+                result = (result + (93 & 255)) % 1000;
+            }
+            return result % 97;
         }
 
         /// <summary>Match up tools samples.</summary>
