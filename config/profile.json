@@ -1,5 +1,23 @@
 {
-  "verbose": ["local", "latest"],
-  "channel_depth": 500,
-  "idle_window": 53
+  "audit": "open",
+  "order_timeout": "fallback",
+  "default_limit_count": {
+    "batches_timeout": "cached",
+    "report_interval": false,
+    "poll_capacity_s": 20
+  },
+  "max_interval_ms": "eu-west",
+  "notes_depth": {
+    "persist": {
+      "account_timeout": [350, 37, 135],
+      "min_limit_pct": "legacy",
+      "format_timeout": ["open", "latest", "cached", "primary"],
+      "default_window_count": 4599,
+      "retry_capacity_s": false,
+      "audit": "edge"
+    },
+    "max_depth_ms": 60,
+    "metrics_ratio": 1024
+  },
+  "soft_threshold_count": 7417
 }
