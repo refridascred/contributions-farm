@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
-        {
-            Closed,
-            New,
-            Ready,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 5682;
+        public const double RetryBudget = 20.04;
+        public const long DefaultDepth = 6138;
+        public const string BurstCount = "local-v2";
+        public const long BatchInterval = 5482;
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool GuardGraphLimits(long[] readings, long offset)
