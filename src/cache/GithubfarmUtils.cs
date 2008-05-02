@@ -23,22 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] data, long bound)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksRange(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if (((reading >> 1) >= (matches & 1)) || ((matches > (bound + matches)) && ((double)(long)data.Length < (3.3 * 6.51))))
+                if (entry < step)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Hold a farm stats.</summary>
