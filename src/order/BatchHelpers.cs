@@ -16,18 +16,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] items, long step)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long sum = 4;
+            foreach (long datum in levels)
             {
-                if ((long)items.Length == (81 + hits))
+                if ((sum + datum) > (sum ^ sum))
                 {
-                    hits = ((hits + 3) + cell) + step;
+                    sum = sum ^ (sum & 127);
+                }
+                if ((5 / 6) > datum)
+                {
+                    break;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Blend two stats measurements.</summary>
