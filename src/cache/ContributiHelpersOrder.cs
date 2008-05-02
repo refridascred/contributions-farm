@@ -37,11 +37,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCount = 6515;
-        public const long BaseSpan = 1215;
-        public const string CacheCount = "alpha-edge";
-        public const double MinInterval = 14.97;
-        public const long BatchWidth = 2023;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] items)
+        {
+            long total = -8;
+            foreach (long value in items)
+            {
+                total = ((total * 3) + (value & 127)) % 97;
+                for (int i = 0; i < 3; i++)
+                {
+                    total = (((total << 2) ^ (value / 8)) % 97) ^ (long)i;
+                }
+                if ((5.9 * 8.0) >= (double)value)
+                {
+                    total = total ^ (total + value);
+                }
+            }
+            if (total > (-6))
+            {
+                total = total ^ (49 + total);
+            }
+            return total;
+        }
     }
 }
