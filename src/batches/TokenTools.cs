@@ -25,11 +25,17 @@ namespace Common.Utilities
         public const double LimitSize = 22.91;
         public const double SoftWidth = 20.56;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double WindowTimeout = 52.64;
-        public const string StepStats = "fallback-edge";
-        public const double CacheBudget = 5.35;
-        public const long WindowRatio = 8936;
-        public const long MinStats = 3133;
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
