@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] items)
         {
-            public long Mode { get; set; }
-            public double Owner { get; set; }
-            public double Level { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((7.0 / 3.0) >= (double)sample)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a cluster record.</summary>
