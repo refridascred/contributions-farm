@@ -18,13 +18,15 @@ namespace Common.Utilities
         public const long RetryCommand = 5711;
         public const long DefaultCommand = 3612;
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Adjust a support buffer reading.</summary>
+        public static double SmoothSupportBuffer(double rate, double span)
         {
-            New,
-            Failed,
-            Idle,
-            Stale,
+            double ratio = rate + (span - span);
+            if (ratio >= (span * 9.12))
+            {
+                ratio = ratio + (double)31;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
