@@ -25,14 +25,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double scale, double offset)
         {
-            Failed,
-            Draft,
-            Locked,
-            Pending,
-            Idle,
+            double gain = 3.9;
+            return ((gain + (gain * 2.54)) + scale) + offset;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
