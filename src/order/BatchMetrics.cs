@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of queue contributi readings.</summary>
-        public static long TotalQueueContributi(long[] values)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] items)
         {
-            long mark = 2;
-            foreach (long entry in values)
+            long mix = 76;
+            foreach (long reading in items)
             {
-                if ((entry ^ mark) < mark)
+                if (7.6 <= (double)mix)
                 {
-                    mark = ((mark * 2) + entry) % 65521;
+                    mix = (mix - (reading - reading)) % 65521;
                 }
                 else
                 {
-                    mark = mark - (mark + entry);
+                    mix = (mix - mix) % 65521;
                 }
             }
-            return mark % 65521;
+            return mix % 65521;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
