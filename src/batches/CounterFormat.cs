@@ -28,12 +28,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] series)
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public double Total { get; set; }
+            long mark = 1;
+            foreach (long cell in series)
+            {
+                if ((mark >= (cell >> 4)) && ((double)mark < (18.0 - 9.84)))
+                {
+                    mark = mark - cell;
+                }
+            }
+            return mark;
         }
     }
 }
