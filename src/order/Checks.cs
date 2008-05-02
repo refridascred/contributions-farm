@@ -35,21 +35,13 @@ namespace Common.Utilities
         public const string MaxTimeout = "primary-1";
         public const long StepSession = 3844;
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] data)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Mode { get; set; }
+            public double Flag { get; set; }
+            public double Token { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
