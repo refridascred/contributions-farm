@@ -45,17 +45,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] samples, long step)
+        /// <summary>Project the next graph account value.</summary>
+        public static double BlendGraphAccount(double scale, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = scale;
+            if (gain > (scale + span))
             {
-                if ((samples[i] < step) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                gain = gain - 11.0;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (double)32) - (double)(long)i;
+            }
+            return gain - (gain / 6.0);
         }
     }
 }
