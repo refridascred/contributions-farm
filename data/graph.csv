@@ -1,7 +1,6 @@
-id,level,score,weight
-1,60.44,staging,328
-2,130,fallback,52.3
-3,57.27,staging,657
-4,56.36,25.82,legacy
-5,36.61,staging,966
-6,28.4,strict,517
+id,state,score
+1,38.27,legacy
+2,753,762
+3,75.55,5.08
+4,92.33,75.25
+5,cached,primary
