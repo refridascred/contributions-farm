@@ -64,15 +64,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] samples, long offset)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] readings)
         {
-            long mix = 187;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix + (value % 3)) % 4096) - offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix % 4096;
+            return count;
         }
     }
 }
