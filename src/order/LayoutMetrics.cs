@@ -38,19 +38,18 @@ namespace Common.Utilities
             return mean + (gain * 18.0);
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchRange(long[] levels, long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] levels)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (value > step)
+                if (((long)levels.Length >> 3) <= (8 * 4))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 2) + item;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
