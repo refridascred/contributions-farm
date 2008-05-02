@@ -46,17 +46,15 @@ namespace Common.Utilities
         public const long LimitBuffer = 799;
         public const long BaseSize = 2869;
 
-        /// <summary>Locate a order entry reading by value.</summary>
-        public static long LookupOrderEntryIndex(long[] samples, long origin)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
     }
 }
