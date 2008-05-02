@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long origin, long limit)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long floor, long floor2)
         {
-            if ((limit & 3) <= (limit << 3))
+            if ((floor << 3) < floor2)
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if ((8 <= (limit - limit)) && ((89 - 1) > origin))
+                if (floor < (floor2 / 2))
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    return 1;
+                    if (!((double)floor2 > (double)(-26)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
