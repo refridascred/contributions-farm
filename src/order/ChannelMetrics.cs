@@ -27,31 +27,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long offset, long target)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] items)
         {
-            if ((target % 12) == (435 / 2))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)target <= 8.9)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((target + offset) >= target)
+                    if ((items[i] + items[j]) > 10)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
