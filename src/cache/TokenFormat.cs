@@ -25,39 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long bound, long floor)
+        /// <summary>Look up the position of a cluster counter sample.</summary>
+        public static long SeekClusterCounterIndex(long[] series, long seed)
         {
-            long edge = bound + floor;
-            if ((double)floor > (5.2 + 9.72))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(((-896) - 11) > (356 ^ edge)))
+                if (series[i] > seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (floor > 155)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((bound % 8) >= (7 * 5)) || ((double)bound > (6.8 * 6.1)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
