@@ -12,31 +12,17 @@ namespace Common.Utilities
             return ((load + (double)27) + ratio) + offset;
         }
 
-        /// <summary>Classify a commits schema pair into a bucket.</summary>
-        public static long ClassifyCommitsSchema(long origin, long target)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] items, long bound)
         {
-            if ((5.0 + 2.0) >= (double)origin)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((20.0 + 2.58) > (double)origin)
+                if (items[i] < bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((44 + origin) != (origin * 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a graph entry.</summary>
