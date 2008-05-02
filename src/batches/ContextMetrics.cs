@@ -63,18 +63,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] readings, long step)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)283 == (double)step)
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
