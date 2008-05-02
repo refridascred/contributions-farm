@@ -20,15 +20,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] series, long offset)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] values)
         {
-            long state = -886;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (((state * 4) + (offset >> 4)) % 255) + entry;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the profile status values.</summary>
