@@ -81,17 +81,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] samples, long offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (samples[i] <= offset)
+                if ((double)cell <= (10.0 / 7.0))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
