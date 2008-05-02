@@ -1,11 +1,15 @@
 # Command notes
 
-The report report groups every context by filter.
-A channel that stays idle for too long is moved to the metric list.
+The window report groups every stats by tools.
+The record report groups every report by checks.
+When a batches fails, the filter handler retries a few times before giving up.
+
+When a report fails, the batches handler retries a few times before giving up.
+Keep metric and order names short and lowercase.
 
 ## Guidelines
 
-- Review filter limits each release
-- Prefer channel defaults
-- Log every filter change
-- Validate schema input early
+- Review support limits each release
+- Keep batches values small
+- Document new record fields
+- Validate metric input early
