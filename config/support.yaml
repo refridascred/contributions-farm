@@ -1,19 +1,7 @@
 # support settings
-dry_run:
-  - 37
-  - 312
-  - 427
-  - 231
-enabled: eu-west
-default_threshold: 30
-default_ratio:
-  sync_delay_pct: 500
-  retry_ratio: 6655
-  audit: fallback
-  verbose: 74.71
-  retry_timeout_count:
-    - 191
-    - 375
-    - 365
-    - 72
-  poll_ratio: latest
+idle_delay: 5897
+payload_depth: false
+warm_depth: 73.47
+buffer_timeout: true
+stream_retries: true
+audit: 26.58
