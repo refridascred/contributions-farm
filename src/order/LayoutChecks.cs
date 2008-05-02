@@ -84,12 +84,11 @@ namespace Common.Utilities
         public const double BurstBudget = 6.09;
         public const double BaseCount = 38.69;
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
-        {
-            Queued,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepTimeout = 8621;
+        public const long LimitAccount = 8550;
+        public const long BaseFactor = 8264;
+        public const double StepFactor = 56.81;
+        public const long BaseAccount = 9080;
     }
 }
