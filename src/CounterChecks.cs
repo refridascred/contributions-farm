@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit layout tools readings against a rule.</summary>
-        public static long MeasureLayoutToolsMatches(long[] series, long seed)
+        /// <summary>Match up queue commits samples.</summary>
+        public static long PairQueueCommitsCount(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((reading & 255) >= (8 ^ 802)) || ((double)(long)series.Length > (8.46 - 3.8)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 1) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((items[i] + items[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the editor kind values.</summary>
