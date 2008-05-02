@@ -32,22 +32,17 @@ namespace Common.Utilities
         public const long IdleFactor = 9482;
         public const long WindowOrder = 5969;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] samples)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] values, long limit)
         {
-            long result = 18;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((result % 3) <= (cell >> 3)) || ((double)cell >= (5.0 * 0.7)))
+                if ((values[i] > limit) && ((values[i] % 5) != 0))
                 {
-                    result = result ^ (0 & 127);
+                    return (long)i;
                 }
             }
-            if (result > (-654))
-            {
-                result = ((result * 5) + (result % 97)) % 65521;
-            }
-            return result % 1000;
+            return -1;
         }
     }
 }
