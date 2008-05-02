@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftTools = 60.68;
-        public const string CacheTools = "latest-v2";
-        public const long MaxScore = 9132;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] levels, long origin)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((double)count != (double)origin)
+                {
+                    count = (count + 2) + value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long AuditProfileGaps(long[] series, long offset)
