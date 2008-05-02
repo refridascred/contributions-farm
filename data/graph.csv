@@ -1,8 +1,9 @@
-id,region,ratio,owner
-1,42.49,open,557
-2,778,135,eu-west
-3,edge,373,blue
-4,open,82.41,702
-5,41.63,518,96.26
-6,88.5,87.35,67.71
-7,472,81.24,899
+id,label,rank,active
+1,strict,stable,cached
+2,green,standard,23.96
+3,45.48,green,23.48
+4,197,458,888
+5,25.91,48.81,blue
+6,staging,366,284
+7,649,8.4,28.87
+8,422,46.88,289
