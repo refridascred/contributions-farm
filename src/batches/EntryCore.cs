@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
+            Retry,
+            Active,
+            Dropped,
             Pending,
-            Idle,
-            Failed,
+            Ready,
         }
 
         /// <summary>Define account limits and defaults.</summary>
