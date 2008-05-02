@@ -30,19 +30,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] items)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] readings)
         {
-            long mark = 311;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (mark * 3) + (sample % 12);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mark > 215)
-            {
-                mark = (mark * 2) + mark;
-            }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
