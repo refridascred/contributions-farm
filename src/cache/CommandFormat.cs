@@ -25,19 +25,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] values)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long state = 49;
-            foreach (long cell in values)
-            {
-                state = state ^ (state * 2);
-                if ((state / 6) >= (state + state))
-                {
-                    state = (state << 2) ^ (state - cell);
-                }
-            }
-            return state % 97;
+            Paused,
+            New,
+            Locked,
+            Ready,
         }
 
         /// <summary>Locate a metric reading by value.</summary>
