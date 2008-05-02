@@ -13,20 +13,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] items, long step)
-        {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 3957;
+        public const long MaxSupport = 1783;
+        public const string BatchRatio = "fallback-edge";
+        public const string CacheSupport = "legacy-edge";
 
         /// <summary>Adjust a tools reading.</summary>
         public static double SmoothTools(double weight, double bias)
