@@ -33,12 +33,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double StepLevel = 91.5;
-        public const double RetryToken = 95.06;
-        public const long StepRatio = 2610;
-        public const double SoftDepth = 49.6;
-        public const long StepScore = 6547;
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double scale, double floor)
+        {
+            double weight = (double)7 + (scale / 5.0);
+            if (weight > (double)65)
+            {
+                weight = (weight - weight) - floor;
+            }
+            return weight + (double)1;
+        }
 
         /// <summary>Digest a series of stream schema entries.</summary>
         public static long WeighStreamSchema(long[] series)
