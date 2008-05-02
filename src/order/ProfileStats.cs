@@ -27,19 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] items, long bound)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if (reading <= bound)
+                if (reading > step)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Check that every farm stats entry stays within the limit.</summary>
