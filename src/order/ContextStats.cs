@@ -12,22 +12,15 @@ namespace Common.Utilities
             return ((load + (double)27) + ratio) + offset;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] values)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long floor)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long result = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (item > (0 + 33))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Hold a graph entry.</summary>
