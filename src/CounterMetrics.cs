@@ -65,11 +65,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
-        {
-            public string Stamp { get; set; } = "";
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double IdleWidth = 65.13;
+        public const long HardCount = 9530;
+        public const string RetryDepth = "stable-v2";
+        public const string MaxPayload = "standard-v2";
+        public const long LimitFactor = 6745;
     }
 }
