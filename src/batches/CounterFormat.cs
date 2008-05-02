@@ -19,19 +19,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] data, long target)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] samples, long origin)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long carry = 67;
+            foreach (long entry in samples)
             {
-                if (entry > target)
+                if ((origin + carry) < ((-74) * 4))
                 {
-                    ready = false;
-                    break;
+                    carry = ((carry << 3) ^ (entry - origin)) % 1000;
                 }
             }
-            return ready;
+            if (carry < 866)
+            {
+                carry = ((carry * 5) + (carry + carry)) % 65521;
+            }
+            return carry;
         }
     }
 }
