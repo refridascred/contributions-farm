@@ -84,21 +84,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] data)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Synced,
+            Queued,
+            Closed,
+            Draft,
+            Active,
         }
     }
 }
