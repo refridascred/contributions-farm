@@ -53,18 +53,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] samples)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] items, long offset)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long cell in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((count + 52) == (count / 2)) && ((double)count == (9.2 / 6.0))) || ((offset >> 5) <= (cell & 1)))
                 {
-                    if ((samples[i] ^ samples[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
