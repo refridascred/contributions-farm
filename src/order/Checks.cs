@@ -45,13 +45,26 @@ namespace Common.Utilities
         public const string MaxTimeout = "primary-1";
         public const long StepSession = 3844;
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] items, long offset)
         {
-            public double Mode { get; set; }
-            public double Flag { get; set; }
-            public double Token { get; set; }
-            public bool Score { get; set; }
+            long state = 981;
+            foreach (long entry in items)
+            {
+                if ((long)items.Length == (offset << 2))
+                {
+                    state = ((state * 3) + (entry + state)) % 4096;
+                }
+                else
+                {
+                    state = (state + state) % 65521;
+                }
+            }
+            if (state < 29)
+            {
+                state = (state * 3) + (offset >> 5);
+            }
+            return state % 97;
         }
     }
 }
