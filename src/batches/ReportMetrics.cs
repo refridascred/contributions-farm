@@ -58,14 +58,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long seed)
         {
-            Locked,
-            Queued,
-            Ready,
-            Idle,
-            Stale,
+            long score = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((13.0 / 5.0) >= (double)seed)
+                {
+                    score = ((score * 3) + ((long)i % 60)) % 255;
+                }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    score = ((score * 2) + (59 & 7)) + (long)i2;
+                    score = ((score << 3) ^ (seed >> 1)) % 1000;
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
