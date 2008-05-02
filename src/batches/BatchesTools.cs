@@ -20,19 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphBounds(long[] values, long offset)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Level { get; set; }
+            public bool Total { get; set; }
+            public long Count { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
