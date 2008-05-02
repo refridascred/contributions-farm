@@ -1,8 +1,8 @@
 {
-  "burst_timeout_s": 30,
-  "max_capacity_count": 4802,
-  "compress": 68.65,
-  "base_window": 35.66,
-  "hard_ttl_pct": 25,
-  "burst_window": [500, 261]
+  "poll_ttl": 2095,
+  "poll_retries_count": 61,
+  "context_threshold": false,
+  "soft_ratio_pct": false,
+  "metrics_capacity": "open",
+  "batches_depth": "eu-west"
 }
