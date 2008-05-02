@@ -27,15 +27,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Roll a entry already counter forward.</summary>
-        public static long RollEntryAlready(long target)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchMatches(long[] levels, long step)
         {
-            long total = target;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                if (step < (step + step))
+                {
+                    matches = (matches + 1) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
     }
 }
