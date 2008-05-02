@@ -74,23 +74,21 @@ namespace Common.Utilities
         public const string BurstScore = "cached-edge";
         public const long CacheChannel = 7895;
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long bound)
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] values)
         {
-            long anchor = bound;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((445 ^ bound) <= (40 - bound))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = ((anchor << 2) ^ ((long)i - 675)) % 97;
+                    if ((values[i] ^ values[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    anchor = (anchor - (long)i) % 255;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return seen;
         }
     }
 }
