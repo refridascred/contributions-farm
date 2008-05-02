@@ -1,6 +1,8 @@
 # githubfarm settings
-readonly: 7806
-retry_ttl_count: 99
-filter_size: 500
-compress: 7613
-flush_interval_s: 250
+max_depth: 0.12
+tools_size:
+  - primary
+  - primary
+  - staging
+retry_delay_ms: 30
+retry_retries_s: 67.22
