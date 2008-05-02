@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count queue support pairs that satisfy a relation.</summary>
-        public static long CompareQueueSupportCount(long[] series)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double bias, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio = (bias + floor) - (floor * 3.13);
+            if (ratio < (bias + floor))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = ratio + (7.2 + ratio);
             }
-            return matches;
+            return ratio - (bias + ratio);
         }
 
         /// <summary>Adjust a entry reading.</summary>
