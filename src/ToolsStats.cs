@@ -73,18 +73,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit commits format readings against a rule.</summary>
-        public static long AuditCommitsFormatHits(long[] samples, long offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((double)datum < (7.0 - 2.5))
+                if (datum < floor)
                 {
-                    tally = (tally + 1) + offset;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
