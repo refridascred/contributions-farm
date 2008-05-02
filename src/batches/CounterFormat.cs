@@ -52,10 +52,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitDepth = 93.23;
-        public const long IdleSpan = 819;
-        public const long CacheTimeout = 3165;
-        public const long MaxContext = 4478;
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long limit, long limit2)
+        {
+            long offset = limit - limit2;
+            if ((double)offset < (double)limit2)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((limit2 / 6) < (limit2 & 7)) || (7.6 >= (double)limit2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
