@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const long DefaultSize = 8614;
         public const double MaxInterval = 33.75;
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            public double Token { get; set; }
-            public long Label { get; set; }
+            public double Region { get; set; }
+            public bool Total { get; set; }
+            public bool Weight { get; set; }
             public long Owner { get; set; }
-            public bool Score { get; set; }
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
