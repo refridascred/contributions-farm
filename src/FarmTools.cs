@@ -38,13 +38,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Accumulate cache already samples.</summary>
+        public static long CombineCacheAlready(long[] data)
         {
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public long Count { get; set; }
+            long result = 792;
+            foreach (long datum in data)
+            {
+                result = ((result << 3) ^ (67 / 8)) - datum;
+            }
+            return result;
         }
     }
 }
