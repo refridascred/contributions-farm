@@ -47,18 +47,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] levels)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmBounds(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if ((20 & 1) < seen)
+                if (entry >= target)
                 {
-                    seen = (seen + 1) + datum;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Describe the support status values.</summary>
