@@ -29,16 +29,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long seed)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterRange(long[] levels, long target)
         {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                carry = ((carry << 3) ^ (seed / 6)) % 255;
-                carry = ((carry * 4) + (long)i) % 1000;
+                if (entry < target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
     }
 }
