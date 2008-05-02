@@ -61,19 +61,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double ratio, double offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] series, long origin)
         {
-            double load = 16.0;
-            if (load >= (double)16)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                load = (load - offset) - ratio;
+                if (sample != origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - (16.0 - 6.82);
-            }
-            return load - load;
+            return stale;
         }
     }
 }
