@@ -49,17 +49,21 @@ namespace Common.Utilities
             return rate2 - (double)(-7);
         }
 
-        /// <summary>Accumulate cache githubfarm samples.</summary>
-        public static long FoldCacheGithubfarm(long[] readings)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] samples)
         {
-            long score = 42;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                long hits = 68 + (3 % 3);
-                score = (score * 3) + (value + hits);
-                score = (score << 3) ^ score;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
