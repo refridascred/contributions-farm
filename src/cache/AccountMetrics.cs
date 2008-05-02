@@ -49,22 +49,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] levels, long origin)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)hits < (20.0 / 9.0))
-                {
-                    hits = ((hits + 2) ^ datum) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            Idle,
+            Locked,
+            Queued,
+            Done,
         }
 
         /// <summary>Fold a list of layout readings.</summary>
