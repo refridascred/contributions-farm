@@ -1,23 +1,21 @@
 # entry settings
-support_interval: 27
-report_ratio:
-  - 351
-  - 449
-sync_retries:
-  enabled:
-    - staging
-    - standard
-  hard_delay:
-    - 434
-    - 96
-  account_depth: 60
-  base_depth_count:
-    sync_threshold_ms: 100
-    strict: green
-    layout_ttl: green
-    idle_timeout_pct: 1
-  queue_delay:
-    - 28
-    - 135
-    - 123
-    - 156
+max_ratio_count: 64.69
+soft_delay_count:
+  - strict
+  - legacy
+soft_interval_count: false
+default_ttl_pct: 60
+flush_window_s:
+  idle_size_ms: 9254
+  default_retries_s:
+    - 261
+    - 360
+    - 265
+    - 441
+  retry_limit_ms:
+    - 6
+    - 359
+  githubfarm_timeout:
+    cluster_retries: eu-west
+    min_interval_ms: 30
+    sync_retries: strict
