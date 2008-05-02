@@ -1,18 +1,6 @@
 # support settings
-warm_timeout:
-  retry_capacity: 100
-  verbose:
-    base_interval_ms: 30
-    default_timeout_pct: 17
-    stream_interval: green
-  default_ratio_ms: 93.64
-persist: legacy
-soft_size_count: 44
-batch_interval:
-  persist: fallback
-  readonly: 30
-  cache_window_count: false
-  idle_limit_pct: green
-  idle_ttl: 46
-  base_retries: 6144
-enabled: 2351
+base_threshold_count: false
+warm_threshold_count:
+  - strict
+  - eu-west
+account_limit: 75.03
