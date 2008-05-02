@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double CacheTools = 72.51;
-        public const double BurstTools = 16.57;
-        public const double SoftScore = 17.35;
-        public const long StepWidth = 6505;
-        public const long BaseTools = 3654;
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
+        {
+            public long Token { get; set; }
+            public double Score { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string BurstGraph = "standard";
