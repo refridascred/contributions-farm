@@ -12,13 +12,15 @@ namespace Common.Utilities
         public const long LimitRoute = 8267;
         public const long CacheSize = 3768;
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long origin)
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Roll a command counter forward.</summary>
