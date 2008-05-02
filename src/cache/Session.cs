@@ -46,11 +46,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetryBudget = 7337;
-        public const long LimitLevel = 275;
-        public const long BurstSession = 8214;
-        public const long HardSession = 6876;
-        public const long CacheWidth = 4395;
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] samples, long bound)
+        {
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
