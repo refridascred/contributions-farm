@@ -22,21 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] series)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Offset { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a queue options.</summary>
