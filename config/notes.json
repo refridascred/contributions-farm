@@ -1,7 +1,8 @@
 {
-  "sync_window_count": "local",
-  "audit": true,
-  "sync_delay_count": "edge",
-  "readonly": "green",
-  "warm_timeout_pct": 60
+  "compress": 30,
+  "burst_window_count": 13,
+  "retry_ratio_ms": [409, 317, 141],
+  "hard_depth_count": [29, 126],
+  "base_size_count": 33,
+  "soft_ttl": true
 }
