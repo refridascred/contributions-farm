@@ -67,23 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next payload checks value.</summary>
-        public static double ScalePayloadChecks(double ratio, double bias)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesBounds(long[] samples, long bound)
         {
-            double ratio2 = ratio * 1.02;
-            if (ratio2 <= (double)(-18))
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                ratio2 = ratio2 - (bias - bias);
+                if (reading >= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 + (6.0 / 4.0)) + (double)(long)i;
-            }
-            return ratio2 - (ratio2 - ratio2);
+            return valid;
         }
 
         /// <summary>Audit profile notes readings against a rule.</summary>
