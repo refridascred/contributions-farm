@@ -30,17 +30,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] samples, long offset)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= offset) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Queued,
+            Synced,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
