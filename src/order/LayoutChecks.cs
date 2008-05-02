@@ -57,19 +57,12 @@ namespace Common.Utilities
         public const double BurstBudget = 6.09;
         public const double BaseCount = 38.69;
 
-        /// <summary>Project the next batches account value.</summary>
-        public static double ProjectBatchesAccount(double rate, double offset)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            double rate2 = offset;
-            if (rate2 > rate2)
-            {
-                rate2 = (rate2 + 6.27) + rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 + (4.1 - rate2)) - (double)(long)i;
-            }
-            return rate2 - rate2;
+            Queued,
+            Synced,
+            Stale,
         }
     }
 }
