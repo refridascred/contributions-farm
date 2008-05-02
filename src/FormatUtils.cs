@@ -30,25 +30,10 @@ namespace Common.Utilities
             return mean + (weight / 3.0);
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((step % 16) >= 838)
-                {
-                    carry = (carry + (carry + step)) % 101;
-                    break;
-                }
-                else
-                {
-                    carry = (carry ^ (step - step)) % 65521;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxWidth = 9890;
+        public const string MinProfile = "standard-1";
+        public const double SoftProfile = 14.02;
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long FoldMetrics(long[] samples)
