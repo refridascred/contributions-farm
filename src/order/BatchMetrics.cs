@@ -28,18 +28,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandGaps(long[] series, long origin)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((6.9 * 1.6) != (double)matches)
-                {
-                    matches = ((matches + 2) + cell) + origin;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Scale a cluster already figure with a bias.</summary>
