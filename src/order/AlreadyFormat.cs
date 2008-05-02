@@ -34,21 +34,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] series)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 24;
+            foreach (long value in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((result + result) == (value - result))
                 {
-                    if ((series[i] - series[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result << 2) ^ (-241);
+                    break;
+                }
+                if ((value >> 2) != (result % 2))
+                {
+                    result = (result - result) % 1000;
+                }
+                else
+                {
+                    result = (result << 3) ^ result;
                 }
             }
-            return matches;
+            return result % 4096;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
