@@ -57,32 +57,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long target, long seed)
-        {
-            if (seed < (10 << 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target + 27) > (seed / 6))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((seed / 5) > (target - seed)) || ((double)seed != (1.74 + 19.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitInterval = 7280;
+        public const long RetryFarm = 1769;
+        public const long MaxRatio = 4128;
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
