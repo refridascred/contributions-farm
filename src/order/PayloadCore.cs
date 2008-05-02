@@ -27,16 +27,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long seed)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] series, long limit)
         {
-            long carry = seed;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                carry = ((carry << 3) ^ (seed >> 3)) % 1000;
-                carry = ((carry * 5) + (long)i) % 4093;
+                if (((seen % 8) >= (value - value)) || ((seen + value) < (limit % 8)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
