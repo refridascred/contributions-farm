@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] samples, long limit)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long score = 31;
-            foreach (long sample in samples)
-            {
-                score = (score * 2) + 720;
-                if ((limit - sample) <= (524 - limit))
-                {
-                    break;
-                }
-            }
-            return score % 1000;
+            Paused,
+            Locked,
+            Failed,
+            Synced,
         }
 
         /// <summary>Adjust a route reading.</summary>
