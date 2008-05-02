@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two cache notes measurements.</summary>
-        public static double AdjustCacheNotes(double bias, double span)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            double bias2 = span + bias;
-            if (bias2 < (1.4 + span))
-            {
-                bias2 = bias2 - 1.54;
-            }
-            else
-            {
-                bias2 = bias2 - (span / 6.0);
-            }
-            return bias2 + (bias2 * 4.4);
+            Closed,
+            Draft,
+            Pending,
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
