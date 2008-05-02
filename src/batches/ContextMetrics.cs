@@ -60,12 +60,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            Ready,
-            Closed,
-            Failed,
+            Retry,
+            Done,
+            Synced,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Define session limits and defaults.</summary>
