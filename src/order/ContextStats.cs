@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] samples)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Flag { get; set; }
+            public double Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
