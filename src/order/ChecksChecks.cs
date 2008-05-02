@@ -19,12 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BatchBatches = 6.91;
-        public const long BaseCount = 7852;
-        public const long MinBatches = 994;
-        public const long WindowBatches = 5902;
-        public const string BurstWidth = "legacy";
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double rate, double offset)
+        {
+            double weight = (double)(298 - 620);
+            if (weight > rate)
+            {
+                weight = weight + weight;
+            }
+            else
+            {
+                weight = weight + (weight * 7.1);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - (weight - rate)) + (double)(long)i;
+            }
+            return weight - offset;
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long WeighReport(long[] values)
