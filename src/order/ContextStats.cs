@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            Closed,
-            Draft,
-            Pending,
+            public double Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
