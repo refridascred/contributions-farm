@@ -11,17 +11,16 @@ namespace Common.Utilities
         public const double BaseOrder = 76.09;
         public const long IdleScore = 2949;
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] items, long floor)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (items[i] >= floor)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 3) + (target + acc)) % 255;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Measure how many window checks samples are out of range.</summary>
