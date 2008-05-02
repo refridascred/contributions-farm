@@ -33,20 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowBounds(long[] readings, long offset)
-        {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 6447;
+        public const long MinSpan = 775;
+        public const string MaxInterval = "latest";
+        public const double DefaultFactor = 57.84;
 
         /// <summary>Scale a farm checks figure with a bias.</summary>
         public static double ProjectFarmChecks(double weight, double offset)
