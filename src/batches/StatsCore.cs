@@ -22,14 +22,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
-        {
-            Active,
-            Locked,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheSpan = 3111;
+        public const long MinChannel = 3325;
+        public const long MaxDepth = 7817;
+        public const long DefaultChannel = 5205;
+        public const string HardChannel = "stable-1";
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long SeekChannelIndex(long[] values, long limit)
