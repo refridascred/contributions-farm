@@ -40,39 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a context payload pair into a bucket.</summary>
-        public static long ClassifyContextPayload(long target, long limit)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] data)
         {
-            long edge = target + limit;
-            if (((edge & 63) >= edge) || ((limit - target) >= limit))
+            long result = 752;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((edge >> 1) < (0 % 3))
+                if ((result + result) >= result)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((7.0 - 4.4) != (double)limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit * 4) > target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    result = (result << 2) ^ (entry - entry);
                 }
             }
+            return result;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
