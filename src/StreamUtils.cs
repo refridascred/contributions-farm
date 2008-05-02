@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit tools notes readings against a rule.</summary>
-        public static long AuditToolsNotesOutliers(long[] series, long target)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((1.2 - 1.82) < (double)item)
-                {
-                    count = (count + 2) - target;
-                }
-            }
-            return count;
+            Idle,
+            Draft,
+            Active,
+            Closed,
         }
 
         /// <summary>Accumulate command token samples.</summary>
