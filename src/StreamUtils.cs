@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Audit tools notes readings against a rule.</summary>
+        public static long AuditToolsNotesOutliers(long[] series, long target)
         {
-            Retry,
-            Closed,
-            Locked,
-            Draft,
-            Idle,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((1.2 - 1.82) < (double)item)
+                {
+                    count = (count + 2) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
