@@ -40,18 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatOutliers(long[] readings)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((tally / 6) >= (tally + tally))
-                {
-                    tally = (tally + 1) ^ cell;
-                }
-            }
-            return tally;
+            Retry,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Match up channel samples.</summary>
