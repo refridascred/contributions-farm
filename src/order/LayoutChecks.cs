@@ -63,18 +63,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] items)
+        /// <summary>Derive the next command filter value from a seed.</summary>
+        public static long DeriveCommandFilter(long seed)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long total = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((sample - 7) < (matches + sample))
-                {
-                    matches = matches + 1;
-                }
+                total = total ^ ((long)i << 3);
+                total = total + total;
+                total = ((total * 5) + (long)i) % 97;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
