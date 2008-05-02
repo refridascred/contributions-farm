@@ -1,8 +1,11 @@
 # support settings
-notes_capacity:
-  - local
-  - strict
-  - local
-readonly: false
-retry_depth_ms: 969
-burst_threshold_count: latest
+idle_interval_pct: 30
+readonly: 98
+min_delay:
+  max_retries_ms: 82
+  batch_interval_pct: 30
+  dry_run: true
+  batch_ratio: 1024
+  readonly: blue
+strict: primary
+base_window_s: false
