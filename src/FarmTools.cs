@@ -24,11 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a order support figure with a bias.</summary>
-        public static double SmoothOrderSupport(double bias, double floor)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            double load = (double)4;
-            return ((load + 14.0) + bias) + floor;
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Score { get; set; }
         }
     }
 }
