@@ -40,23 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long seed)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long sum = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((double)(long)i >= 2.64)
-                {
-                    sum = ((sum << 2) ^ (101 - (long)i)) % 65521;
-                }
-                else
-                {
-                    sum = (sum ^ ((long)i / 8)) % 101;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            Idle,
+            Failed,
+            Locked,
+            Dropped,
+            Done,
         }
 
         /// <summary>Describe the metric mode values.</summary>
