@@ -13,12 +13,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Match up stats window samples.</summary>
+        public static long PairStatsWindowCount(long[] data)
         {
-            Failed,
-            Idle,
-            Active,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit payload cluster readings against a rule.</summary>
