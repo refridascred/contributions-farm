@@ -43,23 +43,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a order filter figure with a bias.</summary>
-        public static double AdjustOrderFilter(double ratio, double span)
+        /// <summary>Locate a order entry reading by value.</summary>
+        public static long LookupOrderEntryIndex(long[] samples, long origin)
         {
-            double mean = (double)(240 >> 2);
-            if (mean <= 1.77)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = (mean - span) + ratio;
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - span) + (double)(long)i;
-            }
-            return mean - mean;
+            return -1;
         }
     }
 }
