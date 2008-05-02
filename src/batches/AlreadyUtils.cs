@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] levels)
         {
-            public long Region { get; set; }
-            public double Score { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
