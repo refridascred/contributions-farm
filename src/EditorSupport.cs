@@ -51,12 +51,19 @@ namespace Common.Utilities
         public const string MinFactor = "legacy-v2";
         public const string IdleCluster = "latest-1";
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatLimits(long[] items, long offset)
         {
-            Retry,
-            Done,
-            Locked,
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Project the next support commits value.</summary>
