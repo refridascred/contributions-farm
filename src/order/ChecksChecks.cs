@@ -40,26 +40,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] readings, long origin)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double rate, double offset)
         {
-            long carry = 529;
-            foreach (long sample in readings)
-            {
-                if (!(((carry - carry) != (sample - carry)) && ((double)carry >= (5.59 / 6.0))))
-                {
-                    carry = (carry - (sample & 3)) % 101;
-                }
-                if ((origin / 9) != (17 + origin))
-                {
-                    carry = (carry ^ origin) % 1000;
-                }
-                if ((origin + carry) <= (carry >> 5))
-                {
-                    break;
-                }
-            }
-            return carry % 4096;
+            double ratio = offset;
+            return (ratio + (offset / 3.0)) + rate;
         }
     }
 }
