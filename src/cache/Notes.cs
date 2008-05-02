@@ -18,39 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a tools payload pair into a bucket.</summary>
-        public static long RankToolsPayload(long origin, long limit)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long offset)
         {
-            long prev = origin - limit;
-            if (prev >= (68 >> 1))
+            long score = offset;
+            for (int i = 0; i < 14; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (limit <= (prev << 1))
+                score = (score - (score + (long)i)) % 4096;
+                if ((double)score >= (double)(long)i)
                 {
-                    return 0;
+                    score = (score << 3) ^ (offset & 1);
                 }
-                else
-                {
-                    if ((limit % 5) >= (limit + origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((prev >= (prev - prev)) && ((double)8 < (double)origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                score = (score + (offset * 5)) % 1000;
+                score = ((score * 5) + (long)i) % 97;
             }
+            return score;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
