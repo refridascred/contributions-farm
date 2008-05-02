@@ -1,6 +1,17 @@
 {
-  "warm_timeout_ms": ["latest", "staging", "primary", "strict"],
-  "token_threshold": 80.73,
-  "burst_interval_ms": 1067,
-  "idle_ttl_count": 70.27
+  "hard_retries_s": 31,
+  "poll_threshold": {
+    "hard_depth_ms": [373, 485],
+    "persist": "cached",
+    "report_limit": 1024
+  },
+  "strict": 100,
+  "already_timeout": 4368,
+  "sync_size": {
+    "soft_retries": 56,
+    "account_capacity": "cached",
+    "counter_threshold": "legacy",
+    "poll_window_count": 2321
+  },
+  "default_size_s": true
 }
