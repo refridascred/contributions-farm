@@ -1,6 +1,25 @@
 {
-  "retry_depth": 3259,
-  "batch_interval_count": [40, 320, 285],
-  "commits_threshold": "fallback",
-  "account_size": 38.29
+  "burst_limit_count": {
+    "account_ratio": "legacy",
+    "base_ttl_pct": {
+      "default_threshold_ms": true,
+      "max_retries_s": ["green", "standard", "staging"],
+      "retry_capacity_count": false
+    },
+    "compress": 1991,
+    "soft_limit_count": true
+  },
+  "batch_capacity": "strict",
+  "verbose": {
+    "profile_ratio": 30,
+    "layout_limit": {
+      "verbose": "edge",
+      "max_ratio_pct": true,
+      "compress": "legacy"
+    },
+    "default_timeout_count": [322, 213, 326, 388],
+    "cache_depth_ms": "fallback",
+    "burst_capacity_s": 3348,
+    "burst_capacity_ms": false
+  }
 }
