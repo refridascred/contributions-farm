@@ -26,13 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] samples, long offset)
         {
-            Locked,
-            Done,
-            Draft,
-            Idle,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > offset) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a layout header.</summary>
