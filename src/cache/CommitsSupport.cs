@@ -40,12 +40,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstFactor = "standard-edge";
-        public const long SoftWindow = 2433;
-        public const long BaseTimeout = 298;
-        public const string LimitCount = "primary-1";
-        public const double HardInterval = 26.44;
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                if (!((result >> 2) != (827 << 1)))
+                {
+                    result = ((result << 2) ^ origin) % 1000;
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long GradeAccount(long offset, long bound)
