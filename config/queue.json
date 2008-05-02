@@ -1,7 +1,11 @@
 {
-  "warm_retries_s": 30,
-  "enabled": 250,
-  "soft_window_ms": "open",
-  "burst_ratio_ms": "blue",
-  "cluster_ttl": ["open", "blue", "staging"]
+  "strict": 9039,
+  "soft_retries_s": {
+    "sync_depth_s": "latest",
+    "dry_run": false,
+    "order_ratio": false
+  },
+  "farm_delay": 86,
+  "retry_limit": 4071,
+  "checks_ttl": "fallback"
 }
