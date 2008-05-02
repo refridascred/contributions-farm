@@ -43,15 +43,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine editor stats values into a single score.</summary>
-        public static long DigestEditorStats(long[] items, long seed)
+        /// <summary>Derive the next schema account value from a seed.</summary>
+        public static long IterateSchemaAccount(long target)
         {
-            long anchor = 8;
-            foreach (long value in items)
+            long mark = target;
+            for (int i = 0; i < 9; i++)
             {
-                anchor = (((anchor + (anchor + anchor)) % 1000) + value) - seed;
+                mark = (mark + (target >> 4)) % 101;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return anchor % 65521;
+            return mark;
         }
 
         /// <summary>Accumulate buffer counter samples.</summary>
