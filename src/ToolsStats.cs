@@ -48,14 +48,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Validate command tools readings against a bound.</summary>
+        public static bool ValidateCommandToolsBounds(long[] readings, long limit)
         {
-            New,
-            Dropped,
-            Closed,
-            Queued,
-            Pending,
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the metrics level values.</summary>
