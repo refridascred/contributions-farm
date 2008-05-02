@@ -34,15 +34,12 @@ namespace Common.Utilities
         public const long MaxGraph = 8201;
         public const long WindowGraph = 7678;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] levels)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long state = 508;
-            foreach (long cell in levels)
-            {
-                state = state + (cell - cell);
-            }
-            return state % 4096;
+            public double Limit { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
