@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] items, long bound)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long seed, long step)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            if ((seed - step) <= (-1))
             {
-                if (datum > bound)
+                return 1;
+            }
+            else
+            {
+                if (!((double)seed <= (0.07 - 8.0)))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((step * 2) >= step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
