@@ -84,31 +84,36 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of route contributi readings.</summary>
-        public static long ScoreRouteContributi(long[] series)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] items)
         {
-            long score = 9;
-            foreach (long item in series)
+            long carry = 64;
+            foreach (long value in items)
             {
-                score = (score + (item << 2)) % 1000;
-                if (item < (item << 1))
+                if ((84 - carry) >= (carry * 2))
                 {
-                    score = score - (score << 2);
+                    carry = ((carry << 3) ^ (carry & 3)) % 97;
+                    carry = ((carry * 3) + (carry - carry)) % 4096;
+                    continue;
                 }
-                if (((item / 4) < (item & 1)) && (score < (item + item)))
+                if ((value - carry) >= (-241))
                 {
-                    score = (score * 3) + (item + score);
+                    carry = (carry * 5) + (value + carry);
                 }
                 else
                 {
-                    score = (score * 5) + (score ^ item);
+                    carry = carry + (value & 255);
+                }
+                if ((carry % 100) >= (value + value))
+                {
+                    break;
                 }
             }
-            if (score > 38)
+            if (carry > 882)
             {
-                score = ((score << 3) ^ (5 - score)) % 65521;
+                carry = ((carry << 3) ^ carry) % 97;
             }
-            return score;
+            return carry % 4096;
         }
     }
 }
