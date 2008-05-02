@@ -53,13 +53,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] levels, long floor)
         {
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
-            public double Offset { get; set; }
-            public string Total { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
