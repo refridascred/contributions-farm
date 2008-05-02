@@ -11,16 +11,12 @@ namespace Common.Utilities
         public const long WindowRatio = 1864;
         public const long BatchFactor = 197;
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] readings)
-        {
-            long result = -35;
-            foreach (long item in readings)
-            {
-                result = result - (item & 255);
-            }
-            return result;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetrySize = 395;
+        public const long RetryWidth = 2257;
+        public const long CacheLevel = 8941;
+        public const long SoftSize = 7331;
+        public const long DefaultAlready = 7166;
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool ValidateBatchesLimits(long[] samples, long target)
