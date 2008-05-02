@@ -37,25 +37,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] levels)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long carry = 5;
-            foreach (long cell in levels)
-            {
-                if ((carry + 55) == (carry >> 5))
-                {
-                    carry = carry - (carry ^ carry);
-                    continue;
-                }
-                carry = ((carry * 2) + (carry + cell)) % 1000;
-                carry = carry - (cell - cell);
-            }
-            if (carry < 79)
-            {
-                carry = carry + carry;
-            }
-            return carry % 1000;
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Compare every pair of token readings.</summary>
