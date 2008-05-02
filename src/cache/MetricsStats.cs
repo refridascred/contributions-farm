@@ -30,20 +30,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long offset)
+        /// <summary>Project the next format channel value.</summary>
+        public static double ScaleFormatChannel(double scale, double bias)
         {
-            long result = offset;
-            for (int i = 0; i < 16; i++)
+            double gain = (double)(18 << 1);
+            if (gain <= scale)
             {
-                if ((offset > (offset - offset)) && (((long)i + result) <= result))
-                {
-                    result = (result + result) % 1000;
-                    result = result + (result * 4);
-                }
-                result = ((result * 3) + (long)i) % 97;
+                gain = gain - (gain + gain);
             }
-            return result;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain - bias;
         }
 
         /// <summary>Derive the next schema account value from a seed.</summary>
