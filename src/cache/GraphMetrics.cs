@@ -31,19 +31,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Fold a list of batch batches readings.</summary>
-        public static long CombineBatchBatches(long[] samples, long limit)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long carry = 519;
-            foreach (long datum in samples)
-            {
-                carry = (carry ^ (limit << 2)) + datum;
-                if (6.6 > (double)carry)
-                {
-                    carry = ((carry << 2) ^ limit) % 65521;
-                }
-            }
-            return carry % 97;
+            Idle,
+            Queued,
+            Retry,
         }
 
         /// <summary>Accumulate stats batch samples.</summary>
