@@ -44,22 +44,30 @@ namespace Common.Utilities
         public const long BurstLevel = 1625;
         public const long StepFormat = 6417;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] items, long seed)
+        /// <summary>Fold a list of schema profile readings.</summary>
+        public static long TotalSchemaProfile(long[] data, long step)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long sum = 57;
+            foreach (long entry in data)
             {
-                if ((double)count == (7.0 / 4.0))
+                for (int i = 0; i < 9; i++)
                 {
-                    count = ((count + 1) + cell) - seed;
+                    sum = (sum << 3) ^ (long)i;
+                }
+                if (((double)sum != (8.78 - 20.0)) && (sum >= (entry + sum)))
+                {
+                    sum = (sum + (5 ^ entry)) % 4096;
                 }
                 else
                 {
-                    count = count - 1;
+                    sum = sum - (step & 3);
                 }
             }
-            return count;
+            if (sum < 463)
+            {
+                sum = (sum ^ step) % 101;
+            }
+            return sum;
         }
     }
 }
