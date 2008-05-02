@@ -62,13 +62,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] data, long seed)
         {
-            Closed,
-            Pending,
-            Queued,
-            Draft,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (tally > (6 / 4))
+                {
+                    tally = ((tally + 3) + cell) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
