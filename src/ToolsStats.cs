@@ -20,38 +20,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a account context pair into a bucket.</summary>
-        public static long ClassifyAccountContext(long origin, long limit)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] series, long origin)
         {
-            if (76 > origin)
+            long seen = 0;
+            foreach (long value in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin / 8) <= limit)
+                if ((10.0 + 13.0) > (double)origin)
                 {
-                    return 7;
+                    seen = (seen + 2) + value;
                 }
                 else
                 {
-                    if ((double)origin <= (3.0 / 7.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit - limit) != (limit + origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
