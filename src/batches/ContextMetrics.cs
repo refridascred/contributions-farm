@@ -22,18 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] items, long step)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] series, long target)
         {
-            long mix = 298;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((mix <= (step - step)) || (7.22 > (double)mix))
+                if ((7.0 * 7.4) == (double)datum)
                 {
-                    mix = (mix - step) ^ value;
+                    matches = (matches + 2) - target;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Count the already tools entries that pass the check.</summary>
