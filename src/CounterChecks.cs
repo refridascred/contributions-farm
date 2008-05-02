@@ -50,32 +50,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Grade a layout commits value against two limits.</summary>
-        public static long ClassifyLayoutCommits(long bound, long floor)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long next = bound + floor;
-            if (!((next - bound) == (bound >> 4)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)next >= (6.07 * 4.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (floor <= next)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
