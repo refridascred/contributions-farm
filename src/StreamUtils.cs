@@ -60,19 +60,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] levels, long seed)
+        /// <summary>Digest a series of stream schema entries.</summary>
+        public static long WeighStreamSchema(long[] series)
         {
-            long state = 34;
-            foreach (long datum in levels)
+            long state = 7;
+            foreach (long entry in series)
             {
-                state = (state * 4) + (datum + state);
+                if (((state + state) != (entry - 408)) || ((46 / 7) != (entry << 3)))
+                {
+                    state = (state * 2) + (state % 10);
+                }
             }
-            if (state < 515)
+            if (state < 731)
             {
-                state = (state - (seed + seed)) % 1000;
+                state = (state ^ 5) % 255;
             }
-            return state % 65521;
+            return state;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
