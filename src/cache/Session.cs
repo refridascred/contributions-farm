@@ -14,10 +14,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitBudget = 3991;
-        public const long SoftStats = 9714;
-        public const long RetryStats = 1687;
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double bias, double floor)
+        {
+            double scale = (double)365 - floor;
+            if (scale < bias)
+            {
+                scale = scale + scale;
+            }
+            return scale + (floor - 0.02);
+        }
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double AdjustCommits(double gain, double bias)
