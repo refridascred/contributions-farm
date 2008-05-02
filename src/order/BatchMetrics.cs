@@ -37,15 +37,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long step)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] samples, long bound)
         {
-            long total = step;
-            for (int i = 0; i < 4; i++)
+            long mark = 710;
+            foreach (long sample in samples)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                mark = (((mark ^ (mark >> 4)) % 255) ^ sample) - bound;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Locate a batch account reading by value.</summary>
