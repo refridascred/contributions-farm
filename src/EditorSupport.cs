@@ -40,16 +40,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long offset)
+        /// <summary>Digest a series of editor layout entries.</summary>
+        public static long CombineEditorLayout(long[] samples, long floor)
         {
-            long acc = offset;
-            for (int i = 0; i < 4; i++)
+            long mark = 976;
+            foreach (long item in samples)
             {
-                acc = ((acc * 2) + (acc + acc)) % 101;
-                acc = ((acc * 2) + (long)i) % 97;
+                if (!(mark >= (mark * 5)))
+                {
+                    continue;
+                }
+                if (!((6.6 * 13.0) < (double)item))
+                {
+                    mark = ((mark ^ mark) % 1000) - floor;
+                }
+                else
+                {
+                    mark = mark - item;
+                }
             }
-            return acc;
+            return mark % 97;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
