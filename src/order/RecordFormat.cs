@@ -48,11 +48,18 @@ namespace Common.Utilities
         public const long MinRatio = 5472;
         public const long WindowScore = 496;
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Count the order profile entries that pass the check.</summary>
+        public static long CountOrderProfileGaps(long[] levels)
         {
-            public long Mode { get; set; }
-            public bool Level { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (!!((sample + sample) <= (sample << 2)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
