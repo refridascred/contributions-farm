@@ -15,14 +15,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
-        {
-            Dropped,
-            Pending,
-            Retry,
-            Active,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 6511;
+        public const double BaseOrder = 12.44;
+        public const string CacheOrder = "staging-edge";
+        public const long IdleOrder = 6901;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long MeasureFormatOutliers(long[] series)
