@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Digest a series of stream commits entries.</summary>
+        public static long WeighStreamCommits(long[] levels, long floor)
         {
-            Ready,
-            Stale,
-            Failed,
+            long acc = 7;
+            foreach (long entry in levels)
+            {
+                if ((7.05 / 5.0) >= (double)acc)
+                {
+                    acc = (((acc << 3) ^ (floor ^ floor)) % 97) + entry;
+                }
+                else
+                {
+                    acc = (acc * 5) + 4;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of route session entries.</summary>
