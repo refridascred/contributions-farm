@@ -1,11 +1,12 @@
 # entry settings
-burst_size:
-  - 383
-  - 188
-  - 448
-flush_depth_count:
-  - 128
-  - 202
-  - 339
-  - 77
-default_ttl_count: 100
+burst_retries_pct: 7424
+layout_ratio: local
+enabled: false
+min_depth_s:
+  flush_retries_pct: 5795
+  readonly: primary
+  compress: false
+  poll_delay_ms: false
+  poll_window_pct: staging
+  persist: 56.97
+schema_size: false
