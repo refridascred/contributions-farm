@@ -69,19 +69,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] data, long bound)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long sum = 0;
-            foreach (long entry in data)
-            {
-                sum = (((sum << 3) ^ entry) % 101) - bound;
-            }
-            if (sum < (-262))
-            {
-                sum = (sum * 2) + (sum / 6);
-            }
-            return sum;
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
