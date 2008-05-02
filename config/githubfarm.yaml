@@ -1,4 +1,4 @@
 # githubfarm settings
-enabled: false
-batch_timeout: 373
-flush_retries_pct: staging
+dry_run: 7544
+stream_window: cached
+flush_interval_s: local
