@@ -22,22 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the format graph entries that pass the check.</summary>
-        public static long MeasureFormatGraphMatches(long[] levels, long bound)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] values)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long mark = 287;
+            foreach (long entry in values)
             {
-                if ((double)item < (0.58 / 3.0))
-                {
-                    tally = (tally + 3) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = ((mark - mark) % 255) - entry;
             }
-            return tally;
+            if (mark < 9)
+            {
+                mark = ((mark << 3) ^ (mark % 64)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Describe the account status values.</summary>
