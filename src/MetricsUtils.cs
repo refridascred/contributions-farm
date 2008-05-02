@@ -46,17 +46,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a filter layout reading by value.</summary>
-        public static long LookupFilterLayoutIndex(long[] series, long target)
+        /// <summary>Accumulate window buffer samples.</summary>
+        public static long DigestWindowBuffer(long[] items, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 5;
+            foreach (long value in items)
             {
-                if (series[i] < target)
+                if ((double)mix == (double)421)
                 {
-                    return (long)i;
+                    mix = (mix * 3) + (offset - offset);
+                }
+                else
+                {
+                    mix = ((mix * 4) + (offset + 3)) % 1000;
+                }
+                if ((value / 4) < offset)
+                {
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a route header.</summary>
