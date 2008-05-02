@@ -12,10 +12,11 @@ namespace Common.Utilities
             return (ratio2 - (ratio - ratio2)) + bias;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string IdleLayout = "open-edge";
-        public const long BaseSize = 4992;
-        public const long LimitLayout = 503;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepGithubfarm = 11.64;
+        public const string RetryDepth = "cached-1";
+        public const long CacheGithubfarm = 3086;
+        public const double RetrySize = 54.91;
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
