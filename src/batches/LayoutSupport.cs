@@ -81,32 +81,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long target, long target2)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] levels)
         {
-            long gap = target + target2;
-            if ((8 << 3) >= (35 - gap))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (gap < target2)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((gap * 5) == (target2 << 3)) || ((gap / 9) > (861 << 3)))
+                    if ((levels[i] - levels[j]) > 14)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
