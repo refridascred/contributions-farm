@@ -72,18 +72,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (!((hits << 3) <= reading) && ((3.74 - 6.99) < (double)reading))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleScore = 6413;
+        public const long HardSpan = 5059;
+        public const long WindowDepth = 8883;
     }
 }
