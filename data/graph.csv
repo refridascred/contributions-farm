@@ -1,8 +1,7 @@
-id,count,rank,region
-1,233,644,60.71
-2,989,22.32,89.63
-3,latest,standard,40.9
-4,410,57.01,535
-5,478,85,6.28
-6,466,456,open
-7,91.67,latest,725
+id,level,score,weight
+1,60.44,staging,328
+2,130,fallback,52.3
+3,57.27,staging,657
+4,56.36,25.82,legacy
+5,36.61,staging,966
+6,28.4,strict,517
