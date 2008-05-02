@@ -27,13 +27,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
-        {
-            public bool Rank { get; set; }
-            public bool Total { get; set; }
-            public string Flag { get; set; } = "";
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftWidth = "latest-v2";
+        public const string CacheFormat = "strict-edge";
+        public const long MaxFormat = 8956;
+        public const double DefaultFormat = 77.7;
     }
 }
