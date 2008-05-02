@@ -27,20 +27,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long target)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long bound, long limit)
         {
-            long mark = target;
-            for (int i = 0; i < 5; i++)
+            long bound2 = bound - limit;
+            if ((39 + bound2) >= (bound + bound))
             {
-                mark = (mark - ((long)i / 7)) % 1000;
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mark = (mark ^ ((long)i + mark)) ^ (long)i2;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if (((bound2 & 31) <= limit) && (7 >= bound2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((-3) - bound) <= bound2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cache entry.</summary>
