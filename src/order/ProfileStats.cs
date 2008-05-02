@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] data)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long seed, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((bound - bound) == (bound * 3))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((bound <= (bound - (-67))) && ((91 & 7) <= seed))
                 {
-                    if ((data[i] - data[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the metric class values.</summary>
