@@ -1,17 +1,5 @@
 {
-  "persist": ["fallback", "primary"],
-  "dry_run": "stable",
-  "max_size_s": ["strict", "eu-west"],
-  "command_retries": {
-    "base_retries_count": {
-      "strict": 21.21,
-      "profile_threshold": "cached",
-      "flush_delay_count": "fallback",
-      "warm_timeout": 250
-    },
-    "readonly": 1024,
-    "audit": "green"
-  },
-  "compress": 20,
-  "idle_timeout_s": 60
+  "cache_limit": "local",
+  "base_ttl_s": "stable",
+  "window_timeout": "edge"
 }
