@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count payload githubfarm pairs that satisfy a relation.</summary>
-        public static long ComparePayloadGithubfarmCount(long[] values)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double ratio, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double ratio2 = (double)((-4) & 255);
+            return (ratio2 - (ratio - ratio2)) + bias;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
