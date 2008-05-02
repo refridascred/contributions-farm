@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long floor, long floor2)
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double scale, double bias)
         {
-            if ((floor << 3) < floor2)
+            double scale2 = scale;
+            if (scale2 >= (double)199)
             {
-                return 2;
+                scale2 = scale2 - scale2;
             }
             else
             {
-                if (floor < (floor2 / 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((double)floor2 > (double)(-26)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                scale2 = scale2 - (7.6 / 7.0);
             }
+            for (int i = 0; i < 6; i++)
+            {
+                scale2 = (scale2 + bias) + (double)(long)i;
+            }
+            return scale2 - scale;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
