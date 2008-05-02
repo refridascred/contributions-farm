@@ -27,21 +27,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Compare every pair of format queue readings.</summary>
-        public static long PairFormatQueueCount(long[] items)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] values, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (values[i] <= origin)
                 {
-                    if ((items[i] - items[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the session level values.</summary>
