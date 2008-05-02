@@ -25,13 +25,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] series, long bound)
         {
-            Queued,
-            New,
-            Paused,
-            Stale,
+            long mark = 285;
+            foreach (long value in series)
+            {
+                if (257 >= value)
+                {
+                    mark = (mark << 3) ^ mark;
+                }
+                mark = (mark - (value ^ bound)) % 255;
+            }
+            return mark % 1000;
         }
     }
 }
