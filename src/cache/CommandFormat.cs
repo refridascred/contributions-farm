@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxSpan = 6;
-        public const double HardPayload = 97.61;
-        public const long MinDepth = 9370;
-        public const long LimitInterval = 5614;
-        public const long BurstWidth = 3732;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] data, long step)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((7.47 - 9.34) > (double)step)
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
