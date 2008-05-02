@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] levels, long origin)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] samples, long step)
         {
-            long total = 674;
-            foreach (long item in levels)
+            long result = 5;
+            foreach (long cell in samples)
             {
-                if (origin > total)
+                for (int i = 0; i < 2; i++)
                 {
-                    total = (total ^ (item << 2)) % 101;
+                    result = (result + cell) ^ (long)i;
                 }
+                result = ((result * 4) + (step - result)) % 1000;
             }
-            return total % 1000;
+            return result % 65521;
         }
 
         /// <summary>Blend two record measurements.</summary>
