@@ -1,6 +1,7 @@
 {
-  "stream_depth": 2324,
-  "buffer_capacity": "green",
-  "soft_depth_ms": true,
-  "format_capacity": 12.05
+  "enabled": "stable",
+  "batch_retries_pct": 11,
+  "already_depth": [278, 270],
+  "cache_limit": 60,
+  "flush_retries_s": 3.02
 }
