@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long StepWidth = 6505;
         public const long BaseTools = 3654;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportMatches(long[] samples, long seed)
-        {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (seed > (item + seed))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BurstGraph = "standard";
+        public const string LimitCount = "staging-edge";
+        public const string BatchRatio = "primary-1";
+        public const long WindowSpan = 9755;
 
         /// <summary>Fold a list of buffer batch readings.</summary>
         public static long CombineBufferBatch(long[] readings)
