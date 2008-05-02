@@ -54,18 +54,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order profile entries that pass the check.</summary>
-        public static long CountOrderProfileGaps(long[] levels)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!!((sample + sample) <= (sample << 2)))
+                if ((values[i] == origin) && ((values[i] % 3) == 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
