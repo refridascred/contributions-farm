@@ -1,7 +1,14 @@
 {
-  "readonly": 60,
-  "flush_capacity_s": false,
-  "max_threshold_pct": true,
-  "account_interval": 5.44,
-  "support_window": true
+  "batch_timeout_count": ["primary", "strict", "primary", "blue"],
+  "min_limit": false,
+  "report_size": 500,
+  "retry_ttl_ms": {
+    "compress": ["primary", "fallback", "local"],
+    "schema_ratio": "fallback",
+    "batch_ttl": 30,
+    "default_ttl": "fallback",
+    "batch_threshold_s": "legacy",
+    "warm_size_count": "edge"
+  },
+  "compress": true
 }
