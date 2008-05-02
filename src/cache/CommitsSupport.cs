@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a entry report value against two limits.</summary>
-        public static long RankEntryReport(long seed, long bound)
-        {
-            long offset = seed ^ bound;
-            if ((1.0 - 2.0) != (double)seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed - seed) == (offset / 6))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((5.6 * 2.9) > (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 8267;
+        public const double WindowContext = 65.96;
+        public const long HardTimeout = 5352;
+        public const double SoftContext = 31.75;
+        public const long BurstTimeout = 1806;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long WeighProfile(long[] data)
