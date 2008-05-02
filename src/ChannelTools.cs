@@ -13,12 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 8248;
-        public const double RetryBudget = 76.45;
-        public const long MaxMetrics = 298;
-        public const double RetryScore = 35.7;
-        public const double WindowTimeout = 98.5;
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long CountToolsGaps(long[] samples)
