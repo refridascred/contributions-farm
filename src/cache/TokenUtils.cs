@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long target)
         {
-            public long Rank { get; set; }
-            public bool Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Limit { get; set; }
+            long acc = target;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = acc ^ target;
+                acc = acc - 8;
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
