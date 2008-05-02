@@ -65,11 +65,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandOutliers(long[] levels)
         {
-            public long Region { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((seen + 560) < (value + (long)levels.Length))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
