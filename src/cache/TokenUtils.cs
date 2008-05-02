@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            Synced,
-            Retry,
             Ready,
+            Stale,
+            Failed,
         }
 
         /// <summary>Digest a series of route session entries.</summary>
