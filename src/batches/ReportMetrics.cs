@@ -23,15 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] readings, long bound)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] samples)
         {
             long seen = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)bound < (15.0 + 9.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 3) ^ datum;
+                    if ((samples[i] ^ samples[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
