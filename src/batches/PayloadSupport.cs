@@ -31,12 +31,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] samples, long origin)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] readings, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (samples[i] <= origin)
+                if (readings[i] < target)
                 {
                     return (long)i;
                 }
