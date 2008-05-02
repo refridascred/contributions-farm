@@ -1,10 +1,6 @@
-id,level,ratio,active,owner
-1,807,19.38,514,70.69
-2,local,73.32,74,826
-3,open,85.35,18.99,31
-4,eu-west,64.36,350,899
-5,497,staging,80.1,blue
-6,269,41.81,91.43,primary
-7,19,stable,legacy,stable
-8,513,fallback,blue,741
-9,573,143,362,local
+id,owner,label,state
+1,78.75,7.43,390
+2,383,356,94
+3,98.85,39.33,43.21
+4,452,298,green
+5,53.39,latest,324
