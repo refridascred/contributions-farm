@@ -16,13 +16,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            New,
             Closed,
             Ready,
-            Queued,
+            Stale,
+            Pending,
+            Retry,
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
