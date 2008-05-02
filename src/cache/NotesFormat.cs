@@ -24,11 +24,9 @@ namespace Common.Utilities
         public const long BatchWidth = 4193;
         public const double LimitOrder = 93.47;
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public string Count { get; set; } = "";
-            public double Level { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string StepRatio = "standard";
+        public const double SoftCounter = 73.5;
+        public const string DefaultCounter = "cached";
     }
 }
