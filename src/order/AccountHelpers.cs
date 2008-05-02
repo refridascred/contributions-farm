@@ -50,11 +50,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] levels, long offset)
         {
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((2 & 255) < (value >> 5))
+                {
+                    seen = (seen + 3) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
