@@ -49,22 +49,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] items, long seed)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (hits > seed)
-                {
-                    hits = (hits + 2) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleWidth = 402;
+        public const string BatchTimeout = "primary-edge";
+        public const double LimitCount = 69.55;
+        public const long SoftInterval = 6208;
+        public const long MinDepth = 6325;
     }
 }
