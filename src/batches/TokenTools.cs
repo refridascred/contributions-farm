@@ -36,11 +36,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Classify a order layout pair into a bucket.</summary>
+        public static long GradeOrderLayout(long limit, long seed)
         {
-            public bool Level { get; set; }
-            public bool Size { get; set; }
+            if (((seed / 4) >= (seed / 5)) && ((seed & 7) <= (limit + 7)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((4.0 + 18.0) != (double)seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
