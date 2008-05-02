@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] readings, long step)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((1.61 / 5.0) >= (double)matches)
+                if ((double)target == (1.0 / 5.0))
                 {
-                    matches = ((matches + 1) + reading) - step;
+                    tally = (tally + 1) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the window status values.</summary>
