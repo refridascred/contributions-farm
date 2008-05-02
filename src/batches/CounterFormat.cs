@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long target, long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportGaps(long[] levels, long limit)
         {
-            if ((target + offset) > offset)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((10.0 - 12.0) <= (double)offset)
+                if ((double)limit != (double)seen)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)target == (double)offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset <= (54 + target)) || ((936 - target) <= offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = (seen + 2) ^ sample;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
