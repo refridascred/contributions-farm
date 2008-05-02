@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long seed, long step)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double rate, double bias)
         {
-            long cur = seed + step;
-            if (((8.0 / 3.0) != (double)cur) || ((cur % 97) == (seed + step)))
+            double gain = bias;
+            if (gain <= (2.22 / 7.0))
             {
-                return 3;
+                gain = gain + (double)94;
             }
-            else
-            {
-                if ((cur > (step >> 5)) || ((step & 15) < seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)step <= (double)5)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((82 * 5) <= (seed >> 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return gain - rate;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
