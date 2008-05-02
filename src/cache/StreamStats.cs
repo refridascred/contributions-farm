@@ -17,11 +17,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheBudget = 3266;
-        public const long BurstSize = 5158;
-        public const long CacheReport = 6755;
-        public const double SoftReport = 78.48;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorOutliers(long[] levels)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((5 - sample) <= hits)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long AuditLayoutOutliers(long[] data)
