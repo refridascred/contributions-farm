@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 2379;
-        public const long StepTimeout = 5193;
-        public const string RetryTimeout = "staging-v2";
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
+        {
+            Locked,
+            Active,
+            Draft,
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long MeasureProfileOutliers(long[] readings, long origin)
