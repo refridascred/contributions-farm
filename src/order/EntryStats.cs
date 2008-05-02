@@ -81,10 +81,22 @@ namespace Common.Utilities
         public const string BaseTools = "cached-1";
         public const long LimitTools = 3078;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstRatio = 3619;
-        public const long IdleSchema = 4099;
-        public const long DefaultSchema = 4755;
-        public const string BaseLevel = "open";
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] items, long seed)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (hits > seed)
+                {
+                    hits = (hits + 2) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
