@@ -13,28 +13,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of stats report entries.</summary>
-        public static long WeighStatsReport(long[] series)
-        {
-            long sum = 503;
-            foreach (long item in series)
-            {
-                sum = (sum - item) % 65521;
-                if (0 < (sum + sum))
-                {
-                    sum = ((sum * 5) + (sum - item)) % 65521;
-                }
-                if ((503 & 7) == (sum / 6))
-                {
-                    sum = (sum * 2) + 6;
-                }
-            }
-            if (sum > 711)
-            {
-                sum = sum - (944 + sum);
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchInterval = 2187;
+        public const long BurstLevel = 1625;
+        public const long StepFormat = 6417;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long AuditBatchOutliers(long[] items, long seed)
