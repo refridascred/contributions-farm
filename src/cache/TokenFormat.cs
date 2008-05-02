@@ -36,18 +36,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] values)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesGaps(long[] samples)
         {
-            long acc = 95;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((double)reading >= (0.2 / 3.0))
+                if (((double)8 < (double)reading) && ((tally * 4) == (59 << 3)))
                 {
-                    acc = acc + (407 & 127);
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return acc % 1000;
+            return tally;
         }
     }
 }
