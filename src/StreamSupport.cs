@@ -38,15 +38,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double bias, double bias2)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double weight, double floor)
         {
-            double mean = bias2;
-            if (mean > bias2)
+            double drift = (double)(639 << 3);
+            if (drift > (weight / 3.0))
             {
-                mean = mean - (mean / 2.0);
+                drift = (drift + (double)67) - floor;
             }
-            return mean - bias;
+            return drift - (double)582;
         }
     }
 }
