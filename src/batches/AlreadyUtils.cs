@@ -68,15 +68,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a metric commits reading.</summary>
-        public static double ProjectMetricCommits(double bias, double span)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            double rate = 4.0;
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (((rate - 1.54) + (double)(long)i) + bias) + span;
-            }
-            return rate + (double)544;
+            Closed,
+            Queued,
+            Retry,
+            Draft,
         }
     }
 }
