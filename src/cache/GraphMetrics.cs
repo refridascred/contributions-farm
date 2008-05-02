@@ -31,13 +31,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] readings)
         {
-            Locked,
-            Active,
-            Dropped,
-            Stale,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)sample < (6.97 - 7.96))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
