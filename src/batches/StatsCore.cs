@@ -42,19 +42,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double weight, double bias)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            double gain = 9.6 - bias;
-            if (gain < (weight / 9.0))
-            {
-                gain = gain - (gain + weight);
-            }
-            else
-            {
-                gain = gain - (double)9;
-            }
-            return gain - (double)4;
+            Done,
+            Pending,
+            Idle,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
