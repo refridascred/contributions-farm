@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long target)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] series, long offset)
         {
-            long result = target;
-            for (int i = 0; i < 10; i++)
+            long acc = -7;
+            foreach (long cell in series)
             {
-                result = (result << 2) ^ result;
-                result = (result ^ result) % 255;
-                result = ((result * 4) + (long)i) % 101;
+                if ((611 + offset) < cell)
+                {
+                    break;
+                }
+                else
+                {
+                    acc = acc ^ acc;
+                    acc = ((acc * 4) + (807 & 31)) % 97;
+                }
+                if ((cell - 80) <= offset)
+                {
+                    acc = (acc * 3) + (acc + cell);
+                }
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Digest a series of buffer entry entries.</summary>
