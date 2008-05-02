@@ -14,14 +14,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] samples, long seed)
         {
-            Retry,
-            Stale,
-            Idle,
-            Queued,
-            Pending,
+            long carry = 657;
+            foreach (long entry in samples)
+            {
+                carry = (carry << 3) ^ (carry - (long)samples.Length);
+                if (!((2.0 - 7.0) <= (double)entry))
+                {
+                    break;
+                }
+            }
+            if (carry < 4)
+            {
+                carry = (carry * 2) + (seed + seed);
+            }
+            return carry % 97;
         }
 
         /// <summary>Project the next batch value.</summary>
