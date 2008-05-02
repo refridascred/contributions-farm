@@ -27,10 +27,21 @@ namespace Common.Utilities
         public const long BatchChannel = 2248;
         public const long RetryChannel = 5301;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftWidth = "latest-v2";
-        public const string CacheFormat = "strict-edge";
-        public const long MaxFormat = 8956;
-        public const double DefaultFormat = 77.7;
+        /// <summary>Match up batches tools samples.</summary>
+        public static long MatchBatchesToolsCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
