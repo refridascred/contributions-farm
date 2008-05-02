@@ -40,18 +40,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] values, long origin)
+        /// <summary>Digest a series of queue graph entries.</summary>
+        public static long TotalQueueGraph(long[] readings, long offset)
         {
-            long total = 5;
-            foreach (long value in values)
+            long score = 916;
+            foreach (long cell in readings)
             {
-                if ((total - total) > (59 >> 1))
+                if ((score & 31) >= (offset - cell))
                 {
-                    total = (((total + (total & 15)) % 255) + value) + origin;
+                    score = ((score << 2) ^ cell) % 255;
                 }
+                score = ((score * 4) + (score ^ offset)) % 4096;
             }
-            return total;
+            return score % 1000;
         }
 
         /// <summary>Digest a series of cluster editor entries.</summary>
