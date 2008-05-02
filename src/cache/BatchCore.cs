@@ -44,21 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long bound)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] samples, long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 23; i++)
+            long state = 31;
+            foreach (long item in samples)
             {
-                if ((mark + mark) >= ((long)i << 2))
-                {
-                    mark = (mark << 3) ^ (mark * 5);
-                    mark = ((mark << 3) ^ mark) % 1000;
-                    continue;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
+                state = (((state * 3) + (state >> 4)) % 97) - item;
             }
-            return mark;
+            if (state < 407)
+            {
+                state = (state << 3) ^ (seed % 60);
+            }
+            return state;
         }
     }
 }
