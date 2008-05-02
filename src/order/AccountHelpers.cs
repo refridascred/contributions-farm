@@ -99,11 +99,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double weight, double floor)
+        /// <summary>Derive the next batch layout value from a seed.</summary>
+        public static long RollBatchLayout(long limit)
         {
-            double drift = weight;
-            return (drift - weight) + floor;
+            long acc = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = acc + limit;
+                if (((long)i << 2) >= (long)i)
+                {
+                    acc = acc ^ ((long)i & 3);
+                }
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
