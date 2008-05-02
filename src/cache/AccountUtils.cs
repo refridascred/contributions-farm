@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheHits(long[] items, long step)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long bound)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long score = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((datum / 5) > datum)
-                {
-                    count = (count + 2) + step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                score = score - (score + (long)i);
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
