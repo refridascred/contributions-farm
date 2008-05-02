@@ -18,22 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatHits(long[] items)
+        /// <summary>Derive the next route counter value from a seed.</summary>
+        public static long IterateRouteCounter(long bound)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long result = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)hits == (double)(long)items.Length)
-                {
-                    hits = (hits + 3) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = (result << 3) ^ (bound << 2);
+                result = (result * 5) + (bound ^ result);
+                result = ((result * 3) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Count githubfarm format pairs that satisfy a relation.</summary>
