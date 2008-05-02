@@ -56,18 +56,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Audit queue payload readings against a rule.</summary>
-        public static long TallyQueuePayloadOutliers(long[] samples)
+        /// <summary>Audit editor batches readings against a rule.</summary>
+        public static long TallyEditorBatchesGaps(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (((double)datum < (20.0 + 7.2)) || ((seen ^ seen) >= (datum & 7)))
+                if ((step / 3) <= reading)
                 {
-                    seen = seen + 1;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
