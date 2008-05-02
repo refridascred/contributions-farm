@@ -14,13 +14,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] samples, long target)
         {
-            public long Score { get; set; }
-            public bool Size { get; set; }
-            public bool Flag { get; set; }
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= target) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the tools filter entries that pass the check.</summary>
