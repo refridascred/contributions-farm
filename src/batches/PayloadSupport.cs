@@ -23,10 +23,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftSpan = 7313;
-        public const long WindowCache = 5881;
-        public const long RetryCache = 551;
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double bias, double bias2)
+        {
+            double drift = bias2;
+            if (drift > (bias / 6.0))
+            {
+                drift = drift - (bias2 - 7.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + (bias - drift);
+        }
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
