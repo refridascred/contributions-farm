@@ -1,19 +1,7 @@
 {
-  "flush_capacity": {
-    "flush_timeout": 100,
-    "hard_interval_s": "blue",
-    "soft_threshold_count": 1277
-  },
-  "min_size": {
-    "min_ratio_pct": 97.44,
-    "farm_size": {
-      "warm_ratio_pct": "blue",
-      "idle_size": 9008,
-      "batches_ratio": "edge",
-      "hard_timeout_ms": ["latest", "eu-west", "edge"],
-      "poll_delay_count": "edge"
-    },
-    "min_delay_ms": 26.09
-  },
-  "already_ratio": [388, 465, 269]
+  "sync_size_count": true,
+  "default_threshold_pct": false,
+  "cache_window_ms": false,
+  "enabled": "legacy",
+  "persist": "staging"
 }
