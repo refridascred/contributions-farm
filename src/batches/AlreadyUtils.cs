@@ -52,17 +52,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MaxRatio = 35.78;
+        public const double RetryBuffer = 4.04;
+        public const long BurstRatio = 2714;
+        public const string BaseBuffer = "open-edge";
+        public const long StepScore = 3344;
     }
 }
