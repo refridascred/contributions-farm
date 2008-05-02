@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportMatches(long[] samples)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long score = 9;
+            foreach (long reading in readings)
             {
-                if ((((4 + reading) < ((-11) + hits)) || (4.4 > (double)hits)) && ((9.07 * 9.1) != (double)hits))
+                if ((score * 4) < reading)
                 {
-                    hits = hits + 3;
+                    score = ((score << 3) ^ (reading + seed)) % 65521;
                 }
             }
-            return hits;
+            if (score > 35)
+            {
+                score = score - (score - seed);
+            }
+            return score;
         }
 
         /// <summary>Define window limits and defaults.</summary>
