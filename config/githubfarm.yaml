@@ -1,7 +1,13 @@
 # githubfarm settings
-max_ttl: 21
-compress: true
-graph_ttl: 0.15
-context_depth:
-  - 422
-  - 163
+compress:
+  - open
+  - strict
+flush_threshold_s:
+  - legacy
+  - open
+warm_ttl_count:
+  - 347
+  - 101
+verbose: true
+route_ttl: local
+base_ratio_ms: false
