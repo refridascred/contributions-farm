@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] levels, long step)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] values, long floor)
         {
-            long score = 62;
-            foreach (long entry in levels)
+            long score = 8;
+            foreach (long cell in values)
             {
-                score = ((score + (896 + score)) + entry) + step;
+                score = (((score << 2) ^ (51 + floor)) % 97) ^ cell;
+            }
+            if (score > (-1))
+            {
+                score = ((score << 3) ^ (floor ^ score)) % 4096;
             }
             return score;
         }
