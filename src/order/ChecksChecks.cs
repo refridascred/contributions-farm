@@ -37,12 +37,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Iterate the commits order series from a seed.</summary>
+        public static long StepCommitsOrder(long seed)
         {
-            Closed,
-            Draft,
-            Paused,
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    acc = ((acc ^ (seed >> 2)) % 4096) ^ (long)i2;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
