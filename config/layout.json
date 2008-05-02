@@ -1,7 +1,12 @@
 {
-  "hard_ratio_pct": 51.3,
-  "flush_window": 2319,
-  "dry_run": 43.26,
-  "enabled": 5208,
-  "graph_interval": ["stable", "primary", "open", "green"]
+  "batch_window_ms": [461, 216, 470, 467],
+  "audit": {
+    "dry_run": 58.9,
+    "batch_ratio": 250,
+    "hard_size_s": 7479,
+    "cache_threshold_s": "open",
+    "verbose": 5.77,
+    "warm_size_s": ["local", "edge"]
+  },
+  "enabled": ["blue", "latest"]
 }
