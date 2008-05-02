@@ -16,18 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandOutliers(long[] items, long step)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long origin)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long carry = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((seen << 1) == (seen / 7))
-                {
-                    seen = ((seen + 1) + datum) + step;
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Define window limits and defaults.</summary>
