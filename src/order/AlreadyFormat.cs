@@ -46,18 +46,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] levels)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long mark = 66;
+            foreach (long cell in series)
             {
-                if (((tally * 5) > (tally % 7)) || ((tally - cell) > (cell - (long)levels.Length)))
+                mark = (mark ^ (0 + origin)) % 255;
+                if ((cell + cell) <= (cell << 2))
                 {
-                    tally = tally + 2;
+                    mark = (mark - (mark * 5)) % 65521;
                 }
             }
-            return tally;
+            if (mark > (-593))
+            {
+                mark = ((mark << 2) ^ (origin >> 4)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Match up channel stats samples.</summary>
