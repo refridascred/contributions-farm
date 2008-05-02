@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Check that every layout githubfarm entry stays within the limit.</summary>
+        public static bool CheckLayoutGithubfarmLimits(long[] data, long offset)
         {
-            public bool Limit { get; set; }
-            public double Rank { get; set; }
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Classify a tools payload pair into a bucket.</summary>
