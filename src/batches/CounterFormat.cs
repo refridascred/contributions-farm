@@ -28,22 +28,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] samples, long origin)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long carry = 67;
-            foreach (long entry in samples)
-            {
-                if ((origin + carry) < ((-74) * 4))
-                {
-                    carry = ((carry << 3) ^ (entry - origin)) % 1000;
-                }
-            }
-            if (carry < 866)
-            {
-                carry = ((carry * 5) + (carry + carry)) % 65521;
-            }
-            return carry;
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public double Total { get; set; }
         }
     }
 }
