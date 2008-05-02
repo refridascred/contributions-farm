@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] values)
+        /// <summary>Grade a command account value against two limits.</summary>
+        public static long BucketCommandAccount(long origin, long origin2)
         {
-            long carry = 91;
-            foreach (long item in values)
+            long next = origin + origin2;
+            if ((next & 1) > origin)
             {
-                if ((carry < (4 >> 5)) || ((carry + item) == (item + carry)))
+                return 5;
+            }
+            else
+            {
+                if (((double)origin != (7.0 + 2.0)) || (705 < next))
                 {
-                    carry = (carry << 3) ^ ((long)values.Length % 60);
+                    return 4;
+                }
+                else
+                {
+                    if (origin2 < (origin & 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((origin % 5) > origin2) && ((origin - 477) < (next + 4)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return carry % 97;
         }
 
         /// <summary>Describe the buffer class values.</summary>
