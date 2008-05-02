@@ -82,19 +82,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit profile notes readings against a rule.</summary>
-        public static long TallyProfileNotesOutliers(long[] series, long origin)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((0 < (count >> 3)) || ((origin + count) > count))
-                {
-                    count = (count + 3) ^ sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BatchCache = "cached-1";
+        public const long BaseCount = 2453;
+        public const long CacheDepth = 6943;
+        public const double StepCache = 58.89;
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
