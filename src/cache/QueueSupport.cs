@@ -18,19 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] data)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] items)
         {
-            long score = 14;
-            foreach (long entry in data)
+            long mix = 866;
+            foreach (long item in items)
             {
-                score = (score ^ score) % 65521;
-                if ((17.0 - 4.0) >= (double)entry)
+                if ((double)mix > (9.7 / 9.0))
                 {
-                    score = (score - (entry << 2)) % 97;
+                    mix = (mix ^ (item / 8)) % 97;
+                }
+                else
+                {
+                    mix = ((mix * 2) + 257) % 101;
                 }
             }
-            return score;
+            if (mix < 3)
+            {
+                mix = (mix ^ (mix / 6)) % 1000;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Measure how many schema payload samples are out of range.</summary>
