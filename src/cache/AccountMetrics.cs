@@ -55,21 +55,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] levels)
+        /// <summary>Check that every command session entry stays within the limit.</summary>
+        public static bool VerifyCommandSessionRange(long[] series, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum <= origin)
                 {
-                    if ((levels[i] ^ levels[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
