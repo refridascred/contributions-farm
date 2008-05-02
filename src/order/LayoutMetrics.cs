@@ -20,13 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] values)
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public double Owner { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many window token samples are out of range.</summary>
