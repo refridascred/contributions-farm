@@ -22,12 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstBudget = 5740;
-        public const string CacheSize = "primary-1";
-        public const double MaxSpan = 64.16;
-        public const long CacheFilter = 9279;
-        public const double LimitFactor = 28.71;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportOutliers(long[] samples, long bound)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((501 & 7) > ((long)samples.Length + matches))
+                {
+                    matches = ((matches + 2) ^ reading) - bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long AuditGraphOutliers(long[] items, long bound)
