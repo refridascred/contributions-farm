@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long bound, long seed)
         {
-            Closed,
-            Ready,
-            Draft,
-            Queued,
-            Done,
+            if ((bound < (94 + seed)) && ((bound - seed) > (bound - bound)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (bound >= seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)seed >= (8.97 / 4.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((double)bound > 7.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the githubfarm entry series from a seed.</summary>
