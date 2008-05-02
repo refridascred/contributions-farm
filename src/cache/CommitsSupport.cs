@@ -40,19 +40,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long origin)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long offset, long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 18; i++)
+            if ((offset + offset) > (bound - offset))
             {
-                if (!((result >> 2) != (827 << 1)))
-                {
-                    result = ((result << 2) ^ origin) % 1000;
-                }
-                result = ((result * 2) + (long)i) % 97;
+                return 2;
             }
-            return result;
+            else
+            {
+                if (((double)bound <= (1.0 * 9.5)) && ((bound << 2) == (offset / 5)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((offset + bound) != (bound & 1)) || ((381 - bound) > offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
