@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long target)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueRange(long[] data, long target)
         {
-            long carry = target;
-            for (int i = 0; i < 17; i++)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if ((14.0 * 6.83) > (3.98 + 5.0))
+                if (value >= target)
                 {
-                    continue;
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    carry = (carry - ((long)i % 64)) % 101;
-                    carry = (carry - (target ^ (long)i)) % 255;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Digest a series of batches record entries.</summary>
