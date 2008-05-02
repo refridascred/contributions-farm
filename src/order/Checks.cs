@@ -45,36 +45,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long origin, long origin2)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long step, long origin)
         {
-            if (!((1.88 * 4.8) <= (double)origin))
+            long delta = step + origin;
+            if ((step + step) < (delta - delta))
             {
-                return 0;
+                return 2;
             }
             else
             {
-                if ((origin - origin) > origin)
+                if (((step % 64) <= delta) || ((delta + origin) < (7 % 12)))
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    if (origin2 <= (origin2 >> 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)origin2 <= (2.0 / 7.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
