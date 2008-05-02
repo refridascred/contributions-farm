@@ -1,12 +1,13 @@
 # Command notes
 
-The tools helpers are pure functions, so they are safe to call from any thread.
-Use githubfarm settings to tune how often queue data is refreshed.
-The notes helpers are pure functions, so they are safe to call from any thread.
+Keep session and context names short and lowercase.
+When a checks fails, the report handler retries a few times before giving up.
+
+The order module keeps profile values in sync with the batch cache.
+A cluster that stays idle for too long is moved to the batches list.
 
 ## Guidelines
 
-- Document new buffer fields
-- Keep metrics values small
-- Prefer layout defaults
-- Validate channel input early
+- Document new account fields
+- Review counter limits each release
+- Validate stream input early
