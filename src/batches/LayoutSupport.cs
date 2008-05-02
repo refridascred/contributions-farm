@@ -76,22 +76,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long seed)
+        /// <summary>Locate a channel metric reading by value.</summary>
+        public static long SeekChannelMetricIndex(long[] items, long seed)
         {
-            long acc = seed;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                long next = acc;
-                long next2 = next;
-                if (!((acc ^ next2) > (next2 % 60)))
+                if ((items[i] < seed) && ((items[i] % 3) == 0))
                 {
-                    long tally = 4 << 2;
-                    acc = ((acc << 3) ^ (tally + next)) % 1000;
+                    return (long)i;
                 }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return -1;
         }
     }
 }
