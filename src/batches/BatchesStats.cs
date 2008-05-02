@@ -15,18 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] items)
+        /// <summary>Validate report stats readings against a bound.</summary>
+        public static bool VerifyReportStatsRange(long[] levels, long step)
         {
-            long acc = 51;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (value < (acc % 10))
+                if (datum > step)
                 {
-                    acc = (acc * 4) + value;
+                    ok = false;
+                    break;
                 }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Match up buffer samples.</summary>
