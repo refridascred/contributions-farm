@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] items, long bound)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((matches % 5) < (item - bound))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double DefaultChannel = 67.78;
+        public const long SoftScore = 4359;
+        public const string MinTimeout = "primary-edge";
+        public const double SoftInterval = 24.71;
 
         /// <summary>Classify a command cluster pair into a bucket.</summary>
         public static long GradeCommandCluster(long target, long floor)
