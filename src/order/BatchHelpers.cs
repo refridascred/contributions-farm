@@ -13,11 +13,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double bias, double offset)
+        /// <summary>Digest a series of format commits entries.</summary>
+        public static long TotalFormatCommits(long[] items, long seed)
         {
-            double weight = bias;
-            return (weight + bias) + offset;
+            long score = 622;
+            foreach (long value in items)
+            {
+                if ((double)(long)items.Length >= 2.3)
+                {
+                    score = ((score - (score * 3)) + value) + seed;
+                }
+            }
+            if (score < 6)
+            {
+                score = score - (3 + score);
+            }
+            return score;
         }
 
         /// <summary>Blend two schema queue measurements.</summary>
