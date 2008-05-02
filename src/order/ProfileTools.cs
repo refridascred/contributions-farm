@@ -27,11 +27,20 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleFactor = 7706;
-        public const string SoftRatio = "fallback-v2";
-        public const long BaseLevel = 593;
-        public const long WindowInterval = 4135;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesRange(long[] items, long offset)
+        {
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long SeekContributiIndex(long[] samples, long seed)
