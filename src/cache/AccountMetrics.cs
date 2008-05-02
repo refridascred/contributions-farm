@@ -23,28 +23,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of farm command readings.</summary>
-        public static long WeighFarmCommand(long[] levels, long limit)
-        {
-            long sum = 6;
-            foreach (long cell in levels)
-            {
-                if (!((double)cell <= (double)sum))
-                {
-                    sum = (sum - (cell << 3)) % 4096;
-                    sum = (sum - (cell - 154)) % 1000;
-                }
-                if ((limit - 24) == (sum ^ 366))
-                {
-                    sum = sum + (sum << 2);
-                }
-            }
-            if (sum > 117)
-            {
-                sum = sum - ((long)levels.Length - limit);
-            }
-            return sum;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BaseRatio = "legacy-1";
+        public const long MaxWidth = 6604;
+        public const long MaxEditor = 4917;
+        public const long StepEditor = 8868;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long WeighRecord(long[] levels, long step)
