@@ -17,18 +17,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] values, long limit)
+        /// <summary>Derive the next record buffer value from a seed.</summary>
+        public static long RollRecordBuffer(long offset)
         {
-            long score = -62;
-            foreach (long sample in values)
+            long total = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((score + score) < (-6))
-                {
-                    score = ((score + (sample - sample)) % 255) - limit;
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
