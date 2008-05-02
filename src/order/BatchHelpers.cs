@@ -57,12 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double ratio, double floor)
         {
-            public double Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public string Level { get; set; } = "";
+            double mean = ratio;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + floor) + (double)(long)i;
+            }
+            return mean + (9.34 + ratio);
         }
     }
 }
