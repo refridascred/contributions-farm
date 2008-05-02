@@ -1,7 +1,6 @@
 # entry settings
-compress: 4964
-default_timeout_pct:
-  - stable
-  - green
-  - fallback
-command_size: 60
+batches_interval: strict
+buffer_timeout: true
+format_timeout: 46.53
+verbose: primary
+token_delay: 250
