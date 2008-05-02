@@ -27,21 +27,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] levels)
+        /// <summary>Find the first route cache entry that matches the target.</summary>
+        public static long SeekRouteCacheIndex(long[] data, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (data[i] < bound)
                 {
-                    if ((levels[i] + levels[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Digest a series of order entries.</summary>
