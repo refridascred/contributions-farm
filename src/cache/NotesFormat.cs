@@ -19,11 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxLevel = 1114;
-        public const long IdleRecord = 8346;
-        public const long RetryRecord = 5647;
-        public const long WindowRatio = 2831;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] samples, long bound)
+        {
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Scale a queue checks figure with a bias.</summary>
         public static double ScaleQueueChecks(double weight, double offset)
