@@ -17,13 +17,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            public double Total { get; set; }
-            public double Limit { get; set; }
-            public long Weight { get; set; }
-            public double Score { get; set; }
+            Stale,
+            Done,
+            Ready,
         }
 
         /// <summary>Adjust a stream reading.</summary>
