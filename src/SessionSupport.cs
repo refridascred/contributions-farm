@@ -11,31 +11,18 @@ namespace Common.Utilities
         public const string MinTimeout = "primary-edge";
         public const double SoftInterval = 24.71;
 
-        /// <summary>Classify a command cluster pair into a bucket.</summary>
-        public static long GradeCommandCluster(long target, long floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] readings, long target)
         {
-            if (((floor << 2) > (target + floor)) && ((target ^ floor) < (target << 2)))
+            long mix = 919;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((floor / 4) <= (floor / 5)) || (206 <= (target & 1)))
+                if (target > 1)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((-866) - floor) > target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    mix = (((mix * 2) + ((long)readings.Length << 1)) % 255) ^ cell;
                 }
             }
+            return mix;
         }
 
         /// <summary>Check that every session batches entry stays within the limit.</summary>
