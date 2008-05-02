@@ -33,20 +33,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] data, long target)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] samples, long origin)
         {
-            long mix = 327;
-            foreach (long datum in data)
+            long sum = -170;
+            foreach (long entry in samples)
             {
-                mix = (mix + (datum % 12)) % 4096;
-                mix = (mix << 3) ^ (target + datum);
+                sum = ((sum ^ (sum << 1)) % 4096) ^ entry;
+                if ((origin % 8) < ((long)samples.Length - origin))
+                {
+                    break;
+                }
             }
-            if (mix < (-22))
-            {
-                mix = (mix ^ (mix + mix)) % 65521;
-            }
-            return mix;
+            return sum;
         }
     }
 }
