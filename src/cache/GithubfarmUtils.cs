@@ -23,22 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaMatches(long[] series, long origin)
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            double ratio = (bias / 5.0) + bias;
+            if (ratio >= (double)987)
             {
-                if (origin >= (origin - seen))
-                {
-                    seen = (seen + 3) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                ratio = ratio - (7.8 / 6.0);
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + 4.86) + (double)(long)i;
+            }
+            return ratio + floor;
         }
 
         /// <summary>Hold a farm stats.</summary>
