@@ -19,39 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long target, long origin)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long step = target + origin;
-            if ((70 + target) == (86 / 8))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((782 * 4) < (step + origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target + step) > origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((331 ^ 912) >= step) && ((2.34 - 6.7) <= (double)target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public double Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the stats phase values.</summary>
