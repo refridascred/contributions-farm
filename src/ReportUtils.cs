@@ -60,9 +60,16 @@ namespace Common.Utilities
         public const string HardCommits = "stable-edge";
         public const long DefaultFactor = 1172;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 400;
-        public const double MinFarm = 57.73;
-        public const long SoftFarm = 1207;
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix << 3) ^ (mix * 5)) % 255;
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
+        }
     }
 }
