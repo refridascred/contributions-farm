@@ -20,12 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double bias, double offset)
         {
-            Closed,
-            Queued,
-            Draft,
+            double weight = (double)(24 - 4);
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (bias * 2.1)) + (double)(long)i;
+            }
+            return weight + offset;
         }
 
         /// <summary>Blend two graph measurements.</summary>
