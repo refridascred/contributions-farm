@@ -43,20 +43,10 @@ namespace Common.Utilities
         public const double LimitCount = 31.23;
         public const long BaseGraph = 6549;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] levels)
-        {
-            long total = 52;
-            foreach (long reading in levels)
-            {
-                if (89 > (total - reading))
-                {
-                    total = (total + 31) % 97;
-                }
-                total = ((total << 3) ^ (reading * 4)) % 4096;
-                total = ((total << 3) ^ total) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 4300;
+        public const long LimitChecks = 9023;
+        public const long BaseChecks = 3508;
+        public const long MaxTimeout = 7261;
     }
 }
