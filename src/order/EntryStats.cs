@@ -42,11 +42,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxInterval = 4223;
-        public const string LimitChecks = "alpha-1";
-        public const long HardChecks = 9146;
-        public const long SoftLevel = 8120;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((seen + seen) >= seen)
+                {
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long MeasureToolsHits(long[] items, long seed)
