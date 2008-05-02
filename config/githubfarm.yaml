@@ -1,7 +1,11 @@
 # githubfarm settings
-cache_interval: true
-soft_delay_s: latest
-warm_capacity_count: true
-enabled: 35
-default_depth_ms: local
-max_window_count: fallback
+support_timeout:
+  - 427
+  - 287
+  - 50
+  - 322
+hard_limit: 46.63
+cache_threshold: 70.25
+hard_ratio_count: 78.61
+poll_threshold_pct: 20.64
+flush_threshold_s: blue
