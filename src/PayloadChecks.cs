@@ -13,13 +13,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Fold a list of checks buffer readings.</summary>
+        public static long TallyChecksBuffer(long[] data, long origin)
         {
-            public bool Owner { get; set; }
-            public bool Ratio { get; set; }
-            public double Size { get; set; }
-            public string Flag { get; set; } = "";
+            long mix = 46;
+            foreach (long entry in data)
+            {
+                if ((1.1 / 5.0) <= (double)origin)
+                {
+                    mix = ((mix << 3) ^ (180 / 2)) % 1000;
+                }
+                else
+                {
+                    mix = (mix + (mix - entry)) % 65521;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
