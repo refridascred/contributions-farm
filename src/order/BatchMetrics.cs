@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Fold a list of queue contributi readings.</summary>
+        public static long TotalQueueContributi(long[] values)
         {
-            Synced,
-            Locked,
-            Done,
+            long mark = 2;
+            foreach (long entry in values)
+            {
+                if ((entry ^ mark) < mark)
+                {
+                    mark = ((mark * 2) + entry) % 65521;
+                }
+                else
+                {
+                    mark = mark - (mark + entry);
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
