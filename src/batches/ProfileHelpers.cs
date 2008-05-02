@@ -78,19 +78,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] data, long bound)
+        /// <summary>Audit context metric readings against a rule.</summary>
+        public static long TallyContextMetricOutliers(long[] readings)
         {
             long seen = 0;
-            foreach (long entry in data)
+            foreach (long cell in readings)
             {
-                if (seen > entry)
+                if ((cell + cell) < (seen + seen))
                 {
-                    seen = (seen + 2) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 1;
                 }
             }
             return seen;
