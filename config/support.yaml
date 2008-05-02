@@ -1,42 +1,9 @@
 # support settings
-metrics_threshold:
-  max_retries: 60
-  min_delay_count: 81.02
-  warm_retries_count:
-    burst_interval_ms: true
-    min_timeout_ms: true
-    hard_limit_ms: 500
-    base_threshold: false
-    base_interval_pct: open
-  buffer_window: strict
-  hard_ttl:
-    hard_threshold_pct: true
-    flush_delay_ms: 1024
-    entry_delay: 1066
-    entry_limit:
-      - cached
-      - legacy
-      - blue
-      - staging
-    enabled: false
-  account_depth:
-    persist: blue
-    layout_ratio: false
-    verbose: 47.62
-    default_capacity_ms:
-      - primary
-      - primary
-      - open
-      - latest
-verbose: 3673
-graph_capacity:
-  - standard
-  - legacy
-  - strict
-  - strict
-persist: 33.55
-audit:
-  - 184
-  - 217
-  - 316
-  - 143
+burst_capacity_s: 500
+soft_ttl_count: 4
+cache_ttl:
+  readonly: staging
+  burst_threshold: fallback
+  min_ratio: fallback
+soft_delay_s: true
+soft_ttl_s: true
