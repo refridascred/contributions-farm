@@ -1,7 +1,5 @@
 {
-  "readonly": "staging",
-  "poll_delay_count": [420, 345, 290],
-  "cache_ratio": "green",
-  "burst_delay": "stable",
-  "idle_delay_ms": "cached"
+  "readonly": false,
+  "format_window": 30,
+  "hard_threshold_ms": 88.32
 }
