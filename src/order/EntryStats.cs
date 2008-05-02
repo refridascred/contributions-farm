@@ -21,39 +21,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long seed, long step)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long cur = seed - step;
-            if (((seed + cur) < (seed >> 3)) || ((double)seed > (5.0 * 8.1)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed <= (step & 63)) && ((double)cur != (9.4 - 8.4)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step << 2) != (step * 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)cur == (5.92 + 4.0)) || (seed < (93 + cur)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define checks limits and defaults.</summary>
