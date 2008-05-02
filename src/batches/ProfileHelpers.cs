@@ -18,13 +18,18 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 3086;
         public const double RetrySize = 54.91;
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Count the buffer support entries that pass the check.</summary>
+        public static long TallyBufferSupportGaps(long[] items, long step)
         {
-            Dropped,
-            Synced,
-            Paused,
-            Draft,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((step << 1) <= (tally << 2))
+                {
+                    tally = (tally + 1) - item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a queue entry.</summary>
