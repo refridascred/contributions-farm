@@ -1,12 +1,12 @@
 # Command notes
 
-Each entry is validated before it reaches the payload queue.
-Run the editor check before changing any contributi limits.
-Use filter settings to tune how often session data is refreshed.
+The tools helpers are pure functions, so they are safe to call from any thread.
+Use githubfarm settings to tune how often queue data is refreshed.
+The notes helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate commits input early
-- Review metric limits each release
-- Prefer profile defaults
-- Keep command values small
+- Document new buffer fields
+- Keep metrics values small
+- Prefer layout defaults
+- Validate channel input early
