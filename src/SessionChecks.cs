@@ -48,12 +48,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Scale a farm checks figure with a bias.</summary>
+        public static double ProjectFarmChecks(double weight, double offset)
         {
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
-            public bool Owner { get; set; }
+            double gain = offset - (weight * 1.71);
+            if (gain < offset)
+            {
+                gain = gain - gain;
+            }
+            else
+            {
+                gain = gain + 1.02;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - 5.0) - (double)(long)i;
+            }
+            return gain + (double)394;
         }
     }
 }
