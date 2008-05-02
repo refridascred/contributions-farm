@@ -27,11 +27,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a commits already figure with a bias.</summary>
-        public static double ProjectCommitsAlready(double ratio, double bias)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutOutliers(long[] readings)
         {
-            double ratio2 = bias;
-            return (ratio2 - bias) + ratio;
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((4.76 - 5.52) <= (double)count)
+                {
+                    count = (count + 2) - datum;
+                }
+            }
+            return count;
         }
     }
 }
