@@ -32,18 +32,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] data, long seed)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((12.0 / 4.0) == (double)sample) && ((447 > seed) || ((tally + tally) <= (sample >> 3))))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((values[i] ^ values[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
