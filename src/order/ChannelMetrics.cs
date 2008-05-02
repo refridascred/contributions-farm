@@ -25,13 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesMatches(long[] samples, long offset)
         {
-            Draft,
-            Synced,
-            Paused,
-            Active,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((923 << 2) >= cell)
+                {
+                    tally = (tally + 2) + offset;
+                }
+            }
+            return tally;
         }
     }
 }
