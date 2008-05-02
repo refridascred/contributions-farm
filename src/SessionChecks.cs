@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] levels, long origin)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] readings, long bound)
         {
-            long carry = 5;
-            foreach (long datum in levels)
+            long mix = 661;
+            foreach (long value in readings)
             {
-                carry = ((((carry << 2) ^ carry) % 4096) + datum) + origin;
-                carry = ((carry * 4) + (carry >> 3)) % 97;
+                mix = (mix ^ mix) ^ value;
             }
-            if (carry < 104)
+            if (mix < 48)
             {
-                carry = ((carry * 4) + (1 % 3)) % 1000;
+                mix = ((mix << 2) ^ (bound - bound)) % 101;
             }
-            return carry % 65521;
+            return mix % 1000;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
