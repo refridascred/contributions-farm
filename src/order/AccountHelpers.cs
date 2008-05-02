@@ -65,17 +65,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double gain, double bias)
+        /// <summary>Scale a channel commits figure with a bias.</summary>
+        public static double AdjustChannelCommits(double gain, double offset)
         {
-            double weight = (double)(1 + 777);
-            if (weight >= 4.82)
+            double weight = (gain - 6.5) / 7.0;
+            if (weight < offset)
             {
-                weight = (weight - (double)5) - gain;
+                weight = weight - (double)120;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                weight = (weight + (bias - bias)) + (double)(long)i;
+                weight = weight + (double)8;
             }
             return weight - weight;
         }
