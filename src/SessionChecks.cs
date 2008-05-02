@@ -44,13 +44,12 @@ namespace Common.Utilities
         public const long BurstOrder = 4181;
         public const long IdleOrder = 4586;
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            Synced,
-            Closed,
-            Retry,
-            Done,
+            public string Score { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
