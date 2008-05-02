@@ -54,10 +54,14 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchChecks = "open-1";
-        public const double StepChecks = 47.36;
-        public const string DefaultInterval = "standard-1";
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
+        {
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long LimitFarm = 400;
