@@ -20,15 +20,25 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long target)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long step, long target)
         {
-            long total = target;
-            for (int i = 0; i < 15; i++)
+            long delta = step - target;
+            if (((target - target) <= (target & 7)) || ((7 & 63) >= (delta - 567)))
             {
-                total = ((total * 4) + (long)i) % 65521;
+                return 8;
             }
-            return total;
+            else
+            {
+                if (step < (623 + step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
