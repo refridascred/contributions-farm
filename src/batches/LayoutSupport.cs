@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
-        {
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepSize = 1701;
+        public const long MinWindow = 6430;
+        public const string BatchRatio = "cached-edge";
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long ScoreTools(long[] data)
