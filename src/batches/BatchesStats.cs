@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            Paused,
-            Queued,
-            Ready,
-            Closed,
-            Failed,
+            public double Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Rank metric token input into a small class.</summary>
