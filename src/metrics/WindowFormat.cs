@@ -15,11 +15,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 1517;
-        public const long BaseTimeout = 9214;
-        public const string LimitWidth = "stable-1";
-        public const string BurstPayload = "standard-1";
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterBounds(long[] series, long origin)
+        {
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long LocateProfileIndex(long[] samples, long offset)
