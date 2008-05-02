@@ -39,18 +39,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit order command readings against a rule.</summary>
-        public static long TallyOrderCommandGaps(long[] series)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(hits >= (hits - hits)) || ((hits % 97) == (reading + reading)))
+                if (items[i] == seed)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
