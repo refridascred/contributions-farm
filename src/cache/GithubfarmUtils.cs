@@ -23,19 +23,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksRange(long[] values, long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaMatches(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (entry < step)
+                if (origin >= (origin - seen))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 3) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Hold a farm stats.</summary>
