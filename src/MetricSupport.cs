@@ -20,20 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] values, long limit)
-        {
-            long total = 648;
-            foreach (long sample in values)
-            {
-                total = (((total << 2) ^ (129 & 255)) ^ sample) + limit;
-            }
-            if (total < 10)
-            {
-                total = total ^ (-327);
-            }
-            return total;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseLevel = 9204;
+        public const double MaxBuffer = 26.48;
+        public const string IdleLevel = "cached-edge";
+        public const long SoftCount = 6402;
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long ClassifyProfile(long target, long origin)
