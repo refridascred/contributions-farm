@@ -27,17 +27,31 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] readings, long limit)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long offset, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((target % 12) == (435 / 2))
             {
-                if (readings[i] < limit)
+                return 7;
+            }
+            else
+            {
+                if ((double)target <= 8.9)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((target + offset) >= target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
