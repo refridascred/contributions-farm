@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double ratio, double offset)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long offset)
         {
-            double load = offset;
-            if (load < (offset * 9.0))
+            long carry = offset;
+            for (int i = 0; i < 16; i++)
             {
-                load = (load - (offset - load)) - ratio;
+                carry = carry - (offset + offset);
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - offset) + (double)(long)i;
-            }
-            return load + (double)(-244);
+            return carry;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
