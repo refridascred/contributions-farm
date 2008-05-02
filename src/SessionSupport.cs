@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long floor, long limit)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] items, long bound)
         {
-            if (((double)floor == (double)limit) || ((double)limit == (double)4))
+            long matches = 0;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((6.27 - 2.0) >= (double)floor)
+                if ((matches % 5) < (item - bound))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((19 * 4) <= floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((limit + floor) < ((-300) ^ floor)) && ((limit ^ 11) == (floor + floor)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Classify a command cluster pair into a bucket.</summary>
