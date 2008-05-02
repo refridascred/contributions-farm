@@ -26,20 +26,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long target)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long result = target;
-            for (int i = 0; i < 16; i++)
-            {
-                long slot = (871 + 815) - (target >> 4);
-                if (((target << 2) < (long)i) || ((slot & 7) <= (result ^ (long)i)))
-                {
-                    result = ((result * 3) + slot) % 65521;
-                }
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            public double Label { get; set; }
+            public bool Token { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
