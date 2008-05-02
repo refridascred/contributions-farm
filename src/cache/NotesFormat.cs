@@ -14,24 +14,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of already account entries.</summary>
-        public static long WeighAlreadyAccount(long[] readings)
-        {
-            long anchor = 9;
-            foreach (long entry in readings)
-            {
-                anchor = (anchor ^ entry) % 4096;
-                if ((double)entry >= (4.4 * 5.2))
-                {
-                    anchor = (anchor + (4 / 8)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor ^ anchor) % 101;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxLevel = 1114;
+        public const long IdleRecord = 8346;
+        public const long RetryRecord = 5647;
+        public const long WindowRatio = 2831;
 
         /// <summary>Scale a queue checks figure with a bias.</summary>
         public static double ScaleQueueChecks(double weight, double offset)
