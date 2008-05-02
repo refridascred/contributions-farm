@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double bias, double span)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] items, long bound)
         {
-            double bias2 = bias;
-            if (bias2 > 6.0)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                bias2 = bias2 + 1.0;
+                if (datum > bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (span / 3.0);
-            }
-            return bias2 + 1.58;
+            return flag;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
