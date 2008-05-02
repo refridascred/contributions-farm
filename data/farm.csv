@@ -1,6 +1,8 @@
-id,rank,region,level
-1,809,464,199
-2,4.09,892,green
-3,763,496,627
-4,0.19,49.37,149
-5,780,109,cached
+id,rank,owner,active
+1,310,stable,23.29
+2,883,latest,edge
+3,436,open,70.7
+4,364,936,eu-west
+5,203,open,staging
+6,cached,757,950
+7,legacy,14.05,790
