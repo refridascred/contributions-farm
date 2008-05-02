@@ -34,14 +34,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            Failed,
-            Paused,
-            Pending,
-            Ready,
-            Active,
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Digest a series of commits queue entries.</summary>
