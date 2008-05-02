@@ -6,16 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest open blue stable; do
-    log "checking ${item}"
-done
-
-mode="${1:-strict}"
+mode="${1:-local}"
 case "${mode}" in
-    cached)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
