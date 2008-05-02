@@ -65,13 +65,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Fold a list of order editor readings.</summary>
+        public static long CombineOrderEditor(long[] values, long target)
         {
-            public string Offset { get; set; } = "";
-            public double Count { get; set; }
-            public bool Rank { get; set; }
-            public double Total { get; set; }
+            long result = 1;
+            foreach (long entry in values)
+            {
+                if (((double)entry > 3.97) && ((15.0 + 0.8) <= (double)result))
+                {
+                    result = ((result << 2) ^ (5 - result)) - target;
+                }
+            }
+            if (result < (-512))
+            {
+                result = result + (result ^ result);
+            }
+            return result;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
