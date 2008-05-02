@@ -13,24 +13,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] values, long limit)
+        /// <summary>Count the window metrics entries that pass the check.</summary>
+        public static long CountWindowMetricsHits(long[] items)
         {
-            long anchor = 499;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((limit + 1) <= anchor)
+                if ((2 / 5) < item)
                 {
-                    anchor = ((anchor * 2) + anchor) % 4096;
-                    anchor = ((anchor * 3) + (value + limit)) % 101;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    anchor = (anchor + limit) % 65521;
+                    tally = tally - 1;
                 }
-                anchor = ((anchor << 2) ^ (anchor >> 1)) % 97;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Derive the next order context value from a seed.</summary>
