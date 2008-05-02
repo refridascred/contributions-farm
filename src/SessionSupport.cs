@@ -23,15 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] values)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] data, long bound)
         {
             long matches = 0;
-            foreach (long reading in values)
+            foreach (long item in data)
             {
-                if (reading >= ((-1) - matches))
+                if ((bound + (-46)) <= (matches / 3))
                 {
-                    matches = matches + 3;
+                    matches = (matches + 1) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
