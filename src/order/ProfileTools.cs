@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheWidth = 892;
-        public const long DefaultWidth = 3351;
-        public const string HardTimeout = "fallback-v2";
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
+        {
+            Failed,
+            Idle,
+            Retry,
+        }
 
         /// <summary>Count the tools stream entries that pass the check.</summary>
         public static long TallyToolsStreamGaps(long[] items, long offset)
