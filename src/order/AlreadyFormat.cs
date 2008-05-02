@@ -34,11 +34,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 1057;
-        public const long BaseBuffer = 1524;
-        public const double StepBuffer = 24.28;
-        public const double StepFactor = 58.21;
+        /// <summary>Iterate the report cluster series from a seed.</summary>
+        public static long RollReportCluster(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Count the farm metric entries that pass the check.</summary>
         public static long TallyFarmMetricOutliers(long[] series)
