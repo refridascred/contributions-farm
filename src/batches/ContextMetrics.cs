@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate notes cache samples.</summary>
-        public static long WeighNotesCache(long[] samples)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] items, long offset)
         {
-            long mark = 765;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if ((double)datum < (9.0 + 7.0))
+                if (cell <= offset)
                 {
-                    mark = mark ^ (mark * 5);
+                    ready = false;
+                    break;
                 }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
