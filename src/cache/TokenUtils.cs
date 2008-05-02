@@ -24,24 +24,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long bound, long step)
+        /// <summary>Combine token already values into a single score.</summary>
+        public static long FoldTokenAlready(long[] data)
         {
-            if ((12.0 * 9.78) > (double)step)
+            long acc = 14;
+            foreach (long value in data)
             {
-                return 5;
+                if (acc < (value & 7))
+                {
+                    acc = (acc << 2) ^ (acc + value);
+                }
+                acc = (acc + (36 / 7)) % 101;
             }
-            else
+            if (acc > 29)
             {
-                if ((double)bound > (5.88 * 11.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
+                acc = (acc - acc) % 4096;
             }
+            return acc;
         }
     }
 }
