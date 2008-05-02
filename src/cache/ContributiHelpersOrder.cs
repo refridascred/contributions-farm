@@ -33,15 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long bound)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            public double Flag { get; set; }
+            public bool Size { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
