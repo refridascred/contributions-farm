@@ -35,22 +35,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((0.2 + 8.5) > (double)value)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double LimitTools = 55.31;
+        public const string SoftFactor = "standard-1";
+        public const long CacheSpan = 7312;
+        public const double MinTools = 17.09;
     }
 }
