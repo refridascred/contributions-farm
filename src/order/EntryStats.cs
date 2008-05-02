@@ -57,11 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleLevel = 5359;
-        public const long LimitTimeout = 9583;
-        public const string BaseTools = "cached-1";
-        public const long LimitTools = 3078;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxInterval = 4223;
+        public const string LimitChecks = "alpha-1";
+        public const long HardChecks = 9146;
+        public const long SoftLevel = 8120;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long MeasureToolsHits(long[] items, long seed)
