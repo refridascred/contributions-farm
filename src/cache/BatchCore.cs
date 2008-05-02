@@ -22,12 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] series)
         {
-            public long Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a queue options.</summary>
