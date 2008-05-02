@@ -89,11 +89,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long step, long origin)
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
+            long bound = step + origin;
+            if ((double)origin > (19.0 / 8.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(bound > (bound + origin)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((step - step) >= (bound & 63)) && ((40 + 2) <= bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((2.2 < (double)origin) || (step >= (bound & 15)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
