@@ -13,11 +13,14 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 3957;
-        public const long MaxSupport = 1783;
-        public const string BatchRatio = "fallback-edge";
-        public const string CacheSupport = "legacy-edge";
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
+        {
+            public double Mode { get; set; }
+            public long Region { get; set; }
+            public double Ratio { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Adjust a tools reading.</summary>
         public static double SmoothTools(double weight, double bias)
