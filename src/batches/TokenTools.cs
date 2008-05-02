@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            public string Level { get; set; } = "";
-            public double Region { get; set; }
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a batch summary.</summary>
