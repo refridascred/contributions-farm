@@ -50,17 +50,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] readings, long seed)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] data, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if (readings[i] == seed)
+                if (entry != step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Hold a metric stats.</summary>
