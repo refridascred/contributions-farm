@@ -51,22 +51,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] samples, long offset)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] samples, long seed)
         {
-            long state = 78;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((offset / 8) != (value + 1))
+                if ((samples[i] < seed) && ((samples[i] % 3) == 0))
                 {
-                    state = state - state;
+                    return (long)i;
                 }
             }
-            if (state > 69)
-            {
-                state = (state << 3) ^ (offset + state);
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
