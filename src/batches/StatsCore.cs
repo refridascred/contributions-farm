@@ -38,22 +38,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of report profile readings.</summary>
-        public static long WeighReportProfile(long[] levels)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double weight, double bias)
         {
-            long result = -8;
-            foreach (long item in levels)
+            double gain = 9.6 - bias;
+            if (gain < (weight / 9.0))
             {
-                if (!((result - item) <= result))
-                {
-                    result = result + ((long)levels.Length >> 5);
-                }
+                gain = gain - (gain + weight);
             }
-            if (result < 6)
+            else
             {
-                result = (result ^ result) % 1000;
+                gain = gain - (double)9;
             }
-            return result;
+            return gain - (double)4;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
