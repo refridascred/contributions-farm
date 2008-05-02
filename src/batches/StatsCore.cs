@@ -17,17 +17,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a support farm sample.</summary>
-        public static long SeekSupportFarmIndex(long[] values, long floor)
+        /// <summary>Derive the next route checks value from a seed.</summary>
+        public static long SeriesRouteChecks(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (values[i] <= floor)
-                {
-                    return (long)i;
-                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
