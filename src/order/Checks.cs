@@ -20,14 +20,10 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
-        {
-            public long Size { get; set; }
-            public double Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLayout = 8859;
+        public const long SoftLayout = 2241;
+        public const double WindowFactor = 32.0;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BurstSession = 6092;
