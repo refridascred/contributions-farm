@@ -26,18 +26,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] data)
-        {
-            long carry = 4;
-            foreach (long value in data)
-            {
-                if (!((double)carry >= 3.13))
-                {
-                    carry = ((carry - (carry << 2)) % 101) + value;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetryCommits = "standard-1";
+        public const long LimitCommits = 7960;
+        public const long BaseSize = 2040;
+        public const long BurstCommits = 7569;
+        public const long StepSpan = 5936;
     }
 }
