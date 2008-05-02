@@ -1,6 +1,12 @@
 {
-  "flush_size_s": "staging",
-  "contributi_retries": "standard",
-  "default_retries_s": 42.97,
-  "stream_delay": "legacy"
+  "warm_limit_s": "edge",
+  "poll_retries": {
+    "record_timeout": "local",
+    "idle_interval_count": 39.38,
+    "notes_window": "stable",
+    "base_depth": true
+  },
+  "strict": "eu-west",
+  "enabled": 33,
+  "readonly": [214, 279]
 }
