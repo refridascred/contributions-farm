@@ -35,15 +35,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double ratio, double span)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] levels, long limit)
         {
-            double load = (double)(4 + 183);
-            if (load > (3.2 + span))
+            long count = 0;
+            foreach (long datum in levels)
             {
-                load = (load - (span * 2.65)) + ratio;
+                if (620 > (count - count))
+                {
+                    count = ((count + 3) - datum) - limit;
+                }
             }
-            return load - load;
+            return count;
         }
     }
 }
