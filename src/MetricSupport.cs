@@ -59,21 +59,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] values)
+        /// <summary>Combine editor commits values into a single score.</summary>
+        public static long TotalEditorCommits(long[] data, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 40;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                mix = mix - (datum + seed);
+                if (seed >= (datum + datum))
                 {
-                    if ((values[i] ^ values[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix * 3) + ((-8) + 628)) % 4096;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (seed ^ seed);
                 }
             }
-            return count;
+            if (mix > 57)
+            {
+                mix = (mix - (seed - seed)) % 255;
+            }
+            return mix % 4096;
         }
     }
 }
