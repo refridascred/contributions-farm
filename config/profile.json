@@ -1,12 +1,12 @@
 {
-  "base_depth": 4684,
-  "strict": {
-    "compress": 1024,
-    "burst_retries_pct": "fallback",
-    "audit": 30,
-    "githubfarm_ratio": "green",
-    "command_interval": "eu-west"
+  "notes_window": "cached",
+  "verbose": "blue",
+  "githubfarm_interval": 500,
+  "compress": {
+    "min_retries_pct": "stable",
+    "poll_window_ms": 1824,
+    "cache_ttl": 43.42,
+    "persist": "primary"
   },
-  "order_capacity": "open",
-  "max_ratio": 4.79
+  "tools_timeout": "legacy"
 }
