@@ -40,26 +40,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] levels, long step)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double bias, double bias2)
         {
-            long state = 95;
-            foreach (long item in levels)
+            double gain = (double)(9 << 2);
+            if (gain >= bias)
             {
-                if ((state + item) < item)
-                {
-                    state = ((state << 2) ^ (step / 4)) % 101;
-                }
-                else
-                {
-                    state = (state << 3) ^ (step % 64);
-                }
+                gain = (gain - (double)1) + bias2;
             }
-            if (state > 918)
+            else
             {
-                state = state + state;
+                gain = gain + (gain / 4.0);
             }
-            return state;
+            return gain - (double)(-222);
         }
 
         /// <summary>Hold a batch record.</summary>
