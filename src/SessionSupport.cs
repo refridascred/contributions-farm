@@ -19,26 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine metric cache values into a single score.</summary>
-        public static long TallyMetricCache(long[] readings)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] readings)
         {
-            long total = 22;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((double)item >= (1.1 - 2.8))
+                if (!((reading << 1) == ((long)readings.Length * 4)))
                 {
-                    total = (total + (total / 6)) % 101;
-                }
-                if ((total ^ total) >= item)
-                {
-                    total = (total + (total - item)) % 4096;
-                }
-                else
-                {
-                    total = (total + (3 ^ item)) % 1000;
+                    seen = seen + 3;
                 }
             }
-            return total % 4096;
+            return seen;
         }
 
         /// <summary>Describe the stats phase values.</summary>
