@@ -51,11 +51,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] series, long bound)
         {
-            public long Rank { get; set; }
-            public double Count { get; set; }
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
