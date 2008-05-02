@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a layout profile sample.</summary>
-        public static long LocateLayoutProfileIndex(long[] values, long seed)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (values[i] >= seed)
+                if (step > ((long)i + 4))
                 {
-                    return (long)i;
+                    result = (result * 2) + result;
                 }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
