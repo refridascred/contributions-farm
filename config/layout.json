@@ -1,12 +1,6 @@
 {
-  "retry_retries_s": true,
-  "max_retries_s": {
-    "poll_depth_pct": 2.35,
-    "compress": "legacy",
-    "cache_limit": 8198,
-    "strict": 65
-  },
-  "retry_depth": "edge",
-  "soft_depth_pct": true,
-  "idle_limit_pct": "edge"
+  "context_limit": 97.05,
+  "flush_ratio_count": "primary",
+  "compress": ["open", "primary", "blue"],
+  "persist": "blue"
 }
