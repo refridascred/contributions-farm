@@ -1,5 +1,7 @@
 # githubfarm settings
-burst_capacity_s: 15
-counter_depth: 1024
-flush_interval_ms: true
-batches_retries: 6239
+poll_size_count:
+  - 202
+  - 387
+  - 192
+editor_depth: blue
+audit: stable
