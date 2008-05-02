@@ -23,15 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long limit)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] data)
         {
-            long sum = limit;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                if ((tally - (long)data.Length) < ((long)data.Length >> 1))
+                {
+                    tally = (tally + 1) + value;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Describe the entry level values.</summary>
