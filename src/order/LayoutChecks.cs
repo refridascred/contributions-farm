@@ -42,13 +42,21 @@ namespace Common.Utilities
             return gain - span;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Compare every pair of commits command readings.</summary>
+        public static long MatchCommitsCommandCount(long[] items)
         {
-            Closed,
-            Dropped,
-            New,
-            Paused,
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
