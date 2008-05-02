@@ -1,16 +1,4 @@
 # entry settings
-hard_window_count: true
-record_threshold: 61
-flush_threshold_ms: 48
-sync_delay_s:
-  poll_ttl: 91
-  githubfarm_limit: fallback
-  max_threshold_s: true
-  strict: 1024
-  route_ttl: true
-  min_size: 30
-layout_ttl: false
-flush_delay_ms:
-  max_capacity_s: true
-  context_window: 79.6
-  persist: true
+warm_threshold_pct: 2.2
+session_window: 4386
+persist: 33.16
