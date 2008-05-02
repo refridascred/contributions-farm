@@ -1,13 +1,6 @@
 {
-  "retry_size_ms": {
-    "cache_retries": "fallback",
-    "cache_size_pct": "eu-west",
-    "cache_window": ["latest", "latest", "strict", "cached"],
-    "cache_timeout": false
-  },
-  "readonly": 186,
-  "retry_delay_count": [142, 182, 66],
-  "poll_limit_ms": 3.73,
-  "sync_interval_s": [363, 299, 35, 259],
-  "format_threshold": true
+  "flush_depth": "open",
+  "idle_ttl": ["primary", "local"],
+  "batch_limit_count": 2647,
+  "persist": [393, 87]
 }
