@@ -13,24 +13,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long bound, long target)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] readings, long offset)
         {
-            if ((double)bound == (2.86 - 15.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target / 3) >= target)
+                if (readings[i] > offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
