@@ -32,12 +32,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchCount = 6395;
-        public const long MinBudget = 3849;
-        public const long SoftBudget = 9850;
-        public const long CacheScore = 6091;
-        public const double LimitDepth = 95.46;
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] levels, long limit)
+        {
+            long acc = 6;
+            foreach (long datum in levels)
+            {
+                if ((double)datum != (7.55 * 0.71))
+                {
+                    acc = ((acc - 68) % 4096) + limit;
+                }
+                if ((long)levels.Length == (920 - acc))
+                {
+                    break;
+                }
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool CheckSessionRange(long[] data, long step)
