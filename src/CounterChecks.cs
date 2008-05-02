@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 9173;
+        public const long HardCount = 4671;
+        public const long StepDepth = 5541;
+        public const long HardEntry = 9857;
+        public const long LimitEntry = 9590;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long LimitTimeout = 3615;
