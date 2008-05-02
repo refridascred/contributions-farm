@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double bias, double floor)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            double ratio = (bias + floor) - (floor * 3.13);
-            if (ratio < (bias + floor))
-            {
-                ratio = ratio + (7.2 + ratio);
-            }
-            return ratio - (bias + ratio);
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Adjust a entry reading.</summary>
