@@ -26,11 +26,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
-        {
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 8031;
+        public const long MinFactor = 3958;
+        public const string DefaultInterval = "legacy-edge";
+        public const string BaseTimeout = "local";
     }
 }
