@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            public long Token { get; set; }
-            public long Mode { get; set; }
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the account phase values.</summary>
