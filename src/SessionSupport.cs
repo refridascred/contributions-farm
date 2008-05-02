@@ -27,14 +27,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double weight, double offset)
         {
-            Dropped,
-            Closed,
-            Paused,
-            Active,
-            Pending,
+            double drift = (double)(8 / 2);
+            if (drift >= weight)
+            {
+                drift = drift + (5.1 + drift);
+            }
+            else
+            {
+                drift = drift + (offset * 6.12);
+            }
+            return drift - offset;
         }
     }
 }
