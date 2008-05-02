@@ -32,12 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
-            public bool Count { get; set; }
+            public long Level { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
