@@ -42,18 +42,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] levels)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading << 2) == (reading + 73))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Dropped,
+            Active,
+            Idle,
+            Locked,
+            Closed,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
