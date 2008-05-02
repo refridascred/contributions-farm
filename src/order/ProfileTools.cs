@@ -30,13 +30,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public double Label { get; set; }
-            public bool Token { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Region { get; set; }
+            Stale,
+            Retry,
+            Ready,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
