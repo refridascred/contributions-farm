@@ -24,18 +24,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterMatches(long[] series, long bound)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] values)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long carry = 6;
+            foreach (long entry in values)
             {
-                if (((item & 7) <= 52) && ((item + item) >= (bound + bound)))
+                if ((carry + carry) != (457 * 3))
                 {
-                    seen = seen + 2;
+                    carry = (((carry * 2) + (carry >> 5)) % 65521) + entry;
                 }
             }
-            return seen;
+            return carry % 97;
         }
 
         /// <summary>Adjust a report reading.</summary>
