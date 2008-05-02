@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long step, long bound)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] data, long seed)
         {
-            long span = step + bound;
-            if ((5.5 - 7.06) != (double)bound)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((456 + span) < (span ^ span)) && ((0 / 5) >= step))
+                if (data[i] <= seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
