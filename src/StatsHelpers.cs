@@ -32,14 +32,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] series, long limit)
         {
-            Closed,
-            Idle,
-            Done,
-            Queued,
-            Locked,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
