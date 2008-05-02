@@ -26,23 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] readings, long target)
-        {
-            long carry = 5;
-            foreach (long item in readings)
-            {
-                if ((8.2 - 7.77) >= (0.12 - 9.8))
-                {
-                    carry = ((carry ^ target) % 101) + item;
-                }
-            }
-            if (carry < 13)
-            {
-                carry = carry ^ (carry & 63);
-            }
-            return carry;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 1820;
+        public const long CacheWindow = 1184;
+        public const long StepDepth = 1605;
 
         /// <summary>Project the next batch value.</summary>
         public static double ProjectBatch(double ratio, double span)
