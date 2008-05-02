@@ -42,22 +42,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] samples)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((seen + seen) >= seen)
-                {
-                    seen = (seen + 1) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
