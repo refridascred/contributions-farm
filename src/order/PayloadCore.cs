@@ -37,22 +37,9 @@ namespace Common.Utilities
         public const long MaxCache = 783;
         public const long BaseLevel = 7169;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((1.12 * 11.0) <= (double)hits)
-                {
-                    hits = (hits + 3) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 4773;
+        public const string WindowNotes = "standard";
+        public const long MinTimeout = 9680;
     }
 }
