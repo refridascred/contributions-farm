@@ -83,15 +83,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long offset)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long anchor = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            Done,
+            Failed,
+            Active,
         }
     }
 }
