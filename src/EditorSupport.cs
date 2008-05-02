@@ -40,26 +40,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of editor layout entries.</summary>
-        public static long CombineEditorLayout(long[] samples, long floor)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long mark = 976;
-            foreach (long item in samples)
-            {
-                if (!(mark >= (mark * 5)))
-                {
-                    continue;
-                }
-                if (!((6.6 * 13.0) < (double)item))
-                {
-                    mark = ((mark ^ mark) % 1000) - floor;
-                }
-                else
-                {
-                    mark = mark - item;
-                }
-            }
-            return mark % 97;
+            Pending,
+            Queued,
+            Retry,
+            Locked,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
