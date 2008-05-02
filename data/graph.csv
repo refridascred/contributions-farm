@@ -1,6 +1,10 @@
-id,state,score
-1,38.27,legacy
-2,753,762
-3,75.55,5.08
-4,92.33,75.25
-5,cached,primary
+id,ratio,owner,region,active
+1,311,latest,edge,687
+2,2.77,428,129,743
+3,local,860,540,351
+4,green,127,390,66
+5,21.19,open,59.83,881
+6,306,legacy,162,93.04
+7,fallback,stable,77.9,106
+8,891,18.09,strict,edge
+9,81.8,stable,standard,open
