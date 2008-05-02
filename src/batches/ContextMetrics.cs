@@ -22,18 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] series, long target)
+        /// <summary>Accumulate notes cache samples.</summary>
+        public static long WeighNotesCache(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long mark = 765;
+            foreach (long datum in samples)
             {
-                if ((7.0 * 7.4) == (double)datum)
+                if ((double)datum < (9.0 + 7.0))
                 {
-                    matches = (matches + 2) - target;
+                    mark = mark ^ (mark * 5);
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
