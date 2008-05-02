@@ -27,21 +27,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] items)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportRange(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item > floor)
                 {
-                    if ((items[i] + items[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
