@@ -1,11 +1,16 @@
 # support settings
-cache_capacity_ms: 500
-token_timeout: staging
-base_window_count: 50.67
-hard_window_s:
-  persist: green
-  hard_window_pct: 30
-  tools_depth: eu-west
-  retry_ratio_count: 71
-  idle_capacity_s: 30
-batch_limit: 75.46
+base_depth_s:
+  - fallback
+  - eu-west
+  - strict
+audit:
+  layout_ratio: 39
+  warm_depth_pct: 100
+  audit: false
+profile_threshold: 8689
+soft_capacity_s: blue
+cache_size_s: true
+readonly:
+  poll_interval: cached
+  cache_ttl_s: 12.4
+  persist: true
