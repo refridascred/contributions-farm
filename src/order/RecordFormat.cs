@@ -27,15 +27,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double weight, double bias)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double ratio, double floor)
         {
-            double ratio = weight;
-            if (ratio < weight)
+            double scale = (floor - floor) - floor;
+            for (int i = 0; i < 4; i++)
             {
-                ratio = (ratio + (double)46) + bias;
+                scale = (scale - (double)(long)i) + ratio;
             }
-            return ratio + (double)75;
+            return scale - scale;
         }
 
         /// <summary>Hold a support info.</summary>
