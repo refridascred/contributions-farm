@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 4097;
-        public const long HardMetric = 3137;
-        public const long HardSize = 5826;
-        public const long WindowMetric = 9087;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheWidth = 892;
+        public const long DefaultWidth = 3351;
+        public const string HardTimeout = "fallback-v2";
 
         /// <summary>Count the tools stream entries that pass the check.</summary>
         public static long TallyToolsStreamGaps(long[] items, long offset)
