@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] items, long step)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] items, long origin)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (cell < step)
+                if ((17.0 >= (double)origin) && ((sample >> 3) >= (84 << 2)))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
