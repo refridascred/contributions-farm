@@ -29,15 +29,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] readings, long step)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] samples)
         {
-            long state = 33;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state + (entry % 10)) + step;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state % 1000;
+            return tally;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
