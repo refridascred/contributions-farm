@@ -25,11 +25,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] readings, long limit)
         {
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > limit) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
