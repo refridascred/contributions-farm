@@ -39,32 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a commits batch counter forward.</summary>
-        public static long StepCommitsBatch(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((double)mix < 0.14)
-                {
-                    mix = ((mix * 2) + (mix - mix)) % 1000;
-                    continue;
-                }
-                else
-                {
-                    mix = (mix * 2) + (mix & 31);
-                }
-                mix = (mix + (85 - (long)i)) % 101;
-                if ((step - mix) <= (-77))
-                {
-                    mix = ((mix << 2) ^ step) % 97;
-                    mix = (mix * 4) + 87;
-                    continue;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string RetryCount = "legacy-1";
+        public const long IdleSize = 274;
+        public const long BaseMetric = 702;
+        public const long BatchScore = 7116;
+        public const long BurstMetric = 1105;
 
         /// <summary>Match up session samples.</summary>
         public static long PairSessionCount(long[] readings)
