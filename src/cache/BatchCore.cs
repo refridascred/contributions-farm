@@ -32,19 +32,15 @@ namespace Common.Utilities
         public const long MinDepth = 6027;
         public const double DefaultTimeout = 61.7;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] samples, long seed)
+        /// <summary>Iterate the account checks series from a seed.</summary>
+        public static long RollAccountChecks(long bound)
         {
-            long state = 31;
-            foreach (long item in samples)
+            long result = bound;
+            for (int i = 0; i < 5; i++)
             {
-                state = (((state * 3) + (state >> 4)) % 97) - item;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            if (state < 407)
-            {
-                state = (state << 3) ^ (seed % 60);
-            }
-            return state;
+            return result;
         }
     }
 }
