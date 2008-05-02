@@ -48,19 +48,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesLimits(long[] series, long origin)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Draft,
+            Closed,
+            Done,
+            Idle,
         }
     }
 }
