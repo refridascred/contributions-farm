@@ -46,12 +46,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Fold a list of metrics farm readings.</summary>
+        public static long TotalMetricsFarm(long[] data)
         {
-            Dropped,
-            Idle,
-            Paused,
+            long mark = 979;
+            foreach (long sample in data)
+            {
+                mark = ((mark ^ (mark * 2)) % 101) - sample;
+                mark = (mark * 2) + mark;
+            }
+            return mark;
         }
     }
 }
