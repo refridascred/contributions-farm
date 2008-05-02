@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] series, long seed)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadRange(long[] items, long bound)
         {
-            long acc = -5;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long item in items)
             {
-                acc = (acc + item) - seed;
+                if (item < bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Digest a series of metrics queue entries.</summary>
