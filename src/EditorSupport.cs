@@ -46,13 +46,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Find the first session already entry that matches the target.</summary>
+        public static long LookupSessionAlreadyIndex(long[] values, long target)
         {
-            Pending,
-            Queued,
-            Retry,
-            Locked,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
