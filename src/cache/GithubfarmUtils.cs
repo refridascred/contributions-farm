@@ -23,31 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a session profile value against two limits.</summary>
-        public static long SortSessionProfile(long target, long origin)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteOutliers(long[] items, long offset)
         {
-            if ((1.6 + 2.0) < (double)target)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin >= (8.34 - 6.74))
+                if ((6 >> 2) <= cell)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((-30) << 1) < origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = (hits + 2) + offset;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate farm samples.</summary>
