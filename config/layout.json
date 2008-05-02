@@ -1,12 +1,17 @@
 {
-  "verbose": true,
-  "batch_ttl_count": true,
-  "payload_ratio": false,
-  "sync_capacity_count": {
-    "idle_timeout_s": [453, 81, 123, 202],
-    "cache_ratio": ["strict", "eu-west"],
-    "strict": 5780,
-    "hard_timeout": 60,
-    "audit": true
-  }
+  "persist": ["fallback", "primary"],
+  "dry_run": "stable",
+  "max_size_s": ["strict", "eu-west"],
+  "command_retries": {
+    "base_retries_count": {
+      "strict": 21.21,
+      "profile_threshold": "cached",
+      "flush_delay_count": "fallback",
+      "warm_timeout": 250
+    },
+    "readonly": 1024,
+    "audit": "green"
+  },
+  "compress": 20,
+  "idle_timeout_s": 60
 }
