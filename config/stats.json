@@ -1,16 +1,15 @@
 {
-  "stream_capacity": "local",
-  "soft_interval_s": 100,
-  "stream_size": {
-    "audit": {
-      "cache_retries": 56.81,
-      "stats_capacity": [347, 59, 327, 460],
-      "retry_ratio": [96, 252]
-    },
-    "soft_interval_pct": [168, 105, 144],
-    "readonly": 95.46,
-    "poll_timeout_s": "legacy",
-    "schema_timeout": [287, 50, 201, 46],
-    "graph_capacity": 5794
-  }
+  "retry_threshold": "latest",
+  "profile_size": {
+    "flush_interval_s": "cached",
+    "dry_run": 0.46,
+    "githubfarm_window": "strict",
+    "idle_interval_count": 95,
+    "compress": [208, 235, 182],
+    "hard_ratio_ms": true
+  },
+  "schema_retries": "legacy",
+  "counter_window": true,
+  "hard_retries_s": 51.51,
+  "flush_delay_ms": 500
 }
