@@ -17,19 +17,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long bound)
+        /// <summary>Look up the position of a support farm sample.</summary>
+        public static long SeekSupportFarmIndex(long[] values, long floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (values[i] <= floor)
                 {
-                    carry = ((carry << 2) ^ (carry + carry)) ^ (long)i2;
+                    return (long)i;
                 }
-                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
