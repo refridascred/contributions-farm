@@ -30,11 +30,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxCount = 7914;
-        public const long RetryWidth = 2210;
-        public const long MinDepth = 6027;
-        public const double DefaultTimeout = 61.7;
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
+        {
+            public bool Total { get; set; }
+            public double Offset { get; set; }
+            public double Label { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long TallyTokenGaps(long[] readings, long seed)
