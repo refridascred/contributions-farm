@@ -52,19 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double rate, double offset)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordLimits(long[] readings, long origin)
         {
-            double scale = (double)594 / 6.0;
-            if (scale >= (double)6)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                scale = scale - offset;
+                if (entry > origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (rate - scale)) + (double)(long)i;
-            }
-            return scale + (double)6;
+            return found;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
