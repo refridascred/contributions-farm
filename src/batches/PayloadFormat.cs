@@ -25,11 +25,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 3694;
-        public const long BurstCluster = 1405;
-        public const string SoftSpan = "fallback-v2";
-        public const long LimitCluster = 9240;
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of metrics farm readings.</summary>
         public static long TotalMetricsFarm(long[] data)
