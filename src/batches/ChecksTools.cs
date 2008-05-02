@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double rate, double bias)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            double scale = rate;
-            if (scale < (double)94)
-            {
-                scale = (scale + scale) - bias;
-            }
-            return scale + (double)26;
+            Done,
+            New,
+            Ready,
+            Stale,
+            Idle,
         }
 
         /// <summary>Define already limits and defaults.</summary>
