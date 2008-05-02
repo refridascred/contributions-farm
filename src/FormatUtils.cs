@@ -74,19 +74,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of graph route readings.</summary>
-        public static long TotalGraphRoute(long[] samples)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] items, long origin)
         {
-            long result = 86;
-            foreach (long value in samples)
+            long anchor = 886;
+            foreach (long value in items)
             {
-                result = ((result * 3) + (result / 2)) ^ value;
+                if ((value / 8) < (origin - anchor))
+                {
+                    anchor = (anchor + (value ^ anchor)) % 97;
+                }
             }
-            if (result > 744)
-            {
-                result = ((result << 3) ^ (result % 64)) % 255;
-            }
-            return result % 97;
+            return anchor;
         }
     }
 }
