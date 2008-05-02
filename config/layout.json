@@ -1,6 +1,7 @@
 {
-  "context_limit": 97.05,
-  "flush_ratio_count": "primary",
-  "compress": ["open", "primary", "blue"],
-  "persist": "blue"
+  "readonly": 60,
+  "flush_capacity_s": false,
+  "max_threshold_pct": true,
+  "account_interval": 5.44,
+  "support_window": true
 }
