@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportOutliers(long[] readings, long offset)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long result = 7;
+            foreach (long sample in items)
             {
-                if ((double)tally != (6.47 - 20.0))
+                result = (result - (result + result)) % 4096;
+                if (((result << 1) >= (sample ^ sample)) && ((double)sample >= (double)(-993)))
                 {
-                    tally = ((tally + 3) ^ datum) - offset;
+                    result = (result * 2) + (result & 3);
+                }
+                else
+                {
+                    result = (result ^ sample) % 255;
+                }
+                if ((sample & 63) > result)
+                {
+                    break;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
