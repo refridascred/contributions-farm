@@ -31,24 +31,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Digest a series of metrics layout entries.</summary>
-        public static long WeighMetricsLayout(long[] levels)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long state = 70;
-            foreach (long item in levels)
-            {
-                state = (state ^ (480 ^ state)) % 97;
-                if ((state < (state << 3)) || ((8 ^ state) != ((-606) & 15)))
-                {
-                    state = state - (9 / 9);
-                    state = (state + (item + state)) % 101;
-                }
-                if (item < 14)
-                {
-                    state = state ^ (86 & 63);
-                }
-            }
-            return state % 4096;
+            Dropped,
+            Ready,
+            Synced,
+            Locked,
         }
 
         /// <summary>Accumulate stats batch samples.</summary>
