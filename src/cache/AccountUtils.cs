@@ -14,12 +14,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleCount = 5460;
-        public const string BurstLevel = "latest-edge";
-        public const long WindowScore = 228;
-        public const double SoftFarm = 81.14;
-        public const long HardFarm = 884;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MaxBatch = "staging-1";
+        public const long RetryBatch = 9254;
+        public const long SoftBatch = 8653;
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
