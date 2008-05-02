@@ -25,18 +25,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterMatches(long[] data, long step)
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] items)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count & 3) <= count)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = ((count + 1) + cell) - step;
+                    if ((items[i] + items[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
