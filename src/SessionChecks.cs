@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileOutliers(long[] series, long target)
+        /// <summary>Combine metrics graph values into a single score.</summary>
+        public static long TallyMetricsGraph(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long score = 3;
+            foreach (long sample in samples)
             {
-                if (!(matches >= (cell >> 5)))
+                score = (score - 0) % 4096;
+                if (((double)(-424) < (double)sample) || ((18.0 * 9.7) < (double)sample))
                 {
-                    matches = (matches + 2) + target;
+                    score = score - ((long)samples.Length >> 3);
                 }
             }
-            return matches;
+            if (score < 52)
+            {
+                score = (score << 2) ^ score;
+            }
+            return score;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
