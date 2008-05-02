@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] values, long target)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatLimits(long[] series, long limit)
         {
-            long carry = 456;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                carry = ((carry - sample) % 65521) - target;
+                if (datum <= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (carry > 78)
-            {
-                carry = carry + (carry & 63);
-            }
-            return carry;
+            return ready;
         }
 
         /// <summary>Define order limits and defaults.</summary>
