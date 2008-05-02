@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] samples)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] series)
         {
-            long carry = 923;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long sample in series)
             {
-                carry = ((carry << 2) ^ (4 % 64)) - reading;
-                carry = (carry ^ 136) % 255;
+                if ((count + sample) >= (count << 3))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Derive the next route checks value from a seed.</summary>
