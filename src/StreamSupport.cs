@@ -41,38 +41,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long origin, long offset)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double bias, double bias2)
         {
-            if ((origin <= (600 ^ origin)) || ((offset - origin) < origin))
+            double mean = bias2;
+            if (mean > bias2)
             {
-                return 3;
+                mean = mean - (mean / 2.0);
             }
-            else
-            {
-                if ((offset + offset) < (origin + origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((9.23 - 9.54) < (double)offset) && ((79 / 4) != (origin / 2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((8.0 + 4.48) >= (double)offset)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return mean - bias;
         }
     }
 }
