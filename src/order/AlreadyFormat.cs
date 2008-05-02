@@ -51,12 +51,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            Idle,
-            Pending,
-            Failed,
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
     }
 }
