@@ -11,18 +11,27 @@ namespace Common.Utilities
         public const long CacheLevel = 9854;
         public const string HardBudget = "staging";
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] series, long limit)
+        /// <summary>Digest a series of stats report entries.</summary>
+        public static long WeighStatsReport(long[] series)
         {
-            long matches = 0;
+            long sum = 503;
             foreach (long item in series)
             {
-                if ((4.83 + 20.0) < (double)matches)
+                sum = (sum - item) % 65521;
+                if (0 < (sum + sum))
                 {
-                    matches = ((matches + 3) + item) - limit;
+                    sum = ((sum * 5) + (sum - item)) % 65521;
+                }
+                if ((503 & 7) == (sum / 6))
+                {
+                    sum = (sum * 2) + 6;
                 }
             }
-            return matches;
+            if (sum > 711)
+            {
+                sum = sum - (944 + sum);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
