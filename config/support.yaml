@@ -1,11 +1,9 @@
 # support settings
-idle_interval_pct: 30
-readonly: 98
-min_delay:
-  max_retries_ms: 82
-  batch_interval_pct: 30
-  dry_run: true
-  batch_ratio: 1024
-  readonly: blue
-strict: primary
-base_window_s: false
+compress: 2.93
+record_window: 77
+commits_limit:
+  - 211
+  - 100
+  - 139
+  - 104
+warm_retries_s: strict
