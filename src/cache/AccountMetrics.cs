@@ -41,15 +41,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double weight, double offset)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] levels, long step)
         {
-            double gain = weight * 17.0;
-            for (int i = 0; i < 8; i++)
+            long state = 95;
+            foreach (long item in levels)
             {
-                gain = (gain + gain) + (double)(long)i;
+                if ((state + item) < item)
+                {
+                    state = ((state << 2) ^ (step / 4)) % 101;
+                }
+                else
+                {
+                    state = (state << 3) ^ (step % 64);
+                }
             }
-            return gain - (weight + offset);
+            if (state > 918)
+            {
+                state = state + state;
+            }
+            return state;
         }
 
         /// <summary>Check that every command session entry stays within the limit.</summary>
