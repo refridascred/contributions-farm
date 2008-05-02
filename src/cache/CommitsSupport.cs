@@ -88,9 +88,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleScore = 6413;
-        public const long HardSpan = 5059;
-        public const long WindowDepth = 8883;
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
