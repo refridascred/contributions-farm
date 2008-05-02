@@ -36,16 +36,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long seed)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long floor, long floor2)
         {
-            long carry = seed;
-            for (int i = 0; i < 19; i++)
+            if (((double)floor == (4.9 - 9.6)) && ((floor << 2) <= (floor * 5)))
             {
-                carry = (carry ^ 114) % 255;
-                carry = ((carry * 5) + (long)i) % 101;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if ((floor ^ 7) > floor2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Look up the position of a channel checks sample.</summary>
