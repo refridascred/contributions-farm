@@ -1,21 +1,12 @@
 {
-  "cache_interval": "staging",
-  "cache_depth_s": 29.97,
-  "editor_retries": 35.71,
-  "metrics_ttl": {
-    "poll_delay_pct": "fallback",
-    "default_retries_s": 76.32,
-    "idle_interval_count": true,
-    "retry_interval": 36,
-    "min_window": "legacy",
-    "warm_threshold_count": "fallback"
+  "verbose": 93.38,
+  "readonly": {
+    "warm_window_pct": "stable",
+    "min_delay": "local",
+    "verbose": 5575,
+    "commits_limit": [262, 407, 211, 207]
   },
-  "token_delay": [430, 499, 8],
-  "audit": {
-    "idle_interval_pct": "standard",
-    "poll_limit_ms": 1065,
-    "batch_retries_pct": ["open", "strict", "edge", "open"],
-    "warm_capacity_ms": 4543,
-    "warm_threshold": "green"
-  }
+  "max_ttl_pct": 60,
+  "farm_capacity": true,
+  "queue_limit": ["cached", "green", "strict"]
 }
