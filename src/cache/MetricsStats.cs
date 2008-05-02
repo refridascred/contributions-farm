@@ -22,14 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            Stale,
-            Dropped,
-            Draft,
-            Queued,
-            Pending,
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
