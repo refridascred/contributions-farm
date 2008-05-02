@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = ((mark * 3) + (target + mark)) % 65521;
-                mark = ((mark << 2) ^ (mark - target)) % 101;
-                mark = (mark * 3) + (target * 3);
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 8395;
+        public const double BatchStats = 47.88;
+        public const string CacheStats = "staging";
+        public const string CacheLevel = "stable-edge";
+        public const long RetryStats = 9270;
 
         /// <summary>Look up the position of a checks channel sample.</summary>
         public static long FindChecksChannelIndex(long[] values, long target)
