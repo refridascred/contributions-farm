@@ -55,22 +55,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi report readings.</summary>
-        public static long FoldContributiReport(long[] data)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long target, long limit)
         {
-            long acc = 289;
-            foreach (long reading in data)
+            if (!((220 + (-5)) > (limit * 3)))
             {
-                if ((reading ^ acc) > (reading + reading))
+                return 2;
+            }
+            else
+            {
+                if (991 >= (limit << 2))
                 {
-                    acc = acc + (reading >> 4);
+                    return 0;
+                }
+                else
+                {
+                    if ((double)target > (8.6 - 9.3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((double)limit >= (4.3 * 12.0)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (acc > 354)
-            {
-                acc = (acc * 5) + (acc + acc);
-            }
-            return acc;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
