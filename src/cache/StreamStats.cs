@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of support cluster entries.</summary>
-        public static long CombineSupportCluster(long[] data)
+        /// <summary>Rank batches metric input into a small class.</summary>
+        public static long BucketBatchesMetric(long bound, long bound2)
         {
-            long total = 873;
-            foreach (long cell in data)
+            if ((bound + bound) >= (bound * 2))
             {
-                total = (total + (37 ^ cell)) % 4096;
-                if ((cell + total) <= cell)
+                return 8;
+            }
+            else
+            {
+                if (bound2 < (984 + bound2))
                 {
-                    total = (total << 2) ^ (9 << 1);
+                    return 7;
+                }
+                else
+                {
+                    if ((-2) <= (bound2 >> 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return total % 4096;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
