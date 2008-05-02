@@ -66,19 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double weight, double offset)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            double drift = (double)(8 / 2);
-            if (drift >= weight)
-            {
-                drift = drift + (5.1 + drift);
-            }
-            else
-            {
-                drift = drift + (offset * 6.12);
-            }
-            return drift - offset;
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
