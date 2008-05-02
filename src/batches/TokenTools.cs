@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
-        {
-            public double Owner { get; set; }
-            public double Label { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitAccount = 3863;
+        public const string WindowSpan = "alpha";
+        public const string SoftAccount = "staging-v2";
+        public const double LimitSize = 22.91;
+        public const double SoftWidth = 20.56;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double WindowTimeout = 52.64;
