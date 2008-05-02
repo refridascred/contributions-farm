@@ -58,15 +58,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Paused,
-            Failed,
-            Stale,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitSpan = 9050;
+        public const double BaseCommits = 63.72;
+        public const long BaseSpan = 9243;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool ValidateNotesLimits(long[] series, long floor)
