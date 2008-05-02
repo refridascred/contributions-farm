@@ -1,14 +1,12 @@
 # Command notes
 
-When a batches fails, the context handler retries a few times before giving up.
-When a graph fails, the graph handler retries a few times before giving up.
-Keep cache and format names short and lowercase.
-
-Use report settings to tune how often contributi data is refreshed.
-A counter that stays idle for too long is moved to the batches list.
+Run the graph check before changing any stream limits.
+Each already is validated before it reaches the format queue.
+The farm helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new cluster fields
-- Prefer context defaults
-- Log every queue change
+- Validate queue input early
+- Prefer batch defaults
+- Document new layout fields
+- Keep tools values small
