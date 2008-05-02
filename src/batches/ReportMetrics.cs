@@ -36,18 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] samples)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)(long)samples.Length <= (double)reading)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public double Token { get; set; }
         }
     }
 }
