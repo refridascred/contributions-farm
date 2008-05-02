@@ -17,13 +17,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next record buffer value from a seed.</summary>
-        public static long RollRecordBuffer(long offset)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] values, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 21; i++)
+            long total = 648;
+            foreach (long sample in values)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                total = (((total << 2) ^ (129 & 255)) ^ sample) + limit;
+            }
+            if (total < 10)
+            {
+                total = total ^ (-327);
             }
             return total;
         }
