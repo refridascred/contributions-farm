@@ -22,14 +22,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterRange(long[] items, long seed)
         {
-            Pending,
-            Draft,
-            Closed,
-            Queued,
-            Stale,
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Roll a context counter forward.</summary>
