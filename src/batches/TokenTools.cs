@@ -11,10 +11,23 @@ namespace Common.Utilities
         public const long BurstChecks = 9333;
         public const double SoftChecks = 74.25;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultRatio = 7501;
-        public const long MaxScore = 8706;
-        public const double IdleBuffer = 79.24;
+        /// <summary>Count the checks queue entries that pass the check.</summary>
+        public static long TallyChecksQueueMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (((13.0 * 18.0) < (double)reading) && ((9 << 2) <= (seen % 97)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long DeriveBatches(long target)
