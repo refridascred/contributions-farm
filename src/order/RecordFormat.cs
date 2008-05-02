@@ -54,22 +54,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string RetryGraph = "stable-1";
+        public const long MaxGraph = 6246;
+        public const double StepGraph = 15.94;
+        public const long MinRatio = 5472;
+        public const long WindowScore = 496;
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
