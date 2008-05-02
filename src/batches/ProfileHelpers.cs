@@ -18,18 +18,20 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 3086;
         public const double RetrySize = 54.91;
 
-        /// <summary>Count the buffer support entries that pass the check.</summary>
-        public static long TallyBufferSupportGaps(long[] items, long step)
+        /// <summary>Derive the next order context value from a seed.</summary>
+        public static long SeriesOrderContext(long origin)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long carry = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((step << 1) <= (tally << 2))
+                carry = ((carry << 2) ^ (796 + origin)) % 255;
+                if (!((carry << 2) < ((long)i >> 2)))
                 {
-                    tally = (tally + 1) - item;
+                    break;
                 }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Hold a queue entry.</summary>
