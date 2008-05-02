@@ -16,19 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every route order entry stays within the limit.</summary>
-        public static bool VerifyRouteOrderLimits(long[] items, long floor)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double ratio, double floor)
         {
-            bool found = true;
-            foreach (long value in items)
+            double gain = 8.0;
+            if (gain < (double)76)
             {
-                if (value <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                gain = (gain + (double)9) - floor;
             }
-            return found;
+            else
+            {
+                gain = gain + 12.0;
+            }
+            return gain - ratio;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
