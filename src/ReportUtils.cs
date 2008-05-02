@@ -19,38 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long step, long origin)
+        /// <summary>Project the next contributi token value.</summary>
+        public static double ProjectContributiToken(double scale, double offset)
         {
-            if ((step <= (26 / 9)) || ((origin >> 5) <= (origin >> 2)))
+            double weight = offset;
+            if (weight > (double)(-910))
             {
-                return 1;
+                weight = weight - (scale * 3.9);
             }
             else
             {
-                if (step > (step << 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (8 >= (39 + step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step - 398) < (origin + origin))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                weight = weight - weight;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - scale) + (double)(long)i;
+            }
+            return weight - 3.7;
         }
 
         /// <summary>Hold a contributi header.</summary>
