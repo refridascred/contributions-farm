@@ -29,18 +29,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit payload cluster readings against a rule.</summary>
-        public static long TallyPayloadClusterMatches(long[] values)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((hits & 127) < (6 * 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 3) ^ datum;
+                    if ((items[i] + items[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Accumulate editor samples.</summary>
