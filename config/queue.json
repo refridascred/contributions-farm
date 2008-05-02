@@ -1,14 +1,8 @@
 {
-  "command_ratio": 57,
-  "readonly": {
-    "verbose": true,
-    "order_size": 53.19,
-    "burst_threshold_pct": 25.27,
-    "idle_timeout": true,
-    "min_timeout": 100,
-    "flush_size": "fallback"
-  },
-  "githubfarm_window": "cached",
-  "base_window_s": 7.55,
-  "poll_limit_count": "standard"
+  "max_threshold": 51,
+  "persist": "legacy",
+  "compress": "blue",
+  "command_capacity": 100,
+  "base_retries_count": "green",
+  "batch_ratio": "local"
 }
