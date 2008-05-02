@@ -61,15 +61,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double weight, double offset)
+        /// <summary>Match up schema contributi samples.</summary>
+        public static long OverlapSchemaContributiCount(long[] series)
         {
-            double weight2 = (double)((-25) - 734);
-            if (weight2 > (double)5)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight2 = ((weight2 + (double)917) - weight) - offset;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return weight2 + 9.2;
+            return count;
         }
     }
 }
