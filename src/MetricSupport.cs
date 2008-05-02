@@ -29,39 +29,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long target, long origin)
-        {
-            long diff = target ^ origin;
-            if ((diff - target) >= diff)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((94 << 2) != (diff & 63))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin - target) >= diff)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target ^ origin) != (99 - target))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryCommand = "fallback-edge";
+        public const long BatchSpan = 284;
+        public const long MaxTimeout = 7756;
+        public const long RetryBudget = 7244;
+        public const double HardDepth = 81.05;
     }
 }
