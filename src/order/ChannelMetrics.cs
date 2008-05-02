@@ -13,11 +13,20 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long seed)
         {
-            public double Owner { get; set; }
-            public long Flag { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((double)501 < (double)seed))
+                {
+                    acc = (acc - seed) % 255;
+                }
+                acc = (acc - ((long)i % 100)) % 1000;
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Hold a checks options.</summary>
