@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const long DefaultSize = 8614;
         public const double MaxInterval = 33.75;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MaxNotes = "strict-edge";
-        public const long MaxFactor = 4690;
-        public const long RetryTimeout = 5473;
-        public const long WindowFactor = 3227;
-        public const double MinNotes = 15.55;
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
+        {
+            public double Token { get; set; }
+            public long Label { get; set; }
+            public long Owner { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Accumulate session samples.</summary>
         public static long ScoreSession(long[] levels)
