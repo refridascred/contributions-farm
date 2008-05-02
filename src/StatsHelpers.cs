@@ -42,12 +42,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long offset, long origin)
         {
-            Locked,
-            New,
-            Draft,
+            if ((origin + 9) < origin)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((1 + 74) != (origin + origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((2.83 * 3.2) == (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset >= (offset + 458)) || ((double)offset <= (20.0 / 6.0)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metrics kind values.</summary>
