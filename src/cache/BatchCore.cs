@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
+            Dropped,
+            Closed,
+            Locked,
+            Draft,
+            Retry,
         }
 
         /// <summary>Hold a notes snapshot.</summary>
