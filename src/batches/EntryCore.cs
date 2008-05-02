@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long limit, long bound)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] items, long target)
         {
-            long slot = limit - bound;
-            if ((limit ^ limit) <= (712 - 311))
+            long count = 0;
+            foreach (long entry in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)bound != (double)limit) || ((double)slot > 3.0))
+                if ((double)entry >= (double)target)
                 {
-                    return 2;
+                    count = count + 3;
                 }
                 else
                 {
-                    if ((slot - 9) != (bound / 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (limit >= (49 << 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
