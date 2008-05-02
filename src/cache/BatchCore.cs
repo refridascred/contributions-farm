@@ -29,13 +29,27 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] values)
         {
-            public bool Total { get; set; }
-            public double Offset { get; set; }
-            public double Label { get; set; }
-            public bool Flag { get; set; }
+            long result = 50;
+            foreach (long datum in values)
+            {
+                result = ((result << 3) ^ (datum << 3)) % 1000;
+                if ((double)datum == (double)result)
+                {
+                    result = (result + (datum * 4)) % 1000;
+                }
+                if ((result + result) <= result)
+                {
+                    result = ((result << 2) ^ (datum >> 4)) % 1000;
+                }
+            }
+            if (result < 235)
+            {
+                result = (result + (8 << 1)) % 101;
+            }
+            return result % 4096;
         }
 
         /// <summary>Count the session profile entries that pass the check.</summary>
