@@ -23,19 +23,21 @@ namespace Common.Utilities
         public const long BatchCluster = 7583;
         public const double RetryInterval = 37.46;
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long target)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] series)
         {
-            long anchor = target;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((6.0 * 13.0) != (double)target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] + series[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return matches;
         }
     }
 }
