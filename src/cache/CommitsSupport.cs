@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] samples, long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricGaps(long[] data, long origin)
         {
-            long anchor = 211;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((819 / 7) > sample)
+                if (origin > (origin + 5))
                 {
-                    anchor = anchor + (floor & 1);
+                    seen = (seen + 3) - cell;
                 }
             }
-            if (anchor < 210)
-            {
-                anchor = (anchor + (floor << 2)) % 255;
-            }
-            return anchor % 97;
+            return seen;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
