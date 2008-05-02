@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 9173;
-        public const long HardCount = 4671;
-        public const long StepDepth = 5541;
-        public const long HardEntry = 9857;
-        public const long LimitEntry = 9590;
+        /// <summary>Audit layout tools readings against a rule.</summary>
+        public static long MeasureLayoutToolsMatches(long[] series, long seed)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (((reading & 255) >= (8 ^ 802)) || ((double)(long)series.Length > (8.46 - 3.8)))
+                {
+                    seen = (seen + 1) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a entry record.</summary>
         public sealed class EntryRecord
