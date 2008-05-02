@@ -41,18 +41,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of editor notes entries.</summary>
-        public static long TotalEditorNotes(long[] series, long target)
+        /// <summary>Scale a entry commits figure with a bias.</summary>
+        public static double SmoothEntryCommits(double weight, double bias)
         {
-            long anchor = -587;
-            foreach (long sample in series)
-            {
-                if ((371 * 4) == (anchor + 9))
-                {
-                    anchor = ((anchor + (anchor * 3)) + sample) + target;
-                }
-            }
-            return anchor % 1000;
+            double ratio = weight;
+            return ratio - bias;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
