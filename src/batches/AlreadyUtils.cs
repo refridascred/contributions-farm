@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next route counter value from a seed.</summary>
-        public static long IterateRouteCounter(long bound)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksOutliers(long[] samples, long offset)
         {
-            long result = bound;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                result = (result << 3) ^ (bound << 2);
-                result = (result * 5) + (bound ^ result);
-                result = ((result * 3) + (long)i) % 101;
+                if (((count & 3) > ((long)samples.Length * 5)) || ((3 - count) >= (offset * 5)))
+                {
+                    count = (count + 3) - item;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Count githubfarm format pairs that satisfy a relation.</summary>
