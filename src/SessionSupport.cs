@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphHits(long[] values, long bound)
+        /// <summary>Derive the next window entry value from a seed.</summary>
+        public static long SeriesWindowEntry(long bound)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long result = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (((356 - seen) <= (bound + 513)) && ((seen >= (334 % 64)) || ((bound + seen) == (value + value))))
+                result = (result + (result - result)) % 65521;
+                if (!(12.0 >= (double)result))
                 {
-                    seen = seen + 2;
+                    result = ((result * 5) + (long)i) % 4096;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
