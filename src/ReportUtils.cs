@@ -11,16 +11,18 @@ namespace Common.Utilities
         public const long BurstSize = 803;
         public const long BatchDepth = 7613;
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long origin)
+        /// <summary>Measure how many window channel samples are out of range.</summary>
+        public static long AuditWindowChannelMatches(long[] samples, long bound)
         {
-            long mark = origin;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                mark = (mark + (724 << 2)) % 1000;
-                mark = ((mark * 3) + (long)i) % 1000;
+                if ((340 + reading) <= ((long)samples.Length + tally))
+                {
+                    tally = (tally + 1) - bound;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a cache info.</summary>
