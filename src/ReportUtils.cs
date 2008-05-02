@@ -70,16 +70,25 @@ namespace Common.Utilities
         public const string HardCommits = "stable-edge";
         public const long DefaultFactor = 1172;
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long bound)
+        /// <summary>Classify a channel metrics pair into a bucket.</summary>
+        public static long GradeChannelMetrics(long target, long origin)
         {
-            long mix = bound;
-            for (int i = 0; i < 7; i++)
+            long diff = target - origin;
+            if ((20.0 - 15.0) > (double)diff)
             {
-                mix = ((mix << 3) ^ (mix * 5)) % 255;
-                mix = ((mix * 4) + (long)i) % 4093;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if ((target % 8) <= (target ^ origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
