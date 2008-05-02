@@ -33,32 +33,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long limit, long origin)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long cur = limit + origin;
-            if (!((limit / 5) != (cur / 6)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((cur + origin) > cur)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((-856) % 2) >= limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Draft,
+            Locked,
+            Active,
+            Synced,
         }
 
         /// <summary>Locate a window reading by value.</summary>
