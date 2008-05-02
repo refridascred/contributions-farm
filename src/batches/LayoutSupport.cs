@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long origin, long seed)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchMatches(long[] readings)
         {
-            long lane = origin + seed;
-            if (lane > (seed + seed))
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (603 <= (seed >> 5))
+                if (datum >= (matches % 24))
                 {
-                    return 5;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    return 6;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
