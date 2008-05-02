@@ -1,7 +1,15 @@
 {
-  "strict": 60,
-  "warm_delay": false,
-  "profile_size": "stable",
-  "warm_threshold_s": [12, 335],
-  "editor_delay": "staging"
+  "batch_window_ms": 81.98,
+  "sync_size": 250,
+  "poll_capacity_ms": {
+    "commits_retries": {
+      "base_timeout": [227, 206],
+      "batch_timeout_count": "eu-west",
+      "default_depth_ms": false,
+      "warm_interval": "fallback",
+      "buffer_interval": false
+    },
+    "idle_size_s": [477, 394, 395, 187],
+    "enabled": "edge"
+  }
 }
