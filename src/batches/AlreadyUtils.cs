@@ -13,19 +13,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksOutliers(long[] samples, long offset)
-        {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (((count & 3) > ((long)samples.Length * 5)) || ((3 - count) >= (offset * 5)))
-                {
-                    count = (count + 3) - item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string CacheScore = "cached-edge";
+        public const long RetryCommand = 5711;
+        public const long DefaultCommand = 3612;
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
