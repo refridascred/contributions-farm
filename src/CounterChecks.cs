@@ -12,10 +12,18 @@ namespace Common.Utilities
         public const long HardEntry = 9857;
         public const long LimitEntry = 9590;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitTimeout = 3615;
-        public const long MaxDepth = 8381;
-        public const string MinBudget = "primary-1";
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine farm graph values into a single score.</summary>
         public static long TotalFarmGraph(long[] levels)
