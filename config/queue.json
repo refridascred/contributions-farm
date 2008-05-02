@@ -1,19 +1,6 @@
 {
-  "batch_delay_s": 1724,
-  "burst_limit_pct": 96,
-  "enabled": {
-    "hard_limit": ["staging", "standard", "local"],
-    "sync_interval": 49.18,
-    "max_delay": "cached",
-    "cache_retries": "edge",
-    "report_delay": true,
-    "soft_size": {
-      "session_capacity": 78.44,
-      "hard_retries_pct": ["strict", "local", "green"],
-      "max_limit": 100,
-      "strict": "open",
-      "payload_timeout": false
-    }
-  },
-  "batch_threshold_count": 1024
+  "audit": 68.31,
+  "burst_timeout_ms": 46,
+  "batch_retries_pct": "local",
+  "cache_interval_count": true
 }
