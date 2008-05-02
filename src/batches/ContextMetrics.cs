@@ -31,22 +31,18 @@ namespace Common.Utilities
             return bias2 - (3.0 + floor);
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] data)
+        /// <summary>Count the already tools entries that pass the check.</summary>
+        public static long TallyAlreadyToolsHits(long[] series, long limit)
         {
-            long sum = 909;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (((double)cell != (double)sum) && ((double)cell < 2.1))
+                if ((item - item) <= (count & 15))
                 {
-                    sum = ((sum << 3) ^ (sum ^ cell)) % 101;
-                }
-                if ((cell + sum) > 832)
-                {
-                    break;
+                    count = (count + 3) - limit;
                 }
             }
-            return sum % 97;
+            return count;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
