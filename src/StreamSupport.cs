@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long target)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] samples, long target)
         {
-            long carry = target;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                carry = ((carry << 2) ^ (carry & 7)) % 1000;
-                carry = ((carry * 4) + (long)i) % 65521;
+                if ((hits & 3) < value)
+                {
+                    hits = (hits + 2) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
