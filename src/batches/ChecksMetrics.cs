@@ -25,18 +25,21 @@ namespace Common.Utilities
             return ratio + (floor + rate);
         }
 
-        /// <summary>Count the editor farm entries that pass the check.</summary>
-        public static long TallyEditorFarmOutliers(long[] levels)
+        /// <summary>Count window schema pairs that satisfy a relation.</summary>
+        public static long OverlapWindowSchemaCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry + tally) > (entry ^ entry))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((samples[i] - samples[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
