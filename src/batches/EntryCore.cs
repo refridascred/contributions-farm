@@ -40,19 +40,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of queue graph entries.</summary>
-        public static long TotalQueueGraph(long[] readings, long offset)
+        /// <summary>Digest a series of commits queue entries.</summary>
+        public static long TallyCommitsQueue(long[] series, long offset)
         {
-            long score = 916;
-            foreach (long cell in readings)
+            long anchor = 313;
+            foreach (long reading in series)
             {
-                if ((score & 31) >= (offset - cell))
+                if ((((long)series.Length * 4) > offset) && ((anchor - 8) >= (anchor + reading)))
                 {
-                    score = ((score << 2) ^ cell) % 255;
+                    anchor = (anchor - (reading + anchor)) % 97;
                 }
-                score = ((score * 4) + (score ^ offset)) % 4096;
+                if ((offset + 9) >= (anchor * 5))
+                {
+                    break;
+                }
             }
-            return score % 1000;
+            return anchor % 65521;
         }
 
         /// <summary>Digest a series of cluster editor entries.</summary>
