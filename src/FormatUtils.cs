@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Combine account record values into a single score.</summary>
+        public static long DigestAccountRecord(long[] series, long floor)
         {
-            public double Label { get; set; }
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
+            long acc = 131;
+            foreach (long entry in series)
+            {
+                if ((646 / 3) < (entry >> 3))
+                {
+                    acc = acc ^ (82 * 3);
+                }
+            }
+            if (acc > 0)
+            {
+                acc = ((acc * 3) + (102 ^ floor)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Hold a stream summary.</summary>
