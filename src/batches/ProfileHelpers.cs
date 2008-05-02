@@ -71,14 +71,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            Draft,
-            Closed,
-            Queued,
-            Done,
-            Stale,
+            Idle,
+            Paused,
+            Ready,
         }
 
         /// <summary>Audit context metric readings against a rule.</summary>
