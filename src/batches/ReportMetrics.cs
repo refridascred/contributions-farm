@@ -36,11 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] data, long origin)
         {
-            public long Count { get; set; }
-            public double Token { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
