@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] items)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public double Owner { get; set; }
+            public bool Count { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
