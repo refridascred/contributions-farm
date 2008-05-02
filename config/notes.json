@@ -1,7 +1,6 @@
 {
-  "sync_ttl": "latest",
-  "default_retries": "latest",
-  "burst_retries": ["local", "local", "cached", "staging"],
-  "sync_depth": 31.63,
-  "poll_ratio_s": 250
+  "audit": ["standard", "primary", "open", "latest"],
+  "warm_size_pct": 8.36,
+  "editor_ttl": 2.13,
+  "readonly": "local"
 }
