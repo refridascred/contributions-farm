@@ -1,13 +1,14 @@
 {
-  "max_interval_pct": 22,
-  "buffer_size": 4.49,
-  "compress": {
-    "flush_retries_pct": [195, 109, 136, 119],
-    "batches_timeout": "strict",
-    "enabled": "cached",
-    "route_size": "cached"
+  "default_timeout_s": "edge",
+  "soft_delay_count": "standard",
+  "burst_delay_pct": true,
+  "default_window_pct": {
+    "dry_run": 30,
+    "burst_window_count": [157, 293],
+    "audit": true,
+    "batch_window_s": false,
+    "sync_delay": "latest"
   },
-  "cache_retries_ms": "green",
-  "stats_window": "fallback",
-  "max_size_pct": 250
+  "checks_size": true,
+  "flush_delay_ms": "local"
 }
