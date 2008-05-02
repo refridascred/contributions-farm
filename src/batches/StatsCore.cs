@@ -43,18 +43,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksOutliers(long[] levels)
+        /// <summary>Roll a layout account counter forward.</summary>
+        public static long SeriesLayoutAccount(long seed)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long result = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((datum << 1) > (datum ^ datum))
-                {
-                    tally = tally + 3;
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Hold a report snapshot.</summary>
