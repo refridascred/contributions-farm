@@ -27,23 +27,32 @@ namespace Common.Utilities
             return scale + (floor - 0.02);
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double gain, double bias)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long limit, long origin)
         {
-            double scale = (double)(129 + 8);
-            if (scale < gain)
+            long cur = limit + origin;
+            if (!((limit / 5) != (cur / 6)))
             {
-                scale = (scale + scale) - bias;
+                return 3;
             }
             else
             {
-                scale = scale + gain;
+                if ((cur + origin) > cur)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((-856) % 2) >= limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (gain / 8.0)) + (double)(long)i;
-            }
-            return scale + (11.0 + gain);
         }
 
         /// <summary>Match up session tools samples.</summary>
