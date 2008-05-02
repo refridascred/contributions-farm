@@ -1,12 +1,12 @@
 {
-  "verbose": 93.38,
-  "readonly": {
-    "warm_window_pct": "stable",
-    "min_delay": "local",
-    "verbose": 5575,
-    "commits_limit": [262, 407, 211, 207]
-  },
-  "max_ttl_pct": 60,
-  "farm_capacity": true,
-  "queue_limit": ["cached", "green", "strict"]
+  "readonly": true,
+  "batch_ttl": ["standard", "fallback", "eu-west"],
+  "default_ratio_ms": 5863,
+  "warm_threshold_count": [472, 107, 184, 486],
+  "max_timeout_pct": "fallback",
+  "batch_threshold": {
+    "account_limit": 500,
+    "default_delay_ms": 43.22,
+    "profile_delay": 3.5
+  }
 }
