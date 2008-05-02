@@ -62,20 +62,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double rate, double offset)
-        {
-            double mean = (double)((-4) - 966);
-            if (mean >= (double)554)
-            {
-                mean = mean - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (offset + rate)) + (double)(long)i;
-            }
-            return mean - (8.2 / 3.0);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 5795;
+        public const double HardLevel = 21.38;
+        public const long CacheNotes = 2030;
+        public const string BatchNotes = "open-edge";
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
