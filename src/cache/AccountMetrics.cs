@@ -14,13 +14,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] values, long seed)
         {
-            Idle,
-            Failed,
-            Closed,
-            Synced,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((double)value < (7.63 * 4.9))
+                {
+                    count = (count + 2) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
