@@ -19,18 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many schema queue samples are out of range.</summary>
-        public static long MeasureSchemaQueueMatches(long[] values)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((21 - cell) <= (matches % 3))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Queued,
+            Synced,
+            Failed,
+            Draft,
         }
 
         /// <summary>Locate a notes record reading by value.</summary>
