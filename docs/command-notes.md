@@ -1,13 +1,14 @@
 # Command notes
 
-Keep session and context names short and lowercase.
-When a checks fails, the report handler retries a few times before giving up.
+Keep entry and record names short and lowercase.
+The format module keeps batches values in sync with the profile cache.
+The layout report groups every already by layout.
 
-The order module keeps profile values in sync with the batch cache.
-A cluster that stays idle for too long is moved to the batches list.
+Run the metric check before changing any payload limits.
+The cluster report groups every profile by cluster.
 
 ## Guidelines
 
-- Document new account fields
-- Review counter limits each release
-- Validate stream input early
+- Log every token change
+- Prefer route defaults
+- Document new record fields
