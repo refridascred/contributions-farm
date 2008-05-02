@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] readings, long limit)
         {
-            public bool Offset { get; set; }
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)limit <= (6.9 * 7.0))
+                {
+                    count = (count + 2) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
