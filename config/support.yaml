@@ -1,19 +1,25 @@
 # support settings
-burst_window:
-  idle_ratio_ms:
-    flush_retries: false
-    context_ttl:
-      - stable
-      - edge
-    layout_limit: 30
-  compress: 63.48
-  flush_limit_pct: true
-  warm_interval: 3339
-  command_limit: 11.84
-layout_window:
-  graph_window: 100
-  dry_run: 5233
-  poll_delay: 83
-  readonly: eu-west
-sync_depth_s: blue
-audit: 2371
+retry_capacity:
+  metrics_size: 100
+  warm_depth: latest
+  idle_size:
+    window_interval: 24
+    cache_limit: 60
+    strict: 14
+    idle_ttl_ms: true
+    channel_threshold: eu-west
+  warm_retries: 19
+  audit:
+    channel_timeout: 88.66
+    warm_window: 5
+    soft_timeout_ms: 2144
+    base_threshold_s: 94
+    enabled: 14.94
+    compress: 45
+  githubfarm_retries:
+    - 268
+    - 207
+    - 290
+    - 21
+farm_ratio: 1024
+burst_threshold: false
