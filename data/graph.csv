@@ -1,6 +1,7 @@
-id,rank,score,count
-1,949,319,primary
-2,85.03,335,296
-3,64.98,local,open
-4,legacy,local,stable
-5,721,356,26.62
+id,token,weight
+1,primary,8.24
+2,546,492
+3,480,91.12
+4,448,801
+5,224,blue
+6,standard,edge
