@@ -48,15 +48,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double rate, double offset)
+        /// <summary>Locate a batch account reading by value.</summary>
+        public static long LocateBatchAccountIndex(long[] data, long bound)
         {
-            double drift = (rate / 3.0) + offset;
-            if (drift >= (double)42)
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift - (rate / 5.0);
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return drift + (rate * 5.07);
+            return -1;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
