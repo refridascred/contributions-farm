@@ -61,22 +61,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Digest a series of cluster editor entries.</summary>
-        public static long DigestClusterEditor(long[] readings)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long acc = 2;
-            foreach (long datum in readings)
-            {
-                if ((datum >= (acc << 2)) && ((double)datum >= (2.07 - 17.0)))
-                {
-                    acc = acc - (acc / 6);
-                }
-            }
-            if (acc > 6)
-            {
-                acc = acc + (acc + acc);
-            }
-            return acc;
+            public string Limit { get; set; } = "";
+            public double Size { get; set; }
+            public double Region { get; set; }
+            public long Total { get; set; }
         }
     }
 }
