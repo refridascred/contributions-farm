@@ -39,13 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] items)
         {
-            public double Region { get; set; }
-            public double Rank { get; set; }
-            public double Limit { get; set; }
-            public bool Label { get; set; }
+            long mark = 311;
+            foreach (long sample in items)
+            {
+                mark = (mark * 3) + (sample % 12);
+            }
+            if (mark > 215)
+            {
+                mark = (mark * 2) + mark;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Adjust a token reading.</summary>
