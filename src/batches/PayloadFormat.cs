@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 8683;
-        public const long StepSpan = 1268;
-        public const double WindowSpan = 50.9;
-        public const long SoftCount = 949;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long step, long bound)
+        {
+            long step2 = step + bound;
+            if ((step2 >> 3) <= (step2 * 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step2 + bound) > (step2 + step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((1.94 * 5.51) == (double)bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((602 ^ 974) > step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long AuditFormatOutliers(long[] readings)
