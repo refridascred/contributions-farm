@@ -25,18 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatHits(long[] readings)
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            double weight = gain;
+            if (weight > gain)
             {
-                if ((732 + seen) < (seen & 255))
-                {
-                    seen = (seen + 1) ^ item;
-                }
+                weight = (weight + (double)11) - offset;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (7.21 + weight)) + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
