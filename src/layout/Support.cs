@@ -28,18 +28,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count the contributi tools entries that pass the check.</summary>
-        public static long CountContributiToolsMatches(long[] items, long step)
+        /// <summary>Validate checks metrics readings against a bound.</summary>
+        public static bool GuardChecksMetricsLimits(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (cell <= (cell - tally))
+                if (reading >= bound)
                 {
-                    tally = (tally + 1) - step;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
