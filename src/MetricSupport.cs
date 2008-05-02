@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] levels, long bound)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] values, long floor)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if (datum > bound)
+                if (cell < floor)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
