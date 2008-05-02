@@ -1,11 +1,11 @@
 # Command notes
 
-Keep already and batches names short and lowercase.
-The stream helpers are pure functions, so they are safe to call from any thread.
-Defaults for token live in the config folder and can be overridden per environment.
+The report helpers are pure functions, so they are safe to call from any thread.
+Run the report check before changing any format limits.
 
 ## Guidelines
 
-- Keep record values small
-- Prefer context defaults
-- Document new checks fields
+- Review record limits each release
+- Log every account change
+- Prefer queue defaults
+- Document new report fields
