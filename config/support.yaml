@@ -1,4 +1,5 @@
 # support settings
-githubfarm_timeout: 72.69
-max_threshold_count: 92
-max_interval_s: 250
+max_ratio_ms: false
+tools_retries: 2287
+enabled: primary
+readonly: false
