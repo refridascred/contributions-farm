@@ -65,17 +65,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] items, long limit)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long seed, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((double)floor <= (7.0 - 9.22))
             {
-                if ((items[i] <= limit) && ((items[i] % 2) != 0))
+                return 3;
+            }
+            else
+            {
+                if (((2.79 + 1.0) > (double)floor) && ((floor & 63) < floor))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
     }
 }
