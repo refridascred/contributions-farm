@@ -26,19 +26,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next format channel value.</summary>
-        public static double ScaleFormatChannel(double scale, double bias)
+        /// <summary>Adjust a githubfarm account reading.</summary>
+        public static double SmoothGithubfarmAccount(double weight, double floor)
         {
-            double gain = (double)(18 << 1);
-            if (gain <= scale)
+            double weight2 = (double)(5 * 3);
+            if (weight2 >= (double)(-9))
             {
-                gain = gain - (gain + gain);
+                weight2 = (weight2 - (0.47 - 9.08)) + weight;
             }
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 3; i++)
             {
-                gain = (gain - gain) + (double)(long)i;
+                weight2 = (weight2 + floor) + (double)(long)i;
             }
-            return gain - bias;
+            return weight2 - (double)8;
         }
 
         /// <summary>Derive the next schema account value from a seed.</summary>
