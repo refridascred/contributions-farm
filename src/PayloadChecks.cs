@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesBounds(long[] readings, long step)
         {
-            public double Score { get; set; }
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public bool Limit { get; set; }
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a record info.</summary>
