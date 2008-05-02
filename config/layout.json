@@ -1,6 +1,7 @@
 {
-  "base_limit": 4509,
-  "session_window": "legacy",
-  "tools_limit": ["edge", "strict", "staging"],
-  "queue_limit": 92
+  "dry_run": 6867,
+  "notes_capacity": true,
+  "strict": true,
+  "verbose": 60,
+  "filter_timeout": [125, 461, 23, 444]
 }
