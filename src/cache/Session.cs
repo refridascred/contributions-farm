@@ -58,19 +58,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmBounds(long[] items, long limit)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] samples, long bound)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum != limit)
+                if (samples[i] < bound)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
