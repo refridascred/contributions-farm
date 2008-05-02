@@ -54,10 +54,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardSpan = 4599;
-        public const long DefaultRatio = 4602;
-        public const double StepScore = 83.31;
-        public const string RetryBatch = "staging-edge";
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
+        {
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+        }
     }
 }
