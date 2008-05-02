@@ -46,19 +46,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] values, long step)
-        {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetryBudget = 7337;
+        public const long LimitLevel = 275;
+        public const long BurstSession = 8214;
+        public const long HardSession = 6876;
+        public const long CacheWidth = 4395;
     }
 }
