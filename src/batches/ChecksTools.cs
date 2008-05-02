@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] samples, long step)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long carry = 35;
-            foreach (long cell in samples)
-            {
-                carry = ((carry << 2) ^ (cell + 1)) + step;
-            }
-            return carry;
+            New,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Define already limits and defaults.</summary>
