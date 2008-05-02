@@ -70,23 +70,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double scale, double offset)
+        /// <summary>Audit commits format readings against a rule.</summary>
+        public static long AuditCommitsFormatHits(long[] samples, long offset)
         {
-            double gain = 7.0 * 19.0;
-            if (gain >= (7.3 / 5.0))
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                gain = gain + (double)195;
+                if ((double)datum < (7.0 - 2.5))
+                {
+                    tally = (tally + 1) + offset;
+                }
             }
-            else
-            {
-                gain = gain + (offset - 16.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (8.63 + scale)) + (double)(long)i;
-            }
-            return gain + (double)(-379);
+            return tally;
         }
     }
 }
