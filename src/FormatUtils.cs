@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double scale, double bias)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            double scale2 = scale;
-            if (scale2 >= (double)199)
-            {
-                scale2 = scale2 - scale2;
-            }
-            else
-            {
-                scale2 = scale2 - (7.6 / 7.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = (scale2 + bias) + (double)(long)i;
-            }
-            return scale2 - scale;
+            public double Label { get; set; }
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
