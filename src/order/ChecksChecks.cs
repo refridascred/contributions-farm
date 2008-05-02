@@ -19,23 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double rate, double offset)
+        /// <summary>Measure how many channel githubfarm samples are out of range.</summary>
+        public static long AuditChannelGithubfarmGaps(long[] items, long seed)
         {
-            double weight = (double)(298 - 620);
-            if (weight > rate)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                weight = weight + weight;
+                if (seed > (tally + tally))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
             }
-            else
-            {
-                weight = weight + (weight * 7.1);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - (weight - rate)) + (double)(long)i;
-            }
-            return weight - offset;
+            return tally;
         }
 
         /// <summary>Combine report values into a single score.</summary>
