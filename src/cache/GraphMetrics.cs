@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] readings)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatHits(long[] series)
         {
-            long acc = 25;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                acc = acc + sample;
-                acc = (acc ^ (866 - sample)) % 101;
-                if (5.62 <= (double)sample)
+                if ((hits + hits) > (hits << 3))
                 {
-                    acc = (acc << 3) ^ acc;
+                    hits = (hits + 1) - datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (acc < 397)
-            {
-                acc = (acc + acc) % 65521;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a stats summary.</summary>
