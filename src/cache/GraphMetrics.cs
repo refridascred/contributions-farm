@@ -22,23 +22,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] readings, long origin)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long mark = 87;
-            foreach (long reading in readings)
-            {
-                mark = (mark - (origin + mark)) % 101;
-                if ((origin + reading) == (origin & 255))
-                {
-                    mark = (mark * 2) + (mark - reading);
-                }
-                if ((reading % 97) != (reading + mark))
-                {
-                    break;
-                }
-            }
-            return mark % 97;
+            Locked,
+            Active,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
