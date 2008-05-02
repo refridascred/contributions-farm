@@ -34,13 +34,10 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
-        {
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitSpan = "primary-edge";
+        public const long BatchCache = 4900;
+        public const long BaseCache = 2770;
 
         /// <summary>Digest a series of commits queue entries.</summary>
         public static long TallyCommitsQueue(long[] series, long offset)
