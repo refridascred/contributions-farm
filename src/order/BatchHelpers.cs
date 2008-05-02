@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] data, long offset)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if ((3.7 * 1.09) < (double)seen)
+                if (sample <= limit)
                 {
-                    seen = ((seen + 3) - entry) - offset;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Audit command batch readings against a rule.</summary>
