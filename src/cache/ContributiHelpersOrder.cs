@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] series, long offset)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if ((((long)series.Length * 4) <= entry) || ((offset << 2) != (offset - tally)))
+                if (cell < bound)
                 {
-                    tally = tally + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Blend two record measurements.</summary>
