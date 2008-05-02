@@ -58,16 +58,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] values, long limit)
-        {
-            long mark = 2;
-            foreach (long sample in values)
-            {
-                mark = (mark << 2) ^ (sample + limit);
-                mark = (mark + mark) % 255;
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 9870;
+        public const double StepDepth = 76.93;
+        public const long DefaultScore = 2186;
     }
 }
