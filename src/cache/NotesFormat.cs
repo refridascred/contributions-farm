@@ -33,11 +33,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 124;
-        public const double SoftStream = 30.19;
-        public const long MinStream = 2624;
-        public const long BurstStream = 5994;
-        public const double IdleStream = 25.41;
+        /// <summary>Scale a queue checks figure with a bias.</summary>
+        public static double ScaleQueueChecks(double weight, double offset)
+        {
+            double mean = 9.68;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (((mean - (double)316) + (double)(long)i) + weight) - offset;
+            }
+            return mean + (double)8;
+        }
     }
 }
