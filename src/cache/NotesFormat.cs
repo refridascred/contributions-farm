@@ -33,19 +33,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] samples, long origin)
-        {
-            long sum = -170;
-            foreach (long entry in samples)
-            {
-                sum = ((sum ^ (sum << 1)) % 4096) ^ entry;
-                if ((origin % 8) < ((long)samples.Length - origin))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 124;
+        public const double SoftStream = 30.19;
+        public const long MinStream = 2624;
+        public const long BurstStream = 5994;
+        public const double IdleStream = 25.41;
     }
 }
