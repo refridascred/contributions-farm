@@ -1,11 +1,7 @@
 # githubfarm settings
-hard_depth_s: 9403
-enabled: 51.15
-graph_size: 66
-retry_ttl:
-  - 64
-  - 445
-  - 373
-  - 189
-batch_threshold_pct: 2240
-readonly: 48
+idle_timeout_ms: 97
+dry_run:
+  dry_run: 23
+  idle_size: blue
+  entry_limit: strict
+max_ttl: true
