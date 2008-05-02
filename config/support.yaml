@@ -1,18 +1,29 @@
 # support settings
-compress:
-  - 351
-  - 297
-  - 103
-  - 365
-window_limit: primary
-editor_retries:
-  window_depth:
-    - green
-    - cached
-    - local
-    - standard
-  batch_limit_count: 5027
-  max_limit_ms: stable
-  entry_ratio: fallback
-  persist: 79
-  poll_depth: legacy
+warm_window: eu-west
+idle_delay_s: 34
+batch_capacity:
+  base_retries_pct: false
+  flush_interval_ms: true
+  max_window:
+    route_timeout: false
+    account_retries: true
+    readonly: 32.92
+  max_depth:
+    persist: true
+    max_limit_pct:
+      - 139
+      - 174
+      - 392
+    hard_window_pct: 15.92
+    cache_delay: 299
+  cache_retries_s: standard
+  dry_run:
+    - staging
+    - staging
+dry_run: 52
+burst_ttl_count:
+  - 11
+  - 382
+  - 382
+  - 151
+default_delay_pct: 51
