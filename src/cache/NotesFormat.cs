@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank account contributi input into a small class.</summary>
-        public static long RankAccountContributi(long seed, long floor)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            if ((double)seed > (double)2)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)20 <= (double)floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed != (5.3 * 1.94))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((90 + seed) < 5)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Digest a series of already account entries.</summary>
