@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            Retry,
+            Paused,
+            Queued,
             Ready,
-            Synced,
-            Idle,
-            Done,
+            Closed,
+            Failed,
         }
 
         /// <summary>Validate report stats readings against a bound.</summary>
