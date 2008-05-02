@@ -1,12 +1,10 @@
 # Command notes
 
-Use cache settings to tune how often graph data is refreshed.
-The commits report groups every notes by stats.
-A layout that stays idle for too long is moved to the graph list.
+When a support fails, the stats handler retries a few times before giving up.
+Keep batch and notes names short and lowercase.
 
 ## Guidelines
 
-- Keep batches values small
-- Validate window input early
-- Prefer editor defaults
-- Review token limits each release
+- Log every order change
+- Document new metric fields
+- Keep already values small
