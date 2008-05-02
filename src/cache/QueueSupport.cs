@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const long DefaultSize = 8614;
         public const double MaxInterval = 33.75;
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            public double Region { get; set; }
-            public bool Total { get; set; }
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
+            Queued,
+            Ready,
+            Synced,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
