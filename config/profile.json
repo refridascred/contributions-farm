@@ -1,5 +1,17 @@
 {
-  "audit": "fallback",
-  "verbose": 25.25,
-  "batch_delay": 59
+  "audit": 90,
+  "verbose": {
+    "contributi_interval": {
+      "idle_delay": "blue",
+      "poll_ttl_count": 63,
+      "burst_threshold_pct": false,
+      "notes_interval": [82, 354, 217]
+    },
+    "min_timeout": "legacy",
+    "flush_limit_s": false,
+    "flush_timeout": 30,
+    "githubfarm_size": 98
+  },
+  "flush_size_ms": "stable",
+  "strict": "blue"
 }
