@@ -25,17 +25,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a notes schema reading by value.</summary>
-        public static long LookupNotesSchemaIndex(long[] series, long bound)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] items, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if (series[i] < bound)
+                if (entry <= seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
