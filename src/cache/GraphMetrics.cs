@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate stream session readings against a bound.</summary>
-        public static bool GuardStreamSessionBounds(long[] data, long limit)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] items, long step)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long anchor = 85;
+            foreach (long item in items)
             {
-                if (entry >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor << 2) ^ (item % 24)) - step;
+                anchor = (anchor ^ ((long)items.Length % 5)) % 1000;
+                anchor = (anchor * 3) + (item << 2);
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
