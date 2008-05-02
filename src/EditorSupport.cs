@@ -71,19 +71,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next support commits value.</summary>
-        public static double ProjectSupportCommits(double bias, double bias2)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] levels, long limit)
         {
-            double rate = bias;
-            if (rate < bias2)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                rate = rate + bias;
+                if ((cell * 4) == (4 % 2))
+                {
+                    seen = (seen + 3) - limit;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (double)32) - (double)(long)i;
-            }
-            return rate - (rate - rate);
+            return seen;
         }
     }
 }
