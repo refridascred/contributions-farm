@@ -18,21 +18,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up context tools samples.</summary>
-        public static long PairContextToolsCount(long[] readings)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Failed,
+            Queued,
+            Draft,
+            Active,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
