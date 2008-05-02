@@ -40,15 +40,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double bias, double floor)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            double gain = (double)6 / 2.0;
-            if (gain <= (floor + gain))
-            {
-                gain = (gain + floor) + bias;
-            }
-            return gain + 6.0;
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
