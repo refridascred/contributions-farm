@@ -13,18 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] readings, long origin)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((4.0 - 0.8) < (double)(long)readings.Length)
-                {
-                    count = ((count + 3) + datum) + origin;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Iterate the context account series from a seed.</summary>
