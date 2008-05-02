@@ -45,17 +45,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] samples, long bound)
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double rate, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate2 = (double)(-4) - (double)637;
+            if (rate2 >= (rate / 5.0))
             {
-                if (samples[i] < bound)
-                {
-                    return (long)i;
-                }
+                rate2 = rate2 - rate2;
             }
-            return -1;
+            else
+            {
+                rate2 = rate2 - rate2;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate2 = (rate2 + rate2) + (double)(long)i;
+            }
+            return rate2 + (offset * 19.0);
         }
     }
 }
