@@ -1,6 +1,16 @@
 # support settings
-base_threshold_count: false
-warm_threshold_count:
-  - strict
-  - eu-west
-account_limit: 75.03
+channel_delay:
+  githubfarm_interval: latest
+  already_ratio:
+    min_depth_s: 250
+    idle_ttl_s: 71
+    flush_timeout: 30
+    account_capacity: 97
+    audit:
+      - 171
+      - 429
+      - 103
+      - 442
+  base_threshold: true
+cache_ratio_pct: 1808
+commits_depth: primary
