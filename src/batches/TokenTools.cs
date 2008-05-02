@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of account already readings.</summary>
-        public static long CompareAccountAlreadyCount(long[] levels)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Level { get; set; } = "";
+            public double Region { get; set; }
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a batch summary.</summary>
