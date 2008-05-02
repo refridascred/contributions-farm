@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((seen - seen) == (sample / 5))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleChannel = "standard-1";
+        public const long MinBudget = 9840;
+        public const string DefaultSize = "cached-v2";
+        public const long MaxChannel = 7536;
 
         /// <summary>Describe the order state values.</summary>
         public enum OrderState
