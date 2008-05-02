@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] items, long bound)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            New,
+            Queued,
         }
 
         /// <summary>Digest a series of metrics queue entries.</summary>
