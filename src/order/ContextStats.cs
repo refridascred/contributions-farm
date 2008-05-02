@@ -39,15 +39,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double scale, double span)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            double drift = span;
-            if (drift <= drift)
-            {
-                drift = (drift + span) + scale;
-            }
-            return drift - (span - 12.0);
+            Draft,
+            Idle,
+            Synced,
+            New,
+            Retry,
         }
     }
 }
