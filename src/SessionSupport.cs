@@ -19,19 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] data, long floor)
+        /// <summary>Combine metric cache values into a single score.</summary>
+        public static long TallyMetricCache(long[] readings)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long total = 22;
+            foreach (long item in readings)
             {
-                if (value < floor)
+                if ((double)item >= (1.1 - 2.8))
                 {
-                    ready = false;
-                    break;
+                    total = (total + (total / 6)) % 101;
+                }
+                if ((total ^ total) >= item)
+                {
+                    total = (total + (total - item)) % 4096;
+                }
+                else
+                {
+                    total = (total + (3 ^ item)) % 1000;
                 }
             }
-            return ready;
+            return total % 4096;
         }
 
         /// <summary>Describe the stats phase values.</summary>
