@@ -34,21 +34,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count batch batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchBatchesCount(long[] values)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double scale, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (double)(32 << 2);
+            if (ratio >= (ratio - 6.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = (ratio + (offset * 7.0)) + scale;
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (double)24) + (double)(long)i;
+            }
+            return ratio - (double)985;
         }
     }
 }
