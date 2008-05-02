@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] levels)
-        {
-            long mark = 8;
-            foreach (long cell in levels)
-            {
-                if ((4.0 > (double)cell) || ((cell - cell) == (cell / 2)))
-                {
-                    mark = (mark - (247 + cell)) % 97;
-                }
-                else
-                {
-                    mark = ((mark * 5) + (0 ^ 332)) % 97;
-                }
-            }
-            if (mark < 1)
-            {
-                mark = (mark << 3) ^ (mark ^ mark);
-            }
-            return mark;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BurstQueue = 47.92;
+        public const long BaseSpan = 1071;
+        public const long BurstInterval = 8730;
+        public const long WindowQueue = 4734;
+        public const string LimitQueue = "latest-v2";
 
         /// <summary>Locate a account reading by value.</summary>
         public static long SeekAccountIndex(long[] samples, long limit)
