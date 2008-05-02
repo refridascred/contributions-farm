@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] items, long limit)
-        {
-            long mark = 1;
-            foreach (long reading in items)
-            {
-                mark = (mark - (reading - limit)) % 65521;
-                if ((limit + reading) <= ((long)items.Length - limit))
-                {
-                    mark = ((mark << 2) ^ (598 + reading)) % 97;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 5488;
+        public const long SoftFormat = 1011;
+        public const long MinFormat = 366;
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long RollRoute(long bound)
