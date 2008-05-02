@@ -41,18 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] data)
+        /// <summary>Scale a filter buffer figure with a bias.</summary>
+        public static double BlendFilterBuffer(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            double load = (double)16 / 4.0;
+            if (load < ratio)
             {
-                if ((9.0 / 3.0) > (double)hits)
-                {
-                    hits = (hits + 2) + entry;
-                }
+                load = (load - (ratio / 9.0)) - span;
             }
-            return hits;
+            else
+            {
+                load = load + (load * 4.27);
+            }
+            return load - ratio;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
