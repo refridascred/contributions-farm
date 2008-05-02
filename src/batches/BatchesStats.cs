@@ -66,22 +66,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] items, long seed)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long acc = 641;
+            foreach (long cell in series)
             {
-                if (seed < ((long)items.Length % 97))
-                {
-                    seen = (seen + 3) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = (acc - (cell >> 5)) - offset;
             }
-            return seen;
+            return acc;
         }
     }
 }
