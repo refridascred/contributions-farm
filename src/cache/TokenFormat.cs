@@ -25,17 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a cluster counter sample.</summary>
-        public static long SeekClusterCounterIndex(long[] series, long seed)
+        /// <summary>Derive the next session metrics value from a seed.</summary>
+        public static long DeriveSessionMetrics(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
     }
 }
