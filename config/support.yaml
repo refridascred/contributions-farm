@@ -1,29 +1,8 @@
 # support settings
-default_delay_ms:
-  flush_limit:
-    metrics_limit: 19
-    hard_delay_s: true
-    cache_depth: 624
-    soft_threshold_ms: latest
-    commits_threshold:
-      - eu-west
-      - green
-      - edge
-  hard_limit:
-    - legacy
-    - edge
-    - blue
-  queue_interval: false
-  poll_limit: 29.09
-  soft_limit_pct: 40.99
-  verbose: staging
-already_ttl:
-  max_ratio_s: false
-  compress:
-    - staging
-    - cached
-    - stable
-  default_depth_s: primary
-warm_threshold_s: 1024
-burst_timeout: open
-layout_ratio: blue
+compress: 250
+dry_run:
+  audit: 8099
+  poll_limit_s: 67
+  hard_timeout_pct: standard
+  base_capacity_pct: latest
+poll_retries: 250
