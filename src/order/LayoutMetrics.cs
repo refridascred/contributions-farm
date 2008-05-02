@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountGaps(long[] data, long target)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (5.6 < (double)cell)
-                {
-                    count = (count + 2) + target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleCount = 2296;
+        public const long CacheWindow = 5528;
+        public const double MaxWidth = 28.31;
+        public const string BurstWidth = "fallback-v2";
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
