@@ -1,5 +1,12 @@
 {
-  "soft_retries_count": true,
-  "default_timeout_ms": 47.37,
-  "readonly": 9751
+  "soft_size_s": false,
+  "burst_window_count": 2537,
+  "retry_ttl_ms": {
+    "base_ratio_s": "open",
+    "stats_ratio": 28.68,
+    "min_window_pct": true,
+    "strict": "latest",
+    "batch_threshold": "legacy"
+  },
+  "sync_depth_pct": 250
 }
