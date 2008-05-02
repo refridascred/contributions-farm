@@ -19,12 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Classify a command cluster pair into a bucket.</summary>
+        public static long GradeCommandCluster(long target, long floor)
         {
-            public long Score { get; set; }
-            public double Count { get; set; }
-            public long Owner { get; set; }
+            if (((floor << 2) > (target + floor)) && ((target ^ floor) < (target << 2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((floor / 4) <= (floor / 5)) || (206 <= (target & 1)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((-866) - floor) > target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
