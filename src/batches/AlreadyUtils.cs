@@ -46,22 +46,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate channel layout samples.</summary>
-        public static long TallyChannelLayout(long[] series)
+        /// <summary>Count githubfarm format pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmFormatCount(long[] items)
         {
-            long mark = 6;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)sample <= (13.0 + 18.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark << 3) ^ (mark << 3);
+                    if ((items[i] + items[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark < (-859))
-            {
-                mark = ((mark << 2) ^ mark) % 1000;
-            }
-            return mark % 65521;
+            return seen;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
