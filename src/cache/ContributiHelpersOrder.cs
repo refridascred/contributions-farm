@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] series)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((double)matches >= 4.53)
+                if ((((long)series.Length * 4) <= entry) || ((offset << 2) != (offset - tally)))
                 {
-                    matches = (matches + 2) ^ cell;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
