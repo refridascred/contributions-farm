@@ -64,14 +64,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Grade a record contributi value against two limits.</summary>
+        public static long BucketRecordContributi(long offset, long origin)
         {
-            Closed,
-            New,
-            Done,
-            Synced,
-            Idle,
+            long span = offset + origin;
+            if ((19.0 + 2.9) < (double)origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((span ^ offset) >= (2 ^ 928))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin - origin) <= span)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((36 + span) >= (origin % 24))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
