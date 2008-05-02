@@ -14,18 +14,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many buffer counter samples are out of range.</summary>
-        public static long MeasureBufferCounterGaps(long[] values)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count - count) <= (item % 100))
+                if ((readings[i] >= limit) && ((readings[i] % 5) == 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
