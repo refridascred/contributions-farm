@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const long DefaultSize = 8614;
         public const double MaxInterval = 33.75;
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            Active,
-            Draft,
-            Stale,
-            Locked,
-            Ready,
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate session samples.</summary>
