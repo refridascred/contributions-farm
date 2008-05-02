@@ -16,12 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            Paused,
-            Synced,
-            Retry,
+            New,
+            Closed,
+            Ready,
+            Queued,
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
