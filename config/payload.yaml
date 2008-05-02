@@ -1,10 +1,17 @@
 # payload settings
-batch_timeout:
-  - 256
-  - 116
-enabled: 5
-compress:
-  - open
-  - primary
-  - staging
-layout_timeout: false
+base_delay:
+  default_retries_ms: 56.54
+  idle_depth: green
+  githubfarm_interval: 24
+  batches_ratio:
+    - primary
+    - latest
+    - strict
+sync_depth: eu-west
+cache_ratio: local
+context_ttl: 48.11
+strict:
+  - stable
+  - blue
+  - cached
+default_size_pct: strict
