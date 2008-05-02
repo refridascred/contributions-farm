@@ -38,17 +38,15 @@ namespace Common.Utilities
         public const double WindowChannel = 50.47;
         public const string DefaultChannel = "stable";
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] readings, long seed)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 508;
+            foreach (long cell in levels)
             {
-                if (readings[i] > seed)
-                {
-                    return (long)i;
-                }
+                state = state + (cell - cell);
             }
-            return -1;
+            return state % 4096;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
