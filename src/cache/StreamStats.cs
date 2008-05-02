@@ -32,11 +32,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double weight, double floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] data)
         {
-            double rate = (weight - weight) / 2.0;
-            return (rate + 5.15) + floor;
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (!!((sample + matches) > 42))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
