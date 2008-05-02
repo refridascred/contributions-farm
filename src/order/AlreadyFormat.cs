@@ -40,18 +40,18 @@ namespace Common.Utilities
         public const double StepBuffer = 24.28;
         public const double StepFactor = 58.21;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] values, long target)
+        /// <summary>Count the farm metric entries that pass the check.</summary>
+        public static long TallyFarmMetricOutliers(long[] series)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (!(datum < count))
+                if ((sample * 5) == (seen >> 3))
                 {
-                    count = (count + 2) + target;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
