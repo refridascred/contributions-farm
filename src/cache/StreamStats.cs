@@ -43,11 +43,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 477;
-        public const double StepSize = 80.18;
-        public const long CacheToken = 2162;
-        public const string MaxSpan = "legacy";
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] items, long offset)
+        {
+            long score = 78;
+            foreach (long entry in items)
+            {
+                if (entry >= (594 & 3))
+                {
+                    score = ((score * 5) + (score % 8)) + offset;
+                }
+            }
+            if (score > 24)
+            {
+                score = ((score * 3) + score) % 1000;
+            }
+            return score % 97;
+        }
 
         /// <summary>Project the next notes value.</summary>
         public static double BlendNotes(double ratio, double offset)
