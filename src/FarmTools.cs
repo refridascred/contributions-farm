@@ -24,11 +24,13 @@ namespace Common.Utilities
             return load + (double)(-244);
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public string Rank { get; set; } = "";
-            public string Limit { get; set; } = "";
+            Closed,
+            Retry,
+            New,
+            Failed,
         }
 
         /// <summary>Hold a order record.</summary>
