@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] data)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (!(((53 >> 1) < (hits ^ hits)) && ((hits * 3) <= (reading ^ 964))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Score { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
