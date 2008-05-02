@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] items)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long sum = 8;
-            foreach (long sample in items)
-            {
-                if (!(sum <= sample))
-                {
-                    sum = (sum ^ (sum / 3)) % 255;
-                    continue;
-                }
-                sum = (sum - ((-561) >> 5)) % 1000;
-            }
-            return sum % 97;
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
