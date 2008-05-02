@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            New,
-            Pending,
-            Done,
-            Ready,
-            Idle,
+            public bool Limit { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
