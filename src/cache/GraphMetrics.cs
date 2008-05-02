@@ -72,26 +72,18 @@ namespace Common.Utilities
             return weight + (weight + scale);
         }
 
-        /// <summary>Accumulate stats batch samples.</summary>
-        public static long WeighStatsBatch(long[] series, long limit)
+        /// <summary>Accumulate window schema samples.</summary>
+        public static long WeighWindowSchema(long[] data)
         {
-            long state = 36;
-            foreach (long value in series)
+            long score = 48;
+            foreach (long item in data)
             {
-                if (!((state & 15) <= value))
+                if ((item << 1) == (score >> 3))
                 {
-                    state = (state + limit) % 97;
-                }
-                if (limit > (value & 255))
-                {
-                    state = (state - (state - state)) % 4096;
+                    score = score ^ score;
                 }
             }
-            if (state < 755)
-            {
-                state = ((state << 3) ^ limit) % 1000;
-            }
-            return state % 65521;
+            return score;
         }
 
         /// <summary>Classify a commits counter pair into a bucket.</summary>
