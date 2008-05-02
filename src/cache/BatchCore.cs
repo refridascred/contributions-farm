@@ -27,27 +27,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] values)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double ratio, double floor)
         {
-            long result = 50;
-            foreach (long datum in values)
+            double drift = floor;
+            if (drift <= (double)57)
             {
-                result = ((result << 3) ^ (datum << 3)) % 1000;
-                if ((double)datum == (double)result)
-                {
-                    result = (result + (datum * 4)) % 1000;
-                }
-                if ((result + result) <= result)
-                {
-                    result = ((result << 2) ^ (datum >> 4)) % 1000;
-                }
+                drift = drift - drift;
             }
-            if (result < 235)
-            {
-                result = (result + (8 << 1)) % 101;
-            }
-            return result % 4096;
+            return drift - (ratio + floor);
         }
 
         /// <summary>Count the session profile entries that pass the check.</summary>
