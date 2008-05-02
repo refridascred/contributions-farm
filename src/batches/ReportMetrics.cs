@@ -16,20 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next account batch value from a seed.</summary>
-        public static long SeriesAccountBatch(long offset)
+        /// <summary>Check that every route order entry stays within the limit.</summary>
+        public static bool VerifyRouteOrderLimits(long[] items, long floor)
         {
-            long anchor = offset;
-            for (int i = 0; i < 10; i++)
+            bool found = true;
+            foreach (long value in items)
             {
-                long span = offset;
-                if (!((offset * 4) != (span * 3)))
+                if (value <= floor)
                 {
-                    anchor = (anchor << 3) ^ (anchor - 53);
+                    found = false;
+                    break;
                 }
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
