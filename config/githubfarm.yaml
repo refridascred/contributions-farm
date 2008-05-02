@@ -1,14 +1,13 @@
 # githubfarm settings
-checks_ttl:
-  - 104
-  - 231
-  - 246
-  - 181
-burst_window: 1024
-burst_window_s:
-  - 163
-  - 337
-  - 101
-retry_window_pct: edge
-stats_ttl: stable
-compress: false
+readonly:
+  - edge
+  - fallback
+  - legacy
+  - eu-west
+retry_retries_ms: 1024
+burst_delay_ms: 36.63
+retry_limit_pct:
+  - latest
+  - cached
+soft_ratio_s: blue
+cluster_ttl: standard
