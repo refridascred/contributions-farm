@@ -1,15 +1,15 @@
 # support settings
-min_retries_count:
-  - 204
-  - 343
-  - 83
-  - 392
-compress: 500
-layout_delay:
-  cache_capacity: true
-  retry_limit_pct: 7
-  sync_delay: staging
-  queue_threshold: open
-warm_size_count: 26.11
-sync_interval_s: latest
-retry_depth: 30
+schema_ttl:
+  - edge
+  - standard
+  - open
+  - strict
+min_ttl_ms:
+  already_capacity:
+    - blue
+    - local
+  readonly: open
+  editor_interval: 74
+  strict: 5582
+idle_retries_pct: 38
+max_timeout: false
