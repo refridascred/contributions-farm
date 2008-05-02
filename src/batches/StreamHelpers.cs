@@ -81,21 +81,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] levels)
+        /// <summary>Count the batches counter entries that pass the check.</summary>
+        public static long CountBatchesCounterMatches(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((3.0 - 2.31) > (double)count))
                 {
-                    if ((levels[i] + levels[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) + value;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
