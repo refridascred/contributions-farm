@@ -40,11 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinWidth = 722;
-        public const long IdleInterval = 8823;
-        public const double DefaultWidth = 14.78;
-        public const long SoftSize = 843;
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Stale,
+            Pending,
+            Closed,
+        }
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
