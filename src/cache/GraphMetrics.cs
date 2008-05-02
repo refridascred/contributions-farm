@@ -22,12 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public bool Total { get; set; }
+            public string Region { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Fold a list of batch batches readings.</summary>
