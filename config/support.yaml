@@ -1,9 +1,5 @@
 # support settings
-compress: 2.93
-record_window: 77
-commits_limit:
-  - 211
-  - 100
-  - 139
-  - 104
-warm_retries_s: strict
+soft_limit: 250
+warm_retries: stable
+idle_interval_count: 92.39
+idle_limit_count: 59
