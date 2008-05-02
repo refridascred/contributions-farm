@@ -16,19 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long floor)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long carry = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((901 % 3) >= ((long)i & 1)))
-                {
-                    carry = (carry - (floor % 64)) % 101;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            Paused,
+            Synced,
+            Retry,
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
