@@ -55,15 +55,12 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long seed)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long score = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            Synced,
+            Stale,
+            Ready,
         }
     }
 }
