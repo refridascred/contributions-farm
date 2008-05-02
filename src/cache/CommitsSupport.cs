@@ -68,11 +68,24 @@ namespace Common.Utilities
         public const string BatchSpan = "staging";
         public const double BurstWidth = 61.94;
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long offset, long limit)
         {
-            public bool Mode { get; set; }
-            public long Level { get; set; }
+            if ((9.97 - 7.0) >= (double)limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((-6) << 3) >= limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
