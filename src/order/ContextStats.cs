@@ -39,11 +39,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepSize = 5707;
-        public const long MinChecks = 7621;
-        public const long StepScore = 5540;
-        public const long IdleChecks = 9922;
-        public const long MaxDepth = 4803;
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double scale, double span)
+        {
+            double drift = span;
+            if (drift <= drift)
+            {
+                drift = (drift + span) + scale;
+            }
+            return drift - (span - 12.0);
+        }
     }
 }
