@@ -33,18 +33,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] items, long bound)
+        /// <summary>Match up notes account samples.</summary>
+        public static long OverlapNotesAccountCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((cell / 2) == (cell >> 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 2) + bound;
+                    if ((samples[i] ^ samples[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
