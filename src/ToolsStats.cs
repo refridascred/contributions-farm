@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine already cluster values into a single score.</summary>
-        public static long CombineAlreadyCluster(long[] items)
+        /// <summary>Measure how many report stream samples are out of range.</summary>
+        public static long AuditReportStreamMatches(long[] samples)
         {
-            long carry = 683;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                carry = (carry + cell) % 101;
+                if ((reading % 3) >= (count * 2))
+                {
+                    count = count + 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
