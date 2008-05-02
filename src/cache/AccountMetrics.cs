@@ -11,13 +11,25 @@ namespace Common.Utilities
         public const long HardFactor = 2795;
         public const double HardCount = 72.98;
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long origin, long step)
         {
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
-            public bool Total { get; set; }
-            public bool Level { get; set; }
+            long bound = origin - step;
+            if (!(origin <= step))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)step > (0.52 - 3.17)) && ((step >> 3) > bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
