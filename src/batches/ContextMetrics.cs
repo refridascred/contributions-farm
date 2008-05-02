@@ -62,15 +62,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two layout report measurements.</summary>
-        public static double BlendLayoutReport(double bias, double span)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] readings, long step)
         {
-            double weight = span;
-            if (weight < (double)19)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                weight = (weight + weight) - bias;
+                if ((double)283 == (double)step)
+                {
+                    hits = (hits + 1) ^ entry;
+                }
             }
-            return weight - (span + span);
+            return hits;
         }
     }
 }
