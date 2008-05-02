@@ -27,11 +27,21 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Compare every pair of format queue readings.</summary>
+        public static long PairFormatQueueCount(long[] items)
         {
-            public long Region { get; set; }
-            public double Offset { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the session level values.</summary>
