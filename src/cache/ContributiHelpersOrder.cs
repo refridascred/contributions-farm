@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] samples)
+        /// <summary>Grade a order context value against two limits.</summary>
+        public static long RankOrderContext(long bound, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long delta = bound + target;
+            if ((delta + target) >= 662)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (target > (bound << 2))
                 {
-                    if ((samples[i] ^ samples[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
