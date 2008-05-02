@@ -21,22 +21,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many support tools samples are out of range.</summary>
-        public static long MeasureSupportToolsGaps(long[] readings)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((matches - 594) <= (reading * 3))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Owner { get; set; }
+            public string Total { get; set; } = "";
+            public bool Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
