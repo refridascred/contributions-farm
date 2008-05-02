@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] values)
-        {
-            long sum = 25;
-            foreach (long sample in values)
-            {
-                if ((9.0 * 4.22) < (double)sum)
-                {
-                    sum = ((sum + sum) % 255) + sample;
-                }
-                else
-                {
-                    sum = sum + (-65);
-                }
-            }
-            if (sum > 3)
-            {
-                sum = (sum << 3) ^ (sum * 2);
-            }
-            return sum % 97;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxSpan = 6;
+        public const double HardPayload = 97.61;
+        public const long MinDepth = 9370;
+        public const long LimitInterval = 5614;
+        public const long BurstWidth = 3732;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long CountStreamMatches(long[] readings, long offset)
