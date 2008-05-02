@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const string IdleFactor = "latest";
         public const double SoftContributi = 24.44;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] items)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksGaps(long[] values)
         {
-            long state = 36;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long sample in values)
             {
-                state = (state ^ (item << 1)) % 255;
-                if ((item + item) >= (item ^ state))
+                if (!!((3.9 / 7.0) <= (double)count))
                 {
-                    state = state - (state - state);
+                    count = (count + 1) - sample;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Accumulate cache already samples.</summary>
