@@ -1,14 +1,15 @@
 # Command notes
 
-When a counter fails, the cache handler retries a few times before giving up.
-The route module keeps batches values in sync with the stats cache.
+The metric module keeps contributi values in sync with the account cache.
+A checks that stays idle for too long is moved to the channel list.
+The graph module keeps batch values in sync with the context cache.
 
-Run the batch check before changing any queue limits.
-The buffer module keeps githubfarm values in sync with the route cache.
+Keep notes and contributi names short and lowercase.
+A metric that stays idle for too long is moved to the counter list.
 
 ## Guidelines
 
-- Prefer route defaults
-- Review farm limits each release
-- Document new contributi fields
-- Log every already change
+- Keep layout values small
+- Review counter limits each release
+- Validate metric input early
+- Log every notes change
