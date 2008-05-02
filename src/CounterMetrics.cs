@@ -19,10 +19,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 5810;
-        public const double BatchCount = 4.85;
-        public const long MinCount = 4733;
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Failed,
+            Stale,
+            New,
+            Synced,
+            Idle,
+        }
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long DigestCluster(long[] readings, long step)
