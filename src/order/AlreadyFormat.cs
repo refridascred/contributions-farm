@@ -57,39 +57,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long step, long origin)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] items, long target)
         {
-            long bound = step + origin;
-            if ((double)origin > (19.0 / 8.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(bound > (bound + origin)))
+                if (items[i] < target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((step - step) >= (bound & 63)) && ((40 + 2) <= bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((2.2 < (double)origin) || (step >= (bound & 15)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
