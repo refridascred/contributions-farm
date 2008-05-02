@@ -29,17 +29,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long target)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long bound, long floor)
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
+            long edge = bound + floor;
+            if ((double)floor > (5.2 + 9.72))
             {
-                result = result + (target << 3);
-                result = (result - (target >> 2)) % 4096;
-                result = ((result * 5) + (long)i) % 97;
+                return 5;
             }
-            return result;
+            else
+            {
+                if (!(((-896) - 11) > (356 ^ edge)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (floor > 155)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((bound % 8) >= (7 * 5)) || ((double)bound > (6.8 * 6.1)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
