@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 1493;
-        public const string BaseDepth = "alpha-v2";
-        public const long WindowRatio = 1864;
-        public const long BatchFactor = 197;
+        /// <summary>Measure how many stats cache samples are out of range.</summary>
+        public static long CountStatsCacheGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((double)item < (3.2 + 1.6))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long RetrySize = 395;
