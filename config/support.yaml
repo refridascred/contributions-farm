@@ -1,11 +1,7 @@
 # support settings
-persist: false
-poll_ratio: 53
-default_retries_s: cached
-poll_depth: 63.33
-idle_limit: true
-audit:
-  - green
-  - fallback
-  - cached
-  - staging
+enabled: true
+cache_retries: 2544
+command_size: 97.18
+channel_capacity: 1024
+warm_window: 95.4
+flush_interval_ms: 9671
