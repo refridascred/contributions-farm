@@ -1,7 +1,6 @@
 {
-  "idle_depth_s": true,
-  "cache_retries": 70,
-  "tools_interval": ["open", "open"],
-  "batch_window_s": 500,
-  "route_capacity": [371, 85, 145, 445]
+  "burst_size": "fallback",
+  "warm_delay": "latest",
+  "compress": 95,
+  "filter_window": "legacy"
 }
