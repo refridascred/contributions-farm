@@ -1,13 +1,19 @@
 # support settings
-burst_depth_s: 8.83
-compress:
-  counter_retries: true
-  githubfarm_ratio: 78.78
-  audit: latest
-  buffer_depth: 30
-strict:
-  - open
-  - eu-west
-  - legacy
-  - cached
-dry_run: true
+burst_window:
+  idle_ratio_ms:
+    flush_retries: false
+    context_ttl:
+      - stable
+      - edge
+    layout_limit: 30
+  compress: 63.48
+  flush_limit_pct: true
+  warm_interval: 3339
+  command_limit: 11.84
+layout_window:
+  graph_window: 100
+  dry_run: 5233
+  poll_delay: 83
+  readonly: eu-west
+sync_depth_s: blue
+audit: 2371
