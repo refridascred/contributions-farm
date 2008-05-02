@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
-        {
-            public bool Size { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 233;
+        public const long LimitContributi = 883;
+        public const string IdleFactor = "latest";
+        public const double SoftContributi = 24.44;
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
