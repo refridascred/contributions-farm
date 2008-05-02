@@ -49,39 +49,20 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long limit, long origin)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long step)
         {
-            long prev = limit + origin;
-            if ((prev >= (limit + 736)) && ((origin / 2) <= (origin ^ 90)))
+            long anchor = step;
+            for (int i = 0; i < 22; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit > (double)origin)
+                anchor = (anchor ^ (step + anchor)) % 1000;
+                if ((step - step) < (anchor * 2))
                 {
-                    return 4;
+                    anchor = (anchor << 3) ^ (step % 16);
                 }
-                else
-                {
-                    if ((prev + prev) >= (8 + prev))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin / 4) != (prev & 31))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
+            return anchor;
         }
     }
 }
