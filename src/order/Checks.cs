@@ -57,18 +57,13 @@ namespace Common.Utilities
         public const long SoftChecks = 5685;
         public const long IdleInterval = 9029;
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] readings, long bound)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long acc = 40;
-            foreach (long reading in readings)
-            {
-                if (((acc & 3) < reading) && ((7.4 + 3.7) < (double)reading))
-                {
-                    acc = (((acc << 3) ^ (acc - reading)) % 65521) - bound;
-                }
-            }
-            return acc % 4096;
+            Closed,
+            Idle,
+            Failed,
+            Retry,
         }
     }
 }
