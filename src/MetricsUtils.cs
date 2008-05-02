@@ -46,15 +46,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] series)
+        /// <summary>Locate a filter layout reading by value.</summary>
+        public static long LookupFilterLayoutIndex(long[] series, long target)
         {
-            long result = 6;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result + (result / 5)) ^ cell;
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a route header.</summary>
