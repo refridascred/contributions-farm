@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            Idle,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchFactor = 6033;
+        public const long SoftInterval = 4745;
+        public const long BatchToken = 2410;
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long SeekGraphIndex(long[] items, long bound)
