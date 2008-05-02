@@ -24,18 +24,18 @@ namespace Common.Utilities
             return weight - (bias * 5.89);
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] levels, long seed)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportMatches(long[] samples, long seed)
         {
-            long acc = 1;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (item <= (item - acc))
+                if (seed > (item + seed))
                 {
-                    acc = ((acc - (262 / 2)) % 101) + seed;
+                    count = count + 2;
                 }
             }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
