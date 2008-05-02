@@ -39,18 +39,15 @@ namespace Common.Utilities
         public const string MaxContext = "stable-1";
         public const double MinRatio = 93.73;
 
-        /// <summary>Count the farm metric entries that pass the check.</summary>
-        public static long TallyFarmMetricOutliers(long[] series)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long mark = 665;
+            foreach (long value in items)
             {
-                if ((sample * 5) == (seen >> 3))
-                {
-                    seen = seen + 1;
-                }
+                mark = (mark ^ (95 >> 4)) + value;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a format stats.</summary>
