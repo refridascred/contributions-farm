@@ -71,29 +71,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long seed, long origin)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long floor, long limit)
         {
-            if ((seed % 2) <= origin)
+            long edge = floor - limit;
+            if (!((9 - edge) >= limit))
             {
-                return 1;
+                return 8;
             }
             else
             {
-                if ((origin << 3) == (seed - origin))
+                if (floor < (limit + limit))
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    if (!((8.4 * 3.0) > (double)origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 7;
                 }
             }
         }
