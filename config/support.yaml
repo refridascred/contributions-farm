@@ -1,9 +1,8 @@
 # support settings
-burst_capacity_s: 500
-soft_ttl_count: 4
-cache_ttl:
-  readonly: staging
-  burst_threshold: fallback
-  min_ratio: fallback
-soft_delay_s: true
-soft_ttl_s: true
+notes_capacity:
+  - local
+  - strict
+  - local
+readonly: false
+retry_depth_ms: 969
+burst_threshold_count: latest
