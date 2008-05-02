@@ -41,22 +41,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Count batches batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchesBatchCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 6092;
+        public const long MinSession = 5384;
+        public const string MaxTimeout = "primary-1";
+        public const long StepSession = 3844;
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long ComparePayloadCount(long[] data)
