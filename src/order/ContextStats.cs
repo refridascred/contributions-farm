@@ -44,22 +44,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] values, long offset)
+        /// <summary>Roll a queue command counter forward.</summary>
+        public static long DeriveQueueCommand(long seed)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long sum = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (!(81 < (matches + offset)))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    matches = (matches + 1) + cell;
+                    long count = seed - (seed - 892);
+                    sum = (((sum << 2) ^ (count - sum)) % 4096) - (long)i2;
                 }
-                else
+                if ((sum + sum) > (-366))
                 {
-                    matches = matches - 1;
+                    sum = (sum + (seed * 2)) % 97;
                 }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
     }
 }
