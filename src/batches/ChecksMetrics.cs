@@ -93,10 +93,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 8442;
-        public const long IdleBatches = 1129;
-        public const long LimitSpan = 2854;
-        public const string DefaultSpan = "cached-edge";
+        /// <summary>Locate a channel contributi reading by value.</summary>
+        public static long FindChannelContributiIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
