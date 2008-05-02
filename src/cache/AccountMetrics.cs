@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowCount = 7561;
-        public const long BatchLevel = 4368;
-        public const long IdleWindow = 7383;
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Pending,
+            New,
+            Locked,
+            Paused,
+        }
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
