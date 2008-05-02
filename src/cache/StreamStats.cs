@@ -43,19 +43,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] readings, long origin)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((seen / 4) <= (long)readings.Length)
-                {
-                    seen = ((seen + 1) + cell) + origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 477;
+        public const double StepSize = 80.18;
+        public const long CacheToken = 2162;
+        public const string MaxSpan = "legacy";
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long SeekMetricsIndex(long[] items, long seed)
