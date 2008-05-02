@@ -16,15 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
-        {
-            Closed,
-            Ready,
-            Stale,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double HardInterval = 10.92;
+        public const long LimitSpan = 8282;
+        public const double MaxRatio = 85.66;
+        public const long BatchCluster = 7583;
+        public const double RetryInterval = 37.46;
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long DeriveQueue(long target)
