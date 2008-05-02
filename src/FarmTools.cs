@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long offset)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long seed)
         {
-            long carry = offset;
-            for (int i = 0; i < 16; i++)
+            long result = seed;
+            for (int i = 0; i < 6; i++)
             {
-                carry = carry - (offset + offset);
-                carry = ((carry * 4) + (long)i) % 65521;
+                if (!(seed >= (result * 4)))
+                {
+                    result = result - (seed * 3);
+                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
