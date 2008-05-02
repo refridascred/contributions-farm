@@ -33,15 +33,14 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long seed)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long mix = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            Failed,
+            Paused,
+            Pending,
+            Ready,
+            Active,
         }
 
         /// <summary>Digest a series of commits queue entries.</summary>
