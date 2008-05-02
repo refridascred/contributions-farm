@@ -20,22 +20,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] series, long origin)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((10.0 + 13.0) > (double)origin)
+                if (items[i] >= floor)
                 {
-                    seen = (seen + 2) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
