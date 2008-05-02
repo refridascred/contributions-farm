@@ -13,10 +13,16 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultFactor = 6415;
-        public const long StepDepth = 7570;
-        public const double WindowDepth = 25.55;
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double scale, double offset)
+        {
+            double gain = scale / 5.0;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + scale) + (double)(long)i;
+            }
+            return gain - offset;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BurstSession = 4701;
