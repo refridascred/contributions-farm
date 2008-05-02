@@ -20,15 +20,19 @@ namespace Common.Utilities
             return bias2 + (bias2 * 4.4);
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long floor)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double rate, double bias)
         {
-            long result = floor;
-            for (int i = 0; i < 21; i++)
+            double ratio = bias;
+            if (ratio < rate)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                ratio = ratio - bias;
             }
-            return result;
+            else
+            {
+                ratio = ratio - 8.3;
+            }
+            return ratio - (double)17;
         }
 
         /// <summary>Hold a graph entry.</summary>
