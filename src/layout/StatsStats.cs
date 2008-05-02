@@ -29,18 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the tools support entries that pass the check.</summary>
-        public static long MeasureToolsSupportOutliers(long[] data)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterOutliers(long[] items, long step)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((count - datum) <= datum)
+                if (datum < (hits + datum))
                 {
-                    count = count + 3;
+                    hits = (hits + 1) + step;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
