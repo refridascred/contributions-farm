@@ -37,39 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a layout stats pair into a bucket.</summary>
-        public static long ClassifyLayoutStats(long offset, long seed)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesHits(long[] levels)
         {
-            long step = offset ^ seed;
-            if ((78 / 5) > (step ^ 18))
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (step > (seed - 1))
+                if (((tally * 5) > (tally % 7)) || ((tally - cell) > (cell - (long)levels.Length)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed >> 2) == (seed % 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((-791) + 0) >= (step + seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Match up channel stats samples.</summary>
