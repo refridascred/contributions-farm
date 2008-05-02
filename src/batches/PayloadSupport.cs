@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long limit)
         {
-            public bool Score { get; set; }
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
+            long state = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                state = (state - (state & 31)) % 4096;
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Adjust a entry reading.</summary>
