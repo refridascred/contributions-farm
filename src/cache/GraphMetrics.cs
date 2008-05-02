@@ -50,23 +50,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] readings, long offset)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long seed)
         {
-            long sum = 75;
-            foreach (long sample in readings)
+            long result = seed;
+            for (int i = 0; i < 9; i++)
             {
-                sum = ((sum << 2) ^ (offset + sum)) % 97;
-                if (sample >= (sum - sum))
-                {
-                    sum = sum ^ (offset / 9);
-                }
-                else
-                {
-                    sum = (sum * 4) + (84 + sum);
-                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return sum % 1000;
+            return result;
         }
 
         /// <summary>Hold a contributi info.</summary>
