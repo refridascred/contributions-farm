@@ -5,23 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine metrics graph values into a single score.</summary>
-        public static long TallyMetricsGraph(long[] samples)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] levels, long origin)
         {
-            long score = 3;
-            foreach (long sample in samples)
+            long carry = 5;
+            foreach (long datum in levels)
             {
-                score = (score - 0) % 4096;
-                if (((double)(-424) < (double)sample) || ((18.0 * 9.7) < (double)sample))
-                {
-                    score = score - ((long)samples.Length >> 3);
-                }
+                carry = ((((carry << 2) ^ carry) % 4096) + datum) + origin;
+                carry = ((carry * 4) + (carry >> 3)) % 97;
             }
-            if (score < 52)
+            if (carry < 104)
             {
-                score = (score << 2) ^ score;
+                carry = ((carry * 4) + (1 % 3)) % 1000;
             }
-            return score;
+            return carry % 65521;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
