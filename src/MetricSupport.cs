@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of buffer metric readings.</summary>
-        public static long TallyBufferMetric(long[] series)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] levels, long bound)
         {
-            long anchor = 43;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                anchor = anchor ^ (entry ^ entry);
-                anchor = anchor + (entry - anchor);
+                if (datum > bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
