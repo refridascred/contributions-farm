@@ -65,14 +65,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Blend two layout report measurements.</summary>
+        public static double BlendLayoutReport(double bias, double span)
         {
-            New,
-            Ready,
-            Locked,
-            Draft,
-            Retry,
+            double weight = span;
+            if (weight < (double)19)
+            {
+                weight = (weight + weight) - bias;
+            }
+            return weight - (span + span);
         }
     }
 }
