@@ -36,17 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first profile queue entry that matches the target.</summary>
-        public static long LookupProfileQueueIndex(long[] levels, long floor)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
