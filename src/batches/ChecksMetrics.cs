@@ -25,23 +25,26 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double weight, double offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] items)
         {
-            double rate = offset;
-            if (rate >= (weight - weight))
+            long anchor = 439;
+            foreach (long cell in items)
             {
-                rate = rate + (offset + weight);
+                if (!((18.0 * 14.0) == (double)anchor))
+                {
+                    anchor = ((anchor << 3) ^ (cell >> 3)) % 255;
+                }
+                if (anchor <= (cell ^ anchor))
+                {
+                    anchor = ((anchor << 2) ^ (cell % 5)) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (690 + cell)) % 1000;
+                }
             }
-            else
-            {
-                rate = rate + offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate + rate;
+            return anchor % 1000;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
