@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const string BurstCount = "local-v2";
         public const long BatchInterval = 5482;
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphLimits(long[] readings, long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyHits(long[] samples)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (cell <= offset)
+                if ((cell % 10) <= (cell - tally))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Project the next format channel value.</summary>
