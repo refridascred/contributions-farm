@@ -1,13 +1,6 @@
 # entry settings
-flush_delay: 60
-burst_limit: 3305
-githubfarm_ttl: 81.78
-hard_size_count:
-  - 167
-  - 174
-  - 339
-strict:
-  - 69
-  - 146
-  - 49
-support_delay: 15.89
+min_ratio_s: 3934
+strict: 60
+batch_retries_ms: true
+hard_ratio: true
+checks_timeout: 89
