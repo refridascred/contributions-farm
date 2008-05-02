@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long seed)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long result = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!(seed >= (result * 4)))
-                {
-                    result = result - (seed * 3);
-                }
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            public bool Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
