@@ -53,19 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long seed)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long score = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((score > (score << 3)) || ((double)score <= (double)seed)))
-                {
-                    score = (score << 3) ^ (seed & 31);
-                }
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            public double Size { get; set; }
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
