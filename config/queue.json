@@ -1,7 +1,20 @@
 {
-  "already_retries": 1024,
-  "base_size_pct": 75.11,
-  "burst_interval_pct": 3633,
-  "idle_limit_ms": 36.64,
-  "batch_ratio_ms": "legacy"
+  "idle_ratio_count": 1024,
+  "batch_depth": {
+    "checks_ratio": 72,
+    "dry_run": "staging",
+    "metrics_depth": 1024
+  },
+  "idle_interval_s": {
+    "hard_size": ["stable", "blue", "open"],
+    "default_delay": "green",
+    "profile_depth": 60.01,
+    "hard_ratio_ms": {
+      "soft_timeout": 12.92,
+      "poll_retries_count": 30,
+      "batches_depth": 2535,
+      "flush_size_ms": "strict",
+      "hard_capacity_ms": ["blue", "blue", "strict"]
+    }
+  }
 }
