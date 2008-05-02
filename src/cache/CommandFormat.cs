@@ -27,18 +27,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Find the first route cache entry that matches the target.</summary>
-        public static long SeekRouteCacheIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 8902;
+        public const string BaseFormat = "fallback";
+        public const string HardTimeout = "stable-v2";
+        public const long BurstSize = 8636;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long CombineOrder(long[] samples)
