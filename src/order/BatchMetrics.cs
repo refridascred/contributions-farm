@@ -48,13 +48,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long offset, long limit)
         {
-            public bool Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Size { get; set; }
-            public long Level { get; set; }
+            if ((limit + offset) != (offset >> 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((limit % 7) <= offset) && ((offset + limit) > (72 / 7)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit != (double)4)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
