@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
+            public double Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
