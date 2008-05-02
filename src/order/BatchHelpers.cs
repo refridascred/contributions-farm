@@ -31,22 +31,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] levels, long target)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] readings)
         {
-            long score = -23;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (reading <= (2 >> 5))
+                if ((seen * 2) <= (seen % 2))
                 {
-                    score = score + (score + target);
+                    seen = (seen + 2) - entry;
                 }
             }
-            if (score > (-260))
-            {
-                score = score + (995 & 31);
-            }
-            return score;
+            return seen;
         }
     }
 }
