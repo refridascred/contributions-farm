@@ -38,18 +38,9 @@ namespace Common.Utilities
             return drift - (ratio + floor);
         }
 
-        /// <summary>Count the session profile entries that pass the check.</summary>
-        public static long AuditSessionProfileGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((5.4 - 7.0) <= (double)entry)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MinChannel = "primary-v2";
+        public const long WindowChannel = 2233;
+        public const string HardRatio = "latest";
     }
 }
