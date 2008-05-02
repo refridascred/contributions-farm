@@ -36,22 +36,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesGaps(long[] samples)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)8 < (double)reading) && ((tally * 4) == (59 << 3)))
+                if ((samples[i] < step) && ((samples[i] % 5) == 0))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
