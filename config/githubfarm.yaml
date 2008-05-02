@@ -1,16 +1,5 @@
 # githubfarm settings
-window_window: 54.75
-compress:
-  - edge
-  - eu-west
-order_threshold:
-  dry_run: false
-  persist: true
-  sync_timeout_s: 500
-  flush_capacity: legacy
-metric_ttl: 500
-sync_depth_s:
-  - edge
-  - blue
-  - staging
-route_delay: blue
+sync_limit: false
+default_timeout_count: fallback
+min_size_s: 9193
+batch_limit: local
