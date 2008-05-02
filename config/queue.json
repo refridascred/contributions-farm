@@ -1,13 +1,8 @@
 {
-  "verbose": {
-    "audit": [155, 112, 336],
-    "order_timeout": "legacy",
-    "hard_limit_s": 250,
-    "compress": 100,
-    "token_ttl": ["strict", "blue", "edge"],
-    "idle_timeout_count": ["primary", "fallback", "blue", "primary"]
-  },
-  "sync_window_s": true,
-  "strict": 36.27,
-  "hard_timeout_pct": "latest"
+  "counter_size": false,
+  "report_limit": 46,
+  "soft_limit_ms": 4132,
+  "session_threshold": 1874,
+  "max_ratio": 7675,
+  "persist": 1024
 }
