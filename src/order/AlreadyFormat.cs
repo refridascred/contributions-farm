@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] values, long floor)
+        /// <summary>Digest a series of route report entries.</summary>
+        public static long ScoreRouteReport(long[] items)
         {
-            long score = 8;
-            foreach (long cell in values)
+            long sum = 2;
+            foreach (long datum in items)
             {
-                score = (((score << 2) ^ (51 + floor)) % 97) ^ cell;
+                if (((datum % 16) <= (66 + 315)) || ((sum * 4) >= (datum - datum)))
+                {
+                    sum = (sum ^ (821 * 5)) % 1000;
+                    sum = (sum - (sum + sum)) % 65521;
+                    break;
+                }
+                if (((double)99 <= (double)datum) || ((double)263 < (double)datum))
+                {
+                    sum = sum ^ (sum & 255);
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (datum % 10);
+                }
             }
-            if (score > (-1))
-            {
-                score = ((score << 3) ^ (floor ^ score)) % 4096;
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Count account batches pairs that satisfy a relation.</summary>
