@@ -29,18 +29,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] series)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportRange(long[] levels, long seed)
         {
-            long acc = 91;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if ((acc + acc) < cell)
+                if (reading != seed)
                 {
-                    acc = (acc << 3) ^ (cell ^ acc);
+                    stale = false;
+                    break;
                 }
             }
-            return acc % 4096;
+            return stale;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
