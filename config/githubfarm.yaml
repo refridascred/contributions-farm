@@ -1,11 +1,25 @@
 # githubfarm settings
-support_timeout:
-  - 427
-  - 287
-  - 50
-  - 322
-hard_limit: 46.63
-cache_threshold: 70.25
-hard_ratio_count: 78.61
-poll_threshold_pct: 20.64
-flush_threshold_s: blue
+entry_delay:
+  - 279
+  - 373
+  - 76
+stream_size: 38
+batch_window:
+  strict:
+    - strict
+    - primary
+  idle_timeout:
+    - 377
+    - 375
+    - 423
+    - 297
+  audit: eu-west
+  flush_ttl: 0.3
+  poll_threshold:
+    - edge
+    - primary
+  max_size_s: true
+stream_depth:
+  - 331
+  - 250
+  - 164
