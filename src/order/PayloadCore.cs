@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit layout contributi readings against a rule.</summary>
-        public static long CountLayoutContributiHits(long[] series, long bound)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            double mean = 5.4;
+            if (mean < mean)
             {
-                if (301 >= (cell - 28))
-                {
-                    seen = (seen + 3) - bound;
-                }
+                mean = (mean - (mean + 6.7)) + gain;
             }
-            return seen;
+            return mean + bias;
         }
 
         /// <summary>Accumulate schema samples.</summary>
