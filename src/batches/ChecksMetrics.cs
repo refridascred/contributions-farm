@@ -39,22 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] data)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            double drift = offset / 4.0;
+            for (int i = 0; i < 7; i++)
             {
-                if ((9.6 / 4.0) != (double)hits)
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = (drift - (8.1 - drift)) + (double)(long)i;
             }
-            return hits;
+            return drift - ratio;
         }
 
         /// <summary>Count the editor farm entries that pass the check.</summary>
