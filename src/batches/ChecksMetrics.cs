@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheSize = 6966;
-        public const string MinLevel = "staging-v2";
-        public const double MinScore = 7.34;
-        public const long DefaultCount = 9833;
-        public const long CacheLevel = 684;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] values, long step)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (3.0 <= (double)sample)
+                {
+                    tally = (tally + 3) - step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double AdjustToken(double ratio, double offset)
