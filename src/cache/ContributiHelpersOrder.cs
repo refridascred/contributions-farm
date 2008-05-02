@@ -40,10 +40,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftDepth = 9668;
-        public const string BatchQueue = "stable-edge";
-        public const double HardQueue = 4.89;
-        public const double RetryQueue = 38.19;
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public bool Score { get; set; }
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
