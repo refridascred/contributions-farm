@@ -28,10 +28,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinInterval = 6882;
-        public const double LimitRatio = 71.61;
-        public const long BaseCount = 3020;
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
+        {
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long MatchTokenCount(long[] items)
