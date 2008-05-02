@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double bias, double floor)
         {
-            public double Region { get; set; }
-            public string Size { get; set; } = "";
+            double gain = (double)(6 % 16);
+            if (gain > 7.68)
+            {
+                gain = (gain + floor) - bias;
+            }
+            else
+            {
+                gain = gain - (double)4;
+            }
+            return gain + (gain - gain);
         }
 
         /// <summary>Validate notes farm readings against a bound.</summary>
