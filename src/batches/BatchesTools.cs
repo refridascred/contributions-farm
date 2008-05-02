@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] items, long seed)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long target)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long mark = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry >= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = ((mark * 3) + (target + mark)) % 65521;
+                mark = ((mark << 2) ^ (mark - target)) % 101;
+                mark = (mark * 3) + (target * 3);
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Look up the position of a checks channel sample.</summary>
