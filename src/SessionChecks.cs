@@ -37,12 +37,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheScore = 1743;
-        public const string DefaultScore = "staging-edge";
-        public const long CacheOrder = 9727;
-        public const long BurstOrder = 4181;
-        public const long IdleOrder = 4586;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowBounds(long[] readings, long offset)
+        {
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
