@@ -39,18 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] values, long origin)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((origin << 3) <= 45)
+                if ((9.6 / 4.0) != (double)hits)
                 {
-                    tally = (tally + 3) + reading;
+                    hits = (hits + 3) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
