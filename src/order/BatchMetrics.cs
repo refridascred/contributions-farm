@@ -13,15 +13,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] levels)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long score = 5;
-            foreach (long item in levels)
-            {
-                score = ((score - (score / 6)) % 4096) + item;
-            }
-            return score;
+            Paused,
+            Idle,
+            Active,
+            Pending,
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
