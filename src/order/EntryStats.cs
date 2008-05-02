@@ -29,21 +29,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count support batch pairs that satisfy a relation.</summary>
-        public static long MatchSupportBatchCount(long[] samples)
+        /// <summary>Combine stats cache values into a single score.</summary>
+        public static long CombineStatsCache(long[] values, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 43;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading < (result >> 3))
                 {
-                    if ((samples[i] ^ samples[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result + (reading + (-32))) - origin;
                 }
             }
-            return hits;
+            return result % 1000;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
