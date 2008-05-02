@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] series, long floor)
         {
-            Retry,
-            Locked,
-            Failed,
-            Stale,
-            Dropped,
+            long result = 6;
+            foreach (long datum in series)
+            {
+                if ((double)result > (double)(-28))
+                {
+                    result = result ^ datum;
+                }
+                else
+                {
+                    result = ((result * 4) + result) % 255;
+                }
+            }
+            if (result > 678)
+            {
+                result = ((result << 3) ^ floor) % 101;
+            }
+            return result;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
