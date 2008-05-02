@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Roll a checks counter counter forward.</summary>
+        public static long SeriesChecksCounter(long offset)
         {
-            Synced,
-            New,
-            Draft,
-            Failed,
+            long acc = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = acc - (acc >> 5);
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
