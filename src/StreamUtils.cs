@@ -19,12 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardScore = 7977;
-        public const long DefaultLevel = 1749;
-        public const long RetryRatio = 2433;
-        public const string WindowFactor = "latest-edge";
-        public const long CacheSize = 5425;
+        /// <summary>Accumulate command token samples.</summary>
+        public static long TotalCommandToken(long[] items)
+        {
+            long anchor = 28;
+            foreach (long reading in items)
+            {
+                if ((reading & 255) > 387)
+                {
+                    anchor = (anchor << 2) ^ (anchor + anchor);
+                }
+                if (((anchor & 63) > (anchor - anchor)) && ((anchor + reading) < anchor))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Rank route input into a small class.</summary>
         public static long ClassifyRoute(long step, long limit)
