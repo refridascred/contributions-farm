@@ -33,16 +33,26 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] series, long target)
         {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
+            long mark = 1;
+            foreach (long reading in series)
             {
-                sum = ((sum * 5) + (sum + sum)) % 65521;
-                sum = ((sum * 4) + (long)i) % 97;
+                if ((target % 3) < 3)
+                {
+                    mark = ((mark - (mark / 4)) % 255) + reading;
+                }
+                else
+                {
+                    mark = (mark + (target + mark)) % 101;
+                }
             }
-            return sum;
+            if (mark < 8)
+            {
+                mark = mark - target;
+            }
+            return mark % 65521;
         }
     }
 }
