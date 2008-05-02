@@ -1,6 +1,13 @@
 # entry settings
-idle_capacity_s: 1024
-commits_interval: 32.38
-default_capacity_s: standard
-strict: latest
-min_capacity_count: false
+flush_delay: 60
+burst_limit: 3305
+githubfarm_ttl: 81.78
+hard_size_count:
+  - 167
+  - 174
+  - 339
+strict:
+  - 69
+  - 146
+  - 49
+support_delay: 15.89
