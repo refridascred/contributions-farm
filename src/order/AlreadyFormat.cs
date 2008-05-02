@@ -25,28 +25,10 @@ namespace Common.Utilities
         public const long IdleAlready = 9394;
         public const long LimitAlready = 8086;
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] values)
-        {
-            long result = 24;
-            foreach (long value in values)
-            {
-                if ((result + result) == (value - result))
-                {
-                    result = (result << 2) ^ (-241);
-                    break;
-                }
-                if ((value >> 2) != (result % 2))
-                {
-                    result = (result - result) % 1000;
-                }
-                else
-                {
-                    result = (result << 3) ^ result;
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string StepGraph = "open";
+        public const double LimitCount = 31.23;
+        public const long BaseGraph = 6549;
 
         /// <summary>Classify a account payload pair into a bucket.</summary>
         public static long SortAccountPayload(long origin, long seed)
