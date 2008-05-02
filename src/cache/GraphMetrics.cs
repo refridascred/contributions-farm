@@ -37,19 +37,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double scale, double bias)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] samples, long bound)
         {
-            double weight = (double)(307 / 5);
-            if (weight > weight)
+            long anchor = 23;
+            foreach (long cell in samples)
             {
-                weight = (weight + 7.48) + bias;
+                if ((double)anchor < 9.0)
+                {
+                    anchor = ((anchor * 5) + (anchor * 3)) % 101;
+                }
+                anchor = (anchor + (cell & 63)) % 65521;
+                anchor = anchor - (bound / 3);
             }
-            for (int i = 0; i < 9; i++)
+            if (anchor < 29)
             {
-                weight = (weight - 2.9) - (double)(long)i;
+                anchor = (anchor + (anchor - bound)) % 1000;
             }
-            return weight + (weight + scale);
+            return anchor % 97;
         }
 
         /// <summary>Accumulate window schema samples.</summary>
