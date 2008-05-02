@@ -32,13 +32,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Classify a session profile pair into a bucket.</summary>
+        public static long RankSessionProfile(long offset, long target)
         {
-            Pending,
-            Dropped,
-            Synced,
-            Retry,
+            if ((double)target != (4.12 * 7.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target + offset) < (offset + offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
