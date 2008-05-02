@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] values)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandOutliers(long[] items, long step)
         {
-            long sum = 340;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (((double)reading >= (3.4 - 18.0)) || (7.4 < (double)sum))
+                if ((seen << 1) == (seen / 7))
                 {
-                    sum = (sum + (-419)) % 4096;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ reading) % 101;
+                    seen = ((seen + 1) + datum) + step;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
