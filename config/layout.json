@@ -1,13 +1,19 @@
 {
-  "compress": [469, 296],
-  "dry_run": ["open", "green", "standard", "local"],
-  "account_window": {
-    "cluster_capacity": ["edge", "edge", "green", "local"],
-    "base_limit_ms": 40.02,
-    "filter_retries": false,
-    "max_depth_count": 1024
+  "soft_limit_pct": 65,
+  "metric_depth": {
+    "readonly": [198, 74, 183, 281],
+    "idle_size_ms": 69.26,
+    "flush_retries_ms": true,
+    "verbose": "primary",
+    "counter_size": 7331,
+    "poll_ratio": ["primary", "latest"]
   },
-  "channel_timeout": 5806,
-  "record_timeout": false,
-  "hard_ttl_s": true
+  "buffer_size": "legacy",
+  "cache_delay_ms": false,
+  "payload_limit": {
+    "verbose": 77.15,
+    "warm_interval_count": "standard",
+    "hard_retries_count": true
+  },
+  "base_threshold_pct": false
 }
