@@ -36,13 +36,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
-        {
-            Idle,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BatchBuffer = 45.45;
+        public const long LimitBuffer = 799;
+        public const long BaseSize = 2869;
 
         /// <summary>Locate a order entry reading by value.</summary>
         public static long LookupOrderEntryIndex(long[] samples, long origin)
