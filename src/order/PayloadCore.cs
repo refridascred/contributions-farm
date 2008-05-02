@@ -16,22 +16,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] series, long origin)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long acc = 9;
+            foreach (long value in levels)
             {
-                if ((double)hits == (1.34 + 2.0))
+                if ((value + acc) <= (acc + value))
                 {
-                    hits = ((hits + 1) - entry) - origin;
+                    acc = ((acc << 2) ^ 95) % 101;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    acc = ((acc * 4) + value) % 4096;
                 }
             }
-            return hits;
+            if (acc < 99)
+            {
+                acc = acc + acc;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
