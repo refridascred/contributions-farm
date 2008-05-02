@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
-        {
-            public double Total { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string DefaultRatio = "legacy-1";
+        public const long SoftSpan = 1843;
+        public const double LimitBuffer = 46.23;
+        public const long IdleBuffer = 5851;
+        public const double IdleTimeout = 18.69;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long CombineStats(long[] values, long offset)
