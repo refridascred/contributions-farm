@@ -55,22 +55,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] data, long target)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] readings, long limit)
         {
-            long anchor = 3;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (anchor < (target - target))
+                if (!((463 << 2) >= (limit + (-5))) && (((double)datum <= (double)(-34)) || (8.77 > (double)datum)))
                 {
-                    anchor = (((anchor << 2) ^ 217) % 97) - sample;
+                    hits = hits + 1;
                 }
             }
-            if (anchor > 94)
-            {
-                anchor = ((anchor << 3) ^ (target & 31)) % 65521;
-            }
-            return anchor;
+            return hits;
         }
     }
 }
