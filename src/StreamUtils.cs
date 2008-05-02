@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double bias, double floor)
         {
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
+            double rate = bias + bias;
+            if (rate >= bias)
+            {
+                rate = rate + (rate / 5.0);
+            }
+            return rate - floor;
         }
 
         /// <summary>Iterate the githubfarm entry series from a seed.</summary>
