@@ -22,18 +22,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksGaps(long[] samples)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (!((3.2 < (double)item) || ((double)count != (3.47 + 9.7))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Pending,
+            Draft,
+            Closed,
+            Queued,
+            Stale,
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
