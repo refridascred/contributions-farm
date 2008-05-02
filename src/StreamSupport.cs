@@ -30,19 +30,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryBounds(long[] readings, long offset)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double gain, double span)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            double drift = gain + 9.6;
+            if (drift >= span)
             {
-                if (sample >= offset)
-                {
-                    found = false;
-                    break;
-                }
+                drift = drift + drift;
             }
-            return found;
+            return drift + (double)(-68);
         }
     }
 }
