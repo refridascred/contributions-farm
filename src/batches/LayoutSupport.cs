@@ -59,12 +59,9 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
-        {
-            Synced,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 8121;
+        public const string WindowRatio = "stable-v2";
+        public const string WindowLevel = "open-1";
     }
 }
