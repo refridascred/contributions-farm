@@ -1,14 +1,16 @@
 {
-  "readonly": {
-    "report_timeout": 6690,
-    "hard_limit": "stable",
-    "verbose": 13.58,
-    "idle_size": "green",
-    "burst_retries": [309, 295, 161, 150]
+  "base_interval_ms": true,
+  "format_timeout": ["strict", "cached", "standard"],
+  "stream_delay": {
+    "readonly": [90, 144],
+    "batches_interval": 2.24,
+    "max_limit_count": "stable",
+    "soft_threshold_pct": 60
   },
-  "soft_ttl": "primary",
-  "warm_ttl_pct": 250,
-  "batch_capacity": "fallback",
-  "audit": 30,
-  "min_depth_pct": 500
+  "format_threshold": true,
+  "base_window_pct": {
+    "retry_ratio": 74.71,
+    "poll_limit_ms": 8,
+    "min_retries_ms": 2
+  }
 }
