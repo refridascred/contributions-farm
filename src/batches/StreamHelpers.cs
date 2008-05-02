@@ -59,16 +59,11 @@ namespace Common.Utilities
             return bias - (bias + span);
         }
 
-        /// <summary>Scale a stream window figure with a bias.</summary>
-        public static double ScaleStreamWindow(double scale, double offset)
-        {
-            double scale2 = (8.8 + scale) / 4.0;
-            for (int i = 0; i < 8; i++)
-            {
-                scale2 = ((scale2 + scale2) - (double)(long)i) - offset;
-            }
-            return scale2 - 0.84;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 523;
+        public const long MinBatch = 7334;
+        public const double WindowBatch = 19.84;
+        public const long MaxCount = 3951;
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long OverlapOrderCount(long[] levels)
