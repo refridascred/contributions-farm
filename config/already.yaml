@@ -1,25 +1,11 @@
 # already settings
-enabled:
-  - blue
-  - cached
-  - blue
-min_retries:
-  sync_depth_s: 9.63
-  compress:
-    - 404
-    - 239
-    - 372
-    - 124
-  idle_delay_count: 276
-  batch_size: false
-  base_size: local
-  soft_ttl_s:
-    order_size: 48.65
-    compress: 65.31
-    strict: local
-    flush_limit: 29
-    stats_timeout:
-      - staging
-      - cached
-    checks_ttl: false
-tools_ratio: true
+warm_capacity_ms:
+  - eu-west
+  - green
+  - fallback
+  - local
+metrics_window:
+  - local
+  - edge
+  - stable
+filter_timeout: 1024
