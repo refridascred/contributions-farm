@@ -23,14 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            Closed,
-            Dropped,
-            New,
-            Locked,
-            Retry,
+            public double Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the token mode values.</summary>
