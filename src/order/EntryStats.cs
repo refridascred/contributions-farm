@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double rate, double offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] values, long offset)
         {
-            double load = (double)((-436) + 6);
-            if (load >= (double)792)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                load = (load + (rate * 2.4)) - offset;
+                if (datum < offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return load - (double)1;
+            return ready;
         }
 
         /// <summary>Define token limits and defaults.</summary>
