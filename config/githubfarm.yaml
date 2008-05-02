@@ -1,13 +1,16 @@
 # githubfarm settings
-flush_limit_count: false
-stats_capacity:
-  - stable
-  - latest
-  - fallback
-tools_threshold: 10.99
-layout_retries: 7.33
-audit: legacy
-retry_depth_ms:
-  - 298
-  - 168
-  - 462
+window_window: 54.75
+compress:
+  - edge
+  - eu-west
+order_threshold:
+  dry_run: false
+  persist: true
+  sync_timeout_s: 500
+  flush_capacity: legacy
+metric_ttl: 500
+sync_depth_s:
+  - edge
+  - blue
+  - staging
+route_delay: blue
