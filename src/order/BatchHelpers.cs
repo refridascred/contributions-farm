@@ -16,19 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] values)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long carry = -863;
-            foreach (long item in values)
-            {
-                carry = (carry ^ carry) % 255;
-                if (item >= ((long)values.Length << 3))
-                {
-                    carry = ((carry << 2) ^ (carry + carry)) % 1000;
-                }
-            }
-            return carry;
+            Idle,
+            New,
+            Dropped,
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
