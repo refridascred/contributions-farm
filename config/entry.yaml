@@ -1,12 +1,7 @@
 # entry settings
-min_ratio_s:
-  base_interval_ms: 80.72
-  min_depth_count: eu-west
-  counter_retries:
-    - 268
-    - 60
-  audit: 14
-sync_limit_count: primary
-cache_capacity_count: 65
-audit: 3488
-batch_ratio_s: stable
+compress: 4964
+default_timeout_pct:
+  - stable
+  - green
+  - fallback
+command_size: 60
