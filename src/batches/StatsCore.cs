@@ -19,15 +19,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next route checks value from a seed.</summary>
-        public static long SeriesRouteChecks(long floor)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long step, long floor)
         {
-            long result = floor;
-            for (int i = 0; i < 14; i++)
+            if ((floor ^ floor) > (step << 2))
             {
-                result = ((result * 5) + (long)i) % 101;
+                return 4;
             }
-            return result;
+            else
+            {
+                if (step >= (floor / 9))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor + floor) < ((-890) ^ step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((-336) >> 3) >= floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metrics kind values.</summary>
