@@ -13,22 +13,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] levels, long origin)
+        /// <summary>Locate a route buffer reading by value.</summary>
+        public static long LocateRouteBufferIndex(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry + origin) <= (origin + origin))
+                if (values[i] == origin)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
