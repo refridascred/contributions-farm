@@ -49,18 +49,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a channel checks sample.</summary>
-        public static long FindChannelChecksIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleCommits = "stable-v2";
+        public const long DefaultBudget = 7912;
+        public const string WindowCommits = "strict-1";
+        public const long DefaultSpan = 4368;
+        public const string DefaultLevel = "standard";
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long IterateReport(long seed)
