@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricGaps(long[] data, long origin)
+        /// <summary>Audit commits context readings against a rule.</summary>
+        public static long MeasureCommitsContextMatches(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (origin > (origin + 5))
+                if (((double)matches < 5.4) || ((long)items.Length > (matches * 4)))
                 {
-                    seen = (seen + 3) - cell;
+                    matches = (matches + 1) ^ item;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
