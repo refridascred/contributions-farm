@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] items, long limit)
         {
-            public bool Owner { get; set; }
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
+            long mark = 1;
+            foreach (long reading in items)
+            {
+                mark = (mark - (reading - limit)) % 65521;
+                if ((limit + reading) <= ((long)items.Length - limit))
+                {
+                    mark = ((mark << 2) ^ (598 + reading)) % 97;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
