@@ -1,7 +1,8 @@
 {
-  "hard_delay": 1,
-  "soft_limit": 50,
-  "max_threshold": 52.7,
-  "persist": 9061,
-  "verbose": 4.88
+  "soft_threshold": 89.99,
+  "verbose": "stable",
+  "enabled": 96,
+  "dry_run": "eu-west",
+  "window_depth": 87.01,
+  "strict": "edge"
 }
