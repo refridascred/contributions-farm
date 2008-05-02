@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] items)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long anchor = 0;
-            foreach (long sample in items)
-            {
-                if (((anchor - 9) > (anchor + anchor)) && ((double)anchor != (4.0 + 5.7)))
-                {
-                    anchor = (anchor - anchor) + sample;
-                }
-            }
-            return anchor;
+            public double Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Digest a series of account entries.</summary>
