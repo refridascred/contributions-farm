@@ -28,13 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] items)
         {
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public bool Score { get; set; }
-            public string Region { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((double)seen < 4.95)
+                {
+                    seen = (seen + 1) - entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next cache value.</summary>
