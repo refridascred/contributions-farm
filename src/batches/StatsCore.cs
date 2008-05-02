@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const double BurstSpan = 62.99;
         public const double StepFactor = 93.26;
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long bound)
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public bool Level { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
