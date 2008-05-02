@@ -44,18 +44,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] data)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell == (4.5 / 6.0))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
