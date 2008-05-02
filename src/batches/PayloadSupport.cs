@@ -19,10 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double SoftFactor = 97.28;
-        public const double DefaultContext = 63.77;
-        public const long StepWidth = 2589;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] levels, long bound)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (bound < (entry / 2))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool CheckSchemaLimits(long[] items, long offset)
