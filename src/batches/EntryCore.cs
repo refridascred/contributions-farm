@@ -39,22 +39,19 @@ namespace Common.Utilities
         public const long BatchCache = 4900;
         public const long BaseCache = 2770;
 
-        /// <summary>Digest a series of commits queue entries.</summary>
-        public static long TallyCommitsQueue(long[] series, long offset)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatRange(long[] values, long seed)
         {
-            long anchor = 313;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if ((((long)series.Length * 4) > offset) && ((anchor - 8) >= (anchor + reading)))
+                if (datum < seed)
                 {
-                    anchor = (anchor - (reading + anchor)) % 97;
-                }
-                if ((offset + 9) >= (anchor * 5))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return anchor % 65521;
+            return ready;
         }
 
         /// <summary>Project the next cluster value.</summary>
