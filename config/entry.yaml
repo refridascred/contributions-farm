@@ -1,4 +1,4 @@
 # entry settings
-idle_window_pct: standard
-dry_run: 30
-min_delay_ms: 36.3
+burst_depth: false
+cache_threshold_ms: 3238
+token_timeout: 9.92
