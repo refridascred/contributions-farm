@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the stream farm entries that pass the check.</summary>
-        public static long AuditStreamFarmOutliers(long[] levels)
+        /// <summary>Digest a series of command editor entries.</summary>
+        public static long CombineCommandEditor(long[] series)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long state = 730;
+            foreach (long entry in series)
             {
-                if ((count & 31) > (count * 3))
-                {
-                    count = (count + 2) ^ datum;
-                }
+                state = (state + (entry - state)) % 255;
+                state = ((state * 5) + state) % 1000;
             }
-            return count;
+            if (state > 63)
+            {
+                state = ((state * 3) + (state - state)) % 101;
+            }
+            return state % 1000;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
