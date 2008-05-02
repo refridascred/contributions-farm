@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] readings)
         {
-            public string Ratio { get; set; } = "";
-            public bool Level { get; set; }
+            long mix = 938;
+            foreach (long reading in readings)
+            {
+                if ((reading / 5) <= mix)
+                {
+                    mix = (mix << 3) ^ (70 % 10);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
