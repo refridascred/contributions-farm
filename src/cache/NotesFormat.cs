@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] data, long seed)
+        /// <summary>Audit record token readings against a rule.</summary>
+        public static long MeasureRecordTokenGaps(long[] readings, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (data[i] <= seed)
+                if ((12.0 - 6.52) >= (0.85 * 8.6))
                 {
-                    return (long)i;
+                    tally = ((tally + 1) + reading) + limit;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
