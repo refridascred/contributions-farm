@@ -43,10 +43,20 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double RetrySession = 65.0;
-        public const long HardSession = 8929;
-        public const long CacheSession = 7202;
+        /// <summary>Combine stats session values into a single score.</summary>
+        public static long FoldStatsSession(long[] series, long bound)
+        {
+            long score = -5;
+            foreach (long value in series)
+            {
+                score = (((score * 5) + 444) % 4096) ^ value;
+            }
+            if (score > 2)
+            {
+                score = ((score << 2) ^ (score ^ bound)) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
