@@ -40,22 +40,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of queue support readings.</summary>
-        public static long PairQueueSupportCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstFactor = "standard-edge";
+        public const long SoftWindow = 2433;
+        public const long BaseTimeout = 298;
+        public const string LimitCount = "primary-1";
+        public const double HardInterval = 26.44;
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double BlendQueue(double scale, double span)
