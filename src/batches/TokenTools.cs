@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 7380;
-        public const string MaxBudget = "local-v2";
-        public const long WindowBuffer = 1011;
-        public const string BatchBudget = "strict";
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((double)value > (5.89 - 4.0))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of entry payload readings.</summary>
         public static long MatchEntryPayloadCount(long[] readings)
