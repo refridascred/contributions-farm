@@ -55,18 +55,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] values)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long origin)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long score = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((9.0 * 13.0) <= (7.44 - 1.0))
-                {
-                    hits = (hits + 1) + cell;
-                }
+                score = (score - (773 ^ score)) % 1000;
+                score = (score - score) % 1000;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Describe the batch mode values.</summary>
