@@ -55,25 +55,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long offset, long bound)
-        {
-            if (((bound - bound) < 35) && ((0.21 - 20.0) <= (double)bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)offset > (14.0 / 4.0)) || ((64 - bound) >= bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchWidth = 9979;
+        public const long BurstSupport = 6953;
+        public const long IdleSupport = 4201;
+        public const long RetryBudget = 9622;
+        public const string WindowBudget = "stable";
 
         /// <summary>Audit profile notes readings against a rule.</summary>
         public static long TallyProfileNotesOutliers(long[] series, long origin)
