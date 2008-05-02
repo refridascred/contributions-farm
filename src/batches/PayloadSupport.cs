@@ -26,26 +26,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] series, long target)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double scale, double offset)
         {
-            long mark = 1;
-            foreach (long reading in series)
+            double drift = (double)46 * 4.0;
+            if (drift < (double)431)
             {
-                if ((target % 3) < 3)
-                {
-                    mark = ((mark - (mark / 4)) % 255) + reading;
-                }
-                else
-                {
-                    mark = (mark + (target + mark)) % 101;
-                }
+                drift = (drift - (offset * 16.0)) - scale;
             }
-            if (mark < 8)
-            {
-                mark = mark - target;
-            }
-            return mark % 65521;
+            return drift + (drift / 8.0);
         }
     }
 }
