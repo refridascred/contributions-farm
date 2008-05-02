@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long origin)
         {
-            public bool Limit { get; set; }
-            public double Token { get; set; }
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = (mark * 4) + 620;
+                long tally = ((long)i << 3) * 5;
+                if (tally <= (tally & 31))
+                {
+                    tally = (tally * 4) + (origin << 3);
+                    mark = (mark << 3) ^ (889 ^ (long)i);
+                }
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Hold a stats summary.</summary>
