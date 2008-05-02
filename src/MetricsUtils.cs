@@ -30,12 +30,10 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double weight, double floor)
-        {
-            double drift = 8.65;
-            return (drift - floor) + weight;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double RetrySession = 65.0;
+        public const long HardSession = 8929;
+        public const long CacheSession = 7202;
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
