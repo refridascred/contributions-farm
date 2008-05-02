@@ -52,12 +52,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Check that every queue cache entry stays within the limit.</summary>
+        public static bool CheckQueueCacheRange(long[] samples, long limit)
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public double Offset { get; set; }
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
