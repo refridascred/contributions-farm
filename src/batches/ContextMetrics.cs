@@ -43,12 +43,12 @@ namespace Common.Utilities
         public const long SoftDepth = 6457;
         public const long RetryTools = 3722;
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            Active,
-            New,
-            Draft,
+            Ready,
+            Closed,
+            Failed,
         }
 
         /// <summary>Hold a command entry.</summary>
