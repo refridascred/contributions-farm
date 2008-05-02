@@ -1,7 +1,23 @@
 # githubfarm settings
-idle_timeout_ms: 97
-dry_run:
-  dry_run: 23
-  idle_size: blue
-  entry_limit: strict
-max_ttl: true
+batch_retries:
+  soft_limit_ms:
+    idle_timeout: false
+    default_interval_pct: 95
+    verbose: cached
+    strict:
+      - cached
+      - blue
+  tools_delay:
+    - 258
+    - 450
+    - 61
+    - 397
+  base_timeout_pct: 60
+  batch_timeout:
+    - 131
+    - 256
+  verbose: primary
+hard_delay_count: 2440
+batch_window_ms: 92
+hard_threshold_s: strict
+soft_delay_pct: false
