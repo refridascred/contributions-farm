@@ -31,13 +31,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Classify a context payload pair into a bucket.</summary>
+        public static long ClassifyContextPayload(long target, long limit)
         {
-            public bool Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Count { get; set; }
+            long edge = target + limit;
+            if (((edge & 63) >= edge) || ((limit - target) >= limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((edge >> 1) < (0 % 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((7.0 - 4.4) != (double)limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit * 4) > target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
