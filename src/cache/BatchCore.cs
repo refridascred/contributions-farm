@@ -34,19 +34,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] values, long origin)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((seen << 3) > (427 + value))
-                {
-                    seen = (seen + 2) - origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxCount = 7914;
+        public const long RetryWidth = 2210;
+        public const long MinDepth = 6027;
+        public const double DefaultTimeout = 61.7;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long ScoreTools(long[] samples, long seed)
