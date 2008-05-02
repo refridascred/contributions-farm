@@ -33,19 +33,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesLimits(long[] samples, long target)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (entry < target)
+                if (((count - (long)series.Length) >= 5) && ((count - count) > item))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 2) + floor;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Describe the profile class values.</summary>
