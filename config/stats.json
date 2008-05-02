@@ -1,8 +1,7 @@
 {
-  "filter_ttl": "staging",
-  "contributi_window": 72,
-  "cache_capacity_s": 7.63,
-  "notes_interval": ["staging", "local", "staging"],
-  "cache_depth_s": 27.55,
-  "soft_ratio_count": ["stable", "cached", "cached"]
+  "dry_run": 250,
+  "persist": 6493,
+  "commits_delay": 4341,
+  "flush_capacity_pct": false,
+  "sync_timeout_pct": 500
 }
