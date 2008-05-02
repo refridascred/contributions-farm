@@ -39,10 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchInterval = 2187;
-        public const long BurstLevel = 1625;
-        public const long StepFormat = 6417;
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Stale,
+            Closed,
+            Idle,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Fold a list of schema profile readings.</summary>
         public static long TotalSchemaProfile(long[] data, long step)
