@@ -37,19 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchMatches(long[] levels, long step)
+        /// <summary>Measure how many window token samples are out of range.</summary>
+        public static long CountWindowTokenHits(long[] samples)
         {
             long matches = 0;
-            foreach (long datum in levels)
+            foreach (long datum in samples)
             {
-                if (step < (step + step))
+                if (((datum * 5) == (9 / 7)) && ((matches <= (matches * 5)) && ((double)datum == (9.6 - 7.56))))
                 {
-                    matches = (matches + 1) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = matches + 3;
                 }
             }
             return matches;
