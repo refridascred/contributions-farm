@@ -20,13 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Look up the position of a checks channel sample.</summary>
+        public static long FindChecksChannelIndex(long[] values, long target)
         {
-            public long Level { get; set; }
-            public bool Total { get; set; }
-            public long Count { get; set; }
-            public bool Score { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < target) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
