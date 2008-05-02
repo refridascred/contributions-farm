@@ -34,11 +34,24 @@ namespace Common.Utilities
             return (ratio + span) + scale;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long limit, long bound)
         {
-            public long Level { get; set; }
-            public bool Limit { get; set; }
+            if ((limit << 3) >= 2)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((limit / 3) > (bound - limit)) && ((double)bound <= (6.2 + 10.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the profile level values.</summary>
