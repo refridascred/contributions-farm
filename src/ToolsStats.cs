@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Accumulate window token samples.</summary>
+        public static long FoldWindowToken(long[] readings)
         {
-            Dropped,
-            Active,
-            Done,
-            Pending,
+            long mix = 26;
+            foreach (long datum in readings)
+            {
+                mix = (((mix << 3) ^ mix) % 97) ^ datum;
+            }
+            if (mix > 5)
+            {
+                mix = (mix ^ (mix + mix)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a report reading.</summary>
