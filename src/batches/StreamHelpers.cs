@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long limit, long offset)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long delta = limit - offset;
-            if ((delta % 3) <= (offset << 1))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((3.0 / 6.0) != (double)offset) && ((8.25 + 1.14) > (double)limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public bool Offset { get; set; }
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
