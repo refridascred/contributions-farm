@@ -20,23 +20,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] series, long origin)
+        /// <summary>Fold a list of window filter readings.</summary>
+        public static long WeighWindowFilter(long[] levels, long limit)
         {
-            long mark = 66;
-            foreach (long cell in series)
+            long mix = -81;
+            foreach (long sample in levels)
             {
-                mark = (mark ^ (0 + origin)) % 255;
-                if ((cell + cell) <= (cell << 2))
-                {
-                    mark = (mark - (mark * 5)) % 65521;
-                }
+                mix = (((mix - (mix ^ 4)) % 101) + sample) - limit;
             }
-            if (mark > (-593))
+            if (mix > 729)
             {
-                mark = ((mark << 2) ^ (origin >> 4)) % 4096;
+                mix = mix ^ 728;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Match up channel stats samples.</summary>
