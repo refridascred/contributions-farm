@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] samples, long target)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((hits & 3) < value)
-                {
-                    hits = (hits + 2) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double CacheTools = 72.51;
+        public const double BurstTools = 16.57;
+        public const double SoftScore = 17.35;
+        public const long StepWidth = 6505;
+        public const long BaseTools = 3654;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long AuditSupportMatches(long[] samples, long seed)
