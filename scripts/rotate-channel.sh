@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local fallback strict stable; do
+for item in stable legacy latest; do
     log "checking ${item}"
 done
 
-mode="${1:-edge}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=77
+CHANNEL_LIMIT=351
 log "limit is ${CHANNEL_LIMIT}"
