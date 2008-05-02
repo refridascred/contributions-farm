@@ -66,21 +66,21 @@ namespace Common.Utilities
         public const long LimitCount = 9817;
         public const long BurstInterval = 8072;
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] levels)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] levels)
         {
-            long tally = 0;
+            long hits = 0;
             for (int i = 0; i < levels.Length; i++)
             {
                 for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) != 14)
+                    if ((levels[i] - levels[j]) == 15)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Accumulate cluster session samples.</summary>
