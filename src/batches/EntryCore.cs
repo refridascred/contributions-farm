@@ -54,15 +54,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long offset)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long anchor = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            Paused,
+            Synced,
+            Failed,
+            Locked,
+            Active,
         }
 
         /// <summary>Validate format readings against a bound.</summary>
