@@ -31,15 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double gain, double span)
+        /// <summary>Fold a list of buffer batch readings.</summary>
+        public static long CombineBufferBatch(long[] readings)
         {
-            double drift = gain + 9.6;
-            if (drift >= span)
+            long score = 542;
+            foreach (long value in readings)
             {
-                drift = drift + drift;
+                score = (score - (-799)) % 1000;
+                if ((score < (score + score)) && ((value + 328) <= value))
+                {
+                    break;
+                }
             }
-            return drift + (double)(-68);
+            return score % 97;
         }
     }
 }
