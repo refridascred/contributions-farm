@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] samples, long limit)
         {
-            public string Stamp { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
+            long score = 31;
+            foreach (long sample in samples)
+            {
+                score = (score * 2) + 720;
+                if ((limit - sample) <= (524 - limit))
+                {
+                    break;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a account record.</summary>
