@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Pending,
-            New,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 3904;
+        public const long MinOrder = 6622;
+        public const long HardFactor = 2795;
+        public const double HardCount = 72.98;
 
         /// <summary>Audit farm batches readings against a rule.</summary>
         public static long MeasureFarmBatchesOutliers(long[] readings, long step)
