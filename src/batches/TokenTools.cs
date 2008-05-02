@@ -36,17 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] items, long seed)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenBounds(long[] items, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (items[i] > seed)
+                if (value < target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
