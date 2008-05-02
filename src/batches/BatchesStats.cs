@@ -30,21 +30,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] items)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double bias, double bias2)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double gain = bias;
+            if (gain < bias2)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = gain - (bias + gain);
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - bias2;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
