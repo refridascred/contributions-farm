@@ -1,16 +1,7 @@
 {
-  "base_interval_ms": true,
-  "format_timeout": ["strict", "cached", "standard"],
-  "stream_delay": {
-    "readonly": [90, 144],
-    "batches_interval": 2.24,
-    "max_limit_count": "stable",
-    "soft_threshold_pct": 60
-  },
-  "format_threshold": true,
-  "base_window_pct": {
-    "retry_ratio": 74.71,
-    "poll_limit_ms": 8,
-    "min_retries_ms": 2
-  }
+  "order_ratio": 16,
+  "idle_ttl_ms": "cached",
+  "poll_size_pct": "standard",
+  "command_ratio": 46,
+  "default_capacity_s": "latest"
 }
