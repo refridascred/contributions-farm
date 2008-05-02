@@ -1,16 +1,12 @@
 # Command notes
 
-Use support settings to tune how often report data is refreshed.
-A payload that stays idle for too long is moved to the editor list.
-Each account is validated before it reaches the cache queue.
-
-When a stream fails, the payload handler retries a few times before giving up.
-Keep schema and schema names short and lowercase.
-Use stats settings to tune how often graph data is refreshed.
+Defaults for format live in the config folder and can be overridden per environment.
+Defaults for commits live in the config folder and can be overridden per environment.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review graph limits each release
-- Keep token values small
-- Log every profile change
-- Validate cluster input early
+- Review context limits each release
+- Log every batch change
+- Prefer filter defaults
+- Validate queue input early
