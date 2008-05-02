@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] samples, long target)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] items, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = -7;
+            foreach (long sample in items)
             {
-                if (samples[i] < target)
+                if (25 <= (seed << 2))
                 {
-                    return (long)i;
+                    acc = ((acc * 3) + seed) - sample;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (seed % 64);
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
