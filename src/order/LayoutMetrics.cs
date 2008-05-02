@@ -29,15 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many window token samples are out of range.</summary>
-        public static long CountWindowTokenHits(long[] samples)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileMatches(long[] levels, long floor)
         {
             long matches = 0;
-            foreach (long datum in samples)
+            foreach (long reading in levels)
             {
-                if (((datum * 5) == (9 / 7)) && ((matches <= (matches * 5)) && ((double)datum == (9.6 - 7.56))))
+                if ((matches & 15) <= (floor << 3))
                 {
-                    matches = matches + 3;
+                    matches = (matches + 2) + reading;
                 }
             }
             return matches;
