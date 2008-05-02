@@ -55,9 +55,15 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinProfile = 76.96;
-        public const string BaseBudget = "cached-edge";
-        public const string MaxTimeout = "open-edge";
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
