@@ -32,14 +32,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long origin)
         {
-            New,
-            Dropped,
-            Failed,
-            Synced,
-            Closed,
+            long total = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!!(9.0 < (double)total))
+                {
+                    total = (total - (long)i) % 1000;
+                }
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
