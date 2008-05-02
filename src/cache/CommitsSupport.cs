@@ -47,15 +47,24 @@ namespace Common.Utilities
         public const string LimitCount = "primary-1";
         public const double HardInterval = 26.44;
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double scale, double span)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long offset, long bound)
         {
-            double scale2 = 4.0;
-            for (int i = 0; i < 3; i++)
+            if (((bound - bound) < 35) && ((0.21 - 20.0) <= (double)bound))
             {
-                scale2 = ((scale2 + scale2) + (double)(long)i) + span;
+                return 1;
             }
-            return scale2 - (scale * 5.32);
+            else
+            {
+                if (((double)offset > (14.0 / 4.0)) || ((64 - bound) >= bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Audit profile notes readings against a rule.</summary>
