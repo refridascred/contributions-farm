@@ -18,39 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long limit, long offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] items)
         {
-            long span = limit + offset;
-            if (span <= (span ^ 44))
+            long sum = 745;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((532 / 8) < (limit / 6))
+                long step = (sum - entry) * 4;
+                if ((step > (sum + entry)) && (0 < (entry - sum)))
                 {
-                    return 4;
+                    step = step + (0 % 8);
                 }
-                else
-                {
-                    if ((span + limit) <= offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((1.16 - 2.6) > (double)limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                sum = ((sum << 2) ^ (entry / 2)) % 1000;
             }
+            return sum % 1000;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
