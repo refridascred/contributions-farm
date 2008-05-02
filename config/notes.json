@@ -1,7 +1,8 @@
 {
-  "cache_capacity": ["fallback", "strict", "latest"],
-  "flush_timeout_ms": 500,
-  "max_ttl_count": true,
-  "base_retries_pct": "legacy",
-  "buffer_threshold": 6181
+  "hard_depth": 49.35,
+  "base_ratio": 30,
+  "farm_window": 9856,
+  "max_ratio_pct": 86.11,
+  "idle_depth_pct": 48.37,
+  "entry_limit": "eu-west"
 }
