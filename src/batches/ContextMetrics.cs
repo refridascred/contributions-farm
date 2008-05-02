@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BurstQueue = "alpha";
-        public const double RetryQueue = 20.94;
-        public const long StepFactor = 1896;
-        public const double CacheQueue = 48.83;
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public double Region { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Adjust a order reading.</summary>
         public static double ProjectOrder(double bias, double floor)
