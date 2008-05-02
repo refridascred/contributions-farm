@@ -44,11 +44,19 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 4701;
-        public const long StepLevel = 854;
-        public const long IdleSession = 7675;
-        public const long StepSession = 5942;
-        public const long SoftBudget = 8878;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsRange(long[] samples, long floor)
+        {
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
