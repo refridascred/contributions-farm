@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] series, long limit)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long seed)
         {
-            long acc = 50;
-            foreach (long datum in series)
+            long mark = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (((double)datum == (2.47 * 0.4)) && (5.0 >= (double)limit))
+                if (!(((seed + mark) < mark) && (seed <= (seed ^ seed))))
                 {
-                    acc = (acc << 2) ^ (limit % 5);
+                    mark = (mark + (45 - seed)) % 97;
+                    mark = (mark << 3) ^ mark;
                 }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Define report limits and defaults.</summary>
