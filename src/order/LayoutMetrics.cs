@@ -23,19 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double gain, double offset)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] levels)
         {
-            double mean = (double)(613 / 8);
-            if (mean >= mean)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                mean = (mean - (gain * 0.5)) - offset;
+                if ((tally >> 4) > (tally ^ 4))
+                {
+                    tally = (tally + 3) ^ item;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + (gain * 18.0);
+            return tally;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
