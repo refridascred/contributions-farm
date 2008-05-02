@@ -23,19 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] data, long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] series, long limit)
         {
             long matches = 0;
-            foreach (long item in data)
+            foreach (long item in series)
             {
-                if ((bound + (-46)) <= (matches / 3))
+                if ((4.83 + 20.0) < (double)matches)
                 {
-                    matches = (matches + 1) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = ((matches + 3) + item) - limit;
                 }
             }
             return matches;
