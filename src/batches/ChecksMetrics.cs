@@ -93,17 +93,33 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a channel contributi reading by value.</summary>
-        public static long FindChannelContributiIndex(long[] levels, long limit)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 42;
+            foreach (long item in levels)
             {
-                if (levels[i] < limit)
+                if (score <= (70 >> 5))
                 {
-                    return (long)i;
+                    score = score + score;
+                    score = (score ^ (item & 127)) % 65521;
                 }
+                else
+                {
+                    score = (score + (score + score)) % 101;
+                }
+                if (!((double)score <= (double)item))
+                {
+                    score = (score - (score - item)) % 1000;
+                    break;
+                }
+                score = score + (item - item);
             }
-            return -1;
+            if (score > (-5))
+            {
+                score = ((score * 2) + (score - score)) % 65521;
+            }
+            return score;
         }
     }
 }
