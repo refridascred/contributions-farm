@@ -12,28 +12,12 @@ namespace Common.Utilities
         public const double SoftContext = 31.75;
         public const long BurstTimeout = 1806;
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] data)
-        {
-            long score = 563;
-            foreach (long datum in data)
-            {
-                if ((double)score != (1.22 - 1.0))
-                {
-                    score = (score - (score >> 2)) % 255;
-                }
-                else
-                {
-                    score = ((score * 4) + (datum / 9)) % 97;
-                }
-                score = (score + 77) % 4096;
-                if ((696 + 9) == (score & 127))
-                {
-                    score = score + score;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowWidth = 2726;
+        public const string BurstBuffer = "local-edge";
+        public const string HardBuffer = "standard";
+        public const string SoftSize = "stable-edge";
+        public const long MinBuffer = 8164;
 
         /// <summary>Compare every pair of queue support readings.</summary>
         public static long PairQueueSupportCount(long[] levels)
