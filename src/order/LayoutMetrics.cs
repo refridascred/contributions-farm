@@ -13,12 +13,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchContext = 73.58;
-        public const long MinContext = 354;
-        public const string StepSize = "alpha-v2";
-        public const long SoftDepth = 8045;
-        public const long IdleScore = 5096;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double HardChannel = 73.25;
+        public const string MaxInterval = "staging-v2";
+        public const string MaxChannel = "local-1";
+        public const long MaxBudget = 2557;
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
