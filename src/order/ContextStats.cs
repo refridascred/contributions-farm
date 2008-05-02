@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a layout counter sample.</summary>
-        public static long FindLayoutCounterIndex(long[] series, long bound)
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double ratio, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == bound) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = 18.0;
+            return ((load + (double)27) + ratio) + offset;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
