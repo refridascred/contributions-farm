@@ -17,18 +17,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] readings, long origin)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long acc = 1;
+            foreach (long item in levels)
             {
-                if ((2.95 + 5.0) == (double)hits)
+                if (item <= (item - acc))
                 {
-                    hits = ((hits + 1) + item) - origin;
+                    acc = ((acc - (262 / 2)) % 101) + seed;
                 }
             }
-            return hits;
+            return acc % 4096;
         }
 
         /// <summary>Adjust a stream reading.</summary>
