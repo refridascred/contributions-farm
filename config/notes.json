@@ -1,10 +1,16 @@
 {
-  "max_ttl_count": {
-    "cache_timeout_s": "open",
-    "commits_limit": 100,
-    "strict": 1.86,
-    "retry_delay_count": "local"
-  },
-  "flush_ttl_count": "primary",
-  "compress": [439, 331, 245, 393]
+  "idle_interval": [64, 129, 350],
+  "hard_ttl_ms": 5.71,
+  "cache_delay": false,
+  "persist": {
+    "channel_timeout": "stable",
+    "base_ttl": {
+      "account_window": true,
+      "batch_threshold": [99, 213],
+      "githubfarm_interval": true
+    },
+    "compress": true,
+    "command_threshold": "open",
+    "batch_timeout": "legacy"
+  }
 }
