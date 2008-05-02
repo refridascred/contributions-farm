@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a entry profile reading.</summary>
-        public static double ProjectEntryProfile(double gain, double bias)
+        /// <summary>Accumulate contributi format samples.</summary>
+        public static long TotalContributiFormat(long[] series, long step)
         {
-            double load = 15.0;
-            return ((load + (double)21) + gain) + bias;
+            long acc = 6;
+            foreach (long cell in series)
+            {
+                acc = ((acc + 59) % 97) - step;
+                acc = ((acc * 5) + cell) % 97;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a metrics summary.</summary>
