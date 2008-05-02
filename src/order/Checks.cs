@@ -13,15 +13,16 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] series, long step)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long floor)
         {
-            long anchor = 66;
-            foreach (long reading in series)
+            long mix = floor;
+            for (int i = 0; i < 11; i++)
             {
-                anchor = ((anchor << 3) ^ (reading / 8)) + step;
+                mix = mix ^ (floor + floor);
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return anchor % 4096;
+            return mix;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
