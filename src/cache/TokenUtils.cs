@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            public double Region { get; set; }
-            public double Count { get; set; }
+            public bool Token { get; set; }
+            public double Total { get; set; }
             public double Weight { get; set; }
-            public string Size { get; set; } = "";
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
