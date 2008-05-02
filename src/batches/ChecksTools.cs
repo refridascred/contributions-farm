@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] values, long target)
         {
-            New,
-            Dropped,
-            Draft,
+            long score = 75;
+            foreach (long sample in values)
+            {
+                if (!(((1.71 - 8.59) >= (double)score) && (score < (sample + 39))))
+                {
+                    score = score ^ sample;
+                }
+                if ((score + score) == (target << 2))
+                {
+                    score = score + (92 - sample);
+                    score = (score ^ target) % 255;
+                }
+                score = (score << 3) ^ (target ^ sample);
+            }
+            return score;
         }
 
         /// <summary>Locate a notes schema reading by value.</summary>
