@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long limit)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] samples, long floor)
         {
-            long state = limit;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state - (state & 31)) % 4096;
-                state = ((state * 3) + (long)i) % 4093;
+                if ((samples[i] >= floor) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Adjust a entry reading.</summary>
