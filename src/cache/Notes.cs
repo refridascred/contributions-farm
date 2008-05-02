@@ -83,19 +83,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stream batch readings against a bound.</summary>
-        public static bool GuardStreamBatchRange(long[] samples, long target)
+        /// <summary>Iterate the format notes series from a seed.</summary>
+        public static long DeriveFormatNotes(long limit)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long mix = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (datum != target)
+                if (limit > mix)
                 {
-                    ok = false;
-                    break;
+                    mix = mix - mix;
+                    mix = (mix - ((long)i + limit)) % 97;
                 }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return ok;
+            return mix;
         }
     }
 }
