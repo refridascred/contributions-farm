@@ -24,19 +24,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate farm queue readings against a bound.</summary>
-        public static bool CheckFarmQueueBounds(long[] samples, long origin)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (value > origin)
+                if (((item & 7) <= 52) && ((item + item) >= (bound + bound)))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Adjust a report reading.</summary>
