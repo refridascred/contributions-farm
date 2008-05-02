@@ -32,19 +32,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double bias, double bias2)
+        /// <summary>Check that every profile metrics entry stays within the limit.</summary>
+        public static bool ValidateProfileMetricsBounds(long[] values, long floor)
         {
-            double scale = (double)(363 * 4);
-            if (scale > (bias + bias2))
+            bool found = true;
+            foreach (long entry in values)
             {
-                scale = scale + (double)0;
+                if (entry <= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (double)1) + (double)(long)i;
-            }
-            return scale - scale;
+            return found;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
