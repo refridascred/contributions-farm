@@ -10,21 +10,38 @@ namespace Common.Utilities
         public const string BurstCache = "open";
         public const long BurstCount = 6961;
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] samples)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long offset, long offset2)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((((-53) + offset) == (offset / 6)) && (offset2 >= (offset - offset)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((offset ^ offset2) < (offset2 * 5))
                 {
-                    if ((samples[i] + samples[j]) < 3)
+                    return 3;
+                }
+                else
+                {
+                    if ((9 - offset) < offset)
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset2 & 1) == (offset + offset2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
