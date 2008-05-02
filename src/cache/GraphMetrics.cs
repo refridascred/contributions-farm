@@ -57,12 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double scale, double bias)
         {
-            Idle,
-            Queued,
-            Retry,
+            double weight = (double)(307 / 5);
+            if (weight > weight)
+            {
+                weight = (weight + 7.48) + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - 2.9) - (double)(long)i;
+            }
+            return weight + (weight + scale);
         }
 
         /// <summary>Accumulate stats batch samples.</summary>
