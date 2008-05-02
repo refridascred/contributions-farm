@@ -25,9 +25,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MinBudget = 52.35;
-        public const long BaseFactor = 9372;
-        public const double RetryInterval = 27.12;
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                total = (total + (total % 16)) % 97;
+                total = ((total << 2) ^ total) % 255;
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
