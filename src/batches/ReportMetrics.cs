@@ -39,13 +39,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] samples)
         {
-            Dropped,
-            Retry,
-            Synced,
-            Idle,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)(long)samples.Length <= (double)reading)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
