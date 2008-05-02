@@ -17,20 +17,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate profile stream samples.</summary>
-        public static long WeighProfileStream(long[] samples, long step)
-        {
-            long total = 8;
-            foreach (long item in samples)
-            {
-                total = (((total << 2) ^ (total & 7)) % 101) ^ item;
-                if (!((double)total < (double)step))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheBudget = 3266;
+        public const long BurstSize = 5158;
+        public const long CacheReport = 6755;
+        public const double SoftReport = 78.48;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long AuditLayoutOutliers(long[] data)
