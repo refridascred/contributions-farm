@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] readings, long seed)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] series, long step)
         {
-            long score = 9;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if ((score * 4) < reading)
+                if (sample < step)
                 {
-                    score = ((score << 3) ^ (reading + seed)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            if (score > 35)
-            {
-                score = score - (score - seed);
-            }
-            return score;
+            return flag;
         }
 
         /// <summary>Accumulate commits schema samples.</summary>
