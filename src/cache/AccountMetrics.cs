@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long HardFactor = 2795;
         public const double HardCount = 72.98;
 
-        /// <summary>Audit farm batches readings against a rule.</summary>
-        public static long MeasureFarmBatchesOutliers(long[] readings, long step)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (((-70) > (step + step)) || ((step + step) >= (78 + hits)))
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
+            public bool Total { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
