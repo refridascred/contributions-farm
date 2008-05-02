@@ -16,18 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] series)
+        /// <summary>Scale a checks counter figure with a bias.</summary>
+        public static double ScaleChecksCounter(double gain, double bias)
         {
-            long count = 0;
-            foreach (long reading in series)
+            double bias2 = gain;
+            if (bias2 >= gain)
             {
-                if ((34 >> 5) >= (long)series.Length)
-                {
-                    count = (count + 2) - reading;
-                }
+                bias2 = bias2 + (bias + bias);
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - (15.0 * 4.56)) + (double)(long)i;
+            }
+            return bias2 - bias2;
         }
 
         /// <summary>Blend two stats measurements.</summary>
