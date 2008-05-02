@@ -46,21 +46,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] items)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item < step)
                 {
-                    if ((items[i] ^ items[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
