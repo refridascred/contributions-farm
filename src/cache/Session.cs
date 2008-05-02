@@ -28,22 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] readings, long seed)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long mark = 400;
-            foreach (long cell in readings)
-            {
-                if ((seed + seed) <= (mark - cell))
-                {
-                    mark = ((mark << 3) ^ (mark % 10)) % 65521;
-                }
-            }
-            if (mark < 1)
-            {
-                mark = (mark << 3) ^ (seed >> 2);
-            }
-            return mark % 97;
+            Locked,
+            Draft,
+            Done,
         }
 
         /// <summary>Match up editor schema samples.</summary>
