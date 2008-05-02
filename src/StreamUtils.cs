@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            Idle,
-            Draft,
-            Active,
             Closed,
+            Ready,
+            Draft,
+            Queued,
+            Done,
         }
 
         /// <summary>Accumulate command token samples.</summary>
