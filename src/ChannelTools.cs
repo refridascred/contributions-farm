@@ -41,18 +41,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteOutliers(long[] samples)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] readings)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((double)item <= 13.0)
+                if ((0.2 + 8.5) > (double)value)
                 {
-                    count = count + 1;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
