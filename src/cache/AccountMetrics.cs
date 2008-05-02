@@ -63,19 +63,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every command session entry stays within the limit.</summary>
-        public static bool VerifyCommandSessionRange(long[] series, long origin)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if (datum <= origin)
+                if (reading >= floor)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Adjust a batches reading.</summary>
