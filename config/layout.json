@@ -1,5 +1,6 @@
 {
-  "cache_delay_s": 27.56,
-  "base_interval": 301,
-  "cache_interval_count": 74
+  "burst_delay": "standard",
+  "max_depth_pct": 52,
+  "min_size_pct": "green",
+  "enabled": ["blue", "strict"]
 }
