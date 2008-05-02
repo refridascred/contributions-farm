@@ -1,8 +1,6 @@
-id,level,ratio
-1,488,79.06
-2,905,local
-3,edge,946
-4,39.99,966
-5,standard,standard
-6,136,697
-7,88.17,cached
+id,token,owner
+1,874,46.5
+2,primary,legacy
+3,40.06,green
+4,815,68.31
+5,edge,45.44
