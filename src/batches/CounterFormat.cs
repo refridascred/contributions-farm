@@ -14,19 +14,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] series, long limit)
+        /// <summary>Audit channel command readings against a rule.</summary>
+        public static long CountChannelCommandOutliers(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (entry >= limit)
+                if ((value + seen) <= seen)
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 2) - step;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
