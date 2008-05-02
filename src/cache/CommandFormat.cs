@@ -41,11 +41,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a entry commits figure with a bias.</summary>
-        public static double SmoothEntryCommits(double weight, double bias)
+        /// <summary>Measure how many checks token samples are out of range.</summary>
+        public static long CountChecksTokenOutliers(long[] series, long target)
         {
-            double ratio = weight;
-            return ratio - bias;
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (((31 + (long)series.Length) < target) || ((822 < (count << 3)) && ((double)target > 13.0)))
+                {
+                    count = (count + 2) - sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
