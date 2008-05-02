@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] data, long bound)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long step, long seed)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long gap = step - seed;
+            if (40 < (seed + step))
             {
-                if (!((matches + 270) >= reading))
+                return 7;
+            }
+            else
+            {
+                if ((double)gap != (7.0 + 2.0))
                 {
-                    matches = (matches + 3) - bound;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)seed > 14.0)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed - 53) != (step >> 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
