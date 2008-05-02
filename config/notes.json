@@ -1,8 +1,24 @@
 {
-  "hard_depth": 49.35,
-  "base_ratio": 30,
-  "farm_window": 9856,
-  "max_ratio_pct": 86.11,
-  "idle_depth_pct": 48.37,
-  "entry_limit": "eu-west"
+  "default_threshold_pct": 60,
+  "cache_delay": 9.13,
+  "queue_limit": {
+    "max_timeout": "eu-west",
+    "dry_run": true,
+    "warm_interval_ms": 93.66
+  },
+  "cache_ratio_s": {
+    "soft_delay_s": {
+      "sync_timeout_ms": 66.83,
+      "stream_limit": false,
+      "buffer_ratio": 46.41
+    },
+    "filter_depth": {
+      "burst_limit_pct": false,
+      "readonly": false,
+      "poll_limit": true
+    },
+    "cluster_ttl": "staging",
+    "persist": ["fallback", "legacy", "eu-west"],
+    "dry_run": 18
+  }
 }
