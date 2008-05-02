@@ -40,21 +40,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] readings)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] readings, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 529;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(((carry - carry) != (sample - carry)) && ((double)carry >= (5.59 / 6.0))))
                 {
-                    if ((readings[i] ^ readings[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry - (sample & 3)) % 101;
+                }
+                if ((origin / 9) != (17 + origin))
+                {
+                    carry = (carry ^ origin) % 1000;
+                }
+                if ((origin + carry) <= (carry >> 5))
+                {
+                    break;
                 }
             }
-            return tally;
+            return carry % 4096;
         }
     }
 }
