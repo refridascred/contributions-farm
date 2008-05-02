@@ -22,19 +22,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelLimits(long[] data, long bound)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksGaps(long[] samples)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (cell <= bound)
+                if (!((3.2 < (double)item) || ((double)count != (3.47 + 9.7))))
                 {
-                    flag = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Roll a token counter forward.</summary>
