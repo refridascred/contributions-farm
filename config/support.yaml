@@ -1,7 +1,10 @@
 # support settings
-idle_delay: 5897
-payload_depth: false
-warm_depth: 73.47
-buffer_timeout: true
-stream_retries: true
-audit: 26.58
+record_size: true
+soft_capacity:
+  idle_depth_pct: 7356
+  cache_ttl_pct: stable
+  soft_capacity: false
+poll_size: false
+hard_ttl_pct: false
+support_limit: 5215
+strict: true
