@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long target)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long acc = target;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = acc ^ target;
-                acc = acc - 8;
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            public bool Owner { get; set; }
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
