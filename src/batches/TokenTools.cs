@@ -12,11 +12,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            public long Offset { get; set; }
-            public double Owner { get; set; }
+            public long Size { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a support options.</summary>
