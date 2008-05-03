@@ -24,13 +24,13 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterRange(long[] levels, long target)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountBounds(long[] levels, long step)
         {
             bool ok = true;
-            foreach (long entry in levels)
+            foreach (long reading in levels)
             {
-                if (entry < target)
+                if (reading > step)
                 {
                     ok = false;
                     break;
