@@ -36,22 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricMatches(long[] items, long floor)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry >> 3) >= entry)
+                if (items[i] >= step)
                 {
-                    seen = (seen + 2) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
