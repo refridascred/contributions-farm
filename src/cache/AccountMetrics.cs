@@ -57,10 +57,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 9058;
-        public const long WindowFactor = 7040;
-        public const long SoftDepth = 2551;
-        public const string LimitFactor = "stable-1";
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
+        }
     }
 }
