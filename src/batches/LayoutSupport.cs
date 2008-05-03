@@ -28,12 +28,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] data)
         {
-            public bool Total { get; set; }
-            public double Offset { get; set; }
-            public string Level { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
