@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next metrics queue value from a seed.</summary>
-        public static long DeriveMetricsQueue(long floor)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = (acc + (acc * 4)) % 97;
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            Ready,
+            Synced,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Hold a report entry.</summary>
