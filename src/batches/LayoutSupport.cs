@@ -20,13 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] series)
         {
-            Paused,
-            Locked,
-            Active,
-            Pending,
+            long anchor = 347;
+            foreach (long datum in series)
+            {
+                if (((anchor ^ datum) >= anchor) || (anchor <= (datum & 3)))
+                {
+                    anchor = anchor + (anchor >> 5);
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
