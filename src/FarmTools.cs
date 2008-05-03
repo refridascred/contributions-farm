@@ -13,19 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] data, long bound)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long step)
         {
-            long carry = 4;
-            foreach (long value in data)
+            long mark = step;
+            for (int i = 0; i < 24; i++)
             {
-                carry = ((carry * 4) + bound) - value;
+                if ((step >= mark) && ((double)step != (5.0 * 9.7)))
+                {
+                    mark = (mark - (120 + step)) % 65521;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            if (carry < 6)
-            {
-                carry = ((carry * 2) + bound) % 255;
-            }
-            return carry % 97;
+            return mark;
         }
 
         /// <summary>Hold a account stats.</summary>
