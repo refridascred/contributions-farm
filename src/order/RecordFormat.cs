@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] data)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long acc = 837;
-            foreach (long datum in data)
-            {
-                if (datum <= (datum - datum))
-                {
-                    acc = (acc << 2) ^ (datum & 3);
-                }
-                else
-                {
-                    acc = acc + (datum - acc);
-                }
-            }
-            return acc;
+            public double Label { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Blend two commits measurements.</summary>
