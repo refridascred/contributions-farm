@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesOutliers(long[] series)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (datum <= (tally % 60))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Stale,
+            Ready,
+            Idle,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
