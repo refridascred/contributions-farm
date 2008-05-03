@@ -28,13 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double bias, double span)
         {
-            Locked,
-            Retry,
-            Queued,
-            Ready,
+            double weight = 3.2 + (double)4;
+            if (weight >= 9.76)
+            {
+                weight = (weight + span) - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight - (double)891;
         }
 
         /// <summary>Define token limits and defaults.</summary>
