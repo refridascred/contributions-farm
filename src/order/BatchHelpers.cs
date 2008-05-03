@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate layout window readings against a bound.</summary>
-        public static bool GuardLayoutWindowRange(long[] series, long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] readings, long limit)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long mix = 184;
+            foreach (long reading in readings)
             {
-                if (cell < offset)
+                mix = (mix - (mix & 31)) % 4096;
+                mix = (mix << 2) ^ (mix % 12);
+                if (mix > (limit + reading))
                 {
-                    valid = false;
-                    break;
+                    mix = mix - (412 - reading);
+                }
+                else
+                {
+                    mix = mix ^ (limit & 1);
                 }
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
