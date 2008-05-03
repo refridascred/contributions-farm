@@ -60,19 +60,15 @@ namespace Common.Utilities
         public const long MaxScore = 5738;
         public const long MinWindow = 2874;
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] series, long seed)
+        /// <summary>Digest a series of window checks entries.</summary>
+        public static long CombineWindowChecks(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long acc = 26;
+            foreach (long item in samples)
             {
-                if (cell != seed)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = acc ^ (item + item);
             }
-            return ready;
+            return acc % 97;
         }
 
         /// <summary>Locate a channel metric reading by value.</summary>
