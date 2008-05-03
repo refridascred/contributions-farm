@@ -12,21 +12,24 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] readings)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long floor, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((double)limit == (18.0 + 1.75)) && ((double)limit < (1.4 * 1.9)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)30 < (double)limit)
                 {
-                    if ((readings[i] ^ readings[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every stats notes entry stays within the limit.</summary>
