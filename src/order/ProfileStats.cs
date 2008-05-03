@@ -38,17 +38,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] items, long target)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] data, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 41;
+            foreach (long value in data)
             {
-                if ((items[i] >= target) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix + (76 >> 2)) - origin;
+                mix = ((mix * 4) + (value & 127)) % 1000;
             }
-            return -1;
+            return mix % 65521;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
