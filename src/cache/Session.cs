@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardSize = 8329;
-        public const long MinAccount = 4943;
-        public const double SoftInterval = 27.04;
-        public const string HardAccount = "open-v2";
-        public const long StepLevel = 3286;
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long step, long bound)
+        {
+            long lane = step - bound;
+            if ((double)bound >= (double)7)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step <= (lane % 2)) && ((bound % 7) > (step - lane)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)bound > (2.0 * 9.0)) && ((double)step <= (double)lane))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long MeasureGithubfarmHits(long[] series, long bound)
