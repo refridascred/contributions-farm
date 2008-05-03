@@ -20,22 +20,13 @@ namespace Common.Utilities
             return scale + (double)0;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] readings)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (count <= (count % 5))
-                {
-                    count = (count + 2) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            Stale,
+            Synced,
+            Paused,
         }
 
         /// <summary>Look up the position of a counter checks sample.</summary>
