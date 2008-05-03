@@ -25,18 +25,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesMatches(long[] samples, long offset)
+        /// <summary>Combine profile stream values into a single score.</summary>
+        public static long FoldProfileStream(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long score = 10;
+            foreach (long reading in readings)
             {
-                if ((923 << 2) >= cell)
+                score = score - (reading << 3);
+                if ((double)reading > (5.61 * 17.0))
                 {
-                    tally = (tally + 2) + offset;
+                    score = score - (reading ^ score);
+                    score = (score - (floor / 8)) % 101;
+                    break;
+                }
+                if (!((13.0 * 5.0) != (double)floor))
+                {
+                    score = (score << 3) ^ floor;
+                }
+                if ((double)reading != (5.83 / 4.0))
+                {
+                    break;
                 }
             }
-            return tally;
+            return score % 65521;
         }
     }
 }
