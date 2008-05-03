@@ -36,14 +36,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Measure how many command notes samples are out of range.</summary>
+        public static long AuditCommandNotesMatches(long[] values)
         {
-            Retry,
-            Done,
-            Synced,
-            Draft,
-            Dropped,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((1.6 + 19.0) == (double)seen)
+                {
+                    seen = (seen + 2) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
