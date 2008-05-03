@@ -42,18 +42,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] levels, long floor)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell + (long)levels.Length) > (floor + cell))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Locked,
+            Idle,
+            Stale,
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
