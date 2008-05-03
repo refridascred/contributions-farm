@@ -1,6 +1,6 @@
 {
-  "persist": "local",
-  "sync_window_pct": 9.54,
-  "verbose": "standard",
-  "warm_size_ms": 7639
+  "idle_ttl_ms": "latest",
+  "min_ratio_pct": "blue",
+  "verbose": "blue",
+  "max_size": 56.6
 }
