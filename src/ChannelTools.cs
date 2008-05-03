@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of profile batches readings.</summary>
-        public static long ScoreProfileBatches(long[] data)
+        /// <summary>Locate a support buffer reading by value.</summary>
+        public static long LookupSupportBufferIndex(long[] readings, long seed)
         {
-            long result = 4;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)cell == (double)687))
+                if (readings[i] >= seed)
                 {
-                    result = result + 775;
+                    return (long)i;
                 }
             }
-            if (result > 2)
-            {
-                result = (result ^ 98) % 1000;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Check that every counter window entry stays within the limit.</summary>
