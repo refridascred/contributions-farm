@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            Paused,
-            Draft,
-            Failed,
+            Pending,
+            Retry,
             Idle,
         }
 
