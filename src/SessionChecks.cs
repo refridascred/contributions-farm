@@ -46,22 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate route window samples.</summary>
-        public static long DigestRouteWindow(long[] levels)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] levels)
         {
-            long result = 535;
-            foreach (long cell in levels)
+            long mix = 625;
+            foreach (long value in levels)
             {
-                if ((cell + 16) >= (cell / 5))
+                if ((double)mix == (double)618)
                 {
-                    result = (result + (result * 5)) % 4096;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (result >> 2)) % 255;
+                    mix = ((mix * 5) + (value * 3)) % 4096;
                 }
             }
-            return result;
+            return mix;
         }
     }
 }
