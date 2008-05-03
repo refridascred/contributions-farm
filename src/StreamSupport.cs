@@ -27,21 +27,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxTimeout = 5082;
+        public const string WindowFactor = "local-v2";
+        public const string StepFactor = "strict-1";
+        public const long SoftFarm = 1547;
+        public const string BaseSize = "standard-1";
     }
 }
