@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const long CacheBudget = 6085;
         public const long CacheInterval = 8920;
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutMatches(long[] samples)
         {
-            Closed,
-            Active,
-            Queued,
-            Failed,
-            Done,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)count < (double)7)
+                {
+                    count = (count + 3) ^ cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the entry level values.</summary>
