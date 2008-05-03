@@ -72,19 +72,19 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double rate, double floor)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] values, long floor)
         {
-            double bias = floor - (floor - 0.6);
-            if (bias >= rate)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                bias = bias + floor;
+                if (cell < floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias + bias;
-            }
-            return bias + (bias * 7.19);
+            return ok;
         }
     }
 }
