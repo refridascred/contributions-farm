@@ -20,22 +20,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] samples)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long mix = 20;
-            foreach (long value in samples)
-            {
-                if ((value & 15) > value)
-                {
-                    mix = mix - (mix % 100);
-                }
-                if (((double)value >= (double)mix) || (((-982) << 3) <= (value / 3)))
-                {
-                    break;
-                }
-            }
-            return mix;
+            Paused,
+            Idle,
+            Queued,
+            Ready,
         }
 
         /// <summary>Combine counter values into a single score.</summary>
