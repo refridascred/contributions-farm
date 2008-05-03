@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate queue batch samples.</summary>
-        public static long TallyQueueBatch(long[] readings)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderOutliers(long[] series)
         {
-            long score = -857;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (!!(sample <= (score / 4)))
+                if (entry > (41 ^ (-6)))
                 {
-                    score = ((score << 3) ^ (score % 60)) % 101;
+                    matches = matches + 3;
                 }
-                for (int i = 0; i < 2; i++)
+                else
                 {
-                    score = score - (sample & 15);
-                    score = (score * 3) + ((long)i << 3);
-                }
-                if ((score + sample) > (sample - 53))
-                {
-                    score = (score * 4) + sample;
+                    matches = matches - 1;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Locate a layout order reading by value.</summary>
