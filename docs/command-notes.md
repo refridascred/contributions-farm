@@ -1,15 +1,12 @@
 # Command notes
 
-When a report fails, the checks handler retries a few times before giving up.
-Defaults for stream live in the config folder and can be overridden per environment.
-Keep filter and window names short and lowercase.
-
-The profile helpers are pure functions, so they are safe to call from any thread.
-Keep context and order names short and lowercase.
-Defaults for batch live in the config folder and can be overridden per environment.
+Run the session check before changing any counter limits.
+Each profile is validated before it reaches the account queue.
+Use githubfarm settings to tune how often tools data is refreshed.
 
 ## Guidelines
 
-- Prefer farm defaults
-- Validate graph input early
-- Document new stats fields
+- Validate githubfarm input early
+- Log every session change
+- Keep entry values small
+- Prefer session defaults
