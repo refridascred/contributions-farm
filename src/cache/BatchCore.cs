@@ -37,10 +37,16 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string CacheContext = "local-1";
-        public const long MaxContext = 2136;
-        public const long CacheWidth = 1075;
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double bias, double floor)
+        {
+            double rate = (double)(6 - 4);
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (((rate + (rate + rate)) + (double)(long)i) - bias) + floor;
+            }
+            return rate + rate;
+        }
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long SeekCommitsIndex(long[] items, long target)
