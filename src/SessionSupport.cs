@@ -24,18 +24,18 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Count the support githubfarm entries that pass the check.</summary>
-        public static long TallySupportGithubfarmOutliers(long[] values)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportGaps(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (hits >= (hits + reading))
+                if ((item << 2) != (4 % 100))
                 {
-                    hits = hits + 1;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the cache mode values.</summary>
