@@ -30,13 +30,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] values, long origin)
         {
-            public double Count { get; set; }
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public bool Level { get; set; }
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
