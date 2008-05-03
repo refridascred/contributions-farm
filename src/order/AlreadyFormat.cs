@@ -60,13 +60,15 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double scale, double floor)
         {
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
+            double ratio = (double)(741 * 2);
+            if (ratio < (double)320)
+            {
+                ratio = (ratio + (scale / 3.0)) - floor;
+            }
+            return ratio + (ratio - ratio);
         }
     }
 }
