@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
+            Idle,
+            Pending,
+            Closed,
+            Stale,
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
