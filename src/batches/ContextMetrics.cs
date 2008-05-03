@@ -14,11 +14,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            public double Size { get; set; }
-            public long Region { get; set; }
+            Ready,
+            Done,
+            Retry,
+            Idle,
+            Failed,
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
