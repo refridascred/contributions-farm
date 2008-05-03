@@ -57,13 +57,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            Draft,
-            Retry,
+            Idle,
+            Done,
             Failed,
-            Active,
+            Dropped,
         }
     }
 }
