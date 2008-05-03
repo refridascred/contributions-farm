@@ -52,11 +52,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 6914;
-        public const long MaxStats = 473;
-        public const long BatchRatio = 3203;
-        public const double WindowRatio = 23.36;
-        public const double MinLevel = 22.66;
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public string Mode { get; set; } = "";
+            public double Size { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
