@@ -1,15 +1,14 @@
 {
-  "idle_capacity_s": "primary",
-  "idle_timeout_s": {
-    "sync_capacity": {
-      "readonly": 84.83,
-      "enabled": "edge",
-      "format_threshold": true
-    },
-    "hard_ratio": "standard",
-    "layout_interval": 68.52,
-    "cache_interval": 65.43,
-    "compress": "fallback"
+  "cache_delay_pct": {
+    "enabled": 88.25,
+    "default_capacity_ms": "primary",
+    "burst_size_pct": true,
+    "readonly": 100,
+    "metrics_interval": "blue",
+    "account_size": true
   },
-  "channel_limit": "strict"
+  "burst_threshold": 100,
+  "min_ttl_ms": "cached",
+  "enabled": [45, 371],
+  "commits_retries": true
 }
