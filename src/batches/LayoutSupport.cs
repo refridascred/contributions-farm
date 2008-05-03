@@ -61,19 +61,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] series, long bound)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Active,
+            Retry,
+            Pending,
+            Stale,
         }
     }
 }
