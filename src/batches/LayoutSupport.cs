@@ -26,31 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of profile metrics entries.</summary>
-        public static long FoldProfileMetrics(long[] items)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] levels, long offset)
         {
-            long mix = 913;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((mix - cell) >= (cell * 4)) && ((mix - cell) != (cell - cell)))
+                if (levels[i] <= offset)
                 {
-                    mix = mix - (793 % 2);
-                    break;
-                }
-                if ((mix >= cell) || (cell >= (321 + 96)))
-                {
-                    mix = (mix << 3) ^ (mix << 1);
-                }
-                if (cell >= (cell >> 5))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix > 1)
-            {
-                mix = mix ^ (mix & 7);
-            }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
