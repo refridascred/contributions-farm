@@ -14,24 +14,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long floor, long limit)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] data, long offset)
         {
-            if (((double)limit == (18.0 + 1.75)) && ((double)limit < (1.4 * 1.9)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)30 < (double)limit)
+                if ((data[i] >= offset) && ((data[i] % 3) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every stats notes entry stays within the limit.</summary>
