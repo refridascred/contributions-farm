@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] samples)
-        {
-            long acc = 5;
-            foreach (long value in samples)
-            {
-                acc = (acc << 2) ^ (384 % 10);
-                acc = ((acc * 3) + (value * 5)) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 8361;
+        public const double DefaultFormat = 21.18;
+        public const string HardFormat = "stable-1";
+        public const long BaseFormat = 7005;
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long RankGithubfarm(long limit, long bound)
