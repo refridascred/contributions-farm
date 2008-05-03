@@ -1,12 +1,7 @@
 {
-  "poll_retries_ms": "local",
-  "idle_ttl": [127, 371, 464, 420],
-  "sync_depth": {
-    "max_retries_count": "primary",
-    "default_capacity_ms": 67,
-    "payload_timeout": false
-  },
-  "batch_ttl_count": false,
-  "account_delay": "local",
-  "base_threshold": "stable"
+  "strict": 17,
+  "audit": 4763,
+  "idle_depth_pct": false,
+  "batch_ttl_pct": 9824,
+  "flush_retries_s": 32
 }
