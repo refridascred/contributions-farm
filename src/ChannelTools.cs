@@ -23,21 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] series)
+        /// <summary>Check that every counter window entry stays within the limit.</summary>
+        public static bool ValidateCounterWindowBounds(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item <= target)
                 {
-                    if ((series[i] ^ series[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Accumulate entry samples.</summary>
