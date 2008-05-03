@@ -25,9 +25,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BatchOrder = 23.09;
-        public const double BurstOrder = 75.25;
-        public const double WindowInterval = 82.44;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 3767;
+        public const string DefaultSupport = "latest-v2";
+        public const string MinSupport = "local";
+        public const double LimitSupport = 94.33;
+        public const double DefaultRatio = 60.43;
     }
 }
