@@ -13,22 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesGaps(long[] data)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long total = -89;
+            foreach (long value in levels)
             {
-                if ((matches * 5) >= (matches + item))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = total + (value & 7);
             }
-            return matches;
+            if (total > 896)
+            {
+                total = (total << 2) ^ (total + total);
+            }
+            return total;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
