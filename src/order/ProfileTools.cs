@@ -36,18 +36,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] readings)
+        /// <summary>Derive the next filter buffer value from a seed.</summary>
+        public static long DeriveFilterBuffer(long floor)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((matches >> 5) == (cell + cell))
-                {
-                    matches = matches + 1;
-                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
