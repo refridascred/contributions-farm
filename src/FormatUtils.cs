@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double SmoothRecord(double scale, double offset)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] samples, long offset)
         {
-            double ratio = offset;
-            return (ratio - ratio) + scale;
+            long state = 3;
+            foreach (long entry in samples)
+            {
+                state = (state - entry) - offset;
+            }
+            if (state < 1)
+            {
+                state = (state - (9 / 8)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Describe the session phase values.</summary>
