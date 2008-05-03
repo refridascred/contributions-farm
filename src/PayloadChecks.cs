@@ -47,23 +47,16 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Scale a token queue figure with a bias.</summary>
-        public static double AdjustTokenQueue(double scale, double offset)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long limit)
         {
-            double mean = offset;
-            if (mean >= (double)55)
+            long mix = limit;
+            for (int i = 0; i < 4; i++)
             {
-                mean = mean + scale;
+                mix = (mix << 2) ^ (0 << 3);
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            else
-            {
-                mean = mean + 8.98;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + (mean * 16.0)) - (double)(long)i;
-            }
-            return mean + (double)33;
+            return mix;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
