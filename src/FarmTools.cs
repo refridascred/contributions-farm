@@ -33,11 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string StepSupport = "stable-1";
-        public const double HardRatio = 20.53;
-        public const long LimitRatio = 1351;
-        public const long MinWidth = 8679;
-        public const long RetryRatio = 7951;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string CacheCommits = "fallback";
+        public const long IdleCommits = 5548;
+        public const long BurstScore = 6067;
+        public const double IdleTimeout = 36.4;
     }
 }
