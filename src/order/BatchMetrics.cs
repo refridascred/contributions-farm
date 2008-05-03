@@ -42,12 +42,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double HardPayload = 36.34;
-        public const long SoftTimeout = 6805;
-        public const double DefaultLevel = 93.49;
-        public const long LimitSpan = 9097;
-        public const long RetryPayload = 4643;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] items, long target)
+        {
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Digest a series of already entries.</summary>
         public static long DigestAlready(long[] values, long target)
