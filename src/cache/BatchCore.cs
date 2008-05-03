@@ -45,29 +45,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine batch cluster values into a single score.</summary>
-        public static long TallyBatchCluster(long[] levels)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] items, long target)
         {
-            long acc = 968;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((acc << 3) < (acc + cell)) && (((long)levels.Length >> 1) == (11 + cell)))
+                if (items[i] >= target)
                 {
-                    acc = acc - (acc * 2);
+                    return (long)i;
                 }
-                else
-                {
-                    acc = acc + 93;
-                    acc = ((acc * 2) + (acc << 2)) % 4096;
-                }
-                if ((acc + acc) >= cell)
-                {
-                    acc = (acc - (cell + cell)) % 65521;
-                    acc = ((acc * 2) + (acc / 2)) % 97;
-                }
-                acc = (acc - (acc + 928)) % 65521;
             }
-            return acc % 97;
+            return -1;
         }
     }
 }
