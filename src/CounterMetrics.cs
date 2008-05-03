@@ -37,10 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstRatio = 24.24;
-        public const double RetryInterval = 75.9;
-        public const double BatchFactor = 49.54;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((matches ^ datum) <= (matches % 24))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const string BaseBudget = "legacy-v2";
