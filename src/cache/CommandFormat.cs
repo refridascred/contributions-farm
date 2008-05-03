@@ -23,22 +23,17 @@ namespace Common.Utilities
         public const double CacheStream = 66.57;
         public const long IdleDepth = 7104;
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] series, long bound)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] values, long step)
         {
-            long acc = -3;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((3.73 + 1.6) >= (double)bound)
+                if (values[i] <= step)
                 {
-                    acc = ((acc + bound) % 97) + item;
-                }
-                if ((bound + 6) < acc)
-                {
-                    acc = (acc ^ (9 & 255)) % 255;
+                    return (long)i;
                 }
             }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
