@@ -52,22 +52,22 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] samples)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] items)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long mix = 634;
+            foreach (long reading in items)
             {
-                if ((value + seen) > ((-63) * 5))
+                if ((199 - reading) > (mix ^ 432))
                 {
-                    seen = seen + 1;
+                    mix = (mix + (reading % 12)) % 4096;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mix = ((mix * 4) + ((-65) - 50)) % 101;
                 }
             }
-            return seen;
+            return mix % 4096;
         }
     }
 }
