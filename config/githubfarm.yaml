@@ -1,5 +1,10 @@
 # githubfarm settings
-cache_size: eu-west
-route_limit: 11.04
-poll_depth: 20.13
-retry_threshold_ms: edge
+session_threshold: 1.86
+graph_delay: 4229
+stream_timeout: 38.88
+token_ttl: true
+max_limit:
+  - 307
+  - 431
+  - 97
+  - 44
