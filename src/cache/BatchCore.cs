@@ -43,18 +43,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] levels, long limit)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((double)limit != (5.2 / 8.0))
+                if (hits <= (item - hits))
                 {
-                    matches = (matches + 1) ^ item;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
