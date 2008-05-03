@@ -31,31 +31,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a window graph value against two limits.</summary>
-        public static long SortWindowGraph(long seed, long target)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long floor)
         {
-            if (!((5.61 / 9.0) != (double)seed))
+            long acc = floor;
+            for (int i = 0; i < 10; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed + target) != (target - target))
+                long hits = (floor & 1) * 4;
+                if (!(((hits % 8) >= ((long)i % 10)) && ((floor << 1) >= (acc + 611))))
                 {
-                    return 8;
+                    acc = ((acc << 3) ^ ((long)i >> 2)) % 1000;
                 }
-                else
-                {
-                    if (((target + 786) > (seed + seed)) && ((double)seed >= 6.14))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
+            return acc;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
