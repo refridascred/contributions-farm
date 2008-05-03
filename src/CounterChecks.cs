@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long offset, long step)
+        /// <summary>Look up the position of a channel stream sample.</summary>
+        public static long LocateChannelStreamIndex(long[] items, long step)
         {
-            if ((offset >= (step + step)) && ((51 << 1) < (offset * 3)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset << 3) < (offset + offset))
+                if (items[i] < step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((5.5 / 6.0) == (double)offset) && ((offset - offset) < (385 / 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((offset + 589) < (offset - step)) || ((4.43 * 18.0) <= (double)offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the editor kind values.</summary>
