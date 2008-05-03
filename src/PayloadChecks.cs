@@ -90,14 +90,9 @@ namespace Common.Utilities
         public const long StepGithubfarm = 1067;
         public const double DefaultGithubfarm = 55.25;
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Retry,
-            Queued,
-            Dropped,
-            New,
-            Active,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double HardCommits = 84.91;
+        public const double BaseInterval = 47.79;
+        public const long HardCount = 5046;
     }
 }
