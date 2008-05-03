@@ -32,31 +32,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long limit, long limit2)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenLimits(long[] values, long target)
         {
-            if (limit >= limit2)
+            bool flag = true;
+            foreach (long item in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit2 + limit2) == (limit - limit))
+                if (item != target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((27 >> 2) <= (957 + limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
