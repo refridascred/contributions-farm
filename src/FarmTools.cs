@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit counter stream readings against a rule.</summary>
-        public static long CountCounterStreamGaps(long[] items)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long seed)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long carry = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((9 & 1) >= (matches + matches))
+                if ((seed - seed) >= ((long)i >> 3))
                 {
-                    matches = (matches + 1) - value;
+                    carry = ((carry << 2) ^ seed) % 255;
                 }
+                carry = ((carry << 3) ^ (carry >> 1)) % 1000;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Describe the account kind values.</summary>
