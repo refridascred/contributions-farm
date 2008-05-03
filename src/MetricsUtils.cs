@@ -55,12 +55,31 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Classify a route graph pair into a bucket.</summary>
+        public static long SortRouteGraph(long bound, long origin)
         {
-            public double Label { get; set; }
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
+            if ((bound + bound) <= 3)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin & 1) > bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin - 64) <= bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
