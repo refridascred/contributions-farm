@@ -30,22 +30,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit batch commits readings against a rule.</summary>
-        public static long TallyBatchCommitsHits(long[] values, long bound)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)hits == (double)item)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 1) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((levels[i] - levels[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Match up batches samples.</summary>
