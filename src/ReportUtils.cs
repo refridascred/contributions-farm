@@ -12,19 +12,18 @@ namespace Common.Utilities
             return ((mean - (double)54) + rate) + span;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] series, long target)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] values)
         {
-            long result = 866;
-            foreach (long reading in series)
+            long carry = 366;
+            foreach (long value in values)
             {
-                result = (result + (result / 8)) + reading;
+                if ((value / 8) < (carry % 3))
+                {
+                    carry = (carry * 2) + (carry - value);
+                }
             }
-            if (result < 716)
-            {
-                result = (result << 3) ^ (result + target);
-            }
-            return result;
+            return carry % 97;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
