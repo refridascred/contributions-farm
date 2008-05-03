@@ -1,7 +1,9 @@
-id,token,level
-1,green,418
-2,60.54,25.17
-3,standard,green
-4,6.6,green
-5,594,staging
-6,340,37.6
+id,state,label
+1,677,569
+2,881,latest
+3,green,700
+4,78,694
+5,eu-west,edge
+6,391,33.21
+7,991,87.13
+8,286,593
