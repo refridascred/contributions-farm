@@ -1,8 +1,8 @@
 {
-  "sync_limit": [269, 405],
-  "enabled": ["latest", "staging", "blue", "edge"],
-  "base_timeout_pct": ["strict", "strict"],
-  "githubfarm_ttl": 26.47,
-  "compress": "open",
-  "context_size": "primary"
+  "hard_capacity": 30,
+  "compress": false,
+  "burst_ratio_ms": "open",
+  "soft_interval_ms": 37.1,
+  "burst_interval_pct": "latest",
+  "dry_run": "legacy"
 }
