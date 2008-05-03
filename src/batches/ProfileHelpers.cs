@@ -128,9 +128,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheSize = 3031;
-        public const long WindowBatches = 6353;
-        public const long RetryScore = 748;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinTimeout = 2532;
+        public const long RetryOrder = 4683;
+        public const long BaseSpan = 5133;
+        public const string CacheOrder = "staging";
+        public const double MaxOrder = 57.24;
     }
 }
