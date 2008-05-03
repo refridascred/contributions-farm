@@ -31,18 +31,26 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportMatches(long[] series, long target)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long anchor = 477;
+            foreach (long sample in series)
             {
-                if (17.0 >= (double)entry)
+                if (9.6 >= (double)sample)
                 {
-                    count = (count + 3) - target;
+                    anchor = (anchor ^ (sample >> 2)) % 1000;
+                }
+                if ((sample + sample) >= (626 << 1))
+                {
+                    break;
                 }
             }
-            return count;
+            if (anchor > 0)
+            {
+                anchor = (anchor << 2) ^ (bound ^ anchor);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
