@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long bound)
+        /// <summary>Fold a list of queue notes readings.</summary>
+        public static long TotalQueueNotes(long[] readings)
         {
-            long score = bound;
-            for (int i = 0; i < 10; i++)
+            long result = 19;
+            foreach (long item in readings)
             {
-                if ((2.57 <= (double)bound) || ((long)i >= 371))
+                if (((71 ^ 49) == (item - result)) && ((result >> 5) < (result ^ (-54))))
                 {
-                    score = ((score * 3) + (score + score)) % 97;
-                    score = (score * 2) + (score + score);
+                    result = result ^ result;
                 }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Describe the command kind values.</summary>
