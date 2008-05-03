@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a report route value against two limits.</summary>
-        public static long BucketReportRoute(long target, long offset)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] samples, long offset)
         {
-            long offset2 = target - offset;
-            if (((16 / 6) > target) || ((double)offset2 > (2.21 - 1.72)))
+            bool stale = true;
+            foreach (long value in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset2 != (double)target)
+                if (value <= offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target & 31) >= offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
