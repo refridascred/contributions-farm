@@ -59,16 +59,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] values, long target)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterMatches(long[] readings)
         {
-            long anchor = 70;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                anchor = ((anchor + (6 + anchor)) % 97) - target;
-                anchor = anchor ^ (datum - datum);
+                if ((((datum - datum) >= tally) && (datum < (datum + 63))) || ((datum + tally) <= (datum - tally)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
