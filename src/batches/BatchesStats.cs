@@ -26,13 +26,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] series, long origin)
         {
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Size { get; set; }
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((origin >> 1) != (2 & 127))
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
