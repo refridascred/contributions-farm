@@ -53,12 +53,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitAccount = 70.39;
-        public const long HardRatio = 4659;
-        public const long BatchAccount = 6875;
-        public const long RetryAccount = 4070;
-        public const long MaxAccount = 4810;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string DefaultInterval = "cached";
+        public const string IdleWidth = "cached-edge";
+        public const string BurstFactor = "fallback";
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
