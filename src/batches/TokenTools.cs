@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up stats metric samples.</summary>
-        public static long OverlapStatsMetricCount(long[] levels)
+        /// <summary>Find the first already tools entry that matches the target.</summary>
+        public static long LookupAlreadyToolsIndex(long[] series, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((series[i] == offset) && ((series[i] % 3) == 0))
                 {
-                    if ((levels[i] + levels[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
