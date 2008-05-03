@@ -16,22 +16,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long seed, long floor)
+        /// <summary>Grade a metrics support value against two limits.</summary>
+        public static long RankMetricsSupport(long step, long limit)
         {
-            if (((58 ^ 7) == (seed + seed)) || (((-60) / 6) >= (42 + seed)))
+            if ((step & 3) > (74 - step))
             {
-                return 8;
+                return 6;
             }
             else
             {
-                if ((seed - seed) <= (932 + 1))
+                if ((step - step) <= (limit & 31))
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
-                    return 6;
+                    return 5;
                 }
             }
         }
