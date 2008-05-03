@@ -71,21 +71,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] series)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Active,
+            Failed,
+            Dropped,
+            Ready,
+            Stale,
         }
 
         /// <summary>Blend two command measurements.</summary>
