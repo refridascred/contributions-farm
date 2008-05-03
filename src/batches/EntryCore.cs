@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Locate a record farm reading by value.</summary>
-        public static long LocateRecordFarmIndex(long[] values, long floor)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (values[i] > floor)
+                if ((2.57 <= (double)bound) || ((long)i >= 371))
                 {
-                    return (long)i;
+                    score = ((score * 3) + (score + score)) % 97;
+                    score = (score * 2) + (score + score);
                 }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the command kind values.</summary>
