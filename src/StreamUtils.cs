@@ -82,24 +82,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of counter order readings.</summary>
-        public static long TallyCounterOrder(long[] levels)
+        /// <summary>Audit metrics channel readings against a rule.</summary>
+        public static long AuditMetricsChannelGaps(long[] items, long step)
         {
-            long mix = 773;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long value in items)
             {
-                mix = mix ^ (6 >> 3);
-                mix = mix ^ 318;
-                if ((484 - value) == (mix << 2))
+                if ((5.4 + 13.0) > (double)value)
                 {
-                    break;
+                    seen = (seen + 3) - step;
                 }
             }
-            if (mix > 704)
-            {
-                mix = (mix * 2) + (mix / 6);
-            }
-            return mix;
+            return seen;
         }
     }
 }
