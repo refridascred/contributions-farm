@@ -66,12 +66,24 @@ namespace Common.Utilities
             return rate2 - (double)(-482);
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Classify a commits farm pair into a bucket.</summary>
+        public static long GradeCommitsFarm(long offset, long seed)
         {
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
-            public double Level { get; set; }
+            if ((2 & 255) <= (offset / 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)seed > (7.55 + 6.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
