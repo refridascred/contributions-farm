@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const long WindowDepth = 2854;
         public const long SoftCount = 4435;
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            Closed,
-            Dropped,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string WindowChannel = "primary";
+        public const long IdleSize = 101;
+        public const long DefaultSize = 399;
+        public const long RetryChannel = 619;
+        public const double BaseChannel = 1.18;
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
