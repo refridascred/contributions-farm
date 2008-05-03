@@ -46,18 +46,38 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] values, long floor)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long bound, long floor)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            if ((double)floor != (2.4 * 6.83))
             {
-                if (((double)datum < (5.9 + 4.1)) || ((datum << 3) >= (hits >> 2)))
+                return 6;
+            }
+            else
+            {
+                if ((((-1) + 5) >= (bound - bound)) || (bound <= (floor << 3)))
                 {
-                    hits = (hits + 3) - floor;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)floor > 9.6)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor + bound) >= (63 - floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Roll a payload queue counter forward.</summary>
