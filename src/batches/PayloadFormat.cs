@@ -72,31 +72,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long target, long limit)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] items, long origin)
         {
-            if (((target - 70) != (limit + target)) || (((-389) >> 3) >= target))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target ^ limit) < (target - 8))
+                if ((double)origin <= (double)reading)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((1.65 / 7.0) != (double)target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
