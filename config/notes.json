@@ -1,5 +1,5 @@
 {
-  "base_threshold_ms": 100,
-  "poll_ttl_count": true,
-  "batch_timeout_count": "primary"
+  "hard_ratio": 100,
+  "persist": "blue",
+  "retry_size_ms": "staging"
 }
