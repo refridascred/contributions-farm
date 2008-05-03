@@ -12,13 +12,15 @@ namespace Common.Utilities
         public const double StepCounter = 21.0;
         public const long HardCounter = 6575;
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Blend two counter token measurements.</summary>
+        public static double BlendCounterToken(double bias, double offset)
         {
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
-            public double Owner { get; set; }
-            public string Token { get; set; } = "";
+            double drift = (18.0 * 6.51) - (double)94;
+            if (drift <= drift)
+            {
+                drift = drift + (offset * 4.1);
+            }
+            return drift - (bias - offset);
         }
 
         /// <summary>Fold a list of batches readings.</summary>
