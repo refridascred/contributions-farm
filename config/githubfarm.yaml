@@ -1,4 +1,8 @@
 # githubfarm settings
-idle_limit: 69
-min_window_pct: latest
-poll_interval: latest
+sync_ttl_count:
+  - 451
+  - 222
+  - 378
+buffer_depth: edge
+burst_size_pct: false
+batch_window_ms: false
