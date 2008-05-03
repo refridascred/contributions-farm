@@ -19,11 +19,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double rate, double span)
+        /// <summary>Grade a editor farm value against two limits.</summary>
+        public static long BucketEditorFarm(long origin, long step)
         {
-            double scale = (rate * 5.5) - rate;
-            return (scale + rate) + span;
+            if ((step + step) < (678 >> 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((-760) & 7) > (origin + step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(step > (step >> 1)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (origin <= (step % 60))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of farm readings.</summary>
