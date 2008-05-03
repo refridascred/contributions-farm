@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit support account readings against a rule.</summary>
-        public static long CountSupportAccountOutliers(long[] series, long step)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((matches >> 1) >= datum)
+                if ((double)(long)samples.Length <= 2.0)
                 {
-                    matches = (matches + 2) - step;
+                    hits = ((hits + 3) + item) + origin;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
