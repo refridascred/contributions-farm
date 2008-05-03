@@ -86,16 +86,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long limit)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] series)
         {
-            long mark = limit;
-            for (int i = 0; i < 6; i++)
+            long total = -400;
+            foreach (long datum in series)
             {
-                mark = ((mark << 2) ^ limit) % 65521;
-                mark = ((mark * 2) + (long)i) % 4093;
+                if (314 >= datum)
+                {
+                    total = (total + (total + datum)) % 65521;
+                }
             }
-            return mark;
+            return total % 4096;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
