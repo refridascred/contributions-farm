@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up command notes samples.</summary>
-        public static long PairCommandNotesCount(long[] readings)
+        /// <summary>Audit counter stream readings against a rule.</summary>
+        public static long CountCounterStreamGaps(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((9 & 1) >= (matches + matches))
                 {
-                    if ((readings[i] + readings[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 1) - value;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the account kind values.</summary>
