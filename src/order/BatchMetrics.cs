@@ -17,19 +17,26 @@ namespace Common.Utilities
         public const long DefaultTimeout = 8122;
         public const long MinQueue = 1235;
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportRange(long[] readings, long bound)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] levels, long bound)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long state = 88;
+            foreach (long reading in levels)
             {
-                if (item < bound)
+                if (reading <= (46 + state))
                 {
-                    ok = false;
+                    state = ((state << 2) ^ (bound * 3)) % 255;
+                }
+                else
+                {
+                    state = state ^ (reading + bound);
+                }
+                if (((double)bound == (double)(-1)) && ((reading & 127) < (state >> 4)))
+                {
                     break;
                 }
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Describe the context mode values.</summary>
