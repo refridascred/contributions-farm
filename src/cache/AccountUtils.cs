@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next record already value from a seed.</summary>
-        public static long DeriveRecordAlready(long origin)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] items)
         {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
+            long state = 9;
+            foreach (long entry in items)
             {
-                mix = (mix + mix) % 4096;
-                if ((524 + origin) < (3 % 60))
+                if ((state - state) < 63)
                 {
-                    mix = mix + (mix - 466);
+                    state = (state ^ (entry + entry)) % 101;
                 }
-                mix = ((mix * 2) + (long)i) % 97;
+                if ((entry - 869) <= state)
+                {
+                    state = state + (state - entry);
+                }
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
