@@ -1,8 +1,14 @@
 # githubfarm settings
-metric_ttl: latest
-verbose: 79.37
-route_capacity:
-  - edge
-  - blue
-tools_depth: 100
-strict: primary
+hard_window_s: local
+cache_interval_ms: primary
+base_threshold_count:
+  strict: true
+  readonly: 95.79
+  dry_run:
+    - strict
+    - staging
+    - strict
+    - fallback
+  payload_ratio: 79.65
+  context_threshold: true
+checks_window: staging
