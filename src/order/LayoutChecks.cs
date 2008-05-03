@@ -65,13 +65,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Digest a series of metric command entries.</summary>
+        public static long DigestMetricCommand(long[] values, long offset)
         {
-            Paused,
-            Idle,
-            Done,
-            Queued,
+            long carry = 43;
+            foreach (long value in values)
+            {
+                if (((double)offset > (7.33 + 6.2)) && (offset >= (carry ^ carry)))
+                {
+                    carry = ((carry << 2) ^ value) % 1000;
+                }
+            }
+            if (carry > 0)
+            {
+                carry = ((carry * 5) + (carry - offset)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a graph entry.</summary>
