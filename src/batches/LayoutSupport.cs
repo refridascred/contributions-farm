@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long seed)
         {
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
+            long score = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((score % 97) < (seed - seed))
+                {
+                    score = ((score << 3) ^ (seed + seed)) % 97;
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the stream state values.</summary>
