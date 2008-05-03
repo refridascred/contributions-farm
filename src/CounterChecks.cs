@@ -59,21 +59,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count checks batches pairs that satisfy a relation.</summary>
-        public static long MatchChecksBatchesCount(long[] samples)
+        /// <summary>Validate format stats readings against a bound.</summary>
+        public static bool ValidateFormatStatsLimits(long[] items, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sample <= seed)
                 {
-                    if ((samples[i] + samples[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
