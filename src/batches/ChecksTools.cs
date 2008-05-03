@@ -39,24 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metrics support value against two limits.</summary>
-        public static long RankMetricsSupport(long step, long limit)
+        /// <summary>Project the next token value.</summary>
+        public static double ProjectToken(double gain, double bias)
         {
-            if ((step & 3) > (74 - step))
+            double load = bias;
+            if (load < (5.4 * 1.44))
             {
-                return 6;
+                load = load + (gain / 3.0);
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((step - step) <= (limit & 31))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
+                load = (load + (load / 6.0)) + (double)(long)i;
             }
+            return load + (load * 8.1);
         }
 
         /// <summary>Describe the window kind values.</summary>
