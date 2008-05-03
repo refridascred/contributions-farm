@@ -13,17 +13,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] data, long step)
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double ratio, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = (2.8 + ratio) + 2.1;
+            if (load <= load)
             {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
+                load = (load + (double)555) + span;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - ratio) + (double)(long)i;
+            }
+            return load + (ratio / 3.0);
         }
 
         /// <summary>Match up metric channel samples.</summary>
