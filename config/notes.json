@@ -1,5 +1,6 @@
 {
-  "format_threshold": 6494,
-  "strict": [202, 482, 58],
-  "batch_depth_s": 1024
+  "default_size_count": [363, 390],
+  "flush_size_pct": 55.53,
+  "format_retries": false,
+  "soft_threshold_count": "edge"
 }
