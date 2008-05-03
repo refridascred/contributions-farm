@@ -1,13 +1,7 @@
 # entry settings
-dry_run: 36
-command_interval: 62.83
-strict: 30
-base_size_count: 39.43
-persist:
-  cache_depth: 56.27
-  audit: true
-  retry_ttl_ms: stable
-graph_capacity:
-  - 367
-  - 342
-  - 227
+strict: 500
+route_interval: cached
+batch_threshold: false
+support_limit:
+  - green
+  - local
