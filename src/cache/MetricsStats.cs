@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] items)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (count > (27 >> 1))
-                {
-                    count = (count + 3) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Done,
+            Closed,
+            Queued,
+            New,
         }
 
         /// <summary>Count the token payload entries that pass the check.</summary>
