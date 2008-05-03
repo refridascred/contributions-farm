@@ -29,10 +29,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchDepth = 8237;
-        public const long StepRoute = 4479;
-        public const string BatchRoute = "open-edge";
-        public const long IdleRoute = 6858;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] values, long origin)
+        {
+            long state = 84;
+            foreach (long sample in values)
+            {
+                state = ((state + (sample + sample)) % 97) + origin;
+            }
+            return state % 65521;
+        }
     }
 }
