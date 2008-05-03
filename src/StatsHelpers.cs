@@ -40,17 +40,14 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] data, long target)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Locked,
+            Queued,
+            Idle,
+            Failed,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
