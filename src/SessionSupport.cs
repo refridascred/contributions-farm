@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double DefaultChannel = 67.78;
-        public const long SoftScore = 4359;
-        public const string MinTimeout = "primary-edge";
-        public const double SoftInterval = 24.71;
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double ratio, double floor)
+        {
+            double gain = (double)3 + (double)9;
+            if (gain >= 4.23)
+            {
+                gain = gain - floor;
+            }
+            else
+            {
+                gain = gain + ratio;
+            }
+            return gain - (gain / 8.0);
+        }
 
         /// <summary>Scale a format figure with a bias.</summary>
         public static double ProjectFormat(double scale, double floor)
