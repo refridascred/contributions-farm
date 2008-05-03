@@ -19,18 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterMatches(long[] levels)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((count <= (sample * 4)) && ((2.0 / 6.0) <= (double)sample))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Mode { get; set; }
+            public long Offset { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a cache entry.</summary>
