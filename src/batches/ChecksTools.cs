@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const double BatchFilter = 51.22;
         public const string StepSize = "local";
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] series, long origin)
+        /// <summary>Count already batch pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyBatchCount(long[] samples)
         {
-            long total = -1;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (((total * 3) + (947 % 60)) ^ entry) - origin;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Combine account values into a single score.</summary>
