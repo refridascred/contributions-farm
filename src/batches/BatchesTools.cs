@@ -11,18 +11,14 @@ namespace Common.Utilities
         public const string LimitAlready = "standard-1";
         public const long LimitSpan = 3250;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterHits(long[] samples, long step)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (!(step <= tally))
-                {
-                    tally = (tally + 3) + value;
-                }
-            }
-            return tally;
+            Dropped,
+            Pending,
+            Synced,
+            Draft,
+            Active,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
