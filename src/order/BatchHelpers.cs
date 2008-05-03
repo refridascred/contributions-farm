@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowLimits(long[] samples, long target)
-        {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftRatio = 8897;
+        public const string MaxContext = "primary-edge";
+        public const long SoftContext = 7401;
+        public const long WindowContext = 176;
+        public const long MaxRatio = 9222;
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
