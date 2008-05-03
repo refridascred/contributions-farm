@@ -43,12 +43,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] values, long seed)
         {
-            public double Limit { get; set; }
-            public bool Weight { get; set; }
-            public double Score { get; set; }
+            long carry = 61;
+            foreach (long cell in values)
+            {
+                carry = ((carry << 3) ^ (long)values.Length) + seed;
+                carry = ((carry << 3) ^ (cell + cell)) % 65521;
+            }
+            return carry;
         }
     }
 }
