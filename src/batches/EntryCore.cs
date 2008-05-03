@@ -56,18 +56,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] samples)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long result = -249;
+            foreach (long reading in readings)
             {
-                if ((reading - tally) < (tally << 2))
+                if ((reading + 4) < reading)
                 {
-                    tally = tally + 3;
+                    result = ((result * 2) + (reading / 5)) + step;
                 }
             }
-            return tally;
+            if (result < (-360))
+            {
+                result = (result * 2) + (result / 2);
+            }
+            return result;
         }
     }
 }
