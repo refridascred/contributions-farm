@@ -38,25 +38,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long origin, long target)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long bound = origin ^ target;
-            if ((bound - bound) > origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((bound / 9) <= (362 - bound)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Owner { get; set; }
+            public bool Flag { get; set; }
+            public bool Score { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
