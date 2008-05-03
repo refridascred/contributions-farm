@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public string Offset { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Token { get; set; }
-            public long Stamp { get; set; }
+            Queued,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Project the next already value.</summary>
