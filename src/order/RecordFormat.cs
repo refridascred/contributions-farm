@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] levels, long bound)
         {
-            Closed,
-            Stale,
-            Queued,
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
