@@ -14,17 +14,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] samples, long step)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (samples[i] >= step)
+                if ((double)item > (double)matches)
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
