@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string IdleCount = "alpha-edge";
-        public const long WindowNotes = 7218;
-        public const long RetryFactor = 7239;
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
+        {
+            Paused,
+            Draft,
+            Closed,
+            New,
+            Idle,
+        }
 
         /// <summary>Accumulate farm batches samples.</summary>
         public static long TotalFarmBatches(long[] series, long target)
