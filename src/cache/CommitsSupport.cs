@@ -58,12 +58,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            public long Total { get; set; }
-            public double Mode { get; set; }
-            public bool Count { get; set; }
+            Dropped,
+            Pending,
+            Ready,
+            Closed,
         }
 
         /// <summary>Adjust a contributi reading.</summary>
