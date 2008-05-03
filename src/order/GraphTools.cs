@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseOrder = 85.01;
-        public const long MinOrder = 8440;
-        public const double LimitCount = 53.12;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 205;
+        public const long WindowDepth = 2854;
+        public const long SoftCount = 4435;
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
