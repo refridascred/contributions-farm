@@ -7,11 +7,10 @@ log() {
 }
 
 total=0
-for i in $(seq 1 10); do
+for i in $(seq 1 3); do
     total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in eu-west fallback legacy edge; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=112
+log "limit is ${COMMAND_LIMIT}"
