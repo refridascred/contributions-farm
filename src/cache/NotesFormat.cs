@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double rate, double span)
+        /// <summary>Count the channel batches entries that pass the check.</summary>
+        public static long MeasureChannelBatchesMatches(long[] samples, long seed)
         {
-            double weight = (span - rate) * 7.7;
-            if (weight < (span - rate))
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                weight = weight - (weight * 0.9);
+                if (((seed >> 5) > (949 * 5)) && (((0.9 / 5.0) > (double)entry) && ((entry - seed) < entry)))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                weight = weight - (double)42;
-            }
-            return weight + weight;
+            return matches;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
