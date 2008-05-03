@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two commits filter measurements.</summary>
-        public static double AdjustCommitsFilter(double weight, double offset)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] series, long seed)
         {
-            double weight2 = weight - (20.0 / 6.0);
-            if (weight2 < (2.0 - offset))
+            bool ok = true;
+            foreach (long value in series)
             {
-                weight2 = weight2 + offset;
+                if (value >= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight2 = (weight2 - offset) + (double)(long)i;
-            }
-            return weight2 - 1.19;
+            return ok;
         }
 
         /// <summary>Describe the stream state values.</summary>
