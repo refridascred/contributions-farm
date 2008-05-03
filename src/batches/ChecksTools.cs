@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
-        {
-            public bool Weight { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double StepInterval = 14.09;
+        public const double HardFilter = 51.59;
+        public const double BatchFilter = 51.22;
+        public const string StepSize = "local";
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long FoldEntry(long[] series, long origin)
