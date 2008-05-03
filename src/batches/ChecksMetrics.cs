@@ -22,19 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] values, long origin)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long acc = 22;
-            foreach (long datum in values)
-            {
-                acc = ((acc ^ (origin * 3)) % 97) ^ datum;
-            }
-            if (acc < 66)
-            {
-                acc = acc + (acc + 43);
-            }
-            return acc;
+            public long Level { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Adjust a route reading.</summary>
