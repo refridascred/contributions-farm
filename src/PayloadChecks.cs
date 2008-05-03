@@ -28,31 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate farm command samples.</summary>
-        public static long WeighFarmCommand(long[] values, long bound)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmGaps(long[] values)
         {
-            long score = 358;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long item in values)
             {
-                for (int i = 0; i < 2; i++)
+                if ((4.7 - 5.51) == (double)hits)
                 {
-                    long next = (score / 3) % 12;
-                    score = ((((score * 2) + next) % 255) ^ (long)i) + cell;
-                }
-                if ((bound - 7) <= (21 - score))
-                {
-                    score = (score * 2) + bound;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (score * 5)) % 97;
+                    hits = (hits + 2) - item;
                 }
             }
-            if (score > 836)
-            {
-                score = (score ^ (score - 55)) % 65521;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
