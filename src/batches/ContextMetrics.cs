@@ -58,21 +58,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] samples)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double weight, double floor)
         {
-            long total = 459;
-            foreach (long reading in samples)
+            double scale = weight;
+            if (scale > (double)6)
             {
-                total = ((total << 3) ^ 42) % 4096;
-                total = (total * 5) + (total + reading);
-                total = ((total * 5) + 0) % 4096;
+                scale = (scale - weight) - floor;
             }
-            if (total < (-854))
+            else
             {
-                total = (total + (46 / 8)) % 1000;
+                scale = scale + (0.4 * 11.0);
             }
-            return total % 1000;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (double)(-2)) + (double)(long)i;
+            }
+            return scale - 9.61;
         }
     }
 }
