@@ -34,11 +34,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitReport = "local-1";
-        public const long WindowReport = 9737;
-        public const long SoftLevel = 1491;
-        public const long CacheBudget = 463;
-        public const string BurstSpan = "stable-edge";
+        /// <summary>Measure how many queue graph samples are out of range.</summary>
+        public static long MeasureQueueGraphMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((double)entry <= 7.8)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
