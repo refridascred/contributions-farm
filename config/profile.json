@@ -1,14 +1,12 @@
 {
-  "cache_delay_pct": {
-    "enabled": 88.25,
-    "default_capacity_ms": "primary",
-    "burst_size_pct": true,
-    "readonly": 100,
-    "metrics_interval": "blue",
-    "account_size": true
-  },
-  "burst_threshold": 100,
-  "min_ttl_ms": "cached",
-  "enabled": [45, 371],
-  "commits_retries": true
+  "warm_ttl_count": "strict",
+  "compress": false,
+  "flush_interval_pct": 60.95,
+  "soft_ttl_ms": {
+    "cluster_ratio": 4784,
+    "min_limit": 76.24,
+    "hard_interval": "fallback",
+    "strict": [441, 326],
+    "batch_window": "cached"
+  }
 }
