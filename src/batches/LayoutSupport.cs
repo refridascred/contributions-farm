@@ -61,14 +61,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] items, long seed)
         {
-            Queued,
-            Active,
-            Retry,
-            Pending,
-            Stale,
+            long acc = 845;
+            foreach (long sample in items)
+            {
+                acc = acc ^ (sample - sample);
+            }
+            if (acc < 39)
+            {
+                acc = acc + (acc + seed);
+            }
+            return acc;
         }
     }
 }
