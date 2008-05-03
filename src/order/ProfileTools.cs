@@ -27,15 +27,14 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] levels)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long score = -527;
-            foreach (long value in levels)
-            {
-                score = (score + (27 - value)) % 4096;
-            }
-            return score;
+            Stale,
+            Done,
+            Draft,
+            Idle,
+            Ready,
         }
 
         /// <summary>Match up buffer layout samples.</summary>
