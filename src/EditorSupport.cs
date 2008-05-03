@@ -17,22 +17,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] items)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((double)sample == (double)866)
+                if ((4.18 / 3.0) < (double)entry)
                 {
-                    hits = hits + 2;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
