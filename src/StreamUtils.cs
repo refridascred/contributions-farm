@@ -32,11 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double rate, double floor)
         {
-            public string Total { get; set; } = "";
-            public double Token { get; set; }
+            double rate2 = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                rate2 = (rate2 + rate) + (double)(long)i;
+            }
+            return rate2 - 20.0;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
