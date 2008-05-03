@@ -1,12 +1,8 @@
 {
-  "strict": 94,
-  "retry_capacity_count": ["cached", "standard", "eu-west", "standard"],
-  "flush_timeout": "legacy",
-  "report_window": {
-    "command_ttl": ["strict", "strict"],
-    "notes_delay": ["fallback", "cached", "local"],
-    "idle_ttl_pct": ["legacy", "legacy"]
-  },
-  "soft_window": "open",
-  "poll_window_ms": 93
+  "tools_ttl": true,
+  "cache_limit": ["latest", "fallback", "legacy"],
+  "default_window_s": 871,
+  "batch_threshold_ms": "staging",
+  "cache_window": false,
+  "compress": "edge"
 }
