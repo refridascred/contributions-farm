@@ -28,12 +28,19 @@ namespace Common.Utilities
         public const long HardDepth = 4948;
         public const long LimitDepth = 6047;
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double ratio, double floor)
         {
-            Retry,
-            Pending,
-            Closed,
+            double weight = (floor * 7.3) + floor;
+            if (weight >= (floor * 5.36))
+            {
+                weight = weight + (ratio / 7.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (weight - 4.83)) - (double)(long)i;
+            }
+            return weight - floor;
         }
     }
 }
