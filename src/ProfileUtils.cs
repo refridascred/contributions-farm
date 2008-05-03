@@ -46,19 +46,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every account window entry stays within the limit.</summary>
-        public static bool CheckAccountWindowRange(long[] values, long limit)
-        {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 9187;
+        public const double LimitCommits = 87.19;
+        public const double HardLevel = 23.14;
+        public const double BurstCommits = 59.2;
+        public const long WindowCommits = 9403;
     }
 }
