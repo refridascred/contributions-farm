@@ -64,19 +64,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] items, long seed)
-        {
-            long acc = 845;
-            foreach (long sample in items)
-            {
-                acc = acc ^ (sample - sample);
-            }
-            if (acc < 39)
-            {
-                acc = acc + (acc + seed);
-            }
-            return acc;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLayout = 1193;
+        public const long DefaultBudget = 2452;
+        public const double HardLayout = 72.62;
     }
 }
