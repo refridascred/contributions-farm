@@ -56,12 +56,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            public double Level { get; set; }
-            public long Total { get; set; }
-            public bool Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
