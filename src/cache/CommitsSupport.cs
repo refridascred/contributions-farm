@@ -44,22 +44,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] items)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if (!!((2.1 - 19.0) == (double)hits))
+                if (reading != target)
                 {
-                    hits = (hits + 2) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
