@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a support buffer reading by value.</summary>
-        public static long LookupSupportBufferIndex(long[] readings, long seed)
+        /// <summary>Accumulate queue batch samples.</summary>
+        public static long TallyQueueBatch(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = -857;
+            foreach (long sample in readings)
             {
-                if (readings[i] >= seed)
+                if (!!(sample <= (score / 4)))
                 {
-                    return (long)i;
+                    score = ((score << 3) ^ (score % 60)) % 101;
+                }
+                for (int i = 0; i < 2; i++)
+                {
+                    score = score - (sample & 15);
+                    score = (score * 3) + ((long)i << 3);
+                }
+                if ((score + sample) > (sample - 53))
+                {
+                    score = (score * 4) + sample;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Check that every counter window entry stays within the limit.</summary>
