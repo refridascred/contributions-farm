@@ -30,12 +30,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long offset)
         {
-            public long Region { get; set; }
-            public bool Limit { get; set; }
-            public double Label { get; set; }
+            long total = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    long seen = (offset % 16) << 1;
+                    total = ((total ^ (seen + 97)) % 1000) ^ (long)i2;
+                }
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
