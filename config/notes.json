@@ -1,10 +1,6 @@
 {
-  "tools_delay": "standard",
-  "window_size": [341, 245, 139, 430],
-  "poll_window_s": {
-    "soft_size_count": 250,
-    "persist": "latest",
-    "cache_interval_ms": ["fallback", "strict", "staging"]
-  },
-  "base_window_pct": 60.18
+  "persist": "local",
+  "sync_window_pct": 9.54,
+  "verbose": "standard",
+  "warm_size_ms": 7639
 }
