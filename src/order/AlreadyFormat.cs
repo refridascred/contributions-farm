@@ -63,25 +63,18 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long target, long target2)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] series)
         {
-            long bound = target ^ target2;
-            if (!((bound * 2) <= (-441)))
+            long tally = 0;
+            foreach (long sample in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (((bound / 6) == (bound >> 1)) && (target <= (target2 << 2)))
+                if ((1.08 / 3.0) != (double)tally)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    tally = (tally + 1) ^ sample;
                 }
             }
+            return tally;
         }
     }
 }
