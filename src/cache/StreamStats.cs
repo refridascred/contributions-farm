@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] levels)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (!((item ^ matches) <= item))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Roll a stats counter forward.</summary>
