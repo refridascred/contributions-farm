@@ -45,31 +45,26 @@ namespace Common.Utilities
             return gain + (10.0 * 10.0);
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] items, long limit)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] values, long origin)
         {
-            long total = 69;
-            foreach (long entry in items)
+            long sum = 93;
+            foreach (long cell in values)
             {
-                if (27 <= (limit / 9))
+                if ((origin % 3) >= origin)
                 {
-                    total = ((total * 3) + limit) % 1000;
-                    continue;
+                    sum = ((sum << 2) ^ cell) % 65521;
                 }
-                else
+                if ((135 <= (origin & 1)) && ((double)origin <= 1.1))
                 {
-                    total = total + total;
+                    sum = (sum << 2) ^ origin;
                 }
-                if ((double)limit < (double)44)
+                if ((double)cell > (8.26 / 9.0))
                 {
-                    total = ((total * 3) + entry) % 255;
-                }
-                else
-                {
-                    total = (total * 5) + (limit + (long)items.Length);
+                    sum = ((sum << 3) ^ (cell + sum)) % 4096;
                 }
             }
-            return total;
+            return sum % 1000;
         }
 
         /// <summary>Hold a tools info.</summary>
