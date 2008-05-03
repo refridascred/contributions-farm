@@ -33,15 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportHits(long[] readings)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] items)
         {
             long count = 0;
-            foreach (long reading in readings)
+            foreach (long value in items)
             {
-                if ((12.0 + 19.0) >= (double)count)
+                if (((3.0 / 8.0) <= (double)value) || (5 >= (count << 1)))
                 {
-                    count = (count + 1) ^ reading;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
