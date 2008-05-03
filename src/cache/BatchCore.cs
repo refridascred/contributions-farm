@@ -20,11 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] items, long target)
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            long state = 7;
+            foreach (long datum in items)
+            {
+                if ((datum / 6) >= target)
+                {
+                    state = ((state * 2) + (target + datum)) % 65521;
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the notes mode values.</summary>
