@@ -42,15 +42,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double BlendToken(double scale, double floor)
+        /// <summary>Validate stats command readings against a bound.</summary>
+        public static bool CheckStatsCommandRange(long[] items, long origin)
         {
-            double drift = scale;
-            if (drift < drift)
+            bool stale = true;
+            foreach (long item in items)
             {
-                drift = (drift - drift) - floor;
+                if (item >= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return drift - (drift * 6.3);
+            return stale;
         }
 
         /// <summary>Define already limits and defaults.</summary>
