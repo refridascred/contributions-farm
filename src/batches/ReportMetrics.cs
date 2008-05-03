@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] items)
         {
-            public long Size { get; set; }
-            public double Token { get; set; }
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
+            long sum = 5;
+            foreach (long sample in items)
+            {
+                sum = (((sum * 3) + (3 & 63)) % 101) + sample;
+                sum = (sum + (6 + sum)) % 255;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
