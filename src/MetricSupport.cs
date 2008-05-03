@@ -26,18 +26,13 @@ namespace Common.Utilities
         public const long WindowNotes = 1544;
         public const double StepNotes = 68.79;
 
-        /// <summary>Count the metrics githubfarm entries that pass the check.</summary>
-        public static long AuditMetricsGithubfarmGaps(long[] readings)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((hits + (-677)) <= 3)
-                {
-                    hits = (hits + 1) - datum;
-                }
-            }
-            return hits;
+            Ready,
+            Pending,
+            Failed,
+            Active,
         }
     }
 }
