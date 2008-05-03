@@ -16,26 +16,15 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] levels)
+        /// <summary>Iterate the profile checks series from a seed.</summary>
+        public static long DeriveProfileChecks(long offset)
         {
-            long acc = 9;
-            foreach (long value in levels)
+            long sum = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((value + acc) <= (acc + value))
-                {
-                    acc = ((acc << 2) ^ 95) % 101;
-                }
-                else
-                {
-                    acc = ((acc * 4) + value) % 4096;
-                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            if (acc < 99)
-            {
-                acc = acc + acc;
-            }
-            return acc;
+            return sum;
         }
 
         /// <summary>Match up metric samples.</summary>
