@@ -49,11 +49,23 @@ namespace Common.Utilities
             return weight + (span + span);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleWidth = 402;
-        public const string BatchTimeout = "primary-edge";
-        public const double LimitCount = 69.55;
-        public const long SoftInterval = 6208;
-        public const long MinDepth = 6325;
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!((1.9 - 15.0) >= (6.02 + 11.0)))
+                {
+                    mark = ((mark << 3) ^ (limit * 5)) % 255;
+                }
+                if ((7.6 * 9.2) > (double)(long)i)
+                {
+                    mark = (mark << 2) ^ ((long)i / 8);
+                }
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
+        }
     }
 }
