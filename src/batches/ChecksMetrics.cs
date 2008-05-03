@@ -29,26 +29,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] items)
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double gain, double bias)
         {
-            long anchor = 439;
-            foreach (long cell in items)
+            double ratio = (double)91;
+            if (ratio > (bias - ratio))
             {
-                if (!((18.0 * 14.0) == (double)anchor))
-                {
-                    anchor = ((anchor << 3) ^ (cell >> 3)) % 255;
-                }
-                if (anchor <= (cell ^ anchor))
-                {
-                    anchor = ((anchor << 2) ^ (cell % 5)) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (690 + cell)) % 1000;
-                }
+                ratio = ratio + ratio;
             }
-            return anchor % 1000;
+            else
+            {
+                ratio = ratio + gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - (bias * 3.65)) - (double)(long)i;
+            }
+            return ratio - 9.6;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
