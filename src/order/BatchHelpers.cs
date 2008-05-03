@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long offset)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowLimits(long[] samples, long target)
         {
-            long score = offset;
-            for (int i = 0; i < 21; i++)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if ((offset - (long)i) < (offset + offset))
+                if (cell != target)
                 {
-                    score = score - (score >> 5);
+                    flag = false;
+                    break;
                 }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    score = ((score - score) % 4096) - (long)i2;
-                }
-                if ((score % 24) >= (offset + score))
-                {
-                    score = (score + offset) % 101;
-                }
-                score = ((score * 4) + (long)i) % 97;
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Hold a stats info.</summary>
