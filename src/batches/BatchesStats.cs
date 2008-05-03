@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] values, long floor)
         {
-            Active,
-            Dropped,
-            Done,
-            Stale,
-            Failed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < floor) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
