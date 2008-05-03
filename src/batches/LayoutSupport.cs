@@ -44,12 +44,23 @@ namespace Common.Utilities
         public const long WindowCounter = 3015;
         public const string BurstLevel = "latest-v2";
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Blend two buffer counter measurements.</summary>
+        public static double SmoothBufferCounter(double ratio, double offset)
         {
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
-            public long Region { get; set; }
+            double mean = offset;
+            if (mean <= 3.39)
+            {
+                mean = (mean - (20.0 * 9.0)) - ratio;
+            }
+            else
+            {
+                mean = mean + (19.0 - 9.17);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - mean;
         }
     }
 }
