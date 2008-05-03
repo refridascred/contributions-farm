@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine account record values into a single score.</summary>
-        public static long DigestAccountRecord(long[] series, long floor)
+        /// <summary>Blend two record measurements.</summary>
+        public static double SmoothRecord(double scale, double offset)
         {
-            long acc = 131;
-            foreach (long entry in series)
-            {
-                if ((646 / 3) < (entry >> 3))
-                {
-                    acc = acc ^ (82 * 3);
-                }
-            }
-            if (acc > 0)
-            {
-                acc = ((acc * 3) + (102 ^ floor)) % 1000;
-            }
-            return acc;
+            double ratio = offset;
+            return (ratio - ratio) + scale;
         }
 
         /// <summary>Check that every batches checks entry stays within the limit.</summary>
