@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitLevel = "cached-v2";
-        public const string HardFactor = "legacy-v2";
-        public const double WindowSupport = 31.59;
-        public const long RetryScore = 5761;
-        public const long CacheSupport = 5934;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MaxSize = "standard-v2";
+        public const double BaseDepth = 89.27;
+        public const string MaxEntry = "open-edge";
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
