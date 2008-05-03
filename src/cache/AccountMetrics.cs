@@ -36,13 +36,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Count githubfarm cluster pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmClusterCount(long[] values)
         {
-            Pending,
-            Dropped,
-            New,
-            Done,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
