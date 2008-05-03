@@ -22,26 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long floor, long seed)
-        {
-            long offset = floor - seed;
-            if (offset >= (floor % 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor << 2) > (offset << 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MinScore = 15.43;
+        public const double RetryLevel = 83.04;
+        public const string IdleBudget = "local-1";
+        public const long BurstFilter = 3849;
+        public const long BaseFilter = 9760;
 
         /// <summary>Match up already samples.</summary>
         public static long PairAlreadyCount(long[] items)
