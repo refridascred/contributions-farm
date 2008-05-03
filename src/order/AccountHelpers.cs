@@ -56,12 +56,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsBounds(long[] items, long seed)
         {
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
