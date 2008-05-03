@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 2))
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-for item in legacy local fallback cached; do
-    log "checking ${item}"
-done
-
-mode="${1:-standard}"
+mode="${1:-open}"
 case "${mode}" in
-    stable)
+    cached)
         log "fast path"
         ;;
     *)
