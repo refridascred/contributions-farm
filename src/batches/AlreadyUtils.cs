@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metrics session readings against a bound.</summary>
-        public static bool GuardMetricsSessionLimits(long[] readings, long target)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Idle,
+            Retry,
+            Synced,
         }
 
         /// <summary>Roll a payload batches counter forward.</summary>
