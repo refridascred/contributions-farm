@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowRatio = 1674;
-        public const string BaseTools = "strict-1";
-        public const long MinTools = 8451;
-        public const double LimitFactor = 67.91;
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
+        {
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Count already batch pairs that satisfy a relation.</summary>
         public static long CompareAlreadyBatchCount(long[] samples)
