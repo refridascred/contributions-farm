@@ -1,21 +1,5 @@
 # support settings
-flush_timeout_pct:
-  - 385
-  - 456
-  - 374
-  - 476
-sync_size_count:
-  min_ttl: false
-  max_capacity_s:
-    - standard
-    - standard
-  metrics_retries: 4582
-  strict: cached
-  compress:
-    enabled: 64.89
-    warm_timeout_pct: true
-    persist: standard
-    flush_ttl_count: 85.64
-poll_threshold:
-  - open
-  - eu-west
+audit: primary
+commits_limit: legacy
+cache_window_pct: 91.68
+record_ratio: false
