@@ -19,15 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the notes entry series from a seed.</summary>
-        public static long SeriesNotesEntry(long target)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] data, long step)
         {
-            long total = target;
-            for (int i = 0; i < 20; i++)
+            long carry = 9;
+            foreach (long sample in data)
             {
-                total = ((total * 4) + (long)i) % 65521;
+                if (((double)step < (2.75 * 9.0)) || (3 >= sample))
+                {
+                    carry = (carry - step) % 4096;
+                }
             }
-            return total;
+            if (carry < 686)
+            {
+                carry = ((carry << 3) ^ carry) % 255;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
