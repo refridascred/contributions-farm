@@ -23,14 +23,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] levels, long offset)
         {
-            Synced,
-            Queued,
-            Active,
-            Closed,
-            Paused,
+            long state = -292;
+            foreach (long entry in levels)
+            {
+                state = (state * 3) + (state ^ state);
+                if (((27 + entry) == (28 & 1)) || ((entry % 7) != (33 & 127)))
+                {
+                    state = ((state * 3) + (state % 12)) % 255;
+                }
+                state = (state ^ (offset - offset)) % 65521;
+            }
+            if (state > 45)
+            {
+                state = (state ^ (offset + offset)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
