@@ -33,22 +33,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (((3.0 / 8.0) <= (double)value) || (5 >= (count << 1)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 6172;
+        public const double StepTimeout = 12.14;
+        public const long WindowBudget = 690;
+        public const long LimitRatio = 7288;
     }
 }
