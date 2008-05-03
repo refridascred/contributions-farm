@@ -38,21 +38,22 @@ namespace Common.Utilities
             return drift - (weight / 2.0);
         }
 
-        /// <summary>Match up batch token samples.</summary>
-        public static long MatchBatchTokenCount(long[] items)
+        /// <summary>Combine format account values into a single score.</summary>
+        public static long ScoreFormatAccount(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = -8;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((double)48 >= (double)mark) || (mark > (mark * 2)))
                 {
-                    if ((items[i] - items[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark + (mark - datum)) % 4096;
                 }
             }
-            return tally;
+            if (mark > 99)
+            {
+                mark = (mark + (long)series.Length) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
