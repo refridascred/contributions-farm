@@ -27,17 +27,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a commits tools counter forward.</summary>
-        public static long IterateCommitsTools(long seed)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long offset, long target)
         {
-            long carry = seed;
-            for (int i = 0; i < 4; i++)
+            long edge = offset ^ target;
+            if ((target > (offset << 1)) || (((-4) >> 5) > (edge + target)))
             {
-                carry = carry ^ (carry - 0);
-                carry = (carry << 3) ^ carry;
-                carry = ((carry * 4) + (long)i) % 101;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if (!(4 > (offset - offset)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (target > (offset << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((128 * 5) == (offset << 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate order readings against a bound.</summary>
