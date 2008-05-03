@@ -47,19 +47,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileBounds(long[] data, long step)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            New,
+            Dropped,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
