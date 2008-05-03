@@ -1,12 +1,21 @@
 {
-  "verbose": "staging",
-  "warm_ttl_ms": "eu-west",
-  "readonly": 8148,
-  "base_retries": false,
-  "persist": 4.89,
-  "poll_window": {
-    "enabled": [57, 488, 423, 128],
-    "commits_threshold": 2580,
-    "strict": true
+  "report_capacity": 14,
+  "compress": 40,
+  "hard_ttl_count": {
+    "cache_timeout": {
+      "compress": 60,
+      "flush_interval": 52.75,
+      "sync_capacity_pct": [285, 1, 441, 387],
+      "enabled": 46,
+      "session_window": 500
+    },
+    "account_depth": {
+      "burst_limit_count": 30,
+      "max_timeout_s": true,
+      "hard_window_pct": ["latest", "standard"],
+      "enabled": 24.63
+    },
+    "soft_ttl": "fallback",
+    "farm_threshold": 1024
   }
 }
