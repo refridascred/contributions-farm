@@ -70,20 +70,13 @@ namespace Common.Utilities
         public const double LimitRatio = 7.65;
         public const string HardReport = "legacy-edge";
 
-        /// <summary>Derive the next batch layout value from a seed.</summary>
-        public static long RollBatchLayout(long limit)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long acc = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                acc = acc + limit;
-                if (((long)i << 2) >= (long)i)
-                {
-                    acc = acc ^ ((long)i & 3);
-                }
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
