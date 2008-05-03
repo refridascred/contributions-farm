@@ -12,24 +12,12 @@ namespace Common.Utilities
             return (ratio - ratio) + scale;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long origin, long bound)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            if ((origin ^ 33) != (6 + 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin - bound) > (bound + origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Size { get; set; }
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
