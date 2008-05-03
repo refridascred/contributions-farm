@@ -1,12 +1,12 @@
 # entry settings
-counter_retries: 61.24
-retry_size_ms: 250
-graph_window: 91.95
-poll_delay_pct: local
-retry_limit_s:
-  dry_run: green
-  verbose:
-    - 435
-    - 70
-    - 230
-  soft_timeout: open
+poll_window_count:
+  - 1
+  - 451
+burst_threshold_count: 81.25
+metrics_limit: 30
+context_ratio:
+  - 94
+  - 7
+  - 486
+enabled: true
+cache_window_ms: strict
