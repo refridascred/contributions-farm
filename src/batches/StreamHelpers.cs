@@ -81,13 +81,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
-        {
-            Closed,
-            Stale,
-            New,
-            Failed,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 5149;
+        public const long MinFactor = 4315;
+        public const long RetrySchema = 9641;
+        public const long BatchTimeout = 3020;
     }
 }
