@@ -1,13 +1,8 @@
 {
-  "metrics_depth": {
-    "soft_limit": 19.36,
-    "githubfarm_limit": 74.32,
-    "metrics_ttl": "fallback",
-    "burst_size_ms": ["open", "cached"]
-  },
-  "idle_threshold_count": "blue",
-  "persist": 30,
-  "cache_delay_s": 1,
-  "session_ratio": "cached",
-  "audit": true
+  "verbose": 6385,
+  "retry_capacity_count": 68,
+  "notes_retries": 100,
+  "record_ratio": 84.93,
+  "counter_size": "staging",
+  "sync_retries": 41
 }
