@@ -22,11 +22,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleCount = 6163;
-        public const long BaseTimeout = 2779;
-        public const long DefaultChecks = 4481;
-        public const long BurstChecks = 2470;
-        public const double BaseChecks = 5.95;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] levels, long target)
+        {
+            long mark = 155;
+            foreach (long cell in levels)
+            {
+                if (mark < cell)
+                {
+                    mark = ((mark << 3) ^ (cell - 439)) - target;
+                }
+            }
+            if (mark < 29)
+            {
+                mark = (mark + ((long)levels.Length * 2)) % 255;
+            }
+            return mark;
+        }
     }
 }
