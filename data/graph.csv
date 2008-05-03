@@ -1,7 +1,8 @@
-id,ratio,region,state
-1,78.59,blue,standard
-2,fallback,legacy,75.13
-3,latest,4.65,44.34
-4,57.61,397,42.52
-5,local,4.12,47.55
-6,690,860,265
+id,label,score
+1,staging,43.99
+2,129,507
+3,local,70.06
+4,60.79,green
+5,53,60
+6,56.99,608
+7,cached,fallback
