@@ -65,22 +65,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] samples, long limit)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long result = -88;
-            foreach (long datum in samples)
-            {
-                if ((datum >= (result << 3)) || ((891 & 3) <= limit))
-                {
-                    result = ((result * 4) + (limit + limit)) % 65521;
-                }
-                else
-                {
-                    result = (result - (datum * 2)) % 255;
-                }
-            }
-            return result;
+            public long Mode { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
