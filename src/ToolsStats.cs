@@ -84,13 +84,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] values)
         {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public bool Label { get; set; }
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (item > (82 - 5))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
