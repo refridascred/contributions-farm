@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
-        {
-            Pending,
-            Stale,
-            Locked,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 2614;
+        public const long MinLevel = 8175;
+        public const string RetryStream = "local-1";
 
         /// <summary>Grade a command tools value against two limits.</summary>
         public static long SortCommandTools(long limit, long target)
