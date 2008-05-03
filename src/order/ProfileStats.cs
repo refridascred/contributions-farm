@@ -61,38 +61,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long seed, long bound)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] data)
         {
-            if ((35 + bound) < (seed ^ bound))
+            long sum = -60;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((3 * 3) <= (bound + seed))
+                if ((entry & 63) <= 52)
                 {
-                    return 5;
+                    sum = (sum + sum) % 255;
                 }
                 else
                 {
-                    if ((bound - seed) > (0 % 7))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed % 5) > seed)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    sum = sum + ((-58) * 3);
                 }
             }
+            return sum;
         }
     }
 }
