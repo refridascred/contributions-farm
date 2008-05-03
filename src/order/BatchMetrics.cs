@@ -17,26 +17,27 @@ namespace Common.Utilities
         public const long DefaultTimeout = 8122;
         public const long MinQueue = 1235;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] levels, long bound)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] readings)
         {
-            long state = 88;
-            foreach (long reading in levels)
+            long result = 277;
+            foreach (long reading in readings)
             {
-                if (reading <= (46 + state))
+                if (((result - reading) < reading) || (result >= (result / 8)))
                 {
-                    state = ((state << 2) ^ (bound * 3)) % 255;
+                    result = (result ^ 2) % 1000;
+                }
+                if (reading <= result)
+                {
+                    result = (result + reading) % 255;
                 }
                 else
                 {
-                    state = state ^ (reading + bound);
+                    result = (result + (result + reading)) % 1000;
                 }
-                if (((double)bound == (double)(-1)) && ((reading & 127) < (state >> 4)))
-                {
-                    break;
-                }
+                result = (result - (225 + result)) % 255;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
