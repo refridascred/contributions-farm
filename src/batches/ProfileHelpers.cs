@@ -72,11 +72,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double rate, double bias)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long step, long seed)
         {
-            double ratio = (double)(156 + 253);
-            return (ratio + bias) + rate;
+            if (6 >= (step >> 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if (step < (step - seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)step == (6.2 - 15.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a support record.</summary>
