@@ -100,18 +100,24 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] samples)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] readings)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long mark = 6;
+            foreach (long reading in readings)
             {
-                if ((count - (long)samples.Length) > count)
+                long matches = (reading & 1) ^ (71 << 2);
+                if (0.33 > (double)mark)
                 {
-                    count = (count + 2) + item;
+                    mark = ((mark * 2) + (matches + 82)) % 1000;
+                    break;
+                }
+                if (mark <= (mark - mark))
+                {
+                    mark = (mark << 2) ^ (97 << 1);
                 }
             }
-            return count;
+            return mark;
         }
     }
 }
