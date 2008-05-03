@@ -7,11 +7,17 @@ log() {
 }
 
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 2))
+for i in $(seq 1 11); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-for item in edge latest stable; do
-    log "checking ${item}"
-done
+mode="${1:-open}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
