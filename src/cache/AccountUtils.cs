@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
-        {
-            public double Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchRatio = 5881;
+        public const long LimitInterval = 1649;
+        public const string SoftLevel = "latest-1";
+        public const long BurstFilter = 8795;
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long SortProfile(long offset, long origin)
