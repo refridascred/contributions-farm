@@ -1,22 +1,7 @@
 {
-  "contributi_limit": 500,
-  "account_threshold": {
-    "checks_interval": true,
-    "command_retries": 60,
-    "hard_window_count": "cached",
-    "batches_capacity": true
-  },
-  "session_threshold": false,
-  "order_ratio": {
-    "batch_depth": 8.11,
-    "batches_delay": 1024,
-    "base_interval_pct": 30,
-    "retry_ratio": {
-      "idle_window": "open",
-      "strict": 6535,
-      "burst_ratio_s": "legacy"
-    },
-    "poll_threshold_count": false,
-    "hard_retries": 22.57
-  }
+  "format_delay": 250,
+  "default_threshold": 5892,
+  "soft_interval": 62,
+  "burst_capacity_count": 70.99,
+  "base_interval": false
 }
