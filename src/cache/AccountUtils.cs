@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine record command values into a single score.</summary>
-        public static long CombineRecordCommand(long[] data, long bound)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long score = 601;
-            foreach (long sample in data)
-            {
-                if (!(score < (bound ^ 454)))
-                {
-                    score = (((score * 5) + (score + score)) % 97) + sample;
-                }
-            }
-            return score;
+            Locked,
+            Ready,
+            Paused,
+            Done,
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
