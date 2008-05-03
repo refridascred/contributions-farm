@@ -75,11 +75,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double bias, double offset)
         {
-            public bool Mode { get; set; }
-            public string Total { get; set; } = "";
+            double mean = (offset * 2.6) + (8.59 / 5.0);
+            if (mean < (7.5 + mean))
+            {
+                mean = mean + (bias - 3.1);
+            }
+            return mean + 1.6;
         }
     }
 }
