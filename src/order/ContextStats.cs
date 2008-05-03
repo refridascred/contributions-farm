@@ -34,17 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first token tools entry that matches the target.</summary>
-        public static long FindTokenToolsIndex(long[] items, long step)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((items[i] < step) && ((items[i] % 3) == 0))
+                if ((double)cell < 3.0)
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
