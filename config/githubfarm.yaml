@@ -1,8 +1,18 @@
 # githubfarm settings
-farm_size: eu-west
-command_size: false
-cache_depth:
-  - 298
-  - 76
-  - 185
-  - 493
+retry_size_ms: 98.46
+default_limit:
+  batch_retries_count:
+    cache_delay: strict
+    sync_threshold_ms: true
+    verbose: blue
+    batch_timeout_ms: 80.34
+    default_capacity: true
+  verbose: primary
+  burst_capacity_ms:
+    - 353
+    - 180
+    - 239
+  soft_delay_count: stable
+dry_run: 1024
+retry_threshold: fallback
+max_limit: 74.27
