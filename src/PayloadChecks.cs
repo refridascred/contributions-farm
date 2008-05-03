@@ -14,17 +14,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] data, long bound)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double gain, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain2 = (double)65 + (gain * 1.3);
+            if (gain2 <= (gain2 - bias))
             {
-                if (data[i] >= bound)
-                {
-                    return (long)i;
-                }
+                gain2 = gain2 - (1.3 * 3.6);
             }
-            return -1;
+            return gain2 + (bias / 4.0);
         }
 
         /// <summary>Hold a session header.</summary>
