@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long target)
         {
-            Stale,
-            Ready,
-            Idle,
-            Dropped,
-            Retry,
+            long result = target;
+            for (int i = 0; i < 12; i++)
+            {
+                result = (result - (368 % 60)) % 65521;
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
