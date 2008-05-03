@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Pending,
-            Retry,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string WindowFactor = "alpha-edge";
+        public const string BaseAccount = "local-1";
+        public const long BurstWidth = 4038;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long DefaultQueue = 7368;
