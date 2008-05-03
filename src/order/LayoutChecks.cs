@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] data, long origin)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long floor, long limit)
         {
-            long total = 324;
-            foreach (long datum in data)
+            if (((double)limit != (4.0 - 17.0)) || ((limit >> 1) > (limit << 3)))
             {
-                if (datum >= origin)
+                return 3;
+            }
+            else
+            {
+                if (!((limit + 57) == (limit * 3)))
                 {
-                    total = ((total << 3) ^ origin) % 1000;
+                    return 2;
                 }
                 else
                 {
-                    total = ((total * 3) + datum) % 97;
+                    return 4;
                 }
             }
-            return total % 1000;
         }
 
         /// <summary>Describe the window class values.</summary>
