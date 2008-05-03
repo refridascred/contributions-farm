@@ -77,23 +77,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] items, long floor)
+        /// <summary>Measure how many stream format samples are out of range.</summary>
+        public static long TallyStreamFormatGaps(long[] items)
         {
-            long acc = 4;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long item in items)
             {
-                acc = ((acc << 2) ^ (acc * 5)) ^ datum;
-                if ((floor ^ 98) <= (floor % 24))
+                if ((item & 3) < (matches + matches))
                 {
-                    acc = ((acc * 3) + (970 / 4)) % 101;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (acc < 10)
-            {
-                acc = (acc + (floor >> 2)) % 101;
-            }
-            return acc;
+            return matches;
         }
     }
 }
