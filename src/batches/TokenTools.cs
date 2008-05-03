@@ -42,10 +42,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFactor = 4175;
-        public const double IdleFilter = 24.84;
-        public const long IdleTimeout = 1038;
-        public const long WindowFilter = 6044;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinTimeout = 1629;
+        public const long BaseAccount = 8961;
+        public const string BurstTimeout = "alpha";
+        public const long MinAccount = 6315;
     }
 }
