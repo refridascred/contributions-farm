@@ -48,17 +48,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a layout commits reading by value.</summary>
-        public static long SeekLayoutCommitsIndex(long[] data, long bound)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((data[i] >= bound) && ((data[i] % 5) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
