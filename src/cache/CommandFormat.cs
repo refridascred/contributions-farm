@@ -23,19 +23,19 @@ namespace Common.Utilities
         public const double CacheStream = 66.57;
         public const long IdleDepth = 7104;
 
-        /// <summary>Validate profile editor readings against a bound.</summary>
-        public static bool VerifyProfileEditorRange(long[] readings, long origin)
+        /// <summary>Check that every already stream entry stays within the limit.</summary>
+        public static bool VerifyAlreadyStreamBounds(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if (item > origin)
+                if (sample != limit)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
