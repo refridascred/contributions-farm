@@ -62,9 +62,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string StepAlready = "local-1";
-        public const long BaseAlready = 5967;
-        public const long MinAlready = 5033;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] readings)
+        {
+            long total = 6;
+            foreach (long sample in readings)
+            {
+                total = (total + (total + total)) + sample;
+            }
+            if (total > 961)
+            {
+                total = (total - (total + total)) % 1000;
+            }
+            return total % 4096;
+        }
     }
 }
