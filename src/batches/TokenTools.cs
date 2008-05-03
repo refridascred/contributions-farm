@@ -22,19 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((((4 + item) == (item + item)) && ((2.0 / 9.0) <= (double)tally)) || ((double)tally == (7.94 + 1.53)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 1439;
+        public const long BaseRatio = 1164;
+        public const long MaxDepth = 2838;
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long LocateChannelIndex(long[] items, long step)
