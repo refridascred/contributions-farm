@@ -30,20 +30,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenLimits(long[] values, long offset)
-        {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 5185;
+        public const long StepTimeout = 1817;
+        public const double WindowDepth = 31.79;
+        public const long WindowChannel = 8811;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long DefaultSpan = 7669;
