@@ -22,19 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmRange(long[] samples, long step)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long seed)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (sample < step)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = ((acc << 2) ^ ((long)i % 16)) % 1000;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Combine profile stream values into a single score.</summary>
