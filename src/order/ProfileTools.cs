@@ -60,21 +60,19 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Count queue notes pairs that satisfy a relation.</summary>
-        public static long PairQueueNotesCount(long[] series)
+        /// <summary>Fold a list of queue stats readings.</summary>
+        public static long TotalQueueStats(long[] readings, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 89;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                state = (state ^ (32 + bound)) % 1000;
+                if ((state % 64) <= ((long)readings.Length - state))
                 {
-                    if ((series[i] ^ series[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = state - (cell % 64);
                 }
             }
-            return seen;
+            return state;
         }
     }
 }
