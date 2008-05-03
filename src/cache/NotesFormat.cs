@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long limit, long floor)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long gap = limit + floor;
-            if ((915 ^ gap) != (gap + limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor != (1.3 - 2.9))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit - floor) >= floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public string Rank { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
