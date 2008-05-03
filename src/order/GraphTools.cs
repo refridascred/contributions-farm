@@ -19,10 +19,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double CacheBudget = 27.54;
-        public const string WindowCount = "alpha-v2";
-        public const long BatchSize = 6553;
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
+        {
+            Dropped,
+            Done,
+            Failed,
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long FoldAccount(long[] values)
