@@ -22,11 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowSpan = 1335;
-        public const double IdleNotes = 77.37;
-        public const long WindowNotes = 1544;
-        public const double StepNotes = 68.79;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] data)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (((matches - matches) != (0 - matches)) && (((double)value > 20.0) && ((value << 1) == (matches ^ matches))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up already samples.</summary>
         public static long PairAlreadyCount(long[] items)
