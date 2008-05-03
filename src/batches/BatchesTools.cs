@@ -28,13 +28,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
-        {
-            Locked,
-            Stale,
-            Done,
-            Failed,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 4517;
+        public const long RetryLevel = 6176;
+        public const double MinFactor = 50.35;
+        public const long BatchSpan = 8728;
     }
 }
