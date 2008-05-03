@@ -42,19 +42,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long origin)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] levels, long floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (!((sum >> 4) != (sum + sum)))
+                if ((cell + (long)levels.Length) > (floor + cell))
                 {
-                    sum = (sum ^ ((long)i & 127)) % 65521;
+                    seen = seen + 3;
                 }
-                sum = ((sum * 5) + (long)i) % 97;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
