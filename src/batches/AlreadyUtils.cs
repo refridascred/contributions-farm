@@ -61,12 +61,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Adjust a report queue reading.</summary>
+        public static double BlendReportQueue(double scale, double floor)
         {
-            Stale,
-            Locked,
-            New,
+            double ratio = scale + scale;
+            if (ratio < floor)
+            {
+                ratio = ratio - (double)37;
+            }
+            return ratio + floor;
         }
 
         /// <summary>Describe the metric mode values.</summary>
