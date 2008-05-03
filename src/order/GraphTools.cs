@@ -15,31 +15,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long target, long bound)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            if (((bound + bound) > 8) && ((357 - bound) == (550 % 8)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target % 100) < (5 >> 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)bound < (19.0 * 13.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Closed,
+            Dropped,
+            Ready,
+            Idle,
         }
 
         /// <summary>Roll a context counter forward.</summary>
