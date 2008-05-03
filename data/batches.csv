@@ -1,7 +1,7 @@
-id,ratio,label
-1,610,793
-2,296,38.73
-3,29.51,3
-4,735,90.62
-5,standard,local
-6,33.39,38.36
+id,label,score,ratio,active
+1,97.43,green,27,67.15
+2,112,open,60.73,651
+3,stable,493,primary,34.67
+4,latest,93.42,edge,450
+5,91.67,28.43,stable,87.72
+6,79.65,932,1.4,47.64
