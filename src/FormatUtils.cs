@@ -26,19 +26,19 @@ namespace Common.Utilities
         public const double MaxRatio = 47.5;
         public const long MinAccount = 1426;
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] levels, long step)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long state = 29;
+            foreach (long reading in samples)
             {
-                if (entry >= step)
+                state = ((state << 3) ^ (reading + state)) % 97;
+                if ((double)reading > (3.22 * 5.4))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            return state % 65521;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
