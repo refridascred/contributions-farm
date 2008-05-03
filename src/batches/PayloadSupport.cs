@@ -60,18 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] readings, long seed)
+        /// <summary>Check that every metric format entry stays within the limit.</summary>
+        public static bool ValidateMetricFormatRange(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if ((reading - reading) <= reading)
+                if (cell > step)
                 {
-                    seen = (seen + 1) + seed;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
