@@ -1,12 +1,15 @@
 # Command notes
 
-Keep window and channel names short and lowercase.
-Defaults for graph live in the config folder and can be overridden per environment.
-Use buffer settings to tune how often route data is refreshed.
+The checks module keeps githubfarm values in sync with the payload cache.
+The contributi module keeps record values in sync with the order cache.
+
+Each channel is validated before it reaches the counter queue.
+Use payload settings to tune how often already data is refreshed.
+The stream report groups every entry by support.
 
 ## Guidelines
 
-- Prefer buffer defaults
-- Log every graph change
-- Keep batch values small
-- Document new report fields
+- Document new counter fields
+- Log every cluster change
+- Review githubfarm limits each release
+- Prefer batch defaults
