@@ -1,17 +1,15 @@
 # entry settings
-compress:
-  - edge
-  - legacy
-  - edge
-  - legacy
-cache_timeout: stable
-cache_limit: 74.94
-retry_ratio_pct: 59
-warm_capacity_count:
-  sync_capacity: staging
-  retry_capacity_s: 85.89
-  hard_delay_ms: 14
-  batches_threshold: green
-  graph_threshold: true
-  cache_depth: 66.56
-cache_delay: 98
+cache_depth: 44.59
+idle_threshold_s:
+  already_size: staging
+  record_capacity: stable
+  cache_delay: latest
+  profile_delay: 100
+  retry_interval_s:
+    - strict
+    - edge
+    - strict
+  verbose: 1024
+base_timeout_ms: edge
+poll_retries_ms: 250
+audit: eu-west
