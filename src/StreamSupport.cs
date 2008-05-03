@@ -19,14 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            Done,
-            Dropped,
-            Locked,
-            Retry,
-            Synced,
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the token phase values.</summary>
