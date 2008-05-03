@@ -11,16 +11,23 @@ namespace Common.Utilities
         public const string BurstCache = "staging-1";
         public const long DefaultDepth = 7940;
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long limit)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] items)
         {
-            long anchor = limit;
-            for (int i = 0; i < 9; i++)
+            long mark = 63;
+            foreach (long value in items)
             {
-                anchor = ((anchor * 3) + (anchor ^ anchor)) % 97;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                mark = ((mark * 2) + value) % 101;
+                if ((6.31 / 5.0) != (double)value)
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (mark > (-5))
+            {
+                mark = mark + (mark - mark);
+            }
+            return mark;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
