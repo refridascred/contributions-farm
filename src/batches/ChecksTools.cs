@@ -36,10 +36,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string StepTimeout = "cached-edge";
-        public const long StepToken = 5679;
-        public const double BurstToken = 76.62;
-        public const double RetryWidth = 75.31;
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long limit, long limit2)
+        {
+            if (limit >= limit2)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit2 + limit2) == (limit - limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((27 >> 2) <= (957 + limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
