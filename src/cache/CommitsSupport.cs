@@ -12,15 +12,22 @@ namespace Common.Utilities
         public const string HardRecord = "staging-1";
         public const long HardCount = 470;
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] levels)
+        /// <summary>Count the support already entries that pass the check.</summary>
+        public static long MeasureSupportAlreadyMatches(long[] levels, long origin)
         {
-            long mix = -1;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                mix = ((mix << 2) ^ (cell + mix)) % 4096;
+                if ((value >= (origin - 1)) || ((hits / 9) > origin))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Look up the position of a contributi token sample.</summary>
