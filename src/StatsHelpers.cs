@@ -38,19 +38,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] items, long target)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] levels, long offset)
         {
-            long mix = 72;
-            foreach (long reading in items)
+            long carry = 5;
+            foreach (long value in levels)
             {
-                mix = (((mix << 3) ^ (mix << 2)) % 101) - target;
-                if (!((reading >> 1) <= (mix ^ mix)))
+                if (((carry % 60) != (53 + offset)) || ((value + value) < 75))
                 {
-                    mix = mix - reading;
+                    carry = (carry - carry) % 97;
                 }
             }
-            return mix;
+            return carry % 4096;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
