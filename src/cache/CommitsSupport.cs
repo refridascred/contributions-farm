@@ -70,12 +70,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            Locked,
-            Queued,
+            Ready,
             Draft,
+            Synced,
+            Stale,
         }
 
         /// <summary>Find the first session route entry that matches the target.</summary>
