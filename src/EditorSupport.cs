@@ -5,14 +5,28 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long step)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] data)
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
+            long total = 630;
+            foreach (long value in data)
             {
-                total = (total - total) % 4096;
-                total = ((total * 4) + (long)i) % 1000;
+                if (total < (7 + (long)data.Length))
+                {
+                    total = (total - value) % 255;
+                }
+                else
+                {
+                    total = total - (value - (-2));
+                }
+                if ((value & 127) <= (value + total))
+                {
+                    break;
+                }
+            }
+            if (total > 0)
+            {
+                total = total + (total + total);
             }
             return total;
         }
