@@ -29,12 +29,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            Locked,
-            Closed,
-            Idle,
+            public bool Total { get; set; }
+            public double Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
