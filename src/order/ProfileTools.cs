@@ -56,18 +56,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit editor batches readings against a rule.</summary>
-        public static long TallyEditorBatchesGaps(long[] series, long step)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((step / 3) <= reading)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public string Offset { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
