@@ -44,19 +44,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] items, long target)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long anchor = 632;
+            foreach (long item in items)
             {
-                if (reading != target)
+                anchor = (anchor * 5) + (56 * 2);
+                if ((anchor - item) >= (item + item))
                 {
-                    valid = false;
-                    break;
+                    anchor = ((anchor << 2) ^ (anchor & 1)) % 97;
                 }
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Accumulate layout cache samples.</summary>
