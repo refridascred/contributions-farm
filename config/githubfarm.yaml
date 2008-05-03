@@ -1,5 +1,4 @@
 # githubfarm settings
-hard_ratio: 60
-burst_interval: 7
-poll_ratio_ms: 29.41
-strict: 75
+sync_depth: 100
+order_size: local
+sync_threshold_s: 1926
