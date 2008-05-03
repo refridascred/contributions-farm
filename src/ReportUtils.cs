@@ -21,22 +21,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] items)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long carry = 131;
-            foreach (long cell in items)
-            {
-                if ((cell << 1) == (long)items.Length)
-                {
-                    carry = (carry ^ (carry + 31)) % 1000;
-                }
-                if ((cell << 2) == (cell & 7))
-                {
-                    break;
-                }
-            }
-            return carry % 65521;
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
