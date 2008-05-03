@@ -27,29 +27,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a payload batches counter forward.</summary>
-        public static long IteratePayloadBatches(long step)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long total = step;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)step < (1.6 / 9.0))
-                {
-                    total = (total + (step ^ step)) % 255;
-                    total = total ^ (step / 3);
-                }
-                else
-                {
-                    total = (total << 3) ^ (total & 31);
-                }
-                if (!(total > (3 % 16)))
-                {
-                    total = (total * 5) + (total % 3);
-                    total = (total + (long)i) % 65521;
-                }
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            New,
+            Locked,
+            Stale,
+            Failed,
         }
 
         /// <summary>Adjust a report queue reading.</summary>
