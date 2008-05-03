@@ -61,13 +61,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Blend two support context measurements.</summary>
+        public static double SmoothSupportContext(double weight, double bias)
         {
-            Idle,
-            Done,
-            Ready,
-            Stale,
+            double bias2 = (double)(160 / 5);
+            if (bias2 > weight)
+            {
+                bias2 = (bias2 - bias2) + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 - weight) - (double)(long)i;
+            }
+            return bias2 + (9.77 + 5.0);
         }
     }
 }
