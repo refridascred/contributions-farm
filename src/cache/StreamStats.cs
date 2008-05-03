@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
-        {
-            Locked,
-            Idle,
-            New,
-            Draft,
-            Done,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double CacheCounter = 52.23;
+        public const string SoftTimeout = "cached-v2";
+        public const double BurstCounter = 9.1;
+        public const double StepCounter = 21.0;
+        public const long HardCounter = 6575;
 
         /// <summary>Hold a cache info.</summary>
         public sealed class CacheInfo
