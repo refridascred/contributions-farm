@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many checks batch samples are out of range.</summary>
-        public static long CountChecksBatchHits(long[] samples, long limit)
+        /// <summary>Rank command record input into a small class.</summary>
+        public static long ClassifyCommandRecord(long step, long offset)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long prev = step ^ offset;
+            if (!((step - 938) >= 79))
             {
-                if (entry <= (hits - limit))
+                return 8;
+            }
+            else
+            {
+                if ((double)prev < (double)offset)
                 {
-                    hits = hits + 2;
+                    return 0;
+                }
+                else
+                {
+                    if (16 >= (offset - prev))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((prev - offset) <= (333 - prev))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
