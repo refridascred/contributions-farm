@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] values, long bound)
+        /// <summary>Validate counter graph readings against a bound.</summary>
+        public static bool GuardCounterGraphRange(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if (bound > (item * 5))
+                if (value > step)
                 {
-                    matches = matches + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Accumulate metric stats samples.</summary>
