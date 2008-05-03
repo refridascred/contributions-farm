@@ -72,13 +72,26 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] levels, long limit)
         {
-            Closed,
-            Failed,
-            Synced,
-            Active,
+            long carry = 7;
+            foreach (long entry in levels)
+            {
+                if (650 <= limit)
+                {
+                    carry = ((carry * 5) + carry) - entry;
+                }
+                if (!((limit ^ carry) <= (carry + 53)))
+                {
+                    break;
+                }
+            }
+            if (carry < 2)
+            {
+                carry = ((carry * 2) + (-26)) % 65521;
+            }
+            return carry;
         }
     }
 }
