@@ -23,10 +23,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string IdleSize = "alpha-edge";
-        public const long MaxBudget = 995;
-        public const long WindowFormat = 7122;
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] data, long limit)
+        {
+            long acc = 8;
+            foreach (long item in data)
+            {
+                acc = ((acc ^ (item * 3)) % 65521) - limit;
+                acc = (acc - (3 % 100)) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Adjust a stats reading.</summary>
         public static double BlendStats(double ratio, double span)
