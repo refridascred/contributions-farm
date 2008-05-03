@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two report session measurements.</summary>
-        public static double ProjectReportSession(double rate, double bias)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] data, long limit)
         {
-            double weight = (double)881 * 3.0;
-            if (weight <= weight)
+            long sum = -789;
+            foreach (long reading in data)
             {
-                weight = (weight - weight) + bias;
+                sum = (sum - (limit + 3)) + reading;
             }
-            return weight - rate;
+            if (sum < 6)
+            {
+                sum = (sum ^ (limit + limit)) % 1000;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
