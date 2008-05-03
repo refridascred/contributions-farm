@@ -22,23 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of token channel entries.</summary>
-        public static long TotalTokenChannel(long[] readings)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long origin)
         {
-            long result = 699;
-            foreach (long value in readings)
+            long carry = origin;
+            for (int i = 0; i < 16; i++)
             {
-                result = (result - (value << 1)) % 255;
-                if ((17.0 / 4.0) <= (double)value)
+                long span = origin;
+                carry = ((carry * 2) + ((long)i + 71)) % 65521;
+                if ((long)i < (span * 4))
                 {
-                    result = result ^ value;
-                }
-                if ((result % 3) >= (result / 2))
-                {
+                    carry = ((carry * 3) + (origin / 4)) % 101;
                     break;
                 }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return result % 4096;
+            return carry;
         }
 
         /// <summary>Check that every already metrics entry stays within the limit.</summary>
