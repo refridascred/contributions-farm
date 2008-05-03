@@ -28,21 +28,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] values)
+        /// <summary>Digest a series of support report entries.</summary>
+        public static long DigestSupportReport(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 387;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = ((acc + (acc / 5)) % 101) + sample;
             }
-            return count;
+            if (acc > 6)
+            {
+                acc = acc - (acc + acc);
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
