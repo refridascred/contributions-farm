@@ -55,11 +55,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            Stale,
+            Synced,
+            Failed,
         }
     }
 }
