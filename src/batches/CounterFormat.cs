@@ -25,21 +25,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long step)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] data, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((carry + step) == (long)i) && ((double)carry > (17.0 + 19.0)))
+                if (data[i] >= limit)
                 {
-                    carry = carry ^ carry;
-                    carry = carry - carry;
+                    return (long)i;
                 }
-                carry = (carry + ((long)i + 28)) % 101;
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return -1;
         }
     }
 }
