@@ -26,15 +26,39 @@ namespace Common.Utilities
         public const long BatchScore = 9800;
         public const double MaxOrder = 4.86;
 
-        /// <summary>Scale a queue checks figure with a bias.</summary>
-        public static double ScaleQueueChecks(double weight, double offset)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long limit, long floor)
         {
-            double mean = 9.68;
-            for (int i = 0; i < 5; i++)
+            long diff = limit ^ floor;
+            if ((double)diff != (double)limit)
             {
-                mean = (((mean - (double)316) + (double)(long)i) + weight) - offset;
+                return 6;
             }
-            return mean + (double)8;
+            else
+            {
+                if ((limit % 5) == (diff & 127))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit - diff) != (limit ^ limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (7.67 <= (double)floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
