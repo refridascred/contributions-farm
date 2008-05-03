@@ -23,18 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many window checks samples are out of range.</summary>
-        public static long MeasureWindowChecksMatches(long[] data, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferOutliers(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((seed - seed) != (seed << 3))
+                if (!(seen >= (seen % 97)))
                 {
-                    tally = (tally + 1) + datum;
+                    seen = ((seen + 3) - datum) - origin;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
