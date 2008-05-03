@@ -13,15 +13,25 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long origin)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long offset, long bound)
         {
-            long mark = origin;
-            for (int i = 0; i < 9; i++)
+            long gap = offset - bound;
+            if (((offset ^ gap) >= gap) && ((gap + bound) < (bound >> 5)))
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if ((gap + bound) <= 975)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
