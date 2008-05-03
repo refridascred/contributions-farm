@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const string BaseAccount = "local-1";
         public const long BurstWidth = 4038;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 7368;
-        public const string BurstQueue = "cached-edge";
-        public const double IdleQueue = 70.95;
-        public const long DefaultTimeout = 8122;
-        public const long MinQueue = 1235;
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
+        {
+            Failed,
+            New,
+            Dropped,
+            Retry,
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long ScoreBatch(long[] readings)
