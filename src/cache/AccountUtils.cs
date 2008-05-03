@@ -19,18 +19,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricMatches(long[] values)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long offset, long origin)
         {
-            long count = 0;
-            foreach (long value in values)
+            long cur = offset + origin;
+            if ((cur / 5) == (origin % 10))
             {
-                if ((value + value) != (count + value))
+                return 0;
+            }
+            else
+            {
+                if ((origin << 2) < cur)
                 {
-                    count = count + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((20.0 / 4.0) <= (double)cur)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)cur >= (12.0 / 5.0)) || ((cur - offset) <= (offset ^ origin)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Match up token samples.</summary>
