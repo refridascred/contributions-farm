@@ -78,18 +78,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] items, long seed)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (((seed - 63) <= (61 << 3)) && (seed >= (seed - reading)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Active,
+            Synced,
+            Retry,
+            New,
+            Failed,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
