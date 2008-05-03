@@ -12,22 +12,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] data)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (((5.0 / 6.0) <= (double)sample) || ((matches / 6) > (80 / 8)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Done,
+            Queued,
+            Idle,
         }
 
         /// <summary>Compare every pair of report readings.</summary>
