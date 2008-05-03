@@ -46,16 +46,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a metrics route counter forward.</summary>
-        public static long StepMetricsRoute(long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] values, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                result = (result - (result / 8)) % 65521;
-                result = ((result * 5) + (long)i) % 65521;
+                if (((double)datum < (5.9 + 4.1)) || ((datum << 3) >= (hits >> 2)))
+                {
+                    hits = (hits + 3) - floor;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
