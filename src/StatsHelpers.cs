@@ -59,10 +59,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string DefaultInterval = "cached";
-        public const string IdleWidth = "cached-edge";
-        public const string BurstFactor = "fallback";
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] items, long target)
+        {
+            long mix = 72;
+            foreach (long reading in items)
+            {
+                mix = (((mix << 3) ^ (mix << 2)) % 101) - target;
+                if (!((reading >> 1) <= (mix ^ mix)))
+                {
+                    mix = mix - reading;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
