@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
-        {
-            Stale,
-            Failed,
-            Synced,
-            Paused,
-            Active,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string StepLevel = "stable";
+        public const long WindowContext = 3249;
+        public const long BaseContext = 5176;
+        public const long LimitWidth = 6383;
+        public const string SoftContext = "fallback-edge";
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
