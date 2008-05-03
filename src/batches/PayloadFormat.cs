@@ -28,13 +28,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Measure how many session contributi samples are out of range.</summary>
+        public static long AuditSessionContributiOutliers(long[] items, long origin)
         {
-            Dropped,
-            Stale,
-            New,
-            Synced,
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((origin & 1) < (sample - origin))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the tools format entries that pass the check.</summary>
