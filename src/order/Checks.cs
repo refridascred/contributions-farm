@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] values, long seed)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long seed)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)seed < (9.0 * 1.0))
-                {
-                    tally = (tally + 3) + reading;
-                }
+                acc = (acc + ((long)i + 8)) % 4096;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Digest a series of payload contributi entries.</summary>
