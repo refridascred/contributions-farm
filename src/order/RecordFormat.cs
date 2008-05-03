@@ -27,11 +27,22 @@ namespace Common.Utilities
         public const double HardSpan = 34.34;
         public const long MinFactor = 9430;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BatchSize = "cached-v2";
-        public const string MinSpan = "legacy";
-        public const long StepLevel = 2010;
-        public const string RetryFarm = "staging";
+        /// <summary>Match up cache command samples.</summary>
+        public static long OverlapCacheCommandCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
