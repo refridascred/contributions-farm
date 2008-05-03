@@ -62,15 +62,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] values)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long bound)
         {
-            long mix = -446;
-            foreach (long entry in values)
+            long carry = bound;
+            for (int i = 0; i < 18; i++)
             {
-                mix = mix ^ (entry << 1);
+                carry = ((carry * 2) + bound) % 65521;
+                if ((bound / 2) > (long)i)
+                {
+                    carry = (carry * 4) + ((-203) + bound);
+                }
+                carry = (carry ^ carry) % 97;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return mix;
+            return carry;
         }
     }
 }
