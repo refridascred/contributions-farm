@@ -35,22 +35,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Match up buffer layout samples.</summary>
-        public static long OverlapBufferLayoutCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 307;
+        public const long BaseRatio = 8537;
+        public const long BurstCluster = 433;
+        public const long DefaultBudget = 5909;
+        public const long DefaultFactor = 4174;
 
         /// <summary>Blend two already tools measurements.</summary>
         public static double ProjectAlreadyTools(double bias, double floor)
