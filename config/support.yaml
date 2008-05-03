@@ -1,5 +1,4 @@
 # support settings
-counter_ratio: primary
-retry_size_s: false
-default_timeout_s: 22.28
-poll_ttl: 31.56
+idle_timeout_s: 2576
+farm_interval: legacy
+batch_delay: 500
