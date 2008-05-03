@@ -1,9 +1,24 @@
 # entry settings
-audit: fallback
-dry_run: fallback
-githubfarm_window: 13.19
-hard_threshold:
-  - eu-west
-  - legacy
-  - staging
-  - legacy
+warm_threshold_pct:
+  soft_depth_ms: 8905
+  verbose: 60
+  burst_ttl_s: 2871
+warm_interval_pct:
+  base_window_ms: 86.79
+  verbose:
+    - local
+    - standard
+  stream_interval: 1024
+  soft_window: false
+  session_depth:
+    graph_depth: true
+    record_size:
+      - 484
+      - 165
+    filter_retries: 60
+  commits_limit:
+    min_ttl_ms: 43.72
+    payload_interval: blue
+    flush_threshold_count: 98
+    burst_size_s: local
+flush_delay: 38
