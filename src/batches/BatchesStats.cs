@@ -26,24 +26,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long target, long offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] levels, long limit)
         {
-            if ((target + offset) >= offset)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((9.0 * 3.9) == (double)target)
+                if (reading < limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
