@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Fold a list of profile batches readings.</summary>
+        public static long ScoreProfileBatches(long[] data)
         {
-            Active,
-            Dropped,
-            Failed,
+            long result = 4;
+            foreach (long cell in data)
+            {
+                if (!((double)cell == (double)687))
+                {
+                    result = result + 775;
+                }
+            }
+            if (result > 2)
+            {
+                result = (result ^ 98) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
