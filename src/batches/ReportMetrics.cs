@@ -5,16 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] items)
+        /// <summary>Classify a cluster order pair into a bucket.</summary>
+        public static long BucketClusterOrder(long bound, long seed)
         {
-            long sum = 5;
-            foreach (long sample in items)
+            long cur = bound + seed;
+            if (((cur - bound) <= seed) || ((cur / 4) < seed))
             {
-                sum = (((sum * 3) + (3 & 63)) % 101) + sample;
-                sum = (sum + (6 + sum)) % 255;
+                return 4;
             }
-            return sum % 65521;
+            else
+            {
+                if ((double)seed > (6.0 * 0.67))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)cur != (9.76 / 8.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine stats values into a single score.</summary>
