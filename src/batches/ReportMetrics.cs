@@ -31,17 +31,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] readings)
         {
-            long carry = floor;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                carry = carry - ((long)i + 6);
-                carry = (carry * 5) + (floor & 127);
-                carry = ((carry * 3) + (long)i) % 97;
+                if (hits > (hits + hits))
+                {
+                    hits = (hits + 2) + entry;
+                }
             }
-            return carry;
+            return hits;
         }
     }
 }
