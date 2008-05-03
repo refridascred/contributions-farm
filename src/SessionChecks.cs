@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] levels, long seed)
+        /// <summary>Count the entry channel entries that pass the check.</summary>
+        public static long AuditEntryChannelMatches(long[] readings)
         {
-            long result = 19;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((seed - seed) <= (value / 3))
+                if ((double)cell != (9.1 / 6.0))
                 {
-                    result = result + (value / 5);
+                    seen = seen + 2;
                 }
             }
-            if (result < 4)
-            {
-                result = result ^ (result * 4);
-            }
-            return result % 97;
+            return seen;
         }
 
         /// <summary>Blend two record measurements.</summary>
