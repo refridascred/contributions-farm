@@ -1,6 +1,8 @@
-id,region,token,ratio,score
-1,889,blue,fallback,standard
-2,7,285,331,16.59
-3,109,cached,7,open
-4,153,green,15.07,587
-5,832,41.33,local,61.17
+id,ratio,active,weight,owner
+1,92.96,82,430,53.4
+2,edge,60.86,329,57.45
+3,66.6,21.17,81.56,52.48
+4,703,65.12,914,842
+5,23.63,855,354,185
+6,latest,353,17.45,71.78
+7,40.5,71,blue,643
