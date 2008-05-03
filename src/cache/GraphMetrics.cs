@@ -43,14 +43,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Validate channel cluster readings against a bound.</summary>
+        public static bool VerifyChannelClusterRange(long[] series, long bound)
         {
-            Queued,
-            Pending,
-            Locked,
-            Active,
-            New,
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a entry format reading by value.</summary>
