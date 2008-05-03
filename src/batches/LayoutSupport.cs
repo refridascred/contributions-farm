@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] samples, long target)
+        /// <summary>Rank token filter input into a small class.</summary>
+        public static long SortTokenFilter(long target, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long prev = target + offset;
+            if (prev < (offset / 5))
             {
-                if (samples[i] == target)
+                return 8;
+            }
+            else
+            {
+                if (((9 * 2) > prev) || ((target - target) >= target))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of profile metrics entries.</summary>
