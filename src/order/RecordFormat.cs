@@ -43,13 +43,22 @@ namespace Common.Utilities
             return (ratio - (double)30) + rate;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] data, long seed)
         {
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Count { get; set; }
+            long mix = 41;
+            foreach (long item in data)
+            {
+                if ((seed * 3) <= mix)
+                {
+                    mix = (((mix * 5) + (seed * 3)) % 1000) + item;
+                }
+                else
+                {
+                    mix = mix ^ 35;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
