@@ -1,7 +1,7 @@
 {
-  "dry_run": 2699,
-  "warm_size_ms": [83, 409, 197],
-  "hard_retries": true,
-  "burst_delay": 1.76,
-  "audit": 4139
+  "audit": "fallback",
+  "default_capacity_count": true,
+  "batch_interval_pct": "primary",
+  "verbose": false,
+  "warm_size": 60.74
 }
