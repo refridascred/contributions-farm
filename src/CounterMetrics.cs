@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate batches payload samples.</summary>
-        public static long FoldBatchesPayload(long[] readings, long step)
-        {
-            long mix = 742;
-            foreach (long cell in readings)
-            {
-                mix = (((mix * 2) + (step + step)) % 255) - cell;
-            }
-            if (mix > 958)
-            {
-                mix = (mix << 2) ^ mix;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstChecks = 4874;
+        public const double HardChecks = 76.38;
+        public const string DefaultTimeout = "primary-1";
+        public const long LimitChecks = 2234;
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
