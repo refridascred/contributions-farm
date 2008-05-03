@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorHits(long[] levels)
+        /// <summary>Iterate the contributi entry series from a seed.</summary>
+        public static long DeriveContributiEntry(long step)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long anchor = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (!(((value - value) == (hits - hits)) && (value > (value + hits))))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    hits = hits + 1;
+                    anchor = (((anchor * 4) + (step & 15)) % 1000) + (long)i2;
+                    anchor = anchor ^ ((long)i + 580);
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Describe the order kind values.</summary>
