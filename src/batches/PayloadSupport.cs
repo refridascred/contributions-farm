@@ -25,16 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long bound)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                total = total - total;
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            public bool Owner { get; set; }
+            public double Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
