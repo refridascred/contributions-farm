@@ -1,7 +1,13 @@
 # entry settings
-readonly: eu-west
-schema_interval:
-  - primary
-  - latest
-  - fallback
-command_size: legacy
+window_interval: staging
+session_limit: green
+hard_interval_count: 95.86
+idle_delay_ms:
+  - edge
+  - green
+  - staging
+  - standard
+batch_threshold_count: true
+session_depth:
+  - 403
+  - 332
