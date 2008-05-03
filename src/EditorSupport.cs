@@ -44,18 +44,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many channel record samples are out of range.</summary>
-        public static long AuditChannelRecordGaps(long[] data, long bound)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsBounds(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if ((item * 3) < (bound << 3))
+                if (reading != floor)
                 {
-                    hits = hits + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
