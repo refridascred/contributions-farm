@@ -33,19 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of account counter readings.</summary>
-        public static long WeighAccountCounter(long[] readings, long seed)
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double scale, double floor)
         {
-            long mix = 8;
-            foreach (long entry in readings)
-            {
-                mix = ((mix + (seed % 2)) % 97) + entry;
-            }
-            if (mix < 5)
-            {
-                mix = (mix * 3) + (seed + mix);
-            }
-            return mix;
+            double load = floor;
+            return (load - floor) + scale;
         }
     }
 }
