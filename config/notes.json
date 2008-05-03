@@ -1,6 +1,6 @@
 {
-  "retry_depth": ["edge", "standard", "primary"],
-  "idle_delay_count": "staging",
-  "poll_ttl": "standard",
-  "soft_ttl": 35.28
+  "readonly": 63,
+  "base_delay_ms": true,
+  "graph_depth": ["strict", "staging"],
+  "compress": true
 }
