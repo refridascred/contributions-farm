@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many session queue samples are out of range.</summary>
-        public static long AuditSessionQueueOutliers(long[] items, long offset)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((offset - matches) >= offset)
-                {
-                    matches = (matches + 2) + entry;
-                }
-            }
-            return matches;
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the counter mode values.</summary>
