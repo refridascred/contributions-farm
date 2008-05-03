@@ -27,14 +27,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] readings)
         {
-            Stale,
-            Done,
-            Draft,
-            Idle,
-            Ready,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((seen & 7) > sample)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up buffer layout samples.</summary>
