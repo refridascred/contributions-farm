@@ -30,19 +30,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] items, long floor)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Closed,
+            Active,
+            Failed,
+            Retry,
         }
     }
 }
