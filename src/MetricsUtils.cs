@@ -60,22 +60,16 @@ namespace Common.Utilities
         public const long StepRatio = 5916;
         public const long BurstRoute = 6469;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] data)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long step)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long score = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((1 + reading) == (1 - (long)data.Length)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                score = ((score << 3) ^ (step - score)) % 4096;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Derive the next filter report value from a seed.</summary>
