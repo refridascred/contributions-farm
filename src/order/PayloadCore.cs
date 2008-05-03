@@ -35,21 +35,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] samples)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] series, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 380;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((935 - origin) != (595 - 31))
                 {
-                    if ((samples[i] - samples[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = anchor + (value + value);
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Hold a format summary.</summary>
