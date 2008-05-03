@@ -72,9 +72,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLayout = 1193;
-        public const long DefaultBudget = 2452;
-        public const double HardLayout = 72.62;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] series)
+        {
+            long score = -369;
+            foreach (long reading in series)
+            {
+                score = ((score * 5) + (357 ^ score)) % 97;
+                if (score <= (247 + reading))
+                {
+                    break;
+                }
+            }
+            if (score < (-5))
+            {
+                score = score - (score + score);
+            }
+            return score % 65521;
+        }
     }
 }
