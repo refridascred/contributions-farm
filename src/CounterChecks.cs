@@ -53,18 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] items, long limit)
+        /// <summary>Blend two stats context measurements.</summary>
+        public static double BlendStatsContext(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            double drift = bias;
+            if (drift <= weight)
             {
-                if ((double)datum != (double)tally)
-                {
-                    tally = (tally + 1) - limit;
-                }
+                drift = drift + (double)(-80);
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + weight) - (double)(long)i;
+            }
+            return drift - weight;
         }
 
         /// <summary>Validate format stats readings against a bound.</summary>
