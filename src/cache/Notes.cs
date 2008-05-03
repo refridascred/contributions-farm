@@ -35,38 +35,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long target, long limit)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            if (!((220 + (-5)) > (limit * 3)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (991 >= (limit << 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)target > (8.6 - 9.3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((double)limit >= (4.3 * 12.0)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public double Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
