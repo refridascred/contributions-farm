@@ -1,6 +1,6 @@
 {
-  "token_delay": "standard",
-  "order_retries": 63.45,
-  "cache_depth_ms": [373, 8],
-  "readonly": "legacy"
+  "hard_capacity_s": false,
+  "sync_ttl": [137, 417, 206],
+  "warm_threshold_pct": [458, 217],
+  "dry_run": 500
 }
