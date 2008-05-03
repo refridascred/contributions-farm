@@ -36,19 +36,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((cell + cell) > (cell + tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitBudget = 9022;
+        public const double MaxCounter = 34.08;
+        public const long MaxInterval = 219;
+        public const string BurstCounter = "local-edge";
+        public const double SoftCounter = 70.34;
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
