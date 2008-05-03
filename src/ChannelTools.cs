@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCommits = 9760;
-        public const string BurstInterval = "cached-v2";
-        public const string StepTimeout = "latest-1";
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] readings, long offset)
+        {
+            long carry = 69;
+            foreach (long value in readings)
+            {
+                carry = ((carry + 558) ^ value) - offset;
+                carry = (carry ^ carry) % 4096;
+            }
+            if (carry < 808)
+            {
+                carry = carry - (carry >> 3);
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
