@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] readings, long step)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public long Total { get; set; }
+            public double Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Roll a route window counter forward.</summary>
