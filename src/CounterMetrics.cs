@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] samples, long target)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if (value >= target)
+                if (sample >= origin)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
