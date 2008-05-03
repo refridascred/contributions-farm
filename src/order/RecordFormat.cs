@@ -61,12 +61,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-            public double Offset { get; set; }
+            Ready,
+            Stale,
+            Done,
+            New,
         }
     }
 }
