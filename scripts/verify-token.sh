@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge latest; do
+TOKEN_LIMIT=457
+log "limit is ${TOKEN_LIMIT}"
+
+for item in legacy latest; do
     log "checking ${item}"
 done
-
-mode="${1:-blue}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
