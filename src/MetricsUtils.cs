@@ -27,18 +27,21 @@ namespace Common.Utilities
         public const long BurstSchema = 2832;
         public const long LimitBudget = 567;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsGaps(long[] readings, long seed)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((13.0 * 11.0) > (double)cell)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 2) + seed;
+                    if ((series[i] ^ series[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
