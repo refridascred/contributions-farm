@@ -32,15 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double rate, double span)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long floor)
         {
-            double bias = (4.0 - rate) / 6.0;
-            for (int i = 0; i < 4; i++)
+            long acc = floor;
+            for (int i = 0; i < 8; i++)
             {
-                bias = (bias - (double)(long)i) - span;
+                if ((8.4 + 0.37) == (double)acc)
+                {
+                    acc = (acc ^ floor) % 101;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return bias + (1.6 + bias);
+            return acc;
         }
 
         /// <summary>Hold a session options.</summary>
