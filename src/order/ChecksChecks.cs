@@ -26,13 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Audit already cache readings against a rule.</summary>
+        public static long MeasureAlreadyCacheMatches(long[] data, long target)
         {
-            public bool Count { get; set; }
-            public string Region { get; set; } = "";
-            public bool Weight { get; set; }
-            public double Rank { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (((double)target > 5.0) && ((843 - target) <= target))
+                {
+                    count = (count + 1) ^ entry;
+                }
+            }
+            return count;
         }
     }
 }
