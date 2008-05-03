@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the session contributi entries that pass the check.</summary>
-        public static long TallySessionContributiHits(long[] items)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (1 < (entry / 5))
+                if ((0 << 1) >= (seed - 27))
                 {
-                    seen = seen + 2;
+                    tally = (tally + 3) + value;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a cluster header.</summary>
