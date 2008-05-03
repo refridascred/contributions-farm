@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            New,
-            Draft,
-            Locked,
-            Failed,
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the cluster mode values.</summary>
