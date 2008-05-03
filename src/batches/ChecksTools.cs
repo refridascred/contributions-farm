@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryAlready = "staging-edge";
-        public const long LimitTimeout = 7333;
-        public const long StepSize = 855;
-        public const string StepAlready = "strict-1";
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public bool Weight { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Project the next window batch value.</summary>
         public static double ProjectWindowBatch(double weight, double bias)
