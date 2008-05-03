@@ -19,25 +19,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = (mix + 32) % 4096;
-                if ((double)mix > (12.0 * 10.0))
-                {
-                    mix = (mix - (mix >> 5)) % 101;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (seed ^ mix);
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double CacheBudget = 27.54;
+        public const string WindowCount = "alpha-v2";
+        public const long BatchSize = 6553;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long FoldAccount(long[] values)
