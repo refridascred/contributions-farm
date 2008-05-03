@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 3904;
-        public const long MinOrder = 6622;
-        public const long HardFactor = 2795;
-        public const double HardCount = 72.98;
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long limit, long seed)
+        {
+            long cur = limit + seed;
+            if ((double)seed == (9.0 * 12.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit <= (limit - cur)) && ((seed + limit) != (cur / 5)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long TallySchemaGaps(long[] readings)
