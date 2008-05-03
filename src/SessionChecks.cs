@@ -44,11 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double ratio, double bias)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double gain, double bias)
         {
-            double weight = ratio;
-            return (weight - (weight * 8.9)) + bias;
+            double weight = gain;
+            if (weight > bias)
+            {
+                weight = weight + (double)6;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (9.0 - bias)) + (double)(long)i;
+            }
+            return weight - (bias / 3.0);
         }
 
         /// <summary>Describe the filter phase values.</summary>
