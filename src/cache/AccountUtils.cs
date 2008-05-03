@@ -38,24 +38,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long offset, long origin)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            if (!(((-58) * 2) == (491 + offset)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin + offset) >= (244 % 24))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Active,
+            Queued,
+            Failed,
+            Draft,
         }
     }
 }
