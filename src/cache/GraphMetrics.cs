@@ -61,19 +61,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] readings)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long origin)
         {
-            long total = 6;
-            foreach (long sample in readings)
+            long mark = origin;
+            for (int i = 0; i < 18; i++)
             {
-                total = (total + (total + total)) + sample;
+                if ((mark ^ origin) >= origin)
+                {
+                    break;
+                }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mark = (mark + (156 ^ mark)) - (long)i2;
+                    mark = ((mark * 2) + (mark * 2)) % 1000;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            if (total > 961)
-            {
-                total = (total - (total + total)) % 1000;
-            }
-            return total % 4096;
+            return mark;
         }
     }
 }
