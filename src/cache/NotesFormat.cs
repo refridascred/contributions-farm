@@ -19,21 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] values)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((5.0 / 6.0) <= (double)sample) || ((matches / 6) > (80 / 8)))
                 {
-                    if ((values[i] ^ values[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
