@@ -56,17 +56,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long target)
+        /// <summary>Count the cache checks entries that pass the check.</summary>
+        public static long TallyCacheChecksMatches(long[] samples, long origin)
         {
-            long acc = target;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                long cur = (acc & 15) + (acc / 9);
-                acc = acc ^ cur;
-                acc = ((acc * 4) + (long)i) % 101;
+                if (((tally + tally) < (111 + origin)) && ((2.9 / 2.0) > (double)origin))
+                {
+                    tally = (tally + 1) - sample;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
