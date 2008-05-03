@@ -1,7 +1,5 @@
 # githubfarm settings
-sync_threshold_s: true
-base_depth_pct: local
-session_depth: 2209
-retry_threshold_ms: true
-strict: 91
-max_ratio_s: eu-west
+hard_ratio: 60
+burst_interval: 7
+poll_ratio_ms: 29.41
+strict: 75
