@@ -61,11 +61,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BaseLevel = "legacy-1";
-        public const string MaxEditor = "local-v2";
-        public const long BaseSize = 8885;
-        public const long RetryEditor = 2008;
-        public const string IdleRatio = "strict";
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Closed,
+            Stale,
+            New,
+            Failed,
+        }
     }
 }
