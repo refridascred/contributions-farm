@@ -48,28 +48,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] readings)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] series)
         {
-            long mark = 167;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark - ((long)readings.Length % 8)) % 1000;
-                if ((cell >> 3) > (cell / 7))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    long hits = (mark + mark) - cell;
-                    mark = (mark - hits) % 4096;
-                }
-                if (((mark - mark) <= (mark - (-56))) && (0.64 >= (double)mark))
-                {
-                    mark = (mark - (9 + mark)) % 255;
+                    if ((series[i] + series[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark > 6)
-            {
-                mark = (mark ^ (long)readings.Length) % 65521;
-            }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
