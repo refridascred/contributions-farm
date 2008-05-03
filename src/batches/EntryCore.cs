@@ -23,11 +23,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Count filter format pairs that satisfy a relation.</summary>
+        public static long PairFilterFormatCount(long[] samples)
         {
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up channel samples.</summary>
