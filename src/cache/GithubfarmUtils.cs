@@ -43,19 +43,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double ratio, double span)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            double ratio2 = 2.0 - (double)915;
-            if (ratio2 < ratio2)
-            {
-                ratio2 = (ratio2 + 15.0) - ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 + ratio2) + (double)(long)i;
-            }
-            return ratio2 - (span / 6.0);
+            public bool Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Region { get; set; } = "";
         }
     }
 }
