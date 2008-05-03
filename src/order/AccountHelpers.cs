@@ -16,13 +16,19 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Blend two counter editor measurements.</summary>
+        public static double ScaleCounterEditor(double rate, double span)
         {
-            public bool Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public double Owner { get; set; }
-            public string Limit { get; set; } = "";
+            double rate2 = (double)42;
+            if (rate2 <= (rate * 1.1))
+            {
+                rate2 = rate2 - rate2;
+            }
+            else
+            {
+                rate2 = rate2 - rate;
+            }
+            return rate2 + (span + rate2);
         }
 
         /// <summary>Combine context values into a single score.</summary>
