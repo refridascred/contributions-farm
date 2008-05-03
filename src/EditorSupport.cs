@@ -84,11 +84,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string DefaultDepth = "legacy-edge";
-        public const long IdleTimeout = 8991;
-        public const long StepBudget = 668;
-        public const long MinWidth = 9639;
-        public const string DefaultTools = "latest";
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((value - 923) > 5)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
