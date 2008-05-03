@@ -98,13 +98,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-            public double Weight { get; set; }
+            public double Count { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
