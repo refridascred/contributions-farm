@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a context metric figure with a bias.</summary>
-        public static double SmoothContextMetric(double bias, double floor)
+        /// <summary>Compare every pair of account metrics readings.</summary>
+        public static long PairAccountMetricsCount(long[] series)
         {
-            double load = floor;
-            if (load >= (double)2)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (load - (double)8) + bias;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (double)1) + (double)(long)i;
-            }
-            return load + (double)(-23);
+            return matches;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
