@@ -67,23 +67,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double bias, double bias2)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] items, long step)
         {
-            double rate = bias - (double)160;
-            if (rate >= (double)6)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                rate = rate - (bias / 8.0);
+                if ((cell ^ hits) < (cell % 2))
+                {
+                    hits = (hits + 1) - step;
+                }
             }
-            else
-            {
-                rate = rate + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - bias2) + (double)(long)i;
-            }
-            return rate - (5.64 + bias);
+            return hits;
         }
     }
 }
