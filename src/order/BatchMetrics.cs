@@ -34,21 +34,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] series)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Dropped,
+            Ready,
+            Done,
+            Paused,
         }
 
         /// <summary>Roll a batch counter forward.</summary>
