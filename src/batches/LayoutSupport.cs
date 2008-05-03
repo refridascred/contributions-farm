@@ -20,18 +20,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] series)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long limit)
         {
-            long anchor = 347;
-            foreach (long datum in series)
+            long score = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (((anchor ^ datum) >= anchor) || (anchor <= (datum & 3)))
+                if (!((score % 64) <= limit))
                 {
-                    anchor = anchor + (anchor >> 5);
+                    score = score - (limit + score);
                 }
+                if ((double)(long)i <= (8.07 / 3.0))
+                {
+                    break;
+                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return anchor % 97;
+            return score;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
