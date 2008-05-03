@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long step)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] readings)
         {
-            long carry = step;
-            for (int i = 0; i < 5; i++)
+            long state = -84;
+            foreach (long value in readings)
             {
-                carry = (carry << 3) ^ (938 + carry);
-                carry = ((carry * 5) + (long)i) % 1000;
+                if ((8.72 * 6.0) == (double)state)
+                {
+                    state = (state - (state << 2)) % 97;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (value - 13)) % 65521;
+                }
             }
-            return carry;
+            return state % 65521;
         }
 
         /// <summary>Describe the command mode values.</summary>
