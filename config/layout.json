@@ -1,18 +1,10 @@
 {
-  "persist": "legacy",
-  "context_ttl": "eu-west",
-  "cache_ratio_ms": {
-    "checks_depth": {
-      "format_threshold": 500,
-      "compress": "eu-west",
-      "base_depth_pct": "cached",
-      "default_threshold_ms": ["blue", "strict", "eu-west"],
-      "buffer_limit": 53.33
-    },
-    "retry_window_ms": "strict",
-    "batch_timeout_pct": 1024,
-    "notes_interval": "fallback",
-    "warm_retries_count": "strict",
-    "contributi_ttl": false
-  }
+  "payload_size": false,
+  "cache_window": {
+    "token_retries": ["eu-west", "standard", "staging"],
+    "sync_threshold": [199, 478, 482, 295],
+    "compress": 6,
+    "commits_threshold": "local"
+  },
+  "sync_depth": "edge"
 }
