@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every cache farm entry stays within the limit.</summary>
-        public static bool ValidateCacheFarmRange(long[] data, long seed)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public long Count { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Rank farm entry input into a small class.</summary>
