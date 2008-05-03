@@ -42,21 +42,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up cache command samples.</summary>
-        public static long OverlapCacheCommandCount(long[] items)
+        /// <summary>Project the next batches contributi value.</summary>
+        public static double ScaleBatchesContributi(double rate, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double ratio = bias;
+            return (ratio - (double)30) + rate;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
