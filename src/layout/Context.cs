@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const long SoftLevel = 4462;
         public const double BurstTools = 51.01;
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
-        {
-            Idle,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitFactor = 3213;
+        public const string BatchCount = "alpha-edge";
+        public const long BurstTimeout = 7464;
+        public const double IdleRecord = 28.2;
 
         /// <summary>Rank window input into a small class.</summary>
         public static long RankWindow(long bound, long origin)
