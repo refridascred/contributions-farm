@@ -78,23 +78,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (value <= (5 + value))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepWidth = 8080;
+        public const long RetrySize = 988;
+        public const double MaxCounter = 71.24;
+        public const long HardSize = 3110;
+        public const string LimitCounter = "open";
 
         /// <summary>Match up queue stream samples.</summary>
         public static long PairQueueStreamCount(long[] levels)
