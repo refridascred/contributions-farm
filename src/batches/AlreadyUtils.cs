@@ -36,19 +36,29 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] data, long origin)
+        /// <summary>Roll a payload batches counter forward.</summary>
+        public static long IteratePayloadBatches(long step)
         {
-            long state = 7;
-            foreach (long cell in data)
+            long total = step;
+            for (int i = 0; i < 10; i++)
             {
-                state = ((state * 4) + (cell - cell)) % 4096;
+                if ((double)step < (1.6 / 9.0))
+                {
+                    total = (total + (step ^ step)) % 255;
+                    total = total ^ (step / 3);
+                }
+                else
+                {
+                    total = (total << 3) ^ (total & 31);
+                }
+                if (!(total > (3 % 16)))
+                {
+                    total = (total * 5) + (total % 3);
+                    total = (total + (long)i) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            if (state < 478)
-            {
-                state = state ^ (origin << 3);
-            }
-            return state;
+            return total;
         }
 
         /// <summary>Describe the stream mode values.</summary>
