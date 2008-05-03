@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] values)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorHits(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(((value - value) == (hits - hits)) && (value > (value + hits))))
                 {
-                    if ((values[i] - values[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
