@@ -1,8 +1,33 @@
 {
-  "verbose": 6385,
-  "retry_capacity_count": 68,
-  "notes_retries": 100,
-  "record_ratio": 84.93,
-  "counter_size": "staging",
-  "sync_retries": 41
+  "token_depth": "green",
+  "max_ttl_ms": "stable",
+  "max_threshold": "strict",
+  "entry_threshold": {
+    "entry_limit": "strict",
+    "batch_limit_s": {
+      "batch_limit_pct": 75,
+      "verbose": 1024,
+      "readonly": false,
+      "poll_ttl_count": "eu-west",
+      "base_retries": 75.21
+    },
+    "account_retries": 500,
+    "verbose": ["eu-west", "latest"],
+    "commits_limit": 7594
+  },
+  "persist": {
+    "persist": 72,
+    "hard_ratio": "edge",
+    "enabled": 30,
+    "stats_limit": 68.74,
+    "flush_interval_pct": {
+      "audit": true,
+      "farm_size": false,
+      "profile_capacity": 7,
+      "max_ttl": "staging",
+      "cache_window_ms": "open",
+      "min_retries_pct": 72.61
+    },
+    "min_window_ms": 71
+  }
 }
