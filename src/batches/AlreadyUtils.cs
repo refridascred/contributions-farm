@@ -45,20 +45,12 @@ namespace Common.Utilities
         public const long RetrySize = 7722;
         public const string SoftContributi = "legacy-1";
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long origin)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long total = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((origin + (long)i) > 699)
-                {
-                    total = total + (origin + total);
-                    total = (total ^ ((long)i + total)) % 101;
-                }
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            public double Limit { get; set; }
+            public double Mode { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the metric mode values.</summary>
