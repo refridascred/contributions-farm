@@ -32,22 +32,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] series, long seed)
+        /// <summary>Validate schema commits readings against a bound.</summary>
+        public static bool ValidateSchemaCommitsRange(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if ((9.53 + 5.9) <= (double)seed)
+                if (sample >= limit)
                 {
-                    count = (count + 3) + entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
