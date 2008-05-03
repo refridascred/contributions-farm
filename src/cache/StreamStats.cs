@@ -41,13 +41,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Look up the position of a record layout sample.</summary>
+        public static long FindRecordLayoutIndex(long[] samples, long seed)
         {
-            Locked,
-            Draft,
-            Closed,
-            Failed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
