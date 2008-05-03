@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long step, long bound)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long lane = step - bound;
-            if ((double)bound >= (double)7)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step <= (lane % 2)) && ((bound % 7) > (step - lane)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)bound > (2.0 * 9.0)) && ((double)step <= (double)lane))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public bool Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Locate a report reading by value.</summary>
