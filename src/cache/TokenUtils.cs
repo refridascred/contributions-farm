@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long target, long origin)
         {
-            Paused,
-            Draft,
-            Closed,
-            New,
-            Idle,
+            if ((63 * 2) < (target % 64))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((7.0 / 8.0) > (double)origin) || (target < (190 & 7)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin + origin) > 54)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
