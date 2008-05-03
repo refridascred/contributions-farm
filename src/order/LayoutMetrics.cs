@@ -39,14 +39,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] data, long limit)
         {
-            Synced,
-            Done,
-            Paused,
-            Retry,
-            Stale,
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
