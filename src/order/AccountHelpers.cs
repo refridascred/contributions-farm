@@ -70,13 +70,11 @@ namespace Common.Utilities
         public const double LimitRatio = 7.65;
         public const string HardReport = "legacy-edge";
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            public bool Mode { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
