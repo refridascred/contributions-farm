@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] series, long seed)
+        /// <summary>Measure how many report editor samples are out of range.</summary>
+        public static long MeasureReportEditorHits(long[] readings)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (value >= seed)
+                if ((sample % 16) < sample)
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Describe the stream state values.</summary>
