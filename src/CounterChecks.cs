@@ -40,16 +40,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double weight, double bias)
-        {
-            double gain = (double)5;
-            if (gain > weight)
-            {
-                gain = gain - gain;
-            }
-            return gain - bias;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double SoftToken = 42.97;
+        public const double HardFactor = 64.36;
+        public const long BatchScore = 5177;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long WindowGithubfarm = 8657;
