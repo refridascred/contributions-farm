@@ -52,11 +52,19 @@ namespace Common.Utilities
         public const double BaseLevel = 38.9;
         public const long SoftChecks = 1300;
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] levels, long origin)
         {
-            public bool Stamp { get; set; }
-            public double Score { get; set; }
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
