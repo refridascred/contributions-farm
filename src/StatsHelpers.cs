@@ -53,22 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit farm graph readings against a rule.</summary>
-        public static long AuditFarmGraphGaps(long[] readings, long origin)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if ((seen * 2) != (cell + cell))
+                if (sample > limit)
                 {
-                    seen = (seen + 3) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
