@@ -1,14 +1,6 @@
 # githubfarm settings
-hard_window_s: local
-cache_interval_ms: primary
-base_threshold_count:
-  strict: true
-  readonly: 95.79
-  dry_run:
-    - strict
-    - staging
-    - strict
-    - fallback
-  payload_ratio: 79.65
-  context_threshold: true
-checks_window: staging
+idle_capacity_ms:
+  - green
+  - blue
+idle_size: false
+poll_limit_count: latest
