@@ -45,23 +45,19 @@ namespace Common.Utilities
             return bias + (weight - 20.0);
         }
 
-        /// <summary>Combine checks metrics values into a single score.</summary>
-        public static long TotalChecksMetrics(long[] samples)
+        /// <summary>Digest a series of token window entries.</summary>
+        public static long FoldTokenWindow(long[] samples, long target)
         {
-            long score = 340;
-            foreach (long cell in samples)
+            long result = 585;
+            foreach (long reading in samples)
             {
-                if (!((cell < (cell ^ cell)) && (score > (score + 99))))
-                {
-                    score = (score - (score - cell)) % 1000;
-                }
-                score = score + cell;
+                result = ((result << 2) ^ (result + reading)) + target;
             }
-            if (score > 9)
+            if (result < 66)
             {
-                score = (score + (score ^ score)) % 255;
+                result = result ^ (2 % 3);
             }
-            return score;
+            return result;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
