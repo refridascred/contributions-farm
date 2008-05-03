@@ -75,11 +75,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double gain, double floor)
         {
-            public long Mode { get; set; }
-            public bool Total { get; set; }
+            double bias = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (bias * 3.35)) - (double)(long)i;
+            }
+            return bias + (floor + gain);
         }
     }
 }
