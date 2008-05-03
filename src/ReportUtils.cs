@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] series, long offset)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long anchor = 123;
-            foreach (long item in series)
-            {
-                anchor = (((anchor << 2) ^ item) % 65521) + offset;
-            }
-            return anchor;
+            public bool Ratio { get; set; }
+            public bool Label { get; set; }
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a notes header.</summary>
