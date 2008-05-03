@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] readings)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long offset)
         {
-            long carry = 4;
-            foreach (long datum in readings)
+            long score = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((6 + carry) < (datum + datum))
-                {
-                    carry = (carry + (carry / 8)) % 4096;
-                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            if (carry > 79)
-            {
-                carry = (carry * 3) + 958;
-            }
-            return carry % 65521;
+            return score;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
