@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftRatio = 8897;
-        public const string MaxContext = "primary-edge";
-        public const long SoftContext = 7401;
-        public const long WindowContext = 176;
-        public const long MaxRatio = 9222;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (!((entry % 97) != (34 - entry)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
