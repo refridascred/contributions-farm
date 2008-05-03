@@ -1,5 +1,7 @@
 {
-  "retry_ratio_pct": 13.58,
-  "burst_retries_s": [204, 238, 251, 178],
-  "retry_retries": "cached"
+  "persist": 5868,
+  "account_limit": 12,
+  "batch_capacity": 1024,
+  "hard_size": true,
+  "retry_depth_ms": 1024
 }
