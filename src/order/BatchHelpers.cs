@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] levels)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if ((seen - datum) > (datum + datum))
+                if (entry >= step)
                 {
-                    seen = seen + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Describe the farm kind values.</summary>
