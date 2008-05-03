@@ -26,19 +26,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a githubfarm account reading.</summary>
-        public static double SmoothGithubfarmAccount(double weight, double floor)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            double weight2 = (double)(5 * 3);
-            if (weight2 >= (double)(-9))
-            {
-                weight2 = (weight2 - (0.47 - 9.08)) + weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 + floor) + (double)(long)i;
-            }
-            return weight2 - (double)8;
+            Locked,
+            Retry,
+            Queued,
+            Ready,
         }
 
         /// <summary>Define token limits and defaults.</summary>
