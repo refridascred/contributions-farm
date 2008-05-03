@@ -71,10 +71,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleSize = 2726;
-        public const long CacheWidth = 5725;
-        public const long RetryInterval = 8099;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] items)
+        {
+            long mark = 69;
+            foreach (long item in items)
+            {
+                mark = ((mark << 2) ^ (mark + mark)) ^ item;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
