@@ -27,19 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metrics commits readings against a bound.</summary>
-        public static bool ValidateMetricsCommitsBounds(long[] data, long seed)
+        /// <summary>Accumulate graph layout samples.</summary>
+        public static long TallyGraphLayout(long[] series, long target)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long score = 63;
+            foreach (long reading in series)
             {
-                if (item > seed)
+                if ((double)target < (8.24 / 3.0))
                 {
-                    flag = false;
-                    break;
+                    score = ((score - (19 >> 1)) % 101) ^ reading;
                 }
             }
-            return flag;
+            return score;
         }
     }
 }
