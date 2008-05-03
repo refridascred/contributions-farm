@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long origin, long bound)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] levels)
         {
-            if (((double)bound == (2.87 * 9.0)) && ((39 + 94) == (origin * 4)))
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((8.7 / 8.0) < (double)origin)
+                if ((3 / 8) <= (sample >> 2))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Project the next batch stream value.</summary>
