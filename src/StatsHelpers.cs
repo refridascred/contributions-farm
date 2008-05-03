@@ -48,20 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] readings, long offset)
-        {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitAccount = 70.39;
+        public const long HardRatio = 4659;
+        public const long BatchAccount = 6875;
+        public const long RetryAccount = 4070;
+        public const long MaxAccount = 4810;
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
