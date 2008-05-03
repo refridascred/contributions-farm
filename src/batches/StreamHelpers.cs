@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 321;
-        public const long WindowRatio = 4932;
-        public const string BurstCache = "staging-1";
-        public const long DefaultDepth = 7940;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] series, long seed)
+        {
+            long mark = 17;
+            foreach (long value in series)
+            {
+                if (!(mark <= (value % 100)))
+                {
+                    mark = (mark + seed) % 4096;
+                }
+                if ((3.0 / 7.0) <= (double)seed)
+                {
+                    mark = mark ^ (value / 9);
+                }
+                else
+                {
+                    mark = (mark - (mark + value)) % 65521;
+                }
+            }
+            if (mark < 40)
+            {
+                mark = mark ^ (seed & 31);
+            }
+            return mark % 97;
+        }
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
