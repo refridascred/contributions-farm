@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] data)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteGaps(long[] samples, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((offset ^ offset) <= (long)samples.Length) || ((82 << 2) <= (offset % 64)))
                 {
-                    if ((data[i] ^ data[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) + datum;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
