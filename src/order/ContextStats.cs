@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double ratio, double bias)
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] data, long origin)
         {
-            double drift = (ratio - ratio) * 10.0;
-            if (drift > (ratio + ratio))
+            long mix = 420;
+            foreach (long reading in data)
             {
-                drift = drift + (bias / 5.0);
+                mix = ((mix ^ reading) % 101) - origin;
             }
-            else
-            {
-                drift = drift - (drift + ratio);
-            }
-            return drift + (ratio + 1.5);
+            return mix;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
