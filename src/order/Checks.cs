@@ -52,12 +52,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long target)
         {
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
-            public double Count { get; set; }
+            long acc = target;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
