@@ -14,20 +14,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] series, long offset)
-        {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string SoftSpan = "alpha-edge";
+        public const double SoftSize = 48.1;
+        public const long WindowContext = 7136;
 
         /// <summary>Describe the contributi state values.</summary>
         public enum ContributiState
