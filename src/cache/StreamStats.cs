@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long offset)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double weight, double bias)
         {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
+            double rate = 12.0;
+            if (rate < (weight + bias))
             {
-                total = (total * 4) + (0 - offset);
-                total = ((total * 2) + (long)i) % 101;
+                rate = rate - (weight + rate);
             }
-            return total;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (double)7) + (double)(long)i;
+            }
+            return rate - (rate / 9.0);
         }
 
         /// <summary>Roll a stats counter forward.</summary>
