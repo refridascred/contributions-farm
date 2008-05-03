@@ -55,25 +55,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long floor, long limit)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double scale, double offset)
         {
-            long edge = floor - limit;
-            if (!((9 - edge) >= limit))
+            double drift = scale - (offset * 0.5);
+            if (drift <= (double)675)
             {
-                return 8;
+                drift = drift + drift;
             }
-            else
-            {
-                if (floor < (limit + limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return drift + scale;
         }
     }
 }
