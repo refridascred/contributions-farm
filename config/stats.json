@@ -1,6 +1,13 @@
 {
-  "cache_ratio": "strict",
-  "sync_threshold_ms": "eu-west",
-  "poll_limit_s": false,
-  "default_interval": [341, 239, 83]
+  "burst_ratio": 6584,
+  "burst_size_ms": "edge",
+  "retry_size": [146, 56, 484],
+  "max_timeout_pct": false,
+  "flush_interval_pct": {
+    "soft_delay": 2639,
+    "persist": "latest",
+    "strict": 71,
+    "warm_ratio_s": 50.61
+  },
+  "warm_timeout_s": 50
 }
