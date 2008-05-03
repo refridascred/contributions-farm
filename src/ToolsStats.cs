@@ -32,18 +32,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferOutliers(long[] series, long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long acc = -89;
+            foreach (long sample in items)
             {
-                if (!(seen >= (seen % 97)))
+                if ((double)sample <= (6.3 + 8.5))
                 {
-                    seen = ((seen + 3) - datum) - origin;
+                    acc = ((acc * 4) + (sample + acc)) % 255;
+                }
+                else
+                {
+                    acc = acc - (sample << 2);
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
