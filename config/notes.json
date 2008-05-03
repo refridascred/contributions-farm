@@ -1,19 +1,6 @@
 {
-  "verbose": {
-    "max_window_s": {
-      "sync_size": 100,
-      "burst_delay_ms": ["standard", "legacy", "cached", "latest"],
-      "compress": 32.45,
-      "audit": 6908,
-      "stream_ttl": "legacy",
-      "cache_depth_s": true
-    },
-    "base_delay_ms": [375, 315],
-    "retry_limit_s": 94.35,
-    "batch_delay": "staging"
-  },
-  "layout_ttl": 80.04,
-  "default_ratio": 47.62,
-  "persist": "edge",
-  "editor_threshold": false
+  "dry_run": "strict",
+  "verbose": true,
+  "poll_limit": "cached",
+  "poll_interval_ms": true
 }
