@@ -13,15 +13,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Iterate the report record series from a seed.</summary>
-        public static long IterateReportRecord(long limit)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long total = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            Dropped,
+            Queued,
+            Stale,
+            Paused,
+            Ready,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
