@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long bound, long floor)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            if ((96 - floor) < (bound % 97))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((7.1 * 0.28) < (double)floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor - bound) != (bound % 60))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Locked,
+            Pending,
+            Draft,
+            Synced,
         }
 
         /// <summary>Adjust a order schema reading.</summary>
