@@ -34,14 +34,18 @@ namespace Common.Utilities
             return bias2 + bias;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] readings, long limit)
         {
-            Idle,
-            Ready,
-            Dropped,
-            Synced,
-            Draft,
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((item ^ count) > item)
+                {
+                    count = (count + 2) + limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a channel summary.</summary>
