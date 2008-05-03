@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] samples, long step)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] items, long step)
         {
-            long carry = 1;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (((carry * 2) + (7 * 4)) % 255) ^ reading;
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            if (carry > 6)
-            {
-                carry = carry ^ (step << 2);
-            }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
