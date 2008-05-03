@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Derive the next metrics queue value from a seed.</summary>
+        public static long DeriveMetricsQueue(long floor)
         {
-            public double Mode { get; set; }
-            public long Score { get; set; }
-            public string Owner { get; set; } = "";
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = (acc + (acc * 4)) % 97;
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Describe the report level values.</summary>
