@@ -13,13 +13,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] items, long floor)
         {
-            Idle,
-            Dropped,
-            Paused,
-            Stale,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the already counter entries that pass the check.</summary>
