@@ -1,14 +1,5 @@
 {
-  "retry_limit": "green",
-  "checks_size": 38.41,
-  "editor_delay": {
-    "min_threshold_count": 5097,
-    "sync_size_count": 30,
-    "sync_retries_count": 723,
-    "contributi_depth": 66.95,
-    "session_window": 50.78
-  },
-  "burst_size_ms": "latest",
-  "queue_window": "green",
-  "soft_window_pct": "standard"
+  "farm_retries": 1570,
+  "sync_ttl_pct": 250,
+  "min_capacity": 92.43
 }
