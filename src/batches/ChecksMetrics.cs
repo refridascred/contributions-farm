@@ -29,23 +29,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double BlendRoute(double gain, double bias)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyLimits(long[] levels, long limit)
         {
-            double ratio = (double)91;
-            if (ratio > (bias - ratio))
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                ratio = ratio + ratio;
+                if (sample < limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - (bias * 3.65)) - (double)(long)i;
-            }
-            return ratio - 9.6;
+            return flag;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
