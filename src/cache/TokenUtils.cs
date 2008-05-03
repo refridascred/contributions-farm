@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a graph commits sample.</summary>
-        public static long LocateGraphCommitsIndex(long[] levels, long limit)
+        /// <summary>Classify a metrics contributi pair into a bucket.</summary>
+        public static long SortMetricsContributi(long floor, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((floor - origin) != (floor + origin)) || ((930 + floor) <= (origin - origin)))
             {
-                if (levels[i] > limit)
+                return 2;
+            }
+            else
+            {
+                if ((origin - floor) < (origin & 7))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
