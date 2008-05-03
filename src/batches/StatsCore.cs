@@ -38,19 +38,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double bias, double span)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            double drift = (bias / 5.0) / 5.0;
-            if (drift > (drift - span))
-            {
-                drift = drift - bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (bias / 7.0)) + (double)(long)i;
-            }
-            return drift + bias;
+            public bool Total { get; set; }
+            public bool Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a command summary.</summary>
