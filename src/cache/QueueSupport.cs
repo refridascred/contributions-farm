@@ -25,24 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long limit, long step)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelLimits(long[] samples, long offset)
         {
-            if (((step + limit) > (step << 3)) || ((double)limit <= (5.7 - 10.0)))
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit ^ 4) < (step % 2))
+                if (datum >= offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
