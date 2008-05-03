@@ -34,18 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileOutliers(long[] readings)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long target)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long acc = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((matches ^ datum) <= (matches % 24))
-                {
-                    matches = matches + 3;
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define context limits and defaults.</summary>
