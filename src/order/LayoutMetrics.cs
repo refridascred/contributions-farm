@@ -20,21 +20,20 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] values)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                total = (total << 3) ^ (offset + offset);
+                if ((double)offset < 6.03)
                 {
-                    if ((values[i] ^ values[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total + (total ^ 507)) % 65521;
                 }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Derive the next notes layout value from a seed.</summary>
