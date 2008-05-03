@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] data)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] readings)
         {
-            long carry = 1;
-            foreach (long sample in data)
+            long carry = 4;
+            foreach (long datum in readings)
             {
-                for (int i = 0; i < 4; i++)
+                if ((6 + carry) < (datum + datum))
                 {
-                    carry = ((carry * 4) + carry) - (long)i;
-                    carry = (carry * 2) + sample;
+                    carry = (carry + (carry / 8)) % 4096;
                 }
-                carry = (carry * 3) + (sample & 3);
             }
-            if (carry > 502)
+            if (carry > 79)
             {
-                carry = carry - (823 + carry);
+                carry = (carry * 3) + 958;
             }
-            return carry;
+            return carry % 65521;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
