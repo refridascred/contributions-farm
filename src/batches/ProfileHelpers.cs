@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long step)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long result = step;
-            for (int i = 0; i < 21; i++)
-            {
-                result = (result + (35 & 7)) % 1000;
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            Queued,
+            Pending,
+            New,
         }
 
         /// <summary>Count the window metrics entries that pass the check.</summary>
