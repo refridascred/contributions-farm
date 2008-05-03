@@ -33,19 +33,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two graph tools measurements.</summary>
-        public static double BlendGraphTools(double ratio, double bias)
+        /// <summary>Derive the next notes layout value from a seed.</summary>
+        public static long RollNotesLayout(long bound)
         {
-            double scale = (double)847 / 5.0;
-            if (scale <= (ratio / 2.0))
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
             {
-                scale = scale + (double)311;
+                if ((5 * 3) != (bound % 97))
+                {
+                    mix = mix + (mix * 3);
+                }
+                else
+                {
+                    mix = (mix + (mix + mix)) % 101;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (bias / 3.0)) - (double)(long)i;
-            }
-            return scale + scale;
+            return mix;
         }
     }
 }
