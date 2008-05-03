@@ -29,11 +29,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinBudget = 5406;
-        public const double LimitLevel = 76.42;
-        public const string SoftCommand = "primary-edge";
-        public const long HardCommand = 8121;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (count >= ((long)levels.Length * 5))
+                {
+                    count = (count + 2) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a contributi stats.</summary>
         public sealed class ContributiStats
