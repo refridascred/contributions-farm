@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 9320;
-        public const long IdleWindow = 7355;
-        public const string MaxCount = "cached-v2";
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long AuditWindowGaps(long[] items)
