@@ -1,14 +1,5 @@
 {
-  "notes_timeout": 56.95,
-  "enabled": false,
-  "compress": [418, 180, 176, 326],
-  "max_interval": {
-    "cluster_window": ["open", "local", "cached", "edge"],
-    "cache_interval_pct": "cached",
-    "soft_capacity": "primary",
-    "channel_retries": 461,
-    "payload_depth": "open",
-    "idle_window_pct": 250
-  },
-  "retry_interval": "strict"
+  "max_limit_count": "open",
+  "verbose": "fallback",
+  "sync_interval_s": 77.65
 }
