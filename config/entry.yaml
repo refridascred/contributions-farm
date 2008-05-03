@@ -1,7 +1,8 @@
 # entry settings
-cache_ttl: 100
-dry_run: false
-audit:
-  - 84
-  - 67
-  - 280
+soft_ttl_count: fallback
+default_depth:
+  - 162
+  - 47
+hard_threshold: true
+layout_threshold: 98
+warm_capacity: 4.93
