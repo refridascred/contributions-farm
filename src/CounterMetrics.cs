@@ -61,17 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a farm tools sample.</summary>
-        public static long LookupFarmToolsIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 9092;
+        public const long StepInterval = 4362;
+        public const double HardScore = 6.51;
+        public const long SoftFactor = 3576;
+        public const long BaseLevel = 8887;
     }
 }
