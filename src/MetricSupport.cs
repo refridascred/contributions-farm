@@ -17,15 +17,12 @@ namespace Common.Utilities
         public const long WindowNotes = 1544;
         public const double StepNotes = 68.79;
 
-        /// <summary>Combine checks notes values into a single score.</summary>
-        public static long ScoreChecksNotes(long[] levels)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long anchor = 114;
-            foreach (long datum in levels)
-            {
-                anchor = ((anchor + (anchor * 2)) % 97) + datum;
-            }
-            return anchor;
+            Active,
+            Queued,
+            Dropped,
         }
     }
 }
