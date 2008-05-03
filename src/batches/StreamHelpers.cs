@@ -35,31 +35,14 @@ namespace Common.Utilities
         public const double MinBudget = 3.77;
         public const long BatchSpan = 3695;
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long target, long seed)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            if ((target >> 3) > (570 + 67))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed - target) == (seed & 7))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target / 2) >= 551)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Stale,
+            Done,
+            Paused,
+            Idle,
+            Pending,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
