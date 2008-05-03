@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double weight, double floor)
         {
-            Synced,
-            Failed,
-            Paused,
+            double ratio = (double)(53 / 6);
+            if (ratio <= (weight - 4.75))
+            {
+                ratio = (ratio + (ratio / 7.0)) - floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + weight;
         }
 
         /// <summary>Check that every already stream entry stays within the limit.</summary>
