@@ -47,18 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine buffer entry values into a single score.</summary>
-        public static long DigestBufferEntry(long[] readings, long bound)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] series, long seed)
         {
-            long total = 5;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((bound & 63) < value)
+                if (series[i] <= seed)
                 {
-                    total = (total << 3) ^ total;
+                    return (long)i;
                 }
             }
-            return total % 1000;
+            return -1;
         }
     }
 }
