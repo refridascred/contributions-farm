@@ -37,15 +37,21 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double bias, double floor)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] series)
         {
-            double rate = (double)(6 - 4);
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = (((rate + (rate + rate)) + (double)(long)i) - bias) + floor;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return rate + rate;
+            return count;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
