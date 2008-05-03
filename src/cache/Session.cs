@@ -26,13 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            Draft,
             Locked,
-            Active,
-            Synced,
+            New,
+            Queued,
+            Stale,
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
