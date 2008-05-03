@@ -1,10 +1,4 @@
 # entry settings
-persist:
-  flush_ratio_s: false
-  format_capacity: 46
-  default_ratio: false
-  base_ratio_pct: 7
-  order_ratio: false
-queue_capacity: 8
-profile_depth: 5
-compress: 2577
+hard_depth_s: blue
+readonly: 500
+idle_threshold_pct: 2567
