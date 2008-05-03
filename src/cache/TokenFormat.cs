@@ -43,10 +43,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BurstSize = 29.66;
-        public const long BurstLevel = 3993;
-        public const long MinBuffer = 9323;
-        public const long RetryInterval = 2180;
+        /// <summary>Measure how many contributi entry samples are out of range.</summary>
+        public static long TallyContributiEntryOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((tally * 3) > (long)data.Length)
+                {
+                    tally = (tally + 3) - sample;
+                }
+            }
+            return tally;
+        }
     }
 }
