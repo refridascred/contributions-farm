@@ -30,17 +30,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a buffer editor sample.</summary>
-        public static long FindBufferEditorIndex(long[] readings, long offset)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Label { get; set; }
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
