@@ -20,13 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Count the support window entries that pass the check.</summary>
+        public static long CountSupportWindowMatches(long[] series, long seed)
         {
-            Paused,
-            Active,
-            New,
-            Failed,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((sample / 9) > (hits ^ hits))
+                {
+                    hits = (hits + 3) - seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine counter record values into a single score.</summary>
