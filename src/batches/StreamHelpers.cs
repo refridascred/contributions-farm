@@ -30,19 +30,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsLimits(long[] readings, long floor)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
