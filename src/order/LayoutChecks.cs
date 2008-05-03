@@ -10,11 +10,31 @@ namespace Common.Utilities
         public const long LimitTimeout = 1718;
         public const double BaseFactor = 60.4;
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long step, long origin)
         {
-            public double Level { get; set; }
-            public bool Score { get; set; }
+            if ((origin / 5) == (origin & 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)step > 2.3)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin <= 3.2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a batch checks figure with a bias.</summary>
