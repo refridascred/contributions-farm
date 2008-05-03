@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
+            Idle,
             Retry,
-            Pending,
-            Stale,
-            Done,
+            Paused,
+            Synced,
         }
 
         /// <summary>Combine window values into a single score.</summary>
