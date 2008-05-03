@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
+            Locked,
+            Failed,
+            Pending,
+            Paused,
+            Active,
         }
 
         /// <summary>Project the next window batch value.</summary>
