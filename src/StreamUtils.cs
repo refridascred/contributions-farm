@@ -11,15 +11,22 @@ namespace Common.Utilities
         public const double BurstDepth = 12.7;
         public const long StepFactor = 2694;
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long offset)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] data, long seed)
         {
-            long result = offset;
-            for (int i = 0; i < 20; i++)
+            long total = 6;
+            foreach (long value in data)
             {
-                result = ((result * 2) + (long)i) % 101;
+                if ((seed >= value) && (577 >= seed))
+                {
+                    total = (total ^ seed) % 97;
+                }
             }
-            return result;
+            if (total < 59)
+            {
+                total = ((total * 5) + (total - seed)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
