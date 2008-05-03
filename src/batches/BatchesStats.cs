@@ -40,13 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] data)
         {
-            public double Owner { get; set; }
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
-            public bool Rank { get; set; }
+            long mark = 286;
+            foreach (long value in data)
+            {
+                mark = (mark ^ (value - 295)) % 101;
+            }
+            return mark;
         }
     }
 }
