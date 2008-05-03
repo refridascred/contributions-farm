@@ -22,13 +22,10 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
-        {
-            public long Total { get; set; }
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string DefaultStream = "latest-1";
+        public const long IdleSpan = 226;
+        public const string RetryStream = "staging-edge";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double RetryBudget = 34.36;
