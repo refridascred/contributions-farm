@@ -20,14 +20,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long target)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 14; i++)
+            long acc = offset;
+            for (int i = 0; i < 8; i++)
             {
-                acc = ((acc * 3) + (target + acc)) % 255;
-                acc = ((acc * 5) + (long)i) % 97;
+                acc = ((acc << 2) ^ (acc + acc)) % 101;
+                acc = (acc * 3) + acc;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
             return acc;
         }
