@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long limit, long bound)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] values, long bound)
         {
-            if (89 <= (bound << 2))
+            long total = 59;
+            foreach (long sample in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound + 639) < limit)
+                if (!((sample >> 5) < 29))
                 {
-                    return 4;
+                    total = (total - (bound - sample)) % 1000;
                 }
-                else
-                {
-                    return 7;
-                }
+                total = total ^ 8;
+                total = total - (bound + bound);
             }
+            return total % 1000;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
