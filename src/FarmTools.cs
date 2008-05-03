@@ -21,19 +21,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every command payload entry stays within the limit.</summary>
-        public static bool VerifyCommandPayloadLimits(long[] series, long floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyHits(long[] items)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (value >= floor)
+                if ((seen ^ seen) > (seen + cell))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Hold a report snapshot.</summary>
