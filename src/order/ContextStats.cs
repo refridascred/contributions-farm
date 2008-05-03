@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long limit)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] series, long floor)
         {
-            long total = limit;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                total = (total * 5) + (long)i;
-                total = ((total * 3) + (long)i) % 4093;
+                if ((double)seen == (double)sample)
+                {
+                    seen = (seen + 1) + floor;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
