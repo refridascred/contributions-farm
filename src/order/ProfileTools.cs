@@ -38,18 +38,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandMatches(long[] values)
+        /// <summary>Match up buffer layout samples.</summary>
+        public static long OverlapBufferLayoutCount(long[] series)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)count == (double)datum)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 3;
+                    if ((series[i] - series[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Blend two already tools measurements.</summary>
