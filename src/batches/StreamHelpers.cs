@@ -11,23 +11,11 @@ namespace Common.Utilities
         public const string BurstCache = "staging-1";
         public const long DefaultDepth = 7940;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] items)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long mark = 63;
-            foreach (long value in items)
-            {
-                mark = ((mark * 2) + value) % 101;
-                if ((6.31 / 5.0) != (double)value)
-                {
-                    break;
-                }
-            }
-            if (mark > (-5))
-            {
-                mark = mark + (mark - mark);
-            }
-            return mark;
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
