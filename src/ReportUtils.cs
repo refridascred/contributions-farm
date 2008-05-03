@@ -25,11 +25,14 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
+            Queued,
+            Paused,
+            Failed,
+            Locked,
+            Idle,
         }
 
         /// <summary>Match up metric notes samples.</summary>
