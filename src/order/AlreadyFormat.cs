@@ -40,10 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string StepGraph = "open";
-        public const double LimitCount = 31.23;
-        public const long BaseGraph = 6549;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double CacheInterval = 22.36;
+        public const double SoftLevel = 88.38;
+        public const long BurstFactor = 2907;
+        public const long CacheCommand = 6089;
+        public const long MaxSpan = 4235;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long MinChecks = 4300;
