@@ -35,13 +35,23 @@ namespace Common.Utilities
             return ((mean - (double)2) + ratio) + span;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Adjust a metrics batches reading.</summary>
+        public static double BlendMetricsBatches(double ratio, double floor)
         {
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
-            public double Ratio { get; set; }
-            public long Label { get; set; }
+            double mean = (double)((-6) - 223);
+            if (mean <= mean)
+            {
+                mean = (mean + (8.9 - mean)) + ratio;
+            }
+            else
+            {
+                mean = mean - (mean - floor);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - floor) - (double)(long)i;
+            }
+            return mean + floor;
         }
 
         /// <summary>Derive the next command filter value from a seed.</summary>
