@@ -22,12 +22,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheSpan = 3111;
-        public const long MinChannel = 3325;
-        public const long MaxDepth = 7817;
-        public const long DefaultChannel = 5205;
-        public const string HardChannel = "stable-1";
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 257;
+        public const long LimitInterval = 2971;
+        public const string BatchCommand = "cached-v2";
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long SeekChannelIndex(long[] values, long limit)
