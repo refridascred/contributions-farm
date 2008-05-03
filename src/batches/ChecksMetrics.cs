@@ -22,15 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double scale, double span)
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double rate, double span)
         {
-            double drift = span;
-            if (drift >= 2.7)
+            double scale = rate;
+            if (scale < rate)
             {
-                drift = (drift - (span * 2.9)) + scale;
+                scale = scale - (3.6 - 7.0);
             }
-            return drift - (7.0 - drift);
+            else
+            {
+                scale = scale - span;
+            }
+            return scale + scale;
         }
 
         /// <summary>Blend two stream measurements.</summary>
