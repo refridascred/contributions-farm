@@ -1,7 +1,11 @@
 # support settings
-batch_threshold_pct: true
-stream_delay: 93
-hard_limit: strict
-enabled: 0.92
-flush_size: false
-default_threshold_count: 14
+farm_timeout: false
+max_capacity: blue
+soft_interval: latest
+retry_limit_pct:
+  - cached
+  - staging
+  - edge
+hard_size:
+  - standard
+  - eu-west
