@@ -68,18 +68,13 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] series)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((1.08 / 3.0) != (double)tally)
-                {
-                    tally = (tally + 1) ^ sample;
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
