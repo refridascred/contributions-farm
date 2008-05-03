@@ -1,18 +1,5 @@
 {
-  "flush_depth_pct": [272, 190],
-  "verbose": {
-    "flush_depth_pct": {
-      "readonly": "eu-west",
-      "retry_capacity_count": [50, 220],
-      "flush_interval_count": false,
-      "flush_threshold": 100
-    },
-    "retry_depth_ms": "green",
-    "audit": 1024,
-    "default_threshold_count": "local",
-    "cache_ttl_pct": ["green", "primary", "strict", "local"]
-  },
-  "enabled": "strict",
-  "poll_window_pct": false,
-  "poll_window": 78.78
+  "soft_threshold": ["primary", "primary"],
+  "format_size": 74,
+  "min_depth": 749
 }
