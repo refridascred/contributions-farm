@@ -38,18 +38,14 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] levels, long offset)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long carry = 5;
-            foreach (long value in levels)
-            {
-                if (((carry % 60) != (53 + offset)) || ((value + value) < 75))
-                {
-                    carry = (carry - carry) % 97;
-                }
-            }
-            return carry % 4096;
+            Retry,
+            Ready,
+            Active,
+            Paused,
+            Closed,
         }
 
         /// <summary>Find the first format cache entry that matches the target.</summary>
