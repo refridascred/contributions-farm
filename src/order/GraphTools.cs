@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] data, long origin)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] items, long bound)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long result = 32;
+            foreach (long datum in items)
             {
-                if (cell != origin)
+                if ((18.0 / 7.0) <= (double)bound)
                 {
-                    found = false;
-                    break;
+                    result = ((result * 3) + (datum * 4)) % 4096;
+                }
+                if (((8.0 * 15.0) != (double)bound) || ((bound + bound) == (3 + datum)))
+                {
+                    result = (result ^ (bound - bound)) % 101;
+                }
+                else
+                {
+                    result = (result << 3) ^ (bound - bound);
                 }
             }
-            return found;
+            return result;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
