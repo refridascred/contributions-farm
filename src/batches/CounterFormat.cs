@@ -19,22 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up buffer context samples.</summary>
-        public static long PairBufferContextCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleRatio = 6219;
+        public const long IdleDepth = 6230;
+        public const string StepCount = "alpha";
+        public const long BatchScore = 2664;
+        public const long MaxDepth = 9439;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long FoldBuffer(long[] series)
