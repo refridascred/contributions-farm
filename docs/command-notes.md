@@ -1,12 +1,15 @@
 # Command notes
 
-The report helpers are pure functions, so they are safe to call from any thread.
-Use metric settings to tune how often metric data is refreshed.
-Each context is validated before it reaches the batch queue.
+The queue helpers are pure functions, so they are safe to call from any thread.
+When a report fails, the already handler retries a few times before giving up.
+The context helpers are pure functions, so they are safe to call from any thread.
+
+The metric report groups every metric by session.
+The stats helpers are pure functions, so they are safe to call from any thread.
+A cache that stays idle for too long is moved to the account list.
 
 ## Guidelines
 
-- Keep filter values small
-- Log every account change
-- Review farm limits each release
-- Document new token fields
+- Prefer githubfarm defaults
+- Validate window input early
+- Document new batches fields
