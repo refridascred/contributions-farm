@@ -14,18 +14,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the token payload entries that pass the check.</summary>
-        public static long TallyTokenPayloadMatches(long[] data, long target)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long floor, long origin)
         {
-            long tally = 0;
-            foreach (long value in data)
+            if ((11.0 - 6.2) <= (double)origin)
             {
-                if (tally > 936)
+                return 8;
+            }
+            else
+            {
+                if ((origin & 15) > floor)
                 {
-                    tally = ((tally + 1) ^ value) - target;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
