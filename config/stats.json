@@ -1,12 +1,9 @@
 {
-  "checks_interval": 69,
-  "base_depth_pct": "stable",
-  "persist": {
-    "audit": 55,
-    "warm_depth_ms": "latest",
-    "cache_retries_pct": true,
-    "account_capacity": "stable",
-    "dry_run": [385, 476, 293, 98],
-    "hard_threshold": 9637
+  "flush_size": ["local", "stable"],
+  "readonly": "local",
+  "cluster_capacity": {
+    "default_window": false,
+    "min_capacity": [231, 382, 62],
+    "verbose": true
   }
 }
