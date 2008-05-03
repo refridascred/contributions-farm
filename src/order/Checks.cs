@@ -45,18 +45,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] readings, long target)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (((long)readings.Length + (-2)) >= (matches & 3))
-                {
-                    matches = ((matches + 2) + entry) + target;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public double Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
