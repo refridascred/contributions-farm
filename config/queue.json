@@ -1,5 +1,19 @@
 {
-  "checks_size": "fallback",
-  "verbose": ["open", "standard", "open", "green"],
-  "retry_limit_ms": 20
+  "default_ratio": 96.52,
+  "context_ratio": {
+    "batch_ttl_ms": 87,
+    "payload_limit": 9059,
+    "batches_window": 6104,
+    "warm_retries_ms": [404, 12, 71]
+  },
+  "max_limit": {
+    "poll_ratio_s": "strict",
+    "base_retries_ms": "blue",
+    "burst_timeout_pct": 90,
+    "default_window_pct": 61.9,
+    "flush_delay_count": true,
+    "sync_timeout_s": 8409
+  },
+  "burst_ttl_ms": 33.13,
+  "hard_ratio_s": 9614
 }
