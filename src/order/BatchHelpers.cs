@@ -30,11 +30,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double rate, double floor)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            double load = rate;
-            return (load + (double)232) + floor;
+            public double Count { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
