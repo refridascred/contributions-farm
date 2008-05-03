@@ -1,7 +1,13 @@
 {
-  "metrics_depth": "edge",
-  "min_size": 99,
-  "already_capacity": 16,
-  "cluster_limit": true,
-  "already_delay": "standard"
+  "hard_delay_pct": 84.89,
+  "poll_depth": 11.37,
+  "max_depth_s": 76,
+  "tools_size": "local",
+  "strict": {
+    "farm_ttl": "edge",
+    "report_threshold": 91,
+    "checks_window": 1026,
+    "warm_limit_count": 93.62,
+    "burst_threshold": 100
+  }
 }
