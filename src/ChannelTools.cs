@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next buffer stream value.</summary>
-        public static double BlendBufferStream(double gain, double floor)
-        {
-            double bias = (floor / 3.0) + (floor + 4.25);
-            if (bias >= 2.4)
-            {
-                bias = bias + gain;
-            }
-            return bias + gain;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 2859;
+        public const long BatchSession = 4188;
+        public const long RetrySession = 550;
 
         /// <summary>Locate a layout order reading by value.</summary>
         public static long FindLayoutOrderIndex(long[] series, long floor)
