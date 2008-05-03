@@ -13,21 +13,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count already batch pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyBatchCount(long[] samples)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
