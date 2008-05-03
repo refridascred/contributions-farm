@@ -31,20 +31,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long floor)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long acc = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                long hits = (floor & 1) * 4;
-                if (!(((hits % 8) >= ((long)i % 10)) && ((floor << 1) >= (acc + 611))))
-                {
-                    acc = ((acc << 3) ^ ((long)i >> 2)) % 1000;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
