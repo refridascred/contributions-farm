@@ -44,13 +44,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            Ready,
-            Stale,
-            Done,
-            New,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowSize = "stable-edge";
+        public const string RetrySpan = "alpha-v2";
+        public const long CacheFactor = 6057;
+        public const long BurstPayload = 9146;
     }
 }
