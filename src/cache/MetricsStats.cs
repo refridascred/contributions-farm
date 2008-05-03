@@ -42,17 +42,9 @@ namespace Common.Utilities
         public const long BatchToken = 5077;
         public const long BurstScore = 607;
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == limit) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 7657;
+        public const long BaseCommits = 1290;
+        public const long RetryCommits = 1706;
     }
 }
