@@ -44,12 +44,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public bool Limit { get; set; }
-            public double Size { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double HardFormat = 59.19;
+        public const long WindowFactor = 8368;
+        public const long RetryInterval = 6469;
     }
 }
