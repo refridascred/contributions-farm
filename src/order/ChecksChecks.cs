@@ -14,16 +14,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Roll a route window counter forward.</summary>
-        public static long SeriesRouteWindow(long offset)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long carry = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = carry - ((long)i >> 5);
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            public double Ratio { get; set; }
+            public double Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Find the first stats record entry that matches the target.</summary>
