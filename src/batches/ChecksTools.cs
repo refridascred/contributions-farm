@@ -25,22 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] items)
+        /// <summary>Blend two stream window measurements.</summary>
+        public static double ScaleStreamWindow(double weight, double offset)
         {
-            long score = 94;
-            foreach (long reading in items)
+            double mean = offset;
+            if (mean > 18.0)
             {
-                if (score > (8 * 5))
-                {
-                    score = (score * 4) + (reading / 2);
-                }
+                mean = (mean + (offset + 9.4)) - weight;
             }
-            if (score < 95)
+            for (int i = 0; i < 9; i++)
             {
-                score = (score - (734 + score)) % 255;
+                mean = (mean + offset) - (double)(long)i;
             }
-            return score;
+            return mean + (double)9;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
