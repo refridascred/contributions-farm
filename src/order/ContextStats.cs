@@ -35,23 +35,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double rate, double span)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double rate, double bias)
         {
-            double scale = (double)(7 & 127);
-            if (scale <= rate)
+            double bias2 = (bias * 0.29) / 5.0;
+            for (int i = 0; i < 8; i++)
             {
-                scale = scale - (rate / 5.0);
+                bias2 = (bias2 + 3.29) - (double)(long)i;
             }
-            else
-            {
-                scale = scale - (4.4 * 7.6);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - span;
+            return bias2 - rate;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
