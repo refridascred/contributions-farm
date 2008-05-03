@@ -1,7 +1,7 @@
-id,state,rank
-1,60.08,70.11
-2,51.32,490
-3,latest,399
-4,410,latest
-5,750,49.02
-6,959,latest
+id,ratio,region,state
+1,78.59,blue,standard
+2,fallback,legacy,75.13
+3,latest,4.65,44.34
+4,57.61,397,42.52
+5,local,4.12,47.55
+6,690,860,265
