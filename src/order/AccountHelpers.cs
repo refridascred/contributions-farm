@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Compare every pair of githubfarm entry readings.</summary>
-        public static long OverlapGithubfarmEntryCount(long[] values)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double ratio, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = (double)6 / 5.0;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = (mean - (double)(long)i) + floor;
             }
-            return seen;
+            return mean + ratio;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
