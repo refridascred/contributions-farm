@@ -50,11 +50,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchCache = "cached-1";
-        public const long BaseCount = 2453;
-        public const long CacheDepth = 6943;
-        public const double StepCache = 58.89;
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
+        {
+            Stale,
+            Paused,
+            Done,
+            Active,
+            Idle,
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BatchScore = 7597;
