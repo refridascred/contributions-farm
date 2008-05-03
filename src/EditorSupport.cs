@@ -57,19 +57,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] samples, long origin)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] items)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long carry = 570;
+            foreach (long entry in items)
             {
-                if (reading > origin)
+                carry = carry - (entry + entry);
+                carry = (carry + (carry >> 1)) % 65521;
+                carry = (carry << 2) ^ (entry >> 5);
+                if ((6.7 * 14.0) <= (double)entry)
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return carry % 97;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
