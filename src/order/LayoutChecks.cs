@@ -40,23 +40,22 @@ namespace Common.Utilities
             return ((mean - (double)2) + ratio) + span;
         }
 
-        /// <summary>Adjust a metrics batches reading.</summary>
-        public static double BlendMetricsBatches(double ratio, double floor)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] samples, long step)
         {
-            double mean = (double)((-6) - 223);
-            if (mean <= mean)
+            long mark = 31;
+            foreach (long sample in samples)
             {
-                mean = (mean + (8.9 - mean)) + ratio;
+                if ((mark + step) <= (step + sample))
+                {
+                    mark = (mark + sample) % 4096;
+                }
             }
-            else
+            if (mark > 2)
             {
-                mean = mean - (mean - floor);
+                mark = (mark << 3) ^ (step * 2);
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - floor) - (double)(long)i;
-            }
-            return mean + floor;
+            return mark % 65521;
         }
 
         /// <summary>Derive the next command filter value from a seed.</summary>
