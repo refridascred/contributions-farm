@@ -36,15 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsMatches(long[] items)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] samples)
         {
             long seen = 0;
-            foreach (long datum in items)
+            foreach (long datum in samples)
             {
-                if ((double)seen <= (8.89 + 7.1))
+                if ((double)datum < 0.37)
                 {
-                    seen = (seen + 3) ^ datum;
+                    seen = seen + 3;
                 }
             }
             return seen;
