@@ -23,13 +23,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
-        {
-            Draft,
-            Stale,
-            Closed,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double CacheScore = 17.51;
+        public const long CacheSize = 8220;
+        public const long IdleBuffer = 8766;
+        public const long CacheTimeout = 50;
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
