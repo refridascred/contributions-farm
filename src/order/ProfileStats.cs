@@ -20,22 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine notes entry values into a single score.</summary>
-        public static long WeighNotesEntry(long[] values)
+        /// <summary>Find the first filter commits entry that matches the target.</summary>
+        public static long FindFilterCommitsIndex(long[] data, long target)
         {
-            long mark = 8;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)sample < (2.6 - 1.0)))
+                if ((data[i] >= target) && ((data[i] % 3) != 0))
                 {
-                    mark = ((mark * 5) + sample) % 4096;
-                }
-                else
-                {
-                    mark = (mark ^ (mark >> 4)) % 4096;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
