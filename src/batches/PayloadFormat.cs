@@ -40,13 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Count the editor stream entries that pass the check.</summary>
+        public static long TallyEditorStreamMatches(long[] samples, long bound)
         {
-            New,
-            Locked,
-            Failed,
-            Active,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((count << 3) < (6 & 63))
+                {
+                    count = ((count + 2) ^ item) - bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
