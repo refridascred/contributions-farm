@@ -36,13 +36,19 @@ namespace Common.Utilities
         public const string DefaultScore = "open-1";
         public const long DefaultWidth = 60;
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double rate, double bias)
         {
-            public double Count { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
+            double load = rate;
+            if (load >= (bias / 9.0))
+            {
+                load = load - (bias * 6.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load - (rate / 3.0);
         }
     }
 }
