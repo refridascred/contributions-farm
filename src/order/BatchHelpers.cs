@@ -25,20 +25,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksRange(long[] readings, long offset)
-        {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 7420;
+        public const long CacheBudget = 1042;
+        public const long StepChannel = 811;
+        public const long CacheChannel = 3953;
+        public const string RetryLevel = "strict-1";
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
