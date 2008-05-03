@@ -30,14 +30,17 @@ namespace Common.Utilities
         public const double MaxLayout = 57.22;
         public const long CacheLayout = 9403;
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Find the first entry counter entry that matches the target.</summary>
+        public static long LookupEntryCounterIndex(long[] series, long seed)
         {
-            Pending,
-            Failed,
-            Stale,
-            Active,
-            Locked,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
