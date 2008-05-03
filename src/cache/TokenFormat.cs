@@ -31,19 +31,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double bias, double bias2)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] items)
         {
-            double scale = bias + bias2;
-            if (scale < (4.2 * 10.0))
+            long mark = 3;
+            foreach (long value in items)
             {
-                scale = scale - scale;
+                mark = (mark - mark) % 1000;
+                mark = (mark ^ (mark - value)) % 97;
             }
-            else
-            {
-                scale = scale + (13.0 * 19.0);
-            }
-            return scale - scale;
+            return mark;
         }
     }
 }
