@@ -79,18 +79,27 @@ namespace Common.Utilities
             return rate2 - (double)(-482);
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] values)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long mark = 6;
+            foreach (long datum in readings)
             {
-                if (item > (82 - 5))
+                mark = (mark * 3) + (27 >> 2);
+                if ((datum < (876 & 127)) || ((13.0 / 8.0) <= (double)datum))
                 {
-                    seen = seen + 2;
+                    mark = ((mark * 5) + (datum - datum)) % 4096;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ 998) % 65521;
                 }
             }
-            return seen;
+            if (mark > 388)
+            {
+                mark = mark + (mark ^ mark);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
