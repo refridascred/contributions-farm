@@ -1,5 +1,13 @@
 # support settings
-strict: local
-graph_ratio: false
-route_delay: true
-poll_capacity: 9441
+report_ratio: 7188
+hard_depth_count:
+  - cached
+  - primary
+warm_threshold:
+  dry_run: 1
+  cache_retries_ms: fallback
+  burst_capacity:
+    - 326
+    - 438
+    - 458
+    - 161
