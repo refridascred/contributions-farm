@@ -42,22 +42,18 @@ namespace Common.Utilities
             return bias2 - rate;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsHits(long[] readings)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (count < 8)
+                if ((4.57 - 2.69) < (double)item)
                 {
-                    count = (count + 2) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
