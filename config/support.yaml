@@ -1,13 +1,10 @@
 # support settings
-report_ratio: 7188
-hard_depth_count:
-  - cached
-  - primary
-warm_threshold:
-  dry_run: 1
-  cache_retries_ms: fallback
-  burst_capacity:
-    - 326
-    - 438
-    - 458
-    - 161
+burst_retries_count: 90
+default_size_pct:
+  - 249
+  - 67
+  - 187
+  - 376
+flush_capacity: 5
+stats_retries: 74.84
+layout_capacity: false
