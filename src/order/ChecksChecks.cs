@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] data, long seed)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] readings, long step)
         {
-            long carry = 279;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry ^ (carry - value)) % 255) + seed;
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            if (carry > 6)
-            {
-                carry = ((carry * 5) + (long)data.Length) % 65521;
-            }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Roll a route window counter forward.</summary>
