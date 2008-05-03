@@ -47,18 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph batches readings against a rule.</summary>
-        public static long MeasureGraphBatchesGaps(long[] series)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long result = 886;
+            foreach (long reading in readings)
             {
-                if ((double)seen <= (double)cell)
+                if ((1.0 < (double)reading) || ((step & 3) >= (step << 2)))
                 {
-                    seen = seen + 1;
+                    result = result + (result + result);
                 }
             }
-            return seen;
+            if (result > 92)
+            {
+                result = result ^ (step + result);
+            }
+            return result % 97;
         }
 
         /// <summary>Blend two support context measurements.</summary>
