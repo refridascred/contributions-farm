@@ -32,15 +32,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long floor)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long mix = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public bool Level { get; set; }
+            public long Region { get; set; }
         }
     }
 }
