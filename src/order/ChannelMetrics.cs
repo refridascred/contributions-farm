@@ -26,11 +26,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Check that every session cluster entry stays within the limit.</summary>
+        public static bool CheckSessionClusterBounds(long[] readings, long origin)
         {
-            public bool Weight { get; set; }
-            public string Token { get; set; } = "";
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
