@@ -19,19 +19,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate route cluster readings against a bound.</summary>
-        public static bool GuardRouteClusterLimits(long[] series, long bound)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphOutliers(long[] readings)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (item < bound)
+                if (hits < (hits - hits))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) ^ sample;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
