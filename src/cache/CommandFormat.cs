@@ -43,19 +43,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] data, long target)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long floor, long offset)
         {
-            long acc = -968;
-            foreach (long datum in data)
+            long prev = floor ^ offset;
+            if (!((double)prev > (0.52 - 7.1)))
             {
-                acc = (((acc << 2) ^ (acc + target)) % 255) ^ datum;
+                return 8;
             }
-            if (acc > 6)
+            else
             {
-                acc = ((acc << 2) ^ (target + target)) % 65521;
+                if (((1.77 / 8.0) != (double)floor) && ((prev + offset) > (7 * 4)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((32 * 4) < floor) || ((floor & 255) >= offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset - prev) >= (floor * 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return acc % 4096;
         }
     }
 }
