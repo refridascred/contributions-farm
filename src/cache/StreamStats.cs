@@ -15,19 +15,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] series)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long score = 52;
-            foreach (long reading in series)
-            {
-                score = (score ^ (92 % 16)) % 97;
-                if ((reading - score) == (score >> 3))
-                {
-                    break;
-                }
-            }
-            return score % 1000;
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
+            public double Owner { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Fold a list of batches readings.</summary>
