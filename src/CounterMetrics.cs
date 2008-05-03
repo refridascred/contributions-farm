@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 7205;
-        public const long WindowSpan = 5619;
-        public const long CacheLevel = 7581;
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
+        {
+            public long Level { get; set; }
+            public double Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
