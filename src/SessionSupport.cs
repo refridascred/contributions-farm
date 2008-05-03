@@ -26,12 +26,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
-        {
-            public bool Weight { get; set; }
-            public bool Token { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double LimitSchema = 73.98;
+        public const string WindowLevel = "local";
+        public const string RetrySchema = "stable-edge";
+        public const string WindowSchema = "primary-v2";
+        public const long BatchSchema = 6525;
     }
 }
