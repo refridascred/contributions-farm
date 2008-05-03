@@ -28,19 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of context batches readings.</summary>
-        public static long TallyContextBatches(long[] levels)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandOutliers(long[] items, long seed)
         {
-            long sum = -50;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long item in items)
             {
-                sum = (sum * 5) + datum;
+                if ((seed + (long)items.Length) < seed)
+                {
+                    hits = (hits + 2) + item;
+                }
             }
-            if (sum < 232)
-            {
-                sum = (sum + (sum / 7)) % 101;
-            }
-            return sum % 1000;
+            return hits;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
