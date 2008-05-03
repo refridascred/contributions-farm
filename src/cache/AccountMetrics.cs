@@ -29,10 +29,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseBudget = 1351;
-        public const long IdleBudget = 788;
-        public const double BaseCache = 57.43;
+        /// <summary>Roll a graph tools counter forward.</summary>
+        public static long StepGraphTools(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                score = score ^ ((long)i ^ (long)i);
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricMatches(long[] values)
