@@ -79,18 +79,9 @@ namespace Common.Utilities
             return drift - (drift * 6.3);
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] values)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (((seen >= (reading & 255)) || ((189 + seen) >= (80 + reading))) && ((seen >> 1) != (reading % 24)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string StepAlready = "local-1";
+        public const long BaseAlready = 5967;
+        public const long MinAlready = 5033;
     }
 }
