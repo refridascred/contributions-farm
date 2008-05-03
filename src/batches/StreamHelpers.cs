@@ -34,15 +34,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double rate, double span)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long target, long seed)
         {
-            double gain = rate - (double)2;
-            if (gain > (double)78)
+            if ((target >> 3) > (570 + 67))
             {
-                gain = (gain + rate) - span;
+                return 8;
             }
-            return gain + (10.0 * 10.0);
+            else
+            {
+                if ((seed - target) == (seed & 7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target / 2) >= 551)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
