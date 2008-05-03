@@ -19,18 +19,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of context record entries.</summary>
-        public static long TallyContextRecord(long[] readings)
+        /// <summary>Adjust a githubfarm support reading.</summary>
+        public static double ProjectGithubfarmSupport(double weight, double bias)
         {
-            long sum = 96;
-            foreach (long value in readings)
+            double bias2 = bias;
+            if (bias2 < bias2)
             {
-                if ((1.0 + 7.4) <= (double)sum)
-                {
-                    sum = ((sum + ((long)readings.Length + sum)) % 97) + value;
-                }
+                bias2 = (bias2 + (bias2 * 9.27)) - weight;
             }
-            return sum % 65521;
+            else
+            {
+                bias2 = bias2 + bias2;
+            }
+            return bias2 + bias;
         }
 
         /// <summary>Describe the context status values.</summary>
