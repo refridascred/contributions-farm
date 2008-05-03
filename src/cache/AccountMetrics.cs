@@ -45,12 +45,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
-        {
-            public long Owner { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double StepLayout = 65.48;
+        public const long MaxLayout = 7317;
+        public const long IdleLayout = 440;
+        public const long MinLayout = 7601;
+        public const long RetryLayout = 5282;
 
         /// <summary>Adjust a batches reading.</summary>
         public static double SmoothBatches(double rate, double span)
