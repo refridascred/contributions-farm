@@ -15,18 +15,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] samples, long step)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long limit, long origin)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long prev = limit - origin;
+            if (((prev & 1) > prev) && ((double)origin == (15.0 + 4.83)))
             {
-                if ((matches + step) > step)
+                return 4;
+            }
+            else
+            {
+                if ((7.6 * 7.5) != (double)origin)
                 {
-                    matches = (matches + 1) + entry;
+                    return 3;
+                }
+                else
+                {
+                    if ((prev ^ origin) >= prev)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)prev < (3.82 + 9.7)) && (limit < (94 + prev)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate already samples.</summary>
