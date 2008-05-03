@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BurstSize = 13.82;
-        public const string SoftTimeout = "legacy-edge";
-        public const long WindowScore = 8892;
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double bias, double span)
+        {
+            double bias2 = bias - (bias * 1.89);
+            if (bias2 < bias)
+            {
+                bias2 = (bias2 + (bias2 * 1.73)) + span;
+            }
+            else
+            {
+                bias2 = bias2 + (double)8;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 + bias) + (double)(long)i;
+            }
+            return bias2 - bias2;
+        }
 
         /// <summary>Count the support githubfarm entries that pass the check.</summary>
         public static long TallySupportGithubfarmOutliers(long[] values)
