@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up contributi route samples.</summary>
-        public static long PairContributiRouteCount(long[] series)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] values, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (values[i] > origin)
                 {
-                    if ((series[i] ^ series[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
