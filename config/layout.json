@@ -1,13 +1,7 @@
 {
-  "hard_delay_pct": 84.89,
-  "poll_depth": 11.37,
-  "max_depth_s": 76,
-  "tools_size": "local",
-  "strict": {
-    "farm_ttl": "edge",
-    "report_threshold": 91,
-    "checks_window": 1026,
-    "warm_limit_count": 93.62,
-    "burst_threshold": 100
-  }
+  "soft_delay_pct": false,
+  "default_ratio_count": "stable",
+  "retry_ratio_count": "eu-west",
+  "audit": 87.44,
+  "commits_limit": false
 }
