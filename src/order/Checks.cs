@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] series, long seed)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double gain, double floor)
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double rate = gain * 20.0;
+            return (rate + (gain / 3.0)) + floor;
         }
 
         /// <summary>Validate report route readings against a bound.</summary>
