@@ -1,6 +1,8 @@
 {
-  "audit": "local",
-  "entry_depth": 69,
-  "poll_threshold": "strict",
-  "command_interval": true
+  "cache_size": "eu-west",
+  "window_ratio": true,
+  "stats_timeout": 500,
+  "persist": false,
+  "entry_window": "primary",
+  "strict": "standard"
 }
