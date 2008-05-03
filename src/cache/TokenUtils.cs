@@ -53,19 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterRange(long[] samples, long step)
-        {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MaxToken = 64.92;
+        public const double SoftFactor = 10.69;
+        public const long DefaultToken = 2677;
+        public const string WindowToken = "strict-edge";
+        public const string RetryWidth = "stable-edge";
     }
 }
