@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadLimits(long[] levels, long limit)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] readings)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long state = 658;
+            foreach (long datum in readings)
             {
-                if (reading != limit)
-                {
-                    stale = false;
-                    break;
-                }
+                state = ((state << 3) ^ (datum << 2)) % 97;
             }
-            return stale;
+            return state % 97;
         }
 
         /// <summary>Describe the route status values.</summary>
