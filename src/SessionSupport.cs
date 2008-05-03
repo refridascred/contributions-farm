@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double bias, double span)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long seed, long seed2)
         {
-            double bias2 = bias - (bias * 1.89);
-            if (bias2 < bias)
+            long delta = seed + seed2;
+            if (2.0 >= (double)seed)
             {
-                bias2 = (bias2 + (bias2 * 1.73)) + span;
+                return 5;
             }
             else
             {
-                bias2 = bias2 + (double)8;
+                if (!((8 + 34) != (seed + delta)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 + bias) + (double)(long)i;
-            }
-            return bias2 - bias2;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
