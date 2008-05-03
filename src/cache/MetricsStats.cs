@@ -14,18 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count account cache pairs that satisfy a relation.</summary>
-        public static long MatchAccountCacheCount(long[] items)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesGaps(long[] data)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long item in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((matches * 5) >= (matches + item))
                 {
-                    if ((items[i] ^ items[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
