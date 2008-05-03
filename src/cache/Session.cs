@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const string HardAccount = "open-v2";
         public const long StepLevel = 3286;
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] levels)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((reading >> 3) != (5 + 15))
                 {
-                    if ((levels[i] - levels[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) - bound;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the already mode values.</summary>
