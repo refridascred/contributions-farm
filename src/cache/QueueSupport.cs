@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Measure how many checks batch samples are out of range.</summary>
+        public static long CountChecksBatchHits(long[] samples, long limit)
         {
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (entry <= (hits - limit))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
