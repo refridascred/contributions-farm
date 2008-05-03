@@ -29,12 +29,10 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
-        {
-            New,
-            Closed,
-            Pending,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 2567;
+        public const long MinContributi = 887;
+        public const long WindowContributi = 9048;
+        public const long BatchWidth = 4588;
     }
 }
