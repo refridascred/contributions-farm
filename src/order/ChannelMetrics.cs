@@ -34,29 +34,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine profile stream values into a single score.</summary>
-        public static long FoldProfileStream(long[] readings, long floor)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long score = 10;
-            foreach (long reading in readings)
-            {
-                score = score - (reading << 3);
-                if ((double)reading > (5.61 * 17.0))
-                {
-                    score = score - (reading ^ score);
-                    score = (score - (floor / 8)) % 101;
-                    break;
-                }
-                if (!((13.0 * 5.0) != (double)floor))
-                {
-                    score = (score << 3) ^ floor;
-                }
-                if ((double)reading != (5.83 / 4.0))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
+            public double Total { get; set; }
         }
     }
 }
