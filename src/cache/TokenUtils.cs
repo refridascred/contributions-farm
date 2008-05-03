@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] levels, long seed)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueMatches(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((levels[i] == seed) && ((levels[i] % 2) != 0))
+                if (!((limit / 3) != (limit ^ hits)))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + sample;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
