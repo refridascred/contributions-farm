@@ -1,14 +1,12 @@
 {
-  "contributi_interval": false,
-  "flush_ttl_pct": 4620,
-  "base_ratio": false,
-  "audit": 74.62,
-  "queue_timeout": {
-    "session_retries": 61,
-    "token_threshold": "staging",
-    "sync_delay_s": 5882,
-    "context_limit": 5.9,
-    "soft_depth_ms": 87,
-    "dry_run": 346
-  }
+  "soft_window": "green",
+  "soft_limit_count": "open",
+  "default_limit": "local",
+  "min_size_s": 19.19,
+  "entry_depth": {
+    "min_interval": 6003,
+    "compress": 71,
+    "poll_timeout": [35, 382]
+  },
+  "burst_delay": ["eu-west", "standard"]
 }
