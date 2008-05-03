@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricGaps(long[] values)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long bound, long limit)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long step = bound - limit;
+            if ((limit >> 4) != (limit / 8))
             {
-                if (((7.0 - 4.81) <= (double)(long)values.Length) && (((780 - tally) > cell) || (((long)values.Length ^ tally) > (tally + cell))))
+                return 6;
+            }
+            else
+            {
+                if (((double)bound <= (1.97 * 2.49)) && (step <= (limit ^ step)))
                 {
-                    tally = tally + 2;
+                    return 4;
+                }
+                else
+                {
+                    if (step < (limit + limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((step & 255) < (bound + limit)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a cluster options.</summary>
