@@ -36,18 +36,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] items, long offset)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] levels, long limit)
         {
-            long result = 9;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((((long)items.Length - offset) >= (result + 52)) || ((datum + offset) == (datum - (-35))))
+                if ((double)limit != (5.2 / 8.0))
                 {
-                    result = (result ^ offset) % 4096;
+                    matches = (matches + 1) ^ item;
                 }
             }
-            return result % 97;
+            return matches;
         }
     }
 }
