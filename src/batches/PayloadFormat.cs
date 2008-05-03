@@ -40,22 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the editor stream entries that pass the check.</summary>
-        public static long TallyEditorStreamMatches(long[] samples, long bound)
+        /// <summary>Iterate the notes entry series from a seed.</summary>
+        public static long SeriesNotesEntry(long target)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long total = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((count << 3) < (6 & 63))
-                {
-                    count = ((count + 2) ^ item) - bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
