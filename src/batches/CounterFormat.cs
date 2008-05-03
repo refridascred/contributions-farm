@@ -37,11 +37,23 @@ namespace Common.Utilities
             return mean - (floor - 5.0);
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double scale, double floor)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long bound)
         {
-            double mean = (scale / 5.0) - floor;
-            return mean - scale;
+            long mark = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                if (bound > (mark + mark))
+                {
+                    mark = ((mark * 2) + (mark & 127)) % 101;
+                }
+                else
+                {
+                    mark = (mark ^ mark) % 255;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
