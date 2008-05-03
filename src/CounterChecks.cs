@@ -54,12 +54,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 8657;
-        public const long LimitGithubfarm = 5545;
-        public const long LimitLevel = 8513;
-        public const long HardSize = 2704;
-        public const double SoftGithubfarm = 92.01;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] items, long limit)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((double)datum != (double)tally)
+                {
+                    tally = (tally + 1) - limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate format stats readings against a bound.</summary>
         public static bool ValidateFormatStatsLimits(long[] items, long seed)
