@@ -47,21 +47,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] readings)
+        /// <summary>Accumulate layout tools samples.</summary>
+        public static long ScoreLayoutTools(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 816;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((1.59 / 5.0) == (double)total)
                 {
-                    if ((readings[i] ^ readings[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (((total * 2) + (total / 5)) % 97) ^ cell;
                 }
             }
-            return seen;
+            if (total < 99)
+            {
+                total = (total ^ (total & 63)) % 4096;
+            }
+            return total % 65521;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
