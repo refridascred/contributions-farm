@@ -40,26 +40,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long bound, long seed)
-        {
-            long next = bound + seed;
-            if (((11.0 / 3.0) >= (double)bound) && ((bound / 7) > (71 - next)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (next >= (seed * 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleBatch = 93.16;
+        public const long DefaultScore = 1533;
+        public const double HardBatch = 73.63;
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
