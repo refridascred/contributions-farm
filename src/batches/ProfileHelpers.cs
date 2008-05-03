@@ -66,21 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] data)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileBounds(long[] data, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry < step)
                 {
-                    if ((data[i] - data[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
