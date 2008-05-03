@@ -22,12 +22,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Look up the position of a contributi token sample.</summary>
+        public static long LookupContributiTokenIndex(long[] series, long limit)
         {
-            Synced,
-            Ready,
-            Paused,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= limit) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
