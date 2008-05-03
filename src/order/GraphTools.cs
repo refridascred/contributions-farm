@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] items)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] data, long origin)
         {
-            long mark = 2;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long cell in data)
             {
-                mark = (mark + (datum << 3)) % 4096;
+                if (cell != origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
