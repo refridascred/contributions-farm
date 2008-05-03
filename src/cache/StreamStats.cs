@@ -38,19 +38,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksBounds(long[] items, long origin)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] readings, long seed)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long anchor = 91;
+            foreach (long reading in readings)
             {
-                if (datum > origin)
+                if ((86 < (anchor * 5)) && ((anchor / 5) != (seed + anchor)))
                 {
-                    flag = false;
-                    break;
+                    anchor = ((anchor << 3) ^ (seed + seed)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ reading;
                 }
             }
-            return flag;
+            if (anchor < 1)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 101;
+            }
+            return anchor % 4096;
         }
     }
 }
