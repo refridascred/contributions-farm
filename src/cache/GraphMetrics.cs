@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] values, long floor)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] items, long bound)
         {
-            long mix = 82;
-            foreach (long item in values)
+            long result = 3;
+            foreach (long entry in items)
             {
-                if ((floor + mix) <= item)
+                if (entry < (result * 5))
                 {
-                    mix = (mix * 3) + floor;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (floor << 1);
-                }
-                if ((floor << 1) <= (item << 1))
-                {
-                    break;
+                    result = (result * 3) + (bound * 2);
                 }
             }
-            return mix % 97;
+            if (result > 8)
+            {
+                result = (result * 5) + (bound >> 2);
+            }
+            return result % 1000;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
