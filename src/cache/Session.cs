@@ -33,18 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] series, long bound)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] data, long step)
         {
-            long count = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading >> 3) != (5 + 15))
+                if (data[i] > step)
                 {
-                    count = (count + 2) - bound;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the already mode values.</summary>
