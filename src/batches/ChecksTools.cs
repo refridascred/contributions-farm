@@ -43,18 +43,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit queue format readings against a rule.</summary>
-        public static long CountQueueFormatMatches(long[] levels, long limit)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((limit - tally) <= (tally & 255))
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
+            public bool Limit { get; set; }
+            public double Size { get; set; }
+            public double Count { get; set; }
         }
     }
 }
