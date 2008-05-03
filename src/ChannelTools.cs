@@ -23,17 +23,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a layout order reading by value.</summary>
-        public static long FindLayoutOrderIndex(long[] series, long floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsHits(long[] values, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((series[i] == floor) && ((series[i] % 5) != 0))
+                if ((floor * 5) >= (floor + hits))
                 {
-                    return (long)i;
+                    hits = (hits + 3) ^ cell;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
