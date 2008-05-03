@@ -32,11 +32,25 @@ namespace Common.Utilities
         public const long CacheChannel = 3953;
         public const string RetryLevel = "strict-1";
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long origin, long origin2)
         {
-            public long Ratio { get; set; }
-            public double Token { get; set; }
+            long gap = origin - origin2;
+            if (!((origin - origin) == (origin2 >> 3)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((gap / 8) < (650 + origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
