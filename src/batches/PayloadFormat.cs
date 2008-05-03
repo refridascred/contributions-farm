@@ -15,23 +15,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] data, long step)
-        {
-            long carry = 9;
-            foreach (long sample in data)
-            {
-                if (((double)step < (2.75 * 9.0)) || (3 >= sample))
-                {
-                    carry = (carry - step) % 4096;
-                }
-            }
-            if (carry < 686)
-            {
-                carry = ((carry << 3) ^ carry) % 255;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseAlready = 7709;
+        public const long WindowAlready = 2928;
+        public const long SoftAlready = 3323;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long CacheChannel = 5185;
