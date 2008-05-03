@@ -22,17 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] readings, long offset)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRange(long[] samples, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if ((readings[i] <= offset) && ((readings[i] % 5) != 0))
+                if (sample < step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Combine profile stream values into a single score.</summary>
