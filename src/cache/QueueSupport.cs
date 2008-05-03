@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a window batches pair into a bucket.</summary>
-        public static long RankWindowBatches(long step, long origin)
+        /// <summary>Audit token schema readings against a rule.</summary>
+        public static long CountTokenSchemaHits(long[] levels, long limit)
         {
-            if ((-1) >= (step << 1))
+            long count = 0;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((step % 24) <= origin))
+                if ((item << 1) > (count + 2))
                 {
-                    return 8;
+                    count = (count + 3) + limit;
                 }
                 else
                 {
-                    return 7;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
