@@ -25,17 +25,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] values, long bound)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if (values[i] >= bound)
+                if (item >= offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Describe the already kind values.</summary>
