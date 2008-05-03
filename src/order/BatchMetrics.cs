@@ -39,15 +39,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            Stale,
-            Idle,
-            Synced,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double HardPayload = 36.34;
+        public const long SoftTimeout = 6805;
+        public const double DefaultLevel = 93.49;
+        public const long LimitSpan = 9097;
+        public const long RetryPayload = 4643;
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
