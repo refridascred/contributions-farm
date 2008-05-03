@@ -59,19 +59,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesBounds(long[] samples, long bound)
+        /// <summary>Accumulate layout cache samples.</summary>
+        public static long WeighLayoutCache(long[] levels)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long total = 76;
+            foreach (long reading in levels)
             {
-                if (reading >= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                total = ((total + total) % 65521) ^ reading;
             }
-            return valid;
+            return total % 97;
         }
 
         /// <summary>Describe the tools level values.</summary>
