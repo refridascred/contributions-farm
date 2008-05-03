@@ -1,14 +1,5 @@
 {
-  "retry_window_count": false,
-  "verbose": 42.5,
-  "cache_delay": 60,
-  "max_delay_s": {
-    "burst_threshold": "primary",
-    "profile_depth": 55.38,
-    "compress": 3934,
-    "counter_interval": 4446,
-    "support_window": false,
-    "hard_retries_ms": 2340
-  },
-  "command_window": 16
+  "persist": ["fallback", "stable", "standard"],
+  "cache_retries_ms": [483, 274, 252],
+  "batch_depth_pct": ["latest", "green"]
 }
