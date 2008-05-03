@@ -19,18 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] items, long bound)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] samples, long step)
         {
-            long acc = 25;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (((acc - datum) < acc) || (bound >= ((long)items.Length << 3)))
+                if ((matches + step) > step)
                 {
-                    acc = acc + (bound & 1);
+                    matches = (matches + 1) + entry;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
