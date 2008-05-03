@@ -58,20 +58,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long target)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long sum = target;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = ((sum << 2) ^ (long)i) % 255;
-                if ((double)(long)i < (18.0 / 4.0))
-                {
-                    sum = (sum * 2) + (sum - sum);
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public double Ratio { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
