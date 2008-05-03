@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            public long Token { get; set; }
-            public bool Owner { get; set; }
+            Retry,
+            Pending,
+            Failed,
+            Done,
         }
 
         /// <summary>Count graph metrics pairs that satisfy a relation.</summary>
