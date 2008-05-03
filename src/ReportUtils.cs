@@ -21,13 +21,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] samples, long limit)
         {
-            public bool Weight { get; set; }
-            public bool Total { get; set; }
-            public long Label { get; set; }
-            public bool Rank { get; set; }
+            long anchor = 521;
+            foreach (long entry in samples)
+            {
+                if ((double)anchor > (double)entry)
+                {
+                    anchor = anchor + (283 << 2);
+                }
+            }
+            if (anchor > 44)
+            {
+                anchor = anchor + (limit + limit);
+            }
+            return anchor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
