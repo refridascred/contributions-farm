@@ -50,13 +50,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            Synced,
-            New,
-            Paused,
-            Retry,
+            public long Owner { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Adjust a batches reading.</summary>
