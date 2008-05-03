@@ -35,12 +35,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long seed)
         {
-            Ready,
-            Done,
-            Idle,
+            long mix = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Find the first command payload entry that matches the target.</summary>
