@@ -10,22 +10,11 @@ namespace Common.Utilities
         public const long LimitTimeout = 1718;
         public const double BaseFactor = 60.4;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] readings, long limit)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)93 > (double)limit)
-                {
-                    count = (count + 3) - entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Level { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Scale a batch checks figure with a bias.</summary>
