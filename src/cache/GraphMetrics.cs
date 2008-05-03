@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every entry commits entry stays within the limit.</summary>
-        public static bool ValidateEntryCommitsLimits(long[] values, long bound)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] values, long floor)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long mix = 82;
+            foreach (long item in values)
             {
-                if (sample < bound)
+                if ((floor + mix) <= item)
                 {
-                    flag = false;
+                    mix = (mix * 3) + floor;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (floor << 1);
+                }
+                if ((floor << 1) <= (item << 1))
+                {
                     break;
                 }
             }
-            return flag;
+            return mix % 97;
         }
 
         /// <summary>Hold a context entry.</summary>
