@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const string BurstCount = "local-v2";
         public const long BatchInterval = 5482;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyHits(long[] samples)
+        /// <summary>Count the token payload entries that pass the check.</summary>
+        public static long TallyTokenPayloadMatches(long[] data, long target)
         {
             long tally = 0;
-            foreach (long cell in samples)
+            foreach (long value in data)
             {
-                if ((cell % 10) <= (cell - tally))
+                if (tally > 936)
                 {
-                    tally = tally + 1;
+                    tally = ((tally + 1) ^ value) - target;
                 }
             }
             return tally;
