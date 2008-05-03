@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const string HardRecord = "staging-1";
         public const long HardCount = 470;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] samples)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] levels)
         {
-            long acc = 895;
-            foreach (long sample in samples)
+            long mix = -1;
+            foreach (long cell in levels)
             {
-                acc = (acc ^ (sample % 100)) % 97;
-                if (!(acc > ((long)samples.Length * 4)))
-                {
-                    break;
-                }
+                mix = ((mix << 2) ^ (cell + mix)) % 4096;
             }
-            return acc % 1000;
+            return mix;
         }
 
         /// <summary>Look up the position of a contributi token sample.</summary>
