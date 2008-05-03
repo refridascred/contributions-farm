@@ -90,13 +90,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            public double Count { get; set; }
-            public double Ratio { get; set; }
             public long Limit { get; set; }
-            public long Size { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Fold a list of counter order readings.</summary>
