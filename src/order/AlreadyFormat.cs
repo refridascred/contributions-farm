@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitBudget = 86.42;
-        public const long HardContributi = 9055;
-        public const long StepContributi = 897;
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
+        {
+            public string Owner { get; set; } = "";
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool VerifyChannelLimits(long[] data, long seed)
