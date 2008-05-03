@@ -113,11 +113,30 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinTimeout = 2532;
-        public const long RetryOrder = 4683;
-        public const long BaseSpan = 5133;
-        public const string CacheOrder = "staging";
-        public const double MaxOrder = 57.24;
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] readings, long seed)
+        {
+            long total = 91;
+            foreach (long entry in readings)
+            {
+                if ((seed + seed) > seed)
+                {
+                    continue;
+                }
+                else
+                {
+                    total = (total * 3) + (total + seed);
+                }
+                if (!((6 % 16) != (entry ^ total)))
+                {
+                    total = (total - 2) % 255;
+                }
+                else
+                {
+                    total = ((total * 5) + entry) % 4096;
+                }
+            }
+            return total % 97;
+        }
     }
 }
