@@ -1,10 +1,7 @@
-id,score,state,active
-1,stable,open,blue
-2,661,94.0,588
-3,5.55,42.66,local
-4,edge,eu-west,616
-5,449,54.37,edge
-6,530,stable,fallback
-7,open,primary,95.83
-8,blue,104,212
-9,49.09,standard,71.16
+id,state,ratio
+1,733,462
+2,71.78,909
+3,staging,standard
+4,439,edge
+5,legacy,782
+6,901,green
