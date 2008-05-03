@@ -111,14 +111,39 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long limit, long seed)
         {
-            Retry,
-            Pending,
-            Closed,
-            Done,
-            Locked,
+            long offset = limit - seed;
+            if ((8.0 - 5.0) < (double)seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((limit * 3) >= (limit & 127)) || ((offset * 3) < (seed % 2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (limit > (offset << 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset <= (limit >> 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
