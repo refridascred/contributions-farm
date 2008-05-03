@@ -31,18 +31,19 @@ namespace Common.Utilities
             return bias + ratio;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] readings, long bound)
+        /// <summary>Check that every order session entry stays within the limit.</summary>
+        public static bool GuardOrderSessionRange(long[] series, long bound)
         {
-            long anchor = -59;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if ((entry - 8) <= anchor)
+                if (reading > bound)
                 {
-                    anchor = (anchor ^ anchor) + bound;
+                    valid = false;
+                    break;
                 }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Describe the stats mode values.</summary>
