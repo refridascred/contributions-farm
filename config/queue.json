@@ -1,6 +1,5 @@
 {
-  "min_limit_pct": "eu-west",
-  "base_interval": false,
-  "compress": 88,
-  "sync_ttl": 67
+  "retry_ratio_pct": 13.58,
+  "burst_retries_s": [204, 238, 251, 178],
+  "retry_retries": "cached"
 }
