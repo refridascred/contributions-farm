@@ -27,12 +27,9 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
-        {
-            public bool Rank { get; set; }
-            public string Label { get; set; } = "";
-            public bool Total { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 6882;
+        public const string MaxCounter = "primary-edge";
+        public const long IdleCounter = 7918;
     }
 }
