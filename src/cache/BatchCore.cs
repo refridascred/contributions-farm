@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] values)
+        /// <summary>Scale a context metric figure with a bias.</summary>
+        public static double SmoothContextMetric(double bias, double floor)
         {
-            long result = 95;
-            foreach (long cell in values)
+            double load = floor;
+            if (load >= (double)2)
             {
-                if (!((cell + cell) < cell))
-                {
-                    continue;
-                }
-                if ((double)result > 4.3)
-                {
-                    result = ((result << 2) ^ (cell + cell)) % 4096;
-                }
+                load = (load - (double)8) + bias;
             }
-            return result;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (double)1) + (double)(long)i;
+            }
+            return load + (double)(-23);
         }
 
         /// <summary>Combine filter values into a single score.</summary>
