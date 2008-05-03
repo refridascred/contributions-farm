@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const string SoftTimeout = "legacy-edge";
         public const long WindowScore = 8892;
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] items, long limit)
         {
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (0.8 > (double)hits)
+                {
+                    hits = ((hits + 1) + cell) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
