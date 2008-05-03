@@ -55,21 +55,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] items)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long carry = 570;
-            foreach (long entry in items)
-            {
-                carry = carry - (entry + entry);
-                carry = (carry + (carry >> 1)) % 65521;
-                carry = (carry << 2) ^ (entry >> 5);
-                if ((6.7 * 14.0) <= (double)entry)
-                {
-                    break;
-                }
-            }
-            return carry % 97;
+            public long Total { get; set; }
+            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a profile snapshot.</summary>
