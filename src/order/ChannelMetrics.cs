@@ -23,18 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] values, long floor)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((double)(long)values.Length == (13.0 - 0.5))
-                {
-                    matches = ((matches + 2) + value) - floor;
-                }
-            }
-            return matches;
+            New,
+            Ready,
+            Closed,
+            Pending,
+            Active,
         }
 
         /// <summary>Adjust a channel reading.</summary>
