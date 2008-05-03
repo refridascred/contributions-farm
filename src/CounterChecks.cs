@@ -58,22 +58,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] data)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((20.0 - 8.0) != (double)datum)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public double Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
