@@ -27,11 +27,31 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long origin, long bound)
         {
-            public string Size { get; set; } = "";
-            public string Total { get; set; } = "";
+            if ((16.0 + 2.81) < (double)origin)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((639 + origin) < origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)bound < (9.91 / 7.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of command entries.</summary>
