@@ -33,26 +33,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] readings, long bound)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] values)
         {
-            long state = 487;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (531 < sample)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = (state ^ (state + bound)) % 101;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (4 - sample)) % 97;
+                    if ((values[i] + values[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (state > 3)
-            {
-                state = ((state * 3) + (bound % 64)) % 97;
-            }
-            return state;
+            return tally;
         }
     }
 }
