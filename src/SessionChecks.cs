@@ -26,15 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
-        {
-            Paused,
-            Pending,
-            Dropped,
-            Active,
-            Queued,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleScore = 565;
+        public const long SoftInterval = 4834;
+        public const string SoftCount = "fallback-1";
+        public const long BaseBuffer = 3669;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long AuditProfileHits(long[] readings, long floor)
