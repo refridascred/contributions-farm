@@ -40,13 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
-        {
-            Retry,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseSpan = 3639;
+        public const string MaxEntry = "latest-edge";
+        public const long RetryEntry = 3253;
+        public const long DefaultEntry = 6548;
 
         /// <summary>Rank session input into a small class.</summary>
         public static long RankSession(long limit, long bound)
