@@ -1,5 +1,5 @@
 {
-  "min_delay": "cached",
-  "context_ratio": 88.76,
-  "counter_timeout": 49
+  "base_threshold_ms": 100,
+  "poll_ttl_count": true,
+  "batch_timeout_count": "primary"
 }
