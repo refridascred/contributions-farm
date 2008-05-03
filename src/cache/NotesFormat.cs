@@ -12,12 +12,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Measure how many token metric samples are out of range.</summary>
+        public static long TallyTokenMetricOutliers(long[] values, long step)
         {
-            Done,
-            Queued,
-            Idle,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((double)step >= (3.45 + 8.71))
+                {
+                    hits = (hits + 2) - reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
