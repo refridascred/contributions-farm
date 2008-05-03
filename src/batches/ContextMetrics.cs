@@ -45,19 +45,15 @@ namespace Common.Utilities
             return bias + (weight - 20.0);
         }
 
-        /// <summary>Digest a series of token window entries.</summary>
-        public static long FoldTokenWindow(long[] samples, long target)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double gain, double offset)
         {
-            long result = 585;
-            foreach (long reading in samples)
+            double load = 19.0;
+            if (load > offset)
             {
-                result = ((result << 2) ^ (result + reading)) + target;
+                load = (load + (double)823) - gain;
             }
-            if (result < 66)
-            {
-                result = result ^ (2 % 3);
-            }
-            return result;
+            return load + load;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
