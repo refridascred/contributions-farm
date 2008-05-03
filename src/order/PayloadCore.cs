@@ -52,12 +52,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            public string Mode { get; set; } = "";
-            public double Size { get; set; }
-            public long Score { get; set; }
+            public double Count { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
