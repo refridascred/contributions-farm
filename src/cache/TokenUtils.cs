@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const long WindowNotes = 7218;
         public const long RetryFactor = 7239;
 
-        /// <summary>Count channel counter pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCounterCount(long[] levels)
+        /// <summary>Accumulate farm batches samples.</summary>
+        public static long TotalFarmBatches(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 7;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mix = (((mix * 4) + 40) % 65521) ^ item;
+                if (((-93) & 63) == (target - target))
                 {
-                    if ((levels[i] + levels[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            return mix % 1000;
         }
 
         /// <summary>Blend two filter measurements.</summary>
