@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double weight, double bias)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            double rate = 12.0;
-            if (rate < (weight + bias))
-            {
-                rate = rate - (weight + rate);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (double)7) + (double)(long)i;
-            }
-            return rate - (rate / 9.0);
+            Locked,
+            Idle,
+            New,
+            Draft,
+            Done,
         }
 
         /// <summary>Roll a stats counter forward.</summary>
