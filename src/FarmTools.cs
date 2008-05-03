@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long floor, long floor2)
-        {
-            if (floor >= (floor2 << 1))
-            {
-                return 6;
-            }
-            else
-            {
-                if (floor2 < (floor / 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((5 > (floor2 % 24)) || (floor2 > (floor - floor2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((floor ^ floor2) > (3 & 31)) && (floor2 < (floor2 << 2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string StepSpan = "staging-v2";
+        public const long CacheScore = 9034;
+        public const long MinWindow = 8334;
+        public const double RetryWindow = 36.14;
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
