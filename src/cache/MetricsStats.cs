@@ -17,19 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] levels)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long total = -89;
-            foreach (long value in levels)
-            {
-                total = total + (value & 7);
-            }
-            if (total > 896)
-            {
-                total = (total << 2) ^ (total + total);
-            }
-            return total;
+            Draft,
+            Stale,
+            Closed,
         }
 
         /// <summary>Describe the session state values.</summary>
