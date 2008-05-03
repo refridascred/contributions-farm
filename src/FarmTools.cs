@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next route counter value.</summary>
-        public static double ScaleRouteCounter(double rate, double offset)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long floor, long floor2)
         {
-            double load = (double)(4 / 8);
-            if (load <= rate)
+            if (floor >= (floor2 << 1))
             {
-                load = load + offset;
+                return 6;
             }
             else
             {
-                load = load + (double)40;
+                if (floor2 < (floor / 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((5 > (floor2 % 24)) || (floor2 > (floor - floor2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((floor ^ floor2) > (3 & 31)) && (floor2 < (floor2 << 2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return load - load;
         }
 
         /// <summary>Describe the account kind values.</summary>
