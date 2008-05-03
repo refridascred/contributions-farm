@@ -15,13 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] series)
         {
-            Dropped,
-            Failed,
-            Closed,
-            Retry,
+            long score = 52;
+            foreach (long reading in series)
+            {
+                score = (score ^ (92 % 16)) % 97;
+                if ((reading - score) == (score >> 3))
+                {
+                    break;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Count stats metrics pairs that satisfy a relation.</summary>
