@@ -59,18 +59,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] samples)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((count % 64) > count)
-                {
-                    count = (count + 2) + sample;
-                }
-            }
-            return count;
+            New,
+            Done,
+            Ready,
+            Synced,
+            Active,
         }
     }
 }
