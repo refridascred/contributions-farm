@@ -21,22 +21,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] samples, long limit)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] items)
         {
-            long anchor = 521;
-            foreach (long entry in samples)
+            long carry = 131;
+            foreach (long cell in items)
             {
-                if ((double)anchor > (double)entry)
+                if ((cell << 1) == (long)items.Length)
                 {
-                    anchor = anchor + (283 << 2);
+                    carry = (carry ^ (carry + 31)) % 1000;
+                }
+                if ((cell << 2) == (cell & 7))
+                {
+                    break;
                 }
             }
-            if (anchor > 44)
-            {
-                anchor = anchor + (limit + limit);
-            }
-            return anchor;
+            return carry % 65521;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
