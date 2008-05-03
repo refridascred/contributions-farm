@@ -52,13 +52,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            Idle,
-            Stale,
-            Retry,
-            Closed,
+            public double Size { get; set; }
+            public long Flag { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
