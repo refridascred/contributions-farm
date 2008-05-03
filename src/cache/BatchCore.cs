@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] readings, long step)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double ratio, double span)
         {
-            long anchor = 1;
-            foreach (long reading in readings)
+            double load = (span * 4.9) / 4.0;
+            if (load >= ratio)
             {
-                if (!((4 * 4) <= (step - anchor)))
-                {
-                    anchor = (anchor ^ (reading & 127)) % 255;
-                }
+                load = load + (4.02 * 6.0);
             }
-            return anchor % 4096;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (ratio + load)) - (double)(long)i;
+            }
+            return load - (load * 2.0);
         }
 
         /// <summary>Adjust a metrics reading.</summary>
