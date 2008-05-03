@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of filter profile readings.</summary>
-        public static long MatchFilterProfileCount(long[] items)
+        /// <summary>Project the next route counter value.</summary>
+        public static double ScaleRouteCounter(double rate, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = (double)(4 / 8);
+            if (load <= rate)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load + offset;
             }
-            return seen;
+            else
+            {
+                load = load + (double)40;
+            }
+            return load - load;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
