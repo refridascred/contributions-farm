@@ -28,21 +28,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] levels)
+        /// <summary>Combine account batches values into a single score.</summary>
+        public static long WeighAccountBatches(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 2;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = (mix << 3) ^ (entry << 1);
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
