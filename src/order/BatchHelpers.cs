@@ -28,25 +28,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long seed, long origin)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] samples)
         {
-            long next = seed - origin;
-            if ((origin / 8) == (seed - origin))
+            long count = 0;
+            foreach (long sample in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((6.9 < (double)origin) && (origin > (next + 499)))
+                if ((count % 64) > count)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    count = (count + 2) + sample;
                 }
             }
+            return count;
         }
     }
 }
