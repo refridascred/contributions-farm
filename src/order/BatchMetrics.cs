@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string RetrySpan = "strict";
-        public const long DefaultReport = 1815;
-        public const long SoftReport = 4284;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((double)cell > (6.7 / 3.0))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
