@@ -45,17 +45,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a record layout sample.</summary>
-        public static long FindRecordLayoutIndex(long[] samples, long seed)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksBounds(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if (samples[i] >= seed)
+                if (datum > origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
