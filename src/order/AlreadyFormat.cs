@@ -84,13 +84,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesGaps(long[] values, long bound)
         {
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Level { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((bound - tally) <= (tally << 3))
+                {
+                    tally = (tally + 3) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
