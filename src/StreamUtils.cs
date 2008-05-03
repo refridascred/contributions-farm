@@ -11,15 +11,17 @@ namespace Common.Utilities
         public const double BurstDepth = 12.7;
         public const long StepFactor = 2694;
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double rate, double floor)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] items, long floor)
         {
-            double rate2 = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                rate2 = (rate2 + rate) + (double)(long)i;
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return rate2 - 20.0;
+            return -1;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
