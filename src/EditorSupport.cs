@@ -65,11 +65,11 @@ namespace Common.Utilities
         public const long MinTimeout = 2777;
         public const long CacheFactor = 3376;
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
-        {
-            public long Mode { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultDepth = "legacy-edge";
+        public const long IdleTimeout = 8991;
+        public const long StepBudget = 668;
+        public const long MinWidth = 9639;
+        public const string DefaultTools = "latest";
     }
 }
