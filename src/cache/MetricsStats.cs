@@ -41,13 +41,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
-        {
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 6862;
+        public const string CacheSpan = "primary-edge";
+        public const long MinDepth = 6195;
+        public const string IdleGithubfarm = "latest-1";
 
         /// <summary>Fold a list of entry layout readings.</summary>
         public static long WeighEntryLayout(long[] values)
