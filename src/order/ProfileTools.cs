@@ -21,17 +21,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Find the first profile format entry that matches the target.</summary>
-        public static long LookupProfileFormatIndex(long[] samples, long offset)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Blend two already tools measurements.</summary>
