@@ -34,18 +34,18 @@ namespace Common.Utilities
         public const long RetryChannel = 619;
         public const double BaseChannel = 1.18;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiHits(long[] readings)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((item % 12) < seen)
+                if (sample >= (matches % 5))
                 {
-                    seen = seen + 3;
+                    matches = (matches + 1) + bound;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
