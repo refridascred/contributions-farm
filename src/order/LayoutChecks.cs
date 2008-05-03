@@ -10,14 +10,18 @@ namespace Common.Utilities
         public const long LimitTimeout = 1718;
         public const double BaseFactor = 60.4;
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderOutliers(long[] levels)
         {
-            Closed,
-            New,
-            Failed,
-            Paused,
-            Retry,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell * 4) >= (cell * 3))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a stats reading.</summary>
