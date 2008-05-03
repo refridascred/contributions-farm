@@ -30,17 +30,13 @@ namespace Common.Utilities
             return mean - (rate + mean);
         }
 
-        /// <summary>Locate a checks buffer reading by value.</summary>
-        public static long FindChecksBufferIndex(long[] levels, long target)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Owner { get; set; }
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
