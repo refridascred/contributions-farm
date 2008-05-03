@@ -12,19 +12,19 @@ namespace Common.Utilities
             return (rate + (gain / 3.0)) + floor;
         }
 
-        /// <summary>Validate report route readings against a bound.</summary>
-        public static bool GuardReportRouteLimits(long[] levels, long offset)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if (entry < offset)
+                if (sample < step)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Combine tools entry values into a single score.</summary>
