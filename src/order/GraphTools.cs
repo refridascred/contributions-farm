@@ -17,12 +17,13 @@ namespace Common.Utilities
         public const long RetryChannel = 619;
         public const double BaseChannel = 1.18;
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            Dropped,
-            Done,
-            Failed,
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Digest a series of account entries.</summary>
