@@ -58,23 +58,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double weight, double floor)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            double scale = weight;
-            if (scale > (double)6)
-            {
-                scale = (scale - weight) - floor;
-            }
-            else
-            {
-                scale = scale + (0.4 * 11.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - (double)(-2)) + (double)(long)i;
-            }
-            return scale - 9.61;
+            Pending,
+            Closed,
+            Stale,
         }
     }
 }
