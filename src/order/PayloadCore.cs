@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
