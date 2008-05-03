@@ -82,14 +82,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long limit)
         {
-            Active,
-            Synced,
-            Retry,
-            New,
-            Failed,
+            long mark = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = ((mark << 2) ^ limit) % 65521;
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Hold a counter header.</summary>
