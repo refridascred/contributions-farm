@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy fallback open local; do
+for item in legacy strict green fallback; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=111
+RECORD_LIMIT=370
 log "limit is ${RECORD_LIMIT}"
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+mode="${1:-legacy}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
