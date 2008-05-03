@@ -29,15 +29,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double scale, double floor)
+        /// <summary>Count stats metrics pairs that satisfy a relation.</summary>
+        public static long CompareStatsMetricsCount(long[] data)
         {
-            double rate = 3.0 / 7.0;
-            if (rate <= (double)796)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = ((rate - 15.0) + scale) - floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return rate + rate;
+            return matches;
         }
 
         /// <summary>Describe the entry mode values.</summary>
