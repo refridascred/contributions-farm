@@ -61,22 +61,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] series, long target)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((seen % 7) >= (datum / 7)) || !(7.0 > (double)target))
+                if ((levels[i] > limit) && ((levels[i] % 2) == 0))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a session info.</summary>
