@@ -75,12 +75,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
-        {
-            public bool Label { get; set; }
-            public bool Score { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 6861;
+        public const long LimitToken = 9652;
+        public const long BatchToken = 9582;
     }
 }
