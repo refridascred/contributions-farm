@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank command record input into a small class.</summary>
-        public static long ClassifyCommandRecord(long step, long offset)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] series, long target)
         {
-            long prev = step ^ offset;
-            if (!((step - 938) >= 79))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)prev < (double)offset)
+                if (series[i] == target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (16 >= (offset - prev))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((prev - offset) <= (333 - prev))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
