@@ -52,12 +52,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            public double Size { get; set; }
-            public long Flag { get; set; }
             public bool Level { get; set; }
+            public long Ratio { get; set; }
+            public double Count { get; set; }
         }
     }
 }
