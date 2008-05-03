@@ -1,9 +1,16 @@
 # support settings
-burst_retries_s:
-  cache_capacity: staging
-  soft_retries: 36
-  persist: legacy
-  command_size: 9479
-  burst_limit_ms: 1670
-min_ratio: 5268
-warm_interval_s: fallback
+warm_timeout_count: edge
+poll_limit: 55
+channel_retries:
+  burst_ratio:
+    - 174
+    - 231
+    - 24
+    - 155
+  max_timeout_ms: blue
+  batch_limit_count: 100
+  burst_interval: 5.72
+  warm_ratio_pct: legacy
+default_size_pct: 51
+idle_window: 1024
+entry_ratio: stable
