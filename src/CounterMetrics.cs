@@ -27,24 +27,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double bias, double floor)
-        {
-            double load = bias;
-            if (load > (0.36 / 2.0))
-            {
-                load = load - (load - load);
-            }
-            else
-            {
-                load = load - floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (6.51 / 5.0)) + (double)(long)i;
-            }
-            return load + (load * 5.0);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BurstRatio = 24.24;
+        public const double RetryInterval = 75.9;
+        public const double BatchFactor = 49.54;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BatchTools = 9092;
