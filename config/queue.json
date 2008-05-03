@@ -1,12 +1,14 @@
 {
-  "burst_ttl_s": true,
-  "profile_limit": 250,
-  "window_window": [229, 194, 485],
-  "commits_retries": {
-    "cache_depth_count": false,
-    "entry_interval": "eu-west",
-    "compress": 60
+  "retry_limit": "green",
+  "checks_size": 38.41,
+  "editor_delay": {
+    "min_threshold_count": 5097,
+    "sync_size_count": 30,
+    "sync_retries_count": 723,
+    "contributi_depth": 66.95,
+    "session_window": 50.78
   },
-  "readonly": "cached",
-  "idle_size_pct": true
+  "burst_size_ms": "latest",
+  "queue_window": "green",
+  "soft_window_pct": "standard"
 }
