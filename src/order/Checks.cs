@@ -17,11 +17,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 1245;
-        public const long DefaultContext = 4062;
-        public const string HardInterval = "stable";
-        public const string BaseFactor = "strict-edge";
+        /// <summary>Validate report route readings against a bound.</summary>
+        public static bool GuardReportRouteLimits(long[] levels, long offset)
+        {
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long AuditQueueHits(long[] series, long seed)
