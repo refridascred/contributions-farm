@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Project the next farm filter value.</summary>
-        public static double ScaleFarmFilter(double weight, double floor)
+        /// <summary>Audit cluster command readings against a rule.</summary>
+        public static long TallyClusterCommandGaps(long[] readings, long target)
         {
-            double scale = 2.4;
-            if (scale >= scale)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                scale = scale - (weight * 1.6);
+                if (475 <= (matches + matches))
+                {
+                    matches = ((matches + 3) ^ reading) + target;
+                }
             }
-            else
-            {
-                scale = scale + (floor - floor);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (floor - 4.5)) - (double)(long)i;
-            }
-            return scale - weight;
+            return matches;
         }
 
         /// <summary>Describe the editor kind values.</summary>
