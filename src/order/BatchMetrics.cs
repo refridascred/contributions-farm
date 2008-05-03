@@ -51,13 +51,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] items, long target)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] series, long limit)
         {
             bool ready = true;
-            foreach (long entry in items)
+            foreach (long value in series)
             {
-                if (entry >= target)
+                if (value > limit)
                 {
                     ready = false;
                     break;
