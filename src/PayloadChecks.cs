@@ -12,15 +12,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double gain, double bias)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] samples, long floor)
         {
-            double gain2 = (double)65 + (gain * 1.3);
-            if (gain2 <= (gain2 - bias))
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                gain2 = gain2 - (1.3 * 3.6);
+                if (entry != floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return gain2 + (bias / 4.0);
+            return ok;
         }
 
         /// <summary>Describe the stats level values.</summary>
