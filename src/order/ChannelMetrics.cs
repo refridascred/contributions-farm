@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] samples, long target)
         {
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (((item << 2) >= (19 - 8)) && ((hits << 2) < (item >> 1)))
+                {
+                    hits = (hits + 3) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
