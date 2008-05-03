@@ -27,25 +27,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long origin, long origin2)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double rate, double floor)
         {
-            long gap = origin - origin2;
-            if (!((origin - origin) == (origin2 >> 3)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((gap / 8) < (650 + origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            double load = rate;
+            return (load + (double)232) + floor;
         }
     }
 }
