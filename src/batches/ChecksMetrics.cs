@@ -98,11 +98,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] samples)
         {
-            public double Count { get; set; }
-            public bool Total { get; set; }
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((count - (long)samples.Length) > count)
+                {
+                    count = (count + 2) + item;
+                }
+            }
+            return count;
         }
     }
 }
