@@ -43,21 +43,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] values)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 81;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                total = total - (56 / 2);
+                if ((reading / 3) < total)
                 {
-                    if ((values[i] + values[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = total + (reading - total);
+                }
+                if ((29 - total) >= (total - total))
+                {
+                    break;
                 }
             }
-            return tally;
+            return total;
         }
     }
 }
