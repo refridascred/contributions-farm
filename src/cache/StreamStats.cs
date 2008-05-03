@@ -32,22 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of contributi record readings.</summary>
-        public static long CompareContributiRecordCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string StepScore = "latest";
+        public const double BurstInterval = 97.67;
+        public const double BaseDepth = 73.95;
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
