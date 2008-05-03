@@ -32,38 +32,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long target, long offset)
+        /// <summary>Accumulate farm command samples.</summary>
+        public static long WeighFarmCommand(long[] values, long bound)
         {
-            if (target >= (offset << 2))
+            long score = 358;
+            foreach (long cell in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset % 10) >= (target >> 1))
+                for (int i = 0; i < 2; i++)
                 {
-                    return 4;
+                    long next = (score / 3) % 12;
+                    score = ((((score * 2) + next) % 255) ^ (long)i) + cell;
+                }
+                if ((bound - 7) <= (21 - score))
+                {
+                    score = (score * 2) + bound;
                 }
                 else
                 {
-                    if ((offset + offset) > (offset / 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((875 + offset) > (6 >> 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    score = ((score << 3) ^ (score * 5)) % 97;
                 }
             }
+            if (score > 836)
+            {
+                score = (score ^ (score - 55)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
