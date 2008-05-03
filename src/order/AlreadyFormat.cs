@@ -60,15 +60,25 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double scale, double floor)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long target, long target2)
         {
-            double ratio = (double)(741 * 2);
-            if (ratio < (double)320)
+            long bound = target ^ target2;
+            if (!((bound * 2) <= (-441)))
             {
-                ratio = (ratio + (scale / 3.0)) - floor;
+                return 8;
             }
-            return ratio + (ratio - ratio);
+            else
+            {
+                if (((bound / 6) == (bound >> 1)) && (target <= (target2 << 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
