@@ -64,22 +64,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] samples)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (cell < 988)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            New,
+            Dropped,
+            Queued,
         }
     }
 }
