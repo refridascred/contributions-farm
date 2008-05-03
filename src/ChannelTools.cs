@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long bound, long limit)
+        /// <summary>Compare every pair of metric window readings.</summary>
+        public static long MatchMetricWindowCount(long[] readings)
         {
-            if (((limit + bound) < (bound * 4)) && ((bound * 4) > (limit - bound)))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)limit > 6.3)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit * 4) < (4 >> 4))
+                    if ((readings[i] + readings[j]) != 6)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the cluster class values.</summary>
