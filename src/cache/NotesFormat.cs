@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long limit, long floor)
         {
-            public bool Weight { get; set; }
-            public string Size { get; set; } = "";
+            long gap = limit + floor;
+            if ((915 ^ gap) != (gap + limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)floor != (1.3 - 2.9))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit - floor) >= floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many token metric samples are out of range.</summary>
