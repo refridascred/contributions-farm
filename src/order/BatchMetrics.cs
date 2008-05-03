@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string WindowFactor = "alpha-edge";
-        public const string BaseAccount = "local-1";
-        public const long BurstWidth = 4038;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string RetrySpan = "strict";
+        public const long DefaultReport = 1815;
+        public const long SoftReport = 4284;
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
