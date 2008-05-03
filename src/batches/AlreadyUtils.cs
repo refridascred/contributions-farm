@@ -40,10 +40,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 3855;
-        public const long RetrySize = 7722;
-        public const string SoftContributi = "legacy-1";
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long bound, long seed)
+        {
+            long next = bound + seed;
+            if (((11.0 / 3.0) >= (double)bound) && ((bound / 7) > (71 - next)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (next >= (seed * 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
