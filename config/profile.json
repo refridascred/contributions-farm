@@ -1,7 +1,6 @@
 {
-  "order_depth": true,
-  "hard_ttl_ms": ["open", "fallback"],
-  "default_capacity_pct": false,
-  "cache_interval": 3034,
-  "sync_timeout_s": 53
+  "hard_depth_count": [203, 155],
+  "min_capacity": 78,
+  "dry_run": "primary",
+  "buffer_window": "staging"
 }
