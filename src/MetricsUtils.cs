@@ -43,18 +43,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileMatches(long[] series)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] data)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((tally ^ tally) >= item)
+                if (!((1 + reading) == (1 - (long)data.Length)))
                 {
-                    tally = tally + 3;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Derive the next filter report value from a seed.</summary>
