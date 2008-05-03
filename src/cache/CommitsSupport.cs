@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Adjust a buffer layout reading.</summary>
-        public static double AdjustBufferLayout(double rate, double floor)
-        {
-            double mean = (5.64 * 2.1) - (floor + 11.0);
-            if (mean < (rate - mean))
-            {
-                mean = mean - rate;
-            }
-            return mean + (rate + floor);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardFactor = 6943;
+        public const long BaseRecord = 3101;
+        public const long BurstRecord = 6581;
+        public const string HardRecord = "staging-1";
+        public const long HardCount = 470;
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
