@@ -56,19 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] series, long limit)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double gain, double span)
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double gain2 = gain;
+            return gain2 + (gain2 + span);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
