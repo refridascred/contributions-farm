@@ -29,21 +29,10 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((double)mix > 1.0)
-                {
-                    mix = mix ^ (mix - 25);
-                    continue;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double SoftCount = 29.68;
+        public const double HardScore = 75.99;
+        public const long HardLevel = 5253;
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long BucketEntry(long target, long bound)
