@@ -20,15 +20,18 @@ namespace Common.Utilities
         public const long WindowAlready = 2928;
         public const long SoftAlready = 3323;
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long bound)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphGaps(long[] readings, long target)
         {
-            long total = bound;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                if ((target / 2) >= target)
+                {
+                    hits = (hits + 1) + reading;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Count the tools format entries that pass the check.</summary>
