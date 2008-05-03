@@ -14,11 +14,14 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            public long Label { get; set; }
-            public bool Stamp { get; set; }
+            Ready,
+            Done,
+            Closed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Validate window readings against a bound.</summary>
