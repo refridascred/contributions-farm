@@ -1,6 +1,28 @@
 # entry settings
-queue_delay: edge
-base_capacity: 1024
-metrics_limit: 17.7
-sync_ttl_pct: false
-batch_ttl_s: open
+soft_timeout_ms:
+  warm_delay_ms:
+    - primary
+    - stable
+    - green
+    - fallback
+  enabled: edge
+  default_threshold_ms: 60
+  flush_retries_pct:
+    - 156
+    - 324
+    - 452
+  farm_ttl: false
+  persist:
+    enabled: 50.75
+    buffer_timeout: 39
+    sync_capacity: 1024
+    min_timeout: cached
+batch_ratio:
+  soft_threshold_s:
+    - 376
+    - 173
+  soft_delay: 92.03
+  max_retries_count: open
+  batch_capacity_count: 250
+  default_interval: 1024
+metric_limit: 500
