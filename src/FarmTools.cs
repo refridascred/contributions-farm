@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string StepSpan = "staging-v2";
-        public const long CacheScore = 9034;
-        public const long MinWindow = 8334;
-        public const double RetryWindow = 36.14;
+        /// <summary>Match up command notes samples.</summary>
+        public static long PairCommandNotesCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
