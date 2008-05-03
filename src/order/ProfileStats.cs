@@ -53,19 +53,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every farm stats entry stays within the limit.</summary>
-        public static bool VerifyFarmStatsBounds(long[] samples, long bound)
+        /// <summary>Audit support window readings against a rule.</summary>
+        public static long MeasureSupportWindowHits(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (item != bound)
+                if ((sample + 52) >= hits)
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) + origin;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
