@@ -1,4 +1,14 @@
 # githubfarm settings
-sync_depth: 100
-order_size: local
-sync_threshold_s: 1926
+audit:
+  - eu-west
+  - staging
+  - fallback
+  - strict
+profile_interval:
+  - 76
+  - 486
+  - 441
+counter_timeout: open
+cache_capacity_pct: 7390
+burst_size_s: 28.47
+hard_capacity: stable
