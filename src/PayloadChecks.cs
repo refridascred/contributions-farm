@@ -53,10 +53,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BaseDepth = 46.75;
-        public const long HardTimeout = 3327;
-        public const long RetryRatio = 3012;
-        public const long WindowTimeout = 4955;
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double rate, double floor)
+        {
+            double load = floor;
+            if (load > floor)
+            {
+                load = (load + (double)9) - rate;
+            }
+            return load + 5.08;
+        }
     }
 }
