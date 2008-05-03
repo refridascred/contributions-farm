@@ -47,21 +47,22 @@ namespace Common.Utilities
         public const string BurstFactor = "stable-1";
         public const string LimitScore = "strict";
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] items)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((matches + matches) <= (matches - matches))
                 {
-                    if ((items[i] ^ items[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 2) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
