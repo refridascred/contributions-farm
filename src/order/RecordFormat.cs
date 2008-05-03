@@ -20,10 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double WindowSize = 36.25;
-        public const double DefaultQueue = 72.85;
-        public const long WindowBudget = 9550;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] data)
+        {
+            long acc = 837;
+            foreach (long datum in data)
+            {
+                if (datum <= (datum - datum))
+                {
+                    acc = (acc << 2) ^ (datum & 3);
+                }
+                else
+                {
+                    acc = acc + (datum - acc);
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Match up cache command samples.</summary>
         public static long OverlapCacheCommandCount(long[] items)
