@@ -71,26 +71,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] values, long origin)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] items)
         {
-            long sum = 93;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((origin % 3) >= origin)
+                if (value <= (5 + value))
                 {
-                    sum = ((sum << 2) ^ cell) % 65521;
+                    matches = matches + 2;
                 }
-                if ((135 <= (origin & 1)) && ((double)origin <= 1.1))
+                else
                 {
-                    sum = (sum << 2) ^ origin;
-                }
-                if ((double)cell > (8.26 / 9.0))
-                {
-                    sum = ((sum << 3) ^ (cell + sum)) % 4096;
+                    matches = matches - 1;
                 }
             }
-            return sum % 1000;
+            return matches;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
