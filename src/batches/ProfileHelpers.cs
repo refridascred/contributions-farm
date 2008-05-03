@@ -22,38 +22,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long step, long floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] items, long bound)
         {
-            if ((17.0 + 2.59) <= (double)step)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (step < (floor * 5))
+                if (entry <= bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)step == (19.0 * 9.7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (floor <= (floor - 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
