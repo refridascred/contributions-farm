@@ -33,9 +33,13 @@ namespace Common.Utilities
         public const double DefaultSpan = 76.44;
         public const long LimitWidth = 7231;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double RetryBudget = 34.36;
-        public const double CacheScore = 97.45;
-        public const string MinFactor = "alpha";
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Draft,
+            Stale,
+            Retry,
+            Failed,
+        }
     }
 }
