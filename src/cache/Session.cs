@@ -22,11 +22,16 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleSupport = 76.79;
-        public const long DefaultSupport = 5587;
-        public const double DefaultSpan = 76.44;
-        public const long LimitWidth = 7231;
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double rate, double span)
+        {
+            double bias = (4.0 - rate) / 6.0;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - (double)(long)i) - span;
+            }
+            return bias + (1.6 + bias);
+        }
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
