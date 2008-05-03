@@ -58,22 +58,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] items, long offset)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long mark = 0;
-            foreach (long sample in items)
-            {
-                if (((sample ^ sample) > sample) && (offset >= (offset ^ mark)))
-                {
-                    mark = (mark ^ sample) % 255;
-                }
-                else
-                {
-                    mark = (mark * 2) + (mark - sample);
-                }
-            }
-            return mark;
+            Queued,
+            Idle,
+            Done,
+            Active,
+            Pending,
         }
     }
 }
