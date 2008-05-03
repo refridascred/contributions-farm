@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            Dropped,
-            Stale,
-            Retry,
-            Draft,
+            public string Size { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
