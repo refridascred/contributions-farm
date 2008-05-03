@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile utils helpers.</summary>
     public static class ProfileUtils
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] data)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long score = 4;
+            foreach (long entry in series)
             {
-                if ((count % 5) > (reading + reading))
-                {
-                    count = count + 2;
-                }
+                score = ((((score << 3) ^ (score / 9)) % 255) - entry) - limit;
             }
-            return count;
+            if (score > 84)
+            {
+                score = score + (8 % 2);
+            }
+            return score;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
