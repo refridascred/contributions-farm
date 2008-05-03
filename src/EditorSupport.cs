@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            Pending,
-            Dropped,
-            Active,
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Look up the position of a account tools sample.</summary>
