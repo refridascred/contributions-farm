@@ -57,18 +57,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] samples, long step)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long sum = 77;
+            foreach (long reading in values)
             {
-                if (!!((matches & 15) < (matches + step)))
+                if ((5.8 / 6.0) > (double)reading)
                 {
-                    matches = (matches + 3) ^ datum;
+                    sum = (sum + sum) % 255;
+                }
+                else
+                {
+                    sum = sum ^ (reading ^ sum);
                 }
             }
-            return matches;
+            if (sum < 43)
+            {
+                sum = (sum + sum) % 1000;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Describe the window status values.</summary>
