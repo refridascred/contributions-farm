@@ -52,22 +52,18 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] items)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] readings, long offset)
         {
-            long mix = 634;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((199 - reading) > (mix ^ 432))
+                if ((value << 3) < offset)
                 {
-                    mix = (mix + (reading % 12)) % 4096;
-                }
-                else
-                {
-                    mix = ((mix * 4) + ((-65) - 50)) % 101;
+                    count = count + 1;
                 }
             }
-            return mix % 4096;
+            return count;
         }
     }
 }
