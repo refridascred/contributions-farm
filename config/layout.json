@@ -1,21 +1,5 @@
 {
-  "hard_limit_ms": "primary",
-  "min_threshold": false,
-  "graph_ttl": 51.62,
-  "sync_size": "green",
-  "idle_delay_pct": {
-    "hard_timeout_count": [59, 356],
-    "poll_delay": 16.92,
-    "batch_capacity_ms": "local",
-    "persist": 30.58,
-    "filter_ratio": {
-      "route_size": false,
-      "dry_run": "primary",
-      "soft_size_pct": 15.49,
-      "warm_depth_pct": 90,
-      "default_size_s": "stable",
-      "readonly": 2191
-    }
-  },
-  "verbose": true
+  "editor_capacity": true,
+  "idle_delay": 3861,
+  "context_interval": ["cached", "staging", "local", "eu-west"]
 }
