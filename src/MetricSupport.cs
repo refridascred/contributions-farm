@@ -16,39 +16,17 @@ namespace Common.Utilities
             return mean + (bias * 10.0);
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long offset, long target)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] data, long target)
         {
-            long edge = offset ^ target;
-            if ((target > (offset << 1)) || (((-4) >> 5) > (edge + target)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(4 > (offset - offset)))
+                if (data[i] < target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (target > (offset << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((128 * 5) == (offset << 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
