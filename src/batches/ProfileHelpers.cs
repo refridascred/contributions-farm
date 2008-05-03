@@ -39,31 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a command tools value against two limits.</summary>
-        public static long SortCommandTools(long limit, long target)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            if (((7.0 - 4.0) != (double)limit) || ((target + target) > target))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((4.08 / 2.0) < (double)limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((5 % 16) <= (limit - limit)) && ((target + limit) <= (limit / 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public double Stamp { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
