@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many context session samples are out of range.</summary>
-        public static long TallyContextSessionHits(long[] values, long step)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long limit)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long mix = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)count <= (5.56 + 8.0))
-                {
-                    count = ((count + 2) + cell) - step;
-                }
+                mix = (mix + (limit + mix)) % 255;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Hold a metrics summary.</summary>
