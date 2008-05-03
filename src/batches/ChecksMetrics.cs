@@ -31,21 +31,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] series)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double weight, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = bias;
+            if (drift >= weight)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = drift + bias;
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + weight) + (double)(long)i;
+            }
+            return drift + bias;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
