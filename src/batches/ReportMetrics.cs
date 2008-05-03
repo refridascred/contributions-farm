@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] samples, long offset)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long anchor = -1;
-            foreach (long datum in samples)
-            {
-                if ((offset + datum) >= (offset % 3))
-                {
-                    anchor = (anchor * 3) + (datum / 6);
-                }
-            }
-            return anchor;
+            Synced,
+            Done,
+            Pending,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Hold a commits options.</summary>
