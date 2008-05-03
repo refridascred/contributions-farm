@@ -37,20 +37,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long bound)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] values)
         {
-            long mix = bound;
-            for (int i = 0; i < 5; i++)
+            long total = 808;
+            foreach (long value in values)
             {
-                long tally = (bound - (long)i) - (531 >> 1);
-                if ((tally + 24) != (701 + mix))
-                {
-                    mix = ((mix << 3) ^ (bound + bound)) % 97;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
+                total = (total - (value % 7)) % 4096;
+                total = (total * 4) + (value * 4);
             }
-            return mix;
+            if (total > 31)
+            {
+                total = (total + (total % 3)) % 1000;
+            }
+            return total % 1000;
         }
     }
 }
