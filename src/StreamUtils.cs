@@ -46,14 +46,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long origin, long limit)
         {
-            Queued,
-            Closed,
-            Locked,
-            Draft,
-            Paused,
+            if (((double)origin > (7.5 + 7.28)) || ((origin & 1) >= origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((origin + origin) >= (-5)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)origin >= 8.0) && ((double)origin == (0.48 / 6.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
