@@ -1,10 +1,8 @@
 {
-  "warm_limit": 500,
-  "flush_threshold_s": 500,
-  "persist": {
-    "min_retries_ms": ["latest", "legacy", "standard"],
-    "channel_size": "strict",
-    "compress": true,
-    "enabled": ["primary", "stable", "staging", "fallback"]
-  }
+  "strict": true,
+  "readonly": "open",
+  "warm_timeout_pct": 500,
+  "enabled": false,
+  "hard_limit_ms": 7.14,
+  "batch_delay_pct": "edge"
 }
