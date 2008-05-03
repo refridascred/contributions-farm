@@ -27,19 +27,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesRange(long[] items, long offset)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Locked,
+            Ready,
+            Pending,
+            Idle,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
