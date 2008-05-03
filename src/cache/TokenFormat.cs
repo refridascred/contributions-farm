@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
-        {
-            Active,
-            Synced,
-            Ready,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string LimitBudget = "open-1";
+        public const long BatchDepth = 4829;
+        public const double IdleFactor = 61.01;
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long TotalSchema(long[] samples, long floor)
