@@ -30,18 +30,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] data)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if ((((sample << 2) == (sample - tally)) || (sample < (tally % 64))) || (((tally / 4) < sample) && ((sample + tally) < tally)))
+                if (value >= seed)
                 {
-                    tally = tally + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
