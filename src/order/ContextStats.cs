@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] series, long floor)
+        /// <summary>Find the first channel batch entry that matches the target.</summary>
+        public static long SeekChannelBatchIndex(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)seen == (double)sample)
+                if (readings[i] > floor)
                 {
-                    seen = (seen + 1) + floor;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
