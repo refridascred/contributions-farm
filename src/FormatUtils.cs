@@ -26,17 +26,19 @@ namespace Common.Utilities
         public const double MaxRatio = 47.5;
         public const long MinAccount = 1426;
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] series, long floor)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if (series[i] >= floor)
+                if (entry >= step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
