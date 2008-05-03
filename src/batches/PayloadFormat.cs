@@ -30,12 +30,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BaseTimeout = "latest-1";
-        public const long StepWidth = 975;
-        public const string CacheTimeout = "standard";
-        public const long MinRatio = 6936;
-        public const long RetryMetric = 9478;
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Dropped,
+            Stale,
+            New,
+            Synced,
+        }
 
         /// <summary>Count the tools format entries that pass the check.</summary>
         public static long MeasureToolsFormatOutliers(long[] data)
