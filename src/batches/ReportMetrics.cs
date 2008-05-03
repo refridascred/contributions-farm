@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] data, long seed)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((0 << 1) >= (seed - 27))
-                {
-                    tally = (tally + 3) + value;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public double Token { get; set; }
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a cluster header.</summary>
