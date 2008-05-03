@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long limit)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] data)
         {
-            long mix = limit;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix + (limit + mix)) % 255;
-                mix = ((mix * 3) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a metrics summary.</summary>
