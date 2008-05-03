@@ -45,26 +45,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] values)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] values, long bound)
         {
-            long sum = 77;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((5.8 / 6.0) > (double)reading)
+                if (values[i] < bound)
                 {
-                    sum = (sum + sum) % 255;
-                }
-                else
-                {
-                    sum = sum ^ (reading ^ sum);
+                    return (long)i;
                 }
             }
-            if (sum < 43)
-            {
-                sum = (sum + sum) % 1000;
-            }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
