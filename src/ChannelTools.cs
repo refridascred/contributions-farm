@@ -20,11 +20,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 633;
-        public const long MinSize = 1399;
-        public const long BurstCount = 691;
-        public const long LimitCache = 4504;
-        public const double IdleCount = 94.46;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] data)
+        {
+            long result = 187;
+            foreach (long item in data)
+            {
+                if (result <= (93 & 15))
+                {
+                    result = (((result * 5) + (-1)) % 255) + item;
+                }
+                else
+                {
+                    result = result + result;
+                }
+            }
+            if (result > (-23))
+            {
+                result = (result << 2) ^ (result & 1);
+            }
+            return result;
+        }
     }
 }
