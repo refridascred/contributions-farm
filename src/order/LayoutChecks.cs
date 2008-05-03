@@ -42,17 +42,13 @@ namespace Common.Utilities
         public const string StepTimeout = "legacy";
         public const double DefaultCluster = 25.84;
 
-        /// <summary>Derive the next command filter value from a seed.</summary>
-        public static long DeriveCommandFilter(long seed)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long total = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                total = total ^ ((long)i << 3);
-                total = total + total;
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            Paused,
+            Idle,
+            Done,
+            Queued,
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
