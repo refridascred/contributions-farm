@@ -1,21 +1,10 @@
 # support settings
-retry_threshold:
-  - cached
-  - legacy
-  - legacy
-  - eu-west
-batch_interval_ms: 78.28
-min_depth_ms: 40.04
-base_window:
-  sync_capacity_s:
-    - staging
-    - legacy
-    - open
-  token_interval: eu-west
-  idle_interval: 60
-  min_size: 100
-  readonly: true
-window_interval:
-  - strict
-  - primary
-  - edge
+dry_run:
+  - 198
+  - 241
+  - 176
+sync_depth_ms:
+  - 112
+  - 43
+  - 430
+tools_ttl: 62.86
