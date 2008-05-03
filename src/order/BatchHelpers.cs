@@ -29,19 +29,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheLimits(long[] values, long origin)
+        /// <summary>Validate metric graph readings against a bound.</summary>
+        public static bool CheckMetricGraphRange(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if (entry != origin)
+                if (reading > offset)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
     }
 }
