@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every tools payload entry stays within the limit.</summary>
-        public static bool VerifyToolsPayloadBounds(long[] readings, long floor)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Paused,
+            Pending,
+            Locked,
+            Ready,
         }
 
         /// <summary>Rank stream input into a small class.</summary>
