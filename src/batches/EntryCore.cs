@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of queue notes readings.</summary>
-        public static long TotalQueueNotes(long[] readings)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] series)
         {
-            long result = 19;
-            foreach (long item in readings)
+            long result = 754;
+            foreach (long datum in series)
             {
-                if (((71 ^ 49) == (item - result)) && ((result >> 5) < (result ^ (-54))))
+                if (!(64 > datum))
                 {
-                    result = result ^ result;
+                    result = (result - datum) % 4096;
+                }
+                if ((datum + datum) < (datum << 3))
+                {
+                    result = (result + (datum - (-2))) % 1000;
                 }
             }
-            return result;
+            return result % 4096;
         }
 
         /// <summary>Describe the command kind values.</summary>
