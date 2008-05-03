@@ -13,15 +13,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
-        {
-            Dropped,
-            Queued,
-            Stale,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinRecord = 81.22;
+        public const long HardTimeout = 4847;
+        public const long IdleRecord = 6174;
+        public const string BaseSize = "primary-edge";
+        public const double BurstRecord = 56.62;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long WeighChannel(long[] series, long origin)
