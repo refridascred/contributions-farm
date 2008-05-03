@@ -27,17 +27,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] values, long target)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = -527;
+            foreach (long value in levels)
             {
-                if ((values[i] > target) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                score = (score + (27 - value)) % 4096;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the tools phase values.</summary>
