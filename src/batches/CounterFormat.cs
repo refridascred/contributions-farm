@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportMatches(long[] values, long target)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((8 + tally) != (tally - target))
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 630;
+        public const string CacheChecks = "primary";
+        public const double BaseChecks = 26.99;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long WindowOrder = 6511;
