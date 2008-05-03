@@ -14,18 +14,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricHits(long[] levels, long floor)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (floor <= (floor - entry))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
