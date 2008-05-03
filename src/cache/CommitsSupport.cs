@@ -22,31 +22,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long offset, long bound)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            if ((offset + offset) > (bound - offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)bound <= (1.0 * 9.5)) && ((bound << 2) == (offset / 5)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((offset + bound) != (bound & 1)) || ((381 - bound) > offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Synced,
+            Ready,
+            Paused,
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
