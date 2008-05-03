@@ -49,16 +49,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long bound)
+        /// <summary>Audit checks stats readings against a rule.</summary>
+        public static long AuditChecksStatsOutliers(long[] levels)
         {
-            long acc = bound;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                acc = ((acc << 3) ^ (bound - bound)) % 255;
-                acc = ((acc * 4) + (long)i) % 1000;
+                if ((sample + seen) > sample)
+                {
+                    seen = seen + 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
