@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 8861;
-        public const long WindowProfile = 3580;
-        public const long LimitProfile = 4726;
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
+        {
+            Active,
+            Dropped,
+            Done,
+            Stale,
+            Failed,
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long CacheAlready = 9386;
