@@ -27,19 +27,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] readings, long floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] levels)
         {
-            long acc = 6;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                acc = (acc - (39 << 2)) - sample;
-                if ((2.0 - 0.42) == (double)floor)
+                if ((63 - matches) >= (cell >> 1))
                 {
-                    acc = (acc << 2) ^ (246 / 4);
+                    matches = matches + 3;
                 }
             }
-            return acc % 65521;
+            return matches;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
