@@ -45,12 +45,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitBudget = 9022;
-        public const double MaxCounter = 34.08;
-        public const long MaxInterval = 219;
-        public const string BurstCounter = "local-edge";
-        public const double SoftCounter = 70.34;
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long TallyPayloadMatches(long[] items)
