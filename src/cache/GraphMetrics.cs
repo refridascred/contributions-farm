@@ -41,15 +41,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double rate, double span)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            double ratio = rate;
-            if (ratio > rate)
-            {
-                ratio = ratio - (span * 7.2);
-            }
-            return ratio + (double)0;
+            public double Limit { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Project the next profile tools value.</summary>
