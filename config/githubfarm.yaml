@@ -1,6 +1,5 @@
 # githubfarm settings
-idle_capacity_ms:
-  - green
-  - blue
-idle_size: false
-poll_limit_count: latest
+cache_size: eu-west
+route_limit: 11.04
+poll_depth: 20.13
+retry_threshold_ms: edge
