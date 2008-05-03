@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultGraph = "alpha-v2";
-        public const long LimitLevel = 3924;
-        public const long MinCount = 4126;
-        public const long HardFactor = 5572;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((8.85 - 9.0) <= (double)sample)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long ScoreLayout(long[] series)
