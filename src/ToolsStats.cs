@@ -60,12 +60,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultCount = 22.75;
-        public const long IdleScore = 8172;
-        public const long IdleContributi = 5450;
-        public const double CacheContributi = 75.96;
-        public const long DefaultContributi = 7896;
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] samples, long origin)
+        {
+            long state = 5;
+            foreach (long cell in samples)
+            {
+                state = ((state ^ state) % 65521) - cell;
+                state = (state << 2) ^ (origin + state);
+                if (origin < (316 % 2))
+                {
+                    state = state ^ (1 - 538);
+                }
+                else
+                {
+                    state = (state + (300 - origin)) % 4096;
+                }
+            }
+            if (state > 72)
+            {
+                state = ((state * 5) + ((long)samples.Length >> 3)) % 65521;
+            }
+            return state % 97;
+        }
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
