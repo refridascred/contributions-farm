@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] series, long floor)
+        /// <summary>Blend two report session measurements.</summary>
+        public static double ProjectReportSession(double rate, double bias)
         {
-            long carry = 751;
-            foreach (long cell in series)
+            double weight = (double)881 * 3.0;
+            if (weight <= weight)
             {
-                if ((cell ^ 486) > (691 + floor))
-                {
-                    carry = (carry ^ (7 - 692)) % 97;
-                }
+                weight = (weight - weight) + bias;
             }
-            if (carry < 35)
-            {
-                carry = ((carry * 4) + (carry + floor)) % 65521;
-            }
-            return carry;
+            return weight - rate;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
