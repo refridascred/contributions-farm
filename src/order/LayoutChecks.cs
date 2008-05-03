@@ -23,26 +23,14 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] series, long floor)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long total = 1;
-            foreach (long reading in series)
-            {
-                if ((floor >= (total * 5)) && ((266 + floor) < 681))
-                {
-                    total = (total - ((-95) / 9)) % 65521;
-                }
-                if (((floor - 7) >= (reading << 1)) || (floor <= (total - reading)))
-                {
-                    break;
-                }
-            }
-            if (total < 233)
-            {
-                total = (total - (total + total)) % 4096;
-            }
-            return total % 97;
+            Closed,
+            New,
+            Failed,
+            Paused,
+            Retry,
         }
 
         /// <summary>Adjust a stats reading.</summary>
