@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((6.93 - 4.04) > (double)seen)
-                {
-                    seen = (seen + 3) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 3753;
+        public const string MinSession = "strict-v2";
+        public const string CacheSession = "primary";
+        public const double WindowSession = 77.37;
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
