@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long target)
         {
-            Queued,
-            Retry,
-            Idle,
-            Closed,
+            long acc = target;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Hold a farm stats.</summary>
