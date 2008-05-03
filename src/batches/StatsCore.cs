@@ -38,12 +38,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Project the next token value.</summary>
+        public static double ProjectToken(double bias, double bias2)
         {
-            public bool Total { get; set; }
-            public bool Mode { get; set; }
-            public long Size { get; set; }
+            double gain = (9.7 + 2.43) / 4.0;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (((gain + (double)874) + (double)(long)i) + bias) + bias2;
+            }
+            return gain - gain;
         }
 
         /// <summary>Measure how many metrics queue samples are out of range.</summary>
