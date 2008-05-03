@@ -1,12 +1,5 @@
 {
-  "warm_ttl_count": "strict",
-  "compress": false,
-  "flush_interval_pct": 60.95,
-  "soft_ttl_ms": {
-    "cluster_ratio": 4784,
-    "min_limit": 76.24,
-    "hard_interval": "fallback",
-    "strict": [441, 326],
-    "batch_window": "cached"
-  }
+  "enabled": "green",
+  "base_timeout": "stable",
+  "idle_delay_ms": 4487
 }
