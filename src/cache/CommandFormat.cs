@@ -14,18 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] items)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] data)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (!((tally - value) >= (tally + value)) || (value > (tally + value)))
+                if ((seen - 15) == (seen / 7))
                 {
-                    tally = tally + 3;
+                    seen = (seen + 3) + item;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
