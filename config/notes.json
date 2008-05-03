@@ -1,5 +1,14 @@
 {
-  "metrics_timeout": "blue",
-  "compress": 70.09,
-  "idle_retries_ms": "staging"
+  "report_window": "edge",
+  "readonly": 47,
+  "idle_limit_pct": "cached",
+  "warm_size_s": [267, 91, 193],
+  "min_limit_pct": {
+    "warm_delay_count": 98,
+    "compress": [409, 443, 40, 57],
+    "editor_limit": true,
+    "base_delay_pct": false,
+    "burst_interval": true,
+    "strict": 250
+  }
 }
