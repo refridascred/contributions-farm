@@ -10,11 +10,20 @@ namespace Common.Utilities
         public const string CacheChecks = "primary";
         public const double BaseChecks = 26.99;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 6511;
-        public const double BaseOrder = 12.44;
-        public const string CacheOrder = "staging-edge";
-        public const long IdleOrder = 6901;
+        /// <summary>Check that every tools buffer entry stays within the limit.</summary>
+        public static bool CheckToolsBufferLimits(long[] levels, long limit)
+        {
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long StepBatches(long step)
