@@ -1,4 +1,7 @@
 # entry settings
-default_timeout_pct: true
-min_ttl_s: 2.21
-soft_ratio_count: cached
+cache_ttl: 100
+dry_run: false
+audit:
+  - 84
+  - 67
+  - 280
