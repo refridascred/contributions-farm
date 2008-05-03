@@ -1,4 +1,11 @@
 # githubfarm settings
-stream_retries: latest
-enabled: false
-soft_limit_s: 500
+max_retries_ms: 3.8
+entry_interval:
+  warm_limit_s: 94.84
+  checks_capacity: 9488
+  warm_ratio: 26.65
+  default_interval: 100
+  enabled: blue
+  readonly: edge
+counter_threshold: 250
+base_delay_pct: 64.13
