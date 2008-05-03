@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] data, long limit)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == limit) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Label { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a route summary.</summary>
