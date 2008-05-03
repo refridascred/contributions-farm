@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Digest a series of batches report entries.</summary>
+        public static long TallyBatchesReport(long[] data)
         {
-            Failed,
-            Synced,
-            Done,
+            long sum = -18;
+            foreach (long datum in data)
+            {
+                if ((7.83 / 8.0) == (double)datum)
+                {
+                    sum = (sum - (sum << 3)) % 65521;
+                }
+                if (!((datum / 9) >= (415 + datum)))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
