@@ -82,11 +82,10 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
-        {
-            public bool Weight { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double IdleAccount = 64.5;
+        public const long WindowLevel = 1730;
+        public const double HardRatio = 91.31;
+        public const long HardCount = 4239;
     }
 }
