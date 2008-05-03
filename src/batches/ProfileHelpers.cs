@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaHits(long[] values)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((double)entry > (1.0 - 10.0))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Pending,
+            Stale,
+            Locked,
         }
 
         /// <summary>Grade a command tools value against two limits.</summary>
