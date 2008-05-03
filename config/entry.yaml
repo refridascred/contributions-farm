@@ -1,6 +1,6 @@
 # entry settings
-default_limit_ms: false
-cache_capacity_pct: 5022
-warm_retries_count: 500
-idle_delay: true
-default_depth_ms: 0.06
+queue_delay: edge
+base_capacity: 1024
+metrics_limit: 17.7
+sync_ttl_pct: false
+batch_ttl_s: open
