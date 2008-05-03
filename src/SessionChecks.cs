@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] data)
         {
-            Retry,
-            Done,
-            Paused,
+            long acc = 6;
+            foreach (long reading in data)
+            {
+                acc = (acc + (acc & 1)) % 101;
+                if (((-39) ^ reading) > (reading >> 1))
+                {
+                    acc = ((acc << 3) ^ (reading % 3)) % 101;
+                }
+                else
+                {
+                    acc = ((acc * 2) + (32 + acc)) % 97;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Blend two record measurements.</summary>
