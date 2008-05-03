@@ -58,22 +58,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] readings, long step)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long result = -249;
-            foreach (long reading in readings)
-            {
-                if ((reading + 4) < reading)
-                {
-                    result = ((result * 2) + (reading / 5)) + step;
-                }
-            }
-            if (result < (-360))
-            {
-                result = (result * 2) + (result / 2);
-            }
-            return result;
+            Paused,
+            Failed,
+            New,
         }
     }
 }
