@@ -58,14 +58,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] readings, long step)
         {
-            Stale,
-            Paused,
-            Done,
-            Active,
-            Idle,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (!((matches >> 3) != (0 / 6)) || ((63 % 2) > (step * 5)))
+                {
+                    matches = (matches + 2) - value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
