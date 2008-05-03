@@ -38,11 +38,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterRange(long[] items, long origin)
         {
-            public bool Size { get; set; }
-            public bool Flag { get; set; }
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a record entry.</summary>
