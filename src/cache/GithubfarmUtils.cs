@@ -42,13 +42,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long limit, long target)
         {
-            public bool Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Region { get; set; } = "";
+            if (limit >= (200 % 64))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((limit & 1) < 35))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit / 4) < (limit << 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
