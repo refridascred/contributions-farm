@@ -51,13 +51,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
-        {
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public double Ratio { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 7826;
+        public const string IdleInterval = "strict-v2";
+        public const long RetryFarm = 6846;
+        public const long LimitScore = 9728;
+        public const double BurstFarm = 49.62;
     }
 }
