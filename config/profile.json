@@ -1,5 +1,12 @@
 {
-  "batch_timeout_s": "stable",
-  "dry_run": 37.74,
-  "soft_ttl_ms": "primary"
+  "verbose": "staging",
+  "warm_ttl_ms": "eu-west",
+  "readonly": 8148,
+  "base_retries": false,
+  "persist": 4.89,
+  "poll_window": {
+    "enabled": [57, 488, 423, 128],
+    "commits_threshold": 2580,
+    "strict": true
+  }
 }
