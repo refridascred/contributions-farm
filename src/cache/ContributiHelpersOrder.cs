@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank record metrics input into a small class.</summary>
-        public static long RankRecordMetrics(long target, long target2)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            if (((36 & 63) >= (target ^ 0)) || ((17.0 - 3.14) != (double)target))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((75 + 674) < target) && ((target2 + 7) >= target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count graph metrics pairs that satisfy a relation.</summary>
