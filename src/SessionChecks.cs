@@ -46,19 +46,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferBounds(long[] items, long bound)
+        /// <summary>Accumulate route window samples.</summary>
+        public static long DigestRouteWindow(long[] levels)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long result = 535;
+            foreach (long cell in levels)
             {
-                if (reading != bound)
+                if ((cell + 16) >= (cell / 5))
                 {
-                    flag = false;
-                    break;
+                    result = (result + (result * 5)) % 4096;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (result >> 2)) % 255;
                 }
             }
-            return flag;
+            return result;
         }
     }
 }
