@@ -22,10 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitWidth = 6665;
-        public const long SoftWidth = 6799;
-        public const long MaxBuffer = 1764;
+        /// <summary>Look up the position of a account tools sample.</summary>
+        public static long FindAccountToolsIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long OverlapBufferCount(long[] samples)
