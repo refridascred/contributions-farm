@@ -44,18 +44,12 @@ namespace Common.Utilities
             return ratio - (scale / 5.0);
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] data)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((32 / 4) >= (reading << 3))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Done,
+            Dropped,
+            Locked,
         }
     }
 }
