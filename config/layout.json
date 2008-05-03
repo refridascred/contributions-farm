@@ -1,7 +1,7 @@
 {
-  "soft_delay_pct": false,
-  "default_ratio_count": "stable",
-  "retry_ratio_count": "eu-west",
-  "audit": 87.44,
-  "commits_limit": false
+  "contributi_interval": [380, 345, 4, 9],
+  "min_threshold": 17.64,
+  "queue_limit": 41.79,
+  "strict": ["cached", "local", "cached"],
+  "persist": "standard"
 }
