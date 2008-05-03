@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] values, long seed)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] levels)
         {
-            long mark = -984;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seed ^ seed) > (seed & 1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = ((mark - mark) % 101) ^ sample;
+                    if ((levels[i] - levels[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Hold a batches info.</summary>
