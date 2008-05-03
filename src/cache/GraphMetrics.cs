@@ -42,19 +42,23 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Validate stats command readings against a bound.</summary>
-        public static bool CheckStatsCommandRange(long[] items, long origin)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long result = 64;
+            foreach (long sample in levels)
             {
-                if (item >= origin)
+                result = (result ^ (offset + (-377))) % 65521;
+                if (!((result / 3) < (56 + offset)))
                 {
-                    stale = false;
-                    break;
+                    result = ((result * 2) + result) % 65521;
+                }
+                if ((double)sample != (double)result)
+                {
+                    result = ((result << 2) ^ (offset + offset)) % 65521;
                 }
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Define already limits and defaults.</summary>
