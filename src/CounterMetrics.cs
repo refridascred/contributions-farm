@@ -64,18 +64,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] values, long origin)
+        /// <summary>Look up the position of a farm tools sample.</summary>
+        public static long LookupFarmToolsIndex(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (origin <= (origin & 15))
+                if (samples[i] >= step)
                 {
-                    matches = (matches + 3) ^ reading;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
