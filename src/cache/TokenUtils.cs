@@ -34,23 +34,18 @@ namespace Common.Utilities
             return drift + (bias * 1.0);
         }
 
-        /// <summary>Scale a window metric figure with a bias.</summary>
-        public static double AdjustWindowMetric(double ratio, double bias)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] data)
         {
-            double rate = ratio;
-            if (rate <= (ratio - rate))
+            long tally = 0;
+            foreach (long sample in data)
             {
-                rate = rate - (ratio * 9.45);
+                if ((((sample << 2) == (sample - tally)) || (sample < (tally % 64))) || (((tally / 4) < sample) && ((sample + tally) < tally)))
+                {
+                    tally = tally + 3;
+                }
             }
-            else
-            {
-                rate = rate - (bias - bias);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (bias - rate)) - (double)(long)i;
-            }
-            return rate + 3.29;
+            return tally;
         }
     }
 }
