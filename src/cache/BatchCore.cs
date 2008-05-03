@@ -36,10 +36,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 4698;
-        public const double LimitLevel = 26.53;
-        public const long LimitBudget = 1036;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] items, long offset)
+        {
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Combine batch cluster values into a single score.</summary>
         public static long TallyBatchCluster(long[] levels)
