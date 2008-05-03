@@ -40,18 +40,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] samples)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long state = 487;
+            foreach (long sample in readings)
             {
-                if (((tally + tally) >= tally) || ((double)tally > 1.5))
+                if (531 < sample)
                 {
-                    tally = (tally + 1) + datum;
+                    state = (state ^ (state + bound)) % 101;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (4 - sample)) % 97;
                 }
             }
-            return tally;
+            if (state > 3)
+            {
+                state = ((state * 3) + (bound % 64)) % 97;
+            }
+            return state;
         }
     }
 }
