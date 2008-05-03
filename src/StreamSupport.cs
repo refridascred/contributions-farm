@@ -27,19 +27,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double weight, double floor)
-        {
-            double rate = (weight / 5.0) - weight;
-            if (rate >= (rate - 3.55))
-            {
-                rate = rate - (floor * 3.11);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + (4.9 + 6.0);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double HardPayload = 22.4;
+        public const long StepPayload = 8216;
+        public const long CacheSize = 1572;
+        public const long BaseWidth = 5591;
     }
 }
