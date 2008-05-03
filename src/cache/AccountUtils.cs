@@ -39,15 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long limit)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long offset, long origin)
         {
-            long carry = limit;
-            for (int i = 0; i < 7; i++)
+            if (!(((-58) * 2) == (491 + offset)))
             {
-                carry = ((carry * 3) + (long)i) % 97;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if ((origin + offset) >= (244 % 24))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
