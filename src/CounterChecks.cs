@@ -65,11 +65,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] data)
         {
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((20.0 - 8.0) != (double)datum)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
