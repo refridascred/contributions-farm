@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] data)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterGaps(long[] series, long bound)
         {
-            long mix = 77;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (mix >= (790 % 16))
+                if (((4 + (long)series.Length) < (bound - bound)) && ((entry ^ entry) > (entry + tally)))
                 {
-                    mix = mix ^ (item / 4);
+                    tally = tally + 2;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
