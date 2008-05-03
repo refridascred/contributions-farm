@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] items, long bound)
-        {
-            long result = 3;
-            foreach (long entry in items)
-            {
-                if (entry < (result * 5))
-                {
-                    result = (result * 3) + (bound * 2);
-                }
-            }
-            if (result > 8)
-            {
-                result = (result * 5) + (bound >> 2);
-            }
-            return result % 1000;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 8424;
+        public const double MaxBatches = 39.01;
+        public const long WindowCount = 7127;
+        public const double MinBatches = 5.43;
+        public const string LimitBatches = "open";
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TotalChecks(long[] values)
