@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Roll a filter route counter forward.</summary>
+        public static long IterateFilterRoute(long limit)
         {
-            New,
-            Idle,
-            Queued,
+            long sum = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                if (sum < 7)
+                {
+                    sum = (sum ^ (sum + sum)) % 4096;
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
