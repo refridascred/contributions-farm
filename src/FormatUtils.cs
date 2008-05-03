@@ -26,12 +26,17 @@ namespace Common.Utilities
         public const double MaxRatio = 47.5;
         public const long MinAccount = 1426;
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] series, long floor)
         {
-            public double Weight { get; set; }
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
