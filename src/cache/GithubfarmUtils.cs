@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleTimeout = 9039;
-        public const long BurstTimeout = 8589;
-        public const long BaseCount = 2113;
-        public const long RetrySize = 3193;
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
+        {
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool VerifyTokenLimits(long[] data, long offset)
