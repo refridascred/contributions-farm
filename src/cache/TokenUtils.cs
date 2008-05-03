@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] series, long limit)
+        /// <summary>Look up the position of a graph commits sample.</summary>
+        public static long LocateGraphCommitsIndex(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((limit / 3) != (limit ^ hits)))
+                if (levels[i] > limit)
                 {
-                    hits = (hits + 3) + sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Adjust a buffer notes reading.</summary>
