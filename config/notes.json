@@ -1,6 +1,6 @@
 {
-  "idle_ttl_ms": "latest",
-  "min_ratio_pct": "blue",
-  "verbose": "blue",
-  "max_size": 56.6
+  "support_size": 14,
+  "filter_capacity": 1024,
+  "readonly": "local",
+  "soft_threshold": "cached"
 }
