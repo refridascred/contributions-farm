@@ -1,5 +1,24 @@
 {
-  "batch_timeout_s": 18.87,
-  "audit": 250,
-  "min_limit_ms": 58.54
+  "checks_interval": 5786,
+  "retry_ttl_s": ["legacy", "fallback"],
+  "notes_capacity": {
+    "dry_run": [338, 3, 203, 162],
+    "commits_window": 250,
+    "audit": {
+      "hard_threshold_pct": "latest",
+      "dry_run": [416, 65],
+      "poll_limit_s": false,
+      "flush_threshold_s": ["blue", "stable", "strict", "open"],
+      "verbose": false,
+      "audit": 60
+    }
+  },
+  "verbose": 24,
+  "buffer_ttl": {
+    "max_size_pct": "primary",
+    "farm_ttl": 1024,
+    "metric_interval": "legacy",
+    "min_threshold": 79.66
+  },
+  "idle_timeout_s": false
 }
