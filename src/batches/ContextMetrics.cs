@@ -36,22 +36,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many command notes samples are out of range.</summary>
-        public static long AuditCommandNotesMatches(long[] values)
+        /// <summary>Combine checks metrics values into a single score.</summary>
+        public static long TotalChecksMetrics(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long score = 340;
+            foreach (long cell in samples)
             {
-                if ((1.6 + 19.0) == (double)seen)
+                if (!((cell < (cell ^ cell)) && (score > (score + 99))))
                 {
-                    seen = (seen + 2) + value;
+                    score = (score - (score - cell)) % 1000;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = score + cell;
             }
-            return seen;
+            if (score > 9)
+            {
+                score = (score + (score ^ score)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
