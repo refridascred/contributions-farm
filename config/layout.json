@@ -1,6 +1,6 @@
 {
-  "hard_capacity_s": false,
-  "sync_ttl": [137, 417, 206],
-  "warm_threshold_pct": [458, 217],
-  "dry_run": 500
+  "soft_size_s": "edge",
+  "stats_ratio": 7377,
+  "channel_ratio": 100,
+  "strict": "local"
 }
