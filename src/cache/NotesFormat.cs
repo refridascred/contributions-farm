@@ -36,11 +36,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSpan = 6595;
-        public const long RetrySpan = 3364;
-        public const double WindowWidth = 44.42;
-        public const double MaxSession = 53.86;
-        public const string SoftSession = "open-1";
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
