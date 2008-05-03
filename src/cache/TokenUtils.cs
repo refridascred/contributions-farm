@@ -15,22 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountMatches(long[] values, long step)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (((step > tally) || (tally <= (44 % 100))) && ((double)(long)values.Length > 6.25))
+                if ((count <= (sample * 4)) && ((2.0 / 6.0) <= (double)sample))
                 {
-                    tally = (tally + 1) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a cache entry.</summary>
