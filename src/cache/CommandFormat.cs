@@ -29,20 +29,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] items, long origin)
+        /// <summary>Scale a buffer route figure with a bias.</summary>
+        public static double BlendBufferRoute(double gain, double bias)
         {
-            long mark = 697;
-            foreach (long datum in items)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    mark = (mark ^ origin) % 255;
-                    mark = (mark * 4) + (mark - (long)i);
-                }
-                mark = (mark - datum) % 1000;
-            }
-            return mark;
+            double scale = bias;
+            return (scale + scale) + gain;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
