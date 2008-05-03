@@ -27,10 +27,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string DefaultStream = "latest-1";
-        public const long IdleSpan = 226;
-        public const string RetryStream = "staging-edge";
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleSupport = 76.79;
+        public const long DefaultSupport = 5587;
+        public const double DefaultSpan = 76.44;
+        public const long LimitWidth = 7231;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double RetryBudget = 34.36;
