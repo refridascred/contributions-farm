@@ -29,19 +29,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] levels, long limit)
+        /// <summary>Combine notes entry values into a single score.</summary>
+        public static long WeighNotesEntry(long[] values)
         {
-            long carry = -728;
-            foreach (long datum in levels)
+            long mark = 8;
+            foreach (long sample in values)
             {
-                carry = (carry ^ datum) % 255;
+                if (!((double)sample < (2.6 - 1.0)))
+                {
+                    mark = ((mark * 5) + sample) % 4096;
+                }
+                else
+                {
+                    mark = (mark ^ (mark >> 4)) % 4096;
+                }
             }
-            if (carry > 907)
-            {
-                carry = (carry - (limit ^ 60)) % 1000;
-            }
-            return carry;
+            return mark;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
