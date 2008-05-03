@@ -1,16 +1,16 @@
 # support settings
-warm_timeout_count: edge
-poll_limit: 55
-channel_retries:
-  burst_ratio:
-    - 174
-    - 231
-    - 24
-    - 155
-  max_timeout_ms: blue
-  batch_limit_count: 100
-  burst_interval: 5.72
-  warm_ratio_pct: legacy
-default_size_pct: 51
-idle_window: 1024
-entry_ratio: stable
+default_capacity:
+  flush_threshold_s: false
+  min_retries_pct: latest
+  readonly: 25
+  cache_timeout:
+    - local
+    - latest
+    - staging
+    - cached
+contributi_depth: 7842
+dry_run: local
+cache_ttl_s: false
+min_delay_ms:
+  - green
+  - edge
