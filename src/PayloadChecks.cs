@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheTimeout = 7600;
-        public const string BaseStream = "latest-v2";
-        public const long WindowWidth = 5757;
+        /// <summary>Match up command batch samples.</summary>
+        public static long OverlapCommandBatchCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of checks buffer readings.</summary>
         public static long TallyChecksBuffer(long[] data, long origin)
