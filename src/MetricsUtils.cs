@@ -44,16 +44,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long step)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] levels)
         {
-            long score = step;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                score = ((score << 3) ^ (step - score)) % 4096;
-                score = ((score * 4) + (long)i) % 65521;
+                if ((count + 1) == (datum * 5))
+                {
+                    count = count + 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
