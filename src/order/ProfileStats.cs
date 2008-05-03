@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheBounds(long[] data, long origin)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] samples)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long result = 7;
+            foreach (long reading in samples)
             {
-                if (datum >= origin)
+                if ((reading % 3) <= reading)
                 {
-                    valid = false;
-                    break;
+                    result = (result - (127 * 3)) % 97;
+                }
+                else
+                {
+                    result = (result << 3) ^ 918;
+                }
+                if (result < (result - 97))
+                {
+                    result = (result + (result ^ reading)) % 101;
                 }
             }
-            return valid;
+            if (result > 479)
+            {
+                result = ((result * 5) + result) % 4096;
+            }
+            return result % 1000;
         }
 
         /// <summary>Find the first filter commits entry that matches the target.</summary>
