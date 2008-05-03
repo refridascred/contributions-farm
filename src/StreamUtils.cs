@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double bias, double floor)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long step, long bound)
         {
-            double rate = bias + bias;
-            if (rate >= bias)
+            if ((6 + step) > 345)
             {
-                rate = rate + (rate / 5.0);
+                return 8;
             }
-            return rate - floor;
+            else
+            {
+                if (((882 << 1) < step) && ((step + bound) > (8 << 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound + bound) <= (step / 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine stream values into a single score.</summary>
