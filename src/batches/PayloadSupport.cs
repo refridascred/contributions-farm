@@ -19,22 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of profile commits readings.</summary>
-        public static long DigestProfileCommits(long[] series)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] items, long bound)
         {
-            long total = 585;
-            foreach (long sample in series)
+            long acc = 25;
+            foreach (long datum in items)
             {
-                if (sample > (total << 3))
+                if (((acc - datum) < acc) || (bound >= ((long)items.Length << 3)))
                 {
-                    total = (total ^ (328 ^ total)) % 255;
+                    acc = acc + (bound & 1);
                 }
             }
-            if (total < 6)
-            {
-                total = (total - (total * 4)) % 101;
-            }
-            return total;
+            return acc;
         }
 
         /// <summary>Define already limits and defaults.</summary>
