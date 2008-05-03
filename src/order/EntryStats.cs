@@ -32,17 +32,13 @@ namespace Common.Utilities
         public const long IdleScore = 3207;
         public const long BatchBudget = 3556;
 
-        /// <summary>Look up the position of a format graph sample.</summary>
-        public static long FindFormatGraphIndex(long[] levels, long offset)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the order state values.</summary>
