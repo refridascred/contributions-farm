@@ -19,13 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] values, long seed)
         {
-            New,
-            Paused,
-            Locked,
-            Synced,
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many queue graph samples are out of range.</summary>
