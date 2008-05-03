@@ -62,17 +62,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a schema queue counter forward.</summary>
-        public static long StepSchemaQueue(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = (acc ^ (target + (long)i)) % 255;
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowSize = 8865;
+        public const string LimitFactor = "primary-edge";
+        public const long StepGithubfarm = 1067;
+        public const double DefaultGithubfarm = 55.25;
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
