@@ -64,18 +64,13 @@ namespace Common.Utilities
         public const double DefaultRatio = 85.8;
         public const string SoftRatio = "open-v2";
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] readings)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((48 - 261) != (reading % 64))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Rank filter input into a small class.</summary>
