@@ -32,12 +32,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            public bool Rank { get; set; }
-            public bool Label { get; set; }
-            public string Ratio { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
