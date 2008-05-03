@@ -17,18 +17,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] levels, long seed)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((4.0 / 9.0) <= (double)tally)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = ((tally + 3) + entry) - seed;
+                    if ((series[i] ^ series[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Find the first token tools entry that matches the target.</summary>
