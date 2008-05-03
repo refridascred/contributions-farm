@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportMatches(long[] data)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long anchor = 10;
+            foreach (long reading in series)
             {
-                if ((((matches + matches) > (datum + matches)) || (datum < (353 * 2))) || !((double)matches != (14.0 - 11.0)))
+                if ((offset % 10) >= anchor)
                 {
-                    matches = matches + 3;
+                    anchor = (anchor << 2) ^ (reading * 2);
                 }
             }
-            return matches;
+            if (anchor < 313)
+            {
+                anchor = (anchor << 2) ^ (951 * 4);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the command mode values.</summary>
