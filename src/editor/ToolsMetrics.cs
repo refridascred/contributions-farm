@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools metrics helpers.</summary>
     public static class ToolsMetrics
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Adjust a filter channel reading.</summary>
+        public static double BlendFilterChannel(double bias, double offset)
         {
-            Locked,
-            Queued,
-            New,
+            double scale = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = ((scale + offset) + (double)(long)i) + bias;
+            }
+            return scale + offset;
         }
 
         /// <summary>Describe the channel status values.</summary>
