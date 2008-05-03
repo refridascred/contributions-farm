@@ -23,13 +23,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepBudget = "alpha-1";
+        public const long DefaultDepth = 5207;
+        public const long HardProfile = 8143;
+        public const double MaxProfile = 23.35;
+        public const long WindowProfile = 5825;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long DigestCommand(long[] samples, long bound)
