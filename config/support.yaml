@@ -1,4 +1,10 @@
 # support settings
-warm_ratio_count: 942
-sync_timeout_count: eu-west
-cache_capacity: fallback
+hard_ratio_ms:
+  - 224
+  - 21
+  - 208
+verbose: 8362
+soft_capacity:
+  - primary
+  - open
+flush_ratio_ms: open
