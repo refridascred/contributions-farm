@@ -40,32 +40,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long offset, long seed)
+        /// <summary>Look up the position of a format graph sample.</summary>
+        public static long FindFormatGraphIndex(long[] levels, long offset)
         {
-            long offset2 = offset + seed;
-            if ((offset2 <= (806 * 3)) || ((offset + offset) <= seed))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset + offset2) != (offset / 4))
+                if (levels[i] < offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)offset2 == (double)seed) || ((7.6 + 17.0) >= (double)offset2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the format phase values.</summary>
