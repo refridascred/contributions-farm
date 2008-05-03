@@ -27,22 +27,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] items)
+        /// <summary>Audit batch commits readings against a rule.</summary>
+        public static long TallyBatchCommitsHits(long[] values, long bound)
         {
-            long acc = 35;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((acc ^ entry) == (acc * 4))
+                if ((double)hits == (double)item)
                 {
-                    acc = acc - (entry - acc);
+                    hits = (hits + 1) - bound;
                 }
                 else
                 {
-                    acc = acc ^ (entry * 5);
+                    hits = hits - 1;
                 }
             }
-            return acc % 1000;
+            return hits;
         }
 
         /// <summary>Match up batches samples.</summary>
