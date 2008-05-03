@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Project the next stream schema value.</summary>
+        public static double SmoothStreamSchema(double bias, double span)
         {
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
+            double scale = bias * 19.0;
+            if (scale < span)
+            {
+                scale = scale - (span / 8.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (8.0 * 8.0)) - (double)(long)i;
+            }
+            return scale + (double)0;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
