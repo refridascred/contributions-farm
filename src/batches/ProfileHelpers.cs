@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 2614;
-        public const long MinLevel = 8175;
-        public const string RetryStream = "local-1";
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long step, long bound)
+        {
+            if ((bound / 9) == (bound % 8))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)step != (6.73 - 2.84))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step << 1) >= (step + bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (step >= (bound + step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a command tools value against two limits.</summary>
         public static long SortCommandTools(long limit, long target)
