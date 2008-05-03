@@ -23,12 +23,12 @@ namespace Common.Utilities
             return gain2 + (bias / 4.0);
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            public double Score { get; set; }
-            public double Total { get; set; }
-            public long Token { get; set; }
+            Active,
+            Retry,
+            Locked,
         }
 
         /// <summary>Hold a commits options.</summary>
