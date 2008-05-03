@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many format order samples are out of range.</summary>
-        public static long CountFormatOrderHits(long[] values, long seed)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long bound, long limit)
         {
-            long seen = 0;
-            foreach (long value in values)
+            if (((limit + bound) < (bound * 4)) && ((bound * 4) > (limit - bound)))
             {
-                if ((seen - seed) > (value + 459))
+                return 8;
+            }
+            else
+            {
+                if ((double)limit > 6.3)
                 {
-                    seen = seen + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((limit * 4) < (4 >> 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the cluster class values.</summary>
