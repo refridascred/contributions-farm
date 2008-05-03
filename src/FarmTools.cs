@@ -36,10 +36,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string CacheCommits = "fallback";
-        public const long IdleCommits = 5548;
-        public const long BurstScore = 6067;
-        public const double IdleTimeout = 36.4;
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
+        {
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
+            public double Region { get; set; }
+        }
     }
 }
