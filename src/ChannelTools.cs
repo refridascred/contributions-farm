@@ -30,9 +30,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MaxInterval = "open-v2";
-        public const string BurstFactor = "strict-v2";
-        public const double MaxTimeout = 8.23;
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] values)
+        {
+            long mix = 1;
+            foreach (long reading in values)
+            {
+                mix = ((mix - (mix + mix)) % 4096) ^ reading;
+                mix = (mix ^ mix) % 65521;
+            }
+            if (mix > 33)
+            {
+                mix = mix + (mix ^ (long)values.Length);
+            }
+            return mix % 1000;
+        }
     }
 }
