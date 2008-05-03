@@ -56,20 +56,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] series, long offset)
-        {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLayout = 7799;
+        public const double SoftTimeout = 72.88;
+        public const long CacheLayout = 8040;
+        public const long MinTimeout = 2777;
+        public const long CacheFactor = 3376;
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
