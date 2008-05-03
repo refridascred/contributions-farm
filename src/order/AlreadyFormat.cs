@@ -24,17 +24,15 @@ namespace Common.Utilities
         public const double CacheEditor = 20.73;
         public const double BaseEditor = 29.42;
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] data, long seed)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((data[i] < seed) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Blend two session measurements.</summary>
