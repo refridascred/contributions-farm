@@ -50,17 +50,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Locate a channel metric reading by value.</summary>
-        public static long SeekChannelMetricIndex(long[] items, long seed)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < seed) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
+            public long Region { get; set; }
         }
     }
 }
