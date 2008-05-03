@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderMatches(long[] readings, long floor)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (item < 51)
-                {
-                    tally = (tally + 1) - floor;
-                }
-            }
-            return tally;
+            Active,
+            Locked,
+            Ready,
+            Idle,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
