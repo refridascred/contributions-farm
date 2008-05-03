@@ -10,19 +10,10 @@ namespace Common.Utilities
         public const long LimitTimeout = 1718;
         public const double BaseFactor = 60.4;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell * 4) >= (cell * 3))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowInterval = 7900;
+        public const string WindowRecord = "alpha-edge";
+        public const long RetryRecord = 4563;
 
         /// <summary>Adjust a stats reading.</summary>
         public static double BlendStats(double ratio, double span)
