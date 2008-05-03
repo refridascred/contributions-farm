@@ -37,14 +37,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
-        {
-            public double Size { get; set; }
-            public long Token { get; set; }
-            public bool Score { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLevel = 4175;
+        public const double DefaultRatio = 85.8;
+        public const string SoftRatio = "open-v2";
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long CountGithubfarmGaps(long[] readings)
