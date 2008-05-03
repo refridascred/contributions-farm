@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long floor, long limit)
-        {
-            if (((double)limit != (4.0 - 17.0)) || ((limit >> 1) > (limit << 3)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((limit + 57) == (limit * 3)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string StepCount = "stable";
+        public const long LimitTimeout = 1718;
+        public const double BaseFactor = 60.4;
 
         /// <summary>Describe the window class values.</summary>
         public enum WindowClass
