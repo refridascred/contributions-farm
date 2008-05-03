@@ -36,18 +36,12 @@ namespace Common.Utilities
             return weight2 - offset;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] levels)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long mix = 625;
-            foreach (long value in levels)
-            {
-                if ((double)mix == (double)618)
-                {
-                    mix = ((mix * 5) + (value * 3)) % 4096;
-                }
-            }
-            return mix;
+            Locked,
+            Done,
+            Paused,
         }
     }
 }
