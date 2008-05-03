@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] series, long seed)
+        /// <summary>Locate a graph account reading by value.</summary>
+        public static long FindGraphAccountIndex(long[] values, long bound)
         {
-            long anchor = 56;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                if (values[i] >= bound)
                 {
-                    anchor = ((anchor - (seed % 64)) + (long)i) - value;
+                    return (long)i;
                 }
-                anchor = (anchor ^ 3) % 101;
             }
-            if (anchor < 6)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 4096;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
