@@ -26,13 +26,18 @@ namespace Common.Utilities
         public const long WindowNotes = 1544;
         public const double StepNotes = 68.79;
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Count the metrics githubfarm entries that pass the check.</summary>
+        public static long AuditMetricsGithubfarmGaps(long[] readings)
         {
-            public string Flag { get; set; } = "";
-            public bool Limit { get; set; }
-            public bool Count { get; set; }
-            public string Total { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((hits + (-677)) <= 3)
+                {
+                    hits = (hits + 1) - datum;
+                }
+            }
+            return hits;
         }
     }
 }
