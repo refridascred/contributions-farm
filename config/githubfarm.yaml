@@ -1,5 +1,21 @@
 # githubfarm settings
-poll_interval_count: 87.45
-stats_size: fallback
-burst_size_ms: 60
-retry_depth_count: false
+session_limit: 500
+compress: 33.69
+strict:
+  - legacy
+  - staging
+filter_limit:
+  base_timeout_pct: standard
+  audit: false
+  cache_depth:
+    persist: 100
+    soft_depth_count: 12.47
+    flush_window_count: 69.65
+    sync_ratio_count:
+      - 461
+      - 261
+      - 452
+    cache_depth_ms: fallback
+  strict: 25.77
+  default_delay: edge
+warm_threshold_count: false
