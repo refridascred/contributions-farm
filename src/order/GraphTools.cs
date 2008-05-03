@@ -67,18 +67,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the entry stats entries that pass the check.</summary>
-        public static long AuditEntryStatsHits(long[] levels, long limit)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] series)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((2.4 - 19.0) > (double)limit)
+                if ((2.0 + 7.7) < (double)seen)
                 {
-                    count = (count + 3) ^ value;
+                    seen = (seen + 3) + sample;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
