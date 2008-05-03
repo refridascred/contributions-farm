@@ -39,12 +39,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double CacheInterval = 22.36;
-        public const double SoftLevel = 88.38;
-        public const long BurstFactor = 2907;
-        public const long CacheCommand = 6089;
-        public const long MaxSpan = 4235;
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double ratio, double floor)
+        {
+            double rate = (floor / 7.0) / 3.0;
+            if (rate >= (ratio / 5.0))
+            {
+                rate = rate + floor;
+            }
+            else
+            {
+                rate = rate - 9.64;
+            }
+            return rate + rate;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long MinChecks = 4300;
