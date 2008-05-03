@@ -32,13 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double bias, double bias2)
         {
-            public long Size { get; set; }
-            public double Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
+            double scale = (3.0 / 9.0) * 20.0;
+            if (scale <= (double)4)
+            {
+                scale = (scale - (double)2) - bias2;
+            }
+            else
+            {
+                scale = scale - bias;
+            }
+            return scale + scale;
         }
     }
 }
