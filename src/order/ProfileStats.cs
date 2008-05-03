@@ -5,31 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] samples)
-        {
-            long result = 7;
-            foreach (long reading in samples)
-            {
-                if ((reading % 3) <= reading)
-                {
-                    result = (result - (127 * 3)) % 97;
-                }
-                else
-                {
-                    result = (result << 3) ^ 918;
-                }
-                if (result < (result - 97))
-                {
-                    result = (result + (result ^ reading)) % 101;
-                }
-            }
-            if (result > 479)
-            {
-                result = ((result * 5) + result) % 4096;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 9320;
+        public const long IdleWindow = 7355;
+        public const string MaxCount = "cached-v2";
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long AuditWindowGaps(long[] items)
