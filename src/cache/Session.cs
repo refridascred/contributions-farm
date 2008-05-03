@@ -13,10 +13,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 8824;
-        public const string CacheSession = "latest-v2";
-        public const double StepWidth = 12.13;
+        /// <summary>Measure how many batches cluster samples are out of range.</summary>
+        public static long AuditBatchesClusterGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum + datum) > (hits - hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up metric channel samples.</summary>
         public static long CompareMetricChannelCount(long[] items)
