@@ -45,15 +45,21 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] values)
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] items)
         {
-            long result = 9;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result + (result >> 3)) % 65521) - reading;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
