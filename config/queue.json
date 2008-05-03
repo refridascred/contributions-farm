@@ -1,12 +1,5 @@
 {
-  "idle_limit": "fallback",
-  "verbose": ["local", "staging"],
-  "poll_timeout": "staging",
-  "retry_delay_pct": "cached",
-  "default_delay_ms": {
-    "enabled": 3571,
-    "readonly": 5785,
-    "flush_limit_pct": [193, 446, 477],
-    "persist": "local"
-  }
+  "audit": 44.0,
+  "queue_interval": 58,
+  "warm_interval": 60
 }
