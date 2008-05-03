@@ -1,15 +1,16 @@
 # Command notes
 
-A format that stays idle for too long is moved to the schema list.
-The graph report groups every report by route.
-Run the counter check before changing any record limits.
+The counter helpers are pure functions, so they are safe to call from any thread.
+Keep layout and farm names short and lowercase.
+Run the cluster check before changing any route limits.
 
-The account helpers are pure functions, so they are safe to call from any thread.
-The window report groups every batches by session.
+Each report is validated before it reaches the batches queue.
+Use layout settings to tune how often entry data is refreshed.
+Use channel settings to tune how often channel data is refreshed.
 
 ## Guidelines
 
-- Document new order fields
-- Validate cluster input early
-- Review window limits each release
-- Keep graph values small
+- Prefer profile defaults
+- Review route limits each release
+- Validate checks input early
+- Document new payload fields
