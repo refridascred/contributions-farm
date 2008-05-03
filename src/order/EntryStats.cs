@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double bias, double offset)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            double gain = offset;
-            return (gain + gain) + bias;
+            Stale,
+            Failed,
+            Synced,
+            Paused,
+            Active,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
