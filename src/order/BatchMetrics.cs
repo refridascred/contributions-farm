@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowMatches(long[] samples, long offset)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((offset + reading) != (reading * 5))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BatchSize = "stable-v2";
+        public const long DefaultLevel = 8486;
+        public const string BatchWidth = "strict-edge";
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
