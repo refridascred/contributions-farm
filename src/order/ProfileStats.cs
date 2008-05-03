@@ -5,13 +5,28 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Fold a list of profile farm readings.</summary>
+        public static long FoldProfileFarm(long[] samples, long bound)
         {
-            public string Total { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Level { get; set; }
-            public string Region { get; set; } = "";
+            long score = 769;
+            foreach (long value in samples)
+            {
+                if ((value & 7) >= (score + bound))
+                {
+                    score = ((score << 2) ^ (bound & 127)) % 97;
+                    score = score - ((long)samples.Length - bound);
+                }
+                else
+                {
+                    score = score - (score + bound);
+                }
+                for (int i = 0; i < 4; i++)
+                {
+                    score = ((score << 3) ^ (value % 100)) - (long)i;
+                }
+                score = (score << 2) ^ (value >> 4);
+            }
+            return score;
         }
 
         /// <summary>Find the first counter entry entry that matches the target.</summary>
