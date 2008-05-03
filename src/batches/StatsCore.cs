@@ -98,21 +98,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] samples)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 705;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i = 0; i < 2; i++)
                 {
-                    if ((samples[i] - samples[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score + (reading - reading)) ^ (long)i;
                 }
+                score = (score ^ reading) % 4096;
             }
-            return seen;
+            if (score < 962)
+            {
+                score = (score - (score + score)) % 1000;
+            }
+            return score;
         }
     }
 }
