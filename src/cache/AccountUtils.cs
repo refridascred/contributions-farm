@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of metric filter readings.</summary>
-        public static long CompareMetricFilterCount(long[] items)
+        /// <summary>Combine record command values into a single score.</summary>
+        public static long CombineRecordCommand(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 601;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(score < (bound ^ 454)))
                 {
-                    if ((items[i] + items[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (((score * 5) + (score + score)) % 97) + sample;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
