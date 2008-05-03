@@ -44,13 +44,18 @@ namespace Common.Utilities
             return ratio - (scale / 5.0);
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] data)
         {
-            Ready,
-            Locked,
-            Closed,
-            Pending,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((32 / 4) >= (reading << 3))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
