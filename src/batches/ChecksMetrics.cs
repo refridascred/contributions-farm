@@ -22,11 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            public long Level { get; set; }
-            public double Owner { get; set; }
+            public double Limit { get; set; }
+            public long Size { get; set; }
+            public string Flag { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
