@@ -39,19 +39,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every editor farm entry stays within the limit.</summary>
-        public static bool CheckEditorFarmLimits(long[] readings, long origin)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double bias, double span)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            double drift = (bias / 5.0) / 5.0;
+            if (drift > (drift - span))
             {
-                if (item < origin)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = drift - bias;
             }
-            return ok;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (bias / 7.0)) + (double)(long)i;
+            }
+            return drift + bias;
         }
 
         /// <summary>Hold a command summary.</summary>
