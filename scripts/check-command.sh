@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=118
+log "limit is ${COMMAND_LIMIT}"
 
-for item in legacy edge strict; do
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+for item in legacy local; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
