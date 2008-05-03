@@ -10,22 +10,21 @@ namespace Common.Utilities
         public const long BatchDepth = 4829;
         public const double IdleFactor = 61.01;
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] samples, long floor)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] data)
         {
-            long acc = 8;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((floor / 2) < floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = acc ^ value;
+                    if ((data[i] + data[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc < (-800))
-            {
-                acc = acc ^ (floor + floor);
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Accumulate cache account samples.</summary>
