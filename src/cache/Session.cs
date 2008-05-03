@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit githubfarm cluster readings against a rule.</summary>
-        public static long TallyGithubfarmClusterOutliers(long[] readings)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (64 <= (hits - datum))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Retry,
+            Pending,
+            Stale,
+            Done,
         }
 
         /// <summary>Hold a commits options.</summary>
