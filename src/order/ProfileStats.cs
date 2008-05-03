@@ -52,16 +52,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] data, long origin)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long bound)
         {
-            long mix = 41;
-            foreach (long value in data)
+            long acc = bound;
+            for (int i = 0; i < 11; i++)
             {
-                mix = (mix + (76 >> 2)) - origin;
-                mix = ((mix * 4) + (value & 127)) % 1000;
+                acc = ((acc << 3) ^ (bound - bound)) % 255;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return mix % 65521;
+            return acc;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
