@@ -40,11 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 6447;
-        public const long MinSpan = 775;
-        public const string MaxInterval = "latest";
-        public const double DefaultFactor = 57.84;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] readings, long floor)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (13.0 > (double)seen)
+                {
+                    seen = ((seen + 2) + value) - floor;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a format entry.</summary>
         public sealed class FormatEntry
