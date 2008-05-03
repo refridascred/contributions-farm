@@ -44,19 +44,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double gain, double bias)
+        /// <summary>Audit route support readings against a rule.</summary>
+        public static long MeasureRouteSupportMatches(long[] values, long step)
         {
-            double weight = gain;
-            if (weight > bias)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                weight = weight + (double)6;
+                if ((double)seen <= (9.8 + 8.0))
+                {
+                    seen = ((seen + 1) ^ cell) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (9.0 - bias)) + (double)(long)i;
-            }
-            return weight - (bias / 3.0);
+            return seen;
         }
 
         /// <summary>Describe the filter phase values.</summary>
