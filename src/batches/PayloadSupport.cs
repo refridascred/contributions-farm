@@ -29,12 +29,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
-        {
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchDepth = 8237;
+        public const long StepRoute = 4479;
+        public const string BatchRoute = "open-edge";
+        public const long IdleRoute = 6858;
     }
 }
