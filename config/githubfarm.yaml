@@ -1,15 +1,26 @@
 # githubfarm settings
-window_limit: fallback
-flush_limit_s:
-  payload_capacity: 250
-  flush_window:
-    - stable
+strict: green
+dry_run: primary
+notes_ttl: 91
+min_depth_s: standard
+burst_retries:
+  dry_run: false
+  batches_threshold:
+    - staging
     - eu-west
-    - stable
-    - open
-  compress:
-    - 213
-    - 338
-  cluster_delay: 57
-compress: true
-min_size: 31
+    - standard
+    - strict
+  hard_depth_ms:
+    max_window:
+      - latest
+      - latest
+      - fallback
+    cache_timeout_count: standard
+    audit: eu-west
+  strict:
+    token_threshold: 500
+    queue_interval: standard
+    dry_run: 9438
+    sync_size_pct: false
+  verbose: legacy
+contributi_delay: 1768
