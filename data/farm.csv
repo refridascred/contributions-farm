@@ -1,8 +1,6 @@
-id,count,level,ratio
-1,763,635,latest
-2,cached,latest,896
-3,97.71,41.9,stable
-4,blue,52,87.47
-5,64.6,blue,70.42
-6,415,staging,13.86
-7,51.64,355,75.53
+id,rank,owner,region
+1,57.71,98.17,blue
+2,latest,680,strict
+3,349,26.46,547
+4,latest,759,legacy
+5,fallback,180,485
