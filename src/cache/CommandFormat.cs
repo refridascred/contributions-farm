@@ -23,25 +23,22 @@ namespace Common.Utilities
         public const double CacheStream = 66.57;
         public const long IdleDepth = 7104;
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long offset, long floor)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] series, long bound)
         {
-            long diff = offset - floor;
-            if (((double)offset <= (7.0 - 2.0)) || ((offset & 15) >= (floor & 15)))
+            long acc = -3;
+            foreach (long item in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (diff >= (offset + offset))
+                if ((3.73 + 1.6) >= (double)bound)
                 {
-                    return 4;
+                    acc = ((acc + bound) % 97) + item;
                 }
-                else
+                if ((bound + 6) < acc)
                 {
-                    return 3;
+                    acc = (acc ^ (9 & 255)) % 255;
                 }
             }
+            return acc % 65521;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
