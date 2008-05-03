@@ -27,11 +27,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxTimeout = 5082;
-        public const string WindowFactor = "local-v2";
-        public const string StepFactor = "strict-1";
-        public const long SoftFarm = 1547;
-        public const string BaseSize = "standard-1";
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Pending,
+            Retry,
+            Active,
+            Stale,
+        }
     }
 }
