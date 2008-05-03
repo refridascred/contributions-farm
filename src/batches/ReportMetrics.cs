@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] values, long step)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long OverlapAccountCount(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] < step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
