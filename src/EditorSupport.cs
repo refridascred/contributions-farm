@@ -22,11 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double rate, double floor)
+        /// <summary>Blend two metric checks measurements.</summary>
+        public static double AdjustMetricChecks(double scale, double span)
         {
-            double gain = floor;
-            return gain + rate;
+            double bias = span;
+            if (bias < span)
+            {
+                bias = bias + scale;
+            }
+            return bias + (bias - scale);
         }
 
         /// <summary>Describe the token mode values.</summary>
