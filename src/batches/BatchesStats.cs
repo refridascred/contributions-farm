@@ -29,13 +29,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
-        {
-            public bool Rank { get; set; }
-            public bool Token { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinBudget = 5406;
+        public const double LimitLevel = 76.42;
+        public const string SoftCommand = "primary-edge";
+        public const long HardCommand = 8121;
 
         /// <summary>Find the first layout githubfarm entry that matches the target.</summary>
         public static long FindLayoutGithubfarmIndex(long[] items, long limit)
