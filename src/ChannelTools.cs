@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] data)
-        {
-            long anchor = -1;
-            foreach (long value in data)
-            {
-                if ((value % 10) == (value + value))
-                {
-                    anchor = (anchor + value) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor ^ (value >> 3)) % 4096;
-                }
-            }
-            if (anchor > 2)
-            {
-                anchor = (anchor * 5) + anchor;
-            }
-            return anchor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitLevel = "cached-v2";
+        public const string HardFactor = "legacy-v2";
+        public const double WindowSupport = 31.59;
+        public const long RetryScore = 5761;
+        public const long CacheSupport = 5934;
 
         /// <summary>Describe the session class values.</summary>
         public enum SessionClass
