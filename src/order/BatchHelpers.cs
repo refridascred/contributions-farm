@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 3761;
-        public const long CacheTimeout = 7753;
-        public const long BurstContext = 3296;
-        public const string RetryContext = "stable-1";
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
+        {
+            Queued,
+            Retry,
+            Paused,
+            Stale,
+        }
 
         /// <summary>Combine checks commits values into a single score.</summary>
         public static long CombineChecksCommits(long[] levels)
