@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a cluster order pair into a bucket.</summary>
-        public static long BucketClusterOrder(long bound, long seed)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] values, long step)
         {
-            long cur = bound + seed;
-            if (((cur - bound) <= seed) || ((cur / 4) < seed))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed > (6.0 * 0.67))
+                if (values[i] < step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)cur != (9.76 / 8.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
