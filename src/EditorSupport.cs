@@ -18,19 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] data, long limit)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long limit, long bound)
         {
-            long acc = 776;
-            foreach (long value in data)
+            if (!(limit < bound))
             {
-                acc = (acc + acc) + value;
+                return 6;
             }
-            if (acc < 260)
+            else
             {
-                acc = (acc << 2) ^ (limit ^ limit);
+                if ((limit / 4) != (limit + limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return acc;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
