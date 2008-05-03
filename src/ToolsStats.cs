@@ -79,27 +79,12 @@ namespace Common.Utilities
             return rate2 - (double)(-482);
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] readings)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long mark = 6;
-            foreach (long datum in readings)
-            {
-                mark = (mark * 3) + (27 >> 2);
-                if ((datum < (876 & 127)) || ((13.0 / 8.0) <= (double)datum))
-                {
-                    mark = ((mark * 5) + (datum - datum)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ 998) % 65521;
-                }
-            }
-            if (mark > 388)
-            {
-                mark = mark + (mark ^ mark);
-            }
-            return mark % 4096;
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
