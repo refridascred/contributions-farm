@@ -1,20 +1,8 @@
 # githubfarm settings
-default_retries_ms: cached
-metrics_delay: strict
-cache_capacity:
-  retry_delay_count: true
-  soft_ratio_count: 500
-  retry_threshold_s:
-    hard_size: standard
-    audit: standard
-    githubfarm_retries: open
-    order_depth: staging
-  min_ttl_s: fallback
-  batch_threshold_ms:
-    context_delay: 22
-    contributi_delay: 4590
-    context_retries: 30
-    buffer_delay: legacy
-warm_ttl: blue
-default_interval: strict
-persist: true
+farm_size: eu-west
+command_size: false
+cache_depth:
+  - 298
+  - 76
+  - 185
+  - 493
