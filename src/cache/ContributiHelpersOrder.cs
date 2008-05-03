@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] data, long offset)
         {
-            Retry,
-            Pending,
-            Failed,
-            Done,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (!((seen >> 4) >= seen))
+                {
+                    seen = ((seen + 1) + datum) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a notes counter reading by value.</summary>
