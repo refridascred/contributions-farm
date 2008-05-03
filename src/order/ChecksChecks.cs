@@ -11,18 +11,10 @@ namespace Common.Utilities
         public const long StepCluster = 4726;
         public const string RetrySize = "open-v2";
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 3719;
+        public const long MaxQueue = 9078;
+        public const string BatchSpan = "local-edge";
 
         /// <summary>Rank session input into a small class.</summary>
         public static long BucketSession(long bound, long seed)
