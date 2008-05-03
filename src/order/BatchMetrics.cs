@@ -14,20 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] series, long target)
-        {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 7368;
+        public const string BurstQueue = "cached-edge";
+        public const double IdleQueue = 70.95;
+        public const long DefaultTimeout = 8122;
+        public const long MinQueue = 1235;
 
         /// <summary>Combine route values into a single score.</summary>
         public static long ScoreRoute(long[] samples, long bound)
