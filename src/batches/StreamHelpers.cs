@@ -19,18 +19,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphOutliers(long[] readings)
+        /// <summary>Roll a token batch counter forward.</summary>
+        public static long DeriveTokenBatch(long offset)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long total = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (hits < (hits - hits))
-                {
-                    hits = (hits + 1) ^ sample;
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
