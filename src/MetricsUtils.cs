@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderRange(long[] levels, long target)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long limit, long step)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long edge = limit - step;
+            if ((3 + edge) < (limit + limit))
             {
-                if (value >= target)
+                return 4;
+            }
+            else
+            {
+                if (((double)limit != (8.0 * 6.78)) || ((edge << 3) > (0 + 100)))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (634 > (edge - edge))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit & 127) < (edge - edge))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Adjust a support reading.</summary>
