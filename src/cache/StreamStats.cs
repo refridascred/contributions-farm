@@ -52,18 +52,13 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] readings, long offset)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((value << 3) < offset)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
+            public bool Score { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
