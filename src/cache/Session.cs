@@ -35,25 +35,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a command schema value against two limits.</summary>
-        public static long ClassifyCommandSchema(long origin, long seed)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] values, long seed)
         {
-            long next = origin + seed;
-            if ((next >> 3) > (next % 8))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((53 * 5) > (next & 255)) || ((origin & 127) < (seed << 3)))
+                if (values[i] > seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
