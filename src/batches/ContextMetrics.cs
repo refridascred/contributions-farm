@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] readings, long origin)
+        /// <summary>Fold a list of profile cluster readings.</summary>
+        public static long TallyProfileCluster(long[] values)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long score = 8;
+            foreach (long sample in values)
             {
-                if (reading < origin)
+                if (!((sample & 63) != (score + score)))
                 {
-                    valid = false;
-                    break;
+                    score = (score - (580 >> 5)) % 97;
                 }
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
