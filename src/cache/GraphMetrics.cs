@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] levels, long floor)
         {
-            public double Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
-            public bool Mode { get; set; }
+            long anchor = 514;
+            foreach (long entry in levels)
+            {
+                if ((double)entry == (6.6 / 7.0))
+                {
+                    anchor = anchor + (anchor - floor);
+                }
+            }
+            if (anchor < 32)
+            {
+                anchor = anchor ^ (anchor + anchor);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Hold a profile entry.</summary>
