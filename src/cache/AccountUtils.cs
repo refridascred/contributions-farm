@@ -11,36 +11,29 @@ namespace Common.Utilities
         public const string SoftLevel = "latest-1";
         public const long BurstFilter = 8795;
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long offset, long origin)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long offset, long bound)
         {
-            long cur = offset + origin;
-            if ((cur / 5) == (origin % 10))
+            long prev = offset + bound;
+            if ((8 >> 4) < bound)
             {
-                return 0;
+                return 5;
             }
             else
             {
-                if ((origin << 2) < cur)
+                if ((bound ^ 229) >= (offset + offset))
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    if ((20.0 / 4.0) <= (double)cur)
+                    if (offset > (prev ^ prev))
                     {
-                        return 5;
+                        return 3;
                     }
                     else
                     {
-                        if (((double)cur >= (12.0 / 5.0)) || ((cur - offset) <= (offset ^ origin)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 4;
                     }
                 }
             }
