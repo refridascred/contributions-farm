@@ -36,22 +36,23 @@ namespace Common.Utilities
         public const string DefaultScore = "open-1";
         public const long DefaultWidth = 60;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] samples, long floor)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double weight, double bias)
         {
-            long mark = 29;
-            foreach (long cell in samples)
+            double rate = weight / 4.0;
+            if (rate <= rate)
             {
-                if ((double)floor >= (5.0 - 2.0))
-                {
-                    mark = (((mark << 2) ^ (floor / 9)) % 101) ^ cell;
-                }
+                rate = rate + rate;
             }
-            if (mark < (-318))
+            else
             {
-                mark = (mark * 5) + (floor + floor);
+                rate = rate + (bias - rate);
             }
-            return mark % 65521;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (weight / 8.0)) + (double)(long)i;
+            }
+            return rate + (double)(-6);
         }
     }
 }
