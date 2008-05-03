@@ -32,17 +32,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a batch account reading by value.</summary>
-        public static long LocateBatchAccountIndex(long[] data, long bound)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long bound, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((bound + bound) >= target)
             {
-                if (data[i] < bound)
+                return 3;
+            }
+            else
+            {
+                if (!(target < (-120)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)target <= (double)(-168))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((88 / 3) <= target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
