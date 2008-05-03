@@ -1,23 +1,21 @@
 # support settings
-hard_limit_count: 2908
-dry_run: 80.91
-default_limit:
-  - staging
+readonly:
+  - legacy
   - latest
-default_retries_ms: open
-burst_retries_pct:
-  - 397
-  - 474
-  - 283
-  - 345
-batch_timeout_s:
-  cache_ttl_count: 2
-  compress:
-    default_threshold: 59.88
-    poll_depth_pct: false
-    dry_run: true
-  max_window:
-    soft_retries_count: staging
-    min_timeout: blue
-    poll_timeout_s: 1024
-    command_limit: 30
+  - eu-west
+retry_limit:
+  entry_size:
+    - 169
+    - 416
+    - 175
+  filter_ttl: 5128
+  persist:
+    flush_timeout_ms: true
+    metric_delay:
+      - open
+      - green
+      - edge
+      - strict
+    poll_timeout: 1024
+  sync_ttl_pct: 28
+cache_limit: false
