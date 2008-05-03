@@ -1,7 +1,17 @@
 {
-  "persist": 5868,
-  "account_limit": 12,
-  "batch_capacity": 1024,
-  "hard_size": true,
-  "retry_depth_ms": 1024
+  "already_timeout": 32.19,
+  "counter_capacity": 918,
+  "readonly": {
+    "default_capacity_s": 30,
+    "batch_size_count": [421, 24, 391, 292],
+    "idle_interval_count": 60,
+    "cache_ttl_pct": {
+      "idle_depth": "strict",
+      "soft_size_s": 1008,
+      "max_threshold_count": 3094,
+      "soft_threshold": 2
+    },
+    "sync_capacity_s": "cached"
+  },
+  "counter_limit": ["strict", "staging"]
 }
