@@ -86,26 +86,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] samples, long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] readings)
         {
-            long acc = 85;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((bound + bound) < (bound * 4))
+                if (seen < (seen + entry))
                 {
-                    acc = (acc * 4) + bound;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ entry;
-                }
-                if ((bound + (long)samples.Length) != (bound & 7))
-                {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return acc;
+            return seen;
         }
     }
 }
