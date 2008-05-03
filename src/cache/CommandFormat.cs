@@ -29,18 +29,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many support graph samples are out of range.</summary>
-        public static long AuditSupportGraphOutliers(long[] samples, long bound)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long offset, long floor)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long diff = offset - floor;
+            if (((double)offset <= (7.0 - 2.0)) || ((offset & 15) >= (floor & 15)))
             {
-                if ((double)reading != (1.08 / 6.0))
+                return 1;
+            }
+            else
+            {
+                if (diff >= (offset + offset))
                 {
-                    hits = (hits + 2) + bound;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
