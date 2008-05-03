@@ -10,23 +10,19 @@ namespace Common.Utilities
         public const long MinWindow = 6430;
         public const string BatchRatio = "cached-edge";
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] data)
+        /// <summary>Iterate the support stream series from a seed.</summary>
+        public static long RollSupportStream(long target)
         {
-            long sum = 2;
-            foreach (long cell in data)
+            long total = target;
+            for (int i = 0; i < 6; i++)
             {
-                sum = (sum * 3) + (cell + cell);
-                if (!((sum + cell) > sum))
+                if ((target + 11) == (total / 4))
                 {
-                    sum = (sum ^ cell) % 1000;
+                    total = ((total * 2) + 52) % 255;
                 }
-                else
-                {
-                    sum = ((sum * 4) + sum) % 1000;
-                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return sum % 4096;
+            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
