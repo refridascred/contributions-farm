@@ -19,23 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double bias, double floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] data, long step)
         {
-            double gain = (double)18;
-            if (gain <= bias)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                gain = gain - (bias + bias);
+                if (datum >= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - (double)587;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + (bias / 7.0)) + (double)(long)i;
-            }
-            return gain - (floor * 5.0);
+            return ok;
         }
 
         /// <summary>Describe the token phase values.</summary>
