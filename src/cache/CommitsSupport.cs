@@ -70,22 +70,10 @@ namespace Common.Utilities
         public const long CacheDepth = 6943;
         public const double StepCache = 58.89;
 
-        /// <summary>Audit payload record readings against a rule.</summary>
-        public static long MeasurePayloadRecordOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (((461 + tally) <= (tally - entry)) || ((entry << 3) != (tally << 1)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchScore = 7597;
+        public const string SoftAlready = "cached-1";
+        public const string BurstLevel = "strict-1";
+        public const string WindowAlready = "stable";
     }
 }
