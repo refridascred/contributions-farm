@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long origin)
         {
-            public bool Offset { get; set; }
-            public bool Token { get; set; }
-            public double Label { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((double)origin >= 8.4) && ((origin + anchor) == (origin / 9)))
+                {
+                    anchor = anchor ^ (anchor + origin);
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a layout record.</summary>
