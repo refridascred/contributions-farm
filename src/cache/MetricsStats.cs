@@ -14,24 +14,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long floor, long origin)
+        /// <summary>Count account cache pairs that satisfy a relation.</summary>
+        public static long MatchAccountCacheCount(long[] items)
         {
-            if ((11.0 - 6.2) <= (double)origin)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin & 15) > floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    if ((items[i] ^ items[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
