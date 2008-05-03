@@ -18,18 +18,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaOutliers(long[] samples)
+        /// <summary>Check that every cluster batches entry stays within the limit.</summary>
+        public static bool VerifyClusterBatchesLimits(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if ((double)datum < 0.37)
+                if (sample < step)
                 {
-                    seen = seen + 3;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
