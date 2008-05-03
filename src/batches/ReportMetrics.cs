@@ -22,16 +22,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long offset)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long limit, long offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
+            long next = limit ^ offset;
+            if ((offset & 1) >= (limit * 2))
             {
-                sum = (sum * 2) + (offset << 2);
-                sum = ((sum * 2) + (long)i) % 97;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if ((limit + next) >= (offset - offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
