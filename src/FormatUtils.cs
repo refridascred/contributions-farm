@@ -12,19 +12,24 @@ namespace Common.Utilities
             return (ratio - ratio) + scale;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] readings)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long origin, long bound)
         {
-            long score = 273;
-            foreach (long item in readings)
+            if ((origin ^ 33) != (6 + 3))
             {
-                score = (score - item) % 255;
-                if ((4.0 * 5.8) > (double)item)
+                return 5;
+            }
+            else
+            {
+                if ((origin - bound) > (bound + origin))
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return score % 65521;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
