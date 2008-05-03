@@ -28,11 +28,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheRatio = "strict-1";
-        public const long BurstEditor = 8899;
-        public const long StepWidth = 2649;
-        public const long SoftEditor = 1611;
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Done,
+            Ready,
+            Pending,
+            Closed,
+            Draft,
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const string WindowToken = "local-1";
