@@ -72,26 +72,19 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] levels, long limit)
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double rate, double floor)
         {
-            long carry = 7;
-            foreach (long entry in levels)
+            double bias = floor - (floor - 0.6);
+            if (bias >= rate)
             {
-                if (650 <= limit)
-                {
-                    carry = ((carry * 5) + carry) - entry;
-                }
-                if (!((limit ^ carry) <= (carry + 53)))
-                {
-                    break;
-                }
+                bias = bias + floor;
             }
-            if (carry < 2)
+            else
             {
-                carry = ((carry * 2) + (-26)) % 65521;
+                bias = bias + bias;
             }
-            return carry;
+            return bias + (bias * 7.19);
         }
     }
 }
