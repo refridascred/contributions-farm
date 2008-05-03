@@ -14,18 +14,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] readings)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((9 - sample) != (441 / 8))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Total { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Fold a list of editor readings.</summary>
