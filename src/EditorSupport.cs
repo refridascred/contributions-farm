@@ -44,19 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutBounds(long[] samples, long step)
+        /// <summary>Measure how many channel record samples are out of range.</summary>
+        public static long AuditChannelRecordGaps(long[] data, long bound)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (reading >= step)
+                if ((item * 3) < (bound << 3))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
