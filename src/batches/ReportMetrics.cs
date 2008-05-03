@@ -27,17 +27,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] data, long origin)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Rank { get; set; }
+            public string Label { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
