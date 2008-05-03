@@ -56,19 +56,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderRange(long[] levels, long bound)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
