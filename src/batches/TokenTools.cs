@@ -29,15 +29,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double gain, double span)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricMatches(long[] items, long floor)
         {
-            double mean = (double)(28 + 54);
-            if (mean >= (double)4)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                mean = (mean - (double)614) - gain;
+                if ((entry >> 3) >= entry)
+                {
+                    seen = (seen + 2) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mean - span;
+            return seen;
         }
     }
 }
