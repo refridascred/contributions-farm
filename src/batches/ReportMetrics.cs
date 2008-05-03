@@ -22,25 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long limit, long offset)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long next = limit ^ offset;
-            if ((offset & 1) >= (limit * 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit + next) >= (offset - offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Count { get; set; }
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
