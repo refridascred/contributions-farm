@@ -30,18 +30,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] series, long limit)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsLimits(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if (!((double)count > (1.0 + 3.47)))
+                if (datum <= floor)
                 {
-                    count = ((count + 3) - entry) + limit;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
