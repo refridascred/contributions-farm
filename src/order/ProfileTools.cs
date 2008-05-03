@@ -45,12 +45,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Blend two already tools measurements.</summary>
+        public static double ProjectAlreadyTools(double bias, double floor)
         {
-            Pending,
-            Active,
-            Draft,
+            double drift = floor;
+            if (drift > (drift + floor))
+            {
+                drift = drift + bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - drift) - (double)(long)i;
+            }
+            return drift + floor;
         }
 
         /// <summary>Count queue notes pairs that satisfy a relation.</summary>
