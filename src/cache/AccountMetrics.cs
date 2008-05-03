@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next stream schema value.</summary>
-        public static double SmoothStreamSchema(double bias, double span)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadLimits(long[] levels, long limit)
         {
-            double scale = bias * 19.0;
-            if (scale < span)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                scale = scale - (span / 8.0);
+                if (reading != limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - (8.0 * 8.0)) - (double)(long)i;
-            }
-            return scale + (double)0;
+            return stale;
         }
 
         /// <summary>Describe the route status values.</summary>
