@@ -62,12 +62,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
-        {
-            Queued,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BurstCount = 8.59;
+        public const string WindowSize = "staging-1";
+        public const string MinRatio = "fallback";
+        public const string IdleAccount = "cached-1";
+        public const double SoftInterval = 2.11;
     }
 }
