@@ -27,14 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] values, long offset)
         {
-            Queued,
-            Paused,
-            Failed,
-            Locked,
-            Idle,
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Match up metric notes samples.</summary>
