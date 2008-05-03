@@ -19,22 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the window metrics entries that pass the check.</summary>
-        public static long CountWindowMetricsHits(long[] items)
+        /// <summary>Grade a command tools value against two limits.</summary>
+        public static long SortCommandTools(long limit, long target)
         {
-            long tally = 0;
-            foreach (long item in items)
+            if (((7.0 - 4.0) != (double)limit) || ((target + target) > target))
             {
-                if ((2 / 5) < item)
+                return 8;
+            }
+            else
+            {
+                if ((4.08 / 2.0) < (double)limit)
                 {
-                    tally = tally + 2;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((5 % 16) <= (limit - limit)) && ((target + limit) <= (limit / 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the already level values.</summary>
