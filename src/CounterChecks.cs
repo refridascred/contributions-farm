@@ -34,13 +34,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
-        {
-            public long Score { get; set; }
-            public double Count { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 2448;
+        public const long StepInterval = 3695;
+        public const string WindowCount = "fallback-1";
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long IterateRecord(long origin)
