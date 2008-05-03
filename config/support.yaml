@@ -1,10 +1,34 @@
 # support settings
-hard_ratio_ms:
-  - 224
-  - 21
-  - 208
-verbose: 8362
-soft_capacity:
-  - primary
-  - open
-flush_ratio_ms: open
+base_ratio_ms: false
+batch_ttl: 50.64
+cache_depth_s: 32.43
+burst_threshold_ms:
+  soft_depth: 60
+  base_delay_pct:
+    dry_run: 58
+    flush_timeout_ms:
+      - cached
+      - stable
+      - stable
+    buffer_interval: blue
+    buffer_delay: legacy
+    warm_retries: local
+  soft_capacity_s:
+    - 478
+    - 448
+  flush_capacity_s:
+    - primary
+    - strict
+    - fallback
+    - latest
+  sync_retries_count: latest
+  max_depth_s:
+    - open
+    - standard
+    - standard
+verbose:
+  - staging
+  - edge
+  - eu-west
+  - edge
+default_window_s: true
