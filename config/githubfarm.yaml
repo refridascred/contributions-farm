@@ -1,33 +1,7 @@
 # githubfarm settings
-flush_depth_pct: open
-tools_depth:
-  hard_capacity: open
-  verbose:
-    retry_interval_s:
-      - 308
-      - 402
-    readonly: 87.39
-    record_threshold: 72.02
-  default_interval: standard
-  profile_threshold: 84.23
-  buffer_window: stable
-  soft_size: legacy
-channel_ratio: 87
-persist: 18
-support_delay:
-  verbose:
-    - 393
-    - 383
-    - 409
-    - 262
-  queue_size:
-    - 159
-    - 67
-    - 437
-  hard_ttl_ms: 30
-  enabled:
-    - blue
-    - green
-  route_window: 45
-  max_capacity_count: legacy
-burst_timeout_count: blue
+sync_threshold_s: true
+base_depth_pct: local
+session_depth: 2209
+retry_threshold_ms: true
+strict: 91
+max_ratio_s: eu-west
