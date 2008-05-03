@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the entry channel entries that pass the check.</summary>
-        public static long AuditEntryChannelMatches(long[] readings)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)cell != (9.1 / 6.0))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Retry,
+            Done,
+            Paused,
         }
 
         /// <summary>Blend two record measurements.</summary>
