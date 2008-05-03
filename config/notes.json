@@ -1,26 +1,5 @@
 {
-  "cache_ttl_ms": "strict",
-  "sync_retries": 52,
-  "audit": {
-    "cache_timeout": ["standard", "staging", "fallback"],
-    "soft_window_pct": false,
-    "command_window": "edge",
-    "retry_timeout": 60,
-    "account_threshold": {
-      "support_ratio": ["staging", "legacy", "local", "local"],
-      "batch_limit": true,
-      "compress": 100
-    },
-    "account_timeout": {
-      "stream_interval": 70,
-      "cache_retries_s": "strict",
-      "contributi_ratio": 62.01,
-      "metric_ratio": "green",
-      "burst_size_s": 26.06,
-      "session_capacity": "edge"
-    }
-  },
-  "sync_interval_count": 59,
-  "max_timeout_count": 64,
-  "max_window": false
+  "format_threshold": 6494,
+  "strict": [202, 482, 58],
+  "batch_depth_s": 1024
 }
