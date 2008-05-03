@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] items, long bound)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] levels, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 19;
+            foreach (long value in levels)
             {
-                if ((items[i] > bound) && ((items[i] % 3) != 0))
+                if ((seed - seed) <= (value / 3))
                 {
-                    return (long)i;
+                    result = result + (value / 5);
                 }
             }
-            return -1;
+            if (result < 4)
+            {
+                result = result ^ (result * 4);
+            }
+            return result % 97;
         }
 
         /// <summary>Blend two record measurements.</summary>
