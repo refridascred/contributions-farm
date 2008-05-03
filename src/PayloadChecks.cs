@@ -84,11 +84,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowSize = 8865;
-        public const string LimitFactor = "primary-edge";
-        public const long StepGithubfarm = 1067;
-        public const double DefaultGithubfarm = 55.25;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] items)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((sample ^ count) != (count >> 5))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double HardCommits = 84.91;
