@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] series, long offset)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 5;
+            foreach (long value in samples)
             {
-                if ((series[i] < offset) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc << 2) ^ (384 % 10);
+                acc = ((acc * 3) + (value * 5)) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
