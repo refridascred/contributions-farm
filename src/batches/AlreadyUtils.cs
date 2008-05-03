@@ -19,12 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double WindowFilter = 2.27;
-        public const string HardFilter = "legacy-edge";
-        public const long DefaultFilter = 4808;
-        public const long RetryDepth = 7290;
-        public const string MinInterval = "fallback-edge";
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of support report entries.</summary>
         public static long DigestSupportReport(long[] samples)
