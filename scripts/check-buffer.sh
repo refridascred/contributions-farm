@@ -6,22 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=361
+log "limit is ${BUFFER_LIMIT}"
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 4))
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
-
-for item in latest primary; do
-    log "checking ${item}"
-done
+log "ran ${count} rounds"
