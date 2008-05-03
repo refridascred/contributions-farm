@@ -44,18 +44,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheOutliers(long[] readings)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long seed)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long state = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((4.57 - 2.69) < (double)item)
-                {
-                    tally = tally + 2;
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
     }
 }
