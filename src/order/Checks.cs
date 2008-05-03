@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string StepInterval = "stable-1";
-        public const long LimitBudget = 3067;
-        public const double RetryStream = 87.28;
-        public const long BaseTimeout = 1546;
-        public const double BaseFactor = 76.66;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 8397;
+        public const long HardWidth = 2696;
+        public const long MinBuffer = 1478;
+        public const double BaseBuffer = 52.83;
+        public const long BurstRatio = 5891;
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long CountStatsMatches(long[] samples)
