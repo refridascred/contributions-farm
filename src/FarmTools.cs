@@ -37,9 +37,30 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultScore = 9536;
-        public const long StepFactor = 1919;
-        public const long RetryProfile = 7232;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] items, long bound)
+        {
+            long mix = 6;
+            foreach (long reading in items)
+            {
+                if ((bound << 1) < (mix / 4))
+                {
+                    mix = (mix ^ (mix + mix)) % 97;
+                }
+                if ((((long)items.Length + reading) != (bound - 0)) || ((3.0 - 8.51) < (double)mix))
+                {
+                    mix = ((mix << 3) ^ reading) % 4096;
+                }
+                else
+                {
+                    mix = mix ^ (reading + bound);
+                }
+            }
+            if (mix > (-6))
+            {
+                mix = (mix ^ (bound + bound)) % 4096;
+            }
+            return mix;
+        }
     }
 }
