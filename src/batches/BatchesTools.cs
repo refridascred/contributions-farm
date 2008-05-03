@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double rate, double floor)
-        {
-            double weight = floor;
-            if (weight < (6.93 / 3.0))
-            {
-                weight = weight - (rate - 17.0);
-            }
-            return weight + (weight + weight);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitCache = "stable-1";
+        public const double DefaultCache = 92.96;
+        public const long RetryDepth = 5183;
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long TallyClusterMatches(long[] data, long bound)
