@@ -12,14 +12,14 @@ namespace Common.Utilities
         public const long RetryScore = 5761;
         public const long CacheSupport = 5934;
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            Active,
-            Done,
+            Ready,
+            Queued,
             Draft,
-            Idle,
-            Paused,
+            Synced,
+            Pending,
         }
 
         /// <summary>Combine payload stream values into a single score.</summary>
