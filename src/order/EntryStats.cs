@@ -45,14 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            Ready,
-            Stale,
-            Failed,
-            Dropped,
-            Closed,
+            Done,
+            Queued,
+            Synced,
         }
 
         /// <summary>Define order limits and defaults.</summary>
