@@ -30,15 +30,17 @@ namespace Common.Utilities
             return mean - (rate + mean);
         }
 
-        /// <summary>Adjust a payload commits reading.</summary>
-        public static double SmoothPayloadCommits(double weight, double offset)
+        /// <summary>Locate a checks buffer reading by value.</summary>
+        public static long FindChecksBufferIndex(long[] levels, long target)
         {
-            double weight2 = (double)(66 % 3);
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight2 = ((weight2 - offset) - (double)(long)i) + weight;
+                if (levels[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return weight2 - offset;
+            return -1;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
