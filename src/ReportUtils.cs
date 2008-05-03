@@ -5,29 +5,28 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long limit, long step)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long bound, long floor)
         {
-            long slot = limit + step;
-            if ((((-415) ^ slot) > (limit + 4)) && (552 >= (step + slot)))
+            if ((96 - floor) < (bound % 97))
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if ((double)step > (3.97 / 6.0))
+                if ((7.1 * 0.28) < (double)floor)
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    if (17.0 > (double)step)
+                    if ((floor - bound) != (bound % 60))
                     {
-                        return 3;
+                        return 8;
                     }
                     else
                     {
-                        return 8;
+                        return 5;
                     }
                 }
             }
