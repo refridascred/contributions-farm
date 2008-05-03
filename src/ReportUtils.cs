@@ -54,24 +54,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] series)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long total = 61;
-            foreach (long datum in series)
-            {
-                total = ((total << 2) ^ (4 << 1)) % 65521;
-                if (!(((long)series.Length + total) >= ((-44) ^ datum)))
-                {
-                    total = ((total * 2) + (datum + total)) % 1000;
-                }
-                total = total - total;
-                if ((total - total) != (38 + datum))
-                {
-                    break;
-                }
-            }
-            return total;
+            Draft,
+            Paused,
+            Pending,
         }
     }
 }
