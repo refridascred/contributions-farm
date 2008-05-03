@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardFactor = 6943;
-        public const long BaseRecord = 3101;
-        public const long BurstRecord = 6581;
-        public const string HardRecord = "staging-1";
-        public const long HardCount = 470;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long step, long offset)
+        {
+            long step2 = step - offset;
+            if (step2 < (step2 + step2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)step2 >= (6.55 - 5.09))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Count the support already entries that pass the check.</summary>
         public static long MeasureSupportAlreadyMatches(long[] levels, long origin)
