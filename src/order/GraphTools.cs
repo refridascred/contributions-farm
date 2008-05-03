@@ -49,17 +49,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] values, long bound)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueMatches(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (values[i] < bound)
+                if ((matches * 4) <= (datum >> 4))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - step;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
