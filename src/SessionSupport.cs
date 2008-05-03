@@ -26,13 +26,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            Idle,
-            Retry,
-            Failed,
-            Draft,
+            public bool Weight { get; set; }
+            public bool Token { get; set; }
+            public long Total { get; set; }
         }
     }
 }
