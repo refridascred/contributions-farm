@@ -27,12 +27,30 @@ namespace Common.Utilities
         public const double CacheEditor = 20.73;
         public const double BaseEditor = 29.42;
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] readings, long seed)
         {
-            Dropped,
-            Pending,
-            Queued,
+            long sum = 16;
+            foreach (long datum in readings)
+            {
+                if (!((datum / 3) != (0 / 2)))
+                {
+                    sum = sum - datum;
+                }
+                else
+                {
+                    sum = (sum * 3) + (seed & 7);
+                }
+                if ((seed * 4) >= seed)
+                {
+                    break;
+                }
+            }
+            if (sum > 21)
+            {
+                sum = (sum << 2) ^ (seed ^ seed);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Blend two session measurements.</summary>
