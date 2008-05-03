@@ -1,4 +1,38 @@
 # entry settings
-idle_limit_count: 77.36
-default_depth_pct: legacy
-token_ttl: 7880
+batch_threshold_count: green
+order_depth:
+  verbose: 30
+  min_delay_pct: 58
+  dry_run: eu-west
+  metrics_depth: staging
+  notes_size: 8
+  stats_ttl: 9706
+sync_ttl:
+  sync_delay:
+    - standard
+    - legacy
+    - edge
+  warm_size_ms:
+    cache_delay_ms:
+      - blue
+      - stable
+      - staging
+      - fallback
+    default_delay:
+      - blue
+      - blue
+      - local
+      - stable
+    dry_run: false
+    profile_capacity: primary
+    warm_limit_ms: 30.47
+    poll_delay_count:
+      - 308
+      - 19
+      - 469
+  poll_depth_ms: 1610
+  readonly: local
+  counter_delay: 1024
+retry_threshold_pct: 75.88
+verbose: 1024
+cache_interval_pct: standard
