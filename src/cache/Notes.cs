@@ -43,18 +43,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first command payload entry that matches the target.</summary>
-        public static long LookupCommandPayloadIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double LimitInterval = 69.74;
+        public const long StepStats = 3075;
+        public const long CacheWidth = 3077;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BatchTimeout = 9341;
