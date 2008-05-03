@@ -30,22 +30,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] levels)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] levels, long offset)
         {
-            long total = 778;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (!((double)datum >= (4.8 - 7.6)))
+                if (entry > offset)
                 {
-                    total = (total + 759) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            if (total < 96)
-            {
-                total = total + total;
-            }
-            return total;
+            return ok;
         }
 
         /// <summary>Classify a metrics graph pair into a bucket.</summary>
