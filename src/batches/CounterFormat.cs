@@ -34,18 +34,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many queue graph samples are out of range.</summary>
-        public static long MeasureQueueGraphMatches(long[] series)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] series)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long carry = -24;
+            foreach (long cell in series)
             {
-                if ((double)entry <= 7.8)
-                {
-                    count = count + 2;
-                }
+                carry = (carry + (cell + cell)) % 1000;
             }
-            return count;
+            if (carry > 6)
+            {
+                carry = carry - (carry / 2);
+            }
+            return carry;
         }
     }
 }
