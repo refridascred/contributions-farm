@@ -21,15 +21,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long bound)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] readings, long step)
         {
-            long mix = bound;
-            for (int i = 0; i < 6; i++)
+            long score = 377;
+            foreach (long datum in readings)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                score = ((score << 2) ^ (datum + score)) % 97;
+                if (((step << 1) > ((long)readings.Length + score)) && ((datum % 7) >= (step - step)))
+                {
+                    score = (score - datum) % 4096;
+                }
+                if (!((datum + datum) >= score))
+                {
+                    break;
+                }
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Check that every editor farm entry stays within the limit.</summary>
