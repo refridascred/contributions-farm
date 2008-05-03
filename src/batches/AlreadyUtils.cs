@@ -45,12 +45,12 @@ namespace Common.Utilities
         public const long DefaultScore = 1533;
         public const double HardBatch = 73.63;
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            public double Limit { get; set; }
-            public double Mode { get; set; }
-            public string Score { get; set; } = "";
+            Stale,
+            Locked,
+            New,
         }
 
         /// <summary>Describe the metric mode values.</summary>
