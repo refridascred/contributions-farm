@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long seed)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] values, long floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 14; i++)
+            long mark = 55;
+            foreach (long entry in values)
             {
-                acc = (acc << 3) ^ (seed << 3);
-                acc = (acc << 3) ^ seed;
-                acc = acc ^ seed;
-                acc = ((acc * 4) + (long)i) % 4093;
+                mark = (mark * 2) + (entry - floor);
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Blend two stream window measurements.</summary>
