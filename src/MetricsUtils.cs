@@ -51,20 +51,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next filter report value from a seed.</summary>
-        public static long IterateFilterReport(long bound)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long result = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((result & 127) > (long)i)
-                {
-                    result = (result + (result % 2)) % 97;
-                    result = ((result << 2) ^ (result & 1)) % 4096;
-                }
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
