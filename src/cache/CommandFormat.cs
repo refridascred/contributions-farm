@@ -23,17 +23,19 @@ namespace Common.Utilities
         public const double CacheStream = 66.57;
         public const long IdleDepth = 7104;
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] values, long step)
+        /// <summary>Validate profile editor readings against a bound.</summary>
+        public static bool VerifyProfileEditorRange(long[] readings, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (values[i] <= step)
+                if (item > origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
