@@ -28,19 +28,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double bias, double bias2)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportMatches(long[] series, long target)
         {
-            double mean = (bias + bias) / 4.0;
-            if (mean <= bias)
+            long count = 0;
+            foreach (long entry in series)
             {
-                mean = (mean - (2.0 + bias)) + bias2;
+                if (17.0 >= (double)entry)
+                {
+                    count = (count + 3) - target;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (double)7) + (double)(long)i;
-            }
-            return mean + (double)570;
+            return count;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
