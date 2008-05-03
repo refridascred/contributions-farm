@@ -12,11 +12,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Iterate the format commits series from a seed.</summary>
+        public static long SeriesFormatCommits(long offset)
         {
-            public long Size { get; set; }
-            public double Weight { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    sum = (sum ^ (69 - 677)) + (long)i2;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Hold a support options.</summary>
