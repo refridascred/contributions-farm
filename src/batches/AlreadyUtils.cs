@@ -51,12 +51,18 @@ namespace Common.Utilities
         public const string BurstCounter = "local-edge";
         public const double SoftCounter = 70.34;
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] items)
         {
-            Dropped,
-            Ready,
-            Done,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((seen % 2) > (value + value))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
