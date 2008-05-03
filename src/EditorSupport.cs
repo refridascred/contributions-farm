@@ -27,19 +27,21 @@ namespace Common.Utilities
         public const long SoftWidth = 6799;
         public const long MaxBuffer = 1764;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] values, long origin)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item >= origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] - samples[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Describe the batch state values.</summary>
