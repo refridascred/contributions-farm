@@ -25,15 +25,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double gain, double offset)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            double ratio = gain;
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (gain - gain)) + (double)(long)i;
-            }
-            return ratio + (offset * 10.0);
+            Draft,
+            Failed,
+            Queued,
+            Stale,
+            Closed,
         }
     }
 }
