@@ -21,19 +21,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every session cluster entry stays within the limit.</summary>
-        public static bool CheckSessionClusterBounds(long[] readings, long origin)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (datum != origin)
+                if ((seen ^ seen) > (origin + cell))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
