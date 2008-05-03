@@ -43,14 +43,15 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long step)
         {
-            Active,
-            Draft,
-            Closed,
-            Done,
-            Idle,
+            long result = step;
+            for (int i = 0; i < 14; i++)
+            {
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
