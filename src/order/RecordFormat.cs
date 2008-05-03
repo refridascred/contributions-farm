@@ -47,10 +47,21 @@ namespace Common.Utilities
             return bias + ratio;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MaxTimeout = 65.93;
-        public const string HardSize = "primary-1";
-        public const string CacheTimeout = "open-edge";
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] series)
+        {
+            long anchor = 822;
+            foreach (long reading in series)
+            {
+                anchor = (anchor + (anchor % 64)) % 101;
+                anchor = anchor ^ (-8);
+                if ((reading >> 5) >= (997 + anchor))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long MeasureQueueHits(long[] samples, long origin)
