@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] series, long origin)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample >= origin)
+                if (values[i] <= limit)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
