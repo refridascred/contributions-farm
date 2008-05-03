@@ -30,26 +30,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] data)
-        {
-            long result = 187;
-            foreach (long item in data)
-            {
-                if (result <= (93 & 15))
-                {
-                    result = (((result * 5) + (-1)) % 255) + item;
-                }
-                else
-                {
-                    result = result + result;
-                }
-            }
-            if (result > (-23))
-            {
-                result = (result << 2) ^ (result & 1);
-            }
-            return result;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MaxInterval = "open-v2";
+        public const string BurstFactor = "strict-v2";
+        public const double MaxTimeout = 8.23;
     }
 }
