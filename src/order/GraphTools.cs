@@ -62,18 +62,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] items, long target)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] samples, long step)
         {
-            long state = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((((long)items.Length / 6) >= state) && ((datum + datum) < (state >> 4)))
+                if (!!((matches & 15) < (matches + step)))
                 {
-                    state = (((state << 2) ^ 3) % 101) - target;
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
