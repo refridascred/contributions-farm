@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] levels, long target)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 2;
+            foreach (long datum in items)
             {
-                if ((levels[i] < target) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark + (datum << 3)) % 4096;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
