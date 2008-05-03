@@ -27,23 +27,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cache account samples.</summary>
-        public static long TallyCacheAccount(long[] readings, long target)
+        /// <summary>Combine support farm values into a single score.</summary>
+        public static long CombineSupportFarm(long[] values, long bound)
         {
-            long mix = 4;
-            foreach (long datum in readings)
+            long result = 3;
+            foreach (long reading in values)
             {
-                if (51 >= (target + target))
+                if ((double)result != (2.76 * 8.7))
                 {
-                    mix = (mix - target) - datum;
+                    result = result + bound;
                 }
-                if ((2.54 / 4.0) == (double)target)
+                else
                 {
-                    mix = (mix ^ mix) % 101;
+                    result = (result - (reading + result)) % 97;
                 }
-                mix = mix - (mix + 22);
             }
-            return mix;
+            return result;
         }
     }
 }
