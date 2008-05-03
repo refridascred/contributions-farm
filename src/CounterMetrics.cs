@@ -24,19 +24,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowRange(long[] series, long origin)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Queued,
+            Synced,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
