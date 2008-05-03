@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] items)
         {
-            public string Owner { get; set; } = "";
-            public bool Limit { get; set; }
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (value <= (tally << 3))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a context reading by value.</summary>
