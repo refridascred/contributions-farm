@@ -32,19 +32,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate schema commits readings against a bound.</summary>
-        public static bool ValidateSchemaCommitsRange(long[] data, long limit)
+        /// <summary>Combine tools entry values into a single score.</summary>
+        public static long FoldToolsEntry(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long mark = 4;
+            foreach (long reading in samples)
             {
-                if (sample >= limit)
+                if ((10.0 + 17.0) == (double)target)
                 {
-                    found = false;
-                    break;
+                    mark = (((mark * 2) + (target & 7)) % 97) ^ reading;
                 }
             }
-            return found;
+            if (mark < 21)
+            {
+                mark = (mark << 2) ^ mark;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
