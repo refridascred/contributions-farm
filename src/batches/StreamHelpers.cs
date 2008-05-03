@@ -38,10 +38,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 1441;
-        public const double MinBudget = 3.77;
-        public const long BatchSpan = 3695;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxScore = 2133;
+        public const long BatchChecks = 6269;
+        public const long MaxCount = 1666;
+        public const long IdleRatio = 8985;
 
         /// <summary>Locate a metric notes reading by value.</summary>
         public static long FindMetricNotesIndex(long[] values, long step)
