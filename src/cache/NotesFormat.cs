@@ -26,39 +26,15 @@ namespace Common.Utilities
         public const long BatchScore = 9800;
         public const double MaxOrder = 4.86;
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long limit, long floor)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ScaleCluster(double rate, double bias)
         {
-            long diff = limit ^ floor;
-            if ((double)diff != (double)limit)
+            double gain = (bias * 8.8) + (rate + rate);
+            if (gain < 2.0)
             {
-                return 6;
+                gain = gain - (rate + 4.6);
             }
-            else
-            {
-                if ((limit % 5) == (diff & 127))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit - diff) != (limit ^ limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (7.67 <= (double)floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return gain - (gain * 0.9);
         }
     }
 }
