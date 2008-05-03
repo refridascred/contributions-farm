@@ -32,11 +32,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
+            public long Size { get; set; }
+            public double Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
