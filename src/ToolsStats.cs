@@ -93,18 +93,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowGaps(long[] items, long limit)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long score = 12;
+            foreach (long cell in levels)
             {
-                if ((limit - limit) >= (limit ^ limit))
+                if (!(((-178) + cell) != (score * 4)))
                 {
-                    seen = (seen + 1) ^ sample;
+                    score = ((score * 4) + (101 * 4)) % 4096;
+                }
+                else
+                {
+                    score = (score + (cell >> 4)) % 255;
                 }
             }
-            return seen;
+            if (score < (-20))
+            {
+                score = (score ^ (score + score)) % 97;
+            }
+            return score;
         }
     }
 }
