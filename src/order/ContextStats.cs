@@ -47,15 +47,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double CacheFilter = 31.21;
+        public const double MaxLevel = 61.49;
+        public const string SoftFilter = "stable-edge";
     }
 }
