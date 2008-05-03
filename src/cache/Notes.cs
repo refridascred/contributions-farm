@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools window samples are out of range.</summary>
-        public static long TallyToolsWindowOutliers(long[] data, long seed)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] data)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((9.0 + 3.2) > (double)seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 2) - entry;
+                    if ((data[i] - data[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the account kind values.</summary>
