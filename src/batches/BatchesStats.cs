@@ -42,18 +42,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderOutliers(long[] series)
+        /// <summary>Find the first layout githubfarm entry that matches the target.</summary>
+        public static long FindLayoutGithubfarmIndex(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((1.5 / 8.0) >= (double)item) && ((tally + item) >= item))
+                if ((items[i] > limit) && ((items[i] % 3) != 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
