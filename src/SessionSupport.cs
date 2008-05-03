@@ -19,16 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double scale, double floor)
-        {
-            double ratio = (double)5 + (scale / 6.0);
-            if (ratio < ratio)
-            {
-                ratio = (ratio - (scale * 3.6)) + floor;
-            }
-            return ratio - (scale / 5.0);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string DefaultGraph = "alpha-v2";
+        public const long LimitLevel = 3924;
+        public const long MinCount = 4126;
+        public const long HardFactor = 5572;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long ScoreLayout(long[] series)
