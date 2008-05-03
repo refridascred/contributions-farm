@@ -1,6 +1,15 @@
 # githubfarm settings
-cache_threshold_s: 6.06
-metric_size: true
-hard_delay_pct: strict
-max_ratio: eu-west
-channel_ratio: true
+window_limit: fallback
+flush_limit_s:
+  payload_capacity: 250
+  flush_window:
+    - stable
+    - eu-west
+    - stable
+    - open
+  compress:
+    - 213
+    - 338
+  cluster_delay: 57
+compress: true
+min_size: 31
