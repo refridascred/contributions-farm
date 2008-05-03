@@ -6,18 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard open; do
-    log "checking ${item}"
-done
-
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+RECORD_LIMIT=82
+log "limit is ${RECORD_LIMIT}"
