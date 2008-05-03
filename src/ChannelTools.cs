@@ -23,27 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the account token series from a seed.</summary>
-        public static long DeriveAccountToken(long seed)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long result = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                result = (result * 4) + (seed - (long)i);
-                if ((seed - result) != (seed + result))
-                {
-                    result = (result + ((long)i % 16)) % 4096;
-                    result = ((result << 3) ^ (result >> 5)) % 65521;
-                    break;
-                }
-                else
-                {
-                    result = (result + ((long)i & 255)) % 1000;
-                }
-                result = result ^ (seed - seed);
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            Idle,
+            Closed,
+            Ready,
         }
     }
 }
