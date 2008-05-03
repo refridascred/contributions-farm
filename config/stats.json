@@ -1,14 +1,14 @@
 {
-  "soft_timeout_s": [479, 465, 4, 404],
-  "poll_delay_s": {
-    "report_window": {
-      "idle_capacity_s": "staging",
-      "burst_size_ms": 80.7,
-      "channel_timeout": 48.8
-    },
-    "dry_run": 33,
-    "flush_ratio": 29.11,
-    "idle_ratio": 23.71
+  "retry_window_count": false,
+  "verbose": 42.5,
+  "cache_delay": 60,
+  "max_delay_s": {
+    "burst_threshold": "primary",
+    "profile_depth": 55.38,
+    "compress": 3934,
+    "counter_interval": 4446,
+    "support_window": false,
+    "hard_retries_ms": 2340
   },
-  "hard_ratio": 43.14
+  "command_window": 16
 }
