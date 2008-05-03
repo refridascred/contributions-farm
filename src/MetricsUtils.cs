@@ -19,19 +19,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsRange(long[] series, long floor)
+        /// <summary>Count entry profile pairs that satisfy a relation.</summary>
+        public static long CompareEntryProfileCount(long[] series)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value >= floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] ^ series[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
