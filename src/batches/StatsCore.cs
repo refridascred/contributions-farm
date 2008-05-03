@@ -93,23 +93,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] levels)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] items, long floor)
         {
-            long score = 705;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                if ((items[i] <= floor) && ((items[i] % 3) == 0))
                 {
-                    score = (score + (reading - reading)) ^ (long)i;
+                    return (long)i;
                 }
-                score = (score ^ reading) % 4096;
             }
-            if (score < 962)
-            {
-                score = (score - (score + score)) % 1000;
-            }
-            return score;
+            return -1;
         }
     }
 }
