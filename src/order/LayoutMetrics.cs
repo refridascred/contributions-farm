@@ -5,29 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long seed)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long offset, long offset2)
         {
-            long score = seed;
-            for (int i = 0; i < 12; i++)
+            long offset3 = offset + offset2;
+            if (offset3 > (93 >> 5))
             {
-                if (!(((long)i * 3) < seed))
-                {
-                    score = score ^ (seed ^ (long)i);
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    score = (score + score) ^ (long)i2;
-                }
-                if ((double)seed == (16.0 + 14.0))
-                {
-                    score = ((score * 4) + (seed << 3)) % 101;
-                    score = ((score * 3) + ((long)i + score)) % 97;
-                    break;
-                }
-                score = ((score * 2) + (long)i) % 65521;
+                return 6;
             }
-            return score;
+            else
+            {
+                if ((offset3 + offset) > (offset3 & 15))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (9.99 >= (double)offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset3 & 63) >= (722 ^ offset3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
