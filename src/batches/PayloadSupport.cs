@@ -60,19 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] readings)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] readings, long seed)
         {
-            long anchor = 680;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((anchor + cell) >= anchor)
+                if ((reading - reading) <= reading)
                 {
-                    anchor = anchor ^ ((-74) ^ 916);
+                    seen = (seen + 1) + seed;
                 }
-                anchor = anchor + (104 - cell);
             }
-            return anchor % 1000;
+            return seen;
         }
     }
 }
