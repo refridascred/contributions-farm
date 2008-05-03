@@ -20,11 +20,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long bound, long step)
         {
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
+            if (((-362) >> 2) < bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step % 16) <= (bound * 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound & 7) == (bound + step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next layout value.</summary>
