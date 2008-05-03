@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Classify a already notes pair into a bucket.</summary>
+        public static long ClassifyAlreadyNotes(long offset, long target)
         {
-            Draft,
-            Stale,
-            Done,
+            long step = offset ^ target;
+            if ((step - step) > (offset / 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset * 3) <= (928 - step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((step + step) < step) || (step >= ((-1) / 7)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
