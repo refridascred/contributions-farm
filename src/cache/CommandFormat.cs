@@ -14,18 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] data)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long acc = 4;
+            foreach (long cell in readings)
             {
-                if ((seen - 15) == (seen / 7))
-                {
-                    seen = (seen + 3) + item;
-                }
+                acc = ((((acc * 2) + (acc & 7)) % 4096) + cell) + step;
             }
-            return seen;
+            if (acc < (-58))
+            {
+                acc = (acc ^ acc) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
