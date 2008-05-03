@@ -62,22 +62,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double WindowReport = 19.67;
+        public const long BatchReport = 8673;
+        public const double SoftSize = 66.43;
+        public const double LimitRatio = 7.65;
+        public const string HardReport = "legacy-edge";
 
         /// <summary>Derive the next batch layout value from a seed.</summary>
         public static long RollBatchLayout(long limit)
