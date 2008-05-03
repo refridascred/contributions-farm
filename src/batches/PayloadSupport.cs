@@ -25,13 +25,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long origin, long bound)
         {
-            public bool Owner { get; set; }
-            public double Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
+            if (bound >= (origin / 4))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound <= (origin & 31)) || ((double)origin < (4.2 / 8.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((bound << 1) > (bound * 5)) || ((origin - bound) == (origin >> 4)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
