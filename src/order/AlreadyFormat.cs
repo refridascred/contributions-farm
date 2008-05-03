@@ -22,10 +22,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstSpan = 825;
-        public const double CacheEditor = 20.73;
-        public const double BaseEditor = 29.42;
+        /// <summary>Rank commits record input into a small class.</summary>
+        public static long SortCommitsRecord(long origin, long bound)
+        {
+            if (33 >= (origin - bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((3 / 9) != (5 + bound)) && (((-79) + bound) >= origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TallyBatches(long[] readings, long seed)
