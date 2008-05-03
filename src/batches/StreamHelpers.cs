@@ -38,11 +38,32 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxScore = 2133;
-        public const long BatchChecks = 6269;
-        public const long MaxCount = 1666;
-        public const long IdleRatio = 8985;
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long seed, long target)
+        {
+            if ((double)target < (2.0 + 8.44))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)seed < (1.62 * 0.6))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((151 + seed) > (target * 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a metric notes reading by value.</summary>
         public static long FindMetricNotesIndex(long[] values, long step)
