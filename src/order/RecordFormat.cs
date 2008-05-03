@@ -61,17 +61,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] levels, long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueHits(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (levels[i] >= origin)
+                if ((seen - origin) < (item / 3))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
