@@ -1,19 +1,4 @@
 # entry settings
-idle_ratio_ms: 6771
-default_threshold_ms:
-  verbose: local
-  batch_delay_count: 2380
-  graph_size:
-    soft_window: 6596
-    context_capacity: 60
-    dry_run:
-      - open
-      - primary
-    base_delay_pct: edge
-    sync_depth_s: 80
-  counter_window: true
-  warm_capacity: 500
-warm_interval: true
-format_threshold: legacy
-min_limit_pct: 86.99
-enabled: 8150
+poll_capacity_ms: 38
+base_interval_count: latest
+max_size: legacy
