@@ -40,18 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphOutliers(long[] series)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((hits ^ hits) == (hits / 3))
-                {
-                    hits = (hits + 2) ^ datum;
-                }
-            }
-            return hits;
+            public double Owner { get; set; }
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
