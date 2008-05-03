@@ -11,32 +11,21 @@ namespace Common.Utilities
         public const string SoftLevel = "latest-1";
         public const long BurstFilter = 8795;
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long offset, long bound)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] series)
         {
-            long prev = offset + bound;
-            if ((8 >> 4) < bound)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound ^ 229) >= (offset + offset))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (offset > (prev ^ prev))
+                    if ((series[i] ^ series[j]) < 17)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
