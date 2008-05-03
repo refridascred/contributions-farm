@@ -1,23 +1,8 @@
 {
-  "flush_threshold_s": 3721,
-  "idle_capacity_count": 100,
-  "batches_threshold": "eu-west",
-  "flush_retries": {
-    "buffer_size": "green",
-    "persist": ["latest", "edge", "fallback"],
-    "verbose": true,
-    "schema_limit": true
-  },
-  "poll_ttl_pct": "strict",
-  "verbose": {
-    "verbose": 14,
-    "compress": 6.03,
-    "max_window": {
-      "cluster_window": 76,
-      "persist": 48,
-      "account_timeout": false,
-      "compress": 228
-    },
-    "persist": 1.72
-  }
+  "persist": [203, 174, 322],
+  "sync_delay_count": 37.65,
+  "dry_run": 100,
+  "default_depth_count": 51.53,
+  "warm_retries_s": 1024,
+  "compress": "cached"
 }
