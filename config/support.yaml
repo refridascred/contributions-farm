@@ -1,20 +1,8 @@
 # support settings
-metrics_retries: 8
-contributi_ratio: 97
-retry_window:
-  burst_timeout_s:
-    - strict
-    - primary
-    - blue
-    - latest
-  counter_interval:
-    warm_ttl: green
-    poll_delay: 12.97
-    record_timeout: edge
-    sync_retries_s: 13
-  soft_timeout_count: 60
-  farm_ratio: 100
-channel_interval: 26.5
-graph_ttl:
-  - eu-west
-  - green
+persist: open
+base_timeout_ms: stable
+entry_threshold: primary
+cluster_size:
+  - 366
+  - 209
+default_limit_pct: true
