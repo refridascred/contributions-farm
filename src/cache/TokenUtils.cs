@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long target, long origin)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] levels, long seed)
         {
-            if ((63 * 2) < (target % 64))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((7.0 / 8.0) > (double)origin) || (target < (190 & 7)))
+                if ((levels[i] == seed) && ((levels[i] % 2) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin + origin) > 54)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
