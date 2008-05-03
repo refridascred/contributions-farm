@@ -21,11 +21,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchInterval = 3570;
-        public const long LimitInterval = 7395;
-        public const long BaseFarm = 9460;
-        public const long MinFarm = 3473;
-        public const long RetryFarm = 765;
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
+        {
+            Draft,
+            Active,
+            Done,
+        }
     }
 }
