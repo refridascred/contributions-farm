@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long seed, long target)
+        /// <summary>Compare every pair of githubfarm entry readings.</summary>
+        public static long OverlapGithubfarmEntryCount(long[] values)
         {
-            if (((target << 3) == (seed + target)) || ((6.37 / 8.0) > (double)target))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((seed - seed) > seed))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target <= 3.0)
+                    if ((values[i] + values[j]) < 2)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed - target) > (target % 7))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
