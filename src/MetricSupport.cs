@@ -29,19 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] levels, long origin)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Dropped,
+            Idle,
         }
     }
 }
