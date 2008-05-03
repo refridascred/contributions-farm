@@ -30,25 +30,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long limit, long origin)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long edge = limit - origin;
-            if (origin <= (limit - edge))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((origin >> 3) >= (origin + origin)) || (edge < (limit % 8)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Total { get; set; } = "";
+            public double Size { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Combine commits values into a single score.</summary>
