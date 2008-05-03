@@ -48,20 +48,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] series)
-        {
-            long mark = 27;
-            foreach (long item in series)
-            {
-                mark = mark ^ (mark + item);
-            }
-            if (mark < 288)
-            {
-                mark = (mark * 5) + (mark & 63);
-            }
-            return mark % 97;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 6024;
+        public const double BurstMetrics = 24.88;
+        public const double CacheMetrics = 88.65;
 
         /// <summary>Count the cache checks entries that pass the check.</summary>
         public static long TallyCacheChecksMatches(long[] samples, long origin)
