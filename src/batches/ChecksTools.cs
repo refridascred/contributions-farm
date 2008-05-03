@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long origin, long bound)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long seed)
         {
-            if ((origin % 16) == (bound - 4))
+            long acc = seed;
+            for (int i = 0; i < 14; i++)
             {
-                return 4;
+                acc = (acc << 3) ^ (seed << 3);
+                acc = (acc << 3) ^ seed;
+                acc = acc ^ seed;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((double)bound != (4.0 * 4.4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Blend two stream window measurements.</summary>
