@@ -61,9 +61,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstInterval = 7342;
-        public const double BurstSchema = 29.19;
-        public const long HardSchema = 5816;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 6914;
+        public const long MaxStats = 473;
+        public const long BatchRatio = 3203;
+        public const double WindowRatio = 23.36;
+        public const double MinLevel = 22.66;
     }
 }
