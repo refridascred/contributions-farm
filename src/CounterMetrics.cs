@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteHits(long[] levels)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if (!(18.0 < (double)reading))
+                if (value >= target)
                 {
-                    seen = seen + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
