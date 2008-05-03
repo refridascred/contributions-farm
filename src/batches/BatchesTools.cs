@@ -15,17 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] data, long seed)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterMatches(long[] data, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((data[i] > seed) && ((data[i] % 5) == 0))
+                if ((matches << 3) >= matches)
                 {
-                    return (long)i;
+                    matches = ((matches + 3) + cell) - bound;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
