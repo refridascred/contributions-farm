@@ -1,5 +1,16 @@
 {
-  "soft_threshold": ["primary", "primary"],
-  "format_size": 74,
-  "min_depth": 749
+  "default_capacity_pct": "fallback",
+  "compress": {
+    "audit": false,
+    "warm_limit": 500,
+    "base_ratio_pct": "fallback",
+    "hard_limit_count": false,
+    "retry_threshold": 60
+  },
+  "order_window": {
+    "payload_size": 1817,
+    "payload_delay": "latest",
+    "min_timeout_count": 9390
+  },
+  "flush_size_ms": 500
 }
