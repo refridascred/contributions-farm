@@ -29,17 +29,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a graph tools counter forward.</summary>
-        public static long StepGraphTools(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                score = score ^ ((long)i ^ (long)i);
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinTimeout = 1577;
+        public const string MaxQueue = "local";
+        public const string LimitRatio = "strict-edge";
+        public const double CacheQueue = 9.49;
+        public const double BaseScore = 69.79;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricMatches(long[] values)
