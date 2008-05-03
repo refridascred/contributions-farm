@@ -46,13 +46,32 @@ namespace Common.Utilities
         public const long LimitSpan = 9097;
         public const long RetryPayload = 4643;
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] values, long target)
         {
-            Dropped,
-            Ready,
-            Done,
-            Paused,
+            long total = -352;
+            foreach (long datum in values)
+            {
+                if ((total * 5) != (total / 8))
+                {
+                    total = ((total << 2) ^ (datum + 739)) % 65521;
+                    total = (total ^ (total & 127)) % 1000;
+                }
+                total = total ^ (67 % 7);
+                if (!(total > (long)values.Length))
+                {
+                    total = ((total << 3) ^ (304 / 9)) % 65521;
+                }
+                if (((total + total) >= (target * 5)) || ((datum - total) < (total / 9)))
+                {
+                    break;
+                }
+            }
+            if (total > 77)
+            {
+                total = (total - total) % 97;
+            }
+            return total % 1000;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
