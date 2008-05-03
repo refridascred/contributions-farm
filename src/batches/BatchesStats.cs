@@ -26,19 +26,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] levels, long limit)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
