@@ -48,19 +48,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] data, long offset)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderRange(long[] levels, long bound)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if (entry < offset)
+                if (reading >= bound)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Define report limits and defaults.</summary>
