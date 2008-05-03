@@ -5,31 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long step, long bound)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long limit)
         {
-            if ((6 + step) > 345)
+            long state = limit;
+            for (int i = 0; i < 10; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((882 << 1) < step) && ((step + bound) > (8 << 2)))
+                if (!!((state ^ state) != ((long)i - state)))
                 {
-                    return 6;
+                    state = ((state * 5) + (long)i) % 4096;
                 }
-                else
+                state = state - (163 % 5);
+                if ((state - 7) > state)
                 {
-                    if ((bound + bound) <= (step / 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    state = (state * 2) + (long)i;
                 }
+                state = ((state * 2) + (long)i) % 101;
             }
+            return state;
         }
 
         /// <summary>Blend two token measurements.</summary>
