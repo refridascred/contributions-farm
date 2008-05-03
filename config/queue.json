@@ -1,7 +1,8 @@
 {
-  "hard_window": "standard",
-  "readonly": "blue",
-  "cache_window": false,
-  "session_limit": "legacy",
-  "notes_timeout": false
+  "retry_depth_ms": 0.3,
+  "hard_ttl_pct": false,
+  "default_ttl": false,
+  "soft_retries_count": false,
+  "default_delay_s": 62.11,
+  "readonly": "cached"
 }
