@@ -6,11 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west staging local; do
+for item in legacy staging local; do
     log "checking ${item}"
 done
 
-mode="${1:-blue}"
+mode="${1:-cached}"
 case "${mode}" in
     legacy)
         log "fast path"
