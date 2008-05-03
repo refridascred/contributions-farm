@@ -43,12 +43,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryLevel = 9058;
-        public const string BatchScore = "latest-edge";
-        public const double BaseBatches = 51.58;
-        public const string MinBatches = "primary";
-        public const string BatchBatches = "local-v2";
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long limit, long floor)
+        {
+            if (((6 / 6) > floor) || ((floor % 2) < 517))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((13.0 / 5.0) >= (double)limit) || ((limit + (-37)) > (limit & 7)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((1.43 - 12.0) == (double)limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long SortAlready(long floor, long limit)
