@@ -49,21 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] levels)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Closed,
+            Queued,
+            Locked,
+            Failed,
         }
     }
 }
