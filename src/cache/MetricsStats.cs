@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 5682;
-        public const double RetryBudget = 20.04;
-        public const long DefaultDepth = 6138;
-        public const string BurstCount = "local-v2";
-        public const long BatchInterval = 5482;
+        /// <summary>Accumulate editor route samples.</summary>
+        public static long ScoreEditorRoute(long[] levels)
+        {
+            long sum = 13;
+            foreach (long cell in levels)
+            {
+                if ((70 + cell) == (sum & 63))
+                {
+                    sum = ((sum * 3) + (sum * 4)) % 97;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Count the token payload entries that pass the check.</summary>
         public static long TallyTokenPayloadMatches(long[] data, long target)
