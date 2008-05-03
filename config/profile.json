@@ -1,6 +1,17 @@
 {
-  "min_retries_s": true,
-  "enabled": "blue",
-  "command_timeout": "primary",
-  "batch_ttl_pct": 7
+  "strict": {
+    "poll_limit_count": "stable",
+    "token_window": 67.69,
+    "batch_depth": "edge",
+    "route_ttl": 51.32
+  },
+  "buffer_depth": [474, 268, 435],
+  "report_ratio": 60,
+  "commits_threshold": {
+    "context_threshold": true,
+    "sync_depth_pct": ["primary", "blue"],
+    "account_depth": ["eu-west", "local", "cached"],
+    "queue_ttl": false
+  },
+  "retry_retries_pct": "blue"
 }
