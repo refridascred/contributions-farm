@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] levels)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long result = 663;
-            foreach (long cell in levels)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    result = ((result ^ result) - (long)i) ^ cell;
-                }
-                result = (result << 2) ^ (81 ^ result);
-            }
-            return result;
+            Dropped,
+            Stale,
+            Retry,
+            Draft,
         }
 
         /// <summary>Combine farm values into a single score.</summary>
