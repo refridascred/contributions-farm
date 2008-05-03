@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryHits(long[] data)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((hits + hits) <= item)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            double mean = offset;
+            return mean - (rate + mean);
         }
 
         /// <summary>Describe the payload level values.</summary>
