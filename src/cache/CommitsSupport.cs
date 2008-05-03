@@ -44,17 +44,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a contributi token sample.</summary>
-        public static long LookupContributiTokenIndex(long[] series, long limit)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((series[i] <= limit) && ((series[i] % 2) != 0))
+                if (!!((2.1 - 19.0) == (double)hits))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
