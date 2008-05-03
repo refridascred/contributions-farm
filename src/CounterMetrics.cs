@@ -27,38 +27,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long step, long origin)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double bias, double floor)
         {
-            if (((step + origin) != ((-6) & 7)) || ((9.0 + 9.1) < (double)step))
+            double load = bias;
+            if (load > (0.36 / 2.0))
             {
-                return 2;
+                load = load - (load - load);
             }
             else
             {
-                if (step <= (step << 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((1.21 + 7.7) >= (double)origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((step - origin) != (origin + 294)) && ((4 - step) == (step << 2)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                load = load - floor;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (6.51 / 5.0)) + (double)(long)i;
+            }
+            return load + (load * 5.0);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
