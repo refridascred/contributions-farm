@@ -45,10 +45,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftCount = 29.68;
-        public const double HardScore = 75.99;
-        public const long HardLevel = 5253;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 6946;
+        public const double SoftScore = 78.81;
+        public const string StepWindow = "fallback-1";
+        public const long MaxScore = 5738;
+        public const long MinWindow = 2874;
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long BucketEntry(long target, long bound)
