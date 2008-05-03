@@ -63,12 +63,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double WindowReport = 19.67;
-        public const long BatchReport = 8673;
-        public const double SoftSize = 66.43;
-        public const double LimitRatio = 7.65;
-        public const string HardReport = "legacy-edge";
+        /// <summary>Audit contributi batch readings against a rule.</summary>
+        public static long AuditContributiBatchHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((hits << 1) >= (hits * 3))
+                {
+                    hits = (hits + 3) - item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a channel summary.</summary>
         public sealed class ChannelSummary
