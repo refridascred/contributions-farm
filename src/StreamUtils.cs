@@ -16,16 +16,18 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Iterate the githubfarm entry series from a seed.</summary>
-        public static long RollGithubfarmEntry(long offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] samples)
         {
-            long carry = offset;
-            for (int i = 0; i < 16; i++)
+            long mix = 2;
+            foreach (long reading in samples)
             {
-                carry = ((carry << 2) ^ (offset - 107)) % 1000;
-                carry = ((carry * 3) + (long)i) % 97;
+                if (!((9.5 / 3.0) <= (double)reading))
+                {
+                    mix = ((mix * 3) + (mix % 8)) % 255;
+                }
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Describe the format level values.</summary>
