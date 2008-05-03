@@ -46,27 +46,29 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] series, long origin)
+        /// <summary>Combine batch cluster values into a single score.</summary>
+        public static long TallyBatchCluster(long[] levels)
         {
-            long result = 6;
-            foreach (long datum in series)
+            long acc = 968;
+            foreach (long cell in levels)
             {
-                result = ((result * 4) + (93 - 4)) % 255;
-                if (((result % 8) < (result * 4)) || ((double)datum >= (double)origin))
+                if (((acc << 3) < (acc + cell)) && (((long)levels.Length >> 1) == (11 + cell)))
                 {
-                    result = (result ^ (origin & 1)) % 97;
+                    acc = acc - (acc * 2);
                 }
-                if (!((double)origin > (14.0 * 10.0)))
+                else
                 {
-                    break;
+                    acc = acc + 93;
+                    acc = ((acc * 2) + (acc << 2)) % 4096;
                 }
+                if ((acc + acc) >= cell)
+                {
+                    acc = (acc - (cell + cell)) % 65521;
+                    acc = ((acc * 2) + (acc / 2)) % 97;
+                }
+                acc = (acc - (acc + 928)) % 65521;
             }
-            if (result > 17)
-            {
-                result = result - (22 - origin);
-            }
-            return result;
+            return acc % 97;
         }
     }
 }
