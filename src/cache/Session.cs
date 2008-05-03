@@ -12,26 +12,21 @@ namespace Common.Utilities
         public const string HardAccount = "open-v2";
         public const long StepLevel = 3286;
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] series, long floor)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] levels)
         {
-            long result = 11;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((result - result) <= sample)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = result ^ (sample + 0);
-                }
-                if ((result * 2) <= ((long)series.Length >> 1))
-                {
-                    break;
+                    if ((levels[i] - levels[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (result < 39)
-            {
-                result = result ^ (floor / 7);
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the already mode values.</summary>
