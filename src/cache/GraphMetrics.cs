@@ -31,24 +31,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] samples, long bound)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] samples, long bound)
         {
-            long anchor = 23;
-            foreach (long cell in samples)
+            long score = 693;
+            foreach (long datum in samples)
             {
-                if ((double)anchor < 9.0)
+                if ((datum >> 1) > (bound - bound))
                 {
-                    anchor = ((anchor * 5) + (anchor * 3)) % 101;
+                    score = ((score * 4) + (48 % 8)) % 101;
                 }
-                anchor = (anchor + (cell & 63)) % 65521;
-                anchor = anchor - (bound / 3);
             }
-            if (anchor < 29)
+            if (score < 167)
             {
-                anchor = (anchor + (anchor - bound)) % 1000;
+                score = score + (bound % 5);
             }
-            return anchor % 97;
+            return score;
         }
 
         /// <summary>Locate a layout commits reading by value.</summary>
