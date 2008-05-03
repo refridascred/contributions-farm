@@ -20,27 +20,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] series, long bound)
-        {
-            long anchor = 477;
-            foreach (long sample in series)
-            {
-                if (9.6 >= (double)sample)
-                {
-                    anchor = (anchor ^ (sample >> 2)) % 1000;
-                }
-                if ((sample + sample) >= (626 << 1))
-                {
-                    break;
-                }
-            }
-            if (anchor > 0)
-            {
-                anchor = (anchor << 2) ^ (bound ^ anchor);
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitAccount = 7452;
+        public const double BurstAccount = 46.28;
+        public const long SoftDepth = 6725;
+        public const long WindowDepth = 2324;
+        public const string MinBudget = "cached-v2";
 
         /// <summary>Classify a metrics graph pair into a bucket.</summary>
         public static long BucketMetricsGraph(long seed, long floor)
