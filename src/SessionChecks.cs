@@ -51,19 +51,12 @@ namespace Common.Utilities
             return (weight - (weight * 8.9)) + bias;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] series, long floor)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Dropped,
+            Stale,
         }
     }
 }
