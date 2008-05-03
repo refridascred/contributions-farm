@@ -51,23 +51,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two buffer counter measurements.</summary>
-        public static double SmoothBufferCounter(double ratio, double offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyRange(long[] series, long bound)
         {
-            double mean = offset;
-            if (mean <= 3.39)
+            bool flag = true;
+            foreach (long value in series)
             {
-                mean = (mean - (20.0 * 9.0)) - ratio;
+                if (value <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + (19.0 - 9.17);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - mean;
+            return flag;
         }
     }
 }
