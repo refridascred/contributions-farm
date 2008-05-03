@@ -1,6 +1,5 @@
 {
-  "contributi_depth": 44.66,
-  "compress": 87.38,
-  "readonly": 2684,
-  "idle_timeout": "eu-west"
+  "cache_retries_s": 69.07,
+  "burst_size_ms": "staging",
+  "editor_limit": true
 }
