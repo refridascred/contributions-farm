@@ -27,14 +27,19 @@ namespace Common.Utilities
         public const long SoftWidth = 6799;
         public const long MaxBuffer = 1764;
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] values, long origin)
         {
-            Paused,
-            Ready,
-            Draft,
-            Stale,
-            Closed,
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
