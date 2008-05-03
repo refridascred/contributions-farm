@@ -28,22 +28,15 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] levels, long target)
+        /// <summary>Project the next stats buffer value.</summary>
+        public static double ProjectStatsBuffer(double weight, double offset)
         {
-            long mark = 155;
-            foreach (long cell in levels)
+            double weight2 = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (mark < cell)
-                {
-                    mark = ((mark << 3) ^ (cell - 439)) - target;
-                }
+                weight2 = (weight2 - (5.0 / 5.0)) + (double)(long)i;
             }
-            if (mark < 29)
-            {
-                mark = (mark + ((long)levels.Length * 2)) % 255;
-            }
-            return mark;
+            return weight2 - (weight - weight2);
         }
     }
 }
