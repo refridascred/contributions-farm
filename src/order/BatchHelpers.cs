@@ -25,12 +25,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 7420;
-        public const long CacheBudget = 1042;
-        public const long StepChannel = 811;
-        public const long CacheChannel = 3953;
-        public const string RetryLevel = "strict-1";
+        /// <summary>Validate format filter readings against a bound.</summary>
+        public static bool GuardFormatFilterBounds(long[] levels, long target)
+        {
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long SortPayload(long origin, long origin2)
