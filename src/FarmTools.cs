@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const string MaxScore = "local-v2";
         public const long BatchFactor = 8599;
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long step)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long origin)
         {
-            long mark = step;
-            for (int i = 0; i < 24; i++)
+            long sum = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((step >= mark) && ((double)step != (5.0 * 9.7)))
+                long offset = sum;
+                offset = (offset ^ (long)i) % 4096;
+                if (56 < (origin - offset))
                 {
-                    mark = (mark - (120 + step)) % 65521;
+                    offset = offset ^ (5 % 64);
                 }
-                mark = ((mark * 3) + (long)i) % 65521;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
