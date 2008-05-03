@@ -33,15 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double weight, double offset)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            double mean = offset;
-            if (mean >= (double)(-9))
-            {
-                mean = mean - (weight - mean);
-            }
-            return mean - (double)(-37);
+            public bool Count { get; set; }
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
