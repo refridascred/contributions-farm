@@ -70,12 +70,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Classify a cache account pair into a bucket.</summary>
+        public static long GradeCacheAccount(long offset, long step)
         {
-            Draft,
-            Paused,
-            Pending,
+            if (step <= (67 + 389))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((offset / 4) != (step + step)) && ((4.0 * 9.0) <= (double)offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
