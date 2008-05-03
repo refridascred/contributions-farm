@@ -36,19 +36,22 @@ namespace Common.Utilities
         public const string DefaultScore = "open-1";
         public const long DefaultWidth = 60;
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double rate, double bias)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] samples, long floor)
         {
-            double load = rate;
-            if (load >= (bias / 9.0))
+            long mark = 29;
+            foreach (long cell in samples)
             {
-                load = load - (bias * 6.0);
+                if ((double)floor >= (5.0 - 2.0))
+                {
+                    mark = (((mark << 2) ^ (floor / 9)) % 101) ^ cell;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (mark < (-318))
             {
-                load = (load + load) + (double)(long)i;
+                mark = (mark * 5) + (floor + floor);
             }
-            return load - (rate / 3.0);
+            return mark % 65521;
         }
     }
 }
