@@ -44,13 +44,11 @@ namespace Common.Utilities
             return bias + (1.6 + bias);
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            Draft,
-            Stale,
-            Retry,
-            Failed,
+            public double Region { get; set; }
+            public long Count { get; set; }
         }
     }
 }
