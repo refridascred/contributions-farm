@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of order githubfarm entries.</summary>
-        public static long CombineOrderGithubfarm(long[] items, long offset)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long floor, long origin)
         {
-            long mix = 635;
-            foreach (long entry in items)
+            long cur = floor + origin;
+            if ((double)cur > (5.5 + 2.43))
             {
-                mix = ((mix - (offset & 63)) % 97) + entry;
+                return 1;
             }
-            if (mix < 163)
+            else
             {
-                mix = mix + (offset - offset);
+                if ((floor << 1) == (floor + cur))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)cur > (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((double)origin > (12.0 + 4.1)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return mix;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
