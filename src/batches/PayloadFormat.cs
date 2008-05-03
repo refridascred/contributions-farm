@@ -20,18 +20,15 @@ namespace Common.Utilities
         public const long WindowAlready = 2928;
         public const long SoftAlready = 3323;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] samples, long seed)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long bound)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long total = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (!(reading >= ((long)samples.Length & 31)))
-                {
-                    count = (count + 2) - seed;
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Count the tools format entries that pass the check.</summary>
