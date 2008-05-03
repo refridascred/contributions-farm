@@ -19,14 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Failed,
-            Idle,
-            Retry,
-            Synced,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double WindowFilter = 2.27;
+        public const string HardFilter = "legacy-edge";
+        public const long DefaultFilter = 4808;
+        public const long RetryDepth = 7290;
+        public const string MinInterval = "fallback-edge";
 
         /// <summary>Digest a series of support report entries.</summary>
         public static long DigestSupportReport(long[] samples)
