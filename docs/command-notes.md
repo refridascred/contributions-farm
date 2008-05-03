@@ -1,11 +1,10 @@
 # Command notes
 
-Each schema is validated before it reaches the cache queue.
-Each report is validated before it reaches the checks queue.
-The cache report groups every token by profile.
+Each layout is validated before it reaches the layout queue.
+Use contributi settings to tune how often command data is refreshed.
 
 ## Guidelines
 
-- Log every command change
-- Review batch limits each release
-- Keep stats values small
+- Prefer stats defaults
+- Document new schema fields
+- Keep channel values small
