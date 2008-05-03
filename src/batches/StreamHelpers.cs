@@ -96,12 +96,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Match up queue stream samples.</summary>
+        public static long PairQueueStreamCount(long[] levels)
         {
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
-            public bool Offset { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
