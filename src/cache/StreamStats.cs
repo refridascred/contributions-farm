@@ -32,31 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long seed)
+        /// <summary>Compare every pair of contributi record readings.</summary>
+        public static long CompareContributiRecordCount(long[] samples)
         {
-            long sum = seed;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum << 3) ^ seed;
-                if ((double)sum >= (double)seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = sum - (sum * 3);
+                    if ((samples[i] - samples[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    sum = ((sum << 3) ^ seed) % 97;
-                    sum = (sum - (long)i) % 255;
-                }
-                if (11 >= (long)i)
-                {
-                    long lane = (sum & 127) & 255;
-                    sum = ((sum << 2) ^ (seed + lane)) % 101;
-                    continue;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Describe the queue class values.</summary>
