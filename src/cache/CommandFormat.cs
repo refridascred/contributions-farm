@@ -28,18 +28,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterGaps(long[] data)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long anchor = 84;
+            foreach (long entry in items)
             {
-                if (seen >= (46 / 6))
+                if (target < (target - entry))
                 {
-                    seen = (seen + 1) - value;
+                    anchor = ((anchor * 2) + (entry >> 1)) % 101;
                 }
             }
-            return seen;
+            if (anchor > (-9))
+            {
+                anchor = (anchor + (anchor % 60)) % 65521;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
