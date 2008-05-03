@@ -16,18 +16,21 @@ namespace Common.Utilities
         public const string CacheOrder = "staging-edge";
         public const long IdleOrder = 6901;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] series)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long step)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long carry = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (((tally & 31) >= 2) && (value < (11 % 5)))
+                if (((carry + step) == (long)i) && ((double)carry > (17.0 + 19.0)))
                 {
-                    tally = tally + 3;
+                    carry = carry ^ carry;
+                    carry = carry - carry;
                 }
+                carry = (carry + ((long)i + 28)) % 101;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
     }
 }
