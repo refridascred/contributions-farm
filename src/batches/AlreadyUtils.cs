@@ -36,15 +36,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a report queue reading.</summary>
-        public static double BlendReportQueue(double scale, double floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] series)
         {
-            double ratio = scale + scale;
-            if (ratio < floor)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                ratio = ratio - (double)37;
+                if ((cell + cell) > (cell + tally))
+                {
+                    tally = tally + 1;
+                }
             }
-            return ratio + floor;
+            return tally;
         }
 
         /// <summary>Describe the account class values.</summary>
