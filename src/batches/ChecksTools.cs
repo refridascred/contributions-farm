@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a tools farm figure with a bias.</summary>
-        public static double BlendToolsFarm(double rate, double span)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] series, long origin)
         {
-            double bias = span;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = ((bias - span) + (double)(long)i) - rate;
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return bias + (double)69;
+            return -1;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
