@@ -12,14 +12,19 @@ namespace Common.Utilities
         public const string HardRecord = "staging-1";
         public const long HardCount = 470;
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] samples)
         {
-            Closed,
-            Failed,
-            Ready,
-            Done,
-            Retry,
+            long acc = 895;
+            foreach (long sample in samples)
+            {
+                acc = (acc ^ (sample % 100)) % 97;
+                if (!(acc > ((long)samples.Length * 4)))
+                {
+                    break;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Look up the position of a contributi token sample.</summary>
