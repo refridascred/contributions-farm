@@ -20,13 +20,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
-        {
-            public bool Label { get; set; }
-            public bool Weight { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 547;
+        public const long DefaultRoute = 4023;
+        public const double BaseTimeout = 5.13;
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
