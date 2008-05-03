@@ -19,11 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            public double Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            Paused,
+            Queued,
+            New,
+            Draft,
+            Active,
         }
 
         /// <summary>Adjust a stats reading.</summary>
