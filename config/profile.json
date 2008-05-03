@@ -1,7 +1,7 @@
 {
-  "audit": "eu-west",
-  "graph_window": true,
-  "sync_timeout": "local",
-  "soft_timeout_count": "edge",
-  "warm_capacity_ms": 4042
+  "dry_run": 2699,
+  "warm_size_ms": [83, 409, 197],
+  "hard_retries": true,
+  "burst_delay": 1.76,
+  "audit": 4139
 }
