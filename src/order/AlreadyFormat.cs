@@ -32,12 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] readings, long target)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] readings, long limit)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] == target)
+                if ((readings[i] == limit) && ((readings[i] % 2) == 0))
                 {
                     return (long)i;
                 }
