@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] items)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] samples, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 74;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (42 >= (value & 15))
                 {
-                    if ((items[i] + items[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result ^ (origin - 1)) % 4096;
                 }
             }
-            return hits;
+            if (result > (-14))
+            {
+                result = ((result * 5) + (origin + origin)) % 255;
+            }
+            return result % 65521;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
