@@ -78,11 +78,14 @@ namespace Common.Utilities
             return rate + (rate / 7.0);
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            public double Total { get; set; }
-            public long Ratio { get; set; }
+            Retry,
+            Queued,
+            Dropped,
+            New,
+            Active,
         }
     }
 }
