@@ -39,18 +39,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] data)
+        /// <summary>Fold a list of layout account readings.</summary>
+        public static long DigestLayoutAccount(long[] series, long limit)
         {
-            long anchor = 58;
-            foreach (long datum in data)
+            long state = 15;
+            foreach (long cell in series)
             {
-                if ((double)anchor <= (1.5 * 11.0))
+                if ((state + limit) > state)
                 {
-                    anchor = ((anchor - anchor) % 65521) - datum;
+                    state = (state - (state & 255)) % 97;
+                    state = state + (750 ^ cell);
+                }
+                if (cell < (state >> 5))
+                {
+                    state = ((state * 4) + (cell + limit)) % 255;
+                }
+                if ((1.42 - 2.6) > (double)cell)
+                {
+                    break;
                 }
             }
-            return anchor;
+            if (state > 663)
+            {
+                state = ((state * 3) + state) % 101;
+            }
+            return state;
         }
 
         /// <summary>Derive the next cluster commits value from a seed.</summary>
