@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many batches cluster samples are out of range.</summary>
-        public static long AuditBatchesClusterGaps(long[] readings)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorLimits(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if ((datum + datum) > (hits - hits))
+                if (datum <= step)
                 {
-                    hits = hits + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Hold a editor stats.</summary>
