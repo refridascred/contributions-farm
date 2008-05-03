@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long step)
         {
-            Active,
-            Dropped,
-            Ready,
+            long carry = step;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = (carry << 3) ^ (938 + carry);
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate route samples.</summary>
