@@ -20,12 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double DefaultLevel = 57.48;
-        public const string MaxTimeout = "cached-v2";
-        public const double LimitChecks = 97.7;
-        public const double HardSpan = 34.34;
-        public const long MinFactor = 9430;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double WindowSize = 36.25;
+        public const double DefaultQueue = 72.85;
+        public const long WindowBudget = 9550;
 
         /// <summary>Match up cache command samples.</summary>
         public static long OverlapCacheCommandCount(long[] items)
