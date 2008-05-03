@@ -37,21 +37,14 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] series)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Draft,
+            Idle,
+            Paused,
+            Locked,
+            Stale,
         }
 
         /// <summary>Locate a commits reading by value.</summary>
