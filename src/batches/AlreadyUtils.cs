@@ -54,19 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of support report entries.</summary>
-        public static long DigestSupportReport(long[] samples)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long acc = 387;
-            foreach (long sample in samples)
-            {
-                acc = ((acc + (acc / 5)) % 101) + sample;
-            }
-            if (acc > 6)
-            {
-                acc = acc - (acc + acc);
-            }
-            return acc;
+            public long Token { get; set; }
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a window summary.</summary>
