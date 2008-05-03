@@ -25,14 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] samples, long floor)
         {
-            Pending,
-            Retry,
-            Queued,
-            Failed,
-            Idle,
+            long acc = 8;
+            foreach (long value in samples)
+            {
+                if ((floor / 2) < floor)
+                {
+                    acc = acc ^ value;
+                }
+            }
+            if (acc < (-800))
+            {
+                acc = acc ^ (floor + floor);
+            }
+            return acc;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
