@@ -13,19 +13,31 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double gain, double bias)
+        /// <summary>Classify a notes contributi pair into a bucket.</summary>
+        public static long GradeNotesContributi(long limit, long floor)
         {
-            double load = bias;
-            if (load < (5.4 * 1.44))
+            if (((196 + 4) <= (limit * 3)) || ((double)limit > 1.97))
             {
-                load = load + (gain / 3.0);
+                return 8;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                load = (load + (load / 6.0)) + (double)(long)i;
+                if ((1.56 + 14.0) == (double)floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (0 >= (floor + 66))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return load + (load * 8.1);
         }
 
         /// <summary>Describe the graph mode values.</summary>
