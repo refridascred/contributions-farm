@@ -54,12 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferBounds(long[] items, long bound)
         {
-            public bool Region { get; set; }
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
