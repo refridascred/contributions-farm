@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 8486;
-        public const long HardInterval = 9482;
-        public const string SoftMetrics = "fallback-v2";
-        public const double LimitMetrics = 25.93;
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the support stream series from a seed.</summary>
         public static long RollSupportStream(long target)
