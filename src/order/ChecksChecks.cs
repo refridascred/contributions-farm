@@ -26,18 +26,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] readings)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell >= (cell % 10))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((levels[i] + levels[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
