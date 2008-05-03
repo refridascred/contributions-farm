@@ -1,26 +1,25 @@
 # githubfarm settings
-strict: green
-dry_run: primary
-notes_ttl: 91
-min_depth_s: standard
-burst_retries:
-  dry_run: false
-  batches_threshold:
-    - staging
-    - eu-west
-    - standard
-    - strict
-  hard_depth_ms:
-    max_window:
-      - latest
-      - latest
-      - fallback
-    cache_timeout_count: standard
-    audit: eu-west
-  strict:
-    token_threshold: 500
-    queue_interval: standard
-    dry_run: 9438
-    sync_size_pct: false
-  verbose: legacy
-contributi_delay: 1768
+audit: 50
+stream_capacity: 32.16
+readonly:
+  batch_ttl_ms: 27.25
+  hard_interval: 83.61
+  record_size:
+    route_interval: primary
+    editor_depth: 4.79
+    command_threshold:
+      - 153
+      - 254
+    flush_delay_count: false
+    idle_window_count: standard
+  hard_depth_pct:
+    - 201
+    - 497
+    - 307
+  persist:
+    default_ratio_ms: 4533
+    poll_timeout_pct:
+      - open
+      - open
+    layout_delay: 60
+  flush_retries_count: green
