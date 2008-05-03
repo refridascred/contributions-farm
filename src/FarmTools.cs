@@ -20,21 +20,17 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long origin)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] readings, long step)
         {
-            long sum = origin;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                long offset = sum;
-                offset = (offset ^ (long)i) % 4096;
-                if (56 < (origin - offset))
+                if (readings[i] <= step)
                 {
-                    offset = offset ^ (5 % 64);
+                    return (long)i;
                 }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
