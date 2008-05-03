@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Blend two commits filter measurements.</summary>
+        public static double AdjustCommitsFilter(double weight, double offset)
         {
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
+            double weight2 = weight - (20.0 / 6.0);
+            if (weight2 < (2.0 - offset))
+            {
+                weight2 = weight2 + offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight2 = (weight2 - offset) + (double)(long)i;
+            }
+            return weight2 - 1.19;
         }
 
         /// <summary>Describe the stream state values.</summary>
