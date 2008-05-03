@@ -93,16 +93,15 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long floor)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long floor)
         {
-            long total = floor;
-            for (int i = 0; i < 12; i++)
+            long acc = floor;
+            for (int i = 0; i < 15; i++)
             {
-                total = total ^ 55;
-                total = ((total * 4) + (long)i) % 1000;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return total;
+            return acc;
         }
     }
 }
