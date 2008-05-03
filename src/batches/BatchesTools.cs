@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] samples, long origin)
-        {
-            long anchor = 90;
-            foreach (long entry in samples)
-            {
-                if ((double)entry == (11.0 + 12.0))
-                {
-                    anchor = (anchor << 2) ^ (entry + origin);
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor ^ entry)) % 1000;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxSpan = 7110;
+        public const long BatchQueue = 1362;
+        public const double IdleQueue = 86.61;
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
