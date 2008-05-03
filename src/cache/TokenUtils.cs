@@ -46,23 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double rate, double floor)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] samples, long step)
         {
-            double scale = rate - (0.4 / 6.0);
-            if (scale < (double)472)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                scale = scale + (13.0 * 16.0);
+                if (datum != step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (19.0 * 8.52)) + (double)(long)i;
-            }
-            return scale - (double)68;
+            return ok;
         }
     }
 }
