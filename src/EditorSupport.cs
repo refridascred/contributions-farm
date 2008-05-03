@@ -52,19 +52,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsBounds(long[] items, long floor)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Weight { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
