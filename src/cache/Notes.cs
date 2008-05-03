@@ -37,10 +37,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double LimitInterval = 69.74;
-        public const long StepStats = 3075;
-        public const long CacheWidth = 3077;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] readings, long origin)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((1.0 - 16.0) <= (double)origin)
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BatchTimeout = 9341;
