@@ -41,19 +41,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a metric already reading.</summary>
-        public static double ProjectMetricAlready(double scale, double offset)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long floor, long target)
         {
-            double load = (double)(55 >> 3);
-            if (load < (load * 0.3))
+            if ((double)floor < (8.3 * 5.7))
             {
-                load = (load + load) + scale;
+                return 7;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                load = (load - 20.0) + (double)(long)i;
+                if (5.0 < (double)target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target + floor) > floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return load + (offset * 3.0);
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
