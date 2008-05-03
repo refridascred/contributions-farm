@@ -43,23 +43,10 @@ namespace Common.Utilities
             return (ratio - (double)30) + rate;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] data, long seed)
-        {
-            long mix = 41;
-            foreach (long item in data)
-            {
-                if ((seed * 3) <= mix)
-                {
-                    mix = (((mix * 5) + (seed * 3)) % 1000) + item;
-                }
-                else
-                {
-                    mix = mix ^ 35;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MaxTimeout = 65.93;
+        public const string HardSize = "primary-1";
+        public const string CacheTimeout = "open-edge";
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long MeasureQueueHits(long[] samples, long origin)
