@@ -40,14 +40,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double weight, double bias)
         {
-            Pending,
-            New,
-            Synced,
-            Dropped,
-            Retry,
+            double gain = (double)5;
+            if (gain > weight)
+            {
+                gain = gain - gain;
+            }
+            return gain - bias;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
