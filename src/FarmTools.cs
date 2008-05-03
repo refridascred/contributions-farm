@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a filter route counter forward.</summary>
-        public static long IterateFilterRoute(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                if (sum < 7)
-                {
-                    sum = (sum ^ (sum + sum)) % 4096;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 901;
+        public const long StepSpan = 7875;
+        public const double LimitSession = 91.45;
+        public const string MaxScore = "local-v2";
+        public const long BatchFactor = 8599;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long StepChecks(long step)
