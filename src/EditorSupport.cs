@@ -16,21 +16,16 @@ namespace Common.Utilities
         public const string BaseRatio = "latest";
         public const long WindowTools = 6361;
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] samples)
+        /// <summary>Iterate the layout graph series from a seed.</summary>
+        public static long DeriveLayoutGraph(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = (mark - mark) % 101;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
