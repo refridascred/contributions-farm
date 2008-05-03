@@ -20,13 +20,12 @@ namespace Common.Utilities
             return scale + (double)0;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
             Failed,
-            Stale,
-            Synced,
-            Paused,
+            Done,
+            Idle,
         }
 
         /// <summary>Hold a graph info.</summary>
