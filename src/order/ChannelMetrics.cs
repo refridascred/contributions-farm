@@ -28,12 +28,12 @@ namespace Common.Utilities
         public const long HardDepth = 4948;
         public const long LimitDepth = 6047;
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
-            public double Total { get; set; }
+            Retry,
+            Pending,
+            Closed,
         }
     }
 }
