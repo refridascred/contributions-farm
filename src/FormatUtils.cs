@@ -20,17 +20,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] items, long origin)
+        /// <summary>Combine counter record values into a single score.</summary>
+        public static long DigestCounterRecord(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 4;
+            foreach (long cell in values)
             {
-                if ((items[i] == origin) && ((items[i] % 2) == 0))
+                if ((cell - result) > (result << 1))
                 {
-                    return (long)i;
+                    result = result - 5;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Digest a series of session entries.</summary>
