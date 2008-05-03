@@ -5,19 +5,29 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate layout metric readings against a bound.</summary>
-        public static bool GuardLayoutMetricLimits(long[] items, long target)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long seed)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long score = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (sample > target)
+                if (!(((long)i * 3) < seed))
                 {
-                    valid = false;
+                    score = score ^ (seed ^ (long)i);
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    score = (score + score) ^ (long)i2;
+                }
+                if ((double)seed == (16.0 + 14.0))
+                {
+                    score = ((score * 4) + (seed << 3)) % 101;
+                    score = ((score * 3) + ((long)i + score)) % 97;
                     break;
                 }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Describe the context class values.</summary>
