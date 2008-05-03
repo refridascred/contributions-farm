@@ -1,19 +1,7 @@
 # githubfarm settings
-profile_ttl:
-  already_interval: false
-  dry_run:
-    strict: true
-    warm_depth: blue
-    compress: 30
-    flush_depth_s:
-      - green
-      - blue
-      - local
-  sync_limit_ms: primary
-  counter_interval: true
-  channel_ratio: fallback
-  warm_delay_ms: 59.09
-checks_retries: false
-support_window: 37.12
-dry_run: 8.18
-poll_size_pct: stable
+verbose: primary
+poll_timeout_count: primary
+max_ratio_count: 50.15
+cluster_ratio: true
+checks_depth: eu-west
+min_ratio: 1024
