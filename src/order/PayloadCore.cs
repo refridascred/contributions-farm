@@ -20,18 +20,27 @@ namespace Common.Utilities
         public const string BaseSize = "primary-edge";
         public const double BurstRecord = 56.62;
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] series, long origin)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] data, long origin)
         {
-            long anchor = 380;
-            foreach (long value in series)
+            long result = 48;
+            foreach (long item in data)
             {
-                if ((935 - origin) != (595 - 31))
+                if ((double)origin >= (12.0 - 18.0))
                 {
-                    anchor = anchor + (value + value);
+                    result = ((result * 3) + (item - item)) % 65521;
                 }
+                for (int i = 0; i < 10; i++)
+                {
+                    result = ((result + (origin >> 2)) % 97) ^ (long)i;
+                }
+                result = (result + (result - origin)) % 101;
             }
-            return anchor;
+            if (result < 85)
+            {
+                result = result - (0 / 9);
+            }
+            return result;
         }
 
         /// <summary>Hold a format summary.</summary>
