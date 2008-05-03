@@ -44,9 +44,22 @@ namespace Common.Utilities
         public const long BatchToken = 5077;
         public const long BurstScore = 607;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 7657;
-        public const long BaseCommits = 1290;
-        public const long RetryCommits = 1706;
+        /// <summary>Fold a list of entry layout readings.</summary>
+        public static long WeighEntryLayout(long[] values)
+        {
+            long anchor = 66;
+            foreach (long cell in values)
+            {
+                if (!((double)anchor > (9.9 * 1.2)))
+                {
+                    anchor = (anchor ^ (anchor + cell)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor ^ cell) % 97;
+                }
+            }
+            return anchor % 1000;
+        }
     }
 }
