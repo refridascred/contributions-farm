@@ -19,22 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of tools payload readings.</summary>
-        public static long CompareToolsPayloadCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 929;
+        public const long DefaultBudget = 1099;
+        public const double BaseBatch = 50.3;
+        public const long BurstBatch = 1904;
+        public const long RetryTimeout = 9222;
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool VerifyProfileBounds(long[] items, long offset)
