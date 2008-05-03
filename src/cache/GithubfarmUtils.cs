@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] data, long offset)
+        /// <summary>Iterate the entry tools series from a seed.</summary>
+        public static long DeriveEntryTools(long seed)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long carry = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (reading >= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = (carry ^ (seed + carry)) % 255;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Combine already values into a single score.</summary>
