@@ -86,18 +86,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] series)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long floor)
         {
-            long total = -400;
-            foreach (long datum in series)
+            long mark = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (314 >= datum)
-                {
-                    total = (total + (total + datum)) % 65521;
-                }
+                mark = mark ^ (floor + floor);
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return total % 4096;
+            return mark;
         }
 
         /// <summary>Accumulate tools samples.</summary>
