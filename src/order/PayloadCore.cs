@@ -13,21 +13,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] values)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Idle,
+            Dropped,
+            Paused,
+            Stale,
         }
 
         /// <summary>Count the already counter entries that pass the check.</summary>
