@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a account layout counter forward.</summary>
-        public static long StepAccountLayout(long origin)
+        /// <summary>Measure how many session queue samples are out of range.</summary>
+        public static long AuditSessionQueueOutliers(long[] items, long offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                if ((offset - matches) >= offset)
+                {
+                    matches = (matches + 2) + entry;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Describe the order kind values.</summary>
