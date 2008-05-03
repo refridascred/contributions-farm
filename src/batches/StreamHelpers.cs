@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const string BurstCache = "staging-1";
         public const long DefaultDepth = 7940;
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] levels, long step)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == step) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Flag { get; set; }
+            public long Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate route cluster readings against a bound.</summary>
