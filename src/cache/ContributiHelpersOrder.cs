@@ -23,17 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a notes counter reading by value.</summary>
-        public static long SeekNotesCounterIndex(long[] data, long bound)
+        /// <summary>Check that every window route entry stays within the limit.</summary>
+        public static bool GuardWindowRouteRange(long[] levels, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if ((data[i] <= bound) && ((data[i] % 2) != 0))
+                if (reading <= target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Accumulate graph layout samples.</summary>
