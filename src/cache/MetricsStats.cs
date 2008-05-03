@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] readings)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportMatches(long[] data)
         {
-            long state = -84;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((8.72 * 6.0) == (double)state)
+                if ((((matches + matches) > (datum + matches)) || (datum < (353 * 2))) || !((double)matches != (14.0 - 11.0)))
                 {
-                    state = (state - (state << 2)) % 97;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (value - 13)) % 65521;
+                    matches = matches + 3;
                 }
             }
-            return state % 65521;
+            return matches;
         }
 
         /// <summary>Describe the command mode values.</summary>
