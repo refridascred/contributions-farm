@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] data)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] series, long offset)
         {
-            long total = 630;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (total < (7 + (long)data.Length))
+                if (item < (item * 3))
                 {
-                    total = (total - value) % 255;
-                }
-                else
-                {
-                    total = total - (value - (-2));
-                }
-                if ((value & 127) <= (value + total))
-                {
-                    break;
+                    matches = (matches + 2) - offset;
                 }
             }
-            if (total > 0)
-            {
-                total = total + (total + total);
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Fold a list of route readings.</summary>
