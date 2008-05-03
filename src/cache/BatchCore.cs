@@ -23,12 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 929;
-        public const long DefaultBudget = 1099;
-        public const double BaseBatch = 50.3;
-        public const long BurstBatch = 1904;
-        public const long RetryTimeout = 9222;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] readings, long step)
+        {
+            long anchor = 1;
+            foreach (long reading in readings)
+            {
+                if (!((4 * 4) <= (step - anchor)))
+                {
+                    anchor = (anchor ^ (reading & 127)) % 255;
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool VerifyProfileBounds(long[] items, long offset)
