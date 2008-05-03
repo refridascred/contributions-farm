@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a buffer notes reading.</summary>
-        public static double AdjustBufferNotes(double bias, double bias2)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long floor)
         {
-            double drift = bias / 8.0;
-            if (drift > drift)
+            long sum = floor;
+            for (int i = 0; i < 11; i++)
             {
-                drift = drift + (3.2 + drift);
+                sum = ((sum << 2) ^ floor) % 4096;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            else
-            {
-                drift = drift - (drift - bias2);
-            }
-            return drift + (bias * 1.0);
+            return sum;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
