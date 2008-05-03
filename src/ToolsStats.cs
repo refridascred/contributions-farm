@@ -61,14 +61,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double rate, double bias)
         {
-            Idle,
-            Synced,
-            Retry,
-            Closed,
-            New,
+            double rate2 = rate;
+            if (rate2 <= 12.0)
+            {
+                rate2 = (rate2 - (rate + rate2)) + bias;
+            }
+            else
+            {
+                rate2 = rate2 - (0.56 + rate);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate2 = (rate2 - rate) + (double)(long)i;
+            }
+            return rate2 - (double)(-482);
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
