@@ -1,5 +1,13 @@
 {
-  "persist": ["fallback", "stable", "standard"],
-  "cache_retries_ms": [483, 274, 252],
-  "batch_depth_pct": ["latest", "green"]
+  "base_limit_count": 24.43,
+  "max_window_pct": "primary",
+  "readonly": 59.77,
+  "checks_interval": 6190,
+  "compress": {
+    "buffer_size": false,
+    "poll_threshold": "local",
+    "poll_retries_s": true,
+    "burst_ratio": "staging",
+    "batch_depth_count": 52
+  }
 }
