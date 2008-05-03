@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
-        {
-            public bool Owner { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 742;
+        public const long CacheSupport = 2194;
+        public const long BatchWidth = 2386;
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool GuardStreamLimits(long[] data, long floor)
