@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string StepLevel = "stable";
-        public const long WindowContext = 3249;
-        public const long BaseContext = 5176;
-        public const long LimitWidth = 6383;
-        public const string SoftContext = "fallback-edge";
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = carry + limit;
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
