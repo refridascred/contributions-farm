@@ -71,19 +71,19 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaRange(long[] values, long floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long mark = 60;
+            foreach (long datum in levels)
             {
-                if (cell < floor)
+                mark = ((mark + (mark - 113)) % 65521) - origin;
+                if ((double)datum > (double)mark)
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            return mark;
         }
     }
 }
