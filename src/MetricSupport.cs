@@ -27,12 +27,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 2857;
-        public const string CacheSchema = "staging";
-        public const long MinSchema = 5861;
-        public const double DefaultSchema = 14.17;
-        public const string StepSchema = "legacy-edge";
+        /// <summary>Roll a commits tools counter forward.</summary>
+        public static long IterateCommitsTools(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = carry ^ (carry - 0);
+                carry = (carry << 3) ^ carry;
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool ValidateOrderLimits(long[] levels, long origin)
