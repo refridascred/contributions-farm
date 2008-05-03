@@ -1,25 +1,20 @@
 # githubfarm settings
-audit: 50
-stream_capacity: 32.16
-readonly:
-  batch_ttl_ms: 27.25
-  hard_interval: 83.61
-  record_size:
-    route_interval: primary
-    editor_depth: 4.79
-    command_threshold:
-      - 153
-      - 254
-    flush_delay_count: false
-    idle_window_count: standard
-  hard_depth_pct:
-    - 201
-    - 497
-    - 307
-  persist:
-    default_ratio_ms: 4533
-    poll_timeout_pct:
-      - open
-      - open
-    layout_delay: 60
-  flush_retries_count: green
+default_retries_ms: cached
+metrics_delay: strict
+cache_capacity:
+  retry_delay_count: true
+  soft_ratio_count: 500
+  retry_threshold_s:
+    hard_size: standard
+    audit: standard
+    githubfarm_retries: open
+    order_depth: staging
+  min_ttl_s: fallback
+  batch_threshold_ms:
+    context_delay: 22
+    contributi_delay: 4590
+    context_retries: 30
+    buffer_delay: legacy
+warm_ttl: blue
+default_interval: strict
+persist: true
