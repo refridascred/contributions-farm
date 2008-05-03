@@ -28,24 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] levels, long offset)
+        /// <summary>Fold a list of context batches readings.</summary>
+        public static long TallyContextBatches(long[] levels)
         {
-            long state = -292;
-            foreach (long entry in levels)
+            long sum = -50;
+            foreach (long datum in levels)
             {
-                state = (state * 3) + (state ^ state);
-                if (((27 + entry) == (28 & 1)) || ((entry % 7) != (33 & 127)))
-                {
-                    state = ((state * 3) + (state % 12)) % 255;
-                }
-                state = (state ^ (offset - offset)) % 65521;
+                sum = (sum * 5) + datum;
             }
-            if (state > 45)
+            if (sum < 232)
             {
-                state = (state ^ (offset + offset)) % 97;
+                sum = (sum + (sum / 7)) % 101;
             }
-            return state;
+            return sum % 1000;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
