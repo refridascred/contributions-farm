@@ -13,13 +13,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Look up the position of a farm filter sample.</summary>
+        public static long LocateFarmFilterIndex(long[] levels, long seed)
         {
-            public long Count { get; set; }
-            public double Region { get; set; }
-            public string Total { get; set; } = "";
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
