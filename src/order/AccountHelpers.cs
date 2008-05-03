@@ -71,15 +71,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
-        {
-            Active,
-            Failed,
-            Dropped,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleSize = 2726;
+        public const long CacheWidth = 5725;
+        public const long RetryInterval = 8099;
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
