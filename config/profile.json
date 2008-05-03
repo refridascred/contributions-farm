@@ -1,6 +1,15 @@
 {
-  "hard_depth_count": [203, 155],
-  "min_capacity": 78,
-  "dry_run": "primary",
-  "buffer_window": "staging"
+  "idle_capacity_s": "primary",
+  "idle_timeout_s": {
+    "sync_capacity": {
+      "readonly": 84.83,
+      "enabled": "edge",
+      "format_threshold": true
+    },
+    "hard_ratio": "standard",
+    "layout_interval": 68.52,
+    "cache_interval": 65.43,
+    "compress": "fallback"
+  },
+  "channel_limit": "strict"
 }
