@@ -52,31 +52,19 @@ namespace Common.Utilities
         public const long MaxScore = 5738;
         public const long MinWindow = 2874;
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long target, long bound)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] series, long seed)
         {
-            if ((2.9 + 9.2) != (double)bound)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound >= (8.7 + 0.3))
+                if (cell != seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((413 ^ 747) <= target) && (81 >= (bound * 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Locate a channel metric reading by value.</summary>
