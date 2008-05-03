@@ -1,7 +1,12 @@
 {
-  "retry_size_s": 26,
-  "soft_depth_count": "strict",
-  "route_threshold": [60, 290],
-  "min_ttl": 9.32,
-  "readonly": 60.35
+  "idle_retries_ms": [144, 71],
+  "min_ratio_s": 76.07,
+  "verbose": {
+    "buffer_capacity": 79,
+    "audit": ["local", "eu-west"],
+    "compress": "legacy"
+  },
+  "strict": 1363,
+  "cache_retries": "local",
+  "base_limit": false
 }
