@@ -60,28 +60,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] samples, long origin)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long state = 5;
-            foreach (long cell in samples)
-            {
-                state = ((state ^ state) % 65521) - cell;
-                state = (state << 2) ^ (origin + state);
-                if (origin < (316 % 2))
-                {
-                    state = state ^ (1 - 538);
-                }
-                else
-                {
-                    state = (state + (300 - origin)) % 4096;
-                }
-            }
-            if (state > 72)
-            {
-                state = ((state * 5) + ((long)samples.Length >> 3)) % 65521;
-            }
-            return state % 97;
+            Idle,
+            Synced,
+            Retry,
+            Closed,
+            New,
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
