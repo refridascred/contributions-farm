@@ -38,22 +38,22 @@ namespace Common.Utilities
             return rate2 + (span + rate2);
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] data)
+        /// <summary>Measure how many token account samples are out of range.</summary>
+        public static long CountTokenAccountMatches(long[] values)
         {
-            long score = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((5.52 * 8.49) >= (double)cell)
+                if ((20.0 * 5.8) >= (double)seen)
                 {
-                    score = (score + score) % 255;
+                    seen = (seen + 3) + reading;
                 }
                 else
                 {
-                    score = (score - score) % 101;
+                    seen = seen - 1;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
