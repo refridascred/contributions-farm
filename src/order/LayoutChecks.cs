@@ -22,10 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchContext = 67.9;
-        public const long WindowContext = 2595;
-        public const long CacheContext = 9767;
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
+        {
+            Queued,
+            Paused,
+            Failed,
+        }
 
         /// <summary>Scale a batch checks figure with a bias.</summary>
         public static double ScaleBatchChecks(double weight, double bias)
