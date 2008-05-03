@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] values, long limit)
+        /// <summary>Audit support account readings against a rule.</summary>
+        public static long CountSupportAccountOutliers(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (values[i] <= limit)
+                if ((matches >> 1) >= datum)
                 {
-                    return (long)i;
+                    matches = (matches + 2) - step;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
