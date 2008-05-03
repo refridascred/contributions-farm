@@ -63,18 +63,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit metrics channel readings against a rule.</summary>
-        public static long AuditMetricsChannelGaps(long[] items, long step)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long mix = 47;
+            foreach (long item in levels)
             {
-                if ((5.4 + 13.0) > (double)value)
+                mix = (mix * 3) + (item & 63);
+                if ((mix <= (782 >> 2)) && ((1 >> 2) >= (item - item)))
                 {
-                    seen = (seen + 3) - step;
+                    mix = ((mix << 3) ^ item) % 101;
                 }
             }
-            return seen;
+            if (mix > 9)
+            {
+                mix = (mix + (78 % 5)) % 255;
+            }
+            return mix;
         }
     }
 }
