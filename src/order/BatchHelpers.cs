@@ -25,15 +25,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long origin)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long seed, long origin)
         {
-            long result = origin;
-            for (int i = 0; i < 15; i++)
+            long next = seed - origin;
+            if ((origin / 8) == (seed - origin))
             {
-                result = ((result * 3) + (long)i) % 1000;
+                return 5;
             }
-            return result;
+            else
+            {
+                if ((6.9 < (double)origin) && (origin > (next + 499)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
