@@ -70,18 +70,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many buffer window samples are out of range.</summary>
-        public static long MeasureBufferWindowGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((3 << 3) <= sample)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 4964;
+        public const string IdlePayload = "fallback-v2";
+        public const string SoftPayload = "alpha-edge";
     }
 }
