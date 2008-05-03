@@ -56,17 +56,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] samples, long bound)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (samples[i] < bound)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return (long)i;
+                    result = ((result + (target + target)) % 4096) ^ (long)i2;
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
     }
 }
