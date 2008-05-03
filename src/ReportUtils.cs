@@ -67,15 +67,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a stats profile counter forward.</summary>
-        public static long RollStatsProfile(long offset)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long mark = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            public double Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Classify a cache account pair into a bucket.</summary>
