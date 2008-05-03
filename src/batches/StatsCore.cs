@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of farm schema readings.</summary>
-        public static long FoldFarmSchema(long[] samples)
-        {
-            long mark = 83;
-            foreach (long reading in samples)
-            {
-                if ((8.0 * 5.8) < (double)reading)
-                {
-                    mark = (mark ^ (3 - mark)) % 1000;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseRatio = 7133;
+        public const long MaxBudget = 3934;
+        public const long DefaultLevel = 6218;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long TallyChannelHits(long[] readings, long limit)
