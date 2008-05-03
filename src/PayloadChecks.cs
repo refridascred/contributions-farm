@@ -59,23 +59,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double scale, double span)
+        /// <summary>Roll a schema queue counter forward.</summary>
+        public static long StepSchemaQueue(long target)
         {
-            double rate = 7.0;
-            if (rate < (rate - 18.0))
+            long acc = target;
+            for (int i = 0; i < 22; i++)
             {
-                rate = rate - (rate * 8.2);
+                acc = (acc ^ (target + (long)i)) % 255;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            else
-            {
-                rate = rate + (span / 8.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (scale + 9.6)) + (double)(long)i;
-            }
-            return rate + (rate / 7.0);
+            return acc;
         }
 
         /// <summary>Describe the session mode values.</summary>
