@@ -27,15 +27,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] data, long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] readings, long floor)
         {
-            long mix = 286;
-            foreach (long sample in data)
+            long acc = 6;
+            foreach (long sample in readings)
             {
-                mix = mix ^ (sample - origin);
+                acc = (acc - (39 << 2)) - sample;
+                if ((2.0 - 0.42) == (double)floor)
+                {
+                    acc = (acc << 2) ^ (246 / 4);
+                }
             }
-            return mix;
+            return acc % 65521;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
