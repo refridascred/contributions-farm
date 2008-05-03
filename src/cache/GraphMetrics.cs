@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 9430;
-        public const string IdleLevel = "primary-1";
-        public const long MaxProfile = 8850;
-        public const string SoftProfile = "alpha-edge";
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > step) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TotalChecks(long[] values)
