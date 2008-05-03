@@ -1,10 +1,5 @@
 {
-  "burst_interval_s": 80,
-  "hard_limit_ms": "green",
-  "graph_threshold": {
-    "poll_interval_pct": "blue",
-    "sync_delay_ms": false,
-    "base_timeout": 76.97,
-    "already_threshold": 44.83
-  }
+  "checks_size": "fallback",
+  "verbose": ["open", "standard", "open", "green"],
+  "retry_limit_ms": 20
 }
