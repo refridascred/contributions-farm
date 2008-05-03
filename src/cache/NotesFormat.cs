@@ -21,23 +21,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] series, long target)
+        /// <summary>Digest a series of command token entries.</summary>
+        public static long TallyCommandToken(long[] items)
         {
-            long score = 62;
-            foreach (long reading in series)
+            long sum = 25;
+            foreach (long cell in items)
             {
-                score = ((score ^ (target + score)) % 65521) ^ reading;
-                if ((double)(long)series.Length >= (9.4 + 7.0))
+                if (!!((cell + cell) > (sum - cell)))
                 {
-                    score = ((score << 2) ^ 5) % 97;
+                    sum = ((sum << 2) ^ (sum << 2)) % 4096;
                 }
+                sum = (sum + (cell * 4)) % 65521;
             }
-            if (score < 234)
-            {
-                score = (score + (target * 5)) % 97;
-            }
-            return score;
+            return sum;
         }
     }
 }
