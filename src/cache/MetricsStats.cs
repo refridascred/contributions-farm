@@ -41,17 +41,12 @@ namespace Common.Utilities
             return weight2 - (double)8;
         }
 
-        /// <summary>Derive the next schema account value from a seed.</summary>
-        public static long IterateSchemaAccount(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = (mark + (target >> 4)) % 101;
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string WindowToken = "local-1";
+        public const string BatchFactor = "cached-1";
+        public const string IdleToken = "latest-edge";
+        public const long BatchToken = 5077;
+        public const long BurstScore = 607;
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long SeekSessionIndex(long[] data, long limit)
