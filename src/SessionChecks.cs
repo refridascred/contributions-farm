@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] readings, long bound)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long floor, long limit)
         {
-            long mix = 661;
-            foreach (long value in readings)
+            long span = floor - limit;
+            if ((span >> 1) < (span - 783))
             {
-                mix = (mix ^ mix) ^ value;
+                return 2;
             }
-            if (mix < 48)
+            else
             {
-                mix = ((mix << 2) ^ (bound - bound)) % 101;
+                if ((980 & 31) != (limit << 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return mix % 1000;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
