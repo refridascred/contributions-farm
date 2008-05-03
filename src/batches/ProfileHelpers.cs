@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            Retry,
-            Pending,
-            Queued,
-            Paused,
+            public long Region { get; set; }
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
