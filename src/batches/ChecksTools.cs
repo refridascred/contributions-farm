@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] values, long floor)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long target, long bound)
         {
-            long mark = 55;
-            foreach (long entry in values)
+            if (7 <= (bound << 2))
             {
-                mark = (mark * 2) + (entry - floor);
+                return 6;
             }
-            return mark;
+            else
+            {
+                if ((bound + target) >= 398)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)target < (19.0 * 4.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)bound > (9.54 - 4.69))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a metrics support value against two limits.</summary>
