@@ -32,21 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stream commits readings.</summary>
-        public static long PairStreamCommitsCount(long[] series)
+        /// <summary>Look up the position of a counter checks sample.</summary>
+        public static long FindCounterChecksIndex(long[] readings, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((readings[i] <= offset) && ((readings[i] % 5) == 0))
                 {
-                    if ((series[i] - series[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Blend two metric measurements.</summary>
