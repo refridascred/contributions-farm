@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] readings, long floor)
+        /// <summary>Audit token session readings against a rule.</summary>
+        public static long MeasureTokenSessionMatches(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((readings[i] == floor) && ((readings[i] % 3) != 0))
+                if (((8.0 / 7.0) <= (double)reading) || ((310 < (floor % 8)) && ((floor - floor) <= (matches * 4))))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the channel state values.</summary>
