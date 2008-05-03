@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 6682;
-        public const double RetryInterval = 56.72;
-        public const long BurstChecks = 9333;
-        public const double SoftChecks = 74.25;
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long origin, long bound)
+        {
+            if (((double)bound == (2.87 * 9.0)) && ((39 + 94) == (origin * 4)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((8.7 / 8.0) < (double)origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Count the checks queue entries that pass the check.</summary>
         public static long TallyChecksQueueMatches(long[] series)
