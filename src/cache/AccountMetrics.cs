@@ -34,21 +34,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count githubfarm cluster pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmClusterCount(long[] values)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((sample >> 4) >= (matches ^ matches))
                 {
-                    if ((values[i] - values[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Fold a list of stats session readings.</summary>
