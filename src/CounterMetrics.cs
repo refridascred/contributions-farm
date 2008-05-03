@@ -42,11 +42,11 @@ namespace Common.Utilities
         public const double RetryInterval = 75.9;
         public const double BatchFactor = 49.54;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 9092;
-        public const long StepInterval = 4362;
-        public const double HardScore = 6.51;
-        public const long SoftFactor = 3576;
-        public const long BaseLevel = 8887;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BaseBudget = "legacy-v2";
+        public const double LimitContext = 29.04;
+        public const long WindowWidth = 1748;
+        public const string MinCount = "legacy-1";
+        public const long RetrySpan = 4156;
     }
 }
