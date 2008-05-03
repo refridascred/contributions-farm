@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Audit githubfarm cluster readings against a rule.</summary>
+        public static long TallyGithubfarmClusterOutliers(long[] readings)
         {
-            Synced,
-            Ready,
-            Done,
-            Closed,
-            Stale,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (64 <= (hits - datum))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a farm filter sample.</summary>
