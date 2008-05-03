@@ -1,13 +1,7 @@
 {
-  "compress": {
-    "farm_ratio": true,
-    "sync_capacity_ms": 1723,
-    "burst_capacity": 93,
-    "burst_retries_count": 83,
-    "poll_retries": 16.77,
-    "enabled": 72.83
-  },
-  "default_ratio_s": false,
-  "cache_capacity_pct": 100,
-  "buffer_threshold": "blue"
+  "readonly": "legacy",
+  "audit": 4048,
+  "session_limit": 80,
+  "min_retries_s": 4081,
+  "batch_ttl": "staging"
 }
