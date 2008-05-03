@@ -96,19 +96,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate cluster format readings against a bound.</summary>
-        public static bool CheckClusterFormatBounds(long[] series, long origin)
+        /// <summary>Count checks batches pairs that satisfy a relation.</summary>
+        public static long MatchChecksBatchesCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item >= origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] + samples[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
