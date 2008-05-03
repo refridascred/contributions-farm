@@ -53,11 +53,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxToken = 64.92;
-        public const double SoftFactor = 10.69;
-        public const long DefaultToken = 2677;
-        public const string WindowToken = "strict-edge";
-        public const string RetryWidth = "stable-edge";
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long step, long limit)
+        {
+            if (!((step ^ 78) >= (0 + limit)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((limit + 705) == (step - 0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step & 7) >= 958)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (limit > (limit * 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
