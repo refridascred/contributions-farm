@@ -63,18 +63,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (seen < (seen + entry))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BaseLevel = "legacy-1";
+        public const string MaxEditor = "local-v2";
+        public const long BaseSize = 8885;
+        public const long RetryEditor = 2008;
+        public const string IdleRatio = "strict";
     }
 }
