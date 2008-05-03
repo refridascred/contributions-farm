@@ -44,10 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowSize = "stable-edge";
-        public const string RetrySpan = "alpha-v2";
-        public const long CacheFactor = 6057;
-        public const long BurstPayload = 9146;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (item >= (item << 1))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
