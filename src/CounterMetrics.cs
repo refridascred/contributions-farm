@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] items, long offset)
+        /// <summary>Find the first graph queue entry that matches the target.</summary>
+        public static long SeekGraphQueueIndex(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample != offset)
+                if (values[i] < offset)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
