@@ -52,19 +52,11 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] series)
-        {
-            long mark = 251;
-            foreach (long entry in series)
-            {
-                mark = (mark + (mark + mark)) + entry;
-            }
-            if (mark < 642)
-            {
-                mark = (mark * 5) + (mark >> 4);
-            }
-            return mark;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseNotes = "legacy-1";
+        public const long StepSpan = 6473;
+        public const long StepNotes = 6062;
+        public const long SoftNotes = 5128;
+        public const long IdleSize = 7094;
     }
 }
