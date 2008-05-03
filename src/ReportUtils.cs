@@ -49,25 +49,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a channel metrics pair into a bucket.</summary>
-        public static long GradeChannelMetrics(long target, long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchGaps(long[] items, long bound)
         {
-            long diff = target - origin;
-            if ((20.0 - 15.0) > (double)diff)
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target % 8) <= (target ^ origin))
+                if ((9.3 / 7.0) > (double)value)
                 {
-                    return 0;
+                    tally = (tally + 3) - bound;
                 }
                 else
                 {
-                    return 5;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
