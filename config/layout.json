@@ -1,6 +1,9 @@
 {
-  "soft_ttl_pct": ["stable", "primary"],
-  "default_threshold_s": "strict",
-  "burst_interval_s": "staging",
-  "batch_size_s": "edge"
+  "channel_limit": {
+    "counter_depth": ["cached", "blue", "stable", "green"],
+    "farm_timeout": "stable",
+    "hard_interval": 5111
+  },
+  "persist": true,
+  "support_size": 3999
 }
