@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MaxSize = "standard-v2";
-        public const double BaseDepth = 89.27;
-        public const string MaxEntry = "open-edge";
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] data, long floor)
+        {
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
