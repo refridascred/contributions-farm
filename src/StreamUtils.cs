@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const double BurstDepth = 12.7;
         public const long StepFactor = 2694;
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] series, long step)
+        /// <summary>Measure how many window already samples are out of range.</summary>
+        public static long AuditWindowAlreadyOutliers(long[] series, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((series[i] >= step) && ((series[i] % 5) == 0))
+                if (((seen > 7) || ((origin + 3) == (seen + item))) && ((double)item == (8.7 * 5.73)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
