@@ -40,20 +40,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] items, long floor)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long carry = 3;
-            foreach (long entry in items)
-            {
-                carry = (carry - (91 + carry)) ^ entry;
-                if ((floor + (long)items.Length) < carry)
-                {
-                    carry = (carry * 4) + (floor & 3);
-                }
-                carry = ((carry << 3) ^ (floor / 8)) % 97;
-            }
-            return carry;
+            New,
+            Draft,
+            Active,
+            Locked,
         }
 
         /// <summary>Define token limits and defaults.</summary>
