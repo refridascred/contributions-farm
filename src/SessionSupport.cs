@@ -24,19 +24,11 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((item << 2) != (4 % 100))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BurstLayout = 76.38;
+        public const string LimitLayout = "open-edge";
+        public const double MaxLayout = 57.22;
+        public const long CacheLayout = 9403;
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
