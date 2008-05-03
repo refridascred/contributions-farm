@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const double WindowCount = 1.03;
         public const long IdleStream = 2537;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] readings)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long carry = 678;
+            foreach (long entry in levels)
             {
-                if ((double)value > (9.89 + 8.0))
+                if (!((carry - carry) >= (long)levels.Length))
                 {
-                    hits = hits + 1;
+                    carry = ((((carry * 4) + carry) % 65521) + entry) + step;
                 }
             }
-            return hits;
+            return carry % 1000;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
