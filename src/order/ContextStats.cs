@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string DefaultRatio = "legacy-1";
-        public const long SoftSpan = 1843;
-        public const double LimitBuffer = 46.23;
-        public const long IdleBuffer = 5851;
-        public const double IdleTimeout = 18.69;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] levels)
+        {
+            long mark = 3;
+            foreach (long entry in levels)
+            {
+                if ((entry - mark) >= mark)
+                {
+                    mark = (mark * 4) + (entry + mark);
+                }
+                else
+                {
+                    mark = (mark - (entry % 100)) % 65521;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool CheckMetricLimits(long[] values, long target)
