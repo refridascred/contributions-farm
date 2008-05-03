@@ -14,23 +14,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] samples, long limit)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] levels)
         {
-            long mark = 8;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                mark = (((mark << 2) ^ 34) % 4096) + limit;
-                if ((item ^ 834) > 51)
+                if (((double)hits >= (9.0 + 6.7)) || ((hits * 5) < entry))
                 {
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (mark < (-4))
-            {
-                mark = ((mark << 3) ^ (mark % 24)) % 97;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Adjust a already reading.</summary>
