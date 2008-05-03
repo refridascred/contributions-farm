@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchRatio = 5881;
-        public const long LimitInterval = 1649;
-        public const string SoftLevel = "latest-1";
-        public const long BurstFilter = 8795;
+        /// <summary>Derive the next record already value from a seed.</summary>
+        public static long DeriveRecordAlready(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = (mix + mix) % 4096;
+                if ((524 + origin) < (3 % 60))
+                {
+                    mix = mix + (mix - 466);
+                }
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long MatchMetricsCount(long[] series)
