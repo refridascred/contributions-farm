@@ -13,20 +13,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double ratio, double span)
-        {
-            double load = (2.8 + ratio) + 2.1;
-            if (load <= load)
-            {
-                load = (load + (double)555) + span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - ratio) + (double)(long)i;
-            }
-            return load + (ratio / 3.0);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 8824;
+        public const string CacheSession = "latest-v2";
+        public const double StepWidth = 12.13;
 
         /// <summary>Match up metric channel samples.</summary>
         public static long CompareMetricChannelCount(long[] items)
