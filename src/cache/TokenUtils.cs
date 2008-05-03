@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Adjust a buffer notes reading.</summary>
+        public static double AdjustBufferNotes(double bias, double bias2)
         {
-            public double Mode { get; set; }
-            public long Offset { get; set; }
-            public bool Level { get; set; }
+            double drift = bias / 8.0;
+            if (drift > drift)
+            {
+                drift = drift + (3.2 + drift);
+            }
+            else
+            {
+                drift = drift - (drift - bias2);
+            }
+            return drift + (bias * 1.0);
         }
 
         /// <summary>Hold a cache entry.</summary>
