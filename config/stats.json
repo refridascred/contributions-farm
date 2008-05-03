@@ -1,11 +1,7 @@
 {
-  "flush_limit_count": 2207,
-  "cache_window": "eu-west",
-  "base_threshold_count": {
-    "graph_window": 59,
-    "flush_ttl_s": 51,
-    "audit": 250
-  },
-  "entry_depth": 8202,
-  "session_size": "staging"
+  "batch_window_pct": true,
+  "layout_interval": "primary",
+  "dry_run": 29,
+  "burst_depth_count": 60,
+  "base_ratio_count": ["local", "green"]
 }
