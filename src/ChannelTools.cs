@@ -23,18 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsHits(long[] values, long floor)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((floor * 5) >= (floor + hits))
-                {
-                    hits = (hits + 3) ^ cell;
-                }
-            }
-            return hits;
+            Ready,
+            Synced,
+            Done,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
