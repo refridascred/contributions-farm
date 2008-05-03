@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] series)
         {
-            public long Token { get; set; }
-            public double Score { get; set; }
-            public long Region { get; set; }
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (!((double)datum < (8.38 - 3.99)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the metric status values.</summary>
