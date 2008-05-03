@@ -31,25 +31,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long floor, long bound)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowGaps(long[] items)
         {
-            long lane = floor - bound;
-            if ((0 / 6) < floor)
+            long count = 0;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (lane < (bound * 2))
+                if ((double)item == (17.0 / 9.0))
                 {
-                    return 0;
+                    count = count + 2;
                 }
                 else
                 {
-                    return 3;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
