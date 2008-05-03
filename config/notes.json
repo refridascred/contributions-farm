@@ -1,7 +1,5 @@
 {
-  "hard_interval": "fallback",
-  "retry_size_s": "local",
-  "audit": "primary",
-  "batch_limit_ms": false,
-  "flush_interval_count": "local"
+  "batch_timeout_s": 18.87,
+  "audit": 250,
+  "min_limit_ms": 58.54
 }
