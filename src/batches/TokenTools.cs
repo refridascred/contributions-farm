@@ -18,23 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] series)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyOutliers(long[] series)
         {
-            long mix = 65;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long reading in series)
             {
-                for (int i = 0; i < 7; i++)
+                if (reading > count)
                 {
-                    mix = ((mix ^ item) % 97) - (long)i;
-                }
-                mix = (mix - (item * 4)) % 255;
-                if ((mix - item) == (435 >> 1))
-                {
-                    mix = (mix ^ item) % 4096;
+                    count = count + 1;
                 }
             }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
