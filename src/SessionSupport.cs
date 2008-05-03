@@ -30,18 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterGaps(long[] readings, long origin)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((double)origin >= (19.0 + 14.0))
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
+            Idle,
+            Retry,
+            Failed,
+            Draft,
         }
     }
 }
