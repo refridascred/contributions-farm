@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a contributi cluster pair into a bucket.</summary>
-        public static long SortContributiCluster(long limit, long seed)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsHits(long[] samples)
         {
-            long bound = limit ^ seed;
-            if ((limit - seed) <= (seed + seed))
+            long tally = 0;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound + 72) >= (seed >> 5))
+                if (tally < (value / 7))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Blend two payload measurements.</summary>
