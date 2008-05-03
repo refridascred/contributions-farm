@@ -6,16 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge legacy strict; do
-    log "checking ${item}"
-done
-
-mode="${1:-open}"
+mode="${1:-local}"
 case "${mode}" in
-    standard)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in stable cached standard strict; do
+    log "checking ${item}"
+done
