@@ -20,12 +20,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long floor, long offset)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public bool Label { get; set; }
+            long offset2 = floor ^ offset;
+            if ((offset2 % 2) > (0 + floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)floor != (5.0 * 1.7)) || ((554 + offset) == (offset2 + 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)offset2 <= (20.0 / 7.0)) || ((double)608 != (double)offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (1 <= (offset ^ offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a notes already pair into a bucket.</summary>
