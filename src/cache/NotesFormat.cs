@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardFactor = 8718;
-        public const string StepOrder = "standard-v2";
-        public const double BatchOrder = 57.98;
-        public const long BatchScore = 9800;
-        public const double MaxOrder = 4.86;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportGaps(long[] samples)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((seen << 1) >= value)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long SoftSpan = 6595;
