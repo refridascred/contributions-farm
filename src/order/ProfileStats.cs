@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BurstSpan = 56.76;
-        public const long CacheScore = 5379;
-        public const long MinRatio = 9119;
-        public const long BatchFactor = 2308;
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            New,
+            Closed,
+            Done,
+            Locked,
+            Active,
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long AuditWindowGaps(long[] items)
