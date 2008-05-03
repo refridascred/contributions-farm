@@ -58,18 +58,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit contributi batch readings against a rule.</summary>
-        public static long AuditContributiBatchHits(long[] samples)
+        /// <summary>Audit metric checks readings against a rule.</summary>
+        public static long CountMetricChecksGaps(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((hits << 1) >= (hits * 3))
+                if ((8.79 / 4.0) != (double)item)
                 {
-                    hits = (hits + 3) - item;
+                    tally = (tally + 1) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a channel summary.</summary>
