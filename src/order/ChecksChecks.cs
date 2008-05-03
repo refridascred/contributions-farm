@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long step, long seed)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] samples, long seed)
         {
-            long gap = step + seed;
-            if ((gap & 255) < (step - gap))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (step > (seed / 9))
+                if (samples[i] <= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
