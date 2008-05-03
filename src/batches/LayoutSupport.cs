@@ -37,12 +37,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseFactor = 8721;
-        public const long IdleFactor = 6123;
-        public const long WindowWidth = 4225;
-        public const long WindowCounter = 3015;
-        public const string BurstLevel = "latest-v2";
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsLimits(long[] data, long step)
+        {
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Blend two buffer counter measurements.</summary>
         public static double SmoothBufferCounter(double ratio, double offset)
