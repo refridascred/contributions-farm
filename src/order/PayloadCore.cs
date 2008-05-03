@@ -55,18 +55,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] series, long target)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((double)matches >= (6.08 / 4.0))
-                {
-                    matches = ((matches + 1) + item) + target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstInterval = 7342;
+        public const double BurstSchema = 29.19;
+        public const long HardSchema = 5816;
     }
 }
