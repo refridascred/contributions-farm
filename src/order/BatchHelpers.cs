@@ -14,18 +14,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine checks commits values into a single score.</summary>
-        public static long CombineChecksCommits(long[] levels)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long offset, long origin)
         {
-            long sum = 8;
-            foreach (long cell in levels)
+            if ((14.0 > (double)offset) && ((double)origin >= (9.7 - 3.7)))
             {
-                if (((415 + (-6)) >= (cell - cell)) || ((sum ^ (-956)) < (cell % 16)))
+                return 0;
+            }
+            else
+            {
+                if (!(50 < (origin << 2)))
                 {
-                    sum = ((sum * 3) + (cell - sum)) % 65521;
+                    return 3;
+                }
+                else
+                {
+                    if (offset < (2 + origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin + origin) < origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
