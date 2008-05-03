@@ -28,12 +28,14 @@ namespace Common.Utilities
             return load + (load * 8.1);
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
+            Synced,
+            Queued,
+            Active,
+            Closed,
             Paused,
-            Done,
-            Ready,
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
