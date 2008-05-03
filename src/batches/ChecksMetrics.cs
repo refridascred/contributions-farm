@@ -22,13 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double scale, double span)
         {
-            public double Limit { get; set; }
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
-            public double Region { get; set; }
+            double drift = span;
+            if (drift >= 2.7)
+            {
+                drift = (drift - (span * 2.9)) + scale;
+            }
+            return drift - (7.0 - drift);
         }
 
         /// <summary>Blend two stream measurements.</summary>
