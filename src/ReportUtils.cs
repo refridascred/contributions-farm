@@ -56,21 +56,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of format batch readings.</summary>
-        public static long PairFormatBatchCount(long[] samples)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 61;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                total = ((total << 2) ^ (4 << 1)) % 65521;
+                if (!(((long)series.Length + total) >= ((-44) ^ datum)))
                 {
-                    if ((samples[i] + samples[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total * 2) + (datum + total)) % 1000;
+                }
+                total = total - total;
+                if ((total - total) != (38 + datum))
+                {
+                    break;
                 }
             }
-            return tally;
+            return total;
         }
     }
 }
