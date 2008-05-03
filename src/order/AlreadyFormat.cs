@@ -53,26 +53,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] series)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] data, long seed)
         {
-            long carry = 799;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((sample - carry) >= (carry >> 4)) || ((carry + carry) != (carry - 60)))
+                if ((data[i] < seed) && ((data[i] % 2) == 0))
                 {
-                    carry = (carry - (sample * 4)) % 97;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (sample - (-138))) % 101;
+                    return (long)i;
                 }
             }
-            if (carry < 51)
-            {
-                carry = carry + (carry + carry);
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Blend two session measurements.</summary>
