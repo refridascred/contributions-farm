@@ -67,18 +67,23 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] levels)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            double rate = bias - (double)160;
+            if (rate >= (double)6)
             {
-                if ((9.0 * 4.6) > (double)tally)
-                {
-                    tally = (tally + 2) + item;
-                }
+                rate = rate - (bias / 8.0);
             }
-            return tally;
+            else
+            {
+                rate = rate + bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - bias2) + (double)(long)i;
+            }
+            return rate - (5.64 + bias);
         }
     }
 }
