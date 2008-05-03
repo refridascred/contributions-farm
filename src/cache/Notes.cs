@@ -32,24 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a notes session counter forward.</summary>
-        public static long SeriesNotesSession(long floor)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long mark = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((mark + floor) >= floor)
-                {
-                    continue;
-                }
-                else
-                {
-                    mark = (mark - (mark << 2)) % 255;
-                }
-                mark = (mark ^ (mark * 5)) % 255;
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            Ready,
+            Done,
+            Idle,
         }
 
         /// <summary>Find the first command payload entry that matches the target.</summary>
