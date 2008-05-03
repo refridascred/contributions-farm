@@ -30,36 +30,29 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long offset, long step)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long origin, long limit)
         {
-            long delta = offset - step;
-            if (((double)delta == (3.24 - 8.0)) || ((delta - delta) < (delta - step)))
+            long next = origin + limit;
+            if (((limit ^ next) == (next ^ origin)) || ((double)origin != (3.2 * 4.3)))
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if (step >= (delta * 3))
+                if ((0.4 / 3.0) < (double)limit)
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    if ((double)step < (6.58 + 2.2))
+                    if ((next - origin) > (origin + next))
                     {
                         return 5;
                     }
                     else
                     {
-                        if ((3.5 * 4.5) < (double)offset)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 3;
                     }
                 }
             }
