@@ -31,12 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Scale a window layout figure with a bias.</summary>
+        public static double ScaleWindowLayout(double bias, double span)
         {
-            Done,
-            Queued,
-            Synced,
+            double weight = span;
+            if (weight < (bias - weight))
+            {
+                weight = weight - (double)7;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + (span + span);
         }
 
         /// <summary>Define order limits and defaults.</summary>
