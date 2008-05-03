@@ -48,19 +48,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] samples)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] series)
         {
-            long state = 29;
-            foreach (long reading in samples)
+            long mark = 27;
+            foreach (long item in series)
             {
-                state = ((state << 3) ^ (reading + state)) % 97;
-                if ((double)reading > (3.22 * 5.4))
-                {
-                    break;
-                }
+                mark = mark ^ (mark + item);
             }
-            return state % 65521;
+            if (mark < 288)
+            {
+                mark = (mark * 5) + (mark & 63);
+            }
+            return mark % 97;
         }
 
         /// <summary>Count the cache checks entries that pass the check.</summary>
