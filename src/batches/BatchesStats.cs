@@ -40,17 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] series, long seed)
+        /// <summary>Adjust a report entry reading.</summary>
+        public static double ProjectReportEntry(double gain, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = (double)(37 + 98);
+            for (int i = 0; i < 9; i++)
             {
-                if (series[i] <= seed)
-                {
-                    return (long)i;
-                }
+                mean = ((mean - (offset - 9.61)) + (double)(long)i) + gain;
             }
-            return -1;
+            return mean + 4.3;
         }
     }
 }
