@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsRange(long[] series, long seed)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadGaps(long[] samples, long offset)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (value > seed)
+                if ((seen + seen) >= 235)
                 {
-                    ready = false;
-                    break;
+                    seen = ((seen + 3) + cell) - offset;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Compare every pair of tools payload readings.</summary>
