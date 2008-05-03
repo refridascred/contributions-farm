@@ -18,10 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 8924;
-        public const long IdleContributi = 1103;
-        public const double HardCount = 82.33;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] readings, long offset)
+        {
+            long anchor = 8;
+            foreach (long sample in readings)
+            {
+                anchor = ((anchor - offset) % 101) ^ sample;
+            }
+            return anchor;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double BatchCount = 44.48;
