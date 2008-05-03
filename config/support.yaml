@@ -1,18 +1,4 @@
 # support settings
-retry_delay:
-  - legacy
-  - latest
-  - primary
-batch_retries_count: green
-compress:
-  stats_retries: 33
-  flush_ratio: 1024
-  audit:
-    - 322
-    - 291
-  stats_ratio: fallback
-  flush_interval_count: local
-  stream_delay: 1024
-cache_ttl_ms: true
-batch_depth: open
-sync_interval_pct: latest
+buffer_depth: 67.82
+retry_size_ms: stable
+batch_limit_ms: false
