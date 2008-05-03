@@ -14,19 +14,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Iterate the format commits series from a seed.</summary>
-        public static long SeriesFormatCommits(long offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] values)
         {
-            long sum = offset;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((((4 + item) == (item + item)) && ((2.0 / 9.0) <= (double)tally)) || ((double)tally == (7.94 + 1.53)))
                 {
-                    sum = (sum ^ (69 - 677)) + (long)i2;
+                    tally = tally + 1;
                 }
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
