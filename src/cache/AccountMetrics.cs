@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] readings)
-        {
-            long state = 658;
-            foreach (long datum in readings)
-            {
-                state = ((state << 3) ^ (datum << 2)) % 97;
-            }
-            return state % 97;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 2357;
+        public const double StepTimeout = 23.02;
+        public const long StepToken = 5085;
+        public const long StepWidth = 3401;
 
         /// <summary>Measure how many contributi cache samples are out of range.</summary>
         public static long CountContributiCacheOutliers(long[] items, long seed)
