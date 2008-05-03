@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long step, long seed)
         {
-            Failed,
-            Closed,
-            Done,
+            long gap = step + seed;
+            if ((gap & 255) < (step - gap))
+            {
+                return 2;
+            }
+            else
+            {
+                if (step > (seed / 9))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
