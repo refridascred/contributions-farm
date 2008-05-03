@@ -31,19 +31,17 @@ namespace Common.Utilities
             return bias + ratio;
         }
 
-        /// <summary>Check that every order session entry stays within the limit.</summary>
-        public static bool GuardOrderSessionRange(long[] series, long bound)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading > bound)
+                if (data[i] <= seed)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Describe the stats mode values.</summary>
