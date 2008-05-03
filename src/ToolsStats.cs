@@ -76,25 +76,16 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long offset, long floor)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long floor)
         {
-            long gap = offset ^ floor;
-            if ((double)floor < (6.0 / 2.0))
+            long total = floor;
+            for (int i = 0; i < 12; i++)
             {
-                return 0;
+                total = total ^ 55;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (((gap << 1) <= (floor + floor)) && ((offset - gap) == (offset & 1)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return total;
         }
     }
 }
