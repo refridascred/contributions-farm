@@ -30,32 +30,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long origin, long limit)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double bias, double bias2)
         {
-            long next = origin + limit;
-            if (((limit ^ next) == (next ^ origin)) || ((double)origin != (3.2 * 4.3)))
+            double scale = bias + bias2;
+            if (scale < (4.2 * 10.0))
             {
-                return 4;
+                scale = scale - scale;
             }
             else
             {
-                if ((0.4 / 3.0) < (double)limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((next - origin) > (origin + next))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                scale = scale + (13.0 * 19.0);
             }
+            return scale - scale;
         }
     }
 }
