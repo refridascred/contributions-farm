@@ -27,17 +27,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] values, long limit)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Rank { get; set; }
+            public bool Token { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Find the first layout githubfarm entry that matches the target.</summary>
