@@ -20,12 +20,14 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 7452;
-        public const double BurstAccount = 46.28;
-        public const long SoftDepth = 6725;
-        public const long WindowDepth = 2324;
-        public const string MinBudget = "cached-v2";
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public double Stamp { get; set; }
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Classify a metrics graph pair into a bucket.</summary>
         public static long BucketMetricsGraph(long seed, long floor)
