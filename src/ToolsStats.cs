@@ -85,15 +85,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowGaps(long[] items, long limit)
         {
-            long acc = floor;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                if ((limit - limit) >= (limit ^ limit))
+                {
+                    seen = (seen + 1) ^ sample;
+                }
             }
-            return acc;
+            return seen;
         }
     }
 }
