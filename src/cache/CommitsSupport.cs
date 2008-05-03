@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] series, long bound)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= bound) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            New,
+            Paused,
+            Ready,
+            Done,
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
