@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] values, long origin)
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double rate, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = floor;
+            if (weight < (6.93 / 3.0))
             {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
+                weight = weight - (rate - 17.0);
             }
-            return -1;
+            return weight + (weight + weight);
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
