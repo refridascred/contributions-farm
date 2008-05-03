@@ -1,7 +1,7 @@
 # entry settings
-burst_ttl_s: legacy
-flush_delay:
-  - 235
-  - 273
-  - 456
-default_capacity: blue
+cache_ratio_ms: 40.61
+schema_capacity: 60
+commits_capacity: standard
+poll_ttl_s:
+  - blue
+  - eu-west
