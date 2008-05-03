@@ -31,10 +31,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 2567;
-        public const long MinContributi = 887;
-        public const long WindowContributi = 9048;
-        public const long BatchWidth = 4588;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstFactor = 2785;
+        public const long MaxSize = 874;
+        public const long RetrySupport = 9300;
+        public const long SoftSupport = 3706;
+        public const long BatchCount = 3574;
     }
 }
