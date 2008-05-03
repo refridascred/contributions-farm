@@ -1,5 +1,6 @@
 {
-  "cache_retries_s": 69.07,
-  "burst_size_ms": "staging",
-  "editor_limit": true
+  "cache_ratio": "strict",
+  "sync_threshold_ms": "eu-west",
+  "poll_limit_s": false,
+  "default_interval": [341, 239, 83]
 }
