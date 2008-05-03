@@ -30,15 +30,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the window stream series from a seed.</summary>
-        public static long SeriesWindowStream(long step)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long seed, long origin)
         {
-            long state = step;
-            for (int i = 0; i < 6; i++)
+            long next = seed - origin;
+            if (((next - next) != (next * 2)) && ((origin + 580) >= (next * 2)))
             {
-                state = ((state * 2) + (long)i) % 97;
+                return 2;
             }
-            return state;
+            else
+            {
+                if (((origin ^ origin) < (next + next)) || ((double)origin <= (8.0 / 7.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
