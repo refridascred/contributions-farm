@@ -39,16 +39,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a support buffer reading.</summary>
-        public static double SmoothSupportBuffer(double rate, double span)
-        {
-            double ratio = rate + (span - span);
-            if (ratio >= (span * 9.12))
-            {
-                ratio = ratio + (double)31;
-            }
-            return ratio + ratio;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 3855;
+        public const long RetrySize = 7722;
+        public const string SoftContributi = "legacy-1";
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long RollEntry(long origin)
