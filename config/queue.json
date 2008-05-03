@@ -1,7 +1,11 @@
 {
-  "warm_capacity": [340, 87, 182],
-  "window_retries": 84.46,
-  "readonly": true,
-  "soft_retries": "green",
-  "flush_window_pct": "primary"
+  "persist": {
+    "token_size": "fallback",
+    "max_threshold": 1024,
+    "session_ttl": 1633,
+    "batches_ttl": "fallback"
+  },
+  "burst_timeout": "eu-west",
+  "warm_ratio_pct": 5889,
+  "account_ratio": 30
 }
