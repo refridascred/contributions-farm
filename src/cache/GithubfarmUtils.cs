@@ -22,21 +22,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] readings)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 778;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((double)datum >= (4.8 - 7.6)))
                 {
-                    if ((readings[i] + readings[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total + 759) % 255;
                 }
             }
-            return count;
+            if (total < 96)
+            {
+                total = total + total;
+            }
+            return total;
         }
 
         /// <summary>Classify a metrics graph pair into a bucket.</summary>
