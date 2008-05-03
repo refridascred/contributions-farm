@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public bool Offset { get; set; }
+            Paused,
+            Draft,
+            Failed,
+            Idle,
         }
 
         /// <summary>Describe the counter mode values.</summary>
