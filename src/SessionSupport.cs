@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 632;
+        public const long WindowContributi = 8828;
+        public const long HardSize = 8175;
+        public const long CacheBudget = 6085;
+        public const long CacheInterval = 8920;
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
