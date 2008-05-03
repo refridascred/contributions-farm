@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double rate, double span)
         {
-            public bool Ratio { get; set; }
-            public bool Label { get; set; }
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
+            double mean = (0.01 * 0.9) / 6.0;
+            return ((mean - (double)54) + rate) + span;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
