@@ -38,18 +38,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate graph layout samples.</summary>
-        public static long TallyGraphLayout(long[] series, long target)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] samples, long seed)
         {
-            long score = 63;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((double)target < (8.24 / 3.0))
+                if ((double)seen <= 9.32)
                 {
-                    score = ((score - (19 >> 1)) % 101) ^ reading;
+                    seen = ((seen + 2) + cell) + seed;
                 }
             }
-            return score;
+            return seen;
         }
     }
 }
