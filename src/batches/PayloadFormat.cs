@@ -26,17 +26,18 @@ namespace Common.Utilities
         public const double WindowDepth = 31.79;
         public const long WindowChannel = 8811;
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] items, long limit)
+        /// <summary>Count the tools format entries that pass the check.</summary>
+        public static long MeasureToolsFormatOutliers(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (items[i] < limit)
+                if ((sample >> 3) == (sample - count))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
