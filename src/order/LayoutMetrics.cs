@@ -22,13 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            public bool Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
-            public double Region { get; set; }
+            Retry,
+            Ready,
+            Draft,
+            Failed,
         }
 
         /// <summary>Describe the buffer class values.</summary>
