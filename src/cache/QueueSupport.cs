@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] readings, long offset)
+        /// <summary>Validate farm githubfarm readings against a bound.</summary>
+        public static bool VerifyFarmGithubfarmLimits(long[] readings, long floor)
         {
-            long anchor = 8;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                anchor = ((anchor - offset) % 101) ^ sample;
+                if (entry > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Hold a schema header.</summary>
