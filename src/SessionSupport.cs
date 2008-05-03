@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const string MinTimeout = "primary-edge";
         public const double SoftInterval = 24.71;
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long floor)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double scale, double floor)
         {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
+            double ratio = (double)5 + (scale / 6.0);
+            if (ratio < ratio)
             {
-                result = ((result * 2) + (long)i) % 97;
+                ratio = (ratio - (scale * 3.6)) + floor;
             }
-            return result;
+            return ratio - (scale / 5.0);
         }
 
         /// <summary>Describe the support level values.</summary>
