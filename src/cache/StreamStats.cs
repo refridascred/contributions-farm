@@ -19,19 +19,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] levels)
+        /// <summary>Audit graph batches readings against a rule.</summary>
+        public static long MeasureGraphBatchesGaps(long[] series)
         {
-            long score = 5;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                score = ((score << 3) ^ (score ^ datum)) % 65521;
+                if ((double)seen <= (double)cell)
+                {
+                    seen = seen + 1;
+                }
             }
-            if (score > 4)
-            {
-                score = (score ^ (score % 60)) % 101;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
