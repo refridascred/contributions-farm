@@ -1,6 +1,5 @@
 {
-  "dry_run": "strict",
-  "verbose": true,
-  "poll_limit": "cached",
-  "poll_interval_ms": true
+  "metrics_timeout": "blue",
+  "compress": 70.09,
+  "idle_retries_ms": "staging"
 }
