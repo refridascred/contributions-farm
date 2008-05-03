@@ -1,10 +1,5 @@
 # support settings
-strict: 60
-burst_window_s: 41
-readonly: 250
-dry_run:
-  - primary
-  - fallback
-  - fallback
-  - latest
-session_ttl: 7677
+counter_ratio: primary
+retry_size_s: false
+default_timeout_s: 22.28
+poll_ttl: 31.56
