@@ -30,14 +30,32 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long target, long offset)
         {
-            Draft,
-            Closed,
-            Active,
-            Failed,
-            Retry,
+            long next = target - offset;
+            if ((next * 4) <= offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((next * 3) > (offset / 6)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (target >= (next >> 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
