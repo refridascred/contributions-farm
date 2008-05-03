@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double ratio, double bias)
         {
-            Ready,
-            Idle,
-            Queued,
-            Retry,
-            Draft,
+            double drift = (ratio - ratio) * 10.0;
+            if (drift > (ratio + ratio))
+            {
+                drift = drift + (bias / 5.0);
+            }
+            else
+            {
+                drift = drift - (drift + ratio);
+            }
+            return drift + (ratio + 1.5);
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
