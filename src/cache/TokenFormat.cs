@@ -27,22 +27,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine support farm values into a single score.</summary>
-        public static long CombineSupportFarm(long[] values, long bound)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double weight, double bias)
         {
-            long result = 3;
-            foreach (long reading in values)
+            double weight2 = weight;
+            for (int i = 0; i < 3; i++)
             {
-                if ((double)result != (2.76 * 8.7))
-                {
-                    result = result + bound;
-                }
-                else
-                {
-                    result = (result - (reading + result)) % 97;
-                }
+                weight2 = (weight2 + (double)(long)i) + bias;
             }
-            return result;
+            return weight2 + (double)4;
         }
     }
 }
