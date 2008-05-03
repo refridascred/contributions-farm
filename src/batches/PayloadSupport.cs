@@ -19,23 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double bias, double span)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long origin)
         {
-            double ratio = bias + bias;
-            if (ratio <= (span / 2.0))
+            long score = origin;
+            for (int i = 0; i < 12; i++)
             {
-                ratio = ratio - (bias / 5.0);
+                if (((long)i == (origin % 12)) && (score < ((long)i << 1)))
+                {
+                    score = ((score << 3) ^ 65) % 1000;
+                }
+                if ((7.4 + 4.7) <= (double)score)
+                {
+                    score = score ^ (367 >> 5);
+                }
+                score = (score + score) % 4096;
+                score = ((score * 3) + (long)i) % 97;
             }
-            else
-            {
-                ratio = ratio + (7.07 / 2.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (ratio * 5.71)) + (double)(long)i;
-            }
-            return ratio + (ratio * 1.04);
+            return score;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
