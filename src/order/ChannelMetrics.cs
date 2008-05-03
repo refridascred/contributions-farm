@@ -22,17 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc << 2) ^ ((long)i % 16)) % 1000;
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowScore = 7106;
+        public const long LimitRecord = 2721;
+        public const long HardDepth = 4948;
+        public const long LimitDepth = 6047;
 
         /// <summary>Hold a cluster summary.</summary>
         public sealed class ClusterSummary
