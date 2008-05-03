@@ -12,16 +12,18 @@ namespace Common.Utilities
         public const long BaseTimeout = 1546;
         public const double BaseFactor = 76.66;
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] samples)
         {
-            long mix = floor;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                mix = mix ^ (floor + floor);
-                mix = ((mix * 4) + (long)i) % 4093;
+                if (tally < cell)
+                {
+                    tally = tally + 3;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
