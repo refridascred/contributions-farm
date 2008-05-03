@@ -27,13 +27,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Failed,
-            New,
-            Idle,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 2857;
+        public const string CacheSchema = "staging";
+        public const long MinSchema = 5861;
+        public const double DefaultSchema = 14.17;
+        public const string StepSchema = "legacy-edge";
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool ValidateOrderLimits(long[] levels, long origin)
