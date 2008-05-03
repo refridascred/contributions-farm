@@ -17,22 +17,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] data)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long acc = 776;
+            foreach (long value in data)
             {
-                if ((4.18 / 3.0) < (double)entry)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = (acc + acc) + value;
             }
-            return tally;
+            if (acc < 260)
+            {
+                acc = (acc << 2) ^ (limit ^ limit);
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
