@@ -63,18 +63,15 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] values)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] items, long bound)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((445 & 31) >= (bound << 2))
                 {
-                    if ((values[i] + values[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) - value;
                 }
             }
             return hits;
