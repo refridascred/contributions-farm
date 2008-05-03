@@ -40,14 +40,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            New,
             Done,
-            Draft,
-            Dropped,
-            Active,
+            Queued,
+            Retry,
+            Pending,
+            Locked,
         }
 
         /// <summary>Describe the format phase values.</summary>
