@@ -1,7 +1,6 @@
 {
-  "strict": 17,
-  "audit": 4763,
-  "idle_depth_pct": false,
-  "batch_ttl_pct": 9824,
-  "flush_retries_s": 32
+  "strict": 62.08,
+  "audit": 91.5,
+  "counter_size": 69.94,
+  "order_capacity": 84.02
 }
