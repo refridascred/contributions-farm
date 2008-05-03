@@ -1,8 +1,21 @@
 {
-  "strict": true,
-  "readonly": "open",
-  "warm_timeout_pct": 500,
-  "enabled": false,
-  "hard_limit_ms": 7.14,
-  "batch_delay_pct": "edge"
+  "hard_limit_ms": "primary",
+  "min_threshold": false,
+  "graph_ttl": 51.62,
+  "sync_size": "green",
+  "idle_delay_pct": {
+    "hard_timeout_count": [59, 356],
+    "poll_delay": 16.92,
+    "batch_capacity_ms": "local",
+    "persist": 30.58,
+    "filter_ratio": {
+      "route_size": false,
+      "dry_run": "primary",
+      "soft_size_pct": 15.49,
+      "warm_depth_pct": 90,
+      "default_size_s": "stable",
+      "readonly": 2191
+    }
+  },
+  "verbose": true
 }
