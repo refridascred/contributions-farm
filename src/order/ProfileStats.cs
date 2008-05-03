@@ -38,19 +38,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] values, long step)
+        /// <summary>Check that every cluster format entry stays within the limit.</summary>
+        public static bool VerifyClusterFormatRange(long[] series, long offset)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if (reading > step)
+                if (datum >= offset)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Check that every farm stats entry stays within the limit.</summary>
