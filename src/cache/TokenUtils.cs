@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Locked,
-            Pending,
-            New,
-            Done,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string IdleCount = "alpha-edge";
+        public const long WindowNotes = 7218;
+        public const long RetryFactor = 7239;
 
         /// <summary>Count channel counter pairs that satisfy a relation.</summary>
         public static long OverlapChannelCounterCount(long[] levels)
