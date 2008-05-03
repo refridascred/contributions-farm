@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public string Rank { get; set; } = "";
-            public double Level { get; set; }
+            Active,
+            Synced,
+            Ready,
         }
 
         /// <summary>Digest a series of schema entries.</summary>
