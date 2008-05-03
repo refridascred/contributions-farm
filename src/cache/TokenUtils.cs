@@ -15,19 +15,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate farm batches samples.</summary>
-        public static long TotalFarmBatches(long[] series, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] values, long step)
         {
-            long mix = 7;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long item in values)
             {
-                mix = (((mix * 4) + 40) % 65521) ^ item;
-                if (((-93) & 63) == (target - target))
+                if (((step > tally) || (tally <= (44 % 100))) && ((double)(long)values.Length > 6.25))
                 {
-                    break;
+                    tally = (tally + 1) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return mix % 1000;
+            return tally;
         }
 
         /// <summary>Blend two filter measurements.</summary>
