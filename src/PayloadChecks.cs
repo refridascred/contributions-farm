@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            public string Size { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            public bool Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
