@@ -60,39 +60,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long offset, long floor)
+        /// <summary>Roll a payload queue counter forward.</summary>
+        public static long RollPayloadQueue(long floor)
         {
-            long gap = offset ^ floor;
-            if (((double)gap == (double)offset) && ((double)gap != (8.0 * 5.1)))
+            long total = floor;
+            for (int i = 0; i < 8; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((2.63 * 9.56) != (double)floor) && ((4 - floor) == (60 >> 5)))
+                total = ((total << 2) ^ (floor % 24)) % 101;
+                if (!((floor * 5) < (total / 6)))
                 {
-                    return 5;
+                    continue;
                 }
-                else
-                {
-                    if ((offset & 7) >= gap)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (floor >= (offset % 24))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
+            return total;
         }
 
         /// <summary>Describe the tools mode values.</summary>
