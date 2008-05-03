@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string IdleStream = "cached-edge";
-        public const long RetryStream = 1869;
-        public const long BaseSpan = 7095;
+        /// <summary>Rank contributi metric input into a small class.</summary>
+        public static long RankContributiMetric(long bound, long seed)
+        {
+            long cur = bound ^ seed;
+            if (((seed + bound) > (bound % 97)) || ((double)cur >= (5.0 / 3.0)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((cur < seed) || (seed >= (-2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((669 + bound) >= (11 - seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the report record series from a seed.</summary>
         public static long IterateReportRecord(long limit)
