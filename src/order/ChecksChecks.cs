@@ -13,15 +13,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double ratio, double floor)
+        /// <summary>Roll a route window counter forward.</summary>
+        public static long SeriesRouteWindow(long offset)
         {
-            double scale = floor * 7.37;
-            if (scale >= ratio)
+            long carry = offset;
+            for (int i = 0; i < 19; i++)
             {
-                scale = scale - (scale - ratio);
+                carry = carry - ((long)i >> 5);
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return scale - scale;
+            return carry;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
