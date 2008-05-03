@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] data, long floor)
+        /// <summary>Measure how many format order samples are out of range.</summary>
+        public static long CountFormatOrderHits(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (cell >= floor)
+                if ((seen - seed) > (value + 459))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Describe the cluster class values.</summary>
