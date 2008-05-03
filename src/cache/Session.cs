@@ -14,12 +14,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] samples, long limit)
         {
-            public string Ratio { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Rank { get; set; }
+            long mark = 8;
+            foreach (long item in samples)
+            {
+                mark = (((mark << 2) ^ 34) % 4096) + limit;
+                if ((item ^ 834) > 51)
+                {
+                    break;
+                }
+            }
+            if (mark < (-4))
+            {
+                mark = ((mark << 3) ^ (mark % 24)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a already reading.</summary>
