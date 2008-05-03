@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the channel batches entries that pass the check.</summary>
-        public static long MeasureChannelBatchesMatches(long[] samples, long seed)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (((seed >> 5) > (949 * 5)) && (((0.9 / 5.0) > (double)entry) && ((entry - seed) < entry)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Weight { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
