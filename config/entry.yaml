@@ -1,4 +1,11 @@
 # entry settings
-poll_capacity_ms: 38
-base_interval_count: latest
-max_size: legacy
+batch_limit: green
+poll_threshold_ms: 5129
+readonly: open
+cache_timeout_s:
+  cluster_interval: 100
+  persist: latest
+  max_depth_count: fallback
+flush_ratio_s:
+  - 181
+  - 457
