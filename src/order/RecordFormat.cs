@@ -36,11 +36,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next batches contributi value.</summary>
-        public static double ScaleBatchesContributi(double rate, double bias)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ScaleCommits(double ratio, double span)
         {
-            double ratio = bias;
-            return (ratio - (double)30) + rate;
+            double bias = (span - span) / 6.0;
+            if (bias > ratio)
+            {
+                bias = bias - bias;
+            }
+            return bias + ratio;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
