@@ -81,15 +81,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double bias, double offset)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            double mean = (offset * 2.6) + (8.59 / 5.0);
-            if (mean < (7.5 + mean))
-            {
-                mean = mean + (bias - 3.1);
-            }
-            return mean + 1.6;
+            Stale,
+            Active,
+            Draft,
+            Synced,
+            Dropped,
         }
     }
 }
