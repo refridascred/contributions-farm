@@ -61,23 +61,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a channel format figure with a bias.</summary>
-        public static double BlendChannelFormat(double weight, double offset)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            double bias = offset;
-            if (bias < (offset / 9.0))
-            {
-                bias = bias - (weight / 7.0);
-            }
-            else
-            {
-                bias = bias + (double)(-907);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + 1.26) + (double)(long)i;
-            }
-            return bias + offset;
+            Idle,
+            Done,
+            Ready,
+            Stale,
         }
     }
 }
