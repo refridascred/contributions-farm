@@ -1,7 +1,6 @@
 {
-  "batch_window_pct": true,
-  "layout_interval": "primary",
-  "dry_run": 29,
-  "burst_depth_count": 60,
-  "base_ratio_count": ["local", "green"]
+  "commits_retries": "open",
+  "report_ratio": 59.33,
+  "batch_ttl": 40.54,
+  "warm_interval": "blue"
 }
