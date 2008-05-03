@@ -22,18 +22,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] data)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long floor, long seed)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long offset = floor - seed;
+            if (offset >= (floor % 2))
             {
-                if (((matches - matches) != (0 - matches)) && (((double)value > 20.0) && ((value << 1) == (matches ^ matches))))
+                return 5;
+            }
+            else
+            {
+                if ((floor << 2) > (offset << 2))
                 {
-                    matches = matches + 2;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Match up already samples.</summary>
