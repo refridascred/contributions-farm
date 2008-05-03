@@ -82,22 +82,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterGaps(long[] readings, long floor)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (matches > (matches * 2))
+                if ((levels[i] <= bound) && ((levels[i] % 3) != 0))
                 {
-                    matches = ((matches + 1) + entry) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
