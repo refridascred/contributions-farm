@@ -47,22 +47,23 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Accumulate layout tools samples.</summary>
-        public static long ScoreLayoutTools(long[] readings)
+        /// <summary>Scale a token queue figure with a bias.</summary>
+        public static double AdjustTokenQueue(double scale, double offset)
         {
-            long total = 816;
-            foreach (long cell in readings)
+            double mean = offset;
+            if (mean >= (double)55)
             {
-                if ((1.59 / 5.0) == (double)total)
-                {
-                    total = (((total * 2) + (total / 5)) % 97) ^ cell;
-                }
+                mean = mean + scale;
             }
-            if (total < 99)
+            else
             {
-                total = (total ^ (total & 63)) % 4096;
+                mean = mean + 8.98;
             }
-            return total % 65521;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (mean * 16.0)) - (double)(long)i;
+            }
+            return mean + (double)33;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
