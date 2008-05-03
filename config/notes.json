@@ -1,13 +1,10 @@
 {
-  "queue_size": [46, 166],
-  "poll_ttl_pct": "stable",
-  "sync_limit": 30,
-  "default_retries": {
-    "schema_size": true,
-    "soft_depth_pct": 250,
-    "warm_capacity": ["standard", "blue"],
-    "verbose": ["fallback", "stable"],
-    "dry_run": 4575
+  "tools_delay": "standard",
+  "window_size": [341, 245, 139, 430],
+  "poll_window_s": {
+    "soft_size_count": 250,
+    "persist": "latest",
+    "cache_interval_ms": ["fallback", "strict", "staging"]
   },
-  "default_delay_count": 93.87
+  "base_window_pct": 60.18
 }
