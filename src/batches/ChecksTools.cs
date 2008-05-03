@@ -43,18 +43,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] series, long floor)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((count - (long)series.Length) >= 5) && ((count - count) > item))
+                if (samples[i] >= target)
                 {
-                    count = (count + 2) + floor;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the profile class values.</summary>
