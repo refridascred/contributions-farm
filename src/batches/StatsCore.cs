@@ -63,20 +63,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a payload queue counter forward.</summary>
-        public static long RollPayloadQueue(long floor)
+        /// <summary>Count graph payload pairs that satisfy a relation.</summary>
+        public static long PairGraphPayloadCount(long[] items)
         {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total << 2) ^ (floor % 24)) % 101;
-                if (!((floor * 5) < (total / 6)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    continue;
+                    if ((items[i] ^ items[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
                 }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the tools mode values.</summary>
