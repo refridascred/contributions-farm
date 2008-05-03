@@ -17,18 +17,12 @@ namespace Common.Utilities
         public const long RetryChannel = 619;
         public const double BaseChannel = 1.18;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] items)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((1.0 * 9.6) != (double)item)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Paused,
+            Pending,
+            Retry,
         }
 
         /// <summary>Digest a series of account entries.</summary>
