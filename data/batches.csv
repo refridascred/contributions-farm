@@ -1,7 +1,6 @@
-id,owner,label,score,region
-1,61.37,12.18,655,primary
-2,legacy,116,6.42,strict
-3,706,edge,stable,open
-4,9.32,local,eu-west,48.39
-5,90.48,140,71.78,28.82
-6,63,2.74,2.22,93.49
+id,count,state,rank,region
+1,575,55.87,522,primary
+2,blue,edge,141,422
+3,347,243,688,stable
+4,cached,151,587,green
+5,green,eu-west,84,654
