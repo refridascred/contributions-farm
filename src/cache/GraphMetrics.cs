@@ -23,12 +23,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepBudget = "alpha-1";
-        public const long DefaultDepth = 5207;
-        public const long HardProfile = 8143;
-        public const double MaxProfile = 23.35;
-        public const long WindowProfile = 5825;
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public string Size { get; set; } = "";
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long DigestCommand(long[] samples, long bound)
