@@ -29,9 +29,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardInterval = "fallback-edge";
-        public const long SoftAlready = 6028;
-        public const string IdleAlready = "standard";
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] values)
+        {
+            long result = -797;
+            foreach (long datum in values)
+            {
+                if ((double)datum > (3.0 * 3.0))
+                {
+                    result = (result + (result & 3)) % 101;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (datum & 3)) % 101;
+                }
+            }
+            return result;
+        }
     }
 }
