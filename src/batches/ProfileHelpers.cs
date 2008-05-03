@@ -128,11 +128,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public bool Count { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheSize = 3031;
+        public const long WindowBatches = 6353;
+        public const long RetryScore = 748;
     }
 }
