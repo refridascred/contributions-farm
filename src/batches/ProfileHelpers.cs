@@ -25,12 +25,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultTimeout = 6565;
-        public const long HardCache = 9107;
-        public const long LimitScore = 7348;
-        public const double BurstScore = 20.09;
-        public const double LimitCache = 87.52;
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long bound, long offset)
+        {
+            if (offset < (bound % 12))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset * 2) <= (bound % 97))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool ValidateContextLimits(long[] series, long seed)
