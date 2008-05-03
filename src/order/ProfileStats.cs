@@ -53,18 +53,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit support window readings against a rule.</summary>
-        public static long MeasureSupportWindowHits(long[] data, long origin)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if ((sample + 52) >= hits)
+                if (cell < 988)
                 {
-                    hits = (hits + 1) + origin;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
