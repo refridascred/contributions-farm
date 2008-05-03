@@ -24,12 +24,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] series, long limit)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] data, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (series[i] < limit)
+                if (data[i] >= target)
                 {
                     return (long)i;
                 }
