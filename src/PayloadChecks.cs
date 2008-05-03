@@ -14,29 +14,29 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long step, long floor)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long limit, long offset)
         {
-            long diff = step ^ floor;
-            if ((3 + floor) != (floor % 8))
+            long offset2 = limit ^ offset;
+            if (((offset + 22) <= 0) || (4 < (limit - offset)))
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if ((floor - floor) <= (diff * 5))
+                if (!((offset2 / 4) > offset2))
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    if ((step + step) != (step & 255))
+                    if ((706 << 1) < offset2)
                     {
-                        return 8;
+                        return 5;
                     }
                     else
                     {
-                        return 7;
+                        return 2;
                     }
                 }
             }
