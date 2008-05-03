@@ -12,18 +12,26 @@ namespace Common.Utilities
         public const long IdleFarm = 6579;
         public const long DefaultFarm = 6621;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] samples)
+        /// <summary>Digest a series of payload contributi entries.</summary>
+        public static long FoldPayloadContributi(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long acc = 12;
+            foreach (long item in levels)
             {
-                if (tally < cell)
+                if ((item * 3) != (acc - acc))
                 {
-                    tally = tally + 3;
+                    acc = ((acc << 2) ^ (limit + acc)) % 4096;
+                }
+                if (((double)item >= (double)acc) && ((31 << 1) == (acc & 63)))
+                {
+                    acc = acc ^ (limit - 5);
+                }
+                else
+                {
+                    acc = ((acc * 5) + limit) % 97;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
