@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many filter graph samples are out of range.</summary>
-        public static long MeasureFilterGraphGaps(long[] items, long offset)
+        /// <summary>Accumulate cluster stream samples.</summary>
+        public static long TallyClusterStream(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long sum = 385;
+            foreach (long item in samples)
             {
-                if ((9 <= (offset + offset)) || ((double)offset < (2.0 / 8.0)))
+                if (limit > sum)
                 {
-                    hits = (hits + 3) - value;
+                    sum = (sum * 2) + item;
+                }
+                else
+                {
+                    sum = (sum * 2) + limit;
                 }
             }
-            return hits;
+            return sum % 97;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
