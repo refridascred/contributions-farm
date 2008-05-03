@@ -74,31 +74,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long limit, long floor)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] series, long seed)
         {
-            if (((6 / 6) > floor) || ((floor % 2) < 517))
+            bool stale = true;
+            foreach (long cell in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((13.0 / 5.0) >= (double)limit) || ((limit + (-37)) > (limit & 7)))
+                if (cell <= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((1.43 - 12.0) == (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
