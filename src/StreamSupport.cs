@@ -28,15 +28,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Project the next stats buffer value.</summary>
-        public static double ProjectStatsBuffer(double weight, double offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] values)
         {
-            double weight2 = offset;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                weight2 = (weight2 - (5.0 / 5.0)) + (double)(long)i;
+                if (reading >= (reading - (-50)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return weight2 - (weight - weight2);
+            return seen;
         }
     }
 }
