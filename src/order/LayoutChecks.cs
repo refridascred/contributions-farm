@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string StepCount = "stable";
-        public const long LimitTimeout = 1718;
-        public const double BaseFactor = 60.4;
+        /// <summary>Count support profile pairs that satisfy a relation.</summary>
+        public static long PairSupportProfileCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank window input into a small class.</summary>
         public static long BucketWindow(long step, long origin)
