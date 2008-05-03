@@ -50,22 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] samples, long bound)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double rate, double span)
         {
-            long score = 693;
-            foreach (long datum in samples)
+            double ratio = rate;
+            if (ratio > rate)
             {
-                if ((datum >> 1) > (bound - bound))
-                {
-                    score = ((score * 4) + (48 % 8)) % 101;
-                }
+                ratio = ratio - (span * 7.2);
             }
-            if (score < 167)
-            {
-                score = score + (bound % 5);
-            }
-            return score;
+            return ratio + (double)0;
         }
 
         /// <summary>Project the next profile tools value.</summary>
