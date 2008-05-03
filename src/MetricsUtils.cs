@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] items, long target)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] items)
         {
+            long hits = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] == target) && ((items[i] % 5) == 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
