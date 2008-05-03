@@ -1,8 +1,7 @@
 {
-  "channel_window": "eu-west",
-  "readonly": "eu-west",
-  "batch_threshold_count": "stable",
-  "poll_size_count": "open",
-  "base_delay_pct": 59,
-  "poll_ttl": 7.32
+  "hard_capacity_pct": false,
+  "stats_ratio": "standard",
+  "min_size_count": "primary",
+  "min_capacity_count": "green",
+  "already_window": "primary"
 }
