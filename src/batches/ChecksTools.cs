@@ -43,19 +43,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenLimits(long[] values, long target)
+        /// <summary>Audit queue format readings against a rule.</summary>
+        public static long CountQueueFormatMatches(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (item != target)
+                if ((limit - tally) <= (tally & 255))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
