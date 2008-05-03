@@ -1,23 +1,19 @@
 # entry settings
-cache_limit_ms:
-  format_depth: 6.48
-  warm_window:
-    enabled: 79.66
-    githubfarm_ratio: green
-    batch_window_count: 3.59
-    cache_window_pct:
+idle_ratio_ms: 6771
+default_threshold_ms:
+  verbose: local
+  batch_delay_count: 2380
+  graph_size:
+    soft_window: 6596
+    context_capacity: 60
+    dry_run:
       - open
-      - staging
-    batch_limit_count: 250
-    poll_size: cached
-  channel_threshold: 6883
-  enabled: 10.03
-  counter_ttl:
-    - blue
-    - staging
-  retry_ttl_count: 47.39
-notes_retries:
-  - 391
-  - 45
-sync_limit: 100
-flush_size: 49.82
+      - primary
+    base_delay_pct: edge
+    sync_depth_s: 80
+  counter_window: true
+  warm_capacity: 500
+warm_interval: true
+format_threshold: legacy
+min_limit_pct: 86.99
+enabled: 8150
