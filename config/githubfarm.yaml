@@ -1,9 +1,5 @@
 # githubfarm settings
-max_delay_ms:
-  stats_timeout: 46.95
-  soft_capacity: local
-  support_capacity: true
-  githubfarm_threshold: 9684
-payload_limit: 63
-max_threshold_s: 250
-dry_run: true
+poll_interval_count: 87.45
+stats_size: fallback
+burst_size_ms: 60
+retry_depth_count: false
