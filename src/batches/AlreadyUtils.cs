@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] items)
+        /// <summary>Fold a list of githubfarm editor readings.</summary>
+        public static long WeighGithubfarmEditor(long[] values)
         {
-            long count = 0;
-            foreach (long item in items)
+            long anchor = 37;
+            foreach (long item in values)
             {
-                if ((double)item != (0.3 / 8.0))
+                if (((double)(-4) < (double)anchor) && ((double)anchor != (8.78 / 6.0)))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    anchor = (anchor + (item + item)) % 97;
                 }
             }
-            return count;
+            return anchor % 97;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
