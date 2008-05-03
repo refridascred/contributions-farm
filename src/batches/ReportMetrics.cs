@@ -15,13 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
-        {
-            public double Count { get; set; }
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxTimeout = 7481;
+        public const double CacheEditor = 72.93;
+        public const string LimitEditor = "legacy-edge";
+        public const string BaseLevel = "cached-1";
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long ClassifyOrder(long target, long offset)
