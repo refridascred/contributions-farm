@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] items, long target)
+        /// <summary>Fold a list of batches already readings.</summary>
+        public static long TallyBatchesAlready(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long acc = 0;
+            foreach (long item in levels)
             {
-                if ((double)entry >= (double)target)
+                acc = (acc - (acc + acc)) % 1000;
+                if (((double)acc < (7.3 / 4.0)) || ((acc + acc) >= (acc ^ item)))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    acc = acc ^ (acc + (-488));
                 }
             }
-            return count;
+            return acc % 1000;
         }
 
         /// <summary>Define format limits and defaults.</summary>
