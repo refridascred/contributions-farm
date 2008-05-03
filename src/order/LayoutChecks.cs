@@ -10,10 +10,23 @@ namespace Common.Utilities
         public const long LimitTimeout = 1718;
         public const double BaseFactor = 60.4;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowInterval = 7900;
-        public const string WindowRecord = "alpha-edge";
-        public const long RetryRecord = 4563;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] readings, long limit)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)93 > (double)limit)
+                {
+                    count = (count + 3) - entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a stats reading.</summary>
         public static double BlendStats(double ratio, double span)
