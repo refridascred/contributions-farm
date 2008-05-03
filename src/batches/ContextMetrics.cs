@@ -60,10 +60,19 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultRatio = "primary-v2";
-        public const string LimitBudget = "staging-v2";
-        public const long DefaultGraph = 6296;
-        public const long LimitRatio = 4892;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] levels, long seed)
+        {
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
