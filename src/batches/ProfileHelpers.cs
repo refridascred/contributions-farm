@@ -101,31 +101,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long step, long seed)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] data, long origin)
         {
-            if (6 >= (step >> 3))
+            long result = 862;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (step < (step - seed))
+                result = ((result << 2) ^ (result % 5)) % 97;
+                if ((9.35 / 2.0) >= (double)item)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step == (6.2 - 15.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    result = (result << 2) ^ ((-3) ^ origin);
                 }
             }
+            return result % 65521;
         }
 
         /// <summary>Define order limits and defaults.</summary>
