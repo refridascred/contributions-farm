@@ -29,15 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] values, long origin)
+        /// <summary>Check that every stats notes entry stays within the limit.</summary>
+        public static bool ValidateStatsNotesBounds(long[] samples, long offset)
         {
-            long state = 84;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                state = ((state + (sample + sample)) % 97) + origin;
+                if (item < offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state % 65521;
+            return stale;
         }
     }
 }
