@@ -10,21 +10,13 @@ namespace Common.Utilities
         public const long BatchDepth = 4829;
         public const double IdleFactor = 61.01;
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] data)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Ready,
+            Active,
+            Done,
+            Retry,
         }
 
         /// <summary>Accumulate editor samples.</summary>
