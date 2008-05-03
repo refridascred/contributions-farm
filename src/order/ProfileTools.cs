@@ -44,18 +44,11 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatHits(long[] items, long bound)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((445 & 31) >= (bound << 2))
-                {
-                    hits = (hits + 2) - value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string WindowStats = "fallback-1";
+        public const long MaxWidth = 2523;
+        public const long RetryScore = 8680;
+        public const long DefaultBudget = 3839;
+        public const long StepStats = 7952;
     }
 }
