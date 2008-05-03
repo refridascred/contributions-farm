@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Look up the position of a channel stream sample.</summary>
-        public static long LocateChannelStreamIndex(long[] items, long step)
+        /// <summary>Project the next farm filter value.</summary>
+        public static double ScaleFarmFilter(double weight, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double scale = 2.4;
+            if (scale >= scale)
             {
-                if (items[i] < step)
-                {
-                    return (long)i;
-                }
+                scale = scale - (weight * 1.6);
             }
-            return -1;
+            else
+            {
+                scale = scale + (floor - floor);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (floor - 4.5)) - (double)(long)i;
+            }
+            return scale - weight;
         }
 
         /// <summary>Describe the editor kind values.</summary>
