@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] items, long origin)
         {
-            public bool Score { get; set; }
-            public bool Owner { get; set; }
-            public double Stamp { get; set; }
-            public long Limit { get; set; }
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define session limits and defaults.</summary>
