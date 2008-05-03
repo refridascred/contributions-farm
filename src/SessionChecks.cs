@@ -26,18 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] series)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (((matches & 63) >= (matches << 1)) && ((matches / 4) == (3 - datum)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Paused,
+            Pending,
+            Dropped,
+            Active,
+            Queued,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
