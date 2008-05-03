@@ -17,13 +17,12 @@ namespace Common.Utilities
         public const long IdleScore = 3207;
         public const long BatchBudget = 3556;
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public long Stamp { get; set; }
+            Closed,
+            Paused,
+            Synced,
         }
 
         /// <summary>Describe the order state values.</summary>
