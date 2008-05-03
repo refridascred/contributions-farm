@@ -80,13 +80,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
-        {
-            Stale,
-            Synced,
-            Done,
-            Active,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultTimeout = 6404;
+        public const double MaxInterval = 32.63;
+        public const double MinFactor = 22.63;
+        public const long IdleSpan = 4062;
+        public const long SoftCache = 2101;
     }
 }
