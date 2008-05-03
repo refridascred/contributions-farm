@@ -20,18 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit metric token readings against a rule.</summary>
-        public static long MeasureMetricTokenOutliers(long[] readings)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (((221 + entry) != (1 / 6)) || ((11.0 + 13.0) > (double)hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Closed,
+            Pending,
+            Idle,
+            Done,
         }
 
         /// <summary>Compare every pair of notes session readings.</summary>
