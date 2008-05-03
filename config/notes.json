@@ -1,6 +1,20 @@
 {
-  "support_size": 14,
-  "filter_capacity": 1024,
-  "readonly": "local",
-  "soft_threshold": "cached"
+  "poll_window_ms": 67.56,
+  "warm_interval_ms": {
+    "commits_timeout": true,
+    "dry_run": {
+      "min_limit": 3434,
+      "idle_ratio": "legacy",
+      "cache_capacity_count": 2,
+      "tools_delay": false
+    },
+    "enabled": {
+      "base_ttl": [292, 45, 91, 123],
+      "sync_capacity_s": "cached",
+      "audit": "latest",
+      "schema_interval": ["staging", "blue", "blue", "open"]
+    }
+  },
+  "batch_ratio": 5149,
+  "sync_threshold": ["blue", "green", "local", "legacy"]
 }
