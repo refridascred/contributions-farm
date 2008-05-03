@@ -65,11 +65,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 7826;
-        public const string IdleInterval = "strict-v2";
-        public const long RetryFarm = 6846;
-        public const long LimitScore = 9728;
-        public const double BurstFarm = 49.62;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] samples, long limit)
+        {
+            long result = -88;
+            foreach (long datum in samples)
+            {
+                if ((datum >= (result << 3)) || ((891 & 3) <= limit))
+                {
+                    result = ((result * 4) + (limit + limit)) % 65521;
+                }
+                else
+                {
+                    result = (result - (datum * 2)) % 255;
+                }
+            }
+            return result;
+        }
     }
 }
