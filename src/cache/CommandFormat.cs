@@ -14,19 +14,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double weight, double floor)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ProjectContributi(double scale, double span)
         {
-            double ratio = (double)(53 / 6);
-            if (ratio <= (weight - 4.75))
+            double weight = scale * 19.0;
+            for (int i = 0; i < 6; i++)
             {
-                ratio = (ratio + (ratio / 7.0)) - floor;
+                weight = ((weight + (1.35 / 3.0)) + (double)(long)i) - span;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + weight;
+            return weight - (2.0 / 6.0);
         }
 
         /// <summary>Compare every pair of account readings.</summary>
