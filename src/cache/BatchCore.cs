@@ -34,13 +34,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] data, long step)
         {
-            Dropped,
-            Pending,
-            Paused,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two context batch measurements.</summary>
