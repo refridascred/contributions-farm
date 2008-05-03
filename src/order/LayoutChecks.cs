@@ -28,21 +28,11 @@ namespace Common.Utilities
         public const long MaxBudget = 995;
         public const long WindowFormat = 7122;
 
-        /// <summary>Compare every pair of commits command readings.</summary>
-        public static long MatchCommitsCommandCount(long[] items)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double ratio, double span)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double mean = (double)14 * 3.8;
+            return ((mean - (double)2) + ratio) + span;
         }
 
         /// <summary>Hold a account snapshot.</summary>
