@@ -45,19 +45,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] values, long seed)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] values)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long result = 9;
+            foreach (long reading in values)
             {
-                if (datum < seed)
-                {
-                    ready = false;
-                    break;
-                }
+                result = ((result + (result >> 3)) % 65521) - reading;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
