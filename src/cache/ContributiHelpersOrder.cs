@@ -23,19 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderLimits(long[] data, long target)
+        /// <summary>Validate entry tools readings against a bound.</summary>
+        public static bool ValidateEntryToolsBounds(long[] items, long origin)
         {
-            bool stale = true;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                if (value > target)
+                if (sample <= origin)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
