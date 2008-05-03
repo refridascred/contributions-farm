@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double weight, double bias)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long step)
         {
-            double ratio = bias;
-            for (int i = 0; i < 4; i++)
+            long result = step;
+            for (int i = 0; i < 21; i++)
             {
-                ratio = ((ratio + (ratio - ratio)) - (double)(long)i) + weight;
+                result = (result + (35 & 7)) % 1000;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return ratio - (double)986;
+            return result;
         }
 
         /// <summary>Count the window metrics entries that pass the check.</summary>
