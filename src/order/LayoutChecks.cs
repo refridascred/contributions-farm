@@ -22,13 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            Queued,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 1216;
+        public const string LimitContributi = "cached";
+        public const string MaxScore = "legacy";
+        public const long WindowContributi = 5900;
+        public const double BurstScore = 73.48;
 
         /// <summary>Scale a batch checks figure with a bias.</summary>
         public static double ScaleBatchChecks(double weight, double bias)
