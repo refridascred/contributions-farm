@@ -1,17 +1,10 @@
 # entry settings
-base_limit_pct: 5862
-soft_window: 58
-idle_depth: 30
-counter_capacity:
-  default_ttl: 31
-  layout_size: false
-  verbose:
-    - fallback
-    - staging
-    - edge
-  min_size_s: false
-  flush_interval_ms:
-    - strict
-    - standard
-    - cached
-    - cached
+commits_capacity: latest
+base_ttl:
+  - strict
+  - cached
+  - staging
+commits_ttl: false
+base_limit_s: 15.06
+cache_interval_ms: 55
+batch_interval_pct: 2269
