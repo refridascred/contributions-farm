@@ -87,18 +87,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] items)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((value - 923) > 5)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Done,
+            Synced,
+            Failed,
+            Idle,
         }
     }
 }
