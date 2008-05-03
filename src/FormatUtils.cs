@@ -27,20 +27,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] readings, long limit)
-        {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BurstSpan = 4.96;
+        public const long BurstAccount = 4602;
+        public const double MaxRatio = 47.5;
+        public const long MinAccount = 1426;
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
