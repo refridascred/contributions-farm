@@ -75,10 +75,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 5149;
-        public const long MinFactor = 4315;
-        public const long RetrySchema = 9641;
-        public const long BatchTimeout = 3020;
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
+        {
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
+            public bool Offset { get; set; }
+        }
     }
 }
