@@ -25,25 +25,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long step, long origin)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] series, long seed)
         {
-            long delta = step + origin;
-            if ((step + step) < (delta - delta))
+            long count = 0;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((step % 64) <= delta) || ((delta + origin) < (7 % 12)))
+                if ((9.53 + 5.9) <= (double)seed)
                 {
-                    return 7;
+                    count = (count + 3) + entry;
                 }
                 else
                 {
-                    return 0;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the support state values.</summary>
