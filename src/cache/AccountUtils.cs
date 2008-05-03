@@ -19,19 +19,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyMatches(long[] series)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricMatches(long[] values)
         {
             long count = 0;
-            foreach (long sample in series)
+            foreach (long value in values)
             {
-                if ((3.8 / 3.0) > (double)sample)
+                if ((value + value) != (count + value))
                 {
                     count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
                 }
             }
             return count;
