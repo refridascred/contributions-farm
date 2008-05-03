@@ -93,19 +93,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double bias, double span)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long bound)
         {
-            double gain = (double)(-4) - bias;
-            if (gain >= (span - span))
+            long mix = bound;
+            for (int i = 0; i < 22; i++)
             {
-                gain = gain - (gain + 0.27);
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            else
-            {
-                gain = gain + bias;
-            }
-            return gain + (double)48;
+            return mix;
         }
     }
 }
