@@ -58,11 +58,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
+            Queued,
+            Retry,
+            Ready,
         }
     }
 }
