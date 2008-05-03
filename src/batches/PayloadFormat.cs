@@ -15,10 +15,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 7709;
-        public const long WindowAlready = 2928;
-        public const long SoftAlready = 3323;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamLimits(long[] data, long floor)
+        {
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long TallyGraphGaps(long[] readings, long target)
