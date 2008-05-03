@@ -14,20 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] readings, long step)
-        {
-            long acc = 4;
-            foreach (long cell in readings)
-            {
-                acc = ((((acc * 2) + (acc & 7)) % 4096) + cell) + step;
-            }
-            if (acc < (-58))
-            {
-                acc = (acc ^ acc) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepCount = 4890;
+        public const long StepInterval = 8039;
+        public const string BurstStream = "open-edge";
+        public const double CacheStream = 66.57;
+        public const long IdleDepth = 7104;
 
         /// <summary>Rank account input into a small class.</summary>
         public static long RankAccount(long offset, long floor)
