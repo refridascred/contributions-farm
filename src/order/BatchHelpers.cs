@@ -25,38 +25,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long offset, long origin)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] values, long bound)
         {
-            if ((14.0 > (double)offset) && ((double)origin >= (9.7 - 3.7)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(50 < (origin << 2)))
+                if (values[i] >= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (offset < (2 + origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin + origin) < origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the already kind values.</summary>
