@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up batches githubfarm samples.</summary>
-        public static long OverlapBatchesGithubfarmCount(long[] items)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double rate, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = (double)(280 + 29);
+            if (scale >= (5.0 + 15.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = (scale - (scale - 11.0)) - floor;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (scale * 18.0)) + (double)(long)i;
+            }
+            return scale - (6.91 - rate);
         }
 
         /// <summary>Combine checks commits values into a single score.</summary>
