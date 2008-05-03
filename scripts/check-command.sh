@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=294
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-eu-west}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in legacy edge strict; do
+    log "checking ${item}"
+done
 
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in fallback primary; do
-    log "checking ${item}"
-done
