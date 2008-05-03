@@ -51,23 +51,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] levels, long offset)
+        /// <summary>Locate a layout commits reading by value.</summary>
+        public static long SeekLayoutCommitsIndex(long[] data, long bound)
         {
-            long result = 64;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result ^ (offset + (-377))) % 65521;
-                if (!((result / 3) < (56 + offset)))
+                if ((data[i] >= bound) && ((data[i] % 5) != 0))
                 {
-                    result = ((result * 2) + result) % 65521;
-                }
-                if ((double)sample != (double)result)
-                {
-                    result = ((result << 2) ^ (offset + offset)) % 65521;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
