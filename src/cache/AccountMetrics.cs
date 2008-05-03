@@ -11,25 +11,22 @@ namespace Common.Utilities
         public const long HardFactor = 2795;
         public const double HardCount = 72.98;
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long origin, long step)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] readings)
         {
-            long bound = origin - step;
-            if (!(origin <= step))
+            long count = 0;
+            foreach (long value in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)step > (0.52 - 3.17)) && ((step >> 3) > bound))
+                if (count <= (count % 5))
                 {
-                    return 6;
+                    count = (count + 2) ^ value;
                 }
                 else
                 {
-                    return 5;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Look up the position of a counter checks sample.</summary>
