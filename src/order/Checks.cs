@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string RetryFarm = "cached";
-        public const long StepFarm = 1111;
-        public const long BurstFarm = 6048;
-        public const long IdleFarm = 6579;
-        public const long DefaultFarm = 6621;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] values, long seed)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((double)seed < (9.0 * 1.0))
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of payload contributi entries.</summary>
         public static long FoldPayloadContributi(long[] levels, long limit)
