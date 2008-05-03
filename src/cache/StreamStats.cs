@@ -12,15 +12,11 @@ namespace Common.Utilities
         public const double StepCounter = 21.0;
         public const long HardCounter = 6575;
 
-        /// <summary>Blend two counter token measurements.</summary>
-        public static double BlendCounterToken(double bias, double offset)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            double drift = (18.0 * 6.51) - (double)94;
-            if (drift <= drift)
-            {
-                drift = drift + (offset * 4.1);
-            }
-            return drift - (bias - offset);
+            public bool Rank { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Fold a list of batches readings.</summary>
