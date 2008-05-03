@@ -17,14 +17,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            Paused,
-            Pending,
-            Synced,
-            Draft,
-            Queued,
+            public bool Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
