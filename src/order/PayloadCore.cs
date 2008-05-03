@@ -16,13 +16,18 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] data)
         {
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public bool Count { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((double)hits != (7.6 / 7.0))
+                {
+                    hits = (hits + 2) - item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up metric samples.</summary>
