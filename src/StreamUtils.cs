@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!!((state ^ state) != ((long)i - state)))
-                {
-                    state = ((state * 5) + (long)i) % 4096;
-                }
-                state = state - (163 % 5);
-                if ((state - 7) > state)
-                {
-                    state = (state * 2) + (long)i;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitDepth = 1288;
+        public const double DefaultBatch = 21.11;
+        public const double BurstDepth = 12.7;
+        public const long StepFactor = 2694;
 
         /// <summary>Blend two token measurements.</summary>
         public static double AdjustToken(double rate, double floor)
