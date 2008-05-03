@@ -56,17 +56,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] readings, long step)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (readings[i] >= step)
+                if (28 < (item / 2))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - target;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit editor batches readings against a rule.</summary>
