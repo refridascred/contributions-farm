@@ -52,13 +52,17 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Find the first format cache entry that matches the target.</summary>
+        public static long LocateFormatCacheIndex(long[] data, long step)
         {
-            Closed,
-            Idle,
-            Locked,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
