@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double rate, double floor)
-        {
-            double scale = (double)(280 + 29);
-            if (scale >= (5.0 + 15.0))
-            {
-                scale = (scale - (scale - 11.0)) - floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - (scale * 18.0)) + (double)(long)i;
-            }
-            return scale - (6.91 - rate);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 3761;
+        public const long CacheTimeout = 7753;
+        public const long BurstContext = 3296;
+        public const string RetryContext = "stable-1";
 
         /// <summary>Combine checks commits values into a single score.</summary>
         public static long CombineChecksCommits(long[] levels)
