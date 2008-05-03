@@ -1,18 +1,6 @@
 {
-  "idle_retries_pct": {
-    "default_delay_count": {
-      "audit": 94.96,
-      "hard_size_pct": "staging",
-      "command_window": 65.27,
-      "poll_window": [459, 49, 66, 235],
-      "buffer_timeout": "stable"
-    },
-    "default_ratio_pct": "legacy",
-    "base_interval_pct": true,
-    "notes_ttl": ["latest", "cached", "blue", "green"],
-    "cluster_delay": "staging"
-  },
-  "record_capacity": 497,
-  "readonly": 22.48,
-  "enabled": 48.37
+  "min_retries_s": true,
+  "enabled": "blue",
+  "command_timeout": "primary",
+  "batch_ttl_pct": 7
 }
