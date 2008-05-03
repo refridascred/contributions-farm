@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] readings, long seed)
         {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
