@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long target, long bound)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            if (7 <= (bound << 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound + target) >= 398)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)target < (19.0 * 4.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)bound > (9.54 - 4.69))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Project the next token value.</summary>
