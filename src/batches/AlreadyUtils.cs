@@ -27,12 +27,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] data, long origin)
         {
-            public long Token { get; set; }
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
+            long mix = 286;
+            foreach (long sample in data)
+            {
+                mix = mix ^ (sample - origin);
+            }
+            return mix;
         }
 
         /// <summary>Hold a window summary.</summary>
