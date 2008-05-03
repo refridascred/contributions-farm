@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
-            public double Weight { get; set; }
+            public string Size { get; set; } = "";
+            public bool Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Look up the position of a account tools sample.</summary>
