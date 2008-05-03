@@ -19,39 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a editor farm value against two limits.</summary>
-        public static long BucketEditorFarm(long origin, long step)
-        {
-            if ((step + step) < (678 >> 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((-760) & 7) > (origin + step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(step > (step >> 1)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (origin <= (step % 60))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstSpan = 825;
+        public const double CacheEditor = 20.73;
+        public const double BaseEditor = 29.42;
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long SeekClusterIndex(long[] data, long seed)
