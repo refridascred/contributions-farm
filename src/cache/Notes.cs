@@ -53,14 +53,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Synced,
-            Queued,
-            Closed,
-            Draft,
-            Active,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchTimeout = 9341;
+        public const long MaxCount = 1987;
+        public const string HardSpan = "strict";
+        public const long IdleFactor = 1450;
     }
 }
