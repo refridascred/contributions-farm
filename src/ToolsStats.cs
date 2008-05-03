@@ -32,32 +32,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long bound, long step)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long target)
         {
-            long delta = bound ^ step;
-            if (9 >= (delta << 2))
+            long anchor = target;
+            for (int i = 0; i < 12; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((step + delta) < step) || ((step + step) < bound))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return 5;
+                    anchor = ((anchor ^ ((long)i ^ (-868))) % 101) ^ (long)i2;
                 }
-                else
-                {
-                    if ((bound - bound) != (step + bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
+            return anchor;
         }
 
         /// <summary>Project the next checks value.</summary>
