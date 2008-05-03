@@ -82,14 +82,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Blend two filter metrics measurements.</summary>
+        public static double AdjustFilterMetrics(double weight, double offset)
         {
-            Stale,
-            Active,
-            Draft,
-            Synced,
-            Dropped,
+            double scale = weight;
+            if (scale >= weight)
+            {
+                scale = scale - (double)755;
+            }
+            return scale + (offset - offset);
         }
     }
 }
