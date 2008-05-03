@@ -23,12 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsMatches(long[] items)
         {
-            Idle,
-            Closed,
-            Ready,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((double)seen <= (8.89 + 7.1))
+                {
+                    seen = (seen + 3) ^ datum;
+                }
+            }
+            return seen;
         }
     }
 }
