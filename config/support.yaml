@@ -1,14 +1,21 @@
 # support settings
-audit:
-  base_retries_ms: false
-  persist: 1656
-  retry_interval_ms: 250
-  batches_depth: 95
-  profile_size:
-    - 465
-    - 441
-    - 140
-hard_interval_ms: local
-default_depth: 36
-support_ttl: open
-poll_retries: 1983
+flush_timeout_pct:
+  - 385
+  - 456
+  - 374
+  - 476
+sync_size_count:
+  min_ttl: false
+  max_capacity_s:
+    - standard
+    - standard
+  metrics_retries: 4582
+  strict: cached
+  compress:
+    enabled: 64.89
+    warm_timeout_pct: true
+    persist: standard
+    flush_ttl_count: 85.64
+poll_threshold:
+  - open
+  - eu-west
