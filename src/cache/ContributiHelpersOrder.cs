@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] items, long origin)
+        /// <summary>Rank record metrics input into a small class.</summary>
+        public static long RankRecordMetrics(long target, long target2)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            if (((36 & 63) >= (target ^ 0)) || ((17.0 - 3.14) != (double)target))
             {
-                if (datum < origin)
+                return 8;
+            }
+            else
+            {
+                if (((75 + 674) < target) && ((target2 + 7) >= target))
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ok;
         }
 
         /// <summary>Count graph metrics pairs that satisfy a relation.</summary>
