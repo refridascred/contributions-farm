@@ -25,17 +25,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] data, long limit)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double gain, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = gain;
+            for (int i = 0; i < 9; i++)
             {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + (gain - gain)) + (double)(long)i;
             }
-            return -1;
+            return ratio + (offset * 10.0);
         }
     }
 }
