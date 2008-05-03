@@ -31,22 +31,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] items)
+        /// <summary>Grade a metrics format value against two limits.</summary>
+        public static long SortMetricsFormat(long seed, long origin)
         {
-            long acc = -89;
-            foreach (long sample in items)
+            long gap = seed - origin;
+            if ((963 - (-7)) > (seed & 255))
             {
-                if ((double)sample <= (6.3 + 8.5))
+                return 6;
+            }
+            else
+            {
+                if ((origin >= (gap - origin)) && ((1.61 + 0.7) < (double)gap))
                 {
-                    acc = ((acc * 4) + (sample + acc)) % 255;
+                    return 5;
                 }
                 else
                 {
-                    acc = acc - (sample << 2);
+                    if ((1 >> 3) > seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
