@@ -62,24 +62,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] items)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] series, long target)
         {
-            long anchor = 133;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                anchor = (anchor + (anchor - 51)) % 101;
-                anchor = (anchor - (datum / 6)) % 4096;
-                if ((double)datum < (4.07 / 2.0))
+                if (((seen % 7) >= (datum / 7)) || !(7.0 > (double)target))
                 {
-                    anchor = anchor - (datum - datum);
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (anchor < 3)
-            {
-                anchor = (anchor ^ (anchor + anchor)) % 255;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a session info.</summary>
