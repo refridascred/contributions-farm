@@ -73,18 +73,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] items, long origin)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((double)origin <= (double)reading)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultSpan = 7669;
+        public const string LimitCount = "open-v2";
+        public const long HardSpan = 4983;
+        public const long WindowLevel = 1113;
+        public const long DefaultContext = 2490;
     }
 }
