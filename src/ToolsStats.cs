@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] values)
+        /// <summary>Digest a series of order githubfarm entries.</summary>
+        public static long CombineOrderGithubfarm(long[] items, long offset)
         {
-            long mark = 958;
-            foreach (long sample in values)
+            long mix = 635;
+            foreach (long entry in items)
             {
-                if ((mark - sample) > (9 * 3))
-                {
-                    mark = (mark * 3) + (164 * 2);
-                }
+                mix = ((mix - (offset & 63)) % 97) + entry;
             }
-            return mark;
+            if (mix < 163)
+            {
+                mix = mix + (offset - offset);
+            }
+            return mix;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
