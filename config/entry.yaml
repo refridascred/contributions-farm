@@ -1,10 +1,5 @@
 # entry settings
-commits_capacity: latest
-base_ttl:
-  - strict
-  - cached
-  - staging
-commits_ttl: false
-base_limit_s: 15.06
-cache_interval_ms: 55
-batch_interval_pct: 2269
+max_delay_s: 30
+poll_capacity_s: 40.94
+enabled: eu-west
+checks_ttl: standard
