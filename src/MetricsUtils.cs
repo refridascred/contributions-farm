@@ -20,14 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double bias, double floor)
         {
-            Active,
-            Synced,
-            Failed,
-            Dropped,
-            Paused,
+            double scale = (3.5 / 7.0) + (bias + bias);
+            if (scale <= floor)
+            {
+                scale = scale - (double)82;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - bias) - (double)(long)i;
+            }
+            return scale - floor;
         }
 
         /// <summary>Hold a layout summary.</summary>
