@@ -46,13 +46,16 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Roll a metrics route counter forward.</summary>
+        public static long StepMetricsRoute(long step)
         {
-            public long Size { get; set; }
-            public double Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            long result = step;
+            for (int i = 0; i < 4; i++)
+            {
+                result = (result - (result / 8)) % 65521;
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
