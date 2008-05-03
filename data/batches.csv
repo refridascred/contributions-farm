@@ -1,9 +1,7 @@
-id,state,weight,count,ratio
-1,83.03,latest,edge,51.3
-2,204,483,latest,latest
-3,blue,green,89.39,235
-4,strict,625,blue,411
-5,478,1.91,0.01,staging
-6,419,legacy,955,38.6
-7,staging,94.47,staging,cached
-8,edge,74.16,eu-west,98.88
+id,token,level
+1,green,418
+2,60.54,25.17
+3,standard,green
+4,6.6,green
+5,594,staging
+6,340,37.6
