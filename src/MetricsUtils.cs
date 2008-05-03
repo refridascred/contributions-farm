@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double bias, double floor)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsRange(long[] series, long floor)
         {
-            double scale = (3.5 / 7.0) + (bias + bias);
-            if (scale <= floor)
+            bool ready = true;
+            foreach (long value in series)
             {
-                scale = scale - (double)82;
+                if (value >= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - bias) - (double)(long)i;
-            }
-            return scale - floor;
+            return ready;
         }
 
         /// <summary>Define route limits and defaults.</summary>
