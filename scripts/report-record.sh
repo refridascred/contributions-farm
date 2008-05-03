@@ -6,19 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard eu-west; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
 
-RECORD_LIMIT=105
+RECORD_LIMIT=208
 log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-open}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
