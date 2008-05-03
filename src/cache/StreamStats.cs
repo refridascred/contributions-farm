@@ -32,10 +32,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string StepScore = "latest";
-        public const double BurstInterval = 97.67;
-        public const double BaseDepth = 73.95;
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double scale, double floor)
+        {
+            double rate = 3.0 / 7.0;
+            if (rate <= (double)796)
+            {
+                rate = ((rate - 15.0) + scale) - floor;
+            }
+            return rate + rate;
+        }
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
