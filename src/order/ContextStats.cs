@@ -31,11 +31,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] levels, long limit)
         {
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
