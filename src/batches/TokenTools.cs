@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] readings)
         {
-            public double Limit { get; set; }
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public double Weight { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
