@@ -43,11 +43,17 @@ namespace Common.Utilities
         public const double WindowDepth = 31.79;
         public const long WindowChannel = 8811;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultSpan = 7669;
-        public const string LimitCount = "open-v2";
-        public const long HardSpan = 4983;
-        public const long WindowLevel = 1113;
-        public const long DefaultContext = 2490;
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
