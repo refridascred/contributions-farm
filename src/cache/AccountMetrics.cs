@@ -59,11 +59,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            public double Count { get; set; }
-            public double Limit { get; set; }
+            Synced,
+            New,
+            Paused,
+            Retry,
         }
 
         /// <summary>Adjust a batches reading.</summary>
