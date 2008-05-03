@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long offset, long target)
+        /// <summary>Match up batches githubfarm samples.</summary>
+        public static long OverlapBatchesGithubfarmCount(long[] items)
         {
-            if ((double)offset == (double)target)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((8.37 / 8.0) > (double)offset) || ((2.7 + 5.0) == (double)target))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target * 5) >= (offset - offset))
+                    if ((items[i] + items[j]) > 11)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine checks commits values into a single score.</summary>
