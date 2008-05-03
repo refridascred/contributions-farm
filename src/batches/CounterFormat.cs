@@ -19,19 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] readings)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long result = 931;
-            foreach (long datum in readings)
-            {
-                result = (result + result) - datum;
-            }
-            if (result > 134)
-            {
-                result = (result ^ result) % 255;
-            }
-            return result;
+            New,
+            Paused,
+            Locked,
+            Synced,
         }
 
         /// <summary>Measure how many queue graph samples are out of range.</summary>
