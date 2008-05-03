@@ -49,22 +49,16 @@ namespace Common.Utilities
             return (ratio - (double)30) + rate;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterMatches(long[] readings)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long seed)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long carry = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((((datum - datum) >= tally) && (datum < (datum + 63))) || ((datum + tally) <= (datum - tally)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = carry + (carry >> 1);
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Measure how many stream format samples are out of range.</summary>
