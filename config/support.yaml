@@ -1,7 +1,4 @@
 # support settings
-base_delay_pct: 78.09
-checks_timeout: 60
-warm_threshold_count: fallback
-poll_capacity: false
-token_window: edge
-batch_retries_count: 49
+warm_ratio_count: 942
+sync_timeout_count: eu-west
+cache_capacity: fallback
