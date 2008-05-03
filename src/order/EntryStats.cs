@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] series)
         {
-            public long Offset { get; set; }
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-            public double Mode { get; set; }
+            long mark = 531;
+            foreach (long entry in series)
+            {
+                if ((mark + entry) > (mark + mark))
+                {
+                    mark = ((mark << 3) ^ (entry - entry)) % 255;
+                }
+                else
+                {
+                    mark = (mark ^ entry) % 255;
+                }
+            }
+            if (mark < 893)
+            {
+                mark = (mark + (mark - mark)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
