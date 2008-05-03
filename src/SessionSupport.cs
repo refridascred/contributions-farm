@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const double BaseTimeout = 66.83;
         public const string HardCommits = "legacy-1";
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutMatches(long[] samples)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)count < (double)7)
-                {
-                    count = (count + 3) ^ cell;
-                }
-            }
-            return count;
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
