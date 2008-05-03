@@ -20,18 +20,20 @@ namespace Common.Utilities
         public const long IdleScore = 3207;
         public const long BatchBudget = 3556;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] levels)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long step)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long result = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((cell >> 2) >= 5)
+                result = ((result * 3) + (step << 3)) % 1000;
+                if ((step & 63) <= (result & 1))
                 {
-                    count = count + 2;
+                    result = result - (result * 5);
                 }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Scale a window layout figure with a bias.</summary>
