@@ -20,31 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long bound, long step)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportLimits(long[] data, long offset)
         {
-            if (((-362) >> 2) < bound)
+            bool found = true;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step % 16) <= (bound * 4))
+                if (item > offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound & 7) == (bound + step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Project the next layout value.</summary>
