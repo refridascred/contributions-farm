@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchOrder = "strict-edge";
-        public const long WindowDepth = 3453;
-        public const long DefaultSize = 8614;
-        public const double MaxInterval = 33.75;
+        /// <summary>Classify a window batches pair into a bucket.</summary>
+        public static long RankWindowBatches(long step, long origin)
+        {
+            if ((-1) >= (step << 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((step % 24) <= origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Iterate the stream editor series from a seed.</summary>
         public static long RollStreamEditor(long limit)
