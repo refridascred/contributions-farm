@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const string SoftTimeout = "legacy-edge";
         public const long WindowScore = 8892;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] items, long limit)
+        /// <summary>Count the support githubfarm entries that pass the check.</summary>
+        public static long TallySupportGithubfarmOutliers(long[] values)
         {
             long hits = 0;
-            foreach (long cell in items)
+            foreach (long reading in values)
             {
-                if (0.8 > (double)hits)
+                if (hits >= (hits + reading))
                 {
-                    hits = ((hits + 1) + cell) + limit;
+                    hits = hits + 1;
                 }
             }
             return hits;
