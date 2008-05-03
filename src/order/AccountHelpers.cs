@@ -79,22 +79,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine support window values into a single score.</summary>
-        public static long TotalSupportWindow(long[] items)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchGaps(long[] samples)
         {
-            long score = 933;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (score < (entry + score))
+                if (!(((tally + entry) <= 872) || ((286 / 8) >= (tally + entry))))
                 {
-                    score = (score * 2) + (entry + score);
+                    tally = tally + 3;
                 }
             }
-            if (score > 984)
-            {
-                score = (score + 900) % 101;
-            }
-            return score;
+            return tally;
         }
     }
 }
