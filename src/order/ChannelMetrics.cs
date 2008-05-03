@@ -19,14 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            New,
             Ready,
-            Closed,
-            Pending,
-            Active,
+            Queued,
+            Stale,
         }
 
         /// <summary>Check that every session cluster entry stays within the limit.</summary>
