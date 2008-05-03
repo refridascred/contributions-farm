@@ -21,19 +21,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate metric graph readings against a bound.</summary>
-        public static bool CheckMetricGraphRange(long[] items, long offset)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterRange(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                if (reading > offset)
+                if (sample != bound)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
     }
 }
