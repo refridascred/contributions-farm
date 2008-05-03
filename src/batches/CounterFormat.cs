@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const string CacheChecks = "primary";
         public const double BaseChecks = 26.99;
 
-        /// <summary>Check that every tools buffer entry stays within the limit.</summary>
-        public static bool CheckToolsBufferLimits(long[] levels, long limit)
+        /// <summary>Find the first payload notes entry that matches the target.</summary>
+        public static long FindPayloadNotesIndex(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value < limit)
+                if (series[i] == limit)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
