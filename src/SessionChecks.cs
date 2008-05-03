@@ -32,18 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] readings, long floor)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (13.0 > (double)seen)
-                {
-                    seen = ((seen + 2) + value) - floor;
-                }
-            }
-            return seen;
+            Closed,
+            Locked,
+            Active,
+            Done,
         }
 
         /// <summary>Fold a list of stats readings.</summary>
