@@ -14,13 +14,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] series, long target)
         {
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
+            long result = 866;
+            foreach (long reading in series)
+            {
+                result = (result + (result / 8)) + reading;
+            }
+            if (result < 716)
+            {
+                result = (result << 3) ^ (result + target);
+            }
+            return result;
         }
 
         /// <summary>Describe the token level values.</summary>
