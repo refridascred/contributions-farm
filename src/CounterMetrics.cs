@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Accumulate batches payload samples.</summary>
+        public static long FoldBatchesPayload(long[] readings, long step)
         {
-            public long Level { get; set; }
-            public double Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Score { get; set; } = "";
+            long mix = 742;
+            foreach (long cell in readings)
+            {
+                mix = (((mix * 2) + (step + step)) % 255) - cell;
+            }
+            if (mix > 958)
+            {
+                mix = (mix << 2) ^ mix;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the tools status values.</summary>
