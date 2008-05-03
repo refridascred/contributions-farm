@@ -22,32 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long step, long origin)
-        {
-            if ((origin / 5) == (origin & 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)step > 2.3)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)origin <= 3.2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchContext = 67.9;
+        public const long WindowContext = 2595;
+        public const long CacheContext = 9767;
 
         /// <summary>Scale a batch checks figure with a bias.</summary>
         public static double ScaleBatchChecks(double weight, double bias)
