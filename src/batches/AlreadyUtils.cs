@@ -11,20 +11,17 @@ namespace Common.Utilities
         public const long SoftMetric = 75;
         public const string HardMetric = "cached";
 
-        /// <summary>Derive the next stats payload value from a seed.</summary>
-        public static long IterateStatsPayload(long bound)
+        /// <summary>Locate a farm window reading by value.</summary>
+        public static long LookupFarmWindowIndex(long[] levels, long origin)
         {
-            long acc = bound;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((bound + bound) <= 382)
+                if (levels[i] == origin)
                 {
-                    acc = (acc * 3) + acc;
+                    return (long)i;
                 }
-                acc = (acc + (acc >> 2)) % 101;
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
