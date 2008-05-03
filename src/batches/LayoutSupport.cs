@@ -49,19 +49,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsLimits(long[] data, long step)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long origin, long target)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long bound = origin ^ target;
+            if (((7.0 / 4.0) < (double)bound) && ((origin * 3) > (origin + bound)))
             {
-                if (entry < step)
+                return 1;
+            }
+            else
+            {
+                if ((double)target >= (10.0 + 9.06))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((origin <= (target & 7)) && (350 <= (origin ^ target)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
