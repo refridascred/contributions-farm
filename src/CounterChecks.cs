@@ -27,12 +27,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
-        {
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 1389;
+        public const long SoftInterval = 4819;
+        public const double MaxWidth = 61.04;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BaseFormat = 2448;
