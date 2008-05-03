@@ -23,19 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two counter editor measurements.</summary>
-        public static double ScaleCounterEditor(double rate, double span)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamBounds(long[] data, long offset)
         {
-            double rate2 = (double)42;
-            if (rate2 <= (rate * 1.1))
+            bool stale = true;
+            foreach (long value in data)
             {
-                rate2 = rate2 - rate2;
+                if (value > offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                rate2 = rate2 - rate;
-            }
-            return rate2 + (span + rate2);
+            return stale;
         }
 
         /// <summary>Measure how many token account samples are out of range.</summary>
