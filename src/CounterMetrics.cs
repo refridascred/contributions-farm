@@ -24,12 +24,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long step, long origin)
         {
-            Failed,
-            Queued,
-            Synced,
+            if (((step + origin) != ((-6) & 7)) || ((9.0 + 9.1) < (double)step))
+            {
+                return 2;
+            }
+            else
+            {
+                if (step <= (step << 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((1.21 + 7.7) >= (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((step - origin) != (origin + 294)) && ((4 - step) == (step << 2)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
