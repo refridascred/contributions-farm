@@ -24,15 +24,25 @@ namespace Common.Utilities
         public const double CacheEditor = 20.73;
         public const double BaseEditor = 29.42;
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long bound)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long offset, long offset2)
         {
-            long result = bound;
-            for (int i = 0; i < 4; i++)
+            long cur = offset - offset2;
+            if ((offset <= (offset2 - offset2)) || ((offset * 4) <= cur))
             {
-                result = ((result * 4) + (long)i) % 101;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((cur + 66) > (cur / 9))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Blend two session measurements.</summary>
