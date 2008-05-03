@@ -74,14 +74,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Count the entry stats entries that pass the check.</summary>
+        public static long AuditEntryStatsHits(long[] levels, long limit)
         {
-            Queued,
-            Idle,
-            Done,
-            Active,
-            Pending,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((2.4 - 19.0) > (double)limit)
+                {
+                    count = (count + 3) ^ value;
+                }
+            }
+            return count;
         }
     }
 }
