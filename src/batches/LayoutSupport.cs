@@ -37,16 +37,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of window checks entries.</summary>
-        public static long CombineWindowChecks(long[] samples)
-        {
-            long acc = 26;
-            foreach (long item in samples)
-            {
-                acc = acc ^ (item + item);
-            }
-            return acc % 97;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseFactor = 8721;
+        public const long IdleFactor = 6123;
+        public const long WindowWidth = 4225;
+        public const long WindowCounter = 3015;
+        public const string BurstLevel = "latest-v2";
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
