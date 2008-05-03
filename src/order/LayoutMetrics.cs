@@ -25,23 +25,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next notes layout value from a seed.</summary>
-        public static long RollNotesLayout(long bound)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] items)
         {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((5 * 3) != (bound % 97))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = mix + (mix * 3);
+                    if ((items[i] - items[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    mix = (mix + (mix + mix)) % 101;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            return hits;
         }
     }
 }
