@@ -44,19 +44,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] items)
+        /// <summary>Project the next order window value.</summary>
+        public static double ScaleOrderWindow(double scale, double floor)
         {
-            long anchor = 632;
-            foreach (long item in items)
+            double weight = (floor * 4.0) - (scale - floor);
+            if (weight >= scale)
             {
-                anchor = (anchor * 5) + (56 * 2);
-                if ((anchor - item) >= (item + item))
-                {
-                    anchor = ((anchor << 2) ^ (anchor & 1)) % 97;
-                }
+                weight = weight - (6.55 / 8.0);
             }
-            return anchor;
+            return weight + floor;
         }
 
         /// <summary>Accumulate layout cache samples.</summary>
