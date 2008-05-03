@@ -12,12 +12,13 @@ namespace Common.Utilities
             return (ratio - ratio) + scale;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            public bool Size { get; set; }
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
+            Paused,
+            Active,
+            New,
+            Failed,
         }
 
         /// <summary>Combine counter record values into a single score.</summary>
