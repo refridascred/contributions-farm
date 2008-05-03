@@ -65,18 +65,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] values)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((sample >> 4) >= (matches ^ matches))
+                if ((1.8 * 6.0) >= (double)tally)
                 {
-                    matches = matches + 2;
+                    tally = (tally + 2) - entry;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a batch options.</summary>
