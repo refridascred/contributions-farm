@@ -63,19 +63,18 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Fold a list of queue stats readings.</summary>
-        public static long TotalQueueStats(long[] readings, long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] readings)
         {
-            long state = 89;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                state = (state ^ (32 + bound)) % 1000;
-                if ((state % 64) <= ((long)readings.Length - state))
+                if (matches >= (sample & 15))
                 {
-                    state = state - (cell % 64);
+                    matches = matches + 3;
                 }
             }
-            return state;
+            return matches;
         }
     }
 }
