@@ -27,14 +27,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long limit, long origin)
         {
-            Closed,
-            Locked,
-            Queued,
-            Idle,
-            Failed,
+            long edge = limit - origin;
+            if (origin <= (limit - edge))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((origin >> 3) >= (origin + origin)) || (edge < (limit % 8)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Derive the next token stats value from a seed.</summary>
