@@ -27,18 +27,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsOutliers(long[] readings)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((seen & 7) > sample)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Label { get; set; }
+            public bool Weight { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Match up buffer layout samples.</summary>
