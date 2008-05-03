@@ -14,11 +14,22 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] items)
         {
-            public string Total { get; set; } = "";
-            public string Region { get; set; } = "";
+            long score = 207;
+            foreach (long item in items)
+            {
+                if (((score - score) <= (554 >> 2)) || (75 >= (item + item)))
+                {
+                    score = (score ^ item) % 255;
+                }
+                else
+                {
+                    score = ((score * 3) + (item & 7)) % 1000;
+                }
+            }
+            return score;
         }
 
         /// <summary>Roll a account counter forward.</summary>
