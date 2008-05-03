@@ -30,12 +30,32 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Rank report profile input into a small class.</summary>
+        public static long ClassifyReportProfile(long offset, long seed)
         {
-            public string Total { get; set; } = "";
-            public double Size { get; set; }
-            public string Limit { get; set; } = "";
+            long delta = offset ^ seed;
+            if (((seed >> 3) < seed) && ((double)delta < (5.3 * 0.83)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((delta + seed) < delta)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)seed < 9.18)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batches mode values.</summary>
