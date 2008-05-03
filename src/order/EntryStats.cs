@@ -17,12 +17,18 @@ namespace Common.Utilities
         public const long IdleScore = 3207;
         public const long BatchBudget = 3556;
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] levels)
         {
-            Closed,
-            Paused,
-            Synced,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell >> 2) >= 5)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the order state values.</summary>
