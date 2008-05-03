@@ -1,7 +1,7 @@
-id,token,region,active
-1,579,417,322
-2,strict,57.13,89.97
-3,cached,263,eu-west
-4,eu-west,2.62,staging
-5,775,587,59.95
-6,stable,31.67,local
+id,owner,score
+1,905,13.7
+2,913,813
+3,756,0
+4,629,staging
+5,275,204
+6,556,green
