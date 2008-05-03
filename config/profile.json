@@ -1,5 +1,18 @@
 {
-  "flush_interval_s": true,
-  "githubfarm_ttl": true,
-  "cache_retries_pct": true
+  "sync_window_count": "eu-west",
+  "counter_limit": 30,
+  "batches_size": "staging",
+  "persist": {
+    "idle_depth_pct": false,
+    "cache_depth_s": ["strict", "local"],
+    "retry_interval": 6842,
+    "min_capacity": {
+      "poll_window": 21,
+      "soft_interval": "latest",
+      "persist": "primary"
+    },
+    "base_limit_pct": 43
+  },
+  "session_retries": "primary",
+  "poll_limit": 71
 }
