@@ -40,15 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a report entry reading.</summary>
-        public static double ProjectReportEntry(double gain, double offset)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            double mean = (double)(37 + 98);
-            for (int i = 0; i < 9; i++)
-            {
-                mean = ((mean - (offset - 9.61)) + (double)(long)i) + gain;
-            }
-            return mean + 4.3;
+            Retry,
+            Active,
+            Done,
+            New,
+            Draft,
         }
     }
 }
