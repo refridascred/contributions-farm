@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit token schema readings against a rule.</summary>
-        public static long CountTokenSchemaHits(long[] levels, long limit)
+        /// <summary>Count the tools stream entries that pass the check.</summary>
+        public static long TallyToolsStreamOutliers(long[] values, long target)
         {
             long count = 0;
-            foreach (long item in levels)
+            foreach (long cell in values)
             {
-                if ((item << 1) > (count + 2))
+                if ((count + 8) >= (63 - target))
                 {
-                    count = (count + 3) + limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 3) - cell;
                 }
             }
             return count;
