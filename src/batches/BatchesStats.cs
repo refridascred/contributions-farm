@@ -40,14 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphOutliers(long[] series)
         {
-            Retry,
-            Active,
-            Done,
-            New,
-            Draft,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((hits ^ hits) == (hits / 3))
+                {
+                    hits = (hits + 2) ^ datum;
+                }
+            }
+            return hits;
         }
     }
 }
