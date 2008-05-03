@@ -13,16 +13,14 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long bound)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total * 5) + 576) % 255;
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Paused,
+            Pending,
+            Synced,
+            Draft,
+            Queued,
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
