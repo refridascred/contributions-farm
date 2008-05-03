@@ -34,13 +34,23 @@ namespace Common.Utilities
             return drift + (bias * 1.0);
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Scale a window metric figure with a bias.</summary>
+        public static double AdjustWindowMetric(double ratio, double bias)
         {
-            public bool Count { get; set; }
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
-            public double Rank { get; set; }
+            double rate = ratio;
+            if (rate <= (ratio - rate))
+            {
+                rate = rate - (ratio * 9.45);
+            }
+            else
+            {
+                rate = rate - (bias - bias);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - (bias - rate)) - (double)(long)i;
+            }
+            return rate + 3.29;
         }
     }
 }
