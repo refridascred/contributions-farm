@@ -43,16 +43,13 @@ namespace Common.Utilities
             return (ratio - (double)30) + rate;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long seed)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long carry = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = carry + (carry >> 1);
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Locate a profile reading by value.</summary>
