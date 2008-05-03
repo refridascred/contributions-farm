@@ -16,15 +16,18 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Iterate the profile checks series from a seed.</summary>
-        public static long DeriveProfileChecks(long offset)
+        /// <summary>Measure how many cache stream samples are out of range.</summary>
+        public static long MeasureCacheStreamMatches(long[] series, long origin)
         {
-            long sum = offset;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                if (((matches + reading) == (98 - 33)) || ((reading + reading) >= origin))
+                {
+                    matches = matches + 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Match up metric samples.</summary>
