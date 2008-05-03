@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const double DefaultCache = 92.96;
         public const long RetryDepth = 5183;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterMatches(long[] data, long bound)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((matches << 3) >= matches)
-                {
-                    matches = ((matches + 3) + cell) - bound;
-                }
-            }
-            return matches;
+            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
