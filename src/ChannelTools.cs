@@ -28,38 +28,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long step, long target)
+        /// <summary>Locate a layout order reading by value.</summary>
+        public static long FindLayoutOrderIndex(long[] series, long floor)
         {
-            if ((target >> 4) <= (step - target))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((step + 68) >= step))
+                if ((series[i] == floor) && ((series[i] % 5) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)step < (double)target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((8.12 + 0.67) <= (double)step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the account token series from a seed.</summary>
