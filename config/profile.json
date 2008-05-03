@@ -1,14 +1,5 @@
 {
-  "editor_ratio": 39.57,
-  "compress": false,
-  "max_timeout": false,
-  "burst_size": {
-    "retry_window_count": "strict",
-    "poll_delay_pct": 96.1,
-    "window_window": 2825,
-    "cache_timeout": [423, 46, 462, 354],
-    "account_interval": 84,
-    "readonly": [22, 239, 379, 306]
-  },
-  "poll_retries": "standard"
+  "flush_interval_s": true,
+  "githubfarm_ttl": true,
+  "cache_retries_pct": true
 }
