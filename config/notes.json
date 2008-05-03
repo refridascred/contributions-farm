@@ -1,8 +1,6 @@
 {
-  "sync_depth_s": "staging",
-  "soft_timeout_ms": 250,
-  "soft_retries_s": "eu-west",
-  "base_timeout": 31.69,
-  "readonly": [141, 465, 53],
-  "buffer_limit": "primary"
+  "retry_depth": ["edge", "standard", "primary"],
+  "idle_delay_count": "staging",
+  "poll_ttl": "standard",
+  "soft_ttl": 35.28
 }
