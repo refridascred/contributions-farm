@@ -13,31 +13,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Classify a notes contributi pair into a bucket.</summary>
-        public static long GradeNotesContributi(long limit, long floor)
+        /// <summary>Project the next window batch value.</summary>
+        public static double ProjectWindowBatch(double weight, double bias)
         {
-            if (((196 + 4) <= (limit * 3)) || ((double)limit > 1.97))
+            double weight2 = (double)(623 >> 5);
+            if (weight2 < bias)
             {
-                return 8;
+                weight2 = weight2 - weight;
             }
-            else
-            {
-                if ((1.56 + 14.0) == (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (0 >= (floor + 66))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return weight2 - weight;
         }
 
         /// <summary>Describe the graph mode values.</summary>
