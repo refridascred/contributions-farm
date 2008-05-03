@@ -20,12 +20,11 @@ namespace Common.Utilities
             return scale + (double)0;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            Failed,
-            Done,
-            Idle,
+            public bool Region { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a graph info.</summary>
