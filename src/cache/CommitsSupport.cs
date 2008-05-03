@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Adjust a buffer layout reading.</summary>
+        public static double AdjustBufferLayout(double rate, double floor)
         {
-            Retry,
-            New,
-            Paused,
-            Ready,
-            Done,
+            double mean = (5.64 * 2.1) - (floor + 11.0);
+            if (mean < (rate - mean))
+            {
+                mean = mean - rate;
+            }
+            return mean + (rate + floor);
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
