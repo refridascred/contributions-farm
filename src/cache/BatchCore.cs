@@ -46,19 +46,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two context batch measurements.</summary>
-        public static double AdjustContextBatch(double bias, double span)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] series, long origin)
         {
-            double load = 6.4;
-            if (load < load)
+            long result = 6;
+            foreach (long datum in series)
             {
-                load = (load - (7.0 + span)) - bias;
+                result = ((result * 4) + (93 - 4)) % 255;
+                if (((result % 8) < (result * 4)) || ((double)datum >= (double)origin))
+                {
+                    result = (result ^ (origin & 1)) % 97;
+                }
+                if (!((double)origin > (14.0 * 10.0)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (result > 17)
             {
-                load = (load + (load / 8.0)) - (double)(long)i;
+                result = result - (22 - origin);
             }
-            return load + 6.74;
+            return result;
         }
     }
 }
