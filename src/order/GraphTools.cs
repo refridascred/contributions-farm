@@ -67,18 +67,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] series)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((2.0 + 7.7) < (double)seen)
+                if ((9.0 * 4.6) > (double)tally)
                 {
-                    seen = (seen + 3) + sample;
+                    tally = (tally + 2) + item;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
