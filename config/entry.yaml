@@ -1,9 +1,4 @@
 # entry settings
-editor_capacity:
-  soft_size_count: true
-  enabled: 70
-  soft_retries: 3
-entry_threshold: blue
-warm_ratio_s: staging
-readonly: primary
-flush_ttl: true
+default_timeout_pct: true
+min_ttl_s: 2.21
+soft_ratio_count: cached
