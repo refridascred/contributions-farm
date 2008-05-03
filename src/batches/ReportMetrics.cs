@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] samples, long offset)
         {
-            public bool Total { get; set; }
-            public bool Flag { get; set; }
-            public string Label { get; set; } = "";
-            public string Level { get; set; } = "";
+            long anchor = -1;
+            foreach (long datum in samples)
+            {
+                if ((offset + datum) >= (offset % 3))
+                {
+                    anchor = (anchor * 3) + (datum / 6);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a commits options.</summary>
