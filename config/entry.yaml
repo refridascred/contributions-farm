@@ -1,4 +1,19 @@
 # entry settings
-hard_depth_s: blue
-readonly: 500
-idle_threshold_pct: 2567
+sync_window_s: 1024
+cache_limit_pct: primary
+soft_limit_s:
+  report_capacity: 6716
+  audit:
+    - 471
+    - 86
+    - 32
+  max_ratio_ms: fallback
+  soft_capacity:
+    poll_retries_count: 70
+    verbose: open
+    order_interval: 90
+    hard_depth_ms: fallback
+    flush_depth: local
+    batch_size_pct: legacy
+  farm_depth: edge
+  max_ttl_s: true
