@@ -47,19 +47,12 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] levels, long origin)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long mark = 60;
-            foreach (long datum in levels)
-            {
-                mark = ((mark + (mark - 113)) % 65521) - origin;
-                if ((double)datum > (double)mark)
-                {
-                    break;
-                }
-            }
-            return mark;
+            Dropped,
+            Ready,
+            Done,
         }
     }
 }
