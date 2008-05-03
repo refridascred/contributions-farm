@@ -14,20 +14,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] samples, long step)
-        {
-            long result = 5;
-            foreach (long cell in samples)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    result = (result + cell) ^ (long)i;
-                }
-                result = ((result * 4) + (step - result)) % 1000;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinLevel = 7991;
+        public const double MaxBatches = 76.74;
+        public const long BatchBatches = 5713;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long SoftContributi = 2567;
