@@ -14,32 +14,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long limit, long offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] levels, long floor)
         {
-            long offset2 = limit ^ offset;
-            if (((offset + 22) <= 0) || (4 < (limit - offset)))
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((offset2 / 4) > offset2))
+                if (floor <= (floor - entry))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((706 << 1) < offset2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate farm command samples.</summary>
