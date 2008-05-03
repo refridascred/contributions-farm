@@ -26,21 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] readings)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double ratio, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = ratio;
+            if (mean > (9.59 / 8.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean + (double)60;
             }
-            return hits;
+            return mean - (floor - 5.0);
         }
 
         /// <summary>Project the next batch value.</summary>
