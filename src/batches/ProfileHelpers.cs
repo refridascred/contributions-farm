@@ -111,30 +111,14 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] readings, long seed)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long total = 91;
-            foreach (long entry in readings)
-            {
-                if ((seed + seed) > seed)
-                {
-                    continue;
-                }
-                else
-                {
-                    total = (total * 3) + (total + seed);
-                }
-                if (!((6 % 16) != (entry ^ total)))
-                {
-                    total = (total - 2) % 255;
-                }
-                else
-                {
-                    total = ((total * 5) + entry) % 4096;
-                }
-            }
-            return total % 97;
+            Retry,
+            Pending,
+            Closed,
+            Done,
+            Locked,
         }
     }
 }
