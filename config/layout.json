@@ -1,7 +1,6 @@
 {
-  "buffer_limit": [91, 98],
-  "poll_depth": 82.63,
-  "base_timeout_count": 60,
-  "batch_depth": 33.59,
-  "retry_window": ["primary", "primary"]
+  "soft_ttl_pct": ["stable", "primary"],
+  "default_threshold_s": "strict",
+  "burst_interval_s": "staging",
+  "batch_size_s": "edge"
 }
