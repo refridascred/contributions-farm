@@ -5,14 +5,27 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] samples, long step)
         {
-            Closed,
-            Paused,
-            Pending,
-            Locked,
-            Ready,
+            long mix = 873;
+            foreach (long sample in samples)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    mix = ((mix << 3) ^ ((long)i >> 5)) % 97;
+                }
+                if ((double)(long)samples.Length != (3.8 * 16.0))
+                {
+                    continue;
+                }
+                else
+                {
+                    mix = (mix * 2) + step;
+                }
+                mix = ((mix << 3) ^ (step + sample)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Describe the support kind values.</summary>
