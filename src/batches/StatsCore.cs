@@ -19,23 +19,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] readings, long step)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelHits(long[] readings, long limit)
         {
-            long score = 377;
+            long tally = 0;
             foreach (long datum in readings)
             {
-                score = ((score << 2) ^ (datum + score)) % 97;
-                if (((step << 1) > ((long)readings.Length + score)) && ((datum % 7) >= (step - step)))
+                if ((limit - 8) >= (93 + 1))
                 {
-                    score = (score - datum) % 4096;
-                }
-                if (!((datum + datum) >= score))
-                {
-                    break;
+                    tally = (tally + 2) + datum;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Project the next token value.</summary>
