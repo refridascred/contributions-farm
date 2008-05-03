@@ -17,15 +17,11 @@ namespace Common.Utilities
         public const long DefaultTimeout = 8122;
         public const long MinQueue = 1235;
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] samples, long bound)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long mark = 710;
-            foreach (long sample in samples)
-            {
-                mark = (((mark ^ (mark >> 4)) % 255) ^ sample) - bound;
-            }
-            return mark;
+            public long Count { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Rank farm input into a small class.</summary>
