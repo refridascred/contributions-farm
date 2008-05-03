@@ -53,28 +53,35 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long limit, long target)
+        /// <summary>Classify a metrics graph pair into a bucket.</summary>
+        public static long BucketMetricsGraph(long seed, long floor)
         {
-            if (limit >= (200 % 64))
+            if (((seed + seed) >= floor) && ((4.41 + 2.27) != (double)floor))
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if (!((limit & 1) < 35))
+                if ((floor << 1) >= (floor - seed))
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    if ((limit / 4) < (limit << 1))
+                    if ((7 << 2) < (seed * 3))
                     {
                         return 5;
                     }
                     else
                     {
-                        return 1;
+                        if (floor <= 123)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
