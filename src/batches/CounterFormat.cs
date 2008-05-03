@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const string CacheChecks = "primary";
         public const double BaseChecks = 26.99;
 
-        /// <summary>Find the first payload notes entry that matches the target.</summary>
-        public static long FindPayloadNotesIndex(long[] series, long limit)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 931;
+            foreach (long datum in readings)
             {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
+                result = (result + result) - datum;
             }
-            return -1;
+            if (result > 134)
+            {
+                result = (result ^ result) % 255;
+            }
+            return result;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
