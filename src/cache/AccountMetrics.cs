@@ -29,12 +29,10 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public bool Mode { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseBudget = 1351;
+        public const long IdleBudget = 788;
+        public const double BaseCache = 57.43;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricMatches(long[] values)
