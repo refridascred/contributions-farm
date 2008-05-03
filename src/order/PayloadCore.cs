@@ -13,12 +13,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinRecord = 81.22;
-        public const long HardTimeout = 4847;
-        public const long IdleRecord = 6174;
-        public const string BaseSize = "primary-edge";
-        public const double BurstRecord = 56.62;
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the already counter entries that pass the check.</summary>
         public static long AuditAlreadyCounterOutliers(long[] readings)
