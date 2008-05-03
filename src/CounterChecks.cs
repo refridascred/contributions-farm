@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Match up queue commits samples.</summary>
-        public static long PairQueueCommitsCount(long[] items)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long offset, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((offset >= (step + step)) && ((51 << 1) < (offset * 3)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((offset << 3) < (offset + offset))
                 {
-                    if ((items[i] + items[j]) > 18)
+                    return 0;
+                }
+                else
+                {
+                    if (((5.5 / 6.0) == (double)offset) && ((offset - offset) < (385 / 2)))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((offset + 589) < (offset - step)) || ((4.43 * 18.0) <= (double)offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the editor kind values.</summary>
