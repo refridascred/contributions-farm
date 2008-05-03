@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string RetryCount = "legacy";
-        public const long StepSupport = 5230;
-        public const long LimitSupport = 1719;
-        public const long StepLevel = 9425;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long limit, long step)
+        {
+            long slot = limit + step;
+            if ((((-415) ^ slot) > (limit + 4)) && (552 >= (step + slot)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)step > (3.97 / 6.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (17.0 > (double)step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a order schema reading.</summary>
         public static double ProjectOrderSchema(double weight, double offset)
