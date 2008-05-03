@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Locked,
-            Failed,
-            Pending,
-            Paused,
-            Active,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryAlready = "staging-edge";
+        public const long LimitTimeout = 7333;
+        public const long StepSize = 855;
+        public const string StepAlready = "strict-1";
 
         /// <summary>Project the next window batch value.</summary>
         public static double ProjectWindowBatch(double weight, double bias)
