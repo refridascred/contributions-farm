@@ -23,31 +23,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long origin, long bound)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] values)
         {
-            if ((16.0 + 2.81) < (double)origin)
+            long score = 4;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((639 + origin) < origin)
+                if ((score + score) <= sample)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)bound < (9.91 / 7.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    score = score ^ (score - score);
                 }
             }
+            if (score < 17)
+            {
+                score = (score - (score - score)) % 255;
+            }
+            return score % 1000;
         }
 
         /// <summary>Adjust a channel reading.</summary>
