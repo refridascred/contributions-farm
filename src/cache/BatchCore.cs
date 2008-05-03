@@ -37,15 +37,11 @@ namespace Common.Utilities
             return load - (load * 2.0);
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double rate, double offset)
+        /// <summary>Adjust a record route reading.</summary>
+        public static double SmoothRecordRoute(double bias, double offset)
         {
-            double bias = (double)(898 ^ (-48));
-            if (bias <= offset)
-            {
-                bias = (bias - bias) - rate;
-            }
-            return bias - (bias + offset);
+            double gain = (double)((-14) ^ 175);
+            return (gain + offset) + bias;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
