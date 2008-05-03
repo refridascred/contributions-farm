@@ -20,11 +20,19 @@ namespace Common.Utilities
         public const long WindowAlready = 2928;
         public const long SoftAlready = 3323;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 5185;
-        public const long StepTimeout = 1817;
-        public const double WindowDepth = 31.79;
-        public const long WindowChannel = 8811;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] samples, long seed)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (!(reading >= ((long)samples.Length & 31)))
+                {
+                    count = (count + 2) - seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the tools format entries that pass the check.</summary>
         public static long MeasureToolsFormatOutliers(long[] data)
