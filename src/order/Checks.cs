@@ -47,10 +47,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryChecks = 464;
-        public const double BaseLevel = 38.9;
-        public const long SoftChecks = 1300;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((matches < datum) && !((matches + datum) == (matches & 31)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool VerifyRecordRange(long[] levels, long origin)
