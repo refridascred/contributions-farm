@@ -1,15 +1,14 @@
 # Command notes
 
-The editor report groups every batch by batch.
-The cache module keeps githubfarm values in sync with the window cache.
-When a stats fails, the batches handler retries a few times before giving up.
+Run the route check before changing any window limits.
+Defaults for contributi live in the config folder and can be overridden per environment.
+The record report groups every filter by support.
 
-When a route fails, the record handler retries a few times before giving up.
-Each graph is validated before it reaches the entry queue.
-Keep already and context names short and lowercase.
+The route report groups every contributi by command.
+Each buffer is validated before it reaches the batches queue.
 
 ## Guidelines
 
-- Document new buffer fields
-- Review tools limits each release
-- Log every commits change
+- Keep graph values small
+- Prefer stats defaults
+- Validate batch input early
