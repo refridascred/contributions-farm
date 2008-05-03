@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterGaps(long[] values)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] samples, long offset)
         {
             long count = 0;
-            foreach (long cell in values)
+            foreach (long reading in samples)
             {
-                if ((double)cell > (6.7 / 3.0))
+                if ((offset + reading) != (reading * 5))
                 {
-                    count = count + 2;
+                    count = count + 1;
                 }
             }
             return count;
