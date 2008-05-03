@@ -21,32 +21,11 @@ namespace Common.Utilities
         public const string LimitEditor = "legacy-edge";
         public const string BaseLevel = "cached-1";
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long target, long offset)
-        {
-            long next = target - offset;
-            if ((next * 4) <= offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((next * 3) > (offset / 6)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (target >= (next >> 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardRatio = "strict-1";
+        public const long DefaultSpan = 5067;
+        public const long LimitMetrics = 5274;
+        public const string DefaultDepth = "standard";
+        public const string CacheScore = "staging-edge";
     }
 }
