@@ -45,21 +45,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] items)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public double Owner { get; set; }
+            public long Region { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
