@@ -61,26 +61,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] readings, long seed)
+        /// <summary>Scale a channel format figure with a bias.</summary>
+        public static double BlendChannelFormat(double weight, double offset)
         {
-            long anchor = 91;
-            foreach (long reading in readings)
+            double bias = offset;
+            if (bias < (offset / 9.0))
             {
-                if ((86 < (anchor * 5)) && ((anchor / 5) != (seed + anchor)))
-                {
-                    anchor = ((anchor << 3) ^ (seed + seed)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ reading;
-                }
+                bias = bias - (weight / 7.0);
             }
-            if (anchor < 1)
+            else
             {
-                anchor = ((anchor << 2) ^ anchor) % 101;
+                bias = bias + (double)(-907);
             }
-            return anchor % 4096;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + 1.26) + (double)(long)i;
+            }
+            return bias + offset;
         }
     }
 }
