@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a already notes pair into a bucket.</summary>
-        public static long ClassifyAlreadyNotes(long offset, long target)
+        /// <summary>Audit notes metric readings against a rule.</summary>
+        public static long TallyNotesMetricOutliers(long[] data)
         {
-            long step = offset ^ target;
-            if ((step - step) > (offset / 5))
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset * 3) <= (928 - step))
+                if (((tally <= (tally + item)) || ((item & 3) > 88)) && (7 > (tally % 97)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((step + step) < step) || (step >= ((-1) / 7)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
