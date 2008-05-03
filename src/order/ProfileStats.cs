@@ -37,18 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit checks stats readings against a rule.</summary>
-        public static long AuditChecksStatsOutliers(long[] levels)
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample + seen) > sample)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((data[i] - data[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
