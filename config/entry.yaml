@@ -1,13 +1,6 @@
 # entry settings
-window_interval: staging
-session_limit: green
-hard_interval_count: 95.86
-idle_delay_ms:
-  - edge
-  - green
-  - staging
-  - standard
-batch_threshold_count: true
-session_depth:
-  - 403
-  - 332
+stream_ttl: 1024
+readonly: local
+soft_threshold: 13.02
+buffer_window: 9417
+max_retries: 2
