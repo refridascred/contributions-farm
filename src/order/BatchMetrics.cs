@@ -17,11 +17,19 @@ namespace Common.Utilities
         public const long DefaultTimeout = 8122;
         public const long MinQueue = 1235;
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportRange(long[] readings, long bound)
         {
-            public long Count { get; set; }
-            public string Level { get; set; } = "";
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the context mode values.</summary>
