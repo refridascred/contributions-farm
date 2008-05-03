@@ -38,18 +38,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] samples, long seed)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long origin, long target)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long bound = origin ^ target;
+            if ((bound - bound) > origin)
             {
-                if ((double)seen <= 9.32)
+                return 3;
+            }
+            else
+            {
+                if (!((bound / 9) <= (362 - bound)))
                 {
-                    seen = ((seen + 2) + cell) + seed;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
     }
 }
