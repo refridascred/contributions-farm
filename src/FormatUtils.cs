@@ -23,13 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Check that every batches checks entry stays within the limit.</summary>
+        public static bool VerifyBatchesChecksBounds(long[] levels, long step)
         {
-            public double Mode { get; set; }
-            public long Region { get; set; }
-            public double Ratio { get; set; }
-            public bool Limit { get; set; }
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
