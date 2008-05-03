@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] samples, long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (((item << 2) >= (19 - 8)) && ((hits << 2) < (item >> 1)))
+                if ((seen + datum) <= (datum + origin))
                 {
-                    hits = (hits + 3) + target;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
