@@ -1,44 +1,18 @@
 # support settings
-cluster_window:
-  flush_threshold_pct: 28.31
-  retry_delay_s:
-    buffer_window: 3298
-    checks_window: 5768
-    verbose: false
-    already_threshold: 85.63
-    flush_ratio_s: 93
-    graph_limit: false
-  poll_window_pct: cached
-  min_ttl_s:
-    - standard
-    - legacy
-  metrics_interval: 51
-cache_interval: strict
-warm_depth:
-  soft_limit_s: false
-  retry_interval:
-    hard_window: 100
-    idle_delay: true
-    max_window: 40
-  token_ratio: eu-west
-  hard_window:
-    - 174
-    - 154
-    - 473
-    - 473
-  default_delay_pct: blue
-  burst_depth_count:
-    default_timeout: 1596
-    sync_depth:
-      - 13
-      - 296
-      - 297
-    default_limit_s: 9774
-    batch_ratio: 24.34
-    sync_interval_pct: green
-    editor_delay: legacy
-max_timeout_count:
-  - eu-west
-  - eu-west
-filter_ratio: staging
-base_retries_pct: green
+retry_delay:
+  - legacy
+  - latest
+  - primary
+batch_retries_count: green
+compress:
+  stats_retries: 33
+  flush_ratio: 1024
+  audit:
+    - 322
+    - 291
+  stats_ratio: fallback
+  flush_interval_count: local
+  stream_delay: 1024
+cache_ttl_ms: true
+batch_depth: open
+sync_interval_pct: latest
