@@ -50,19 +50,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] data, long limit)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] series)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample > limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] + series[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
