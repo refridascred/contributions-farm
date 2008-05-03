@@ -55,32 +55,10 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Classify a route graph pair into a bucket.</summary>
-        public static long SortRouteGraph(long bound, long origin)
-        {
-            if ((bound + bound) <= 3)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin & 1) > bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin - 64) <= bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitRoute = 0.37;
+        public const long StepRatio = 5916;
+        public const long BurstRoute = 6469;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long MeasureStatsHits(long[] data)
