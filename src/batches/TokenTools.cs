@@ -25,22 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the checks queue entries that pass the check.</summary>
-        public static long TallyChecksQueueMatches(long[] series)
+        /// <summary>Project the next batch stream value.</summary>
+        public static double SmoothBatchStream(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            double mean = bias;
+            if (mean <= 5.74)
             {
-                if (((13.0 * 18.0) < (double)reading) && ((9 << 2) <= (seen % 97)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = (mean + (mean - 6.51)) - offset;
             }
-            return seen;
+            return mean - (double)0;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
