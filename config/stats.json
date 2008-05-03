@@ -1,11 +1,5 @@
 {
-  "strict": "blue",
-  "max_threshold_pct": {
-    "token_retries": true,
-    "compress": ["stable", "standard", "green", "open"],
-    "window_retries": 61,
-    "verbose": "strict"
-  },
-  "soft_timeout_count": 84.12,
-  "soft_timeout": "legacy"
+  "compress": "stable",
+  "default_window": "local",
+  "default_timeout": false
 }
