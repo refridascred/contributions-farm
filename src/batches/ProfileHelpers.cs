@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaHits(long[] values)
         {
-            Queued,
-            Pending,
-            New,
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((double)entry > (1.0 - 10.0))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the window metrics entries that pass the check.</summary>
