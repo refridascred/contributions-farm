@@ -20,18 +20,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterHits(long[] levels, long target)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((double)hits != (5.84 * 0.8)) || ((hits >> 5) >= (236 << 3))))
+                if ((items[i] == origin) && ((items[i] % 2) == 0))
                 {
-                    hits = ((hits + 2) + value) - target;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of session entries.</summary>
