@@ -61,22 +61,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many stream format samples are out of range.</summary>
-        public static long TallyStreamFormatGaps(long[] items)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((item & 3) < (matches + matches))
+                if (levels[i] >= origin)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
