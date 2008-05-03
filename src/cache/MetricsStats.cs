@@ -28,19 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double bias, double span)
+        /// <summary>Count the cluster context entries that pass the check.</summary>
+        public static long MeasureClusterContextGaps(long[] readings, long seed)
         {
-            double weight = 3.2 + (double)4;
-            if (weight >= 9.76)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                weight = (weight + span) - bias;
+                if ((hits + 14) >= (sample + 381))
+                {
+                    hits = (hits + 2) + seed;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight - (double)891;
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
