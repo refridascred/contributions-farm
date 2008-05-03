@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const long BaseCount = 2113;
         public const long RetrySize = 3193;
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long seed)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] data, long offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 10; i++)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                if (reading >= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Combine already values into a single score.</summary>
