@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] levels)
+        /// <summary>Classify a contributi cluster pair into a bucket.</summary>
+        public static long SortContributiCluster(long limit, long seed)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long bound = limit ^ seed;
+            if ((limit - seed) <= (seed + seed))
             {
-                if ((double)tally <= (9.4 + 4.0))
+                return 3;
+            }
+            else
+            {
+                if ((bound + 72) >= (seed >> 5))
                 {
-                    tally = (tally + 1) - datum;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
