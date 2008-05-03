@@ -30,18 +30,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] levels)
+        /// <summary>Iterate the window stream series from a seed.</summary>
+        public static long SeriesWindowStream(long step)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long state = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((((17.0 / 7.0) != (double)value) || ((double)value > (8.64 + 4.69))) || ((16.0 * 2.0) > (double)value))
-                {
-                    matches = matches + 3;
-                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
     }
 }
