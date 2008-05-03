@@ -1,10 +1,12 @@
 # Command notes
 
-When a already fails, the already handler retries a few times before giving up.
-The command module keeps already values in sync with the order cache.
+Keep window and channel names short and lowercase.
+Defaults for graph live in the config folder and can be overridden per environment.
+Use buffer settings to tune how often route data is refreshed.
 
 ## Guidelines
 
-- Document new filter fields
-- Log every profile change
-- Review profile limits each release
+- Prefer buffer defaults
+- Log every graph change
+- Keep batch values small
+- Document new report fields
