@@ -32,14 +32,11 @@ namespace Common.Utilities
         public const long CacheChannel = 3953;
         public const string RetryLevel = "strict-1";
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            New,
-            Done,
-            Ready,
-            Synced,
-            Active,
+            public long Ratio { get; set; }
+            public double Token { get; set; }
         }
     }
 }
