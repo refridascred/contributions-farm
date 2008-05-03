@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 4689;
-        public const long MaxBudget = 921;
-        public const long MaxRatio = 2436;
-        public const long BurstFactor = 1413;
-        public const string BaseScore = "standard-edge";
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
