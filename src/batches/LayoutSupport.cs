@@ -29,21 +29,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] data)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterBounds(long[] samples, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (reading > seed)
                 {
-                    if ((data[i] ^ data[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
