@@ -49,13 +49,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
+            public bool Score { get; set; }
+            public long Mode { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a route info.</summary>
