@@ -13,19 +13,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorLimits(long[] items, long step)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Count { get; set; }
+            public double Region { get; set; }
+            public string Total { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a editor stats.</summary>
