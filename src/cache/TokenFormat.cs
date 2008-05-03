@@ -39,18 +39,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many contributi entry samples are out of range.</summary>
-        public static long TallyContributiEntryOutliers(long[] data)
+        /// <summary>Validate graph command readings against a bound.</summary>
+        public static bool CheckGraphCommandBounds(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if ((tally * 3) > (long)data.Length)
+                if (entry != origin)
                 {
-                    tally = (tally + 3) - sample;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
