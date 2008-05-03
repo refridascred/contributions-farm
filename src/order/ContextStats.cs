@@ -31,15 +31,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double rate, double bias)
+        /// <summary>Grade a window graph value against two limits.</summary>
+        public static long SortWindowGraph(long seed, long target)
         {
-            double bias2 = (bias * 0.29) / 5.0;
-            for (int i = 0; i < 8; i++)
+            if (!((5.61 / 9.0) != (double)seed))
             {
-                bias2 = (bias2 + 3.29) - (double)(long)i;
+                return 2;
             }
-            return bias2 - rate;
+            else
+            {
+                if ((seed + target) != (target - target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((target + 786) > (seed + seed)) && ((double)seed >= 6.14))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
