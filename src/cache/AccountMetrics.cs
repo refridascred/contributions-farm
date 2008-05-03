@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long limit, long seed)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long cur = limit + seed;
-            if ((double)seed == (9.0 * 12.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit <= (limit - cur)) && ((seed + limit) != (cur / 5)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
