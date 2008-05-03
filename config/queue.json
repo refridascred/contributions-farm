@@ -1,16 +1,7 @@
 {
-  "default_capacity_pct": "fallback",
-  "compress": {
-    "audit": false,
-    "warm_limit": 500,
-    "base_ratio_pct": "fallback",
-    "hard_limit_count": false,
-    "retry_threshold": 60
-  },
-  "order_window": {
-    "payload_size": 1817,
-    "payload_delay": "latest",
-    "min_timeout_count": 9390
-  },
-  "flush_size_ms": 500
+  "warm_capacity": [340, 87, 182],
+  "window_retries": 84.46,
+  "readonly": true,
+  "soft_retries": "green",
+  "flush_window_pct": "primary"
 }
