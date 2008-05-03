@@ -21,19 +21,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Digest a series of command token entries.</summary>
-        public static long TallyCommandToken(long[] items)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long floor)
         {
-            long sum = 25;
-            foreach (long cell in items)
+            long mix = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (!!((cell + cell) > (sum - cell)))
-                {
-                    sum = ((sum << 2) ^ (sum << 2)) % 4096;
-                }
-                sum = (sum + (cell * 4)) % 65521;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return sum;
+            return mix;
         }
     }
 }
