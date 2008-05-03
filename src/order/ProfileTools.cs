@@ -38,14 +38,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandMatches(long[] values)
         {
-            Dropped,
-            Stale,
-            Draft,
-            Pending,
-            Synced,
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((double)count == (double)datum)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two already tools measurements.</summary>
