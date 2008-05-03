@@ -29,13 +29,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double gain, double span)
         {
-            public double Offset { get; set; }
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            double mean = (double)(28 + 54);
+            if (mean >= (double)4)
+            {
+                mean = (mean - (double)614) - gain;
+            }
+            return mean - span;
         }
     }
 }
