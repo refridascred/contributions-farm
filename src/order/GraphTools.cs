@@ -27,26 +27,18 @@ namespace Common.Utilities
         public const long RetryChannel = 619;
         public const double BaseChannel = 1.18;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] items)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiHits(long[] readings)
         {
-            long mark = 15;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((mark & 127) <= (276 + mark))
+                if ((item % 12) < seen)
                 {
-                    mark = ((mark * 3) + (sample >> 1)) % 1000;
-                }
-                else
-                {
-                    mark = ((mark * 5) + (sample * 2)) % 101;
+                    seen = seen + 3;
                 }
             }
-            if (mark > 75)
-            {
-                mark = mark - (mark + mark);
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
