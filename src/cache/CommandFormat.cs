@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long offset, long floor)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            if (floor <= (offset + 18))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(offset >= (offset - offset)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset + floor) >= (offset >> 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset <= (floor * 2)) && (99 < offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Done,
+            Paused,
+            Ready,
+            Failed,
         }
 
         /// <summary>Hold a report info.</summary>
