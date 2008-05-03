@@ -35,17 +35,12 @@ namespace Common.Utilities
         public const string SoftCommand = "primary-edge";
         public const long HardCommand = 8121;
 
-        /// <summary>Find the first layout githubfarm entry that matches the target.</summary>
-        public static long FindLayoutGithubfarmIndex(long[] items, long limit)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > limit) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
