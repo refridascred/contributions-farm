@@ -1,7 +1,9 @@
 # entry settings
-strict: 500
-route_interval: cached
-batch_threshold: false
-support_limit:
-  - green
-  - local
+editor_capacity:
+  soft_size_count: true
+  enabled: 70
+  soft_retries: 3
+entry_threshold: blue
+warm_ratio_s: staging
+readonly: primary
+flush_ttl: true
