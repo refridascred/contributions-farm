@@ -11,17 +11,23 @@ namespace Common.Utilities
         public const long LimitSupport = 1719;
         public const long StepLevel = 9425;
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] items, long floor)
+        /// <summary>Adjust a order schema reading.</summary>
+        public static double ProjectOrderSchema(double weight, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain = 9.72;
+            if (gain >= 17.0)
             {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
+                gain = ((gain + (double)(-401)) - weight) + offset;
             }
-            return -1;
+            else
+            {
+                gain = gain + 7.0;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain - (3.48 / 3.0);
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
