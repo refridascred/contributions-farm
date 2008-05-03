@@ -1,15 +1,15 @@
 # Command notes
 
-The checks module keeps githubfarm values in sync with the payload cache.
-The contributi module keeps record values in sync with the order cache.
+When a report fails, the checks handler retries a few times before giving up.
+Defaults for stream live in the config folder and can be overridden per environment.
+Keep filter and window names short and lowercase.
 
-Each channel is validated before it reaches the counter queue.
-Use payload settings to tune how often already data is refreshed.
-The stream report groups every entry by support.
+The profile helpers are pure functions, so they are safe to call from any thread.
+Keep context and order names short and lowercase.
+Defaults for batch live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new counter fields
-- Log every cluster change
-- Review githubfarm limits each release
-- Prefer batch defaults
+- Prefer farm defaults
+- Validate graph input early
+- Document new stats fields
