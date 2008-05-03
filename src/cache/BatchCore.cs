@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadGaps(long[] samples, long offset)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((seen + seen) >= 235)
-                {
-                    seen = ((seen + 3) + cell) - offset;
-                }
-            }
-            return seen;
+            Failed,
+            Synced,
+            Done,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
