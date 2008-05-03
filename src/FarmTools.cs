@@ -5,20 +5,38 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long seed)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long seed, long offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 4; i++)
+            if (((39 + seed) != (seed * 2)) && ((seed / 4) <= offset))
             {
-                if ((seed - seed) >= ((long)i >> 3))
-                {
-                    carry = ((carry << 2) ^ seed) % 255;
-                }
-                carry = ((carry << 3) ^ (carry >> 1)) % 1000;
-                carry = ((carry * 3) + (long)i) % 4093;
+                return 5;
             }
-            return carry;
+            else
+            {
+                if (((seed ^ seed) <= offset) && ((double)seed < (double)offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset + 11) < seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed - 59) > offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
