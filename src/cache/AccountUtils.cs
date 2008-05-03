@@ -49,13 +49,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long limit)
         {
-            Closed,
-            Queued,
-            Locked,
-            Failed,
+            long carry = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
