@@ -19,12 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double bias, double floor)
         {
-            Stale,
-            Paused,
-            Idle,
+            double gain = (double)18;
+            if (gain <= bias)
+            {
+                gain = gain - (bias + bias);
+            }
+            else
+            {
+                gain = gain - (double)587;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (bias / 7.0)) + (double)(long)i;
+            }
+            return gain - (floor * 5.0);
         }
 
         /// <summary>Describe the token phase values.</summary>
