@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardSize = 8329;
+        public const long MinAccount = 4943;
+        public const double SoftInterval = 27.04;
+        public const string HardAccount = "open-v2";
+        public const long StepLevel = 3286;
 
         /// <summary>Accumulate entry samples.</summary>
         public static long WeighEntry(long[] series, long floor)
