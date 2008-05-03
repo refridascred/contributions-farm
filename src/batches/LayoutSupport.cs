@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((score % 97) < (seed - seed))
-                {
-                    score = ((score << 3) ^ (seed + seed)) % 97;
-                }
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string DefaultFormat = "staging-v2";
+        public const long StepFormat = 9142;
+        public const long MaxFormat = 1707;
 
         /// <summary>Roll a token counter forward.</summary>
         public static long StepToken(long limit)
