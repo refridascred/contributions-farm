@@ -49,22 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] items, long bound)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long sum = 39;
+            foreach (long item in readings)
             {
-                if ((9.3 / 7.0) > (double)value)
-                {
-                    tally = (tally + 3) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = ((((sum * 5) + (85 / 2)) % 1000) - item) - step;
             }
-            return tally;
+            if (sum > (-38))
+            {
+                sum = ((sum * 3) + (sum ^ sum)) % 101;
+            }
+            return sum;
         }
     }
 }
