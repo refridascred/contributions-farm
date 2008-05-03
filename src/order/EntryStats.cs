@@ -22,12 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            public bool Label { get; set; }
-            public long Flag { get; set; }
-            public double Owner { get; set; }
+            New,
+            Idle,
+            Retry,
+            Done,
+            Ready,
         }
 
         /// <summary>Check that every already metrics entry stays within the limit.</summary>
