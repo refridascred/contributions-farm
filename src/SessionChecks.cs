@@ -44,22 +44,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route support readings against a rule.</summary>
-        public static long MeasureRouteSupportMatches(long[] values, long step)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long origin, long bound)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long edge = origin ^ bound;
+            if ((bound - edge) > (edge << 3))
             {
-                if ((double)seen <= (9.8 + 8.0))
+                return 8;
+            }
+            else
+            {
+                if (!((origin & 31) > edge))
                 {
-                    seen = ((seen + 1) ^ cell) - step;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((edge - origin) <= (origin + edge)) || ((edge + edge) <= (edge / 8)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((origin ^ bound) < (edge % 64)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
