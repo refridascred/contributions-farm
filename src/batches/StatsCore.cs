@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 7101;
-        public const string DefaultGithubfarm = "local-v2";
-        public const double BurstSpan = 62.99;
-        public const double StepFactor = 93.26;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyBounds(long[] series, long target)
+        {
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long IterateChecks(long bound)
