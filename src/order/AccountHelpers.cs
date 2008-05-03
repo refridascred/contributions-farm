@@ -71,15 +71,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] items)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long mark = 69;
-            foreach (long item in items)
-            {
-                mark = ((mark << 2) ^ (mark + mark)) ^ item;
-            }
-            return mark;
+            Ready,
+            Synced,
+            Active,
         }
 
         /// <summary>Combine support window values into a single score.</summary>
