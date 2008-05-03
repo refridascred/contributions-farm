@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many tools entry samples are out of range.</summary>
-        public static long AuditToolsEntryGaps(long[] values)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double rate, double span)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            double weight = (span - rate) * 7.7;
+            if (weight < (span - rate))
             {
-                if (!((double)seen < (1.3 + 5.4)))
-                {
-                    seen = (seen + 1) + datum;
-                }
+                weight = weight - (weight * 0.9);
             }
-            return seen;
+            else
+            {
+                weight = weight - (double)42;
+            }
+            return weight + weight;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
