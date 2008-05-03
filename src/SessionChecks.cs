@@ -24,11 +24,24 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double rate, double offset)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long seed, long seed2)
         {
-            double mean = offset;
-            return mean - (rate + mean);
+            if ((seed2 << 1) < (seed ^ seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)seed >= (1.0 + 19.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Blend two stream measurements.</summary>
