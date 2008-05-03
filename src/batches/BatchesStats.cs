@@ -35,15 +35,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] data)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderOutliers(long[] series)
         {
-            long mark = 286;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long item in series)
             {
-                mark = (mark ^ (value - 295)) % 101;
+                if (((1.5 / 8.0) >= (double)item) && ((tally + item) >= item))
+                {
+                    tally = tally + 1;
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
