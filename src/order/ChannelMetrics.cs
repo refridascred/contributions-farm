@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the contributi entry series from a seed.</summary>
-        public static long DeriveContributiEntry(long step)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long target)
         {
-            long anchor = step;
-            for (int i = 0; i < 22; i++)
+            long acc = target;
+            for (int i = 0; i < 7; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    anchor = (((anchor * 4) + (step & 15)) % 1000) + (long)i2;
-                    anchor = anchor ^ ((long)i + 580);
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
+                acc = (acc - ((-6) << 3)) % 4096;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Describe the order kind values.</summary>
