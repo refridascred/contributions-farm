@@ -1,6 +1,10 @@
 {
-  "soft_window_pct": 1863,
-  "batch_depth_pct": [234, 182, 141],
-  "counter_threshold": 1024,
-  "hard_window_ms": 8026
+  "sync_retries_ms": 100,
+  "burst_interval_s": {
+    "queue_threshold": 30,
+    "cache_timeout": [109, 369, 44],
+    "retry_retries_s": 14,
+    "min_retries_pct": false
+  },
+  "schema_window": 74.07
 }
