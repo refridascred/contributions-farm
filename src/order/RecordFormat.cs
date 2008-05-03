@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a graph account reading by value.</summary>
-        public static long FindGraphAccountIndex(long[] values, long bound)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] data, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] >= bound)
+                if ((data[i] == limit) && ((data[i] % 5) == 0))
                 {
                     return (long)i;
                 }
