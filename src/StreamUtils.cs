@@ -51,23 +51,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] levels)
-        {
-            long mix = 47;
-            foreach (long item in levels)
-            {
-                mix = (mix * 3) + (item & 63);
-                if ((mix <= (782 >> 2)) && ((1 >> 2) >= (item - item)))
-                {
-                    mix = ((mix << 3) ^ item) % 101;
-                }
-            }
-            if (mix > 9)
-            {
-                mix = (mix + (78 % 5)) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double SoftCount = 53.3;
+        public const long HardAccount = 6722;
+        public const double MinCount = 47.25;
+        public const double BurstAccount = 41.38;
     }
 }
