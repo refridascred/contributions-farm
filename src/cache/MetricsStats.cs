@@ -41,12 +41,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string WindowToken = "local-1";
-        public const string BatchFactor = "cached-1";
-        public const string IdleToken = "latest-edge";
-        public const long BatchToken = 5077;
-        public const long BurstScore = 607;
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Fold a list of entry layout readings.</summary>
         public static long WeighEntryLayout(long[] values)
