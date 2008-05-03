@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] levels)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 8;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)seed < (double)mark)
                 {
-                    if ((levels[i] + levels[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark ^ (mark * 3)) % 101;
+                }
+                else
+                {
+                    mark = (mark - (mark + reading)) % 4096;
                 }
             }
-            return count;
+            if (mark > 81)
+            {
+                mark = (mark + (mark / 4)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Describe the editor level values.</summary>
