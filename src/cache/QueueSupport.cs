@@ -45,9 +45,9 @@ namespace Common.Utilities
         public const long IdleContributi = 1103;
         public const double HardCount = 82.33;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 9960;
-        public const double HardProfile = 46.36;
-        public const double RetryProfile = 30.17;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BatchCount = 44.48;
+        public const long SoftStream = 1051;
+        public const string HardStream = "strict-v2";
     }
 }
