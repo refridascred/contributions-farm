@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 8424;
-        public const double MaxBatches = 39.01;
-        public const long WindowCount = 7127;
-        public const double MinBatches = 5.43;
-        public const string LimitBatches = "open";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 9430;
+        public const string IdleLevel = "primary-1";
+        public const long MaxProfile = 8850;
+        public const string SoftProfile = "alpha-edge";
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TotalChecks(long[] values)
