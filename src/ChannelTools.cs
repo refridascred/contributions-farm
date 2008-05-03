@@ -28,19 +28,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every counter window entry stays within the limit.</summary>
-        public static bool ValidateCounterWindowBounds(long[] readings, long target)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long step, long target)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            if ((target >> 4) <= (step - target))
             {
-                if (item <= target)
+                return 7;
+            }
+            else
+            {
+                if (!((step + 68) >= step))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)step < (double)target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((8.12 + 0.67) <= (double)step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Iterate the account token series from a seed.</summary>
