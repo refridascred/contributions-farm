@@ -27,21 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up metric channel samples.</summary>
-        public static long CompareMetricChannelCount(long[] items)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Look up the position of a command sample.</summary>
