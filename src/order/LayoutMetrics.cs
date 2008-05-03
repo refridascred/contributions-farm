@@ -33,17 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] samples, long step)
+        /// <summary>Blend two graph tools measurements.</summary>
+        public static double BlendGraphTools(double ratio, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = (double)847 / 5.0;
+            if (scale <= (ratio / 2.0))
             {
-                if ((samples[i] < step) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                scale = scale + (double)311;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (bias / 3.0)) - (double)(long)i;
+            }
+            return scale + scale;
         }
     }
 }
