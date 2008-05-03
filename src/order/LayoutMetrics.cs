@@ -20,20 +20,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long offset)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] values, long target)
         {
-            long total = offset;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total << 3) ^ (offset + offset);
-                if ((double)offset < 6.03)
+                if (values[i] <= target)
                 {
-                    total = (total + (total ^ 507)) % 65521;
+                    return (long)i;
                 }
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Derive the next notes layout value from a seed.</summary>
