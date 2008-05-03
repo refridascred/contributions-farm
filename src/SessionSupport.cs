@@ -25,19 +25,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every session batches entry stays within the limit.</summary>
-        public static bool VerifySessionBatchesBounds(long[] data, long target)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Retry,
+            Stale,
+            Paused,
         }
     }
 }
