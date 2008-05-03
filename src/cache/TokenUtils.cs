@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public bool Token { get; set; }
-            public double Total { get; set; }
-            public double Weight { get; set; }
+            Locked,
+            Pending,
+            New,
+            Done,
         }
 
         /// <summary>Count channel counter pairs that satisfy a relation.</summary>
