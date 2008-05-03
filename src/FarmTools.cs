@@ -21,13 +21,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Check that every command payload entry stays within the limit.</summary>
+        public static bool VerifyCommandPayloadLimits(long[] series, long floor)
         {
-            Active,
-            New,
-            Failed,
-            Idle,
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
