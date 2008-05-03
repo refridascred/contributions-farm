@@ -28,12 +28,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            public long Owner { get; set; }
-            public double Offset { get; set; }
-            public double Size { get; set; }
+            Queued,
+            Closed,
+            Locked,
+            Draft,
+            Paused,
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
