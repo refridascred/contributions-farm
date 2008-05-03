@@ -37,20 +37,10 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] items, long offset)
-        {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string CacheContext = "local-1";
+        public const long MaxContext = 2136;
+        public const long CacheWidth = 1075;
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long SeekCommitsIndex(long[] items, long target)
