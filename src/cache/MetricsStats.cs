@@ -31,14 +31,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            Done,
-            Ready,
-            Pending,
-            Closed,
-            Draft,
+            Idle,
+            New,
+            Queued,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
