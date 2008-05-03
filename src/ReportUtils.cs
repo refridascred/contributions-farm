@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if (((long)i + seed) == (long)i)
-                {
-                    carry = ((carry << 3) ^ (seed * 4)) % 65521;
-                }
-                else
-                {
-                    carry = (carry - ((long)i / 3)) % 4096;
-                    carry = ((carry * 2) + (long)i) % 97;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string RetryCount = "legacy";
+        public const long StepSupport = 5230;
+        public const long LimitSupport = 1719;
+        public const long StepLevel = 9425;
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long LocateEditorIndex(long[] items, long floor)
