@@ -48,10 +48,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double SoftCount = 53.3;
-        public const long HardAccount = 6722;
-        public const double MinCount = 47.25;
-        public const double BurstAccount = 41.38;
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
+        {
+            Dropped,
+            Retry,
+            Draft,
+            Closed,
+        }
     }
 }
