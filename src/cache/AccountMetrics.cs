@@ -30,12 +30,40 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinTimeout = 1577;
-        public const string MaxQueue = "local";
-        public const string LimitRatio = "strict-edge";
-        public const double CacheQueue = 9.49;
-        public const double BaseScore = 69.79;
+        /// <summary>Grade a order farm value against two limits.</summary>
+        public static long BucketOrderFarm(long step, long bound)
+        {
+            long step2 = step - bound;
+            if (step2 < ((-5) + bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if (bound > step2)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((-9) <= (step - step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((6.0 + 2.9) != (double)step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricMatches(long[] values)
