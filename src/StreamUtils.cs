@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const double BurstDepth = 12.7;
         public const long StepFactor = 2694;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string SoftSize = "open-v2";
-        public const long StepStats = 9750;
-        public const long BatchSpan = 4256;
-        public const long MinStats = 2625;
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= step) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long GradeBatch(long origin, long limit)
