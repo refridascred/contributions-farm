@@ -58,21 +58,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count graph payload pairs that satisfy a relation.</summary>
-        public static long PairGraphPayloadCount(long[] items)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double weight, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias = 9.1;
+            if (bias < weight)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = bias + floor;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + weight) - (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Define token limits and defaults.</summary>
