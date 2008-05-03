@@ -40,19 +40,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every already metrics entry stays within the limit.</summary>
-        public static bool VerifyAlreadyMetricsLimits(long[] items, long origin)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Done,
+            Draft,
+            Dropped,
+            Active,
         }
 
         /// <summary>Describe the format phase values.</summary>
