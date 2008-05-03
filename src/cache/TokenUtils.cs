@@ -18,16 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long floor)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long floor, long limit)
         {
-            long sum = floor;
-            for (int i = 0; i < 11; i++)
+            long next = floor ^ limit;
+            if (((floor & 127) <= 73) || ((1 - floor) >= 298))
             {
-                sum = ((sum << 2) ^ floor) % 4096;
-                sum = ((sum * 3) + (long)i) % 97;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if ((6.52 > (double)floor) && (limit >= (limit - limit)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((next % 7) == (limit + (-591)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
