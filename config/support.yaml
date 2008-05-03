@@ -1,21 +1,7 @@
 # support settings
-readonly:
-  - legacy
-  - latest
-  - eu-west
-retry_limit:
-  entry_size:
-    - 169
-    - 416
-    - 175
-  filter_ttl: 5128
-  persist:
-    flush_timeout_ms: true
-    metric_delay:
-      - open
-      - green
-      - edge
-      - strict
-    poll_timeout: 1024
-  sync_ttl_pct: 28
-cache_limit: false
+retry_capacity_count: true
+default_size_count: 30
+soft_size_count: 38.1
+channel_delay: 60
+batch_limit: 82.68
+notes_limit: 59.43
