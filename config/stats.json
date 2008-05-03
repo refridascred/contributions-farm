@@ -1,6 +1,5 @@
 {
-  "sync_ttl_s": "standard",
-  "idle_capacity_ms": "blue",
-  "max_capacity": 7695,
-  "githubfarm_capacity": 8
+  "warm_timeout": ["local", "primary"],
+  "order_depth": false,
+  "base_threshold": ["green", "stable", "open", "open"]
 }
