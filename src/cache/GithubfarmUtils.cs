@@ -28,15 +28,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] readings, long limit)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] levels, long floor)
         {
             long count = 0;
-            foreach (long item in readings)
+            foreach (long entry in levels)
             {
-                if ((item ^ count) > item)
+                if (count >= (entry + floor))
                 {
-                    count = (count + 2) + limit;
+                    count = count + 2;
                 }
             }
             return count;
