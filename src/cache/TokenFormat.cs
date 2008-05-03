@@ -39,19 +39,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate graph command readings against a bound.</summary>
-        public static bool CheckGraphCommandBounds(long[] samples, long origin)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long offset, long step)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long delta = offset - step;
+            if (((double)delta == (3.24 - 8.0)) || ((delta - delta) < (delta - step)))
             {
-                if (entry != origin)
+                return 2;
+            }
+            else
+            {
+                if (step >= (delta * 3))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)step < (6.58 + 2.2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((3.5 * 4.5) < (double)offset)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
