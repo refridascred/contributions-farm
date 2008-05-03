@@ -30,12 +30,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
-        {
-            public bool Total { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 1441;
+        public const double MinBudget = 3.77;
+        public const long BatchSpan = 3695;
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long ClassifyPayload(long target, long seed)
