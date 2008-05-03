@@ -1,10 +1,7 @@
 {
-  "payload_size": false,
-  "cache_window": {
-    "token_retries": ["eu-west", "standard", "staging"],
-    "sync_threshold": [199, 478, 482, 295],
-    "compress": 6,
-    "commits_threshold": "local"
-  },
-  "sync_depth": "edge"
+  "hard_timeout": 95.84,
+  "dry_run": "open",
+  "cache_capacity_count": "open",
+  "cache_depth_ms": [125, 233, 419, 139],
+  "verbose": "green"
 }
