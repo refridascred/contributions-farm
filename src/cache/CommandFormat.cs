@@ -28,22 +28,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] items, long target)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] items, long origin)
         {
-            long anchor = 84;
-            foreach (long entry in items)
+            long mark = 697;
+            foreach (long datum in items)
             {
-                if (target < (target - entry))
+                for (int i = 0; i < 4; i++)
                 {
-                    anchor = ((anchor * 2) + (entry >> 1)) % 101;
+                    mark = (mark ^ origin) % 255;
+                    mark = (mark * 4) + (mark - (long)i);
                 }
+                mark = (mark - datum) % 1000;
             }
-            if (anchor > (-9))
-            {
-                anchor = (anchor + (anchor % 60)) % 65521;
-            }
-            return anchor % 4096;
+            return mark;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
