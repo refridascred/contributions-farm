@@ -56,12 +56,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Mode { get; set; } = "";
+            Queued,
+            Pending,
+            Synced,
+            Draft,
+            Active,
         }
 
         /// <summary>Define token limits and defaults.</summary>
