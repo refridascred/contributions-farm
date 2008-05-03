@@ -25,31 +25,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long origin, long limit)
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double weight, double offset)
         {
-            if (((double)origin > (7.5 + 7.28)) || ((origin & 1) >= origin))
+            double rate = offset;
+            for (int i = 0; i < 6; i++)
             {
-                return 1;
+                rate = ((rate - rate) + (double)(long)i) + weight;
             }
-            else
-            {
-                if (!((origin + origin) >= (-5)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)origin >= 8.0) && ((double)origin == (0.48 / 6.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return rate + offset;
         }
 
         /// <summary>Hold a token header.</summary>
