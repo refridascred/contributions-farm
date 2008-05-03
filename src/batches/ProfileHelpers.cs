@@ -25,20 +25,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] items, long bound)
-        {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultTimeout = 6565;
+        public const long HardCache = 9107;
+        public const long LimitScore = 7348;
+        public const double BurstScore = 20.09;
+        public const double LimitCache = 87.52;
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool ValidateContextLimits(long[] series, long seed)
