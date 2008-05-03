@@ -28,18 +28,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] values)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if (reading >= (reading - (-50)))
+                if (value >= limit)
                 {
-                    seen = seen + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
