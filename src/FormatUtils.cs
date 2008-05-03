@@ -20,18 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the support window entries that pass the check.</summary>
-        public static long CountSupportWindowMatches(long[] series, long seed)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((sample / 9) > (hits ^ hits))
+                if (!(((datum % 16) != (tally / 2)) || ((double)datum > (double)27)))
                 {
-                    hits = (hits + 3) - seed;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Combine counter record values into a single score.</summary>
