@@ -1,7 +1,10 @@
 # support settings
-idle_ttl_ms: 55.5
-batch_size:
-  - 26
-  - 405
-  - 353
-idle_ttl_pct: local
+strict: 60
+burst_window_s: 41
+readonly: 250
+dry_run:
+  - primary
+  - fallback
+  - fallback
+  - latest
+session_ttl: 7677
