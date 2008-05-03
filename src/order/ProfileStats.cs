@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of profile farm readings.</summary>
-        public static long FoldProfileFarm(long[] samples, long bound)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheBounds(long[] data, long origin)
         {
-            long score = 769;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if ((value & 7) >= (score + bound))
+                if (datum >= origin)
                 {
-                    score = ((score << 2) ^ (bound & 127)) % 97;
-                    score = score - ((long)samples.Length - bound);
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    score = score - (score + bound);
-                }
-                for (int i = 0; i < 4; i++)
-                {
-                    score = ((score << 3) ^ (value % 100)) - (long)i;
-                }
-                score = (score << 2) ^ (value >> 4);
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Combine notes entry values into a single score.</summary>
