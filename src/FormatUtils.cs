@@ -67,12 +67,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadOutliers(long[] readings, long step)
         {
-            Locked,
-            Draft,
-            New,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((((double)tally != (0.01 - 3.2)) && ((93 + tally) == ((long)readings.Length ^ reading))) || (((step + 215) <= (reading ^ tally)) && ((323 + reading) == (reading * 5))))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
