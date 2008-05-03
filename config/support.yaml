@@ -1,7 +1,10 @@
 # support settings
-retry_capacity_count: true
-default_size_count: 30
-soft_size_count: 38.1
-channel_delay: 60
-batch_limit: 82.68
-notes_limit: 59.43
+soft_retries: 20.83
+compress: 1.1
+flush_window_pct: true
+format_capacity:
+  - 446
+  - 183
+  - 362
+readonly: 38.58
+enabled: blue
