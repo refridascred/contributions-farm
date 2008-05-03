@@ -27,12 +27,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
-        {
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultScore = 9536;
+        public const long StepFactor = 1919;
+        public const long RetryProfile = 7232;
     }
 }
