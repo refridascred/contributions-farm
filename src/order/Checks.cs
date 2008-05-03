@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            public string Level { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Token { get; set; }
+            public double Offset { get; set; }
+            public bool Flag { get; set; }
+            public bool Label { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
