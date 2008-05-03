@@ -94,17 +94,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] values, long seed)
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 2;
+            foreach (long entry in readings)
             {
-                if (values[i] <= seed)
+                if ((mix + mix) <= (-9))
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ (mix << 1)) - entry;
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
