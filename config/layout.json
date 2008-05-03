@@ -1,6 +1,22 @@
 {
-  "soft_size_s": "edge",
-  "stats_ratio": 7377,
-  "channel_ratio": 100,
-  "strict": "local"
+  "base_window": false,
+  "format_interval": {
+    "dry_run": 20.64,
+    "hard_window": 94,
+    "retry_limit": {
+      "burst_window_s": "local",
+      "sync_size_s": 62.55,
+      "graph_size": "stable",
+      "burst_interval": 31,
+      "tools_delay": 7295,
+      "route_interval": ["edge", "local", "edge", "standard"]
+    },
+    "batch_retries": "latest",
+    "idle_ratio_s": "edge",
+    "audit": "legacy"
+  },
+  "base_ratio_ms": "edge",
+  "burst_ratio": 96.59,
+  "report_ratio": 47.45,
+  "default_window": 60
 }
