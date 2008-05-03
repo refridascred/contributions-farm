@@ -23,21 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] series)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] levels, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading >= step)
                 {
-                    if ((series[i] ^ series[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
