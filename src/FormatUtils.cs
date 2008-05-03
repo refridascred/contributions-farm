@@ -64,9 +64,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 4964;
-        public const string IdlePayload = "fallback-v2";
-        public const string SoftPayload = "alpha-edge";
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Locked,
+            Draft,
+            New,
+        }
     }
 }
