@@ -55,15 +55,21 @@ namespace Common.Utilities
         public const double BaseLevel = 38.9;
         public const long SoftChecks = 1300;
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long target)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] data)
         {
-            long acc = target;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc;
+            return seen;
         }
     }
 }
