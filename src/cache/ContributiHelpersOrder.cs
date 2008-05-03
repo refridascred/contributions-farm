@@ -14,10 +14,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinLevel = 7991;
-        public const double MaxBatches = 76.74;
-        public const long BatchBatches = 5713;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftBudget = 5517;
+        public const long SoftTimeout = 8435;
+        public const long LimitSession = 4890;
+        public const string DefaultSession = "fallback-edge";
+        public const long BatchFactor = 7143;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long SoftContributi = 2567;
