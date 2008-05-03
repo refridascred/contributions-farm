@@ -14,11 +14,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] series, long offset)
         {
-            public string Label { get; set; } = "";
-            public string Weight { get; set; } = "";
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Compare every pair of session entry readings.</summary>
