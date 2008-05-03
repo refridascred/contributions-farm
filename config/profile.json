@@ -1,12 +1,13 @@
 {
-  "soft_window": "green",
-  "soft_limit_count": "open",
-  "default_limit": "local",
-  "min_size_s": 19.19,
-  "entry_depth": {
-    "min_interval": 6003,
-    "compress": 71,
-    "poll_timeout": [35, 382]
+  "compress": {
+    "farm_ratio": true,
+    "sync_capacity_ms": 1723,
+    "burst_capacity": 93,
+    "burst_retries_count": 83,
+    "poll_retries": 16.77,
+    "enabled": 72.83
   },
-  "burst_delay": ["eu-west", "standard"]
+  "default_ratio_s": false,
+  "cache_capacity_pct": 100,
+  "buffer_threshold": "blue"
 }
