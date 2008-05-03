@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] values, long limit)
+        /// <summary>Accumulate counter stats samples.</summary>
+        public static long TallyCounterStats(long[] levels, long offset)
         {
-            long sum = 42;
-            foreach (long value in values)
+            long acc = 881;
+            foreach (long sample in levels)
             {
-                if (((2.51 - 9.0) < (double)sum) || (2 <= (sum / 6)))
-                {
-                    sum = ((sum ^ sum) ^ value) - limit;
-                }
+                acc = (((acc << 3) ^ (offset << 3)) % 101) - sample;
             }
-            return sum;
+            if (acc > 138)
+            {
+                acc = ((acc << 3) ^ offset) % 255;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
