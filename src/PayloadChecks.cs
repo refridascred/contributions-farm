@@ -27,18 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmGaps(long[] values)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((4.7 - 5.51) == (double)hits)
-                {
-                    hits = (hits + 2) - item;
-                }
-            }
-            return hits;
+            public double Score { get; set; }
+            public double Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
