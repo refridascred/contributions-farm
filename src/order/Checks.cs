@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
-        {
-            public double Offset { get; set; }
-            public bool Flag { get; set; }
-            public bool Label { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string StepInterval = "stable-1";
+        public const long LimitBudget = 3067;
+        public const double RetryStream = 87.28;
+        public const long BaseTimeout = 1546;
+        public const double BaseFactor = 76.66;
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long RollContext(long floor)
