@@ -25,31 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long origin, long bound)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            if (bound >= (origin / 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound <= (origin & 31)) || ((double)origin < (4.2 / 8.0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((bound << 1) > (bound * 5)) || ((origin - bound) == (origin >> 4)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
