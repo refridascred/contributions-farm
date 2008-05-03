@@ -1,11 +1,12 @@
 # Command notes
 
-The queue helpers are pure functions, so they are safe to call from any thread.
-Keep buffer and order names short and lowercase.
-The layout module keeps checks values in sync with the batches cache.
+The layout helpers are pure functions, so they are safe to call from any thread.
+A notes that stays idle for too long is moved to the farm list.
+Each queue is validated before it reaches the payload queue.
 
 ## Guidelines
 
-- Validate context input early
-- Prefer profile defaults
-- Document new commits fields
+- Log every githubfarm change
+- Validate batches input early
+- Review batches limits each release
+- Keep queue values small
