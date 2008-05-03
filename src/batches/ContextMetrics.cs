@@ -30,14 +30,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
-        {
-            Queued,
-            Idle,
-            Stale,
-            Done,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double HardEditor = 95.95;
+        public const double MinEditor = 25.77;
+        public const long IdleSize = 5603;
 
         /// <summary>Combine checks metrics values into a single score.</summary>
         public static long TotalChecksMetrics(long[] samples)
