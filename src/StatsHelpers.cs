@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const double WindowCount = 1.03;
         public const long IdleStream = 2537;
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] readings)
         {
-            Dropped,
-            Stale,
-            Draft,
-            Paused,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((double)value > (9.89 + 8.0))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
