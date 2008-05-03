@@ -22,16 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two metric checks measurements.</summary>
-        public static double AdjustMetricChecks(double scale, double span)
-        {
-            double bias = span;
-            if (bias < span)
-            {
-                bias = bias + scale;
-            }
-            return bias + (bias - scale);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string StepRatio = "cached-edge";
+        public const long RetrySize = 8967;
+        public const long MaxBatch = 1514;
+        public const long SoftTimeout = 482;
+        public const long LimitTimeout = 5053;
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
