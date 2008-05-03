@@ -30,10 +30,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 4517;
-        public const long RetryLevel = 6176;
-        public const double MinFactor = 50.35;
-        public const long BatchSpan = 8728;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (!((item + 16) <= (item << 2)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
