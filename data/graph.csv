@@ -1,11 +1,6 @@
-id,token,state,rank
-1,81.31,35.62,legacy
-2,773,682,latest
-3,282,334,34.52
-4,408,369,13.48
-5,637,10,28
-6,922,258,393
-7,487,local,83.37
-8,eu-west,eu-west,primary
-9,open,open,564
-10,13,40.42,47.91
+id,label,ratio,owner
+1,legacy,111,staging
+2,39.04,eu-west,248
+3,50.33,84.77,25.43
+4,standard,3.8,540
+5,82.48,54.96,240
