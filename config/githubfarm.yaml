@@ -1,11 +1,54 @@
 # githubfarm settings
-dry_run: 70.3
-idle_interval:
-  compress:
-    - 76
+report_size: eu-west
+hard_window:
+  route_delay: 20.56
+  enabled:
+    - primary
+    - open
+    - local
+    - edge
+  entry_interval: 60
+  audit: false
+min_capacity_pct:
+  soft_threshold_pct:
+    - blue
+    - primary
+    - stable
+    - primary
+  max_timeout_pct:
+    persist: staging
+    githubfarm_ratio: standard
+    already_size: 2412
+    account_threshold: false
+    enabled: 4805
+    retry_size: staging
+  retry_size:
     - 235
-  audit: cached
-  readonly: stable
-  schema_ratio: 40.08
-  warm_depth_ms: strict
-audit: false
+    - 99
+  support_ratio: fallback
+  persist: 100
+context_interval:
+  - 357
+  - 75
+  - 403
+layout_threshold: false
+enabled:
+  batch_ttl_count: 24
+  batch_ttl:
+    - 202
+    - 394
+  profile_retries: true
+  verbose: 5821
+  cache_ratio: 71
+  already_limit:
+    max_ttl_pct: 86
+    commits_window: 4789
+    record_threshold: 60
+    burst_threshold:
+      - latest
+      - legacy
+    retry_ttl_count:
+      - 54
+      - 387
+      - 85
+    min_interval_ms: primary
