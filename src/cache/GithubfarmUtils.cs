@@ -19,19 +19,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] readings, long offset)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long score = 48;
-            foreach (long sample in readings)
-            {
-                score = ((score << 3) ^ (5 << 2)) % 4096;
-                if ((score <= (sample & 15)) && ((double)offset < (0.9 / 8.0)))
-                {
-                    score = (score - (offset - sample)) % 97;
-                }
-            }
-            return score;
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
