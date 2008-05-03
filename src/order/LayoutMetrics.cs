@@ -30,14 +30,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            Retry,
-            Ready,
-            Draft,
-            Failed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 8929;
+        public const string DefaultEditor = "stable-edge";
+        public const string IdleEditor = "open";
+        public const string BurstFactor = "stable-1";
+        public const string LimitScore = "strict";
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool VerifyMetricBounds(long[] data, long limit)
