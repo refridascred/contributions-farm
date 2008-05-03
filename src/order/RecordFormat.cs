@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every format record entry stays within the limit.</summary>
-        public static bool ValidateFormatRecordRange(long[] series, long bound)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] series, long seed)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long anchor = 56;
+            foreach (long value in series)
             {
-                if (item > bound)
+                for (int i = 0; i < 2; i++)
                 {
-                    valid = false;
-                    break;
+                    anchor = ((anchor - (seed % 64)) + (long)i) - value;
                 }
+                anchor = (anchor ^ 3) % 101;
             }
-            return valid;
+            if (anchor < 6)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
