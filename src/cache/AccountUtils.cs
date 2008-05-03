@@ -33,13 +33,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] levels)
         {
-            public string Limit { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
