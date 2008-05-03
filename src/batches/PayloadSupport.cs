@@ -50,22 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] values)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] readings)
         {
-            long result = -797;
-            foreach (long datum in values)
+            long anchor = 680;
+            foreach (long cell in readings)
             {
-                if ((double)datum > (3.0 * 3.0))
+                if ((anchor + cell) >= anchor)
                 {
-                    result = (result + (result & 3)) % 101;
+                    anchor = anchor ^ ((-74) ^ 916);
                 }
-                else
-                {
-                    result = ((result << 2) ^ (datum & 3)) % 101;
-                }
+                anchor = anchor + (104 - cell);
             }
-            return result;
+            return anchor % 1000;
         }
     }
 }
