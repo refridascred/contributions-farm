@@ -74,21 +74,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long bound)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] values, long seed)
         {
-            long carry = bound;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 2) + bound) % 65521;
-                if ((bound / 2) > (long)i)
+                if (values[i] <= seed)
                 {
-                    carry = (carry * 4) + ((-203) + bound);
+                    return (long)i;
                 }
-                carry = (carry ^ carry) % 97;
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
     }
 }
