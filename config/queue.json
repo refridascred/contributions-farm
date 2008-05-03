@@ -1,18 +1,12 @@
 {
-  "verbose": "green",
-  "flush_limit": 9255,
-  "soft_limit_pct": {
-    "counter_ratio": "green",
-    "cache_size": false,
-    "burst_size": {
-      "dry_run": 4623,
-      "min_retries_ms": "stable",
-      "compress": 65,
-      "max_interval": "eu-west"
-    },
-    "tools_ttl": 47.71,
-    "poll_threshold_ms": "cached",
-    "poll_interval_count": false
+  "burst_ttl_s": true,
+  "profile_limit": 250,
+  "window_window": [229, 194, 485],
+  "commits_retries": {
+    "cache_depth_count": false,
+    "entry_interval": "eu-west",
+    "compress": 60
   },
-  "compress": "strict"
+  "readonly": "cached",
+  "idle_size_pct": true
 }
