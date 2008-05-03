@@ -28,11 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double ratio, double span)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            double mean = (double)14 * 3.8;
-            return ((mean - (double)2) + ratio) + span;
+            Done,
+            Locked,
+            Closed,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
