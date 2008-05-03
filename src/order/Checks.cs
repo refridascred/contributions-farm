@@ -45,15 +45,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryHits(long[] samples)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterGaps(long[] readings, long target)
         {
             long matches = 0;
-            foreach (long datum in samples)
+            foreach (long entry in readings)
             {
-                if ((matches < datum) && !((matches + datum) == (matches & 31)))
+                if (((long)readings.Length + (-2)) >= (matches & 3))
                 {
-                    matches = matches + 1;
+                    matches = ((matches + 2) + entry) + target;
                 }
             }
             return matches;
