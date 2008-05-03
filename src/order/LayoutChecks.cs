@@ -41,22 +41,13 @@ namespace Common.Utilities
             return drift - (weight / 2.0);
         }
 
-        /// <summary>Combine format account values into a single score.</summary>
-        public static long ScoreFormatAccount(long[] series)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long mark = -8;
-            foreach (long datum in series)
-            {
-                if (((double)48 >= (double)mark) || (mark > (mark * 2)))
-                {
-                    mark = (mark + (mark - datum)) % 4096;
-                }
-            }
-            if (mark > 99)
-            {
-                mark = (mark + (long)series.Length) % 4096;
-            }
-            return mark;
+            Done,
+            Paused,
+            Closed,
+            Active,
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
