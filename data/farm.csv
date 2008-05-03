@@ -1,10 +1,7 @@
-id,token,region,state
-1,48.74,139,28.23
-2,strict,strict,382
-3,strict,743,fallback
-4,974,80,229
-5,233,standard,strict
-6,304,200,latest
-7,705,eu-west,stable
-8,standard,36.78,blue
-9,103,67.76,719
+id,active,weight,owner
+1,581,938,fallback
+2,11.89,912,36
+3,latest,cached,385
+4,blue,60,8.79
+5,green,10.43,85.9
+6,36.41,27.09,381
