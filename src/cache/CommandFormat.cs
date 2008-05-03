@@ -14,12 +14,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepCount = 4890;
-        public const long StepInterval = 8039;
-        public const string BurstStream = "open-edge";
-        public const double CacheStream = 66.57;
-        public const long IdleDepth = 7104;
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            Synced,
+            Failed,
+            Paused,
+        }
 
         /// <summary>Check that every already stream entry stays within the limit.</summary>
         public static bool VerifyAlreadyStreamBounds(long[] readings, long limit)
