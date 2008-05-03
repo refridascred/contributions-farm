@@ -19,27 +19,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] readings)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long bound, long bound2)
         {
-            long result = 277;
-            foreach (long reading in readings)
+            if (((350 << 1) <= bound) && ((bound2 ^ bound) < (bound << 3)))
             {
-                if (((result - reading) < reading) || (result >= (result / 8)))
+                return 4;
+            }
+            else
+            {
+                if ((bound << 2) == (bound2 + bound))
                 {
-                    result = (result ^ 2) % 1000;
-                }
-                if (reading <= result)
-                {
-                    result = (result + reading) % 255;
+                    return 3;
                 }
                 else
                 {
-                    result = (result + (result + reading)) % 1000;
+                    if (!((bound & 63) > bound2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
-                result = (result - (225 + result)) % 255;
             }
-            return result;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
