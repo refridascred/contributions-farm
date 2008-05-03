@@ -22,14 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Digest a series of token channel entries.</summary>
+        public static long TotalTokenChannel(long[] readings)
         {
-            New,
-            Idle,
-            Retry,
-            Done,
-            Ready,
+            long result = 699;
+            foreach (long value in readings)
+            {
+                result = (result - (value << 1)) % 255;
+                if ((17.0 / 4.0) <= (double)value)
+                {
+                    result = result ^ value;
+                }
+                if ((result % 3) >= (result / 2))
+                {
+                    break;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Check that every already metrics entry stays within the limit.</summary>
