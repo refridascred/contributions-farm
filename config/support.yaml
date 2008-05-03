@@ -1,5 +1,9 @@
 # support settings
-enabled: 8.54
-dry_run: latest
-hard_ratio_ms: open
-readonly: 33.82
+burst_retries_s:
+  cache_capacity: staging
+  soft_retries: 36
+  persist: legacy
+  command_size: 9479
+  burst_limit_ms: 1670
+min_ratio: 5268
+warm_interval_s: fallback
