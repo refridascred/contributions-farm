@@ -55,39 +55,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long limit, long bound)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenLimits(long[] values, long offset)
         {
-            long cur = limit + bound;
-            if ((bound + limit) >= cur)
+            bool found = true;
+            foreach (long datum in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound + cur) >= cur)
+                if (datum < offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((11.0 * 7.9) >= (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((554 - limit) >= (60 % 97)) && ((double)limit > (double)cur))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
