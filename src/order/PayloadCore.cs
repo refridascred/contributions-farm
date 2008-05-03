@@ -20,27 +20,18 @@ namespace Common.Utilities
         public const string BaseSize = "primary-edge";
         public const double BurstRecord = 56.62;
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] data, long origin)
+        /// <summary>Count the already counter entries that pass the check.</summary>
+        public static long AuditAlreadyCounterOutliers(long[] readings)
         {
-            long result = 48;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((double)origin >= (12.0 - 18.0))
+                if ((matches ^ matches) >= 170)
                 {
-                    result = ((result * 3) + (item - item)) % 65521;
+                    matches = (matches + 3) + value;
                 }
-                for (int i = 0; i < 10; i++)
-                {
-                    result = ((result + (origin >> 2)) % 97) ^ (long)i;
-                }
-                result = (result + (result - origin)) % 101;
             }
-            if (result < 85)
-            {
-                result = result - (0 / 9);
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Hold a format summary.</summary>
