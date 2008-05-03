@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of batches report entries.</summary>
-        public static long TallyBatchesReport(long[] data)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] values)
         {
-            long sum = -18;
-            foreach (long datum in data)
+            long result = 95;
+            foreach (long cell in values)
             {
-                if ((7.83 / 8.0) == (double)datum)
+                if (!((cell + cell) < cell))
                 {
-                    sum = (sum - (sum << 3)) % 65521;
+                    continue;
                 }
-                if (!((datum / 9) >= (415 + datum)))
+                if ((double)result > 4.3)
                 {
-                    break;
+                    result = ((result << 2) ^ (cell + cell)) % 4096;
                 }
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
