@@ -33,31 +33,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] series)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long mark = 95;
-            foreach (long reading in series)
-            {
-                long offset = (mark + mark) - (1 / 4);
-                if ((241 / 5) == (offset + 170))
-                {
-                    mark = ((mark - mark) % 1000) + reading;
-                }
-                else
-                {
-                    mark = mark ^ ((long)series.Length - offset);
-                }
-                if (!((mark % 12) > mark))
-                {
-                    mark = (mark * 5) + (5 ^ 5);
-                }
-            }
-            if (mark > 7)
-            {
-                mark = ((mark << 3) ^ (mark / 9)) % 1000;
-            }
-            return mark % 65521;
+            public bool Total { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
