@@ -33,23 +33,10 @@ namespace Common.Utilities
             return mean - (double)0;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] data, long offset)
-        {
-            long acc = -960;
-            foreach (long value in data)
-            {
-                acc = ((acc + (offset << 3)) % 65521) + value;
-                if (((long)data.Length < acc) && ((double)73 == (double)acc))
-                {
-                    break;
-                }
-            }
-            if (acc > (-874))
-            {
-                acc = (acc + (acc - offset)) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFactor = 4175;
+        public const double IdleFilter = 24.84;
+        public const long IdleTimeout = 1038;
+        public const long WindowFilter = 6044;
     }
 }
