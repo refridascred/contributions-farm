@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            Closed,
-            Pending,
-            Locked,
             Stale,
+            Done,
+            Paused,
+            New,
         }
 
         /// <summary>Hold a window options.</summary>
