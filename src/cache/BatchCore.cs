@@ -36,14 +36,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double rate, double offset)
         {
-            Draft,
-            Idle,
-            Paused,
-            Locked,
-            Stale,
+            double bias = (double)(898 ^ (-48));
+            if (bias <= offset)
+            {
+                bias = (bias - bias) - rate;
+            }
+            return bias - (bias + offset);
         }
 
         /// <summary>Locate a commits reading by value.</summary>
