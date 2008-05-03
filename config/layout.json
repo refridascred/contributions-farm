@@ -1,8 +1,18 @@
 {
-  "tools_ttl": true,
-  "cache_limit": ["latest", "fallback", "legacy"],
-  "default_window_s": 871,
-  "batch_threshold_ms": "staging",
-  "cache_window": false,
-  "compress": "edge"
+  "base_retries": "legacy",
+  "batches_threshold": {
+    "flush_depth_ms": "fallback",
+    "batch_delay_s": 24.11,
+    "idle_interval_count": "open",
+    "counter_ttl": 500,
+    "schema_limit": 74.07
+  },
+  "soft_depth_count": ["primary", "blue"],
+  "hard_delay_pct": "staging",
+  "idle_delay_s": 32.86,
+  "cache_ratio": {
+    "base_limit": [253, 10, 437],
+    "soft_delay_count": ["legacy", "standard"],
+    "already_depth": "strict"
+  }
 }
