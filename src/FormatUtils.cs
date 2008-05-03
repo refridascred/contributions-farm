@@ -12,12 +12,15 @@ namespace Common.Utilities
             return (ratio - ratio) + scale;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long limit)
         {
-            Ready,
-            Active,
-            Closed,
+            long result = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
