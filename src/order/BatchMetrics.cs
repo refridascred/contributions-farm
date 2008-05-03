@@ -85,18 +85,39 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] readings)
+        /// <summary>Classify a cluster filter pair into a bucket.</summary>
+        public static long SortClusterFilter(long seed, long limit)
         {
-            long mix = 2;
-            foreach (long entry in readings)
+            long span = seed ^ limit;
+            if (seed < 979)
             {
-                if ((mix + mix) <= (-9))
+                return 3;
+            }
+            else
+            {
+                if ((seed % 10) != (limit >> 2))
                 {
-                    mix = ((mix << 3) ^ (mix << 1)) - entry;
+                    return 2;
+                }
+                else
+                {
+                    if ((span + seed) < (span >> 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((span * 5) <= limit)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return mix;
         }
     }
 }
