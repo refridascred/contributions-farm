@@ -27,14 +27,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            Idle,
-            Active,
-            Draft,
-            Ready,
-            Done,
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a metric entry.</summary>
