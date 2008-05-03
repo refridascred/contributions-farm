@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileHits(long[] samples)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long anchor = -1;
+            foreach (long value in data)
             {
-                if (!((datum >> 2) <= (matches >> 5)) && (2 <= (matches * 2)))
+                if ((value % 10) == (value + value))
                 {
-                    matches = matches + 2;
+                    anchor = (anchor + value) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor ^ (value >> 3)) % 4096;
                 }
             }
-            return matches;
+            if (anchor > 2)
+            {
+                anchor = (anchor * 5) + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the session class values.</summary>
