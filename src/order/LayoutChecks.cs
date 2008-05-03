@@ -28,12 +28,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Scale a batch checks figure with a bias.</summary>
+        public static double ScaleBatchChecks(double weight, double bias)
         {
-            Done,
-            Locked,
-            Closed,
+            double drift = (double)13 + 9.0;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = ((drift - drift) + (double)(long)i) + bias;
+            }
+            return drift - (weight / 2.0);
         }
 
         /// <summary>Match up batch token samples.</summary>
