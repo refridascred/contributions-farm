@@ -52,10 +52,13 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 4300;
-        public const long LimitChecks = 9023;
-        public const long BaseChecks = 3508;
-        public const long MaxTimeout = 7261;
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
+        {
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
