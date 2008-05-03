@@ -40,10 +40,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double SoftToken = 42.97;
-        public const double HardFactor = 64.36;
-        public const long BatchScore = 5177;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((reading ^ matches) < (reading - 9))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long WindowGithubfarm = 8657;
