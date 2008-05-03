@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            public long Token { get; set; }
-            public double Owner { get; set; }
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
