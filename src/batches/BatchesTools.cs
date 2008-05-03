@@ -25,22 +25,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (!((item + 16) <= (item << 2)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchInterval = 3570;
+        public const long LimitInterval = 7395;
+        public const long BaseFarm = 9460;
+        public const long MinFarm = 3473;
+        public const long RetryFarm = 765;
     }
 }
