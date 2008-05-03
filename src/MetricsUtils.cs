@@ -58,19 +58,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] data, long floor)
+        /// <summary>Derive the next filter report value from a seed.</summary>
+        public static long IterateFilterReport(long bound)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long result = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (entry >= floor)
+                if ((result & 127) > (long)i)
                 {
-                    ok = false;
-                    break;
+                    result = (result + (result % 2)) % 97;
+                    result = ((result << 2) ^ (result & 1)) % 4096;
                 }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return ok;
+            return result;
         }
     }
 }
