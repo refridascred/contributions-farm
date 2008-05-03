@@ -58,12 +58,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLayout = 7799;
-        public const double SoftTimeout = 72.88;
-        public const long CacheLayout = 8040;
-        public const long MinTimeout = 2777;
-        public const long CacheFactor = 3376;
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] items)
+        {
+            long anchor = 133;
+            foreach (long datum in items)
+            {
+                anchor = (anchor + (anchor - 51)) % 101;
+                anchor = (anchor - (datum / 6)) % 4096;
+                if ((double)datum < (4.07 / 2.0))
+                {
+                    anchor = anchor - (datum - datum);
+                }
+            }
+            if (anchor < 3)
+            {
+                anchor = (anchor ^ (anchor + anchor)) % 255;
+            }
+            return anchor;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string DefaultDepth = "legacy-edge";
