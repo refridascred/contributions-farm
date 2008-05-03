@@ -20,13 +20,13 @@ namespace Common.Utilities
             return scale + (double)0;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public double Count { get; set; }
-            public double Stamp { get; set; }
-            public bool Weight { get; set; }
-            public double Region { get; set; }
+            Failed,
+            New,
+            Synced,
+            Paused,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
