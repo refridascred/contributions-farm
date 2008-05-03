@@ -1,11 +1,6 @@
-id,label,token,ratio
-1,65.7,strict,fallback
-2,92.04,strict,98.14
-3,94.36,771,standard
-4,32.02,edge,77.31
-5,695,25.88,35.97
-6,72.12,primary,eu-west
-7,stable,cached,cached
-8,43.89,745,30.04
-9,eu-west,98.11,92.41
-10,53.56,42.91,347
+id,region,score
+1,499,58.63
+2,local,480
+3,825,187
+4,standard,58.26
+5,143,124
