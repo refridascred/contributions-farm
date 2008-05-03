@@ -11,25 +11,10 @@ namespace Common.Utilities
         public const string HardFormat = "stable-1";
         public const long BaseFormat = 7005;
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long limit, long bound)
-        {
-            if (!(limit < bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit / 4) != (limit + limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double RetryRatio = 43.57;
+        public const string BaseRatio = "latest";
+        public const long WindowTools = 6361;
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long OverlapBufferCount(long[] samples)
