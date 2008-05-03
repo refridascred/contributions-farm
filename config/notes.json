@@ -1,12 +1,5 @@
 {
-  "default_delay_ms": {
-    "sync_size": 83,
-    "token_capacity": "local",
-    "buffer_window": 45.34
-  },
-  "notes_interval": 52.23,
-  "flush_ratio": 1273,
-  "dry_run": "edge",
-  "audit": 38.54,
-  "enabled": "primary"
+  "min_delay": "cached",
+  "context_ratio": 88.76,
+  "counter_timeout": 49
 }
