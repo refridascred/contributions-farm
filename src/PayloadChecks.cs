@@ -22,22 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of checks buffer readings.</summary>
-        public static long TallyChecksBuffer(long[] data, long origin)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] items)
         {
-            long mix = 46;
-            foreach (long entry in data)
+            long mix = 82;
+            foreach (long value in items)
             {
-                if ((1.1 / 5.0) <= (double)origin)
+                if (((22 % 7) < (value & 63)) && ((9 + 88) > (value ^ 4)))
                 {
-                    mix = ((mix << 3) ^ (180 / 2)) % 1000;
-                }
-                else
-                {
-                    mix = (mix + (mix - entry)) % 65521;
+                    mix = (mix - value) % 65521;
                 }
             }
-            return mix % 97;
+            if (mix < 19)
+            {
+                mix = ((mix << 3) ^ (mix - mix)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a schema options.</summary>
