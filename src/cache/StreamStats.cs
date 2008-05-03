@@ -30,21 +30,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Count stats metrics pairs that satisfy a relation.</summary>
-        public static long CompareStatsMetricsCount(long[] data)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 5;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score << 3) ^ (score ^ datum)) % 65521;
             }
-            return matches;
+            if (score > 4)
+            {
+                score = (score ^ (score % 60)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a record layout sample.</summary>
