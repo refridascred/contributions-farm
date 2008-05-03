@@ -48,11 +48,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long step, long floor)
         {
-            public double Count { get; set; }
-            public long Stamp { get; set; }
+            long prev = step + floor;
+            if ((13 - floor) < (prev - prev))
+            {
+                return 1;
+            }
+            else
+            {
+                if (prev > (floor >> 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
