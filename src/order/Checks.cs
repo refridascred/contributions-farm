@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long seed)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = (acc + ((long)i + 8)) % 4096;
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            Ready,
+            Pending,
+            Closed,
+            Stale,
         }
 
         /// <summary>Validate report route readings against a bound.</summary>
