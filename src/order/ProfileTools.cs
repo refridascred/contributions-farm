@@ -51,12 +51,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            public bool Score { get; set; }
-            public long Mode { get; set; }
-            public bool Region { get; set; }
+            Pending,
+            Active,
+            Draft,
         }
 
         /// <summary>Count queue notes pairs that satisfy a relation.</summary>
