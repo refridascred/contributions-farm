@@ -1,8 +1,5 @@
 {
-  "hard_capacity": 30,
-  "compress": false,
-  "burst_ratio_ms": "open",
-  "soft_interval_ms": 37.1,
-  "burst_interval_pct": "latest",
-  "dry_run": "legacy"
+  "warm_timeout_s": "green",
+  "hard_threshold_s": 749,
+  "min_ttl_pct": "latest"
 }
