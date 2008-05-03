@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            public long Total { get; set; }
-            public bool Size { get; set; }
-            public long Weight { get; set; }
+            Synced,
+            Ready,
+            Done,
+            Closed,
+            Stale,
         }
 
         /// <summary>Look up the position of a farm filter sample.</summary>
