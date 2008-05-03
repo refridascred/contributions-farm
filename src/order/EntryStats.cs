@@ -40,14 +40,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
-        {
-            public string Owner { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFactor = 915;
+        public const long IdleFarm = 9102;
+        public const long SoftFarm = 9209;
+        public const long RetryFarm = 5322;
+        public const long BurstCount = 4178;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long IdleWidth = 402;
