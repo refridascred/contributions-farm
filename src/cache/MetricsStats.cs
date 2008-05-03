@@ -45,22 +45,18 @@ namespace Common.Utilities
         public const long MinDepth = 6195;
         public const string IdleGithubfarm = "latest-1";
 
-        /// <summary>Fold a list of entry layout readings.</summary>
-        public static long WeighEntryLayout(long[] values)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordHits(long[] series, long bound)
         {
-            long anchor = 66;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (!((double)anchor > (9.9 * 1.2)))
+                if ((double)bound > (double)hits)
                 {
-                    anchor = (anchor ^ (anchor + cell)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor ^ cell) % 97;
+                    hits = (hits + 1) - datum;
                 }
             }
-            return anchor % 1000;
+            return hits;
         }
     }
 }
