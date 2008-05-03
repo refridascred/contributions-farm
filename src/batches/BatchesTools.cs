@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 7934;
+        public const long HardFactor = 9823;
+        public const string LimitAlready = "standard-1";
+        public const long LimitSpan = 3250;
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long AuditClusterHits(long[] samples, long step)
