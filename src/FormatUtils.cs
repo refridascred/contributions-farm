@@ -52,22 +52,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] samples)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long target)
         {
-            long total = 62;
-            foreach (long cell in samples)
+            long acc = target;
+            for (int i = 0; i < 7; i++)
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    total = (total + (cell + cell)) ^ (long)i;
-                }
-                if (((9 - cell) < cell) && ((double)(long)samples.Length <= (double)cell))
-                {
-                    total = (total ^ cell) % 101;
-                }
+                long cur = (acc & 15) + (acc / 9);
+                acc = acc ^ cur;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
