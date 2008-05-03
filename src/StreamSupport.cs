@@ -27,10 +27,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double HardPayload = 22.4;
-        public const long StepPayload = 8216;
-        public const long CacheSize = 1572;
-        public const long BaseWidth = 5591;
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
