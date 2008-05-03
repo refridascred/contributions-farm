@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] data, long origin)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long carry = 9;
-            foreach (long cell in data)
-            {
-                if (((carry / 8) > (origin & 7)) && ((carry ^ carry) >= (origin << 3)))
-                {
-                    carry = (carry ^ carry) % 101;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (cell * 4);
-                }
-                if ((cell > 5) || (((-862) + origin) >= carry))
-                {
-                    break;
-                }
-            }
-            return carry;
+            New,
+            Idle,
+            Queued,
         }
 
         /// <summary>Combine window values into a single score.</summary>
