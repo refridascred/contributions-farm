@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] series)
         {
-            Idle,
-            Pending,
-            Closed,
-            Stale,
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (datum <= (tally % 60))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the order phase values.</summary>
