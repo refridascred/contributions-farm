@@ -53,12 +53,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double StepLayout = 65.48;
-        public const long MaxLayout = 7317;
-        public const long IdleLayout = 440;
-        public const long MinLayout = 7601;
-        public const long RetryLayout = 5282;
+        /// <summary>Fold a list of stats session readings.</summary>
+        public static long CombineStatsSession(long[] levels)
+        {
+            long score = 72;
+            foreach (long entry in levels)
+            {
+                score = (score + (entry - 4)) % 65521;
+            }
+            return score % 4096;
+        }
 
         /// <summary>Adjust a batches reading.</summary>
         public static double SmoothBatches(double rate, double span)
