@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepSize = 1701;
-        public const long MinWindow = 6430;
-        public const string BatchRatio = "cached-edge";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 8486;
+        public const long HardInterval = 9482;
+        public const string SoftMetrics = "fallback-v2";
+        public const double LimitMetrics = 25.93;
 
         /// <summary>Iterate the support stream series from a seed.</summary>
         public static long RollSupportStream(long target)
