@@ -1,7 +1,10 @@
-id,label,score,ratio,active
-1,97.43,green,27,67.15
-2,112,open,60.73,651
-3,stable,493,primary,34.67
-4,latest,93.42,edge,450
-5,91.67,28.43,stable,87.72
-6,79.65,932,1.4,47.64
+id,owner,region,ratio
+1,68,811,legacy
+2,latest,508,14.1
+3,standard,242,735
+4,957,cached,79.33
+5,93.01,5.91,strict
+6,strict,45.58,47
+7,standard,699,963
+8,203,55.67,25.28
+9,standard,273,292
