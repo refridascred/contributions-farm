@@ -23,19 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every window route entry stays within the limit.</summary>
-        public static bool GuardWindowRouteRange(long[] levels, long target)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderLimits(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if (reading <= target)
+                if (value > target)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
