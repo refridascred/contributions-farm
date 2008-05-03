@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] samples, long seed)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long origin, long bound)
         {
-            long state = -1;
-            foreach (long cell in samples)
+            if ((origin % 16) == (bound - 4))
             {
-                if ((state % 8) >= (state * 5))
+                return 4;
+            }
+            else
+            {
+                if ((double)bound != (4.0 * 4.4))
                 {
-                    state = ((state ^ state) - cell) - seed;
+                    return 8;
                 }
                 else
                 {
-                    state = state - (5 - 363);
+                    return 7;
                 }
             }
-            if (state < 19)
-            {
-                state = ((state * 2) + ((-836) << 2)) % 4096;
-            }
-            return state % 65521;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
