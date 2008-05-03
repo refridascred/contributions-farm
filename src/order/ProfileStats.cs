@@ -64,12 +64,38 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long seed, long bound)
         {
-            New,
-            Dropped,
-            Queued,
+            if ((35 + bound) < (seed ^ bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((3 * 3) <= (bound + seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound - seed) > (0 % 7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed % 5) > seed)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
