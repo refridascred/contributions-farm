@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long origin, long bound)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long gap = origin - bound;
-            if (!(origin >= (origin << 3)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound * 4) != (gap * 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
