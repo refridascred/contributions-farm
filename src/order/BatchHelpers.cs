@@ -25,19 +25,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate format filter readings against a bound.</summary>
-        public static bool GuardFormatFilterBounds(long[] levels, long target)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long PairClusterCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value <= target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] + levels[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
