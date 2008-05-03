@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] data, long limit)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long sum = -789;
-            foreach (long reading in data)
-            {
-                sum = (sum - (limit + 3)) + reading;
-            }
-            if (sum < 6)
-            {
-                sum = (sum ^ (limit + limit)) % 1000;
-            }
-            return sum % 1000;
+            public double Mode { get; set; }
+            public long Score { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Roll a batches counter forward.</summary>
