@@ -19,19 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] values, long seed)
+        /// <summary>Match up buffer context samples.</summary>
+        public static long PairBufferContextCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry >= seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] - readings[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
