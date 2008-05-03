@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordOutliers(long[] items)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((double)value < 4.0)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetrySpan = 5186;
+        public const long WindowScore = 2327;
+        public const string CacheTimeout = "strict-edge";
+        public const long BatchContext = 4749;
+        public const long IdleBudget = 8725;
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long StepFilter(long seed)
