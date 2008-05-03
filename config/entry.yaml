@@ -1,8 +1,7 @@
 # entry settings
-soft_ttl_count: fallback
-default_depth:
-  - 162
-  - 47
-hard_threshold: true
-layout_threshold: 98
-warm_capacity: 4.93
+readonly: eu-west
+schema_interval:
+  - primary
+  - latest
+  - fallback
+command_size: legacy
