@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long offset)
         {
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
+            long total = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                total = (total * 4) + (0 - offset);
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
