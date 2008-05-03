@@ -1,12 +1,11 @@
 # Command notes
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-A notes that stays idle for too long is moved to the farm list.
-Each queue is validated before it reaches the payload queue.
+Defaults for stats live in the config folder and can be overridden per environment.
+Use record settings to tune how often batch data is refreshed.
+Use cluster settings to tune how often payload data is refreshed.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Validate batches input early
-- Review batches limits each release
-- Keep queue values small
+- Log every token change
+- Document new profile fields
+- Validate graph input early
