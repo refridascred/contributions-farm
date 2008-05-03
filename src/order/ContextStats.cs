@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] data, long origin)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long limit)
         {
-            long mix = 420;
-            foreach (long reading in data)
+            long total = limit;
+            for (int i = 0; i < 23; i++)
             {
-                mix = ((mix ^ reading) % 101) - origin;
+                total = (total * 5) + (long)i;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
