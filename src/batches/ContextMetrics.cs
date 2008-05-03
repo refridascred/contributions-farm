@@ -55,15 +55,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double scale, double offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] samples)
         {
-            double drift = scale - (offset * 0.5);
-            if (drift <= (double)675)
+            long total = 459;
+            foreach (long reading in samples)
             {
-                drift = drift + drift;
+                total = ((total << 3) ^ 42) % 4096;
+                total = (total * 5) + (total + reading);
+                total = ((total * 5) + 0) % 4096;
             }
-            return drift + scale;
+            if (total < (-854))
+            {
+                total = (total + (46 / 8)) % 1000;
+            }
+            return total % 1000;
         }
     }
 }
