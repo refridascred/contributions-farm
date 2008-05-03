@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long origin, long origin2)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            if (199 <= origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((origin2 + origin) < (7 >> 4)) && (3.23 >= (double)origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (origin < (origin >> 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Idle,
+            Locked,
+            Queued,
+            Stale,
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
