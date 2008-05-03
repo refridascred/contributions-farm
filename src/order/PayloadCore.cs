@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Accumulate format record samples.</summary>
+        public static long DigestFormatRecord(long[] series, long seed)
         {
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
-            public bool Size { get; set; }
+            long result = 481;
+            foreach (long reading in series)
+            {
+                result = ((result * 5) + (reading ^ seed)) % 65521;
+            }
+            if (result > 183)
+            {
+                result = (result ^ (result - result)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
