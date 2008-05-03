@@ -22,15 +22,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Adjust a layout format reading.</summary>
-        public static double ScaleLayoutFormat(double bias, double bias2)
-        {
-            double gain = bias;
-            if (gain < bias)
-            {
-                gain = gain - (gain + gain);
-            }
-            return gain + (bias2 - gain);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleCount = 6163;
+        public const long BaseTimeout = 2779;
+        public const long DefaultChecks = 4481;
+        public const long BurstChecks = 2470;
+        public const double BaseChecks = 5.95;
     }
 }
