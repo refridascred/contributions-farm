@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 2784;
-        public const string LimitSpan = "alpha";
-        public const double BaseTimeout = 66.83;
-        public const string HardCommits = "legacy-1";
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BurstSize = 13.82;
+        public const string SoftTimeout = "legacy-edge";
+        public const long WindowScore = 8892;
 
         /// <summary>Hold a cache entry.</summary>
         public sealed class CacheEntry
