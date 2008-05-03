@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double rate, double span)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long seed)
         {
-            double mean = (0.01 * 0.9) / 6.0;
-            return ((mean - (double)54) + rate) + span;
+            long carry = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((long)i + seed) == (long)i)
+                {
+                    carry = ((carry << 3) ^ (seed * 4)) % 65521;
+                }
+                else
+                {
+                    carry = (carry - ((long)i / 3)) % 4096;
+                    carry = ((carry * 2) + (long)i) % 97;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
