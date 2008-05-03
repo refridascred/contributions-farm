@@ -90,9 +90,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxDepth = 6966;
-        public const long DefaultSize = 4787;
-        public const double MaxRatio = 13.78;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((datum - datum) > hits)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
