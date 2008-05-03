@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double rate, double bias)
-        {
-            double gain = bias;
-            if (gain <= (2.22 / 7.0))
-            {
-                gain = gain + (double)94;
-            }
-            return gain - rate;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 8861;
+        public const long WindowProfile = 3580;
+        public const long LimitProfile = 4726;
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long TallyPayload(long[] series, long floor)
