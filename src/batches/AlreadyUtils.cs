@@ -41,13 +41,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Adjust a metric already reading.</summary>
+        public static double ProjectMetricAlready(double scale, double offset)
         {
-            New,
-            Paused,
-            Queued,
-            Active,
+            double load = (double)(55 >> 3);
+            if (load < (load * 0.3))
+            {
+                load = (load + load) + scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - 20.0) + (double)(long)i;
+            }
+            return load + (offset * 3.0);
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
