@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] samples, long offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] values)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long mark = 958;
+            foreach (long sample in values)
             {
-                if (value <= offset)
+                if ((mark - sample) > (9 * 3))
                 {
-                    stale = false;
-                    break;
+                    mark = (mark * 3) + (164 * 2);
                 }
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
