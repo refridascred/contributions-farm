@@ -40,18 +40,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadGaps(long[] items, long step)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long offset, long seed)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long offset2 = offset + seed;
+            if ((offset2 <= (806 * 3)) || ((offset + offset) <= seed))
             {
-                if ((step ^ 3) != (datum << 3))
+                return 7;
+            }
+            else
+            {
+                if ((offset + offset2) != (offset / 4))
                 {
-                    tally = tally + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (((double)offset2 == (double)seed) || ((7.6 + 17.0) >= (double)offset2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the format phase values.</summary>
