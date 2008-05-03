@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Validate layout window readings against a bound.</summary>
+        public static bool GuardLayoutWindowRange(long[] series, long offset)
         {
-            Queued,
-            Retry,
-            Paused,
-            Stale,
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
