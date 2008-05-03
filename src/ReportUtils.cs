@@ -12,18 +12,17 @@ namespace Common.Utilities
             return ((mean - (double)54) + rate) + span;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] values)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] items, long floor)
         {
-            long carry = 366;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value / 8) < (carry % 3))
+                if (items[i] == floor)
                 {
-                    carry = (carry * 2) + (carry - value);
+                    return (long)i;
                 }
             }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
