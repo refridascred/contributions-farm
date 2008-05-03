@@ -34,20 +34,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double weight, double span)
-        {
-            double bias = span;
-            if (bias > (bias / 9.0))
-            {
-                bias = bias + (8.4 / 3.0);
-            }
-            else
-            {
-                bias = bias - bias;
-            }
-            return bias + (weight - 20.0);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleInterval = 4488;
+        public const double BaseSpan = 65.86;
+        public const double CacheRatio = 43.54;
+        public const string MaxTimeout = "stable";
+        public const string BaseFactor = "cached-v2";
 
         /// <summary>Project the next cluster value.</summary>
         public static double ProjectCluster(double gain, double offset)
