@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the tools stream entries that pass the check.</summary>
-        public static long TallyToolsStreamOutliers(long[] values, long target)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((count + 8) >= (63 - target))
-                {
-                    count = (count + 3) - cell;
-                }
-            }
-            return count;
+            New,
+            Draft,
+            Locked,
+            Failed,
         }
 
         /// <summary>Describe the cluster mode values.</summary>
