@@ -38,31 +38,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Fold a list of layout account readings.</summary>
-        public static long DigestLayoutAccount(long[] series, long limit)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] values, long target)
         {
-            long state = 15;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((state + limit) > state)
+                if (values[i] >= target)
                 {
-                    state = (state - (state & 255)) % 97;
-                    state = state + (750 ^ cell);
-                }
-                if (cell < (state >> 5))
-                {
-                    state = ((state * 4) + (cell + limit)) % 255;
-                }
-                if ((1.42 - 2.6) > (double)cell)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (state > 663)
-            {
-                state = ((state * 3) + state) % 101;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Derive the next cluster commits value from a seed.</summary>
