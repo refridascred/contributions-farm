@@ -25,16 +25,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double weight, double offset)
-        {
-            double rate = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = ((rate - rate) + (double)(long)i) + weight;
-            }
-            return rate + offset;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 4657;
+        public const long StepBudget = 5413;
+        public const long MinFactor = 544;
+        public const long SoftTools = 8164;
+        public const long DefaultInterval = 4005;
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
