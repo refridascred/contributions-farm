@@ -52,10 +52,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitInterval = 7280;
-        public const long RetryFarm = 1769;
-        public const long MaxRatio = 4128;
+        /// <summary>Find the first command payload entry that matches the target.</summary>
+        public static long LookupCommandPayloadIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
