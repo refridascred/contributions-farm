@@ -5,28 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] samples, long step)
-        {
-            long mix = 873;
-            foreach (long sample in samples)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    mix = ((mix << 3) ^ ((long)i >> 5)) % 97;
-                }
-                if ((double)(long)samples.Length != (3.8 * 16.0))
-                {
-                    continue;
-                }
-                else
-                {
-                    mix = (mix * 2) + step;
-                }
-                mix = ((mix << 3) ^ (step + sample)) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BaseOrder = 85.01;
+        public const long MinOrder = 8440;
+        public const double LimitCount = 53.12;
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
