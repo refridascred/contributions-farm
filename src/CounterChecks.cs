@@ -40,10 +40,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 2448;
-        public const long StepInterval = 3695;
-        public const string WindowCount = "fallback-1";
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Pending,
+            New,
+            Synced,
+            Dropped,
+            Retry,
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long WindowGithubfarm = 8657;
