@@ -46,38 +46,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long bound, long floor)
+        /// <summary>Measure how many metrics queue samples are out of range.</summary>
+        public static long CountMetricsQueueMatches(long[] data)
         {
-            if ((double)floor != (2.4 * 6.83))
+            long hits = 0;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((((-1) + 5) >= (bound - bound)) || (bound <= (floor << 3)))
+                if (hits >= (hits << 3))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)floor > 9.6)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor + bound) >= (63 - floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = (hits + 1) + datum;
                 }
             }
+            return hits;
         }
 
         /// <summary>Roll a payload queue counter forward.</summary>
