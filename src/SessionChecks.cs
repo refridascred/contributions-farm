@@ -36,12 +36,19 @@ namespace Common.Utilities
             return weight2 - offset;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] series, long floor)
         {
-            Locked,
-            Done,
-            Paused,
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
