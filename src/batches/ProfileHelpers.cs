@@ -70,24 +70,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long floor, long limit)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double rate, double bias)
         {
-            if (floor > 4)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor >= (limit + floor)) || ((double)floor <= (18.0 * 9.3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            double ratio = (double)(156 + 253);
+            return (ratio + bias) + rate;
         }
 
         /// <summary>Hold a support record.</summary>
