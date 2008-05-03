@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate counter stats samples.</summary>
-        public static long TallyCounterStats(long[] levels, long offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] series, long seed)
         {
-            long acc = 881;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long item in series)
             {
-                acc = (((acc << 3) ^ (offset << 3)) % 101) - sample;
+                if ((seed / 5) > seed)
+                {
+                    seen = (seen + 1) + item;
+                }
             }
-            if (acc > 138)
-            {
-                acc = ((acc << 3) ^ offset) % 255;
-            }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
