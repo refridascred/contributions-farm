@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const long BaseCount = 2113;
         public const long RetrySize = 3193;
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long seed)
         {
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Total { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a stream options.</summary>
