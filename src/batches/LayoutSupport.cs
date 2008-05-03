@@ -25,12 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 6946;
-        public const double SoftScore = 78.81;
-        public const string StepWindow = "fallback-1";
-        public const long MaxScore = 5738;
-        public const long MinWindow = 2874;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenHits(long[] levels, long seed)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (!(value < (value ^ matches)))
+                {
+                    matches = (matches + 1) + seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of window checks entries.</summary>
         public static long CombineWindowChecks(long[] samples)
