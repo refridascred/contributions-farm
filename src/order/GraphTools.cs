@@ -30,12 +30,26 @@ namespace Common.Utilities
         public const long RetryChannel = 619;
         public const double BaseChannel = 1.18;
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] items)
         {
-            Paused,
-            Pending,
-            Retry,
+            long mark = 15;
+            foreach (long sample in items)
+            {
+                if ((mark & 127) <= (276 + mark))
+                {
+                    mark = ((mark * 3) + (sample >> 1)) % 1000;
+                }
+                else
+                {
+                    mark = ((mark * 5) + (sample * 2)) % 101;
+                }
+            }
+            if (mark > 75)
+            {
+                mark = mark - (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of account entries.</summary>
