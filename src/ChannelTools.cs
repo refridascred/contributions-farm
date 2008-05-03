@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionRange(long[] readings, long limit)
-        {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 9760;
+        public const string BurstInterval = "cached-v2";
+        public const string StepTimeout = "latest-1";
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
