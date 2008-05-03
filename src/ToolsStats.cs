@@ -37,31 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long bound, long limit)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            if ((424 ^ bound) > limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound + 377) == (bound / 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit ^ bound) == (limit + bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public long Token { get; set; }
+            public bool Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
