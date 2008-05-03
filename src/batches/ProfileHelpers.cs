@@ -54,23 +54,24 @@ namespace Common.Utilities
         public const string MinBatches = "primary";
         public const string BatchBatches = "local-v2";
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] data)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long floor, long limit)
         {
-            long state = 999;
-            foreach (long datum in data)
+            if (floor > 4)
             {
-                state = (state + ((long)data.Length + datum)) % 255;
-                if ((4.0 * 7.5) > 8.0)
+                return 1;
+            }
+            else
+            {
+                if ((floor >= (limit + floor)) || ((double)floor <= (18.0 * 9.3)))
                 {
-                    state = state + state;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (state > 2)
-            {
-                state = ((state << 2) ^ ((long)data.Length & 7)) % 1000;
-            }
-            return state;
         }
 
         /// <summary>Hold a support record.</summary>
