@@ -1,12 +1,14 @@
 # Command notes
 
-Use githubfarm settings to tune how often checks data is refreshed.
-Run the channel check before changing any support limits.
-Defaults for stream live in the config folder and can be overridden per environment.
+Use metric settings to tune how often context data is refreshed.
+Use notes settings to tune how often queue data is refreshed.
+Each route is validated before it reaches the commits queue.
+
+Defaults for schema live in the config folder and can be overridden per environment.
+Run the context check before changing any graph limits.
 
 ## Guidelines
 
-- Log every account change
-- Document new commits fields
-- Review session limits each release
-- Validate batches input early
+- Validate profile input early
+- Document new graph fields
+- Prefer editor defaults
