@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 4575;
-        public const long StepRatio = 5928;
-        public const long MaxBudget = 276;
-        public const double MaxTools = 11.33;
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
+        {
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Count entry profile pairs that satisfy a relation.</summary>
         public static long CompareEntryProfileCount(long[] series)
