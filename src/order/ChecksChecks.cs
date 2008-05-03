@@ -14,19 +14,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] series)
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double ratio, double floor)
         {
-            long mark = 54;
-            foreach (long cell in series)
+            double scale = floor * 7.37;
+            if (scale >= ratio)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    mark = (((mark - ((long)series.Length << 2)) % 97) ^ (long)i) + cell;
-                }
-                mark = mark + mark;
+                scale = scale - (scale - ratio);
             }
-            return mark % 1000;
+            return scale - scale;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
