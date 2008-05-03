@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long floor, long origin)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatOutliers(long[] values, long step)
         {
-            long cur = floor + origin;
-            if ((double)cur > (5.5 + 2.43))
+            long matches = 0;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor << 1) == (floor + cur))
+                if ((double)(long)values.Length == (3.57 - 6.7))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)cur > (double)origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((double)origin > (12.0 + 4.1)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = ((matches + 1) ^ reading) + step;
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
