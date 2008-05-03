@@ -1,5 +1,6 @@
 {
-  "session_limit": ["blue", "edge", "local"],
-  "hard_retries_s": "open",
-  "poll_retries_ms": true
+  "soft_window_pct": 1863,
+  "batch_depth_pct": [234, 182, 141],
+  "counter_threshold": 1024,
+  "hard_window_ms": 8026
 }
