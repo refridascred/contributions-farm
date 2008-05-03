@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
-        {
-            public bool Ratio { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepCount = 8933;
+        public const double WindowCount = 1.03;
+        public const long IdleStream = 2537;
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
