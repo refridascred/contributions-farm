@@ -18,18 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] samples)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long offset)
         {
-            long anchor = 258;
-            foreach (long datum in samples)
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((datum - datum) < anchor)
-                {
-                    anchor = ((anchor * 3) + anchor) % 65521;
-                }
+                sum = (sum * 2) + (offset << 2);
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
