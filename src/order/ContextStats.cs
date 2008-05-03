@@ -54,9 +54,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double CacheFilter = 31.21;
-        public const double MaxLevel = 61.49;
-        public const string SoftFilter = "stable-edge";
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long step, long floor)
+        {
+            if ((4.9 / 4.0) < (double)floor)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step << 2) >= 84)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (floor < (299 / 9))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step ^ floor) == (floor << 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
