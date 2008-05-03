@@ -6,22 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+BUFFER_LIMIT=458
+log "limit is ${BUFFER_LIMIT}"
 
-for item in edge strict open eu-west; do
-    log "checking ${item}"
-done
-
-mode="${1:-primary}"
+mode="${1:-standard}"
 case "${mode}" in
-    edge)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
