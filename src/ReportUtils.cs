@@ -56,19 +56,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] readings, long step)
+        /// <summary>Compare every pair of format batch readings.</summary>
+        public static long PairFormatBatchCount(long[] samples)
         {
-            long sum = 39;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((((sum * 5) + (85 / 2)) % 1000) - item) - step;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (sum > (-38))
-            {
-                sum = ((sum * 3) + (sum ^ sum)) % 101;
-            }
-            return sum;
+            return tally;
         }
     }
 }
