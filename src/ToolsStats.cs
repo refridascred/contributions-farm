@@ -33,29 +33,29 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a metrics format value against two limits.</summary>
-        public static long SortMetricsFormat(long seed, long origin)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long bound, long step)
         {
-            long gap = seed - origin;
-            if ((963 - (-7)) > (seed & 255))
+            long delta = bound ^ step;
+            if (9 >= (delta << 2))
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if ((origin >= (gap - origin)) && ((1.61 + 0.7) < (double)gap))
+                if (((step + delta) < step) || ((step + step) < bound))
                 {
                     return 5;
                 }
                 else
                 {
-                    if ((1 >> 3) > seed)
+                    if ((bound - bound) != (step + bound))
                     {
-                        return 1;
+                        return 6;
                     }
                     else
                     {
-                        return 3;
+                        return 4;
                     }
                 }
             }
