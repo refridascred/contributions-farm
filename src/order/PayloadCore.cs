@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double gain, double bias)
-        {
-            double mean = 5.4;
-            if (mean < mean)
-            {
-                mean = (mean - (mean + 6.7)) + gain;
-            }
-            return mean + bias;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string IdleStream = "cached-edge";
+        public const long RetryStream = 1869;
+        public const long BaseSpan = 7095;
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long CountReportHits(long[] data)
