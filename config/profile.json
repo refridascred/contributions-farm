@@ -1,6 +1,14 @@
 {
-  "poll_ttl_pct": [79, 21],
-  "default_timeout_ms": 9409,
-  "report_limit": true,
-  "warm_ratio_s": true
+  "contributi_interval": false,
+  "flush_ttl_pct": 4620,
+  "base_ratio": false,
+  "audit": 74.62,
+  "queue_timeout": {
+    "session_retries": 61,
+    "token_threshold": "staging",
+    "sync_delay_s": 5882,
+    "context_limit": 5.9,
+    "soft_depth_ms": 87,
+    "dry_run": 346
+  }
 }
