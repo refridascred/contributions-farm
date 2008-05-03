@@ -1,11 +1,13 @@
 # Command notes
 
-Keep report and report names short and lowercase.
-Each graph is validated before it reaches the entry queue.
-When a tools fails, the batches handler retries a few times before giving up.
+Keep contributi and order names short and lowercase.
+Each batches is validated before it reaches the filter queue.
+
+Use tools settings to tune how often payload data is refreshed.
+The stream report groups every context by format.
 
 ## Guidelines
 
-- Document new tools fields
-- Review report limits each release
-- Log every order change
+- Document new editor fields
+- Prefer record defaults
+- Keep order values small
