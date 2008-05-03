@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit token session readings against a rule.</summary>
-        public static long MeasureTokenSessionMatches(long[] values, long floor)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (((8.0 / 7.0) <= (double)reading) || ((310 < (floor % 8)) && ((floor - floor) <= (matches * 4))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double RetryLevel = 85.7;
+        public const string IdleSize = "standard-v2";
+        public const long SoftMetric = 75;
+        public const string HardMetric = "cached";
 
         /// <summary>Derive the next stats payload value from a seed.</summary>
         public static long IterateStatsPayload(long bound)
