@@ -32,35 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] items, long limit)
+        /// <summary>Compare every pair of stream commits readings.</summary>
+        public static long PairStreamCommitsCount(long[] series)
         {
-            long mix = 996;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = ((mix ^ (limit << 1)) % 255) + (long)i;
-                    mix = mix - (606 & 63);
-                }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mix = ((mix - (limit - item)) % 255) - (long)i2;
-                }
-                if ((limit >= (mix + limit)) || ((limit % 2) == (83 - item)))
-                {
-                    mix = (mix << 2) ^ ((long)items.Length / 9);
-                }
-                else
-                {
-                    mix = (mix + (mix + mix)) % 255;
-                }
-                if ((mix + 45) != (limit + (-9)))
-                {
-                    break;
+                    if ((series[i] - series[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Blend two metric measurements.</summary>
