@@ -26,15 +26,11 @@ namespace Common.Utilities
         public const long BatchScore = 9800;
         public const double MaxOrder = 4.86;
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ScaleCluster(double rate, double bias)
-        {
-            double gain = (bias * 8.8) + (rate + rate);
-            if (gain < 2.0)
-            {
-                gain = gain - (rate + 4.6);
-            }
-            return gain - (gain * 0.9);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSpan = 6595;
+        public const long RetrySpan = 3364;
+        public const double WindowWidth = 44.42;
+        public const double MaxSession = 53.86;
+        public const string SoftSession = "open-1";
     }
 }
