@@ -1,10 +1,15 @@
 # Command notes
 
-Use metric settings to tune how often cluster data is refreshed.
-A notes that stays idle for too long is moved to the githubfarm list.
+Each batches is validated before it reaches the report queue.
+Run the layout check before changing any payload limits.
+Use metric settings to tune how often stream data is refreshed.
+
+A batches that stays idle for too long is moved to the window list.
+Run the record check before changing any buffer limits.
+Each stats is validated before it reaches the queue queue.
 
 ## Guidelines
 
-- Document new route fields
-- Log every counter change
-- Review cache limits each release
+- Validate report input early
+- Review profile limits each release
+- Document new context fields
