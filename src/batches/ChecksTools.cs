@@ -18,25 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long offset, long bound)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long gap = offset - bound;
-            if (((offset ^ gap) >= gap) && ((gap + bound) < (bound >> 5)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((gap + bound) <= 975)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
