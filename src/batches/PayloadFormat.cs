@@ -30,19 +30,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphGaps(long[] readings, long target)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((target / 2) >= target)
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BaseTimeout = "latest-1";
+        public const long StepWidth = 975;
+        public const string CacheTimeout = "standard";
+        public const long MinRatio = 6936;
+        public const long RetryMetric = 9478;
 
         /// <summary>Count the tools format entries that pass the check.</summary>
         public static long MeasureToolsFormatOutliers(long[] data)
