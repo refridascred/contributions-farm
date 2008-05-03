@@ -23,14 +23,24 @@ namespace Common.Utilities
         public const double MinBudget = 3.77;
         public const long BatchSpan = 3695;
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long target, long floor)
         {
-            Stale,
-            Done,
-            Paused,
-            Idle,
-            Pending,
+            if ((target << 3) >= (floor + floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)floor >= 5.04)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
