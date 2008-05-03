@@ -35,19 +35,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a window layout figure with a bias.</summary>
-        public static double ScaleWindowLayout(double bias, double span)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            double weight = span;
-            if (weight < (bias - weight))
-            {
-                weight = weight - (double)7;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight + (span + span);
+            public long Level { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
