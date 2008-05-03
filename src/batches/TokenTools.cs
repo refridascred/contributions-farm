@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsMatches(long[] levels)
+        /// <summary>Match up stats metric samples.</summary>
+        public static long OverlapStatsMetricCount(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((3 / 8) <= (sample >> 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 2;
+                    if ((levels[i] + levels[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Project the next batch stream value.</summary>
