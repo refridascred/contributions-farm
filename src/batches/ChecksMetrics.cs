@@ -92,18 +92,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] data)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((datum - datum) > hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
