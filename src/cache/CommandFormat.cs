@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double gain, double span)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            double drift = span / 7.0;
-            if (drift >= (drift - gain))
-            {
-                drift = drift + (double)649;
-            }
-            return drift + (drift / 9.0);
+            public long Token { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
