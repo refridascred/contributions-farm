@@ -41,31 +41,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long floor, long target)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            if ((double)floor < (8.3 * 5.7))
-            {
-                return 7;
-            }
-            else
-            {
-                if (5.0 < (double)target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target + floor) > floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a record entry.</summary>
