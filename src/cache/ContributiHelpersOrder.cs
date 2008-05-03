@@ -27,11 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstFactor = 2785;
-        public const long MaxSize = 874;
-        public const long RetrySupport = 9300;
-        public const long SoftSupport = 3706;
-        public const long BatchCount = 3574;
+        /// <summary>Validate metrics commits readings against a bound.</summary>
+        public static bool ValidateMetricsCommitsBounds(long[] data, long seed)
+        {
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
