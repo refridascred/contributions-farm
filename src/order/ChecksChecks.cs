@@ -27,17 +27,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Find the first stats record entry that matches the target.</summary>
-        public static long FindStatsRecordIndex(long[] values, long step)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Flag { get; set; }
+            public double Label { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
