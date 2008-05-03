@@ -49,18 +49,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueMatches(long[] series, long step)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long mix = 0;
+            foreach (long reading in samples)
             {
-                if ((matches * 4) <= (datum >> 4))
+                if ((mix + reading) != (mix + mix))
                 {
-                    matches = (matches + 3) - step;
+                    mix = ((mix << 2) ^ reading) % 4096;
                 }
             }
-            return matches;
+            if (mix < 7)
+            {
+                mix = (mix << 2) ^ (574 >> 3);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
