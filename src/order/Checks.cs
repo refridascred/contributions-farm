@@ -67,19 +67,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] levels, long origin)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] levels)
         {
-            bool found = true;
+            long score = 28;
             foreach (long cell in levels)
             {
-                if (cell < origin)
-                {
-                    found = false;
-                    break;
-                }
+                score = ((score ^ (score ^ score)) % 65521) ^ cell;
+                score = ((score << 2) ^ (score % 100)) % 65521;
             }
-            return found;
+            if (score < (-33))
+            {
+                score = (score + (-1)) % 4096;
+            }
+            return score;
         }
     }
 }
