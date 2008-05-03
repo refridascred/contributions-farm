@@ -40,14 +40,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] items, long step)
         {
-            Done,
-            Queued,
-            Retry,
-            Pending,
-            Locked,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((step ^ 3) != (datum << 3))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the format phase values.</summary>
