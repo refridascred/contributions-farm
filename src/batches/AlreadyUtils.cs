@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of githubfarm editor readings.</summary>
-        public static long WeighGithubfarmEditor(long[] values)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] readings, long floor)
         {
-            long anchor = 37;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)(-4) < (double)anchor) && ((double)anchor != (8.78 / 6.0)))
+                if ((readings[i] == floor) && ((readings[i] % 3) != 0))
                 {
-                    anchor = (anchor + (item + item)) % 97;
+                    return (long)i;
                 }
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
