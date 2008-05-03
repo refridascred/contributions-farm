@@ -12,17 +12,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] levels, long offset)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Locked,
+            Active,
+            Pending,
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
