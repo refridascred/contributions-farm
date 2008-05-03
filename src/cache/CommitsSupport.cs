@@ -61,10 +61,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchScore = 7597;
-        public const string SoftAlready = "cached-1";
-        public const string BurstLevel = "strict-1";
-        public const string WindowAlready = "stable";
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Stale,
+            Locked,
+            Ready,
+        }
     }
 }
