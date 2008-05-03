@@ -42,30 +42,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] readings, long seed)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] items)
         {
-            long sum = 16;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((datum / 3) != (0 / 2)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = sum - datum;
-                }
-                else
-                {
-                    sum = (sum * 3) + (seed & 7);
-                }
-                if ((seed * 4) >= seed)
-                {
-                    break;
+                    if ((items[i] + items[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum > 21)
-            {
-                sum = (sum << 2) ^ (seed ^ seed);
-            }
-            return sum % 65521;
+            return count;
         }
 
         /// <summary>Blend two session measurements.</summary>
