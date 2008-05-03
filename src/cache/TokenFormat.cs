@@ -35,15 +35,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double SmoothBatches(double bias, double bias2)
-        {
-            double scale = bias + bias;
-            for (int i = 0; i < 7; i++)
-            {
-                scale = ((scale - bias) + (double)(long)i) - bias2;
-            }
-            return scale - (scale + bias);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BurstSize = 29.66;
+        public const long BurstLevel = 3993;
+        public const long MinBuffer = 9323;
+        public const long RetryInterval = 2180;
     }
 }
