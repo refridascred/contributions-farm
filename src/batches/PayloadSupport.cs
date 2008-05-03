@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long offset, long offset2)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] samples, long step)
         {
-            if (((offset / 7) != (496 % 5)) || ((offset2 << 2) != (1 + 32)))
+            long carry = 1;
+            foreach (long reading in samples)
             {
-                return 1;
+                carry = (((carry * 2) + (7 * 4)) % 255) ^ reading;
             }
-            else
+            if (carry > 6)
             {
-                if (!((offset2 ^ offset2) >= offset2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
+                carry = carry ^ (step << 2);
             }
+            return carry % 65521;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
