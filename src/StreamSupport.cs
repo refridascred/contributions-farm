@@ -28,19 +28,39 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] data, long limit)
+        /// <summary>Classify a notes already pair into a bucket.</summary>
+        public static long ClassifyNotesAlready(long origin, long step)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long lane = origin + step;
+            if ((772 + step) <= origin)
             {
-                if (value >= limit)
+                return 3;
+            }
+            else
+            {
+                if ((18.0 + 6.0) >= (double)origin)
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((step << 1) >= (step - 56)) && ((step + 870) > (8 & 15)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((lane + origin) < (step * 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
