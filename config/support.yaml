@@ -1,4 +1,26 @@
 # support settings
-idle_timeout_s: 2576
-farm_interval: legacy
-batch_delay: 500
+layout_ratio:
+  base_ttl: true
+  editor_delay:
+    - edge
+    - open
+    - stable
+    - open
+  soft_ttl: 80
+  account_delay: 8116
+graph_interval:
+  cache_interval: true
+  min_ratio: 61
+  sync_window_pct: standard
+  filter_capacity:
+    already_ratio: 24.71
+    farm_threshold: 353
+    cache_window: strict
+    schema_ttl: edge
+    base_ratio_pct: 21
+    max_ratio_ms: false
+tools_size:
+  - latest
+  - fallback
+batch_threshold: eu-west
+strict: 34.85
