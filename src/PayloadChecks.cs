@@ -47,16 +47,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long limit)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] data, long bound)
         {
-            long mix = limit;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long value in data)
             {
-                mix = (mix << 2) ^ (0 << 3);
-                mix = ((mix * 5) + (long)i) % 101;
+                if (value >= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Roll a schema queue counter forward.</summary>
