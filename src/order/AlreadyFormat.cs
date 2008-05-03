@@ -19,24 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank commits record input into a small class.</summary>
-        public static long SortCommitsRecord(long origin, long bound)
+        /// <summary>Accumulate metric stats samples.</summary>
+        public static long TotalMetricStats(long[] series)
         {
-            if (33 >= (origin - bound))
+            long sum = -2;
+            foreach (long sample in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (((3 / 9) != (5 + bound)) && (((-79) + bound) >= origin))
+                if (((sample << 1) < (sum + sample)) && ((sum ^ sum) == (837 + sample)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    sum = ((sum << 2) ^ (sum << 1)) % 255;
                 }
             }
+            if (sum > 4)
+            {
+                sum = (sum + (sum + 98)) % 97;
+            }
+            return sum % 97;
         }
 
         /// <summary>Fold a list of layout account readings.</summary>
