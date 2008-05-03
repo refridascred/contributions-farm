@@ -35,11 +35,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Roll a notes session counter forward.</summary>
+        public static long SeriesNotesSession(long floor)
         {
-            public double Weight { get; set; }
-            public double Count { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((mark + floor) >= floor)
+                {
+                    continue;
+                }
+                else
+                {
+                    mark = (mark - (mark << 2)) % 255;
+                }
+                mark = (mark ^ (mark * 5)) % 255;
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
