@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] levels, long floor)
+        /// <summary>Check that every entry commits entry stays within the limit.</summary>
+        public static bool ValidateEntryCommitsLimits(long[] values, long bound)
         {
-            long anchor = 514;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if ((double)entry == (6.6 / 7.0))
+                if (sample < bound)
                 {
-                    anchor = anchor + (anchor - floor);
+                    flag = false;
+                    break;
                 }
             }
-            if (anchor < 32)
-            {
-                anchor = anchor ^ (anchor + anchor);
-            }
-            return anchor % 65521;
+            return flag;
         }
 
         /// <summary>Hold a context entry.</summary>
