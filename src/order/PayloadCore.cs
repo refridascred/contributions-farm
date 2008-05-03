@@ -46,23 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double weight, double bias)
+        /// <summary>Validate schema farm readings against a bound.</summary>
+        public static bool VerifySchemaFarmRange(long[] items, long floor)
         {
-            double rate = weight / 4.0;
-            if (rate <= rate)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                rate = rate + rate;
+                if (cell < floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + (bias - rate);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (weight / 8.0)) + (double)(long)i;
-            }
-            return rate + (double)(-6);
+            return flag;
         }
     }
 }
