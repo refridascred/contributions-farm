@@ -60,19 +60,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metric format entry stays within the limit.</summary>
-        public static bool ValidateMetricFormatRange(long[] levels, long step)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] samples, long floor)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell > step)
+                if (samples[i] == floor)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
