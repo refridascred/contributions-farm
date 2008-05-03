@@ -12,19 +12,12 @@ namespace Common.Utilities
             return (ratio - ratio) + scale;
         }
 
-        /// <summary>Check that every batches checks entry stays within the limit.</summary>
-        public static bool VerifyBatchesChecksBounds(long[] levels, long step)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Active,
+            Closed,
         }
 
         /// <summary>Define account limits and defaults.</summary>
