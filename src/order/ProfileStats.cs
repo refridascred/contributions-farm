@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BurstSpan = 56.76;
+        public const long CacheScore = 5379;
+        public const long MinRatio = 9119;
+        public const long BatchFactor = 2308;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long AuditWindowGaps(long[] items)
