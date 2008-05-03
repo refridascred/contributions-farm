@@ -28,16 +28,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] items)
+        /// <summary>Accumulate cache account samples.</summary>
+        public static long TallyCacheAccount(long[] readings, long target)
         {
-            long mark = 3;
-            foreach (long value in items)
+            long mix = 4;
+            foreach (long datum in readings)
             {
-                mark = (mark - mark) % 1000;
-                mark = (mark ^ (mark - value)) % 97;
+                if (51 >= (target + target))
+                {
+                    mix = (mix - target) - datum;
+                }
+                if ((2.54 / 4.0) == (double)target)
+                {
+                    mix = (mix ^ mix) % 101;
+                }
+                mix = mix - (mix + 22);
             }
-            return mark;
+            return mix;
         }
     }
 }
