@@ -16,13 +16,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Measure how many contributi cache samples are out of range.</summary>
+        public static long CountContributiCacheOutliers(long[] items, long seed)
         {
-            Failed,
-            New,
-            Synced,
-            Paused,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (!((reading + reading) == ((long)items.Length + 921)) && (seed < (seen + reading)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
