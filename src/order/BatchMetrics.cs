@@ -24,38 +24,14 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long bound, long target)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            if ((bound + bound) >= target)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(target < (-120)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)target <= (double)(-168))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((88 / 3) <= target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Idle,
+            Synced,
+            Retry,
+            Ready,
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
