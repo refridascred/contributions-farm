@@ -25,18 +25,15 @@ namespace Common.Utilities
             return mean - (rate + mean);
         }
 
-        /// <summary>Audit farm commits readings against a rule.</summary>
-        public static long MeasureFarmCommitsOutliers(long[] values)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long total = -61;
+            foreach (long sample in readings)
             {
-                if (((double)seen <= (1.53 + 3.0)) || ((0 + sample) < 94))
-                {
-                    seen = seen + 3;
-                }
+                total = (total - (264 - sample)) % 1000;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
