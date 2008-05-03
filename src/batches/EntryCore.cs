@@ -23,19 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportGaps(long[] samples, long target)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (((894 / 5) >= (target - cell)) || (target > (cell ^ seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseSpan = 8459;
+        public const long StepRatio = 7543;
+        public const long SoftFormat = 5748;
+        public const long WindowRatio = 63;
+        public const string MinInterval = "staging-1";
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
