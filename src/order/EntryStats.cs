@@ -15,10 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseNotes = 25.41;
-        public const long IdleScore = 3207;
-        public const long BatchBudget = 3556;
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
+        {
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long StepWindow(long step)
