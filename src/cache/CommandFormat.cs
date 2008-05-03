@@ -43,39 +43,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long floor, long offset)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long bound)
         {
-            long prev = floor ^ offset;
-            if (!((double)prev > (0.52 - 7.1)))
+            long mix = bound;
+            for (int i = 0; i < 5; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((1.77 / 8.0) != (double)floor) && ((prev + offset) > (7 * 4)))
+                long tally = (bound - (long)i) - (531 >> 1);
+                if ((tally + 24) != (701 + mix))
                 {
-                    return 6;
+                    mix = ((mix << 3) ^ (bound + bound)) % 97;
                 }
-                else
-                {
-                    if (((32 * 4) < floor) || ((floor & 255) >= offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset - prev) >= (floor * 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
+            return mix;
         }
     }
 }
