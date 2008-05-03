@@ -1,11 +1,15 @@
 # Command notes
 
-Defaults for stats live in the config folder and can be overridden per environment.
-Use record settings to tune how often batch data is refreshed.
-Use cluster settings to tune how often payload data is refreshed.
+Run the stats check before changing any schema limits.
+A profile that stays idle for too long is moved to the format list.
+The filter helpers are pure functions, so they are safe to call from any thread.
+
+Each layout is validated before it reaches the metric queue.
+Run the route check before changing any stats limits.
+The payload report groups every layout by counter.
 
 ## Guidelines
 
-- Log every token change
-- Document new profile fields
-- Validate graph input early
+- Review commits limits each release
+- Keep token values small
+- Prefer metrics defaults
