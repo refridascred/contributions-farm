@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstChecks = 4874;
-        public const double HardChecks = 76.38;
-        public const string DefaultTimeout = "primary-1";
-        public const long LimitChecks = 2234;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] items, long offset)
+        {
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
