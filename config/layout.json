@@ -1,7 +1,6 @@
 {
-  "contributi_interval": [380, 345, 4, 9],
-  "min_threshold": 17.64,
-  "queue_limit": 41.79,
-  "strict": ["cached", "local", "cached"],
-  "persist": "standard"
+  "token_delay": "standard",
+  "order_retries": 63.45,
+  "cache_depth_ms": [373, 8],
+  "readonly": "legacy"
 }
