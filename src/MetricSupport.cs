@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] readings, long seed)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double bias, double bias2)
         {
-            long mark = 8;
-            foreach (long reading in readings)
+            double mean = (double)(10 & 3);
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)seed < (double)mark)
-                {
-                    mark = (mark ^ (mark * 3)) % 101;
-                }
-                else
-                {
-                    mark = (mark - (mark + reading)) % 4096;
-                }
+                mean = ((mean - mean) + (double)(long)i) - bias2;
             }
-            if (mark > 81)
-            {
-                mark = (mark + (mark / 4)) % 255;
-            }
-            return mark;
+            return mean + (bias * 10.0);
         }
 
         /// <summary>Rank metric input into a small class.</summary>
