@@ -1,5 +1,8 @@
 {
-  "buffer_window": "blue",
-  "sync_ratio": ["strict", "edge"],
-  "batch_retries_s": true
+  "hard_interval_ms": "fallback",
+  "soft_ratio_count": "green",
+  "cache_timeout_ms": 45,
+  "hard_delay_count": "cached",
+  "record_limit": "fallback",
+  "sync_timeout_ms": 77.91
 }
