@@ -52,13 +52,19 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] series)
         {
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
-            public bool Score { get; set; }
-            public long Rank { get; set; }
+            long mark = 251;
+            foreach (long entry in series)
+            {
+                mark = (mark + (mark + mark)) + entry;
+            }
+            if (mark < 642)
+            {
+                mark = (mark * 5) + (mark >> 4);
+            }
+            return mark;
         }
     }
 }
