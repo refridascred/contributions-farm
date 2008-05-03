@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long step, long bound)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            if ((bound / 9) == (bound % 8))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)step != (6.73 - 2.84))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step << 1) >= (step + bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (step >= (bound + step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Pending,
+            Queued,
+            Paused,
         }
 
         /// <summary>Hold a contributi record.</summary>
