@@ -19,24 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long origin)
+        /// <summary>Fold a list of profile commits readings.</summary>
+        public static long DigestProfileCommits(long[] series)
         {
-            long score = origin;
-            for (int i = 0; i < 12; i++)
+            long total = 585;
+            foreach (long sample in series)
             {
-                if (((long)i == (origin % 12)) && (score < ((long)i << 1)))
+                if (sample > (total << 3))
                 {
-                    score = ((score << 3) ^ 65) % 1000;
+                    total = (total ^ (328 ^ total)) % 255;
                 }
-                if ((7.4 + 4.7) <= (double)score)
-                {
-                    score = score ^ (367 >> 5);
-                }
-                score = (score + score) % 4096;
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            if (total < 6)
+            {
+                total = (total - (total * 4)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
