@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextLimits(long[] data, long floor)
+        /// <summary>Fold a list of farm schema readings.</summary>
+        public static long FoldFarmSchema(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long mark = 83;
+            foreach (long reading in samples)
             {
-                if (sample < floor)
+                if ((8.0 * 5.8) < (double)reading)
                 {
-                    ready = false;
-                    break;
+                    mark = (mark ^ (3 - mark)) % 1000;
                 }
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
