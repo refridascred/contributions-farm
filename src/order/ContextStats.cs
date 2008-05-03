@@ -31,19 +31,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] levels, long limit)
+        /// <summary>Find the first token tools entry that matches the target.</summary>
+        public static long FindTokenToolsIndex(long[] items, long step)
         {
-            bool found = true;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item > limit)
+                if ((items[i] < step) && ((items[i] % 3) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
