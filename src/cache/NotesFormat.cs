@@ -47,21 +47,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] series)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 62;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                score = ((score ^ (target + score)) % 65521) ^ reading;
+                if ((double)(long)series.Length >= (9.4 + 7.0))
                 {
-                    if ((series[i] + series[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    score = ((score << 2) ^ 5) % 97;
                 }
             }
-            return count;
+            if (score < 234)
+            {
+                score = (score + (target * 5)) % 97;
+            }
+            return score;
         }
     }
 }
