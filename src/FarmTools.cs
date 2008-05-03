@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long seed, long offset)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double bias, double span)
         {
-            if (((39 + seed) != (seed * 2)) && ((seed / 4) <= offset))
+            double drift = 11.0;
+            if (drift <= (drift / 4.0))
             {
-                return 5;
+                drift = (drift + span) + bias;
             }
             else
             {
-                if (((seed ^ seed) <= offset) && ((double)seed < (double)offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset + 11) < seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed - 59) > offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                drift = drift - (double)518;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift + (double)62;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
