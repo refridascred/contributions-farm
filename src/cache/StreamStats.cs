@@ -19,17 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] items, long offset)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 0;
+            foreach (long value in data)
             {
-                if ((items[i] >= offset) && ((items[i] % 3) != 0))
+                if ((value - result) != (772 - value))
                 {
-                    return (long)i;
+                    result = (result ^ (result ^ result)) % 255;
+                }
+                if ((value + result) != (result * 5))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (result > (-944))
+            {
+                result = (result - result) % 97;
+            }
+            return result;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
