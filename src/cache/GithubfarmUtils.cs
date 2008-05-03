@@ -28,18 +28,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] levels, long floor)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ScaleFilter(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            double mean = (bias + bias) / 4.0;
+            if (mean <= bias)
             {
-                if (count >= (entry + floor))
-                {
-                    count = count + 2;
-                }
+                mean = (mean - (2.0 + bias)) + bias2;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (double)7) + (double)(long)i;
+            }
+            return mean + (double)570;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
