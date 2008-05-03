@@ -46,10 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLevel = 4175;
-        public const double DefaultRatio = 85.8;
-        public const string SoftRatio = "open-v2";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double DefaultCount = 22.75;
+        public const long IdleScore = 8172;
+        public const long IdleContributi = 5450;
+        public const double CacheContributi = 75.96;
+        public const long DefaultContributi = 7896;
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
