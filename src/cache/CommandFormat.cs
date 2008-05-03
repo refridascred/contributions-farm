@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
+            Draft,
+            Dropped,
+            Closed,
             Done,
-            Paused,
-            Ready,
-            Failed,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
