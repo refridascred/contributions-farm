@@ -40,11 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseSpan = 3639;
-        public const string MaxEntry = "latest-edge";
-        public const long RetryEntry = 3253;
-        public const long DefaultEntry = 6548;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] levels, long limit)
+        {
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Rank session input into a small class.</summary>
         public static long RankSession(long limit, long bound)
