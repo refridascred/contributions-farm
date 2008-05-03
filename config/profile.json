@@ -1,6 +1,12 @@
 {
-  "audit": 73,
-  "max_ratio_ms": [190, 442, 339, 309],
-  "window_threshold": "open",
-  "farm_depth": "legacy"
+  "hard_limit_s": {
+    "profile_ttl": "primary",
+    "enabled": "latest",
+    "readonly": "latest",
+    "queue_ratio": true
+  },
+  "max_threshold_count": "green",
+  "idle_size_pct": "blue",
+  "record_capacity": [223, 28, 312],
+  "compress": 70.86
 }
