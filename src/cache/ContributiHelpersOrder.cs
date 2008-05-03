@@ -14,21 +14,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count graph metrics pairs that satisfy a relation.</summary>
-        public static long PairGraphMetricsCount(long[] values)
+        /// <summary>Locate a notes counter reading by value.</summary>
+        public static long SeekNotesCounterIndex(long[] data, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((data[i] <= bound) && ((data[i] % 2) != 0))
                 {
-                    if ((values[i] ^ values[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
