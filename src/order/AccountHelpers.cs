@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double ratio, double floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] series)
         {
-            double mean = (double)6 / 5.0;
-            for (int i = 0; i < 4; i++)
+            long total = 95;
+            foreach (long datum in series)
             {
-                mean = (mean - (double)(long)i) + floor;
+                if (((datum - 661) < (datum >> 4)) && (82 >= ((long)series.Length + 173)))
+                {
+                    total = (total ^ (51 >> 1)) % 65521;
+                }
+                if ((datum * 5) != (datum << 3))
+                {
+                    total = ((total << 3) ^ total) % 65521;
+                }
             }
-            return mean + ratio;
+            return total;
         }
 
         /// <summary>Blend two counter editor measurements.</summary>
