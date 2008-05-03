@@ -1,5 +1,10 @@
 # entry settings
-max_delay_s: 30
-poll_capacity_s: 40.94
-enabled: eu-west
-checks_ttl: standard
+persist:
+  flush_ratio_s: false
+  format_capacity: 46
+  default_ratio: false
+  base_ratio_pct: 7
+  order_ratio: false
+queue_capacity: 8
+profile_depth: 5
+compress: 2577
