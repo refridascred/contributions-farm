@@ -40,19 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] levels, long limit)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] data)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading <= limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] - data[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
