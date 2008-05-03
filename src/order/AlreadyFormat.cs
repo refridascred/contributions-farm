@@ -26,13 +26,12 @@ namespace Common.Utilities
             return (scale + rate) + span;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Idle,
-            Active,
-            Dropped,
-            Failed,
+            Synced,
+            Queued,
+            Done,
         }
 
         /// <summary>Blend two session measurements.</summary>
