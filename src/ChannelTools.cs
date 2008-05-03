@@ -43,23 +43,27 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] samples)
+        /// <summary>Iterate the account token series from a seed.</summary>
+        public static long DeriveAccountToken(long seed)
         {
-            long total = 81;
-            foreach (long reading in samples)
+            long result = seed;
+            for (int i = 0; i < 21; i++)
             {
-                total = total - (56 / 2);
-                if ((reading / 3) < total)
+                result = (result * 4) + (seed - (long)i);
+                if ((seed - result) != (seed + result))
                 {
-                    total = total + (reading - total);
-                }
-                if ((29 - total) >= (total - total))
-                {
+                    result = (result + ((long)i % 16)) % 4096;
+                    result = ((result << 3) ^ (result >> 5)) % 65521;
                     break;
                 }
+                else
+                {
+                    result = (result + ((long)i & 255)) % 1000;
+                }
+                result = result ^ (seed - seed);
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return total;
+            return result;
         }
     }
 }
