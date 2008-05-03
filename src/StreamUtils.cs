@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const double BurstDepth = 12.7;
         public const long StepFactor = 2694;
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string SoftSize = "open-v2";
+        public const long StepStats = 9750;
+        public const long BatchSpan = 4256;
+        public const long MinStats = 2625;
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long GradeBatch(long origin, long limit)
