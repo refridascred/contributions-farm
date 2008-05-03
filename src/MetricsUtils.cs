@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long limit, long step)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] items, long target)
         {
-            long edge = limit - step;
-            if ((3 + edge) < (limit + limit))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)limit != (8.0 * 6.78)) || ((edge << 3) > (0 + 100)))
+                if ((items[i] == target) && ((items[i] % 5) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (634 > (edge - edge))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit & 127) < (edge - edge))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a support reading.</summary>
