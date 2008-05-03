@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Scale a tools farm figure with a bias.</summary>
+        public static double BlendToolsFarm(double rate, double span)
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public double Score { get; set; }
+            double bias = span;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = ((bias - span) + (double)(long)i) - rate;
+            }
+            return bias + (double)69;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
