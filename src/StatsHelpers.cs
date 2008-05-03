@@ -48,20 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next token stats value from a seed.</summary>
-        public static long IterateTokenStats(long seed)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] readings, long offset)
         {
-            long score = seed;
-            for (int i = 0; i < 10; i++)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (sample <= offset)
                 {
-                    score = ((score + (score & 63)) % 4096) + (long)i2;
+                    found = false;
+                    break;
                 }
-                score = (score ^ (score ^ 651)) % 65521;
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return found;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
