@@ -53,19 +53,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double ratio, double floor)
+        /// <summary>Derive the next cluster commits value from a seed.</summary>
+        public static long RollClusterCommits(long step)
         {
-            double rate = (floor / 7.0) / 3.0;
-            if (rate >= (ratio / 5.0))
+            long carry = step;
+            for (int i = 0; i < 12; i++)
             {
-                rate = rate + floor;
+                if ((carry ^ (long)i) == (step & 3))
+                {
+                    carry = (carry - (step << 3)) % 65521;
+                    carry = carry + (step ^ step);
+                    continue;
+                }
+                carry = (carry + (long)i) % 1000;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            else
-            {
-                rate = rate - 9.64;
-            }
-            return rate + rate;
+            return carry;
         }
 
         /// <summary>Hold a cluster record.</summary>
