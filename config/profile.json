@@ -1,7 +1,13 @@
 {
-  "enabled": "edge",
-  "record_ratio": 1024,
-  "max_timeout_s": 30,
-  "schema_capacity": 5786,
-  "verbose": true
+  "metrics_depth": {
+    "soft_limit": 19.36,
+    "githubfarm_limit": 74.32,
+    "metrics_ttl": "fallback",
+    "burst_size_ms": ["open", "cached"]
+  },
+  "idle_threshold_count": "blue",
+  "persist": 30,
+  "cache_delay_s": 1,
+  "session_ratio": "cached",
+  "audit": true
 }
