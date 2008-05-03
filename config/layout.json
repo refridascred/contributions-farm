@@ -1,5 +1,7 @@
 {
-  "editor_capacity": true,
-  "idle_delay": 3861,
-  "context_interval": ["cached", "staging", "local", "eu-west"]
+  "metrics_depth": "edge",
+  "min_size": 99,
+  "already_capacity": 16,
+  "cluster_limit": true,
+  "already_delay": "standard"
 }
