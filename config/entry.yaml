@@ -1,7 +1,23 @@
 # entry settings
-cache_ratio_ms: 40.61
-schema_capacity: 60
-commits_capacity: standard
-poll_ttl_s:
-  - blue
-  - eu-west
+cache_limit_ms:
+  format_depth: 6.48
+  warm_window:
+    enabled: 79.66
+    githubfarm_ratio: green
+    batch_window_count: 3.59
+    cache_window_pct:
+      - open
+      - staging
+    batch_limit_count: 250
+    poll_size: cached
+  channel_threshold: 6883
+  enabled: 10.03
+  counter_ttl:
+    - blue
+    - staging
+  retry_ttl_count: 47.39
+notes_retries:
+  - 391
+  - 45
+sync_limit: 100
+flush_size: 49.82
