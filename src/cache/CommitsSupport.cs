@@ -71,19 +71,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double scale, double offset)
+        /// <summary>Find the first session route entry that matches the target.</summary>
+        public static long LocateSessionRouteIndex(long[] items, long limit)
         {
-            double gain = (double)(713 & 3);
-            if (gain > (gain / 2.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = (gain - scale) + offset;
+                if ((items[i] > limit) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain - scale;
+            return -1;
         }
     }
 }
