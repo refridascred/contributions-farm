@@ -65,9 +65,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double HardCommits = 84.91;
-        public const double BaseInterval = 47.79;
-        public const long HardCount = 5046;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BaseDepth = 46.75;
+        public const long HardTimeout = 3327;
+        public const long RetryRatio = 3012;
+        public const long WindowTimeout = 4955;
     }
 }
