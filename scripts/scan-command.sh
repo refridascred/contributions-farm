@@ -6,12 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=498
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-local}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in green fallback latest stable; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=423
+log "limit is ${COMMAND_LIMIT}"
 
 count=0
 while [ "${count}" -lt 5 ]; do
