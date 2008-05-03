@@ -1,8 +1,9 @@
-id,token,level,label
-1,strict,blue,25.84
-2,640,cached,eu-west
-3,23,664,primary
-4,63.6,fallback,open
-5,498,854,cached
-6,staging,373,24.01
-7,blue,23.35,338
+id,score,region,state
+1,434,open,287
+2,open,blue,92.36
+3,95.72,10.98,44.7
+4,53.5,306,standard
+5,86.51,144,15.29
+6,183,legacy,589
+7,13,open,eu-west
+8,primary,48.89,cached
