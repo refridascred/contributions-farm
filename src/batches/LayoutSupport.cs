@@ -29,18 +29,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenHits(long[] levels, long seed)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (!(value < (value ^ matches)))
-                {
-                    matches = (matches + 1) + seed;
-                }
-            }
-            return matches;
+            Locked,
+            Closed,
+            Idle,
         }
 
         /// <summary>Digest a series of window checks entries.</summary>
