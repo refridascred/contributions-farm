@@ -55,12 +55,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public long Limit { get; set; }
-            public double Weight { get; set; }
-            public string Label { get; set; } = "";
+            Failed,
+            Synced,
+            Active,
         }
 
         /// <summary>Fold a list of counter order readings.</summary>
