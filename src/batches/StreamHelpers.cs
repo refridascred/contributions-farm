@@ -82,10 +82,26 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double IdleAccount = 64.5;
-        public const long WindowLevel = 1730;
-        public const double HardRatio = 91.31;
-        public const long HardCount = 4239;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] samples, long bound)
+        {
+            long acc = 85;
+            foreach (long entry in samples)
+            {
+                if ((bound + bound) < (bound * 4))
+                {
+                    acc = (acc * 4) + bound;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ entry;
+                }
+                if ((bound + (long)samples.Length) != (bound & 7))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
     }
 }
