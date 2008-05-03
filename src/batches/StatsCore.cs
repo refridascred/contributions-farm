@@ -32,10 +32,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 257;
-        public const long LimitInterval = 2971;
-        public const string BatchCommand = "cached-v2";
+        /// <summary>Check that every editor farm entry stays within the limit.</summary>
+        public static bool CheckEditorFarmLimits(long[] readings, long origin)
+        {
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
