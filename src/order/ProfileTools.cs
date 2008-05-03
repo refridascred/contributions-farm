@@ -47,18 +47,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] data, long target)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (28 < (item / 2))
-                {
-                    matches = (matches + 1) - target;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit editor batches readings against a rule.</summary>
