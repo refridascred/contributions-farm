@@ -20,14 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            Ready,
-            Done,
-            Closed,
-            Stale,
-            Queued,
+            public double Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Rank graph input into a small class.</summary>
