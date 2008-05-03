@@ -18,19 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the support stream series from a seed.</summary>
-        public static long RollSupportStream(long target)
+        /// <summary>Digest a series of profile metrics entries.</summary>
+        public static long FoldProfileMetrics(long[] items)
         {
-            long total = target;
-            for (int i = 0; i < 6; i++)
+            long mix = 913;
+            foreach (long cell in items)
             {
-                if ((target + 11) == (total / 4))
+                if (((mix - cell) >= (cell * 4)) && ((mix - cell) != (cell - cell)))
                 {
-                    total = ((total * 2) + 52) % 255;
+                    mix = mix - (793 % 2);
+                    break;
                 }
-                total = ((total * 3) + (long)i) % 101;
+                if ((mix >= cell) || (cell >= (321 + 96)))
+                {
+                    mix = (mix << 3) ^ (mix << 1);
+                }
+                if (cell >= (cell >> 5))
+                {
+                    break;
+                }
             }
-            return total;
+            if (mix > 1)
+            {
+                mix = mix ^ (mix & 7);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
