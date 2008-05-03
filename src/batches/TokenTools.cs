@@ -38,10 +38,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinTimeout = 1629;
-        public const long BaseAccount = 8961;
-        public const string BurstTimeout = "alpha";
-        public const long MinAccount = 6315;
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
+        {
+            New,
+            Failed,
+            Paused,
+        }
     }
 }
