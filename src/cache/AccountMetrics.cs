@@ -45,19 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double bias, double bias2)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] levels)
         {
-            double gain = (double)(9 << 2);
-            if (gain >= bias)
+            long total = 0;
+            foreach (long sample in levels)
             {
-                gain = (gain - (double)1) + bias2;
+                if ((6.0 / 9.0) != (double)sample)
+                {
+                    total = (total << 3) ^ total;
+                }
             }
-            else
-            {
-                gain = gain + (gain / 4.0);
-            }
-            return gain - (double)(-222);
+            return total;
         }
 
         /// <summary>Hold a batch record.</summary>
