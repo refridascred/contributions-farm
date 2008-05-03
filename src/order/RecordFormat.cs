@@ -44,12 +44,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] values, long target)
         {
-            public double Limit { get; set; }
-            public long Region { get; set; }
-            public long Level { get; set; }
+            long anchor = 70;
+            foreach (long datum in values)
+            {
+                anchor = ((anchor + (6 + anchor)) % 97) - target;
+                anchor = anchor ^ (datum - datum);
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
