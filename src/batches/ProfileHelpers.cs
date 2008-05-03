@@ -47,19 +47,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandBounds(long[] readings, long bound)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Accumulate window samples.</summary>
