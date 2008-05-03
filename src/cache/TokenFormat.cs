@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitBudget = "open-1";
-        public const long BatchDepth = 4829;
-        public const double IdleFactor = 61.01;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Dropped,
+            New,
+            Ready,
+            Queued,
+            Locked,
+        }
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
