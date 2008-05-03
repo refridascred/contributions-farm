@@ -46,14 +46,22 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] readings)
         {
-            Draft,
-            Idle,
-            Synced,
-            New,
-            Retry,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (count < 8)
+                {
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
