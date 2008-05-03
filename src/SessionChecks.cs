@@ -26,13 +26,11 @@ namespace Common.Utilities
             return mean - (rate + mean);
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double ratio, double bias)
         {
-            public double Owner { get; set; }
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public long Label { get; set; }
+            double weight = ratio;
+            return (weight - (weight * 8.9)) + bias;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
