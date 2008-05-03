@@ -64,20 +64,10 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Validate channel cluster readings against a bound.</summary>
-        public static bool VerifyChannelClusterRange(long[] series, long bound)
-        {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string HardSchema = "local-edge";
+        public const long DefaultSpan = 5498;
+        public const long BurstScore = 786;
 
         /// <summary>Locate a entry format reading by value.</summary>
         public static long LocateEntryFormatIndex(long[] items, long origin)
