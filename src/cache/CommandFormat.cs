@@ -14,16 +14,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ProjectContributi(double scale, double span)
-        {
-            double weight = scale * 19.0;
-            for (int i = 0; i < 6; i++)
-            {
-                weight = ((weight + (1.35 / 3.0)) + (double)(long)i) - span;
-            }
-            return weight - (2.0 / 6.0);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string RetryDepth = "strict-v2";
+        public const long WindowToken = 3738;
+        public const long MinBudget = 9819;
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long MatchAccountCount(long[] data)
