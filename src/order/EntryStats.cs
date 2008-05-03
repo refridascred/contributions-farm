@@ -55,12 +55,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFactor = 915;
-        public const long IdleFarm = 9102;
-        public const long SoftFarm = 9209;
-        public const long RetryFarm = 5322;
-        public const long BurstCount = 4178;
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
+        {
+            Ready,
+            Stale,
+            Failed,
+            Dropped,
+            Closed,
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long IdleWidth = 402;
