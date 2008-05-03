@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long target)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long offset, long offset2)
         {
-            long result = target;
-            for (int i = 0; i < 12; i++)
+            if (((offset / 7) != (496 % 5)) || ((offset2 << 2) != (1 + 32)))
             {
-                result = (result - (368 % 60)) % 65521;
-                result = ((result * 3) + (long)i) % 101;
+                return 1;
             }
-            return result;
+            else
+            {
+                if (!((offset2 ^ offset2) >= offset2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Grade a format value against two limits.</summary>
