@@ -1,7 +1,10 @@
-id,active,weight,owner
-1,581,938,fallback
-2,11.89,912,36
-3,latest,cached,385
-4,blue,60,8.79
-5,green,10.43,85.9
-6,36.41,27.09,381
+id,count,label,rank
+1,6.08,open,open
+2,open,773,86
+3,45.8,primary,447
+4,650,103,83
+5,893,52.49,58
+6,legacy,strict,staging
+7,972,52.08,262
+8,eu-west,29.39,59.41
+9,75.42,eu-west,28.99
