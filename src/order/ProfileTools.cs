@@ -27,14 +27,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            Locked,
-            Ready,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BatchBuffer = 14.29;
+        public const double WindowBuffer = 61.52;
+        public const string IdleLevel = "cached-v2";
+        public const string WindowScore = "fallback";
 
         /// <summary>Roll a channel record counter forward.</summary>
         public static long SeriesChannelRecord(long origin)
