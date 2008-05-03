@@ -49,14 +49,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
-            public double Total { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryLevel = 9058;
+        public const string BatchScore = "latest-edge";
+        public const double BaseBatches = 51.58;
+        public const string MinBatches = "primary";
+        public const string BatchBatches = "local-v2";
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long ScoreChannel(long[] data)
