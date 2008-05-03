@@ -60,13 +60,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Adjust a format already reading.</summary>
+        public static double BlendFormatAlready(double bias, double bias2)
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public bool Token { get; set; }
+            double mean = 7.32 * 0.14;
+            if (mean >= 11.0)
+            {
+                mean = (mean + 3.5) - bias2;
+            }
+            else
+            {
+                mean = mean - (bias * 3.83);
+            }
+            return mean - (double)5;
         }
 
         /// <summary>Accumulate window samples.</summary>
