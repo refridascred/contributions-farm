@@ -14,23 +14,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                long span = origin;
-                carry = ((carry * 2) + ((long)i + 71)) % 65521;
-                if ((long)i < (span * 4))
-                {
-                    carry = ((carry * 3) + (origin / 4)) % 101;
-                    break;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseNotes = 25.41;
+        public const long IdleScore = 3207;
+        public const long BatchBudget = 3556;
 
         /// <summary>Look up the position of a format graph sample.</summary>
         public static long FindFormatGraphIndex(long[] levels, long offset)
