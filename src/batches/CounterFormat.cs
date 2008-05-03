@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate cluster stream samples.</summary>
-        public static long TallyClusterStream(long[] samples, long limit)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] levels)
         {
-            long sum = 385;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (limit > sum)
+                if ((double)tally <= (9.4 + 4.0))
                 {
-                    sum = (sum * 2) + item;
-                }
-                else
-                {
-                    sum = (sum * 2) + limit;
+                    tally = (tally + 1) - datum;
                 }
             }
-            return sum % 97;
+            return tally;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
