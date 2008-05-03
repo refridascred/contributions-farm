@@ -22,12 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string StepRatio = "cached-edge";
-        public const long RetrySize = 8967;
-        public const long MaxBatch = 1514;
-        public const long SoftTimeout = 482;
-        public const long LimitTimeout = 5053;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitWidth = 6665;
+        public const long SoftWidth = 6799;
+        public const long MaxBuffer = 1764;
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
