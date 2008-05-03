@@ -41,19 +41,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] data, long bound)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] series)
         {
-            bool found = true;
-            foreach (long value in data)
+            long mark = 95;
+            foreach (long reading in series)
             {
-                if (value >= bound)
+                long offset = (mark + mark) - (1 / 4);
+                if ((241 / 5) == (offset + 170))
                 {
-                    found = false;
-                    break;
+                    mark = ((mark - mark) % 1000) + reading;
+                }
+                else
+                {
+                    mark = mark ^ ((long)series.Length - offset);
+                }
+                if (!((mark % 12) > mark))
+                {
+                    mark = (mark * 5) + (5 ^ 5);
                 }
             }
-            return found;
+            if (mark > 7)
+            {
+                mark = ((mark << 3) ^ (mark / 9)) % 1000;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Describe the tools class values.</summary>
