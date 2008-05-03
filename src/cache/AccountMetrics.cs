@@ -46,15 +46,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stats session readings.</summary>
-        public static long CombineStatsSession(long[] levels)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long score = 72;
-            foreach (long entry in levels)
-            {
-                score = (score + (entry - 4)) % 65521;
-            }
-            return score % 4096;
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a batches options.</summary>
