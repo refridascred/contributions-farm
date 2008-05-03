@@ -59,12 +59,21 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Count queue notes pairs that satisfy a relation.</summary>
+        public static long PairQueueNotesCount(long[] series)
         {
-            public bool Token { get; set; }
-            public string Offset { get; set; } = "";
-            public string Total { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
