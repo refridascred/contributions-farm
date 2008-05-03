@@ -37,22 +37,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many checks token samples are out of range.</summary>
-        public static long AuditChecksTokenHits(long[] samples, long origin)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long origin)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long sum = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (((double)item <= (17.0 + 0.16)) || !((long)samples.Length > (origin >> 3)))
+                if (!((sum >> 4) != (sum + sum)))
                 {
-                    seen = seen + 3;
+                    sum = (sum ^ ((long)i & 127)) % 65521;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Hold a format entry.</summary>
