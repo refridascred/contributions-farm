@@ -44,12 +44,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] data, long floor)
         {
-            Failed,
-            Paused,
-            Ready,
+            long mix = 7;
+            foreach (long sample in data)
+            {
+                if ((sample % 16) != (mix - floor))
+                {
+                    mix = mix - mix;
+                }
+            }
+            return mix % 4096;
         }
     }
 }
