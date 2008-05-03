@@ -5,32 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a notes order value against two limits.</summary>
-        public static long RankNotesOrder(long bound, long seed)
+        /// <summary>Combine stream record values into a single score.</summary>
+        public static long TallyStreamRecord(long[] readings, long limit)
         {
-            long delta = bound - seed;
-            if ((delta + bound) > (bound + seed))
+            long result = 5;
+            foreach (long sample in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((58 > (bound + seed)) && ((seed % 60) <= (4 * 3)))
+                result = result ^ (limit - 33);
+                if ((result - sample) == (limit >> 2))
                 {
-                    return 8;
+                    break;
                 }
-                else
-                {
-                    if (seed >= (delta / 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                result = ((result << 3) ^ limit) % 1000;
             }
+            return result;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
