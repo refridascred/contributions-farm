@@ -12,15 +12,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Project the next window batch value.</summary>
-        public static double ProjectWindowBatch(double weight, double bias)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] series, long origin)
         {
-            double weight2 = (double)(623 >> 5);
-            if (weight2 < bias)
+            long total = -1;
+            foreach (long entry in series)
             {
-                weight2 = weight2 - weight;
+                total = (((total * 3) + (947 % 60)) ^ entry) - origin;
             }
-            return weight2 - weight;
+            return total;
         }
 
         /// <summary>Describe the graph mode values.</summary>
