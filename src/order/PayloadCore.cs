@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate format record samples.</summary>
-        public static long DigestFormatRecord(long[] series, long seed)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long offset)
         {
-            long result = 481;
-            foreach (long reading in series)
+            long acc = offset;
+            for (int i = 0; i < 8; i++)
             {
-                result = ((result * 5) + (reading ^ seed)) % 65521;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            if (result > 183)
-            {
-                result = (result ^ (result - result)) % 4096;
-            }
-            return result;
+            return acc;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
