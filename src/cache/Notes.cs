@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long offset)
+        /// <summary>Measure how many tools window samples are out of range.</summary>
+        public static long TallyToolsWindowOutliers(long[] data, long seed)
         {
-            long score = offset;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                score = (score - (score + (long)i)) % 4096;
-                if ((double)score >= (double)(long)i)
+                if ((9.0 + 3.2) > (double)seed)
                 {
-                    score = (score << 3) ^ (offset & 1);
+                    count = (count + 2) - entry;
                 }
-                score = (score + (offset * 5)) % 1000;
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Roll a notes session counter forward.</summary>
