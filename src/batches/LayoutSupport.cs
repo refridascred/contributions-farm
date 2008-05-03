@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank token filter input into a small class.</summary>
-        public static long SortTokenFilter(long target, long offset)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long prev = target + offset;
-            if (prev < (offset / 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((9 * 2) > prev) || ((target - target) >= target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Locate a queue reading by value.</summary>
