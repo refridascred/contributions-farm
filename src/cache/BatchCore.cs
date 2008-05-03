@@ -37,22 +37,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of notes session readings.</summary>
-        public static long MatchNotesSessionCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 4698;
+        public const double LimitLevel = 26.53;
+        public const long LimitBudget = 1036;
 
         /// <summary>Combine batch cluster values into a single score.</summary>
         public static long TallyBatchCluster(long[] levels)
