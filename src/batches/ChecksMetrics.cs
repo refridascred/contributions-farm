@@ -31,19 +31,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyLimits(long[] levels, long limit)
+        /// <summary>Check that every buffer channel entry stays within the limit.</summary>
+        public static bool VerifyBufferChannelBounds(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if (sample < limit)
+                if (value < seed)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
