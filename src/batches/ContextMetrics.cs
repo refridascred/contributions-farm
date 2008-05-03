@@ -30,10 +30,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double HardEditor = 95.95;
-        public const double MinEditor = 25.77;
-        public const long IdleSize = 5603;
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double weight, double span)
+        {
+            double bias = span;
+            if (bias > (bias / 9.0))
+            {
+                bias = bias + (8.4 / 3.0);
+            }
+            else
+            {
+                bias = bias - bias;
+            }
+            return bias + (weight - 20.0);
+        }
 
         /// <summary>Combine checks metrics values into a single score.</summary>
         public static long TotalChecksMetrics(long[] samples)
