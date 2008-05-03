@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchFactor = 6033;
-        public const long SoftInterval = 4745;
-        public const long BatchToken = 2410;
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
+        {
+            Active,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
