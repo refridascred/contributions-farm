@@ -52,11 +52,13 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BaseNotes = "legacy-1";
-        public const long StepSpan = 6473;
-        public const long StepNotes = 6062;
-        public const long SoftNotes = 5128;
-        public const long IdleSize = 7094;
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
+        {
+            Locked,
+            Draft,
+            Closed,
+            Failed,
+        }
     }
 }
