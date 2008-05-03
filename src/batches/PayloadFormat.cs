@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchGaps(long[] series)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((double)seen != (1.4 / 2.0))
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
+            Synced,
+            Pending,
+            Failed,
+            Draft,
+            Ready,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
