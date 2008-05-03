@@ -20,12 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftBudget = 5517;
-        public const long SoftTimeout = 8435;
-        public const long LimitSession = 4890;
-        public const string DefaultSession = "fallback-edge";
-        public const long BatchFactor = 7143;
+        /// <summary>Count graph metrics pairs that satisfy a relation.</summary>
+        public static long PairGraphMetricsCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long SoftContributi = 2567;
