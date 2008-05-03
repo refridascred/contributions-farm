@@ -46,11 +46,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a batches options.</summary>
