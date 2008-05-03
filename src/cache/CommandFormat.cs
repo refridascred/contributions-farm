@@ -29,18 +29,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of filter counter readings.</summary>
-        public static long PairFilterCounterCount(long[] items)
+        /// <summary>Measure how many support graph samples are out of range.</summary>
+        public static long AuditSupportGraphOutliers(long[] samples, long bound)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)reading != (1.08 / 6.0))
                 {
-                    if ((items[i] - items[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) + bound;
                 }
             }
             return hits;
