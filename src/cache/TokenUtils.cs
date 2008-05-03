@@ -30,11 +30,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long seed)
         {
-            public long Offset { get; set; }
-            public double Limit { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    acc = ((acc * 5) + ((long)i - (long)i2)) % 255;
+                }
+                for (int i3 = 0; i3 < 4; i3++)
+                {
+                    acc = (((acc * 4) + seed) % 4096) - (long)i3;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
