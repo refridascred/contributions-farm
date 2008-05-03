@@ -17,27 +17,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of payload contributi entries.</summary>
-        public static long FoldPayloadContributi(long[] levels, long limit)
-        {
-            long acc = 12;
-            foreach (long item in levels)
-            {
-                if ((item * 3) != (acc - acc))
-                {
-                    acc = ((acc << 2) ^ (limit + acc)) % 4096;
-                }
-                if (((double)item >= (double)acc) && ((31 << 1) == (acc & 63)))
-                {
-                    acc = acc ^ (limit - 5);
-                }
-                else
-                {
-                    acc = ((acc * 5) + limit) % 97;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 1245;
+        public const long DefaultContext = 4062;
+        public const string HardInterval = "stable";
+        public const string BaseFactor = "strict-edge";
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long AuditQueueHits(long[] series, long seed)
