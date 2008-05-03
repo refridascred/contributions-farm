@@ -51,13 +51,38 @@ namespace Common.Utilities
         public const long CacheSize = 2441;
         public const long CacheCount = 7206;
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long limit, long limit2)
         {
-            public long Score { get; set; }
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
+            if ((2.86 - 8.7) == (double)limit2)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)limit < (7.5 * 1.63))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit2 - limit2) <= (limit2 + limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit & 1) < limit2)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
