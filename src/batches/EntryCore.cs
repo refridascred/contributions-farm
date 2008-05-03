@@ -20,12 +20,23 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseSpan = 8459;
-        public const long StepRatio = 7543;
-        public const long SoftFormat = 5748;
-        public const long WindowRatio = 63;
-        public const string MinInterval = "staging-1";
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] samples)
+        {
+            long mix = 20;
+            foreach (long value in samples)
+            {
+                if ((value & 15) > value)
+                {
+                    mix = mix - (mix % 100);
+                }
+                if (((double)value >= (double)mix) || (((-982) << 3) <= (value / 3)))
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long DigestCounter(long[] items)
