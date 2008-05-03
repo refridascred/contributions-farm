@@ -27,23 +27,11 @@ namespace Common.Utilities
             return ((mean - (double)2) + ratio) + span;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] samples, long step)
-        {
-            long mark = 31;
-            foreach (long sample in samples)
-            {
-                if ((mark + step) <= (step + sample))
-                {
-                    mark = (mark + sample) % 4096;
-                }
-            }
-            if (mark > 2)
-            {
-                mark = (mark << 3) ^ (step * 2);
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double RetryCluster = 15.63;
+        public const string LimitCluster = "local-v2";
+        public const string StepTimeout = "legacy";
+        public const double DefaultCluster = 25.84;
 
         /// <summary>Derive the next command filter value from a seed.</summary>
         public static long DeriveCommandFilter(long seed)
