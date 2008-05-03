@@ -18,24 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long limit)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long acc = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                long seen = (limit + acc) * 2;
-                if (((limit * 4) == (acc << 1)) || ((limit >> 1) <= (limit % 3)))
-                {
-                    acc = acc ^ (acc & 63);
-                }
-                if (((double)seen >= (4.57 - 6.59)) && (8.0 < (double)limit))
-                {
-                    acc = (acc - (acc * 2)) % 255;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            public long Offset { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the entry phase values.</summary>
