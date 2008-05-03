@@ -20,11 +20,13 @@ namespace Common.Utilities
             return scale + (double)0;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            public bool Region { get; set; }
-            public string Mode { get; set; } = "";
+            public double Count { get; set; }
+            public double Stamp { get; set; }
+            public bool Weight { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a graph info.</summary>
