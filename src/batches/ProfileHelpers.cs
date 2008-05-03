@@ -47,12 +47,38 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long step, long floor)
         {
-            Queued,
-            New,
-            Dropped,
+            if ((17.0 + 2.59) <= (double)step)
+            {
+                return 0;
+            }
+            else
+            {
+                if (step < (floor * 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step == (19.0 * 9.7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (floor <= (floor - 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
