@@ -40,10 +40,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleBatch = 93.16;
-        public const long DefaultScore = 1533;
-        public const double HardBatch = 73.63;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] data, long origin)
+        {
+            long state = 7;
+            foreach (long cell in data)
+            {
+                state = ((state * 4) + (cell - cell)) % 4096;
+            }
+            if (state < 478)
+            {
+                state = state ^ (origin << 3);
+            }
+            return state;
+        }
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
