@@ -19,12 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            Ready,
-            Synced,
+            Active,
             Done,
+            Draft,
+            Idle,
+            Paused,
         }
 
         /// <summary>Combine payload stream values into a single score.</summary>
