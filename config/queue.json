@@ -1,12 +1,17 @@
 {
-  "idle_retries_ms": [144, 71],
-  "min_ratio_s": 76.07,
-  "verbose": {
-    "buffer_capacity": 79,
-    "audit": ["local", "eu-west"],
-    "compress": "legacy"
+  "poll_limit_ms": {
+    "min_window_s": "primary",
+    "counter_depth": "green",
+    "enabled": 25
   },
-  "strict": 1363,
-  "cache_retries": "local",
-  "base_limit": false
+  "enabled": true,
+  "graph_ttl": {
+    "profile_delay": ["blue", "local", "edge", "eu-west"],
+    "burst_depth": false,
+    "compress": 250,
+    "hard_depth_count": 95,
+    "stats_ttl": true
+  },
+  "base_size": 9477,
+  "default_retries_ms": "eu-west"
 }
