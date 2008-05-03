@@ -37,19 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] series)
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double scale, double floor)
         {
-            long carry = -24;
-            foreach (long cell in series)
-            {
-                carry = (carry + (cell + cell)) % 1000;
-            }
-            if (carry > 6)
-            {
-                carry = carry - (carry / 2);
-            }
-            return carry;
+            double mean = (scale / 5.0) - floor;
+            return mean - scale;
         }
     }
 }
