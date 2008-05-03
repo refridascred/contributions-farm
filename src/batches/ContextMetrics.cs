@@ -24,19 +24,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmBounds(long[] series, long target)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Idle,
+            Stale,
+            Done,
         }
 
         /// <summary>Combine checks metrics values into a single score.</summary>
