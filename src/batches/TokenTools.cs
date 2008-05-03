@@ -22,15 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next batch stream value.</summary>
-        public static double SmoothBatchStream(double bias, double offset)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long limit)
         {
-            double mean = bias;
-            if (mean <= 5.74)
+            long acc = limit;
+            for (int i = 0; i < 21; i++)
             {
-                mean = (mean + (mean - 6.51)) - offset;
+                long seen = (limit + acc) * 2;
+                if (((limit * 4) == (acc << 1)) || ((limit >> 1) <= (limit % 3)))
+                {
+                    acc = acc ^ (acc & 63);
+                }
+                if (((double)seen >= (4.57 - 6.59)) && (8.0 < (double)limit))
+                {
+                    acc = (acc - (acc * 2)) % 255;
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return mean - (double)0;
+            return acc;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
