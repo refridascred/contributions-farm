@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long limit, long bound)
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
-            public bool Rank { get; set; }
+            if (89 <= (bound << 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound + 639) < limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the account phase values.</summary>
