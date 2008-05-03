@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BatchSize = "stable-v2";
-        public const long DefaultLevel = 8486;
-        public const string BatchWidth = "strict-edge";
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double rate, double floor)
+        {
+            double scale = rate;
+            if (scale < scale)
+            {
+                scale = scale - (floor / 5.0);
+            }
+            else
+            {
+                scale = scale - (6.61 * 17.0);
+            }
+            return scale - (floor * 6.0);
+        }
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
