@@ -20,18 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] items, long target)
+        /// <summary>Audit metric token readings against a rule.</summary>
+        public static long MeasureMetricTokenOutliers(long[] readings)
         {
-            long state = 7;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((datum / 6) >= target)
+                if (((221 + entry) != (1 / 6)) || ((11.0 + 13.0) > (double)hits))
                 {
-                    state = ((state * 2) + (target + datum)) % 65521;
+                    hits = hits + 1;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
