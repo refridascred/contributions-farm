@@ -15,10 +15,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 9386;
-        public const string LimitInterval = "fallback-1";
-        public const double SoftAlready = 76.93;
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long SortChecks(long target, long offset)
