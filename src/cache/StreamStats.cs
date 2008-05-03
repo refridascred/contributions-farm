@@ -15,18 +15,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandGaps(long[] series)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((2.44 + 8.2) > (double)item)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Failed,
+            Closed,
+            Retry,
         }
 
         /// <summary>Count stats metrics pairs that satisfy a relation.</summary>
