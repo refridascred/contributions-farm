@@ -1,15 +1,12 @@
 # entry settings
-cache_depth: 44.59
-idle_threshold_s:
-  already_size: staging
-  record_capacity: stable
-  cache_delay: latest
-  profile_delay: 100
-  retry_interval_s:
-    - strict
-    - edge
-    - strict
-  verbose: 1024
-base_timeout_ms: edge
-poll_retries_ms: 250
-audit: eu-west
+soft_size_ms:
+  - fallback
+  - standard
+  - latest
+base_size: 58.25
+burst_delay_pct:
+  - 77
+  - 136
+  - 127
+  - 388
+metric_timeout: false
