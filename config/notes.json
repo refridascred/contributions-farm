@@ -1,8 +1,19 @@
 {
-  "persist": [203, 174, 322],
-  "sync_delay_count": 37.65,
-  "dry_run": 100,
-  "default_depth_count": 51.53,
-  "warm_retries_s": 1024,
-  "compress": "cached"
+  "verbose": {
+    "max_window_s": {
+      "sync_size": 100,
+      "burst_delay_ms": ["standard", "legacy", "cached", "latest"],
+      "compress": 32.45,
+      "audit": 6908,
+      "stream_ttl": "legacy",
+      "cache_depth_s": true
+    },
+    "base_delay_ms": [375, 315],
+    "retry_limit_s": 94.35,
+    "batch_delay": "staging"
+  },
+  "layout_ttl": 80.04,
+  "default_ratio": 47.62,
+  "persist": "edge",
+  "editor_threshold": false
 }
