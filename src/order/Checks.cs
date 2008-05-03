@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 8397;
-        public const long HardWidth = 2696;
-        public const long MinBuffer = 1478;
-        public const double BaseBuffer = 52.83;
-        public const long BurstRatio = 5891;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string RetryFarm = "cached";
+        public const long StepFarm = 1111;
+        public const long BurstFarm = 6048;
+        public const long IdleFarm = 6579;
+        public const long DefaultFarm = 6621;
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long CountStatsMatches(long[] samples)
