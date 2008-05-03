@@ -22,12 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MinScore = 15.43;
-        public const double RetryLevel = 83.04;
-        public const string IdleBudget = "local-1";
-        public const long BurstFilter = 3849;
-        public const long BaseFilter = 9760;
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
+        {
+            Failed,
+            New,
+            Idle,
+        }
 
         /// <summary>Match up already samples.</summary>
         public static long PairAlreadyCount(long[] items)
