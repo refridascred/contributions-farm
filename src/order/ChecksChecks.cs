@@ -26,18 +26,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already cache readings against a rule.</summary>
-        public static long MeasureAlreadyCacheMatches(long[] data, long target)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long bound, long seed)
         {
-            long count = 0;
-            foreach (long entry in data)
+            if (seed > (bound % 3))
             {
-                if (((double)target > 5.0) && ((843 - target) <= target))
+                return 1;
+            }
+            else
+            {
+                if (((double)bound < (2.26 - 7.2)) || ((double)bound != (7.17 * 2.48)))
                 {
-                    count = (count + 1) ^ entry;
+                    return 2;
+                }
+                else
+                {
+                    if (((-101) + seed) >= seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
     }
 }
