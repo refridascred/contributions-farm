@@ -43,24 +43,17 @@ namespace Common.Utilities
         public const double MinBudget = 3.77;
         public const long BatchSpan = 3695;
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long target, long floor)
+        /// <summary>Locate a metric notes reading by value.</summary>
+        public static long FindMetricNotesIndex(long[] values, long step)
         {
-            if ((target << 3) >= (floor + floor))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor >= 5.04)
+                if (values[i] == step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
