@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine stream record values into a single score.</summary>
-        public static long TallyStreamRecord(long[] readings, long limit)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long result = 5;
-            foreach (long sample in readings)
-            {
-                result = result ^ (limit - 33);
-                if ((result - sample) == (limit >> 2))
-                {
-                    break;
-                }
-                result = ((result << 3) ^ limit) % 1000;
-            }
-            return result;
+            Active,
+            Done,
+            Retry,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
