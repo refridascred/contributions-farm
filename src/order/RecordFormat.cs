@@ -47,17 +47,15 @@ namespace Common.Utilities
             return bias + ratio;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] series)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] readings, long bound)
         {
-            long anchor = 822;
-            foreach (long reading in series)
+            long anchor = -59;
+            foreach (long entry in readings)
             {
-                anchor = (anchor + (anchor % 64)) % 101;
-                anchor = anchor ^ (-8);
-                if ((reading >> 5) >= (997 + anchor))
+                if ((entry - 8) <= anchor)
                 {
-                    break;
+                    anchor = (anchor ^ anchor) + bound;
                 }
             }
             return anchor;
