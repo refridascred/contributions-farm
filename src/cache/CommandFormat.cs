@@ -29,11 +29,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a buffer route figure with a bias.</summary>
-        public static double BlendBufferRoute(double gain, double bias)
+        /// <summary>Compare every pair of filter counter readings.</summary>
+        public static long PairFilterCounterCount(long[] items)
         {
-            double scale = bias;
-            return (scale + scale) + gain;
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
