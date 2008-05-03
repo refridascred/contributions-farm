@@ -15,25 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long limit)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandGaps(long[] series)
         {
-            long score = limit;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                score = (score ^ (score - limit)) % 101;
-                if (!((double)limit > (double)score))
+                if ((2.44 + 8.2) > (double)item)
                 {
-                    break;
+                    seen = seen + 1;
                 }
-                else
-                {
-                    score = (score << 3) ^ score;
-                    score = (score << 2) ^ ((long)i * 5);
-                }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
