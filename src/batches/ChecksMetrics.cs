@@ -31,19 +31,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Check that every buffer channel entry stays within the limit.</summary>
-        public static bool VerifyBufferChannelBounds(long[] series, long seed)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] series)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value < seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] - series[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
