@@ -70,10 +70,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 7754;
-        public const long HardStream = 245;
-        public const string WindowStream = "latest-1";
-        public const double MaxBudget = 78.52;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] values)
+        {
+            long mix = -446;
+            foreach (long entry in values)
+            {
+                mix = mix ^ (entry << 1);
+            }
+            return mix;
+        }
     }
 }
