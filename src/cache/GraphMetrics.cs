@@ -14,32 +14,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Rank farm entry input into a small class.</summary>
-        public static long BucketFarmEntry(long offset, long offset2)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long bound = offset - offset2;
-            if (7.14 < (double)offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((938 << 2) < offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound & 255) != (offset - bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Fold a list of schema readings.</summary>
