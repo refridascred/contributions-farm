@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] data, long seed)
         {
-            Queued,
-            Draft,
-            Dropped,
+            long carry = 279;
+            foreach (long value in data)
+            {
+                carry = ((carry ^ (carry - value)) % 255) + seed;
+            }
+            if (carry > 6)
+            {
+                carry = ((carry * 5) + (long)data.Length) % 65521;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Roll a route window counter forward.</summary>
