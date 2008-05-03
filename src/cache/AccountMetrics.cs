@@ -29,17 +29,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a counter checks sample.</summary>
-        public static long FindCounterChecksIndex(long[] readings, long offset)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= offset) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Mode { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Digest a series of layout entries.</summary>
