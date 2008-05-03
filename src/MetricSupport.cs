@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSupport = 4844;
-        public const long DefaultSupport = 1713;
-        public const long RetrySupport = 3056;
-        public const long MinSpan = 8513;
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long OverlapClusterCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long WindowSpan = 1335;
