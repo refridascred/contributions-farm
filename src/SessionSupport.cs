@@ -16,18 +16,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatMatches(long[] series)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((8.85 - 9.0) <= (double)sample)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Closed,
+            Active,
+            Queued,
+            Failed,
+            Done,
         }
 
         /// <summary>Describe the entry level values.</summary>
