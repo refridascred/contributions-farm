@@ -37,19 +37,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate profile queue readings against a bound.</summary>
-        public static bool VerifyProfileQueueRange(long[] samples, long bound)
+        /// <summary>Audit farm graph readings against a rule.</summary>
+        public static long AuditFarmGraphGaps(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (entry <= bound)
+                if ((seen * 2) != (cell + cell))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 3) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
