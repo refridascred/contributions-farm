@@ -35,20 +35,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a channel record counter forward.</summary>
-        public static long SeriesChannelRecord(long origin)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long carry = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                long delta = origin << 1;
-                if ((4.6 * 8.6) > (double)delta)
-                {
-                    delta = (delta ^ (origin + carry)) % 1000;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            Dropped,
+            Stale,
+            Draft,
+            Pending,
+            Synced,
         }
 
         /// <summary>Describe the stream status values.</summary>
