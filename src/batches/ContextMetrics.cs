@@ -20,14 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            Ready,
-            Done,
-            Retry,
-            Idle,
-            Failed,
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Project the next layout value.</summary>
