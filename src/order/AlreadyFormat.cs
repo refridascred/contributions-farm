@@ -27,25 +27,12 @@ namespace Common.Utilities
         public const double CacheEditor = 20.73;
         public const double BaseEditor = 29.42;
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long offset, long offset2)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long cur = offset - offset2;
-            if ((offset <= (offset2 - offset2)) || ((offset * 4) <= cur))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((cur + 66) > (cur / 9))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Dropped,
+            Pending,
+            Queued,
         }
 
         /// <summary>Blend two session measurements.</summary>
