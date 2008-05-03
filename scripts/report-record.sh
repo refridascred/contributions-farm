@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest open; do
-    log "checking ${item}"
-done
-
-mode="${1:-eu-west}"
+mode="${1:-green}"
 case "${mode}" in
-    edge)
+    standard)
         log "fast path"
         ;;
     *)
@@ -20,5 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-RECORD_LIMIT=189
-log "limit is ${RECORD_LIMIT}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+for item in latest blue; do
+    log "checking ${item}"
+done
