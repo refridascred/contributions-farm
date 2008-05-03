@@ -37,11 +37,17 @@ namespace Common.Utilities
             return load - (load * 2.0);
         }
 
-        /// <summary>Adjust a record route reading.</summary>
-        public static double SmoothRecordRoute(double bias, double offset)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long bound)
         {
-            double gain = (double)((-14) ^ 175);
-            return (gain + offset) + bias;
+            long score = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                score = ((score << 2) ^ 34) % 1000;
+                score = score - (bound / 4);
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Hold a cluster header.</summary>
