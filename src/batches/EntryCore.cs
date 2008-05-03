@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of batches already readings.</summary>
-        public static long TallyBatchesAlready(long[] levels)
+        /// <summary>Locate a record farm reading by value.</summary>
+        public static long LocateRecordFarmIndex(long[] values, long floor)
         {
-            long acc = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc - (acc + acc)) % 1000;
-                if (((double)acc < (7.3 / 4.0)) || ((acc + acc) >= (acc ^ item)))
+                if (values[i] > floor)
                 {
-                    acc = acc ^ (acc + (-488));
+                    return (long)i;
                 }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Describe the command kind values.</summary>
