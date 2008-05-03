@@ -19,15 +19,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a token batch counter forward.</summary>
-        public static long DeriveTokenBatch(long offset)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmMatches(long[] series, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                if (!((double)count > (1.0 + 3.47)))
+                {
+                    count = ((count + 3) - entry) + limit;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
