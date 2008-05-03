@@ -1,10 +1,7 @@
-id,score,state,count
-1,legacy,45,645
-2,1.59,open,186
-3,664,451,legacy
-4,35,311,83.02
-5,strict,edge,601
-6,739,73.49,62.37
-7,930,63.69,415
-8,staging,eu-west,65.32
-9,6.74,34.82,151
+id,token,region,active
+1,579,417,322
+2,strict,57.13,89.97
+3,cached,263,eu-west
+4,eu-west,2.62,staging
+5,775,587,59.95
+6,stable,31.67,local
