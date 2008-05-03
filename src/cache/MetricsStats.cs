@@ -45,18 +45,13 @@ namespace Common.Utilities
         public const long MinDepth = 6195;
         public const string IdleGithubfarm = "latest-1";
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] series, long bound)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((double)bound > (double)hits)
-                {
-                    hits = (hits + 1) - datum;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
