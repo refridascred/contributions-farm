@@ -32,19 +32,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountBounds(long[] levels, long step)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] readings)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (reading > step)
+                if (cell >= (cell % 10))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
