@@ -1,10 +1,6 @@
 # githubfarm settings
-warm_ttl_s: false
-payload_ratio:
-  - strict
-  - eu-west
-  - eu-west
-  - fallback
-soft_timeout: green
-base_depth_pct: 42.35
-max_ttl_count: 98.44
+cache_threshold_s: 6.06
+metric_size: true
+hard_delay_pct: strict
+max_ratio: eu-west
+channel_ratio: true
