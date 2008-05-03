@@ -20,17 +20,13 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] readings, long step)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            New,
+            Failed,
+            Idle,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
