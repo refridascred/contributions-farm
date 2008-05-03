@@ -23,19 +23,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] levels, long step)
+        /// <summary>Project the next metrics format value.</summary>
+        public static double AdjustMetricsFormat(double scale, double span)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            double load = scale;
+            if (load < (double)978)
             {
-                if (reading >= step)
-                {
-                    ok = false;
-                    break;
-                }
+                load = load - span;
             }
-            return ok;
+            return load - (6.2 * 2.96);
         }
 
         /// <summary>Describe the buffer state values.</summary>
