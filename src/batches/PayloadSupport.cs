@@ -19,13 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double bias, double span)
         {
-            New,
-            Done,
-            Retry,
-            Stale,
+            double ratio = bias + bias;
+            if (ratio <= (span / 2.0))
+            {
+                ratio = ratio - (bias / 5.0);
+            }
+            else
+            {
+                ratio = ratio + (7.07 / 2.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (ratio * 5.71)) + (double)(long)i;
+            }
+            return ratio + (ratio * 1.04);
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
