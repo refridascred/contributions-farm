@@ -16,26 +16,14 @@ namespace Common.Utilities
             return mean + (rate + floor);
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long offset)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long result = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    result = (result - (result << 2)) - (long)i2;
-                    result = (result + (result / 5)) % 255;
-                }
-                double rate = 4.33;
-                if (((1.0 + rate) >= 8.0) && (((long)i + offset) == (6 << 2)))
-                {
-                    double ratio = (rate * 4.0) / 9.0;
-                    rate = rate + ratio;
-                }
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            Closed,
+            Failed,
+            Ready,
+            Done,
+            Retry,
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
