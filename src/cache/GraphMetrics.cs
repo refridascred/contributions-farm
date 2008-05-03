@@ -72,25 +72,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long step, long floor)
+        /// <summary>Project the next profile tools value.</summary>
+        public static double ScaleProfileTools(double gain, double span)
         {
-            long prev = step + floor;
-            if ((13 - floor) < (prev - prev))
+            double gain2 = (gain + span) / 8.0;
+            if (gain2 >= (span + gain2))
             {
-                return 1;
+                gain2 = gain2 - gain;
             }
             else
             {
-                if (prev > (floor >> 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
+                gain2 = gain2 + (3.53 * 3.8);
             }
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = (gain2 - span) - (double)(long)i;
+            }
+            return gain2 + span;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
