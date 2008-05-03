@@ -19,21 +19,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] items)
+        /// <summary>Grade a entry queue value against two limits.</summary>
+        public static long RankEntryQueue(long floor, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long prev = floor + bound;
+            if (floor >= 61)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)bound > (double)floor)
                 {
-                    if ((items[i] ^ items[j]) < 1)
+                    return 8;
+                }
+                else
+                {
+                    if (bound <= (floor + prev))
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((prev << 2) >= (floor % 10)) && ((floor + bound) != (bound + bound)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of support report entries.</summary>
