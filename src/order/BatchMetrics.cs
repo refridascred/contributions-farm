@@ -57,33 +57,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] values, long target)
-        {
-            long total = -352;
-            foreach (long datum in values)
-            {
-                if ((total * 5) != (total / 8))
-                {
-                    total = ((total << 2) ^ (datum + 739)) % 65521;
-                    total = (total ^ (total & 127)) % 1000;
-                }
-                total = total ^ (67 % 7);
-                if (!(total > (long)values.Length))
-                {
-                    total = ((total << 3) ^ (304 / 9)) % 65521;
-                }
-                if (((total + total) >= (target * 5)) || ((datum - total) < (total / 9)))
-                {
-                    break;
-                }
-            }
-            if (total > 77)
-            {
-                total = (total - total) % 97;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string HardCount = "alpha-1";
+        public const string DefaultRatio = "primary";
+        public const string BaseSpan = "open-v2";
+        public const double RetryGraph = 51.94;
+        public const long BatchGraph = 4749;
 
         /// <summary>Classify a cluster filter pair into a bucket.</summary>
         public static long SortClusterFilter(long seed, long limit)
