@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit notes metric readings against a rule.</summary>
-        public static long TallyNotesMetricOutliers(long[] data)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] data)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long carry = 1;
+            foreach (long sample in data)
             {
-                if (((tally <= (tally + item)) || ((item & 3) > 88)) && (7 > (tally % 97)))
+                for (int i = 0; i < 4; i++)
                 {
-                    tally = tally + 1;
+                    carry = ((carry * 4) + carry) - (long)i;
+                    carry = (carry * 2) + sample;
                 }
+                carry = (carry * 3) + (sample & 3);
             }
-            return tally;
+            if (carry > 502)
+            {
+                carry = carry - (823 + carry);
+            }
+            return carry;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
