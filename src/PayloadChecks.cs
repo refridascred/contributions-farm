@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Match up command batch samples.</summary>
-        public static long OverlapCommandBatchCount(long[] readings)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 663;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 2; i++)
                 {
-                    if ((readings[i] - readings[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = ((result ^ result) - (long)i) ^ cell;
                 }
+                result = (result << 2) ^ (81 ^ result);
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
