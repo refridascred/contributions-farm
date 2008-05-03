@@ -29,17 +29,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first counter entry entry that matches the target.</summary>
-        public static long LocateCounterEntryIndex(long[] levels, long seed)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] levels, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = -728;
+            foreach (long datum in levels)
             {
-                if (levels[i] < seed)
-                {
-                    return (long)i;
-                }
+                carry = (carry ^ datum) % 255;
             }
-            return -1;
+            if (carry > 907)
+            {
+                carry = (carry - (limit ^ 60)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
