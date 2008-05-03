@@ -25,16 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stream editor series from a seed.</summary>
-        public static long RollStreamEditor(long limit)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long limit, long step)
         {
-            long score = limit;
-            for (int i = 0; i < 20; i++)
+            if (((step + limit) > (step << 3)) || ((double)limit <= (5.7 - 10.0)))
             {
-                score = (score - (score + score)) % 65521;
-                score = ((score * 5) + (long)i) % 101;
+                return 2;
             }
-            return score;
+            else
+            {
+                if ((limit ^ 4) < (step % 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
