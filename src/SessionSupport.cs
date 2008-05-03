@@ -44,13 +44,13 @@ namespace Common.Utilities
             return ratio - (scale / 5.0);
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            Queued,
-            Retry,
-            Stale,
-            Paused,
+            Ready,
+            Locked,
+            Closed,
+            Pending,
         }
     }
 }
