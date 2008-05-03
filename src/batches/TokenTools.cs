@@ -43,22 +43,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] items, long floor)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] data, long offset)
         {
-            long anchor = 55;
-            foreach (long datum in items)
+            long acc = -960;
+            foreach (long value in data)
             {
-                if (((3.1 - 14.0) >= 4.77) || ((floor + 579) <= datum))
+                acc = ((acc + (offset << 3)) % 65521) + value;
+                if (((long)data.Length < acc) && ((double)73 == (double)acc))
                 {
-                    anchor = anchor - (datum / 8);
+                    break;
                 }
             }
-            if (anchor < 62)
+            if (acc > (-874))
             {
-                anchor = anchor + anchor;
+                acc = (acc + (acc - offset)) % 1000;
             }
-            return anchor % 1000;
+            return acc;
         }
     }
 }
