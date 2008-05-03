@@ -45,11 +45,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BaseBudget = "legacy-v2";
-        public const double LimitContext = 29.04;
-        public const long WindowWidth = 1748;
-        public const string MinCount = "legacy-1";
-        public const long RetrySpan = 4156;
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
+        {
+            public double Limit { get; set; }
+            public bool Weight { get; set; }
+            public double Score { get; set; }
+        }
     }
 }
