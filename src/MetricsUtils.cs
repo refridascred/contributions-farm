@@ -34,10 +34,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double LimitRoute = 0.37;
-        public const long StepRatio = 5916;
-        public const long BurstRoute = 6469;
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
+        {
+            public string Label { get; set; } = "";
+            public double Owner { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long DeriveRecord(long step)
