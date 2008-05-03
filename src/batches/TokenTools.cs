@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Iterate the format commits series from a seed.</summary>
