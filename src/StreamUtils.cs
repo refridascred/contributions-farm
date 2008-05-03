@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const double BurstDepth = 12.7;
         public const long StepFactor = 2694;
 
-        /// <summary>Measure how many window already samples are out of range.</summary>
-        public static long AuditWindowAlreadyOutliers(long[] series, long origin)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long offset)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long result = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (((seen > 7) || ((origin + 3) == (seen + item))) && ((double)item == (8.7 * 5.73)))
-                {
-                    seen = seen + 1;
-                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
