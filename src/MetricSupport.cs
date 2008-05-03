@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowBounds(long[] values, long floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderMatches(long[] readings, long floor)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (cell < floor)
+                if (item < 51)
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 1) - floor;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
