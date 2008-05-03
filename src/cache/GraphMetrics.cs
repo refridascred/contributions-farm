@@ -48,21 +48,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] samples)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
