@@ -44,15 +44,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next order window value.</summary>
-        public static double ScaleOrderWindow(double scale, double floor)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            double weight = (floor * 4.0) - (scale - floor);
-            if (weight >= scale)
-            {
-                weight = weight - (6.55 / 8.0);
-            }
-            return weight + floor;
+            public double Rank { get; set; }
+            public bool Flag { get; set; }
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Accumulate layout cache samples.</summary>
