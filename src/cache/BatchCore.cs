@@ -43,18 +43,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] values)
+        /// <summary>Blend two context batch measurements.</summary>
+        public static double AdjustContextBatch(double bias, double span)
         {
-            long hits = 0;
-            foreach (long item in values)
+            double load = 6.4;
+            if (load < load)
             {
-                if (hits <= (item - hits))
-                {
-                    hits = hits + 3;
-                }
+                load = (load - (7.0 + span)) - bias;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (load / 8.0)) - (double)(long)i;
+            }
+            return load + 6.74;
         }
     }
 }
