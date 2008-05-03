@@ -1,4 +1,7 @@
 # support settings
-buffer_depth: 67.82
-retry_size_ms: stable
-batch_limit_ms: false
+batch_threshold_pct: true
+stream_delay: 93
+hard_limit: strict
+enabled: 0.92
+flush_size: false
+default_threshold_count: 14
