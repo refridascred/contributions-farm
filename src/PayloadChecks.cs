@@ -84,18 +84,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] items)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((sample ^ count) != (count >> 5))
+                if (!((entry - entry) >= entry))
                 {
-                    count = count + 1;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
