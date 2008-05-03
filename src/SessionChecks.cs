@@ -25,13 +25,18 @@ namespace Common.Utilities
             return mean - (rate + mean);
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Audit farm commits readings against a rule.</summary>
+        public static long MeasureFarmCommitsOutliers(long[] values)
         {
-            Closed,
-            Locked,
-            Active,
-            Done,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (((double)seen <= (1.53 + 3.0)) || ((0 + sample) < 94))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
