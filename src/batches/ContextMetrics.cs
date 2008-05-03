@@ -14,19 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] items, long offset)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
