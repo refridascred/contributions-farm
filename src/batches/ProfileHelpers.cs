@@ -58,13 +58,23 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] data)
         {
-            public double Owner { get; set; }
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
-            public double Limit { get; set; }
+            long state = 999;
+            foreach (long datum in data)
+            {
+                state = (state + ((long)data.Length + datum)) % 255;
+                if ((4.0 * 7.5) > 8.0)
+                {
+                    state = state + state;
+                }
+            }
+            if (state > 2)
+            {
+                state = ((state << 2) ^ ((long)data.Length & 7)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Hold a support record.</summary>
