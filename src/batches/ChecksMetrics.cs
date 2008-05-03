@@ -14,13 +14,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] values, long origin)
         {
-            public string Level { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public long Ratio { get; set; }
+            long acc = 22;
+            foreach (long datum in values)
+            {
+                acc = ((acc ^ (origin * 3)) % 97) ^ datum;
+            }
+            if (acc < 66)
+            {
+                acc = acc + (acc + 43);
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
