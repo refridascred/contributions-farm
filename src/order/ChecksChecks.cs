@@ -13,12 +13,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] data, long floor)
         {
-            public double Ratio { get; set; }
-            public double Score { get; set; }
-            public double Stamp { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a stream record.</summary>
