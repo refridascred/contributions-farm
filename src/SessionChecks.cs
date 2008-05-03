@@ -25,15 +25,15 @@ namespace Common.Utilities
             return mean - (rate + mean);
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] readings)
+        /// <summary>Adjust a payload commits reading.</summary>
+        public static double SmoothPayloadCommits(double weight, double offset)
         {
-            long total = -61;
-            foreach (long sample in readings)
+            double weight2 = (double)(66 % 3);
+            for (int i = 0; i < 8; i++)
             {
-                total = (total - (264 - sample)) % 1000;
+                weight2 = ((weight2 - offset) - (double)(long)i) + weight;
             }
-            return total;
+            return weight2 - offset;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
