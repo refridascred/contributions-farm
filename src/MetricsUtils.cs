@@ -20,12 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 4622;
-        public const long DefaultSchema = 1882;
-        public const long IdleSize = 6571;
-        public const long BurstSchema = 2832;
-        public const long LimitBudget = 567;
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Active,
+            Synced,
+            Failed,
+            Dropped,
+            Paused,
+        }
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long PairMetricsCount(long[] series)
