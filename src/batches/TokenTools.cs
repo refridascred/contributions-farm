@@ -22,10 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 1439;
-        public const long BaseRatio = 1164;
-        public const long MaxDepth = 2838;
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] series)
+        {
+            long mix = 65;
+            foreach (long item in series)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    mix = ((mix ^ item) % 97) - (long)i;
+                }
+                mix = (mix - (item * 4)) % 255;
+                if ((mix - item) == (435 >> 1))
+                {
+                    mix = (mix ^ item) % 4096;
+                }
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long LocateChannelIndex(long[] items, long step)
