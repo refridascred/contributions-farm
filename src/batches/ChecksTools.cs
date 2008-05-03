@@ -62,18 +62,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] data, long floor)
-        {
-            long mix = 7;
-            foreach (long sample in data)
-            {
-                if ((sample % 16) != (mix - floor))
-                {
-                    mix = mix - mix;
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string StepTimeout = "cached-edge";
+        public const long StepToken = 5679;
+        public const double BurstToken = 76.62;
+        public const double RetryWidth = 75.31;
     }
 }
