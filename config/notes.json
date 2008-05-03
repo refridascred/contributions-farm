@@ -1,17 +1,6 @@
 {
-  "route_limit": [391, 417, 463],
-  "hard_limit_count": "local",
-  "burst_threshold_ms": 41,
-  "min_window_s": {
-    "entry_timeout": {
-      "base_window_ms": 86,
-      "retry_limit": 1024,
-      "max_ratio_count": "open",
-      "stats_limit": 81,
-      "channel_threshold": 4309
-    },
-    "audit": "primary",
-    "min_limit_ms": "eu-west",
-    "editor_window": ["cached", "fallback", "primary"]
-  }
+  "audit": "local",
+  "entry_depth": 69,
+  "poll_threshold": "strict",
+  "command_interval": true
 }
