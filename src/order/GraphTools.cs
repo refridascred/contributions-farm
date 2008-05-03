@@ -27,12 +27,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string WindowChannel = "primary";
-        public const long IdleSize = 101;
-        public const long DefaultSize = 399;
-        public const long RetryChannel = 619;
-        public const double BaseChannel = 1.18;
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                score = (score ^ (floor * 2)) % 101;
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long AuditProfileOutliers(long[] series, long bound)
