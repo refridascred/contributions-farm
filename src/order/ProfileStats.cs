@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] levels)
         {
-            New,
-            Closed,
-            Done,
-            Locked,
-            Active,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)tally > 2.8)
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
