@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Measure how many tools metric samples are out of range.</summary>
+        public static long CountToolsMetricMatches(long[] readings)
         {
-            Draft,
-            Retry,
-            Locked,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((item % 64) < (item - seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
