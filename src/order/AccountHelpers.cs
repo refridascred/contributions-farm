@@ -16,18 +16,18 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] series, long bound)
+        /// <summary>Measure how many metric stream samples are out of range.</summary>
+        public static long MeasureMetricStreamOutliers(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((double)bound >= 6.7)
+                if ((((double)entry <= (double)matches) || ((double)entry > (6.6 + 7.29))) && !((1.0 + 18.0) > (double)step))
                 {
-                    tally = (tally + 2) + entry;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Combine context values into a single score.</summary>
