@@ -34,25 +34,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long seed, long origin)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueRange(long[] items, long floor)
         {
-            long next = seed - origin;
-            if (((next - next) != (next * 2)) && ((origin + 580) >= (next * 2)))
+            bool flag = true;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((origin ^ origin) < (next + next)) || ((double)origin <= (8.0 / 7.0)))
+                if (sample > floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
