@@ -54,9 +54,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BatchSize = "fallback-v2";
-        public const long WindowRatio = 1372;
-        public const long MinLayout = 1466;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Idle,
+            Stale,
+            Retry,
+            Closed,
+        }
     }
 }
