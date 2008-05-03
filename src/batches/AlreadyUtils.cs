@@ -68,18 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] items)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((seen % 2) > (value + value))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public long Total { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
