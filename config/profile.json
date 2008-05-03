@@ -1,5 +1,6 @@
 {
-  "max_limit_count": "open",
-  "verbose": "fallback",
-  "sync_interval_s": 77.65
+  "poll_ttl_pct": [79, 21],
+  "default_timeout_ms": 9409,
+  "report_limit": true,
+  "warm_ratio_s": true
 }
