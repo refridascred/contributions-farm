@@ -78,11 +78,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardScore = 2926;
-        public const long WindowTools = 758;
-        public const long RetryTools = 6722;
-        public const long CacheSpan = 1153;
-        public const long BaseTools = 4911;
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long offset, long floor)
+        {
+            long gap = offset ^ floor;
+            if ((double)floor < (6.0 / 2.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((gap << 1) <= (floor + floor)) && ((offset - gap) == (offset & 1)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
