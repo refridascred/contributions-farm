@@ -63,17 +63,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first commits batch entry that matches the target.</summary>
-        public static long LocateCommitsBatchIndex(long[] items, long bound)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > bound) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Owner { get; set; }
+            public long Weight { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
