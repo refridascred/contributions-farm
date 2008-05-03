@@ -36,18 +36,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] levels)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long total = 0;
-            foreach (long sample in levels)
-            {
-                if ((6.0 / 9.0) != (double)sample)
-                {
-                    total = (total << 3) ^ total;
-                }
-            }
-            return total;
+            Pending,
+            Dropped,
+            New,
+            Done,
         }
 
         /// <summary>Hold a stats info.</summary>
