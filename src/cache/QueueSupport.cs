@@ -19,19 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many tools metric samples are out of range.</summary>
-        public static long CountToolsMetricMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((item % 64) < (item - seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 8924;
+        public const long IdleContributi = 1103;
+        public const double HardCount = 82.33;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long CacheContext = 6172;
