@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate editor route samples.</summary>
-        public static long ScoreEditorRoute(long[] levels)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] items)
         {
-            long sum = 13;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((70 + cell) == (sum & 63))
+                if (count > (27 >> 1))
                 {
-                    sum = ((sum * 3) + (sum * 4)) % 97;
+                    count = (count + 3) + reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return sum % 97;
+            return count;
         }
 
         /// <summary>Count the token payload entries that pass the check.</summary>
