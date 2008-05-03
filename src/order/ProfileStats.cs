@@ -31,17 +31,25 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Find the first filter commits entry that matches the target.</summary>
-        public static long FindFilterCommitsIndex(long[] data, long target)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long floor, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long lane = floor - bound;
+            if ((0 / 6) < floor)
             {
-                if ((data[i] >= target) && ((data[i] % 3) != 0))
+                return 6;
+            }
+            else
+            {
+                if (lane < (bound * 2))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
