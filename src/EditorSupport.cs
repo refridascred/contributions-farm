@@ -79,13 +79,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            Done,
-            Synced,
-            Failed,
-            Idle,
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
