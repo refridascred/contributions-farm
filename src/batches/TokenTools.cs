@@ -19,12 +19,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            New,
-            Failed,
-            Paused,
+            public double Offset { get; set; }
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
