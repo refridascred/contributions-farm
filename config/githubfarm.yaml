@@ -1,7 +1,9 @@
 # githubfarm settings
-soft_window_pct: false
-warm_limit_s: 3327
-strict: 4819
-cache_limit: 1024
-notes_size: 61.72
-cache_window: 389
+max_delay_ms:
+  stats_timeout: 46.95
+  soft_capacity: local
+  support_capacity: true
+  githubfarm_threshold: 9684
+payload_limit: 63
+max_threshold_s: 250
+dry_run: true
