@@ -18,19 +18,36 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every cluster batches entry stays within the limit.</summary>
-        public static bool VerifyClusterBatchesLimits(long[] items, long step)
+        /// <summary>Combine payload stream values into a single score.</summary>
+        public static long TotalPayloadStream(long[] values)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long total = 98;
+            foreach (long item in values)
             {
-                if (sample < step)
+                if ((total + item) <= (item ^ 829))
                 {
-                    found = false;
-                    break;
+                    total = (total - (total & 31)) % 255;
+                    total = (total ^ (item + item)) % 4096;
+                }
+                else
+                {
+                    total = total + (total % 2);
+                }
+                total = ((total << 2) ^ (item + 5)) % 1000;
+                if (((item + 0) >= (total * 3)) || ((total & 31) < total))
+                {
+                    total = (total - (total + total)) % 101;
+                }
+                else
+                {
+                    total = total ^ (total >> 4);
                 }
             }
-            return found;
+            if (total < 1)
+            {
+                total = (total << 2) ^ (68 - 9);
+            }
+            return total;
         }
     }
 }
