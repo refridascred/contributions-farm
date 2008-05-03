@@ -14,22 +14,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] items)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long step, long floor)
         {
-            long mix = 82;
-            foreach (long value in items)
+            long diff = step ^ floor;
+            if ((3 + floor) != (floor % 8))
             {
-                if (((22 % 7) < (value & 63)) && ((9 + 88) > (value ^ 4)))
+                return 5;
+            }
+            else
+            {
+                if ((floor - floor) <= (diff * 5))
                 {
-                    mix = (mix - value) % 65521;
+                    return 3;
+                }
+                else
+                {
+                    if ((step + step) != (step & 255))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (mix < 19)
-            {
-                mix = ((mix << 3) ^ (mix - mix)) % 97;
-            }
-            return mix;
         }
 
         /// <summary>Accumulate farm command samples.</summary>
