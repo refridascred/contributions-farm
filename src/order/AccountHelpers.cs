@@ -82,15 +82,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two filter metrics measurements.</summary>
-        public static double AdjustFilterMetrics(double weight, double offset)
+        /// <summary>Combine support window values into a single score.</summary>
+        public static long TotalSupportWindow(long[] items)
         {
-            double scale = weight;
-            if (scale >= weight)
+            long score = 933;
+            foreach (long entry in items)
             {
-                scale = scale - (double)755;
+                if (score < (entry + score))
+                {
+                    score = (score * 2) + (entry + score);
+                }
             }
-            return scale + (offset - offset);
+            if (score > 984)
+            {
+                score = (score + 900) % 101;
+            }
+            return score;
         }
     }
 }
