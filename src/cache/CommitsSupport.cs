@@ -68,12 +68,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double scale, double offset)
         {
-            Stale,
-            Locked,
-            Ready,
+            double gain = (double)(713 & 3);
+            if (gain > (gain / 2.0))
+            {
+                gain = (gain - scale) + offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain - scale;
         }
     }
 }
