@@ -28,9 +28,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 6882;
-        public const string MaxCounter = "primary-edge";
-        public const long IdleCounter = 7918;
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = carry - ((long)i + 6);
+                carry = (carry * 5) + (floor & 127);
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
     }
 }
