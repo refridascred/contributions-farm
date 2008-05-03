@@ -32,18 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] samples)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long mix = 2;
-            foreach (long reading in samples)
-            {
-                if (!((9.5 / 3.0) <= (double)reading))
-                {
-                    mix = ((mix * 3) + (mix % 8)) % 255;
-                }
-            }
-            return mix;
+            public string Total { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
