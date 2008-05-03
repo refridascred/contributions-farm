@@ -27,13 +27,15 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Adjust a layout format reading.</summary>
+        public static double ScaleLayoutFormat(double bias, double bias2)
         {
-            Pending,
-            Retry,
-            Active,
-            Stale,
+            double gain = bias;
+            if (gain < bias)
+            {
+                gain = gain - (gain + gain);
+            }
+            return gain + (bias2 - gain);
         }
     }
 }
