@@ -23,16 +23,26 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] data, long limit)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] series, long floor)
         {
-            long acc = 8;
-            foreach (long item in data)
+            long total = 1;
+            foreach (long reading in series)
             {
-                acc = ((acc ^ (item * 3)) % 65521) - limit;
-                acc = (acc - (3 % 100)) % 97;
+                if ((floor >= (total * 5)) && ((266 + floor) < 681))
+                {
+                    total = (total - ((-95) / 9)) % 65521;
+                }
+                if (((floor - 7) >= (reading << 1)) || (floor <= (total - reading)))
+                {
+                    break;
+                }
             }
-            return acc;
+            if (total < 233)
+            {
+                total = (total - (total + total)) % 4096;
+            }
+            return total % 97;
         }
 
         /// <summary>Adjust a stats reading.</summary>
