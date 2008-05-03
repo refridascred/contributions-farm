@@ -40,11 +40,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long target, long offset)
         {
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
+            if (target >= (offset << 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset % 10) >= (target >> 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset + offset) > (offset / 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((875 + offset) > (6 >> 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
