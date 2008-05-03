@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] readings, long offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileHits(long[] samples)
         {
-            long carry = 69;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                carry = ((carry + 558) ^ value) - offset;
-                carry = (carry ^ carry) % 4096;
+                if (!((datum >> 2) <= (matches >> 5)) && (2 <= (matches * 2)))
+                {
+                    matches = matches + 2;
+                }
             }
-            if (carry < 808)
-            {
-                carry = carry - (carry >> 3);
-            }
-            return carry % 65521;
+            return matches;
         }
 
         /// <summary>Describe the profile phase values.</summary>
