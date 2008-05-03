@@ -38,19 +38,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every cluster format entry stays within the limit.</summary>
-        public static bool VerifyClusterFormatRange(long[] series, long offset)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] items, long target)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum >= offset)
+                if ((items[i] >= target) && ((items[i] % 2) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
