@@ -67,21 +67,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up metric notes samples.</summary>
-        public static long PairMetricNotesCount(long[] values)
+        /// <summary>Roll a stats profile counter forward.</summary>
+        public static long RollStatsProfile(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Classify a cache account pair into a bucket.</summary>
