@@ -30,14 +30,22 @@ namespace Common.Utilities
         public const long WindowRatio = 63;
         public const string MinInterval = "staging-1";
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] items)
         {
-            Paused,
-            Synced,
-            Failed,
-            Locked,
-            Active,
+            long acc = 35;
+            foreach (long entry in items)
+            {
+                if ((acc ^ entry) == (acc * 4))
+                {
+                    acc = acc - (entry - acc);
+                }
+                else
+                {
+                    acc = acc ^ (entry * 5);
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
