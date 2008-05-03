@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 9892;
+        public const long BurstCluster = 4113;
+        public const long StepCluster = 4726;
+        public const string RetrySize = "open-v2";
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long LocateMetricIndex(long[] data, long floor)
