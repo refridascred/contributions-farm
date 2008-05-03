@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] levels, long step)
-        {
-            long carry = 804;
-            foreach (long item in levels)
-            {
-                if ((double)item != (1.1 * 6.1))
-                {
-                    carry = ((carry - (carry + item)) % 255) + step;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 4575;
+        public const long StepRatio = 5928;
+        public const long MaxBudget = 276;
+        public const double MaxTools = 11.33;
 
         /// <summary>Count entry profile pairs that satisfy a relation.</summary>
         public static long CompareEntryProfileCount(long[] series)
