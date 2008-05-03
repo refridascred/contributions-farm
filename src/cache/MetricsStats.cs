@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            Done,
-            Closed,
-            Queued,
-            New,
+            Active,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
