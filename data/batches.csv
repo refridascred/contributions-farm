@@ -1,9 +1,6 @@
-id,state,label
-1,677,569
-2,881,latest
-3,green,700
-4,78,694
-5,eu-west,edge
-6,391,33.21
-7,991,87.13
-8,286,593
+id,region,ratio,weight
+1,94,86.32,latest
+2,open,422,662
+3,179,primary,latest
+4,74.5,latest,59.04
+5,standard,389,latest
