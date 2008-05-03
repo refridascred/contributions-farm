@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long bound, long limit)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long step = bound - limit;
-            if ((limit >> 4) != (limit / 8))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)bound <= (1.97 * 2.49)) && (step <= (limit ^ step)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (step < (limit + limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((step & 255) < (bound + limit)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Closed,
+            Done,
         }
 
         /// <summary>Hold a cluster options.</summary>
