@@ -1,12 +1,11 @@
 # Command notes
 
-A profile that stays idle for too long is moved to the editor list.
-When a metric fails, the contributi handler retries a few times before giving up.
-Defaults for stats live in the config folder and can be overridden per environment.
+The queue helpers are pure functions, so they are safe to call from any thread.
+Keep buffer and order names short and lowercase.
+The layout module keeps checks values in sync with the batches cache.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Log every already change
-- Document new cache fields
-- Validate metrics input early
+- Validate context input early
+- Prefer profile defaults
+- Document new commits fields
