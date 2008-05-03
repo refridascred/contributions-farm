@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportMatches(long[] values, long target)
         {
-            Active,
-            Done,
-            Idle,
-            Synced,
-            Draft,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((8 + tally) != (tally - target))
+                {
+                    tally = (tally + 1) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
