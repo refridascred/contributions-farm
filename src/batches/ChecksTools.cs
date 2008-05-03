@@ -16,19 +16,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two stream window measurements.</summary>
-        public static double ScaleStreamWindow(double weight, double offset)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long seed, long floor)
         {
-            double mean = offset;
-            if (mean > 18.0)
+            if (((58 ^ 7) == (seed + seed)) || (((-60) / 6) >= (42 + seed)))
             {
-                mean = (mean + (offset + 9.4)) - weight;
+                return 8;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                mean = (mean + offset) - (double)(long)i;
+                if ((seed - seed) <= (932 + 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return mean + (double)9;
         }
 
         /// <summary>Describe the window kind values.</summary>
