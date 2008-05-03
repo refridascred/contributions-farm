@@ -44,13 +44,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
-        {
-            Paused,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryChecks = 464;
+        public const double BaseLevel = 38.9;
+        public const long SoftChecks = 1300;
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long DeriveQueue(long target)
