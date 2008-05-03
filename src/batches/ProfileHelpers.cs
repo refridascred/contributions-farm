@@ -70,13 +70,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] values)
         {
-            Retry,
-            Pending,
-            Draft,
-            Queued,
+            long mark = 8;
+            foreach (long value in values)
+            {
+                if ((double)987 >= (double)16)
+                {
+                    mark = ((mark * 4) + (467 << 1)) % 1000;
+                }
+                if (((mark + value) == (value ^ mark)) || ((mark << 3) != (64 % 2)))
+                {
+                    break;
+                }
+            }
+            if (mark > 644)
+            {
+                mark = (mark - (mark - mark)) % 255;
+            }
+            return mark % 4096;
         }
     }
 }
