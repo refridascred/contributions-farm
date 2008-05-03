@@ -1,11 +1,14 @@
 # support settings
-warm_timeout_s:
-  session_size: stable
-  enabled: local
-  window_depth: 3341
-poll_threshold_s: eu-west
-max_window_pct:
-  - blue
-  - open
-  - fallback
-window_capacity: 60
+audit:
+  base_retries_ms: false
+  persist: 1656
+  retry_interval_ms: 250
+  batches_depth: 95
+  profile_size:
+    - 465
+    - 441
+    - 140
+hard_interval_ms: local
+default_depth: 36
+support_ttl: open
+poll_retries: 1983
