@@ -50,23 +50,19 @@ namespace Common.Utilities
             return weight + (span + span);
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long limit)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportBounds(long[] values, long seed)
         {
-            long mark = limit;
-            for (int i = 0; i < 12; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if (!((1.9 - 15.0) >= (6.02 + 11.0)))
+                if (value > seed)
                 {
-                    mark = ((mark << 3) ^ (limit * 5)) % 255;
+                    flag = false;
+                    break;
                 }
-                if ((7.6 * 9.2) > (double)(long)i)
-                {
-                    mark = (mark << 2) ^ ((long)i / 8);
-                }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return flag;
         }
     }
 }
