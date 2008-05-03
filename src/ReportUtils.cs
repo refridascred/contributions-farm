@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BatchFarm = 64.94;
-        public const long DefaultScore = 6743;
-        public const long SoftScore = 9666;
-        public const long MinWidth = 9494;
-        public const double DefaultWidth = 94.5;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] series, long offset)
+        {
+            long anchor = 123;
+            foreach (long item in series)
+            {
+                anchor = (((anchor << 2) ^ item) % 65521) + offset;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a notes header.</summary>
         public sealed class NotesHeader
