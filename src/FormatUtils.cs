@@ -20,11 +20,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BurstSpan = 4.96;
-        public const long BurstAccount = 4602;
-        public const double MaxRatio = 47.5;
-        public const long MinAccount = 1426;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterHits(long[] levels, long target)
+        {
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (!(((double)hits != (5.84 * 0.8)) || ((hits >> 5) >= (236 << 3))))
+                {
+                    hits = ((hits + 2) + value) - target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long DigestSession(long[] samples)
