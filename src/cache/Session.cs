@@ -56,19 +56,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long target)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long SeekRecordIndex(long[] levels, long target)
         {
-            long result = target;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((levels[i] == target) && ((levels[i] % 3) == 0))
                 {
-                    result = ((result + (target + target)) % 4096) ^ (long)i2;
+                    return (long)i;
                 }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
     }
 }
