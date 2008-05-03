@@ -66,15 +66,10 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double rate, double span)
-        {
-            double mean = rate * 11.0;
-            if (mean <= (mean - 3.0))
-            {
-                mean = mean + (rate - span);
-            }
-            return mean - (double)35;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 9058;
+        public const long WindowFactor = 7040;
+        public const long SoftDepth = 2551;
+        public const string LimitFactor = "stable-1";
     }
 }
