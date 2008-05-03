@@ -26,18 +26,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] series, long origin)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((origin >> 1) != (2 & 127))
+                if (values[i] < limit)
                 {
-                    tally = (tally + 1) ^ cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
