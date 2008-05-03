@@ -37,19 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenBounds(long[] values, long target)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterGaps(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (value <= target)
+                if ((double)origin >= (19.0 + 14.0))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 1) + item;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
