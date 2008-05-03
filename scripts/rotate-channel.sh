@@ -6,13 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard strict open; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 2))
 done
+log "total ${total}"
 
-mode="${1:-staging}"
+CHANNEL_LIMIT=258
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-latest}"
 case "${mode}" in
-    strict)
+    local)
         log "fast path"
         ;;
     *)
