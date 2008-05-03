@@ -52,13 +52,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] series, long offset)
         {
-            public long Total { get; set; }
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
