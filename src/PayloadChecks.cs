@@ -56,18 +56,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] samples)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (!((entry - entry) >= entry))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define token limits and defaults.</summary>
