@@ -1,9 +1,10 @@
 {
-  "channel_limit": {
-    "counter_depth": ["cached", "blue", "stable", "green"],
-    "farm_timeout": "stable",
-    "hard_interval": 5111
-  },
-  "persist": true,
-  "support_size": 3999
+  "warm_limit": 500,
+  "flush_threshold_s": 500,
+  "persist": {
+    "min_retries_ms": ["latest", "legacy", "standard"],
+    "channel_size": "strict",
+    "compress": true,
+    "enabled": ["primary", "stable", "staging", "fallback"]
+  }
 }
