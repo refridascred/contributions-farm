@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] series, long seed)
+        /// <summary>Compare every pair of metric filter readings.</summary>
+        public static long CompareMetricFilterCount(long[] items)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seed / 5) > seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 1) + item;
+                    if ((items[i] + items[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
