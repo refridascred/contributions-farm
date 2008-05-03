@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many report editor samples are out of range.</summary>
-        public static long MeasureReportEditorHits(long[] readings)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample % 16) < sample)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the stream state values.</summary>
