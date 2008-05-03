@@ -70,19 +70,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] data, long origin)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandBounds(long[] readings, long bound)
         {
-            long result = 862;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                result = ((result << 2) ^ (result % 5)) % 97;
-                if ((9.35 / 2.0) >= (double)item)
+                if (datum < bound)
                 {
-                    result = (result << 2) ^ ((-3) ^ origin);
+                    ready = false;
+                    break;
                 }
             }
-            return result % 65521;
+            return ready;
         }
 
         /// <summary>Describe the order state values.</summary>
