@@ -1,10 +1,21 @@
 # support settings
-burst_retries_count: 90
-default_size_pct:
-  - 249
-  - 67
-  - 187
-  - 376
-flush_capacity: 5
-stats_retries: 74.84
-layout_capacity: false
+retry_threshold:
+  - cached
+  - legacy
+  - legacy
+  - eu-west
+batch_interval_ms: 78.28
+min_depth_ms: 40.04
+base_window:
+  sync_capacity_s:
+    - staging
+    - legacy
+    - open
+  token_interval: eu-west
+  idle_interval: 60
+  min_size: 100
+  readonly: true
+window_interval:
+  - strict
+  - primary
+  - edge
