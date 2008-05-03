@@ -19,14 +19,18 @@ namespace Common.Utilities
         public const double SoftSize = 48.1;
         public const long WindowContext = 7136;
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterGaps(long[] data)
         {
-            Ready,
-            Draft,
-            Closed,
-            Retry,
-            Done,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (seen >= (46 / 6))
+                {
+                    seen = (seen + 1) - value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
