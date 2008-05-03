@@ -26,19 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already counter entries that pass the check.</summary>
-        public static long AuditAlreadyCounterOutliers(long[] readings)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((matches ^ matches) >= 170)
-                {
-                    matches = (matches + 3) + value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 4521;
+        public const double LimitWidth = 3.81;
+        public const long MinWindow = 6922;
+        public const string DefaultScore = "open-1";
+        public const long DefaultWidth = 60;
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
