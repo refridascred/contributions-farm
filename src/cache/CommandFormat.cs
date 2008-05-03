@@ -29,19 +29,21 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Check that every already stream entry stays within the limit.</summary>
-        public static bool VerifyAlreadyStreamBounds(long[] readings, long limit)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] data)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample != limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Fold a list of command readings.</summary>
