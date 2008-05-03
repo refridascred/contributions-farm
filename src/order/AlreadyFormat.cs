@@ -19,17 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] values, long offset)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double rate, double span)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < offset) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = (rate * 5.5) - rate;
+            return (scale + rate) + span;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
