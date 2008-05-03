@@ -2,9 +2,13 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     state TEXT NOT NULL DEFAULT 'new',
-    rank INTEGER,
-    score REAL NOT NULL DEFAULT 0,
-    label TEXT
+    owner TEXT NOT NULL,
+    ratio REAL,
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_label ON stats_logs (label);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_ratio ON stats_logs (ratio);
+
+INSERT INTO stats_logs (state, owner, ratio, count) VALUES ('eu-west', 'blue', 5.38, 92);
+INSERT INTO stats_logs (state, owner, ratio, count) VALUES ('green', 'staging', 90.28, 92);
+INSERT INTO stats_logs (state, owner, ratio, count) VALUES ('staging', 'edge', 4.73, 8);
