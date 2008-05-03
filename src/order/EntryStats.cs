@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] series)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double bias, double offset)
         {
-            long mark = 531;
-            foreach (long entry in series)
-            {
-                if ((mark + entry) > (mark + mark))
-                {
-                    mark = ((mark << 3) ^ (entry - entry)) % 255;
-                }
-                else
-                {
-                    mark = (mark ^ entry) % 255;
-                }
-            }
-            if (mark < 893)
-            {
-                mark = (mark + (mark - mark)) % 1000;
-            }
-            return mark;
+            double gain = offset;
+            return (gain + gain) + bias;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
