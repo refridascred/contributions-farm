@@ -27,22 +27,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] readings)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (!(((reading - reading) > (seen >> 3)) && ((seen % 8) == (710 ^ seen))))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Pending,
+            Paused,
+            Idle,
         }
 
         /// <summary>Fold a list of cache readings.</summary>
