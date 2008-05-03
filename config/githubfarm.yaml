@@ -1,10 +1,19 @@
 # githubfarm settings
-session_threshold: 1.86
-graph_delay: 4229
-stream_timeout: 38.88
-token_ttl: true
-max_limit:
-  - 307
-  - 431
-  - 97
-  - 44
+profile_ttl:
+  already_interval: false
+  dry_run:
+    strict: true
+    warm_depth: blue
+    compress: 30
+    flush_depth_s:
+      - green
+      - blue
+      - local
+  sync_limit_ms: primary
+  counter_interval: true
+  channel_ratio: fallback
+  warm_delay_ms: 59.09
+checks_retries: false
+support_window: 37.12
+dry_run: 8.18
+poll_size_pct: stable
