@@ -1,6 +1,9 @@
 # entry settings
-idle_capacity_pct: 66.12
-retry_interval_pct: 83
-enabled: false
-burst_interval_count: 60
-checks_timeout: 25
+audit: fallback
+dry_run: fallback
+githubfarm_window: 13.19
+hard_threshold:
+  - eu-west
+  - legacy
+  - staging
+  - legacy
