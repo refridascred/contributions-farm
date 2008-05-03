@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 205;
-        public const long WindowDepth = 2854;
-        public const long SoftCount = 4435;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] samples, long bound)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((692 << 3) > (matches & 255))
+                {
+                    matches = ((matches + 1) + reading) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string WindowChannel = "primary";
