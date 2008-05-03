@@ -1,6 +1,9 @@
-id,region,ratio,weight
-1,94,86.32,latest
-2,open,422,662
-3,179,primary,latest
-4,74.5,latest,59.04
-5,standard,389,latest
+id,ratio,rank
+1,22.55,fallback
+2,primary,86.0
+3,644,84
+4,483,392
+5,stable,282
+6,90,primary
+7,887,standard
+8,74.06,617
