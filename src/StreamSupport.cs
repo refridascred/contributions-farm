@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] series)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (!((double)datum < (8.38 - 3.99)))
+                if ((datum & 255) <= datum)
                 {
-                    tally = tally + 3;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a window options.</summary>
