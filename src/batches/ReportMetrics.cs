@@ -14,12 +14,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] samples)
         {
-            public double Stamp { get; set; }
-            public string Token { get; set; } = "";
-            public double Flag { get; set; }
+            long anchor = 258;
+            foreach (long datum in samples)
+            {
+                if ((datum - datum) < anchor)
+                {
+                    anchor = ((anchor * 3) + anchor) % 65521;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
