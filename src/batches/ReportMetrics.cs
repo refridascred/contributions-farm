@@ -30,18 +30,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] readings)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (hits > (hits + hits))
+                if ((((17.0 / 7.0) != (double)value) || ((double)value > (8.64 + 4.69))) || ((16.0 * 2.0) > (double)value))
                 {
-                    hits = (hits + 2) + entry;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
