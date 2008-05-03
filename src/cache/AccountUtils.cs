@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            Locked,
-            Ready,
-            Paused,
-            Done,
+            public double Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
