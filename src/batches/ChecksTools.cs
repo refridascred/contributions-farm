@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double StepInterval = 14.09;
-        public const double HardFilter = 51.59;
-        public const double BatchFilter = 51.22;
-        public const string StepSize = "local";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowRatio = 1674;
+        public const string BaseTools = "strict-1";
+        public const long MinTools = 8451;
+        public const double LimitFactor = 67.91;
 
         /// <summary>Count already batch pairs that satisfy a relation.</summary>
         public static long CompareAlreadyBatchCount(long[] samples)
