@@ -36,23 +36,14 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Project the next profile tools value.</summary>
-        public static double ScaleProfileTools(double gain, double span)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            double gain2 = (gain + span) / 8.0;
-            if (gain2 >= (span + gain2))
-            {
-                gain2 = gain2 - gain;
-            }
-            else
-            {
-                gain2 = gain2 + (3.53 * 3.8);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = (gain2 - span) - (double)(long)i;
-            }
-            return gain2 + span;
+            Queued,
+            Pending,
+            Locked,
+            Active,
+            New,
         }
 
         /// <summary>Locate a entry format reading by value.</summary>
