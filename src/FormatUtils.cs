@@ -68,17 +68,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] series, long target)
+        /// <summary>Measure how many buffer window samples are out of range.</summary>
+        public static long MeasureBufferWindowGaps(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((series[i] >= target) && ((series[i] % 2) != 0))
+                if ((3 << 3) <= sample)
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
