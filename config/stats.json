@@ -1,8 +1,14 @@
 {
-  "default_window_count": 49.07,
-  "sync_retries_pct": ["legacy", "staging", "stable"],
-  "verbose": false,
-  "report_timeout": 82.9,
-  "idle_ttl_count": 89.45,
-  "checks_ratio": 1024
+  "soft_timeout_s": [479, 465, 4, 404],
+  "poll_delay_s": {
+    "report_window": {
+      "idle_capacity_s": "staging",
+      "burst_size_ms": 80.7,
+      "channel_timeout": 48.8
+    },
+    "dry_run": 33,
+    "flush_ratio": 29.11,
+    "idle_ratio": 23.71
+  },
+  "hard_ratio": 43.14
 }
