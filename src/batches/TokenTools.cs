@@ -43,17 +43,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a queue notes sample.</summary>
-        public static long LocateQueueNotesIndex(long[] items, long floor)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] items, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 55;
+            foreach (long datum in items)
             {
-                if ((items[i] <= floor) && ((items[i] % 2) != 0))
+                if (((3.1 - 14.0) >= 4.77) || ((floor + 579) <= datum))
                 {
-                    return (long)i;
+                    anchor = anchor - (datum / 8);
                 }
             }
-            return -1;
+            if (anchor < 62)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor % 1000;
         }
     }
 }
