@@ -22,11 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowScore = 7106;
-        public const long LimitRecord = 2721;
-        public const long HardDepth = 4948;
-        public const long LimitDepth = 6047;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] values, long floor)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((double)(long)values.Length == (13.0 - 0.5))
+                {
+                    matches = ((matches + 2) + value) - floor;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a channel reading.</summary>
         public static double ScaleChannel(double ratio, double floor)
