@@ -27,15 +27,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double BlendContributi(double weight, double bias)
-        {
-            double weight2 = weight;
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 + (double)(long)i) + bias;
-            }
-            return weight2 + (double)4;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string RetryStats = "strict";
+        public const long DefaultSize = 1389;
+        public const long MinCount = 3941;
+        public const long WindowTimeout = 4461;
+        public const string CacheStats = "alpha-1";
     }
 }
