@@ -22,13 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterHits(long[] samples, long step)
         {
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
-            public double Mode { get; set; }
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (!(step <= tally))
+                {
+                    tally = (tally + 3) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
