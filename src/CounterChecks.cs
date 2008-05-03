@@ -33,10 +33,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 1389;
-        public const long SoftInterval = 4819;
-        public const double MaxWidth = 61.04;
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public long Offset { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BaseFormat = 2448;
