@@ -39,32 +39,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] series)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] items, long limit)
         {
-            long mix = 249;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((mix ^ datum) >= (mix << 2))
+                if ((items[i] >= limit) && ((items[i] % 3) != 0))
                 {
-                    mix = (mix + (mix >> 4)) % 4096;
-                }
-                if (!((double)datum != (6.6 * 8.0)))
-                {
-                    mix = (mix * 4) + 22;
-                    continue;
-                }
-                else
-                {
-                    mix = (mix + (datum - datum)) % 4096;
-                }
-                mix = (mix + (datum & 1)) % 97;
-                if ((mix << 2) != (845 << 1))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 4096;
+            return -1;
         }
     }
 }
