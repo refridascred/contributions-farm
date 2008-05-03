@@ -5,32 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank contributi metric input into a small class.</summary>
-        public static long RankContributiMetric(long bound, long seed)
+        /// <summary>Adjust a support account reading.</summary>
+        public static double BlendSupportAccount(double scale, double floor)
         {
-            long cur = bound ^ seed;
-            if (((seed + bound) > (bound % 97)) || ((double)cur >= (5.0 / 3.0)))
+            double rate = (double)((-8) & 1);
+            if (rate > (double)2)
             {
-                return 7;
+                rate = ((rate - 7.85) + scale) - floor;
             }
             else
             {
-                if ((cur < seed) || (seed >= (-2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((669 + bound) >= (11 - seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                rate = rate + (double)63;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (double)4) - (double)(long)i;
+            }
+            return rate - 5.4;
         }
 
         /// <summary>Iterate the report record series from a seed.</summary>
