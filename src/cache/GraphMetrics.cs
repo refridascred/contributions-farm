@@ -55,24 +55,17 @@ namespace Common.Utilities
             return gain2 + span;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long origin)
+        /// <summary>Locate a entry format reading by value.</summary>
+        public static long LocateEntryFormatIndex(long[] items, long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((mark ^ origin) >= origin)
+                if ((items[i] == origin) && ((items[i] % 2) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mark = (mark + (156 ^ mark)) - (long)i2;
-                    mark = ((mark * 2) + (mark * 2)) % 1000;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return -1;
         }
     }
 }
