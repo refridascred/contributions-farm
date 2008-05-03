@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsBounds(long[] samples, long offset)
         {
-            Stale,
-            Done,
-            Paused,
-            New,
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a window options.</summary>
