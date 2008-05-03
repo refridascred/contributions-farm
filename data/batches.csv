@@ -1,9 +1,7 @@
-id,score,label,token,rank
-1,open,828,29.35,343
-2,49.81,803,6.39,421
-3,fallback,274,600,843
-4,19.61,45,380,legacy
-5,92,934,74.13,strict
-6,strict,88,978,primary
-7,31.99,edge,latest,49.74
-8,815,36.65,77.72,63
+id,active,count,weight
+1,blue,56.67,strict
+2,cached,974,open
+3,stable,502,standard
+4,79.46,93.11,866
+5,380,173,717
+6,staging,74,legacy
