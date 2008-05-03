@@ -42,17 +42,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] series, long floor)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Owner { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
