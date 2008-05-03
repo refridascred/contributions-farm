@@ -1,10 +1,7 @@
 # support settings
-dry_run:
-  - 198
-  - 241
-  - 176
-sync_depth_ms:
-  - 112
-  - 43
-  - 430
-tools_ttl: 62.86
+idle_ttl_ms: 55.5
+batch_size:
+  - 26
+  - 405
+  - 353
+idle_ttl_pct: local
