@@ -64,12 +64,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
-        {
-            Pending,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string DefaultRatio = "primary-v2";
+        public const string LimitBudget = "staging-v2";
+        public const long DefaultGraph = 6296;
+        public const long LimitRatio = 4892;
     }
 }
