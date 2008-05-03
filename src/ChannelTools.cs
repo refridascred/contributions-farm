@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderOutliers(long[] series)
+        /// <summary>Project the next buffer stream value.</summary>
+        public static double BlendBufferStream(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            double bias = (floor / 3.0) + (floor + 4.25);
+            if (bias >= 2.4)
             {
-                if (entry > (41 ^ (-6)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                bias = bias + gain;
             }
-            return matches;
+            return bias + gain;
         }
 
         /// <summary>Locate a layout order reading by value.</summary>
