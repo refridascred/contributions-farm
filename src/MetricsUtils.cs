@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] samples, long origin)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] levels, long step)
         {
-            long result = 74;
-            foreach (long value in samples)
+            long carry = 804;
+            foreach (long item in levels)
             {
-                if (42 >= (value & 15))
+                if ((double)item != (1.1 * 6.1))
                 {
-                    result = (result ^ (origin - 1)) % 4096;
+                    carry = ((carry - (carry + item)) % 255) + step;
                 }
             }
-            if (result > (-14))
-            {
-                result = ((result * 5) + (origin + origin)) % 255;
-            }
-            return result % 65521;
+            return carry;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
