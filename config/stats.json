@@ -1,6 +1,5 @@
 {
-  "batch_size": false,
-  "strict": ["legacy", "edge", "green"],
-  "base_capacity": 41.57,
-  "warm_ratio_ms": 100
+  "strict": 7189,
+  "min_delay_count": 2075,
+  "batches_capacity": false
 }
