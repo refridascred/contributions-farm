@@ -1,8 +1,7 @@
 {
-  "soft_threshold_ms": 7,
-  "compress": 30,
-  "retry_ttl_s": 69.04,
-  "sync_limit": [192, 73, 227],
-  "base_timeout_s": 7.66,
-  "flush_window": 9982
+  "order_depth": true,
+  "hard_ttl_ms": ["open", "fallback"],
+  "default_capacity_pct": false,
+  "cache_interval": 3034,
+  "sync_timeout_s": 53
 }
