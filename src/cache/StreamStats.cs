@@ -12,11 +12,39 @@ namespace Common.Utilities
         public const double StepCounter = 21.0;
         public const long HardCounter = 6575;
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long origin, long offset)
         {
-            public bool Rank { get; set; }
-            public double Label { get; set; }
+            long delta = origin ^ offset;
+            if ((double)origin < (double)delta)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((delta <= (delta - 3)) || ((16.0 * 9.6) <= (double)delta))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((origin - 7) > (29 % 100)) || ((origin / 2) > offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((delta + offset) < delta)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit graph batches readings against a rule.</summary>
