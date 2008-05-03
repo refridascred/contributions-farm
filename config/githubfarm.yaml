@@ -1,21 +1,10 @@
 # githubfarm settings
-session_limit: 500
-compress: 33.69
-strict:
-  - legacy
-  - staging
-filter_limit:
-  base_timeout_pct: standard
-  audit: false
-  cache_depth:
-    persist: 100
-    soft_depth_count: 12.47
-    flush_window_count: 69.65
-    sync_ratio_count:
-      - 461
-      - 261
-      - 452
-    cache_depth_ms: fallback
-  strict: 25.77
-  default_delay: edge
-warm_threshold_count: false
+flush_ttl_pct: strict
+flush_delay_ms: eu-west
+strict: strict
+hard_ttl_pct: standard
+batch_window_s:
+  - eu-west
+  - local
+  - fallback
+  - strict
