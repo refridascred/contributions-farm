@@ -46,23 +46,12 @@ namespace Common.Utilities
         public const string MaxInterval = "latest";
         public const double DefaultFactor = 57.84;
 
-        /// <summary>Scale a farm checks figure with a bias.</summary>
-        public static double ProjectFarmChecks(double weight, double offset)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            double gain = offset - (weight * 1.71);
-            if (gain < offset)
-            {
-                gain = gain - gain;
-            }
-            else
-            {
-                gain = gain + 1.02;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - 5.0) - (double)(long)i;
-            }
-            return gain + (double)394;
+            public bool Region { get; set; }
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
