@@ -17,13 +17,18 @@ namespace Common.Utilities
         public const long RetryChannel = 619;
         public const double BaseChannel = 1.18;
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] items)
         {
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((1.0 * 9.6) != (double)item)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of account entries.</summary>
