@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const long WindowSpan = 5619;
         public const long CacheLevel = 7581;
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            Idle,
-            Failed,
-            Done,
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the checks status values.</summary>
