@@ -23,19 +23,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every stats notes entry stays within the limit.</summary>
-        public static bool ValidateStatsNotesBounds(long[] samples, long offset)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item < offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] - samples[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
