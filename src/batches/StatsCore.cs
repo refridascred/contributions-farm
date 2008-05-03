@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyBounds(long[] series, long target)
+        /// <summary>Grade a notes order value against two limits.</summary>
+        public static long RankNotesOrder(long bound, long seed)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long delta = bound - seed;
+            if ((delta + bound) > (bound + seed))
             {
-                if (value != target)
+                return 0;
+            }
+            else
+            {
+                if ((58 > (bound + seed)) && ((seed % 60) <= (4 * 3)))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (seed >= (delta / 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
