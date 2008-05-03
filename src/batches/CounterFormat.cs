@@ -19,12 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleRatio = 6219;
-        public const long IdleDepth = 6230;
-        public const string StepCount = "alpha";
-        public const long BatchScore = 2664;
-        public const long MaxDepth = 9439;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] items)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((double)item > (double)count)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long FoldBuffer(long[] series)
