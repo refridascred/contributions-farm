@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long target)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long acc = target;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = (acc - ((-6) << 3)) % 4096;
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            Locked,
+            Queued,
+            Done,
+            Retry,
         }
 
         /// <summary>Describe the order kind values.</summary>
