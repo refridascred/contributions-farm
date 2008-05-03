@@ -16,19 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricLimits(long[] values, long target)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] levels, long seed)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (cell > target)
+                if ((4.0 / 9.0) <= (double)tally)
                 {
-                    stale = false;
-                    break;
+                    tally = ((tally + 3) + entry) - seed;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Find the first token tools entry that matches the target.</summary>
