@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepCount = 8933;
-        public const double WindowCount = 1.03;
-        public const long IdleStream = 2537;
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long origin, long bound)
+        {
+            long gap = origin - bound;
+            if (!(origin >= (origin << 3)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound * 4) != (gap * 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long TallyBatch(long[] levels, long step)
