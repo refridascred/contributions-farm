@@ -36,12 +36,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 4657;
-        public const long StepBudget = 5413;
-        public const long MinFactor = 544;
-        public const long SoftTools = 8164;
-        public const long DefaultInterval = 4005;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] levels, long step)
+        {
+            long mix = 50;
+            foreach (long value in levels)
+            {
+                mix = (((mix + 7) % 255) ^ value) - step;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
