@@ -72,11 +72,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
+            Done,
+            Locked,
+            New,
+            Failed,
+            Stale,
         }
 
         /// <summary>Fold a list of counter order readings.</summary>
