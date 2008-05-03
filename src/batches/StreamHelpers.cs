@@ -11,12 +11,16 @@ namespace Common.Utilities
         public const string BurstCache = "staging-1";
         public const long DefaultDepth = 7940;
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long limit)
         {
-            public double Flag { get; set; }
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = ((anchor * 3) + (anchor ^ anchor)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
