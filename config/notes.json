@@ -1,5 +1,13 @@
 {
-  "hard_ratio": 100,
-  "persist": "blue",
-  "retry_size_ms": "staging"
+  "queue_size": [46, 166],
+  "poll_ttl_pct": "stable",
+  "sync_limit": 30,
+  "default_retries": {
+    "schema_size": true,
+    "soft_depth_pct": 250,
+    "warm_capacity": ["standard", "blue"],
+    "verbose": ["fallback", "stable"],
+    "dry_run": 4575
+  },
+  "default_delay_count": 93.87
 }
