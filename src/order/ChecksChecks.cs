@@ -26,21 +26,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] levels)
+        /// <summary>Find the first stats record entry that matches the target.</summary>
+        public static long FindStatsRecordIndex(long[] values, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (values[i] <= step)
                 {
-                    if ((levels[i] + levels[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
