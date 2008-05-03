@@ -1,5 +1,8 @@
 {
-  "warm_timeout_s": "green",
-  "hard_threshold_s": 749,
-  "min_ttl_pct": "latest"
+  "sync_depth_s": "staging",
+  "soft_timeout_ms": 250,
+  "soft_retries_s": "eu-west",
+  "base_timeout": 31.69,
+  "readonly": [141, 465, 53],
+  "buffer_limit": "primary"
 }
