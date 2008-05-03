@@ -20,22 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportHits(long[] series)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((double)item > (double)matches)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Stale,
+            Draft,
+            New,
+            Pending,
+            Failed,
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
