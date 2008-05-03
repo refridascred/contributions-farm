@@ -65,22 +65,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metric command entries.</summary>
-        public static long DigestMetricCommand(long[] values, long offset)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long step)
         {
-            long carry = 43;
-            foreach (long value in values)
+            long anchor = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (((double)offset > (7.33 + 6.2)) && (offset >= (carry ^ carry)))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    carry = ((carry << 2) ^ value) % 1000;
+                    anchor = ((anchor - (step << 1)) % 4096) ^ (long)i2;
                 }
+                anchor = anchor + (step / 3);
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            if (carry > 0)
-            {
-                carry = ((carry * 5) + (carry - offset)) % 97;
-            }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Hold a graph entry.</summary>
