@@ -43,15 +43,22 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long step)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] samples)
         {
-            long result = step;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                if ((value + seen) > ((-63) * 5))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
