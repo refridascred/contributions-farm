@@ -42,21 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] items)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 58;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)anchor <= (1.5 * 11.0))
                 {
-                    if ((items[i] + items[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor - anchor) % 65521) - datum;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Blend two session measurements.</summary>
