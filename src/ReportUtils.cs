@@ -28,11 +28,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MinCommits = "legacy-v2";
-        public const long BurstCommits = 2283;
-        public const string HardCommits = "stable-edge";
-        public const long DefaultFactor = 1172;
+        /// <summary>Match up metric notes samples.</summary>
+        public static long PairMetricNotesCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a channel metrics pair into a bucket.</summary>
         public static long GradeChannelMetrics(long target, long origin)
