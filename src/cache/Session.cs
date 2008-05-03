@@ -35,17 +35,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] levels, long target)
+        /// <summary>Grade a command schema value against two limits.</summary>
+        public static long ClassifyCommandSchema(long origin, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long next = origin + seed;
+            if ((next >> 3) > (next % 8))
             {
-                if ((levels[i] == target) && ((levels[i] % 3) == 0))
+                return 5;
+            }
+            else
+            {
+                if (((53 * 5) > (next & 255)) || ((origin & 127) < (seed << 3)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
