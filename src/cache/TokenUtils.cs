@@ -46,19 +46,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] data, long seed)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double rate, double floor)
         {
-            bool flag = true;
-            foreach (long value in data)
+            double scale = rate - (0.4 / 6.0);
+            if (scale < (double)472)
             {
-                if (value >= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = scale + (13.0 * 16.0);
             }
-            return flag;
+            else
+            {
+                scale = scale - floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (19.0 * 8.52)) + (double)(long)i;
+            }
+            return scale - (double)68;
         }
     }
 }
