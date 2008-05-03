@@ -57,12 +57,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            Failed,
-            Synced,
-            Active,
+            public double Count { get; set; }
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Fold a list of counter order readings.</summary>
