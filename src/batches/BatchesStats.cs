@@ -10,16 +10,10 @@ namespace Common.Utilities
         public const long WindowProfile = 3580;
         public const long LimitProfile = 4726;
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] series, long floor)
-        {
-            long mix = 1;
-            foreach (long cell in series)
-            {
-                mix = ((mix + 10) + cell) + floor;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 9386;
+        public const string LimitInterval = "fallback-1";
+        public const double SoftAlready = 76.93;
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long SortChecks(long target, long offset)
