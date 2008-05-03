@@ -16,18 +16,13 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Measure how many cache stream samples are out of range.</summary>
-        public static long MeasureCacheStreamMatches(long[] series, long origin)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (((matches + reading) == (98 - 33)) || ((reading + reading) >= origin))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Match up metric samples.</summary>
