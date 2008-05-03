@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long floor, long limit)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] items, long bound)
         {
-            long span = floor - limit;
-            if ((span >> 1) < (span - 783))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((980 & 31) != (limit << 1))
+                if ((items[i] > bound) && ((items[i] % 3) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
