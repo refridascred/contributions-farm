@@ -23,14 +23,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Paused,
-            Idle,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepPayload = "stable-v2";
+        public const double CachePayload = 24.4;
+        public const long BurstSpan = 5884;
+        public const long CacheCount = 4536;
 
         /// <summary>Match up channel samples.</summary>
         public static long CompareChannelCount(long[] levels)
