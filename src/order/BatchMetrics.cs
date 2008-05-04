@@ -24,32 +24,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long bound, long bound2)
-        {
-            if (((350 << 1) <= bound) && ((bound2 ^ bound) < (bound << 3)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound << 2) == (bound2 + bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((bound & 63) > bound2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstFactor = 1021;
+        public const long BurstLevel = 2348;
+        public const long BatchEntry = 8138;
+        public const long DefaultSize = 7229;
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
