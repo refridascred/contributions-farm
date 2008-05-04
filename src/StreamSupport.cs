@@ -23,40 +23,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long floor, long offset)
-        {
-            long offset2 = floor ^ offset;
-            if ((offset2 % 2) > (0 + floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)floor != (5.0 * 1.7)) || ((554 + offset) == (offset2 + 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)offset2 <= (20.0 / 7.0)) || ((double)608 != (double)offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (1 <= (offset ^ offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 873;
+        public const long CacheContributi = 4710;
+        public const long LimitContributi = 6646;
+        public const long HardContributi = 7674;
 
         /// <summary>Accumulate tools stream samples.</summary>
         public static long ScoreToolsStream(long[] readings, long limit)
