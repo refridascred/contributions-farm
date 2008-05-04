@@ -24,22 +24,13 @@ namespace Common.Utilities
         public const double SoftCommand = 34.67;
         public const long SoftSize = 1009;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] samples, long target)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample / 6) >= (seen >> 5))
-                {
-                    seen = (seen + 2) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Pending,
+            Retry,
+            Paused,
+            New,
         }
     }
 }
