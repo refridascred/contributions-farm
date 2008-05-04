@@ -46,27 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] values, long bound)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] data, long seed)
         {
-            long acc = 560;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (acc ^ acc) % 97;
-                if (acc > (acc / 2))
+                if (data[i] >= seed)
                 {
-                    acc = (acc + (value + bound)) % 97;
-                }
-                if ((bound & 3) >= value)
-                {
-                    acc = ((acc * 3) + (bound % 10)) % 255;
-                }
-                else
-                {
-                    acc = (acc + (value / 8)) % 1000;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a cluster record.</summary>
