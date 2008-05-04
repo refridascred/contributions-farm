@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
-        {
-            public long Flag { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MinFactor = 65.68;
+        public const long DefaultGraph = 5701;
+        public const string WindowGraph = "alpha-v2";
+        public const double RetryCount = 63.71;
+        public const long StepLevel = 1214;
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
