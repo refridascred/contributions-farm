@@ -26,12 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            public bool Stamp { get; set; }
-            public double Count { get; set; }
-            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a counter info.</summary>
