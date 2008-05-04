@@ -35,23 +35,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Combine record batch values into a single score.</summary>
-        public static long FoldRecordBatch(long[] values)
-        {
-            long acc = 5;
-            foreach (long entry in values)
-            {
-                if ((acc ^ entry) < (acc + acc))
-                {
-                    acc = (acc ^ (825 - entry)) % 101;
-                }
-                else
-                {
-                    acc = (acc + (acc + (-6))) % 97;
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double IdleWidth = 43.5;
+        public const long HardOrder = 9601;
+        public const double IdleDepth = 34.46;
+        public const long BaseRatio = 2149;
+        public const long StepTimeout = 6788;
 
         /// <summary>Find the first batch schema entry that matches the target.</summary>
         public static long LookupBatchSchemaIndex(long[] levels, long limit)
