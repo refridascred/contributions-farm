@@ -55,19 +55,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double bias, double offset)
-        {
-            double rate = offset;
-            if (rate < rate)
-            {
-                rate = rate + offset;
-            }
-            else
-            {
-                rate = rate + (bias + rate);
-            }
-            return rate - bias;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string HardRatio = "open-1";
+        public const long CacheRatio = 3958;
+        public const long BaseCache = 6722;
     }
 }
