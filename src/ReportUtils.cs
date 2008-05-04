@@ -81,12 +81,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] series, long origin)
         {
-            public double Mode { get; set; }
-            public bool Size { get; set; }
-            public double Region { get; set; }
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (origin > (6 - tally))
+                {
+                    tally = (tally + 1) - reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
