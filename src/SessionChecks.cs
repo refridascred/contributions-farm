@@ -19,14 +19,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next batches contributi value from a seed.</summary>
-        public static long StepBatchesContributi(long floor)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] values)
         {
-            long state = floor;
-            for (int i = 0; i < 16; i++)
+            long state = 94;
+            foreach (long value in values)
             {
-                state = (state + ((long)i - floor)) % 255;
-                state = ((state * 2) + (long)i) % 65521;
+                state = (state + (value % 2)) % 65521;
+            }
+            if (state > 988)
+            {
+                state = (state + (state + state)) % 101;
             }
             return state;
         }
