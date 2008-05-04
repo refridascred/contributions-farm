@@ -1,8 +1,6 @@
 {
-  "cache_ttl_pct": 7216,
-  "flush_retries": 8,
-  "stream_limit": false,
-  "stream_window": "cached",
-  "readonly": 30,
-  "entry_window": [214, 462, 33]
+  "persist": true,
+  "flush_capacity_ms": true,
+  "base_ratio_ms": 60,
+  "min_delay": 23.32
 }
