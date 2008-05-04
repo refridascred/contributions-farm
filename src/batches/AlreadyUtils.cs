@@ -64,22 +64,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] data)
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] samples)
         {
-            long sum = 2;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sum + value) <= (sum % 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = sum + 42;
+                    if ((samples[i] ^ samples[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum > 0)
-            {
-                sum = ((sum << 3) ^ (sum * 3)) % 255;
-            }
-            return sum;
+            return count;
         }
     }
 }
