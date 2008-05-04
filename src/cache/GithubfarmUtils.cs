@@ -30,19 +30,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((0 + 515) < (datum * 3))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BurstLevel = "latest-v2";
+        public const long MinContributi = 2603;
+        public const long SoftScore = 8876;
 
         /// <summary>Classify a metrics graph pair into a bucket.</summary>
         public static long BucketMetricsGraph(long seed, long floor)
