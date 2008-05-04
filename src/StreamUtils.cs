@@ -19,18 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BurstLevel = "open-edge";
+        public const string IdleScore = "fallback-1";
+        public const double StepWidth = 44.54;
+        public const long HardStream = 8167;
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long DigestProfile(long[] levels, long step)
