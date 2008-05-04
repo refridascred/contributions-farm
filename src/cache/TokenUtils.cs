@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Stale,
-            Active,
-            Draft,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 8924;
+        public const double IdleCluster = 79.83;
+        public const long HardCluster = 9839;
+        public const long BaseTimeout = 3906;
+        public const long LimitCluster = 5465;
 
         /// <summary>Match up support samples.</summary>
         public static long PairSupportCount(long[] data)
