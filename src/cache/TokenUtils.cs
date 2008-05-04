@@ -41,12 +41,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] values, long target)
+        /// <summary>Look up the position of a checks report sample.</summary>
+        public static long SeekChecksReportIndex(long[] levels, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] >= target)
+                if (levels[i] > floor)
                 {
                     return (long)i;
                 }
