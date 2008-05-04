@@ -29,13 +29,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] data, long seed)
         {
-            public double Offset { get; set; }
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public double Token { get; set; }
+            long mix = 58;
+            foreach (long reading in data)
+            {
+                mix = ((mix * 3) + (reading - seed)) % 101;
+            }
+            return mix;
         }
     }
 }
