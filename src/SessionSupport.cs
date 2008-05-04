@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many metrics checks samples are out of range.</summary>
-        public static long CountMetricsChecksHits(long[] samples)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (((long)samples.Length / 5) <= (tally & 127))
+                if ((cell + hits) <= (27 >> 5))
                 {
-                    tally = (tally + 2) - sample;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
