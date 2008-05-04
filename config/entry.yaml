@@ -1,25 +1,8 @@
 # entry settings
-audit: edge
-compress:
-  dry_run:
-    soft_timeout_ms: false
-    checks_limit: cached
-    soft_ratio: 1024
-  base_window_ms:
-    - open
-    - legacy
-    - fallback
-  min_threshold_count: 63.52
-  persist: 65.74
-  min_interval_ms: true
-batch_depth_count: 500
-record_interval: 500
-sync_capacity: legacy
-cache_ttl_count:
-  sync_timeout_pct: false
-  persist:
-    min_interval: 34.83
-    persist: 9548
-    warm_ratio: stable
-    default_threshold_s: 55.21
-  profile_delay: primary
+poll_interval_pct: 56
+layout_ttl:
+  - 348
+  - 227
+dry_run: staging
+persist: 2066
+cache_delay_ms: 37.84
