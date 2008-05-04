@@ -45,12 +45,38 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Classify a notes tools pair into a bucket.</summary>
+        public static long RankNotesTools(long offset, long step)
         {
-            Active,
-            Failed,
-            Retry,
+            if ((step % 24) < (6 - offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step ^ step) > (5 << 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((4.0 * 1.58) != (double)offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((7 - step) <= (offset + step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
