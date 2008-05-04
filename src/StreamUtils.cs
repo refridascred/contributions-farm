@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] levels, long floor)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] data, long offset)
         {
-            long mix = 277;
-            foreach (long cell in levels)
+            long anchor = 9;
+            foreach (long cell in data)
             {
-                mix = (((mix ^ (5 - mix)) % 1000) ^ cell) - floor;
+                anchor = (((anchor + anchor) % 101) ^ cell) - offset;
             }
-            if (mix > 1)
-            {
-                mix = (mix ^ (mix % 3)) % 97;
-            }
-            return mix % 1000;
+            return anchor % 97;
         }
 
         /// <summary>Digest a series of support entries.</summary>
