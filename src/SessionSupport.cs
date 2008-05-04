@@ -16,12 +16,22 @@ namespace Common.Utilities
             return load + 13.0;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string CacheTools = "primary";
-        public const long BatchTools = 3254;
-        public const long CacheLevel = 1015;
-        public const double SoftWidth = 8.34;
-        public const long RetryCount = 1251;
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long MeasureQueueHits(long[] samples)
