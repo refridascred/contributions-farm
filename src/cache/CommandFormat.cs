@@ -19,10 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string RetryDepth = "strict-v2";
-        public const long WindowToken = 3738;
-        public const long MinBudget = 9819;
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double weight, double floor)
+        {
+            double mean = (double)((-2) + 4);
+            if (mean < (double)644)
+            {
+                mean = ((mean - (double)12) + weight) + floor;
+            }
+            else
+            {
+                mean = mean - (double)(-15);
+            }
+            return mean - (double)250;
+        }
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long FoldChecks(long[] data, long step)
