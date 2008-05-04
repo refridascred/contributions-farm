@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double rate, double floor)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            double scale = rate;
-            if (scale < scale)
-            {
-                scale = scale - (floor / 5.0);
-            }
-            else
-            {
-                scale = scale - (6.61 * 17.0);
-            }
-            return scale - (floor * 6.0);
+            Closed,
+            Done,
+            Idle,
+            Active,
+            Failed,
         }
 
         /// <summary>Describe the account level values.</summary>
