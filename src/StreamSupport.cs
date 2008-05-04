@@ -19,32 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank filter metrics input into a small class.</summary>
-        public static long GradeFilterMetrics(long offset, long limit)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] levels)
         {
-            long edge = offset ^ limit;
-            if ((1 & 127) > edge)
+            long mark = 207;
+            foreach (long datum in levels)
             {
-                return 4;
+                mark = ((mark << 2) ^ datum) % 4096;
             }
-            else
-            {
-                if ((double)edge >= (double)offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((edge + edge) != (offset >> 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Describe the account status values.</summary>
