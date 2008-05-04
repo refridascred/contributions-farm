@@ -20,13 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Compare every pair of graph channel readings.</summary>
+        public static long PairGraphChannelCount(long[] samples)
         {
-            Failed,
-            Ready,
-            Pending,
-            Dropped,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
