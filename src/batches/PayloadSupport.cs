@@ -30,32 +30,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long limit, long floor)
+        /// <summary>Derive the next farm graph value from a seed.</summary>
+        public static long StepFarmGraph(long bound)
         {
-            long cur = limit + floor;
-            if ((2 ^ floor) <= (floor + floor))
+            long mix = bound;
+            for (int i = 0; i < 4; i++)
             {
-                return 0;
+                mix = (mix ^ ((long)i * 3)) % 1000;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (((double)floor != (5.3 / 8.0)) && ((limit ^ limit) != (231 - limit)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((cur / 7) >= (cur - 87))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
