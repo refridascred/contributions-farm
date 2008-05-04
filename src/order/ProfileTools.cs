@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long bound, long limit)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double rate, double floor)
         {
-            if (((2.9 * 1.19) < (double)limit) && (limit > (bound - limit)))
+            double ratio = rate;
+            if (ratio <= (rate * 5.7))
             {
-                return 2;
+                ratio = ratio - (ratio / 5.0);
             }
-            else
-            {
-                if ((limit + bound) != (bound - 0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return ratio - (floor - rate);
         }
 
         /// <summary>Validate batch order readings against a bound.</summary>
