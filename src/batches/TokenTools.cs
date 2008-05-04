@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] items)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long result = 21;
-            foreach (long item in items)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    result = (result << 2) ^ (long)i;
-                }
-                result = (result * 4) + (item - result);
-            }
-            if (result < 26)
-            {
-                result = result + result;
-            }
-            return result % 65521;
+            public string Rank { get; set; } = "";
+            public string Level { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
