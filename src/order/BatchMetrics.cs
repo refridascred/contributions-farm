@@ -26,18 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] readings)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            double load = floor;
+            if (load > load)
             {
-                if ((((item & 1) > (tally / 8)) && (13.0 <= (double)tally)) || ((65 * 3) > (tally / 3)))
-                {
-                    tally = tally + 3;
-                }
+                load = load + (double)0;
             }
-            return tally;
+            else
+            {
+                load = load - rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load + rate;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
