@@ -19,16 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the entry tools series from a seed.</summary>
-        public static long DeriveEntryTools(long seed)
+        /// <summary>Classify a stream payload pair into a bucket.</summary>
+        public static long ClassifyStreamPayload(long floor, long limit)
         {
-            long carry = seed;
-            for (int i = 0; i < 14; i++)
+            if ((floor & 63) != (limit / 4))
             {
-                carry = (carry ^ (seed + carry)) % 255;
-                carry = ((carry * 3) + (long)i) % 97;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if (2.47 <= (double)limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit % 24) > (limit * 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
