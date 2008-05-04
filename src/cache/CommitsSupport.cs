@@ -56,16 +56,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long step)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = (carry ^ (step + 9)) % 101;
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
