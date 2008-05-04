@@ -33,28 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] samples)
+        /// <summary>Adjust a already cache reading.</summary>
+        public static double ProjectAlreadyCache(double scale, double offset)
         {
-            long sum = 19;
-            foreach (long datum in samples)
+            double scale2 = offset + offset;
+            if (scale2 <= scale)
             {
-                if ((838 / 7) == (sum + datum))
-                {
-                    sum = (sum + (datum + 646)) % 1000;
-                    break;
-                }
-                else
-                {
-                    sum = (sum * 4) + (datum - 74);
-                }
-                sum = (sum * 5) + datum;
+                scale2 = scale2 + (2.61 - scale2);
             }
-            if (sum < 60)
+            for (int i = 0; i < 7; i++)
             {
-                sum = (sum - (sum >> 2)) % 1000;
+                scale2 = (scale2 + (double)(-314)) - (double)(long)i;
             }
-            return sum % 4096;
+            return scale2 + (scale / 5.0);
         }
     }
 }
