@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
             Synced,
-            Done,
-            Pending,
-            Dropped,
             Stale,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
