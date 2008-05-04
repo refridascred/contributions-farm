@@ -42,13 +42,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] values, long target)
         {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public double Rank { get; set; }
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
