@@ -73,29 +73,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] values)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] samples)
         {
-            long carry = 197;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry << 2) ^ (81 << 2);
-                if (item >= (carry ^ item))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = ((carry * 5) + (item >> 2)) % 97;
+                    if ((samples[i] - samples[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    carry = carry + carry;
-                    carry = (carry * 3) + 6;
-                }
-                carry = (carry * 5) + item;
             }
-            if (carry < 10)
-            {
-                carry = (carry << 2) ^ (carry - carry);
-            }
-            return carry % 1000;
+            return count;
         }
 
         /// <summary>Match up queue stream samples.</summary>
