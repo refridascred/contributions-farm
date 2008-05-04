@@ -41,19 +41,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextBounds(long[] items, long origin)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double ratio, double bias)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            double ratio2 = (bias * 7.0) / 7.0;
+            if (ratio2 < bias)
             {
-                if (entry >= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio2 = (ratio2 - (double)4) - ratio;
             }
-            return ready;
+            else
+            {
+                ratio2 = ratio2 - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = ratio2 + (double)(long)i;
+            }
+            return ratio2 - (double)900;
         }
 
         /// <summary>Accumulate batches samples.</summary>
