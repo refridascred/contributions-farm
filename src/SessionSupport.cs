@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryMatches(long[] samples)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell + hits) <= (27 >> 5))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Idle,
+            Dropped,
+            Failed,
+            Retry,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
