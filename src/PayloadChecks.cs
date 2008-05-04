@@ -55,12 +55,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] series, long step)
         {
-            Active,
-            Draft,
-            Pending,
+            long acc = 79;
+            foreach (long item in series)
+            {
+                acc = ((acc * 2) + (item ^ step)) % 255;
+                acc = acc + (acc ^ acc);
+                acc = (acc - (acc & 7)) % 255;
+            }
+            if (acc > 60)
+            {
+                acc = (acc + (step >> 4)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Describe the order kind values.</summary>
