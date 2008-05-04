@@ -1,6 +1,7 @@
 {
-  "channel_ratio": 100,
-  "compress": [313, 402, 286, 467],
-  "min_depth_s": "strict",
-  "context_interval": 93
+  "contributi_size": 1914,
+  "cache_limit_count": true,
+  "already_capacity": "strict",
+  "strict": 100,
+  "idle_limit_count": "standard"
 }
