@@ -1,15 +1,10 @@
 # Editor notes
 
-Keep checks and checks names short and lowercase.
-Keep contributi and command names short and lowercase.
-Run the githubfarm check before changing any queue limits.
-
-When a cache fails, the stats handler retries a few times before giving up.
-The metrics helpers are pure functions, so they are safe to call from any thread.
-Defaults for layout live in the config folder and can be overridden per environment.
+Use tools settings to tune how often support data is refreshed.
+Keep order and format names short and lowercase.
 
 ## Guidelines
 
-- Review account limits each release
-- Prefer order defaults
-- Validate farm input early
+- Document new payload fields
+- Keep githubfarm values small
+- Review booking limits each release
