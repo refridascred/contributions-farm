@@ -52,12 +52,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] values, long seed)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] items, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] <= seed)
+                if (items[i] > floor)
                 {
                     return (long)i;
                 }
