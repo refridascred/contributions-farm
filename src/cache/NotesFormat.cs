@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first record context entry that matches the target.</summary>
-        public static long LocateRecordContextIndex(long[] values, long offset)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long SeekRecordIndex(long[] levels, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] < offset)
+                if (levels[i] == limit)
                 {
                     return (long)i;
                 }
