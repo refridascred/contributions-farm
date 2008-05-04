@@ -43,22 +43,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] samples, long target)
+        /// <summary>Check that every command cache entry stays within the limit.</summary>
+        public static bool VerifyCommandCacheLimits(long[] samples, long target)
         {
-            long sum = 6;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if (item > (target & 255))
+                if (entry >= target)
                 {
-                    sum = sum - sum;
-                }
-                if ((1.6 * 3.5) == (double)target)
-                {
+                    ready = false;
                     break;
                 }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
