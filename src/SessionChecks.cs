@@ -43,18 +43,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterOutliers(long[] samples, long limit)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((5 ^ sample) == (matches & 7))
-                {
-                    matches = (matches + 2) - limit;
-                }
-            }
-            return matches;
+            Retry,
+            Active,
+            Closed,
+            Locked,
+            Synced,
         }
     }
 }
