@@ -19,13 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            Synced,
+            Locked,
+            New,
+            Failed,
+            Paused,
             Queued,
-            Pending,
-            Dropped,
         }
 
         /// <summary>Combine account batches values into a single score.</summary>
