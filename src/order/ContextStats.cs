@@ -55,15 +55,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a tools graph counter forward.</summary>
-        public static long SeriesToolsGraph(long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] samples)
         {
-            long carry = target;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                carry = ((carry * 5) + (long)i) % 1000;
+                if ((double)entry <= (7.0 - 6.6))
+                {
+                    matches = matches + 2;
+                }
             }
-            return carry;
+            return matches;
         }
     }
 }
