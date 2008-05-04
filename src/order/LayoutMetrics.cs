@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ScaleBatches(double ratio, double offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] readings)
         {
-            double drift = (8.0 * 9.7) + (double)1;
-            if (drift <= 5.5)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                drift = (drift - (ratio * 8.34)) - offset;
+                if (((199 ^ sample) > (sample - sample)) && ((double)30 < (double)hits))
+                {
+                    hits = hits + 3;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - ratio) - (double)(long)i;
-            }
-            return drift + 1.11;
+            return hits;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
