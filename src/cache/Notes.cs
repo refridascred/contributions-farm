@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double bias, double offset)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            double rate = bias;
-            if (rate < (rate - rate))
-            {
-                rate = rate + offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + bias) + (double)(long)i;
-            }
-            return rate - (1.0 * 3.0);
+            Failed,
+            Active,
+            Idle,
+            Done,
         }
 
         /// <summary>Measure how many session payload samples are out of range.</summary>
