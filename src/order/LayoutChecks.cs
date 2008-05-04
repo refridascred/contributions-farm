@@ -81,26 +81,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] series, long seed)
-        {
-            long carry = 105;
-            foreach (long reading in series)
-            {
-                if (((reading & 63) != (reading ^ carry)) && (((long)series.Length << 2) <= (carry * 2)))
-                {
-                    carry = (carry - (seed & 1)) % 65521;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ carry;
-                }
-            }
-            if (carry < 2)
-            {
-                carry = carry + (carry % 5);
-            }
-            return carry;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 6312;
+        public const double BaseFactor = 58.61;
+        public const long RetryScore = 6660;
+        public const string BaseLevel = "cached";
+        public const long WindowTimeout = 1954;
     }
 }
