@@ -16,31 +16,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long origin, long offset)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            if ((double)origin == (6.69 * 8.62))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset ^ origin) > (origin ^ offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset & 31) > origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Roll a account counter forward.</summary>
