@@ -1,7 +1,10 @@
-id,label,weight,count
-1,556,600,67.19
-2,edge,565,green
-3,778,986,green
-4,primary,legacy,fallback
-5,legacy,18.53,46
-6,local,primary,green
+id,rank
+1,stable
+2,749
+3,369
+4,50.21
+5,fallback
+6,fallback
+7,722
+8,edge
+9,10.09
