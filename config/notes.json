@@ -1,8 +1,5 @@
 {
-  "graph_window": 59.79,
-  "default_retries_s": "strict",
-  "compress": "local",
-  "cache_limit": ["standard", "standard", "staging"],
-  "warm_ttl_pct": true,
-  "retry_ttl_s": 38
+  "layout_capacity": "edge",
+  "context_depth": 28,
+  "persist": 8804
 }
