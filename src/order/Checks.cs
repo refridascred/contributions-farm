@@ -46,12 +46,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] values, long seed)
         {
-            Closed,
-            Retry,
-            New,
+            long state = 339;
+            foreach (long sample in values)
+            {
+                state = ((state << 3) ^ sample) + seed;
+            }
+            return state;
         }
     }
 }
