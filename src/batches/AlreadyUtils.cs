@@ -54,17 +54,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long step)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] data)
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
+            long sum = 2;
+            foreach (long value in data)
             {
-                long prev = (step << 2) ^ (277 - (long)i);
-                total = total ^ (prev & 15);
-                total = ((total * 4) + (long)i) % 1000;
+                if ((sum + value) <= (sum % 2))
+                {
+                    sum = sum + 42;
+                }
             }
-            return total;
+            if (sum > 0)
+            {
+                sum = ((sum << 3) ^ (sum * 3)) % 255;
+            }
+            return sum;
         }
     }
 }
