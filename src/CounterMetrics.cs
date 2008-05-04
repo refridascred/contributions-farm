@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first graph queue entry that matches the target.</summary>
-        public static long SeekGraphQueueIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheTimeout = 5122;
+        public const string MaxTimeout = "latest-edge";
+        public const string DefaultFilter = "staging-1";
+        public const double BurstRatio = 93.21;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterMatches(long[] samples, long origin)
