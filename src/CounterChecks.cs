@@ -40,22 +40,17 @@ namespace Common.Utilities
         public const double RetrySpan = 52.14;
         public const long LimitCounter = 5198;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] levels)
+        /// <summary>Locate a account layout reading by value.</summary>
+        public static long FindAccountLayoutIndex(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)cell <= (double)15)
+                if ((series[i] <= seed) && ((series[i] % 3) != 0))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
