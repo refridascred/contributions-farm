@@ -34,10 +34,8 @@ namespace Common.Utilities
         }
 
         /// <summary>Define tools limits and defaults.</summary>
-        public const double BaseCount = 68.25;
-        public const long HardTools = 8522;
-        public const long BaseTools = 9306;
-        public const string LimitTools = "primary-1";
-        public const double IdleLevel = 18.22;
+        public const string RetryInterval = "staging-edge";
+        public const long BaseTimeout = 8210;
+        public const long LimitTools = 7676;
     }
 }
