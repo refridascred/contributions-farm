@@ -20,21 +20,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] levels)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) > 11)
+                    if ((readings[i] - readings[j]) == 13)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Grade a farm window value against two limits.</summary>
