@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 3753;
-        public const string MinSession = "strict-v2";
-        public const string CacheSession = "primary";
-        public const double WindowSession = 77.37;
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
+        {
+            Draft,
+            Failed,
+            Pending,
+            Ready,
+            Stale,
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long CountContributiMatches(long[] series)
