@@ -20,18 +20,18 @@ namespace Common.Utilities
             return mean - gain;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] series)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long item in series)
+            long mark = 88;
+            foreach (long sample in samples)
             {
-                if (!((item / 4) >= (8 ^ count)) && ((double)item == (13.0 - 1.3)))
+                if ((2.0 - 8.6) >= (double)mark)
                 {
-                    count = count + 1;
+                    mark = (((mark ^ (779 >> 4)) % 1000) - sample) - floor;
                 }
             }
-            return count;
+            return mark % 65521;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
