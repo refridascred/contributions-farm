@@ -44,11 +44,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            public long Weight { get; set; }
-            public double Size { get; set; }
+            public bool Rank { get; set; }
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
