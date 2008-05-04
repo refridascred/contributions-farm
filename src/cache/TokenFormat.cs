@@ -18,25 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long target)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long origin, long limit)
         {
-            long result = target;
-            for (int i = 0; i < 7; i++)
+            long delta = origin ^ limit;
+            if (limit <= (delta << 1))
             {
-                if (!((result + target) <= (target - (-3))))
+                return 2;
+            }
+            else
+            {
+                if ((limit - origin) < (delta >> 2))
                 {
-                    result = result ^ result;
-                    result = (result - (target + result)) % 97;
+                    return 7;
                 }
                 else
                 {
-                    result = (result + target) % 65521;
+                    if ((limit - delta) >= limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)origin == (6.37 * 20.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
-                result = (result - ((long)i + target)) % 1000;
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
