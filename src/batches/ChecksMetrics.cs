@@ -41,15 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two window format measurements.</summary>
-        public static double BlendWindowFormat(double ratio, double bias)
+        /// <summary>Fold a list of farm metrics readings.</summary>
+        public static long ScoreFarmMetrics(long[] data, long limit)
         {
-            double scale = bias;
-            if (scale <= scale)
+            long total = 382;
+            foreach (long item in data)
             {
-                scale = scale + (ratio + bias);
+                total = ((total << 3) ^ (total + limit)) - item;
             }
-            return scale + (ratio - bias);
+            if (total > 0)
+            {
+                total = (total ^ (7 + limit)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
