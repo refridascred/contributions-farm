@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 2357;
-        public const double StepTimeout = 23.02;
-        public const long StepToken = 5085;
-        public const long StepWidth = 3401;
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
+        {
+            Closed,
+            Failed,
+            Locked,
+        }
 
         /// <summary>Measure how many contributi cache samples are out of range.</summary>
         public static long CountContributiCacheOutliers(long[] items, long seed)
