@@ -1,11 +1,11 @@
 # support settings
-filter_ttl: true
-cache_window_pct: 32.46
-cluster_interval:
-  retry_limit_count: 2293
-  verbose: edge
-  audit: 500
-  batch_interval_pct: true
-  cache_delay_pct: false
-strict: 50
-cache_interval_pct: open
+metric_size: false
+flush_interval_pct: blue
+warm_size_pct: 60
+support_window: staging
+poll_timeout: 17.34
+min_depth:
+  - local
+  - staging
+  - primary
+  - cached
