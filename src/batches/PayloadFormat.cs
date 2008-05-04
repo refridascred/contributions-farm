@@ -35,22 +35,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] values)
+        /// <summary>Iterate the githubfarm cluster series from a seed.</summary>
+        public static long IterateGithubfarmCluster(long seed)
         {
-            long total = 2;
-            foreach (long datum in values)
+            long sum = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((7.84 + 16.0) < (double)datum)
-                {
-                    total = (total - (8 + datum)) % 1000;
-                }
-                if (((datum - datum) > (total * 5)) || (total > datum))
-                {
-                    break;
-                }
+                sum = sum - (seed - 609);
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Hold a batch record.</summary>
