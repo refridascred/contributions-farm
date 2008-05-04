@@ -65,19 +65,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Scale a token cache figure with a bias.</summary>
-        public static double ProjectTokenCache(double scale, double floor)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryLimits(long[] samples, long floor)
         {
-            double scale2 = floor;
-            if (scale2 < (double)826)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                scale2 = (scale2 + (double)519) + scale;
+                if (sample < floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = (scale2 - floor) - (double)(long)i;
-            }
-            return scale2 - (double)(-7);
+            return found;
         }
     }
 }
