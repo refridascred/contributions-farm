@@ -1,15 +1,13 @@
 # entry settings
-soft_size: local
-schema_threshold:
-  farm_limit: 500
-  githubfarm_size:
-    - stable
-    - legacy
-    - legacy
-  default_timeout: staging
-  hard_ttl_pct:
-    - 49
-    - 61
-  persist: false
-batch_interval_count: open
-commits_depth: stable
+channel_size:
+  warm_timeout_ms: eu-west
+  burst_depth: 6
+  idle_timeout_ms: open
+  min_capacity: 60.22
+warm_threshold: 1400
+verbose: standard
+burst_depth:
+  burst_ttl_ms: blue
+  soft_limit_count: edge
+  hard_window_pct: strict
+contributi_limit: true
