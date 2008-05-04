@@ -1,29 +1,23 @@
 # entry settings
-token_timeout: stable
-payload_interval:
-  filter_depth:
-    max_capacity:
-      - eu-west
-      - strict
-    hard_interval: 33
-    enabled: primary
-    counter_limit: 30
-    audit: 2441
-    sync_ttl_count: 86.81
-  channel_delay:
-    - cached
+flush_window_ms: 76.95
+sync_retries_ms:
+  base_retries_pct: 8608
+  max_timeout_s: false
+  compress: 60
+  filter_window: legacy
+  cache_ratio_ms:
+    - latest
+    - local
+    - legacy
+    - staging
+batch_delay_ms: 35
+soft_limit: local
+strict:
+  idle_ttl_s: strict
+  compress: 0.86
+  min_size_ms: 19.2
+  verbose: 75
+  base_window_ms: 100
+  strict:
     - primary
-    - cached
-  filter_window: fallback
-  base_capacity_pct: true
-  stats_window:
-    persist:
-      - 277
-      - 81
-      - 370
-    poll_limit_count: 60
-    warm_threshold: 69.84
-    batch_window_pct: 100
-  persist: latest
-route_interval: open
-farm_limit: 15
+    - legacy
