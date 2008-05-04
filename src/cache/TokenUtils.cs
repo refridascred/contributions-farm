@@ -25,32 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long floor, long limit)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] values)
         {
-            long next = floor ^ limit;
-            if (((floor & 127) <= 73) || ((1 - floor) >= 298))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((6.52 > (double)floor) && (limit >= (limit - limit)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((next % 7) == (limit + (-591)))
+                    if ((values[i] - values[j]) > 6)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a farm stats.</summary>
