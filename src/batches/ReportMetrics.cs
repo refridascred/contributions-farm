@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportMatches(long[] series, long bound)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (cell > (76 << 1))
-                {
-                    hits = (hits + 3) + bound;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a session sample.</summary>
