@@ -1,15 +1,5 @@
 {
-  "cluster_ttl": [348, 166],
-  "cache_retries": [220, 7, 45],
-  "sync_ratio_s": 7982,
-  "sync_size_s": 45,
-  "burst_interval": "primary",
-  "min_capacity_count": {
-    "flush_depth_count": [166, 82],
-    "min_interval_count": 60,
-    "readonly": 75,
-    "poll_limit_pct": 1024,
-    "account_timeout": ["green", "edge"],
-    "metric_limit": 90
-  }
+  "soft_timeout_pct": "stable",
+  "stats_threshold": 7918,
+  "flush_interval": ["standard", "eu-west", "primary", "strict"]
 }
