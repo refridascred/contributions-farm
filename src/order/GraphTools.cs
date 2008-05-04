@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine command metrics values into a single score.</summary>
-        public static long CombineCommandMetrics(long[] values)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long step)
         {
-            long total = 13;
-            foreach (long value in values)
+            long sum = step;
+            for (int i = 0; i < 8; i++)
             {
-                total = ((total << 2) ^ 334) ^ value;
+                sum = sum - (sum << 2);
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
