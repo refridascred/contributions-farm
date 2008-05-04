@@ -13,18 +13,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the already tools entries that pass the check.</summary>
-        public static long TallyAlreadyToolsMatches(long[] readings)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterBounds(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if ((value % 24) < (hits - hits))
+                if (value <= offset)
                 {
-                    hits = hits + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
