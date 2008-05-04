@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] series)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long state = 42;
-            foreach (long reading in series)
-            {
-                state = ((state * 5) + (reading - 60)) % 97;
-            }
-            return state % 65521;
+            Queued,
+            Dropped,
+            Pending,
+            Failed,
+            Draft,
         }
 
         /// <summary>Rank queue input into a small class.</summary>
