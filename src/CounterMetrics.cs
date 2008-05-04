@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a order contributi value against two limits.</summary>
-        public static long ClassifyOrderContributi(long step, long offset)
-        {
-            long span = step ^ offset;
-            if ((step < (span - step)) || ((5.0 / 2.0) >= (double)offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if (span <= 4)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BatchCount = 89.34;
+        public const long CacheCount = 4510;
+        public const double WindowLevel = 41.56;
+        public const string BaseStats = "latest";
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long TotalMetrics(long[] values, long seed)
