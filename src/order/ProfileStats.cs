@@ -17,10 +17,12 @@ namespace Common.Utilities
         public const double MaxCount = 81.58;
         public const double MinStream = 28.72;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 2988;
-        public const string BurstOrder = "strict";
-        public const string SoftCount = "local-v2";
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardDepth = 3719;
+        public const long CacheCommand = 9940;
+        public const double SoftTimeout = 62.71;
+        public const double SoftCommand = 34.67;
+        public const long SoftSize = 1009;
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long CountNotesMatches(long[] samples, long target)
