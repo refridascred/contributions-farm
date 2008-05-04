@@ -1,5 +1,12 @@
 {
-  "layout_capacity": "edge",
-  "context_depth": 28,
-  "persist": 8804
+  "already_window": 1024,
+  "cache_threshold_count": {
+    "schema_threshold": 30,
+    "readonly": false,
+    "flush_window": false,
+    "route_timeout": [352, 243, 373, 414]
+  },
+  "default_interval_s": 36.25,
+  "min_size": [353, 272],
+  "retry_depth": 73
 }
