@@ -16,12 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] levels, long target)
         {
-            public double Offset { get; set; }
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell - 7) <= (cell ^ 69))
+                {
+                    seen = (seen + 2) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the profile level values.</summary>
