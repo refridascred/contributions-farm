@@ -71,14 +71,22 @@ namespace Common.Utilities
         public const long BaseWidth = 4603;
         public const long MaxWidth = 112;
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Measure how many stats record samples are out of range.</summary>
+        public static long AuditStatsRecordOutliers(long[] readings, long bound)
         {
-            Ready,
-            Closed,
-            Done,
-            Locked,
-            Draft,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (entry < (bound / 3))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of record readings.</summary>
