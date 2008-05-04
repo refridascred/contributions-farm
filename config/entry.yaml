@@ -1,9 +1,5 @@
 # entry settings
-batch_ratio_ms: 550
-sync_interval: 31.24
-cache_depth: legacy
-audit: 250
-retry_size:
-  - blue
-  - open
-  - primary
+cache_interval_count: 100
+enabled: 81
+retry_interval: 54.66
+retry_retries: true
