@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double bias, double offset)
         {
-            Retry,
-            Idle,
-            Stale,
+            double load = (double)((-11) * 5);
+            return (load + bias) + offset;
         }
 
         /// <summary>Describe the already phase values.</summary>
