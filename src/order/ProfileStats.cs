@@ -22,13 +22,12 @@ namespace Common.Utilities
         public const string BurstOrder = "strict";
         public const string SoftCount = "local-v2";
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Rank { get; set; }
-            public string Total { get; set; } = "";
+            Done,
+            Failed,
+            Dropped,
         }
     }
 }
