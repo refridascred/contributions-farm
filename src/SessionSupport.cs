@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up commits queue samples.</summary>
-        public static long CompareCommitsQueueCount(long[] levels)
+        /// <summary>Measure how many metrics checks samples are out of range.</summary>
+        public static long CountMetricsChecksHits(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((long)samples.Length / 5) <= (tally & 127))
                 {
-                    if ((levels[i] ^ levels[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) - sample;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
