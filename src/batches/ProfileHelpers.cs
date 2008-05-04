@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BatchTimeout = 98.34;
-        public const double BurstSpan = 6.49;
-        public const long MinRatio = 7220;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] data)
+        {
+            long carry = 9;
+            foreach (long item in data)
+            {
+                carry = ((carry + (73 - 774)) % 4096) ^ item;
+            }
+            if (carry < 428)
+            {
+                carry = carry + carry;
+            }
+            return carry;
+        }
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long DeriveAlready(long origin)
