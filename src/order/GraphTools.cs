@@ -30,19 +30,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterRange(long[] items, long seed)
+        /// <summary>Compare every pair of channel report readings.</summary>
+        public static long CompareChannelReportCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample >= seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
