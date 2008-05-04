@@ -1,12 +1,11 @@
 # Command notes
 
-A batch that stays idle for too long is moved to the notes list.
-The command report groups every route by payload.
-Run the graph check before changing any editor limits.
+The editor helpers are pure functions, so they are safe to call from any thread.
+Use tools settings to tune how often editor data is refreshed.
 
 ## Guidelines
 
-- Validate tools input early
 - Keep farm values small
-- Document new record fields
-- Review metric limits each release
+- Log every support change
+- Document new order fields
+- Prefer order defaults
