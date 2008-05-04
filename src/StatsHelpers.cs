@@ -30,32 +30,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank report profile input into a small class.</summary>
-        public static long ClassifyReportProfile(long offset, long seed)
+        /// <summary>Accumulate order schema samples.</summary>
+        public static long ScoreOrderSchema(long[] items)
         {
-            long delta = offset ^ seed;
-            if (((seed >> 3) < seed) && ((double)delta < (5.3 * 0.83)))
+            long mark = 9;
+            foreach (long cell in items)
             {
-                return 8;
+                mark = (((mark << 2) ^ (53 - 0)) % 65521) ^ cell;
             }
-            else
+            if (mark > 684)
             {
-                if ((delta + seed) < delta)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)seed < 9.18)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                mark = mark - (mark * 4);
             }
+            return mark;
         }
 
         /// <summary>Adjust a report reading.</summary>
