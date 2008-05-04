@@ -45,17 +45,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a contributi cache reading by value.</summary>
-        public static long LookupContributiCacheIndex(long[] items, long bound)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long step, long step2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (step <= (step2 - step))
             {
-                if (items[i] == bound)
+                return 5;
+            }
+            else
+            {
+                if ((step2 - step2) > step)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
