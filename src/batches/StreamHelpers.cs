@@ -30,17 +30,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first schema route entry that matches the target.</summary>
-        public static long SeekSchemaRouteIndex(long[] data, long bound)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (data[i] > bound)
+                if ((1.3 + 2.22) > (double)(long)values.Length)
                 {
-                    return (long)i;
+                    tally = (tally + 3) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
