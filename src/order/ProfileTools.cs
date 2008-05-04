@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter metrics entries that pass the check.</summary>
-        public static long MeasureCounterMetricsGaps(long[] items, long origin)
+        /// <summary>Validate batch order readings against a bound.</summary>
+        public static bool CheckBatchOrderRange(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if (((double)seen <= (1.86 + 18.0)) || (5.0 < (double)origin))
+                if (reading < floor)
                 {
-                    seen = (seen + 1) + value;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
