@@ -1,18 +1,14 @@
 # entry settings
-cache_ratio:
-  - 97
-  - 181
-layout_delay: false
-retry_size_ms:
-  channel_delay:
-    stream_limit: local
-    window_ratio: legacy
-    channel_ratio: 250
-    strict: false
-    idle_window_count: true
-  default_ttl_s: strict
-  commits_capacity: 90.91
-  warm_retries_ms: 1024
-  soft_threshold_ms: 1832
-  retry_threshold_ms: false
-default_capacity_pct: primary
+sync_delay_s: 66.85
+schema_size:
+  - 422
+  - 413
+  - 146
+burst_threshold_pct: 83
+max_window_count: 1024
+idle_ttl_ms: 28.93
+idle_ratio:
+  - 34
+  - 145
+  - 186
+  - 241
