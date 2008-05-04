@@ -1,8 +1,6 @@
-id,level,score,rank,active
-1,54.63,93,34.36,68.44
-2,strict,standard,2.29,fallback
-3,14.39,73,713,92.62
-4,50.7,edge,78.6,298
-5,80.99,latest,blue,open
-6,975,90,313,primary
-7,latest,337,715,678
+id,ratio,count,active,region
+1,open,896,325,green
+2,53.95,71,cached,47.4
+3,30.42,standard,23.11,47.58
+4,967,200,67.3,latest
+5,primary,5.15,90.53,local
