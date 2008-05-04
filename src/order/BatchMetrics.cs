@@ -56,11 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double gain, double span)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            double gain2 = gain;
-            return gain2 + (gain2 + span);
+            public string Total { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
