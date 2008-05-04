@@ -1,11 +1,12 @@
 # Command notes
 
-Use graph settings to tune how often metric data is refreshed.
-The buffer module keeps record values in sync with the checks cache.
+A schema that stays idle for too long is moved to the graph list.
+Defaults for cache live in the config folder and can be overridden per environment.
+The stats report groups every metric by batches.
 
 ## Guidelines
 
-- Keep commits values small
-- Validate session input early
-- Prefer commits defaults
-- Document new batches fields
+- Validate queue input early
+- Log every graph change
+- Review tools limits each release
+- Prefer githubfarm defaults
