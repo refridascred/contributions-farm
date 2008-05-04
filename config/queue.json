@@ -1,6 +1,18 @@
 {
-  "notes_interval": "legacy",
-  "route_timeout": "stable",
-  "readonly": "edge",
-  "tools_limit": 81.82
+  "strict": 1753,
+  "min_size": {
+    "soft_delay_pct": [275, 431],
+    "compress": 250,
+    "flush_size": {
+      "record_capacity": "local",
+      "min_limit_count": "staging",
+      "buffer_retries": 12,
+      "max_ratio_s": "edge",
+      "format_size": 3.02
+    },
+    "cluster_capacity": 2141
+  },
+  "compress": "legacy",
+  "batch_interval_pct": "legacy",
+  "hard_window_s": "standard"
 }
