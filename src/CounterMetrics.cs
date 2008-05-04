@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const string DefaultFilter = "staging-1";
         public const double BurstRatio = 93.21;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] samples, long origin)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long limit)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long score = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)(long)samples.Length <= 2.0)
+                long span = -54;
+                span = (span ^ score) % 255;
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    hits = ((hits + 3) + item) + origin;
+                    score = ((score - span) % 1000) - (long)i2;
                 }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
