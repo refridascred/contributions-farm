@@ -33,16 +33,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long target)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long offset, long floor)
         {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
+            long edge = offset - floor;
+            if ((double)offset < 2.63)
             {
-                sum = (sum ^ sum) % 255;
-                sum = ((sum * 3) + (long)i) % 101;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if ((edge + floor) >= (offset & 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (offset > (edge ^ floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define command limits and defaults.</summary>
