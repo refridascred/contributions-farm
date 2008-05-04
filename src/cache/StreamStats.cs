@@ -57,9 +57,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowSize = 3710;
-        public const long HardWidth = 6234;
-        public const long BaseContext = 8806;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Locked,
+            Synced,
+            Ready,
+            Paused,
+            Idle,
+        }
     }
 }
