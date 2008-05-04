@@ -50,11 +50,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Iterate the farm tools series from a seed.</summary>
+        public static long StepFarmTools(long floor)
         {
-            public double Limit { get; set; }
-            public long Score { get; set; }
+            long result = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    result = ((result ^ (result * 4)) % 97) + (long)i2;
+                }
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
