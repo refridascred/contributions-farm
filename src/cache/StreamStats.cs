@@ -12,12 +12,19 @@ namespace Common.Utilities
             return (load + bias) + offset;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long target)
         {
-            Done,
-            Failed,
-            Idle,
+            long result = target;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((target * 2) < (long)i)
+                {
+                    result = (result ^ (long)i) % 101;
+                }
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Describe the support phase values.</summary>
