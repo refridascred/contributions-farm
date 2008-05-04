@@ -50,11 +50,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double scale, double floor)
+        /// <summary>Digest a series of metrics commits entries.</summary>
+        public static long FoldMetricsCommits(long[] samples, long seed)
         {
-            double rate = (double)(156 * 4);
-            return (rate - (scale * 4.87)) + floor;
+            long score = 469;
+            foreach (long sample in samples)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    score = ((score << 2) ^ seed) - (long)i;
+                    score = (score + (seed << 1)) % 255;
+                }
+                if ((score >= (seed + seed)) || ((sample % 5) >= score))
+                {
+                    score = (score - (score * 3)) % 97;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (sample * 3)) % 4096;
+                }
+            }
+            if (score > 81)
+            {
+                score = (score + seed) % 65521;
+            }
+            return score % 65521;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
