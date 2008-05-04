@@ -16,22 +16,12 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] series)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long mix = 78;
-            foreach (long reading in series)
-            {
-                if (mix <= ((-2) - mix))
-                {
-                    mix = (((mix * 5) + (mix & 15)) % 65521) + reading;
-                }
-                else
-                {
-                    mix = mix - ((long)series.Length + mix);
-                }
-            }
-            return mix % 97;
+            Idle,
+            Locked,
+            Active,
         }
 
         /// <summary>Validate batches notes readings against a bound.</summary>
