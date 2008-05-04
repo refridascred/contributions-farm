@@ -1,13 +1,5 @@
 {
-  "dry_run": 100,
-  "default_delay_ms": 73.31,
-  "route_threshold": [444, 464],
-  "poll_ttl_count": {
-    "flush_interval_ms": 758,
-    "enabled": 31,
-    "flush_timeout_ms": 500,
-    "record_interval": "latest"
-  },
-  "warm_window_ms": "legacy",
-  "idle_interval_s": 8978
+  "warm_ttl": [312, 483, 145],
+  "stream_depth": 1024,
+  "batch_capacity_ms": false
 }
