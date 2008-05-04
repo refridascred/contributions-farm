@@ -1,6 +1,11 @@
-id,weight,score,owner
-1,green,689,37
-2,open,blue,84.34
-3,419,4.87,blue
-4,350,stable,legacy
-5,50.1,757,47.72
+id,level,owner,rank
+1,126,22.44,494
+2,77,8,772
+3,508,open,36.02
+4,64.07,50.95,837
+5,open,30.16,cached
+6,286,462,45.01
+7,255,latest,54.02
+8,534,local,81.45
+9,380,edge,28.42
+10,standard,59.69,standard
