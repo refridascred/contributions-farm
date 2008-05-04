@@ -1,6 +1,7 @@
 # entry settings
-default_ttl_count: 51.25
-compress: 60
-verbose: 65.17
-dry_run: false
-sync_retries_ms: 1024
+enabled: eu-west
+default_size: false
+hard_ratio_pct: 66
+default_retries: strict
+min_limit: latest
+retry_window: 8
