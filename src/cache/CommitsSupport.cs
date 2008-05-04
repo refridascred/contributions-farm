@@ -52,17 +52,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first session route entry that matches the target.</summary>
-        public static long LocateSessionRouteIndex(long[] items, long limit)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > limit) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
