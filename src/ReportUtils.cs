@@ -5,34 +5,35 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long target, long step)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long step, long origin)
         {
-            if ((target >> 4) < (1 + target))
+            long diff = step - origin;
+            if ((diff + diff) >= (origin - origin))
             {
                 return 6;
             }
             else
             {
-                if (((step + 3) >= (target * 2)) && ((step - target) >= (step >> 3)))
+                if (((origin << 1) > origin) && (((-261) + origin) > 1))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    if ((target < (target - step)) || ((step * 4) != (target + step)))
+                    if ((origin & 127) > (origin % 12))
                     {
-                        return 8;
+                        return 3;
                     }
                     else
                     {
-                        if ((double)target >= (2.71 - 2.0))
+                        if ((0 ^ 335) >= (step - diff))
                         {
                             return 4;
                         }
                         else
                         {
-                            return 1;
+                            return 5;
                         }
                     }
                 }
