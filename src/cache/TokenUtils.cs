@@ -13,19 +13,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] levels, long target)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] data)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell <= target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] + data[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Look up the position of a checks report sample.</summary>
