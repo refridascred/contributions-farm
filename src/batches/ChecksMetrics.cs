@@ -25,19 +25,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (reading > 687)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double IdleCount = 33.03;
+        public const double WindowWidth = 79.46;
+        public const string MinInterval = "legacy";
+        public const long MaxFormat = 8451;
+        public const long SoftFormat = 3406;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long StepChecks(long origin)
