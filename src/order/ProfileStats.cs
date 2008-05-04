@@ -30,22 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string SoftDepth = "standard-edge";
+        public const double BatchWindow = 75.91;
+        public const long CacheWindow = 5854;
+        public const double DefaultRatio = 44.33;
+        public const long BatchInterval = 7615;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long FoldContributi(long[] data)
