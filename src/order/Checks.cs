@@ -40,20 +40,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] levels)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long floor)
         {
-            long score = 28;
-            foreach (long cell in levels)
+            long mix = floor;
+            for (int i = 0; i < 16; i++)
             {
-                score = ((score ^ (score ^ score)) % 65521) ^ cell;
-                score = ((score << 2) ^ (score % 100)) % 65521;
+                mix = (mix - (mix & 1)) % 1000;
+                if ((floor << 3) >= (floor + mix))
+                {
+                    mix = (mix + ((long)i + (long)i)) % 97;
+                    mix = (mix - ((long)i - floor)) % 97;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            if (score < (-33))
-            {
-                score = (score + (-1)) % 4096;
-            }
-            return score;
+            return mix;
         }
     }
 }
