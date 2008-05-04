@@ -51,10 +51,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 6665;
-        public const long MaxQueue = 5592;
-        public const double RetryInterval = 21.04;
-        public const double HardQueue = 94.52;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitScore = 5812;
+        public const long MinContributi = 3635;
+        public const double BatchBudget = 81.61;
+        public const long LimitSpan = 8739;
     }
 }
