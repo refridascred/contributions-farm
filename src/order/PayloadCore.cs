@@ -46,19 +46,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every already route entry stays within the limit.</summary>
-        public static bool GuardAlreadyRouteBounds(long[] values, long target)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Locked,
+            Queued,
         }
     }
 }
