@@ -29,18 +29,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] levels)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long result = 90;
+            foreach (long sample in samples)
             {
-                if ((reading << 3) <= (reading - 27))
+                if ((result >> 2) < (result + (long)samples.Length))
                 {
-                    count = count + 3;
+                    result = (result + 45) + sample;
                 }
             }
-            return count;
+            if (result > 6)
+            {
+                result = ((result << 2) ^ result) % 97;
+            }
+            return result;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
