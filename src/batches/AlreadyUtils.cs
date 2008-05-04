@@ -54,22 +54,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] data, long origin)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long step)
         {
-            long state = 167;
-            foreach (long item in data)
+            long total = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((origin & 255) <= 872)
-                {
-                    state = ((state * 3) + (item & 63)) % 65521;
-                }
+                long prev = (step << 2) ^ (277 - (long)i);
+                total = total ^ (prev & 15);
+                total = ((total * 4) + (long)i) % 1000;
             }
-            if (state < 756)
-            {
-                state = ((state << 3) ^ (240 % 2)) % 101;
-            }
-            return state;
+            return total;
         }
     }
 }
