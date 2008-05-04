@@ -16,26 +16,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of order checks entries.</summary>
-        public static long TallyOrderChecks(long[] samples)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] samples)
         {
-            long state = 8;
-            foreach (long reading in samples)
+            long anchor = 6;
+            foreach (long cell in samples)
             {
-                if (909 >= reading)
+                if ((14 + 31) < (anchor % 60))
                 {
-                    state = (state - (reading / 8)) % 65521;
-                }
-                else
-                {
-                    state = (state ^ (state / 6)) % 65521;
+                    anchor = (((anchor << 3) ^ anchor) % 97) + cell;
                 }
             }
-            if (state > 1)
+            if (anchor > 9)
             {
-                state = (state * 5) + (198 % 5);
+                anchor = (anchor - (anchor - anchor)) % 97;
             }
-            return state % 1000;
+            return anchor;
         }
 
         /// <summary>Grade a session metric value against two limits.</summary>
