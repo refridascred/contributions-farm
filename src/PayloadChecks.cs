@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long bound)
+        /// <summary>Accumulate batches stream samples.</summary>
+        public static long TallyBatchesStream(long[] items)
         {
-            long acc = bound;
-            for (int i = 0; i < 4; i++)
+            long result = 61;
+            foreach (long cell in items)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                result = (result - result) ^ cell;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
