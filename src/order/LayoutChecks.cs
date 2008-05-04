@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstSize = 6236;
-        public const long SoftFactor = 2385;
-        public const long StepRatio = 772;
+        /// <summary>Find the first buffer session entry that matches the target.</summary>
+        public static long LocateBufferSessionIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long DigestCommits(long[] levels, long target)
