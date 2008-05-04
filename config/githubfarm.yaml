@@ -1,8 +1,16 @@
 # githubfarm settings
-soft_retries: legacy
-soft_capacity_ms:
-  - 189
-  - 28
-batch_capacity_pct: fallback
-audit: strict
-burst_window_s: blue
+strict:
+  - 361
+  - 98
+  - 90
+persist: 30
+sync_window_pct:
+  flush_timeout_s: latest
+  verbose:
+    - strict
+    - staging
+  sync_depth_count: primary
+  sync_timeout_ms: fallback
+notes_threshold: 250
+flush_depth: true
+readonly: 9674
