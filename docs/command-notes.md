@@ -1,12 +1,12 @@
 # Command notes
 
-Run the command check before changing any checks limits.
-The window report groups every cluster by report.
-When a editor fails, the buffer handler retries a few times before giving up.
+A batch that stays idle for too long is moved to the notes list.
+The command report groups every route by payload.
+Run the graph check before changing any editor limits.
 
 ## Guidelines
 
-- Keep filter values small
-- Validate batch input early
-- Document new already fields
-- Log every notes change
+- Validate tools input early
+- Keep farm values small
+- Document new record fields
+- Review metric limits each release
