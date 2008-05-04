@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] data, long seed)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (sample < seed)
+                if ((3.5 + 7.8) > (double)tally)
                 {
-                    valid = false;
-                    break;
+                    tally = ((tally + 1) + entry) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Hold a farm header.</summary>
