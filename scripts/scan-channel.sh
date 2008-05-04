@@ -6,18 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 5))
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
+
+for item in eu-west stable; do
+    log "checking ${item}"
+done
