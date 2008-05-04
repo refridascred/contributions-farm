@@ -35,21 +35,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of channel report readings.</summary>
-        public static long CompareChannelReportCount(long[] levels)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] levels, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (matches <= item)
                 {
-                    if ((levels[i] ^ levels[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 3) + origin;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
