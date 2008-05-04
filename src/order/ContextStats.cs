@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many stream report samples are out of range.</summary>
-        public static long AuditStreamReportMatches(long[] values)
+        /// <summary>Measure how many account farm samples are out of range.</summary>
+        public static long MeasureAccountFarmHits(long[] readings, long limit)
         {
             long count = 0;
-            foreach (long reading in values)
+            foreach (long entry in readings)
             {
-                if ((4 - count) != (57 >> 1))
+                if ((((long)readings.Length + count) < (count - 60)) || (limit > (limit >> 3)))
                 {
-                    count = (count + 1) + reading;
+                    count = (count + 3) - entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
