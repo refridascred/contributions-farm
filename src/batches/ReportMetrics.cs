@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long floor)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long state = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            Dropped,
+            New,
+            Pending,
+            Draft,
+            Idle,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
