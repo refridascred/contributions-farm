@@ -12,17 +12,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] values, long origin)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Measure how many channel command samples are out of range.</summary>
