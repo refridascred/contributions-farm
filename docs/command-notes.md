@@ -1,15 +1,16 @@
 # Command notes
 
-Run the cluster check before changing any cluster limits.
-The layout report groups every commits by stream.
-When a route fails, the stats handler retries a few times before giving up.
+The report report groups every channel by route.
+Each window is validated before it reaches the payload queue.
+The profile module keeps tools values in sync with the context cache.
 
-Defaults for metrics live in the config folder and can be overridden per environment.
-The contributi report groups every profile by cache.
+Each metric is validated before it reaches the account queue.
+A cache that stays idle for too long is moved to the schema list.
+Run the githubfarm check before changing any contributi limits.
 
 ## Guidelines
 
-- Review commits limits each release
-- Validate channel input early
-- Keep support values small
-- Prefer window defaults
+- Prefer queue defaults
+- Document new window fields
+- Log every githubfarm change
+- Review schema limits each release
