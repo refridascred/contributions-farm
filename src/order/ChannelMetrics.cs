@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next record batches value.</summary>
-        public static double ScaleRecordBatches(double gain, double span)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] series)
         {
-            double bias = 2.8;
-            if (bias <= bias)
+            long state = 223;
+            foreach (long datum in series)
             {
-                bias = bias - gain;
+                if (state < (datum & 3))
+                {
+                    state = (state ^ datum) % 101;
+                }
+                else
+                {
+                    state = state ^ (datum + state);
+                }
             }
-            return bias - (span * 4.0);
+            return state % 4096;
         }
 
         /// <summary>Grade a farm window value against two limits.</summary>
