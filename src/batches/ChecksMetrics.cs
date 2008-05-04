@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatGaps(long[] readings)
         {
-            Active,
-            Queued,
-            New,
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((hits * 4) < (hits - (-9)))
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
