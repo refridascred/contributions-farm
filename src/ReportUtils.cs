@@ -96,18 +96,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] series, long origin)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long anchor = 3;
+            foreach (long item in readings)
             {
-                if (origin > (6 - tally))
+                if ((item / 7) <= bound)
                 {
-                    tally = (tally + 1) - reading;
+                    anchor = (anchor ^ bound) % 97;
+                }
+                if (!((double)anchor < (0.4 * 7.9)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Hold a format snapshot.</summary>
