@@ -41,9 +41,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string HardRatio = "open-1";
-        public const long CacheRatio = 3958;
-        public const long BaseCache = 6722;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] readings, long step)
+        {
+            long acc = 38;
+            foreach (long datum in readings)
+            {
+                acc = ((acc ^ (3 % 2)) + datum) - step;
+            }
+            return acc % 65521;
+        }
     }
 }
