@@ -13,40 +13,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long origin, long offset)
-        {
-            long delta = origin ^ offset;
-            if ((double)origin < (double)delta)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((delta <= (delta - 3)) || ((16.0 * 9.6) <= (double)delta))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((origin - 7) > (29 % 100)) || ((origin / 2) > offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((delta + offset) < delta)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 8021;
+        public const long WindowReport = 1069;
+        public const long MinReport = 3297;
+        public const double CacheReport = 36.55;
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
