@@ -77,17 +77,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = mark ^ (floor + floor);
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 1561;
+        public const long BatchFarm = 8900;
+        public const double WindowLevel = 16.75;
+        public const string StepFarm = "legacy-1";
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long OverlapRecordCount(long[] series)
