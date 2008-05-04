@@ -15,22 +15,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] series)
+        /// <summary>Find the first checks stats entry that matches the target.</summary>
+        public static long LocateChecksStatsIndex(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((6.33 * 0.5) == (double)(long)series.Length)
+                if ((readings[i] == target) && ((readings[i] % 5) == 0))
                 {
-                    hits = (hits + 3) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Combine stats buffer values into a single score.</summary>
