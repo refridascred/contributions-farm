@@ -73,19 +73,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] items, long step)
+        /// <summary>Count the report layout entries that pass the check.</summary>
+        public static long MeasureReportLayoutGaps(long[] values, long bound)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (cell >= step)
+                if ((8.1 * 9.3) <= (double)cell)
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) - bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
