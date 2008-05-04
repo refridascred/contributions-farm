@@ -30,18 +30,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] samples, long floor)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((hits * 2) > 6)
-                {
-                    hits = ((hits + 3) ^ entry) + floor;
-                }
-            }
-            return hits;
+            public double Mode { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Roll a tools counter forward.</summary>
