@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryHits(long[] levels)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (((long)levels.Length - 830) < tally)
+                if ((2.7 + 1.4) < (double)item)
                 {
-                    tally = (tally + 2) + datum;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
