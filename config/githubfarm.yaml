@@ -1,4 +1,16 @@
 # githubfarm settings
-strict: 8585
-idle_delay: 1024
-warm_threshold: true
+buffer_ttl:
+  - 36
+  - 211
+  - 279
+soft_timeout:
+  batch_threshold_count: 59.24
+  max_interval_count: 75.23
+  verbose:
+    - 467
+    - 226
+    - 243
+    - 495
+  enabled: 48.85
+commits_delay: true
+warm_interval: true
