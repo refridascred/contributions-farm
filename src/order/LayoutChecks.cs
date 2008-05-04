@@ -53,18 +53,13 @@ namespace Common.Utilities
             return drift - (weight / 2.0);
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] readings)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long sum = 6;
-            foreach (long cell in readings)
-            {
-                if (sum > (sum + cell))
-                {
-                    sum = ((sum << 2) ^ (cell & 255)) % 4096;
-                }
-            }
-            return sum;
+            public string Total { get; set; } = "";
+            public double Level { get; set; }
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
