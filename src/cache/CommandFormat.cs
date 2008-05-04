@@ -19,14 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Count the profile cluster entries that pass the check.</summary>
+        public static long TallyProfileClusterMatches(long[] items)
         {
-            Queued,
-            Locked,
-            Draft,
-            New,
-            Closed,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((((hits + 87) < (206 & 255)) && ((reading / 5) == (hits << 2))) && ((reading + hits) < (hits + reading)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
