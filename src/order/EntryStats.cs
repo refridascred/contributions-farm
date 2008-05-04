@@ -41,19 +41,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportBounds(long[] values, long seed)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchRange(long[] values, long floor)
         {
-            bool flag = true;
+            bool stale = true;
             foreach (long value in values)
             {
-                if (value > seed)
+                if (value != floor)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
     }
 }
