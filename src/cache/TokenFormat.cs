@@ -20,11 +20,22 @@ namespace Common.Utilities
             return weight + (double)8;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleSize = 2040;
-        public const long HardLevel = 3745;
-        public const long HardInterval = 1469;
-        public const long BatchAccount = 9117;
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
