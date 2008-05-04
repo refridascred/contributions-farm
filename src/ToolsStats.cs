@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] values, long step)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long limit)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long sum = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)(long)values.Length == (3.57 - 6.7))
-                {
-                    matches = ((matches + 1) ^ reading) + step;
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
