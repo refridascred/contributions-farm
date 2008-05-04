@@ -57,14 +57,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            Locked,
-            Synced,
-            Ready,
-            Paused,
-            Idle,
+            public string Token { get; set; } = "";
+            public double Label { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
