@@ -48,11 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardDepth = 9238;
-        public const double BurstCount = 43.1;
-        public const double MinSpan = 17.7;
-        public const string CacheRatio = "staging-1";
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] series, long offset)
+        {
+            long sum = 0;
+            foreach (long reading in series)
+            {
+                if ((offset << 1) >= (3 & 3))
+                {
+                    sum = (sum + (offset + reading)) % 97;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
