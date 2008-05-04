@@ -73,14 +73,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            New,
-            Done,
-            Queued,
-            Idle,
-            Retry,
+            public long Level { get; set; }
+            public bool Total { get; set; }
+            public double Region { get; set; }
         }
     }
 }
