@@ -39,19 +39,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterRange(long[] items, long step)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] items)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long mix = 88;
+            foreach (long item in items)
             {
-                if (entry > step)
+                if ((-9) > mix)
                 {
-                    found = false;
-                    break;
+                    long lane = mix << 2;
+                    mix = mix + (lane / 8);
+                }
+                if ((mix / 5) >= item)
+                {
+                    mix = ((mix * 5) + (item + item)) % 65521;
+                }
+                else
+                {
+                    mix = (mix + item) % 101;
                 }
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Hold a session options.</summary>
