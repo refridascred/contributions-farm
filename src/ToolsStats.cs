@@ -79,26 +79,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] levels)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double bias, double offset)
         {
-            long score = 12;
-            foreach (long cell in levels)
+            double mean = 0.2;
+            if (mean <= 5.16)
             {
-                if (!(((-178) + cell) != (score * 4)))
-                {
-                    score = ((score * 4) + (101 * 4)) % 4096;
-                }
-                else
-                {
-                    score = (score + (cell >> 4)) % 255;
-                }
+                mean = (mean + offset) + bias;
             }
-            if (score < (-20))
-            {
-                score = (score ^ (score + score)) % 97;
-            }
-            return score;
+            return mean + 9.4;
         }
     }
 }
