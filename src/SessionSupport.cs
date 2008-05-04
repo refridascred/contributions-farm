@@ -33,19 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] readings, long origin)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] data)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (reading > origin)
+                if ((datum << 3) >= (592 << 2))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
