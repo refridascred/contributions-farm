@@ -1,9 +1,8 @@
-id,state,level
-1,standard,250
-2,27.33,strict
-3,latest,103
-4,96.28,253
-5,896,19.46
-6,531,45.66
-7,strict,34.42
-8,local,672
+id,count,owner,weight
+1,69.36,348,standard
+2,552,cached,881
+3,73,232,636
+4,584,623,98.45
+5,190,cached,15.77
+6,strict,658,161
+7,614,49.11,stable
