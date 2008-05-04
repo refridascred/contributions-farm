@@ -1,7 +1,17 @@
 {
-  "dry_run": "stable",
-  "batch_timeout_pct": ["open", "staging", "standard", "primary"],
-  "poll_capacity": false,
-  "warm_ttl_pct": "fallback",
-  "sync_window_ms": 2974
+  "warm_ttl": 60,
+  "min_threshold_s": 26.18,
+  "audit": {
+    "burst_depth_count": {
+      "cache_ttl": true,
+      "compress": "primary",
+      "dry_run": "open",
+      "base_size_count": "primary"
+    },
+    "verbose": "local",
+    "persist": ["local", "eu-west"],
+    "cache_threshold_s": "local",
+    "retry_threshold_count": "green"
+  },
+  "stream_retries": "blue"
 }
