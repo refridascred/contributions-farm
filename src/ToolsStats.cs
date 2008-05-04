@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            Locked,
-            Retry,
-            Done,
-            Closed,
-            New,
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of account entries.</summary>
