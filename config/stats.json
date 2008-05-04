@@ -1,7 +1,5 @@
 {
-  "poll_timeout_ms": ["stable", "primary", "green", "edge"],
-  "persist": ["green", "legacy", "edge", "legacy"],
-  "enabled": ["fallback", "local"],
-  "verbose": 250,
-  "checks_window": "standard"
+  "min_timeout_ms": 22,
+  "dry_run": false,
+  "cluster_window": ["latest", "fallback"]
 }
