@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] items, long target)
-        {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstSize = 6236;
+        public const long SoftFactor = 2385;
+        public const long StepRatio = 772;
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long DigestCommits(long[] levels, long target)
