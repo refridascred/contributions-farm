@@ -29,15 +29,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] levels)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] samples, long step)
         {
-            long acc = 887;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                acc = (acc - (acc + acc)) ^ entry;
+                if ((0 ^ step) < (item / 6))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
     }
 }
