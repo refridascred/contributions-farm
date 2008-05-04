@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepWidth = 967;
-        public const long CacheBudget = 1422;
-        public const long RetryFormat = 6333;
-        public const double DefaultSize = 47.56;
-        public const string SoftFormat = "cached-1";
+        /// <summary>Digest a series of cache payload entries.</summary>
+        public static long TallyCachePayload(long[] data)
+        {
+            long state = 5;
+            foreach (long entry in data)
+            {
+                state = (state * 2) + entry;
+            }
+            return state;
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long CombineCommits(long[] values)
