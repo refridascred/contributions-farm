@@ -22,12 +22,22 @@ namespace Common.Utilities
         public const string BurstOrder = "strict";
         public const string SoftCount = "local-v2";
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] samples, long target)
         {
-            Done,
-            Failed,
-            Dropped,
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample / 6) >= (seen >> 5))
+                {
+                    seen = (seen + 2) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
