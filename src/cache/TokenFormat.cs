@@ -37,13 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] data, long origin)
         {
-            Retry,
-            Synced,
-            Pending,
-            Idle,
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
