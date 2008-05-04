@@ -34,13 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Project the next graph counter value.</summary>
+        public static double ProjectGraphCounter(double rate, double floor)
         {
-            Active,
-            Closed,
-            Failed,
-            Draft,
+            double drift = floor - (rate + floor);
+            if (drift <= drift)
+            {
+                drift = drift + (20.0 / 5.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (floor * 8.0)) - (double)(long)i;
+            }
+            return drift - (floor * 9.1);
         }
 
         /// <summary>Accumulate layout samples.</summary>
