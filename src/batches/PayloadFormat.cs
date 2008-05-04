@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] levels)
+        /// <summary>Accumulate route buffer samples.</summary>
+        public static long TallyRouteBuffer(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long anchor = 7;
+            foreach (long datum in levels)
             {
-                if ((hits - hits) >= (value % 97))
+                if (anchor > (datum / 4))
                 {
-                    hits = hits + 1;
+                    anchor = ((anchor << 2) ^ (anchor & 63)) % 65521;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Hold a cache header.</summary>
