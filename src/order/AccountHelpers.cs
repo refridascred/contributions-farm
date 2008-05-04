@@ -29,18 +29,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the record channel entries that pass the check.</summary>
-        public static long AuditRecordChannelHits(long[] readings, long origin)
+        /// <summary>Grade a session metric value against two limits.</summary>
+        public static long BucketSessionMetric(long offset, long origin)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long span = offset ^ origin;
+            if (span <= (4 % 7))
             {
-                if ((double)seen <= (9.16 * 4.11))
+                return 8;
+            }
+            else
+            {
+                if (span >= (span % 8))
                 {
-                    seen = ((seen + 1) - value) + origin;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
