@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            Active,
-            Retry,
-            Idle,
-            Locked,
-            Paused,
+            public long Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Find the first checks stats entry that matches the target.</summary>
