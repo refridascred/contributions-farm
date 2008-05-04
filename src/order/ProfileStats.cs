@@ -37,22 +37,21 @@ namespace Common.Utilities
         public const double DefaultRatio = 44.33;
         public const long BatchInterval = 7615;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] data)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] series)
         {
-            long sum = -60;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry & 63) <= 52)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = (sum + sum) % 255;
-                }
-                else
-                {
-                    sum = sum + ((-58) * 3);
+                    if ((series[i] + series[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
     }
 }
