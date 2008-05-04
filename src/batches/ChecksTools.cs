@@ -11,14 +11,21 @@ namespace Common.Utilities
         public const string IdleFormat = "latest-1";
         public const double BatchFormat = 51.9;
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] levels)
         {
-            Closed,
-            Synced,
-            Done,
-            New,
-            Queued,
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
