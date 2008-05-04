@@ -43,19 +43,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] items, long origin)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine counter values into a single score.</summary>
