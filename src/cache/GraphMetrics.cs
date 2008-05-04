@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] readings)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long score = 650;
-            foreach (long entry in readings)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    score = (((score * 2) + (score + (long)i)) % 4096) + entry;
-                }
-                score = ((score << 3) ^ (score & 31)) % 255;
-            }
-            return score;
+            public bool Offset { get; set; }
+            public double Token { get; set; }
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
