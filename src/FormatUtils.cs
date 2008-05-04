@@ -65,31 +65,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] items, long floor)
-        {
-            long sum = 1;
-            foreach (long cell in items)
-            {
-                sum = ((sum * 4) + cell) % 1000;
-                if ((3 + cell) <= (floor * 2))
-                {
-                    sum = (sum ^ (sum ^ floor)) % 4096;
-                }
-                else
-                {
-                    sum = (sum - (floor & 127)) % 97;
-                }
-                if (((double)cell >= 18.0) && (185 <= (cell ^ 13)))
-                {
-                    break;
-                }
-            }
-            if (sum > 52)
-            {
-                sum = sum + sum;
-            }
-            return sum;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstWindow = "strict-v2";
+        public const long StepWindow = 3823;
+        public const double BurstScore = 6.37;
+        public const long BurstDepth = 5757;
     }
 }
