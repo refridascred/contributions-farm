@@ -13,12 +13,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Audit token account readings against a rule.</summary>
+        public static long AuditTokenAccountGaps(long[] series)
         {
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (((item ^ 0) > ((long)series.Length * 3)) && ((item / 8) != (long)series.Length))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit entry filter readings against a rule.</summary>
