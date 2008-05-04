@@ -19,11 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MaxSize = 83.11;
-        public const string IdleCount = "local-v2";
-        public const long IdleRatio = 7679;
-        public const string LimitSpan = "fallback-1";
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            Closed,
+            Synced,
+            Paused,
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long TallyWindowMatches(long[] levels)
