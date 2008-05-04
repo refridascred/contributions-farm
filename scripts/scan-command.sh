@@ -6,21 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
+COMMAND_LIMIT=189
+log "limit is ${COMMAND_LIMIT}"
+
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
 total=0
 for i in $(seq 1 5); do
-    total=$((total + i * 4))
+    total=$((total + i * 1))
 done
 log "total ${total}"
-
-mode="${1:-staging}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-COMMAND_LIMIT=454
-log "limit is ${COMMAND_LIMIT}"
