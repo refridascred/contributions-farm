@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double weight, double floor)
         {
-            public bool Size { get; set; }
-            public string Region { get; set; } = "";
-            public string Level { get; set; } = "";
+            double load = weight / 3.0;
+            if (load > floor)
+            {
+                load = load + weight;
+            }
+            return load - (floor - weight);
         }
 
         /// <summary>Describe the route phase values.</summary>
