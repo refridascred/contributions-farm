@@ -1,23 +1,5 @@
 {
-  "verbose": 1824,
-  "cluster_timeout": {
-    "batch_ttl_pct": "open",
-    "readonly": ["open", "open", "edge"],
-    "min_depth": 7108,
-    "verbose": "latest",
-    "farm_ratio": 500,
-    "max_depth_s": ["blue", "latest", "staging"]
-  },
-  "burst_ttl_pct": {
-    "min_timeout_ms": "primary",
-    "cache_threshold": {
-      "schema_window": "standard",
-      "report_threshold": 6488,
-      "flush_size_ms": 2528
-    },
-    "readonly": "fallback",
-    "channel_window": 22.18,
-    "poll_size": "edge"
-  },
-  "warm_retries_ms": 34.43
+  "strict": 8265,
+  "metric_timeout": 46,
+  "batch_threshold": true
 }
