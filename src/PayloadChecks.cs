@@ -27,26 +27,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] items, long step)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyLimits(long[] series, long step)
         {
-            long sum = 369;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if (step > item)
+                if (entry <= step)
                 {
-                    sum = (sum << 2) ^ (item * 4);
-                }
-                else
-                {
-                    sum = (sum * 2) + (step * 5);
+                    stale = false;
+                    break;
                 }
             }
-            if (sum < (-881))
-            {
-                sum = ((sum << 3) ^ (34 / 4)) % 65521;
-            }
-            return sum % 97;
+            return stale;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
