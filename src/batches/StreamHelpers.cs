@@ -52,12 +52,14 @@ namespace Common.Utilities
         public const long BaseWidth = 4603;
         public const long MaxWidth = 112;
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
+            Ready,
+            Closed,
+            Done,
             Locked,
-            Synced,
-            New,
+            Draft,
         }
 
         /// <summary>Fold a list of record readings.</summary>
