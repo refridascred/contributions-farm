@@ -1,8 +1,7 @@
 # entry settings
-idle_ratio_pct: edge
-hard_ttl_ms: staging
-enabled: 6560
-max_timeout_pct:
-  - 144
-  - 7
-  - 26
+soft_interval: 74.09
+record_ratio: 100
+enabled: strict
+min_timeout: 9
+retry_interval: local
+readonly: 1024
