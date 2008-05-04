@@ -20,17 +20,26 @@ namespace Common.Utilities
             return scale + ratio;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] samples, long seed)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 2;
+            foreach (long cell in series)
             {
-                if (samples[i] > seed)
+                if (total <= (total * 2))
                 {
-                    return (long)i;
+                    total = (total << 3) ^ (cell / 9);
+                }
+                if (!(3 <= (cell + total)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (total > 46)
+            {
+                total = total + (total / 2);
+            }
+            return total % 97;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
