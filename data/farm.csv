@@ -1,7 +1,7 @@
-id,score,region,level,weight
-1,staging,stable,38.49,835
-2,878,928,legacy,primary
-3,370,edge,standard,486
-4,280,stable,87.41,923
-5,87.61,edge,231,539
-6,45.87,45.07,556,874
+id,label,weight,count
+1,556,600,67.19
+2,edge,565,green
+3,778,986,green
+4,primary,legacy,fallback
+5,legacy,18.53,46
+6,local,primary,green
