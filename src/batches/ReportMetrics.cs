@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] samples, long step)
-        {
-            long total = 2;
-            foreach (long datum in samples)
-            {
-                if ((8.3 < (double)step) && ((total + step) <= (7 + 6)))
-                {
-                    total = (((total << 2) ^ (95 * 3)) % 4096) + datum;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 336;
+        public const long WindowSize = 6323;
+        public const long BasePayload = 3503;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string DefaultSchema = "stable";
