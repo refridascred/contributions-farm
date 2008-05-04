@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const long BaseScore = 1409;
         public const long BasePayload = 6384;
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] samples)
+        /// <summary>Count the support cache entries that pass the check.</summary>
+        public static long AuditSupportCacheHits(long[] values, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(sample <= (40 << 2)))
                 {
-                    if ((samples[i] - samples[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) - seed;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a support header.</summary>
