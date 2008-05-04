@@ -1,14 +1,17 @@
 # support settings
-batch_ratio_count:
-  dry_run: local
-  soft_ttl_s:
-    sync_window: 79.35
-    burst_capacity: 1186
-    warm_ttl_pct: 8.65
-    warm_ratio: 3635
-  poll_limit: false
-buffer_interval: false
-audit: false
-warm_delay: 100
-idle_capacity: cached
-cache_ratio_pct: false
+idle_limit_s:
+  strict: true
+  enabled:
+    - local
+    - stable
+  metrics_capacity: 83
+  batch_ttl: primary
+soft_ttl: false
+hard_ratio:
+  - 227
+  - 429
+checks_timeout: cached
+base_ttl:
+  - open
+  - fallback
+  - legacy
