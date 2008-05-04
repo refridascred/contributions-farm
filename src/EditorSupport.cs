@@ -66,10 +66,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitScore = 5812;
-        public const long MinContributi = 3635;
-        public const double BatchBudget = 81.61;
-        public const long LimitSpan = 8739;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (item < (item / 4))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
