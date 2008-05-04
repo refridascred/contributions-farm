@@ -1,8 +1,6 @@
-id,owner,score
-1,53,999
-2,98.66,stable
-3,legacy,774
-4,43.56,local
-5,latest,76.77
-6,open,503
-7,11.7,159
+id,weight,ratio,state
+1,16.16,primary,854
+2,latest,green,primary
+3,open,stable,104
+4,301,local,staging
+5,staging,67.24,fallback
