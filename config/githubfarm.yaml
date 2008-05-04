@@ -1,10 +1,5 @@
 # githubfarm settings
-min_size_ms:
-  cache_ttl: true
-  audit: false
-  hard_delay: 90.25
-min_capacity_ms: 20
-dry_run: true
-max_capacity_ms: 73
-default_limit_count: strict
-buffer_depth: 95.72
+idle_interval: true
+verbose: stable
+burst_timeout_ms: 52.67
+enabled: open
