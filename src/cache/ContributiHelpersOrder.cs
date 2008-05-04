@@ -44,13 +44,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Count already profile pairs that satisfy a relation.</summary>
+        public static long PairAlreadyProfileCount(long[] samples)
         {
-            public string Flag { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Limit { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
