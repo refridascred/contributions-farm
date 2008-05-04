@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheSize = 2107;
-        public const long LimitSpan = 612;
-        public const long BaseScore = 1409;
-        public const long BasePayload = 6384;
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long ScoreReport(long[] data, long limit)
