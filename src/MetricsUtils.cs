@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Level { get; set; }
-            public string Token { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
