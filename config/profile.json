@@ -1,21 +1,12 @@
 {
-  "flush_timeout_count": [218, 345, 112],
-  "default_interval_s": [457, 277, 261],
-  "hard_retries_pct": {
-    "warm_depth_count": 500,
-    "batch_threshold": {
-      "audit": "green",
-      "max_delay": false,
-      "stats_ratio": 6312
-    },
-    "schema_ttl": 90.71,
-    "max_limit_count": [199, 165, 65],
-    "burst_interval": {
-      "batch_retries_count": "standard",
-      "min_size": [475, 451],
-      "already_interval": 59.67,
-      "sync_depth_pct": true,
-      "warm_threshold_pct": true
-    }
-  }
+  "cache_retries_s": [145, 145],
+  "account_limit": {
+    "enabled": false,
+    "account_depth": [105, 14],
+    "commits_capacity": 38
+  },
+  "report_interval": 41,
+  "persist": "green",
+  "strict": ["cached", "stable", "primary"],
+  "sync_retries_count": false
 }
