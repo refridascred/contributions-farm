@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double gain, double floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] items)
         {
-            double rate = gain * 20.0;
-            return (rate + (gain / 3.0)) + floor;
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (matches < datum)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
