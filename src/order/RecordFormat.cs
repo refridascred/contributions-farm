@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long bound, long bound2)
         {
-            public string Label { get; set; } = "";
-            public string Level { get; set; } = "";
+            long span = bound - bound2;
+            if ((bound << 2) < bound2)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((bound2 + bound) >= (span >> 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((0.81 - 4.9) < (double)span)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a route summary.</summary>
