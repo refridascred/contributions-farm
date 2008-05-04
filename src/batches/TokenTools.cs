@@ -19,12 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
-        {
-            public double Weight { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 8655;
+        public const double WindowMetrics = 48.28;
+        public const string LimitMetrics = "stable-v2";
+        public const double RetryInterval = 61.05;
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long ScoreBatch(long[] data)
