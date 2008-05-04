@@ -37,21 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] samples)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Locked,
+            Active,
+            Dropped,
         }
 
         /// <summary>Combine already values into a single score.</summary>
