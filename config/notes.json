@@ -1,6 +1,7 @@
 {
-  "warm_interval": 88,
-  "max_window_s": "eu-west",
-  "max_delay": 100,
-  "compress": true
+  "sync_interval": "local",
+  "sync_depth": 77,
+  "sync_capacity_count": "staging",
+  "stats_delay": "legacy",
+  "flush_delay": [3, 232]
 }
