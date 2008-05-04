@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] readings, long target)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long seed, long seed2)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            if ((seed2 >= (seed2 % 60)) || ((double)seed == (double)seed2))
             {
-                if (((target + count) > (target / 2)) || (((reading - 279) < (reading - target)) && ((1.0 - 8.02) <= (double)target)))
+                return 1;
+            }
+            else
+            {
+                if (seed2 < (seed2 * 4))
                 {
-                    count = count + 2;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
