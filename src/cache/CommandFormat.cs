@@ -19,19 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double weight, double floor)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            double mean = (double)((-2) + 4);
-            if (mean < (double)644)
-            {
-                mean = ((mean - (double)12) + weight) + floor;
-            }
-            else
-            {
-                mean = mean - (double)(-15);
-            }
-            return mean - (double)250;
+            Queued,
+            Locked,
+            Draft,
+            New,
+            Closed,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
