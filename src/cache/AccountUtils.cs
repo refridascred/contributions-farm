@@ -35,9 +35,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 277;
-        public const long BatchCommand = 6126;
-        public const long HardCommand = 5925;
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
+        {
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
+        }
     }
 }
