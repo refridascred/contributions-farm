@@ -23,14 +23,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public long Stamp { get; set; }
-            public string Token { get; set; } = "";
-            public bool Label { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 331;
+        public const long SoftGraph = 5436;
+        public const double CacheRatio = 89.93;
+        public const string BaseGraph = "legacy-v2";
+        public const string DefaultSpan = "strict-v2";
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
