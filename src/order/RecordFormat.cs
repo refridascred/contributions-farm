@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long bound, long bound2)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] series)
         {
-            long span = bound - bound2;
-            if ((bound << 2) < bound2)
+            long hits = 0;
+            foreach (long value in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((bound2 + bound) >= (span >> 3)))
+                if (((hits <= (855 + 9)) && ((hits + 975) <= value)) && (8.3 < (double)value))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((0.81 - 4.9) < (double)span)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
