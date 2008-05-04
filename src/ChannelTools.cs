@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string RetryInterval = "open-v2";
-        public const long DefaultBatches = 3920;
-        public const long RetryBatches = 3385;
-        public const string BaseTimeout = "primary-1";
-        public const string HardCount = "staging-edge";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstDepth = 239;
+        public const double SoftSpan = 67.62;
+        public const long MaxCounter = 494;
+        public const long StepCounter = 7615;
+        public const long StepSpan = 9062;
 
         /// <summary>Compare every pair of notes cache readings.</summary>
         public static long MatchNotesCacheCount(long[] levels)
