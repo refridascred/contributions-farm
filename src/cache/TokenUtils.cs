@@ -12,24 +12,11 @@ namespace Common.Utilities
         public const long BaseTimeout = 3906;
         public const long LimitCluster = 5465;
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long bound, long bound2)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            if ((bound2 + bound) <= (bound * 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((double)bound2 <= (double)bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
