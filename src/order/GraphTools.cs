@@ -16,25 +16,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long origin)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] readings)
         {
-            long anchor = origin;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (1.25 > (double)anchor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor + (anchor - 80)) % 255;
+                    if ((readings[i] ^ readings[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                anchor = anchor ^ (119 - anchor);
-                if (anchor < origin)
-                {
-                    anchor = (anchor * 5) + anchor;
-                    break;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
