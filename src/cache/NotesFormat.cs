@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Check that every filter channel entry stays within the limit.</summary>
+        public static bool CheckFilterChannelBounds(long[] data, long target)
         {
-            Failed,
-            Ready,
-            New,
-            Pending,
-            Paused,
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
