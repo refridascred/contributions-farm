@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up record session samples.</summary>
-        public static long OverlapRecordSessionCount(long[] series)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 3;
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((mark <= (mark >> 3)) || ((double)mark > (1.06 / 8.0)))
                 {
-                    if ((series[i] ^ series[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = mark ^ (value - mark);
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a report record.</summary>
