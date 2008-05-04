@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphOutliers(long[] values)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] levels)
         {
             long hits = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((reading >> 4) >= hits) && (reading >= (760 % 10)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((levels[i] - levels[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
