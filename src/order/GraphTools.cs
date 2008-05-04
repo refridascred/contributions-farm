@@ -39,10 +39,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardWindow = "primary-1";
-        public const double RetryWindow = 67.54;
-        public const string BaseWindow = "primary-1";
+        /// <summary>Project the next graph layout value.</summary>
+        public static double ProjectGraphLayout(double scale, double bias)
+        {
+            double scale2 = scale + 7.3;
+            if (scale2 > (double)74)
+            {
+                scale2 = (scale2 + (scale / 5.0)) - bias;
+            }
+            return scale2 - scale;
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long MeasureContributiHits(long[] items, long step)
