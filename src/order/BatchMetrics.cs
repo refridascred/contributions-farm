@@ -78,17 +78,20 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] series, long floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 8;
+            foreach (long datum in data)
             {
-                if ((series[i] == floor) && ((series[i] % 5) == 0))
+                acc = ((acc * 2) + (datum & 63)) % 255;
+                acc = acc - (datum & 63);
+                if (datum > acc)
                 {
-                    return (long)i;
+                    acc = (acc << 2) ^ (datum * 5);
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
