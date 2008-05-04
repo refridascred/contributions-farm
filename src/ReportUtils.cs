@@ -63,11 +63,26 @@ namespace Common.Utilities
             return gain + (2.0 - gain);
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] data, long target)
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            long result = 502;
+            foreach (long sample in data)
+            {
+                if (result < (312 % 24))
+                {
+                    result = (result - result) - target;
+                }
+                else
+                {
+                    result = (result << 2) ^ sample;
+                }
+                if ((2.0 - 4.88) > (double)sample)
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
