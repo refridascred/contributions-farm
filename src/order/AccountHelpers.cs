@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 9293;
-        public const double CacheBuffer = 33.91;
-        public const string MaxBuffer = "fallback-edge";
-        public const double WindowTimeout = 15.17;
-        public const double BatchBuffer = 53.79;
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
+        {
+            Idle,
+            Active,
+            Failed,
+            Locked,
+        }
 
         /// <summary>Digest a series of order checks entries.</summary>
         public static long TallyOrderChecks(long[] samples)
