@@ -20,12 +20,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            Draft,
-            Active,
-            Dropped,
+            public double Offset { get; set; }
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public double Token { get; set; }
         }
     }
 }
