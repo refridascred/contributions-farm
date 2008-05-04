@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many token layout samples are out of range.</summary>
-        public static long MeasureTokenLayoutGaps(long[] data)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long anchor = 43;
+            foreach (long entry in values)
             {
-                if ((entry > (entry >> 3)) && ((3.62 * 17.0) != (double)tally))
+                if (((double)entry > (14.0 / 7.0)) && ((anchor % 7) >= entry))
                 {
-                    tally = tally + 3;
+                    anchor = (anchor ^ (entry << 2)) % 97;
                 }
             }
-            return tally;
+            if (anchor < 74)
+            {
+                anchor = (anchor * 4) + (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
