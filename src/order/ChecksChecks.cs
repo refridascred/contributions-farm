@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] samples)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] items)
         {
-            long score = 7;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (2.67 <= (double)reading)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score - 660) % 4096;
+                    if ((items[i] - items[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (score > 13)
-            {
-                score = ((score << 3) ^ (score << 2)) % 101;
-            }
-            return score % 65521;
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
