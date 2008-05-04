@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first cache commits entry that matches the target.</summary>
-        public static long LocateCacheCommitsIndex(long[] readings, long floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] levels, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 277;
+            foreach (long cell in levels)
             {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
+                mix = (((mix ^ (5 - mix)) % 1000) ^ cell) - floor;
             }
-            return -1;
+            if (mix > 1)
+            {
+                mix = (mix ^ (mix % 3)) % 97;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Digest a series of support entries.</summary>
