@@ -1,16 +1,4 @@
 # githubfarm settings
-strict:
-  - 361
-  - 98
-  - 90
-persist: 30
-sync_window_pct:
-  flush_timeout_s: latest
-  verbose:
-    - strict
-    - staging
-  sync_depth_count: primary
-  sync_timeout_ms: fallback
-notes_threshold: 250
-flush_depth: true
-readonly: 9674
+dry_run: edge
+max_capacity_count: true
+hard_timeout_ms: 8556
