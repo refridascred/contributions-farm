@@ -80,13 +80,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public bool Label { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxScore = 3876;
+        public const string BurstInterval = "local-1";
+        public const long IdleFactor = 2443;
     }
 }
