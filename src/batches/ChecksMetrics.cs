@@ -98,24 +98,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] readings)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double gain, double bias)
         {
-            long mark = 6;
-            foreach (long reading in readings)
+            double mean = bias;
+            for (int i = 0; i < 7; i++)
             {
-                long matches = (reading & 1) ^ (71 << 2);
-                if (0.33 > (double)mark)
-                {
-                    mark = ((mark * 2) + (matches + 82)) % 1000;
-                    break;
-                }
-                if (mark <= (mark - mark))
-                {
-                    mark = (mark << 2) ^ (97 << 1);
-                }
+                mean = ((mean + bias) + (double)(long)i) - gain;
             }
-            return mark;
+            return mean + mean;
         }
     }
 }
