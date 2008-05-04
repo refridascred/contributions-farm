@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] readings)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long seed, long floor)
         {
-            long mark = 268;
-            foreach (long cell in readings)
+            long delta = seed + floor;
+            if ((floor << 2) != (seed - floor))
             {
-                if (0.72 < (double)mark)
+                return 3;
+            }
+            else
+            {
+                if ((double)seed >= (double)delta)
                 {
-                    mark = mark + (mark - cell);
+                    return 6;
+                }
+                else
+                {
+                    if ((seed >> 1) != (seed & 127))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((18 / 8) > (floor + seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return mark % 4096;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
