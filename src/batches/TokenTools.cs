@@ -34,22 +34,21 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] data)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long origin)
         {
-            long acc = -540;
-            foreach (long reading in data)
+            long state = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((acc - 502) != (reading >> 1))
+                bool stale = (double)origin > (0.4 - 11.0);
+                if (stale)
                 {
-                    acc = acc - (acc & 3);
+                    break;
                 }
-                else
-                {
-                    acc = (acc + (acc ^ acc)) % 255;
-                }
+                stale = !stale;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return acc;
+            return state;
         }
     }
 }
