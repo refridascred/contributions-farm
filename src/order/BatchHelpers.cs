@@ -21,11 +21,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a tools filter figure with a bias.</summary>
-        public static double ScaleToolsFilter(double ratio, double bias)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            double gain = ratio;
-            return gain + bias;
+            Draft,
+            Active,
+            Dropped,
         }
     }
 }
