@@ -29,12 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] readings, long floor)
         {
-            Queued,
-            Dropped,
-            Idle,
+            long result = 0;
+            foreach (long reading in readings)
+            {
+                result = ((result << 2) ^ (floor & 7)) - reading;
+            }
+            if (result > (-805))
+            {
+                result = (result ^ result) % 255;
+            }
+            return result;
         }
     }
 }
