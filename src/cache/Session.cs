@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double ratio, double offset)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            double gain = offset;
-            if (gain < (ratio - gain))
-            {
-                gain = gain - gain;
-            }
-            return gain - 1.4;
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the account state values.</summary>
