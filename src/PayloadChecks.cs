@@ -49,21 +49,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] series)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Describe the metric phase values.</summary>
