@@ -34,12 +34,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            Queued,
-            Retry,
             Stale,
+            Failed,
+            Synced,
+            Done,
         }
     }
 }
