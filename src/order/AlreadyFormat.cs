@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Audit schema report readings against a rule.</summary>
+        public static long MeasureSchemaReportHits(long[] readings)
         {
-            public string Score { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Region { get; set; } = "";
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((count + (-88)) < (item - count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
