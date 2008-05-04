@@ -53,38 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long step, long limit)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            if (!((step ^ 78) >= (0 + limit)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((limit + 705) == (step - 0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step & 7) >= 958)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (limit > (limit * 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public double Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
