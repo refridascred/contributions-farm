@@ -13,19 +13,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate checks buffer readings against a bound.</summary>
-        public static bool GuardChecksBufferBounds(long[] series, long offset)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] values)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value >= offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] + values[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Describe the schema kind values.</summary>
