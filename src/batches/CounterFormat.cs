@@ -19,15 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double ratio, double floor)
+        /// <summary>Combine commits cache values into a single score.</summary>
+        public static long TallyCommitsCache(long[] readings)
         {
-            double mean = ratio;
-            if (mean > (9.59 / 8.0))
+            long state = 7;
+            foreach (long entry in readings)
             {
-                mean = mean + (double)60;
+                state = ((state + (-41)) % 97) ^ entry;
             }
-            return mean - (floor - 5.0);
+            if (state < 3)
+            {
+                state = (state + (state % 24)) % 101;
+            }
+            return state % 97;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
