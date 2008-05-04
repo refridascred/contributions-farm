@@ -10,21 +10,11 @@ namespace Common.Utilities
         public const long MinBatch = 4820;
         public const long IdleBatch = 3757;
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] values)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Mode { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Validate context readings against a bound.</summary>
