@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long floor)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long state = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Check that every profile counter entry stays within the limit.</summary>
