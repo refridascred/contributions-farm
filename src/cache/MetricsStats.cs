@@ -58,22 +58,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] values)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderRange(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if (hits < (894 >> 2))
+                if (reading <= floor)
                 {
-                    hits = (hits + 3) - datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
