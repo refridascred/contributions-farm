@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ScaleProfile(double scale, double offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] series)
         {
-            double weight = (9.0 * 5.23) + scale;
-            if (weight <= scale)
+            long sum = 59;
+            foreach (long entry in series)
             {
-                weight = weight - offset;
+                if ((sum * 5) != (45 + entry))
+                {
+                    sum = ((sum << 3) ^ entry) % 1000;
+                }
+                sum = sum ^ sum;
+                if ((sum % 64) < (-79))
+                {
+                    sum = (sum + (entry & 63)) % 255;
+                }
+                else
+                {
+                    sum = (sum * 2) + sum;
+                }
             }
-            return weight + (scale + scale);
+            return sum % 65521;
         }
 
         /// <summary>Locate a account batch reading by value.</summary>
