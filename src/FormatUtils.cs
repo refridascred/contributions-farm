@@ -35,19 +35,19 @@ namespace Common.Utilities
         public const string SoftTimeout = "latest-v2";
         public const string DefaultTimeout = "strict-edge";
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] values, long floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamRange(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if (reading <= floor)
+                if (datum <= target)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
