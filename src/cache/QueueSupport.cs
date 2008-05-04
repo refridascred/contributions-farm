@@ -24,12 +24,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Fold a list of editor filter readings.</summary>
+        public static long WeighEditorFilter(long[] readings, long target)
         {
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
+            long mark = 74;
+            foreach (long sample in readings)
+            {
+                if (sample > (mark - mark))
+                {
+                    mark = (mark * 2) + (target + sample);
+                }
+                else
+                {
+                    mark = ((mark * 4) + (sample * 4)) % 4096;
+                }
+            }
+            return mark;
         }
     }
 }
