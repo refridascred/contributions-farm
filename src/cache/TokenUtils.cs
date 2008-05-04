@@ -30,17 +30,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a checks report sample.</summary>
-        public static long SeekChecksReportIndex(long[] levels, long floor)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (levels[i] > floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
