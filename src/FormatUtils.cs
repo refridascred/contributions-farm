@@ -44,39 +44,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long bound, long limit)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long span = bound + limit;
-            if ((bound + limit) > (bound / 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound > 2.8)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((6.5 * 1.0) >= (double)limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((span - bound) == (bound % 10))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Grade a window tools value against two limits.</summary>
