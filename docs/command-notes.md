@@ -1,14 +1,15 @@
 # Command notes
 
-The graph report groups every route by graph.
-The notes module keeps order values in sync with the window cache.
+The stream helpers are pure functions, so they are safe to call from any thread.
+When a graph fails, the batch handler retries a few times before giving up.
+Run the command check before changing any commits limits.
 
-Each githubfarm is validated before it reaches the format queue.
-Keep cluster and layout names short and lowercase.
-When a stream fails, the notes handler retries a few times before giving up.
+When a session fails, the filter handler retries a few times before giving up.
+The stream report groups every batches by stats.
 
 ## Guidelines
 
-- Validate channel input early
-- Review stream limits each release
-- Log every tools change
+- Document new metric fields
+- Review metric limits each release
+- Validate graph input early
+- Keep session values small
