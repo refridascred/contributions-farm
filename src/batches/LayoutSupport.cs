@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Accumulate checks counter samples.</summary>
+        public static long WeighChecksCounter(long[] samples)
         {
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
-            public double Count { get; set; }
+            long mix = 8;
+            foreach (long value in samples)
+            {
+                mix = (mix * 2) + (mix + value);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the support class values.</summary>
