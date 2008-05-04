@@ -51,17 +51,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a entry format reading by value.</summary>
-        public static long LocateEntryFormatIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == origin) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string SoftCache = "standard-edge";
+        public const double BurstCache = 17.05;
+        public const long StepInterval = 9287;
+        public const long MaxCache = 9970;
+        public const long DefaultCache = 5716;
     }
 }
