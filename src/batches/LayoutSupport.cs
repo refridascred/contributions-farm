@@ -43,19 +43,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterBounds(long[] samples, long seed)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Draft,
+            Failed,
+            Retry,
+            Pending,
         }
 
         /// <summary>Grade a command value against two limits.</summary>
