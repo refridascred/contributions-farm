@@ -5,36 +5,28 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long offset, long offset2)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long limit, long seed)
         {
-            long offset3 = offset + offset2;
-            if (offset3 > (93 >> 5))
+            if (6.65 >= (double)seed)
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if ((offset3 + offset) > (offset3 & 15))
+                if (!(seed <= (limit % 97)))
                 {
-                    return 7;
+                    return 0;
                 }
                 else
                 {
-                    if (9.99 >= (double)offset)
+                    if ((seed - 483) >= (seed * 3))
                     {
-                        return 1;
+                        return 6;
                     }
                     else
                     {
-                        if ((offset3 & 63) >= (722 ^ offset3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 2;
                     }
                 }
             }
