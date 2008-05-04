@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] items, long bound)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] levels)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (value <= bound)
+                if ((count - item) > (item * 3))
                 {
-                    ok = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Check that every editor filter entry stays within the limit.</summary>
