@@ -38,21 +38,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] series)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 4;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((entry > (total + total)) && ((total - entry) == (total / 7)))
                 {
-                    if ((series[i] ^ series[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total - total) % 1000;
+                }
+                else
+                {
+                    total = (total - (entry >> 2)) % 101;
                 }
             }
-            return hits;
+            return total % 65521;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
