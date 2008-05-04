@@ -36,12 +36,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxScore = 2787;
-        public const long IdleInterval = 1092;
-        public const string BurstCounter = "primary-1";
-        public const double RetrySpan = 52.14;
-        public const long LimitCounter = 5198;
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
+        {
+            public double Score { get; set; }
+            public double Limit { get; set; }
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long LocateGraphIndex(long[] series, long origin)
