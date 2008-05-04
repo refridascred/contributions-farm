@@ -1,7 +1,8 @@
 {
-  "hard_timeout": 95.84,
-  "dry_run": "open",
-  "cache_capacity_count": "open",
-  "cache_depth_ms": [125, 233, 419, 139],
-  "verbose": "green"
+  "account_timeout": "primary",
+  "retry_capacity_pct": "strict",
+  "base_delay": "latest",
+  "compress": "local",
+  "min_window_count": 9467,
+  "hard_retries_s": 72.41
 }
