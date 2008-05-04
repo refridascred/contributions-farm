@@ -1,7 +1,15 @@
 {
-  "token_retries": "blue",
-  "readonly": 80.35,
-  "strict": [20, 160, 172, 5],
-  "cluster_limit": "local",
-  "batch_size_ms": false
+  "hard_interval": false,
+  "max_capacity_count": "fallback",
+  "metric_size": "latest",
+  "poll_retries_pct": {
+    "max_capacity_s": true,
+    "cache_threshold_pct": "latest",
+    "min_delay_s": 2878
+  },
+  "cache_depth_count": {
+    "soft_window": 84.79,
+    "filter_threshold": [350, 354, 32],
+    "soft_retries_ms": 32.09
+  }
 }
