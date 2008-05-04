@@ -83,23 +83,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double gain, double bias)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] readings, long bound)
         {
-            double gain2 = 8.47 * 11.0;
-            if (gain2 >= (gain2 + gain))
+            long seen = 0;
+            foreach (long item in readings)
             {
-                gain2 = gain2 - (gain2 * 0.7);
+                if ((item ^ (long)readings.Length) < seen)
+                {
+                    seen = (seen + 3) + bound;
+                }
             }
-            else
-            {
-                gain2 = gain2 + (6.39 / 7.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 - bias) + (double)(long)i;
-            }
-            return gain2 - gain2;
+            return seen;
         }
     }
 }
