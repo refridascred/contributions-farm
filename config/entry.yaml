@@ -1,9 +1,20 @@
 # entry settings
-sync_timeout_pct: 951
-stream_capacity: primary
-buffer_capacity:
-  metric_threshold: eu-west
-  dry_run: 8691
-  readonly: standard
-  buffer_retries: 100
-warm_threshold_s: 85.49
+base_retries_pct: 4301
+base_capacity: staging
+session_depth:
+  format_delay:
+    strict: 8061
+    hard_window_count: 60
+    metrics_ttl: 53.77
+    poll_size: staging
+  poll_ttl: cached
+  burst_retries: true
+  max_size_s:
+    account_interval: cached
+    batch_limit: false
+    graph_size: primary
+compress: 99
+flush_delay_s: 5084
+cache_interval_s:
+  - 314
+  - 486
