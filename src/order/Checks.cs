@@ -28,22 +28,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine tools entry values into a single score.</summary>
-        public static long FoldToolsEntry(long[] samples, long target)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] readings, long offset)
         {
-            long mark = 4;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if ((10.0 + 17.0) == (double)target)
+                if (datum < offset)
                 {
-                    mark = (((mark * 2) + (target & 7)) % 97) ^ reading;
+                    found = false;
+                    break;
                 }
             }
-            if (mark < 21)
-            {
-                mark = (mark << 2) ^ mark;
-            }
-            return mark % 4096;
+            return found;
         }
 
         /// <summary>Hold a account entry.</summary>
