@@ -23,19 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((double)value != (20.0 / 7.0))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardInterval = "alpha-1";
+        public const long BurstCount = 6602;
+        public const string MinFarm = "strict-v2";
+        public const double SoftFarm = 97.5;
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
