@@ -64,17 +64,19 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Find the first checks profile entry that matches the target.</summary>
-        public static long LookupChecksProfileIndex(long[] series, long floor)
+        /// <summary>Project the next notes entry value.</summary>
+        public static double AdjustNotesEntry(double ratio, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = bias;
+            if (drift > (ratio - bias))
             {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
+                drift = drift - (double)780;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + ratio) - (double)(long)i;
+            }
+            return drift + (double)(-210);
         }
     }
 }
