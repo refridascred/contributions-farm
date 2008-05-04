@@ -57,9 +57,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 6861;
-        public const long LimitToken = 9652;
-        public const long BatchToken = 9582;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyLimits(long[] readings, long bound)
+        {
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
