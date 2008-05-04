@@ -51,19 +51,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchLimits(long[] samples, long limit)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a report info.</summary>
