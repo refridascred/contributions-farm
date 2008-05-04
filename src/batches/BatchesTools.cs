@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxSpan = 7110;
-        public const long BatchQueue = 1362;
-        public const double IdleQueue = 86.61;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] readings, long floor)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((2.0 + 20.0) <= (double)count)
+                {
+                    count = ((count + 1) ^ item) + floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
