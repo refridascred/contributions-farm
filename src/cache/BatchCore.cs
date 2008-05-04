@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBatch = 7025;
-        public const long CacheBatch = 166;
-        public const double HardTimeout = 37.02;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] values, long step)
+        {
+            long mark = 35;
+            foreach (long datum in values)
+            {
+                if ((datum > (mark - mark)) || ((19.0 * 14.0) < (double)step))
+                {
+                    mark = (mark ^ (datum + mark)) % 4096;
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long ScoreTools(long[] readings, long origin)
