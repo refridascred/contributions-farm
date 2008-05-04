@@ -1,11 +1,11 @@
 # Command notes
 
-Run the githubfarm check before changing any schema limits.
-Run the order check before changing any account limits.
-Run the session check before changing any window limits.
+Use graph settings to tune how often metric data is refreshed.
+The buffer module keeps record values in sync with the checks cache.
 
 ## Guidelines
 
-- Prefer channel defaults
-- Validate stats input early
-- Review already limits each release
+- Keep commits values small
+- Validate session input early
+- Prefer commits defaults
+- Document new batches fields
