@@ -20,12 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] readings, long step)
         {
-            Dropped,
-            Draft,
-            Active,
+            long carry = 5;
+            foreach (long sample in readings)
+            {
+                carry = ((carry << 3) ^ (sample - step)) % 97;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Describe the order phase values.</summary>
