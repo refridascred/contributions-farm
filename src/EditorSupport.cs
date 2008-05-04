@@ -36,17 +36,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] levels, long limit)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchLimits(long[] samples, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if ((levels[i] > limit) && ((levels[i] % 2) == 0))
+                if (entry < limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
