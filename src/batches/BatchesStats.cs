@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two cache farm measurements.</summary>
-        public static double BlendCacheFarm(double ratio, double floor)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long target, long floor)
         {
-            double weight = (double)(438 * 3);
-            if (weight > (double)262)
+            if (target > (floor >> 3))
             {
-                weight = ((weight + (weight / 6.0)) - ratio) - floor;
+                return 2;
             }
-            return weight + (double)(-6);
+            else
+            {
+                if (((double)target >= (4.32 - 5.2)) && ((floor / 5) >= floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)floor > (1.1 - 7.4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
