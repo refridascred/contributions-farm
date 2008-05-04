@@ -25,21 +25,19 @@ namespace Common.Utilities
         public const string CacheBudget = "strict";
         public const long BaseReport = 468;
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] readings)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double BlendChecks(double weight, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (floor / 9.0) / 7.0;
+            if (drift <= (floor - drift))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = (drift - drift) - weight;
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (drift / 4.0)) + (double)(long)i;
+            }
+            return drift + (double)18;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
