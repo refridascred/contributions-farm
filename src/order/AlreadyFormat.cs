@@ -13,22 +13,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Accumulate metric stats samples.</summary>
-        public static long TotalMetricStats(long[] series)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] items, long bound)
         {
-            long sum = -2;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if (((sample << 1) < (sum + sample)) && ((sum ^ sum) == (837 + sample)))
+                if (value <= bound)
                 {
-                    sum = ((sum << 2) ^ (sum << 1)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            if (sum > 4)
-            {
-                sum = (sum + (sum + 98)) % 97;
-            }
-            return sum % 97;
+            return ok;
         }
 
         /// <summary>Check that every editor filter entry stays within the limit.</summary>
