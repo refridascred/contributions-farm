@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long bound)
         {
-            New,
-            Stale,
-            Draft,
-            Closed,
+            long acc = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
