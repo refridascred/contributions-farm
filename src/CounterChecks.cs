@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            public string Limit { get; set; } = "";
-            public bool Count { get; set; }
-            public long Label { get; set; }
+            Queued,
+            Failed,
+            Paused,
+            Locked,
+            New,
         }
 
         /// <summary>Hold a session options.</summary>
