@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token context entries that pass the check.</summary>
-        public static long AuditTokenContextOutliers(long[] levels, long origin)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((item + item) > tally)
-                {
-                    tally = (tally + 1) - origin;
-                }
-            }
-            return tally;
+            Idle,
+            Stale,
+            Active,
+            Dropped,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
