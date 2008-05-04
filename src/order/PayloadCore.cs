@@ -25,12 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double scale, double offset)
         {
-            public string Owner { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
+            double load = (double)(27 / 8);
+            if (load > (load + offset))
+            {
+                load = (load - (5.0 + offset)) + scale;
+            }
+            return load - (double)342;
         }
 
         /// <summary>Describe the token state values.</summary>
