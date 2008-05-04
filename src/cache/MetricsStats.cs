@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a schema contributi sample.</summary>
-        public static long FindSchemaContributiIndex(long[] levels, long seed)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (levels[i] > seed)
+                if (!(state >= floor))
                 {
-                    return (long)i;
+                    state = state - (state - state);
                 }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
