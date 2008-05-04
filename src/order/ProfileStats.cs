@@ -20,10 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardStream = 2162;
-        public const double MaxCount = 81.58;
-        public const double MinStream = 28.72;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] items, long seed)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (((count % 8) <= (seed ^ count)) || (((datum * 4) >= datum) || ((count % 60) < (785 + 728))))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long HardDepth = 3719;
