@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first support githubfarm entry that matches the target.</summary>
-        public static long SeekSupportGithubfarmIndex(long[] values, long limit)
+        /// <summary>Audit token payload readings against a rule.</summary>
+        public static long AuditTokenPayloadHits(long[] levels, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((values[i] >= limit) && ((values[i] % 3) != 0))
+                if ((sample / 9) <= (target * 3))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
