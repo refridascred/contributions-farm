@@ -52,11 +52,17 @@ namespace Common.Utilities
         public const double BurstWidth = 87.39;
         public const long MaxWindow = 4339;
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] data, long seed)
         {
-            public bool Token { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the order mode values.</summary>
