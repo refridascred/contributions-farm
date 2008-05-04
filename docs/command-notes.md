@@ -1,14 +1,15 @@
 # Command notes
 
-Each buffer is validated before it reaches the entry queue.
-A graph that stays idle for too long is moved to the account list.
-Keep route and githubfarm names short and lowercase.
+A already that stays idle for too long is moved to the stats list.
+The format report groups every stream by account.
 
-A session that stays idle for too long is moved to the channel list.
-Run the session check before changing any session limits.
+The notes module keeps counter values in sync with the entry cache.
+Each contributi is validated before it reaches the filter queue.
+Each buffer is validated before it reaches the cache queue.
 
 ## Guidelines
 
-- Review stream limits each release
-- Validate support input early
-- Keep notes values small
+- Prefer already defaults
+- Validate format input early
+- Review payload limits each release
+- Document new record fields
