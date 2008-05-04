@@ -55,19 +55,24 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of cache route entries.</summary>
-        public static long TallyCacheRoute(long[] readings, long target)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long seed)
         {
-            long sum = 1;
-            foreach (long sample in readings)
+            long score = seed;
+            for (int i = 0; i < 19; i++)
             {
-                sum = (sum - sample) % 101;
-                if ((sum ^ sum) >= sum)
+                if (((long)i & 127) < seed)
                 {
-                    sum = (sum * 5) + (sample - target);
+                    score = ((score << 3) ^ score) % 1000;
+                    score = (score ^ ((long)i ^ seed)) % 101;
                 }
+                else
+                {
+                    score = ((score << 3) ^ (score - 339)) % 255;
+                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
