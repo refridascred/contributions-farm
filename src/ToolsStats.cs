@@ -59,15 +59,22 @@ namespace Common.Utilities
             return rate2 - (double)(-482);
         }
 
-        /// <summary>Iterate the contributi stats series from a seed.</summary>
-        public static long DeriveContributiStats(long bound)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderMatches(long[] samples)
         {
-            long total = bound;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                total = ((total * 2) + (long)i) % 101;
+                if ((4.02 * 19.0) > (double)seen)
+                {
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Adjust a farm reading.</summary>
