@@ -56,39 +56,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a record stream value against two limits.</summary>
-        public static long ClassifyRecordStream(long origin, long step)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long gap = origin - step;
-            if (((gap + 6) < (step + gap)) && ((1.73 / 2.0) >= (1.9 * 3.3)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)step < (0.7 + 17.0)) && ((81 / 6) == (2 - step)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((gap ^ 0) == (gap << 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((gap - 196) >= (gap & 255))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public double Rank { get; set; }
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
