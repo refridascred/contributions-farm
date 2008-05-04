@@ -1,7 +1,16 @@
 {
-  "contributi_size": 1914,
-  "cache_limit_count": true,
-  "already_capacity": "strict",
-  "strict": 100,
-  "idle_limit_count": "standard"
+  "stats_delay": [268, 215, 493],
+  "poll_limit_pct": 30,
+  "cache_interval": {
+    "compress": 500,
+    "cache_delay": {
+      "sync_retries_s": 43,
+      "batch_depth_s": "latest",
+      "poll_ratio_ms": 1024,
+      "max_depth_s": 4572,
+      "compress": 33
+    },
+    "commits_threshold": 77,
+    "cache_capacity_count": "green"
+  }
 }
