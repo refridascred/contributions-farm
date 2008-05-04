@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double scale, double span)
+        /// <summary>Measure how many batch githubfarm samples are out of range.</summary>
+        public static long AuditBatchGithubfarmHits(long[] series, long origin)
         {
-            double scale2 = (double)619 / 7.0;
-            if (scale2 < 2.69)
+            long count = 0;
+            foreach (long reading in series)
             {
-                scale2 = scale2 - (span / 8.0);
+                if (!(origin <= (count + count)))
+                {
+                    count = (count + 1) - reading;
+                }
             }
-            else
-            {
-                scale2 = scale2 - (6.21 + scale);
-            }
-            return scale2 - scale;
+            return count;
         }
 
         /// <summary>Validate command format readings against a bound.</summary>
