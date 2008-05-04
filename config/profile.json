@@ -1,12 +1,6 @@
 {
-  "editor_ttl": true,
-  "enabled": [141, 496, 363, 10],
-  "report_ttl": 100,
-  "poll_limit": {
-    "base_capacity_count": 49,
-    "max_ratio_count": "staging",
-    "default_limit_pct": "edge",
-    "min_depth_s": "green",
-    "retry_delay_pct": 60
-  }
+  "burst_depth_ms": "strict",
+  "checks_timeout": "open",
+  "max_limit_ms": false,
+  "burst_depth_s": "green"
 }
