@@ -1,11 +1,14 @@
 # Command notes
 
-Use session settings to tune how often account data is refreshed.
-Keep graph and stats names short and lowercase.
-The window module keeps context values in sync with the channel cache.
+The context helpers are pure functions, so they are safe to call from any thread.
+Each schema is validated before it reaches the tools queue.
+
+The notes report groups every session by metric.
+Defaults for stats live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review profile limits each release
-- Log every command change
+- Log every filter change
 - Document new checks fields
+- Keep buffer values small
+- Review format limits each release
