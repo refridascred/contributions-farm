@@ -36,39 +36,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long floor, long bound)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] values, long offset)
         {
-            long offset = floor - bound;
-            if (((offset & 127) <= floor) && ((floor >> 2) == (530 << 1)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor - bound) == (floor & 15))
+                if ((values[i] == offset) && ((values[i] % 2) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((1.0 - 5.68) > (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor << 1) <= 89)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
