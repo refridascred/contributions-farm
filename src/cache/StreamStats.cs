@@ -41,13 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double bias, double offset)
         {
-            Draft,
-            Idle,
-            Pending,
-            Locked,
+            double rate = offset;
+            if (rate < rate)
+            {
+                rate = rate + offset;
+            }
+            else
+            {
+                rate = rate + (bias + rate);
+            }
+            return rate - bias;
         }
     }
 }
