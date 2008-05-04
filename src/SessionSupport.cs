@@ -33,18 +33,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] samples)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] series)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(datum >= (4 ^ count)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 3;
+                    if ((series[i] - series[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
