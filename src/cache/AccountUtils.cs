@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] series, long floor)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double ratio, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = (double)(8 << 3);
+            if (scale <= 9.64)
             {
-                if ((series[i] >= floor) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale + (bias / 5.0);
             }
-            return -1;
+            else
+            {
+                scale = scale - bias;
+            }
+            return scale + ratio;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
