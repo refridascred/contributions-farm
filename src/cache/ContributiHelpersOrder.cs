@@ -44,12 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenOutliers(long[] levels, long limit)
         {
-            Dropped,
-            Closed,
-            Stale,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)limit == (double)hits)
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
         }
     }
 }
