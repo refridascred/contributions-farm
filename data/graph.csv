@@ -1,6 +1,10 @@
-id,weight,rank,owner
-1,794,974,latest
-2,759,92.18,832
-3,380,231,green
-4,918,545,blue
-5,cached,434,cached
+id,level,owner,token,region
+1,58.04,333,24.26,35
+2,107,151,96.33,36.66
+3,eu-west,780,695,4
+4,15.73,edge,cached,664
+5,323,legacy,251,944
+6,386,376,14.01,283
+7,51.95,staging,open,892
+8,937,179,679,323
+9,primary,26.84,352,91.28
