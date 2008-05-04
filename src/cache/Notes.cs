@@ -41,19 +41,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] data, long limit)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long limit, long offset)
         {
-            bool found = true;
-            foreach (long item in data)
+            if ((offset <= (-770)) && ((limit + offset) < limit))
             {
-                if (item > limit)
+                return 4;
+            }
+            else
+            {
+                if (((double)limit >= (6.11 - 0.3)) || ((offset >> 1) >= (offset + limit)))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit << 2) == (offset * 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define already limits and defaults.</summary>
