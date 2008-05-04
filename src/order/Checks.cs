@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 9800;
-        public const long WindowBatches = 73;
-        public const long RetryBatches = 6871;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] series, long limit)
+        {
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long BaseBatch = 5448;
