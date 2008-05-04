@@ -1,7 +1,8 @@
 {
-  "batch_threshold_pct": 87.15,
-  "retry_ttl": "edge",
-  "idle_ratio": "strict",
-  "poll_delay_count": 14,
-  "verbose": 6666
+  "max_ttl": false,
+  "compress": "edge",
+  "hard_ratio_ms": true,
+  "account_interval": "primary",
+  "token_threshold": "cached",
+  "burst_size": "local"
 }
