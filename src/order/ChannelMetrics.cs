@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] samples)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] data, long floor)
         {
-            long state = 8;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = state ^ entry;
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            if (state < 689)
-            {
-                state = (state ^ (6 << 2)) % 97;
-            }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
