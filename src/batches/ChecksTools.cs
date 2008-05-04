@@ -57,21 +57,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] readings)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((3.11 - 8.8) != (double)offset) && ((state + state) < offset))
                 {
-                    if ((readings[i] - readings[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = ((state * 2) + (state - offset)) % 1000;
+                    state = (state ^ (state % 100)) % 97;
                 }
+                else
+                {
+                    state = (state + (offset / 8)) % 97;
+                    state = (state ^ state) % 101;
+                }
+                state = state ^ (state * 5);
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
