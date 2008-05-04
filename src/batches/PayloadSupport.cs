@@ -53,12 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] samples, long floor)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] readings, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (samples[i] == floor)
+                if (readings[i] < limit)
                 {
                     return (long)i;
                 }
