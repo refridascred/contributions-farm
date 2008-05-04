@@ -41,18 +41,31 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] samples)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long target, long target2)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            if ((83 > (target - 294)) || ((target2 & 15) <= (target * 3)))
             {
-                if ((double)entry <= (7.0 - 6.6))
+                return 8;
+            }
+            else
+            {
+                if ((9.7 - 16.0) > (double)target2)
                 {
-                    matches = matches + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((target2 & 63) >= 123)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
