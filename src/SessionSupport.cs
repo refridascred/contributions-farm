@@ -32,26 +32,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of command report readings.</summary>
-        public static long ScoreCommandReport(long[] levels)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long result = 28;
-            foreach (long sample in levels)
-            {
-                if (((result / 7) != (490 & 1)) || (7 > (sample << 3)))
-                {
-                    result = result - (result ^ result);
-                }
-                else
-                {
-                    result = (result << 2) ^ (sample + result);
-                }
-            }
-            if (result > 912)
-            {
-                result = (result << 3) ^ (result % 7);
-            }
-            return result;
+            Paused,
+            Stale,
+            Idle,
         }
     }
 }
