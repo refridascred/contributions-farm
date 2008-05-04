@@ -19,18 +19,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] series, long step)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if ((468 + 50) < (entry ^ seen))
+                if (item <= origin)
                 {
-                    seen = (seen + 1) + step;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Hold a support header.</summary>
