@@ -33,11 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double scale, double span)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] items)
         {
-            double weight = 5.5;
-            return (weight - scale) + span;
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (reading > 687)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
