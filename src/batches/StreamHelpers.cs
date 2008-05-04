@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long step)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] values)
         {
-            long result = step;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result * 5) + 1) % 97;
-                result = ((result * 5) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
