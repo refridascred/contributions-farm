@@ -1,10 +1,14 @@
 # Command notes
 
-When a counter fails, the profile handler retries a few times before giving up.
-Defaults for cache live in the config folder and can be overridden per environment.
+Each buffer is validated before it reaches the entry queue.
+A graph that stays idle for too long is moved to the account list.
+Keep route and githubfarm names short and lowercase.
+
+A session that stays idle for too long is moved to the channel list.
+Run the session check before changing any session limits.
 
 ## Guidelines
 
-- Prefer format defaults
-- Review counter limits each release
-- Validate stream input early
+- Review stream limits each release
+- Validate support input early
+- Keep notes values small
