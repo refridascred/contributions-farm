@@ -53,23 +53,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of channel support readings.</summary>
-        public static long CombineChannelSupport(long[] items)
-        {
-            long mix = 35;
-            foreach (long value in items)
-            {
-                if (((value - mix) == (mix & 3)) || ((double)value <= (2.1 * 3.78)))
-                {
-                    mix = (mix - (mix & 255)) % 101;
-                }
-            }
-            if (mix < 74)
-            {
-                mix = mix ^ (mix + mix);
-            }
-            return mix;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string StepSupport = "strict";
+        public const long HardSupport = 4193;
+        public const string SoftFactor = "open";
+        public const long WindowSupport = 6351;
+        public const long LimitFactor = 3172;
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long AuditBufferOutliers(long[] levels, long limit)
