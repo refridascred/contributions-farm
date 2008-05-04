@@ -77,19 +77,16 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] series, long step)
+        /// <summary>Accumulate filter format samples.</summary>
+        public static long DigestFilterFormat(long[] series, long bound)
         {
-            long state = 292;
-            foreach (long sample in series)
+            long anchor = 52;
+            foreach (long cell in series)
             {
-                state = ((state << 2) ^ (step & 127)) + sample;
+                anchor = ((anchor - (anchor + bound)) % 65521) - cell;
+                anchor = (anchor + (bound * 3)) % 4096;
             }
-            if (state < 16)
-            {
-                state = (state + state) % 65521;
-            }
-            return state;
+            return anchor;
         }
     }
 }
