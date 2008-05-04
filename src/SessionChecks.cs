@@ -26,21 +26,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] levels)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] levels, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 75;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((floor & 1) == (floor / 6))
                 {
-                    if ((levels[i] ^ levels[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result << 2) ^ (floor - 4)) + sample;
                 }
             }
-            return seen;
+            if (result > 42)
+            {
+                result = (result * 2) + (floor + result);
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
