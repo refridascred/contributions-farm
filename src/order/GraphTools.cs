@@ -58,18 +58,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiHits(long[] items, long step)
+        /// <summary>Scale a token cache figure with a bias.</summary>
+        public static double ProjectTokenCache(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            double scale2 = floor;
+            if (scale2 < (double)826)
             {
-                if ((cell ^ hits) < (cell % 2))
-                {
-                    hits = (hits + 1) - step;
-                }
+                scale2 = (scale2 + (double)519) + scale;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 - floor) - (double)(long)i;
+            }
+            return scale2 - (double)(-7);
         }
     }
 }
