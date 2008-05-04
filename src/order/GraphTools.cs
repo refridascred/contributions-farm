@@ -39,21 +39,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((double)carry > (double)(long)i) || ((1.0 * 9.81) == (double)carry))
-                {
-                    carry = ((carry * 3) + (carry >> 4)) % 255;
-                    carry = ((carry * 2) + (long)i) % 4096;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardWindow = "primary-1";
+        public const double RetryWindow = 67.54;
+        public const string BaseWindow = "primary-1";
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long MeasureContributiHits(long[] items, long step)
