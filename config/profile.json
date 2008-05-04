@@ -1,8 +1,7 @@
 {
-  "readonly": 65.43,
-  "stream_depth": 34.52,
-  "compress": "green",
-  "batch_retries": "primary",
-  "warm_threshold": 2958,
-  "base_capacity_pct": 6574
+  "account_interval": 5179,
+  "poll_timeout_ms": 26,
+  "hard_delay_ms": "cached",
+  "strict": ["latest", "staging", "strict"],
+  "burst_size": "open"
 }
