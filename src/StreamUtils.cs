@@ -36,13 +36,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double bias, double bias2)
         {
-            public long Size { get; set; }
-            public string Label { get; set; } = "";
-            public double Limit { get; set; }
-            public long Region { get; set; }
+            double bias3 = bias2;
+            if (bias3 < bias2)
+            {
+                bias3 = (bias3 + (0.87 / 8.0)) - bias;
+            }
+            else
+            {
+                bias3 = bias3 + (double)97;
+            }
+            return bias3 + bias3;
         }
 
         /// <summary>Classify a notes tools pair into a bucket.</summary>
