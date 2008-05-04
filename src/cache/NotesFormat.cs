@@ -22,18 +22,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionMatches(long[] readings)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((seen >> 4) == (seen << 3))
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
+            Queued,
+            New,
+            Draft,
+            Idle,
+            Retry,
         }
     }
 }
