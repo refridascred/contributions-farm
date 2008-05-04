@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long seed, long bound)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] items, long seed)
         {
-            if (((seed - bound) == (seed + 328)) && ((double)bound < (5.6 * 9.62)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound - bound) < ((-1) + seed))
+                if (items[i] >= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed >= (bound >> 1)) && (bound <= (bound + 39)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
