@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchCache = "standard-v2";
-        public const double MaxBudget = 44.25;
-        public const long SoftTimeout = 3788;
-        public const long DefaultRatio = 6743;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 7025;
+        public const long CacheBatch = 166;
+        public const double HardTimeout = 37.02;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long ScoreTools(long[] readings, long origin)
