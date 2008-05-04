@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MinFactor = 65.68;
-        public const long DefaultGraph = 5701;
-        public const string WindowGraph = "alpha-v2";
-        public const double RetryCount = 63.71;
-        public const long StepLevel = 1214;
+        /// <summary>Grade a farm cache value against two limits.</summary>
+        public static long SortFarmCache(long offset, long floor)
+        {
+            if ((619 ^ offset) == ((-28) << 1))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor - floor) > offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
