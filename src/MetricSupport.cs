@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 1491;
-        public const long StepCommits = 1661;
-        public const long MaxCommits = 2210;
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long limit, long origin)
+        {
+            long lane = limit + origin;
+            if (((14 - limit) > (626 >> 4)) || ((23 % 24) < (limit >> 2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit / 3) != (lane % 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Hold a context entry.</summary>
         public sealed class ContextEntry
