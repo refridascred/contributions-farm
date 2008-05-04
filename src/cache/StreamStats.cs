@@ -12,19 +12,27 @@ namespace Common.Utilities
             return (load + bias) + offset;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long target)
+        /// <summary>Fold a list of checks command readings.</summary>
+        public static long TallyChecksCommand(long[] data)
         {
-            long result = target;
-            for (int i = 0; i < 19; i++)
+            long total = 51;
+            foreach (long reading in data)
             {
-                if ((target * 2) < (long)i)
+                if (((4.9 * 11.0) == (double)total) && (total < (total + total)))
                 {
-                    result = (result ^ (long)i) % 101;
+                    total = total ^ reading;
                 }
-                result = ((result * 5) + (long)i) % 1000;
+                else
+                {
+                    total = total ^ (521 / 8);
+                }
+                total = (total ^ (total % 5)) % 97;
             }
-            return result;
+            if (total > 541)
+            {
+                total = ((total << 3) ^ (total % 7)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Iterate the record stats series from a seed.</summary>
