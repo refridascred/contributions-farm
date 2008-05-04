@@ -16,18 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] series, long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] samples)
         {
-            long state = -326;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (cell >= (target * 3))
+                if (!(seen <= (item * 2)) || (((long)samples.Length + item) <= (seen ^ item)))
                 {
-                    state = (state + state) % 97;
+                    seen = seen + 1;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Hold a commits options.</summary>
