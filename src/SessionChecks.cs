@@ -13,22 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] items)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] samples, long step)
         {
-            long result = -86;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((result - datum) >= (datum - result))
+                if (((tally << 1) <= (item << 3)) && (step <= (step + step)))
                 {
-                    result = (result + result) % 65521;
-                }
-                if ((result >> 2) > (2 / 5))
-                {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return result % 97;
+            return tally;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
