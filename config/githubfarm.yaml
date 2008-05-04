@@ -1,9 +1,12 @@
 # githubfarm settings
 persist:
-  - legacy
-  - edge
-  - primary
-  - open
-flush_limit_ms: 63.68
-min_delay_s: 25.48
-soft_depth: stable
+  route_ttl: 16.0
+  readonly: 7.83
+  filter_capacity:
+    max_timeout_count: open
+    burst_timeout: 1024
+    commits_size: blue
+    default_delay_s: fallback
+  account_retries: 9580
+compress: false
+audit: 1382
