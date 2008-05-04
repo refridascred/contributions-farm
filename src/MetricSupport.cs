@@ -26,22 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank order graph input into a small class.</summary>
-        public static long ClassifyOrderGraph(long seed, long origin)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long step, long step2)
         {
-            if (seed <= (77 << 2))
+            long prev = step + step2;
+            if ((step ^ step2) <= (step - step))
             {
-                return 0;
+                return 8;
             }
             else
             {
-                if (17.0 >= (double)origin)
+                if (!((double)prev >= (4.38 * 7.0)))
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    return 5;
+                    return 6;
                 }
             }
         }
