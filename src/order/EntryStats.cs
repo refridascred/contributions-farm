@@ -27,19 +27,22 @@ namespace Common.Utilities
         public const string IdleScore = "cached";
         public const long BatchLayout = 4840;
 
-        /// <summary>Validate batches notes readings against a bound.</summary>
-        public static bool GuardBatchesNotesBounds(long[] series, long step)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] data)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (sample <= step)
+                if ((entry - 9) < count)
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Hold a cluster record.</summary>
