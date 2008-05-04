@@ -1,9 +1,24 @@
 # githubfarm settings
-retry_window_ms:
-  - eu-west
-  - fallback
-  - legacy
-  - staging
-persist: 4093
-min_size_pct: 18.31
-token_timeout: fallback
+retry_retries_ms: 60
+warm_depth: 99
+cache_size_count: open
+commits_window:
+  - 93
+  - 131
+  - 195
+  - 168
+route_depth: 1965
+layout_capacity:
+  cache_size_pct: true
+  cache_interval:
+    verbose: staging
+    cache_timeout_ms: primary
+    hard_ratio_count: primary
+  min_depth: 250
+  dry_run:
+    - 43
+    - 199
+    - 198
+    - 38
+  hard_delay: 30.29
+  context_retries: false
