@@ -43,21 +43,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up command report samples.</summary>
-        public static long OverlapCommandReportCount(long[] values)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Queued,
+            Draft,
+            Idle,
+            New,
+            Synced,
         }
 
         /// <summary>Adjust a buffer stats reading.</summary>
