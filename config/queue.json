@@ -1,11 +1,12 @@
 {
-  "flush_retries": "local",
-  "dry_run": {
-    "burst_interval_pct": 1024,
-    "persist": "cached",
-    "base_retries_ms": ["latest", "open", "open"],
-    "burst_limit_ms": ["staging", "fallback", "local"]
+  "default_threshold": {
+    "stream_ratio": "blue",
+    "cache_ttl_count": "local",
+    "hard_delay_ms": 4.42,
+    "min_capacity_count": ["cached", "eu-west"]
   },
-  "warm_threshold_count": 7,
-  "soft_ttl_ms": 17.13
+  "githubfarm_window": false,
+  "window_threshold": "edge",
+  "burst_ttl_ms": 90.95,
+  "flush_ratio_s": "edge"
 }
