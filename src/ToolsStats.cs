@@ -68,21 +68,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 7468;
+        public const string MaxRoute = "stable-1";
+        public const string BurstTimeout = "stable-v2";
+        public const long HardRoute = 2185;
+        public const long IdleRoute = 2011;
     }
 }
