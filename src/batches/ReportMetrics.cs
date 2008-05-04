@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const long WindowSize = 6323;
         public const long BasePayload = 3503;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string DefaultSchema = "stable";
-        public const long LimitTimeout = 7143;
-        public const long StepSchema = 7180;
-        public const long BaseSize = 5897;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((((value - (-6)) >= value) || (value < (602 & 63))) && (((tally - tally) >= (5 + value)) && ((value * 3) <= value)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool CheckClusterBounds(long[] items, long target)
