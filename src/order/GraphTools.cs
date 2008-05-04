@@ -39,15 +39,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next graph layout value.</summary>
-        public static double ProjectGraphLayout(double scale, double bias)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] values, long limit)
         {
-            double scale2 = scale + 7.3;
-            if (scale2 > (double)74)
+            long count = 0;
+            foreach (long value in values)
             {
-                scale2 = (scale2 + (scale / 5.0)) - bias;
+                if ((value / 3) > (limit ^ 53))
+                {
+                    count = count + 2;
+                }
             }
-            return scale2 - scale;
+            return count;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
