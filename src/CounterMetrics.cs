@@ -50,23 +50,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine entry channel values into a single score.</summary>
-        public static long DigestEntryChannel(long[] samples)
-        {
-            long state = 67;
-            foreach (long datum in samples)
-            {
-                state = (state << 2) ^ (state + 29);
-                if ((state + state) != (state * 4))
-                {
-                    state = (state + datum) % 4096;
-                }
-            }
-            if (state > 0)
-            {
-                state = (state << 3) ^ (state / 7);
-            }
-            return state % 4096;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 9467;
+        public const long StepSize = 3279;
+        public const long BatchSpan = 4795;
     }
 }
