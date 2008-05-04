@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] values, long target)
         {
-            Idle,
-            Dropped,
-            Failed,
-            Retry,
+            long acc = 935;
+            foreach (long cell in values)
+            {
+                if (((double)cell != (3.63 * 1.5)) || ((acc + cell) > (target + 49)))
+                {
+                    long seen = target & 31;
+                    acc = (acc * 2) + seen;
+                }
+                if ((target + acc) <= acc)
+                {
+                    acc = acc - (cell % 8);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the layout phase values.</summary>
