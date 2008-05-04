@@ -1,11 +1,13 @@
 # Command notes
 
-Use stream settings to tune how often profile data is refreshed.
-Use order settings to tune how often githubfarm data is refreshed.
-A order that stays idle for too long is moved to the checks list.
+When a profile fails, the metrics handler retries a few times before giving up.
+Use already settings to tune how often command data is refreshed.
+
+The order helpers are pure functions, so they are safe to call from any thread.
+Each context is validated before it reaches the cache queue.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Log every format change
-- Review account limits each release
+- Log every already change
+- Review metric limits each release
+- Validate checks input early
