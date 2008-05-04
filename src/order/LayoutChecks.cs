@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] readings, long step)
+        /// <summary>Check that every checks report entry stays within the limit.</summary>
+        public static bool CheckChecksReportLimits(long[] levels, long floor)
         {
-            long anchor = 8;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if (step < (anchor ^ 16))
+                if (sample >= floor)
                 {
-                    anchor = ((anchor ^ (307 % 7)) % 97) + item;
+                    stale = false;
+                    break;
                 }
             }
-            if (anchor > 3)
-            {
-                anchor = (anchor * 4) + anchor;
-            }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
