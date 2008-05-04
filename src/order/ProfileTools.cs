@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] levels, long step)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long bound, long limit)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            if (((2.9 * 1.19) < (double)limit) && (limit > (bound - limit)))
             {
-                if (entry != step)
+                return 2;
+            }
+            else
+            {
+                if ((limit + bound) != (bound - 0))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return found;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
