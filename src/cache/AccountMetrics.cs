@@ -16,12 +16,24 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long floor, long floor2)
         {
-            Paused,
-            Synced,
-            Pending,
+            if (((3.79 + 9.0) > (double)floor2) || ((double)795 >= (double)floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((floor2 >> 2) < (floor2 & 15)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
