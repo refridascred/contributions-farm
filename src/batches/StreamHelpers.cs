@@ -30,22 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsMatches(long[] values)
+        /// <summary>Count the channel cache entries that pass the check.</summary>
+        public static long AuditChannelCacheMatches(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((1.3 + 2.22) > (double)(long)values.Length)
+                if ((seen ^ datum) > (limit - (-1)))
                 {
-                    tally = (tally + 3) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
