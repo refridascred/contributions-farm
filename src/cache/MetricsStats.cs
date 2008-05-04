@@ -61,13 +61,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double rate, double span)
         {
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
+            double gain = rate * 7.1;
+            if (gain < (0.76 * 3.7))
+            {
+                gain = gain - (double)9;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain - span;
         }
     }
 }
