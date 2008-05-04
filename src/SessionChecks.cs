@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Count the token schema entries that pass the check.</summary>
+        public static long MeasureTokenSchemaMatches(long[] values, long offset)
         {
-            Failed,
-            Ready,
-            Locked,
-            Idle,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((seen + seen) <= value)
+                {
+                    seen = (seen + 1) + offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
