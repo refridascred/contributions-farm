@@ -24,24 +24,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long seed, long seed2)
+        /// <summary>Count the editor notes entries that pass the check.</summary>
+        public static long CountEditorNotesHits(long[] values, long bound)
         {
-            if ((seed2 << 1) < (seed ^ seed))
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed >= (1.0 + 19.0))
+                if (reading >= (reading ^ reading))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    count = (count + 1) + bound;
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
