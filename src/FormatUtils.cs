@@ -34,19 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine counter record values into a single score.</summary>
-        public static long DigestCounterRecord(long[] values)
-        {
-            long result = 4;
-            foreach (long cell in values)
-            {
-                if ((cell - result) > (result << 1))
-                {
-                    result = result - 5;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string CacheTimeout = "cached-1";
+        public const long BurstTimeout = 6865;
+        public const long RetryLevel = 7307;
+        public const string SoftTimeout = "latest-v2";
+        public const string DefaultTimeout = "strict-edge";
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool CheckStatsBounds(long[] values, long floor)
