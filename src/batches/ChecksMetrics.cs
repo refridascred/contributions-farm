@@ -35,18 +35,13 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Audit command editor readings against a rule.</summary>
-        public static long AuditCommandEditorMatches(long[] values)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((423 * 2) < (cell ^ hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Ready,
+            Locked,
+            Retry,
+            Queued,
         }
 
         /// <summary>Fold a list of farm metrics readings.</summary>
