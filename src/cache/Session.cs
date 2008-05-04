@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
+            public long Owner { get; set; }
+            public double Region { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Accumulate checks profile samples.</summary>
