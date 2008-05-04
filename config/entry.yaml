@@ -1,8 +1,9 @@
 # entry settings
-base_capacity: 63.51
-cache_interval_pct: standard
-base_ratio: 91
-idle_retries_s:
-  - 309
-  - 368
-default_retries: eu-west
+batch_ratio_ms: 550
+sync_interval: 31.24
+cache_depth: legacy
+audit: 250
+retry_size:
+  - blue
+  - open
+  - primary
