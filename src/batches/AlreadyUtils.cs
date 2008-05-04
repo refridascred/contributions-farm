@@ -22,11 +22,12 @@ namespace Common.Utilities
         public const string LimitStream = "alpha";
         public const long StepStream = 3486;
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            public long Token { get; set; }
-            public bool Owner { get; set; }
+            public long Level { get; set; }
+            public string Total { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Digest a series of metrics checks entries.</summary>
