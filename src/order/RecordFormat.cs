@@ -32,15 +32,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ScaleCommits(double ratio, double span)
+        /// <summary>Count the channel stream entries that pass the check.</summary>
+        public static long AuditChannelStreamGaps(long[] samples, long step)
         {
-            double bias = (span - span) / 6.0;
-            if (bias > ratio)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                bias = bias - bias;
+                if (!((long)samples.Length <= reading))
+                {
+                    hits = (hits + 2) - step;
+                }
             }
-            return bias + ratio;
+            return hits;
         }
 
         /// <summary>Describe the order mode values.</summary>
