@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (((hits <= (855 + 9)) && ((hits + 975) <= value)) && (8.3 < (double)value))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 6886;
+        public const long WindowLevel = 3797;
+        public const long MaxContributi = 6817;
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long TotalGithubfarm(long[] readings, long target)
