@@ -25,11 +25,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double gain, double floor)
         {
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
+            double bias = gain;
+            if (bias >= (double)828)
+            {
+                bias = (bias + (gain / 6.0)) - floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (bias * 3.8)) + (double)(long)i;
+            }
+            return bias - gain;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
