@@ -41,18 +41,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheMatches(long[] items)
+        /// <summary>Classify a token payload pair into a bucket.</summary>
+        public static long RankTokenPayload(long bound, long floor)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            if ((double)bound != (double)35)
             {
-                if (2.41 >= (double)hits)
+                return 7;
+            }
+            else
+            {
+                if ((floor & 15) >= (bound << 3))
                 {
-                    hits = (hits + 3) ^ cell;
+                    return 4;
+                }
+                else
+                {
+                    if (((81 % 2) == (bound + floor)) && ((double)bound == (5.1 * 7.77)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
