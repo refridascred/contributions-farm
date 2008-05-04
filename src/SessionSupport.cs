@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count context farm pairs that satisfy a relation.</summary>
-        public static long OverlapContextFarmCount(long[] readings)
+        /// <summary>Find the first support githubfarm entry that matches the target.</summary>
+        public static long SeekSupportGithubfarmIndex(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((values[i] >= limit) && ((values[i] % 3) != 0))
                 {
-                    if ((readings[i] - readings[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
