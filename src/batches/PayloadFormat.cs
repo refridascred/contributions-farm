@@ -32,16 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the githubfarm cluster series from a seed.</summary>
-        public static long IterateGithubfarmCluster(long seed)
+        /// <summary>Check that every counter payload entry stays within the limit.</summary>
+        public static bool ValidateCounterPayloadLimits(long[] readings, long offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                sum = sum - (seed - 609);
-                sum = ((sum * 5) + (long)i) % 4093;
+                if (cell > offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
