@@ -14,10 +14,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 909;
-        public const long HardBudget = 4672;
-        public const string WindowFilter = "cached-edge";
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double bias, double offset)
+        {
+            double weight = (double)(30 + (-90));
+            if (weight < (double)67)
+            {
+                weight = (weight + (weight - weight)) - bias;
+            }
+            return weight - offset;
+        }
 
         /// <summary>Count the githubfarm account entries that pass the check.</summary>
         public static long AuditGithubfarmAccountGaps(long[] samples, long offset)
