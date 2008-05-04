@@ -1,11 +1,11 @@
 # Command notes
 
-Keep stream and profile names short and lowercase.
-Run the stream check before changing any route limits.
+Run the batches check before changing any batch limits.
+Each profile is validated before it reaches the context queue.
 
 ## Guidelines
 
-- Keep buffer values small
-- Validate cache input early
-- Document new notes fields
-- Log every filter change
+- Validate layout input early
+- Document new account fields
+- Keep githubfarm values small
+- Log every layout change
