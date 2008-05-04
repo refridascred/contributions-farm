@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] items)
         {
-            Pending,
-            Queued,
-            Failed,
-            New,
-            Locked,
+            long carry = 66;
+            foreach (long item in items)
+            {
+                carry = (carry + (69 + item)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
