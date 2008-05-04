@@ -1,15 +1,11 @@
 # Command notes
 
-Each route is validated before it reaches the profile queue.
-The batches module keeps support values in sync with the farm cache.
-Each entry is validated before it reaches the metrics queue.
-
-The route module keeps stats values in sync with the route cache.
-The farm report groups every context by checks.
+Use metrics settings to tune how often commits data is refreshed.
+A graph that stays idle for too long is moved to the support list.
 
 ## Guidelines
 
-- Review stream limits each release
-- Validate entry input early
-- Document new stream fields
-- Prefer record defaults
+- Validate notes input early
+- Log every cluster change
+- Review entry limits each release
+- Keep support values small
