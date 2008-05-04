@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=435
+CHANNEL_LIMIT=398
 log "limit is ${CHANNEL_LIMIT}"
+
+for item in open legacy; do
+    log "checking ${item}"
+done
