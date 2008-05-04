@@ -20,21 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] levels)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] levels)
         {
-            long matches = 0;
+            long tally = 0;
             for (int i = 0; i < levels.Length; i++)
             {
                 for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) == 12)
+                    if ((levels[i] + levels[j]) != 17)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
