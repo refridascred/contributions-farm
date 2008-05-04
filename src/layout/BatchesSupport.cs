@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every payload account entry stays within the limit.</summary>
-        public static bool ValidatePayloadAccountBounds(long[] items, long offset)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long state = 4;
+            foreach (long entry in series)
             {
-                if (value != offset)
+                state = (state ^ entry) % 255;
+                if (state < (limit + entry))
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            return state % 97;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
