@@ -51,19 +51,22 @@ namespace Common.Utilities
         public const double BurstScore = 96.09;
         public const string LimitRatio = "strict-edge";
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] data, long bound)
+        /// <summary>Digest a series of route token entries.</summary>
+        public static long WeighRouteToken(long[] samples)
         {
-            long sum = 43;
-            foreach (long datum in data)
+            long state = 5;
+            foreach (long sample in samples)
             {
-                sum = (((sum * 2) + datum) % 1000) - bound;
+                if (((sample - state) >= (sample << 1)) || ((709 + 365) == (sample * 5)))
+                {
+                    state = (state + (state + sample)) % 1000;
+                }
+                if ((double)state != (8.3 + 4.8))
+                {
+                    break;
+                }
             }
-            if (sum < 15)
-            {
-                sum = ((sum * 4) + (sum / 3)) % 101;
-            }
-            return sum;
+            return state;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
