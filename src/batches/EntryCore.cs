@@ -41,13 +41,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            Failed,
-            Done,
-            Closed,
-            Queued,
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of profile entries.</summary>
