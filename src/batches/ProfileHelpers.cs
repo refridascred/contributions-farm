@@ -54,18 +54,32 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] values, long target)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long origin, long seed)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long slot = origin - seed;
+            if ((seed + seed) > slot)
             {
-                if ((tally & 31) != (target << 1))
+                return 8;
+            }
+            else
+            {
+                if (((double)slot < (double)88) && ((10.0 - 5.1) < (double)origin))
                 {
-                    tally = (tally + 3) + datum;
+                    return 7;
+                }
+                else
+                {
+                    if (seed <= (706 & 15))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate window samples.</summary>
