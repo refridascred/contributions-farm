@@ -13,21 +13,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of record stats readings.</summary>
-        public static long MatchRecordStatsCount(long[] data)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (1.25 > (double)anchor)
                 {
-                    if ((data[i] + data[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor + (anchor - 80)) % 255;
                 }
+                anchor = anchor ^ (119 - anchor);
+                if (anchor < origin)
+                {
+                    anchor = (anchor * 5) + anchor;
+                    break;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
