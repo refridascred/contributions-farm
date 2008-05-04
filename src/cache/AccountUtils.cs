@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] series, long floor)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double rate, double span)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            double scale = rate / 5.0;
+            if (scale > (9.98 / 5.0))
             {
-                if (reading >= (reading + matches))
-                {
-                    matches = (matches + 1) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = scale - (scale - rate);
             }
-            return matches;
+            else
+            {
+                scale = scale + (double)28;
+            }
+            return scale + (span - span);
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
