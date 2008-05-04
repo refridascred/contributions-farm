@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] readings, long bound)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] data, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 5;
+            foreach (long entry in data)
             {
-                if ((readings[i] == bound) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total - (entry * 5)) % 97) - origin;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a profile options.</summary>
