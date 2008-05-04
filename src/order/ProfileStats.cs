@@ -12,12 +12,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseCount = 97.77;
-        public const long RetryInterval = 2259;
-        public const long HardCount = 6370;
-        public const long BaseOrder = 7662;
-        public const long IdleCount = 8049;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] data)
+        {
+            long mix = 831;
+            foreach (long datum in data)
+            {
+                mix = (mix ^ (mix % 24)) - datum;
+                mix = mix ^ (mix % 100);
+                if ((double)mix <= 1.6)
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long StepOrder = 2988;
