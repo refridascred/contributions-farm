@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const double RetryWidth = 59.01;
         public const long WindowTimeout = 2975;
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            Locked,
-            Retry,
-            Active,
-            Stale,
+            public string Region { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
