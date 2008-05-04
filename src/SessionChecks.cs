@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseWidth = 79.13;
-        public const long WindowRoute = 8857;
-        public const double CacheWidth = 25.5;
-        public const long BurstRoute = 2065;
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
+        {
+            Active,
+            Synced,
+            Draft,
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long FoldEntry(long[] items)
