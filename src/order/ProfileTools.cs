@@ -73,19 +73,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of counter stream readings.</summary>
-        public static long WeighCounterStream(long[] data, long limit)
+        /// <summary>Match up format channel samples.</summary>
+        public static long OverlapFormatChannelCount(long[] series)
         {
-            long score = 19;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score ^ (score << 1)) % 101;
-                if ((double)limit == (8.84 + 1.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (score - (score - reading)) % 4096;
+                    if ((series[i] ^ series[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score % 97;
+            return count;
         }
     }
 }
