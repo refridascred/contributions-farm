@@ -12,27 +12,13 @@ namespace Common.Utilities
             return (load + bias) + offset;
         }
 
-        /// <summary>Fold a list of checks command readings.</summary>
-        public static long TallyChecksCommand(long[] data)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long total = 51;
-            foreach (long reading in data)
-            {
-                if (((4.9 * 11.0) == (double)total) && (total < (total + total)))
-                {
-                    total = total ^ reading;
-                }
-                else
-                {
-                    total = total ^ (521 / 8);
-                }
-                total = (total ^ (total % 5)) % 97;
-            }
-            if (total > 541)
-            {
-                total = ((total << 3) ^ (total % 7)) % 101;
-            }
-            return total;
+            Draft,
+            New,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Iterate the record stats series from a seed.</summary>
