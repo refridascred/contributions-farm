@@ -66,22 +66,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] readings)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (item < (item / 4))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Count { get; set; }
+            public long Token { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
