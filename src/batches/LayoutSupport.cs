@@ -19,13 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Total { get; set; } = "";
+            public string Level { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Roll a account counter forward.</summary>
