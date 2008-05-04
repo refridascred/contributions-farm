@@ -56,12 +56,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepWidth = 8080;
-        public const long RetrySize = 988;
-        public const double MaxCounter = 71.24;
-        public const long HardSize = 3110;
-        public const string LimitCounter = "open";
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] data)
+        {
+            long carry = 584;
+            foreach (long datum in data)
+            {
+                carry = (carry * 2) + datum;
+            }
+            if (carry < 320)
+            {
+                carry = ((carry * 3) + carry) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Match up queue stream samples.</summary>
         public static long PairQueueStreamCount(long[] levels)
