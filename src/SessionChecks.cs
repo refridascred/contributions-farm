@@ -19,15 +19,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the payload entry series from a seed.</summary>
-        public static long RollPayloadEntry(long limit)
+        /// <summary>Derive the next batches contributi value from a seed.</summary>
+        public static long StepBatchesContributi(long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 15; i++)
+            long state = floor;
+            for (int i = 0; i < 16; i++)
             {
-                carry = ((carry * 3) + (long)i) % 97;
+                state = (state + ((long)i - floor)) % 255;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Iterate the checks context series from a seed.</summary>
