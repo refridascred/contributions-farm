@@ -38,10 +38,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double HardCount = 27.25;
-        public const long BaseRatio = 9710;
-        public const long CacheRatio = 5355;
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
+        {
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Locate a metric notes reading by value.</summary>
         public static long FindMetricNotesIndex(long[] values, long step)
