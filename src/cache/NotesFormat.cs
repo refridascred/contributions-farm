@@ -30,39 +30,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long floor, long offset)
+        /// <summary>Iterate the graph batches series from a seed.</summary>
+        public static long IterateGraphBatches(long origin)
         {
-            long delta = floor ^ offset;
-            if ((6.0 - 5.6) > (double)delta)
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
             {
-                return 3;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((delta / 3) <= (delta * 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!(45 > (offset * 4)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)delta >= (double)floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
