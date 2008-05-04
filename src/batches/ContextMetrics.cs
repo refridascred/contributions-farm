@@ -30,13 +30,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Rank order route input into a small class.</summary>
+        public static long SortOrderRoute(long bound, long floor)
         {
-            public double Owner { get; set; }
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
+            if ((6 & 3) < (floor + floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((floor % 7) >= (floor + 4)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((12.0 - 4.0) >= (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
