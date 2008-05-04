@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate entry record samples.</summary>
-        public static long WeighEntryRecord(long[] values, long step)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long target)
         {
-            long mark = 798;
-            foreach (long cell in values)
+            long carry = target;
+            for (int i = 0; i < 4; i++)
             {
-                mark = (((mark << 2) ^ (cell - mark)) % 97) - step;
+                carry = carry + (carry - target);
+                carry = (carry + (carry + target)) % 101;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            if (mark < 928)
-            {
-                mark = mark - (mark * 4);
-            }
-            return mark % 97;
+            return carry;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
