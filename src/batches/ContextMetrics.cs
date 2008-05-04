@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricGaps(long[] levels, long step)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long score = 140;
+            foreach (long reading in items)
             {
-                if ((3.0 - 1.54) == (double)step)
+                score = score ^ (0 - reading);
+                if ((2.1 >= (double)score) || ((double)bound <= (5.94 / 8.0)))
                 {
-                    count = (count + 2) - cell;
+                    score = (score + (bound & 3)) % 97;
+                }
+                else
+                {
+                    score = (score - (reading / 8)) % 255;
+                }
+                if ((bound > 2) || ((bound & 255) == (35 * 2)))
+                {
+                    break;
                 }
             }
-            return count;
+            if (score < (-942))
+            {
+                score = (score ^ (score ^ score)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Hold a route header.</summary>
