@@ -20,15 +20,18 @@ namespace Common.Utilities
             return weight + (double)8;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long seed)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] readings)
         {
-            long score = seed;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                score = ((score * 5) + (long)i) % 1000;
+                if ((entry & 127) >= (14 + entry))
+                {
+                    matches = matches + 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Compare every pair of checks context readings.</summary>
