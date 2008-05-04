@@ -22,17 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long seed)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesMatches(long[] samples, long target)
         {
-            long sum = seed;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                sum = sum ^ 127;
-                sum = ((sum << 2) ^ (long)i) % 255;
-                sum = ((sum * 4) + (long)i) % 4093;
+                if (!((reading * 2) <= tally))
+                {
+                    tally = (tally + 2) + target;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Blend two stream measurements.</summary>
