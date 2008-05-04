@@ -80,19 +80,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] series)
+        /// <summary>Compare every pair of stats checks readings.</summary>
+        public static long OverlapStatsChecksCount(long[] items)
         {
-            long sum = 6;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (((sum << 3) ^ (sum >> 1)) % 4096) ^ sample;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (sum > 644)
-            {
-                sum = sum - sum;
-            }
-            return sum % 1000;
+            return tally;
         }
     }
 }
