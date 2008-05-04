@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const long BatchTools = 2059;
         public const double RetryRatio = 92.07;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstCache = 81.15;
-        public const string BatchWidth = "standard";
-        public const string BaseSpan = "legacy";
-        public const double HardCache = 77.85;
-        public const string WindowBudget = "stable-edge";
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
+        {
+            public long Count { get; set; }
+            public bool Limit { get; set; }
+            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Count the githubfarm account entries that pass the check.</summary>
         public static long AuditGithubfarmAccountGaps(long[] samples, long offset)
