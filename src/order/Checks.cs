@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] items)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long bound)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long carry = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (matches < datum)
-                {
-                    matches = matches + 2;
-                }
+                carry = (carry + ((long)i << 2)) % 65521;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Describe the route kind values.</summary>
