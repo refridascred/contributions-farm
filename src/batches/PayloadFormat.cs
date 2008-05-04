@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] levels)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long step, long step2)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long offset = step + step2;
+            if ((26 + offset) < 8)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((7.0 * 7.37) == (double)offset) && (offset >= (step ^ step)))
                 {
-                    if ((levels[i] ^ levels[j]) < 20)
+                    return 6;
+                }
+                else
+                {
+                    if ((7.0 - 11.0) != (double)step2)
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)step2 < (6.3 * 12.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
