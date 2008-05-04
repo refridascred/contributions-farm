@@ -26,17 +26,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] readings, long limit)
+        /// <summary>Project the next cluster schema value.</summary>
+        public static double ProjectClusterSchema(double weight, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = (double)((-57) ^ 309);
+            for (int i = 0; i < 8; i++)
             {
-                if (readings[i] < limit)
-                {
-                    return (long)i;
-                }
+                mean = ((mean - (floor + floor)) + (double)(long)i) - weight;
             }
-            return -1;
+            return mean - mean;
         }
     }
 }
