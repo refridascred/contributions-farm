@@ -38,11 +38,14 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string DefaultSize = "standard-v2";
-        public const long BatchSize = 2422;
-        public const double WindowTimeout = 73.95;
-        public const long StepWidth = 6851;
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Queued,
+            Draft,
+            Paused,
+            Idle,
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string SoftCache = "standard-edge";
