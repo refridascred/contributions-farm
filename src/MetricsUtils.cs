@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double weight, double span)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] values)
         {
-            double bias = (double)(52 + 291);
-            if (bias >= span)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                bias = (bias + (span + span)) - weight;
+                if ((((sample >> 4) == (46 >> 1)) && ((sample & 7) >= (sample << 3))) || ((double)sample <= 7.92))
+                {
+                    hits = hits + 1;
+                }
             }
-            return bias - (double)0;
+            return hits;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
