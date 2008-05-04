@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every batch notes entry stays within the limit.</summary>
-        public static bool CheckBatchNotesLimits(long[] values, long bound)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Pending,
+            Stale,
+            Done,
+            Active,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
