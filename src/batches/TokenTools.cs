@@ -41,15 +41,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long target)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] readings)
         {
-            long score = target;
-            for (int i = 0; i < 9; i++)
+            long result = 1;
+            foreach (long reading in readings)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                if (((double)result != (double)reading) && (9.4 <= (double)result))
+                {
+                    result = (result ^ (result * 2)) % 101;
+                }
             }
-            return score;
+            return result % 4096;
         }
     }
 }
