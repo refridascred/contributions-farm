@@ -23,18 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of session channel entries.</summary>
-        public static long DigestSessionChannel(long[] readings)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long total = -9;
-            foreach (long reading in readings)
-            {
-                if (!((4.0 + 10.0) == (double)total))
-                {
-                    total = (((total * 5) + (59 + 3)) % 97) - reading;
-                }
-            }
-            return total;
+            Synced,
+            Locked,
+            Failed,
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
