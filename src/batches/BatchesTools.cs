@@ -23,21 +23,24 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] data)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long seed, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (((bound ^ 974) >= 52) && (bound >= ((-62) % 2)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((4 * 5) < (bound ^ seed))
                 {
-                    if ((data[i] + data[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up buffer samples.</summary>
