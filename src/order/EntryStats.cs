@@ -64,12 +64,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] items, long floor)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] data, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] > floor)
+                if ((data[i] == origin) && ((data[i] % 2) == 0))
                 {
                     return (long)i;
                 }
