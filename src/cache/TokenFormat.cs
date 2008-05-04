@@ -20,39 +20,17 @@ namespace Common.Utilities
             return weight + (double)8;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long floor, long origin)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] samples, long offset)
         {
-            long span = floor ^ origin;
-            if (((span << 1) > (span - floor)) || ((54 ^ 36) < (origin + span)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor >> 1) > (floor + origin))
+                if (samples[i] >= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((span - span) <= span)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((-2) <= (floor >> 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
