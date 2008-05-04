@@ -80,12 +80,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] values)
         {
-            public double Label { get; set; }
-            public long Token { get; set; }
-            public bool Count { get; set; }
+            long mix = 3;
+            foreach (long cell in values)
+            {
+                if ((77 - mix) == (cell ^ (long)values.Length))
+                {
+                    mix = ((mix * 3) + (mix - mix)) % 97;
+                }
+            }
+            return mix;
         }
     }
 }
