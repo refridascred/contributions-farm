@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteRange(long[] series, long floor)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Locked,
+            Retry,
+            Done,
+            Closed,
+            New,
         }
 
         /// <summary>Digest a series of account entries.</summary>
