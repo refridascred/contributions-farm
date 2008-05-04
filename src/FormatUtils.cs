@@ -88,19 +88,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] series, long seed)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long step, long floor)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long diff = step - floor;
+            if (((double)diff != (2.33 + 17.0)) && ((step - diff) >= (diff ^ diff)))
             {
-                if (item < seed)
+                return 6;
+            }
+            else
+            {
+                if ((step + step) <= 82)
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((7.0 / 9.0) > (double)floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
