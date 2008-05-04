@@ -74,18 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderMatches(long[] readings, long limit)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if (cell > (matches << 1))
+                if (value < step)
                 {
-                    matches = (matches + 1) - limit;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
