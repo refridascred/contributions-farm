@@ -72,24 +72,9 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((3.2 + 1.26) > (double)sum)
-                {
-                    sum = ((sum * 4) + (sum * 3)) % 65521;
-                }
-                else
-                {
-                    sum = (sum - ((long)i + sum)) % 65521;
-                }
-                sum = sum - ((long)i % 100);
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCount = 6241;
+        public const double DefaultCache = 3.89;
+        public const long HardCache = 8810;
     }
 }
