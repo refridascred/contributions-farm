@@ -56,13 +56,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] values)
         {
-            public long Stamp { get; set; }
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-            public bool Offset { get; set; }
+            long carry = 197;
+            foreach (long item in values)
+            {
+                carry = (carry << 2) ^ (81 << 2);
+                if (item >= (carry ^ item))
+                {
+                    carry = ((carry * 5) + (item >> 2)) % 97;
+                }
+                else
+                {
+                    carry = carry + carry;
+                    carry = (carry * 3) + 6;
+                }
+                carry = (carry * 5) + item;
+            }
+            if (carry < 10)
+            {
+                carry = (carry << 2) ^ (carry - carry);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Match up queue stream samples.</summary>
