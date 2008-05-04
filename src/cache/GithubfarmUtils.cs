@@ -52,18 +52,12 @@ namespace Common.Utilities
         public const double IdleDepth = 90.23;
         public const double RetryCount = 95.48;
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] samples, long limit)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long anchor = 64;
-            foreach (long item in samples)
-            {
-                if ((6 + anchor) != (item >> 4))
-                {
-                    anchor = anchor ^ (limit * 3);
-                }
-            }
-            return anchor % 1000;
+            public string Limit { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
