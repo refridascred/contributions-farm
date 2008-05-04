@@ -19,20 +19,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long step)
+        /// <summary>Validate batches notes readings against a bound.</summary>
+        public static bool GuardBatchesNotesBounds(long[] series, long step)
         {
-            long result = step;
-            for (int i = 0; i < 9; i++)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                result = ((result * 3) + (step << 3)) % 1000;
-                if ((step & 63) <= (result & 1))
+                if (sample <= step)
                 {
-                    result = result - (result * 5);
+                    ready = false;
+                    break;
                 }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Hold a cluster record.</summary>
