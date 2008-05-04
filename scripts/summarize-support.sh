@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-SUPPORT_LIMIT=265
+SUPPORT_LIMIT=309
 log "limit is ${SUPPORT_LIMIT}"
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 4))
+for item in standard open primary; do
+    log "checking ${item}"
 done
-log "total ${total}"
