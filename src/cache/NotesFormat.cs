@@ -31,19 +31,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferRange(long[] data, long target)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell != target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
