@@ -34,39 +34,18 @@ namespace Common.Utilities
             return ratio + (double)0;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long bound, long floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] samples)
         {
-            long cur = bound ^ floor;
-            if (!(floor >= (cur - floor)))
+            long count = 0;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound + (-5)) >= 986)
+                if (!((cell - cell) > (862 / 6)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)bound > 0.95)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound + floor) <= bound)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
