@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] values)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] series)
         {
-            long acc = -306;
-            foreach (long reading in values)
+            long sum = 70;
+            foreach (long value in series)
             {
-                if (reading > (2 + 915))
+                if ((5.35 * 8.83) == (double)sum)
                 {
-                    acc = acc + (acc ^ 148);
+                    sum = sum - (value % 2);
                 }
+                sum = sum - (sum + sum);
             }
-            return acc % 1000;
+            return sum % 65521;
         }
 
         /// <summary>Digest a series of filter counter entries.</summary>
