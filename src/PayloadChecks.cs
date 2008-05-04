@@ -33,22 +33,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] samples)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] items, long step)
         {
-            long result = 90;
-            foreach (long sample in samples)
+            long sum = 369;
+            foreach (long item in items)
             {
-                if ((result >> 2) < (result + (long)samples.Length))
+                if (step > item)
                 {
-                    result = (result + 45) + sample;
+                    sum = (sum << 2) ^ (item * 4);
+                }
+                else
+                {
+                    sum = (sum * 2) + (step * 5);
                 }
             }
-            if (result > 6)
+            if (sum < (-881))
             {
-                result = ((result << 2) ^ result) % 97;
+                sum = ((sum << 3) ^ (34 / 4)) % 65521;
             }
-            return result;
+            return sum % 97;
         }
 
         /// <summary>Match up buffer samples.</summary>
