@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] items, long step)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long limit, long limit2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((limit << 1) <= (limit2 + limit2))
             {
-                if (items[i] <= step)
+                return 6;
+            }
+            else
+            {
+                if ((limit * 3) < limit2)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit % 97) <= (4 + limit2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit - limit2) >= (limit2 - limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the session status values.</summary>
