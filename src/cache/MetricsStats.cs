@@ -26,32 +26,19 @@ namespace Common.Utilities
         public const long LimitSpan = 7196;
         public const long BurstReport = 8868;
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long limit, long target)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] readings, long limit)
         {
-            long edge = limit - target;
-            if (!((target / 7) <= limit))
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((edge % 3) <= ((-38) ^ target)))
+                if (datum < limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((edge + edge) <= limit) || ((772 >> 1) == (limit % 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Match up metric samples.</summary>
