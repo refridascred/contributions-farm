@@ -30,22 +30,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many channel command samples are out of range.</summary>
-        public static long MeasureChannelCommandGaps(long[] samples, long target)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long step)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long state = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((2.0 - 4.1) < (double)seen)
-                {
-                    seen = ((seen + 1) + reading) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Project the next entry value.</summary>
