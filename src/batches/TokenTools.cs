@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] readings)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long result = 21;
+            foreach (long item in items)
             {
-                if (((long)readings.Length / 3) <= (tally + tally))
+                for (int i = 0; i < 11; i++)
                 {
-                    tally = (tally + 2) + reading;
+                    result = (result << 2) ^ (long)i;
                 }
+                result = (result * 4) + (item - result);
             }
-            return tally;
+            if (result < 26)
+            {
+                result = result + result;
+            }
+            return result % 65521;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
