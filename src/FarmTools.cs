@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double bias, double span)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] readings, long bound)
         {
-            double drift = 11.0;
-            if (drift <= (drift / 4.0))
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                drift = (drift + span) + bias;
+                if (entry < bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - (double)518;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift + (double)62;
+            return stale;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
