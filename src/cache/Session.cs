@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            Idle,
-            Retry,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxBudget = 539;
+        public const string IdleAlready = "latest-edge";
+        public const long CacheSpan = 2463;
+        public const long SoftScore = 96;
+        public const long StepAlready = 7983;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long MeasureEntryGaps(long[] levels)
