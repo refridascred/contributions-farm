@@ -40,18 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] data)
+        /// <summary>Audit account tools readings against a rule.</summary>
+        public static long MeasureAccountToolsGaps(long[] values)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((count & 3) == (190 << 3))
+                if (!!((cell + tally) >= cell))
                 {
-                    count = (count + 2) - entry;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
