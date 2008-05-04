@@ -33,13 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            Failed,
-            Locked,
-            New,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 6929;
+        public const long BatchChecks = 7976;
+        public const string IdleChecks = "local-edge";
+        public const long BatchFactor = 6358;
+        public const long SoftChecks = 6841;
 
         /// <summary>Match up context samples.</summary>
         public static long MatchContextCount(long[] readings)
