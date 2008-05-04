@@ -34,17 +34,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] samples, long origin)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] data, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if ((samples[i] < origin) && ((samples[i] % 2) != 0))
+                if (item <= step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
