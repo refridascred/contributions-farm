@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two cluster profile measurements.</summary>
-        public static double ScaleClusterProfile(double ratio, double bias)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            double gain = bias;
-            if (gain > bias)
-            {
-                gain = (gain - (gain - gain)) + ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - gain) - (double)(long)i;
-            }
-            return gain - (double)(-747);
+            Queued,
+            Closed,
+            Retry,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
