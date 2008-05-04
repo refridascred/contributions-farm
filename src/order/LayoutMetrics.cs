@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            public bool Token { get; set; }
-            public double Label { get; set; }
-            public bool Region { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Blend two token measurements.</summary>
