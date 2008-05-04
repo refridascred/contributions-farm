@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            Locked,
-            Dropped,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFormat = 7721;
+        public const double CacheFormat = 76.87;
+        public const string IdleFormat = "latest-1";
+        public const double BatchFormat = 51.9;
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long LocateEditorIndex(long[] series, long floor)
