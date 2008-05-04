@@ -1,21 +1,8 @@
 {
-  "githubfarm_retries": "latest",
-  "base_timeout_count": {
-    "compress": 45.49,
-    "strict": {
-      "audit": 500,
-      "verbose": 84.25,
-      "command_ratio": "edge",
-      "poll_limit": 28.31,
-      "idle_window": "green"
-    },
-    "audit": {
-      "soft_timeout_s": "edge",
-      "compress": 3.76,
-      "base_delay": false
-    }
-  },
-  "flush_size_s": 8964,
-  "strict": 68.04,
-  "max_capacity": false
+  "compress": "edge",
+  "order_threshold": false,
+  "default_delay_pct": 21,
+  "notes_threshold": 64.45,
+  "audit": "cached",
+  "counter_depth": false
 }
