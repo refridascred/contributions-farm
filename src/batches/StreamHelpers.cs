@@ -40,12 +40,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
-        {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string DefaultWindow = "fallback-v2";
+        public const long RetryWindow = 6601;
+        public const double BurstWidth = 87.39;
+        public const long MaxWindow = 4339;
 
         /// <summary>Digest a series of batch batches entries.</summary>
         public static long CombineBatchBatches(long[] samples, long seed)
