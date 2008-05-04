@@ -19,13 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long origin, long bound)
         {
-            public bool Count { get; set; }
-            public bool Size { get; set; }
-            public double Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            if (((origin + origin) >= (origin - bound)) && ((3 - bound) >= (origin + origin)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound + origin) < (origin << 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
