@@ -68,10 +68,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 722;
-        public const string MinWidth = "latest";
-        public const long SoftAccount = 6045;
+        /// <summary>Audit order channel readings against a rule.</summary>
+        public static long AuditOrderChannelMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (tally < (value / 6))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
