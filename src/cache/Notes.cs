@@ -53,26 +53,17 @@ namespace Common.Utilities
         public const long BurstAlready = 493;
         public const double IdleAlready = 23.6;
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] data, long floor)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] values, long seed)
         {
-            long result = 40;
-            foreach (long sample in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((floor - floor) <= (result << 3))
+                if (values[i] <= seed)
                 {
-                    result = (result ^ (result / 9)) ^ sample;
-                }
-                if (((5.0 / 5.0) < (double)(long)data.Length) || ((result ^ result) >= (result >> 1)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (result < 351)
-            {
-                result = result - (result ^ (-6));
-            }
-            return result;
+            return -1;
         }
     }
 }
