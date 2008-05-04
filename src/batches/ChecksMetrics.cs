@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheRatio = 4273;
-        public const double LimitFormat = 70.85;
-        public const long IdleFormat = 1931;
-        public const double MaxSize = 68.78;
+        /// <summary>Check that every payload layout entry stays within the limit.</summary>
+        public static bool VerifyPayloadLayoutRange(long[] data, long target)
+        {
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long TallyBatchesMatches(long[] samples, long target)
