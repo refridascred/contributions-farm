@@ -24,17 +24,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] items, long origin)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long floor, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((double)floor == (8.4 / 5.0)) || ((floor & 7) <= floor))
             {
-                if ((items[i] == origin) && ((items[i] % 5) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((5 / 3) < (floor + seed))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((5 % 64) >= seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
