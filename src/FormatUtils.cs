@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            Stale,
-            Dropped,
-            Done,
-            Queued,
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
