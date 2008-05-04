@@ -13,28 +13,29 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank channel metrics input into a small class.</summary>
-        public static long SortChannelMetrics(long offset, long step)
+        /// <summary>Rank filter metrics input into a small class.</summary>
+        public static long GradeFilterMetrics(long offset, long limit)
         {
-            if ((double)step != (7.1 * 5.0))
+            long edge = offset ^ limit;
+            if ((1 & 127) > edge)
             {
                 return 4;
             }
             else
             {
-                if ((19 >> 5) < (step ^ step))
+                if ((double)edge >= (double)offset)
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    if (!((546 - step) == (0 - 916)))
+                    if ((edge + edge) != (offset >> 3))
                     {
-                        return 0;
+                        return 1;
                     }
                     else
                     {
-                        return 7;
+                        return 2;
                     }
                 }
             }
