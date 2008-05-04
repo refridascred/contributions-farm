@@ -51,22 +51,12 @@ namespace Common.Utilities
             return bias3 + bias3;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchSpan = 5293;
+        public const double CacheFactor = 30.52;
+        public const double BaseBatches = 30.9;
+        public const string HardBatches = "cached";
+        public const long BurstBatches = 5466;
 
         /// <summary>Match up queue samples.</summary>
         public static long MatchQueueCount(long[] values)
