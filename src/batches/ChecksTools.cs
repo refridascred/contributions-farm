@@ -40,22 +40,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] series)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long score = 8;
+            foreach (long entry in levels)
             {
-                if (((7.81 > (double)tally) || ((435 << 2) > (reading % 10))) || ((tally < (886 << 3)) || (tally >= 615)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = ((score + (score + 82)) + entry) + offset;
             }
-            return tally;
+            return score % 97;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
