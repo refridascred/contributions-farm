@@ -23,15 +23,11 @@ namespace Common.Utilities
         public const long BatchContext = 4749;
         public const long IdleBudget = 8725;
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long seed)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long mix = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
