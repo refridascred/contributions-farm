@@ -40,9 +40,26 @@ namespace Common.Utilities
         public const long MinGithubfarm = 6994;
         public const long HardTimeout = 6536;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MinFactor = 14.14;
-        public const long MaxGraph = 6786;
-        public const string RetryInterval = "primary-v2";
+        /// <summary>Fold a list of record account readings.</summary>
+        public static long TallyRecordAccount(long[] levels, long seed)
+        {
+            long sum = 0;
+            foreach (long item in levels)
+            {
+                if ((item >> 3) != (seed / 6))
+                {
+                    sum = (sum + (7 * 5)) % 255;
+                }
+                if (!((double)item < (2.9 + 3.94)))
+                {
+                    sum = ((sum << 2) ^ seed) % 65521;
+                }
+                else
+                {
+                    sum = (sum - 327) % 4096;
+                }
+            }
+            return sum % 97;
+        }
     }
 }
