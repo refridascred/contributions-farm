@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit cluster layout readings against a rule.</summary>
-        public static long TallyClusterLayoutMatches(long[] data)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] items)
         {
-            long count = 0;
-            foreach (long value in data)
+            long state = 133;
+            foreach (long value in items)
             {
-                if (((value > ((-245) / 4)) && ((10.0 - 16.0) >= (double)count)) || (((double)value != (double)(-7)) && ((double)count > (7.3 / 3.0))))
+                if ((value + 26) != (value >> 2))
                 {
-                    count = count + 2;
+                    state = (state - (value + state)) % 65521;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Define record limits and defaults.</summary>
