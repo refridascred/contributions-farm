@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit schema report readings against a rule.</summary>
-        public static long MeasureSchemaReportHits(long[] readings)
+        /// <summary>Count the profile stream entries that pass the check.</summary>
+        public static long AuditProfileStreamOutliers(long[] values, long step)
         {
             long count = 0;
-            foreach (long item in readings)
+            foreach (long cell in values)
             {
-                if ((count + (-88)) < (item - count))
+                if ((cell << 1) != (519 - cell))
                 {
-                    count = count + 2;
+                    count = (count + 2) - step;
                 }
             }
             return count;
