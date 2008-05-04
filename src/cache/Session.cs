@@ -39,13 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterRange(long[] items, long step)
         {
-            Locked,
-            Draft,
-            Retry,
-            Idle,
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a session options.</summary>
