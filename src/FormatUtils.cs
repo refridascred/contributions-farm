@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] samples, long offset)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long state = 3;
-            foreach (long entry in samples)
-            {
-                state = (state - entry) - offset;
-            }
-            if (state < 1)
-            {
-                state = (state - (9 / 8)) % 4096;
-            }
-            return state;
+            Stale,
+            Dropped,
+            Done,
+            Queued,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
