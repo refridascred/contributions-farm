@@ -28,12 +28,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BatchFilter = 77.96;
-        public const long SoftDepth = 1732;
-        public const long BaseFactor = 7155;
-        public const long MaxFilter = 3978;
-        public const long MinSize = 5274;
+        /// <summary>Measure how many payload queue samples are out of range.</summary>
+        public static long CountPayloadQueueHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((entry >= (902 ^ matches)) || (((entry + 7) < (entry * 2)) && ((matches & 3) == (matches << 2))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
