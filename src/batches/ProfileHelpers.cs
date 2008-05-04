@@ -33,15 +33,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account schema entries.</summary>
-        public static long ScoreAccountSchema(long[] data, long target)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long target)
         {
-            long total = 4;
-            foreach (long cell in data)
+            long sum = target;
+            for (int i = 0; i < 10; i++)
             {
-                total = (total - (target - target)) + cell;
+                sum = (sum ^ sum) % 255;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return total % 4096;
+            return sum;
         }
 
         /// <summary>Define command limits and defaults.</summary>
