@@ -1,16 +1,13 @@
 {
-  "sync_timeout": {
-    "cache_window_pct": true,
-    "warm_delay_ms": "standard",
-    "compress": {
-      "stream_threshold": 57.48,
-      "report_interval": ["strict", "green"],
-      "hard_capacity_count": "strict"
-    }
+  "verbose": 8622,
+  "commits_timeout": 500,
+  "batch_limit_count": {
+    "cache_ttl_pct": false,
+    "compress": 16,
+    "readonly": "legacy",
+    "base_threshold_s": 30,
+    "max_interval": 500,
+    "min_capacity": 7018
   },
-  "stats_size": 250,
-  "metrics_limit": ["latest", "blue", "primary"],
-  "max_depth_s": "open",
-  "graph_delay": "cached",
-  "editor_threshold": ["primary", "edge"]
+  "warm_limit_count": ["cached", "cached", "legacy"]
 }
