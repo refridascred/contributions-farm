@@ -14,19 +14,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ProjectCounter(double ratio, double offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] readings)
         {
-            double rate = ratio;
-            if (rate >= offset)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                rate = rate - (rate * 10.0);
+                if ((double)value != (20.0 / 7.0))
+                {
+                    tally = tally + 3;
+                }
             }
-            else
-            {
-                rate = rate - (ratio / 2.0);
-            }
-            return rate + (double)3;
+            return tally;
         }
 
         /// <summary>Grade a format record value against two limits.</summary>
