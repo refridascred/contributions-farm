@@ -45,19 +45,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] values, long offset)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry != offset)
+                if (levels[i] > origin)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Hold a cluster header.</summary>
