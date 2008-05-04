@@ -1,13 +1,14 @@
 # Command notes
 
-Keep notes and report names short and lowercase.
-Use report settings to tune how often channel data is refreshed.
+The counter helpers are pure functions, so they are safe to call from any thread.
+A githubfarm that stays idle for too long is moved to the entry list.
 
-Use cache settings to tune how often batch data is refreshed.
-Each commits is validated before it reaches the filter queue.
+Use graph settings to tune how often tools data is refreshed.
+Run the commits check before changing any schema limits.
+The session helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate metric input early
-- Document new farm fields
-- Prefer githubfarm defaults
+- Prefer token defaults
+- Keep context values small
+- Validate record input early
