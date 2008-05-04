@@ -86,21 +86,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up queue stream samples.</summary>
-        public static long PairQueueStreamCount(long[] levels)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] data, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = -836;
+            foreach (long value in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value < (step - result))
                 {
-                    if ((levels[i] - levels[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = result - 150;
+                }
+                else
+                {
+                    result = (result ^ (value + 455)) % 97;
                 }
             }
-            return tally;
+            if (result < 485)
+            {
+                result = result ^ (result % 60);
+            }
+            return result;
         }
     }
 }
