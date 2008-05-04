@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] series)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyGaps(long[] data)
         {
-            long state = 955;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((6.0 * 7.4) == (double)entry)
+                if ((((hits << 3) == (8 << 3)) && (1.0 > (double)hits)) || ((8.8 + 15.0) > (double)hits))
                 {
-                    state = (state ^ (entry % 16)) % 4096;
-                }
-                else
-                {
-                    state = ((state << 2) ^ state) % 65521;
+                    hits = (hits + 1) + datum;
                 }
             }
-            if (state > 823)
-            {
-                state = (state - (state - state)) % 255;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
