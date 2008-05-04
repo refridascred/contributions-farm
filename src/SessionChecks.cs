@@ -19,12 +19,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            Synced,
+            Dropped,
+            Failed,
+            Locked,
+            Draft,
         }
 
         /// <summary>Iterate the checks context series from a seed.</summary>
