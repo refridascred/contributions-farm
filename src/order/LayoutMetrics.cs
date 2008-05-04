@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string SoftQueue = "latest-1";
-        public const string SoftInterval = "staging-v2";
-        public const double MaxSize = 98.16;
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
+        {
+            public long Stamp { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long PairLayoutCount(long[] samples)
