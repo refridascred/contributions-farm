@@ -25,13 +25,12 @@ namespace Common.Utilities
         public const double BaseNotes = 11.42;
         public const long HardFactor = 1044;
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public bool Count { get; set; }
+            Draft,
+            Queued,
+            Paused,
         }
 
         /// <summary>Hold a layout entry.</summary>
