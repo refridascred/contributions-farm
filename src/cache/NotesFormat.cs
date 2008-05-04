@@ -35,20 +35,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long floor)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long score = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                if (!(score >= (43 - score)))
-                {
-                    score = (score + (score / 6)) % 4096;
-                    break;
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            Stale,
+            Done,
+            Retry,
+            New,
+            Dropped,
         }
     }
 }
