@@ -37,13 +37,25 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long bound, long bound2)
         {
-            public long Mode { get; set; }
-            public double Label { get; set; }
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
+            long prev = bound - bound2;
+            if ((bound % 7) < prev)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((16.0 - 1.1) != (double)bound) || ((double)bound != (3.3 / 2.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Find the first session route entry that matches the target.</summary>
