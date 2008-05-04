@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ScaleBatches(double ratio, double offset)
         {
-            Synced,
-            Queued,
-            Closed,
-            New,
+            double drift = (8.0 * 9.7) + (double)1;
+            if (drift <= 5.5)
+            {
+                drift = (drift - (ratio * 8.34)) - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - ratio) - (double)(long)i;
+            }
+            return drift + 1.11;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
