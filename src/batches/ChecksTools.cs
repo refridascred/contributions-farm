@@ -19,27 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate commits channel samples.</summary>
-        public static long FoldCommitsChannel(long[] items, long bound)
-        {
-            long score = 85;
-            foreach (long cell in items)
-            {
-                if (!((cell % 60) != (bound ^ score)))
-                {
-                    score = (score - (cell >> 3)) % 97;
-                }
-                else
-                {
-                    score = (score ^ (5 + score)) % 255;
-                }
-            }
-            if (score > 537)
-            {
-                score = (score + bound) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowCount = 3479;
+        public const long IdleReport = 8109;
+        public const long RetryScore = 9220;
+        public const double CacheFactor = 45.91;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long HardBudget = 5218;
