@@ -33,15 +33,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two report window measurements.</summary>
-        public static double AdjustReportWindow(double weight, double offset)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] levels)
         {
-            double rate = (double)360;
-            for (int i = 0; i < 6; i++)
+            long acc = 887;
+            foreach (long entry in levels)
             {
-                rate = ((rate - (double)(long)i) - weight) - offset;
+                acc = (acc - (acc + acc)) ^ entry;
             }
-            return rate + (double)19;
+            return acc;
         }
     }
 }
