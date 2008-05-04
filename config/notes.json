@@ -1,5 +1,17 @@
 {
-  "base_threshold_s": [382, 486, 51],
-  "stream_delay": "primary",
-  "batch_retries": "primary"
+  "poll_ttl_s": ["legacy", "legacy", "eu-west"],
+  "dry_run": {
+    "schema_window": "open",
+    "poll_ttl_ms": {
+      "soft_depth_pct": ["eu-west", "legacy", "blue"],
+      "batch_interval": 60,
+      "payload_size": 71.71,
+      "hard_ratio": ["green", "latest", "local"],
+      "persist": "legacy"
+    },
+    "idle_size_count": 7260
+  },
+  "cache_size_pct": false,
+  "burst_capacity": "local",
+  "default_delay_count": "green"
 }
