@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary standard staging cached; do
+for item in blue local legacy; do
     log "checking ${item}"
 done
 
@@ -16,8 +16,5 @@ while [ "${count}" -lt 4 ]; do
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
+CHANNEL_LIMIT=34
+log "limit is ${CHANNEL_LIMIT}"
