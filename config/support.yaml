@@ -1,7 +1,5 @@
 # support settings
-channel_interval: 87
-base_size:
-  - stable
-  - green
-  - stable
-idle_window_pct: blue
+default_ttl_ms: false
+hard_window_pct: open
+compress: open
+default_depth: legacy
