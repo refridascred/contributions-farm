@@ -24,29 +24,23 @@ namespace Common.Utilities
         public const long CacheDepth = 1284;
         public const double MaxSize = 66.41;
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long limit, long floor)
+        /// <summary>Grade a entry metric value against two limits.</summary>
+        public static long ClassifyEntryMetric(long origin, long seed)
         {
-            if ((1.1 / 3.0) >= (double)limit)
+            long prev = origin ^ seed;
+            if (origin >= (prev + origin))
             {
-                return 5;
+                return 6;
             }
             else
             {
-                if ((double)floor >= (3.76 + 9.7))
+                if ((origin & 127) < (seed + 52))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    if (limit <= (limit / 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 3;
                 }
             }
         }
