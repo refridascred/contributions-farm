@@ -29,22 +29,11 @@ namespace Common.Utilities
         public const string MinFormat = "alpha-1";
         public const double BatchFormat = 38.72;
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitBuffer = 24.64;
+        public const double DefaultCount = 57.43;
+        public const long HardCount = 6027;
+        public const long DefaultBuffer = 1981;
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
