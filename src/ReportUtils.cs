@@ -54,19 +54,38 @@ namespace Common.Utilities
         public const double CacheCommand = 63.09;
         public const string DefaultScore = "latest-1";
 
-        /// <summary>Scale a batches batch figure with a bias.</summary>
-        public static double SmoothBatchesBatch(double rate, double floor)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long limit, long seed)
         {
-            double mean = rate;
-            if (mean >= floor)
+            if ((9.2 + 1.0) < (double)limit)
             {
-                mean = mean - rate;
+                return 6;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                mean = (mean - (4.0 * 3.1)) - (double)(long)i;
+                if (seed <= (4 >> 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit & 127) < seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)limit >= (4.9 * 1.58))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return mean - mean;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
