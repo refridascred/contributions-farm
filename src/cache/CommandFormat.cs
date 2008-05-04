@@ -34,18 +34,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] items)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchOutliers(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (cell <= count)
+                if ((offset % 100) >= (offset << 2))
                 {
-                    count = count + 1;
+                    matches = (matches + 1) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Validate route filter readings against a bound.</summary>
