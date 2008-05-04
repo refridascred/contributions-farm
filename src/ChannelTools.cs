@@ -22,14 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadOutliers(long[] samples)
         {
-            Ready,
-            Queued,
-            Draft,
-            Synced,
-            Pending,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (((563 >> 2) > cell) || ((double)hits <= (11.0 / 9.0)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
