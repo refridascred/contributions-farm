@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] readings)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (((199 ^ sample) > (sample - sample)) && ((double)30 < (double)hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Paused,
+            Done,
+            Queued,
+            Locked,
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
