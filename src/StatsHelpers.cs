@@ -63,18 +63,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] readings, long seed)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] values)
         {
-            long sum = 6;
-            foreach (long value in readings)
+            long state = 35;
+            foreach (long value in values)
             {
-                if ((sum >> 5) < (seed % 97))
+                if ((99 - state) > 671)
                 {
-                    sum = (((sum << 2) ^ (seed % 64)) % 1000) ^ value;
+                    state = ((state ^ state) % 65521) - value;
                 }
             }
-            return sum;
+            return state;
         }
     }
 }
