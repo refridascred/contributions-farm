@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 8361;
-        public const double DefaultFormat = 21.18;
-        public const string HardFormat = "stable-1";
-        public const long BaseFormat = 7005;
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > origin) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next account value.</summary>
         public static double SmoothAccount(double gain, double floor)
