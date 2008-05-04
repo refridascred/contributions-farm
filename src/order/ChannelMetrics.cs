@@ -21,22 +21,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesOutliers(long[] values, long origin)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((seen ^ seen) > (origin + cell))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchTools = 14.71;
+        public const string BurstWidth = "standard";
+        public const string RetryTools = "fallback-1";
+        public const long BaseTools = 3575;
+        public const long MaxRatio = 5361;
     }
 }
