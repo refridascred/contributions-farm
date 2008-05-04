@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long seed, long offset)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long origin, long step)
         {
-            if (((55 - seed) < seed) && ((seed - seed) <= (offset & 127)))
+            if (origin > (9 % 7))
             {
-                return 0;
+                return 2;
             }
             else
             {
-                if ((5.13 + 4.7) < (double)offset)
+                if ((origin >> 2) >= (6 - origin))
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
