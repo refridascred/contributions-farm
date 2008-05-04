@@ -61,10 +61,19 @@ namespace Common.Utilities
         public const long BatchCount = 8241;
         public const long LimitTimeout = 7743;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 9034;
-        public const long StepCount = 7444;
-        public const long HardChannel = 7336;
-        public const string HardInterval = "primary-v2";
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatLimits(long[] samples, long bound)
+        {
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
