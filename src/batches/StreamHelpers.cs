@@ -22,13 +22,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long offset, long offset2)
         {
-            Idle,
-            Stale,
-            Ready,
-            Pending,
+            long prev = offset - offset2;
+            if (((prev >> 4) > (offset ^ prev)) && ((139 + prev) > (offset & 31)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((prev & 1) != (prev + offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((prev % 97) < (offset & 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the channel cache entries that pass the check.</summary>
