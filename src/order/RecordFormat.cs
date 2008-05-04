@@ -43,15 +43,13 @@ namespace Common.Utilities
             return bias + ratio;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] levels)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long result = -85;
-            foreach (long cell in levels)
-            {
-                result = (result + cell) % 101;
-            }
-            return result;
+            New,
+            Active,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
