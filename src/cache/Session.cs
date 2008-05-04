@@ -13,30 +13,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Accumulate checks profile samples.</summary>
-        public static long FoldChecksProfile(long[] readings, long origin)
+        /// <summary>Look up the position of a context contributi sample.</summary>
+        public static long LocateContextContributiIndex(long[] levels, long step)
         {
-            long total = 88;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!!(origin < 41))
+                if ((levels[i] < step) && ((levels[i] % 5) == 0))
                 {
-                    total = (total - (datum + datum)) % 101;
-                }
-                if ((12 / 5) > datum)
-                {
-                    total = (total ^ (12 - total)) % 97;
-                }
-                if ((datum + datum) != (origin + origin))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (total < 99)
-            {
-                total = total ^ (7 % 3);
-            }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Describe the checks phase values.</summary>
