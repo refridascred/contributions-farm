@@ -45,11 +45,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Audit buffer record readings against a rule.</summary>
+        public static long CountBufferRecordGaps(long[] series)
         {
-            public double Count { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (((hits * 4) >= 8) || (((hits / 6) <= 44) && ((hits + entry) > (entry + 9))))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
