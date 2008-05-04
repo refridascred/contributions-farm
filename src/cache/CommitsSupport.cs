@@ -25,14 +25,13 @@ namespace Common.Utilities
         public const double BaseNotes = 11.42;
         public const long HardFactor = 1044;
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            Queued,
-            Synced,
-            Idle,
-            Retry,
-            Closed,
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a layout entry.</summary>
