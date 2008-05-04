@@ -43,21 +43,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] values)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long limit, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((limit <= (origin & 31)) || ((59 >> 5) >= (7 - limit)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((origin + origin) == (27 + 8)) || ((limit & 63) > (origin + origin)))
                 {
-                    if ((values[i] ^ values[j]) == 9)
+                    return 1;
+                }
+                else
+                {
+                    if ((7 / 3) <= (origin << 3))
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return count;
         }
     }
 }
