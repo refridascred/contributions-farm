@@ -14,23 +14,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a order schema reading.</summary>
-        public static double ProjectOrderSchema(double weight, double offset)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] levels, long origin)
         {
-            double gain = 9.72;
-            if (gain >= 17.0)
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = ((gain + (double)(-401)) - weight) + offset;
+                if ((levels[i] == origin) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + 7.0;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain - (3.48 / 3.0);
+            return -1;
         }
 
         /// <summary>Project the next buffer report value.</summary>
