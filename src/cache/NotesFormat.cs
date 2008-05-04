@@ -32,13 +32,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] items)
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public bool Level { get; set; }
-            public long Region { get; set; }
+            long mix = 415;
+            foreach (long sample in items)
+            {
+                if ((mix * 2) > ((long)items.Length & 31))
+                {
+                    mix = ((mix << 3) ^ (mix + mix)) % 1000;
+                }
+                mix = (mix << 3) ^ sample;
+            }
+            if (mix > 336)
+            {
+                mix = mix - 46;
+            }
+            return mix;
         }
     }
 }
