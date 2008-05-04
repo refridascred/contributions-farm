@@ -14,18 +14,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] data)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long total = 0;
+            foreach (long entry in readings)
             {
-                if (matches >= ((long)data.Length * 3))
+                if ((18.0 - 9.0) <= (double)total)
                 {
-                    matches = (matches + 3) + reading;
+                    total = ((total + (total - entry)) % 101) - target;
                 }
             }
-            return matches;
+            return total % 1000;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
