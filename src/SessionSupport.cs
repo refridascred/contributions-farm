@@ -33,18 +33,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit account stats readings against a rule.</summary>
-        public static long CountAccountStatsHits(long[] levels)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long bound, long limit)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            if ((8 - bound) > (824 % 64))
             {
-                if ((3 - datum) >= datum)
+                return 3;
+            }
+            else
+            {
+                if (!((double)limit < (double)278))
                 {
-                    tally = tally + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
     }
 }
