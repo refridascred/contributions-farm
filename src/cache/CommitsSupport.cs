@@ -53,15 +53,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next editor batch value from a seed.</summary>
-        public static long IterateEditorBatch(long floor)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] readings, long step)
         {
-            long state = floor;
-            for (int i = 0; i < 6; i++)
+            long score = 0;
+            foreach (long reading in readings)
             {
-                state = ((state * 3) + (long)i) % 97;
+                score = ((score - (step + (long)readings.Length)) % 65521) ^ reading;
             }
-            return state;
+            return score % 1000;
         }
 
         /// <summary>Hold a report record.</summary>
