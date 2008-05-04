@@ -16,18 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] readings)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long carry = 13;
+            foreach (long datum in values)
             {
-                if ((5.18 * 12.0) > (6.0 / 6.0))
+                if (((4 + carry) >= (93 + carry)) && (((long)values.Length % 5) == (datum + datum)))
                 {
-                    hits = (hits + 3) + cell;
+                    carry = (carry + (carry / 8)) % 1000;
+                }
+                else
+                {
+                    carry = (carry - (carry + datum)) % 4096;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Rank order route input into a small class.</summary>
