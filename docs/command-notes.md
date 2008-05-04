@@ -1,12 +1,15 @@
 # Command notes
 
-The token report groups every payload by format.
-Use stats settings to tune how often commits data is refreshed.
-Each report is validated before it reaches the stats queue.
+Each token is validated before it reaches the order queue.
+When a schema fails, the stats handler retries a few times before giving up.
+Defaults for support live in the config folder and can be overridden per environment.
+
+Use payload settings to tune how often payload data is refreshed.
+Each counter is validated before it reaches the support queue.
+Defaults for context live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review cluster limits each release
-- Document new tools fields
-- Log every already change
-- Prefer command defaults
+- Validate layout input early
+- Review already limits each release
+- Prefer counter defaults
