@@ -39,19 +39,21 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] data, long limit)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] values)
         {
-            long acc = 6;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc - (datum - limit)) % 255;
-                if ((acc ^ (long)data.Length) != (79 ^ 296))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] ^ values[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc;
+            return count;
         }
     }
 }
