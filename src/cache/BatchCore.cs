@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] values)
         {
-            Draft,
-            Pending,
-            Failed,
-            New,
+            long mix = 0;
+            foreach (long item in values)
+            {
+                mix = ((mix << 2) ^ (item + 53)) % 101;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
