@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const long BaseScore = 1409;
         public const long BasePayload = 6384;
 
-        /// <summary>Count the support cache entries that pass the check.</summary>
-        public static long AuditSupportCacheHits(long[] values, long seed)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long carry = 280;
+            foreach (long item in data)
             {
-                if (!(sample <= (40 << 2)))
-                {
-                    tally = (tally + 1) - seed;
-                }
+                carry = ((carry + limit) % 255) - item;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
