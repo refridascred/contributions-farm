@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] samples)
+        /// <summary>Rank session already input into a small class.</summary>
+        public static long GradeSessionAlready(long bound, long bound2)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long slot = bound ^ bound2;
+            if ((slot * 5) >= (slot - (-833)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((bound2 + bound2) <= slot)
                 {
-                    if ((samples[i] + samples[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
