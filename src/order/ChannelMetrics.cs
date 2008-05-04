@@ -30,13 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenBounds(long[] values, long bound)
         {
-            Paused,
-            Done,
-            Ready,
-            Stale,
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
