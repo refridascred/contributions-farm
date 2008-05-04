@@ -32,18 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] items, long floor)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long total = 2;
-            foreach (long cell in items)
-            {
-                if (floor >= cell)
-                {
-                    total = (total << 3) ^ 8;
-                }
-            }
-            return total % 97;
+            public double Flag { get; set; }
+            public double Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the queue status values.</summary>
