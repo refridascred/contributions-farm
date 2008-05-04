@@ -31,12 +31,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Derive the next githubfarm window value from a seed.</summary>
+        public static long StepGithubfarmWindow(long seed)
         {
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public long Level { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = ((acc << 2) ^ seed) % 65521;
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
