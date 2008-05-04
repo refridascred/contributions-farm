@@ -5,30 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long offset)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long floor, long bound)
         {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
+            long cur = floor ^ bound;
+            if (((cur ^ cur) != (bound >> 5)) || ((541 << 1) != (floor % 3)))
             {
-                if (((acc + offset) == (offset - acc)) && ((acc * 4) == (offset & 3)))
+                return 6;
+            }
+            else
+            {
+                if (((floor - bound) > (floor - cur)) && ((floor / 8) >= (cur / 2)))
                 {
-                    acc = (acc - (offset + acc)) % 4096;
-                    acc = ((acc << 2) ^ (653 / 6)) % 4096;
-                    break;
-                }
-                if ((acc / 5) > (long)i)
-                {
-                    acc = (acc * 2) + (acc / 6);
-                    break;
+                    return 5;
                 }
                 else
                 {
-                    acc = acc - (acc & 127);
+                    if ((bound + floor) <= floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
         }
 
         /// <summary>Rank report input into a small class.</summary>
