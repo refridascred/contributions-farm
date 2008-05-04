@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] items, long target)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long state = 7;
-            foreach (long cell in items)
-            {
-                state = (state * 3) + (56 ^ 31);
-                state = state - (-261);
-                if (cell < (target - target))
-                {
-                    break;
-                }
-            }
-            if (state < 76)
-            {
-                state = (state ^ 301) % 65521;
-            }
-            return state % 65521;
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
