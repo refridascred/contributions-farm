@@ -72,12 +72,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            Synced,
-            Dropped,
-            Done,
+            Active,
+            Draft,
+            Pending,
         }
 
         /// <summary>Describe the order kind values.</summary>
