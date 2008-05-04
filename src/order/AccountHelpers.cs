@@ -34,25 +34,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a session metric value against two limits.</summary>
-        public static long BucketSessionMetric(long offset, long origin)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] samples, long origin)
         {
-            long span = offset ^ origin;
-            if (span <= (4 % 7))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (span >= (span % 8))
+                if ((samples[i] < origin) && ((samples[i] % 2) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
