@@ -5,10 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseDepth = 3712;
-        public const long LimitBudget = 7484;
-        public const long RetrySpan = 180;
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((acc + offset) == (offset - acc)) && ((acc * 4) == (offset & 3)))
+                {
+                    acc = (acc - (offset + acc)) % 4096;
+                    acc = ((acc << 2) ^ (653 / 6)) % 4096;
+                    break;
+                }
+                if ((acc / 5) > (long)i)
+                {
+                    acc = (acc * 2) + (acc / 6);
+                    break;
+                }
+                else
+                {
+                    acc = acc - (acc & 127);
+                }
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Rank report input into a small class.</summary>
         public static long SortReport(long seed, long offset)
