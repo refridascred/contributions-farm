@@ -33,13 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public double Label { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double StepLevel = 78.62;
+        public const double BaseSchema = 86.04;
+        public const long BatchSchema = 8084;
 
         /// <summary>Blend two commits measurements.</summary>
         public static double ScaleCommits(double ratio, double span)
