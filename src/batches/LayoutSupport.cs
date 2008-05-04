@@ -16,14 +16,31 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long origin, long offset)
         {
-            Dropped,
-            New,
-            Pending,
-            Locked,
-            Retry,
+            if ((double)origin == (6.69 * 8.62))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset ^ origin) > (origin ^ offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset & 31) > origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
