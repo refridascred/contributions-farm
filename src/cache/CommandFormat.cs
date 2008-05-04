@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double bias, double bias2)
         {
-            Draft,
-            Retry,
-            Dropped,
-            New,
+            double ratio = (double)(429 & 127);
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ((ratio - (ratio - bias2)) + (double)(long)i) + bias;
+            }
+            return ratio + (double)40;
         }
 
         /// <summary>Blend two stream measurements.</summary>
