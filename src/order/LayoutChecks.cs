@@ -62,18 +62,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] readings, long floor)
+        /// <summary>Count the channel entry entries that pass the check.</summary>
+        public static long CountChannelEntryHits(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (tally > (floor ^ reading))
+                if ((461 & 63) < (62 + value))
                 {
-                    tally = tally + 1;
+                    matches = (matches + 1) - seed;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
