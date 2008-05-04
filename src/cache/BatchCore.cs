@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a metric layout counter forward.</summary>
-        public static long SeriesMetricLayout(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = mix + mix;
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BatchCache = "standard-v2";
+        public const double MaxBudget = 44.25;
+        public const long SoftTimeout = 3788;
+        public const long DefaultRatio = 6743;
 
         /// <summary>Iterate the githubfarm session series from a seed.</summary>
         public static long DeriveGithubfarmSession(long floor)
