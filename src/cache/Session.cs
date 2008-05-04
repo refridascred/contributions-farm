@@ -22,18 +22,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteMatches(long[] readings)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphBounds(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if ((double)sample < (double)matches)
+                if (entry < offset)
                 {
-                    matches = matches + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Digest a series of already entries.</summary>
