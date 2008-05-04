@@ -16,21 +16,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] readings)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] items, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = -94;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((item - floor) > sum)
                 {
-                    if ((readings[i] - readings[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum << 3) ^ (25 / 9);
+                }
+                else
+                {
+                    sum = (sum ^ (floor >> 5)) % 97;
                 }
             }
-            return tally;
+            if (sum < 0)
+            {
+                sum = ((sum << 2) ^ sum) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Roll a order account counter forward.</summary>
