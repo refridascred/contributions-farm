@@ -51,13 +51,13 @@ namespace Common.Utilities
         public const long MinDepth = 6195;
         public const string IdleGithubfarm = "latest-1";
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
