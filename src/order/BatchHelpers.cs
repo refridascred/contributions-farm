@@ -12,27 +12,38 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] levels)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long step, long floor)
         {
-            long score = 56;
-            foreach (long reading in levels)
+            if ((floor - step) <= (step << 1))
             {
-                score = ((score * 4) + (score + reading)) % 101;
-                if ((double)reading > (5.0 / 9.0))
+                return 6;
+            }
+            else
+            {
+                if ((double)step != (double)floor)
                 {
-                    score = score + reading;
+                    return 1;
                 }
                 else
                 {
-                    score = (score - 896) % 97;
+                    if (step >= floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (3.0 < (double)step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (score < 765)
-            {
-                score = (score ^ score) % 255;
-            }
-            return score;
         }
 
         /// <summary>Hold a schema summary.</summary>
