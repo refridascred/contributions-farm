@@ -48,13 +48,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch account entries that pass the check.</summary>
-        public static long CountBatchAccountOutliers(long[] data)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] levels, long seed)
         {
             long count = 0;
-            foreach (long value in data)
+            foreach (long datum in levels)
             {
-                if ((value << 2) <= ((-9) - count))
+                if ((datum - datum) >= (seed % 64))
                 {
                     count = count + 2;
                 }
