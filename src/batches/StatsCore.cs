@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleTimeout = 8646;
-        public const long MaxMetrics = 7651;
-        public const long CacheMetrics = 7006;
-        public const long BatchSpan = 8281;
-        public const long RetrySize = 3361;
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] readings, long seed)
+        {
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long CountFormatOutliers(long[] samples)
