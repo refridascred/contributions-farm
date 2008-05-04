@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] values)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] readings, long seed)
         {
-            long mix = 0;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix << 2) ^ (item + 53)) % 101;
+                if ((readings[i] <= seed) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
