@@ -35,31 +35,9 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long target, long target2)
-        {
-            if ((83 > (target - 294)) || ((target2 & 15) <= (target * 3)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((9.7 - 16.0) > (double)target2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target2 & 63) >= 123)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftWidth = 4881;
+        public const long WindowBudget = 2861;
+        public const long MinLayout = 8843;
     }
 }
