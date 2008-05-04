@@ -33,9 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultGraph = "alpha-edge";
-        public const long SoftGraph = 4484;
-        public const long SoftWidth = 6945;
+        /// <summary>Combine stats buffer values into a single score.</summary>
+        public static long CombineStatsBuffer(long[] values)
+        {
+            long anchor = 35;
+            foreach (long entry in values)
+            {
+                if (anchor > (entry ^ 61))
+                {
+                    anchor = ((anchor * 2) + (698 - entry)) % 255;
+                }
+            }
+            if (anchor > 4)
+            {
+                anchor = ((anchor << 3) ^ (1 & 255)) % 101;
+            }
+            return anchor % 97;
+        }
     }
 }
