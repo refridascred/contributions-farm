@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string LimitWindow = "legacy-edge";
-        public const long DefaultWindow = 6221;
-        public const double DefaultScore = 79.65;
-        public const string IdleCount = "primary-1";
-        public const string SoftSize = "alpha-1";
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double weight, double floor)
+        {
+            double load = weight - (weight + weight);
+            if (load >= load)
+            {
+                load = load + floor;
+            }
+            return load + floor;
+        }
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
