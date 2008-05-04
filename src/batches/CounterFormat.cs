@@ -33,23 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long bound)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long mark = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                if (bound > (mark + mark))
-                {
-                    mark = ((mark * 2) + (mark & 127)) % 101;
-                }
-                else
-                {
-                    mark = (mark ^ mark) % 255;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            Locked,
+            Ready,
+            Done,
+            Closed,
+            Draft,
         }
     }
 }
