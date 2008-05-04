@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batch order readings against a bound.</summary>
-        public static bool CheckBatchOrderRange(long[] data, long floor)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Score { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
