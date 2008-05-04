@@ -25,20 +25,21 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Iterate the buffer contributi series from a seed.</summary>
-        public static long RollBufferContributi(long offset)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] data)
         {
-            long mix = offset;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((offset >> 4) <= ((long)i % 10))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (mix * 2) + (197 + mix);
-                    continue;
+                    if ((data[i] ^ data[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
