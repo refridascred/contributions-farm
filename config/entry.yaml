@@ -1,12 +1,28 @@
 # entry settings
-entry_interval: 82
-soft_ratio: cached
-hard_ratio:
-  poll_capacity_pct: blue
-  metric_interval: 55.17
-  audit: cached
-  sync_window_ms:
-    burst_threshold_count: 6924
-    strict: false
-    burst_timeout_pct: 86
-    max_size_ms: edge
+burst_window:
+  farm_retries: primary
+  retry_ratio_count: false
+  audit:
+    - 251
+    - 86
+    - 326
+  verbose: 2942
+  min_ttl:
+    - 277
+    - 75
+  flush_size_count: 5391
+cache_ttl: 13.48
+dry_run:
+  - 2
+  - 415
+  - 307
+  - 205
+record_limit:
+  - latest
+  - edge
+  - green
+  - open
+poll_depth:
+  batch_ratio: local
+  batch_retries: blue
+  payload_interval: true
