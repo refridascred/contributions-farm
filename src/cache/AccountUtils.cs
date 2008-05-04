@@ -28,11 +28,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long limit)
         {
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
+            long total = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    total = (total ^ total) ^ (long)i2;
+                }
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
