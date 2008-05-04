@@ -26,23 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support already entries that pass the check.</summary>
-        public static long MeasureSupportAlreadyMatches(long[] levels, long origin)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((value >= (origin - 1)) || ((hits / 9) > origin))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitRatio = 7409;
+        public const double LimitNotes = 53.2;
+        public const double BaseNotes = 11.42;
+        public const long HardFactor = 1044;
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
