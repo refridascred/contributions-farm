@@ -33,17 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] levels, long seed)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count payload already pairs that satisfy a relation.</summary>
