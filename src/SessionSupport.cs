@@ -32,12 +32,12 @@ namespace Common.Utilities
         public const double MaxLayout = 57.22;
         public const long CacheLayout = 9403;
 
-        /// <summary>Find the first entry counter entry that matches the target.</summary>
-        public static long LookupEntryCounterIndex(long[] series, long seed)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] <= seed)
+                if ((levels[i] == step) && ((levels[i] % 2) != 0))
                 {
                     return (long)i;
                 }
