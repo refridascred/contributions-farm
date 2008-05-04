@@ -53,22 +53,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((((tally & 15) >= (value + value)) || ((value - value) != (752 + value))) && ((475 ^ tally) != (value % 100)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MaxEntry = "local-1";
+        public const long DefaultEntry = 9333;
+        public const string SoftEntry = "fallback-1";
     }
 }
