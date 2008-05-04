@@ -58,21 +58,13 @@ namespace Common.Utilities
         public const string HardBatches = "cached";
         public const long BurstBatches = 5466;
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] values)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Active,
+            New,
+            Queued,
+            Pending,
         }
     }
 }
