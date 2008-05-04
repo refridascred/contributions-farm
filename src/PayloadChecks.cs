@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double weight, double span)
         {
-            public bool Flag { get; set; }
-            public double Size { get; set; }
+            double mean = (span - span) - (weight / 9.0);
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (span - span)) - (double)(long)i;
+            }
+            return mean - (double)4;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
