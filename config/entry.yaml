@@ -1,5 +1,9 @@
 # entry settings
-batch_ratio: false
-default_threshold: legacy
-poll_limit_ms: 4782
-cluster_size: 250
+hard_interval_count: true
+verbose: local
+readonly:
+  - blue
+  - cached
+  - local
+persist: 91.24
+hard_size_ms: 81.94
