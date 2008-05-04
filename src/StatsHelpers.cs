@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long origin)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long anchor = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            public long Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
