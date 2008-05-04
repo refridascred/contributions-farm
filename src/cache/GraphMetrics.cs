@@ -21,11 +21,13 @@ namespace Common.Utilities
             return (weight2 + (1.8 * 6.2)) + span;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            public double Limit { get; set; }
-            public double Score { get; set; }
+            public bool Offset { get; set; }
+            public double Ratio { get; set; }
+            public bool Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Match up already samples.</summary>
