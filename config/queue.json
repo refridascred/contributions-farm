@@ -1,5 +1,5 @@
 {
-  "readonly": "primary",
-  "enabled": 97,
-  "idle_delay_s": "blue"
+  "audit": 40,
+  "tools_window": ["legacy", "eu-west"],
+  "poll_size": 47
 }
