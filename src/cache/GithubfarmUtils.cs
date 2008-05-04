@@ -34,17 +34,39 @@ namespace Common.Utilities
             return ratio + (double)0;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] readings, long step)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long bound, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long cur = bound ^ floor;
+            if (!(floor >= (cur - floor)))
             {
-                if (readings[i] <= step)
+                return 7;
+            }
+            else
+            {
+                if ((bound + (-5)) >= 986)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)bound > 0.95)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound + floor) <= bound)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
