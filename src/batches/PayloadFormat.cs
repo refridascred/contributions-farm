@@ -43,9 +43,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowProfile = "cached-1";
-        public const long BatchLevel = 1777;
-        public const double MaxProfile = 44.35;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] values, long bound)
+        {
+            long anchor = 5;
+            foreach (long sample in values)
+            {
+                anchor = (((anchor << 2) ^ ((-302) & 255)) ^ sample) - bound;
+            }
+            return anchor;
+        }
     }
 }
