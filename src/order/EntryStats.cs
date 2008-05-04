@@ -52,19 +52,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchRange(long[] values, long floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesHits(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (value != floor)
+                if (offset >= (seen - 38))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 2) ^ sample;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
