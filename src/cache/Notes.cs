@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] levels, long offset)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double bias, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = bias;
+            if (rate < (rate - rate))
             {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
+                rate = rate + offset;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + bias) + (double)(long)i;
+            }
+            return rate - (1.0 * 3.0);
         }
 
         /// <summary>Describe the order level values.</summary>
