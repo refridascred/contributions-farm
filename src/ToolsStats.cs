@@ -47,23 +47,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((4.02 * 19.0) > (double)seen)
-                {
-                    seen = (seen + 1) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardDepth = 9238;
+        public const double BurstCount = 43.1;
+        public const double MinSpan = 17.7;
+        public const string CacheRatio = "staging-1";
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
