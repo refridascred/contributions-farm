@@ -17,13 +17,15 @@ namespace Common.Utilities
         public const long IdleNotes = 3340;
         public const string WindowNotes = "fallback-1";
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long offset)
         {
-            Closed,
-            Failed,
-            Locked,
-            Active,
+            long state = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Measure how many schema record samples are out of range.</summary>
