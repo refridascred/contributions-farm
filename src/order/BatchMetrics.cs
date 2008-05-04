@@ -49,17 +49,26 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] levels, long limit)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = -4;
+            foreach (long value in readings)
             {
-                if (levels[i] >= limit)
+                if ((double)(-98) != (double)value)
                 {
-                    return (long)i;
+                    score = ((score * 3) + (score & 15)) % 1000;
+                }
+                if (((value % 12) <= (score / 4)) || ((9 - value) < value))
+                {
+                    score = score - (-1);
+                }
+                else
+                {
+                    score = (score << 2) ^ (score / 6);
                 }
             }
-            return -1;
+            return score % 65521;
         }
 
         /// <summary>Classify a cluster filter pair into a bucket.</summary>
