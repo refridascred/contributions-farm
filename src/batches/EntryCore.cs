@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterBounds(long[] samples, long seed)
+        /// <summary>Digest a series of commits farm entries.</summary>
+        public static long ScoreCommitsFarm(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long carry = 11;
+            foreach (long cell in readings)
             {
-                if (entry != seed)
+                carry = (carry + (27 / 3)) % 1000;
+                if (((bound + bound) != (974 + cell)) && ((5 % 12) < bound))
                 {
-                    stale = false;
-                    break;
+                    carry = (carry + (cell ^ cell)) % 65521;
                 }
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
