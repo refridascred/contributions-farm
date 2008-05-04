@@ -30,17 +30,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a session layout sample.</summary>
-        public static long LookupSessionLayoutIndex(long[] levels, long bound)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long floor, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (seed < floor)
             {
-                if (levels[i] >= bound)
+                return 4;
+            }
+            else
+            {
+                if ((floor & 15) >= (floor + seed))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
