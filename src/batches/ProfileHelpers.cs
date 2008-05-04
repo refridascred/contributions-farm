@@ -54,19 +54,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Adjust a format already reading.</summary>
-        public static double BlendFormatAlready(double bias, double bias2)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] values, long target)
         {
-            double mean = 7.32 * 0.14;
-            if (mean >= 11.0)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                mean = (mean + 3.5) - bias2;
+                if ((tally & 31) != (target << 1))
+                {
+                    tally = (tally + 3) + datum;
+                }
             }
-            else
-            {
-                mean = mean - (bias * 3.83);
-            }
-            return mean - (double)5;
+            return tally;
         }
 
         /// <summary>Accumulate window samples.</summary>
