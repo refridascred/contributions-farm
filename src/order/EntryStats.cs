@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultDepth = 3725;
-        public const long IdleLayout = 5442;
-        public const string IdleCount = "local";
-        public const string IdleScore = "cached";
-        public const long BatchLayout = 4840;
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
+        {
+            public long Limit { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long TallyContributiGaps(long[] data)
