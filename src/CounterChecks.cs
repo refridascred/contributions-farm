@@ -62,19 +62,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next notes entry value.</summary>
-        public static double AdjustNotesEntry(double ratio, double bias)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            double drift = bias;
-            if (drift > (ratio - bias))
-            {
-                drift = drift - (double)780;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + ratio) - (double)(long)i;
-            }
-            return drift + (double)(-210);
+            public string Flag { get; set; } = "";
+            public long Region { get; set; }
+            public bool Score { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
