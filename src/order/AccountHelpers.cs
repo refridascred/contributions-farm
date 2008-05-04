@@ -49,18 +49,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] readings, long target)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (5.06 < (double)seen)
-                {
-                    seen = ((seen + 1) + sample) + target;
-                }
-            }
-            return seen;
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
