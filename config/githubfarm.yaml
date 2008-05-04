@@ -1,10 +1,7 @@
 # githubfarm settings
-commits_timeout: true
-burst_capacity:
-  - primary
-  - eu-west
-  - strict
-  - local
-sync_ttl_ms: 3015
-enabled: 2
-min_interval: edge
+base_capacity_s: 80
+compress: local
+dry_run: 75.48
+readonly: fallback
+cluster_size: 87.05
+flush_threshold_pct: fallback
