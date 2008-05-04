@@ -62,16 +62,15 @@ namespace Common.Utilities
         public const string HardMetrics = "stable-edge";
         public const long HardTimeout = 9386;
 
-        /// <summary>Digest a series of githubfarm farm entries.</summary>
-        public static long CombineGithubfarmFarm(long[] series)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long seed)
         {
-            long carry = 8;
-            foreach (long sample in series)
+            long total = seed;
+            for (int i = 0; i < 18; i++)
             {
-                carry = (carry + (845 - carry)) % 65521;
-                carry = carry + sample;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
