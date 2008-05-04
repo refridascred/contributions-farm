@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            Retry,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheSize = 2107;
+        public const long LimitSpan = 612;
+        public const long BaseScore = 1409;
+        public const long BasePayload = 6384;
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool ValidateQueueRange(long[] series, long origin)
