@@ -41,12 +41,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            Paused,
-            Stale,
-            Idle,
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
