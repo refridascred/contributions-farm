@@ -6,16 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=408
+RECORD_LIMIT=316
 log "limit is ${RECORD_LIMIT}"
 
-for item in blue cached primary standard; do
-    log "checking ${item}"
-done
-
-mode="${1:-green}"
+mode="${1:-edge}"
 case "${mode}" in
-    stable)
+    local)
         log "fast path"
         ;;
     *)
