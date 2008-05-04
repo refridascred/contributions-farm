@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double bias, double bias2)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] data)
         {
-            double ratio = (double)(429 & 127);
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                ratio = ((ratio - (ratio - bias2)) + (double)(long)i) + bias;
+                if ((reading % 3) < (matches >> 2))
+                {
+                    matches = matches + 2;
+                }
             }
-            return ratio + (double)40;
+            return matches;
         }
 
         /// <summary>Blend two stream measurements.</summary>
