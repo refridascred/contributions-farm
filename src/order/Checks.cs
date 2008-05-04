@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long step, long floor)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] items)
         {
-            if (((step & 127) <= (floor - floor)) && (step > (floor % 12)))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor < (12.0 + 11.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((step % 16) > step) && ((double)floor == (6.64 / 7.0)))
+                    if ((items[i] ^ items[j]) != 13)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((20.0 + 6.87) < (double)step)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
