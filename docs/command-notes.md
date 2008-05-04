@@ -1,14 +1,16 @@
 # Command notes
 
-The context helpers are pure functions, so they are safe to call from any thread.
-Each schema is validated before it reaches the tools queue.
+A session that stays idle for too long is moved to the route list.
+Use format settings to tune how often context data is refreshed.
+When a support fails, the command handler retries a few times before giving up.
 
-The notes report groups every session by metric.
-Defaults for stats live in the config folder and can be overridden per environment.
+Defaults for layout live in the config folder and can be overridden per environment.
+Keep report and window names short and lowercase.
+Each filter is validated before it reaches the profile queue.
 
 ## Guidelines
 
-- Log every filter change
-- Document new checks fields
-- Keep buffer values small
-- Review format limits each release
+- Validate batch input early
+- Log every contributi change
+- Document new commits fields
+- Prefer profile defaults
