@@ -34,19 +34,39 @@ namespace Common.Utilities
         public const string SoftTimeout = "latest-v2";
         public const string DefaultTimeout = "strict-edge";
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamRange(long[] items, long target)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long bound, long limit)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long span = bound + limit;
+            if ((bound + limit) > (bound / 4))
             {
-                if (datum <= target)
+                return 7;
+            }
+            else
+            {
+                if ((double)bound > 2.8)
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((6.5 * 1.0) >= (double)limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((span - bound) == (bound % 10))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
