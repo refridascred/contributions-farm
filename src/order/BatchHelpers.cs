@@ -20,34 +20,35 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long step, long floor)
+        /// <summary>Rank commits farm input into a small class.</summary>
+        public static long BucketCommitsFarm(long origin, long step)
         {
-            if ((floor - step) <= (step << 1))
+            long slot = origin - step;
+            if (((origin + 5) < (slot << 3)) && ((4.65 / 8.0) > (double)step))
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if ((double)step != (double)floor)
+                if ((double)step != (3.39 - 2.1))
                 {
                     return 1;
                 }
                 else
                 {
-                    if (step >= floor)
+                    if (!((step >> 1) == (slot - origin)))
                     {
-                        return 7;
+                        return 3;
                     }
                     else
                     {
-                        if (3.0 < (double)step)
+                        if ((46 / 4) < (origin + origin))
                         {
-                            return 3;
+                            return 7;
                         }
                         else
                         {
-                            return 5;
+                            return 2;
                         }
                     }
                 }
