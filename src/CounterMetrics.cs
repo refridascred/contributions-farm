@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Grade a order contributi value against two limits.</summary>
+        public static long ClassifyOrderContributi(long step, long offset)
         {
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
-            public double Count { get; set; }
+            long span = step ^ offset;
+            if ((step < (span - step)) || ((5.0 / 2.0) >= (double)offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if (span <= 4)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Accumulate metrics samples.</summary>
