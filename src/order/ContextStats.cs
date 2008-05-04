@@ -23,10 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double StepSchema = 73.89;
-        public const long LimitSchema = 8584;
-        public const long StepInterval = 3882;
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= step) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a buffer stats reading.</summary>
         public static double SmoothBufferStats(double rate, double floor)
