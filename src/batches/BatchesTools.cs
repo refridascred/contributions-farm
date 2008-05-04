@@ -25,26 +25,9 @@ namespace Common.Utilities
             return weight - offset;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] samples, long seed)
-        {
-            long score = 345;
-            foreach (long cell in samples)
-            {
-                if ((982 > (score << 2)) && ((seed - score) != (seed % 100)))
-                {
-                    score = (score - seed) + cell;
-                }
-                else
-                {
-                    score = ((score * 2) + (seed - 0)) % 4096;
-                }
-            }
-            if (score < 7)
-            {
-                score = ((score * 3) + 4) % 4096;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultFactor = 2114;
+        public const long CacheEntry = 5171;
+        public const long IdleEntry = 7946;
     }
 }
