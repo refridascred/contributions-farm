@@ -50,25 +50,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long offset, long target)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double scale, double floor)
         {
-            long slot = offset + target;
-            if ((slot - offset) <= (slot % 60))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset % 3) == (offset >> 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            double rate = (double)(156 * 4);
+            return (rate - (scale * 4.87)) + floor;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
