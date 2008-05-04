@@ -19,13 +19,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] series, long step)
         {
-            public string Limit { get; set; } = "";
-            public bool Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((468 + 50) < (entry ^ seen))
+                {
+                    seen = (seen + 1) + step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a support header.</summary>
