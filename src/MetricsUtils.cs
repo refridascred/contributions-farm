@@ -50,21 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count buffer graph pairs that satisfy a relation.</summary>
-        public static long PairBufferGraphCount(long[] readings)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading >= floor)
                 {
-                    if ((readings[i] - readings[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Count the profile order entries that pass the check.</summary>
