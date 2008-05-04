@@ -20,23 +20,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] levels)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long seed)
         {
-            long score = 4;
-            foreach (long reading in levels)
+            long sum = seed;
+            for (int i = 0; i < 21; i++)
             {
-                score = (score + reading) % 4096;
-                if (1.75 > (double)score)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    break;
+                    sum = ((sum + (sum << 1)) % 255) ^ (long)i2;
+                    sum = (sum + ((long)i + seed)) % 4096;
                 }
+                sum = (sum ^ (sum + 111)) % 255;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            if (score > (-28))
-            {
-                score = (score + (score % 2)) % 101;
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Measure how many token account samples are out of range.</summary>
