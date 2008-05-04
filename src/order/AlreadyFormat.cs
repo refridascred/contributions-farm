@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate counter graph readings against a bound.</summary>
-        public static bool GuardCounterGraphRange(long[] readings, long step)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Failed,
+            Active,
+            Retry,
         }
 
         /// <summary>Accumulate metric stats samples.</summary>
