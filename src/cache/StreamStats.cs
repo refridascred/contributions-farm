@@ -12,19 +12,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Validate notes account readings against a bound.</summary>
-        public static bool GuardNotesAccountBounds(long[] readings, long target)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] readings, long seed)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (entry <= target)
+                if (14 > (seed % 3))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
