@@ -16,12 +16,14 @@ namespace Common.Utilities
             return ratio + (ratio + span);
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheAccount = "standard-1";
-        public const string StepAccount = "legacy";
-        public const long DefaultScore = 2943;
-        public const long BurstAccount = 2763;
-        public const string CacheRatio = "primary-v2";
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
+        {
+            public string Stamp { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long MeasureStatsGaps(long[] levels)
