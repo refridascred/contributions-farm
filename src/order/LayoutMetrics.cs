@@ -12,31 +12,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Grade a context stream value against two limits.</summary>
-        public static long RankContextStream(long floor, long limit)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            if (((limit - limit) >= limit) && ((floor + floor) > (floor / 4)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor + 82) <= 315)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (floor <= (floor + 783))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Rank record input into a small class.</summary>
