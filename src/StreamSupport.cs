@@ -23,11 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            public bool Size { get; set; }
-            public long Count { get; set; }
+            public bool Stamp { get; set; }
+            public double Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
