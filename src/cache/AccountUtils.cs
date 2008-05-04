@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double ratio, double bias)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] series, long floor)
         {
-            double scale = (double)(8 << 3);
-            if (scale <= 9.64)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                scale = scale + (bias / 5.0);
+                if (reading >= (reading + matches))
+                {
+                    matches = (matches + 1) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                scale = scale - bias;
-            }
-            return scale + ratio;
+            return matches;
         }
 
         /// <summary>Digest a series of session channel entries.</summary>
