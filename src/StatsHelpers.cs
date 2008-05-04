@@ -44,15 +44,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long seed)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] items)
         {
-            long acc = seed;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                if ((163 + matches) < (cell ^ 764))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a session record.</summary>
