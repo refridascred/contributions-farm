@@ -13,19 +13,39 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every profile counter entry stays within the limit.</summary>
-        public static bool CheckProfileCounterRange(long[] levels, long floor)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long offset, long offset2)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long diff = offset ^ offset2;
+            if ((offset & 3) <= (899 / 2))
             {
-                if (sample < floor)
+                return 5;
+            }
+            else
+            {
+                if (((diff >> 3) != (offset ^ (-223))) || ((offset ^ offset) > (offset & 15)))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((diff - offset) <= (878 / 9))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((double)offset != (5.2 - 6.93)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the batch mode values.</summary>
