@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseRatio = 2627;
+        public const double IdleCount = 56.94;
+        public const string WindowBuffer = "primary";
+        public const double BaseWidth = 56.66;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderHits(long[] values, long floor)
