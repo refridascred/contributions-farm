@@ -12,21 +12,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] samples)
+        /// <summary>Iterate the notes report series from a seed.</summary>
+        public static long StepNotesReport(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                sum = sum + (step - step);
+                if (((sum ^ step) != (sum + sum)) && (sum > (sum * 4)))
                 {
-                    if ((samples[i] ^ samples[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    continue;
                 }
+                sum = (sum * 3) + step;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Rank record input into a small class.</summary>
