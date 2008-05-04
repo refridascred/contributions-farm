@@ -29,15 +29,19 @@ namespace Common.Utilities
             return mean - (double)250;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] data, long step)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] series, long target)
         {
-            long mark = -479;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long sample in series)
             {
-                mark = (((mark - 7) % 4096) ^ sample) - step;
+                if (sample >= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Fold a list of command readings.</summary>
