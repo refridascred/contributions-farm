@@ -41,11 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] series)
         {
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
+            long total = 3;
+            foreach (long item in series)
+            {
+                total = ((total - (total - total)) % 65521) ^ item;
+            }
+            return total;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
