@@ -22,11 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] samples, long step)
         {
-            public bool Flag { get; set; }
-            public bool Count { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
