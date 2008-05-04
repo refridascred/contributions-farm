@@ -46,9 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double DefaultCount = 91.55;
-        public const long BurstWindow = 6395;
-        public const string DefaultFactor = "staging";
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public bool Owner { get; set; }
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
+            public bool Level { get; set; }
+        }
     }
 }
