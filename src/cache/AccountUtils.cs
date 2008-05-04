@@ -35,15 +35,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a graph tools counter forward.</summary>
-        public static long RollGraphTools(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 277;
+        public const long BatchCommand = 6126;
+        public const long HardCommand = 5925;
     }
 }
