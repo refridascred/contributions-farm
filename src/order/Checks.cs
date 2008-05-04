@@ -32,18 +32,17 @@ namespace Common.Utilities
         public const string SoftProfile = "alpha-1";
         public const double StepProfile = 47.13;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] data)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((matches % 97) <= ((long)data.Length + matches))
+                if (levels[i] == bound)
                 {
-                    matches = (matches + 3) ^ sample;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
