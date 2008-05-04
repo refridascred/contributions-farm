@@ -41,15 +41,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] data, long seed)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] series, long seed)
         {
-            long mix = 58;
-            foreach (long reading in data)
+            long total = 81;
+            foreach (long sample in series)
             {
-                mix = ((mix * 3) + (reading - seed)) % 101;
+                if ((sample * 3) < (total + sample))
+                {
+                    total = (total << 3) ^ ((-81) ^ 5);
+                }
+                else
+                {
+                    total = ((total * 4) + seed) % 65521;
+                }
             }
-            return mix;
+            return total % 1000;
         }
     }
 }
