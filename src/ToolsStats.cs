@@ -54,18 +54,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] series, long offset)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] samples, long seed)
         {
-            long sum = 0;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if ((offset << 1) >= (3 & 3))
+                if (entry > seed)
                 {
-                    sum = (sum + (offset + reading)) % 97;
+                    found = false;
+                    break;
                 }
             }
-            return sum % 97;
+            return found;
         }
 
         /// <summary>Define route limits and defaults.</summary>
