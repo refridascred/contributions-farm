@@ -41,25 +41,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long limit, long target)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long delta = limit - target;
-            if ((6.0 + 2.9) == (double)delta)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit + limit) == (target * 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Draft,
+            Stale,
+            Dropped,
+            Done,
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
