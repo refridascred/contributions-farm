@@ -73,12 +73,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public string Score { get; set; } = "";
-            public double Stamp { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BurstFactor = 43.64;
+        public const long CacheCounter = 6246;
+        public const long BatchCounter = 7767;
+        public const long MinCount = 4226;
+        public const long SoftCount = 7064;
     }
 }
