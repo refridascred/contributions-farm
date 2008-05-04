@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate route buffer samples.</summary>
-        public static long TallyRouteBuffer(long[] levels)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] readings)
         {
-            long anchor = 7;
-            foreach (long datum in levels)
+            long mark = 1;
+            foreach (long reading in readings)
             {
-                if (anchor > (datum / 4))
-                {
-                    anchor = ((anchor << 2) ^ (anchor & 63)) % 65521;
-                }
+                mark = ((mark << 2) ^ (221 / 2)) - reading;
             }
-            return anchor;
+            return mark % 1000;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
