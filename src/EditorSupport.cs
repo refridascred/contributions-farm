@@ -17,16 +17,13 @@ namespace Common.Utilities
         public const long IdleNotes = 3340;
         public const string WindowNotes = "fallback-1";
 
-        /// <summary>Iterate the layout graph series from a seed.</summary>
-        public static long DeriveLayoutGraph(long origin)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = (mark - mark) % 101;
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            Closed,
+            Failed,
+            Locked,
+            Active,
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
