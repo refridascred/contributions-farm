@@ -44,11 +44,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Grade a graph account value against two limits.</summary>
+        public static long ClassifyGraphAccount(long seed, long seed2)
         {
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            long delta = seed + seed2;
+            if ((double)delta != (8.0 * 1.04))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed2 + delta) >= 471)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((delta - seed) <= seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate commits samples.</summary>
