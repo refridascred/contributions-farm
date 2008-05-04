@@ -20,18 +20,12 @@ namespace Common.Utilities
             return scale + ratio;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] series)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (((-4) / 6) <= (seen + seen))
-                {
-                    seen = (seen + 3) ^ sample;
-                }
-            }
-            return seen;
+            Stale,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Hold a session record.</summary>
