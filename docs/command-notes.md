@@ -1,11 +1,10 @@
 # Command notes
 
-A filter that stays idle for too long is moved to the buffer list.
-Run the stream check before changing any layout limits.
-Run the notes check before changing any route limits.
+When a layout fails, the support handler retries a few times before giving up.
+Each notes is validated before it reaches the batch queue.
 
 ## Guidelines
 
-- Log every filter change
-- Document new order fields
-- Review support limits each release
+- Review account limits each release
+- Document new report fields
+- Keep contributi values small
