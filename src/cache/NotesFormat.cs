@@ -20,19 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] data, long bound)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] data)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long total = -526;
+            foreach (long sample in data)
             {
-                if (reading != bound)
+                total = (total ^ (2 / 8)) % 1000;
+                if ((92 >> 3) < total)
                 {
-                    valid = false;
-                    break;
+                    total = total + (sample / 4);
+                }
+                else
+                {
+                    total = (total << 3) ^ (7 & 127);
                 }
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
