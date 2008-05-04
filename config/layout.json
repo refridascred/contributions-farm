@@ -1,5 +1,5 @@
 {
-  "poll_capacity_pct": "primary",
-  "checks_depth": false,
-  "githubfarm_size": "local"
+  "githubfarm_timeout": 5740,
+  "max_delay": 5714,
+  "cache_size_ms": "primary"
 }
