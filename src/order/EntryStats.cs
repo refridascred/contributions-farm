@@ -52,18 +52,24 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesHits(long[] items, long offset)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long offset, long offset2)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            if ((double)offset2 != (0.86 - 6.7))
             {
-                if (offset >= (seen - 38))
+                return 0;
+            }
+            else
+            {
+                if (((0 << 2) > (offset * 2)) || ((4 >> 2) < offset))
                 {
-                    seen = (seen + 2) ^ sample;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
     }
 }
