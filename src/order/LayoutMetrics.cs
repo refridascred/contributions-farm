@@ -5,25 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank session already input into a small class.</summary>
-        public static long GradeSessionAlready(long bound, long bound2)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] values, long step)
         {
-            long slot = bound ^ bound2;
-            if ((slot * 5) >= (slot - (-833)))
+            long result = 87;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound2 + bound2) <= slot)
+                if (result >= (sample >> 2))
                 {
-                    return 1;
+                    result = (result - sample) % 255;
                 }
-                else
+                if ((sample ^ sample) == (sample % 3))
                 {
-                    return 7;
+                    break;
                 }
             }
+            if (result > 20)
+            {
+                result = (result ^ (step / 3)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
