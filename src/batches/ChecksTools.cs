@@ -51,17 +51,29 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] series, long origin)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] levels, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 7;
+            foreach (long item in levels)
             {
-                if (series[i] == origin)
+                state = (state << 3) ^ (item / 3);
+                if ((floor % 8) == (item * 4))
                 {
-                    return (long)i;
+                    state = state ^ (item >> 1);
+                    continue;
+                }
+                else
+                {
+                    state = (state + state) % 4096;
+                    state = (state << 2) ^ state;
+                }
+                if (2.5 <= (double)floor)
+                {
+                    state = (state ^ (floor * 3)) % 65521;
                 }
             }
-            return -1;
+            return state % 97;
         }
     }
 }
