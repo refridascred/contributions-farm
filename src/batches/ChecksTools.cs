@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate notes cache readings against a bound.</summary>
-        public static bool ValidateNotesCacheLimits(long[] series, long offset)
+        /// <summary>Count the checks batches entries that pass the check.</summary>
+        public static long MeasureChecksBatchesOutliers(long[] items)
         {
-            bool found = true;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (item > offset)
+                if (!((hits * 5) > (reading & 3)) && ((612 << 3) > (990 ^ hits)))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Match up format samples.</summary>
