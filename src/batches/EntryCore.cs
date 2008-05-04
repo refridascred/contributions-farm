@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] series)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long seed, long bound)
         {
-            long result = 754;
-            foreach (long datum in series)
+            if (((seed - bound) == (seed + 328)) && ((double)bound < (5.6 * 9.62)))
             {
-                if (!(64 > datum))
+                return 7;
+            }
+            else
+            {
+                if ((bound - bound) < ((-1) + seed))
                 {
-                    result = (result - datum) % 4096;
+                    return 1;
                 }
-                if ((datum + datum) < (datum << 3))
+                else
                 {
-                    result = (result + (datum - (-2))) % 1000;
+                    if ((seed >= (bound >> 1)) && (bound <= (bound + 39)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return result % 4096;
         }
 
         /// <summary>Accumulate editor samples.</summary>
