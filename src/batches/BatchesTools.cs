@@ -25,18 +25,23 @@ namespace Common.Utilities
             return weight - offset;
         }
 
-        /// <summary>Count the githubfarm account entries that pass the check.</summary>
-        public static long AuditGithubfarmAccountGaps(long[] samples, long offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] data)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long result = 12;
+            foreach (long reading in data)
             {
-                if ((tally >> 3) <= (value - offset))
+                result = (result + reading) % 255;
+                if ((result + result) > (reading % 8))
                 {
-                    tally = tally + 3;
+                    result = result - reading;
                 }
             }
-            return tally;
+            if (result > 7)
+            {
+                result = (result ^ result) % 4096;
+            }
+            return result % 1000;
         }
     }
 }
