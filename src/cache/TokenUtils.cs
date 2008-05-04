@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyOutliers(long[] readings)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((tally * 2) != ((long)readings.Length << 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 3) + datum;
+                    if ((samples[i] ^ samples[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a already stats.</summary>
