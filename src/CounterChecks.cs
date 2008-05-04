@@ -47,19 +47,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two stats context measurements.</summary>
-        public static double BlendStatsContext(double weight, double bias)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] items, long step)
         {
-            double drift = bias;
-            if (drift <= weight)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                drift = drift + (double)(-80);
+                if (sample <= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + weight) - (double)(long)i;
-            }
-            return drift - weight;
+            return stale;
         }
 
         /// <summary>Project the next notes entry value.</summary>
