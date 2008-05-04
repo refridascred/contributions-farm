@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            Draft,
-            Dropped,
-            Pending,
-            Active,
-            Ready,
+            public string Total { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Look up the position of a filter queue sample.</summary>
