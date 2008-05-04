@@ -62,24 +62,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long offset, long offset2)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] values, long seed)
         {
-            if ((double)offset2 != (0.86 - 6.7))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((0 << 2) > (offset * 2)) || ((4 >> 2) < offset))
+                if (values[i] <= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
