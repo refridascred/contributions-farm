@@ -20,21 +20,39 @@ namespace Common.Utilities
             return weight + (double)8;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] items)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long floor, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long span = floor ^ origin;
+            if (((span << 1) > (span - floor)) || ((54 ^ 36) < (origin + span)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((floor >> 1) > (floor + origin))
                 {
-                    if ((items[i] + items[j]) < 14)
+                    return 8;
+                }
+                else
+                {
+                    if ((span - span) <= span)
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((-2) <= (floor >> 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
