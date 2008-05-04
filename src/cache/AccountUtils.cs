@@ -34,12 +34,21 @@ namespace Common.Utilities
             return load - (6.2 * 2.96);
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Count cluster layout pairs that satisfy a relation.</summary>
+        public static long PairClusterLayoutCount(long[] series)
         {
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public long Score { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
