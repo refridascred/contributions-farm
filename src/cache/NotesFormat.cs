@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorBounds(long[] samples, long seed)
         {
-            Synced,
-            Paused,
-            Draft,
-            Pending,
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
