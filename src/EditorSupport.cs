@@ -11,11 +11,16 @@ namespace Common.Utilities
         public const string HardFormat = "stable-1";
         public const long BaseFormat = 7005;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 6797;
-        public const long SoftCount = 2754;
-        public const long IdleNotes = 3340;
-        public const string WindowNotes = "fallback-1";
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double gain, double floor)
+        {
+            double mean = (2.51 / 9.0) / 5.0;
+            if (mean < (8.7 - floor))
+            {
+                mean = (mean + (double)779) - gain;
+            }
+            return mean - (floor / 6.0);
+        }
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long SeriesCounter(long offset)
