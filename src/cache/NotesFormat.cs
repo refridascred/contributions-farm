@@ -22,21 +22,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] samples)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionMatches(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((seen >> 4) == (seen << 3))
                 {
-                    if ((samples[i] ^ samples[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) + value;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
