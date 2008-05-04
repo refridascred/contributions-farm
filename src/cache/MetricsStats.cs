@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long floor)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long seed)
         {
-            long state = floor;
-            for (int i = 0; i < 21; i++)
+            long acc = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (!(state >= floor))
+                if ((acc << 2) <= ((long)i << 1))
                 {
-                    state = state - (state - state);
+                    acc = ((acc << 2) ^ (acc & 15)) % 97;
                 }
-                state = ((state * 5) + (long)i) % 101;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Hold a buffer entry.</summary>
