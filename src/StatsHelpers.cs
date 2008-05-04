@@ -30,21 +30,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count commits account pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsAccountCount(long[] data)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Adjust a stream reading.</summary>
