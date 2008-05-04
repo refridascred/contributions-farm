@@ -43,18 +43,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)matches >= 14.0)
-                {
-                    matches = (matches + 2) - entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowProfile = "cached-1";
+        public const long BatchLevel = 1777;
+        public const double MaxProfile = 44.35;
     }
 }
