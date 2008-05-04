@@ -52,18 +52,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a farm contributi reading by value.</summary>
-        public static long LookupFarmContributiIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > floor) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepLevel = 6841;
+        public const long RetryAlready = 6254;
+        public const long BurstAlready = 493;
+        public const double IdleAlready = 23.6;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string LimitSpan = "alpha";
