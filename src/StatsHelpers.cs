@@ -30,16 +30,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 16; i++)
-            {
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string CacheSpan = "strict";
+        public const long IdleBatches = 2175;
+        public const double StepBatches = 65.51;
+        public const long SoftBatches = 4563;
+        public const long HardBudget = 7678;
 
         /// <summary>Project the next entry value.</summary>
         public static double ScaleEntry(double weight, double span)
