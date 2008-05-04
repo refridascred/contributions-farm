@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] readings)
         {
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((hits - reading) == (long)readings.Length)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
