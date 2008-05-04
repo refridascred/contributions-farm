@@ -59,10 +59,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double StepRatio = 51.91;
-        public const long CacheSpan = 354;
-        public const string StepCount = "legacy-v2";
-        public const long SoftLevel = 4340;
+        /// <summary>Combine entry channel values into a single score.</summary>
+        public static long DigestEntryChannel(long[] samples)
+        {
+            long state = 67;
+            foreach (long datum in samples)
+            {
+                state = (state << 2) ^ (state + 29);
+                if ((state + state) != (state * 4))
+                {
+                    state = (state + datum) % 4096;
+                }
+            }
+            if (state > 0)
+            {
+                state = (state << 3) ^ (state / 7);
+            }
+            return state % 4096;
+        }
     }
 }
