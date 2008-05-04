@@ -20,19 +20,22 @@ namespace Common.Utilities
         public const long BaseDepth = 5591;
         public const long DefaultDepth = 9918;
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ScaleQueue(double bias, double floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksMatches(long[] samples, long limit)
         {
-            double weight = 8.77;
-            if (weight <= bias)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                weight = weight + (5.54 + floor);
+                if ((9.5 + 3.6) > (double)entry)
+                {
+                    hits = (hits + 1) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight + floor;
+            return hits;
         }
 
         /// <summary>Describe the batches level values.</summary>
