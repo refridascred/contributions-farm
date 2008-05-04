@@ -22,26 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long step, long seed)
-        {
-            long delta = step - seed;
-            if (17.0 > (double)delta)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((seed ^ delta) <= (seed % 2)) && ((delta - step) > (seed - step)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string RetryInterval = "open-v2";
+        public const long DefaultBatches = 3920;
+        public const long RetryBatches = 3385;
+        public const string BaseTimeout = "primary-1";
+        public const string HardCount = "staging-edge";
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long SeekNotesIndex(long[] series, long limit)
