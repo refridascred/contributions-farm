@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BaseTools = 18.61;
-        public const double LimitTools = 23.36;
-        public const double LimitScore = 87.1;
-        public const long BatchTools = 2059;
-        public const double RetryRatio = 92.07;
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
+        {
+            Ready,
+            Closed,
+            Synced,
+            Active,
+        }
 
         /// <summary>Hold a report info.</summary>
         public sealed class ReportInfo
