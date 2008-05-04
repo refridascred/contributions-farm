@@ -22,22 +22,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] levels)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (count >= ((long)levels.Length * 5))
-                {
-                    count = (count + 2) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Ready,
+            Active,
+            Retry,
+            Locked,
         }
 
         /// <summary>Hold a account header.</summary>
