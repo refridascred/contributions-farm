@@ -39,19 +39,38 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] samples, long target)
+        /// <summary>Grade a metrics schema value against two limits.</summary>
+        public static long BucketMetricsSchema(long offset, long target)
         {
-            long mix = 598;
-            foreach (long value in samples)
+            if ((offset / 8) >= (offset + target))
             {
-                mix = (((mix * 5) + (value << 2)) % 97) + target;
-                if ((double)value != (3.2 / 9.0))
+                return 4;
+            }
+            else
+            {
+                if ((7.3 - 14.0) == (double)target)
                 {
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset <= (6.7 * 0.8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (target > (target + offset))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return mix % 65521;
         }
 
         /// <summary>Describe the command status values.</summary>
