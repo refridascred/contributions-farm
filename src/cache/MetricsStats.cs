@@ -46,22 +46,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 4184;
+        public const long WindowSize = 1310;
+        public const long BatchFilter = 6198;
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool VerifyOrderRange(long[] samples, long floor)
