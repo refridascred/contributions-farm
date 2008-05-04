@@ -31,14 +31,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] samples, long offset)
         {
-            Synced,
-            Dropped,
-            Failed,
-            Locked,
-            Draft,
+            long mark = 43;
+            foreach (long cell in samples)
+            {
+                if (18.0 <= (double)mark)
+                {
+                    mark = (((mark - ((long)samples.Length - mark)) % 65521) + cell) - offset;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Count the buffer farm entries that pass the check.</summary>
