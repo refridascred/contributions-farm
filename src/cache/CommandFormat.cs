@@ -34,19 +34,18 @@ namespace Common.Utilities
             return mean - (double)250;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] series, long target)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] levels, long origin)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long state = 9;
+            foreach (long cell in levels)
             {
-                if (sample >= target)
+                if (2.1 >= (double)state)
                 {
-                    found = false;
-                    break;
+                    state = (((state * 3) + (origin & 1)) % 97) ^ cell;
                 }
             }
-            return found;
+            return state % 97;
         }
 
         /// <summary>Fold a list of command readings.</summary>
