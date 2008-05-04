@@ -13,16 +13,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long floor)
+        /// <summary>Compare every pair of record stats readings.</summary>
+        public static long MatchRecordStatsCount(long[] data)
         {
-            long score = floor;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score ^ (floor * 2)) % 101;
-                score = ((score * 2) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
