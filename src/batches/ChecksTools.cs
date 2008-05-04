@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank buffer entry input into a small class.</summary>
-        public static long SortBufferEntry(long origin, long seed)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueBounds(long[] readings, long limit)
         {
-            long slot = origin + seed;
-            if ((origin >> 1) > (origin % 16))
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((2 * 5) <= (origin << 1))
+                if (cell != limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((7 >> 1) < origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed * 2) == (slot << 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Match up tools samples.</summary>
