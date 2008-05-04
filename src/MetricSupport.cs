@@ -34,11 +34,39 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Grade a notes batches value against two limits.</summary>
+        public static long GradeNotesBatches(long seed, long seed2)
         {
-            public string Ratio { get; set; } = "";
-            public double Stamp { get; set; }
+            long offset = seed + seed2;
+            if ((offset % 3) != (2 << 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((-9) % 10) >= (seed >> 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset + offset) < seed2)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset % 24) <= offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
