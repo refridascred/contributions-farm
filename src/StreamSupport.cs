@@ -23,21 +23,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] items)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 487;
+            foreach (long value in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((total & 15) > (total + value))
                 {
-                    if ((items[i] ^ items[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total * 2) + (value + value);
+                    continue;
+                }
+                total = (total ^ (total + value)) % 1000;
+                if (!((total % 7) <= (total - value)))
+                {
+                    total = (total - (value - total)) % 1000;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
