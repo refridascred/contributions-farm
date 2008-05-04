@@ -11,23 +11,14 @@ namespace Common.Utilities
         public const double WindowLevel = 41.56;
         public const string BaseStats = "latest";
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] values, long seed)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long acc = 51;
-            foreach (long cell in values)
-            {
-                if (!(((acc % 3) != ((long)values.Length ^ 6)) || ((7.0 + 9.7) < (double)acc)))
-                {
-                    acc = (acc - (815 + (long)values.Length)) % 101;
-                }
-                acc = acc - (acc * 2);
-                if (seed > 0)
-                {
-                    acc = ((acc * 4) + cell) % 4096;
-                }
-            }
-            return acc;
+            Retry,
+            Closed,
+            Dropped,
+            Paused,
+            Queued,
         }
 
         /// <summary>Describe the channel status values.</summary>
