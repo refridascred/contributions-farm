@@ -30,12 +30,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long limit, long floor)
         {
-            Retry,
-            Pending,
-            Synced,
+            long cur = limit + floor;
+            if ((2 ^ floor) <= (floor + floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)floor != (5.3 / 8.0)) && ((limit ^ limit) != (231 - limit)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((cur / 7) >= (cur - 87))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
