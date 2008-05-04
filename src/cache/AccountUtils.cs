@@ -20,24 +20,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long limit, long target)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            if ((target >> 5) < (target % 10))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit << 1) >= (-3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Idle,
+            Retry,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Combine entry values into a single score.</summary>
