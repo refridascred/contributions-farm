@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate checks counter samples.</summary>
-        public static long WeighChecksCounter(long[] samples)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorGaps(long[] levels, long bound)
         {
-            long mix = 8;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                mix = (mix * 2) + (mix + value);
+                if ((((seen - (long)levels.Length) >= bound) && ((seen / 4) <= (value * 5))) || ((double)value >= (5.0 / 2.0)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return mix % 1000;
+            return seen;
         }
 
         /// <summary>Hold a contributi record.</summary>
