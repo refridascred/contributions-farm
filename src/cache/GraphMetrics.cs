@@ -32,22 +32,10 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultSize = 689;
+        public const long DefaultCommand = 1762;
+        public const double LimitCommand = 62.71;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string StepMetric = "local-edge";
