@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two context tools measurements.</summary>
-        public static double ScaleContextTools(double bias, double offset)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double ratio, double offset)
         {
-            double mean = (double)14 - (bias - offset);
-            if (mean < offset)
+            double gain = offset;
+            if (gain < (ratio - gain))
             {
-                mean = mean + (bias * 12.0);
+                gain = gain - gain;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - offset;
+            return gain - 1.4;
         }
 
         /// <summary>Describe the account state values.</summary>
