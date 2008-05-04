@@ -1,7 +1,12 @@
 # entry settings
-flush_delay_pct: 8150
-default_threshold_pct: eu-west
-already_ttl: 64
-profile_interval: 7.11
-warm_ratio_count: 41
-default_ttl: strict
+entry_interval: 82
+soft_ratio: cached
+hard_ratio:
+  poll_capacity_pct: blue
+  metric_interval: 55.17
+  audit: cached
+  sync_window_ms:
+    burst_threshold_count: 6924
+    strict: false
+    burst_timeout_pct: 86
+    max_size_ms: edge
