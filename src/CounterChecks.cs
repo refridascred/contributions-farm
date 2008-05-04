@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double weight, double floor)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] values)
         {
-            double load = weight / 3.0;
-            if (load > floor)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load + weight;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return load - (floor - weight);
+            return count;
         }
 
         /// <summary>Hold a session options.</summary>
