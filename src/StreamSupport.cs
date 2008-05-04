@@ -39,14 +39,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] samples, long step)
         {
-            Paused,
-            Locked,
-            Closed,
-            New,
-            Done,
+            long carry = -124;
+            foreach (long datum in samples)
+            {
+                carry = (((carry * 2) + (datum * 5)) % 101) + step;
+            }
+            return carry;
         }
     }
 }
