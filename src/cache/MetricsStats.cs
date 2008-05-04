@@ -40,13 +40,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            Idle,
-            New,
-            Queued,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryDepth = 2777;
+        public const long CacheBudget = 9090;
+        public const string CacheContributi = "standard-1";
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long LimitGithubfarm = 6862;
