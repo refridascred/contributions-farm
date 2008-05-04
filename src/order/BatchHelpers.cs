@@ -11,13 +11,22 @@ namespace Common.Utilities
         public const string CacheSession = "primary";
         public const double WindowSession = 77.37;
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] series)
         {
-            public double Rank { get; set; }
-            public bool Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Region { get; set; }
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((6.33 * 0.5) == (double)(long)series.Length)
+                {
+                    hits = (hits + 3) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a contributi summary.</summary>
