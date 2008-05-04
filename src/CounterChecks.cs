@@ -29,19 +29,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] data, long limit)
+        /// <summary>Iterate the schema metrics series from a seed.</summary>
+        public static long SeriesSchemaMetrics(long limit)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (sample > limit)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
