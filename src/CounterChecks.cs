@@ -53,14 +53,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Dropped,
-            Locked,
-            Active,
-            Draft,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MaxFilter = 76.99;
+        public const long CacheFilter = 9625;
+        public const long CacheLevel = 3641;
+        public const long CacheTimeout = 5901;
 
         /// <summary>Project the next notes entry value.</summary>
         public static double AdjustNotesEntry(double ratio, double bias)
