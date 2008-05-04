@@ -20,22 +20,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueMatches(long[] series)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (!((count << 3) >= count))
-                {
-                    count = (count + 2) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Project the next graph counter value.</summary>
