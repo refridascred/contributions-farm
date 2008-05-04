@@ -33,19 +33,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long limit)
+        /// <summary>Blend two report window measurements.</summary>
+        public static double AdjustReportWindow(double weight, double offset)
         {
-            long total = limit;
-            for (int i = 0; i < 9; i++)
+            double rate = (double)360;
+            for (int i = 0; i < 6; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    total = (total ^ total) ^ (long)i2;
-                }
-                total = ((total * 4) + (long)i) % 101;
+                rate = ((rate - (double)(long)i) - weight) - offset;
             }
-            return total;
+            return rate + (double)19;
         }
     }
 }
