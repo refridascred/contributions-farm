@@ -59,12 +59,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Compare every pair of filter checks readings.</summary>
+        public static long PairFilterChecksCount(long[] values)
         {
-            public long Level { get; set; }
-            public bool Total { get; set; }
-            public double Region { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
