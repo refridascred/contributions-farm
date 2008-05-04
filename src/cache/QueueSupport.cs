@@ -15,13 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            Ready,
-            Retry,
-            Synced,
-            Draft,
+            Failed,
+            Active,
+            Closed,
         }
 
         /// <summary>Fold a list of editor filter readings.</summary>
