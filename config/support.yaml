@@ -1,5 +1,12 @@
 # support settings
-default_ttl_ms: false
-hard_window_pct: open
-compress: open
-default_depth: legacy
+persist:
+  - strict
+  - primary
+  - edge
+readonly: 98
+context_retries:
+  - cached
+  - standard
+  - stable
+  - latest
+batch_interval_ms: blue
