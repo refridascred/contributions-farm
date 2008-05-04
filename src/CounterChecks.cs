@@ -15,12 +15,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Iterate the session tools series from a seed.</summary>
+        public static long StepSessionTools(long limit)
         {
-            public double Flag { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = (acc + (acc / 9)) % 4096;
+                double mean = (double)(acc % 2);
+                if ((738 << 1) <= (limit & 63))
+                {
+                    double gain = mean - mean;
+                    mean = mean - gain;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
