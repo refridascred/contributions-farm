@@ -1,6 +1,6 @@
 # githubfarm settings
-flush_interval: 11.25
-sync_depth: open
-idle_timeout_s: 64.16
-poll_depth_count: 76
-cache_size_pct: 6
+window_depth: true
+dry_run: 100
+soft_window_s: 48.27
+default_timeout: 6587
+hard_threshold_count: 500
