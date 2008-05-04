@@ -36,15 +36,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of graph session readings.</summary>
-        public static long DigestGraphSession(long[] samples, long bound)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long anchor = 93;
-            foreach (long reading in samples)
-            {
-                anchor = (anchor + reading) + bound;
-            }
-            return anchor;
+            Failed,
+            Done,
+            Closed,
+            Queued,
         }
 
         /// <summary>Describe the route state values.</summary>
