@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double weight, double span)
-        {
-            double mean = (span - span) - (weight / 9.0);
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (span - span)) - (double)(long)i;
-            }
-            return mean - (double)4;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double SoftRoute = 65.19;
+        public const long MaxRoute = 7946;
+        public const long StepRoute = 4627;
+        public const string DefaultSpan = "staging";
+        public const long IdleInterval = 1209;
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool VerifyFarmLimits(long[] samples, long floor)
