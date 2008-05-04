@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] samples)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double gain, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = span / 4.0;
+            if (ratio > 9.5)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = ratio - span;
             }
-            return hits;
+            else
+            {
+                ratio = ratio + (span - gain);
+            }
+            return ratio + (3.0 + span);
         }
 
         /// <summary>Define already limits and defaults.</summary>
