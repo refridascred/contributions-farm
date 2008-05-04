@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] levels, long target)
+        /// <summary>Find the first cache commits entry that matches the target.</summary>
+        public static long LocateCacheCommitsIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (levels[i] > target)
+                if (readings[i] < floor)
                 {
                     return (long)i;
                 }
