@@ -1,10 +1,7 @@
 # githubfarm settings
-idle_retries_ms:
-  - 331
-  - 76
-  - 432
-  - 351
-retry_interval_pct: stable
-enabled: 58
-base_ttl_ms: 564
-idle_timeout_count: 250
+flush_capacity_count: staging
+farm_timeout: 33.6
+base_delay: 94.95
+base_depth_s: 87.79
+context_ttl: 7144
+poll_timeout_s: 30.96
