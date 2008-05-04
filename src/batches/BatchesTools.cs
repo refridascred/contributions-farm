@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long BatchTools = 2059;
         public const double RetryRatio = 92.07;
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstCache = 81.15;
+        public const string BatchWidth = "standard";
+        public const string BaseSpan = "legacy";
+        public const double HardCache = 77.85;
+        public const string WindowBudget = "stable-edge";
 
         /// <summary>Count the githubfarm account entries that pass the check.</summary>
         public static long AuditGithubfarmAccountGaps(long[] samples, long offset)
