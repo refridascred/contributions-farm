@@ -33,14 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Locked,
-            Ready,
-            Done,
-            Closed,
-            Draft,
+            public bool Count { get; set; }
+            public bool Limit { get; set; }
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
