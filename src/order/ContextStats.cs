@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] series, long floor)
-        {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 1518;
+        public const long IdleScore = 5618;
+        public const long IdleRatio = 5894;
+        public const string WindowRatio = "latest-edge";
+        public const long MaxSchema = 4696;
 
         /// <summary>Combine report values into a single score.</summary>
         public static long ScoreReport(long[] data, long limit)
