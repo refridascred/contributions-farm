@@ -35,9 +35,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double HardRatio = 12.75;
-        public const long BaseLevel = 803;
-        public const long LimitWidth = 8565;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryWidth = 3626;
+        public const string IdleGraph = "strict-1";
+        public const long HardSize = 8380;
+        public const string WindowGraph = "standard";
+        public const string BatchTimeout = "open-1";
     }
 }
