@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsGaps(long[] levels)
         {
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample * 2) == (hits - sample))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
