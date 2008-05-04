@@ -34,16 +34,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] values, long origin)
         {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                anchor = (anchor - (floor + floor)) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if (!((10.0 + 9.02) != (double)origin))
+                {
+                    hits = (hits + 1) ^ sample;
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
