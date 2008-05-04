@@ -81,11 +81,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            public double Weight { get; set; }
-            public string Mode { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public double Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
