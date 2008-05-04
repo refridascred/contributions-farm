@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of metric window readings.</summary>
-        public static long MatchMetricWindowCount(long[] readings)
+        /// <summary>Count tools profile pairs that satisfy a relation.</summary>
+        public static long OverlapToolsProfileCount(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) != 6)
+                    if ((series[i] + series[j]) < 18)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the cluster class values.</summary>
