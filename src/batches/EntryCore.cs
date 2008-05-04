@@ -50,12 +50,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] items)
         {
-            Paused,
-            Failed,
-            New,
+            long total = 711;
+            foreach (long datum in items)
+            {
+                total = total ^ datum;
+            }
+            if (total < 69)
+            {
+                total = (total + (total & 15)) % 101;
+            }
+            return total % 4096;
         }
     }
 }
