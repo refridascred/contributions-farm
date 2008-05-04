@@ -31,17 +31,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] series, long target)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long limit, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((0.8 / 9.0) > (double)origin)
             {
-                if (series[i] < target)
+                return 4;
+            }
+            else
+            {
+                if (((limit % 5) <= (-791)) && ((9.96 / 2.0) < (double)origin))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (((limit + 16) >= (479 % 16)) || ((limit * 2) < origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
