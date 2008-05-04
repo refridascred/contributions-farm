@@ -37,23 +37,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many token account samples are out of range.</summary>
-        public static long CountTokenAccountMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((20.0 * 5.8) >= (double)seen)
-                {
-                    seen = (seen + 3) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseDepth = 898;
+        public const long SoftSession = 1667;
+        public const string WindowSession = "strict";
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool CheckCommitsBounds(long[] items, long seed)
