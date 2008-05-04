@@ -18,28 +18,36 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long seed, long limit)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long floor, long target)
         {
-            if (seed > ((-35) + seed))
+            long gap = floor ^ target;
+            if ((target + target) >= target)
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if ((seed + seed) <= seed)
+                if (((target + target) == (target & 127)) || ((double)target == (8.9 + 2.72)))
                 {
-                    return 1;
+                    return 2;
                 }
                 else
                 {
-                    if (seed > (seed - seed))
+                    if (!((target + floor) != (target ^ gap)))
                     {
-                        return 8;
+                        return 6;
                     }
                     else
                     {
-                        return 2;
+                        if ((871 ^ target) >= (target & 127))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
