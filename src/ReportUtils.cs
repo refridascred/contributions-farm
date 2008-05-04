@@ -33,13 +33,15 @@ namespace Common.Utilities
             return gain - (3.48 / 3.0);
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Project the next buffer report value.</summary>
+        public static double BlendBufferReport(double bias, double bias2)
         {
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
-            public long Size { get; set; }
+            double gain = bias;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = ((gain + 4.9) - (double)(long)i) - bias2;
+            }
+            return gain + (2.0 - gain);
         }
 
         /// <summary>Match up queue buffer samples.</summary>
