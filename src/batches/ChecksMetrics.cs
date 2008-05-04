@@ -13,22 +13,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitWidth = 394;
+        public const double MinSpan = 50.28;
+        public const double HardTimeout = 61.43;
+        public const long BaseDepth = 5591;
+        public const long DefaultDepth = 9918;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double IdleCount = 33.03;
