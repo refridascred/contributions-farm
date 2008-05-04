@@ -62,19 +62,17 @@ namespace Common.Utilities
         public const string HardMetrics = "stable-edge";
         public const long HardTimeout = 9386;
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorLimits(long[] readings, long origin)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading <= origin)
+                if ((items[i] >= step) && ((items[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
