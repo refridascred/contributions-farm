@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] items, long origin)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((items[i] > origin) && ((items[i] % 2) != 0))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return (long)i;
+                    mark = ((mark + mark) % 1000) - (long)i2;
                 }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Project the next account value.</summary>
