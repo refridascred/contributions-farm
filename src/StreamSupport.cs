@@ -58,18 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] items)
+        /// <summary>Accumulate tools stream samples.</summary>
+        public static long ScoreToolsStream(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long anchor = 70;
+            foreach (long cell in readings)
             {
-                if ((value << 1) >= (332 % 8))
-                {
-                    hits = hits + 1;
-                }
+                anchor = ((anchor << 2) ^ (limit + cell)) % 97;
             }
-            return hits;
+            if (anchor > 6)
+            {
+                anchor = (anchor + limit) % 65521;
+            }
+            return anchor;
         }
     }
 }
