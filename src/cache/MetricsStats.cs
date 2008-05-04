@@ -42,20 +42,21 @@ namespace Common.Utilities
             return drift - (floor * 9.1);
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] levels, long step)
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] data)
         {
-            long score = 56;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((-9) / 3) == (score + 23))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = score - (4 * 4);
-                    score = score - (step >> 3);
+                    if ((data[i] ^ data[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                score = (score ^ sample) % 101;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
