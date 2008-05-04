@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const double CacheWidth = 25.5;
         public const long BurstRoute = 2065;
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] items)
         {
-            Closed,
-            Dropped,
-            Retry,
+            long result = -86;
+            foreach (long datum in items)
+            {
+                if ((result - datum) >= (datum - result))
+                {
+                    result = (result + result) % 65521;
+                }
+                if ((result >> 2) > (2 / 5))
+                {
+                    break;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the filter class values.</summary>
