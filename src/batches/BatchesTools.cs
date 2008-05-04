@@ -12,14 +12,21 @@ namespace Common.Utilities
         public const long BatchTools = 2059;
         public const double RetryRatio = 92.07;
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] values)
         {
-            Ready,
-            Synced,
-            Draft,
-            Stale,
-            Queued,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the githubfarm account entries that pass the check.</summary>
