@@ -10,17 +10,38 @@ namespace Common.Utilities
         public const double HardCluster = 38.56;
         public const long BatchCluster = 6579;
 
-        /// <summary>Look up the position of a filter queue sample.</summary>
-        public static long FindFilterQueueIndex(long[] samples, long offset)
+        /// <summary>Classify a batches record pair into a bucket.</summary>
+        public static long ClassifyBatchesRecord(long floor, long floor2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((floor << 1) <= 489)
             {
-                if (samples[i] <= offset)
+                return 6;
+            }
+            else
+            {
+                if (!((floor + floor2) <= (97 - floor2)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (floor2 <= (790 % 97))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (floor > (floor % 12))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the entry status values.</summary>
