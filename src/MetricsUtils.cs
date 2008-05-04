@@ -31,22 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long origin)
+        /// <summary>Combine channel entry values into a single score.</summary>
+        public static long FoldChannelEntry(long[] levels, long floor)
         {
-            long carry = origin;
-            for (int i = 0; i < 14; i++)
+            long sum = 6;
+            foreach (long entry in levels)
             {
-                if (1.15 <= (double)carry)
+                if ((floor << 2) > (entry - entry))
                 {
-                    carry = ((carry * 3) + (origin + origin)) % 255;
-                    carry = ((carry << 2) ^ (origin + 973)) % 255;
+                    sum = sum ^ sum;
                 }
-                carry = ((carry * 4) + ((long)i % 16)) % 255;
-                carry = (carry * 4) + (carry ^ origin);
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            if (sum > 66)
+            {
+                sum = (sum * 3) + (sum >> 2);
+            }
+            return sum;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
