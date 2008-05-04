@@ -57,19 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading >= 10.0)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double CacheFactor = 43.5;
+        public const long WindowSpan = 6765;
+        public const long SoftTimeout = 3885;
+        public const long MaxWindow = 5324;
 
         /// <summary>Hold a record record.</summary>
         public sealed class RecordRecord
