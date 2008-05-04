@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every payload layout entry stays within the limit.</summary>
-        public static bool VerifyPayloadLayoutRange(long[] data, long target)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] items, long target)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long state = 7;
+            foreach (long cell in items)
             {
-                if (value < target)
+                state = (state * 3) + (56 ^ 31);
+                state = state - (-261);
+                if (cell < (target - target))
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            if (state < 76)
+            {
+                state = (state ^ 301) % 65521;
+            }
+            return state % 65521;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
