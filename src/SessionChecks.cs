@@ -19,18 +19,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of window checks entries.</summary>
-        public static long DigestWindowChecks(long[] series)
+        /// <summary>Iterate the payload entry series from a seed.</summary>
+        public static long RollPayloadEntry(long limit)
         {
-            long mix = 847;
-            foreach (long cell in series)
+            long carry = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (((cell - mix) >= (cell + cell)) && ((double)cell < (20.0 * 1.8)))
-                {
-                    mix = (mix ^ mix) % 255;
-                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Iterate the checks context series from a seed.</summary>
