@@ -22,22 +22,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadOutliers(long[] samples)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long step, long seed)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long delta = step - seed;
+            if (17.0 > (double)delta)
             {
-                if (((563 >> 2) > cell) || ((double)hits <= (11.0 / 9.0)))
+                return 4;
+            }
+            else
+            {
+                if (((seed ^ delta) <= (seed % 2)) && ((delta - step) > (seed - step)))
                 {
-                    hits = hits + 2;
+                    return 5;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
