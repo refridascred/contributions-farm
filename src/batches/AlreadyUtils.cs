@@ -22,12 +22,17 @@ namespace Common.Utilities
         public const string LimitStream = "alpha";
         public const long StepStream = 3486;
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Look up the position of a already editor sample.</summary>
+        public static long LocateAlreadyEditorIndex(long[] items, long offset)
         {
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
-            public bool Offset { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < offset) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of metrics checks entries.</summary>
