@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] series, long origin)
         {
-            public string Region { get; set; } = "";
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((origin * 2) != (origin ^ reading))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
