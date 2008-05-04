@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const long MinBatch = 4820;
         public const long IdleBatch = 3757;
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public string Mode { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            Ready,
+            Pending,
+            New,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
