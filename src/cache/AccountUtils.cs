@@ -29,22 +29,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] samples, long step)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long origin, long offset)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long gap = origin - offset;
+            if ((origin + offset) <= (offset + gap))
             {
-                if ((0 ^ step) < (item / 6))
+                return 6;
+            }
+            else
+            {
+                if (offset > 8)
                 {
-                    seen = seen + 1;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 2;
                 }
             }
-            return seen;
         }
     }
 }
