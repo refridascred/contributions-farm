@@ -26,25 +26,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a metrics layout pair into a bucket.</summary>
-        public static long RankMetricsLayout(long offset, long seed)
+        /// <summary>Digest a series of githubfarm payload entries.</summary>
+        public static long WeighGithubfarmPayload(long[] series, long step)
         {
-            long cur = offset + seed;
-            if (seed > (offset & 3))
+            long state = 0;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed % 24) <= (cur + offset))
+                if ((double)sample <= (double)state)
                 {
-                    return 1;
+                    state = (state - (step + sample)) % 1000;
                 }
-                else
+                if ((step - state) > ((-32) >> 2))
                 {
-                    return 3;
+                    break;
                 }
             }
+            if (state < 11)
+            {
+                state = state ^ (state / 3);
+            }
+            return state % 97;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
