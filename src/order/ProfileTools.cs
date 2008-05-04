@@ -39,19 +39,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileLimits(long[] samples, long seed)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long seed)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long total = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (datum > seed)
+                if (((seed + seed) != (5 + 16)) && ((seed + seed) > total))
                 {
-                    stale = false;
-                    break;
+                    total = ((total * 5) + (long)i) % 4096;
                 }
+                else
+                {
+                    total = (total * 5) + seed;
+                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
