@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every format layout entry stays within the limit.</summary>
-        public static bool VerifyFormatLayoutBounds(long[] levels, long step)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
+            public double Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
