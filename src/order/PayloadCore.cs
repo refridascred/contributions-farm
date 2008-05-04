@@ -35,12 +35,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] readings, long bound)
         {
-            Active,
-            Synced,
-            Draft,
+            long state = 8;
+            foreach (long item in readings)
+            {
+                if ((item ^ bound) != (4 >> 1))
+                {
+                    state = (state * 3) + (item - bound);
+                }
+                else
+                {
+                    state = state ^ (state + state);
+                }
+            }
+            return state;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
