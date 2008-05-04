@@ -21,19 +21,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterRange(long[] items, long bound)
+        /// <summary>Scale a tools filter figure with a bias.</summary>
+        public static double ScaleToolsFilter(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double gain = ratio;
+            return gain + bias;
         }
     }
 }
