@@ -11,16 +11,18 @@ namespace Common.Utilities
         public const long SoftTimeout = 3788;
         public const long DefaultRatio = 6743;
 
-        /// <summary>Iterate the githubfarm session series from a seed.</summary>
-        public static long DeriveGithubfarmSession(long floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] readings, long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 12; i++)
+            long sum = 894;
+            foreach (long entry in readings)
             {
-                mark = (mark - (mark - (-801))) % 255;
-                mark = ((mark * 3) + (long)i) % 4093;
+                if (((35 & 255) != (58 - sum)) && ((sum & 127) <= (origin + origin)))
+                {
+                    sum = ((sum - (origin + (long)readings.Length)) % 4096) - entry;
+                }
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
