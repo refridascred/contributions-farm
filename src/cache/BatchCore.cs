@@ -11,39 +11,13 @@ namespace Common.Utilities
         public const double WindowNotes = 64.57;
         public const long StepRatio = 3151;
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long floor, long target)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long gap = floor ^ target;
-            if ((target + target) >= target)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((target + target) == (target & 127)) || ((double)target == (8.9 + 2.72)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((target + floor) != (target ^ gap)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((871 ^ target) >= (target & 127))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Ready,
+            Synced,
+            Idle,
         }
 
         /// <summary>Locate a channel reading by value.</summary>
