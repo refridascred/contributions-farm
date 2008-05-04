@@ -26,17 +26,9 @@ namespace Common.Utilities
         public const string BaseTimeout = "primary-1";
         public const string HardCount = "staging-edge";
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string DefaultRatio = "open-1";
+        public const long IdleOrder = 4898;
+        public const string MinLevel = "open";
     }
 }
