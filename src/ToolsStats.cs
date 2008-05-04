@@ -20,10 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepWidth = 1130;
-        public const long MinTimeout = 5144;
-        public const long BaseTools = 8674;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] items)
+        {
+            long state = 293;
+            foreach (long reading in items)
+            {
+                state = ((state ^ (7 + state)) % 101) ^ reading;
+            }
+            if (state < 73)
+            {
+                state = state + (state - state);
+            }
+            return state;
+        }
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
