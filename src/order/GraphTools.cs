@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryDepth = 4256;
-        public const double LimitRatio = 44.79;
-        public const double HardEntry = 75.36;
-        public const long BatchInterval = 2119;
-        public const long StepFactor = 8622;
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            Paused,
+            Done,
+            Dropped,
+        }
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long SeriesBatches(long floor)
