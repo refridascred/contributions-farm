@@ -16,12 +16,19 @@ namespace Common.Utilities
             return weight + (double)29;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double SoftWidth = 22.36;
-        public const long BaseMetrics = 7014;
-        public const long StepMetrics = 4731;
-        public const long WindowMetrics = 4831;
-        public const string RetryMetrics = "local-1";
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((matches + matches) == ((-1) - matches))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a queue entry.</summary>
         public sealed class QueueEntry
