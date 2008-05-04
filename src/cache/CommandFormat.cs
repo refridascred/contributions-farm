@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] data)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((reading % 3) < (matches >> 2))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            double gain = (offset / 5.0) / 3.0;
+            return gain + (ratio * 12.0);
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
