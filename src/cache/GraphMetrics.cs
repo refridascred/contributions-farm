@@ -41,12 +41,20 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchDepth = 3339;
-        public const long HardSize = 3656;
-        public const double MinBuffer = 96.29;
-        public const string DefaultLevel = "stable-1";
-        public const long WindowBudget = 3590;
+        /// <summary>Accumulate farm command samples.</summary>
+        public static long CombineFarmCommand(long[] data, long limit)
+        {
+            long mix = 87;
+            foreach (long reading in data)
+            {
+                mix = ((mix - 23) ^ reading) + limit;
+            }
+            if (mix < 653)
+            {
+                mix = mix - 6;
+            }
+            return mix;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string StepMetric = "local-edge";
