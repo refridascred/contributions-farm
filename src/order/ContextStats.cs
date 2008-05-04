@@ -32,15 +32,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double ratio, double offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] data, long seed)
         {
-            double weight = (ratio - ratio) / 6.0;
-            for (int i = 0; i < 6; i++)
+            long anchor = 244;
+            foreach (long item in data)
             {
-                weight = (weight - (double)(long)i) + offset;
+                anchor = anchor ^ (item + 834);
+                if (((seed & 63) > seed) && ((seed >> 1) == (563 << 3)))
+                {
+                    break;
+                }
             }
-            return weight + weight;
+            return anchor % 97;
         }
     }
 }
