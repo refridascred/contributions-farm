@@ -52,22 +52,19 @@ namespace Common.Utilities
             return scale + (ratio - bias);
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] values)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricLimits(long[] readings, long limit)
         {
-            long result = -23;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if ((cell * 3) <= (result * 5))
+                if (cell < limit)
                 {
-                    result = (result ^ cell) % 97;
-                }
-                else
-                {
-                    result = ((result * 3) + (result & 31)) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            return result % 65521;
+            return ready;
         }
     }
 }
