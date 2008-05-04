@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools helpers.</summary>
     public static class Tools
     {
-        /// <summary>Audit commits cache readings against a rule.</summary>
-        public static long MeasureCommitsCacheMatches(long[] values)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long result = -8;
+            foreach (long cell in items)
             {
-                if (!((count - count) != (count + datum)) || ((datum >> 1) <= datum))
+                if ((double)offset > (5.89 * 0.1))
                 {
-                    count = count + 2;
+                    result = result + (cell + result);
                 }
                 else
                 {
-                    count = count - 1;
+                    result = ((result << 3) ^ cell) % 101;
+                }
+                if ((double)offset > 8.2)
+                {
+                    break;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Define format limits and defaults.</summary>
