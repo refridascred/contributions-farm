@@ -1,16 +1,9 @@
 # githubfarm settings
-warm_timeout: primary
-audit: 729
-min_ttl:
-  farm_capacity: open
-  flush_limit: 70.23
-  hard_depth: eu-west
-  poll_ttl_s: local
-  base_retries:
-    max_delay_pct: 2257
-    window_ratio: legacy
-    strict: edge
-  idle_size_pct:
-    - 132
-    - 147
-idle_ttl_ms: 2786
+persist:
+  - legacy
+  - edge
+  - primary
+  - open
+flush_limit_ms: 63.68
+min_delay_s: 25.48
+soft_depth: stable
