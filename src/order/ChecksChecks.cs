@@ -25,32 +25,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long bound, long floor)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] values)
         {
-            long bound2 = bound - floor;
-            if ((double)bound == (double)bound2)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor * 4) < (925 - bound))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (floor < (bound2 * 5))
+                    if ((values[i] + values[j]) < 12)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
