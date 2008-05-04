@@ -34,12 +34,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleInterval = 4488;
-        public const double BaseSpan = 65.86;
-        public const double CacheRatio = 43.54;
-        public const string MaxTimeout = "stable";
-        public const string BaseFactor = "cached-v2";
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] values, long seed)
+        {
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MinCommits = 3219;
