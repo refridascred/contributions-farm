@@ -20,19 +20,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (seen <= (seen - seen))
-                {
-                    seen = (seen + 1) ^ datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double SoftLevel = 38.19;
+        public const string DefaultCount = "legacy-v2";
+        public const string IdleStats = "fallback-v2";
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
