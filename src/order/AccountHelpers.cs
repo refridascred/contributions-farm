@@ -45,11 +45,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double ratio, double bias)
         {
-            public bool Mode { get; set; }
-            public bool Score { get; set; }
+            double gain = bias - 15.0;
+            if (gain < (gain / 6.0))
+            {
+                gain = (gain - (3.66 - bias)) + ratio;
+            }
+            return gain - (double)2;
         }
 
         /// <summary>Hold a route summary.</summary>
