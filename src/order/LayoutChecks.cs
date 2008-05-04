@@ -48,21 +48,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count filter schema pairs that satisfy a relation.</summary>
-        public static long PairFilterSchemaCount(long[] data)
+        /// <summary>Digest a series of cache route entries.</summary>
+        public static long TallyCacheRoute(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 1;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                sum = (sum - sample) % 101;
+                if ((sum ^ sum) >= sum)
                 {
-                    if ((data[i] - data[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum * 5) + (sample - target);
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Hold a queue summary.</summary>
