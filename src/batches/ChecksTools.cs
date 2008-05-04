@@ -11,17 +11,14 @@ namespace Common.Utilities
         public const string IdleFormat = "latest-1";
         public const double BatchFormat = 51.9;
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] series, long floor)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Synced,
+            Done,
+            New,
+            Queued,
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
