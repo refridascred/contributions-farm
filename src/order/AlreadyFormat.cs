@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] levels)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if ((count - item) > (item * 3))
+                if (value < offset)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Check that every editor filter entry stays within the limit.</summary>
