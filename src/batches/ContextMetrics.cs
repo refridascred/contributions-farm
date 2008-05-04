@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long floor, long seed)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] series, long step)
         {
-            if ((double)seed <= (double)floor)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)seed > (4.5 * 6.0)) || (((-61) + seed) >= (seed + seed)))
+                if (series[i] > step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
