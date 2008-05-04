@@ -37,10 +37,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardSchema = "local-edge";
-        public const long DefaultSpan = 5498;
-        public const long BurstScore = 786;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((reading ^ matches) < (matches * 4))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a entry format reading by value.</summary>
         public static long LocateEntryFormatIndex(long[] items, long origin)
