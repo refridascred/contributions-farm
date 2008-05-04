@@ -72,20 +72,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmRange(long[] values, long target)
-        {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleFactor = 6678;
+        public const double IdleToken = 31.43;
+        public const long WindowRatio = 1169;
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
