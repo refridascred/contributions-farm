@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] series, long seed)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long floor, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long edge = floor + offset;
+            if (((edge + edge) > (floor + edge)) || ((floor ^ edge) < (27 + edge)))
             {
-                if ((series[i] == seed) && ((series[i] % 2) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((edge - edge) > (floor ^ offset))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (((offset + floor) >= floor) || ((double)floor >= (9.37 / 2.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((7.4 * 8.35) <= (double)floor)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
