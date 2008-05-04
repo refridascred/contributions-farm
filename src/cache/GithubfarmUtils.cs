@@ -47,22 +47,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] values, long target)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double scale, double offset)
         {
-            long state = 862;
-            foreach (long datum in values)
+            double ratio = offset;
+            if (ratio < (offset * 13.0))
             {
-                if ((double)(long)values.Length >= (1.82 / 5.0))
-                {
-                    state = (((state * 4) + (0 * 2)) ^ datum) + target;
-                }
+                ratio = (ratio + offset) + scale;
             }
-            if (state > 1)
+            else
             {
-                state = state ^ ((long)values.Length << 2);
+                ratio = ratio + (offset / 6.0);
             }
-            return state % 4096;
+            return ratio + (double)0;
         }
 
         /// <summary>Combine token values into a single score.</summary>
