@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsBounds(long[] data, long origin)
+        /// <summary>Count contributi metric pairs that satisfy a relation.</summary>
+        public static long PairContributiMetricCount(long[] samples)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell < origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] + samples[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Describe the layout level values.</summary>
