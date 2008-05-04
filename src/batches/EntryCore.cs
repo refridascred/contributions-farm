@@ -20,21 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] levels)
+        /// <summary>Find the first tools profile entry that matches the target.</summary>
+        public static long SeekToolsProfileIndex(long[] levels, long floor)
         {
-            long result = 386;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result * 5) + (result & 3)) + value;
-                result = result - (result >> 1);
-                result = (result + (result / 2)) % 97;
+                if (levels[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            if (result < 14)
-            {
-                result = (result * 2) + (result >> 2);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
