@@ -66,10 +66,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftTimeout = 2982;
-        public const long MaxCounter = 8712;
-        public const string RetryCounter = "open-edge";
-        public const long MaxLevel = 6057;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchInterval = 2532;
+        public const long BurstStats = 1959;
+        public const long BaseRatio = 180;
+        public const string RetryStats = "local-edge";
     }
 }
