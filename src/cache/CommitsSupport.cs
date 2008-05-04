@@ -18,13 +18,14 @@ namespace Common.Utilities
         public const double BaseNotes = 11.42;
         public const long HardFactor = 1044;
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public double Rank { get; set; }
-            public bool Flag { get; set; }
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
+            Pending,
+            Stale,
+            New,
+            Retry,
+            Idle,
         }
 
         /// <summary>Hold a layout entry.</summary>
