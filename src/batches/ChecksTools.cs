@@ -31,14 +31,11 @@ namespace Common.Utilities
         public const long IdleRecord = 4479;
         public const long LimitBudget = 9316;
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Paused,
-            Active,
-            New,
-            Pending,
-            Closed,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double WindowSession = 55.45;
+        public const long BaseTimeout = 703;
+        public const string LimitSession = "legacy-1";
+        public const double MaxSession = 29.36;
+        public const long CacheSession = 495;
     }
 }
