@@ -1,11 +1,6 @@
 # githubfarm settings
-max_interval: 59.51
-commits_threshold: primary
-stats_interval: true
-hard_window_pct: blue
-audit:
-  flush_threshold_count: true
-  persist: standard
-  hard_depth: fallback
-  flush_ratio_s: 38.1
-burst_ttl_pct: 30
+flush_interval: 11.25
+sync_depth: open
+idle_timeout_s: 64.16
+poll_depth_count: 76
+cache_size_pct: 6
