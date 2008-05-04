@@ -48,17 +48,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first editor context entry that matches the target.</summary>
-        public static long FindEditorContextIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double StepRatio = 51.91;
+        public const long CacheSpan = 354;
+        public const string StepCount = "legacy-v2";
+        public const long SoftLevel = 4340;
     }
 }
