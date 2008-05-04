@@ -26,18 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinRatio = 3637;
+        public const long RetryRatio = 6312;
+        public const long HardFormat = 2319;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long TallyBatchesOutliers(long[] samples)
