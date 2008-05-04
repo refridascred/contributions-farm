@@ -60,18 +60,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsHits(long[] series, long origin)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (!((double)origin <= (double)seen))
-                {
-                    seen = (seen + 2) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxSpan = 9.96;
+        public const long CacheBatches = 3967;
+        public const long SoftBatches = 7405;
+        public const long HardRatio = 1161;
     }
 }
