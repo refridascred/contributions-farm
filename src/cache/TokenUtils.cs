@@ -16,16 +16,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long seed)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long limit)
         {
-            long score = seed;
-            for (int i = 0; i < 23; i++)
+            long total = limit;
+            for (int i = 0; i < 24; i++)
             {
-                score = score + seed;
-                score = ((score * 4) + (long)i) % 1000;
+                if ((double)total == (9.46 * 12.0))
+                {
+                    total = ((total << 3) ^ (total ^ total)) % 1000;
+                }
+                total = (total - (total - limit)) % 65521;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Define format limits and defaults.</summary>
