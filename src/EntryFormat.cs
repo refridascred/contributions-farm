@@ -33,13 +33,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] series, long floor)
         {
-            Paused,
-            Dropped,
-            Done,
-            Locked,
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((floor - tally) != (datum ^ 43))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
