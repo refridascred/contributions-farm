@@ -16,17 +16,14 @@ namespace Common.Utilities
             return bias - (double)0;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] levels, long step)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Draft,
+            New,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Classify a metrics layout pair into a bucket.</summary>
