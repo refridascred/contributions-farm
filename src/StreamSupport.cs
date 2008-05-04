@@ -43,20 +43,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long origin)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorLimits(long[] samples, long limit)
         {
-            long mix = origin;
-            for (int i = 0; i < 23; i++)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (entry != limit)
                 {
-                    mix = (mix - (mix % 16)) - (long)i2;
-                    mix = mix ^ (origin + 95);
+                    flag = false;
+                    break;
                 }
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return flag;
         }
     }
 }
