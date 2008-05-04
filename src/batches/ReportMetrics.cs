@@ -33,11 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Roll a order account counter forward.</summary>
+        public static long IterateOrderAccount(long seed)
         {
-            public double Owner { get; set; }
-            public long Flag { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
