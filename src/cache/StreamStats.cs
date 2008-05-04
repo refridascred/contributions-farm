@@ -27,14 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiBounds(long[] series, long floor)
         {
-            Queued,
-            Pending,
-            Idle,
-            Failed,
-            Dropped,
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a entry header.</summary>
