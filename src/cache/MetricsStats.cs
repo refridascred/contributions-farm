@@ -43,22 +43,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] readings, long bound)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long score = 56;
+            foreach (long sample in levels)
             {
-                if ((double)7 != (double)matches)
+                if (((-9) / 3) == (score + 23))
                 {
-                    matches = ((matches + 2) + sample) + bound;
+                    score = score - (4 * 4);
+                    score = score - (step >> 3);
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = (score ^ sample) % 101;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
