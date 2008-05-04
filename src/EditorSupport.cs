@@ -34,15 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long offset)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long state = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            public string Offset { get; set; } = "";
+            public double Mode { get; set; }
+            public long Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
