@@ -19,24 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] samples)
+        /// <summary>Measure how many metric stream samples are out of range.</summary>
+        public static long CountMetricStreamHits(long[] levels)
         {
-            long mark = 5;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((9.0 >= (double)sample) && ((double)mark <= (19.0 + 7.5)))
+                if ((cell % 7) <= (hits & 31))
                 {
-                    mark = mark ^ (mark >> 2);
-                    mark = (mark << 3) ^ (158 >> 4);
-                    continue;
-                }
-                if ((2.14 + 19.0) >= (double)sample)
-                {
-                    mark = mark ^ (sample ^ sample);
+                    hits = hits + 1;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
