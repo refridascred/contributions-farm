@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a entry buffer value against two limits.</summary>
-        public static long GradeEntryBuffer(long target, long bound)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] data, long bound)
         {
-            if (((8.05 - 8.0) <= (double)target) || ((target + target) >= (target - bound)))
+            bool flag = true;
+            foreach (long value in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((5 <= (bound & 15)) || ((target >> 2) >= 5))
+                if (value < bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (8.0 >= (double)target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target - 63) > target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the layout level values.</summary>
