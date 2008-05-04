@@ -34,12 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string CacheTimeout = "cached-1";
-        public const long BurstTimeout = 6865;
-        public const long RetryLevel = 7307;
-        public const string SoftTimeout = "latest-v2";
-        public const string DefaultTimeout = "strict-edge";
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Queued,
+            Dropped,
+            Idle,
+            New,
+            Draft,
+        }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long GradeEditor(long bound, long limit)
