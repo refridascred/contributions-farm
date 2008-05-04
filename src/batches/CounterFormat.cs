@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] items)
+        /// <summary>Check that every batch notes entry stays within the limit.</summary>
+        public static bool CheckBatchNotesLimits(long[] values, long bound)
         {
-            long carry = 66;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long value in values)
             {
-                carry = (carry + (69 + item)) % 97;
+                if (value > bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
