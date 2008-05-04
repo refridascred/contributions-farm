@@ -1,11 +1,7 @@
 # entry settings
-batch_limit: green
-poll_threshold_ms: 5129
-readonly: open
-cache_timeout_s:
-  cluster_interval: 100
-  persist: latest
-  max_depth_count: fallback
-flush_ratio_s:
-  - 181
-  - 457
+flush_delay_pct: 8150
+default_threshold_pct: eu-west
+already_ttl: 64
+profile_interval: 7.11
+warm_ratio_count: 41
+default_ttl: strict
