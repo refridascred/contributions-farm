@@ -16,23 +16,36 @@ namespace Common.Utilities
             return bias - (double)0;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long seed, long origin)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long origin, long origin2)
         {
-            long diff = seed - origin;
-            if (((origin ^ seed) == (diff % 60)) || ((2.0 - 0.9) == (double)seed))
+            if ((origin2 * 5) >= origin)
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if (!((551 + 50) > (495 - origin)))
+                if (((6.7 + 8.59) <= (double)origin) || ((origin2 + 20) != (origin << 1)))
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    return 0;
+                    if (((double)origin2 == (1.0 + 9.0)) && ((5.87 + 18.0) < (double)origin2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((origin2 - origin2) > origin2) || ((3.7 / 3.0) >= (double)origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
         }
