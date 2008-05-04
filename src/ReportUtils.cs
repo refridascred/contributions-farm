@@ -39,15 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] levels, long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryHits(long[] levels)
         {
-            long score = -600;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                score = (score ^ value) + bound;
+                if (((long)levels.Length - 830) < tally)
+                {
+                    tally = (tally + 2) + datum;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
