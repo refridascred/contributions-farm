@@ -1,14 +1,7 @@
 # support settings
-flush_size_count:
-  - 22
-  - 469
-  - 285
-soft_ratio: 34.88
-warm_limit: false
-poll_ttl_count:
-  - strict
-  - blue
-verbose:
-  - legacy
+channel_interval: 87
+base_size:
+  - stable
   - green
-default_depth_ms: fallback
+  - stable
+idle_window_pct: blue
