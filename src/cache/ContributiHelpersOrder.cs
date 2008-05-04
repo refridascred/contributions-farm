@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] samples)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] samples)
         {
-            long sum = 25;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading < (sum + sum)) && ((reading / 7) > (reading + reading)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum ^ ((long)samples.Length >> 5)) % 4096;
+                    if ((samples[i] ^ samples[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
