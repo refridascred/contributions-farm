@@ -16,18 +16,12 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Measure how many contributi cache samples are out of range.</summary>
-        public static long CountContributiCacheOutliers(long[] items, long seed)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (!((reading + reading) == ((long)items.Length + 921)) && (seed < (seen + reading)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Paused,
+            Synced,
+            Pending,
         }
 
         /// <summary>Define format limits and defaults.</summary>
