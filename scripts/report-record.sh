@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+RECORD_LIMIT=40
+log "limit is ${RECORD_LIMIT}"
+
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 3))
+for i in $(seq 1 12); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in standard fallback blue strict; do
+for item in eu-west stable latest blue; do
     log "checking ${item}"
 done
