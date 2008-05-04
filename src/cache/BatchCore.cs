@@ -37,17 +37,19 @@ namespace Common.Utilities
             return load - (load * 2.0);
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long bound)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] values, long offset)
         {
-            long score = bound;
-            for (int i = 0; i < 24; i++)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                score = ((score << 2) ^ 34) % 1000;
-                score = score - (bound / 4);
-                score = ((score * 4) + (long)i) % 4093;
+                if (entry != offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Hold a cluster header.</summary>
