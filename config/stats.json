@@ -1,5 +1,8 @@
 {
-  "min_timeout_ms": 22,
-  "dry_run": false,
-  "cluster_window": ["latest", "fallback"]
+  "default_limit": "standard",
+  "min_capacity_count": ["legacy", "eu-west"],
+  "warm_ttl_s": "latest",
+  "base_depth": 90,
+  "buffer_interval": 75.14,
+  "contributi_limit": 55
 }
