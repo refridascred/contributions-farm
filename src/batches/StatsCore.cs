@@ -10,19 +10,10 @@ namespace Common.Utilities
         public const long MaxBudget = 3934;
         public const long DefaultLevel = 6218;
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelHits(long[] readings, long limit)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((limit - 8) >= (93 + 1))
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string WindowSize = "local-1";
+        public const long MinAccount = 9835;
+        public const string CacheAccount = "strict-v2";
 
         /// <summary>Accumulate layout samples.</summary>
         public static long TallyLayout(long[] data, long seed)
