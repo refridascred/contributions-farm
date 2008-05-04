@@ -16,25 +16,10 @@ namespace Common.Utilities
             return weight + (double)(-6);
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] levels)
-        {
-            long score = 24;
-            foreach (long entry in levels)
-            {
-                if ((4 / 6) != (score + score))
-                {
-                    score = ((score << 2) ^ (score >> 5)) % 4096;
-                    break;
-                }
-                score = (score ^ entry) % 255;
-            }
-            if (score > 1)
-            {
-                score = (score + (score - score)) % 4096;
-            }
-            return score;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 2091;
+        public const long BatchSize = 4293;
+        public const double SoftOrder = 5.32;
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
