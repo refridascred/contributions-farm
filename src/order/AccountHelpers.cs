@@ -29,10 +29,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseDepth = 898;
-        public const long SoftSession = 1667;
-        public const string WindowSession = "strict";
+        /// <summary>Count the record channel entries that pass the check.</summary>
+        public static long AuditRecordChannelHits(long[] readings, long origin)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((double)seen <= (9.16 * 4.11))
+                {
+                    seen = ((seen + 1) - value) + origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long WeighQueue(long[] readings, long seed)
