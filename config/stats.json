@@ -1,13 +1,8 @@
 {
-  "persist": 92.65,
-  "schema_timeout": true,
-  "base_threshold_count": {
-    "warm_ttl_count": 26,
-    "audit": false,
-    "flush_interval": 250,
-    "idle_ttl_pct": 2.99,
-    "sync_ttl_count": "strict",
-    "default_threshold_s": "standard"
-  },
-  "compress": "open"
+  "persist": false,
+  "cache_ttl_s": 26,
+  "stats_retries": 33,
+  "max_size_s": [310, 333, 91, 415],
+  "enabled": "stable",
+  "payload_ttl": "staging"
 }
