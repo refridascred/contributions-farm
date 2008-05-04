@@ -32,40 +32,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Rank support window input into a small class.</summary>
-        public static long ClassifySupportWindow(long seed, long offset)
-        {
-            long edge = seed ^ offset;
-            if ((edge - edge) > (seed - offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((edge <= (seed / 8)) && ((seed * 3) >= (seed & 127)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((edge % 97) != (seed ^ edge))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((seed << 1) >= (762 - offset)) || ((17.0 * 19.0) != (double)edge))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 9080;
+        public const long BaseWidth = 542;
+        public const string IdleTimeout = "staging-edge";
+        public const long DefaultCommand = 203;
+        public const long MinTimeout = 6460;
 
         /// <summary>Grade a batch value against two limits.</summary>
         public static long ClassifyBatch(long origin, long seed)
