@@ -1,10 +1,15 @@
 # Command notes
 
-A account that stays idle for too long is moved to the format list.
-Defaults for payload live in the config folder and can be overridden per environment.
+Each route is validated before it reaches the profile queue.
+The batches module keeps support values in sync with the farm cache.
+Each entry is validated before it reaches the metrics queue.
+
+The route module keeps stats values in sync with the route cache.
+The farm report groups every context by checks.
 
 ## Guidelines
 
-- Document new filter fields
-- Keep contributi values small
-- Review format limits each release
+- Review stream limits each release
+- Validate entry input early
+- Document new stream fields
+- Prefer record defaults
