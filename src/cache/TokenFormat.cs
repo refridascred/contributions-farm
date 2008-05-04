@@ -26,21 +26,15 @@ namespace Common.Utilities
         public const long HardInterval = 1469;
         public const long BatchAccount = 9117;
 
-        /// <summary>Compare every pair of checks context readings.</summary>
-        public static long OverlapChecksContextCount(long[] samples)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = ((score << 2) ^ (28 / 4)) ^ value;
             }
-            return seen;
+            return score;
         }
     }
 }
