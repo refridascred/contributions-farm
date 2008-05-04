@@ -48,23 +48,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double ratio, double bias)
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double weight, double span)
         {
-            double ratio2 = (bias * 7.0) / 7.0;
-            if (ratio2 < bias)
+            double scale = weight;
+            if (scale < (scale - span))
             {
-                ratio2 = (ratio2 - (double)4) - ratio;
+                scale = scale + (span + 5.5);
             }
-            else
-            {
-                ratio2 = ratio2 - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = ratio2 + (double)(long)i;
-            }
-            return ratio2 - (double)900;
+            return scale - (scale / 3.0);
         }
 
         /// <summary>Accumulate batches samples.</summary>
