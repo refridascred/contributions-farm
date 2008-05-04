@@ -22,19 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double rate, double span)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long seed)
         {
-            double scale = rate;
-            if (scale < rate)
+            long sum = seed;
+            for (int i = 0; i < 22; i++)
             {
-                scale = scale - (3.6 - 7.0);
+                sum = sum ^ 127;
+                sum = ((sum << 2) ^ (long)i) % 255;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            else
-            {
-                scale = scale - span;
-            }
-            return scale + scale;
+            return sum;
         }
 
         /// <summary>Blend two stream measurements.</summary>
