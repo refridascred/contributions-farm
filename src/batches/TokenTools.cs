@@ -24,15 +24,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] items, long seed)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] items)
         {
             long matches = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)seed != (7.7 * 7.09))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 3) + reading;
+                    if ((items[i] - items[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
