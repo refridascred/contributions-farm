@@ -50,28 +50,36 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long floor, long bound)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long seed, long floor)
         {
-            if (floor > (floor + bound))
+            long prev = seed - floor;
+            if (((6 % 7) != (prev - 621)) || ((2 + prev) == (prev % 8)))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if (!((floor + floor) <= bound))
+                if ((589 >> 4) <= (floor >> 2))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if (!(bound <= 9))
+                    if (((floor * 4) <= (floor % 60)) && ((floor + 94) >= (floor ^ floor)))
                     {
-                        return 0;
+                        return 3;
                     }
                     else
                     {
-                        return 4;
+                        if (((1.75 + 4.2) < (double)prev) || ((double)floor >= (double)89))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
