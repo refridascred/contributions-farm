@@ -1,12 +1,8 @@
 # support settings
-soft_size_count: cached
-batch_retries: standard
-dry_run: 87
-verbose:
-  soft_size_pct: 8467
-  base_depth_ms: local
-  token_threshold: 3
-  hard_interval_s:
-    - stable
-    - latest
-batch_size_count: fallback
+profile_ratio:
+  - 373
+  - 410
+  - 125
+batch_ttl_pct: 14.15
+poll_threshold_s: true
+verbose: 70.52
