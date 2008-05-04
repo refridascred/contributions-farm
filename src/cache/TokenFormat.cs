@@ -27,11 +27,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
+            Pending,
+            Failed,
             Paused,
-            Stale,
             New,
         }
     }
