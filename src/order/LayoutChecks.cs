@@ -23,26 +23,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long bound, long origin)
-        {
-            long edge = bound ^ origin;
-            if ((origin <= (bound ^ 706)) && ((double)origin > (double)edge))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound - bound) != (origin ^ bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double CacheContributi = 58.49;
+        public const long SoftLevel = 6426;
+        public const long BatchContributi = 9151;
 
         /// <summary>Scale a batch checks figure with a bias.</summary>
         public static double ScaleBatchChecks(double weight, double bias)
