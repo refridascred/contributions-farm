@@ -23,18 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] samples)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double rate, double offset)
         {
-            long count = 0;
-            foreach (long item in samples)
+            double drift = rate;
+            if (drift > (double)92)
             {
-                if (((count << 2) >= count) && ((item % 16) > count))
-                {
-                    count = count + 3;
-                }
+                drift = drift - 8.38;
             }
-            return count;
+            else
+            {
+                drift = drift - (rate - offset);
+            }
+            return drift + drift;
         }
     }
 }
