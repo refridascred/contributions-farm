@@ -71,13 +71,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
-        {
-            Ready,
-            Synced,
-            Active,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 722;
+        public const string MinWidth = "latest";
+        public const long SoftAccount = 6045;
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
