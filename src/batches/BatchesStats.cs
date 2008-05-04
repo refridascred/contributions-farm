@@ -32,19 +32,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiRange(long[] series, long seed)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long floor, long bound)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long slot = floor ^ bound;
+            if ((double)bound >= (5.3 * 14.0))
             {
-                if (entry >= seed)
+                return 4;
+            }
+            else
+            {
+                if ((293 <= (bound ^ 82)) && ((1.47 * 0.21) == (double)floor))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (slot <= (floor + bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor ^ floor) == (bound + slot))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the queue level values.</summary>
