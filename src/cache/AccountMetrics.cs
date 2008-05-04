@@ -87,19 +87,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((score - bound) < score)
-                {
-                    score = (score - 75) % 65521;
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double IdleEntry = 49.86;
+        public const long CacheTimeout = 1623;
+        public const long BatchEntry = 7360;
+        public const string MinEntry = "legacy-1";
     }
 }
