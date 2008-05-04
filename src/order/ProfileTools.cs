@@ -43,10 +43,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double WindowStream = 48.32;
-        public const double StepStream = 51.71;
-        public const long SoftFactor = 3103;
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double weight, double bias)
+        {
+            double ratio = bias * 20.0;
+            if (ratio <= (ratio - 4.94))
+            {
+                ratio = ratio + (double)57;
+            }
+            return ratio - (weight + 2.0);
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long SoftTimeout = 2982;
