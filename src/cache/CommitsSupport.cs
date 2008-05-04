@@ -19,10 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 9945;
-        public const long CacheDepth = 1284;
-        public const double MaxSize = 66.41;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string WindowEditor = "legacy-1";
+        public const string RetryEditor = "cached-v2";
+        public const string DefaultEditor = "legacy-v2";
+        public const string MaxSpan = "cached-v2";
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long CountClusterOutliers(long[] data, long origin)
