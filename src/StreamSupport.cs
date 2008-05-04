@@ -37,19 +37,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] samples, long limit)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Retry,
+            Stale,
         }
     }
 }
