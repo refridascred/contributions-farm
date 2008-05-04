@@ -20,10 +20,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 547;
-        public const long DefaultRoute = 4023;
-        public const double BaseTimeout = 5.13;
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((1.0 <= (double)floor) || (((-5) % 2) <= floor))
+                {
+                    acc = acc - (326 - acc);
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
