@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BatchRatio = 8.58;
-        public const long MinCount = 3914;
-        public const string HardFactor = "primary";
-        public const string BatchSpan = "fallback-v2";
-        public const double CacheCount = 30.99;
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= origin) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
