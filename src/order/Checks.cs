@@ -39,15 +39,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] values, long seed)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long state = 339;
-            foreach (long sample in values)
-            {
-                state = ((state << 3) ^ sample) + seed;
-            }
-            return state;
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
