@@ -31,11 +31,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 7172;
-        public const long CacheFilter = 2267;
-        public const string HardFilter = "fallback";
-        public const long RetryInterval = 5345;
+        /// <summary>Classify a metrics layout pair into a bucket.</summary>
+        public static long RankMetricsLayout(long offset, long seed)
+        {
+            long cur = offset + seed;
+            if (seed > (offset & 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed % 24) <= (cur + offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long DeriveCounter(long seed)
