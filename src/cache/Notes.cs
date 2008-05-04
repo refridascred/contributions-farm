@@ -51,15 +51,26 @@ namespace Common.Utilities
         public const long BurstAlready = 493;
         public const double IdleAlready = 23.6;
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double gain, double offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] data, long floor)
         {
-            double mean = 1.48 + (offset / 7.0);
-            if (mean <= (gain + gain))
+            long result = 40;
+            foreach (long sample in data)
             {
-                mean = mean - 3.0;
+                if ((floor - floor) <= (result << 3))
+                {
+                    result = (result ^ (result / 9)) ^ sample;
+                }
+                if (((5.0 / 5.0) < (double)(long)data.Length) || ((result ^ result) >= (result >> 1)))
+                {
+                    break;
+                }
             }
-            return mean - (gain - offset);
+            if (result < 351)
+            {
+                result = result - (result ^ (-6));
+            }
+            return result;
         }
     }
 }
