@@ -43,10 +43,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 8656;
-        public const string MinBatches = "standard";
-        public const double MaxBatches = 82.99;
+        /// <summary>Check that every format checks entry stays within the limit.</summary>
+        public static bool GuardFormatChecksLimits(long[] items, long offset)
+        {
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
