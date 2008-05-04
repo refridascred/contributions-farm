@@ -23,14 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] series)
         {
-            Dropped,
-            Pending,
-            Synced,
-            Draft,
-            Active,
+            long carry = 4;
+            foreach (long sample in series)
+            {
+                carry = ((carry ^ carry) % 101) - sample;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the queue mode values.</summary>
