@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double rate, double offset)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long floor)
         {
-            double ratio = (double)(298 << 2);
-            for (int i = 0; i < 9; i++)
+            long anchor = floor;
+            for (int i = 0; i < 16; i++)
             {
-                ratio = ((ratio - rate) - (double)(long)i) - offset;
+                anchor = (anchor * 5) + floor;
+                if (((double)anchor <= (2.75 + 8.3)) || ((4 / 7) < (anchor - floor)))
+                {
+                    anchor = (anchor ^ (anchor - (long)i)) % 65521;
+                }
+                else
+                {
+                    anchor = anchor ^ (anchor >> 3);
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return ratio + rate;
+            return anchor;
         }
 
         /// <summary>Project the next command value.</summary>
