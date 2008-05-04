@@ -81,11 +81,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 6312;
-        public const double BaseFactor = 58.61;
-        public const long RetryScore = 6660;
-        public const string BaseLevel = "cached";
-        public const long WindowTimeout = 1954;
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    anchor = (anchor - ((long)i2 << 2)) % 4096;
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
+        }
     }
 }
