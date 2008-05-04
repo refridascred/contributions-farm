@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            Dropped,
-            Locked,
-            Retry,
+            Pending,
+            Idle,
+            Queued,
+            Closed,
+            Active,
         }
 
         /// <summary>Project the next cluster schema value.</summary>
