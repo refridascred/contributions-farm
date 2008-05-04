@@ -19,17 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] data, long step)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamOutliers(long[] data, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((data[i] >= step) && ((data[i] % 5) == 0))
+                if ((432 % 3) > (offset * 4))
                 {
-                    return (long)i;
+                    seen = (seen + 2) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
