@@ -46,11 +46,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheSchema = 91.51;
-        public const long MaxRatio = 4344;
-        public const long SoftSchema = 9665;
-        public const long HardFactor = 5162;
-        public const double CacheRatio = 44.0;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultCount = 91.55;
+        public const long BurstWindow = 6395;
+        public const string DefaultFactor = "staging";
     }
 }
