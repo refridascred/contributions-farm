@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long BaseScore = 1409;
         public const long BasePayload = 6384;
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] series, long origin)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item <= origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] - samples[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Hold a support header.</summary>
