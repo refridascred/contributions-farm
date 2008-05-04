@@ -72,9 +72,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCount = 6241;
-        public const double DefaultCache = 3.89;
-        public const long HardCache = 8810;
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
+        {
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Token { get; set; } = "";
+        }
     }
 }
