@@ -1,10 +1,12 @@
 # Command notes
 
-Keep checks and record names short and lowercase.
-Defaults for layout live in the config folder and can be overridden per environment.
+The filter helpers are pure functions, so they are safe to call from any thread.
+When a layout fails, the schema handler retries a few times before giving up.
+A channel that stays idle for too long is moved to the format list.
 
 ## Guidelines
 
-- Log every batches change
-- Validate stream input early
-- Keep tools values small
+- Keep buffer values small
+- Log every order change
+- Prefer already defaults
+- Validate context input early
