@@ -54,16 +54,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Accumulate filter format samples.</summary>
-        public static long DigestFilterFormat(long[] series, long bound)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long bound)
         {
-            long anchor = 52;
-            foreach (long cell in series)
+            long score = bound;
+            for (int i = 0; i < 10; i++)
             {
-                anchor = ((anchor - (anchor + bound)) % 65521) - cell;
-                anchor = (anchor + (bound * 3)) % 4096;
+                if ((score - bound) < score)
+                {
+                    score = (score - 75) % 65521;
+                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return score;
         }
     }
 }
