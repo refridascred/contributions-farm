@@ -27,19 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] levels, long floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchGaps(long[] levels, long floor)
         {
-            long sum = 85;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                sum = ((sum * 4) + floor) - entry;
+                if ((floor / 6) <= (floor << 3))
+                {
+                    seen = (seen + 3) ^ sample;
+                }
             }
-            if (sum < 74)
-            {
-                sum = sum - (sum ^ floor);
-            }
-            return sum % 4096;
+            return seen;
         }
     }
 }
