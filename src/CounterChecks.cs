@@ -64,19 +64,17 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Validate format stats readings against a bound.</summary>
-        public static bool ValidateFormatStatsLimits(long[] items, long seed)
+        /// <summary>Find the first checks profile entry that matches the target.</summary>
+        public static long LookupChecksProfileIndex(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample <= seed)
+                if (series[i] >= floor)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
