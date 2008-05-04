@@ -1,4 +1,20 @@
 # githubfarm settings
-dry_run: edge
-max_capacity_count: true
-hard_timeout_ms: 8556
+editor_window:
+  - eu-west
+  - strict
+  - staging
+base_interval_pct: 65.52
+persist: staging
+default_threshold_count: false
+context_ttl: false
+report_ratio:
+  batches_limit: 3.5
+  notes_delay:
+    cache_capacity_count: strict
+    graph_threshold: local
+    burst_ratio_s:
+      - 70
+      - 287
+      - 141
+      - 295
+  layout_ratio: open
