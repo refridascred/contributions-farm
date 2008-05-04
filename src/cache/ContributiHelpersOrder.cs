@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] data, long offset)
+        /// <summary>Measure how many order stats samples are out of range.</summary>
+        public static long MeasureOrderStatsHits(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (!((seen >> 4) >= seen))
+                if ((hits - target) < hits)
                 {
-                    seen = ((seen + 1) + datum) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Validate entry tools readings against a bound.</summary>
