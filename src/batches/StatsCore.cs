@@ -57,19 +57,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] readings, long bound)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Total { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
