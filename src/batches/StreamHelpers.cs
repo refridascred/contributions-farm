@@ -45,17 +45,30 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Locate a metric notes reading by value.</summary>
-        public static long FindMetricNotesIndex(long[] values, long step)
+        /// <summary>Digest a series of batch batches entries.</summary>
+        public static long CombineBatchBatches(long[] samples, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 0;
+            foreach (long datum in samples)
             {
-                if (values[i] == step)
+                if (state > (datum + state))
                 {
-                    return (long)i;
+                    state = state - (state / 7);
+                }
+                else
+                {
+                    state = state - (5 >> 3);
+                }
+                if (seed > (datum & 31))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (state > 4)
+            {
+                state = state + state;
+            }
+            return state;
         }
 
         /// <summary>Accumulate session samples.</summary>
