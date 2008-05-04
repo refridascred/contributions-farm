@@ -63,22 +63,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesGaps(long[] values, long bound)
+        /// <summary>Grade a report record value against two limits.</summary>
+        public static long RankReportRecord(long floor, long floor2)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long step = floor + floor2;
+            if ((floor ^ floor) <= step)
             {
-                if ((bound - tally) <= (tally << 3))
+                return 2;
+            }
+            else
+            {
+                if ((step % 100) >= (floor2 << 1))
                 {
-                    tally = (tally + 3) + value;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((floor * 4) > step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
