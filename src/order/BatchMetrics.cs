@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long step, long seed)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] items)
         {
-            long prev = step - seed;
-            if (step <= (prev & 255))
+            long mark = 72;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step <= (9.7 * 9.5))
+                if (((reading + mark) > (long)items.Length) || ((mark + mark) < mark))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    mark = (mark * 2) + reading;
                 }
             }
+            if (mark < 37)
+            {
+                mark = ((mark * 4) + mark) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Blend two stats measurements.</summary>
