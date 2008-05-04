@@ -22,28 +22,28 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long floor, long step)
+        /// <summary>Grade a format record value against two limits.</summary>
+        public static long RankFormatRecord(long step, long target)
         {
-            if ((7 + step) == (630 * 4))
+            if (!((double)step > (9.0 / 7.0)))
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if ((3.7 * 7.98) >= (double)floor)
+                if ((step ^ step) != (target + step))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    if ((-102) < (floor + floor))
+                    if ((double)749 < (double)step)
                     {
-                        return 5;
+                        return 1;
                     }
                     else
                     {
-                        return 3;
+                        return 8;
                     }
                 }
             }
