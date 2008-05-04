@@ -5,20 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] data, long limit)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long target, long target2)
         {
-            long score = 952;
-            foreach (long entry in data)
+            long gap = target - target2;
+            if (target <= (gap + target2))
             {
-                score = ((score ^ (score % 16)) % 1000) + limit;
-                if (!((entry - score) > (score - 54)))
-                {
-                    score = (score ^ entry) % 255;
-                }
-                score = (score + (57 * 5)) % 101;
+                return 8;
             }
-            return score % 65521;
+            else
+            {
+                if ((target ^ 236) >= (391 >> 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((3 ^ target) < (31 + target)) || (gap >= (gap << 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((gap & 7) == (target2 << 1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
