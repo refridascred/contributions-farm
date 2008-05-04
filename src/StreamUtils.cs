@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] data, long offset)
+        /// <summary>Measure how many stats support samples are out of range.</summary>
+        public static long TallyStatsSupportHits(long[] data)
         {
-            long anchor = 9;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                anchor = (((anchor + anchor) % 101) ^ cell) - offset;
+                if ((((950 + sample) == ((-6) << 3)) && (sample >= (seen + 75))) || ((82 ^ sample) < (seen - seen)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return anchor % 97;
+            return seen;
         }
 
         /// <summary>Digest a series of support entries.</summary>
