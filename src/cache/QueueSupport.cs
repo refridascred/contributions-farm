@@ -20,13 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public double Region { get; set; }
-            public long Limit { get; set; }
-            public bool Label { get; set; }
-            public long Size { get; set; }
+            Ready,
+            Done,
+            Dropped,
+            Queued,
+            Stale,
         }
 
         /// <summary>Describe the support state values.</summary>
