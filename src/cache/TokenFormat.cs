@@ -26,15 +26,13 @@ namespace Common.Utilities
         public const long HardInterval = 1469;
         public const long BatchAccount = 9117;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] series)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long score = 0;
-            foreach (long value in series)
-            {
-                score = ((score << 2) ^ (28 / 4)) ^ value;
-            }
-            return score;
+            Retry,
+            Synced,
+            Pending,
+            Idle,
         }
     }
 }
