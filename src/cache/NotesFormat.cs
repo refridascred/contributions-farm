@@ -13,22 +13,14 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamOutliers(long[] levels, long bound)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (!(((bound << 2) <= (long)levels.Length) || ((reading ^ reading) < bound)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Locked,
+            Draft,
+            Active,
+            Idle,
+            Synced,
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
