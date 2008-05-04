@@ -1,13 +1,8 @@
 {
-  "layout_retries": "staging",
-  "enabled": "staging",
-  "verbose": {
-    "poll_window": 1764,
-    "enabled": "strict",
-    "persist": 93,
-    "payload_timeout": true,
-    "default_limit_count": [368, 224, 288, 181],
-    "stream_threshold": 500
-  },
-  "dry_run": 7530
+  "audit": true,
+  "format_depth": 53,
+  "commits_window": false,
+  "githubfarm_interval": 17,
+  "max_timeout_ms": 60,
+  "layout_ttl": 9682
 }
