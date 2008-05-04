@@ -40,21 +40,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long floor)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = (mix - (mix & 1)) % 1000;
-                if ((floor << 3) >= (floor + mix))
-                {
-                    mix = (mix + ((long)i + (long)i)) % 97;
-                    mix = (mix - ((long)i - floor)) % 97;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            Closed,
+            Retry,
+            New,
         }
     }
 }
