@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] readings, long floor)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double weight, double span)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            double bias = (double)(52 + 291);
+            if (bias >= span)
             {
-                if (floor < (floor / 5))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
+                bias = (bias + (span + span)) - weight;
             }
-            return matches;
+            return bias - (double)0;
         }
 
         /// <summary>Look up the position of a route entry sample.</summary>
