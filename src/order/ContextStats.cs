@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine order queue values into a single score.</summary>
-        public static long ScoreOrderQueue(long[] values)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long mark = 64;
-            foreach (long cell in values)
-            {
-                if (20.0 >= (double)cell)
-                {
-                    mark = ((mark * 4) + ((long)values.Length + mark)) % 101;
-                }
-            }
-            return mark % 65521;
+            Retry,
+            Pending,
+            Stale,
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
