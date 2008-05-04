@@ -6,7 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging stable cached; do
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+for item in standard latest; do
     log "checking ${item}"
 done
 
