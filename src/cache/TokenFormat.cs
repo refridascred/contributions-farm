@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] levels, long limit)
         {
-            Dropped,
-            New,
-            Ready,
-            Queued,
-            Locked,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < limit) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine command values into a single score.</summary>
