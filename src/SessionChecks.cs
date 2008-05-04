@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Audit buffer support readings against a rule.</summary>
+        public static long TallyBufferSupportGaps(long[] series, long offset)
         {
-            Active,
-            Synced,
-            Draft,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((tally << 2) >= (offset - 3))
+                {
+                    tally = (tally + 3) - item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
