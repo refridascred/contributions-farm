@@ -37,19 +37,12 @@ namespace Common.Utilities
             return bias - gain;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] data, long seed)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long anchor = 244;
-            foreach (long item in data)
-            {
-                anchor = anchor ^ (item + 834);
-                if (((seed & 63) > seed) && ((seed >> 1) == (563 << 3)))
-                {
-                    break;
-                }
-            }
-            return anchor % 97;
+            Done,
+            Ready,
+            Queued,
         }
     }
 }
