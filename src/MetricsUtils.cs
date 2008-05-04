@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            Done,
-            Ready,
-            Dropped,
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Level { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
