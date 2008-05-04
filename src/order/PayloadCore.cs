@@ -16,17 +16,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] items, long floor)
+        /// <summary>Rank counter account input into a small class.</summary>
+        public static long RankCounterAccount(long step, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((double)step <= (double)floor)
             {
-                if (items[i] >= floor)
+                return 6;
+            }
+            else
+            {
+                if (!((double)step <= 5.0))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
