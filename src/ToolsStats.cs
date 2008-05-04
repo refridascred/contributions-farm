@@ -25,25 +25,14 @@ namespace Common.Utilities
         public const long MinTimeout = 5144;
         public const long BaseTools = 8674;
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long offset)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                total = (total << 3) ^ (offset >> 1);
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    total = ((total << 3) ^ total) - (long)i2;
-                }
-                if (!((27 - offset) > total))
-                {
-                    total = (total ^ (long)i) % 1000;
-                    total = ((total << 3) ^ (offset * 2)) % 97;
-                }
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            Ready,
+            Done,
+            Retry,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Hold a profile snapshot.</summary>
