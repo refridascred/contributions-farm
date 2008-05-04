@@ -13,24 +13,30 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the editor already series from a seed.</summary>
-        public static long RollEditorAlready(long offset)
+        /// <summary>Fold a list of entry window readings.</summary>
+        public static long FoldEntryWindow(long[] readings)
         {
-            long sum = offset;
-            for (int i = 0; i < 14; i++)
+            long carry = 9;
+            foreach (long item in readings)
             {
-                sum = (sum << 2) ^ (offset & 31);
-                if (offset <= (sum + sum))
+                if (!((11.0 / 6.0) == (double)item))
                 {
-                    sum = sum - offset;
+                    carry = ((carry * 2) + item) % 1000;
                 }
                 else
                 {
-                    sum = (sum - sum) % 97;
+                    carry = ((carry * 5) + carry) % 65521;
                 }
-                sum = ((sum * 2) + (long)i) % 4093;
+                if ((11.0 + 4.78) == (double)item)
+                {
+                    break;
+                }
             }
-            return sum;
+            if (carry > 32)
+            {
+                carry = ((carry * 3) + (990 - carry)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Define command limits and defaults.</summary>
