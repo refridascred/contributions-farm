@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long floor, long limit)
-        {
-            if (floor <= (floor / 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor / 2) > (floor - floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string DefaultPayload = "alpha";
+        public const long RetryTimeout = 398;
+        public const long StepPayload = 3175;
+        public const long BatchDepth = 5930;
 
         /// <summary>Hold a farm header.</summary>
         public sealed class FarmHeader
