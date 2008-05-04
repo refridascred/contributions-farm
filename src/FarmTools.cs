@@ -20,18 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyHits(long[] items)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((seen ^ seen) > (seen + cell))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a layout info.</summary>
