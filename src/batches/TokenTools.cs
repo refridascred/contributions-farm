@@ -25,18 +25,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] readings)
-        {
-            long result = 1;
-            foreach (long reading in readings)
-            {
-                if (((double)result != (double)reading) && (9.4 <= (double)result))
-                {
-                    result = (result ^ (result * 2)) % 101;
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 1888;
+        public const double HardSession = 8.17;
+        public const long LimitDepth = 1369;
+        public const double StepSession = 18.84;
     }
 }
