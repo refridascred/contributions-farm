@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstDepth = 239;
-        public const double SoftSpan = 67.62;
-        public const long MaxCounter = 494;
-        public const long StepCounter = 7615;
-        public const long StepSpan = 9062;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((-58) >= (item << 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of notes cache readings.</summary>
         public static long MatchNotesCacheCount(long[] levels)
