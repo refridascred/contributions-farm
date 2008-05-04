@@ -1,11 +1,11 @@
 # Command notes
 
-When a tools fails, the schema handler retries a few times before giving up.
-A metrics that stays idle for too long is moved to the notes list.
-Use commits settings to tune how often filter data is refreshed.
+Use stream settings to tune how often profile data is refreshed.
+Use order settings to tune how often githubfarm data is refreshed.
+A order that stays idle for too long is moved to the checks list.
 
 ## Guidelines
 
-- Validate queue input early
-- Review token limits each release
-- Document new farm fields
+- Prefer stream defaults
+- Log every format change
+- Review account limits each release
