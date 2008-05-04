@@ -23,22 +23,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up notes window samples.</summary>
-        public static long CompareNotesWindowCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepRatio = "alpha-v2";
+        public const string RetryRecord = "staging";
+        public const double StepScore = 70.98;
+        public const long IdleRecord = 202;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long MeasureSessionGaps(long[] values)
