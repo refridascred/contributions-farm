@@ -25,23 +25,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long seed)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] data, long limit)
         {
-            long total = seed;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((seed + seed) != (5 + 16)) && ((seed + seed) > total))
+                if ((data[i] <= limit) && ((data[i] % 5) != 0))
                 {
-                    total = ((total * 5) + (long)i) % 4096;
+                    return (long)i;
                 }
-                else
-                {
-                    total = (total * 5) + seed;
-                }
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Count the profile filter entries that pass the check.</summary>
