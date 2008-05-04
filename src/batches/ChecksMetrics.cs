@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count support token pairs that satisfy a relation.</summary>
-        public static long PairSupportTokenCount(long[] readings)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long floor, long floor2)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((floor2 % 12) <= (floor & 63)) || ((12.0 - 14.0) != (double)floor2))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((floor - 35) > (floor - floor2))
                 {
-                    if ((readings[i] - readings[j]) < 8)
+                    return 3;
+                }
+                else
+                {
+                    if ((floor + floor2) > (floor / 8))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
