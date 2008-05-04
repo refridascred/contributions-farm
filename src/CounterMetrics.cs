@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long origin)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiMatches(long[] levels, long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                mark = (mark - (41 * 2)) % 101;
-                mark = ((mark * 4) + (long)i) % 101;
+                if (target < (target ^ value))
+                {
+                    matches = matches + 2;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a notes info.</summary>
