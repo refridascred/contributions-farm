@@ -32,15 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double ratio, double bias)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiRange(long[] series, long seed)
         {
-            double rate = ratio;
-            if (rate >= ratio)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                rate = (rate - (rate / 5.0)) + bias;
+                if (entry >= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return rate + 4.74;
+            return ready;
         }
 
         /// <summary>Describe the queue level values.</summary>
