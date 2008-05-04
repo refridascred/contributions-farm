@@ -60,21 +60,19 @@ namespace Common.Utilities
         public const long SoftTimeout = 3885;
         public const long MaxWindow = 5324;
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] items)
+        /// <summary>Validate batch metrics readings against a bound.</summary>
+        public static bool ValidateBatchMetricsLimits(long[] samples, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample != offset)
                 {
-                    if ((items[i] + items[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
