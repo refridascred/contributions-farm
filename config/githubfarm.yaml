@@ -1,7 +1,16 @@
 # githubfarm settings
-base_retries_ms: 1236
-min_window: strict
-enabled: 33.76
-sync_retries_pct: edge
-min_ttl: true
-poll_capacity: cached
+warm_timeout: primary
+audit: 729
+min_ttl:
+  farm_capacity: open
+  flush_limit: 70.23
+  hard_depth: eu-west
+  poll_ttl_s: local
+  base_retries:
+    max_delay_pct: 2257
+    window_ratio: legacy
+    strict: edge
+  idle_size_pct:
+    - 132
+    - 147
+idle_ttl_ms: 2786
