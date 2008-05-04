@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] values)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long limit, long bound)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            if (bound >= (limit >> 4))
             {
-                if ((datum < (46 - seen)) && ((seen << 3) >= datum))
+                return 7;
+            }
+            else
+            {
+                if ((limit + bound) >= (limit >> 1))
                 {
-                    seen = seen + 1;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Blend two already checks measurements.</summary>
