@@ -26,19 +26,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] data, long offset)
-        {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 6596;
+        public const double RetrySupport = 12.94;
+        public const string MinSupport = "stable-1";
     }
 }
