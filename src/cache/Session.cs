@@ -22,10 +22,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinSpan = 2386;
-        public const string BurstCount = "open-edge";
-        public const long HardGraph = 7415;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesOutliers(long[] levels, long seed)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (seen > (153 % 60))
+                {
+                    seen = ((seen + 1) + entry) - seed;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of already entries.</summary>
         public static long FoldAlready(long[] items)
