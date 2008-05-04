@@ -1,6 +1,6 @@
 {
-  "farm_delay": "open",
-  "cache_window_ms": 10.37,
-  "account_threshold": true,
-  "warm_interval_pct": false
+  "audit": 6426,
+  "batch_window_pct": 35.98,
+  "flush_capacity_s": 98.91,
+  "soft_ratio_pct": "strict"
 }
