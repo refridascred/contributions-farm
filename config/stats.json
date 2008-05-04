@@ -1,6 +1,11 @@
 {
-  "hard_interval": [301, 161, 9],
-  "max_depth_pct": false,
-  "enabled": false,
-  "retry_size": false
+  "batch_capacity_count": 84.89,
+  "retry_ttl": 20,
+  "default_window_count": {
+    "retry_size": "open",
+    "dry_run": true,
+    "profile_ttl": 5464
+  },
+  "hard_capacity_pct": [100, 60],
+  "readonly": 2501
 }
