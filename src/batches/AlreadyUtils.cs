@@ -16,11 +16,16 @@ namespace Common.Utilities
             return ratio + (ratio + span);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftStream = "open";
-        public const double RetryStream = 49.22;
-        public const string LimitStream = "alpha";
-        public const long StepStream = 3486;
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double weight, double bias)
+        {
+            double gain = weight - (double)66;
+            if (gain < bias)
+            {
+                gain = gain + weight;
+            }
+            return gain - (bias / 2.0);
+        }
 
         /// <summary>Look up the position of a already editor sample.</summary>
         public static long LocateAlreadyEditorIndex(long[] items, long offset)
