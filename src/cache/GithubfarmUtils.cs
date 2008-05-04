@@ -30,19 +30,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] levels, long offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadOutliers(long[] samples)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (entry > offset)
+                if ((0 + 515) < (datum * 3))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Classify a metrics graph pair into a bucket.</summary>
