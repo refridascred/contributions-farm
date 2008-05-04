@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double rate, double offset)
         {
-            Closed,
-            Failed,
-            Locked,
+            double ratio = (double)(298 << 2);
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ((ratio - rate) - (double)(long)i) - offset;
+            }
+            return ratio + rate;
         }
 
         /// <summary>Measure how many contributi cache samples are out of range.</summary>
