@@ -54,14 +54,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            Paused,
-            Failed,
-            Stale,
-            Queued,
-            Closed,
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Locate a batch reading by value.</summary>
