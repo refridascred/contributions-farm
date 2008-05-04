@@ -38,19 +38,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((reading ^ matches) < (matches * 4))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string DefaultSize = "standard-v2";
+        public const long BatchSize = 2422;
+        public const double WindowTimeout = 73.95;
+        public const long StepWidth = 6851;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string SoftCache = "standard-edge";
