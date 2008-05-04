@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of counter command readings.</summary>
-        public static long FoldCounterCommand(long[] readings, long step)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long mark = 139;
-            foreach (long value in readings)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    mark = ((mark - (long)i) + value) + step;
-                }
-                mark = (mark - (614 + 73)) % 97;
-            }
-            return mark;
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
