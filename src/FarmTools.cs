@@ -31,9 +31,31 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double IdleFactor = 87.3;
-        public const double MinRatio = 0.76;
-        public const string MinTimeout = "stable-edge";
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long floor, long step)
+        {
+            if ((7 + step) == (630 * 4))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((3.7 * 7.98) >= (double)floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((-102) < (floor + floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
