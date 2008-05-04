@@ -57,19 +57,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two support context measurements.</summary>
-        public static double SmoothSupportContext(double weight, double bias)
-        {
-            double bias2 = (double)(160 / 5);
-            if (bias2 > weight)
-            {
-                bias2 = (bias2 - bias2) + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - weight) - (double)(long)i;
-            }
-            return bias2 + (9.77 + 5.0);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowSize = 3710;
+        public const long HardWidth = 6234;
+        public const long BaseContext = 8806;
     }
 }
