@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many farm metric samples are out of range.</summary>
-        public static long TallyFarmMetricHits(long[] samples, long limit)
+        /// <summary>Validate notes cache readings against a bound.</summary>
+        public static bool ValidateNotesCacheLimits(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long item in series)
             {
-                if ((item >> 1) == (887 / 8))
+                if (item > offset)
                 {
-                    matches = (matches + 2) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Match up tools samples.</summary>
