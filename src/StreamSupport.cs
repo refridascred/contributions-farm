@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyGaps(long[] data)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((((hits << 3) == (8 << 3)) && (1.0 > (double)hits)) || ((8.8 + 15.0) > (double)hits))
-                {
-                    hits = (hits + 1) + datum;
-                }
-            }
-            return hits;
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
+            public double Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
