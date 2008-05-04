@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] data)
+        /// <summary>Count the batches already entries that pass the check.</summary>
+        public static long CountBatchesAlreadyGaps(long[] items, long limit)
         {
-            long acc = 6;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                acc = (acc + (acc & 1)) % 101;
-                if (((-39) ^ reading) > (reading >> 1))
+                if ((double)limit == (8.0 - 9.3))
                 {
-                    acc = ((acc << 3) ^ (reading % 3)) % 101;
-                }
-                else
-                {
-                    acc = ((acc * 2) + (32 + acc)) % 97;
+                    seen = (seen + 1) + datum;
                 }
             }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Count the editor notes entries that pass the check.</summary>
