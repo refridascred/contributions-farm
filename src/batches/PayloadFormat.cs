@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long step, long step2)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] levels)
         {
-            long offset = step + step2;
-            if ((26 + offset) < 8)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((7.0 * 7.37) == (double)offset) && (offset >= (step ^ step)))
+                if ((hits - hits) >= (value % 97))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((7.0 - 11.0) != (double)step2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)step2 < (6.3 * 12.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
