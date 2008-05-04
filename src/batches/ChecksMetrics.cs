@@ -45,39 +45,20 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long seed, long floor)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long origin)
         {
-            long prev = seed - floor;
-            if (((6 % 7) != (prev - 621)) || ((2 + prev) == (prev % 8)))
+            long anchor = origin;
+            for (int i = 0; i < 14; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((589 >> 4) <= (floor >> 2))
+                if ((9.0 - 0.46) > (double)(long)i)
                 {
-                    return 5;
+                    anchor = (anchor * 3) + anchor;
                 }
-                else
-                {
-                    if (((floor * 4) <= (floor % 60)) && ((floor + 94) >= (floor ^ floor)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((1.75 + 4.2) < (double)prev) || ((double)floor >= (double)89))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                anchor = (anchor + ((long)i - anchor)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
+            return anchor;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
