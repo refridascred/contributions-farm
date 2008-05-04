@@ -38,18 +38,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesOutliers(long[] items)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)reading > (9.04 / 3.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((levels[i] + levels[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
