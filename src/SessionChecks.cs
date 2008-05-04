@@ -31,18 +31,25 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] samples, long offset)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long limit, long step)
         {
-            long mark = 43;
-            foreach (long cell in samples)
+            long bound = limit - step;
+            if ((52 % 10) >= (limit + bound))
             {
-                if (18.0 <= (double)mark)
+                return 6;
+            }
+            else
+            {
+                if ((double)step != (double)limit)
                 {
-                    mark = (((mark - ((long)samples.Length - mark)) % 65521) + cell) - offset;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return mark % 1000;
         }
 
         /// <summary>Count the buffer farm entries that pass the check.</summary>
