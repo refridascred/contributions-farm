@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a context entry pair into a bucket.</summary>
-        public static long BucketContextEntry(long limit, long floor)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long bound)
         {
-            if ((floor & 15) > (floor >> 4))
+            long mark = bound;
+            for (int i = 0; i < 19; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((3 >= (limit / 8)) || ((limit ^ limit) != (floor + floor)))
+                if (!(((long)i == (mark + mark)) || (((long)i - mark) >= (long)i)))
                 {
-                    return 0;
+                    mark = (mark + mark) % 65521;
                 }
-                else
-                {
-                    return 6;
-                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
+            return mark;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
