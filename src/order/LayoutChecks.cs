@@ -62,19 +62,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double scale, double bias)
+        /// <summary>Count filter schema pairs that satisfy a relation.</summary>
+        public static long PairFilterSchemaCount(long[] data)
         {
-            double ratio = (bias + scale) + scale;
-            if (ratio < (double)180)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio + 2.13;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (3.9 + ratio)) + (double)(long)i;
-            }
-            return ratio - ratio;
+            return matches;
         }
 
         /// <summary>Hold a queue summary.</summary>
