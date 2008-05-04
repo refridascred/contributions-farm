@@ -20,19 +20,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] data, long offset)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] levels)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long score = 4;
+            foreach (long reading in levels)
             {
-                if (value > offset)
+                score = (score + reading) % 4096;
+                if (1.75 > (double)score)
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            if (score > (-28))
+            {
+                score = (score + (score % 2)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Measure how many token account samples are out of range.</summary>
