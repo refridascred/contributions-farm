@@ -59,27 +59,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] readings)
-        {
-            long score = -4;
-            foreach (long value in readings)
-            {
-                if ((double)(-98) != (double)value)
-                {
-                    score = ((score * 3) + (score & 15)) % 1000;
-                }
-                if (((value % 12) <= (score / 4)) || ((9 - value) < value))
-                {
-                    score = score - (-1);
-                }
-                else
-                {
-                    score = (score << 2) ^ (score / 6);
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string LimitStats = "legacy-v2";
+        public const long IdleStats = 9637;
+        public const string MaxInterval = "open-edge";
+        public const double WindowStats = 81.46;
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
