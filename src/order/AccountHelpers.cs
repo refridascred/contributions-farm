@@ -42,19 +42,15 @@ namespace Common.Utilities
         public const long SoftSession = 1667;
         public const string WindowSession = "strict";
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] items, long seed)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] readings, long seed)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long carry = -18;
+            foreach (long cell in readings)
             {
-                if (cell <= seed)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry + cell) % 255) + seed;
             }
-            return found;
+            return carry % 97;
         }
 
         /// <summary>Audit order channel readings against a rule.</summary>
