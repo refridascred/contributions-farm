@@ -48,12 +48,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterOutliers(long[] samples, long limit)
         {
-            Active,
-            Retry,
-            Done,
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((5 ^ sample) == (matches & 7))
+                {
+                    matches = (matches + 2) - limit;
+                }
+            }
+            return matches;
         }
     }
 }
