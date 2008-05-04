@@ -33,22 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] series, long seed)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] series)
         {
-            long total = 81;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((sample * 3) < (total + sample))
+                if ((matches + item) > item)
                 {
-                    total = (total << 3) ^ ((-81) ^ 5);
-                }
-                else
-                {
-                    total = ((total * 4) + seed) % 65521;
+                    matches = matches + 3;
                 }
             }
-            return total % 1000;
+            return matches;
         }
     }
 }
