@@ -40,21 +40,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Count payload already pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadAlreadyCount(long[] data)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 449;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = (carry + (entry & 15)) % 255;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
