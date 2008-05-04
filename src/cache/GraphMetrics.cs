@@ -55,11 +55,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string SoftCache = "standard-edge";
-        public const double BurstCache = 17.05;
-        public const long StepInterval = 9287;
-        public const long MaxCache = 9970;
-        public const long DefaultCache = 5716;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepMetric = "local-edge";
+        public const long HardSpan = 2444;
+        public const long DefaultFactor = 3814;
+        public const long RetryLevel = 2806;
+        public const string LimitSpan = "stable";
     }
 }
