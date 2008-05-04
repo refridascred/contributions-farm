@@ -1,17 +1,18 @@
 {
-  "warm_ttl": 60,
-  "min_threshold_s": 26.18,
-  "audit": {
-    "burst_depth_count": {
-      "cache_ttl": true,
-      "compress": "primary",
-      "dry_run": "open",
-      "base_size_count": "primary"
+  "max_interval_pct": 65.2,
+  "idle_ratio_count": {
+    "poll_interval": true,
+    "persist": "blue",
+    "idle_threshold_s": {
+      "min_threshold": "stable",
+      "context_timeout": true,
+      "githubfarm_limit": "local"
     },
-    "verbose": "local",
-    "persist": ["local", "eu-west"],
-    "cache_threshold_s": "local",
-    "retry_threshold_count": "green"
+    "sync_interval_count": 18.02,
+    "format_depth": 39,
+    "cache_size": ["green", "latest", "local", "stable"]
   },
-  "stream_retries": "blue"
+  "cache_capacity_pct": 60,
+  "schema_retries": 1024,
+  "strict": 100
 }
