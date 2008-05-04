@@ -1,6 +1,17 @@
 {
-  "audit": 6426,
-  "batch_window_pct": 35.98,
-  "flush_capacity_s": 98.91,
-  "soft_ratio_pct": "strict"
+  "burst_size_ms": 250,
+  "base_ratio_count": {
+    "editor_limit": {
+      "command_window": 8455,
+      "soft_delay_count": "local",
+      "strict": 30
+    },
+    "compress": 39.01,
+    "flush_window_count": "latest",
+    "batch_threshold": true,
+    "strict": "stable"
+  },
+  "min_interval_count": "green",
+  "audit": 10.23,
+  "poll_delay_pct": true
 }
