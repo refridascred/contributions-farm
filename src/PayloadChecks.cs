@@ -39,13 +39,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long bound, long bound2)
         {
-            public bool Total { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            if ((bound + bound2) != (bound * 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((1 >> 2) != (bound2 << 2)) && ((bound2 * 2) > (bound << 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the stats kind values.</summary>
