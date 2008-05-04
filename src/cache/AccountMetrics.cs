@@ -16,17 +16,19 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] items, long floor)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double bias, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio = (double)(96 - 279);
+            if (ratio < 2.47)
             {
-                if ((items[i] <= floor) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + (double)95) - bias;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (double)9) + (double)(long)i;
+            }
+            return ratio - span;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
