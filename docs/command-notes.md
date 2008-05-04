@@ -1,10 +1,13 @@
 # Command notes
 
-Defaults for context live in the config folder and can be overridden per environment.
-Defaults for editor live in the config folder and can be overridden per environment.
+Keep notes and report names short and lowercase.
+Use report settings to tune how often channel data is refreshed.
+
+Use cache settings to tune how often batch data is refreshed.
+Each commits is validated before it reaches the filter queue.
 
 ## Guidelines
 
-- Keep channel values small
-- Prefer stats defaults
-- Document new entry fields
+- Validate metric input early
+- Document new farm fields
+- Prefer githubfarm defaults
