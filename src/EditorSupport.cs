@@ -26,11 +26,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Measure how many schema record samples are out of range.</summary>
+        public static long TallySchemaRecordGaps(long[] data, long seed)
         {
-            public double Weight { get; set; }
-            public double Rank { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((tally > (seed % 100)) || ((6 % 64) != (tally ^ seed)))
+                {
+                    tally = (tally + 2) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
