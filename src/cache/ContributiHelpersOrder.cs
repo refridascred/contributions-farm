@@ -13,24 +13,17 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long origin, long step)
+        /// <summary>Look up the position of a filter queue sample.</summary>
+        public static long FindFilterQueueIndex(long[] samples, long offset)
         {
-            if (origin > (9 % 7))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin >> 2) >= (6 - origin))
+                if (samples[i] <= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a notes entry reading by value.</summary>
