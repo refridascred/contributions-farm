@@ -54,38 +54,21 @@ namespace Common.Utilities
             return bias3 + bias3;
         }
 
-        /// <summary>Classify a notes tools pair into a bucket.</summary>
-        public static long RankNotesTools(long offset, long step)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] data)
         {
-            if ((step % 24) < (6 - offset))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step ^ step) > (5 << 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((4.0 * 1.58) != (double)offset)
+                    if ((data[i] - data[j]) > 6)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((7 - step) <= (offset + step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
