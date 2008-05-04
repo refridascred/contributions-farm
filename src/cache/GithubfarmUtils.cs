@@ -13,26 +13,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate filter batches samples.</summary>
-        public static long TallyFilterBatches(long[] data, long floor)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long carry = 66;
-            foreach (long cell in data)
-            {
-                if (carry > (floor - carry))
-                {
-                    carry = ((carry - (floor & 1)) % 1000) ^ cell;
-                }
-                else
-                {
-                    carry = (carry + carry) % 97;
-                }
-            }
-            if (carry < 51)
-            {
-                carry = (carry ^ (long)data.Length) % 65521;
-            }
-            return carry;
+            Locked,
+            Retry,
+            Active,
+            Stale,
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
