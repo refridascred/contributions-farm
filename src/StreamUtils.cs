@@ -19,11 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BurstLevel = "open-edge";
-        public const string IdleScore = "fallback-1";
-        public const double StepWidth = 44.54;
-        public const long HardStream = 8167;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MaxSize = 83.11;
+        public const string IdleCount = "local-v2";
+        public const long IdleRatio = 7679;
+        public const string LimitSpan = "fallback-1";
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long TallyWindowMatches(long[] levels)
