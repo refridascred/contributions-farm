@@ -43,20 +43,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] values)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] series, long limit)
         {
-            long mix = 1;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix - (mix + mix)) % 4096) ^ reading;
-                mix = (mix ^ mix) % 65521;
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            if (mix > 33)
-            {
-                mix = mix + (mix ^ (long)values.Length);
-            }
-            return mix % 1000;
+            return -1;
         }
     }
 }
