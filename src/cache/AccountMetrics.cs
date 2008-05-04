@@ -75,10 +75,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double IdleEntry = 49.86;
-        public const long CacheTimeout = 1623;
-        public const long BatchEntry = 7360;
-        public const string MinEntry = "legacy-1";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheDepth = 1740;
+        public const long LimitBatches = 6323;
+        public const double LimitRatio = 80.32;
+        public const string BatchSpan = "legacy-v2";
     }
 }
