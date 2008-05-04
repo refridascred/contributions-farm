@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] items)
         {
-            Pending,
-            Draft,
-            Dropped,
-            Retry,
-            Synced,
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
