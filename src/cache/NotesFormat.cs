@@ -35,14 +35,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] samples, long origin)
         {
-            Queued,
-            New,
-            Draft,
-            Idle,
-            Retry,
+            long result = 5;
+            foreach (long cell in samples)
+            {
+                if (!((origin - 98) < (origin + 479)))
+                {
+                    result = (result + (origin + 243)) % 255;
+                }
+                if ((result >> 5) <= (cell << 3))
+                {
+                    break;
+                }
+            }
+            if (result < 9)
+            {
+                result = (result ^ (result + 43)) % 1000;
+            }
+            return result;
         }
     }
 }
