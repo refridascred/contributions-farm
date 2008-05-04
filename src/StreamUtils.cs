@@ -65,15 +65,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double gain, double span)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesHits(long[] series)
         {
-            double drift = span * 6.2;
-            if (drift < (double)628)
+            long tally = 0;
+            foreach (long value in series)
             {
-                drift = (drift + 19.0) - gain;
+                if ((((tally & 15) >= (value + value)) || ((value - value) != (752 + value))) && ((475 ^ tally) != (value % 100)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return drift - (span * 3.05);
+            return tally;
         }
     }
 }
