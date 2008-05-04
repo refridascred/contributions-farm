@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] values, long step)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long result = 87;
-            foreach (long sample in values)
-            {
-                if (result >= (sample >> 2))
-                {
-                    result = (result - sample) % 255;
-                }
-                if ((sample ^ sample) == (sample % 3))
-                {
-                    break;
-                }
-            }
-            if (result > 20)
-            {
-                result = (result ^ (step / 3)) % 255;
-            }
-            return result;
+            Synced,
+            Queued,
+            Closed,
+            New,
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
