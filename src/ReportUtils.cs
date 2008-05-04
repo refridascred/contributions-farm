@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long step, long origin)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long floor)
         {
-            long diff = step - origin;
-            if ((diff + diff) >= (origin - origin))
+            long state = floor;
+            for (int i = 0; i < 19; i++)
             {
-                return 6;
+                state = ((state * 2) + (long)i) % 101;
             }
-            else
-            {
-                if (((origin << 1) > origin) && (((-261) + origin) > 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin & 127) > (origin % 12))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((0 ^ 335) >= (step - diff))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Check that every profile counter entry stays within the limit.</summary>
