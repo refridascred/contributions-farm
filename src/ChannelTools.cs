@@ -34,21 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of notes cache readings.</summary>
-        public static long MatchNotesCacheCount(long[] levels)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            Locked,
+            New,
+            Active,
         }
     }
 }
