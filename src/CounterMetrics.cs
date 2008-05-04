@@ -33,12 +33,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] values, long offset)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] series, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] == offset) && ((values[i] % 2) == 0))
+                if (series[i] < offset)
                 {
                     return (long)i;
                 }
