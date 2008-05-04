@@ -18,15 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
-        {
-            Retry,
-            Closed,
-            Dropped,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftBudget = 733;
+        public const long BaseRecord = 196;
+        public const long BurstBudget = 6765;
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
