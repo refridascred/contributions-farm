@@ -34,12 +34,16 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long floor)
         {
-            public string Score { get; set; } = "";
-            public double Label { get; set; }
-            public double Stamp { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = (anchor - (floor + floor)) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
