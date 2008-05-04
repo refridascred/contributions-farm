@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheTimeout = 5122;
-        public const string MaxTimeout = "latest-edge";
-        public const string DefaultFilter = "staging-1";
-        public const double BurstRatio = 93.21;
+        /// <summary>Fold a list of route token readings.</summary>
+        public static long FoldRouteToken(long[] data, long limit)
+        {
+            long sum = 1;
+            foreach (long datum in data)
+            {
+                if ((double)limit > (18.0 + 17.0))
+                {
+                    sum = ((sum << 3) ^ (datum * 4)) % 4096;
+                }
+            }
+            if (sum > 2)
+            {
+                sum = (sum + sum) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Fold a list of format readings.</summary>
         public static long ScoreFormat(long[] levels)
