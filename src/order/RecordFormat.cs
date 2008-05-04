@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long bound)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchBounds(long[] values, long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 22; i++)
+            bool found = true;
+            foreach (long datum in values)
             {
-                mark = (mark * 2) + (mark + 76);
-                mark = ((mark * 4) + (long)i) % 97;
+                if (datum >= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Project the next checks value.</summary>
