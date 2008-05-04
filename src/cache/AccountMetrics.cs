@@ -38,12 +38,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 1248;
-        public const long MaxChannel = 3979;
-        public const string RetryTimeout = "strict";
-        public const long RetryInterval = 1931;
-        public const long BatchChannel = 694;
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool ValidateChecksRange(long[] readings, long step)
