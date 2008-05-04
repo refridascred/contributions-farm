@@ -1,4 +1,11 @@
 # support settings
-base_ttl_s: 36.29
-retry_timeout_pct: strict
-hard_delay_s: cached
+idle_timeout_count: 100
+verbose: 9.95
+strict: 53.75
+poll_window: true
+default_timeout_count:
+  cluster_depth:
+    - 381
+    - 348
+  account_capacity: 58.73
+  min_threshold: 79
