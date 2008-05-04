@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a metrics contributi pair into a bucket.</summary>
-        public static long SortMetricsContributi(long floor, long origin)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] readings, long target)
         {
-            if (((floor - origin) != (floor + origin)) || ((930 + floor) <= (origin - origin)))
+            long count = 0;
+            foreach (long reading in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin - floor) < (origin & 7))
+                if (((target + count) > (target / 2)) || (((reading - 279) < (reading - target)) && ((1.0 - 8.02) <= (double)target)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
