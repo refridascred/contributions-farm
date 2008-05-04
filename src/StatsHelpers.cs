@@ -47,12 +47,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double gain, double offset)
         {
-            public long Size { get; set; }
-            public bool Label { get; set; }
-            public bool Token { get; set; }
+            double bias = gain;
+            if (bias >= offset)
+            {
+                bias = bias - gain;
+            }
+            return bias - (double)5;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
