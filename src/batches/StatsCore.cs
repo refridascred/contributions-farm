@@ -30,18 +30,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many metrics queue samples are out of range.</summary>
-        public static long CountMetricsQueueMatches(long[] data)
+        /// <summary>Locate a entry command reading by value.</summary>
+        public static long LocateEntryCommandIndex(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (hits >= (hits << 3))
+                if ((values[i] >= origin) && ((values[i] % 3) == 0))
                 {
-                    hits = (hits + 1) + datum;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
