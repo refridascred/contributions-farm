@@ -1,7 +1,7 @@
 # support settings
-support_interval: 81.5
-counter_capacity: 56.55
-compress:
-  - eu-west
-  - standard
-  - fallback
+cache_delay: fallback
+idle_size:
+  - local
+  - local
+  - open
+filter_window: edge
