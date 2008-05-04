@@ -29,19 +29,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long target)
+        /// <summary>Roll a contributi entry counter forward.</summary>
+        public static long RollContributiEntry(long target)
         {
-            long anchor = target;
-            for (int i = 0; i < 12; i++)
+            long acc = target;
+            for (int i = 0; i < 15; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    anchor = ((anchor ^ ((long)i ^ (-868))) % 101) ^ (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Project the next checks value.</summary>
