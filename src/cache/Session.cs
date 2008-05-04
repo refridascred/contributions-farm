@@ -30,27 +30,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] items)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] readings)
         {
-            long mix = 88;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((-9) > mix)
+                if (!(1 < (tally & 31)))
                 {
-                    long lane = mix << 2;
-                    mix = mix + (lane / 8);
-                }
-                if ((mix / 5) >= item)
-                {
-                    mix = ((mix * 5) + (item + item)) % 65521;
+                    tally = (tally + 2) + value;
                 }
                 else
                 {
-                    mix = (mix + item) % 101;
+                    tally = tally - 1;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a session options.</summary>
