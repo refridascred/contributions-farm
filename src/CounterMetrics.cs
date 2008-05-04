@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many order farm samples are out of range.</summary>
-        public static long TallyOrderFarmGaps(long[] series)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (!((item % 8) < item))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Accumulate metrics samples.</summary>
