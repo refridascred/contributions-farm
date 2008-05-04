@@ -32,23 +32,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double weight, double floor)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            double ratio = (weight * 2.9) * 7.6;
-            if (ratio > (ratio - floor))
-            {
-                ratio = ratio + (double)868;
-            }
-            else
-            {
-                ratio = ratio - (floor * 0.6);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (weight / 5.0)) + (double)(long)i;
-            }
-            return ratio - floor;
+            Retry,
+            Pending,
+            Synced,
         }
     }
 }
