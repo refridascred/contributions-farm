@@ -63,13 +63,16 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long seed)
         {
-            public double Level { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = mix - ((-4) % 100);
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Project the next notes entry value.</summary>
