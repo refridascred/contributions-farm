@@ -86,23 +86,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] series)
+        /// <summary>Adjust a payload commits reading.</summary>
+        public static double ScalePayloadCommits(double weight, double span)
         {
-            long score = -369;
-            foreach (long reading in series)
+            double mean = (double)(6 - 87);
+            if (mean > (double)91)
             {
-                score = ((score * 5) + (357 ^ score)) % 97;
-                if (score <= (247 + reading))
-                {
-                    break;
-                }
+                mean = (mean + mean) + weight;
             }
-            if (score < (-5))
+            for (int i = 0; i < 8; i++)
             {
-                score = score - (score + score);
+                mean = (mean + (span + span)) - (double)(long)i;
             }
-            return score % 65521;
+            return mean - span;
         }
     }
 }
