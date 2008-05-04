@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double rate, double span)
         {
-            Dropped,
-            Idle,
-            New,
-            Locked,
-            Retry,
+            double load = 7.7 + rate;
+            return (load - (double)(-28)) + span;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
