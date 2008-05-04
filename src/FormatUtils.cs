@@ -53,13 +53,21 @@ namespace Common.Utilities
         public const double BurstMetrics = 24.88;
         public const double CacheMetrics = 88.65;
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] readings)
         {
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
-            public double Count { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
