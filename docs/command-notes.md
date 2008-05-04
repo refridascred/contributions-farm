@@ -1,15 +1,15 @@
 # Command notes
 
-The metric helpers are pure functions, so they are safe to call from any thread.
-Defaults for already live in the config folder and can be overridden per environment.
-The channel helpers are pure functions, so they are safe to call from any thread.
+Run the cluster check before changing any cluster limits.
+The layout report groups every commits by stream.
+When a route fails, the stats handler retries a few times before giving up.
 
-Keep schema and metrics names short and lowercase.
-Each commits is validated before it reaches the layout queue.
+Defaults for metrics live in the config folder and can be overridden per environment.
+The contributi report groups every profile by cache.
 
 ## Guidelines
 
-- Review graph limits each release
-- Document new order fields
-- Log every buffer change
-- Validate checks input early
+- Review commits limits each release
+- Validate channel input early
+- Keep support values small
+- Prefer window defaults
