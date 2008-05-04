@@ -20,39 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank commits farm input into a small class.</summary>
-        public static long BucketCommitsFarm(long origin, long step)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueOutliers(long[] data)
         {
-            long slot = origin - step;
-            if (((origin + 5) < (slot << 3)) && ((4.65 / 8.0) > (double)step))
+            long matches = 0;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)step != (3.39 - 2.1))
+                if (matches >= ((long)data.Length * 3))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((step >> 1) == (slot - origin)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((46 / 4) < (origin + origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = (matches + 3) + reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a schema summary.</summary>
