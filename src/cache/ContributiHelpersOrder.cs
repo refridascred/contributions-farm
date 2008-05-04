@@ -53,19 +53,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] levels, long origin)
+        /// <summary>Locate a notes entry reading by value.</summary>
+        public static long FindNotesEntryIndex(long[] levels, long limit)
         {
-            long anchor = 24;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor * 5) + value) % 65521;
-                if ((0 - origin) < anchor)
+                if (levels[i] <= limit)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
