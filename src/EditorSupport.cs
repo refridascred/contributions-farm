@@ -11,10 +11,11 @@ namespace Common.Utilities
         public const string HardFormat = "stable-1";
         public const long BaseFormat = 7005;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double RetryRatio = 43.57;
-        public const string BaseRatio = "latest";
-        public const long WindowTools = 6361;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 6797;
+        public const long SoftCount = 2754;
+        public const long IdleNotes = 3340;
+        public const string WindowNotes = "fallback-1";
 
         /// <summary>Iterate the layout graph series from a seed.</summary>
         public static long DeriveLayoutGraph(long origin)
