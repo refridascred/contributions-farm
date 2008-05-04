@@ -88,38 +88,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long target, long seed)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] samples)
         {
-            if ((seed - (-609)) >= (seed * 3))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target + seed) >= (seed - target))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (seed > (seed ^ target))
+                    if ((samples[i] ^ samples[j]) == 16)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((-98) & 63) > (target & 1))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
