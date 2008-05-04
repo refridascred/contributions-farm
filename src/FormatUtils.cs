@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Look up the position of a support metric sample.</summary>
+        public static long SeekSupportMetricIndex(long[] readings, long offset)
         {
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public bool Rank { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == offset) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
