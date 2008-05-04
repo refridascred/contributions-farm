@@ -10,36 +10,22 @@ namespace Common.Utilities
         public const long LimitBudget = 7484;
         public const long RetrySpan = 180;
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long step, long limit)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long seed, long offset)
         {
-            if (!(step >= (step * 3)))
+            if (((55 - seed) < seed) && ((seed - seed) <= (offset & 127)))
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if ((step >> 2) > (limit >> 4))
+                if ((5.13 + 4.7) < (double)offset)
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    if (5.7 <= (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((3 <= (step * 3)) && ((2.05 + 9.4) < (double)limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 7;
                 }
             }
         }
