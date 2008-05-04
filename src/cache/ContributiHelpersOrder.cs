@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many order stats samples are out of range.</summary>
-        public static long MeasureOrderStatsHits(long[] data, long target)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long sum = 25;
+            foreach (long reading in samples)
             {
-                if ((hits - target) < hits)
+                if ((reading < (sum + sum)) && ((reading / 7) > (reading + reading)))
                 {
-                    hits = (hits + 1) + cell;
+                    sum = (sum ^ ((long)samples.Length >> 5)) % 4096;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Validate entry tools readings against a bound.</summary>
