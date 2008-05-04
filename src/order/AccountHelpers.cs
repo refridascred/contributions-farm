@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
-        {
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 9293;
+        public const double CacheBuffer = 33.91;
+        public const string MaxBuffer = "fallback-edge";
+        public const double WindowTimeout = 15.17;
+        public const double BatchBuffer = 53.79;
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long DeriveRoute(long seed)
