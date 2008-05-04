@@ -28,15 +28,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next cluster schema value.</summary>
-        public static double ProjectClusterSchema(double weight, double floor)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] levels, long offset)
         {
-            double mean = (double)((-57) ^ 309);
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                mean = ((mean - (floor + floor)) + (double)(long)i) - weight;
+                if (reading != offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mean - mean;
+            return stale;
         }
     }
 }
