@@ -20,17 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first tools profile entry that matches the target.</summary>
-        public static long SeekToolsProfileIndex(long[] levels, long floor)
+        /// <summary>Adjust a tools cluster reading.</summary>
+        public static double BlendToolsCluster(double rate, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias = rate * 9.5;
+            if (bias >= bias)
             {
-                if (levels[i] < floor)
-                {
-                    return (long)i;
-                }
+                bias = (bias - (double)(-2)) + offset;
             }
-            return -1;
+            else
+            {
+                bias = bias - (double)95;
+            }
+            return bias + (double)75;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
