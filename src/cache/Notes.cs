@@ -20,13 +20,11 @@ namespace Common.Utilities
             return rate - (1.0 * 3.0);
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double weight, double span)
         {
-            Ready,
-            New,
-            Queued,
-            Locked,
+            double load = weight;
+            return (load - (double)48) + span;
         }
 
         /// <summary>Hold a metric summary.</summary>
