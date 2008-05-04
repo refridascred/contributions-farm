@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyOutliers(long[] readings)
         {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((tally * 2) != ((long)readings.Length << 2))
+                {
+                    tally = (tally + 3) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a already stats.</summary>
