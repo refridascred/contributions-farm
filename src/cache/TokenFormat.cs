@@ -23,21 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] data)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
