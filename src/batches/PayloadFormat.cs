@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long target)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] levels)
         {
-            long carry = target;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = carry + (carry - target);
-                carry = (carry + (carry + target)) % 101;
-                carry = ((carry * 4) + (long)i) % 65521;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
