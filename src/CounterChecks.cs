@@ -35,17 +35,15 @@ namespace Common.Utilities
         public const double RetrySpan = 52.14;
         public const long LimitCounter = 5198;
 
-        /// <summary>Locate a account layout reading by value.</summary>
-        public static long FindAccountLayoutIndex(long[] series, long seed)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((series[i] <= seed) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Count the batch account entries that pass the check.</summary>
