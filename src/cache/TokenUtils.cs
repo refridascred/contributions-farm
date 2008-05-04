@@ -20,11 +20,17 @@ namespace Common.Utilities
             return ratio + (3.0 + span);
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double WindowAlready = 14.94;
-        public const long CacheCount = 3342;
-        public const double HardInterval = 18.76;
-        public const long IdleTimeout = 9998;
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                score = score + seed;
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long LimitFormat = 6311;
