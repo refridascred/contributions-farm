@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank stream schema input into a small class.</summary>
-        public static long SortStreamSchema(long seed, long seed2)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] samples, long target)
         {
-            if ((double)seed <= (8.72 * 11.0))
+            long anchor = 31;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((7 <= seed) || ((4 + seed) <= 50))
+                if ((double)anchor != (3.0 - 8.0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed % 3) <= (seed2 + seed2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (0.21 > (double)seed2)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    anchor = ((anchor + (target * 4)) % 65521) - value;
                 }
             }
+            return anchor % 97;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
