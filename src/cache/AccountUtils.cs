@@ -23,12 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiMatches(long[] levels, long limit)
         {
-            Synced,
-            Locked,
-            Failed,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((hits + reading) > hits)
+                {
+                    hits = (hits + 3) - limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
