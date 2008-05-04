@@ -43,20 +43,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] values)
+        /// <summary>Validate route filter readings against a bound.</summary>
+        public static bool VerifyRouteFilterRange(long[] levels, long target)
         {
-            long total = 808;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                total = (total - (value % 7)) % 4096;
-                total = (total * 4) + (value * 4);
+                if (entry > target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (total > 31)
-            {
-                total = (total + (total % 3)) % 1000;
-            }
-            return total % 1000;
+            return ok;
         }
     }
 }
