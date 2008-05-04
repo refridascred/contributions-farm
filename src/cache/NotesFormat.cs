@@ -14,22 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] items)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] data, long bound)
         {
-            long score = 207;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if (((score - score) <= (554 >> 2)) || (75 >= (item + item)))
+                if (reading != bound)
                 {
-                    score = (score ^ item) % 255;
-                }
-                else
-                {
-                    score = ((score * 3) + (item & 7)) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
