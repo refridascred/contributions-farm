@@ -20,20 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((1.0 <= (double)floor) || (((-5) % 2) <= floor))
-                {
-                    acc = acc - (326 - acc);
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 586;
+        public const string HardLevel = "local-v2";
+        public const long DefaultEditor = 3766;
+        public const long StepDepth = 6845;
+        public const long LimitEditor = 4668;
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
