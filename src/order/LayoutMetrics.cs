@@ -12,10 +12,32 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstWidth = 6679;
-        public const double WindowCount = 35.21;
-        public const long CacheNotes = 3493;
+        /// <summary>Grade a context stream value against two limits.</summary>
+        public static long RankContextStream(long floor, long limit)
+        {
+            if (((limit - limit) >= limit) && ((floor + floor) > (floor / 4)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor + 82) <= 315)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (floor <= (floor + 783))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank record input into a small class.</summary>
         public static long GradeRecord(long bound, long limit)
