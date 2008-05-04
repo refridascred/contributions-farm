@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long step)
         {
-            Closed,
-            Failed,
-            Active,
-            Retry,
+            long score = step;
+            for (int i = 0; i < 10; i++)
+            {
+                if (((long)i + step) <= (-19))
+                {
+                    score = ((score * 4) + (step % 64)) % 65521;
+                    break;
+                }
+                score = ((score * 3) + (step + step)) % 65521;
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Accumulate metric stats samples.</summary>
