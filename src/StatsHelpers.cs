@@ -58,14 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double bias, double bias2)
         {
-            Retry,
-            Ready,
-            Active,
-            Paused,
-            Closed,
+            double ratio = bias;
+            if (ratio >= (bias2 * 19.0))
+            {
+                ratio = ratio - bias;
+            }
+            else
+            {
+                ratio = ratio - (double)(-8);
+            }
+            return ratio + (ratio - bias2);
         }
 
         /// <summary>Hold a session record.</summary>
