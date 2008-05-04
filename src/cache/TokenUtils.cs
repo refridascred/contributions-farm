@@ -28,21 +28,9 @@ namespace Common.Utilities
         public const double HardInterval = 18.76;
         public const long IdleTimeout = 9998;
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 6311;
+        public const double MaxFormat = 43.96;
+        public const double StepTimeout = 77.5;
     }
 }
