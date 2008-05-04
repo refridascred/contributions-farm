@@ -1,10 +1,52 @@
 # entry settings
-idle_delay_count: eu-west
-burst_timeout_ms: false
-hard_limit_ms: cached
-idle_ttl_pct:
-  - 199
-  - 155
-  - 53
-enabled: 250
-batch_interval_pct: open
+cache_ratio:
+  retry_delay_ms: true
+  contributi_retries:
+    max_timeout_pct: 37.02
+    burst_depth:
+      - eu-west
+      - staging
+    poll_delay_s: false
+    poll_limit: strict
+    base_timeout_count:
+      - eu-west
+      - fallback
+    persist: 250
+  dry_run: 28
+  audit: 1070
+burst_interval_count:
+  audit: blue
+  readonly: false
+  batch_window: 500
+audit:
+  readonly: 76.89
+  sync_limit:
+    retry_interval_pct:
+      - open
+      - primary
+    flush_retries_s: 500
+    enabled: staging
+    flush_depth_ms: 45.91
+    sync_limit_count: 4193
+    hard_retries_pct: 76
+  min_ratio_count: strict
+  retry_capacity_ms: 32.53
+  hard_threshold_s:
+    - strict
+    - latest
+    - cached
+min_ratio: standard
+poll_window_ms:
+  tools_retries: stable
+  filter_timeout: 500
+  stream_delay: 32
+  profile_threshold: 90
+  verbose: 81.7
+  flush_timeout_s:
+    flush_interval_ms: 59
+    soft_limit_ms: 78.27
+    warm_timeout_ms: false
+    strict:
+      - strict
+      - cached
+      - local
