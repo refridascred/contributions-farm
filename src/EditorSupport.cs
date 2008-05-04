@@ -40,17 +40,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] values, long origin)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 3;
+            foreach (long item in values)
             {
-                if ((values[i] < origin) && ((values[i] % 5) == 0))
+                if (!((4.64 - 7.81) == (double)state))
                 {
-                    return (long)i;
+                    state = (((state * 2) + (88 + 304)) % 1000) - item;
                 }
             }
-            return -1;
+            if (state < 7)
+            {
+                state = (state ^ (-58)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a contributi options.</summary>
