@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFormat = 7721;
-        public const double CacheFormat = 76.87;
-        public const string IdleFormat = "latest-1";
-        public const double BatchFormat = 51.9;
+        /// <summary>Rank buffer entry input into a small class.</summary>
+        public static long SortBufferEntry(long origin, long seed)
+        {
+            long slot = origin + seed;
+            if ((origin >> 1) > (origin % 16))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((2 * 5) <= (origin << 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((7 >> 1) < origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed * 2) == (slot << 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up tools samples.</summary>
         public static long OverlapToolsCount(long[] levels)
