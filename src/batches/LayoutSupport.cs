@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorGaps(long[] levels, long bound)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] samples)
         {
             long seen = 0;
-            foreach (long value in levels)
+            foreach (long item in samples)
             {
-                if ((((seen - (long)levels.Length) >= bound) && ((seen / 4) <= (value * 5))) || ((double)value >= (5.0 / 2.0)))
+                if ((item << 2) >= (seen - seen))
                 {
-                    seen = seen + 3;
+                    seen = seen + 1;
                 }
             }
             return seen;
