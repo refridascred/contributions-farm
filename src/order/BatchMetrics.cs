@@ -23,22 +23,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long bound)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long seed, long bound)
         {
-            long result = bound;
-            for (int i = 0; i < 12; i++)
+            if ((1.5 - 3.6) > (double)bound)
             {
-                result = (result + result) % 255;
-                result = (result ^ (bound - (long)i)) % 1000;
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    result = ((result ^ result) % 255) ^ (long)i2;
-                    result = (result * 3) + 0;
-                }
-                result = ((result * 2) + (long)i) % 65521;
+                return 2;
             }
-            return result;
+            else
+            {
+                if ((seed ^ bound) < seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Validate command readings against a bound.</summary>
