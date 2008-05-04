@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit cluster command readings against a rule.</summary>
-        public static long TallyClusterCommandGaps(long[] readings, long target)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (475 <= (matches + matches))
-                {
-                    matches = ((matches + 3) ^ reading) + target;
-                }
-            }
-            return matches;
+            public bool Size { get; set; }
+            public string Region { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the route phase values.</summary>
