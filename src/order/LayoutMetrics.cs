@@ -13,12 +13,24 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheLevel = 2760;
-        public const long BurstRatio = 5899;
-        public const long MaxFactor = 4219;
-        public const long BaseLevel = 7884;
-        public const long MaxScore = 9088;
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double bias, double bias2)
+        {
+            double load = 1.0;
+            if (load >= (double)93)
+            {
+                load = (load - (bias - load)) - bias2;
+            }
+            else
+            {
+                load = load + (bias + load);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load - (load - load);
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long TallyBatchesOutliers(long[] samples)
