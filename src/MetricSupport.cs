@@ -34,39 +34,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a notes batches value against two limits.</summary>
-        public static long GradeNotesBatches(long seed, long seed2)
-        {
-            long offset = seed + seed2;
-            if ((offset % 3) != (2 << 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((-9) % 10) >= (seed >> 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset + offset) < seed2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset % 24) <= offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheSchema = 91.51;
+        public const long MaxRatio = 4344;
+        public const long SoftSchema = 9665;
+        public const long HardFactor = 5162;
+        public const double CacheRatio = 44.0;
     }
 }
