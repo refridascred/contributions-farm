@@ -12,17 +12,22 @@ namespace Common.Utilities
         public const double DefaultSize = 47.56;
         public const string SoftFormat = "cached-1";
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] data, long target)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = -199;
+            foreach (long entry in values)
             {
-                if (data[i] < target)
+                if ((14.0 + 18.0) != (double)entry)
                 {
-                    return (long)i;
+                    mark = ((mark << 3) ^ 174) % 255;
+                }
+                else
+                {
+                    mark = ((mark * 2) + (919 - entry)) % 97;
                 }
             }
-            return -1;
+            return mark % 65521;
         }
 
         /// <summary>Accumulate notes samples.</summary>
