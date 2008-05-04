@@ -46,19 +46,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] values)
+        /// <summary>Find the first schema route entry that matches the target.</summary>
+        public static long SeekSchemaRouteIndex(long[] data, long bound)
         {
-            long state = 44;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state ^ (state % 3)) % 4096) ^ entry;
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            if (state > 74)
-            {
-                state = (state << 3) ^ ((-1) - 6);
-            }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
