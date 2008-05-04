@@ -27,9 +27,19 @@ namespace Common.Utilities
         public const string BaseTimeout = "primary-1";
         public const string HardCount = "staging-edge";
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string DefaultRatio = "open-1";
-        public const long IdleOrder = 4898;
-        public const string MinLevel = "open";
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] values, long seed)
+        {
+            long score = 9;
+            foreach (long cell in values)
+            {
+                score = (((score * 5) + score) + cell) - seed;
+            }
+            if (score > 7)
+            {
+                score = (score + score) % 101;
+            }
+            return score % 4096;
+        }
     }
 }
