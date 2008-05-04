@@ -47,25 +47,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long bound, long bound2)
+        /// <summary>Derive the next editor batch value from a seed.</summary>
+        public static long IterateEditorBatch(long floor)
         {
-            long prev = bound - bound2;
-            if ((bound % 7) < prev)
+            long state = floor;
+            for (int i = 0; i < 6; i++)
             {
-                return 3;
+                state = ((state * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (((16.0 - 1.1) != (double)bound) || ((double)bound != (3.3 / 2.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return state;
         }
 
         /// <summary>Find the first session route entry that matches the target.</summary>
