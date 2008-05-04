@@ -25,10 +25,20 @@ namespace Common.Utilities
         public const double BaseNotes = 11.42;
         public const long HardFactor = 1044;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double LimitWidth = 56.5;
-        public const long LimitCount = 5533;
-        public const string StepRecord = "strict-v2";
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricLimits(long[] levels, long target)
+        {
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a layout entry.</summary>
         public sealed class LayoutEntry
