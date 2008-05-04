@@ -12,21 +12,24 @@ namespace Common.Utilities
         public const long BaseTimeout = 3906;
         public const long LimitCluster = 5465;
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] data)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long bound, long bound2)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((bound2 + bound) <= (bound * 4))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!((double)bound2 <= (double)bound))
                 {
-                    if ((data[i] + data[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
