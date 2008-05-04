@@ -52,13 +52,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Combine record batch values into a single score.</summary>
+        public static long FoldRecordBatch(long[] values)
         {
-            Draft,
-            Stale,
-            Dropped,
-            Done,
+            long acc = 5;
+            foreach (long entry in values)
+            {
+                if ((acc ^ entry) < (acc + acc))
+                {
+                    acc = (acc ^ (825 - entry)) % 101;
+                }
+                else
+                {
+                    acc = (acc + (acc + (-6))) % 97;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Find the first batch schema entry that matches the target.</summary>
