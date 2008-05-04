@@ -64,10 +64,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstWindow = "strict-v2";
-        public const long StepWindow = 3823;
-        public const double BurstScore = 6.37;
-        public const long BurstDepth = 5757;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] series, long seed)
+        {
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
