@@ -56,19 +56,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every cache profile entry stays within the limit.</summary>
-        public static bool GuardCacheProfileBounds(long[] samples, long step)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long floor)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long result = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (value != step)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    ok = false;
-                    break;
+                    result = (result - (result + (long)i)) - (long)i2;
                 }
+                result = result - (floor + floor);
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
