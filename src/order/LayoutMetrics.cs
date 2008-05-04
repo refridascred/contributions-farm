@@ -26,10 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinRatio = 3637;
-        public const long RetryRatio = 6312;
-        public const long HardFormat = 2319;
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                if (origin <= (state & 7))
+                {
+                    state = state - (origin << 1);
+                    state = (state - (state / 4)) % 97;
+                }
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long TallyBatchesOutliers(long[] samples)
