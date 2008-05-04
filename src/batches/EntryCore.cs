@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a tools cluster reading.</summary>
-        public static double BlendToolsCluster(double rate, double offset)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelRange(long[] levels, long offset)
         {
-            double bias = rate * 9.5;
-            if (bias >= bias)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                bias = (bias - (double)(-2)) + offset;
+                if (sample <= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias - (double)95;
-            }
-            return bias + (double)75;
+            return stale;
         }
 
         /// <summary>Describe the entry phase values.</summary>
