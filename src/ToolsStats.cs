@@ -16,17 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] data)
         {
-            long acc = offset;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                acc = ((acc << 2) ^ (acc + acc)) % 101;
-                acc = (acc * 3) + acc;
-                acc = ((acc * 3) + (long)i) % 4093;
+                if ((entry < (entry / 9)) || ((9.3 * 3.0) >= (double)tally))
+                {
+                    tally = tally + 2;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Describe the session level values.</summary>
