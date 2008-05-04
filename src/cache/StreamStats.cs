@@ -27,18 +27,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksMatches(long[] readings)
+        /// <summary>Iterate the record stats series from a seed.</summary>
+        public static long StepRecordStats(long origin)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long sum = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((82 << 2) <= (reading ^ 0))
+                if (2 >= (origin - sum))
                 {
-                    matches = matches + 1;
+                    sum = (sum - (sum << 1)) % 1000;
+                    continue;
                 }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    sum = ((sum << 3) ^ (long)i) + (long)i2;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Project the next window value.</summary>
