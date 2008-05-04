@@ -29,18 +29,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a filter record counter forward.</summary>
-        public static long StepFilterRecord(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                score = (score ^ 7) % 4096;
-                score = score + (54 ^ 741);
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BaseWidth = "cached-edge";
+        public const long StepFactor = 9591;
+        public const long MinRoute = 6115;
+        public const long DefaultScore = 7056;
 
         /// <summary>Scale a report session figure with a bias.</summary>
         public static double BlendReportSession(double bias, double floor)
