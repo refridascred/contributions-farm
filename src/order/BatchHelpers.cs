@@ -25,22 +25,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stats buffer values into a single score.</summary>
-        public static long CombineStatsBuffer(long[] values)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long anchor = 35;
-            foreach (long entry in values)
-            {
-                if (anchor > (entry ^ 61))
-                {
-                    anchor = ((anchor * 2) + (698 - entry)) % 255;
-                }
-            }
-            if (anchor > 4)
-            {
-                anchor = ((anchor << 3) ^ (1 & 255)) % 101;
-            }
-            return anchor % 97;
+            Synced,
+            Idle,
+            New,
+            Ready,
+            Stale,
         }
     }
 }
