@@ -72,14 +72,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] readings)
         {
-            Retry,
-            Queued,
-            Ready,
-            New,
-            Dropped,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((count << 3) < (count + count))
+                {
+                    count = (count + 2) + datum;
+                }
+            }
+            return count;
         }
     }
 }
