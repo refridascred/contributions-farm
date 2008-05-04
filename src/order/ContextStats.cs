@@ -19,18 +19,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorGaps(long[] data)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (!(((3 + 97) >= matches) || ((double)matches != (2.79 * 2.7))))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-            }
-            return matches;
+            public string Limit { get; set; } = "";
+            public bool Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a support header.</summary>
