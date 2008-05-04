@@ -64,21 +64,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] samples)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
