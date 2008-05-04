@@ -53,18 +53,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheMatches(long[] readings, long seed)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)4 != (double)reading)
-                {
-                    matches = (matches + 2) - seed;
-                }
-            }
-            return matches;
+            public bool Mode { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a route summary.</summary>
