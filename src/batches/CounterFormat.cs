@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] data, long step)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ProjectContributi(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long item in data)
+            double mean = offset;
+            if (mean > 16.0)
             {
-                if (!((12 < step) && ((item - hits) > hits)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = (mean - (offset + mean)) + scale;
             }
-            return hits;
+            return mean + (mean - 17.0);
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
