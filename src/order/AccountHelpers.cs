@@ -50,15 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] readings, long seed)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] readings, long target)
         {
-            long carry = -18;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                carry = ((carry + cell) % 255) + seed;
+                if (5.06 < (double)seen)
+                {
+                    seen = ((seen + 1) + sample) + target;
+                }
             }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
