@@ -13,12 +13,20 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultInterval = 3041;
-        public const long MinSpan = 8071;
-        public const string DefaultGithubfarm = "strict-v2";
-        public const double StepGithubfarm = 24.48;
-        public const string CacheBudget = "strict-v2";
+        /// <summary>Validate checks buffer readings against a bound.</summary>
+        public static bool GuardChecksBufferBounds(long[] series, long offset)
+        {
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
