@@ -32,10 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 2091;
-        public const long BatchSize = 4293;
-        public const double SoftOrder = 5.32;
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double ratio, double bias)
+        {
+            double rate = ratio;
+            if (rate >= ratio)
+            {
+                rate = (rate - (rate / 5.0)) + bias;
+            }
+            return rate + 4.74;
+        }
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
