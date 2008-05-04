@@ -1,5 +1,11 @@
 # support settings
-batches_retries: true
-verbose: true
-max_timeout: 3965
-editor_limit: standard
+filter_ttl: true
+cache_window_pct: 32.46
+cluster_interval:
+  retry_limit_count: 2293
+  verbose: edge
+  audit: 500
+  batch_interval_pct: true
+  cache_delay_pct: false
+strict: 50
+cache_interval_pct: open
