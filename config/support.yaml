@@ -1,11 +1,4 @@
 # support settings
-editor_ttl:
-  min_window_pct: true
-  flush_limit_pct: 70.75
-  compress: primary
-compress: fallback
-cache_depth:
-  - latest
-  - local
-  - edge
-  - blue
+base_ttl_s: 36.29
+retry_timeout_pct: strict
+hard_delay_s: cached
