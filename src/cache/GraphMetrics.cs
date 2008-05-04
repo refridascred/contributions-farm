@@ -41,19 +41,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate farm command samples.</summary>
-        public static long CombineFarmCommand(long[] data, long limit)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] readings)
         {
-            long mix = 87;
-            foreach (long reading in data)
+            long mark = -9;
+            foreach (long item in readings)
             {
-                mix = ((mix - 23) ^ reading) + limit;
+                mark = mark - (item ^ item);
             }
-            if (mix < 653)
-            {
-                mix = mix - 6;
-            }
-            return mix;
+            return mark;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
