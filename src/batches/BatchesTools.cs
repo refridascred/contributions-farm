@@ -23,26 +23,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] items, long limit)
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] data)
         {
-            long score = 45;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((limit + (long)items.Length) <= (limit << 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = ((score << 3) ^ sample) % 4096;
-                }
-                else
-                {
-                    score = (score ^ score) % 97;
+                    if ((data[i] + data[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (score < 641)
-            {
-                score = ((score << 3) ^ score) % 4096;
-            }
-            return score % 65521;
+            return hits;
         }
 
         /// <summary>Match up buffer samples.</summary>
