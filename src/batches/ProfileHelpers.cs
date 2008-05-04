@@ -45,19 +45,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextLimits(long[] series, long seed)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Adjust a format already reading.</summary>
