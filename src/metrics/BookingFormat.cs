@@ -20,15 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a cluster booking reading.</summary>
-        public static double AdjustClusterBooking(double gain, double span)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] levels, long limit)
         {
-            double gain2 = 5.0 / 6.0;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain2 = (((gain2 + gain2) - (double)(long)i) + gain) - span;
+                if (levels[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return gain2 + gain2;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
