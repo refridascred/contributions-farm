@@ -25,11 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] data, long step)
         {
-            public string Limit { get; set; } = "";
-            public string Size { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((entry + matches) == (874 % 10))
+                {
+                    matches = (matches + 1) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a format summary.</summary>
