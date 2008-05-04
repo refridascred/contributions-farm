@@ -48,9 +48,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double HardFormat = 59.19;
-        public const long WindowFactor = 8368;
-        public const long RetryInterval = 6469;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long bound, long seed)
+        {
+            if ((bound + bound) > seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)301 != (double)seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound >> 5) > bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
