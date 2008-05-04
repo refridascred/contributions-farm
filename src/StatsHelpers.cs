@@ -30,12 +30,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Measure how many channel command samples are out of range.</summary>
+        public static long MeasureChannelCommandGaps(long[] samples, long target)
         {
-            public double Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((2.0 - 4.1) < (double)seen)
+                {
+                    seen = ((seen + 1) + reading) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
