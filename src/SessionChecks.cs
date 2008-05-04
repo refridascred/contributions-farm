@@ -19,22 +19,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] levels, long floor)
+        /// <summary>Digest a series of window checks entries.</summary>
+        public static long DigestWindowChecks(long[] series)
         {
-            long result = 75;
-            foreach (long sample in levels)
+            long mix = 847;
+            foreach (long cell in series)
             {
-                if ((floor & 1) == (floor / 6))
+                if (((cell - mix) >= (cell + cell)) && ((double)cell < (20.0 * 1.8)))
                 {
-                    result = ((result << 2) ^ (floor - 4)) + sample;
+                    mix = (mix ^ mix) % 255;
                 }
             }
-            if (result > 42)
-            {
-                result = (result * 2) + (floor + result);
-            }
-            return result % 65521;
+            return mix;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
