@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a graph tools reading by value.</summary>
-        public static long LocateGraphToolsIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseWidth = 79.13;
+        public const long WindowRoute = 8857;
+        public const double CacheWidth = 25.5;
+        public const long BurstRoute = 2065;
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
