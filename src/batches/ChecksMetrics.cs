@@ -36,19 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double weight, double bias)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            double drift = bias;
-            if (drift >= weight)
-            {
-                drift = drift + bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + weight) + (double)(long)i;
-            }
-            return drift + bias;
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
