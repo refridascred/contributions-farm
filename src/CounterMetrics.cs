@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 2470;
+        public const string BatchLayout = "local-1";
+        public const long HardTimeout = 3124;
+        public const long SoftLayout = 8860;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long CountSupportHits(long[] levels, long target)
