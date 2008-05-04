@@ -1,16 +1,10 @@
 # support settings
-default_capacity:
-  flush_threshold_s: false
-  min_retries_pct: latest
-  readonly: 25
-  cache_timeout:
-    - local
-    - latest
-    - staging
-    - cached
-contributi_depth: 7842
-dry_run: local
-cache_ttl_s: false
-min_delay_ms:
-  - green
-  - edge
+sync_retries: 13.26
+enabled: 60
+soft_window_s: 11.61
+format_size:
+  - 137
+  - 409
+  - 205
+default_timeout_pct: 1024
+soft_capacity_count: fallback
