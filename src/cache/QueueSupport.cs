@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] data, long bound)
+        /// <summary>Blend two cluster profile measurements.</summary>
+        public static double ScaleClusterProfile(double ratio, double bias)
         {
-            bool flag = true;
-            foreach (long value in data)
+            double gain = bias;
+            if (gain > bias)
             {
-                if (value < bound)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = (gain - (gain - gain)) + ratio;
             }
-            return flag;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - gain) - (double)(long)i;
+            }
+            return gain - (double)(-747);
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
