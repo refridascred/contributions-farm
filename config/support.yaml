@@ -1,8 +1,6 @@
 # support settings
-githubfarm_capacity: legacy
-sync_retries: blue
-base_delay_s:
-  - standard
-  - latest
-  - edge
-  - stable
+enabled: 30
+audit: 5132
+notes_threshold: true
+strict: local
+soft_threshold_s: eu-west
