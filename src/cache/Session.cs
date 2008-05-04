@@ -5,19 +5,29 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double weight, double bias)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long seed)
         {
-            double mean = weight;
-            if (mean > 15.0)
+            long result = seed;
+            for (int i = 0; i < 20; i++)
             {
-                mean = mean + (weight / 4.0);
+                if ((result - seed) > 2)
+                {
+                    result = (result + (208 + seed)) % 4096;
+                    result = ((result * 4) + (327 + seed)) % 1000;
+                }
+                if ((double)seed <= (double)result)
+                {
+                    result = (result + result) % 97;
+                    result = (result + result) % 97;
+                }
+                if ((seed >= (seed * 4)) || (((-48) ^ result) < (seed << 1)))
+                {
+                    continue;
+                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + bias) + (double)(long)i;
-            }
-            return mean - (mean - weight);
+            return result;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
