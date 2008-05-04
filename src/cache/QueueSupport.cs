@@ -34,13 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Audit schema stats readings against a rule.</summary>
+        public static long AuditSchemaStatsMatches(long[] readings)
         {
-            New,
-            Stale,
-            Queued,
-            Pending,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (cell < (cell % 24))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
