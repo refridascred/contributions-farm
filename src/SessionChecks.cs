@@ -14,18 +14,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the editor notes entries that pass the check.</summary>
-        public static long CountEditorNotesHits(long[] values, long bound)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading >= (reading ^ reading))
+                if ((readings[i] == bound) && ((readings[i] % 3) == 0))
                 {
-                    count = (count + 1) + bound;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
