@@ -1,13 +1,12 @@
 {
-  "verbose": 8622,
-  "commits_timeout": 500,
-  "batch_limit_count": {
-    "cache_ttl_pct": false,
-    "compress": 16,
-    "readonly": "legacy",
-    "base_threshold_s": 30,
-    "max_interval": 500,
-    "min_capacity": 7018
-  },
-  "warm_limit_count": ["cached", "cached", "legacy"]
+  "editor_ttl": true,
+  "enabled": [141, 496, 363, 10],
+  "report_ttl": 100,
+  "poll_limit": {
+    "base_capacity_count": 49,
+    "max_ratio_count": "staging",
+    "default_limit_pct": "edge",
+    "min_depth_s": "green",
+    "retry_delay_pct": 60
+  }
 }
