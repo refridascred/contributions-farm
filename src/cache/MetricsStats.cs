@@ -20,11 +20,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleRatio = 7501;
-        public const double MaxSize = 56.37;
-        public const long LimitSpan = 7196;
-        public const long BurstReport = 8868;
+        /// <summary>Adjust a stats format reading.</summary>
+        public static double ProjectStatsFormat(double scale, double span)
+        {
+            double weight = scale;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (span / 8.0)) + (double)(long)i;
+            }
+            return weight - (span / 4.0);
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool ValidateReportLimits(long[] readings, long limit)
