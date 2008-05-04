@@ -13,21 +13,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                if (origin <= (state & 7))
-                {
-                    state = state - (origin << 1);
-                    state = (state - (state / 4)) % 97;
-                }
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheLevel = 2760;
+        public const long BurstRatio = 5899;
+        public const long MaxFactor = 4219;
+        public const long BaseLevel = 7884;
+        public const long MaxScore = 9088;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long TallyBatchesOutliers(long[] samples)
