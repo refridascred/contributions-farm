@@ -1,11 +1,6 @@
-id,ratio,owner,rank
-1,cached,51.8,fallback
-2,244,815,cached
-3,386,803,544
-4,local,27.73,local
-5,25.53,fallback,60.1
-6,strict,893,39.93
-7,467,89.17,40
-8,2.1,legacy,standard
-9,legacy,724,581
-10,blue,8.38,eu-west
+id,weight,state,owner
+1,edge,45,38.66
+2,268,41.92,latest
+3,806,495,74.28
+4,standard,55,local
+5,723,458,stable
