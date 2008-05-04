@@ -39,9 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetryInterval = "staging-edge";
-        public const long BaseTimeout = 8210;
-        public const long LimitTools = 7676;
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((4.7 + 9.1) >= (double)(long)i)
+                {
+                    acc = ((acc * 2) + (acc >> 3)) % 101;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
+        }
     }
 }
