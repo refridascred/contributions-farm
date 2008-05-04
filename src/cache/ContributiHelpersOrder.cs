@@ -26,17 +26,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a notes entry reading by value.</summary>
-        public static long FindNotesEntryIndex(long[] levels, long limit)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Stale,
+            Failed,
+            Paused,
+            Synced,
         }
     }
 }
