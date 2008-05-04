@@ -36,38 +36,18 @@ namespace Common.Utilities
         public const double IdleDepth = 90.23;
         public const double RetryCount = 95.48;
 
-        /// <summary>Classify a metrics graph pair into a bucket.</summary>
-        public static long BucketMetricsGraph(long seed, long floor)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] samples, long limit)
         {
-            if (((seed + seed) >= floor) && ((4.41 + 2.27) != (double)floor))
+            long anchor = 64;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor << 1) >= (floor - seed))
+                if ((6 + anchor) != (item >> 4))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((7 << 2) < (seed * 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (floor <= 123)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    anchor = anchor ^ (limit * 3);
                 }
             }
+            return anchor % 1000;
         }
     }
 }
