@@ -14,14 +14,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public long Count { get; set; }
-            public bool Limit { get; set; }
-            public string Token { get; set; } = "";
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 909;
+        public const long HardBudget = 4672;
+        public const string WindowFilter = "cached-edge";
 
         /// <summary>Count the githubfarm account entries that pass the check.</summary>
         public static long AuditGithubfarmAccountGaps(long[] samples, long offset)
