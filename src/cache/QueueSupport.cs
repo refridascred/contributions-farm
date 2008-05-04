@@ -32,19 +32,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutRange(long[] series, long seed)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Stale,
+            Queued,
+            Pending,
         }
     }
 }
