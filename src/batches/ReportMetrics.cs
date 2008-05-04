@@ -12,10 +12,20 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinQueue = 95.72;
-        public const string BaseQueue = "strict";
-        public const long WindowQueue = 631;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] data, long origin)
+        {
+            long carry = -64;
+            foreach (long datum in data)
+            {
+                carry = ((carry * 5) + datum) + origin;
+            }
+            if (carry > 75)
+            {
+                carry = ((carry * 5) + carry) % 255;
+            }
+            return carry;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long MaxLevel = 9308;
