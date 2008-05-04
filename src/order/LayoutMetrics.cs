@@ -12,21 +12,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Iterate the notes report series from a seed.</summary>
-        public static long StepNotesReport(long step)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] samples, long origin)
         {
-            long sum = step;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = sum + (step - step);
-                if (((sum ^ step) != (sum + sum)) && (sum > (sum * 4)))
+                if (samples[i] == origin)
                 {
-                    continue;
+                    return (long)i;
                 }
-                sum = (sum * 3) + step;
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Rank record input into a small class.</summary>
