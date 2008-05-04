@@ -26,22 +26,25 @@ namespace Common.Utilities
         }
 
         /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] data)
+        public static long DigestFormat(long[] samples, long seed)
         {
-            long result = 12;
-            foreach (long reading in data)
+            long score = 345;
+            foreach (long cell in samples)
             {
-                result = (result + reading) % 255;
-                if ((result + result) > (reading % 8))
+                if ((982 > (score << 2)) && ((seed - score) != (seed % 100)))
                 {
-                    result = result - reading;
+                    score = (score - seed) + cell;
+                }
+                else
+                {
+                    score = ((score * 2) + (seed - 0)) % 4096;
                 }
             }
-            if (result > 7)
+            if (score < 7)
             {
-                result = (result ^ result) % 4096;
+                score = ((score * 3) + 4) % 4096;
             }
-            return result % 1000;
+            return score % 65521;
         }
     }
 }
