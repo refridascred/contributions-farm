@@ -22,18 +22,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] values, long limit)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long seed, long limit)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            if (seed > ((-35) + seed))
             {
-                if (entry >= (entry * 5))
+                return 0;
+            }
+            else
+            {
+                if ((seed + seed) <= seed)
                 {
-                    hits = (hits + 1) - limit;
+                    return 1;
+                }
+                else
+                {
+                    if (seed > (seed - seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
