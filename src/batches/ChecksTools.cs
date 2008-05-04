@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] series, long origin)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Dropped,
+            Retry,
+            Draft,
         }
 
         /// <summary>Locate a editor reading by value.</summary>
