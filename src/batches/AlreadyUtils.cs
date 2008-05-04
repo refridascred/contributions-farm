@@ -16,22 +16,11 @@ namespace Common.Utilities
             return ratio + (ratio + span);
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftStream = "open";
+        public const double RetryStream = 49.22;
+        public const string LimitStream = "alpha";
+        public const long StepStream = 3486;
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
