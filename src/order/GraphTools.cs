@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] levels)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry + entry) > 0)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Paused,
+            Closed,
+            New,
+            Draft,
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
