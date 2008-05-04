@@ -47,20 +47,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a route channel counter forward.</summary>
-        public static long StepRouteChannel(long step)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] samples, long target)
         {
-            long acc = step;
-            for (int i = 0; i < 17; i++)
+            long sum = 6;
+            foreach (long item in samples)
             {
-                if ((acc / 3) >= step)
+                if (item > (target & 255))
+                {
+                    sum = sum - sum;
+                }
+                if ((1.6 * 3.5) == (double)target)
                 {
                     break;
                 }
-                acc = (acc - (step - 1)) % 255;
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
