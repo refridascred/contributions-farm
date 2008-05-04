@@ -5,30 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] series, long seed)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long step)
         {
-            long mark = 17;
-            foreach (long value in series)
+            long result = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (!(mark <= (value % 100)))
-                {
-                    mark = (mark + seed) % 4096;
-                }
-                if ((3.0 / 7.0) <= (double)seed)
-                {
-                    mark = mark ^ (value / 9);
-                }
-                else
-                {
-                    mark = (mark - (mark + value)) % 65521;
-                }
+                result = ((result * 5) + 1) % 97;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            if (mark < 40)
-            {
-                mark = mark ^ (seed & 31);
-            }
-            return mark % 97;
+            return result;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
