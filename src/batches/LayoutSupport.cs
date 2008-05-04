@@ -5,30 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of batch contributi entries.</summary>
-        public static long WeighBatchContributi(long[] samples)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long floor, long floor2)
         {
-            long carry = 4;
-            foreach (long sample in samples)
+            if ((floor % 10) >= (floor2 & 63))
             {
-                if (carry <= (sample & 3))
+                return 8;
+            }
+            else
+            {
+                if (!((floor * 2) <= (floor - 35)))
                 {
-                    carry = ((carry << 3) ^ (sample + carry)) % 65521;
-                }
-                if ((carry ^ carry) == (sample / 6))
-                {
-                    carry = carry - (sample * 3);
+                    return 2;
                 }
                 else
                 {
-                    carry = (carry ^ carry) % 101;
+                    if (45 < (floor / 6))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (carry < 1)
-            {
-                carry = carry - (long)samples.Length;
-            }
-            return carry;
         }
 
         /// <summary>Hold a contributi stats.</summary>
