@@ -68,12 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
+            Locked,
+            Queued,
+            Dropped,
         }
     }
 }
