@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] samples, long offset)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Score { get; set; } = "";
+            public double Size { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Project the next session layout value.</summary>
