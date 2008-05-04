@@ -29,18 +29,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmGaps(long[] levels, long target)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryMatches(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((target * 5) > (target << 3))
+                if (!((9 ^ seed) <= datum) || (((19.0 * 18.0) >= (double)seed) && (seen <= (seed / 3))))
                 {
-                    count = (count + 2) - datum;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
