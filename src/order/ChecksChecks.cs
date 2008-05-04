@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] readings, long bound)
+        /// <summary>Locate a entry buffer reading by value.</summary>
+        public static long FindEntryBufferIndex(long[] series, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 5) == 0))
+                if ((series[i] > offset) && ((series[i] % 2) == 0))
                 {
                     return (long)i;
                 }
