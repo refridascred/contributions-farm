@@ -1,28 +1,11 @@
 # support settings
-notes_size:
-  strict:
-    - fallback
-    - eu-west
-    - primary
-  poll_ttl_ms:
-    poll_retries_ms: 250
-    format_capacity:
-      - 181
-      - 389
-      - 262
-      - 103
-    compress: false
-    max_window_pct:
-      - 387
-      - 449
-      - 331
-    warm_interval_s: 30
-  warm_ratio_pct: 30
-idle_limit: open
-profile_depth: latest
-payload_threshold: 30
-cache_size_s: 47.48
-audit:
-  - 317
-  - 392
-  - 160
+default_ratio_count: standard
+already_interval: 47
+channel_size: 75.35
+idle_interval_pct: cached
+idle_ratio_s: legacy
+readonly:
+  - stable
+  - stable
+  - eu-west
+  - green
