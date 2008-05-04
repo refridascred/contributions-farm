@@ -25,21 +25,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] values)
+        /// <summary>Match up notes window samples.</summary>
+        public static long CompareNotesWindowCount(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] + values[j]) > 8)
+                    if ((levels[i] ^ levels[j]) != 15)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the profile class values.</summary>
