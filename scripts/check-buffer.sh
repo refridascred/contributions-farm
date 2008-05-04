@@ -6,11 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 3))
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-BUFFER_LIMIT=473
+for item in legacy open cached; do
+    log "checking ${item}"
+done
+
+BUFFER_LIMIT=444
 log "limit is ${BUFFER_LIMIT}"
