@@ -61,22 +61,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stats token samples are out of range.</summary>
-        public static long MeasureStatsTokenOutliers(long[] series, long floor)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((hits - 512) <= (datum / 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 3) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] ^ series[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
