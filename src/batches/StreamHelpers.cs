@@ -46,11 +46,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string DefaultWindow = "fallback-v2";
-        public const long RetryWindow = 6601;
-        public const double BurstWidth = 87.39;
-        public const long MaxWindow = 4339;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] values)
+        {
+            long state = 44;
+            foreach (long entry in values)
+            {
+                state = ((state ^ (state % 3)) % 4096) ^ entry;
+            }
+            if (state > 74)
+            {
+                state = (state << 3) ^ ((-1) - 6);
+            }
+            return state % 4096;
+        }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long LookupSchemaIndex(long[] data, long seed)
