@@ -23,24 +23,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long seed, long bound)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            if (((bound ^ 974) >= 52) && (bound >= ((-62) % 2)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((4 * 5) < (bound ^ seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            New,
+            Paused,
+            Dropped,
+            Done,
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
