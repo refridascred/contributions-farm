@@ -23,19 +23,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] items, long step)
-        {
-            long anchor = -758;
-            foreach (long cell in items)
-            {
-                if (cell >= (anchor * 5))
-                {
-                    anchor = ((anchor * 4) + anchor) + step;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxScore = 2787;
+        public const long IdleInterval = 1092;
+        public const string BurstCounter = "primary-1";
+        public const double RetrySpan = 52.14;
+        public const long LimitCounter = 5198;
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long FoldSchema(long[] readings)
