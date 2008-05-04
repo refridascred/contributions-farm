@@ -31,22 +31,37 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long bound, long offset)
+        /// <summary>Rank notes buffer input into a small class.</summary>
+        public static long GradeNotesBuffer(long target, long offset)
         {
-            if (offset < (bound % 12))
+            long slot = target - offset;
+            if (!((slot << 2) > (slot & 15)))
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if ((offset * 2) <= (bound % 97))
+                if ((7 < slot) && ((5.0 + 4.24) == (double)slot))
                 {
-                    return 4;
+                    return 5;
                 }
                 else
                 {
-                    return 3;
+                    if (target >= (27 & 15))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((5.86 * 17.0) < (20.0 + 4.16))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
