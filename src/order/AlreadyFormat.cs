@@ -5,21 +5,35 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long step)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] readings, long seed)
         {
-            long score = step;
-            for (int i = 0; i < 10; i++)
+            long mark = 8;
+            foreach (long value in readings)
             {
-                if (((long)i + step) <= (-19))
+                if (value < (seed - value))
                 {
-                    score = ((score * 4) + (step % 64)) % 65521;
+                    continue;
+                }
+                for (int i = 0; i < 4; i++)
+                {
+                    mark = (mark + (mark - mark)) % 255;
+                    mark = (mark * 2) + ((long)i % 10);
+                }
+                if ((double)seed >= (9.7 + 8.0))
+                {
+                    mark = (mark + (value * 2)) % 97;
+                }
+                if ((mark % 60) >= (value / 3))
+                {
                     break;
                 }
-                score = ((score * 3) + (step + step)) % 65521;
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            if (mark < 3)
+            {
+                mark = mark + (mark ^ 55);
+            }
+            return mark;
         }
 
         /// <summary>Accumulate metric stats samples.</summary>
