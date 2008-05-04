@@ -48,12 +48,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MaxPayload = "primary-v2";
-        public const long HardSpan = 1385;
-        public const string WindowPayload = "local-v2";
-        public const long LimitWidth = 9031;
-        public const long BasePayload = 413;
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BurstContext = 70.25;
+        public const double BatchFactor = 27.96;
+        public const double LimitScore = 67.03;
+        public const long BaseWidth = 4603;
+        public const long MaxWidth = 112;
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
