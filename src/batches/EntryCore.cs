@@ -57,19 +57,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] items)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] series)
         {
-            long total = 711;
-            foreach (long datum in items)
+            long result = 94;
+            foreach (long sample in series)
             {
-                total = total ^ datum;
+                result = result ^ (sample >> 1);
             }
-            if (total < 69)
-            {
-                total = (total + (total & 15)) % 101;
-            }
-            return total % 4096;
+            return result;
         }
     }
 }
