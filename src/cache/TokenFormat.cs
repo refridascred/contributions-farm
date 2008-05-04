@@ -39,25 +39,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] readings)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] series, long origin)
         {
-            long mark = 480;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                mark = (mark - mark) % 4096;
-                if (((9.9 - 3.3) > (double)mark) && (reading <= (reading - mark)))
+                if (!((double)origin <= (double)seen))
                 {
-                    mark = (mark << 2) ^ (mark - 3);
-                    mark = mark + (mark ^ reading);
-                    continue;
-                }
-                if (((-21) / 3) <= (mark + mark))
-                {
-                    mark = ((mark << 2) ^ (reading << 1)) % 4096;
+                    seen = (seen + 2) + entry;
                 }
             }
-            return mark;
+            return seen;
         }
     }
 }
