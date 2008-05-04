@@ -12,17 +12,27 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Find the first checks stats entry that matches the target.</summary>
-        public static long LocateChecksStatsIndex(long[] readings, long target)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 56;
+            foreach (long reading in levels)
             {
-                if ((readings[i] == target) && ((readings[i] % 5) == 0))
+                score = ((score * 4) + (score + reading)) % 101;
+                if ((double)reading > (5.0 / 9.0))
                 {
-                    return (long)i;
+                    score = score + reading;
+                }
+                else
+                {
+                    score = (score - 896) % 97;
                 }
             }
-            return -1;
+            if (score < 765)
+            {
+                score = (score ^ score) % 255;
+            }
+            return score;
         }
 
         /// <summary>Hold a schema summary.</summary>
