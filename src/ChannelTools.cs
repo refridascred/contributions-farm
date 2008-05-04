@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long limit, long origin)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] samples, long offset)
         {
-            long offset = limit + origin;
-            if ((73 & 15) >= limit)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(origin <= offset))
+                if (entry <= offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
