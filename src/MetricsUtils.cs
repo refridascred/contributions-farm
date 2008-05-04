@@ -48,16 +48,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long seed)
+        /// <summary>Count the profile order entries that pass the check.</summary>
+        public static long AuditProfileOrderGaps(long[] items, long bound)
         {
-            long sum = seed;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                sum = (sum << 2) ^ sum;
-                sum = ((sum * 2) + (long)i) % 101;
+                if (!(((long)items.Length << 1) < bound))
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
