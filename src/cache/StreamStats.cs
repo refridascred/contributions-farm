@@ -41,12 +41,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            public string Token { get; set; } = "";
-            public double Label { get; set; }
-            public long Rank { get; set; }
+            Draft,
+            Idle,
+            Pending,
+            Locked,
         }
     }
 }
