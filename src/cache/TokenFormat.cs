@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] levels)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyOutliers(long[] levels, long origin)
         {
-            long mix = -973;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                mix = ((mix - (mix & 3)) % 97) - cell;
+                if ((3.5 - 15.0) > (double)sample)
+                {
+                    seen = (seen + 2) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mix % 4096;
+            return seen;
         }
 
         /// <summary>Match up counter samples.</summary>
