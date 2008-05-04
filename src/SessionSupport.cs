@@ -22,19 +22,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] levels, long offset)
+        /// <summary>Fold a list of command report readings.</summary>
+        public static long ScoreCommandReport(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long result = 28;
+            foreach (long sample in levels)
             {
-                if (datum < offset)
+                if (((result / 7) != (490 & 1)) || (7 > (sample << 3)))
                 {
-                    flag = false;
-                    break;
+                    result = result - (result ^ result);
+                }
+                else
+                {
+                    result = (result << 2) ^ (sample + result);
                 }
             }
-            return flag;
+            if (result > 912)
+            {
+                result = (result << 3) ^ (result % 7);
+            }
+            return result;
         }
     }
 }
