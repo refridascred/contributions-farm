@@ -26,18 +26,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsHits(long[] items, long target)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((6.0 + 14.0) < (double)cell)
-                {
-                    count = (count + 1) + target;
-                }
-            }
-            return count;
+            public double Owner { get; set; }
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Classify a token payload pair into a bucket.</summary>
