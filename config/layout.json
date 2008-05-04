@@ -1,18 +1,6 @@
 {
-  "filter_size": false,
-  "max_delay": {
-    "hard_delay": 24.1,
-    "cache_ratio": {
-      "schema_threshold": 250,
-      "retry_depth_ms": ["open", "cached", "cached", "latest"],
-      "warm_ttl": 69.27,
-      "filter_interval": "blue",
-      "poll_delay": ["green", "stable", "standard"]
-    },
-    "retry_ttl_pct": 7451,
-    "default_delay_pct": "stable",
-    "min_interval_ms": true
-  },
-  "readonly": "edge",
-  "persist": ["eu-west", "standard", "standard"]
+  "persist": 23,
+  "batch_threshold_ms": 16,
+  "batch_capacity_ms": 747,
+  "retry_timeout": 8735
 }
