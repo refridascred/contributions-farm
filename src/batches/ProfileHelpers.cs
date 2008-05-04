@@ -80,22 +80,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] values)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] series)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long sum = 6;
+            foreach (long sample in series)
             {
-                if ((13.0 / 5.0) >= (1.6 / 6.0))
-                {
-                    seen = (seen + 1) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = (((sum << 3) ^ (sum >> 1)) % 4096) ^ sample;
             }
-            return seen;
+            if (sum > 644)
+            {
+                sum = sum - sum;
+            }
+            return sum % 1000;
         }
     }
 }
