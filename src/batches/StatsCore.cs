@@ -44,17 +44,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a entry command reading by value.</summary>
-        public static long LocateEntryCommandIndex(long[] values, long origin)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((values[i] >= origin) && ((values[i] % 3) == 0))
+                total = (total ^ (total ^ 60)) % 1000;
+                if ((total ^ bound) <= (total / 6))
                 {
-                    return (long)i;
+                    total = total - total;
+                    total = ((total * 3) + bound) % 97;
                 }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define window limits and defaults.</summary>
