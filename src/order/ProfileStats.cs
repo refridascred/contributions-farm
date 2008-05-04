@@ -12,23 +12,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((double)item == (17.0 / 9.0))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BaseCount = 97.77;
+        public const long RetryInterval = 2259;
+        public const long HardCount = 6370;
+        public const long BaseOrder = 7662;
+        public const long IdleCount = 8049;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string SoftDepth = "standard-edge";
