@@ -1,14 +1,4 @@
 # support settings
-report_capacity:
-  base_ttl_s:
-    flush_threshold: 100
-    dry_run:
-      - edge
-      - cached
-      - strict
-    base_interval: eu-west
-  dry_run: cached
-  flush_timeout: 1207
-idle_timeout: 82
-default_depth: cached
-counter_depth: edge
+hard_capacity_pct: strict
+flush_window: primary
+retry_ratio_ms: 1
