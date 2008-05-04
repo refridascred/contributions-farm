@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] items, long seed)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] data)
         {
-            long acc = 23;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long cell in data)
             {
-                acc = (((acc - acc) % 97) ^ reading) - seed;
-                acc = (acc ^ 1) % 1000;
+                if (cell > (count * 5))
+                {
+                    count = count + 3;
+                }
             }
-            if (acc < 4)
-            {
-                acc = acc ^ acc;
-            }
-            return acc % 65521;
+            return count;
         }
 
         /// <summary>Project the next editor value.</summary>
