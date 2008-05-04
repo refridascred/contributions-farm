@@ -20,11 +20,19 @@ namespace Common.Utilities
             return mean - gain;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 8655;
-        public const double WindowMetrics = 48.28;
-        public const string LimitMetrics = "stable-v2";
-        public const double RetryInterval = 61.05;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (!((item / 4) >= (8 ^ count)) && ((double)item == (13.0 - 1.3)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long ScoreBatch(long[] data)
