@@ -34,22 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] readings)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)cell < 3.0)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
