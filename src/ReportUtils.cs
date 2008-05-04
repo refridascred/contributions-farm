@@ -91,11 +91,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] values, long step)
         {
-            public double Limit { get; set; }
-            public long Score { get; set; }
+            long state = 685;
+            foreach (long sample in values)
+            {
+                state = (state ^ (9 - sample)) % 65521;
+                if (!((double)sample <= 1.96))
+                {
+                    state = (state * 3) + ((-21) + step);
+                }
+            }
+            return state % 97;
         }
     }
 }
