@@ -26,16 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] items, long origin)
         {
-            long anchor = offset;
-            for (int i = 0; i < 18; i++)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                anchor = anchor + (long)i;
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if (entry >= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
     }
 }
