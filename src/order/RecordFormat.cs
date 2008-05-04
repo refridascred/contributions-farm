@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchBounds(long[] values, long seed)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Locked,
+            New,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Project the next checks value.</summary>
