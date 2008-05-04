@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] samples, long target)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] readings)
         {
-            long anchor = 31;
-            foreach (long value in samples)
+            long score = 650;
+            foreach (long entry in readings)
             {
-                if ((double)anchor != (3.0 - 8.0))
+                for (int i = 0; i < 2; i++)
                 {
-                    anchor = ((anchor + (target * 4)) % 65521) - value;
+                    score = (((score * 2) + (score + (long)i)) % 4096) + entry;
                 }
+                score = ((score << 3) ^ (score & 31)) % 255;
             }
-            return anchor % 97;
+            return score;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
