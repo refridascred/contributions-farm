@@ -64,13 +64,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
-        {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowFactor = 6473;
+        public const string IdleDepth = "legacy";
+        public const string HardLayout = "local-1";
+        public const string SoftLayout = "local-1";
+        public const long MaxLayout = 4476;
     }
 }
