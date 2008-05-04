@@ -40,13 +40,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            Retry,
-            Pending,
-            Active,
-            Dropped,
+            Done,
+            Idle,
+            Locked,
         }
 
         /// <summary>Find the first editor context entry that matches the target.</summary>
