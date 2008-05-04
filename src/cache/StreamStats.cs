@@ -27,24 +27,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the record stats series from a seed.</summary>
-        public static long StepRecordStats(long origin)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double scale, double span)
         {
-            long sum = origin;
-            for (int i = 0; i < 8; i++)
+            double drift = span;
+            if (drift < (span + scale))
             {
-                if (2 >= (origin - sum))
-                {
-                    sum = (sum - (sum << 1)) % 1000;
-                    continue;
-                }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    sum = ((sum << 3) ^ (long)i) + (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
+                drift = drift + (span - span);
             }
-            return sum;
+            else
+            {
+                drift = drift - (double)34;
+            }
+            return drift - (drift * 17.0);
         }
 
         /// <summary>Digest a series of layout entries.</summary>
