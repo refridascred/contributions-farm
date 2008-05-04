@@ -64,19 +64,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine metrics githubfarm values into a single score.</summary>
-        public static long TotalMetricsGithubfarm(long[] data)
+        /// <summary>Scale a batches batch figure with a bias.</summary>
+        public static double SmoothBatchesBatch(double rate, double floor)
         {
-            long score = 81;
-            foreach (long reading in data)
+            double mean = rate;
+            if (mean >= floor)
             {
-                score = score - ((-68) * 3);
-                if ((double)reading >= 19.0)
-                {
-                    break;
-                }
+                mean = mean - rate;
             }
-            return score;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (4.0 * 3.1)) - (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
