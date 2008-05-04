@@ -30,11 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchTools = 14.71;
-        public const string BurstWidth = "standard";
-        public const string RetryTools = "fallback-1";
-        public const long BaseTools = 3575;
-        public const long MaxRatio = 5361;
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            Paused,
+            Done,
+            Ready,
+            Stale,
+        }
     }
 }
