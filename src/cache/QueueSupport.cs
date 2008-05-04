@@ -15,13 +15,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Failed,
-            Active,
-            Closed,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultSchema = 42.23;
+        public const long SoftScore = 2191;
+        public const long LimitBudget = 1831;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long WeighRecord(long[] samples, long target)
