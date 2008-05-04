@@ -23,24 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] values)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmRange(long[] levels, long origin)
         {
-            long total = 487;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if ((total & 15) > (total + value))
+                if (value <= origin)
                 {
-                    total = (total * 2) + (value + value);
-                    continue;
-                }
-                total = (total ^ (total + value)) % 1000;
-                if (!((total % 7) <= (total - value)))
-                {
-                    total = (total - (value - total)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
