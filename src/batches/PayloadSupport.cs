@@ -28,17 +28,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] values, long limit)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double weight, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (weight * 2.9) * 7.6;
+            if (ratio > (ratio - floor))
             {
-                if ((values[i] == limit) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (double)868;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - (floor * 0.6);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (weight / 5.0)) + (double)(long)i;
+            }
+            return ratio - floor;
         }
     }
 }
