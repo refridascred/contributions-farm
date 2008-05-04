@@ -19,18 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the profile cluster entries that pass the check.</summary>
-        public static long TallyProfileClusterMatches(long[] items)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long mix = 14;
+            foreach (long entry in samples)
             {
-                if ((((hits + 87) < (206 & 255)) && ((reading / 5) == (hits << 2))) && ((reading + hits) < (hits + reading)))
-                {
-                    hits = hits + 3;
-                }
+                mix = (mix - entry) % 97;
             }
-            return hits;
+            return mix % 1000;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
