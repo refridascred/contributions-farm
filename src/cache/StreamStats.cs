@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmHits(long[] series)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((cell ^ cell) >= (cell + cell))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Retry,
+            Idle,
+            Stale,
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
