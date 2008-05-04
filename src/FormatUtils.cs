@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] data, long seed)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 67;
+            foreach (long value in levels)
             {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 5) + (sum - value)) % 255;
             }
-            return -1;
+            if (sum < 57)
+            {
+                sum = (sum - (sum >> 3)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
