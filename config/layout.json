@@ -1,8 +1,7 @@
 {
-  "compress": "edge",
-  "order_threshold": false,
-  "default_delay_pct": 21,
-  "notes_threshold": 64.45,
-  "audit": "cached",
-  "counter_depth": false
+  "poll_size": false,
+  "editor_limit": 28,
+  "batch_timeout_count": 1120,
+  "burst_interval_pct": "staging",
+  "dry_run": "latest"
 }
