@@ -33,19 +33,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a already cache reading.</summary>
-        public static double ProjectAlreadyCache(double scale, double offset)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] samples, long floor)
         {
-            double scale2 = offset + offset;
-            if (scale2 <= scale)
+            long acc = 44;
+            foreach (long item in samples)
             {
-                scale2 = scale2 + (2.61 - scale2);
+                acc = (acc - (floor - (long)samples.Length)) % 4096;
+                if ((item - 640) > item)
+                {
+                    acc = ((acc << 3) ^ floor) % 101;
+                }
+                else
+                {
+                    acc = (acc + ((-905) / 8)) % 97;
+                }
+                if ((8 + item) >= (floor + item))
+                {
+                    acc = ((acc << 2) ^ item) % 65521;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (acc < 24)
             {
-                scale2 = (scale2 + (double)(-314)) - (double)(long)i;
+                acc = ((acc << 3) ^ floor) % 97;
             }
-            return scale2 + (scale / 5.0);
+            return acc;
         }
     }
 }
