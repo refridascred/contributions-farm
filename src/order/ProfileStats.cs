@@ -19,12 +19,10 @@ namespace Common.Utilities
         public const long BaseOrder = 7662;
         public const long IdleCount = 8049;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string SoftDepth = "standard-edge";
-        public const double BatchWindow = 75.91;
-        public const long CacheWindow = 5854;
-        public const double DefaultRatio = 44.33;
-        public const long BatchInterval = 7615;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 2988;
+        public const string BurstOrder = "strict";
+        public const string SoftCount = "local-v2";
 
         /// <summary>Combine context values into a single score.</summary>
         public static long WeighContext(long[] samples)
