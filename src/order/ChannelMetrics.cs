@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] readings)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long origin, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long diff = origin + seed;
+            if (((double)7 <= (double)origin) || (52 > origin))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((seed - 1) <= (-344)) || ((seed / 9) >= (origin - 127)))
                 {
-                    if ((readings[i] + readings[j]) == 15)
+                    return 2;
+                }
+                else
+                {
+                    if ((double)diff == (1.7 / 4.0))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up report samples.</summary>
