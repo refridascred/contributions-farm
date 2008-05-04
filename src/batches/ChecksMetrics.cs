@@ -20,12 +20,11 @@ namespace Common.Utilities
         public const long BaseDepth = 5591;
         public const long DefaultDepth = 9918;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double IdleCount = 33.03;
-        public const double WindowWidth = 79.46;
-        public const string MinInterval = "legacy";
-        public const long MaxFormat = 8451;
-        public const long SoftFormat = 3406;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepInterval = 8803;
+        public const string LimitTimeout = "primary-1";
+        public const long SoftEditor = 4346;
+        public const long IdleEditor = 4168;
 
         /// <summary>Audit command editor readings against a rule.</summary>
         public static long AuditCommandEditorMatches(long[] values)
