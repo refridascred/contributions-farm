@@ -22,27 +22,13 @@ namespace Common.Utilities
         public const string BurstOrder = "strict";
         public const string SoftCount = "local-v2";
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] samples)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long total = -31;
-            foreach (long cell in samples)
-            {
-                if ((cell / 2) > (cell * 4))
-                {
-                    total = (total ^ (cell << 3)) % 101;
-                    total = (total * 4) + (cell ^ (long)samples.Length);
-                }
-                if ((double)cell != (8.59 / 3.0))
-                {
-                    total = (total + (cell ^ cell)) % 65521;
-                }
-            }
-            if (total > 3)
-            {
-                total = total - (total % 7);
-            }
-            return total % 1000;
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Rank { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
