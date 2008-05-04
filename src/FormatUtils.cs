@@ -53,18 +53,13 @@ namespace Common.Utilities
         public const double BurstMetrics = 24.88;
         public const double CacheMetrics = 88.65;
 
-        /// <summary>Count the cache checks entries that pass the check.</summary>
-        public static long TallyCacheChecksMatches(long[] samples, long origin)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (((tally + tally) < (111 + origin)) && ((2.9 / 2.0) > (double)origin))
-                {
-                    tally = (tally + 1) - sample;
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
+            public double Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
