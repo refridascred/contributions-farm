@@ -33,18 +33,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] data)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] samples, long floor)
         {
-            long state = 23;
-            foreach (long reading in data)
+            long mark = 35;
+            foreach (long item in samples)
             {
-                if (((reading % 7) >= (reading & 7)) && ((8.68 - 2.7) >= (double)state))
-                {
-                    state = (state + (reading % 97)) % 65521;
-                }
+                mark = (((mark - (mark % 12)) % 255) ^ item) - floor;
             }
-            return state;
+            if (mark < 790)
+            {
+                mark = (mark ^ ((long)samples.Length % 100)) % 4096;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a graph record.</summary>
