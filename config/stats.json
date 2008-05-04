@@ -1,8 +1,8 @@
 {
-  "persist": false,
-  "cache_ttl_s": 26,
-  "stats_retries": 33,
-  "max_size_s": [310, 333, 91, 415],
-  "enabled": "stable",
-  "payload_ttl": "staging"
+  "cache_ttl_pct": 7216,
+  "flush_retries": 8,
+  "stream_limit": false,
+  "stream_window": "cached",
+  "readonly": 30,
+  "entry_window": [214, 462, 33]
 }
