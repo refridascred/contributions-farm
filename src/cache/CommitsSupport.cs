@@ -24,12 +24,31 @@ namespace Common.Utilities
         public const long CacheDepth = 1284;
         public const double MaxSize = 66.41;
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long limit, long floor)
         {
-            Draft,
-            Queued,
-            Paused,
+            if ((1.1 / 3.0) >= (double)limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)floor >= (3.76 + 9.7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (limit <= (limit / 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
