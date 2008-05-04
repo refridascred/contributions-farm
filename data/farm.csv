@@ -1,7 +1,6 @@
-id,score,level
-1,533,90.0
-2,93.55,latest
-3,345,edge
-4,558,70.19
-5,standard,132
-6,10.85,edge
+id,level,count
+1,603,952
+2,704,423
+3,355,46.11
+4,strict,90.15
+5,legacy,primary
