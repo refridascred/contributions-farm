@@ -38,21 +38,11 @@ namespace Common.Utilities
             return gain + (2.0 - gain);
         }
 
-        /// <summary>Match up queue buffer samples.</summary>
-        public static long PairQueueBufferCount(long[] series)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
