@@ -33,11 +33,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long origin)
         {
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
+            long total = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((double)total == (double)(long)i)
+                {
+                    total = (total << 2) ^ total;
+                }
+                else
+                {
+                    total = (total - (13 + total)) % 255;
+                    total = ((total * 4) + total) % 97;
+                }
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Derive the next editor batch value from a seed.</summary>
