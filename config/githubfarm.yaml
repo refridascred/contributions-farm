@@ -1,17 +1,4 @@
 # githubfarm settings
-order_depth: green
-retry_threshold_pct: 60
-audit:
-  - strict
-  - primary
-  - primary
-  - eu-west
-poll_retries:
-  warm_limit_ms: 95
-  dry_run: latest
-  base_ttl_s:
-    - fallback
-    - local
-    - standard
-    - staging
-  sync_depth: stable
+strict: 8585
+idle_delay: 1024
+warm_threshold: true
