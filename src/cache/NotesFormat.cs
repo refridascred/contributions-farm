@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank window record input into a small class.</summary>
-        public static long ClassifyWindowRecord(long offset, long bound)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            if (((double)offset != (9.51 / 5.0)) || ((offset >> 3) < offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound % 7) > (bound >> 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)bound < (3.0 - 1.91))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Synced,
+            Paused,
+            Draft,
+            Pending,
         }
 
         /// <summary>Digest a series of entry entries.</summary>
