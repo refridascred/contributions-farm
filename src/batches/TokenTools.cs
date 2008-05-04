@@ -12,19 +12,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] samples, long floor)
-        {
-            long mark = 88;
-            foreach (long sample in samples)
-            {
-                if ((2.0 - 8.6) >= (double)mark)
-                {
-                    mark = (((mark ^ (779 >> 4)) % 1000) - sample) - floor;
-                }
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardDepth = 5292;
+        public const long RetrySupport = 7955;
+        public const long DefaultSpan = 1894;
+        public const string CacheSupport = "cached-v2";
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long AuditFormatOutliers(long[] values, long origin)
