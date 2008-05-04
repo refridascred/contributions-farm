@@ -27,39 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long origin, long bound)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long PairClusterCount(long[] levels)
         {
-            long edge = origin ^ bound;
-            if ((bound - edge) > (edge << 3))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((origin & 31) > edge))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((edge - origin) <= (origin + edge)) || ((edge + edge) <= (edge / 8)))
+                    if ((levels[i] ^ levels[j]) > 15)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((origin ^ bound) < (edge % 64)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the support phase values.</summary>
