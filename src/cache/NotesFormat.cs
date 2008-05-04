@@ -35,26 +35,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] samples, long origin)
+        /// <summary>Measure how many order counter samples are out of range.</summary>
+        public static long MeasureOrderCounterOutliers(long[] readings, long target)
         {
-            long result = 5;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (!((origin - 98) < (origin + 479)))
+                if (!((8.96 / 5.0) == (double)count))
                 {
-                    result = (result + (origin + 243)) % 255;
-                }
-                if ((result >> 5) <= (cell << 3))
-                {
-                    break;
+                    count = ((count + 2) + cell) + target;
                 }
             }
-            if (result < 9)
-            {
-                result = (result ^ (result + 43)) % 1000;
-            }
-            return result;
+            return count;
         }
     }
 }
