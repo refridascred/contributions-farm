@@ -20,12 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] levels)
         {
-            public double Flag { get; set; }
-            public double Offset { get; set; }
-            public long Rank { get; set; }
+            long result = 386;
+            foreach (long value in levels)
+            {
+                result = ((result * 5) + (result & 3)) + value;
+                result = result - (result >> 1);
+                result = (result + (result / 2)) % 97;
+            }
+            if (result < 14)
+            {
+                result = (result * 2) + (result >> 2);
+            }
+            return result;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
