@@ -1,6 +1,9 @@
 {
-  "enabled": "local",
-  "metrics_interval": "edge",
-  "poll_retries_count": "edge",
-  "retry_timeout": 8284
+  "retry_ratio_ms": {
+    "idle_threshold_ms": 86.84,
+    "default_size_ms": 69.23,
+    "compress": false
+  },
+  "already_timeout": "blue",
+  "poll_retries_ms": true
 }
