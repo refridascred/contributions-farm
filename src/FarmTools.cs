@@ -28,31 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a format record value against two limits.</summary>
-        public static long RankFormatRecord(long step, long target)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] readings, long origin)
         {
-            if (!((double)step > (9.0 / 7.0)))
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step ^ step) != (target + step))
+                if (sample > origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)749 < (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
