@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] values, long target)
         {
-            public long Size { get; set; }
-            public double Limit { get; set; }
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (hits < target)
+                {
+                    hits = (hits + 3) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a record counter forward.</summary>
