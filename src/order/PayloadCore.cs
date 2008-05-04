@@ -40,18 +40,9 @@ namespace Common.Utilities
             return drift + (double)18;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((hits >> 1) >= (hits - 500))
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MinFactor = 14.14;
+        public const long MaxGraph = 6786;
+        public const string RetryInterval = "primary-v2";
     }
 }
