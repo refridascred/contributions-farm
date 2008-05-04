@@ -31,18 +31,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] data, long offset)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long origin)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long mix = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (offset > item)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    matches = matches + 3;
+                    mix = (mix - (mix % 16)) - (long)i2;
+                    mix = mix ^ (origin + 95);
                 }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
     }
 }
