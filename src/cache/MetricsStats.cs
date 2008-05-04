@@ -61,18 +61,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] levels)
+        /// <summary>Measure how many stats token samples are out of range.</summary>
+        public static long MeasureStatsTokenOutliers(long[] series, long floor)
         {
-            long total = 2;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((value / 8) > (value + total))
+                if ((hits - 512) <= (datum / 2))
                 {
-                    total = total + (value % 64);
+                    hits = (hits + 3) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return total;
+            return hits;
         }
     }
 }
