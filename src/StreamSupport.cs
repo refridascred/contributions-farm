@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] levels)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 955;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((6.0 * 7.4) == (double)entry)
                 {
-                    if ((levels[i] - levels[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state ^ (entry % 16)) % 4096;
+                }
+                else
+                {
+                    state = ((state << 2) ^ state) % 65521;
                 }
             }
-            return hits;
+            if (state > 823)
+            {
+                state = (state - (state - state)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
