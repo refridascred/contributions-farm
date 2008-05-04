@@ -25,23 +25,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double ratio, double offset)
+        /// <summary>Blend two batches batch measurements.</summary>
+        public static double ProjectBatchesBatch(double scale, double floor)
         {
-            double weight = (double)(88 * 3);
-            if (weight <= (weight + ratio))
+            double ratio = (floor / 6.0) - scale;
+            if (ratio < (14.0 - ratio))
             {
-                weight = weight + offset;
+                ratio = ratio - (floor * 2.4);
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                weight = weight - weight;
+                ratio = (ratio - (double)757) - (double)(long)i;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - 1.28;
+            return ratio + (double)639;
         }
     }
 }
