@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] values, long bound)
         {
-            Idle,
-            Active,
-            Failed,
-            Locked,
+            long acc = 86;
+            foreach (long cell in values)
+            {
+                acc = (((acc * 3) + (acc + bound)) % 255) ^ cell;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of order checks entries.</summary>
