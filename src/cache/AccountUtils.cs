@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            public bool Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            Queued,
+            Stale,
+            Active,
+            Done,
+            Locked,
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
