@@ -1,12 +1,11 @@
 {
-  "base_interval": ["primary", "cached"],
-  "poll_timeout": "open",
-  "hard_retries": 9613,
-  "burst_size_ms": false,
-  "hard_ttl_pct": {
-    "contributi_ttl": "eu-west",
-    "already_depth": "edge",
-    "report_retries": 1024
+  "flush_retries": "local",
+  "dry_run": {
+    "burst_interval_pct": 1024,
+    "persist": "cached",
+    "base_retries_ms": ["latest", "open", "open"],
+    "burst_limit_ms": ["staging", "fallback", "local"]
   },
-  "profile_window": [223, 396]
+  "warm_threshold_count": 7,
+  "soft_ttl_ms": 17.13
 }
