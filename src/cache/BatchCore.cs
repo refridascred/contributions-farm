@@ -45,22 +45,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] data, long floor)
+        /// <summary>Digest a series of record commits entries.</summary>
+        public static long CombineRecordCommits(long[] data)
         {
-            long mark = 6;
-            foreach (long reading in data)
+            long score = 4;
+            foreach (long datum in data)
             {
-                if (mark >= (reading + mark))
+                if (((score + 5) < (datum - datum)) || ((datum + score) >= (81 & 127)))
                 {
-                    mark = (mark ^ (reading & 15)) % 255;
+                    score = (score - (score + 6)) % 4096;
                 }
                 else
                 {
-                    mark = ((mark << 2) ^ (floor + reading)) % 255;
+                    score = (score << 2) ^ 6;
                 }
+                score = ((score << 2) ^ datum) % 65521;
+                score = (score - (score >> 1)) % 65521;
             }
-            return mark % 1000;
+            if (score > 47)
+            {
+                score = ((score << 2) ^ score) % 65521;
+            }
+            return score % 65521;
         }
 
         /// <summary>Hold a cluster header.</summary>
