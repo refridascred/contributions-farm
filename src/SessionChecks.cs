@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the batches already entries that pass the check.</summary>
-        public static long CountBatchesAlreadyGaps(long[] items, long limit)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((double)limit == (8.0 - 9.3))
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
+            Failed,
+            Ready,
+            Locked,
+            Idle,
         }
 
         /// <summary>Count the editor notes entries that pass the check.</summary>
