@@ -36,22 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result << 3) ^ (limit & 63)) % 4096;
-                if ((limit - (long)i) <= (limit + limit))
-                {
-                    result = ((result * 4) + 4) % 4096;
-                }
-                result = result - ((long)i + 8);
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardBudget = 5218;
+        public const string WindowRecord = "staging-v2";
+        public const long IdleRecord = 4479;
+        public const long LimitBudget = 9316;
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long OverlapClusterCount(long[] readings)
