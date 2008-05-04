@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] readings, long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] readings, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (readings[i] >= floor)
+                if (floor < (floor / 5))
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Look up the position of a route entry sample.</summary>
