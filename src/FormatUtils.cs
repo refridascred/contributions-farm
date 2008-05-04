@@ -80,22 +80,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadOutliers(long[] readings, long step)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if ((((double)tally != (0.01 - 3.2)) && ((93 + tally) == ((long)readings.Length ^ reading))) || (((step + 215) <= (reading ^ tally)) && ((323 + reading) == (reading * 5))))
+                if (cell >= step)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
