@@ -25,22 +25,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many session contributi samples are out of range.</summary>
-        public static long AuditSessionContributiOutliers(long[] items, long origin)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] items)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((origin & 1) < (sample - origin))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] + items[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count the tools format entries that pass the check.</summary>
