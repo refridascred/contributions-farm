@@ -20,15 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] readings, long step)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterGaps(long[] data, long step)
         {
-            long carry = 5;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long item in data)
             {
-                carry = ((carry << 3) ^ (sample - step)) % 97;
+                if (!((12 < step) && ((item - hits) > hits)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry % 65521;
+            return hits;
         }
 
         /// <summary>Describe the order phase values.</summary>
