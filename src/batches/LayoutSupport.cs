@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] samples)
+        /// <summary>Digest a series of batch contributi entries.</summary>
+        public static long WeighBatchContributi(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long carry = 4;
+            foreach (long sample in samples)
             {
-                if ((item << 2) >= (seen - seen))
+                if (carry <= (sample & 3))
                 {
-                    seen = seen + 1;
+                    carry = ((carry << 3) ^ (sample + carry)) % 65521;
+                }
+                if ((carry ^ carry) == (sample / 6))
+                {
+                    carry = carry - (sample * 3);
+                }
+                else
+                {
+                    carry = (carry ^ carry) % 101;
                 }
             }
-            return seen;
+            if (carry < 1)
+            {
+                carry = carry - (long)samples.Length;
+            }
+            return carry;
         }
 
         /// <summary>Hold a contributi stats.</summary>
