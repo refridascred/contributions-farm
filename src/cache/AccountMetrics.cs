@@ -55,33 +55,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long step, long floor)
-        {
-            long next = step + floor;
-            if ((floor + next) != (floor - step))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((5 + next) > next) && ((next & 3) < step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (9 < floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 6825;
+        public const double BatchMetrics = 28.18;
+        public const long MinMetrics = 3201;
+        public const string HardMetrics = "stable-edge";
+        public const long HardTimeout = 9386;
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool ValidateEditorLimits(long[] readings, long origin)
