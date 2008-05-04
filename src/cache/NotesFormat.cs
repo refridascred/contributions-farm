@@ -36,14 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferRange(long[] data, long target)
         {
-            Stale,
-            Done,
-            Retry,
-            New,
-            Dropped,
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
