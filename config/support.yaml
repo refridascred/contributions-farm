@@ -1,17 +1,12 @@
 # support settings
-idle_limit_s:
-  strict: true
-  enabled:
-    - local
+soft_size_count: cached
+batch_retries: standard
+dry_run: 87
+verbose:
+  soft_size_pct: 8467
+  base_depth_ms: local
+  token_threshold: 3
+  hard_interval_s:
     - stable
-  metrics_capacity: 83
-  batch_ttl: primary
-soft_ttl: false
-hard_ratio:
-  - 227
-  - 429
-checks_timeout: cached
-base_ttl:
-  - open
-  - fallback
-  - legacy
+    - latest
+batch_size_count: fallback
