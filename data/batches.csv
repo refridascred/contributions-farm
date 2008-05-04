@@ -1,8 +1,9 @@
-id,count,owner,weight
-1,69.36,348,standard
-2,552,cached,881
-3,73,232,636
-4,584,623,98.45
-5,190,cached,15.77
-6,strict,658,161
-7,614,49.11,stable
+id,state,owner
+1,edge,64.96
+2,56.84,eu-west
+3,916,27.71
+4,71.73,7.54
+5,latest,latest
+6,167,staging
+7,553,legacy
+8,staging,legacy
