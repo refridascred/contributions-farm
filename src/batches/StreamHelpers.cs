@@ -31,11 +31,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public bool Owner { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a stream summary.</summary>
