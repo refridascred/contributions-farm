@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long bound)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] levels)
         {
-            long mark = bound;
-            for (int i = 0; i < 19; i++)
+            long mix = -973;
+            foreach (long cell in levels)
             {
-                if (!(((long)i == (mark + mark)) || (((long)i - mark) >= (long)i)))
-                {
-                    mark = (mark + mark) % 65521;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
+                mix = ((mix - (mix & 3)) % 97) - cell;
             }
-            return mark;
+            return mix % 4096;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
