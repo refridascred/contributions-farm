@@ -32,17 +32,13 @@ namespace Common.Utilities
         public const double MaxLayout = 57.22;
         public const long CacheLayout = 9403;
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] levels, long step)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == step) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Ready,
+            Synced,
+            Retry,
         }
     }
 }
