@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] items)
-        {
-            long mark = 72;
-            foreach (long reading in items)
-            {
-                if (((reading + mark) > (long)items.Length) || ((mark + mark) < mark))
-                {
-                    mark = (mark * 2) + reading;
-                }
-            }
-            if (mark < 37)
-            {
-                mark = ((mark * 4) + mark) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double SoftAccount = 59.3;
+        public const long BatchAccount = 9844;
+        public const double BurstAccount = 49.5;
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long ClassifyCluster(long seed, long bound)
