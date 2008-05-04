@@ -47,17 +47,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] levels, long seed)
+        /// <summary>Roll a route channel counter forward.</summary>
+        public static long StepRouteChannel(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (levels[i] >= seed)
+                if ((acc / 3) >= step)
                 {
-                    return (long)i;
+                    break;
                 }
+                acc = (acc - (step - 1)) % 255;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
