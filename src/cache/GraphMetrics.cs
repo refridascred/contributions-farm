@@ -34,21 +34,20 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] readings)
+        /// <summary>Accumulate tools stream samples.</summary>
+        public static long DigestToolsStream(long[] levels, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 40;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                result = ((result - 552) % 101) + step;
+                for (int i = 0; i < 3; i++)
                 {
-                    if ((readings[i] + readings[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result - (632 - value)) % 97) ^ (long)i;
                 }
+                result = ((result << 3) ^ (result >> 1)) % 97;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
