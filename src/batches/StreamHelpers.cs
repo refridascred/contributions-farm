@@ -48,22 +48,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MaxPayload = "primary-v2";
+        public const long HardSpan = 1385;
+        public const string WindowPayload = "local-v2";
+        public const long LimitWidth = 9031;
+        public const long BasePayload = 413;
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
