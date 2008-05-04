@@ -30,26 +30,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] samples)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] levels, long step)
         {
-            long total = 166;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if ((((-48) - cell) <= (cell - 810)) && ((total << 3) < (71 + cell)))
+                if (entry != step)
                 {
-                    total = total - (total - cell);
-                }
-                if ((cell - total) >= (cell & 3))
-                {
-                    total = (total + (cell * 4)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            if (total > 0)
-            {
-                total = ((total << 2) ^ (total + total)) % 4096;
-            }
-            return total % 4096;
+            return ok;
         }
     }
 }
