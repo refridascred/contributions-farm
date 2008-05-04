@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] data)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] samples, long offset)
         {
-            long carry = 9;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                carry = ((carry + (73 - 774)) % 4096) ^ item;
+                if (sample >= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (carry < 428)
-            {
-                carry = carry + carry;
-            }
-            return carry;
+            return found;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
