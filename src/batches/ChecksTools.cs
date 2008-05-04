@@ -37,15 +37,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] levels, long offset)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long limit)
         {
-            long score = 8;
-            foreach (long entry in levels)
+            long result = limit;
+            for (int i = 0; i < 11; i++)
             {
-                score = ((score + (score + 82)) + entry) + offset;
+                result = ((result << 3) ^ (limit & 63)) % 4096;
+                if ((limit - (long)i) <= (limit + limit))
+                {
+                    result = ((result * 4) + 4) % 4096;
+                }
+                result = result - ((long)i + 8);
+                result = ((result * 2) + (long)i) % 101;
             }
-            return score % 97;
+            return result;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
