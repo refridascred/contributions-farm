@@ -16,24 +16,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] items)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] levels, long origin)
         {
-            long state = 132;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                long edge = (state / 9) - state;
-                state = (state * 4) + (state + edge);
-                if (entry < (entry >> 1))
+                if (entry > origin)
                 {
-                    state = ((state * 5) + (entry ^ entry)) % 65521;
+                    valid = false;
+                    break;
                 }
             }
-            if (state > 158)
-            {
-                state = (state ^ (state << 1)) % 4096;
-            }
-            return state % 65521;
+            return valid;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
