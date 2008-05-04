@@ -31,11 +31,11 @@ namespace Common.Utilities
         public const long IdleRecord = 4479;
         public const long LimitBudget = 9316;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double WindowSession = 55.45;
-        public const long BaseTimeout = 703;
-        public const string LimitSession = "legacy-1";
-        public const double MaxSession = 29.36;
-        public const long CacheSession = 495;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string RetryBudget = "strict-edge";
+        public const string StepChannel = "local-edge";
+        public const long CacheSpan = 2199;
+        public const string IdleCount = "staging-edge";
+        public const long IdleFactor = 551;
     }
 }
