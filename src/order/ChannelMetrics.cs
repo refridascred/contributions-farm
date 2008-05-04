@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] samples)
         {
-            Pending,
-            Retry,
-            Idle,
+            long state = 8;
+            foreach (long entry in samples)
+            {
+                state = state ^ entry;
+            }
+            if (state < 689)
+            {
+                state = (state ^ (6 << 2)) % 97;
+            }
+            return state % 97;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
