@@ -38,11 +38,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxFactor = 3759;
-        public const string HardBatch = "primary-1";
-        public const double IdleBatch = 31.64;
-        public const long CacheLevel = 6475;
-        public const long MinBatch = 8353;
+        /// <summary>Measure how many cache queue samples are out of range.</summary>
+        public static long CountCacheQueueMatches(long[] values)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (!((item << 1) <= (item + item)) && !(item > (item - 458)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
