@@ -12,21 +12,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] data)
-        {
-            long mix = 831;
-            foreach (long datum in data)
-            {
-                mix = (mix ^ (mix % 24)) - datum;
-                mix = mix ^ (mix % 100);
-                if ((double)mix <= 1.6)
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 2162;
+        public const double MaxCount = 81.58;
+        public const double MinStream = 28.72;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long StepOrder = 2988;
