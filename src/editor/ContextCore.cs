@@ -20,12 +20,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double CacheFactor = 33.09;
-        public const long DefaultTimeout = 6255;
-        public const long HardGithubfarm = 678;
-        public const long IdleGithubfarm = 1839;
-        public const double MinGithubfarm = 46.28;
+        /// <summary>Validate token editor readings against a bound.</summary>
+        public static bool GuardTokenEditorBounds(long[] values, long limit)
+        {
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
         public static long IterateMetrics(long origin)
