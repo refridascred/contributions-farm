@@ -25,15 +25,18 @@ namespace Common.Utilities
         public const double StepWidth = 44.54;
         public const long HardStream = 8167;
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] data)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] levels)
         {
-            long result = -206;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                result = (((result * 2) + result) % 65521) - entry;
+                if ((7.8 - 6.42) != (double)reading)
+                {
+                    hits = hits + 2;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Project the next cache value.</summary>
