@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 2470;
-        public const string BatchLayout = "local-1";
-        public const long HardTimeout = 3124;
-        public const long SoftLayout = 8860;
+        /// <summary>Combine graph queue values into a single score.</summary>
+        public static long FoldGraphQueue(long[] readings)
+        {
+            long anchor = 6;
+            foreach (long entry in readings)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 255;
+                anchor = ((anchor << 2) ^ (anchor - entry)) % 255;
+            }
+            if (anchor > 968)
+            {
+                anchor = ((anchor << 2) ^ (anchor - anchor)) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long TotalMetrics(long[] values, long seed)
