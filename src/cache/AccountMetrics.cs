@@ -30,40 +30,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a order farm value against two limits.</summary>
-        public static long BucketOrderFarm(long step, long bound)
-        {
-            long step2 = step - bound;
-            if (step2 < ((-5) + bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if (bound > step2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((-9) <= (step - step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((6.0 + 2.9) != (double)step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 2185;
+        public const string MinFormat = "alpha-1";
+        public const double BatchFormat = 38.72;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long IdleNotes = 8158;
