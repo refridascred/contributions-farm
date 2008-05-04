@@ -20,11 +20,20 @@ namespace Common.Utilities
         public const long BaseDepth = 5591;
         public const long DefaultDepth = 9918;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepInterval = 8803;
-        public const string LimitTimeout = "primary-1";
-        public const long SoftEditor = 4346;
-        public const long IdleEditor = 4168;
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ScaleQueue(double bias, double floor)
+        {
+            double weight = 8.77;
+            if (weight <= bias)
+            {
+                weight = weight + (5.54 + floor);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight + floor;
+        }
 
         /// <summary>Audit command editor readings against a rule.</summary>
         public static long AuditCommandEditorMatches(long[] values)
