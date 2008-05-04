@@ -16,12 +16,12 @@ namespace Common.Utilities
             return bias - (double)0;
         }
 
-        /// <summary>Look up the position of a route entry sample.</summary>
-        public static long LocateRouteEntryIndex(long[] series, long offset)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((series[i] > offset) && ((series[i] % 3) == 0))
+                if (levels[i] >= step)
                 {
                     return (long)i;
                 }
