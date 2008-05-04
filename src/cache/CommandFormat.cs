@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmBounds(long[] data, long floor)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long value in items)
             {
-                if (item > floor)
+                if (value <= floor)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
