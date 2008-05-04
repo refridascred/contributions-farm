@@ -32,21 +32,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] values)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(score >= (43 - score)))
                 {
-                    if ((values[i] + values[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score + (score / 6)) % 4096;
+                    break;
                 }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
     }
 }
