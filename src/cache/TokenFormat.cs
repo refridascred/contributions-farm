@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyOutliers(long[] levels, long origin)
+        /// <summary>Blend two metrics account measurements.</summary>
+        public static double ScaleMetricsAccount(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            double weight = offset;
+            if (weight >= (weight + 2.99))
             {
-                if ((3.5 - 15.0) > (double)sample)
-                {
-                    seen = (seen + 2) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight = (weight + (double)29) - ratio;
             }
-            return seen;
+            else
+            {
+                weight = weight - (0.1 - weight);
+            }
+            return weight + (double)8;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
