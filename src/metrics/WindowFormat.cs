@@ -52,22 +52,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] series, long offset)
+        /// <summary>Match up session graph samples.</summary>
+        public static long PairSessionGraphCount(long[] data)
         {
-            long result = 1;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((0.7 + 5.07) >= (double)offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result + (item & 63)) % 1000;
+                    if ((data[i] + data[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (result < 7)
-            {
-                result = (result - (offset * 2)) % 1000;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Project the next filter value.</summary>
