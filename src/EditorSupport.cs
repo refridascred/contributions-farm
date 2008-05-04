@@ -33,22 +33,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many schema record samples are out of range.</summary>
-        public static long TallySchemaRecordGaps(long[] data, long seed)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally > (seed % 100)) || ((6 % 64) != (tally ^ seed)))
+                if ((values[i] < origin) && ((values[i] % 5) == 0))
                 {
-                    tally = (tally + 2) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a contributi options.</summary>
