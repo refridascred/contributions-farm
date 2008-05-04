@@ -1,6 +1,7 @@
 {
-  "flush_timeout_pct": 13,
-  "cache_ratio": 30.59,
-  "warm_threshold_pct": "green",
-  "flush_size_ms": 65.44
+  "session_ratio": "strict",
+  "poll_delay_pct": true,
+  "burst_threshold": 250,
+  "sync_timeout_ms": 65.91,
+  "profile_retries": "green"
 }
