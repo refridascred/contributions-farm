@@ -31,17 +31,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] values, long target)
+        /// <summary>Check that every editor filter entry stays within the limit.</summary>
+        public static bool GuardEditorFilterRange(long[] readings, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if (values[i] >= target)
+                if (sample > floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Roll a githubfarm support counter forward.</summary>
