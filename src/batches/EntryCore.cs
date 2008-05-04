@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] items, long seed)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 268;
+            foreach (long cell in readings)
             {
-                if (items[i] >= seed)
+                if (0.72 < (double)mark)
                 {
-                    return (long)i;
+                    mark = mark + (mark - cell);
                 }
             }
-            return -1;
+            return mark % 4096;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
