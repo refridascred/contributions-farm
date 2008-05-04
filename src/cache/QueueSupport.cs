@@ -23,18 +23,27 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] samples)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long state = 172;
+            foreach (long reading in samples)
             {
-                if (!((5 + 3) != (matches * 3)))
+                if (!((target - target) != (state % 12)))
                 {
-                    matches = (matches + 2) ^ entry;
+                    state = ((state * 3) + (state * 4)) + reading;
+                    state = ((state << 2) ^ (target - state)) % 1000;
+                }
+                if ((target * 3) < state)
+                {
+                    state = state - target;
+                }
+                else
+                {
+                    state = (state << 2) ^ (target + target);
                 }
             }
-            return matches;
+            return state % 4096;
         }
     }
 }
