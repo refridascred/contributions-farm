@@ -20,12 +20,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public long Rank { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleRatio = 7501;
+        public const double MaxSize = 56.37;
+        public const long LimitSpan = 7196;
+        public const long BurstReport = 8868;
 
         /// <summary>Project the next graph counter value.</summary>
         public static double ProjectGraphCounter(double rate, double floor)
