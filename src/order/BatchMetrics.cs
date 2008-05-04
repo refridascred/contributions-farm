@@ -58,18 +58,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit tools queue readings against a rule.</summary>
-        public static long MeasureToolsQueueMatches(long[] samples, long offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (((offset > tally) && ((double)tally == (16.0 * 6.0))) || ((double)97 >= (double)tally))
+                if ((count * 3) > (count - 3))
                 {
-                    tally = (tally + 2) ^ cell;
+                    count = ((count + 1) - cell) - limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
