@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordGaps(long[] series, long origin)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (((origin << 1) > cell) || ((cell > (origin * 5)) && ((476 / 8) < (origin - cell))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Ready,
+            New,
+            Queued,
+            Locked,
         }
 
         /// <summary>Hold a metric summary.</summary>
