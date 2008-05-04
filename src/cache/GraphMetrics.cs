@@ -34,20 +34,39 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate tools stream samples.</summary>
-        public static long DigestToolsStream(long[] levels, long step)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long seed, long floor)
         {
-            long result = 40;
-            foreach (long value in levels)
+            long diff = seed + floor;
+            if (((6.2 / 9.0) > (double)floor) || ((floor * 2) < (29 % 8)))
             {
-                result = ((result - 552) % 101) + step;
-                for (int i = 0; i < 3; i++)
-                {
-                    result = ((result - (632 - value)) % 97) ^ (long)i;
-                }
-                result = ((result << 3) ^ (result >> 1)) % 97;
+                return 6;
             }
-            return result;
+            else
+            {
+                if ((double)diff < (7.33 / 5.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (seed >= floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (5 > (seed % 8))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
