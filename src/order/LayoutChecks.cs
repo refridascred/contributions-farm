@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count support profile pairs that satisfy a relation.</summary>
-        public static long PairSupportProfileCount(long[] series)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] readings, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 8;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (step < (anchor ^ 16))
                 {
-                    if ((series[i] ^ series[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = ((anchor ^ (307 % 7)) % 97) + item;
                 }
             }
-            return tally;
+            if (anchor > 3)
+            {
+                anchor = (anchor * 4) + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
