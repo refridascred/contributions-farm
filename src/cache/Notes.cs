@@ -52,19 +52,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] levels, long seed)
+        /// <summary>Locate a farm contributi reading by value.</summary>
+        public static long LookupFarmContributiIndex(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample <= seed)
+                if ((data[i] > floor) && ((data[i] % 3) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
