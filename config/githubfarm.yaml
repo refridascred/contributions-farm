@@ -1,7 +1,6 @@
 # githubfarm settings
-command_limit: 5
-persist: strict
-retry_size_ms:
-  sync_depth_s: 71.64
-  warm_size: 787
-  burst_timeout_count: blue
+metrics_timeout: false
+retry_size_s: 80
+flush_depth_pct: 3203
+batch_interval: 100
+min_depth_pct: 6
