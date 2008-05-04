@@ -1,6 +1,9 @@
-id,score,active,weight
-1,664,53.96,626
-2,640,57.78,189
-3,stable,626,911
-4,fallback,open,946
-5,80.93,11,35.55
+id,level,state,region,ratio
+1,85.3,561,79.91,edge
+2,845,cached,16.02,82
+3,35.49,200,local,163
+4,46.8,green,66.25,blue
+5,92.28,73.31,47.58,59
+6,5.84,567,fallback,8
+7,756,166,17.17,primary
+8,stable,edge,370,12.21
