@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphLimits(long[] series, long offset)
         {
-            public long Stamp { get; set; }
-            public double Token { get; set; }
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
