@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double CacheCounter = 52.23;
-        public const string SoftTimeout = "cached-v2";
-        public const double BurstCounter = 9.1;
-        public const double StepCounter = 21.0;
-        public const long HardCounter = 6575;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string LimitWidth = "legacy-edge";
+        public const long WindowStream = 4063;
+        public const long HardDepth = 3439;
+        public const string SoftStream = "staging-1";
+        public const long BaseStream = 9307;
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long BucketEntry(long origin, long offset)
