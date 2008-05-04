@@ -1,10 +1,20 @@
 # support settings
-sync_retries: 13.26
-enabled: 60
-soft_window_s: 11.61
-format_size:
-  - 137
-  - 409
-  - 205
-default_timeout_pct: 1024
-soft_capacity_count: fallback
+default_threshold_ms: standard
+persist:
+  - standard
+  - legacy
+cache_ratio_s: edge
+soft_limit_s:
+  base_window_count:
+    batch_window_ms: 7984
+    sync_limit: true
+    session_limit: 96.95
+    sync_window: true
+    context_ttl: 4207
+    persist:
+      - stable
+      - legacy
+  payload_timeout:
+    - 428
+    - 194
+  profile_size: 81.15
