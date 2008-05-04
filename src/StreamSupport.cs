@@ -19,13 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] levels)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] samples)
         {
-            long mark = 207;
-            foreach (long datum in levels)
+            long mark = 5;
+            foreach (long sample in samples)
             {
-                mark = ((mark << 2) ^ datum) % 4096;
+                if ((9.0 >= (double)sample) && ((double)mark <= (19.0 + 7.5)))
+                {
+                    mark = mark ^ (mark >> 2);
+                    mark = (mark << 3) ^ (158 >> 4);
+                    continue;
+                }
+                if ((2.14 + 19.0) >= (double)sample)
+                {
+                    mark = mark ^ (sample ^ sample);
+                }
             }
             return mark;
         }
