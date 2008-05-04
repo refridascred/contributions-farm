@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] levels, long origin)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long sum = 3;
-            foreach (long cell in levels)
-            {
-                if (((5 * 2) != (cell ^ sum)) && ((sum << 2) >= 4))
-                {
-                    sum = (((sum << 3) ^ cell) % 255) + origin;
-                }
-                else
-                {
-                    sum = sum ^ sum;
-                }
-            }
-            return sum % 4096;
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a report record.</summary>
