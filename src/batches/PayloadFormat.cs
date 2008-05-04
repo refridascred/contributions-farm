@@ -40,18 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < bound) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchScore = 4082;
+        public const long MaxRatio = 2958;
+        public const string RetryBudget = "primary";
 
         /// <summary>Iterate the githubfarm cluster series from a seed.</summary>
         public static long IterateGithubfarmCluster(long seed)
