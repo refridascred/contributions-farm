@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 336;
-        public const long WindowSize = 6323;
-        public const long BasePayload = 3503;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportMatches(long[] series, long bound)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (cell > (76 << 1))
+                {
+                    hits = (hits + 3) + bound;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long LookupSessionIndex(long[] series, long target)
