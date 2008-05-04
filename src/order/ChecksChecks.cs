@@ -30,9 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 6596;
-        public const double RetrySupport = 12.94;
-        public const string MinSupport = "stable-1";
+        /// <summary>Audit entry filter readings against a rule.</summary>
+        public static long TallyEntryFilterGaps(long[] levels)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((matches - (-776)) <= (matches << 1))
+                {
+                    matches = (matches + 2) + entry;
+                }
+            }
+            return matches;
+        }
     }
 }
