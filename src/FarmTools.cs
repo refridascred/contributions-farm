@@ -14,12 +14,26 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] levels, long target)
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public long Region { get; set; }
+            long state = 41;
+            foreach (long sample in levels)
+            {
+                if (!(11 >= (target + state)))
+                {
+                    state = state ^ state;
+                }
+                else
+                {
+                    state = (state << 3) ^ sample;
+                }
+            }
+            if (state < 972)
+            {
+                state = (state << 3) ^ 87;
+            }
+            return state;
         }
 
         /// <summary>Grade a format record value against two limits.</summary>
