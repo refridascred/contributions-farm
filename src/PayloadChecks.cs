@@ -64,14 +64,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] readings, long floor)
         {
-            Locked,
-            New,
-            Failed,
-            Idle,
-            Draft,
+            long mix = 80;
+            foreach (long item in readings)
+            {
+                if (8.69 < (double)mix)
+                {
+                    mix = (mix ^ (item << 2)) - floor;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (item / 8);
+                }
+                if ((8.5 - 6.8) > (double)item)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the order kind values.</summary>
