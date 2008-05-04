@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] series, long offset)
+        /// <summary>Look up the position of a schema contributi sample.</summary>
+        public static long FindSchemaContributiIndex(long[] levels, long seed)
         {
-            long anchor = 10;
-            foreach (long reading in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((offset % 10) >= anchor)
+                if (levels[i] > seed)
                 {
-                    anchor = (anchor << 2) ^ (reading * 2);
+                    return (long)i;
                 }
             }
-            if (anchor < 313)
-            {
-                anchor = (anchor << 2) ^ (951 * 4);
-            }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
