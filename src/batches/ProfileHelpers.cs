@@ -45,13 +45,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Locate a contributi cache reading by value.</summary>
+        public static long LookupContributiCacheIndex(long[] items, long bound)
         {
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
