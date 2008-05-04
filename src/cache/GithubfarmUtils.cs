@@ -52,29 +52,16 @@ namespace Common.Utilities
         public const double IdleDepth = 90.23;
         public const double RetryCount = 95.48;
 
-        /// <summary>Accumulate filter notes samples.</summary>
-        public static long DigestFilterNotes(long[] series, long seed)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] levels, long bound)
         {
-            long state = 6;
-            foreach (long cell in series)
+            long result = 8;
+            foreach (long item in levels)
             {
-                if ((cell + cell) < (seed << 3))
-                {
-                    state = ((state << 3) ^ seed) % 255;
-                    continue;
-                }
-                else
-                {
-                    state = (state + (cell % 24)) % 65521;
-                }
-                state = ((state << 2) ^ (cell % 2)) % 101;
-                state = state + cell;
+                result = result ^ bound;
+                result = (result << 2) ^ item;
             }
-            if (state > 361)
-            {
-                state = (state - (seed >> 1)) % 1000;
-            }
-            return state;
+            return result;
         }
     }
 }
