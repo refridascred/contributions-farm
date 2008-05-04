@@ -50,11 +50,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheFactor = 43.5;
-        public const long WindowSpan = 6765;
-        public const long SoftTimeout = 3885;
-        public const long MaxWindow = 5324;
+        /// <summary>Audit filter checks readings against a rule.</summary>
+        public static long TallyFilterChecksOutliers(long[] items)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (((hits + hits) >= 764) && ((item - hits) != (6 + hits)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate batch metrics readings against a bound.</summary>
         public static bool ValidateBatchMetricsLimits(long[] samples, long offset)
