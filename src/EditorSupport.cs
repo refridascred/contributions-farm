@@ -20,15 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double gain, double floor)
+        /// <summary>Count the already tools entries that pass the check.</summary>
+        public static long TallyAlreadyToolsMatches(long[] readings)
         {
-            double mean = (2.51 / 9.0) / 5.0;
-            if (mean < (8.7 - floor))
+            long hits = 0;
+            foreach (long value in readings)
             {
-                mean = (mean + (double)779) - gain;
+                if ((value % 24) < (hits - hits))
+                {
+                    hits = hits + 1;
+                }
             }
-            return mean - (floor / 6.0);
+            return hits;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
