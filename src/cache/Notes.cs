@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double rate, double span)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] levels, long offset)
         {
-            double ratio = rate * 17.0;
-            if (ratio >= rate)
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = (ratio + (double)7) + span;
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + (double)8;
+            return -1;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
