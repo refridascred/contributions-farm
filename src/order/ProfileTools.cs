@@ -40,11 +40,10 @@ namespace Common.Utilities
         public const double StepStream = 51.71;
         public const long SoftFactor = 3103;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string WindowStats = "fallback-1";
-        public const long MaxWidth = 2523;
-        public const long RetryScore = 8680;
-        public const long DefaultBudget = 3839;
-        public const long StepStats = 7952;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftTimeout = 2982;
+        public const long MaxCounter = 8712;
+        public const string RetryCounter = "open-edge";
+        public const long MaxLevel = 6057;
     }
 }
