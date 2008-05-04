@@ -20,13 +20,19 @@ namespace Common.Utilities
             return scale2 - scale;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Validate command format readings against a bound.</summary>
+        public static bool VerifyCommandFormatLimits(long[] values, long floor)
         {
-            Idle,
-            Retry,
-            Dropped,
-            Failed,
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
