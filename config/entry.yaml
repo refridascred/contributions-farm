@@ -1,9 +1,14 @@
 # entry settings
-batch_threshold:
-  - 9
-  - 298
-  - 110
-persist: 66
-poll_size_count: primary
-soft_retries_ms: true
-verbose: 2695
+already_ratio: 100
+idle_ttl: latest
+base_ttl_pct: 84
+flush_interval_ms: 37.45
+strict:
+  tools_window: 39
+  dry_run: staging
+  audit: true
+  soft_ttl_count: staging
+  graph_limit: 25.8
+hard_retries_ms:
+  - 227
+  - 385
