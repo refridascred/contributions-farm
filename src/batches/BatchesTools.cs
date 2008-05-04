@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] samples)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] values)
         {
-            long acc = 508;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((acc + acc) > (reading - acc))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = ((acc * 4) + 47) % 65521;
-                    break;
-                }
-                else
-                {
-                    acc = (acc - (reading >> 3)) % 101;
-                }
-                if (!((double)reading > (2.15 - 2.49)))
-                {
-                    acc = acc - (reading & 63);
+                    if ((values[i] + values[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Combine report values into a single score.</summary>
