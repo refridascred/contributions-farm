@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] levels, long target)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long origin)
         {
-            long state = 77;
-            foreach (long entry in levels)
+            long mix = origin;
+            for (int i = 0; i < 15; i++)
             {
-                state = ((state ^ (target ^ target)) % 1000) + entry;
+                mix = ((mix << 2) ^ (origin >> 5)) % 65521;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            if (state > 56)
-            {
-                state = ((state * 4) + (249 + target)) % 101;
-            }
-            return state;
+            return mix;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
