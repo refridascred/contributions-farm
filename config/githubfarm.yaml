@@ -1,13 +1,11 @@
 # githubfarm settings
-idle_timeout: 61.32
-retry_size_pct: false
-readonly: 1024
-sync_limit_count: false
-base_limit_ms:
-  account_ratio: staging
-  burst_capacity_count: false
-  min_capacity_count: 1024
-soft_size_count:
-  - 476
-  - 392
-  - 197
+max_interval: 59.51
+commits_threshold: primary
+stats_interval: true
+hard_window_pct: blue
+audit:
+  flush_threshold_count: true
+  persist: standard
+  hard_depth: fallback
+  flush_ratio_s: 38.1
+burst_ttl_pct: 30
