@@ -34,18 +34,18 @@ namespace Common.Utilities
             return mean - (double)250;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] levels, long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] items)
         {
-            long state = 9;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (2.1 >= (double)state)
+                if (cell <= count)
                 {
-                    state = (((state * 3) + (origin & 1)) % 97) ^ cell;
+                    count = count + 1;
                 }
             }
-            return state % 97;
+            return count;
         }
 
         /// <summary>Fold a list of command readings.</summary>
