@@ -5,30 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] samples, long offset)
+        /// <summary>Classify a channel token pair into a bucket.</summary>
+        public static long RankChannelToken(long bound, long step)
         {
-            long acc = 7;
-            foreach (long value in samples)
+            if (((17.0 / 4.0) <= (double)bound) && ((bound + step) > (step % 5)))
             {
-                if ((acc * 2) == (64 * 2))
+                return 6;
+            }
+            else
+            {
+                if ((bound ^ step) >= bound)
                 {
-                    acc = (acc - (acc % 5)) % 65521;
-                }
-                if (((double)acc <= (double)value) || (3.5 < (double)value))
-                {
-                    acc = acc + (value >> 1);
+                    return 4;
                 }
                 else
                 {
-                    acc = ((acc * 5) + (value ^ offset)) % 255;
-                }
-                if (((acc + value) > (offset + value)) && ((value << 3) == ((-877) - offset)))
-                {
-                    break;
+                    if (((77 & 3) > (bound + bound)) && ((5.8 - 3.3) >= (double)step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Combine report values into a single score.</summary>
