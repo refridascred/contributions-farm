@@ -17,14 +17,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long step, long bound)
         {
-            Queued,
-            Locked,
-            New,
-            Draft,
-            Pending,
+            if ((double)bound != (0.12 * 0.81))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)bound < 19.0)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound << 3) <= (-22))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a notes record.</summary>
