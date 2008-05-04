@@ -20,19 +20,24 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Digest a series of filter counter entries.</summary>
-        public static long CombineFilterCounter(long[] items, long target)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long limit, long target)
         {
-            long result = 1;
-            foreach (long datum in items)
+            if ((target >> 5) < (target % 10))
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    result = (result ^ ((long)i - datum)) + target;
-                }
-                result = result + (datum >> 4);
+                return 8;
             }
-            return result;
+            else
+            {
+                if ((limit << 1) >= (-3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Combine entry values into a single score.</summary>
