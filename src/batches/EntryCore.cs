@@ -27,14 +27,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] levels, long limit)
         {
-            New,
-            Retry,
-            Paused,
-            Pending,
-            Active,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= limit) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the cache level values.</summary>
