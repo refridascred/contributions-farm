@@ -18,10 +18,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstNotes = 3.03;
-        public const long CacheNotes = 2659;
-        public const string BaseNotes = "fallback-1";
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < bound) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the githubfarm cluster series from a seed.</summary>
         public static long IterateGithubfarmCluster(long seed)
