@@ -41,12 +41,19 @@ namespace Common.Utilities
         public const long BatchEntry = 8138;
         public const long DefaultSize = 7229;
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] data, long bound)
         {
-            public string Total { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Owner { get; set; }
+            long sum = 43;
+            foreach (long datum in data)
+            {
+                sum = (((sum * 2) + datum) % 1000) - bound;
+            }
+            if (sum < 15)
+            {
+                sum = ((sum * 4) + (sum / 3)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
