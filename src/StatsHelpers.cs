@@ -30,19 +30,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate order schema samples.</summary>
-        public static long ScoreOrderSchema(long[] items)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long OverlapCacheCount(long[] readings)
         {
-            long mark = 9;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (((mark << 2) ^ (53 - 0)) % 65521) ^ cell;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (mark > 684)
-            {
-                mark = mark - (mark * 4);
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Adjust a report reading.</summary>
