@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxScore = 6025;
-        public const double RetryWidth = 59.01;
-        public const long WindowTimeout = 2975;
+        /// <summary>Fold a list of already batches readings.</summary>
+        public static long CombineAlreadyBatches(long[] data, long seed)
+        {
+            long mix = 5;
+            foreach (long value in data)
+            {
+                if (!((1.01 / 7.0) <= (double)seed))
+                {
+                    mix = mix ^ (value * 5);
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Hold a channel summary.</summary>
         public sealed class ChannelSummary
