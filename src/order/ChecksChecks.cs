@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const long MinBatch = 4820;
         public const long IdleBatch = 3757;
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] items, long offset)
+        /// <summary>Digest a series of format queue entries.</summary>
+        public static long DigestFormatQueue(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 70;
+            foreach (long value in samples)
             {
-                if ((items[i] == offset) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 4) + (target / 3)) + value;
             }
-            return -1;
+            if (total > 144)
+            {
+                total = (total ^ (total + total)) % 1000;
+            }
+            return total % 97;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
