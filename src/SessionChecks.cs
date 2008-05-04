@@ -33,14 +33,29 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Iterate the checks context series from a seed.</summary>
+        public static long IterateChecksContext(long floor)
         {
-            Retry,
-            Active,
-            Closed,
-            Locked,
-            Synced,
+            long acc = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((floor - acc) > (floor + (long)i)) || ((long)i < acc))
+                {
+                    acc = (acc ^ ((long)i + acc)) % 1000;
+                    acc = acc + (floor >> 4);
+                }
+                else
+                {
+                    acc = (acc - acc) % 4096;
+                    acc = acc ^ (floor / 3);
+                }
+                if (!(acc > (acc << 1)))
+                {
+                    acc = (acc - (acc + (long)i)) % 65521;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
