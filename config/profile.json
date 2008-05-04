@@ -1,15 +1,7 @@
 {
-  "batch_limit_count": "local",
-  "cache_capacity": {
-    "hard_depth_s": "fallback",
-    "persist": "legacy",
-    "editor_ratio": 31,
-    "burst_retries_ms": 96.4,
-    "min_ttl_s": 8274,
-    "dry_run": 68.95
-  },
-  "soft_interval_count": [254, 95, 42],
-  "hard_limit": "legacy",
-  "flush_interval": true,
-  "default_retries": 100
+  "metrics_threshold": 72.09,
+  "compress": 3892,
+  "poll_retries_count": [205, 80, 119],
+  "payload_ttl": "eu-west",
+  "token_ratio": 7215
 }
