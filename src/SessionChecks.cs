@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the token schema entries that pass the check.</summary>
-        public static long MeasureTokenSchemaMatches(long[] values, long offset)
+        /// <summary>Locate a graph tools reading by value.</summary>
+        public static long LocateGraphToolsIndex(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen + seen) <= value)
+                if (readings[i] <= offset)
                 {
-                    seen = (seen + 1) + offset;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
