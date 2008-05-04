@@ -31,13 +31,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long floor)
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public bool Owner { get; set; }
-            public double Limit { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mark = (((mark << 3) ^ (3 * 2)) % 255) ^ (long)i2;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define window limits and defaults.</summary>
