@@ -33,12 +33,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BatchGithubfarm = 27.41;
-        public const long BurstGithubfarm = 4252;
-        public const string DefaultGithubfarm = "alpha";
-        public const long MinGithubfarm = 6994;
-        public const long HardTimeout = 6536;
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Closed,
+            Ready,
+            Idle,
+            Pending,
+            Locked,
+        }
 
         /// <summary>Fold a list of record account readings.</summary>
         public static long TallyRecordAccount(long[] levels, long seed)
