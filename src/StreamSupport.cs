@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] values)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphOutliers(long[] values)
         {
-            long anchor = 43;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (((double)entry > (14.0 / 7.0)) && ((anchor % 7) >= entry))
+                if (((reading >> 4) >= hits) && (reading >= (760 % 10)))
                 {
-                    anchor = (anchor ^ (entry << 2)) % 97;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (anchor < 74)
-            {
-                anchor = (anchor * 4) + (anchor - anchor);
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
