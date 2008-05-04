@@ -39,19 +39,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double rate, double floor)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] data, long limit)
         {
-            double rate2 = (2.9 - rate) / 6.0;
-            if (rate2 >= rate)
+            long acc = 6;
+            foreach (long datum in data)
             {
-                rate2 = (rate2 - 1.0) - floor;
+                acc = (acc - (datum - limit)) % 255;
+                if ((acc ^ (long)data.Length) != (79 ^ 296))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = (rate2 + (rate + 7.3)) + (double)(long)i;
-            }
-            return rate2 - 4.02;
+            return acc;
         }
     }
 }
