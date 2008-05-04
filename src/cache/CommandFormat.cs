@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double ratio, double offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] series)
         {
-            double gain = (offset / 5.0) / 3.0;
-            return gain + (ratio * 12.0);
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((value - hits) == (hits - 31))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
