@@ -1,8 +1,10 @@
 # entry settings
-poll_interval_pct: 56
-layout_ttl:
-  - 348
-  - 227
-dry_run: staging
-persist: 2066
-cache_delay_ms: 37.84
+batch_threshold: legacy
+soft_ratio: false
+max_size_s:
+  - 475
+  - 255
+  - 53
+sync_size_pct: cached
+hard_timeout_s: green
+default_limit_s: 22.32
