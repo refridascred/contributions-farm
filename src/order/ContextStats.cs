@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many account farm samples are out of range.</summary>
-        public static long MeasureAccountFarmHits(long[] readings, long limit)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] data, long step)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long sum = 97;
+            foreach (long cell in data)
             {
-                if ((((long)readings.Length + count) < (count - 60)) || (limit > (limit >> 3)))
-                {
-                    count = (count + 3) - entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = ((sum - (step - step)) % 97) ^ cell;
             }
-            return count;
+            if (sum < 106)
+            {
+                sum = (sum + ((long)data.Length >> 4)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
