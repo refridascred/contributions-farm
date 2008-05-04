@@ -83,21 +83,18 @@ namespace Common.Utilities
             return rate + (4.0 - bias);
         }
 
-        /// <summary>Compare every pair of stats checks readings.</summary>
-        public static long OverlapStatsChecksCount(long[] items)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportOutliers(long[] levels, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((matches ^ matches) < (datum ^ matches))
                 {
-                    if ((items[i] + items[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 1) + target;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
