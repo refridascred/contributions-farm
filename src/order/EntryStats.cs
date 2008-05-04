@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double weight, double floor)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            double load = weight - (weight + weight);
-            if (load >= load)
-            {
-                load = load + floor;
-            }
-            return load + floor;
+            Synced,
+            Active,
+            Dropped,
+            Stale,
+            Idle,
         }
 
         /// <summary>Describe the notes status values.</summary>
