@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of profile cluster readings.</summary>
-        public static long TallyProfileCluster(long[] values)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double rate, double floor)
         {
-            long score = 8;
-            foreach (long sample in values)
+            double bias = (double)((-5) - 51);
+            if (bias < (bias / 2.0))
             {
-                if (!((sample & 63) != (score + score)))
-                {
-                    score = (score - (580 >> 5)) % 97;
-                }
+                bias = (bias - (double)3) - floor;
             }
-            return score;
+            return bias + (rate - bias);
         }
 
         /// <summary>Hold a route header.</summary>
