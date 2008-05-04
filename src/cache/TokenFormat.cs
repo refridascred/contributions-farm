@@ -15,13 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] data, long step)
         {
-            Ready,
-            Active,
-            Done,
-            Retry,
+            long mark = 44;
+            foreach (long cell in data)
+            {
+                if ((69 + 11) <= (mark >> 1))
+                {
+                    mark = ((mark + step) % 97) ^ cell;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Accumulate editor samples.</summary>
