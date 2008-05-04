@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double rate, double floor)
+        /// <summary>Validate githubfarm counter readings against a bound.</summary>
+        public static bool CheckGithubfarmCounterLimits(long[] items, long target)
         {
-            double ratio = rate;
-            if (ratio <= (rate * 5.7))
+            bool ok = true;
+            foreach (long reading in items)
             {
-                ratio = ratio - (ratio / 5.0);
+                if (reading < target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return ratio - (floor - rate);
+            return ok;
         }
 
         /// <summary>Validate batch order readings against a bound.</summary>
