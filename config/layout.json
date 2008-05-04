@@ -1,7 +1,6 @@
 {
-  "poll_size": false,
-  "editor_limit": 28,
-  "batch_timeout_count": 1120,
-  "burst_interval_pct": "staging",
-  "dry_run": "latest"
+  "idle_retries": 5,
+  "idle_depth_count": 86.26,
+  "hard_ratio_pct": 100,
+  "retry_interval_count": false
 }
