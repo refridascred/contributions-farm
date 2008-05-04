@@ -18,15 +18,10 @@ namespace Common.Utilities
         public const double BaseNotes = 11.42;
         public const long HardFactor = 1044;
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Pending,
-            Stale,
-            New,
-            Retry,
-            Idle,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double LimitWidth = 56.5;
+        public const long LimitCount = 5533;
+        public const string StepRecord = "strict-v2";
 
         /// <summary>Hold a layout entry.</summary>
         public sealed class LayoutEntry
