@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of cache payload entries.</summary>
-        public static long TallyCachePayload(long[] data)
-        {
-            long state = 5;
-            foreach (long entry in data)
-            {
-                state = (state * 2) + entry;
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 1491;
+        public const long StepCommits = 1661;
+        public const long MaxCommits = 2210;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long CombineCommits(long[] values)
