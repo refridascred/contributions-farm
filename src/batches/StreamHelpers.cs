@@ -52,30 +52,11 @@ namespace Common.Utilities
         public const double BurstWidth = 87.39;
         public const long MaxWindow = 4339;
 
-        /// <summary>Digest a series of batch batches entries.</summary>
-        public static long CombineBatchBatches(long[] samples, long seed)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long state = 0;
-            foreach (long datum in samples)
-            {
-                if (state > (datum + state))
-                {
-                    state = state - (state / 7);
-                }
-                else
-                {
-                    state = state - (5 >> 3);
-                }
-                if (seed > (datum & 31))
-                {
-                    break;
-                }
-            }
-            if (state > 4)
-            {
-                state = state + state;
-            }
-            return state;
+            public bool Token { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the order mode values.</summary>
