@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long bound, long limit)
+        /// <summary>Look up the position of a command record sample.</summary>
+        public static long LookupCommandRecordIndex(long[] values, long offset)
         {
-            long offset = bound + limit;
-            if ((offset % 10) > bound)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit - limit) != (offset + bound))
+                if (values[i] == offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)offset != (4.3 * 5.0)) && ((offset + offset) <= (offset - bound)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound - limit) < (bound + limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a batches info.</summary>
