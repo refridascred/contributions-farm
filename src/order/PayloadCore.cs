@@ -35,10 +35,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 9497;
-        public const long BatchBudget = 7393;
-        public const string RetryCount = "local-v2";
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
+        {
+            Active,
+            Synced,
+            Draft,
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double MinFactor = 14.14;
