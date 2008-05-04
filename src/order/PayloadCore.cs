@@ -46,19 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate schema farm readings against a bound.</summary>
-        public static bool VerifySchemaFarmRange(long[] items, long floor)
+        /// <summary>Check that every already route entry stays within the limit.</summary>
+        public static bool GuardAlreadyRouteBounds(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (cell < floor)
+                if (value < target)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
     }
 }
