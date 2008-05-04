@@ -10,39 +10,11 @@ namespace Common.Utilities
         public const long WindowBatches = 73;
         public const long RetryBatches = 6871;
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long target, long bound)
-        {
-            if (((bound & 127) < (bound >> 3)) || ((17.0 - 3.6) < (double)target))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(7.3 > (double)bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)bound == (double)target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (bound <= ((-92) - bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 5448;
+        public const string StepDepth = "local-v2";
+        public const long MaxBatch = 8349;
+        public const long LimitBatch = 143;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string CacheSize = "standard-v2";
