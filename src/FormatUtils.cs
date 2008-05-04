@@ -73,22 +73,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the report layout entries that pass the check.</summary>
-        public static long MeasureReportLayoutGaps(long[] values, long bound)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long sum = 1;
+            foreach (long cell in items)
             {
-                if ((8.1 * 9.3) <= (double)cell)
+                sum = ((sum * 4) + cell) % 1000;
+                if ((3 + cell) <= (floor * 2))
                 {
-                    count = (count + 2) - bound;
+                    sum = (sum ^ (sum ^ floor)) % 4096;
                 }
                 else
                 {
-                    count = count - 1;
+                    sum = (sum - (floor & 127)) % 97;
+                }
+                if (((double)cell >= 18.0) && (185 <= (cell ^ 13)))
+                {
+                    break;
                 }
             }
-            return count;
+            if (sum > 52)
+            {
+                sum = sum + sum;
+            }
+            return sum;
         }
     }
 }
