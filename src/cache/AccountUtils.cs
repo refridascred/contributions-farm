@@ -20,20 +20,12 @@ namespace Common.Utilities
             return scale + ratio;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterLimits(long[] data, long step)
-        {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheDepth = 5948;
+        public const long DefaultBatch = 9791;
+        public const long BurstBatch = 8838;
+        public const long WindowBatch = 6566;
+        public const long LimitSpan = 4019;
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
