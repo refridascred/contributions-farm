@@ -1,11 +1,10 @@
 # Command notes
 
-The editor helpers are pure functions, so they are safe to call from any thread.
-Use tools settings to tune how often editor data is refreshed.
+When a counter fails, the profile handler retries a few times before giving up.
+Defaults for cache live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep farm values small
-- Log every support change
-- Document new order fields
-- Prefer order defaults
+- Prefer format defaults
+- Review counter limits each release
+- Validate stream input early
