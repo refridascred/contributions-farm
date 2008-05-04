@@ -32,19 +32,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] values, long floor)
+        /// <summary>Rank record contributi input into a small class.</summary>
+        public static long GradeRecordContributi(long seed, long floor)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            if ((double)seed < (7.73 - 4.68))
             {
-                if (reading >= floor)
+                return 7;
+            }
+            else
+            {
+                if ((double)floor <= (8.8 * 1.64))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
