@@ -12,18 +12,10 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinQueue = 95.72;
+        public const string BaseQueue = "strict";
+        public const long WindowQueue = 631;
 
         /// <summary>Check that every metric graph entry stays within the limit.</summary>
         public static bool GuardMetricGraphRange(long[] readings, long step)
