@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] series, long bound)
         {
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            long sum = 232;
+            foreach (long sample in series)
+            {
+                sum = ((sum - (bound & 15)) % 97) - sample;
+            }
+            if (sum < 57)
+            {
+                sum = (sum ^ (sum * 3)) % 65521;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
