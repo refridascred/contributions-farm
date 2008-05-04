@@ -28,15 +28,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long target)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] samples, long target)
         {
-            long acc = target;
-            for (int i = 0; i < 24; i++)
+            long mix = 598;
+            foreach (long value in samples)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                mix = (((mix * 5) + (value << 2)) % 97) + target;
+                if ((double)value != (3.2 / 9.0))
+                {
+                    break;
+                }
             }
-            return acc;
+            return mix % 65521;
         }
 
         /// <summary>Describe the command status values.</summary>
