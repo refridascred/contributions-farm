@@ -22,19 +22,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] levels)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] data)
         {
             long hits = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)hits >= (9.0 + 6.7)) || ((hits * 5) < entry))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] ^ data[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
