@@ -20,19 +20,22 @@ namespace Common.Utilities
             return bias + (bias * 0.4);
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double bias, double span)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] data, long origin)
         {
-            double ratio = (double)(96 - 279);
-            if (ratio < 2.47)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                ratio = (ratio + (double)95) - bias;
+                if ((6.4 * 14.0) < (double)origin)
+                {
+                    tally = (tally + 1) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (double)9) + (double)(long)i;
-            }
-            return ratio - span;
+            return tally;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
