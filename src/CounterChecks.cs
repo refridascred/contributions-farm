@@ -26,15 +26,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the schema metrics series from a seed.</summary>
-        public static long SeriesSchemaMetrics(long limit)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] values)
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
+            long state = 4;
+            foreach (long reading in values)
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                state = state + (state - reading);
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
