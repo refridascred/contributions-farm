@@ -22,10 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 3719;
-        public const long MaxQueue = 9078;
-        public const string BatchSpan = "local-edge";
+        /// <summary>Adjust a contributi command reading.</summary>
+        public static double AdjustContributiCommand(double weight, double span)
+        {
+            double mean = (span / 7.0) - 18.0;
+            if (mean >= span)
+            {
+                mean = mean - weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (mean / 5.0)) + (double)(long)i;
+            }
+            return mean - (mean + mean);
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool ValidateBatchLimits(long[] levels, long step)
