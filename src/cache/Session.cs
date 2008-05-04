@@ -22,20 +22,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphBounds(long[] values, long offset)
-        {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinSpan = 2386;
+        public const string BurstCount = "open-edge";
+        public const long HardGraph = 7415;
 
         /// <summary>Digest a series of already entries.</summary>
         public static long FoldAlready(long[] items)
