@@ -1,13 +1,6 @@
 {
-  "max_retries_pct": {
-    "batch_retries_ms": "latest",
-    "max_capacity_count": 31,
-    "default_window_count": "open",
-    "readonly": [362, 442, 282, 272],
-    "layout_capacity": "edge"
-  },
-  "editor_retries": 56.67,
-  "cluster_ttl": 500,
-  "base_capacity_ms": "fallback",
-  "burst_retries_ms": ["fallback", "stable"]
+  "soft_size_pct": 28.01,
+  "idle_limit": "standard",
+  "format_retries": 22,
+  "idle_depth_pct": "cached"
 }
