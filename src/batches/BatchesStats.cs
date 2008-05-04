@@ -40,9 +40,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleFactor = 1206;
-        public const long BurstStats = 5576;
-        public const long IdleSpan = 5973;
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
+        {
+            public double Count { get; set; }
+            public double Size { get; set; }
+        }
     }
 }
