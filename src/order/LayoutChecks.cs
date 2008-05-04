@@ -55,20 +55,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long step)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] readings, long floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (tally > (floor ^ reading))
                 {
-                    anchor = ((anchor - (step << 1)) % 4096) ^ (long)i2;
+                    tally = tally + 1;
                 }
-                anchor = anchor + (step / 3);
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Digest a series of context entries.</summary>
