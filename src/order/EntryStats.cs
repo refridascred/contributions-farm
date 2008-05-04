@@ -20,21 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count contributi counter pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCounterCount(long[] values)
+        /// <summary>Blend two already checks measurements.</summary>
+        public static double AdjustAlreadyChecks(double gain, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain2 = (3.8 / 6.0) / 2.0;
+            if (gain2 < (gain2 * 16.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain2 = (gain2 - bias) + gain;
             }
-            return matches;
+            return gain2 + gain2;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
