@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] samples, long step)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (((tally << 1) <= (item << 3)) && (step <= (step + step)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Count { get; set; }
+            public bool Size { get; set; }
+            public double Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
