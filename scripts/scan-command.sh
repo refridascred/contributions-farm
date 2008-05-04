@@ -6,22 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-for item in cached latest staging edge; do
-    log "checking ${item}"
-done
-
-mode="${1:-staging}"
+mode="${1:-open}"
 case "${mode}" in
-    green)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
