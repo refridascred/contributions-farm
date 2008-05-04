@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            Paused,
-            Done,
-            Queued,
-            Locked,
+            public bool Token { get; set; }
+            public double Label { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
