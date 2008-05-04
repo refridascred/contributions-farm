@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback eu-west; do
+for item in edge local blue green; do
     log "checking ${item}"
 done
 
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
