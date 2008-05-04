@@ -65,13 +65,14 @@ namespace Common.Utilities
             return gain - (double)2;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
+            Draft,
+            Synced,
+            Retry,
+            Stale,
+            Ready,
         }
     }
 }
