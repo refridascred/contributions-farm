@@ -32,17 +32,22 @@ namespace Common.Utilities
         public const string SoftProfile = "alpha-1";
         public const double StepProfile = 47.13;
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] levels, long bound)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 59;
+            foreach (long value in levels)
             {
-                if (levels[i] == bound)
+                for (int i = 0; i < 12; i++)
                 {
-                    return (long)i;
+                    mix = mix - ((long)i * 5);
+                }
+                if (value > mix)
+                {
+                    mix = (mix + mix) % 4096;
                 }
             }
-            return -1;
+            return mix % 4096;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
