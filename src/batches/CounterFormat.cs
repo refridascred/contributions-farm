@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] values, long seed)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long total = 2;
-            foreach (long cell in values)
-            {
-                if ((cell & 31) >= (total % 2))
-                {
-                    total = total ^ (seed - total);
-                }
-                else
-                {
-                    total = (total - (80 - 86)) % 101;
-                }
-            }
-            return total % 97;
+            Dropped,
+            Stale,
+            Ready,
+            Failed,
+            Idle,
         }
 
         /// <summary>Blend two contributi measurements.</summary>
