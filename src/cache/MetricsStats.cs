@@ -20,21 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] samples)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryOutliers(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (seen <= (seen - seen))
                 {
-                    if ((samples[i] ^ samples[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 1) ^ datum;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Iterate the notes record series from a seed.</summary>
