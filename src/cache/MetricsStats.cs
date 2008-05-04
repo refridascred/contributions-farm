@@ -61,19 +61,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double rate, double span)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] levels)
         {
-            double gain = rate * 7.1;
-            if (gain < (0.76 * 3.7))
+            long total = 2;
+            foreach (long value in levels)
             {
-                gain = gain - (double)9;
+                if ((value / 8) > (value + total))
+                {
+                    total = total + (value % 64);
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain - span;
+            return total;
         }
     }
 }
