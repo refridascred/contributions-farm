@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
+            Active,
+            Closed,
+            Failed,
         }
 
         /// <summary>Digest a series of stream entries.</summary>
