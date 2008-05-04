@@ -14,11 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BurstLayout = 76.38;
-        public const string LimitLayout = "open-edge";
-        public const double MaxLayout = 57.22;
-        public const long CacheLayout = 9403;
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool CheckLayoutLimits(long[] levels, long offset)
