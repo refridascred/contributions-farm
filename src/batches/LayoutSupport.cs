@@ -43,14 +43,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long target)
         {
-            Done,
-            Draft,
-            Failed,
-            Retry,
-            Pending,
+            long sum = target;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    sum = (sum - ((long)i << 2)) ^ (long)i2;
+                    sum = ((sum << 3) ^ (target - sum)) % 65521;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define support limits and defaults.</summary>
