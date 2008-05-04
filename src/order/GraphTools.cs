@@ -37,24 +37,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long floor, long seed)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            if (seed < floor)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor & 15) >= (floor + seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Queued,
+            Closed,
+            Active,
         }
 
         /// <summary>Digest a series of graph entries.</summary>
