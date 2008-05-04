@@ -31,10 +31,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BurstLevel = "latest-v2";
-        public const long MinContributi = 2603;
-        public const long SoftScore = 8876;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardScore = "strict";
+        public const double IdleDepth = 90.23;
+        public const double RetryCount = 95.48;
 
         /// <summary>Classify a metrics graph pair into a bucket.</summary>
         public static long BucketMetricsGraph(long seed, long floor)
