@@ -13,18 +13,23 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Audit token account readings against a rule.</summary>
-        public static long AuditTokenAccountGaps(long[] series)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double gain, double span)
         {
-            long count = 0;
-            foreach (long item in series)
+            double weight = span;
+            if (weight < span)
             {
-                if (((item ^ 0) > ((long)series.Length * 3)) && ((item / 8) != (long)series.Length))
-                {
-                    count = count + 2;
-                }
+                weight = weight - (double)29;
             }
-            return count;
+            else
+            {
+                weight = weight - (gain / 4.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (gain * 12.0)) + (double)(long)i;
+            }
+            return weight + (double)71;
         }
 
         /// <summary>Audit entry filter readings against a rule.</summary>
