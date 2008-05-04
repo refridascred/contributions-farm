@@ -37,11 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepFactor = 36.28;
-        public const long StepCount = 7386;
-        public const double BurstFarm = 82.76;
-        public const double CacheBudget = 21.2;
-        public const long LimitFarm = 9818;
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
+        {
+            public double Owner { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
