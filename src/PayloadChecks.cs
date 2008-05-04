@@ -57,13 +57,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            New,
-            Draft,
-            Active,
             Locked,
+            New,
+            Failed,
+            Idle,
+            Draft,
         }
 
         /// <summary>Blend two graph measurements.</summary>
