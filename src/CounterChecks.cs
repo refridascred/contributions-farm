@@ -53,16 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long seed)
+        /// <summary>Count the batch account entries that pass the check.</summary>
+        public static long CountBatchAccountOutliers(long[] data)
         {
-            long mix = seed;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                mix = mix - ((-4) % 100);
-                mix = ((mix * 5) + (long)i) % 1000;
+                if ((value << 2) <= ((-9) - count))
+                {
+                    count = count + 2;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Project the next notes entry value.</summary>
