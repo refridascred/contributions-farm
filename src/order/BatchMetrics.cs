@@ -40,11 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstFactor = 1021;
-        public const long BurstLevel = 2348;
-        public const long BatchEntry = 8138;
-        public const long DefaultSize = 7229;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BatchFactor = "cached";
+        public const double StepCounter = 77.03;
+        public const double BurstScore = 96.09;
+        public const string LimitRatio = "strict-edge";
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long DigestCommits(long[] data, long bound)
