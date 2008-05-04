@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double rate, double span)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            double load = 7.7 + rate;
-            return (load - (double)(-28)) + span;
+            public string Region { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Blend two contributi measurements.</summary>
