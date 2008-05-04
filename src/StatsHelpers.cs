@@ -20,12 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] values, long origin)
         {
-            Failed,
-            Dropped,
-            Ready,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many channel command samples are out of range.</summary>
