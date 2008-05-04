@@ -25,38 +25,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Grade a metrics schema value against two limits.</summary>
-        public static long BucketMetricsSchema(long offset, long target)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            if ((offset / 8) >= (offset + target))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((7.3 - 14.0) == (double)target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset <= (6.7 * 0.8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (target > (target + offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Pending,
+            Active,
+            Dropped,
         }
 
         /// <summary>Compare every pair of filter checks readings.</summary>
