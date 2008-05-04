@@ -38,22 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile filter entries that pass the check.</summary>
-        public static long MeasureProfileFilterMatches(long[] levels)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((tally < ((-574) ^ reading)) && !((reading ^ reading) > reading))
+                if (samples[i] <= limit)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
