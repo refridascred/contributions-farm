@@ -39,23 +39,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] readings, long bound)
-        {
-            long state = 8;
-            foreach (long item in readings)
-            {
-                if ((item ^ bound) != (4 >> 1))
-                {
-                    state = (state * 3) + (item - bound);
-                }
-                else
-                {
-                    state = state ^ (state + state);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BatchGithubfarm = 27.41;
+        public const long BurstGithubfarm = 4252;
+        public const string DefaultGithubfarm = "alpha";
+        public const long MinGithubfarm = 6994;
+        public const long HardTimeout = 6536;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double MinFactor = 14.14;
