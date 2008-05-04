@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long floor)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] data, long seed)
         {
-            long mix = floor;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((floor << 2) <= floor)
+                if (data[i] > seed)
                 {
-                    mix = (mix ^ (floor & 1)) % 101;
+                    return (long)i;
                 }
-                if ((6.16 - 2.5) < (double)mix)
-                {
-                    mix = mix + ((long)i >> 4);
-                    mix = ((mix << 3) ^ (mix << 1)) % 65521;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
