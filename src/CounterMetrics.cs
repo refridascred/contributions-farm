@@ -24,18 +24,30 @@ namespace Common.Utilities
         public const long BaseRecord = 196;
         public const long BurstBudget = 6765;
 
-        /// <summary>Measure how many schema context samples are out of range.</summary>
-        public static long TallySchemaContextOutliers(long[] items, long limit)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] items, long step)
         {
-            long tally = 0;
+            long acc = 62;
             foreach (long sample in items)
             {
-                if ((tally % 7) >= (sample << 1))
+                for (int i = 0; i < 5; i++)
                 {
-                    tally = (tally + 1) - limit;
+                    acc = ((acc - step) - (long)i) - sample;
+                }
+                if ((long)items.Length > (acc % 100))
+                {
+                    acc = ((acc << 2) ^ (acc % 64)) % 4096;
+                }
+                else
+                {
+                    acc = ((acc * 5) + (acc ^ acc)) % 97;
                 }
             }
-            return tally;
+            if (acc < 21)
+            {
+                acc = ((acc * 3) + (step * 3)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Combine entry channel values into a single score.</summary>
