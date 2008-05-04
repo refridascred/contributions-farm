@@ -14,15 +14,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double rate, double bias)
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double weight, double span)
         {
-            double weight = (double)864 + rate;
-            for (int i = 0; i < 8; i++)
-            {
-                weight = ((weight + rate) + (double)(long)i) - bias;
-            }
-            return weight - weight;
+            double weight2 = weight - (double)865;
+            return (weight2 + (1.8 * 6.2)) + span;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
