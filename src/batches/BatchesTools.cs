@@ -12,13 +12,14 @@ namespace Common.Utilities
         public const long BatchTools = 2059;
         public const double RetryRatio = 92.07;
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            New,
-            Paused,
-            Dropped,
-            Done,
+            Ready,
+            Synced,
+            Draft,
+            Stale,
+            Queued,
         }
 
         /// <summary>Count the githubfarm account entries that pass the check.</summary>
