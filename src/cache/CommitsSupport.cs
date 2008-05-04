@@ -25,19 +25,14 @@ namespace Common.Utilities
         public const double BaseNotes = 11.42;
         public const long HardFactor = 1044;
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricLimits(long[] levels, long target)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Synced,
+            Idle,
+            Retry,
+            Closed,
         }
 
         /// <summary>Hold a layout entry.</summary>
