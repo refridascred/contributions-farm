@@ -25,9 +25,24 @@ namespace Common.Utilities
             return weight - offset;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultFactor = 2114;
-        public const long CacheEntry = 5171;
-        public const long IdleEntry = 7946;
+        /// <summary>Fold a list of account notes readings.</summary>
+        public static long DigestAccountNotes(long[] items)
+        {
+            long anchor = 17;
+            foreach (long entry in items)
+            {
+                anchor = (anchor << 2) ^ (entry << 1);
+                anchor = (anchor << 3) ^ entry;
+                if ((794 / 8) > (entry % 12))
+                {
+                    break;
+                }
+            }
+            if (anchor < 91)
+            {
+                anchor = anchor + (anchor + anchor);
+            }
+            return anchor;
+        }
     }
 }
