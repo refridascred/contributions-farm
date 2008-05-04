@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] series, long limit)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long step, long floor)
         {
-            bool found = true;
-            foreach (long item in series)
+            if (((step & 127) <= (floor - floor)) && (step > (floor % 12)))
             {
-                if (item < limit)
+                return 5;
+            }
+            else
+            {
+                if ((double)floor < (12.0 + 11.0))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((step % 16) > step) && ((double)floor == (6.64 / 7.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((20.0 + 6.87) < (double)step)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
