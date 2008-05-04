@@ -1,21 +1,14 @@
 # support settings
-persist: strict
-default_timeout: true
-audit: 9394
-readonly: strict
-profile_timeout:
-  burst_interval: false
-  route_ratio: strict
-  audit: local
-  warm_timeout_pct: eu-west
-  channel_ratio: 742
-contributi_delay:
-  editor_window:
-    - green
-    - primary
-    - green
-    - staging
-  token_window: true
-  cache_timeout_count: staging
-  base_ttl_count: primary
-  filter_timeout: edge
+batch_ratio_count:
+  dry_run: local
+  soft_ttl_s:
+    sync_window: 79.35
+    burst_capacity: 1186
+    warm_ttl_pct: 8.65
+    warm_ratio: 3635
+  poll_limit: false
+buffer_interval: false
+audit: false
+warm_delay: 100
+idle_capacity: cached
+cache_ratio_pct: false
