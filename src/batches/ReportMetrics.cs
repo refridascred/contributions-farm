@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] samples, long step)
         {
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
+            long total = 2;
+            foreach (long datum in samples)
+            {
+                if ((8.3 < (double)step) && ((total + step) <= (7 + 6)))
+                {
+                    total = (((total << 2) ^ (95 * 3)) % 4096) + datum;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
