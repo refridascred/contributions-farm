@@ -52,11 +52,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 6862;
-        public const string CacheSpan = "primary-edge";
-        public const long MinDepth = 6195;
-        public const string IdleGithubfarm = "latest-1";
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            Ready,
+            Done,
+            Failed,
+        }
 
         /// <summary>Hold a tools info.</summary>
         public sealed class ToolsInfo
