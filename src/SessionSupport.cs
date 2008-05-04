@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double bias, double floor)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            double load = 1.23;
-            for (int i = 0; i < 8; i++)
-            {
-                load = ((load + bias) + (double)(long)i) + floor;
-            }
-            return load + 13.0;
+            public long Total { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Match up tools samples.</summary>
