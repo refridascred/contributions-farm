@@ -16,24 +16,17 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long floor, long floor2)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] items, long floor)
         {
-            if (((3.79 + 9.0) > (double)floor2) || ((double)795 >= (double)floor))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((floor2 >> 2) < (floor2 & 15)))
+                if ((items[i] <= floor) && ((items[i] % 3) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
