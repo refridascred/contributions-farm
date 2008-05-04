@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 8188;
-        public const double HardCluster = 38.56;
-        public const long BatchCluster = 6579;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] data, long seed)
+        {
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Classify a batches record pair into a bucket.</summary>
         public static long ClassifyBatchesRecord(long floor, long floor2)
