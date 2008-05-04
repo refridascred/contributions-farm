@@ -23,19 +23,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] values)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] data)
         {
-            long anchor = 84;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = anchor ^ (reading + reading);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (anchor < 65)
-            {
-                anchor = (anchor * 2) + (anchor << 2);
-            }
-            return anchor % 65521;
+            return tally;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
