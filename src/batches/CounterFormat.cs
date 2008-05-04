@@ -15,16 +15,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ProjectContributi(double scale, double offset)
-        {
-            double mean = offset;
-            if (mean > 16.0)
-            {
-                mean = (mean - (offset + mean)) + scale;
-            }
-            return mean + (mean - 17.0);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxRatio = 5676;
+        public const double SoftEditor = 21.84;
+        public const long LimitEditor = 496;
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
