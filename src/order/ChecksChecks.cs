@@ -18,12 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] readings)
         {
-            Ready,
-            Pending,
-            New,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
