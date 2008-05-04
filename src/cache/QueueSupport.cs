@@ -15,18 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] samples, long seed)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (((hits % 64) >= (seed << 1)) && !(hits <= (seed & 7)))
-                {
-                    hits = (hits + 2) ^ datum;
-                }
-            }
-            return hits;
+            Ready,
+            Retry,
+            Synced,
+            Draft,
         }
 
         /// <summary>Hold a stats record.</summary>
