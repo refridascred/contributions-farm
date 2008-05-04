@@ -79,19 +79,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] values)
+        /// <summary>Fold a list of format editor readings.</summary>
+        public static long TallyFormatEditor(long[] levels, long limit)
         {
-            long total = 57;
-            foreach (long cell in values)
+            long result = 46;
+            foreach (long reading in levels)
             {
-                total = (total ^ total) ^ cell;
+                if (2.37 > (double)reading)
+                {
+                    result = (result + (reading ^ limit)) % 65521;
+                }
+                else
+                {
+                    result = (result ^ result) % 255;
+                }
             }
-            if (total < 84)
-            {
-                total = total ^ (total + 3);
-            }
-            return total;
+            return result;
         }
     }
 }
