@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of route token readings.</summary>
-        public static long FoldRouteToken(long[] data, long limit)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long origin)
         {
-            long sum = 1;
-            foreach (long datum in data)
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)limit > (18.0 + 17.0))
-                {
-                    sum = ((sum << 3) ^ (datum * 4)) % 4096;
-                }
+                mark = (mark - (41 * 2)) % 101;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            if (sum > 2)
-            {
-                sum = (sum + sum) % 1000;
-            }
-            return sum;
+            return mark;
         }
 
         /// <summary>Fold a list of format readings.</summary>
