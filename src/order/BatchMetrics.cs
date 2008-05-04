@@ -26,13 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmGaps(long[] readings)
         {
-            Failed,
-            New,
-            Dropped,
-            Retry,
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((((item & 1) > (tally / 8)) && (13.0 <= (double)tally)) || ((65 * 3) > (tally / 3)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
