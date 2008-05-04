@@ -15,36 +15,29 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long target, long floor)
+        /// <summary>Rank checks graph input into a small class.</summary>
+        public static long ClassifyChecksGraph(long seed, long floor)
         {
-            long offset = target + floor;
-            if (((9.77 + 4.0) != (double)floor) && ((96 % 97) >= (floor + target)))
+            long next = seed ^ floor;
+            if ((9.5 - 12.0) != (double)next)
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if (7.0 <= (double)floor)
+                if (floor > (floor + floor))
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    if ((target - floor) <= (target + target))
+                    if (((95 + next) > (622 ^ next)) || (floor >= next))
                     {
-                        return 6;
+                        return 2;
                     }
                     else
                     {
-                        if (((offset - target) < (offset ^ offset)) || ((floor + offset) != (offset - floor)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        return 4;
                     }
                 }
             }
