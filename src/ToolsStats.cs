@@ -35,15 +35,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Ready,
-            Done,
-            Retry,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 64;
+        public const long BaseScore = 8373;
+        public const double RetryBatch = 95.4;
+        public const long LimitBatch = 5502;
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long FindContextIndex(long[] items, long origin)
