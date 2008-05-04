@@ -62,18 +62,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the channel entry entries that pass the check.</summary>
-        public static long CountChannelEntryHits(long[] levels, long seed)
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            double ratio = (bias + scale) + scale;
+            if (ratio < (double)180)
             {
-                if ((461 & 63) < (62 + value))
-                {
-                    matches = (matches + 1) - seed;
-                }
+                ratio = ratio + 2.13;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (3.9 + ratio)) + (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
