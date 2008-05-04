@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] values, long origin)
-        {
-            long anchor = 48;
-            foreach (long datum in values)
-            {
-                if (((510 >> 5) <= origin) || ((double)datum < (0.9 * 16.0)))
-                {
-                    anchor = (anchor ^ (datum % 16)) % 1000;
-                }
-                if (((12.0 + 0.85) > (double)anchor) || (origin >= datum))
-                {
-                    break;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BaseTools = 18.61;
+        public const double LimitTools = 23.36;
+        public const double LimitScore = 87.1;
+        public const long BatchTools = 2059;
+        public const double RetryRatio = 92.07;
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
