@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long target, long step)
         {
-            Locked,
-            Pending,
-            Draft,
-            Synced,
+            if ((target >> 4) < (1 + target))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((step + 3) >= (target * 2)) && ((step - target) >= (step >> 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target < (target - step)) || ((step * 4) != (target + step)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)target >= (2.71 - 2.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a layout reading by value.</summary>
