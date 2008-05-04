@@ -69,11 +69,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 1561;
-        public const long BatchFarm = 8900;
-        public const double WindowLevel = 16.75;
-        public const string StepFarm = "legacy-1";
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long offset, long target)
+        {
+            long slot = offset + target;
+            if ((slot - offset) <= (slot % 60))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset % 3) == (offset >> 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long OverlapRecordCount(long[] series)
