@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmGaps(long[] values, long floor)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((double)floor > 17.0)
-                {
-                    hits = (hits + 3) ^ sample;
-                }
-            }
-            return hits;
+            Dropped,
+            Draft,
+            Active,
         }
 
         /// <summary>Describe the order phase values.</summary>
