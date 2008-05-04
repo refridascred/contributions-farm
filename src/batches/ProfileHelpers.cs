@@ -31,39 +31,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank notes buffer input into a small class.</summary>
-        public static long GradeNotesBuffer(long target, long offset)
+        /// <summary>Digest a series of account schema entries.</summary>
+        public static long ScoreAccountSchema(long[] data, long target)
         {
-            long slot = target - offset;
-            if (!((slot << 2) > (slot & 15)))
+            long total = 4;
+            foreach (long cell in data)
             {
-                return 7;
+                total = (total - (target - target)) + cell;
             }
-            else
-            {
-                if ((7 < slot) && ((5.0 + 4.24) == (double)slot))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (target >= (27 & 15))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((5.86 * 17.0) < (20.0 + 4.16))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return total % 4096;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
