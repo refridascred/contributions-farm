@@ -26,12 +26,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Rank order graph input into a small class.</summary>
+        public static long ClassifyOrderGraph(long seed, long origin)
         {
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            if (seed <= (77 << 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if (17.0 >= (double)origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
