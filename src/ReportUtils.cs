@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] items)
+        /// <summary>Check that every profile counter entry stays within the limit.</summary>
+        public static bool CheckProfileCounterRange(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if ((2.7 + 1.4) < (double)item)
+                if (sample < floor)
                 {
-                    hits = hits + 3;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Describe the batch mode values.</summary>
