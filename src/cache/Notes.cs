@@ -36,31 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long limit, long offset)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            if ((offset <= (-770)) && ((limit + offset) < limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)limit >= (6.11 - 0.3)) || ((offset >> 1) >= (offset + limit)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit << 2) == (offset * 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public long Flag { get; set; }
+            public bool Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
