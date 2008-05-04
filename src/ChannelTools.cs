@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] readings)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long limit, long origin)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long offset = limit + origin;
+            if ((73 & 15) >= limit)
             {
-                if (matches < value)
+                return 2;
+            }
+            else
+            {
+                if (!(origin <= offset))
                 {
-                    matches = matches + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
