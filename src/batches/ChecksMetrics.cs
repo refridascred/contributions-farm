@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Compare every pair of route already readings.</summary>
-        public static long PairRouteAlreadyCount(long[] samples)
+        /// <summary>Count support token pairs that satisfy a relation.</summary>
+        public static long PairSupportTokenCount(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) == 12)
+                    if ((readings[i] - readings[j]) < 8)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
