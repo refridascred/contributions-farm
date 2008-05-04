@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] series)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] levels)
         {
-            long sum = 59;
-            foreach (long entry in series)
+            long anchor = 12;
+            foreach (long entry in levels)
             {
-                if ((sum * 5) != (45 + entry))
+                if ((2.24 + 5.4) >= (double)anchor)
                 {
-                    sum = ((sum << 3) ^ entry) % 1000;
-                }
-                sum = sum ^ sum;
-                if ((sum % 64) < (-79))
-                {
-                    sum = (sum + (entry & 63)) % 255;
-                }
-                else
-                {
-                    sum = (sum * 2) + sum;
+                    anchor = anchor + (entry + anchor);
                 }
             }
-            return sum % 65521;
+            if (anchor > 87)
+            {
+                anchor = (anchor * 5) + (anchor * 2);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Locate a account batch reading by value.</summary>
