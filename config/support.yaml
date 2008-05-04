@@ -1,4 +1,5 @@
 # support settings
-hard_capacity_pct: strict
-flush_window: primary
-retry_ratio_ms: 1
+batches_retries: true
+verbose: true
+max_timeout: 3965
+editor_limit: standard
