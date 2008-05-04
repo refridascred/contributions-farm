@@ -37,21 +37,27 @@ namespace Common.Utilities
         public const double DefaultRatio = 44.33;
         public const long BatchInterval = 7615;
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] series)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = -31;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((cell / 2) > (cell * 4))
                 {
-                    if ((series[i] + series[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total ^ (cell << 3)) % 101;
+                    total = (total * 4) + (cell ^ (long)samples.Length);
+                }
+                if ((double)cell != (8.59 / 3.0))
+                {
+                    total = (total + (cell ^ cell)) % 65521;
                 }
             }
-            return hits;
+            if (total > 3)
+            {
+                total = total - (total % 7);
+            }
+            return total % 1000;
         }
     }
 }
