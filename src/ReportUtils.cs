@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long offset, long origin)
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            if ((offset <= (origin + origin)) && ((200 + offset) >= origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset - offset) > (offset % 60))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(origin > offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (offset < (720 * 5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank token input into a small class.</summary>
