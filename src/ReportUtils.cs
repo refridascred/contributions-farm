@@ -53,18 +53,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] series)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((datum & 63) != (datum & 7))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Ready,
+            Synced,
+            Closed,
         }
 
         /// <summary>Scale a batches batch figure with a bias.</summary>
