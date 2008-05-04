@@ -50,17 +50,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double HardRatio = 12.75;
+        public const long BaseLevel = 803;
+        public const long LimitWidth = 8565;
     }
 }
