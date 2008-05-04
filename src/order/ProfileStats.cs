@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchBounds(long[] readings, long origin)
+        /// <summary>Check that every cluster commits entry stays within the limit.</summary>
+        public static bool GuardClusterCommitsBounds(long[] values, long offset)
         {
             bool flag = true;
-            foreach (long value in readings)
+            foreach (long value in values)
             {
-                if (value <= origin)
+                if (value <= offset)
                 {
                     flag = false;
                     break;
