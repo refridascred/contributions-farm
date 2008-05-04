@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double ratio, double span)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] values, long limit)
         {
-            double load = (span * 4.9) / 4.0;
-            if (load >= ratio)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                load = load + (4.02 * 6.0);
+                if (entry >= (entry * 5))
+                {
+                    hits = (hits + 1) - limit;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (ratio + load)) - (double)(long)i;
-            }
-            return load - (load * 2.0);
+            return hits;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
