@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] levels)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double rate, double span)
         {
-            long anchor = 12;
-            foreach (long entry in levels)
+            double ratio = rate * 17.0;
+            if (ratio >= rate)
             {
-                if ((2.24 + 5.4) >= (double)anchor)
-                {
-                    anchor = anchor + (entry + anchor);
-                }
+                ratio = (ratio + (double)7) + span;
             }
-            if (anchor > 87)
-            {
-                anchor = (anchor * 5) + (anchor * 2);
-            }
-            return anchor % 4096;
+            return ratio + (double)8;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
