@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxBudget = 539;
-        public const string IdleAlready = "latest-edge";
-        public const long CacheSpan = 2463;
-        public const long SoftScore = 96;
-        public const long StepAlready = 7983;
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((carry ^ (long)i) >= (bound ^ carry))
+                {
+                    carry = (carry << 3) ^ (bound + (-1));
+                    continue;
+                }
+                carry = ((carry * 5) + (carry & 3)) % 255;
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long MeasureEntryGaps(long[] levels)
