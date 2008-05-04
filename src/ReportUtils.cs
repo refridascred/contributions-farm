@@ -79,19 +79,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferRange(long[] items, long bound)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] data)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (entry < bound)
+                if ((7.9 - 0.1) < (double)seen)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) + cell;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
