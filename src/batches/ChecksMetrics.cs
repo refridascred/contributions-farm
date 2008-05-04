@@ -37,20 +37,18 @@ namespace Common.Utilities
         public const long MaxFormat = 8451;
         public const long SoftFormat = 3406;
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long origin)
+        /// <summary>Audit command editor readings against a rule.</summary>
+        public static long AuditCommandEditorMatches(long[] values)
         {
-            long anchor = origin;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((9.0 - 0.46) > (double)(long)i)
+                if ((423 * 2) < (cell ^ hits))
                 {
-                    anchor = (anchor * 3) + anchor;
+                    hits = hits + 1;
                 }
-                anchor = (anchor + ((long)i - anchor)) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Blend two window format measurements.</summary>
