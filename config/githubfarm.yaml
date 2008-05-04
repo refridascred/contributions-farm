@@ -1,4 +1,7 @@
 # githubfarm settings
-burst_capacity: 76.89
-persist: 500
-poll_interval: 1024
+warm_interval_s:
+  - 491
+  - 497
+verbose: true
+enabled: 59.98
+token_timeout: 809
