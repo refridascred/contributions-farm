@@ -58,12 +58,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Audit tools queue readings against a rule.</summary>
+        public static long MeasureToolsQueueMatches(long[] samples, long offset)
         {
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
-            public bool Region { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (((offset > tally) && ((double)tally == (16.0 * 6.0))) || ((double)97 >= (double)tally))
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
