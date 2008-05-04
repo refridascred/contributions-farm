@@ -5,24 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long seed, long seed2)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long floor)
         {
-            if ((seed2 >= (seed2 % 60)) || ((double)seed == (double)seed2))
+            long score = floor;
+            for (int i = 0; i < 8; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (seed2 < (seed2 * 4))
+                if ((score ^ floor) < (long)i)
                 {
-                    return 7;
+                    score = (score + score) % 4096;
+                    continue;
                 }
-                else
+                if ((double)floor <= (2.0 + 4.6))
                 {
-                    return 3;
+                    score = score + (741 >> 1);
+                    break;
                 }
+                score = ((score * 4) + (long)i) % 65521;
             }
+            return score;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
