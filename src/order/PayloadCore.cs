@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] series, long offset)
         {
-            public double Limit { get; set; }
-            public double Flag { get; set; }
-            public bool Ratio { get; set; }
-            public bool Total { get; set; }
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the graph mode values.</summary>
