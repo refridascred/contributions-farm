@@ -77,18 +77,13 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] data, long offset)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((5.74 - 3.2) == (double)offset)
-                {
-                    tally = (tally + 2) + value;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public double Total { get; set; }
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
