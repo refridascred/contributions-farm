@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long floor)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long score = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((score ^ floor) < (long)i)
-                {
-                    score = (score + score) % 4096;
-                    continue;
-                }
-                if ((double)floor <= (2.0 + 4.6))
-                {
-                    score = score + (741 >> 1);
-                    break;
-                }
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            Stale,
+            Active,
+            Draft,
         }
 
         /// <summary>Validate window readings against a bound.</summary>
