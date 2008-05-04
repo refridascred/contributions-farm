@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of record context readings.</summary>
-        public static long DigestRecordContext(long[] readings)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long mix = 668;
-            foreach (long sample in readings)
-            {
-                mix = ((mix * 5) + (mix * 2)) % 255;
-                if ((209 + mix) >= (sample / 9))
-                {
-                    mix = (mix * 4) + sample;
-                }
-            }
-            return mix;
+            public bool Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
