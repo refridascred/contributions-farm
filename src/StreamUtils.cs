@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many stats support samples are out of range.</summary>
-        public static long TallyStatsSupportHits(long[] data)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((((950 + sample) == ((-6) << 3)) && (sample >= (seen + 75))) || ((82 ^ sample) < (seen - seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the payload mode values.</summary>
