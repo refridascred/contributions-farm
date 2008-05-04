@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long target, long target2)
-        {
-            long gap = target - target2;
-            if (target <= (gap + target2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target ^ 236) >= (391 >> 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((3 ^ target) < (31 + target)) || (gap >= (gap << 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((gap & 7) == (target2 << 1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BatchTimeout = 98.34;
+        public const double BurstSpan = 6.49;
+        public const long MinRatio = 7220;
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long DeriveAlready(long origin)
