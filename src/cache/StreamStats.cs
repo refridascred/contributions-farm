@@ -47,22 +47,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] readings, long step)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] readings)
         {
-            long result = 886;
-            foreach (long reading in readings)
+            long anchor = 815;
+            foreach (long entry in readings)
             {
-                if ((1.0 < (double)reading) || ((step & 3) >= (step << 2)))
+                if (!(((anchor - entry) >= (entry & 63)) || (9.7 > (double)entry)))
                 {
-                    result = result + (result + result);
+                    anchor = (anchor + (anchor << 2)) % 1000;
+                }
+                if ((anchor - 479) != (472 << 1))
+                {
+                    anchor = (anchor + (anchor % 64)) % 97;
+                }
+                else
+                {
+                    anchor = anchor - (entry >> 2);
                 }
             }
-            if (result > 92)
-            {
-                result = result ^ (step + result);
-            }
-            return result % 97;
+            return anchor;
         }
 
         /// <summary>Blend two support context measurements.</summary>
