@@ -24,32 +24,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a stream payload pair into a bucket.</summary>
-        public static long ClassifyStreamPayload(long floor, long limit)
-        {
-            if ((floor & 63) != (limit / 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if (2.47 <= (double)limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit % 24) > (limit * 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string WindowAlready = "cached-edge";
+        public const double BatchSize = 8.5;
+        public const string BatchAlready = "latest-1";
+        public const long DefaultAlready = 8994;
+        public const double StepAlready = 77.74;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string HardScore = "strict";
