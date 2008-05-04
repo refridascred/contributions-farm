@@ -73,11 +73,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitBudget = 2859;
-        public const long RetrySize = 4859;
-        public const double SoftSize = 95.51;
-        public const long BatchCounter = 3295;
-        public const long StepSpan = 7150;
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
+        {
+            public double Region { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
