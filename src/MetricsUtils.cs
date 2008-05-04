@@ -13,15 +13,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next support order value from a seed.</summary>
-        public static long StepSupportOrder(long offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] samples)
         {
-            long anchor = offset;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if ((seen % 97) >= (55 >> 1))
+                {
+                    seen = (seen + 3) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
