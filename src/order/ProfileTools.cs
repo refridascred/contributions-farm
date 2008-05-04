@@ -54,12 +54,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] values)
         {
-            Active,
-            Pending,
-            Ready,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((seen ^ value) < (seen + seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
