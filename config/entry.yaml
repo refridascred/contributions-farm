@@ -1,9 +1,9 @@
 # entry settings
-hard_interval_count: true
-verbose: local
-readonly:
-  - blue
-  - cached
-  - local
-persist: 91.24
-hard_size_ms: 81.94
+githubfarm_capacity: 250
+persist: 250
+sync_ratio_ms: true
+hard_timeout_ms:
+  - legacy
+  - open
+  - edge
+soft_threshold_ms: stable
