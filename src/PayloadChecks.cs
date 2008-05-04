@@ -68,26 +68,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] readings, long floor)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long mix = 80;
-            foreach (long item in readings)
-            {
-                if (8.69 < (double)mix)
-                {
-                    mix = (mix ^ (item << 2)) - floor;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (item / 8);
-                }
-                if ((8.5 - 6.8) > (double)item)
-                {
-                    break;
-                }
-            }
-            return mix;
+            Synced,
+            Dropped,
+            Done,
         }
 
         /// <summary>Describe the order kind values.</summary>
