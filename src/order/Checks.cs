@@ -28,20 +28,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] readings, long offset)
-        {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BatchFilter = 77.96;
+        public const long SoftDepth = 1732;
+        public const long BaseFactor = 7155;
+        public const long MaxFilter = 3978;
+        public const long MinSize = 5274;
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
