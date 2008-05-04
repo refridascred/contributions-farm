@@ -18,21 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] series)
+        /// <summary>Look up the position of a route entry sample.</summary>
+        public static long LocateRouteEntryIndex(long[] series, long offset)
         {
-            long matches = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((series[i] > offset) && ((series[i] % 3) == 0))
                 {
-                    if ((series[i] - series[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
