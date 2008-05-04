@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double weight, double span)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            double load = span;
-            if (load <= span)
-            {
-                load = (load + (double)(-6)) + weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (span * 9.1)) + (double)(long)i;
-            }
-            return load - (span * 13.0);
+            public string Size { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Accumulate commits samples.</summary>
