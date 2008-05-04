@@ -20,19 +20,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamLimits(long[] data, long floor)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] values, long step)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long mark = -940;
+            foreach (long value in values)
             {
-                if (cell > floor)
+                if (step >= (step >> 4))
                 {
-                    stale = false;
-                    break;
+                    mark = (mark ^ (6 - step)) ^ value;
                 }
             }
-            return stale;
+            if (mark > (-896))
+            {
+                mark = ((mark << 2) ^ (mark + mark)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the githubfarm cluster series from a seed.</summary>
