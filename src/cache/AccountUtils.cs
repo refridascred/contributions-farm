@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] levels, long origin)
+        /// <summary>Fold a list of record context readings.</summary>
+        public static long DigestRecordContext(long[] readings)
         {
-            long sum = 918;
-            foreach (long value in levels)
+            long mix = 668;
+            foreach (long sample in readings)
             {
-                if (((origin + 31) <= (value % 60)) || ((0.1 - 4.3) > (double)value))
+                mix = ((mix * 5) + (mix * 2)) % 255;
+                if ((209 + mix) >= (sample / 9))
                 {
-                    sum = (sum * 2) + (value * 2);
+                    mix = (mix * 4) + sample;
                 }
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
