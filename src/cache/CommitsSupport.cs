@@ -56,12 +56,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] data, long bound)
         {
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
