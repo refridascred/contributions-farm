@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Active,
-            Pending,
-            Locked,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxScore = 6025;
+        public const double RetryWidth = 59.01;
+        public const long WindowTimeout = 2975;
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
