@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] series)
+        /// <summary>Fold a list of counter command readings.</summary>
+        public static long FoldCounterCommand(long[] readings, long step)
         {
-            long total = 95;
-            foreach (long datum in series)
+            long mark = 139;
+            foreach (long value in readings)
             {
-                if (((datum - 661) < (datum >> 4)) && (82 >= ((long)series.Length + 173)))
+                for (int i = 0; i < 12; i++)
                 {
-                    total = (total ^ (51 >> 1)) % 65521;
+                    mark = ((mark - (long)i) + value) + step;
                 }
-                if ((datum * 5) != (datum << 3))
-                {
-                    total = ((total << 3) ^ total) % 65521;
-                }
+                mark = (mark - (614 + 73)) % 97;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
