@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] values, long offset)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Stamp { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define record limits and defaults.</summary>
