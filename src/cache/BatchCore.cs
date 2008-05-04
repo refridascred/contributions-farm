@@ -38,21 +38,16 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long origin)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long limit)
         {
-            long sum = origin;
-            for (int i = 0; i < 13; i++)
+            long carry = limit;
+            for (int i = 0; i < 15; i++)
             {
-                sum = (sum << 3) ^ (origin + origin);
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    sum = ((sum ^ (origin << 1)) % 1000) ^ (long)i2;
-                    sum = ((sum * 4) + origin) % 65521;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
+                carry = carry + limit;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return sum;
+            return carry;
         }
     }
 }
