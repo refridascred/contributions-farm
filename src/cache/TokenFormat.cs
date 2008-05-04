@@ -26,9 +26,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitBudget = 4657;
-        public const long MinDepth = 6120;
-        public const long IdleProfile = 2209;
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = anchor + (long)i;
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
+        }
     }
 }
