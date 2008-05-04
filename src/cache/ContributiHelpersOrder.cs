@@ -44,14 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksRange(long[] samples, long bound)
         {
-            Ready,
-            Stale,
-            Failed,
-            Paused,
-            Synced,
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
