@@ -35,15 +35,17 @@ namespace Common.Utilities
         public const double RetrySpan = 52.14;
         public const long LimitCounter = 5198;
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long seed)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] series, long origin)
         {
-            long carry = seed;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                if ((series[i] < origin) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count the batch account entries that pass the check.</summary>
