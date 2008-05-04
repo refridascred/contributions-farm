@@ -20,17 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] levels, long floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] samples, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((levels[i] >= floor) && ((levels[i] % 5) != 0))
+                if (((hits % 64) >= (seed << 1)) && !(hits <= (seed & 7)))
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the stream class values.</summary>
