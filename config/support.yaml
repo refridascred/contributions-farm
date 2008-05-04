@@ -1,13 +1,14 @@
 # support settings
-cache_interval_s: 8676
-profile_interval: 6943
-readonly: stable
-enabled:
-  - 88
-  - 403
-command_ttl:
-  base_limit_count: true
-  tools_depth: 308
-  format_size: false
-  hard_ttl_s: true
-poll_ttl: 7059
+flush_size_count:
+  - 22
+  - 469
+  - 285
+soft_ratio: 34.88
+warm_limit: false
+poll_ttl_count:
+  - strict
+  - blue
+verbose:
+  - legacy
+  - green
+default_depth_ms: fallback
