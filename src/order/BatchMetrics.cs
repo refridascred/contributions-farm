@@ -38,12 +38,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a profile githubfarm sample.</summary>
-        public static long LocateProfileGithubfarmIndex(long[] samples, long step)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] levels, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] < step)
+                if (levels[i] >= limit)
                 {
                     return (long)i;
                 }
