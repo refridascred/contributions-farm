@@ -50,16 +50,17 @@ namespace Common.Utilities
             return ratio + (double)0;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] levels, long bound)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] readings, long step)
         {
-            long result = 8;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = result ^ bound;
-                result = (result << 2) ^ item;
+                if (readings[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
