@@ -35,13 +35,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] items, long origin)
         {
-            public bool Limit { get; set; }
-            public double Mode { get; set; }
-            public long Score { get; set; }
-            public bool Flag { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == origin) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
