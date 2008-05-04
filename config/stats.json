@@ -1,17 +1,6 @@
 {
-  "burst_size_ms": 250,
-  "base_ratio_count": {
-    "editor_limit": {
-      "command_window": 8455,
-      "soft_delay_count": "local",
-      "strict": 30
-    },
-    "compress": 39.01,
-    "flush_window_count": "latest",
-    "batch_threshold": true,
-    "strict": "stable"
-  },
-  "min_interval_count": "green",
-  "audit": 10.23,
-  "poll_delay_pct": true
+  "schema_capacity": 41.0,
+  "entry_limit": 23,
+  "notes_retries": "eu-west",
+  "warm_ttl": 30
 }
