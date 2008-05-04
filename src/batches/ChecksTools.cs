@@ -41,19 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate context cluster readings against a bound.</summary>
-        public static bool ValidateContextClusterRange(long[] levels, long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] samples)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (cell < bound)
+                if ((count - 0) >= entry)
                 {
-                    flag = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
