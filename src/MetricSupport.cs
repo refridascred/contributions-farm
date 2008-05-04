@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const long StepCommits = 1661;
         public const long MaxCommits = 2210;
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] values)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long mark = -199;
-            foreach (long entry in values)
-            {
-                if ((14.0 + 18.0) != (double)entry)
-                {
-                    mark = ((mark << 3) ^ 174) % 255;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (919 - entry)) % 97;
-                }
-            }
-            return mark % 65521;
+            public bool Stamp { get; set; }
+            public double Count { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
