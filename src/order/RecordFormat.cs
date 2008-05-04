@@ -50,14 +50,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            Done,
-            New,
-            Dropped,
-            Active,
-            Ready,
+            public double Limit { get; set; }
+            public long Score { get; set; }
         }
     }
 }
