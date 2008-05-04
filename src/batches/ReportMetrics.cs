@@ -14,11 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxTimeout = 7481;
-        public const double CacheEditor = 72.93;
-        public const string LimitEditor = "legacy-edge";
-        public const string BaseLevel = "cached-1";
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (!((double)count < 16.0))
+                {
+                    count = (count + 3) ^ value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double StepFactor = 36.28;
