@@ -38,13 +38,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesOutliers(long[] items)
         {
-            Queued,
-            Draft,
-            Paused,
-            Idle,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((double)reading > (9.04 / 3.0))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
