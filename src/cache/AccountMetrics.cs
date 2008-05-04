@@ -29,10 +29,22 @@ namespace Common.Utilities
         public const string MinFormat = "alpha-1";
         public const double BatchFormat = 38.72;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 8158;
-        public const long BurstWidth = 1104;
-        public const long HardWidth = 1181;
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
