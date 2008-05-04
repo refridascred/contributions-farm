@@ -59,11 +59,20 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string LimitStats = "legacy-v2";
-        public const long IdleStats = 9637;
-        public const string MaxInterval = "open-edge";
-        public const double WindowStats = 81.46;
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmRange(long[] values, long target)
+        {
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
