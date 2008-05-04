@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (!(((entry ^ tally) < entry) && ((164 / 3) < (tally & 15))))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitContributi = 83.17;
+        public const long StepScore = 632;
+        public const double BatchContributi = 15.06;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BaseAlready = 9895;
