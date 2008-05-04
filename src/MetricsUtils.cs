@@ -37,26 +37,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of githubfarm payload entries.</summary>
-        public static long WeighGithubfarmPayload(long[] series, long step)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long target, long seed)
         {
-            long state = 0;
-            foreach (long sample in series)
+            long bound = target + seed;
+            if ((8 + seed) >= (bound << 2))
             {
-                if ((double)sample <= (double)state)
+                return 1;
+            }
+            else
+            {
+                if ((bound - target) < bound)
                 {
-                    state = (state - (step + sample)) % 1000;
+                    return 0;
                 }
-                if ((step - state) > ((-32) >> 2))
+                else
                 {
-                    break;
+                    if (seed <= (seed + target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (state < 11)
-            {
-                state = state ^ (state / 3);
-            }
-            return state % 97;
         }
 
         /// <summary>Count the profile order entries that pass the check.</summary>
