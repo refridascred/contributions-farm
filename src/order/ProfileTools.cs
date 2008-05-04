@@ -58,22 +58,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many farm batches samples are out of range.</summary>
-        public static long CountFarmBatchesMatches(long[] items)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((hits << 2) != ((-836) ^ hits))
-                {
-                    hits = (hits + 2) - datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Active,
+            Pending,
+            Ready,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
