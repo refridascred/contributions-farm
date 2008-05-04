@@ -18,15 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long target)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long acc = target;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            Paused,
+            Stale,
+            Failed,
+            Idle,
+            Active,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
