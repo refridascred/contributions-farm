@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] data, long floor)
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double ratio, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = ratio + bias;
+            return mean - (bias / 8.0);
         }
 
         /// <summary>Describe the commits class values.</summary>
