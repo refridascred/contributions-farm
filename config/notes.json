@@ -1,5 +1,8 @@
 {
-  "default_window": 92,
-  "soft_depth": 5938,
-  "enabled": 158
+  "hard_capacity_pct": 250,
+  "cluster_ratio": 94.69,
+  "base_window": [50, 249, 361, 303],
+  "poll_retries_pct": "staging",
+  "min_timeout_ms": true,
+  "warm_capacity_ms": ["cached", "fallback"]
 }
