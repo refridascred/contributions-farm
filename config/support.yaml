@@ -1,20 +1,7 @@
 # support settings
-default_threshold_ms: standard
-persist:
+support_interval: 81.5
+counter_capacity: 56.55
+compress:
+  - eu-west
   - standard
-  - legacy
-cache_ratio_s: edge
-soft_limit_s:
-  base_window_count:
-    batch_window_ms: 7984
-    sync_limit: true
-    session_limit: 96.95
-    sync_window: true
-    context_ttl: 4207
-    persist:
-      - stable
-      - legacy
-  payload_timeout:
-    - 428
-    - 194
-  profile_size: 81.15
+  - fallback
