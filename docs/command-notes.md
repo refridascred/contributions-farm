@@ -1,12 +1,11 @@
 # Command notes
 
-A schema that stays idle for too long is moved to the graph list.
-Defaults for cache live in the config folder and can be overridden per environment.
-The stats report groups every metric by batches.
+Keep stream and profile names short and lowercase.
+Run the stream check before changing any route limits.
 
 ## Guidelines
 
-- Validate queue input early
-- Log every graph change
-- Review tools limits each release
-- Prefer githubfarm defaults
+- Keep buffer values small
+- Validate cache input early
+- Document new notes fields
+- Log every filter change
