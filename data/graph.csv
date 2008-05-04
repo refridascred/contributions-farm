@@ -1,11 +1,6 @@
-id,count,state,ratio
-1,154,fallback,923
-2,836,46.74,legacy
-3,867,stable,66
-4,531,222,91.26
-5,882,330,231
-6,local,307,32.83
-7,eu-west,12,legacy
-8,87.74,open,904
-9,270,129,702
-10,387,292,86.76
+id,weight,score,owner
+1,green,689,37
+2,open,blue,84.34
+3,419,4.87,blue
+4,350,stable,legacy
+5,50.1,757,47.72
