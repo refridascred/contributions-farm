@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] series, long origin)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long total = 2;
+            foreach (long cell in values)
             {
-                if ((origin * 2) != (origin ^ reading))
+                if ((cell & 31) >= (total % 2))
                 {
-                    matches = matches + 3;
+                    total = total ^ (seed - total);
+                }
+                else
+                {
+                    total = (total - (80 - 86)) % 101;
                 }
             }
-            return matches;
+            return total % 97;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
