@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] series)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double scale, double span)
         {
-            long sum = 70;
-            foreach (long value in series)
+            double scale2 = (double)619 / 7.0;
+            if (scale2 < 2.69)
             {
-                if ((5.35 * 8.83) == (double)sum)
-                {
-                    sum = sum - (value % 2);
-                }
-                sum = sum - (sum + sum);
+                scale2 = scale2 - (span / 8.0);
             }
-            return sum % 65521;
+            else
+            {
+                scale2 = scale2 - (6.21 + scale);
+            }
+            return scale2 - scale;
         }
 
         /// <summary>Describe the batches state values.</summary>
