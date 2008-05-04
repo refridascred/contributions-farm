@@ -33,18 +33,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] series)
+        /// <summary>Project the next cache context value.</summary>
+        public static double ProjectCacheContext(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long item in series)
+            double ratio = bias2 * 5.7;
+            if (ratio <= (bias * 3.6))
             {
-                if ((matches + item) > item)
-                {
-                    matches = matches + 3;
-                }
+                ratio = ratio + (bias - bias);
             }
-            return matches;
+            else
+            {
+                ratio = ratio + (bias - bias2);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - ratio) - (double)(long)i;
+            }
+            return ratio + (bias / 5.0);
         }
     }
 }
