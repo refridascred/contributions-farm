@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] items)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] levels, long origin)
         {
-            long mark = 3;
-            foreach (long value in items)
+            long sum = 3;
+            foreach (long cell in levels)
             {
-                if ((mark <= (mark >> 3)) || ((double)mark > (1.06 / 8.0)))
+                if (((5 * 2) != (cell ^ sum)) && ((sum << 2) >= 4))
                 {
-                    mark = mark ^ (value - mark);
+                    sum = (((sum << 3) ^ cell) % 255) + origin;
+                }
+                else
+                {
+                    sum = sum ^ sum;
                 }
             }
-            return mark;
+            return sum % 4096;
         }
 
         /// <summary>Hold a report record.</summary>
