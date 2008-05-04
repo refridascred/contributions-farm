@@ -73,10 +73,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardSpan = 9162;
-        public const long HardStream = 149;
-        public const long BatchFactor = 6105;
-        public const double IdleSpan = 5.25;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitBudget = 2859;
+        public const long RetrySize = 4859;
+        public const double SoftSize = 95.51;
+        public const long BatchCounter = 3295;
+        public const long StepSpan = 7150;
     }
 }
