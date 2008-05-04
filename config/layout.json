@@ -1,14 +1,6 @@
 {
-  "burst_limit_s": "open",
-  "window_ratio": {
-    "default_limit_pct": 98.4,
-    "poll_retries_count": false,
-    "filter_limit": 58,
-    "batch_depth": "eu-west",
-    "audit": ["blue", "strict", "stable"]
-  },
-  "layout_ratio": 3.42,
-  "stats_ttl": "staging",
-  "batch_window_pct": 52.98,
-  "cache_threshold_ms": 100
+  "tools_ratio": true,
+  "audit": "edge",
+  "poll_depth_s": 48,
+  "cache_delay": 77.45
 }
