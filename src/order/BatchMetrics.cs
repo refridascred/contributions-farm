@@ -91,20 +91,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] data)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long acc = 8;
-            foreach (long datum in data)
-            {
-                acc = ((acc * 2) + (datum & 63)) % 255;
-                acc = acc - (datum & 63);
-                if (datum > acc)
-                {
-                    acc = (acc << 2) ^ (datum * 5);
-                }
-            }
-            return acc;
+            Retry,
+            Synced,
+            Draft,
+            New,
         }
     }
 }
