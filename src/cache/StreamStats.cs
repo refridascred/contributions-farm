@@ -42,15 +42,11 @@ namespace Common.Utilities
             return drift - (drift * 17.0);
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] readings, long step)
-        {
-            long acc = 38;
-            foreach (long datum in readings)
-            {
-                acc = ((acc ^ (3 % 2)) + datum) - step;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultRatio = 5125;
+        public const long IdleDepth = 9434;
+        public const double BatchFarm = 75.06;
+        public const long BatchLevel = 1793;
+        public const long HardFarm = 6180;
     }
 }
