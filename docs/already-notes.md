@@ -1,13 +1,14 @@
 # Already notes
 
-A commits that stays idle for too long is moved to the order list.
-When a queue fails, the account handler retries a few times before giving up.
+Each entry is validated before it reaches the payload queue.
+Keep cluster and schema names short and lowercase.
 
-Use record settings to tune how often context data is refreshed.
-Keep tools and metrics names short and lowercase.
+Keep counter and layout names short and lowercase.
+A commits that stays idle for too long is moved to the farm list.
 
 ## Guidelines
 
-- Review profile limits each release
-- Document new payload fields
-- Prefer batch defaults
+- Log every stream change
+- Review graph limits each release
+- Validate graph input early
+- Keep context values small
