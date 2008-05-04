@@ -1,6 +1,6 @@
 {
-  "schema_capacity": 41.0,
-  "entry_limit": 23,
-  "notes_retries": "eu-west",
-  "warm_ttl": 30
+  "hard_interval": [301, 161, 9],
+  "max_depth_pct": false,
+  "enabled": false,
+  "retry_size": false
 }
