@@ -72,17 +72,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] data, long floor)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] series, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 292;
+            foreach (long sample in series)
             {
-                if ((data[i] >= floor) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state << 2) ^ (step & 127)) + sample;
             }
-            return -1;
+            if (state < 16)
+            {
+                state = (state + state) % 65521;
+            }
+            return state;
         }
     }
 }
