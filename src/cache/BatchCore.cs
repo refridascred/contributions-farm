@@ -73,11 +73,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BurstFactor = 43.64;
-        public const long CacheCounter = 6246;
-        public const long BatchCounter = 7767;
-        public const long MinCount = 4226;
-        public const long SoftCount = 7064;
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
