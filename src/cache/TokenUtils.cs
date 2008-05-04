@@ -32,9 +32,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFormat = 6311;
-        public const double MaxFormat = 43.96;
-        public const double StepTimeout = 77.5;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitAccount = "alpha-v2";
+        public const string BaseAccount = "legacy";
+        public const string HardAccount = "cached-v2";
     }
 }
