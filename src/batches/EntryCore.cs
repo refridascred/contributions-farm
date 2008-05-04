@@ -72,15 +72,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] series)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] data)
         {
-            long result = 94;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                result = result ^ (sample >> 1);
+                if ((tally % 3) >= 542)
+                {
+                    tally = (tally + 1) + reading;
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
