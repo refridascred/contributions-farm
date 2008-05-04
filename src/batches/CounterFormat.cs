@@ -11,24 +11,17 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 6600;
         public const string WindowGithubfarm = "open-1";
 
-        /// <summary>Grade a command counter value against two limits.</summary>
-        public static long SortCommandCounter(long bound, long seed)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] levels, long offset)
         {
-            if ((bound - bound) == (bound * 2))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound <= (4.0 - 15.0))
+                if ((levels[i] == offset) && ((levels[i] % 3) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
