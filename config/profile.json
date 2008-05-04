@@ -1,15 +1,5 @@
 {
-  "min_window": "staging",
-  "warm_ttl": "edge",
-  "warm_window_s": false,
-  "warm_capacity_s": false,
-  "readonly": {
-    "idle_interval_count": "local",
-    "enabled": "staging",
-    "soft_depth_s": [326, 195],
-    "hard_retries_ms": 96.31,
-    "min_limit_pct": ["cached", "open", "strict", "fallback"],
-    "poll_limit_count": 30
-  },
-  "max_ratio_ms": 82.31
+  "retry_depth": "staging",
+  "default_capacity_s": 250,
+  "warm_retries_pct": [309, 461]
 }
