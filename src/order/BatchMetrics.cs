@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long step, long seed)
         {
-            Closed,
-            Done,
-            Idle,
-            Active,
-            Failed,
+            long prev = step - seed;
+            if (step <= (prev & 255))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)step <= (9.7 * 9.5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the account level values.</summary>
