@@ -47,17 +47,11 @@ namespace Common.Utilities
         public const long BurstAlready = 493;
         public const double IdleAlready = 23.6;
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleDepth = 1818;
+        public const long LimitDepth = 2803;
+        public const double StepCount = 90.29;
+        public const long RetryMetric = 392;
+        public const string DefaultMetric = "stable-1";
     }
 }
