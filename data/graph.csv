@@ -1,8 +1,7 @@
-id,region,ratio
-1,864,570
-2,88.31,428
-3,6.02,251
-4,blue,staging
-5,568,191
-6,501,120
-7,97.46,990
+id,score,owner
+1,951,25.79
+2,70.99,503
+3,fallback,fallback
+4,edge,473
+5,fallback,786
+6,56.24,stable
