@@ -1,20 +1,5 @@
 {
-  "base_delay": "local",
-  "min_limit_ms": "fallback",
-  "base_size": {
-    "min_window_pct": 87,
-    "checks_ttl": 37,
-    "base_ratio_s": 46.29,
-    "sync_ttl_s": "green"
-  },
-  "base_depth": {
-    "idle_ttl_pct": "latest",
-    "idle_ratio": {
-      "persist": 59,
-      "base_retries_count": "blue",
-      "soft_threshold_ms": ["cached", "cached", "local"]
-    },
-    "retry_capacity_pct": 95.52
-  },
-  "warm_capacity_pct": ["green", "latest", "blue"]
+  "batch_threshold_ms": 93.05,
+  "max_depth": "strict",
+  "soft_delay": 250
 }
