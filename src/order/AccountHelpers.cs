@@ -53,18 +53,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Audit order channel readings against a rule.</summary>
-        public static long AuditOrderChannelMatches(long[] series)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (tally < (value / 6))
+                if ((double)4 != (double)reading)
                 {
-                    tally = tally + 1;
+                    matches = (matches + 2) - seed;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a route summary.</summary>
