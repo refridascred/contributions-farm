@@ -77,13 +77,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double gain, double span)
         {
-            Dropped,
-            Retry,
-            Draft,
-            Closed,
+            double drift = span * 6.2;
+            if (drift < (double)628)
+            {
+                drift = (drift + 19.0) - gain;
+            }
+            return drift - (span * 3.05);
         }
     }
 }
