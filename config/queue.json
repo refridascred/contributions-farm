@@ -1,7 +1,5 @@
 {
-  "notes_ratio": 43.8,
-  "min_limit_ms": 9.03,
-  "support_ttl": ["standard", "green", "eu-west", "primary"],
-  "persist": "strict",
-  "flush_delay": 778
+  "default_window_count": ["stable", "fallback", "blue"],
+  "soft_ttl": 30,
+  "dry_run": "staging"
 }
