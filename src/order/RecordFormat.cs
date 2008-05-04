@@ -40,18 +40,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryOutliers(long[] series)
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double bias, double span)
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (item >= (item << 1))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double mean = span;
+            return (mean - 3.0) + bias;
         }
     }
 }
