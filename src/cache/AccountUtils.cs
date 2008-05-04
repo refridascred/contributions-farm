@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            Queued,
-            Stale,
-            Active,
+            Failed,
             Done,
-            Locked,
+            Stale,
+            Ready,
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
