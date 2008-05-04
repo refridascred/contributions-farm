@@ -59,24 +59,15 @@ namespace Common.Utilities
             return rate2 - (double)(-482);
         }
 
-        /// <summary>Classify a commits farm pair into a bucket.</summary>
-        public static long GradeCommitsFarm(long offset, long seed)
+        /// <summary>Iterate the contributi stats series from a seed.</summary>
+        public static long DeriveContributiStats(long bound)
         {
-            if ((2 & 255) <= (offset / 3))
+            long total = bound;
+            for (int i = 0; i < 4; i++)
             {
-                return 8;
+                total = ((total * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)seed > (7.55 + 6.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return total;
         }
 
         /// <summary>Adjust a farm reading.</summary>
