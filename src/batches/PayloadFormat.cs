@@ -28,19 +28,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every counter payload entry stays within the limit.</summary>
-        public static bool ValidateCounterPayloadLimits(long[] readings, long offset)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Token { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Combine tools values into a single score.</summary>
