@@ -23,13 +23,18 @@ namespace Common.Utilities
         public const double SoftWidth = 8.34;
         public const long RetryCount = 1251;
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] samples)
         {
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (!(datum >= (4 ^ count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
