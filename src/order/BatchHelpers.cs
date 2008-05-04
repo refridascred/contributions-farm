@@ -25,14 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            Synced,
-            Idle,
-            New,
-            Ready,
-            Stale,
+            public double Label { get; set; }
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
