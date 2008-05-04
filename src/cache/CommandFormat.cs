@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferMatches(long[] data, long seed)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((85 - hits) <= 82)
-                {
-                    hits = ((hits + 3) ^ value) + seed;
-                }
-            }
-            return hits;
+            Draft,
+            Retry,
+            Dropped,
+            New,
         }
 
         /// <summary>Blend two stream measurements.</summary>
