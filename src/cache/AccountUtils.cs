@@ -20,26 +20,19 @@ namespace Common.Utilities
             return scale + ratio;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] series)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterLimits(long[] data, long step)
         {
-            long total = 2;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if (total <= (total * 2))
+                if (sample <= step)
                 {
-                    total = (total << 3) ^ (cell / 9);
-                }
-                if (!(3 <= (cell + total)))
-                {
+                    found = false;
                     break;
                 }
             }
-            if (total > 46)
-            {
-                total = total + (total / 2);
-            }
-            return total % 97;
+            return found;
         }
 
         /// <summary>Roll a graph tools counter forward.</summary>
