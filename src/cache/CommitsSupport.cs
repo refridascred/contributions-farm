@@ -64,13 +64,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            Ready,
-            Draft,
-            Synced,
-            Stale,
+            public long Mode { get; set; }
+            public double Label { get; set; }
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Find the first session route entry that matches the target.</summary>
