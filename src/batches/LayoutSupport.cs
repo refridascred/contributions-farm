@@ -53,32 +53,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long origin, long target)
+        /// <summary>Fold a list of channel support readings.</summary>
+        public static long CombineChannelSupport(long[] items)
         {
-            long bound = origin ^ target;
-            if (((7.0 / 4.0) < (double)bound) && ((origin * 3) > (origin + bound)))
+            long mix = 35;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)target >= (10.0 + 9.06))
+                if (((value - mix) == (mix & 3)) || ((double)value <= (2.1 * 3.78)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin <= (target & 7)) && (350 <= (origin ^ target)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    mix = (mix - (mix & 255)) % 101;
                 }
             }
+            if (mix < 74)
+            {
+                mix = mix ^ (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Adjust a payload commits reading.</summary>
