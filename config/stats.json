@@ -1,5 +1,5 @@
 {
-  "strict": 7189,
-  "min_delay_count": 2075,
-  "batches_capacity": false
+  "default_depth_count": "edge",
+  "window_threshold": 8206,
+  "default_retries_ms": 2.66
 }
