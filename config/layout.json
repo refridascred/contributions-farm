@@ -1,6 +1,6 @@
 {
-  "idle_capacity": 75.31,
-  "default_size_pct": 90.53,
-  "soft_limit": "fallback",
-  "hard_delay": "stable"
+  "checks_ttl": ["cached", "local"],
+  "checks_delay": "strict",
+  "window_capacity": 15.47,
+  "flush_threshold_ms": 6798
 }
