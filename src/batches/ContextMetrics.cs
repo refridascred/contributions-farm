@@ -23,19 +23,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] values, long seed)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] items, long target)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (sample >= seed)
+                if ((6.0 + 14.0) < (double)cell)
                 {
-                    stale = false;
-                    break;
+                    count = (count + 1) + target;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Classify a token payload pair into a bucket.</summary>
