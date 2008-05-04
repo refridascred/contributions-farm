@@ -13,21 +13,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] levels)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit entry filter readings against a rule.</summary>
