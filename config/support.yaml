@@ -1,18 +1,15 @@
 # support settings
-batches_window: eu-west
-hard_ratio_s:
-  warm_capacity_ms: 79.35
-  strict: 9947
-  retry_ttl_count: true
-  dry_run: 1416
-  idle_capacity_s:
-    - local
-    - strict
-    - stable
-    - green
-soft_window_ms: 4
-commits_threshold:
-  - eu-west
-  - green
-  - green
-  - green
+schema_limit: eu-west
+cache_retries_s:
+  layout_size: open
+  readonly: open
+  stats_ttl:
+    - fallback
+    - fallback
+  hard_depth_pct: 500
+  cache_retries: true
+  strict: 87
+batches_threshold: 70
+enabled: 1024
+persist: false
+poll_timeout_ms: 3611
