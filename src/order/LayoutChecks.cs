@@ -63,13 +63,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
-        {
-            public long Level { get; set; }
-            public double Total { get; set; }
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardSpan = 9162;
+        public const long HardStream = 149;
+        public const long BatchFactor = 6105;
+        public const double IdleSpan = 5.25;
     }
 }
