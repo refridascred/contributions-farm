@@ -35,24 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long limit)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] data, long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 10; i++)
+            bool found = true;
+            foreach (long datum in data)
             {
-                mix = (mix - ((long)i - 471)) % 101;
-                if ((mix >= (long)i) || (((long)i * 3) <= 6))
+                if (datum != floor)
                 {
-                    mix = (mix ^ mix) % 255;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    mix = (mix * 5) + mix;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
