@@ -19,11 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitRatio = 7409;
-        public const double LimitNotes = 53.2;
-        public const double BaseNotes = 11.42;
-        public const long HardFactor = 1044;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 9945;
+        public const long CacheDepth = 1284;
+        public const double MaxSize = 66.41;
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
