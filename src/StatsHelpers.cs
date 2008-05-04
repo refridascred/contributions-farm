@@ -20,15 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Stale,
-            Draft,
-            New,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxSize = 2281;
+        public const long StepNotes = 52;
+        public const long DefaultNotes = 1851;
+        public const string IdleSize = "primary-edge";
+        public const double BurstNotes = 25.59;
 
         /// <summary>Count commits account pairs that satisfy a relation.</summary>
         public static long OverlapCommitsAccountCount(long[] data)
