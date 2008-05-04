@@ -1,12 +1,8 @@
 {
-  "sync_ratio_pct": false,
-  "readonly": {
-    "min_ratio": "green",
-    "tools_timeout": 52,
-    "idle_threshold": ["standard", "latest", "blue"]
-  },
-  "entry_timeout": 12,
-  "channel_retries": [307, 80],
-  "tools_timeout": [474, 76, 258],
-  "compress": 28
+  "readonly": 65.43,
+  "stream_depth": 34.52,
+  "compress": "green",
+  "batch_retries": "primary",
+  "warm_threshold": 2958,
+  "base_capacity_pct": 6574
 }
