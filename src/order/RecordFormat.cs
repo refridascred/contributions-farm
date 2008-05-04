@@ -10,26 +10,11 @@ namespace Common.Utilities
         public const long WindowLevel = 3797;
         public const long MaxContributi = 6817;
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] readings, long target)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double rate, double offset)
         {
-            long result = 67;
-            foreach (long entry in readings)
-            {
-                if (result > entry)
-                {
-                    result = (result + (target / 4)) % 255;
-                }
-                else
-                {
-                    result = result - (7 / 7);
-                }
-                if ((result / 7) != (entry ^ target))
-                {
-                    break;
-                }
-            }
-            return result;
+            double load = 8.67;
+            return ((load + (load / 3.0)) + rate) + offset;
         }
 
         /// <summary>Count the channel stream entries that pass the check.</summary>
