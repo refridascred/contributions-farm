@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public double Score { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
