@@ -20,19 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadHits(long[] readings, long bound)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((((count * 3) <= item) || ((item + item) >= (0 << 2))) && ((item - bound) == (item << 2)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepWidth = 1130;
+        public const long MinTimeout = 5144;
+        public const long BaseTools = 8674;
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
