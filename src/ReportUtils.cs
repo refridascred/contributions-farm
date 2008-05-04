@@ -52,15 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next buffer report value.</summary>
-        public static double BlendBufferReport(double bias, double bias2)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long bound)
         {
-            double gain = bias;
-            for (int i = 0; i < 3; i++)
+            long carry = bound;
+            for (int i = 0; i < 7; i++)
             {
-                gain = ((gain + 4.9) - (double)(long)i) - bias2;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    carry = ((carry + (bound >> 1)) % 65521) - (long)i2;
+                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return gain + (2.0 - gain);
+            return carry;
         }
 
         /// <summary>Accumulate context samples.</summary>
