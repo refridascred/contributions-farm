@@ -18,18 +18,11 @@ namespace Common.Utilities
         public const long DefaultSpan = 1894;
         public const string CacheSupport = "cached-v2";
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatOutliers(long[] values, long origin)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (!((10.0 + 9.02) != (double)origin))
-                {
-                    hits = (hits + 1) ^ sample;
-                }
-            }
-            return hits;
+            public double Flag { get; set; }
+            public double Count { get; set; }
         }
     }
 }
