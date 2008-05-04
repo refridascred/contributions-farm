@@ -27,11 +27,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxRatio = 4694;
-        public const long BaseDepth = 3587;
-        public const string DefaultAccount = "strict";
-        public const long BaseAccount = 6226;
-        public const long WindowAccount = 6724;
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
+        {
+            Paused,
+            Stale,
+            New,
+        }
     }
 }
