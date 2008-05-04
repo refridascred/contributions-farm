@@ -61,17 +61,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] data, long origin)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == origin) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public double Level { get; set; }
+            public double Offset { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
