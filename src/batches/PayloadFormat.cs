@@ -50,13 +50,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] levels, long floor)
         {
-            public long Total { get; set; }
-            public bool Level { get; set; }
-            public long Region { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
