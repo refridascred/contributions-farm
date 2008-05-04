@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] items, long offset)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (offset > (seen * 2))
-                {
-                    seen = (seen + 2) ^ value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseDepth = 3712;
+        public const long LimitBudget = 7484;
+        public const long RetrySpan = 180;
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long ClassifyAccount(long step, long limit)
