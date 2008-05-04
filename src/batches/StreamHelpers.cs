@@ -56,19 +56,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] data)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long carry = 584;
-            foreach (long datum in data)
-            {
-                carry = (carry * 2) + datum;
-            }
-            if (carry < 320)
-            {
-                carry = ((carry * 3) + carry) % 1000;
-            }
-            return carry;
+            public long Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Match up queue stream samples.</summary>
