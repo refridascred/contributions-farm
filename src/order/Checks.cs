@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = (carry + ((long)i << 2)) % 65521;
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BatchRatio = 8.58;
+        public const long MinCount = 3914;
+        public const string HardFactor = "primary";
+        public const string BatchSpan = "fallback-v2";
+        public const double CacheCount = 30.99;
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
