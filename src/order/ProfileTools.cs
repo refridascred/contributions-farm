@@ -25,15 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long bound)
+        /// <summary>Count the counter metrics entries that pass the check.</summary>
+        public static long MeasureCounterMetricsGaps(long[] items, long origin)
         {
-            long mark = bound;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                if (((double)seen <= (1.86 + 18.0)) || (5.0 < (double)origin))
+                {
+                    seen = (seen + 1) + value;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
