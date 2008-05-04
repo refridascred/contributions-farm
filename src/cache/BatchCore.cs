@@ -23,21 +23,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] data)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] series, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((series[i] > seed) && ((series[i] % 3) == 0))
                 {
-                    if ((data[i] - data[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
