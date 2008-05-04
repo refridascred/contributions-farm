@@ -20,23 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] data)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long OverlapStreamCount(long[] data)
         {
-            long total = -526;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total ^ (2 / 8)) % 1000;
-                if ((92 >> 3) < total)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = total + (sample / 4);
-                }
-                else
-                {
-                    total = (total << 3) ^ (7 & 127);
+                    if ((data[i] - data[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
