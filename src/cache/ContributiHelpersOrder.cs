@@ -34,9 +34,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BaseRatio = 35.78;
-        public const long MinBudget = 927;
-        public const string HardWindow = "open";
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
+        {
+            public string Flag { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Limit { get; set; }
+            public string Owner { get; set; } = "";
+        }
     }
 }
