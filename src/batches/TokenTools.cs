@@ -26,19 +26,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double bias, double bias2)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] data)
         {
-            double scale = (3.0 / 9.0) * 20.0;
-            if (scale <= (double)4)
+            long acc = -540;
+            foreach (long reading in data)
             {
-                scale = (scale - (double)2) - bias2;
+                if ((acc - 502) != (reading >> 1))
+                {
+                    acc = acc - (acc & 3);
+                }
+                else
+                {
+                    acc = (acc + (acc ^ acc)) % 255;
+                }
             }
-            else
-            {
-                scale = scale - bias;
-            }
-            return scale + scale;
+            return acc;
         }
     }
 }
