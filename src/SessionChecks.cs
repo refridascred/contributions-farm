@@ -73,12 +73,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
-        {
-            Stale,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxWidth = 9812;
+        public const string MaxScore = "local-v2";
+        public const long HardSize = 3866;
     }
 }
