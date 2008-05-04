@@ -30,13 +30,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterLimits(long[] data, long step)
         {
-            Draft,
-            Pending,
-            Closed,
-            Queued,
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
