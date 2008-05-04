@@ -37,22 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] samples)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long mix = 0;
-            foreach (long reading in samples)
-            {
-                if ((mix + reading) != (mix + mix))
-                {
-                    mix = ((mix << 2) ^ reading) % 4096;
-                }
-            }
-            if (mix < 7)
-            {
-                mix = (mix << 2) ^ (574 >> 3);
-            }
-            return mix % 1000;
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
