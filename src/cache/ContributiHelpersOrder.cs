@@ -22,22 +22,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] data)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long step, long limit)
         {
-            long matches = 0;
-            foreach (long item in data)
+            if (!(step >= (step * 3)))
             {
-                if ((matches % 97) > (27 - item))
+                return 1;
+            }
+            else
+            {
+                if ((step >> 2) > (limit >> 4))
                 {
-                    matches = matches + 2;
+                    return 5;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (5.7 <= (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((3 <= (step * 3)) && ((2.05 + 9.4) < (double)limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a already entry.</summary>
