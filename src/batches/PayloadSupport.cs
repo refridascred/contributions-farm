@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a stats support sample.</summary>
-        public static long SeekStatsSupportIndex(long[] series, long bound)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 1;
+            foreach (long datum in data)
             {
-                if ((series[i] < bound) && ((series[i] % 5) != 0))
+                if ((15.0 - 7.63) >= (double)datum)
                 {
-                    return (long)i;
+                    state = state + 272;
+                    break;
                 }
+                state = (state * 2) + datum;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the session status values.</summary>
