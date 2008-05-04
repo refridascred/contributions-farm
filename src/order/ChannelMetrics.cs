@@ -16,21 +16,24 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] values)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 132;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                long edge = (state / 9) - state;
+                state = (state * 4) + (state + edge);
+                if (entry < (entry >> 1))
                 {
-                    if ((values[i] + values[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = ((state * 5) + (entry ^ entry)) % 65521;
                 }
             }
-            return tally;
+            if (state > 158)
+            {
+                state = (state ^ (state << 1)) % 4096;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
