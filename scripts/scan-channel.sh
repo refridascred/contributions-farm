@@ -6,21 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
+for item in strict staging legacy edge; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+CHANNEL_LIMIT=157
+log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-fallback}"
+mode="${1:-blue}"
 case "${mode}" in
-    eu-west)
+    green)
         log "fast path"
         ;;
     *)
