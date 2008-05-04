@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long WindowSize = 6323;
         public const long BasePayload = 3503;
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesBounds(long[] levels, long limit)
         {
-            public long Label { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Adjust a token reading.</summary>
