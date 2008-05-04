@@ -1,6 +1,21 @@
 {
-  "default_size_count": [363, 390],
-  "flush_size_pct": 55.53,
-  "format_retries": false,
-  "soft_threshold_count": "edge"
+  "retry_interval_pct": 5972,
+  "max_capacity": 250,
+  "format_delay": false,
+  "channel_timeout": {
+    "idle_timeout_s": "cached",
+    "max_delay_ms": 3.03,
+    "hard_retries_pct": {
+      "buffer_ttl": 60,
+      "burst_delay": [64, 136, 323, 187],
+      "dry_run": 250,
+      "retry_limit_s": 74.9
+    },
+    "default_interval_ms": {
+      "flush_timeout": true,
+      "default_ttl": 5684,
+      "poll_depth": false
+    },
+    "commits_size": "local"
+  }
 }
