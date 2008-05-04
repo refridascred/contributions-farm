@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferMatches(long[] data, long seed)
         {
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((85 - hits) <= 82)
+                {
+                    hits = ((hits + 3) ^ value) + seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
