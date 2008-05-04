@@ -1,28 +1,9 @@
 # entry settings
-burst_window:
-  farm_retries: primary
-  retry_ratio_count: false
-  audit:
-    - 251
-    - 86
-    - 326
-  verbose: 2942
-  min_ttl:
-    - 277
-    - 75
-  flush_size_count: 5391
-cache_ttl: 13.48
-dry_run:
-  - 2
-  - 415
-  - 307
-  - 205
-record_limit:
-  - latest
-  - edge
-  - green
-  - open
-poll_depth:
-  batch_ratio: local
-  batch_retries: blue
-  payload_interval: true
+batch_threshold:
+  - 9
+  - 298
+  - 110
+persist: 66
+poll_size_count: primary
+soft_retries_ms: true
+verbose: 2695
