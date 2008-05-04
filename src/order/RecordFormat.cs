@@ -47,11 +47,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double bias, double span)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            double mean = span;
-            return (mean - 3.0) + bias;
+            Done,
+            New,
+            Dropped,
+            Active,
+            Ready,
         }
     }
 }
