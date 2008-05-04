@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] series)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmBounds(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if ((value - hits) == (hits - 31))
+                if (item > floor)
                 {
-                    hits = hits + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
