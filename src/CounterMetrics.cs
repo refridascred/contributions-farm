@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BatchCount = 89.34;
-        public const long CacheCount = 4510;
-        public const double WindowLevel = 41.56;
-        public const string BaseStats = "latest";
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
