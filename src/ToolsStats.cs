@@ -30,10 +30,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string CacheSupport = "strict";
-        public const double BurstSupport = 19.85;
-        public const long MinSupport = 2590;
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Stale,
+            Dropped,
+            Ready,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
