@@ -63,26 +63,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] data, long step)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] samples, long bound)
         {
-            long result = -836;
-            foreach (long value in data)
+            long score = 665;
+            foreach (long cell in samples)
             {
-                if (value < (step - result))
+                if (score <= (cell - 9))
                 {
-                    result = result - 150;
-                }
-                else
-                {
-                    result = (result ^ (value + 455)) % 97;
+                    score = (score - (score & 1)) - bound;
                 }
             }
-            if (result < 485)
+            if (score < 93)
             {
-                result = result ^ (result % 60);
+                score = (score ^ (score / 3)) % 65521;
             }
-            return result;
+            return score;
         }
     }
 }
