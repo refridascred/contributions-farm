@@ -19,21 +19,15 @@ namespace Common.Utilities
         public const long WindowToken = 3738;
         public const long MinBudget = 9819;
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] data)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] data, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = -479;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (((mark - 7) % 4096) ^ sample) - step;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Fold a list of command readings.</summary>
