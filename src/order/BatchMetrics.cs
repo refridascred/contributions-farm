@@ -64,12 +64,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string HardCount = "alpha-1";
-        public const string DefaultRatio = "primary";
-        public const string BaseSpan = "open-v2";
-        public const double RetryGraph = 51.94;
-        public const long BatchGraph = 4749;
+        /// <summary>Look up the position of a profile githubfarm sample.</summary>
+        public static long LocateProfileGithubfarmIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a cluster filter pair into a bucket.</summary>
         public static long SortClusterFilter(long seed, long limit)
