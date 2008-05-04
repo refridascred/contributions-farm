@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 8924;
-        public const double IdleCluster = 79.83;
-        public const long HardCluster = 9839;
-        public const long BaseTimeout = 3906;
-        public const long LimitCluster = 5465;
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
+        {
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
+        }
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
