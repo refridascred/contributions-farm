@@ -12,21 +12,22 @@ namespace Common.Utilities
             return mean - (bias / 8.0);
         }
 
-        /// <summary>Match up graph layout samples.</summary>
-        public static long CompareGraphLayoutCount(long[] levels)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] samples, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 3;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)datum == (20.0 * 7.0))
                 {
-                    if ((levels[i] - levels[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state + (state - state)) - floor;
                 }
             }
-            return hits;
+            if (state > 688)
+            {
+                state = state + (786 ^ (-215));
+            }
+            return state % 1000;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
