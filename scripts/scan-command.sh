@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=443
+log "limit is ${COMMAND_LIMIT}"
+
+for item in stable eu-west green; do
+    log "checking ${item}"
+done
 
 count=0
 while [ "${count}" -lt 4 ]; do
