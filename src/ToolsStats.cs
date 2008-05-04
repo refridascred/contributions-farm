@@ -37,23 +37,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double rate, double bias)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            double rate2 = rate;
-            if (rate2 <= 12.0)
-            {
-                rate2 = (rate2 - (rate + rate2)) + bias;
-            }
-            else
-            {
-                rate2 = rate2 - (0.56 + rate);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = (rate2 - rate) + (double)(long)i;
-            }
-            return rate2 - (double)(-482);
+            public bool Limit { get; set; }
+            public double Mode { get; set; }
+            public long Score { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
