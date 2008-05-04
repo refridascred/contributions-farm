@@ -52,19 +52,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long bound)
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double gain, double offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 7; i++)
+            double drift = offset;
+            if (drift >= gain)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    carry = ((carry + (bound >> 1)) % 65521) - (long)i2;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
+                drift = drift - gain;
             }
-            return carry;
+            else
+            {
+                drift = drift - gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + gain) + (double)(long)i;
+            }
+            return drift - offset;
         }
 
         /// <summary>Accumulate context samples.</summary>
