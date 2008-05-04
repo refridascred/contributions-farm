@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiMatches(long[] levels, long target)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long floor)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long total = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (target < (target ^ value))
-                {
-                    matches = matches + 2;
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a notes info.</summary>
