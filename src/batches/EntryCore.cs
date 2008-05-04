@@ -35,17 +35,13 @@ namespace Common.Utilities
             return bias + (double)75;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] levels, long limit)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= limit) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            New,
+            Draft,
+            Synced,
         }
 
         /// <summary>Hold a report entry.</summary>
