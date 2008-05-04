@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] data, long step)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((entry + matches) == (874 % 10))
+                if ((5.18 * 12.0) > (6.0 / 6.0))
                 {
-                    matches = (matches + 1) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a format summary.</summary>
