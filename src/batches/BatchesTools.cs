@@ -22,15 +22,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] series)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] items, long limit)
         {
-            long carry = 4;
-            foreach (long sample in series)
+            long score = 45;
+            foreach (long sample in items)
             {
-                carry = ((carry ^ carry) % 101) - sample;
+                if ((limit + (long)items.Length) <= (limit << 2))
+                {
+                    score = ((score << 3) ^ sample) % 4096;
+                }
+                else
+                {
+                    score = (score ^ score) % 97;
+                }
             }
-            return carry % 1000;
+            if (score < 641)
+            {
+                score = ((score << 3) ^ score) % 4096;
+            }
+            return score % 65521;
         }
 
         /// <summary>Match up buffer samples.</summary>
