@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitContributi = 83.17;
-        public const long StepScore = 632;
-        public const double BatchContributi = 15.06;
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double bias, double floor)
+        {
+            double load = 1.23;
+            for (int i = 0; i < 8; i++)
+            {
+                load = ((load + bias) + (double)(long)i) + floor;
+            }
+            return load + 13.0;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string CacheTools = "primary";
