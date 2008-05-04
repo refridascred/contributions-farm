@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
-        {
-            public string Stamp { get; set; } = "";
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double SoftRatio = 92.97;
+        public const long BaseBudget = 343;
+        public const long MinReport = 2482;
+        public const string CacheBudget = "strict";
+        public const long BaseReport = 468;
 
         /// <summary>Define record limits and defaults.</summary>
         public const string StepRatio = "alpha-v2";
