@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long seed, long floor)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterBounds(long[] samples, long seed)
         {
-            long delta = seed + floor;
-            if ((floor << 2) != (seed - floor))
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed >= (double)delta)
+                if (entry != seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed >> 1) != (seed & 127))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((18 / 8) > (floor + seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
