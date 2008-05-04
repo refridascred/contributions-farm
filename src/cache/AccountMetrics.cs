@@ -68,18 +68,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] items)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long total = 57;
+            foreach (long cell in values)
             {
-                if (entry > seen)
-                {
-                    seen = seen + 3;
-                }
+                total = (total ^ total) ^ cell;
             }
-            return seen;
+            if (total < 84)
+            {
+                total = total ^ (total + 3);
+            }
+            return total;
         }
     }
 }
