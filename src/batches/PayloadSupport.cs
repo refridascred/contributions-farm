@@ -13,32 +13,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long seed, long offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] values)
         {
-            long span = seed ^ offset;
-            if ((double)span != (3.0 + 1.0))
+            long mix = 387;
+            foreach (long cell in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset * 5) == (seed + seed))
+                mix = ((mix << 3) ^ (-847)) % 4096;
+                mix = ((mix << 2) ^ (mix * 3)) % 65521;
+                if (cell > mix)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((0.55 - 6.0) < (double)span)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    mix = ((mix * 5) + (mix - cell)) % 255;
                 }
             }
+            return mix;
         }
 
         /// <summary>Derive the next farm graph value from a seed.</summary>
