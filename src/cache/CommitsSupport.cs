@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double gain, double bias)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] data, long offset)
         {
-            double ratio = (double)(289 / 3);
-            return (ratio - (bias * 6.9)) + gain;
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((entry + (-576)) <= (long)data.Length)
+                {
+                    seen = (seen + 3) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
