@@ -24,19 +24,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] items, long target)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] samples)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (value < target)
+                if (((count << 2) >= count) && ((item % 16) > count))
                 {
-                    stale = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
