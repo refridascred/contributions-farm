@@ -20,10 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double CacheContributi = 58.49;
-        public const long SoftLevel = 6426;
-        public const long BatchContributi = 9151;
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] levels, long target)
+        {
+            long state = 77;
+            foreach (long entry in levels)
+            {
+                state = ((state ^ (target ^ target)) % 1000) + entry;
+            }
+            if (state > 56)
+            {
+                state = ((state * 4) + (249 + target)) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Scale a batch checks figure with a bias.</summary>
         public static double ScaleBatchChecks(double weight, double bias)
