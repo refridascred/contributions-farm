@@ -47,22 +47,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the profile order entries that pass the check.</summary>
-        public static long AuditProfileOrderGaps(long[] items, long bound)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (!(((long)items.Length << 1) < bound))
-                {
-                    tally = (tally + 1) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            Ready,
+            New,
         }
 
         /// <summary>Digest a series of profile entries.</summary>
