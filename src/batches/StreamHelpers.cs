@@ -17,19 +17,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long floor)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] data, long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((data[i] >= origin) && ((data[i] % 5) == 0))
                 {
-                    mark = (((mark << 3) ^ (3 * 2)) % 255) ^ (long)i2;
+                    return (long)i;
                 }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Find the first schema route entry that matches the target.</summary>
