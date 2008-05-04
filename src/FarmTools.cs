@@ -23,11 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardInterval = "alpha-1";
-        public const long BurstCount = 6602;
-        public const string MinFarm = "strict-v2";
-        public const double SoftFarm = 97.5;
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Queued,
+            Locked,
+            New,
+            Draft,
+            Pending,
+        }
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
