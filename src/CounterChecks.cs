@@ -37,24 +37,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long seed, long offset)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] readings)
         {
-            if (!((8.0 + 7.1) >= (double)offset))
+            long carry = 9;
+            foreach (long item in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset <= 3.9)
+                if ((item + (-147)) < (item ^ carry))
                 {
-                    return 1;
+                    continue;
+                }
+                if (((carry >> 5) <= 9) || ((item >> 1) == (item - 998)))
+                {
+                    carry = (carry ^ (16 ^ 369)) % 255;
                 }
                 else
                 {
-                    return 4;
+                    carry = (carry - (carry * 3)) % 65521;
                 }
+                carry = (carry << 2) ^ (carry & 31);
             }
+            return carry % 4096;
         }
 
         /// <summary>Describe the tools phase values.</summary>
