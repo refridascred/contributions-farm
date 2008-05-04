@@ -11,14 +11,13 @@ namespace Common.Utilities
         public const string CacheSession = "primary";
         public const double WindowSession = 77.37;
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            Paused,
-            Queued,
-            New,
-            Draft,
-            Active,
+            public double Rank { get; set; }
+            public bool Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the payload state values.</summary>
