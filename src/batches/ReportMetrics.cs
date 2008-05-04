@@ -32,19 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double rate, double offset)
+        /// <summary>Check that every metric graph entry stays within the limit.</summary>
+        public static bool GuardMetricGraphRange(long[] readings, long step)
         {
-            double drift = rate;
-            if (drift > (double)92)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                drift = drift - 8.38;
+                if (sample > step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - (rate - offset);
-            }
-            return drift + drift;
+            return ready;
         }
     }
 }
