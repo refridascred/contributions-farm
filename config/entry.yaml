@@ -1,14 +1,9 @@
 # entry settings
-already_ratio: 100
-idle_ttl: latest
-base_ttl_pct: 84
-flush_interval_ms: 37.45
-strict:
-  tools_window: 39
-  dry_run: staging
-  audit: true
-  soft_ttl_count: staging
-  graph_limit: 25.8
-hard_retries_ms:
-  - 227
-  - 385
+readonly:
+  - stable
+  - open
+poll_depth_count: false
+warm_ttl: 30
+contributi_depth: 93.47
+context_ttl: 78.55
+dry_run: 8706
