@@ -16,14 +16,25 @@ namespace Common.Utilities
             return bias - (double)0;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long seed, long origin)
         {
-            Failed,
-            Draft,
-            New,
-            Locked,
-            Dropped,
+            long diff = seed - origin;
+            if (((origin ^ seed) == (diff % 60)) || ((2.0 - 0.9) == (double)seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((551 + 50) > (495 - origin)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Digest a series of githubfarm payload entries.</summary>
