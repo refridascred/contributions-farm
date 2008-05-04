@@ -1,22 +1,11 @@
 # entry settings
-readonly:
-  - 155
-  - 141
-  - 84
-editor_depth: false
-batch_capacity:
-  - 470
-  - 441
-poll_interval:
-  flush_size_ms:
-    - 146
-    - 54
-    - 369
-  retry_ttl:
-    batch_size_pct: 6088
-    max_depth_ms: cached
-    sync_interval_ms: 10
-    payload_threshold: 92.43
-    poll_depth_pct: strict
-    stream_threshold: true
-  default_window_s: 33
+hard_timeout_ms:
+  burst_limit: 27
+  burst_limit_count:
+    - 104
+    - 106
+  token_timeout: 45.42
+  batch_retries_pct: 4529
+dry_run: 73
+base_threshold: latest
+cache_limit_pct: 92
