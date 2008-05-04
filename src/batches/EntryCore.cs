@@ -23,12 +23,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 331;
-        public const long SoftGraph = 5436;
-        public const double CacheRatio = 89.93;
-        public const string BaseGraph = "legacy-v2";
-        public const string DefaultSpan = "strict-v2";
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] items, long floor)
+        {
+            long total = 2;
+            foreach (long cell in items)
+            {
+                if (floor >= cell)
+                {
+                    total = (total << 3) ^ 8;
+                }
+            }
+            return total % 97;
+        }
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
