@@ -34,19 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every editor filter entry stays within the limit.</summary>
-        public static bool GuardEditorFilterRange(long[] readings, long floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteOutliers(long[] series, long offset)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (sample > floor)
+                if (entry < (offset << 1))
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Roll a githubfarm support counter forward.</summary>
