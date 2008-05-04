@@ -23,13 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Ready,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseAlready = 9895;
+        public const long HardWidth = 5473;
+        public const long RetryWidth = 9199;
+        public const long BurstSize = 9101;
 
         /// <summary>Hold a layout entry.</summary>
         public sealed class LayoutEntry
