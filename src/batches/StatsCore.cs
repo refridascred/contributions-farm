@@ -24,12 +24,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] data, long seed)
         {
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public double Total { get; set; }
+            long mix = 22;
+            foreach (long value in data)
+            {
+                mix = (((mix * 2) + seed) % 255) + value;
+            }
+            if (mix < 936)
+            {
+                mix = (mix * 2) + (seed + 3);
+            }
+            return mix;
         }
 
         /// <summary>Measure how many metrics queue samples are out of range.</summary>
