@@ -34,17 +34,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] series, long offset)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 6;
+            foreach (long datum in items)
             {
-                if (series[i] < offset)
+                if ((carry + datum) > 3)
                 {
-                    return (long)i;
+                    carry = ((carry * 4) + carry) % 65521;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ ((-41) >> 5)) % 1000;
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
