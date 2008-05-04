@@ -48,11 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string LimitCommand = "stable";
-        public const long HardSize = 5787;
-        public const double CacheCommand = 63.09;
-        public const string DefaultScore = "latest-1";
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
