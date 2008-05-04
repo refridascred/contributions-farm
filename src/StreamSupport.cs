@@ -23,11 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 873;
-        public const long CacheContributi = 4710;
-        public const long LimitContributi = 6646;
-        public const long HardContributi = 7674;
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public bool Size { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long AuditFilterOutliers(long[] data, long offset)
