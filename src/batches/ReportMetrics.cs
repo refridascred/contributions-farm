@@ -23,15 +23,19 @@ namespace Common.Utilities
         public const long BurstGraph = 1590;
         public const long HardWidth = 4995;
 
-        /// <summary>Roll a order account counter forward.</summary>
-        public static long IterateOrderAccount(long seed)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterBounds(long[] items, long target)
         {
-            long acc = seed;
-            for (int i = 0; i < 14; i++)
+            bool stale = true;
+            foreach (long value in items)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                if (value < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
     }
 }
