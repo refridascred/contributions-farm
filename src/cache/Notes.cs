@@ -69,10 +69,15 @@ namespace Common.Utilities
         public const long BurstAlready = 493;
         public const double IdleAlready = 23.6;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string LimitSpan = "alpha";
-        public const long WindowInterval = 3988;
-        public const long DefaultSchema = 4953;
-        public const string MaxFactor = "fallback-1";
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double gain, double offset)
+        {
+            double mean = 1.48 + (offset / 7.0);
+            if (mean <= (gain + gain))
+            {
+                mean = mean - 3.0;
+            }
+            return mean - (gain - offset);
+        }
     }
 }
