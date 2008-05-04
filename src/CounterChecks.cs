@@ -35,18 +35,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] values)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((reading ^ matches) < (reading - 9))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Active,
+            Retry,
+            Dropped,
+            Done,
+            Idle,
         }
 
         /// <summary>Blend two stats context measurements.</summary>
