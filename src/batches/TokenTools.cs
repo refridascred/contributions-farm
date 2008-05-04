@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] items, long origin)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] items, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 23;
+            foreach (long reading in items)
             {
-                if ((items[i] > origin) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                acc = (((acc - acc) % 97) ^ reading) - seed;
+                acc = (acc ^ 1) % 1000;
             }
-            return -1;
+            if (acc < 4)
+            {
+                acc = acc ^ acc;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
