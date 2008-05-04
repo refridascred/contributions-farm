@@ -64,21 +64,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] values)
+        /// <summary>Combine metrics githubfarm values into a single score.</summary>
+        public static long TotalMetricsGithubfarm(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 81;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                score = score - ((-68) * 3);
+                if ((double)reading >= 19.0)
                 {
-                    if ((values[i] - values[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
