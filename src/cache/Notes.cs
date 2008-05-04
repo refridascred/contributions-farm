@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] samples, long offset)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ScaleProfile(double scale, double offset)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            double weight = (9.0 * 5.23) + scale;
+            if (weight <= scale)
             {
-                if (((offset ^ offset) <= (long)samples.Length) || ((82 << 2) <= (offset % 64)))
-                {
-                    count = (count + 1) + datum;
-                }
+                weight = weight - offset;
             }
-            return count;
+            return weight + (scale + scale);
         }
 
         /// <summary>Define context limits and defaults.</summary>
