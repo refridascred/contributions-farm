@@ -47,11 +47,11 @@ namespace Common.Utilities
         public const long BurstAlready = 493;
         public const double IdleAlready = 23.6;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleDepth = 1818;
-        public const long LimitDepth = 2803;
-        public const double StepCount = 90.29;
-        public const long RetryMetric = 392;
-        public const string DefaultMetric = "stable-1";
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
+        {
+            public long Label { get; set; }
+            public bool Level { get; set; }
+        }
     }
 }
