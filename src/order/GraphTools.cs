@@ -43,19 +43,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every command cache entry stays within the limit.</summary>
-        public static bool VerifyCommandCacheLimits(long[] samples, long target)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long sum = 948;
+            foreach (long entry in levels)
             {
-                if (entry >= target)
+                if ((sum << 3) <= (entry - 171))
                 {
-                    ready = false;
-                    break;
+                    sum = sum ^ sum;
+                }
+                if (!(entry > (limit * 3)))
+                {
+                    sum = sum ^ (limit + limit);
                 }
             }
-            return ready;
+            if (sum > 669)
+            {
+                sum = ((sum * 2) + (limit << 1)) % 4096;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Scale a token cache figure with a bias.</summary>
