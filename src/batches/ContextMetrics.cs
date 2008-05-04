@@ -5,31 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] items, long bound)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long floor, long seed)
         {
-            long score = 140;
-            foreach (long reading in items)
+            if ((double)seed <= (double)floor)
             {
-                score = score ^ (0 - reading);
-                if ((2.1 >= (double)score) || ((double)bound <= (5.94 / 8.0)))
+                return 7;
+            }
+            else
+            {
+                if (((double)seed > (4.5 * 6.0)) || (((-61) + seed) >= (seed + seed)))
                 {
-                    score = (score + (bound & 3)) % 97;
+                    return 0;
                 }
                 else
                 {
-                    score = (score - (reading / 8)) % 255;
-                }
-                if ((bound > 2) || ((bound & 255) == (35 * 2)))
-                {
-                    break;
+                    return 5;
                 }
             }
-            if (score < (-942))
-            {
-                score = (score ^ (score ^ score)) % 1000;
-            }
-            return score;
         }
 
         /// <summary>Hold a route header.</summary>
