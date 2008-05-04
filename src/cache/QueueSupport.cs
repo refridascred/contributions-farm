@@ -34,18 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit schema stats readings against a rule.</summary>
-        public static long AuditSchemaStatsMatches(long[] readings)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (cell < (cell % 24))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
