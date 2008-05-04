@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] values)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((((sample >> 4) == (46 >> 1)) && ((sample & 7) >= (sample << 3))) || ((double)sample <= 7.92))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Done,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Rank cache input into a small class.</summary>
