@@ -19,15 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double gain, double offset)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            double load = gain - 8.16;
-            if (load > (offset - offset))
-            {
-                load = load - load;
-            }
-            return load + load;
+            public double Weight { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
