@@ -1,6 +1,18 @@
 {
-  "tools_ratio": true,
-  "audit": "edge",
-  "poll_depth_s": 48,
-  "cache_delay": 77.45
+  "filter_size": false,
+  "max_delay": {
+    "hard_delay": 24.1,
+    "cache_ratio": {
+      "schema_threshold": 250,
+      "retry_depth_ms": ["open", "cached", "cached", "latest"],
+      "warm_ttl": 69.27,
+      "filter_interval": "blue",
+      "poll_delay": ["green", "stable", "standard"]
+    },
+    "retry_ttl_pct": 7451,
+    "default_delay_pct": "stable",
+    "min_interval_ms": true
+  },
+  "readonly": "edge",
+  "persist": ["eu-west", "standard", "standard"]
 }
