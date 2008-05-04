@@ -24,25 +24,18 @@ namespace Common.Utilities
         public const long CacheDepth = 1284;
         public const double MaxSize = 66.41;
 
-        /// <summary>Grade a entry metric value against two limits.</summary>
-        public static long ClassifyEntryMetric(long origin, long seed)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] data, long origin)
         {
-            long prev = origin ^ seed;
-            if (origin >= (prev + origin))
+            long matches = 0;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin & 127) < (seed + 52))
+                if (((52 - origin) > (origin & 15)) || ((double)0 > (double)entry))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
