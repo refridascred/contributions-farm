@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine commits cache values into a single score.</summary>
-        public static long TallyCommitsCache(long[] readings)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long state = 7;
-            foreach (long entry in readings)
-            {
-                state = ((state + (-41)) % 97) ^ entry;
-            }
-            if (state < 3)
-            {
-                state = (state + (state % 24)) % 101;
-            }
-            return state % 97;
+            public double Mode { get; set; }
+            public long Size { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
