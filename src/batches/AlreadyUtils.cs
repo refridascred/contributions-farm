@@ -39,12 +39,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Count payload already pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadAlreadyCount(long[] data)
         {
-            Locked,
-            Active,
-            Dropped,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine already values into a single score.</summary>
