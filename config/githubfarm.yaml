@@ -1,5 +1,10 @@
 # githubfarm settings
-idle_interval: true
-verbose: stable
-burst_timeout_ms: 52.67
-enabled: open
+idle_retries_ms:
+  - 331
+  - 76
+  - 432
+  - 351
+retry_interval_pct: stable
+enabled: 58
+base_ttl_ms: 564
+idle_timeout_count: 250
