@@ -20,19 +20,11 @@ namespace Common.Utilities
             return weight + (double)8;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry & 127) >= (14 + entry))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleSize = 2040;
+        public const long HardLevel = 3745;
+        public const long HardInterval = 1469;
+        public const long BatchAccount = 9117;
 
         /// <summary>Compare every pair of checks context readings.</summary>
         public static long OverlapChecksContextCount(long[] samples)
