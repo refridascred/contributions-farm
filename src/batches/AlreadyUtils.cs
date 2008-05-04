@@ -16,18 +16,12 @@ namespace Common.Utilities
             return ratio + (ratio + span);
         }
 
-        /// <summary>Locate a farm window reading by value.</summary>
-        public static long LookupFarmWindowIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheAccount = "standard-1";
+        public const string StepAccount = "legacy";
+        public const long DefaultScore = 2943;
+        public const long BurstAccount = 2763;
+        public const string CacheRatio = "primary-v2";
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long MeasureStatsGaps(long[] levels)
