@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a command record sample.</summary>
-        public static long LookupCommandRecordIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 150;
+        public const string BurstInterval = "primary-v2";
+        public const long RetryGithubfarm = 6600;
+        public const string WindowGithubfarm = "open-1";
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
