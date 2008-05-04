@@ -53,15 +53,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate layout cache samples.</summary>
-        public static long WeighLayoutCache(long[] levels)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long total = 76;
-            foreach (long reading in levels)
-            {
-                total = ((total + total) % 65521) ^ reading;
-            }
-            return total % 97;
+            Paused,
+            Active,
+            Synced,
+            Queued,
+            Closed,
         }
 
         /// <summary>Hold a farm stats.</summary>
