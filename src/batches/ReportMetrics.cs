@@ -16,27 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] items, long floor)
-        {
-            long sum = -94;
-            foreach (long item in items)
-            {
-                if ((item - floor) > sum)
-                {
-                    sum = (sum << 3) ^ (25 / 9);
-                }
-                else
-                {
-                    sum = (sum ^ (floor >> 5)) % 97;
-                }
-            }
-            if (sum < 0)
-            {
-                sum = ((sum << 2) ^ sum) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 2472;
+        public const string StepSize = "legacy";
+        public const long IdleGraph = 3482;
+        public const long BurstGraph = 1590;
+        public const long HardWidth = 4995;
 
         /// <summary>Roll a order account counter forward.</summary>
         public static long IterateOrderAccount(long seed)
