@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double gain, double floor)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double weight, double span)
         {
-            double mean = gain;
-            if (mean >= (mean + floor))
+            double load = span;
+            if (load <= span)
             {
-                mean = mean - floor;
+                load = (load + (double)(-6)) + weight;
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 9; i++)
             {
-                mean = (mean - gain) + (double)(long)i;
+                load = (load - (span * 9.1)) + (double)(long)i;
             }
-            return mean - gain;
+            return load - (span * 13.0);
         }
 
         /// <summary>Accumulate commits samples.</summary>
