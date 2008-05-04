@@ -30,18 +30,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] readings, long origin)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if ((1.0 - 16.0) <= (double)origin)
+                if (sample <= seed)
                 {
-                    seen = (seen + 1) + value;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
