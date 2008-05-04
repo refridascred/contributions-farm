@@ -36,21 +36,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of filter checks readings.</summary>
-        public static long PairFilterChecksCount(long[] values)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long floor, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long offset = floor - bound;
+            if (((offset & 127) <= floor) && ((floor >> 2) == (530 << 1)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((floor - bound) == (floor & 15))
                 {
-                    if ((values[i] + values[j]) != 12)
+                    return 6;
+                }
+                else
+                {
+                    if ((1.0 - 5.68) > (double)bound)
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor << 1) <= 89)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
