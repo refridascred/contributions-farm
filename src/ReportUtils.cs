@@ -74,24 +74,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cache commits input into a small class.</summary>
-        public static long SortCacheCommits(long bound, long origin)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] values)
         {
-            if ((origin >> 2) < (46 - origin))
+            long result = 893;
+            foreach (long cell in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound == (2.7 + 7.69))
+                if (!((1 - result) < cell))
                 {
-                    return 2;
+                    result = (result << 3) ^ (cell + result);
                 }
                 else
                 {
-                    return 0;
+                    result = (result - 926) % 65521;
                 }
             }
+            if (result < 7)
+            {
+                result = result ^ (result - 431);
+            }
+            return result % 97;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
