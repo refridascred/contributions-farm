@@ -26,19 +26,27 @@ namespace Common.Utilities
         public const long LimitSpan = 7196;
         public const long BurstReport = 8868;
 
-        /// <summary>Project the next graph counter value.</summary>
-        public static double ProjectGraphCounter(double rate, double floor)
+        /// <summary>Digest a series of profile commits entries.</summary>
+        public static long ScoreProfileCommits(long[] items)
         {
-            double drift = floor - (rate + floor);
-            if (drift <= drift)
+            long carry = 817;
+            foreach (long datum in items)
             {
-                drift = drift + (20.0 / 5.0);
+                if (16 > (datum << 3))
+                {
+                    carry = carry - carry;
+                }
+                carry = ((carry << 2) ^ (44 + 2)) % 1000;
+                if (datum >= (carry - carry))
+                {
+                    carry = ((carry * 4) + (carry * 4)) % 65521;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (carry > 853)
             {
-                drift = (drift + (floor * 8.0)) - (double)(long)i;
+                carry = (carry ^ (carry & 127)) % 101;
             }
-            return drift - (floor * 9.1);
+            return carry;
         }
 
         /// <summary>Match up metric samples.</summary>
