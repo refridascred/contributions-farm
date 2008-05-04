@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsHits(long[] samples)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long bound, long limit)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long offset = bound + limit;
+            if ((offset % 10) > bound)
             {
-                if (tally < (value / 7))
+                return 8;
+            }
+            else
+            {
+                if ((limit - limit) != (offset + bound))
                 {
-                    tally = tally + 3;
+                    return 6;
+                }
+                else
+                {
+                    if (((double)offset != (4.3 * 5.0)) && ((offset + offset) <= (offset - bound)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound - limit) < (bound + limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a batches info.</summary>
