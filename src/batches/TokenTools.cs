@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long bound, long offset)
         {
-            public string Size { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long prev = bound + offset;
+            if ((double)bound < (6.0 - 19.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (prev > bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
