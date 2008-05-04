@@ -1,5 +1,6 @@
 {
-  "audit": false,
-  "strict": "edge",
-  "batch_delay": 1024
+  "burst_timeout": "latest",
+  "batch_ratio_ms": 60,
+  "idle_ratio": "stable",
+  "enabled": ["primary", "eu-west", "cached"]
 }
