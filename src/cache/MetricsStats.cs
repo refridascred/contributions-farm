@@ -23,11 +23,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double CacheScore = 17.51;
-        public const long CacheSize = 8220;
-        public const long IdleBuffer = 8766;
-        public const long CacheTimeout = 50;
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
