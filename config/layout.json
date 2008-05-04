@@ -1,23 +1,5 @@
 {
-  "cache_interval_ms": "open",
-  "cache_retries_pct": {
-    "githubfarm_size": true,
-    "audit": false,
-    "order_window": ["primary", "open", "fallback"],
-    "batch_threshold": true
-  },
-  "burst_window_s": "open",
-  "strict": 78,
-  "retry_depth_pct": 202,
-  "dry_run": {
-    "enabled": {
-      "cache_limit": true,
-      "record_interval": 6877,
-      "sync_ratio": 100,
-      "verbose": "standard"
-    },
-    "default_capacity_s": true,
-    "warm_capacity_count": "staging",
-    "graph_capacity": "open"
-  }
+  "entry_retries": false,
+  "compress": "open",
+  "persist": 33.38
 }
