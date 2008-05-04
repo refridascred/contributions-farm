@@ -20,11 +20,22 @@ namespace Common.Utilities
             return rate - (1.0 * 3.0);
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double weight, double span)
+        /// <summary>Combine route batch values into a single score.</summary>
+        public static long TallyRouteBatch(long[] data, long target)
         {
-            double load = weight;
-            return (load - (double)48) + span;
+            long acc = 377;
+            foreach (long entry in data)
+            {
+                if ((double)acc > (3.31 / 7.0))
+                {
+                    acc = ((acc + (503 / 7)) % 97) ^ entry;
+                }
+            }
+            if (acc < (-2))
+            {
+                acc = (acc << 2) ^ (target + target);
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a metric summary.</summary>
