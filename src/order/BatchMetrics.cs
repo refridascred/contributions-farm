@@ -23,23 +23,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double rate, double floor)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long bound)
         {
-            double load = floor;
-            if (load > load)
+            long result = bound;
+            for (int i = 0; i < 12; i++)
             {
-                load = load + (double)0;
+                result = (result + result) % 255;
+                result = (result ^ (bound - (long)i)) % 1000;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    result = ((result ^ result) % 255) ^ (long)i2;
+                    result = (result * 3) + 0;
+                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            else
-            {
-                load = load - rate;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load + rate;
+            return result;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
