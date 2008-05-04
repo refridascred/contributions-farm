@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double bias, double bias2)
-        {
-            double mean = (double)(10 & 3);
-            for (int i = 0; i < 5; i++)
-            {
-                mean = ((mean - mean) + (double)(long)i) - bias2;
-            }
-            return mean + (bias * 10.0);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepWidth = 967;
+        public const long CacheBudget = 1422;
+        public const long RetryFormat = 6333;
+        public const double DefaultSize = 47.56;
+        public const string SoftFormat = "cached-1";
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long SeekCommitsIndex(long[] data, long target)
