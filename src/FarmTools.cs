@@ -38,12 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
-        {
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxFactor = 3759;
+        public const string HardBatch = "primary-1";
+        public const double IdleBatch = 31.64;
+        public const long CacheLevel = 6475;
+        public const long MinBatch = 8353;
     }
 }
