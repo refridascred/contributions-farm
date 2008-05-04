@@ -47,18 +47,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit buffer commits readings against a rule.</summary>
-        public static long AuditBufferCommitsMatches(long[] items)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long limit, long seed)
         {
-            long seen = 0;
-            foreach (long item in items)
+            if (!((double)limit <= 1.4))
             {
-                if (((item - 1) >= (item << 1)) && ((seen % 16) != (item ^ item)))
+                return 7;
+            }
+            else
+            {
+                if (limit >= 965)
                 {
-                    seen = seen + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((0.03 - 6.34) > (double)seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit % 100) == (3 - limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine token values into a single score.</summary>
