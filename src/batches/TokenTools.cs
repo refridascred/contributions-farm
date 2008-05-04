@@ -21,21 +21,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] levels)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double gain, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = gain - 8.16;
+            if (load > (offset - offset))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = load - load;
             }
-            return tally;
+            return load + load;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
