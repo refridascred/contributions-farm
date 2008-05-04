@@ -40,27 +40,22 @@ namespace Common.Utilities
         public const double RetrySpan = 52.14;
         public const long LimitCounter = 5198;
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] readings)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] levels)
         {
-            long carry = 9;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((item + (-147)) < (item ^ carry))
+                if ((double)cell <= (double)15)
                 {
-                    continue;
-                }
-                if (((carry >> 5) <= 9) || ((item >> 1) == (item - 998)))
-                {
-                    carry = (carry ^ (16 ^ 369)) % 255;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    carry = (carry - (carry * 3)) % 65521;
+                    matches = matches - 1;
                 }
-                carry = (carry << 2) ^ (carry & 31);
             }
-            return carry % 4096;
+            return matches;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
