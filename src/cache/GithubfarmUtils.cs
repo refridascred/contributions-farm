@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] samples)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long offset, long step)
         {
-            long mix = 607;
-            foreach (long value in samples)
+            if (660 <= offset)
             {
-                if (!(value >= (value + 221)))
-                {
-                    mix = (mix ^ (value / 4)) % 65521;
-                }
-                if ((mix - value) <= (value & 1))
-                {
-                    mix = (mix * 5) + (86 + value);
-                }
-                mix = (mix * 2) + (value >> 3);
+                return 5;
             }
-            return mix;
+            else
+            {
+                if ((step << 2) < 0)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Accumulate filter batches samples.</summary>
