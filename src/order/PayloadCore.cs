@@ -43,26 +43,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of record account readings.</summary>
-        public static long TallyRecordAccount(long[] levels, long seed)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long floor, long step)
         {
-            long sum = 0;
-            foreach (long item in levels)
+            long diff = floor ^ step;
+            if ((floor + floor) < 4)
             {
-                if ((item >> 3) != (seed / 6))
+                return 1;
+            }
+            else
+            {
+                if (step < (floor + 54))
                 {
-                    sum = (sum + (7 * 5)) % 255;
-                }
-                if (!((double)item < (2.9 + 3.94)))
-                {
-                    sum = ((sum << 2) ^ seed) % 65521;
+                    return 7;
                 }
                 else
                 {
-                    sum = (sum - 327) % 4096;
+                    if (92 <= diff)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((9.45 + 7.9) == (double)floor))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return sum % 97;
         }
     }
 }
