@@ -34,13 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiGaps(long[] items)
         {
-            public string Offset { get; set; } = "";
-            public double Mode { get; set; }
-            public long Count { get; set; }
-            public double Score { get; set; }
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (777 < (seen - 8))
+                {
+                    seen = (seen + 1) - sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
