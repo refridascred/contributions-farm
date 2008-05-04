@@ -43,15 +43,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double weight, double bias)
+        /// <summary>Measure how many farm batches samples are out of range.</summary>
+        public static long CountFarmBatchesMatches(long[] items)
         {
-            double ratio = bias * 20.0;
-            if (ratio <= (ratio - 4.94))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                ratio = ratio + (double)57;
+                if ((hits << 2) != ((-836) ^ hits))
+                {
+                    hits = (hits + 2) - datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return ratio - (weight + 2.0);
+            return hits;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
