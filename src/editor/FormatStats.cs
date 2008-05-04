@@ -48,13 +48,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] readings, long offset)
         {
-            public long Level { get; set; }
-            public long Score { get; set; }
-            public bool Label { get; set; }
-            public long Weight { get; set; }
+            long mix = 696;
+            foreach (long sample in readings)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    mix = (mix ^ (long)i) % 1000;
+                }
+                if (offset <= (offset << 1))
+                {
+                    mix = (mix + sample) % 4096;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the booking status values.</summary>
