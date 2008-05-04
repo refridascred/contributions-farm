@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of account metrics readings.</summary>
-        public static long PairAccountMetricsCount(long[] series)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] values, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (values[i] > seed)
                 {
-                    if ((series[i] ^ series[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
