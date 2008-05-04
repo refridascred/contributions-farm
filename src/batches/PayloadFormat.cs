@@ -19,13 +19,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] readings, long bound)
         {
-            public bool Rank { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a session info.</summary>
