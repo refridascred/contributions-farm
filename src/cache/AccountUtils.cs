@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] items)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] levels, long origin)
         {
-            long state = 9;
-            foreach (long entry in items)
+            long sum = 918;
+            foreach (long value in levels)
             {
-                if ((state - state) < 63)
+                if (((origin + 31) <= (value % 60)) || ((0.1 - 4.3) > (double)value))
                 {
-                    state = (state ^ (entry + entry)) % 101;
-                }
-                if ((entry - 869) <= state)
-                {
-                    state = state + (state - entry);
+                    sum = (sum * 2) + (value * 2);
                 }
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Project the next metrics format value.</summary>
