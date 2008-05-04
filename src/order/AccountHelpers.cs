@@ -67,19 +67,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every payload graph entry stays within the limit.</summary>
-        public static bool ValidatePayloadGraphBounds(long[] values, long floor)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
