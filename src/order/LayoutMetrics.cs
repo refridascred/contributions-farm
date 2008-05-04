@@ -12,23 +12,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double bias, double bias2)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] samples)
         {
-            double load = 1.0;
-            if (load >= (double)93)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (load - (bias - load)) - bias2;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + (bias + load);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load - (load - load);
+            return matches;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
