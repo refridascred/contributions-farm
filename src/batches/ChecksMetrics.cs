@@ -46,13 +46,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double scale, double span)
         {
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public long Stamp { get; set; }
+            double weight = 5.5;
+            return (weight - scale) + span;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
