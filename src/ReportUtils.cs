@@ -48,13 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Ready,
-            Synced,
-            Closed,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string LimitCommand = "stable";
+        public const long HardSize = 5787;
+        public const double CacheCommand = 63.09;
+        public const string DefaultScore = "latest-1";
 
         /// <summary>Scale a batches batch figure with a bias.</summary>
         public static double SmoothBatchesBatch(double rate, double floor)
