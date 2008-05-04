@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Look up the position of a support metric sample.</summary>
-        public static long SeekSupportMetricIndex(long[] readings, long offset)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((readings[i] == offset) && ((readings[i] % 5) == 0))
+                if ((floor << 2) <= floor)
                 {
-                    return (long)i;
+                    mix = (mix ^ (floor & 1)) % 101;
                 }
+                if ((6.16 - 2.5) < (double)mix)
+                {
+                    mix = mix + ((long)i >> 4);
+                    mix = ((mix << 3) ^ (mix << 1)) % 65521;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
