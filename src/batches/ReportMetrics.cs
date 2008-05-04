@@ -20,11 +20,11 @@ namespace Common.Utilities
         public const string LimitEditor = "legacy-edge";
         public const string BaseLevel = "cached-1";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardRatio = "strict-1";
-        public const long DefaultSpan = 5067;
-        public const long LimitMetrics = 5274;
-        public const string DefaultDepth = "standard";
-        public const string CacheScore = "staging-edge";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepFactor = 36.28;
+        public const long StepCount = 7386;
+        public const double BurstFarm = 82.76;
+        public const double CacheBudget = 21.2;
+        public const long LimitFarm = 9818;
     }
 }
