@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= seed) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 4062;
+        public const double LimitNotes = 85.07;
+        public const double WindowNotes = 64.57;
+        public const long StepRatio = 3151;
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long SortFarm(long floor, long target)
