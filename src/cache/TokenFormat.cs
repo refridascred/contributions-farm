@@ -26,19 +26,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] data, long origin)
-        {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitBudget = 4657;
+        public const long MinDepth = 6120;
+        public const long IdleProfile = 2209;
     }
 }
