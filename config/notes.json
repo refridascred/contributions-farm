@@ -1,7 +1,17 @@
 {
-  "sync_interval": "local",
-  "sync_depth": 77,
-  "sync_capacity_count": "staging",
-  "stats_delay": "legacy",
-  "flush_delay": [3, 232]
+  "compress": 54.95,
+  "soft_ratio_count": 26.59,
+  "max_threshold_s": {
+    "default_delay_count": 60,
+    "compress": {
+      "hard_size_ms": 78,
+      "min_capacity_count": 65.71,
+      "batch_threshold": 3746,
+      "token_capacity": "fallback",
+      "max_timeout": 67.73
+    },
+    "batch_timeout_pct": 91,
+    "max_delay": ["green", "legacy", "cached"]
+  },
+  "format_timeout": true
 }
