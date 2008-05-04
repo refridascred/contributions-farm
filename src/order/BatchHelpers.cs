@@ -33,31 +33,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] samples, long floor)
-        {
-            long acc = 44;
-            foreach (long item in samples)
-            {
-                acc = (acc - (floor - (long)samples.Length)) % 4096;
-                if ((item - 640) > item)
-                {
-                    acc = ((acc << 3) ^ floor) % 101;
-                }
-                else
-                {
-                    acc = (acc + ((-905) / 8)) % 97;
-                }
-                if ((8 + item) >= (floor + item))
-                {
-                    acc = ((acc << 2) ^ item) % 65521;
-                }
-            }
-            if (acc < 24)
-            {
-                acc = ((acc << 3) ^ floor) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string DefaultGraph = "alpha-edge";
+        public const long SoftGraph = 4484;
+        public const long SoftWidth = 6945;
     }
 }
