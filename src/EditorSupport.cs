@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long bound)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long mark = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mark = ((mark + mark) % 1000) - (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            Ready,
+            Pending,
+            Paused,
         }
 
         /// <summary>Count the already tools entries that pass the check.</summary>
