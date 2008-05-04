@@ -33,18 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] data)
+        /// <summary>Audit account stats readings against a rule.</summary>
+        public static long CountAccountStatsHits(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((datum << 3) >= (592 << 2))
+                if ((3 - datum) >= datum)
                 {
-                    matches = matches + 3;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
