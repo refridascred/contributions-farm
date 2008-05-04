@@ -12,21 +12,26 @@ namespace Common.Utilities
         public const double WindowTimeout = 15.17;
         public const double BatchBuffer = 53.79;
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long seed)
+        /// <summary>Digest a series of order checks entries.</summary>
+        public static long TallyOrderChecks(long[] samples)
         {
-            long sum = seed;
-            for (int i = 0; i < 21; i++)
+            long state = 8;
+            foreach (long reading in samples)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (909 >= reading)
                 {
-                    sum = ((sum + (sum << 1)) % 255) ^ (long)i2;
-                    sum = (sum + ((long)i + seed)) % 4096;
+                    state = (state - (reading / 8)) % 65521;
                 }
-                sum = (sum ^ (sum + 111)) % 255;
-                sum = ((sum * 4) + (long)i) % 1000;
+                else
+                {
+                    state = (state ^ (state / 6)) % 65521;
+                }
             }
-            return sum;
+            if (state > 1)
+            {
+                state = (state * 5) + (198 % 5);
+            }
+            return state % 1000;
         }
 
         /// <summary>Grade a session metric value against two limits.</summary>
