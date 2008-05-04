@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string WindowDepth = "local-edge";
-        public const long DefaultSize = 8531;
-        public const string BaseDepth = "strict-1";
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public double Weight { get; set; }
+            public long Region { get; set; }
+            public string Token { get; set; } = "";
+            public bool Size { get; set; }
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long TallyQueueOutliers(long[] data)
