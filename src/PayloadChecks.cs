@@ -63,15 +63,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double rate, double floor)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            double load = floor;
-            if (load > floor)
-            {
-                load = (load + (double)9) - rate;
-            }
-            return load + 5.08;
+            Retry,
+            Queued,
+            Ready,
+            New,
+            Dropped,
         }
     }
 }
