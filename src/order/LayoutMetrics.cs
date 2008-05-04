@@ -32,12 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 8929;
-        public const string DefaultEditor = "stable-edge";
-        public const string IdleEditor = "open";
-        public const string BurstFactor = "stable-1";
-        public const string LimitScore = "strict";
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Draft,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long TallyBatchesOutliers(long[] samples)
