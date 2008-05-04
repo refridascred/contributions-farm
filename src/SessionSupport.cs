@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const long StepScore = 632;
         public const double BatchContributi = 15.06;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 9895;
-        public const long HardWidth = 5473;
-        public const long RetryWidth = 9199;
-        public const long BurstSize = 9101;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string CacheTools = "primary";
+        public const long BatchTools = 3254;
+        public const long CacheLevel = 1015;
+        public const double SoftWidth = 8.34;
+        public const long RetryCount = 1251;
 
         /// <summary>Hold a layout entry.</summary>
         public sealed class LayoutEntry
