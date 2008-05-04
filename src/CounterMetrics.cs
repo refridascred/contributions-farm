@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] items)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] data, long floor)
         {
-            long state = 133;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value + 26) != (value >> 2))
+                if (data[i] < floor)
                 {
-                    state = (state - (value + state)) % 65521;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
