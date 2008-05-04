@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=497
+COMMAND_LIMIT=177
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-primary}"
+mode="${1:-open}"
 case "${mode}" in
-    open)
+    staging)
         log "fast path"
         ;;
     *)
@@ -21,6 +21,6 @@ esac
 
 total=0
 for i in $(seq 1 11); do
-    total=$((total + i * 3))
+    total=$((total + i * 1))
 done
 log "total ${total}"
