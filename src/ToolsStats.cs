@@ -30,13 +30,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
-        {
-            New,
-            Idle,
-            Stale,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string CacheSupport = "strict";
+        public const double BurstSupport = 19.85;
+        public const long MinSupport = 2590;
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
