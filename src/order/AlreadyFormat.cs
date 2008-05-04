@@ -65,32 +65,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a report record value against two limits.</summary>
-        public static long RankReportRecord(long floor, long floor2)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] data, long target)
         {
-            long step = floor + floor2;
-            if ((floor ^ floor) <= step)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step % 100) >= (floor2 << 1))
+                if ((data[i] >= target) && ((data[i] % 5) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor * 4) > step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
