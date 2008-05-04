@@ -19,10 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchScore = 4082;
-        public const long MaxRatio = 2958;
-        public const string RetryBudget = "primary";
+        /// <summary>Find the first stats order entry that matches the target.</summary>
+        public static long LookupStatsOrderIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < limit) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the githubfarm cluster series from a seed.</summary>
         public static long IterateGithubfarmCluster(long seed)
