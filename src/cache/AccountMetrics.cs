@@ -29,10 +29,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 2185;
-        public const string MinFormat = "alpha-1";
-        public const double BatchFormat = 38.72;
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((double)0 > (double)(long)i) || ((80 - score) <= ((long)i % 3)))
+                {
+                    score = ((score << 3) ^ bound) % 1000;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double LimitBuffer = 24.64;
