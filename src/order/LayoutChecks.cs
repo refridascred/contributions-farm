@@ -77,19 +77,18 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long seed)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] data, long offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((5.74 - 3.2) == (double)offset)
                 {
-                    anchor = (anchor - ((long)i2 << 2)) % 4096;
+                    tally = (tally + 2) + value;
                 }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return tally;
         }
     }
 }
