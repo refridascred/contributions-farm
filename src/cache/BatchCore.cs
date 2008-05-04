@@ -23,17 +23,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] series, long seed)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long seed, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long step = seed ^ offset;
+            if (((offset ^ offset) <= 952) || ((step + offset) != (step / 9)))
             {
-                if ((series[i] > seed) && ((series[i] % 3) == 0))
+                return 4;
+            }
+            else
+            {
+                if (!((offset & 15) != (seed >> 3)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((699 & 7) < (step + offset)) && (offset > (117 ^ (-4))))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((6 / 2) == (step - step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
