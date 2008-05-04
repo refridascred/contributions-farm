@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two metrics account measurements.</summary>
-        public static double ScaleMetricsAccount(double ratio, double offset)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            double weight = offset;
-            if (weight >= (weight + 2.99))
-            {
-                weight = (weight + (double)29) - ratio;
-            }
-            else
-            {
-                weight = weight - (0.1 - weight);
-            }
-            return weight + (double)8;
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Look up the position of a report sample.</summary>
