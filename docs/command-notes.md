@@ -1,15 +1,11 @@
 # Command notes
 
-Run the cluster check before changing any record limits.
-A queue that stays idle for too long is moved to the githubfarm list.
-
-Keep order and route names short and lowercase.
-When a format fails, the queue handler retries a few times before giving up.
-Each tools is validated before it reaches the notes queue.
+Use session settings to tune how often account data is refreshed.
+Keep graph and stats names short and lowercase.
+The window module keeps context values in sync with the channel cache.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Review contributi limits each release
-- Keep channel values small
-- Log every notes change
+- Review profile limits each release
+- Log every command change
+- Document new checks fields
