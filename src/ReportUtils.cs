@@ -54,38 +54,12 @@ namespace Common.Utilities
         public const double CacheCommand = 63.09;
         public const string DefaultScore = "latest-1";
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long limit, long seed)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            if ((9.2 + 1.0) < (double)limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if (seed <= (4 >> 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit & 127) < seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)limit >= (4.9 * 1.58))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public bool Size { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
