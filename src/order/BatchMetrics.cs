@@ -91,13 +91,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            Retry,
-            Synced,
-            Draft,
-            New,
+            public double Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
