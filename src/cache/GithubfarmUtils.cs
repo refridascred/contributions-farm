@@ -47,10 +47,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string HardScore = "strict";
-        public const double IdleDepth = 90.23;
-        public const double RetryCount = 95.48;
+        /// <summary>Audit buffer commits readings against a rule.</summary>
+        public static long AuditBufferCommitsMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (((item - 1) >= (item << 1)) && ((seen % 16) != (item ^ item)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long CombineToken(long[] levels, long bound)
