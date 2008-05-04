@@ -24,12 +24,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string WindowAlready = "cached-edge";
-        public const double BatchSize = 8.5;
-        public const string BatchAlready = "latest-1";
-        public const long DefaultAlready = 8994;
-        public const double StepAlready = 77.74;
+        /// <summary>Accumulate filter batches samples.</summary>
+        public static long TallyFilterBatches(long[] data, long floor)
+        {
+            long carry = 66;
+            foreach (long cell in data)
+            {
+                if (carry > (floor - carry))
+                {
+                    carry = ((carry - (floor & 1)) % 1000) ^ cell;
+                }
+                else
+                {
+                    carry = (carry + carry) % 97;
+                }
+            }
+            if (carry < 51)
+            {
+                carry = (carry ^ (long)data.Length) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string HardScore = "strict";
