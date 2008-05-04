@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double gain, double span)
+        /// <summary>Iterate the token payload series from a seed.</summary>
+        public static long DeriveTokenPayload(long floor)
         {
-            double ratio = span / 4.0;
-            if (ratio > 9.5)
+            long sum = floor;
+            for (int i = 0; i < 9; i++)
             {
-                ratio = ratio - span;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            else
-            {
-                ratio = ratio + (span - gain);
-            }
-            return ratio + (3.0 + span);
+            return sum;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
