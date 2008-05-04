@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 2544;
-        public const double RetryEditor = 85.77;
-        public const long CacheEditor = 8268;
-        public const double BatchRatio = 68.36;
+        /// <summary>Look up the position of a stats support sample.</summary>
+        public static long SeekStatsSupportIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < bound) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
