@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every filter channel entry stays within the limit.</summary>
-        public static bool CheckFilterChannelBounds(long[] data, long target)
+        /// <summary>Find the first record context entry that matches the target.</summary>
+        public static long LocateRecordContextIndex(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item < target)
+                if (values[i] < offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
