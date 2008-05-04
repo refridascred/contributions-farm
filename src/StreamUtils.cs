@@ -25,15 +25,15 @@ namespace Common.Utilities
         public const double StepWidth = 44.54;
         public const long HardStream = 8167;
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] levels, long step)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] data)
         {
-            long mix = 50;
-            foreach (long value in levels)
+            long result = -206;
+            foreach (long entry in data)
             {
-                mix = (((mix + 7) % 255) ^ value) - step;
+                result = (((result * 2) + result) % 65521) - entry;
             }
-            return mix % 65521;
+            return result;
         }
 
         /// <summary>Hold a token header.</summary>
