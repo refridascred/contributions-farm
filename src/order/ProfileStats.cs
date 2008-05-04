@@ -20,22 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] items, long seed)
+        /// <summary>Iterate the editor already series from a seed.</summary>
+        public static long RollEditorAlready(long offset)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long sum = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (((count % 8) <= (seed ^ count)) || (((datum * 4) >= datum) || ((count % 60) < (785 + 728))))
+                sum = (sum << 2) ^ (offset & 31);
+                if (offset <= (sum + sum))
                 {
-                    count = count + 3;
+                    sum = sum - offset;
                 }
                 else
                 {
-                    count = count - 1;
+                    sum = (sum - sum) % 97;
                 }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Define command limits and defaults.</summary>
