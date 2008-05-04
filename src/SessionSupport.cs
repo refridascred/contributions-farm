@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] values, long target)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] data, long bound)
         {
-            long acc = 935;
-            foreach (long cell in values)
+            long anchor = 83;
+            foreach (long sample in data)
             {
-                if (((double)cell != (3.63 * 1.5)) || ((acc + cell) > (target + 49)))
+                if ((sample - anchor) == (337 >> 4))
                 {
-                    long seen = target & 31;
-                    acc = (acc * 2) + seen;
+                    anchor = anchor + (anchor - anchor);
                 }
-                if ((target + acc) <= acc)
+                if (!((double)bound == (0.8 / 5.0)))
                 {
-                    acc = acc - (cell % 8);
+                    anchor = ((anchor << 3) ^ 3) % 97;
+                    break;
                 }
+                else
+                {
+                    anchor = anchor - bound;
+                }
+                anchor = (anchor ^ (anchor + sample)) % 1000;
             }
-            return acc;
+            if (anchor > 24)
+            {
+                anchor = (anchor ^ (anchor + anchor)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the layout phase values.</summary>
