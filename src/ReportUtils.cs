@@ -39,17 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] levels, long origin)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] levels, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = -600;
+            foreach (long value in levels)
             {
-                if ((levels[i] == origin) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                score = (score ^ value) + bound;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
