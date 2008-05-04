@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 6886;
-        public const long WindowLevel = 3797;
-        public const long MaxContributi = 6817;
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = (mark * 2) + (mark + 76);
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Project the next checks value.</summary>
         public static double SmoothChecks(double rate, double offset)
