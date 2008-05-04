@@ -26,17 +26,11 @@ namespace Common.Utilities
             return mean + (mean - 17.0);
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] data, long target)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == target) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
