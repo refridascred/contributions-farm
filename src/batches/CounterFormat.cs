@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 150;
-        public const string BurstInterval = "primary-v2";
-        public const long RetryGithubfarm = 6600;
-        public const string WindowGithubfarm = "open-1";
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
+        {
+            Pending,
+            Queued,
+            Failed,
+            New,
+            Locked,
+        }
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long LocateCommandIndex(long[] levels, long offset)
