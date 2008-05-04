@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long floor)
+        /// <summary>Blend two entry editor measurements.</summary>
+        public static double ScaleEntryEditor(double gain, double floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 16; i++)
+            double bias = (gain + floor) / 7.0;
+            if (bias > bias)
             {
-                anchor = (anchor * 5) + floor;
-                if (((double)anchor <= (2.75 + 8.3)) || ((4 / 7) < (anchor - floor)))
-                {
-                    anchor = (anchor ^ (anchor - (long)i)) % 65521;
-                }
-                else
-                {
-                    anchor = anchor ^ (anchor >> 3);
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
+                bias = bias + gain;
             }
-            return anchor;
+            else
+            {
+                bias = bias - (double)24;
+            }
+            return bias + (bias * 0.4);
         }
 
         /// <summary>Project the next command value.</summary>
