@@ -34,19 +34,21 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] readings, long floor)
+        /// <summary>Compare every pair of token route readings.</summary>
+        public static long CompareTokenRouteCount(long[] readings)
         {
-            long result = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result << 2) ^ (floor & 7)) - reading;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (result > (-805))
-            {
-                result = (result ^ result) % 255;
-            }
-            return result;
+            return count;
         }
     }
 }
