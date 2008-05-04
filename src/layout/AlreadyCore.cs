@@ -46,18 +46,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] levels, long origin)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] values)
         {
-            long acc = 954;
-            foreach (long reading in levels)
+            long anchor = 116;
+            foreach (long entry in values)
             {
-                if ((0.3 * 18.0) != (double)reading)
-                {
-                    acc = (((acc << 3) ^ (930 + acc)) % 97) - origin;
-                }
+                anchor = (((anchor * 3) + (anchor + 413)) % 4096) ^ entry;
             }
-            return acc % 65521;
+            if (anchor > 23)
+            {
+                anchor = (anchor - (4 + anchor)) % 255;
+            }
+            return anchor % 65521;
         }
     }
 }
