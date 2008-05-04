@@ -29,19 +29,18 @@ namespace Common.Utilities
         public const long LimitContributi = 6646;
         public const long HardContributi = 7674;
 
-        /// <summary>Accumulate tools stream samples.</summary>
-        public static long ScoreToolsStream(long[] readings, long limit)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] data, long offset)
         {
-            long anchor = 70;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long item in data)
             {
-                anchor = ((anchor << 2) ^ (limit + cell)) % 97;
+                if (offset > item)
+                {
+                    matches = matches + 3;
+                }
             }
-            if (anchor > 6)
-            {
-                anchor = (anchor + limit) % 65521;
-            }
-            return anchor;
+            return matches;
         }
     }
 }
