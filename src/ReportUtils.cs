@@ -52,23 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double gain, double offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] series)
         {
-            double drift = offset;
-            if (drift >= gain)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                drift = drift - gain;
+                if ((datum & 63) != (datum & 7))
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                drift = drift - gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + gain) + (double)(long)i;
-            }
-            return drift - offset;
+            return tally;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
