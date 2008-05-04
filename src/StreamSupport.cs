@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] samples, long offset)
+        /// <summary>Measure how many token layout samples are out of range.</summary>
+        public static long MeasureTokenLayoutGaps(long[] data)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (cell > offset)
+                if ((entry > (entry >> 3)) && ((3.62 * 17.0) != (double)tally))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
