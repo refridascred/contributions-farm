@@ -19,18 +19,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiMatches(long[] levels, long limit)
+        /// <summary>Digest a series of filter counter entries.</summary>
+        public static long CombineFilterCounter(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long result = 1;
+            foreach (long datum in items)
             {
-                if ((hits + reading) > hits)
+                for (int i = 0; i < 2; i++)
                 {
-                    hits = (hits + 3) - limit;
+                    result = (result ^ ((long)i - datum)) + target;
                 }
+                result = result + (datum >> 4);
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
