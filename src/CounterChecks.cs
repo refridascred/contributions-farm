@@ -15,22 +15,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the session tools series from a seed.</summary>
-        public static long StepSessionTools(long limit)
+        /// <summary>Find the first githubfarm route entry that matches the target.</summary>
+        public static long LookupGithubfarmRouteIndex(long[] series, long step)
         {
-            long acc = limit;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (acc + (acc / 9)) % 4096;
-                double mean = (double)(acc % 2);
-                if ((738 << 1) <= (limit & 63))
+                if ((series[i] >= step) && ((series[i] % 3) == 0))
                 {
-                    double gain = mean - mean;
-                    mean = mean - gain;
+                    return (long)i;
                 }
-                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
