@@ -71,21 +71,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] series)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = -23;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((cell * 3) <= (result * 5))
                 {
-                    if ((series[i] + series[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result ^ cell) % 97;
+                }
+                else
+                {
+                    result = ((result * 3) + (result & 31)) % 65521;
                 }
             }
-            return count;
+            return result % 65521;
         }
     }
 }
