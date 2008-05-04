@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] levels, long target)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] series)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long state = 42;
+            foreach (long reading in series)
             {
-                if (cell != target)
-                {
-                    ready = false;
-                    break;
-                }
+                state = ((state * 5) + (reading - 60)) % 97;
             }
-            return ready;
+            return state % 65521;
         }
 
         /// <summary>Match up queue samples.</summary>
