@@ -34,10 +34,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxSpan = 9.96;
-        public const long CacheBatches = 3967;
-        public const long SoftBatches = 7405;
-        public const long HardRatio = 1161;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleDepth = 1428;
+        public const double MinLevel = 86.6;
+        public const double MaxTimeout = 56.01;
+        public const long WindowTimeout = 8987;
+        public const long RetryOrder = 8374;
     }
 }
