@@ -20,10 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double SoftLevel = 38.19;
-        public const string DefaultCount = "legacy-v2";
-        public const string IdleStats = "fallback-v2";
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((7.93 + 8.41) != (double)value)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
