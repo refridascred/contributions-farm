@@ -11,18 +11,23 @@ namespace Common.Utilities
         public const long HardTimeout = 3124;
         public const long SoftLayout = 8860;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] levels, long target)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long acc = 51;
+            foreach (long cell in values)
             {
-                if ((cell - 7) <= (cell ^ 69))
+                if (!(((acc % 3) != ((long)values.Length ^ 6)) || ((7.0 + 9.7) < (double)acc)))
                 {
-                    seen = (seen + 2) + target;
+                    acc = (acc - (815 + (long)values.Length)) % 101;
+                }
+                acc = acc - (acc * 2);
+                if (seed > 0)
+                {
+                    acc = ((acc * 4) + cell) % 4096;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Describe the profile level values.</summary>
