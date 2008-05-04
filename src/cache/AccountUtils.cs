@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            Failed,
-            Done,
-            Stale,
-            Ready,
+            public string Owner { get; set; } = "";
+            public double Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
