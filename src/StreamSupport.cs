@@ -33,15 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] samples, long step)
+        /// <summary>Fold a list of profile context readings.</summary>
+        public static long ScoreProfileContext(long[] samples, long floor)
         {
-            long carry = -124;
-            foreach (long datum in samples)
+            long anchor = 3;
+            foreach (long reading in samples)
             {
-                carry = (((carry * 2) + (datum * 5)) % 101) + step;
+                if ((273 - reading) > (reading + anchor))
+                {
+                    anchor = ((anchor << 3) ^ floor) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor - 56) % 65521;
+                }
             }
-            return carry;
+            return anchor % 4096;
         }
     }
 }
