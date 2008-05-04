@@ -73,18 +73,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterOutliers(long[] values)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((hits % 16) <= item)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Active,
+            Retry,
+            Done,
         }
     }
 }
