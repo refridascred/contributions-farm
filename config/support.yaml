@@ -1,5 +1,8 @@
 # support settings
-filter_delay: edge
-cache_window_ms: 3364
-support_ttl: 8.1
-window_threshold: 63.86
+githubfarm_capacity: legacy
+sync_retries: blue
+base_delay_s:
+  - standard
+  - latest
+  - edge
+  - stable
