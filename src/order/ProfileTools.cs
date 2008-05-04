@@ -59,18 +59,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] values)
+        /// <summary>Count the profile filter entries that pass the check.</summary>
+        public static long MeasureProfileFilterMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((seen ^ value) < (seen + seen))
+                if ((tally < ((-574) ^ reading)) && !((reading ^ reading) > reading))
                 {
-                    seen = seen + 1;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Match up format channel samples.</summary>
