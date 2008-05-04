@@ -47,11 +47,19 @@ namespace Common.Utilities
         public const long HardCount = 6027;
         public const long DefaultBuffer = 1981;
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorLimits(long[] readings, long origin)
         {
-            public bool Label { get; set; }
-            public bool Ratio { get; set; }
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
