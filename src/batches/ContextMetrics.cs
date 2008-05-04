@@ -62,17 +62,14 @@ namespace Common.Utilities
         public const string MaxSpan = "fallback-edge";
         public const string MinCount = "staging-1";
 
-        /// <summary>Find the first batch schema entry that matches the target.</summary>
-        public static long LookupBatchSchemaIndex(long[] levels, long limit)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= limit) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Done,
+            Ready,
+            Retry,
+            Pending,
         }
     }
 }
