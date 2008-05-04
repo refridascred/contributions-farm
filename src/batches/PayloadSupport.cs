@@ -18,39 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long limit, long origin)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long prev = limit - origin;
-            if (((prev & 1) > prev) && ((double)origin == (15.0 + 4.83)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((7.6 * 7.5) != (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((prev ^ origin) >= prev)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)prev < (3.82 + 9.7)) && (limit < (94 + prev)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Locked,
+            Retry,
         }
 
         /// <summary>Look up the position of a context sample.</summary>
