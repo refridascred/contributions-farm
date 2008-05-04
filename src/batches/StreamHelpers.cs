@@ -43,17 +43,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] data, long seed)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] <= seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the order mode values.</summary>
