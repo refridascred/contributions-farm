@@ -17,13 +17,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Iterate the githubfarm session series from a seed.</summary>
+        public static long DeriveGithubfarmSession(long floor)
         {
-            Paused,
-            Ready,
-            Synced,
-            Idle,
+            long mark = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = (mark - (mark - (-801))) % 255;
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
