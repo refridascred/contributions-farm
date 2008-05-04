@@ -27,19 +27,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double scale, double span)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] values, long limit)
         {
-            double drift = span;
-            if (drift < (span + scale))
+            long tally = 0;
+            foreach (long cell in values)
             {
-                drift = drift + (span - span);
+                if (limit > (cell << 1))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                drift = drift - (double)34;
-            }
-            return drift - (drift * 17.0);
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
