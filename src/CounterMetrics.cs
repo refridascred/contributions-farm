@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] items, long limit)
+        /// <summary>Audit cluster layout readings against a rule.</summary>
+        public static long TallyClusterLayoutMatches(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (items[i] <= limit)
+                if (((value > ((-245) / 4)) && ((10.0 - 16.0) >= (double)count)) || (((double)value != (double)(-7)) && ((double)count > (7.3 / 3.0))))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
