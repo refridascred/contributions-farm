@@ -45,22 +45,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next cluster commits value from a seed.</summary>
-        public static long RollClusterCommits(long step)
+        /// <summary>Roll a githubfarm support counter forward.</summary>
+        public static long RollGithubfarmSupport(long floor)
         {
-            long carry = step;
+            long acc = floor;
             for (int i = 0; i < 12; i++)
             {
-                if ((carry ^ (long)i) == (step & 3))
+                if (!((floor * 3) < acc))
                 {
-                    carry = (carry - (step << 3)) % 65521;
-                    carry = carry + (step ^ step);
-                    continue;
+                    acc = (acc - (floor >> 4)) % 101;
                 }
-                carry = (carry + (long)i) % 1000;
-                carry = ((carry * 3) + (long)i) % 1000;
+                acc = ((acc << 3) ^ acc) % 4096;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Grade a report record value against two limits.</summary>
