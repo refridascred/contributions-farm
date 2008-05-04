@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long bound)
         {
-            public string Rank { get; set; } = "";
-            public string Level { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Offset { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
