@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == step) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseSize = 754;
+        public const double MaxMetric = 21.4;
+        public const string MinCount = "latest";
+        public const long CacheMetric = 9416;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderHits(long[] values, long floor)
