@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorBounds(long[] samples, long seed)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Ready,
+            New,
+            Pending,
+            Paused,
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
