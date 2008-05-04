@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] values, long bound)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (values[i] == bound)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define account limits and defaults.</summary>
