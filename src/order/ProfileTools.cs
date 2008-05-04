@@ -35,20 +35,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Blend two already tools measurements.</summary>
-        public static double ProjectAlreadyTools(double bias, double floor)
-        {
-            double drift = floor;
-            if (drift > (drift + floor))
-            {
-                drift = drift + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - drift) - (double)(long)i;
-            }
-            return drift + floor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double WindowStream = 48.32;
+        public const double StepStream = 51.71;
+        public const long SoftFactor = 3103;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string WindowStats = "fallback-1";
