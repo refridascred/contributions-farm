@@ -13,21 +13,31 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] values)
+        /// <summary>Rank channel metrics input into a small class.</summary>
+        public static long SortChannelMetrics(long offset, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((double)step != (7.1 * 5.0))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((19 >> 5) < (step ^ step))
                 {
-                    if ((values[i] + values[j]) > 8)
+                    return 1;
+                }
+                else
+                {
+                    if (!((546 - step) == (0 - 916)))
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the schema kind values.</summary>
