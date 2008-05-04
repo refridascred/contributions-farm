@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first channel stream entry that matches the target.</summary>
-        public static long SeekChannelStreamIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < target) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxTimeout = 3394;
+        public const long WindowFormat = 9744;
+        public const long BaseWidth = 2179;
+        public const long BurstLevel = 3471;
+        public const long BatchDepth = 2736;
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
