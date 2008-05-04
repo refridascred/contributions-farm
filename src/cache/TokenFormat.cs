@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] readings)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((hits - reading) == (long)readings.Length)
+                if ((offset / 7) == (offset - count))
                 {
-                    hits = hits + 3;
+                    count = (count + 2) + sample;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a counter options.</summary>
