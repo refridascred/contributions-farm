@@ -1,5 +1,14 @@
 {
-  "strict": 8265,
-  "metric_timeout": 46,
-  "batch_threshold": true
+  "entry_threshold": 1024,
+  "compress": true,
+  "profile_retries": "strict",
+  "queue_threshold": 44,
+  "checks_ttl": 100,
+  "flush_capacity_s": {
+    "sync_delay_pct": "standard",
+    "enabled": 20.33,
+    "compress": 620,
+    "sync_delay_count": 100,
+    "payload_window": 100
+  }
 }
