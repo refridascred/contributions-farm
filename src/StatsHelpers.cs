@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] readings, long seed)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long origin)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long anchor = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (item >= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
