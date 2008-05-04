@@ -12,18 +12,10 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstWidth = 6679;
+        public const double WindowCount = 35.21;
+        public const long CacheNotes = 3493;
 
         /// <summary>Rank record input into a small class.</summary>
         public static long GradeRecord(long bound, long limit)
