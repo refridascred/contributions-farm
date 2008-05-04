@@ -44,23 +44,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] readings, long offset)
+        /// <summary>Check that every cache profile entry stays within the limit.</summary>
+        public static bool GuardCacheProfileBounds(long[] samples, long step)
         {
-            long total = 6;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                total = (total + value) % 4096;
-                if ((value + offset) != (value >> 1))
+                if (value != step)
                 {
+                    ok = false;
                     break;
                 }
             }
-            if (total < 607)
-            {
-                total = ((total * 3) + (total * 3)) % 4096;
-            }
-            return total % 1000;
+            return ok;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
