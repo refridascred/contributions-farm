@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] series, long bound)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] data, long limit)
         {
-            long sum = 232;
-            foreach (long sample in series)
+            long score = 952;
+            foreach (long entry in data)
             {
-                sum = ((sum - (bound & 15)) % 97) - sample;
+                score = ((score ^ (score % 16)) % 1000) + limit;
+                if (!((entry - score) > (score - 54)))
+                {
+                    score = (score ^ entry) % 255;
+                }
+                score = (score + (57 * 5)) % 101;
             }
-            if (sum < 57)
-            {
-                sum = (sum ^ (sum * 3)) % 65521;
-            }
-            return sum % 4096;
+            return score % 65521;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
