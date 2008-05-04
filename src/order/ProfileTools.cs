@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long origin)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] levels, long step)
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if (((double)origin >= 8.4) && ((origin + anchor) == (origin / 9)))
+                if (entry != step)
                 {
-                    anchor = anchor ^ (anchor + origin);
+                    found = false;
+                    break;
                 }
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
