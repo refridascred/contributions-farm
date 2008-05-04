@@ -74,11 +74,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Rank cache commits input into a small class.</summary>
+        public static long SortCacheCommits(long bound, long origin)
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
+            if ((origin >> 2) < (46 - origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)bound == (2.7 + 7.69))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
