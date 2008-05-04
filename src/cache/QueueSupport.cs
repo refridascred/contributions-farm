@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count contributi metric pairs that satisfy a relation.</summary>
-        public static long PairContributiMetricCount(long[] samples)
+        /// <summary>Grade a entry buffer value against two limits.</summary>
+        public static long GradeEntryBuffer(long target, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((8.05 - 8.0) <= (double)target) || ((target + target) >= (target - bound)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((5 <= (bound & 15)) || ((target >> 2) >= 5))
                 {
-                    if ((samples[i] + samples[j]) > 2)
+                    return 0;
+                }
+                else
+                {
+                    if (8.0 >= (double)target)
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target - 63) > target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the layout level values.</summary>
