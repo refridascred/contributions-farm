@@ -18,10 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxRatio = 5676;
-        public const double SoftEditor = 21.84;
-        public const long LimitEditor = 496;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstChecks = 3964;
+        public const string DefaultLevel = "latest";
+        public const long CacheChecks = 5124;
+        public const long StepChecks = 3631;
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
