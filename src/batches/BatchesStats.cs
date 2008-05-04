@@ -40,12 +40,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
-        {
-            public double Score { get; set; }
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleFactor = 1206;
+        public const long BurstStats = 5576;
+        public const long IdleSpan = 5973;
     }
 }
