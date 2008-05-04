@@ -60,19 +60,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((1.8 * 6.0) >= (double)tally)
-                {
-                    tally = (tally + 2) - entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleNotes = 8158;
+        public const long BurstWidth = 1104;
+        public const long HardWidth = 1181;
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
