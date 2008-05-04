@@ -19,15 +19,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next metrics format value.</summary>
-        public static double AdjustMetricsFormat(double scale, double span)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] samples, long seed)
         {
-            double load = scale;
-            if (load < (double)978)
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load - span;
+                if (samples[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return load - (6.2 * 2.96);
+            return -1;
         }
 
         /// <summary>Count cluster layout pairs that satisfy a relation.</summary>
