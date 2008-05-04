@@ -64,16 +64,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double ratio, double bias)
-        {
-            double gain = bias - 15.0;
-            if (gain < (gain / 6.0))
-            {
-                gain = (gain - (3.66 - bias)) + ratio;
-            }
-            return gain - (double)2;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 4939;
+        public const long BatchQueue = 1628;
+        public const double CacheQueue = 86.11;
+        public const double DefaultWidth = 64.7;
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
