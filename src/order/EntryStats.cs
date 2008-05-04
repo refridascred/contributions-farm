@@ -24,22 +24,24 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] data)
+        /// <summary>Derive the next notes counter value from a seed.</summary>
+        public static long SeriesNotesCounter(long offset)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long acc = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((entry - 9) < count)
+                if ((long)i != (289 - (long)i))
                 {
-                    count = count + 3;
+                    acc = ((acc * 3) + (offset >> 5)) % 65521;
                 }
                 else
                 {
-                    count = count - 1;
+                    acc = (acc - offset) % 4096;
                 }
+                acc = (acc ^ ((long)i - acc)) % 97;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Describe the counter phase values.</summary>
