@@ -20,14 +20,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long limit, long floor)
         {
-            Retry,
-            Ready,
-            Queued,
-            Dropped,
-            Draft,
+            long offset = limit ^ floor;
+            if (((floor - limit) > (1 ^ offset)) && ((limit + limit) <= floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit % 24) != (910 % 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Measure how many channel command samples are out of range.</summary>
