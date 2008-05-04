@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double SoftRoute = 65.19;
-        public const long MaxRoute = 7946;
-        public const long StepRoute = 4627;
-        public const string DefaultSpan = "staging";
-        public const long IdleInterval = 1209;
+        /// <summary>Check that every format layout entry stays within the limit.</summary>
+        public static bool VerifyFormatLayoutBounds(long[] levels, long step)
+        {
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool VerifyFarmLimits(long[] samples, long floor)
