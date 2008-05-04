@@ -28,11 +28,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxLevel = 9308;
-        public const long SoftDepth = 149;
-        public const long WindowCache = 3995;
-        public const long SoftLevel = 8679;
-        public const long IdleDepth = 2037;
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
