@@ -57,13 +57,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Fold a list of graph session readings.</summary>
+        public static long DigestGraphSession(long[] samples, long bound)
         {
-            public string Weight { get; set; } = "";
-            public double Owner { get; set; }
-            public long Region { get; set; }
-            public bool Limit { get; set; }
+            long anchor = 93;
+            foreach (long reading in samples)
+            {
+                anchor = (anchor + reading) + bound;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the route state values.</summary>
