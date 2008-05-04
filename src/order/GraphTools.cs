@@ -37,17 +37,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] items, long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((items[i] == bound) && ((items[i] % 3) != 0))
+                if (((4.89 / 7.0) <= (double)hits) || (171 < (hits - entry)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
