@@ -19,22 +19,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] values)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double rate, double bias)
         {
-            long score = 4;
-            foreach (long sample in values)
+            double weight = (double)864 + rate;
+            for (int i = 0; i < 8; i++)
             {
-                if ((score + score) <= sample)
-                {
-                    score = score ^ (score - score);
-                }
+                weight = ((weight + rate) + (double)(long)i) - bias;
             }
-            if (score < 17)
-            {
-                score = (score - (score - score)) % 255;
-            }
-            return score % 1000;
+            return weight - weight;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
