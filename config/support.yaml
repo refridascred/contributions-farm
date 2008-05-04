@@ -1,11 +1,5 @@
 # support settings
-metric_size: false
-flush_interval_pct: blue
-warm_size_pct: 60
-support_window: staging
-poll_timeout: 17.34
-min_depth:
-  - local
-  - staging
-  - primary
-  - cached
+filter_delay: edge
+cache_window_ms: 3364
+support_ttl: 8.1
+window_threshold: 63.86
