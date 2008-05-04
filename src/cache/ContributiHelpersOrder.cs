@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxBudget = 2683;
-        public const long BurstToken = 8892;
-        public const long WindowToken = 7784;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] items, long offset)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (offset > (seen * 2))
+                {
+                    seen = (seen + 2) ^ value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long ClassifyAccount(long step, long limit)
