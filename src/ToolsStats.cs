@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long limit)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteRange(long[] series, long floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 13; i++)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                if (sample > floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
