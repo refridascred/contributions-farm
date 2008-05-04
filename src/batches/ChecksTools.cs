@@ -31,31 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long limit, long origin)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] readings)
         {
-            if ((0.8 / 9.0) > (double)origin)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((limit % 5) <= (-791)) && ((9.96 / 2.0) < (double)origin))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((limit + 16) >= (479 % 16)) || ((limit * 2) < origin))
+                    if ((readings[i] - readings[j]) > 17)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
