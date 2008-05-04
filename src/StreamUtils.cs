@@ -19,15 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double scale, double floor)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] levels, long step)
         {
-            double rate = floor;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate - (scale / 6.0)) + (double)(long)i;
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return rate - rate;
+            return -1;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
