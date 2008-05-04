@@ -85,18 +85,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphHits(long[] readings, long bound)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((item ^ (long)readings.Length) < seen)
-                {
-                    seen = (seen + 3) + bound;
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public long Token { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
