@@ -1,8 +1,6 @@
 {
-  "idle_threshold": ["open", "fallback", "strict"],
-  "hard_ttl": "legacy",
-  "persist": ["local", "strict", "standard", "edge"],
-  "default_depth": 30,
-  "cache_limit": 51.23,
-  "editor_limit": false
+  "warm_interval": 88,
+  "max_window_s": "eu-west",
+  "max_delay": 100,
+  "compress": true
 }
