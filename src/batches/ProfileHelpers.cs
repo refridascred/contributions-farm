@@ -51,24 +51,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long step, long step2)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] data)
         {
-            if (step <= (step2 - step))
+            long count = 0;
+            foreach (long sample in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step2 - step2) > step)
+                if ((sample - count) > (4 << 2))
                 {
-                    return 4;
+                    count = count + 2;
                 }
                 else
                 {
-                    return 6;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
