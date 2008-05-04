@@ -1,11 +1,13 @@
 # support settings
-default_ratio_count: standard
-already_interval: 47
-channel_size: 75.35
-idle_interval_pct: cached
-idle_ratio_s: legacy
-readonly:
-  - stable
-  - stable
-  - eu-west
-  - green
+cache_interval_s: 8676
+profile_interval: 6943
+readonly: stable
+enabled:
+  - 88
+  - 403
+command_ttl:
+  base_limit_count: true
+  tools_depth: 308
+  format_size: false
+  hard_ttl_s: true
+poll_ttl: 7059
