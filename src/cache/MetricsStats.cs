@@ -20,18 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up record notes samples.</summary>
-        public static long MatchRecordNotesCount(long[] levels)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueMatches(long[] series)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long reading in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((count << 3) >= count))
                 {
-                    if ((levels[i] ^ levels[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
