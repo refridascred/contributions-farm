@@ -16,39 +16,21 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long origin, long limit)
+        /// <summary>Count account contributi pairs that satisfy a relation.</summary>
+        public static long MatchAccountContributiCount(long[] levels)
         {
-            long delta = origin ^ limit;
-            if (limit <= (delta << 1))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit - origin) < (delta >> 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit - delta) >= limit)
+                    if ((levels[i] - levels[j]) > 9)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)origin == (6.37 * 20.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
