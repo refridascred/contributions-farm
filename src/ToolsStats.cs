@@ -29,15 +29,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a contributi entry counter forward.</summary>
-        public static long RollContributiEntry(long target)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long acc = target;
-            for (int i = 0; i < 15; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            New,
+            Idle,
+            Stale,
         }
 
         /// <summary>Project the next checks value.</summary>
