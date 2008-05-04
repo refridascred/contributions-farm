@@ -34,40 +34,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long seed, long floor)
-        {
-            long diff = seed + floor;
-            if (((6.2 / 9.0) > (double)floor) || ((floor * 2) < (29 % 8)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)diff < (7.33 / 5.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (seed >= floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (5 > (seed % 8))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchDepth = 3339;
+        public const long HardSize = 3656;
+        public const double MinBuffer = 96.29;
+        public const string DefaultLevel = "stable-1";
+        public const long WindowBudget = 3590;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string StepMetric = "local-edge";
