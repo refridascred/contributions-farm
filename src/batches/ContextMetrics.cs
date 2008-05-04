@@ -48,29 +48,23 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Classify a token payload pair into a bucket.</summary>
-        public static long RankTokenPayload(long bound, long floor)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long limit, long target)
         {
-            if ((double)bound != (double)35)
+            long delta = limit - target;
+            if ((6.0 + 2.9) == (double)delta)
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if ((floor & 15) >= (bound << 3))
+                if ((limit + limit) == (target * 5))
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if (((81 % 2) == (bound + floor)) && ((double)bound == (5.1 * 7.77)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 0;
                 }
             }
         }
