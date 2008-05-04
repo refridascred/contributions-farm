@@ -69,12 +69,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Validate payload token readings against a bound.</summary>
+        public static bool GuardPayloadTokenLimits(long[] levels, long offset)
         {
-            public double Count { get; set; }
-            public long Token { get; set; }
-            public bool Label { get; set; }
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
