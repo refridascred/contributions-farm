@@ -20,12 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryScore = 26.55;
-        public const long BurstGraph = 9363;
-        public const long SoftCount = 815;
-        public const long BatchGraph = 3489;
-        public const string CacheGraph = "local-v2";
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (!(((3 + 97) >= matches) || ((double)matches != (2.79 * 2.7))))
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long AuditBatchHits(long[] readings)
