@@ -1,7 +1,8 @@
 {
-  "support_retries": 500,
-  "tools_threshold": "latest",
-  "channel_ratio": [324, 316],
-  "report_ratio": false,
-  "schema_delay": "cached"
+  "cache_ratio": true,
+  "sync_ttl": "eu-west",
+  "hard_timeout_s": 332,
+  "poll_window_s": "edge",
+  "min_retries_ms": 44.21,
+  "base_retries_count": "primary"
 }
