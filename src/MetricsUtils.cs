@@ -31,22 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine channel entry values into a single score.</summary>
-        public static long FoldChannelEntry(long[] levels, long floor)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] levels)
         {
-            long sum = 6;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((floor << 2) > (entry - entry))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = sum ^ sum;
+                    if ((levels[i] - levels[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (sum > 66)
-            {
-                sum = (sum * 3) + (sum >> 2);
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
