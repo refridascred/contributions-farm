@@ -48,10 +48,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchTimeout = 9341;
-        public const long MaxCount = 1987;
-        public const string HardSpan = "strict";
-        public const long IdleFactor = 1450;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string LimitSpan = "alpha";
+        public const long WindowInterval = 3988;
+        public const long DefaultSchema = 4953;
+        public const string MaxFactor = "fallback-1";
     }
 }
