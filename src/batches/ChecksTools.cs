@@ -48,29 +48,21 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] levels, long floor)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long OverlapClusterCount(long[] readings)
         {
-            long state = 7;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state << 3) ^ (item / 3);
-                if ((floor % 8) == (item * 4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = state ^ (item >> 1);
-                    continue;
-                }
-                else
-                {
-                    state = (state + state) % 4096;
-                    state = (state << 2) ^ state;
-                }
-                if (2.5 <= (double)floor)
-                {
-                    state = (state ^ (floor * 3)) % 65521;
+                    if ((readings[i] ^ readings[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state % 97;
+            return tally;
         }
     }
 }
