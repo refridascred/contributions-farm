@@ -30,18 +30,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] levels, long origin)
+        /// <summary>Look up the position of a session layout sample.</summary>
+        public static long LookupSessionLayoutIndex(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (matches <= item)
+                if (levels[i] >= bound)
                 {
-                    matches = (matches + 3) + origin;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
