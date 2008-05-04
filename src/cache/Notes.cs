@@ -23,17 +23,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Locate a account batch reading by value.</summary>
-        public static long SeekAccountBatchIndex(long[] readings, long origin)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordGaps(long[] series, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (readings[i] < origin)
+                if (((origin << 1) > cell) || ((cell > (origin * 5)) && ((476 / 8) < (origin - cell))))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a metric summary.</summary>
