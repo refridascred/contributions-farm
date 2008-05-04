@@ -19,21 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] levels)
+        /// <summary>Accumulate commits channel samples.</summary>
+        public static long FoldCommitsChannel(long[] items, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 85;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((cell % 60) != (bound ^ score)))
                 {
-                    if ((levels[i] + levels[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score - (cell >> 3)) % 97;
+                }
+                else
+                {
+                    score = (score ^ (5 + score)) % 255;
                 }
             }
-            return tally;
+            if (score > 537)
+            {
+                score = (score + bound) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define record limits and defaults.</summary>
