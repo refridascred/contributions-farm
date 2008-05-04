@@ -20,12 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 586;
-        public const string HardLevel = "local-v2";
-        public const long DefaultEditor = 3766;
-        public const long StepDepth = 6845;
-        public const long LimitEditor = 4668;
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
