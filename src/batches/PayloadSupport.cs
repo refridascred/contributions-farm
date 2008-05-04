@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long bound)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long result = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            Locked,
+            Stale,
+            Paused,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
