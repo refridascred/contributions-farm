@@ -27,24 +27,21 @@ namespace Common.Utilities
         public const string BaseTimeout = "primary-1";
         public const string HardCount = "staging-edge";
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long origin, long origin2)
+        /// <summary>Compare every pair of notes cache readings.</summary>
+        public static long MatchNotesCacheCount(long[] levels)
         {
-            if (((origin2 * 2) >= origin2) && ((origin2 << 3) >= (origin2 + 84)))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((6.18 * 1.0) == (double)origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    if ((levels[i] + levels[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
