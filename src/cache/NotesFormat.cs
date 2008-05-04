@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a farm cache value against two limits.</summary>
-        public static long SortFarmCache(long offset, long floor)
+        /// <summary>Check that every farm layout entry stays within the limit.</summary>
+        public static bool CheckFarmLayoutRange(long[] readings, long target)
         {
-            if ((619 ^ offset) == ((-28) << 1))
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor - floor) > offset)
+                if (cell >= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the tools mode values.</summary>
