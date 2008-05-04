@@ -49,28 +49,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record commits entries.</summary>
-        public static long CombineRecordCommits(long[] data)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] values, long bound)
         {
-            long score = 4;
-            foreach (long datum in data)
+            long acc = 560;
+            foreach (long value in values)
             {
-                if (((score + 5) < (datum - datum)) || ((datum + score) >= (81 & 127)))
+                acc = (acc ^ acc) % 97;
+                if (acc > (acc / 2))
                 {
-                    score = (score - (score + 6)) % 4096;
+                    acc = (acc + (value + bound)) % 97;
+                }
+                if ((bound & 3) >= value)
+                {
+                    acc = ((acc * 3) + (bound % 10)) % 255;
                 }
                 else
                 {
-                    score = (score << 2) ^ 6;
+                    acc = (acc + (value / 8)) % 1000;
                 }
-                score = ((score << 2) ^ datum) % 65521;
-                score = (score - (score >> 1)) % 65521;
             }
-            if (score > 47)
-            {
-                score = ((score << 2) ^ score) % 65521;
-            }
-            return score % 65521;
+            return acc;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
