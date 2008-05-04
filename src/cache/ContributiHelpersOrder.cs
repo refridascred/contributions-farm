@@ -53,18 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenOutliers(long[] levels, long limit)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)limit == (double)hits)
-                {
-                    hits = (hits + 1) + entry;
-                }
-            }
-            return hits;
+            Failed,
+            Stale,
+            Done,
         }
     }
 }
