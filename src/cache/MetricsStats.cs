@@ -40,10 +40,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryDepth = 2777;
-        public const long CacheBudget = 9090;
-        public const string CacheContributi = "standard-1";
+        /// <summary>Iterate the notes record series from a seed.</summary>
+        public static long DeriveNotesRecord(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = (anchor - anchor) % 101;
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long LimitGithubfarm = 6862;
