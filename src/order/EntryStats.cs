@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] values)
         {
-            public double Owner { get; set; }
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((datum < (46 - seen)) && ((seen << 3) >= datum))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two already checks measurements.</summary>
