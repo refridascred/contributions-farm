@@ -50,32 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long target, long seed)
+        /// <summary>Count buffer graph pairs that satisfy a relation.</summary>
+        public static long PairBufferGraphCount(long[] readings)
         {
-            long bound = target + seed;
-            if ((8 + seed) >= (bound << 2))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound - target) < bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (seed <= (seed + target))
+                    if ((readings[i] - readings[j]) > 15)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the profile order entries that pass the check.</summary>
