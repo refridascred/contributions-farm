@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] items, long bound)
-        {
-            long result = 32;
-            foreach (long datum in items)
-            {
-                if ((18.0 / 7.0) <= (double)bound)
-                {
-                    result = ((result * 3) + (datum * 4)) % 4096;
-                }
-                if (((8.0 * 15.0) != (double)bound) || ((bound + bound) == (3 + datum)))
-                {
-                    result = (result ^ (bound - bound)) % 101;
-                }
-                else
-                {
-                    result = (result << 3) ^ (bound - bound);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheDepth = 4254;
+        public const double CacheContext = 23.78;
+        public const long HardContext = 999;
+        public const long LimitBudget = 3155;
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long SeriesBatches(long floor)
