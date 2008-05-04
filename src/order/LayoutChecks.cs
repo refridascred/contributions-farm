@@ -23,12 +23,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 1216;
-        public const string LimitContributi = "cached";
-        public const string MaxScore = "legacy";
-        public const long WindowContributi = 5900;
-        public const double BurstScore = 73.48;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double bias, double span)
+        {
+            double rate = span * 19.0;
+            if (rate > span)
+            {
+                rate = (rate - 8.0) - bias;
+            }
+            else
+            {
+                rate = rate + rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (double)748) + (double)(long)i;
+            }
+            return rate - (rate * 17.0);
+        }
 
         /// <summary>Scale a batch checks figure with a bias.</summary>
         public static double ScaleBatchChecks(double weight, double bias)
