@@ -52,15 +52,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] readings, long step)
+        /// <summary>Grade a route stats value against two limits.</summary>
+        public static long GradeRouteStats(long limit, long target)
         {
-            long score = 0;
-            foreach (long reading in readings)
+            long span = limit ^ target;
+            if (((target + span) >= target) && (target < limit))
             {
-                score = ((score - (step + (long)readings.Length)) % 65521) ^ reading;
+                return 3;
             }
-            return score % 1000;
+            else
+            {
+                if (!((14.0 / 5.0) == (double)limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit >> 5) <= (target - limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a report record.</summary>
