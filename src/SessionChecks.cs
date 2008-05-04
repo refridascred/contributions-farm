@@ -19,24 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long origin, long bound)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            if (((origin + origin) >= (origin - bound)) && ((3 - bound) >= (origin + origin)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound + origin) < (origin << 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Level { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Region { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
