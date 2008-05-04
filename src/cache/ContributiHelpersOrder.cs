@@ -38,13 +38,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
-        {
-            public bool Owner { get; set; }
-            public bool Flag { get; set; }
-            public bool Score { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BaseRatio = 35.78;
+        public const long MinBudget = 927;
+        public const string HardWindow = "open";
     }
 }
