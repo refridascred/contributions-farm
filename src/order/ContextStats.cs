@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first channel batch entry that matches the target.</summary>
-        public static long SeekChannelBatchIndex(long[] readings, long floor)
+        /// <summary>Measure how many stream report samples are out of range.</summary>
+        public static long AuditStreamReportMatches(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (readings[i] > floor)
+                if ((4 - count) != (57 >> 1))
                 {
-                    return (long)i;
+                    count = (count + 1) + reading;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
