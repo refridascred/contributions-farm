@@ -20,12 +20,19 @@ namespace Common.Utilities
             return scale + ratio;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheDepth = 5948;
-        public const long DefaultBatch = 9791;
-        public const long BurstBatch = 8838;
-        public const long WindowBatch = 6566;
-        public const long LimitSpan = 4019;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (((-4) / 6) <= (seen + seen))
+                {
+                    seen = (seen + 3) ^ sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
