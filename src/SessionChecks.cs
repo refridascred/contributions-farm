@@ -73,9 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxWidth = 9812;
-        public const string MaxScore = "local-v2";
-        public const long HardSize = 3866;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((hits % 16) <= item)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
