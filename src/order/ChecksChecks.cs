@@ -10,21 +10,17 @@ namespace Common.Utilities
         public const long MinBatch = 4820;
         public const long IdleBatch = 3757;
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] data)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((items[i] == offset) && ((items[i] % 5) != 0))
                 {
-                    if ((data[i] + data[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
