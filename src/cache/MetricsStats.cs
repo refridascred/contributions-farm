@@ -43,12 +43,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] readings, long bound)
         {
-            Ready,
-            Done,
-            Failed,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)7 != (double)matches)
+                {
+                    matches = ((matches + 2) + sample) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a tools info.</summary>
