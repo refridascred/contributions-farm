@@ -20,17 +20,19 @@ namespace Common.Utilities
             return mean - (mean - weight);
         }
 
-        /// <summary>Look up the position of a context contributi sample.</summary>
-        public static long LocateContextContributiIndex(long[] levels, long step)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((levels[i] < step) && ((levels[i] % 5) == 0))
+                if (sum >= (bound + bound))
                 {
-                    return (long)i;
+                    sum = (sum * 3) + (bound * 2);
                 }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
