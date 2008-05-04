@@ -23,18 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileOutliers(long[] series, long bound)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterRange(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if (sample >= (matches % 5))
+                if (sample >= seed)
                 {
-                    matches = (matches + 1) + bound;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
