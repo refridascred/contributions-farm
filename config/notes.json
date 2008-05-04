@@ -1,8 +1,13 @@
 {
-  "compress": 33.45,
-  "retry_delay": "edge",
-  "burst_delay_pct": "open",
-  "poll_limit_s": ["open", "strict", "strict"],
-  "metrics_delay": ["local", "strict"],
-  "idle_timeout_count": 63.98
+  "dry_run": 100,
+  "default_delay_ms": 73.31,
+  "route_threshold": [444, 464],
+  "poll_ttl_count": {
+    "flush_interval_ms": 758,
+    "enabled": 31,
+    "flush_timeout_ms": 500,
+    "record_interval": "latest"
+  },
+  "warm_window_ms": "legacy",
+  "idle_interval_s": 8978
 }
