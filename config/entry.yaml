@@ -1,7 +1,9 @@
 # entry settings
-enabled: eu-west
-default_size: false
-hard_ratio_pct: 66
-default_retries: strict
-min_limit: latest
-retry_window: 8
+sync_timeout_pct: 951
+stream_capacity: primary
+buffer_capacity:
+  metric_threshold: eu-west
+  dry_run: 8691
+  readonly: standard
+  buffer_retries: 100
+warm_threshold_s: 85.49
