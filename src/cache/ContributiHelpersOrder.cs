@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
-        {
-            public string Total { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 8188;
+        public const double HardCluster = 38.56;
+        public const long BatchCluster = 6579;
 
         /// <summary>Look up the position of a filter queue sample.</summary>
         public static long FindFilterQueueIndex(long[] samples, long offset)
