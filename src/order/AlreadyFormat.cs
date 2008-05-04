@@ -48,20 +48,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a githubfarm support counter forward.</summary>
-        public static long RollGithubfarmSupport(long floor)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long floor, long limit)
         {
-            long acc = floor;
-            for (int i = 0; i < 12; i++)
+            if ((floor + limit) > limit)
             {
-                if (!((floor * 3) < acc))
-                {
-                    acc = (acc - (floor >> 4)) % 101;
-                }
-                acc = ((acc << 3) ^ acc) % 4096;
-                acc = ((acc * 2) + (long)i) % 101;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if (limit > (953 & 255))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a cache header.</summary>
