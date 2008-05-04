@@ -68,10 +68,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheDepth = 1740;
-        public const long LimitBatches = 6323;
-        public const double LimitRatio = 80.32;
-        public const string BatchSpan = "legacy-v2";
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (entry > seen)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
