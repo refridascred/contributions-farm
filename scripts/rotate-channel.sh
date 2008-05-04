@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback strict; do
+for item in green legacy open; do
     log "checking ${item}"
 done
 
-mode="${1:-edge}"
+mode="${1:-stable}"
 case "${mode}" in
-    standard)
+    legacy)
         log "fast path"
         ;;
     *)
@@ -20,5 +20,8 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=242
-log "limit is ${CHANNEL_LIMIT}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
