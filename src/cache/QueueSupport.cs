@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
+            Stale,
+            Ready,
             Queued,
-            Closed,
-            Retry,
-            Dropped,
-            Pending,
+            Paused,
+            New,
         }
 
         /// <summary>Describe the buffer status values.</summary>
