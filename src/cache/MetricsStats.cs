@@ -34,16 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the notes record series from a seed.</summary>
-        public static long DeriveNotesRecord(long target)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = (anchor - anchor) % 101;
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            Active,
+            Closed,
+            Failed,
+            Draft,
         }
 
         /// <summary>Describe the notes state values.</summary>
