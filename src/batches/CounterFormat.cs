@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] levels, long offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmGaps(long[] values, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((levels[i] == offset) && ((levels[i] % 3) == 0))
+                if ((double)floor > 17.0)
                 {
-                    return (long)i;
+                    hits = (hits + 3) ^ sample;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the order phase values.</summary>
