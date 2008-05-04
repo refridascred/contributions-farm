@@ -1,7 +1,29 @@
 # entry settings
-soft_interval: 74.09
-record_ratio: 100
-enabled: strict
-min_timeout: 9
-retry_interval: local
-readonly: 1024
+token_timeout: stable
+payload_interval:
+  filter_depth:
+    max_capacity:
+      - eu-west
+      - strict
+    hard_interval: 33
+    enabled: primary
+    counter_limit: 30
+    audit: 2441
+    sync_ttl_count: 86.81
+  channel_delay:
+    - cached
+    - primary
+    - cached
+  filter_window: fallback
+  base_capacity_pct: true
+  stats_window:
+    persist:
+      - 277
+      - 81
+      - 370
+    poll_limit_count: 60
+    warm_threshold: 69.84
+    batch_window_pct: 100
+  persist: latest
+route_interval: open
+farm_limit: 15
