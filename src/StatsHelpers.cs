@@ -47,22 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] items)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((163 + matches) < (cell ^ 764))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public bool Label { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
