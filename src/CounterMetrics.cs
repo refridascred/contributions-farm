@@ -11,21 +11,20 @@ namespace Common.Utilities
         public const string DefaultFilter = "staging-1";
         public const double BurstRatio = 93.21;
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long limit)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] levels)
         {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
+            long mix = 753;
+            foreach (long item in levels)
             {
-                long span = -54;
-                span = (span ^ score) % 255;
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    score = ((score - span) % 1000) - (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 97;
+                mix = (mix + (item + item)) % 65521;
+                mix = (mix + (item + mix)) % 1000;
             }
-            return score;
+            if (mix > (-481))
+            {
+                mix = mix ^ 6;
+            }
+            return mix % 97;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
