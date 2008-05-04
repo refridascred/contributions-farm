@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] readings, long floor)
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] samples)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long acc = 508;
+            foreach (long reading in samples)
             {
-                if ((2.0 + 20.0) <= (double)count)
+                if ((acc + acc) > (reading - acc))
                 {
-                    count = ((count + 1) ^ item) + floor;
+                    acc = ((acc * 4) + 47) % 65521;
+                    break;
                 }
                 else
                 {
-                    count = count - 1;
+                    acc = (acc - (reading >> 3)) % 101;
+                }
+                if (!((double)reading > (2.15 - 2.49)))
+                {
+                    acc = acc - (reading & 63);
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Combine report values into a single score.</summary>
