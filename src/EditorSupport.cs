@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            Ready,
-            Pending,
-            Paused,
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Count the already tools entries that pass the check.</summary>
