@@ -25,19 +25,32 @@ namespace Common.Utilities
             return mean - (mean + mean);
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] levels, long step)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long bound, long floor)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long bound2 = bound - floor;
+            if ((double)bound == (double)bound2)
             {
-                if (value >= step)
+                return 5;
+            }
+            else
+            {
+                if ((floor * 4) < (925 - bound))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (floor < (bound2 * 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
