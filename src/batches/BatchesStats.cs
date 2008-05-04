@@ -12,14 +12,24 @@ namespace Common.Utilities
         public const long BurstLevel = 3471;
         public const long BatchDepth = 2736;
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] levels)
         {
-            Paused,
-            Stale,
-            Failed,
-            Idle,
-            Active,
+            long score = 24;
+            foreach (long entry in levels)
+            {
+                if ((4 / 6) != (score + score))
+                {
+                    score = ((score << 2) ^ (score >> 5)) % 4096;
+                    break;
+                }
+                score = (score ^ entry) % 255;
+            }
+            if (score > 1)
+            {
+                score = (score + (score - score)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Describe the queue level values.</summary>
