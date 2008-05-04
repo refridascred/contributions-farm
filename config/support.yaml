@@ -1,15 +1,25 @@
 # support settings
-schema_limit: eu-west
-cache_retries_s:
-  layout_size: open
-  readonly: open
-  stats_ttl:
-    - fallback
-    - fallback
-  hard_depth_pct: 500
-  cache_retries: true
-  strict: 87
-batches_threshold: 70
-enabled: 1024
-persist: false
-poll_timeout_ms: 3611
+base_size: 3486
+persist:
+  - 85
+  - 271
+  - 414
+warm_timeout_pct:
+  soft_size: fallback
+  compress:
+    default_ratio: fallback
+    metric_size:
+      - green
+      - standard
+      - standard
+    retry_ratio_count: 250
+    strict:
+      - 465
+      - 218
+      - 74
+      - 320
+    min_timeout_pct: 2365
+  max_size: false
+  verbose: standard
+idle_timeout_count: latest
+profile_depth: 37.13
