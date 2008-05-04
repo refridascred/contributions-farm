@@ -1,9 +1,4 @@
 # entry settings
-githubfarm_capacity: 250
-persist: 250
-sync_ratio_ms: true
-hard_timeout_ms:
-  - legacy
-  - open
-  - edge
-soft_threshold_ms: stable
+burst_capacity: cached
+batch_capacity: 7294
+verbose: 88
