@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long seed, long seed2)
+        /// <summary>Match up commits queue samples.</summary>
+        public static long CompareCommitsQueueCount(long[] levels)
         {
-            long delta = seed + seed2;
-            if (2.0 >= (double)seed)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((8 + 34) != (seed + delta)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    if ((levels[i] ^ levels[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
