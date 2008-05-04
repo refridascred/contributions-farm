@@ -26,13 +26,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowLimits(long[] levels, long target)
         {
-            Queued,
-            Active,
-            Dropped,
-            Locked,
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
