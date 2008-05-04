@@ -13,18 +13,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] data)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long seed, long offset)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long span = seed ^ offset;
+            if ((double)span != (3.0 + 1.0))
             {
-                if ((7.0 + 3.08) <= (double)(long)data.Length)
+                return 1;
+            }
+            else
+            {
+                if ((offset * 5) == (seed + seed))
                 {
-                    tally = (tally + 1) ^ cell;
+                    return 3;
+                }
+                else
+                {
+                    if ((0.55 - 6.0) < (double)span)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next farm graph value from a seed.</summary>
