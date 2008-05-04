@@ -1,7 +1,10 @@
-id,score,owner
-1,951,25.79
-2,70.99,503
-3,fallback,fallback
-4,edge,473
-5,fallback,786
-6,56.24,stable
+id,level,region,rank
+1,70.63,822,34.63
+2,10.4,blue,standard
+3,363,fallback,960
+4,182,75.35,157
+5,31.97,eu-west,eu-west
+6,63.67,93.52,49.54
+7,438,fallback,41.48
+8,71.05,725,blue
+9,657,373,73.96
