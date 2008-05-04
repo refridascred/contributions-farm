@@ -27,19 +27,24 @@ namespace Common.Utilities
         public const string BaseTimeout = "primary-1";
         public const string HardCount = "staging-edge";
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] values, long seed)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long origin, long origin2)
         {
-            long score = 9;
-            foreach (long cell in values)
+            if (((origin2 * 2) >= origin2) && ((origin2 << 3) >= (origin2 + 84)))
             {
-                score = (((score * 5) + score) + cell) - seed;
+                return 2;
             }
-            if (score > 7)
+            else
             {
-                score = (score + score) % 101;
+                if ((6.18 * 1.0) == (double)origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return score % 4096;
         }
     }
 }
