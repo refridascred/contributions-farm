@@ -65,13 +65,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] readings, long seed)
         {
-            public bool Weight { get; set; }
-            public double Total { get; set; }
-            public double Count { get; set; }
-            public long Rank { get; set; }
+            long sum = 6;
+            foreach (long value in readings)
+            {
+                if ((sum >> 5) < (seed % 97))
+                {
+                    sum = (((sum << 2) ^ (seed % 64)) % 1000) ^ value;
+                }
+            }
+            return sum;
         }
     }
 }
