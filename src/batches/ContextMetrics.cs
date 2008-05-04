@@ -41,16 +41,10 @@ namespace Common.Utilities
         public const string MaxTimeout = "stable";
         public const string BaseFactor = "cached-v2";
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double gain, double offset)
-        {
-            double load = 19.0;
-            if (load > offset)
-            {
-                load = (load + (double)823) - gain;
-            }
-            return load + load;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 3219;
+        public const long WindowRatio = 3055;
+        public const long IdleCommits = 6005;
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool ValidateContributiBounds(long[] levels, long seed)
