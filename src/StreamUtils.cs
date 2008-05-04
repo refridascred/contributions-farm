@@ -19,22 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] data, long seed)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double scale, double floor)
         {
-            long total = 6;
-            foreach (long value in data)
+            double rate = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((seed >= value) && (577 >= seed))
-                {
-                    total = (total ^ seed) % 97;
-                }
+                rate = (rate - (scale / 6.0)) + (double)(long)i;
             }
-            if (total < 59)
-            {
-                total = ((total * 5) + (total - seed)) % 65521;
-            }
-            return total;
+            return rate - rate;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
