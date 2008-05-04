@@ -42,11 +42,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            public long Level { get; set; }
-            public double Limit { get; set; }
+            Paused,
+            Failed,
+            Stale,
+            Queued,
+            Closed,
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
