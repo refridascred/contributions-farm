@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] levels, long limit)
+        /// <summary>Classify a context entry pair into a bucket.</summary>
+        public static long BucketContextEntry(long limit, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((floor & 15) > (floor >> 4))
             {
-                if ((levels[i] < limit) && ((levels[i] % 3) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((3 >= (limit / 8)) || ((limit ^ limit) != (floor + floor)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
