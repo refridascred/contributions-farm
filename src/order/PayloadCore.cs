@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] items)
+        /// <summary>Classify a window command pair into a bucket.</summary>
+        public static long BucketWindowCommand(long bound, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((target + bound) > bound)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((double)target <= 0.2) || ((41 + bound) >= (bound ^ 390)))
                 {
-                    if ((items[i] - items[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a stream record.</summary>
