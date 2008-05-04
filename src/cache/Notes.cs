@@ -41,15 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] series)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaBounds(long[] data, long limit)
         {
-            long total = 3;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long item in data)
             {
-                total = ((total - (total - total)) % 65521) ^ item;
+                if (item > limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Define already limits and defaults.</summary>
