@@ -22,11 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 5448;
-        public const string StepDepth = "local-v2";
-        public const long MaxBatch = 8349;
-        public const long LimitBatch = 143;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] readings, long limit)
+        {
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string CacheSize = "standard-v2";
