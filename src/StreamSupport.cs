@@ -40,12 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            Stale,
-            Failed,
-            Synced,
+            Paused,
+            Locked,
+            Closed,
+            New,
             Done,
         }
     }
