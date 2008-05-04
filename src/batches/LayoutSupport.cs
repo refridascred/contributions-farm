@@ -41,12 +41,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string StepSupport = "strict";
-        public const long HardSupport = 4193;
-        public const string SoftFactor = "open";
-        public const long WindowSupport = 6351;
-        public const long LimitFactor = 3172;
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] readings, long offset)
+        {
+            long total = 6;
+            foreach (long value in readings)
+            {
+                total = (total + value) % 4096;
+                if ((value + offset) != (value >> 1))
+                {
+                    break;
+                }
+            }
+            if (total < 607)
+            {
+                total = ((total * 3) + (total * 3)) % 4096;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long AuditBufferOutliers(long[] levels, long limit)
