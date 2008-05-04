@@ -1,6 +1,6 @@
 {
-  "notes_threshold": 97.29,
-  "base_timeout": "green",
-  "cache_window": "primary",
-  "session_timeout": 87.31
+  "idle_capacity": 75.31,
+  "default_size_pct": 90.53,
+  "soft_limit": "fallback",
+  "hard_delay": "stable"
 }
