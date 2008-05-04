@@ -44,11 +44,33 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitBuffer = 24.64;
-        public const double DefaultCount = 57.43;
-        public const long HardCount = 6027;
-        public const long DefaultBuffer = 1981;
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long step, long floor)
+        {
+            long next = step + floor;
+            if ((floor + next) != (floor - step))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((5 + next) > next) && ((next & 3) < step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (9 < floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool ValidateEditorLimits(long[] readings, long origin)
