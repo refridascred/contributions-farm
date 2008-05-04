@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchBounds(long[] readings, long origin)
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
