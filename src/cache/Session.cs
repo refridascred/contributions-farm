@@ -40,19 +40,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long floor)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long acc = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((8.4 + 0.37) == (double)acc)
-                {
-                    acc = (acc ^ floor) % 101;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            Locked,
+            Draft,
+            Retry,
+            Idle,
         }
 
         /// <summary>Hold a session options.</summary>
