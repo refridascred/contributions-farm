@@ -31,13 +31,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
-        {
-            Active,
-            Retry,
-            Locked,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRecord = 6709;
+        public const long MinSpan = 5504;
+        public const long HardRecord = 457;
+        public const long MinRecord = 9025;
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long BucketQueue(long bound, long bound2)
