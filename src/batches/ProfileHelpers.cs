@@ -20,15 +20,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long origin)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] series, long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Digest a series of account schema entries.</summary>
