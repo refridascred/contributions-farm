@@ -1,8 +1,10 @@
 # entry settings
-idle_size_count:
-  - 25
-  - 147
-  - 122
-  - 52
-poll_interval_count: green
-burst_size_pct: 3996
+tools_depth: 94
+support_interval:
+  base_size_s: legacy
+  burst_ratio: local
+  warm_ratio_pct: false
+  retry_limit_pct: false
+  channel_delay: 75.4
+  commits_depth: false
+enabled: latest
