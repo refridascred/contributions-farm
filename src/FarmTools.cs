@@ -30,12 +30,9 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
-        {
-            public bool Count { get; set; }
-            public long Rank { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double IdleFactor = 87.3;
+        public const double MinRatio = 0.76;
+        public const string MinTimeout = "stable-edge";
     }
 }
