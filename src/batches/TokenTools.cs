@@ -26,11 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardDepth = 5292;
-        public const long RetrySupport = 7955;
-        public const long DefaultSpan = 1894;
-        public const string CacheSupport = "cached-v2";
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] items, long seed)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((double)seed != (7.7 * 7.09))
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long DeriveProfile(long target)
