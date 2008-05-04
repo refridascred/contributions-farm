@@ -26,15 +26,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] values)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] items, long step)
         {
-            long state = 4;
-            foreach (long reading in values)
+            long anchor = -758;
+            foreach (long cell in items)
             {
-                state = state + (state - reading);
+                if (cell >= (anchor * 5))
+                {
+                    anchor = ((anchor * 4) + anchor) + step;
+                }
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
