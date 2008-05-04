@@ -22,20 +22,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double gain, double floor)
-        {
-            double bias = gain;
-            if (bias >= (double)828)
-            {
-                bias = (bias + (gain / 6.0)) - floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (bias * 3.8)) + (double)(long)i;
-            }
-            return bias - gain;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double StepSchema = 73.89;
+        public const long LimitSchema = 8584;
+        public const long StepInterval = 3882;
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
