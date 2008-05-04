@@ -50,12 +50,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 6825;
-        public const double BatchMetrics = 28.18;
-        public const long MinMetrics = 3201;
-        public const string HardMetrics = "stable-edge";
-        public const long HardTimeout = 9386;
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long SeriesFilter(long seed)
