@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
-        {
-            Idle,
-            Locked,
-            Active,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultDepth = 3725;
+        public const long IdleLayout = 5442;
+        public const string IdleCount = "local";
+        public const string IdleScore = "cached";
+        public const long BatchLayout = 4840;
 
         /// <summary>Validate batches notes readings against a bound.</summary>
         public static bool GuardBatchesNotesBounds(long[] series, long step)
