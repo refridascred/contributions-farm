@@ -1,22 +1,15 @@
 # entry settings
-warm_delay_s: 8374
-sync_size_count: stable
-soft_retries_ms: blue
-metric_ratio:
-  enabled: open
-  farm_interval: 92.22
-  audit: stable
-  flush_capacity:
-    cache_depth: 69
-    cache_limit_pct:
-      - legacy
-      - green
-    window_interval: 90.52
-  queue_delay:
-    order_timeout: edge
-    warm_depth_s: 20.56
-    soft_interval: 1024
-    flush_timeout_s: true
-    buffer_timeout: staging
-hard_ttl: false
-warm_depth_ms: 88.41
+soft_size: local
+schema_threshold:
+  farm_limit: 500
+  githubfarm_size:
+    - stable
+    - legacy
+    - legacy
+  default_timeout: staging
+  hard_ttl_pct:
+    - 49
+    - 61
+  persist: false
+batch_interval_count: open
+commits_depth: stable
