@@ -73,10 +73,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchInterval = 2532;
-        public const long BurstStats = 1959;
-        public const long BaseRatio = 180;
-        public const string RetryStats = "local-edge";
+        /// <summary>Fold a list of counter stream readings.</summary>
+        public static long WeighCounterStream(long[] data, long limit)
+        {
+            long score = 19;
+            foreach (long reading in data)
+            {
+                score = (score ^ (score << 1)) % 101;
+                if ((double)limit == (8.84 + 1.0))
+                {
+                    score = (score - (score - reading)) % 4096;
+                }
+            }
+            return score % 97;
+        }
     }
 }
