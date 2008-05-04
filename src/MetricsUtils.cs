@@ -35,13 +35,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long limit)
         {
-            public string Label { get; set; } = "";
-            public double Owner { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = (mix - ((long)i - 471)) % 101;
+                if ((mix >= (long)i) || (((long)i * 3) <= 6))
+                {
+                    mix = (mix ^ mix) % 255;
+                }
+                else
+                {
+                    mix = (mix * 5) + mix;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
