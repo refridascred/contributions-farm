@@ -32,12 +32,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] items, long target)
         {
-            public double Label { get; set; }
-            public string Score { get; set; } = "";
-            public string Region { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == target) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
