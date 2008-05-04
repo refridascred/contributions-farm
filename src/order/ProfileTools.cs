@@ -62,21 +62,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up format channel samples.</summary>
-        public static long OverlapFormatChannelCount(long[] series)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Count { get; set; }
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
