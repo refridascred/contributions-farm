@@ -43,11 +43,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryWidth = 3626;
-        public const string IdleGraph = "strict-1";
-        public const long HardSize = 8380;
-        public const string WindowGraph = "standard";
-        public const string BatchTimeout = "open-1";
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)matches >= 14.0)
+                {
+                    matches = (matches + 2) - entry;
+                }
+            }
+            return matches;
+        }
     }
 }
