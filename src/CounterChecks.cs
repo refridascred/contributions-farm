@@ -63,11 +63,14 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MaxFilter = 76.99;
-        public const long CacheFilter = 9625;
-        public const long CacheLevel = 3641;
-        public const long CacheTimeout = 5901;
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
+        {
+            public double Level { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Project the next notes entry value.</summary>
         public static double AdjustNotesEntry(double ratio, double bias)
