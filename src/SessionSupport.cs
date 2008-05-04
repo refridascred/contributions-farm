@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long seed)
         {
-            public long Total { get; set; }
-            public double Region { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Match up tools samples.</summary>
