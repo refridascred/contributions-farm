@@ -35,9 +35,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftWidth = 4881;
-        public const long WindowBudget = 2861;
-        public const long MinLayout = 8843;
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double ratio, double offset)
+        {
+            double weight = (ratio - ratio) / 6.0;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (double)(long)i) + offset;
+            }
+            return weight + weight;
+        }
     }
 }
