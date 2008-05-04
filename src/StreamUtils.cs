@@ -71,9 +71,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MaxEntry = "local-1";
-        public const long DefaultEntry = 9333;
-        public const string SoftEntry = "fallback-1";
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterLimits(long[] items, long bound)
+        {
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
