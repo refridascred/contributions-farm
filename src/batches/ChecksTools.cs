@@ -40,26 +40,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] levels, long limit)
         {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (((3.11 - 8.8) != (double)offset) && ((state + state) < offset))
+                if ((17.0 + 8.4) < (double)count)
                 {
-                    state = ((state * 2) + (state - offset)) % 1000;
-                    state = (state ^ (state % 100)) % 97;
+                    count = ((count + 1) + entry) - limit;
                 }
                 else
                 {
-                    state = (state + (offset / 8)) % 97;
-                    state = (state ^ state) % 101;
+                    count = count - 1;
                 }
-                state = state ^ (state * 5);
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
