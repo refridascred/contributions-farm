@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long step, long offset)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double gain, double bias)
         {
-            long step2 = step - offset;
-            if (step2 < (step2 + step2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)step2 >= (6.55 - 5.09))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            double ratio = (double)(289 / 3);
+            return (ratio - (bias * 6.9)) + gain;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
