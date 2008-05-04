@@ -45,24 +45,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long origin)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long CompareMetricCount(long[] series)
         {
-            long total = origin;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)total == (double)(long)i)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (total << 2) ^ total;
+                    if ((series[i] ^ series[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    total = (total - (13 + total)) % 255;
-                    total = ((total * 4) + total) % 97;
-                }
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
