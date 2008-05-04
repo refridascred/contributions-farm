@@ -38,18 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cache queue samples are out of range.</summary>
-        public static long CountCacheQueueMatches(long[] values)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (!((item << 1) <= (item + item)) && !(item > (item - 458)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Count { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
     }
 }
