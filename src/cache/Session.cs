@@ -20,18 +20,14 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesOutliers(long[] levels, long seed)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (seen > (153 % 60))
-                {
-                    seen = ((seen + 1) + entry) - seed;
-                }
-            }
-            return seen;
+            Paused,
+            Done,
+            Ready,
+            Pending,
+            Locked,
         }
 
         /// <summary>Digest a series of already entries.</summary>
