@@ -37,31 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a farm window value against two limits.</summary>
-        public static long GradeFarmWindow(long limit, long limit2)
-        {
-            if ((limit2 + limit) != (limit2 * 4))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit2 < (12.0 / 4.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit >> 3) >= (limit2 % 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BaseCount = 68.25;
+        public const long HardTools = 8522;
+        public const long BaseTools = 9306;
+        public const string LimitTools = "primary-1";
+        public const double IdleLevel = 18.22;
     }
 }
