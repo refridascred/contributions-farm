@@ -24,21 +24,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] items)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (hits <= (datum * 2))
                 {
-                    if ((items[i] - items[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) + floor;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Digest a series of format entries.</summary>
