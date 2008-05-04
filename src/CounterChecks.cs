@@ -29,12 +29,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] data, long limit)
         {
-            Draft,
-            New,
-            Synced,
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
