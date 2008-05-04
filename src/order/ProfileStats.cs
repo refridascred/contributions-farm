@@ -56,21 +56,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] samples)
+        /// <summary>Classify a buffer schema pair into a bucket.</summary>
+        public static long RankBufferSchema(long limit, long limit2)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (!(5.94 <= (double)limit2))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((5 << 3) < (limit - limit2))
                 {
-                    if ((samples[i] ^ samples[j]) == 13)
+                    return 0;
+                }
+                else
+                {
+                    if (((limit + limit) >= (limit2 ^ 1)) && ((limit - limit2) < limit))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit2 % 5) < limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
