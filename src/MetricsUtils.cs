@@ -18,21 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count entry profile pairs that satisfy a relation.</summary>
-        public static long CompareEntryProfileCount(long[] series)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] series)
         {
-            long seen = 0;
+            long matches = 0;
             for (int i = 0; i < series.Length; i++)
             {
                 for (int j = 0; j < series.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) < 9)
+                    if ((series[i] - series[j]) > 14)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
