@@ -1,11 +1,10 @@
 # githubfarm settings
-burst_retries:
-  - stable
-  - legacy
-  - open
-default_window: 250
-default_retries_count:
-  max_ratio_count: stable
-  queue_limit: cached
-  order_size: standard
-checks_timeout: 100
+commits_timeout: true
+burst_capacity:
+  - primary
+  - eu-west
+  - strict
+  - local
+sync_ttl_ms: 3015
+enabled: 2
+min_interval: edge
