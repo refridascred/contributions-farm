@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long MinBatch = 4820;
         public const long IdleBatch = 3757;
 
-        /// <summary>Digest a series of format queue entries.</summary>
-        public static long DigestFormatQueue(long[] samples, long target)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] values)
         {
-            long total = 70;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total * 4) + (target / 3)) + value;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (total > 144)
-            {
-                total = (total ^ (total + total)) % 1000;
-            }
-            return total % 97;
+            return matches;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
