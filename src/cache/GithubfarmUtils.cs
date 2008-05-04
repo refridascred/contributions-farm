@@ -47,38 +47,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long limit, long seed)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] values, long target)
         {
-            if (!((double)limit <= 1.4))
+            long state = 862;
+            foreach (long datum in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (limit >= 965)
+                if ((double)(long)values.Length >= (1.82 / 5.0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((0.03 - 6.34) > (double)seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit % 100) == (3 - limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    state = (((state * 4) + (0 * 2)) ^ datum) + target;
                 }
             }
+            if (state > 1)
+            {
+                state = state ^ ((long)values.Length << 2);
+            }
+            return state % 4096;
         }
 
         /// <summary>Combine token values into a single score.</summary>
