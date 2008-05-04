@@ -1,12 +1,4 @@
 # githubfarm settings
-persist:
-  route_ttl: 16.0
-  readonly: 7.83
-  filter_capacity:
-    max_timeout_count: open
-    burst_timeout: 1024
-    commits_size: blue
-    default_delay_s: fallback
-  account_retries: 9580
-compress: false
-audit: 1382
+burst_capacity: 76.89
+persist: 500
+poll_interval: 1024
