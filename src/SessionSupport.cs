@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long seed)
+        /// <summary>Count context farm pairs that satisfy a relation.</summary>
+        public static long OverlapContextFarmCount(long[] readings)
         {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Match up tools samples.</summary>
