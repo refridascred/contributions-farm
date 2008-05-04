@@ -25,18 +25,20 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesMatches(long[] samples, long target)
+        /// <summary>Iterate the buffer contributi series from a seed.</summary>
+        public static long RollBufferContributi(long offset)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long mix = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((reading * 2) <= tally))
+                if ((offset >> 4) <= ((long)i % 10))
                 {
-                    tally = (tally + 2) + target;
+                    mix = (mix * 2) + (197 + mix);
+                    continue;
                 }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define format limits and defaults.</summary>
