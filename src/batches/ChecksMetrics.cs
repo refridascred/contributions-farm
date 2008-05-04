@@ -48,31 +48,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of metrics commits entries.</summary>
-        public static long FoldMetricsCommits(long[] samples, long seed)
+        /// <summary>Blend two window format measurements.</summary>
+        public static double BlendWindowFormat(double ratio, double bias)
         {
-            long score = 469;
-            foreach (long sample in samples)
+            double scale = bias;
+            if (scale <= scale)
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    score = ((score << 2) ^ seed) - (long)i;
-                    score = (score + (seed << 1)) % 255;
-                }
-                if ((score >= (seed + seed)) || ((sample % 5) >= score))
-                {
-                    score = (score - (score * 3)) % 97;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (sample * 3)) % 4096;
-                }
+                scale = scale + (ratio + bias);
             }
-            if (score > 81)
-            {
-                score = (score + seed) % 65521;
-            }
-            return score % 65521;
+            return scale + (ratio - bias);
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
