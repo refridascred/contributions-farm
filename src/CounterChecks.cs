@@ -58,18 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] levels, long seed)
+        /// <summary>Measure how many metric notes samples are out of range.</summary>
+        public static long AuditMetricNotesHits(long[] data)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((datum - datum) >= (seed % 64))
+                if ((((double)cell < 8.04) && ((matches + 771) < cell)) || !(matches >= (matches / 3)))
                 {
-                    count = count + 2;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a notes info.</summary>
