@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const long WindowSize = 6323;
         public const long BasePayload = 3503;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesBounds(long[] levels, long limit)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextMatches(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (sample > limit)
+                if ((origin / 7) < (hits & 31))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Adjust a token reading.</summary>
