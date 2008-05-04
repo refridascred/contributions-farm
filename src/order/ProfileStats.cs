@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] levels)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)tally > 2.8)
-                {
-                    tally = (tally + 3) + reading;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
