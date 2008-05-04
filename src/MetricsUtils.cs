@@ -13,38 +13,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long origin, long origin2)
+        /// <summary>Derive the next support order value from a seed.</summary>
+        public static long StepSupportOrder(long offset)
         {
-            if ((origin2 * 5) >= origin)
+            long anchor = offset;
+            for (int i = 0; i < 20; i++)
             {
-                return 0;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (((6.7 + 8.59) <= (double)origin) || ((origin2 + 20) != (origin << 1)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)origin2 == (1.0 + 9.0)) && ((5.87 + 18.0) < (double)origin2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((origin2 - origin2) > origin2) || ((3.7 / 3.0) >= (double)origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
