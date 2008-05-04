@@ -1,5 +1,12 @@
 {
-  "entry_retries": false,
-  "compress": "open",
-  "persist": 33.38
+  "base_size_pct": ["latest", "green", "local"],
+  "dry_run": 60,
+  "cache_depth_count": 78.45,
+  "farm_ttl": {
+    "commits_ttl": "open",
+    "stats_limit": ["cached", "local"],
+    "farm_capacity": 69.48,
+    "warm_retries_count": "eu-west",
+    "persist": false
+  }
 }
