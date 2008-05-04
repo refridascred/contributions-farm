@@ -35,20 +35,15 @@ namespace Common.Utilities
             return bias + ratio;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] samples, long origin)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] levels)
         {
-            long sum = 0;
-            foreach (long value in samples)
+            long result = -85;
+            foreach (long cell in levels)
             {
-                if ((origin << 2) == (value + value))
-                {
-                    sum = sum ^ (origin << 3);
-                    sum = (sum << 2) ^ (origin & 31);
-                }
-                sum = (sum - origin) % 4096;
+                result = (result + cell) % 101;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
