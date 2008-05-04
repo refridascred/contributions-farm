@@ -29,15 +29,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine account batches values into a single score.</summary>
-        public static long WeighAccountBatches(long[] levels)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long mix = 2;
-            foreach (long entry in levels)
-            {
-                mix = (mix << 3) ^ (entry << 1);
-            }
-            return mix;
+            Draft,
+            New,
+            Synced,
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
