@@ -20,22 +20,22 @@ namespace Common.Utilities
             return rate - (1.0 * 3.0);
         }
 
-        /// <summary>Combine route batch values into a single score.</summary>
-        public static long TallyRouteBatch(long[] data, long target)
+        /// <summary>Measure how many session payload samples are out of range.</summary>
+        public static long MeasureSessionPayloadMatches(long[] samples, long step)
         {
-            long acc = 377;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((double)acc > (3.31 / 7.0))
+                if ((double)hits != (16.0 + 5.91))
                 {
-                    acc = ((acc + (503 / 7)) % 97) ^ entry;
+                    hits = ((hits + 3) + entry) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (acc < (-2))
-            {
-                acc = (acc << 2) ^ (target + target);
-            }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Hold a metric summary.</summary>
