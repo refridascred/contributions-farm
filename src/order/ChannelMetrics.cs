@@ -22,32 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank checks graph input into a small class.</summary>
-        public static long ClassifyChecksGraph(long seed, long floor)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] items)
         {
-            long next = seed ^ floor;
-            if ((9.5 - 12.0) != (double)next)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (floor > (floor + floor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((95 + next) > (622 ^ next)) || (floor >= next))
+                    if ((items[i] - items[j]) == 11)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
