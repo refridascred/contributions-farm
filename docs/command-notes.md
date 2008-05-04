@@ -1,12 +1,11 @@
 # Command notes
 
-Defaults for queue live in the config folder and can be overridden per environment.
-Keep entry and buffer names short and lowercase.
-Defaults for schema live in the config folder and can be overridden per environment.
+Run the githubfarm check before changing any schema limits.
+Run the order check before changing any account limits.
+Run the session check before changing any window limits.
 
 ## Guidelines
 
-- Validate filter input early
-- Keep route values small
-- Review graph limits each release
-- Document new already fields
+- Prefer channel defaults
+- Validate stats input early
+- Review already limits each release
