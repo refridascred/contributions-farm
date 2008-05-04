@@ -1,24 +1,6 @@
 {
-  "default_threshold_pct": 74,
-  "max_delay_s": {
-    "retry_limit": {
-      "poll_timeout": ["eu-west", "staging", "eu-west", "fallback"],
-      "base_interval": true,
-      "burst_limit_pct": ["open", "stable"],
-      "persist": "blue"
-    },
-    "audit": {
-      "schema_window": ["fallback", "strict"],
-      "poll_capacity_ms": "open",
-      "graph_depth": 250,
-      "command_retries": "latest",
-      "warm_capacity": false
-    },
-    "soft_window_s": "open",
-    "batch_interval": 47,
-    "batch_size": [444, 164],
-    "flush_interval_count": 43.78
-  },
-  "batch_limit": 37.71,
-  "channel_interval": ["fallback", "legacy"]
+  "account_ratio": "latest",
+  "soft_window_s": "strict",
+  "cache_timeout_count": "fallback",
+  "idle_interval_pct": 30
 }
