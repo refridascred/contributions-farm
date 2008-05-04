@@ -16,24 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank counter account input into a small class.</summary>
-        public static long RankCounterAccount(long step, long floor)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            if ((double)step <= (double)floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((double)step <= 5.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Failed,
+            Ready,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
