@@ -1,13 +1,11 @@
 # githubfarm settings
-sync_threshold: true
-idle_ttl: staging
-profile_threshold: open
-audit:
+burst_retries:
   - stable
-  - stable
-  - green
-window_capacity: 30
-record_ratio:
-  persist: 100
-  graph_ttl: false
-  sync_ttl: 250
+  - legacy
+  - open
+default_window: 250
+default_retries_count:
+  max_ratio_count: stable
+  queue_limit: cached
+  order_size: standard
+checks_timeout: 100
