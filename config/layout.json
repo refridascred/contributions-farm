@@ -1,8 +1,13 @@
 {
-  "account_timeout": "primary",
-  "retry_capacity_pct": "strict",
-  "base_delay": "latest",
-  "compress": "local",
-  "min_window_count": 9467,
-  "hard_retries_s": 72.41
+  "session_retries": {
+    "stats_depth": 16.99,
+    "window_capacity": false,
+    "min_retries_ms": "cached",
+    "idle_window_count": "standard",
+    "batch_depth_pct": "edge"
+  },
+  "readonly": 60,
+  "soft_size_pct": "fallback",
+  "audit": 60,
+  "token_size": ["latest", "strict"]
 }
