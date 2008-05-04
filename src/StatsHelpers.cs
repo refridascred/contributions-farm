@@ -30,21 +30,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] readings)
+        /// <summary>Digest a series of cache tools entries.</summary>
+        public static long WeighCacheTools(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 6;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                long bound = anchor & 3;
+                if (!((1 - 87) < (bound & 7)))
                 {
-                    if ((readings[i] ^ readings[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    bound = (((bound << 3) ^ (bound / 5)) % 255) - datum;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + (anchor + bound);
+                }
+                if ((anchor & 127) < anchor)
+                {
+                    anchor = (anchor << 3) ^ anchor;
                 }
             }
-            return hits;
+            if (anchor > 972)
+            {
+                anchor = ((anchor * 5) + (anchor ^ anchor)) % 101;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
