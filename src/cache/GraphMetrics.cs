@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double weight, double span)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] data)
         {
-            double weight2 = weight - (double)865;
-            return (weight2 + (1.8 * 6.2)) + span;
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((count & 3) == (190 << 3))
+                {
+                    count = (count + 2) - entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
