@@ -31,25 +31,17 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long limit, long step)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] levels, long seed)
         {
-            long bound = limit - step;
-            if ((52 % 10) >= (limit + bound))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step != (double)limit)
+                if (levels[i] == seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the buffer farm entries that pass the check.</summary>
