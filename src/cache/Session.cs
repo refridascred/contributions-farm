@@ -39,22 +39,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] readings)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (!(1 < (tally & 31)))
-                {
-                    tally = (tally + 2) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Failed,
+            Locked,
+            New,
         }
 
         /// <summary>Match up context samples.</summary>
