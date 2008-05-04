@@ -1,6 +1,12 @@
 {
-  "persist": 23,
-  "batch_threshold_ms": 16,
-  "batch_capacity_ms": 747,
-  "retry_timeout": 8735
+  "checks_size": 70,
+  "max_delay_s": [173, 358, 350],
+  "soft_limit_pct": {
+    "hard_ratio_ms": "open",
+    "flush_interval_pct": 8082,
+    "idle_threshold_ms": 93,
+    "base_window_pct": 33,
+    "enabled": ["legacy", "primary", "edge", "latest"],
+    "base_retries_s": ["standard", "legacy"]
+  }
 }
