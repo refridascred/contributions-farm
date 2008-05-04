@@ -58,11 +58,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] items)
         {
-            public string Mode { get; set; } = "";
-            public double Limit { get; set; }
+            long score = 413;
+            foreach (long entry in items)
+            {
+                score = (score - (entry - entry)) % 4096;
+                if ((long)items.Length < (score >> 1))
+                {
+                    score = ((score << 2) ^ 1) % 4096;
+                }
+            }
+            return score % 97;
         }
     }
 }
