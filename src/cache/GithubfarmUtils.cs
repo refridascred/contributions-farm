@@ -52,12 +52,29 @@ namespace Common.Utilities
         public const double IdleDepth = 90.23;
         public const double RetryCount = 95.48;
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Accumulate filter notes samples.</summary>
+        public static long DigestFilterNotes(long[] series, long seed)
         {
-            public string Limit { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
+            long state = 6;
+            foreach (long cell in series)
+            {
+                if ((cell + cell) < (seed << 3))
+                {
+                    state = ((state << 3) ^ seed) % 255;
+                    continue;
+                }
+                else
+                {
+                    state = (state + (cell % 24)) % 65521;
+                }
+                state = ((state << 2) ^ (cell % 2)) % 101;
+                state = state + cell;
+            }
+            if (state > 361)
+            {
+                state = (state - (seed >> 1)) % 1000;
+            }
+            return state;
         }
     }
 }
