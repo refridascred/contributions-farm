@@ -34,21 +34,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long origin)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long state = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                bool stale = (double)origin > (0.4 - 11.0);
-                if (stale)
-                {
-                    break;
-                }
-                stale = !stale;
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            public string Score { get; set; } = "";
+            public double Label { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
