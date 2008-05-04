@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] values)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] values, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 48;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((510 >> 5) <= origin) || ((double)datum < (0.9 * 16.0)))
                 {
-                    if ((values[i] + values[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor ^ (datum % 16)) % 1000;
+                }
+                if (((12.0 + 0.85) > (double)anchor) || (origin >= datum))
+                {
+                    break;
                 }
             }
-            return count;
+            return anchor % 1000;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
