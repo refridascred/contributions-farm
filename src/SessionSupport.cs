@@ -25,13 +25,19 @@ namespace Common.Utilities
         public const double MaxLayout = 57.22;
         public const long CacheLayout = 9403;
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] levels, long offset)
         {
-            New,
-            Ready,
-            Synced,
-            Retry,
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
