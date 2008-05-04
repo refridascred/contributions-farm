@@ -38,15 +38,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double gain, double offset)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] items, long origin)
         {
-            double bias = gain;
-            if (bias >= offset)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                bias = bias - gain;
+                if (entry >= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return bias - (double)5;
+            return ready;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
