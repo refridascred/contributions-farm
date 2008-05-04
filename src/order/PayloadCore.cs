@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long offset)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long acc = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            public double Limit { get; set; }
+            public double Flag { get; set; }
+            public bool Ratio { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the graph mode values.</summary>
