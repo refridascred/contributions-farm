@@ -1,8 +1,11 @@
 # support settings
-profile_ratio:
-  - 373
-  - 410
-  - 125
-batch_ttl_pct: 14.15
-poll_threshold_s: true
-verbose: 70.52
+editor_ttl:
+  min_window_pct: true
+  flush_limit_pct: 70.75
+  compress: primary
+compress: fallback
+cache_depth:
+  - latest
+  - local
+  - edge
+  - blue
