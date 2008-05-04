@@ -47,15 +47,14 @@ namespace Common.Utilities
         public const long IdleRecord = 4479;
         public const long LimitBudget = 9316;
 
-        /// <summary>Roll a token already counter forward.</summary>
-        public static long DeriveTokenAlready(long limit)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long anchor = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            Paused,
+            Active,
+            New,
+            Pending,
+            Closed,
         }
     }
 }
