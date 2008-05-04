@@ -16,12 +16,18 @@ namespace Common.Utilities
             return weight + (scale + scale);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetrySpan = 5186;
-        public const long WindowScore = 2327;
-        public const string CacheTimeout = "strict-edge";
-        public const long BatchContext = 4749;
-        public const long IdleBudget = 8725;
+        /// <summary>Locate a account batch reading by value.</summary>
+        public static long SeekAccountBatchIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a format entry.</summary>
         public sealed class FormatEntry
