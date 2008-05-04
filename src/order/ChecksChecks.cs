@@ -17,31 +17,19 @@ namespace Common.Utilities
         public const long MaxQueue = 9078;
         public const string BatchSpan = "local-edge";
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long bound, long seed)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] levels, long step)
         {
-            if (seed > (bound % 3))
+            bool ok = true;
+            foreach (long value in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)bound < (2.26 - 7.2)) || ((double)bound != (7.17 * 2.48)))
+                if (value >= step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((-101) + seed) >= seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
