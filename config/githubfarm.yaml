@@ -1,7 +1,13 @@
 # githubfarm settings
-report_window: 7529
-flush_size_pct: 29.92
-dry_run: 31.51
-retry_delay_ms: 89
-editor_timeout: 36.52
-stream_threshold: staging
+idle_timeout: 61.32
+retry_size_pct: false
+readonly: 1024
+sync_limit_count: false
+base_limit_ms:
+  account_ratio: staging
+  burst_capacity_count: false
+  min_capacity_count: 1024
+soft_size_count:
+  - 476
+  - 392
+  - 197
