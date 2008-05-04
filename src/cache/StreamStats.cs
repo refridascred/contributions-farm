@@ -12,13 +12,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Validate notes account readings against a bound.</summary>
+        public static bool GuardNotesAccountBounds(long[] readings, long target)
         {
-            Draft,
-            New,
-            Failed,
-            Dropped,
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Iterate the record stats series from a seed.</summary>
