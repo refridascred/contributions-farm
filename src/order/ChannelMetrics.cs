@@ -37,19 +37,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenBounds(long[] values, long bound)
+        /// <summary>Grade a farm window value against two limits.</summary>
+        public static long GradeFarmWindow(long limit, long limit2)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            if ((limit2 + limit) != (limit2 * 4))
             {
-                if (sample < bound)
+                return 3;
+            }
+            else
+            {
+                if ((double)limit2 < (12.0 / 4.0))
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit >> 3) >= (limit2 % 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
