@@ -16,14 +16,12 @@ namespace Common.Utilities
             return load - (floor - weight);
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            Locked,
-            New,
-            Failed,
-            Paused,
-            Queued,
+            public double Flag { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate buffer samples.</summary>
