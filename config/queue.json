@@ -1,5 +1,15 @@
 {
-  "default_window_count": ["stable", "fallback", "blue"],
-  "soft_ttl": 30,
-  "dry_run": "staging"
+  "enabled": "primary",
+  "filter_size": {
+    "compress": 27,
+    "graph_interval": "stable",
+    "strict": true
+  },
+  "hard_capacity": false,
+  "metric_size": false,
+  "base_size_pct": {
+    "compress": "fallback",
+    "poll_ttl_s": "standard",
+    "strict": 14.55
+  }
 }
