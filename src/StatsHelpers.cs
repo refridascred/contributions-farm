@@ -30,17 +30,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] series, long floor)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Adjust a stream reading.</summary>
