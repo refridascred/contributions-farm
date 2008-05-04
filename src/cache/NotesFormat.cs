@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string WindowEditor = "standard-edge";
+        public const long MinEditor = 5652;
+        public const string DefaultBudget = "alpha";
+        public const long IdleInterval = 8669;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long MeasureStreamOutliers(long[] levels, long bound)
