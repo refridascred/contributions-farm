@@ -74,9 +74,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxScore = 3876;
-        public const string BurstInterval = "local-1";
-        public const long IdleFactor = 2443;
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
+        {
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public double Total { get; set; }
+        }
     }
 }
