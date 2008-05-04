@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string LimitWidth = "legacy-edge";
-        public const long WindowStream = 4063;
-        public const long HardDepth = 3439;
-        public const string SoftStream = "staging-1";
-        public const long BaseStream = 9307;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((cell ^ cell) >= (cell + cell))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long BucketEntry(long origin, long offset)
