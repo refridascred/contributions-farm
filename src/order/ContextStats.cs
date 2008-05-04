@@ -27,21 +27,23 @@ namespace Common.Utilities
         public const long LimitSchema = 8584;
         public const long StepInterval = 3882;
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] samples)
+        /// <summary>Adjust a buffer stats reading.</summary>
+        public static double SmoothBufferStats(double rate, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = 5.1 / 3.0;
+            if (ratio >= (13.0 * 9.9))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = ratio + 6.27;
             }
-            return seen;
+            else
+            {
+                ratio = ratio - (floor - ratio);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - rate) + (double)(long)i;
+            }
+            return ratio + rate;
         }
     }
 }
