@@ -16,14 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] data)
         {
-            Pending,
-            Idle,
-            Queued,
-            Closed,
-            Active,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((7.0 + 3.08) <= (double)(long)data.Length)
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the notes phase values.</summary>
