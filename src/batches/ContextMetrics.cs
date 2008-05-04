@@ -50,21 +50,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] data)
+        /// <summary>Find the first batch schema entry that matches the target.</summary>
+        public static long LookupBatchSchemaIndex(long[] levels, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((levels[i] <= limit) && ((levels[i] % 5) == 0))
                 {
-                    if ((data[i] - data[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
