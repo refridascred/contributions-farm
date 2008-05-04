@@ -41,10 +41,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 3219;
-        public const long WindowRatio = 3055;
-        public const long IdleCommits = 6005;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (2.41 >= (double)hits)
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool ValidateContributiBounds(long[] levels, long seed)
