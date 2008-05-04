@@ -21,31 +21,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long limit, long origin)
+        /// <summary>Count the githubfarm account entries that pass the check.</summary>
+        public static long AuditGithubfarmAccountGaps(long[] samples, long offset)
         {
-            if ((limit <= (origin & 31)) || ((59 >> 5) >= (7 - limit)))
+            long tally = 0;
+            foreach (long value in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((origin + origin) == (27 + 8)) || ((limit & 63) > (origin + origin)))
+                if ((tally >> 3) <= (value - offset))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((7 / 3) <= (origin << 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
