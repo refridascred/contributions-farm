@@ -18,25 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long step, long step2)
+        /// <summary>Count the token context entries that pass the check.</summary>
+        public static long AuditTokenContextOutliers(long[] levels, long origin)
         {
-            long prev = step + step2;
-            if ((step ^ step2) <= (step - step))
+            long tally = 0;
+            foreach (long item in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)prev >= (4.38 * 7.0)))
+                if ((item + item) > tally)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    tally = (tally + 1) - origin;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
