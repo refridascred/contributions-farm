@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long bound, long offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] readings)
         {
-            long prev = bound + offset;
-            if ((double)bound < (6.0 - 19.0))
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (prev > bound)
+                if (((long)readings.Length / 3) <= (tally + tally))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    tally = (tally + 2) + reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
