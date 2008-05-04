@@ -31,17 +31,20 @@ namespace Common.Utilities
             return bias + ratio;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] data, long seed)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] samples, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 0;
+            foreach (long value in samples)
             {
-                if (data[i] <= seed)
+                if ((origin << 2) == (value + value))
                 {
-                    return (long)i;
+                    sum = sum ^ (origin << 3);
+                    sum = (sum << 2) ^ (origin & 31);
                 }
+                sum = (sum - origin) % 4096;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
