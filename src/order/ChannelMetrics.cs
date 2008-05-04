@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] series)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] values)
         {
-            long state = 223;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (state < (datum & 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = (state ^ datum) % 101;
-                }
-                else
-                {
-                    state = state ^ (datum + state);
+                    if ((values[i] + values[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state % 4096;
+            return tally;
         }
 
         /// <summary>Grade a farm window value against two limits.</summary>
