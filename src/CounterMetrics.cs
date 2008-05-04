@@ -17,20 +17,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] levels)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long mix = 753;
-            foreach (long item in levels)
-            {
-                mix = (mix + (item + item)) % 65521;
-                mix = (mix + (item + mix)) % 1000;
-            }
-            if (mix > (-481))
-            {
-                mix = mix ^ 6;
-            }
-            return mix % 97;
+            public double Offset { get; set; }
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Grade a metrics schema value against two limits.</summary>
