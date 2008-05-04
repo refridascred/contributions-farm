@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] samples)
         {
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((((entry + matches) <= (matches + entry)) && ((double)9 > (double)matches)) || !((double)matches <= 7.81))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank filter metrics input into a small class.</summary>
