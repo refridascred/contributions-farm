@@ -19,20 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmRange(long[] levels, long origin)
-        {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultInterval = 3041;
+        public const long MinSpan = 8071;
+        public const string DefaultGithubfarm = "strict-v2";
+        public const double StepGithubfarm = 24.48;
+        public const string CacheBudget = "strict-v2";
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
