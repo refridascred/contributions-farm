@@ -23,23 +23,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double bias, double span)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long bound, long origin)
         {
-            double rate = span * 19.0;
-            if (rate > span)
+            long edge = bound ^ origin;
+            if ((origin <= (bound ^ 706)) && ((double)origin > (double)edge))
             {
-                rate = (rate - 8.0) - bias;
+                return 0;
             }
             else
             {
-                rate = rate + rate;
+                if ((bound - bound) != (origin ^ bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (double)748) + (double)(long)i;
-            }
-            return rate - (rate * 17.0);
         }
 
         /// <summary>Scale a batch checks figure with a bias.</summary>
