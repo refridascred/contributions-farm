@@ -16,19 +16,39 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] levels, long origin)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long target, long floor)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long offset = target + floor;
+            if (((9.77 + 4.0) != (double)floor) && ((96 % 97) >= (floor + target)))
             {
-                if (entry > origin)
+                return 3;
+            }
+            else
+            {
+                if (7.0 <= (double)floor)
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((target - floor) <= (target + target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((offset - target) < (offset ^ offset)) || ((floor + offset) != (offset - floor)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
