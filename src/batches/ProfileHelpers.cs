@@ -33,32 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long offset, long floor)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long edge = offset - floor;
-            if ((double)offset < 2.63)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((edge + floor) >= (offset & 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (offset > (edge ^ floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
