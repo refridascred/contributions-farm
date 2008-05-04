@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiGaps(long[] readings)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((287 - entry) < (entry << 1))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryDepth = 4256;
+        public const double LimitRatio = 44.79;
+        public const double HardEntry = 75.36;
+        public const long BatchInterval = 2119;
+        public const long StepFactor = 8622;
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long SeriesBatches(long floor)
