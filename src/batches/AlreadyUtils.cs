@@ -63,21 +63,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] samples)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = -8;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((result * 4) + limit) - cell;
             }
-            return count;
+            if (result > 4)
+            {
+                result = ((result << 3) ^ (result + (-27))) % 1000;
+            }
+            return result;
         }
     }
 }
