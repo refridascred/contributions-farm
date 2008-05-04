@@ -40,21 +40,21 @@ namespace Common.Utilities
         public const long BatchFactor = 6358;
         public const long SoftChecks = 6841;
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] readings)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mark = ((mark * 5) + (limit & 127)) % 4096;
+                if ((double)(long)i == (6.6 / 2.0))
                 {
-                    if ((readings[i] ^ readings[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = ((mark * 4) + (limit / 8)) % 65521;
+                    mark = ((mark << 2) ^ (mark + limit)) % 65521;
                 }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
     }
 }
