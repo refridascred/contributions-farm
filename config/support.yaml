@@ -1,10 +1,7 @@
 # support settings
-soft_size: 3364
-min_interval_pct:
-  - 468
-  - 290
-  - 147
-  - 186
-base_depth_pct: 69.96
-enabled: true
-compress: eu-west
+persist: 15
+default_retries_ms: 32.93
+soft_window_ms: legacy
+enabled: 16.52
+batch_delay: 47
+default_ttl: 96
