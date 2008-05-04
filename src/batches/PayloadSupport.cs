@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountGaps(long[] series, long seed)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long bound)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long result = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((count + 42) < ((-7) * 5))
-                {
-                    count = ((count + 2) + reading) + seed;
-                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Describe the session status values.</summary>
