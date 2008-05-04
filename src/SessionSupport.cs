@@ -22,18 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] data)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] data, long offset)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (2 >= (offset & 63))
                 {
-                    if ((data[i] + data[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) + item;
                 }
             }
             return seen;
