@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string WindowEditor = "standard-edge";
-        public const long MinEditor = 5652;
-        public const string DefaultBudget = "alpha";
-        public const long IdleInterval = 8669;
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public bool Label { get; set; }
+            public bool Stamp { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long MeasureStreamOutliers(long[] levels, long bound)
