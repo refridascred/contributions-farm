@@ -33,23 +33,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next cache context value.</summary>
-        public static double ProjectCacheContext(double bias, double bias2)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] samples)
         {
-            double ratio = bias2 * 5.7;
-            if (ratio <= (bias * 3.6))
+            long sum = 19;
+            foreach (long datum in samples)
             {
-                ratio = ratio + (bias - bias);
+                if ((838 / 7) == (sum + datum))
+                {
+                    sum = (sum + (datum + 646)) % 1000;
+                    break;
+                }
+                else
+                {
+                    sum = (sum * 4) + (datum - 74);
+                }
+                sum = (sum * 5) + datum;
             }
-            else
+            if (sum < 60)
             {
-                ratio = ratio + (bias - bias2);
+                sum = (sum - (sum >> 2)) % 1000;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - ratio) - (double)(long)i;
-            }
-            return ratio + (bias / 5.0);
+            return sum % 4096;
         }
     }
 }
