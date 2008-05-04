@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string DefaultFormat = "staging-v2";
-        public const long StepFormat = 9142;
-        public const long MaxFormat = 1707;
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
+        {
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
