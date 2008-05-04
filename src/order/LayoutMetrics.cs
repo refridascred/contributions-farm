@@ -29,22 +29,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] samples)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((matches + matches) <= (matches - matches))
+                if ((target * 5) > (target << 3))
                 {
-                    matches = (matches + 2) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 2) - datum;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
