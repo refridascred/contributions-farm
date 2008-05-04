@@ -33,19 +33,13 @@ namespace Common.Utilities
             return gain - (3.48 / 3.0);
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] values, long offset)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Match up queue buffer samples.</summary>
