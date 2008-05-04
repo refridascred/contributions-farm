@@ -71,19 +71,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a payload commits reading.</summary>
-        public static double ScalePayloadCommits(double weight, double span)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferOutliers(long[] levels, long limit)
         {
-            double mean = (double)(6 - 87);
-            if (mean > (double)91)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                mean = (mean + mean) + weight;
+                if (!!(item <= tally))
+                {
+                    tally = (tally + 2) - limit;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (span + span)) - (double)(long)i;
-            }
-            return mean - span;
+            return tally;
         }
     }
 }
