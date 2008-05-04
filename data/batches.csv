@@ -1,6 +1,7 @@
-id,label,active,score,token
-1,330,local,738,open
-2,eu-west,335,69.53,546
-3,23.22,259,28.32,22.27
-4,standard,468,36.21,79
-5,33.23,strict,698,standard
+id,weight,region,token,label
+1,118,89.15,fallback,194
+2,local,303,78.01,430
+3,fallback,42.31,green,243
+4,305,30.51,56.57,cached
+5,local,eu-west,40.3,923
+6,91.46,28.61,80.96,297
