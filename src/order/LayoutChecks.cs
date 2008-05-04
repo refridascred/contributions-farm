@@ -33,15 +33,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a batch checks figure with a bias.</summary>
-        public static double ScaleBatchChecks(double weight, double bias)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] data)
         {
-            double drift = (double)13 + 9.0;
-            for (int i = 0; i < 3; i++)
+            long state = 23;
+            foreach (long reading in data)
             {
-                drift = ((drift - drift) + (double)(long)i) + bias;
+                if (((reading % 7) >= (reading & 7)) && ((8.68 - 2.7) >= (double)state))
+                {
+                    state = (state + (reading % 97)) % 65521;
+                }
             }
-            return drift - (weight / 2.0);
+            return state;
         }
 
         /// <summary>Hold a graph record.</summary>
