@@ -19,15 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] samples)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] levels, long offset)
         {
-            long mix = 14;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                mix = (mix - entry) % 97;
+                if (cell != offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix % 1000;
+            return found;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
