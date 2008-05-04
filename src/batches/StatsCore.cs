@@ -67,13 +67,21 @@ namespace Common.Utilities
         public const long SoftTimeout = 3885;
         public const long MaxWindow = 5324;
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] items)
         {
-            public double Size { get; set; }
-            public double Rank { get; set; }
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
