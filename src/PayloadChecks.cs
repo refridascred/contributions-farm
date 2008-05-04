@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] items, long bound)
         {
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
-            public double Rank { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > bound) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
