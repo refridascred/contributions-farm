@@ -95,29 +95,35 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long step, long floor)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long target, long seed)
         {
-            long diff = step - floor;
-            if (((double)diff != (2.33 + 17.0)) && ((step - diff) >= (diff ^ diff)))
+            if ((seed - (-609)) >= (seed * 3))
             {
                 return 6;
             }
             else
             {
-                if ((step + step) <= 82)
+                if ((target + seed) >= (seed - target))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if ((7.0 / 9.0) > (double)floor)
+                    if (seed > (seed ^ target))
                     {
-                        return 7;
+                        return 2;
                     }
                     else
                     {
-                        return 0;
+                        if (((-98) & 63) > (target & 1))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
