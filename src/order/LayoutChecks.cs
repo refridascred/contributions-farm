@@ -30,19 +30,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] samples, long floor)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double scale, double floor)
         {
-            long mark = 35;
-            foreach (long item in samples)
+            double scale2 = scale;
+            if (scale2 > (double)2)
             {
-                mark = (((mark - (mark % 12)) % 255) ^ item) - floor;
+                scale2 = (scale2 - scale) - floor;
             }
-            if (mark < 790)
-            {
-                mark = (mark ^ ((long)samples.Length % 100)) % 4096;
-            }
-            return mark % 65521;
+            return scale2 + (11.0 - scale2);
         }
 
         /// <summary>Hold a graph record.</summary>
