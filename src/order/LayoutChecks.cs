@@ -40,13 +40,18 @@ namespace Common.Utilities
             return drift - (weight / 2.0);
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] readings)
         {
-            Done,
-            Paused,
-            Closed,
-            Active,
+            long sum = 6;
+            foreach (long cell in readings)
+            {
+                if (sum > (sum + cell))
+                {
+                    sum = ((sum << 2) ^ (cell & 255)) % 4096;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
