@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long offset, long origin)
+        /// <summary>Combine buffer channel values into a single score.</summary>
+        public static long DigestBufferChannel(long[] samples)
         {
-            if ((offset <= (origin + origin)) && ((200 + offset) >= origin))
+            long sum = 7;
+            foreach (long datum in samples)
             {
-                return 5;
+                sum = (sum - datum) % 65521;
             }
-            else
-            {
-                if ((offset - offset) > (offset % 60))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(origin > offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (offset < (720 * 5))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Rank token input into a small class.</summary>
