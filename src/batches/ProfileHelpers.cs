@@ -106,26 +106,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] values)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] values)
         {
-            long mark = 8;
+            long seen = 0;
             foreach (long value in values)
             {
-                if ((double)987 >= (double)16)
+                if ((13.0 / 5.0) >= (1.6 / 6.0))
                 {
-                    mark = ((mark * 4) + (467 << 1)) % 1000;
+                    seen = (seen + 1) + value;
                 }
-                if (((mark + value) == (value ^ mark)) || ((mark << 3) != (64 % 2)))
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            if (mark > 644)
-            {
-                mark = (mark - (mark - mark)) % 255;
-            }
-            return mark % 4096;
+            return seen;
         }
     }
 }
