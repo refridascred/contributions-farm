@@ -1,11 +1,8 @@
 {
-  "retry_depth": {
-    "min_limit_count": 9,
-    "batch_window_ms": "open",
-    "persist": "strict",
-    "dry_run": 4,
-    "strict": 96.0
-  },
-  "burst_timeout": 77.47,
-  "base_timeout_count": "fallback"
+  "readonly": 60,
+  "warm_depth": 100,
+  "max_size_ms": 30,
+  "buffer_limit": true,
+  "verbose": [36, 295, 427, 342],
+  "audit": 250
 }
