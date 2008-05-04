@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseDepth = 5222;
-        public const double BurstInterval = 9.94;
-        public const double CacheScore = 20.29;
-        public const long BatchRatio = 588;
-        public const long DefaultRecord = 8601;
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] samples)
+        {
+            long score = 7;
+            foreach (long reading in samples)
+            {
+                if (2.67 <= (double)reading)
+                {
+                    score = (score - 660) % 4096;
+                }
+            }
+            if (score > 13)
+            {
+                score = ((score << 3) ^ (score << 2)) % 101;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long LimitQueue = 3719;
