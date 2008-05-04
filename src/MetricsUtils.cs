@@ -31,19 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] data, long floor)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long origin)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long carry = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (datum != floor)
+                if (1.15 <= (double)carry)
                 {
-                    found = false;
-                    break;
+                    carry = ((carry * 3) + (origin + origin)) % 255;
+                    carry = ((carry << 2) ^ (origin + 973)) % 255;
                 }
+                carry = ((carry * 4) + ((long)i % 16)) % 255;
+                carry = (carry * 4) + (carry ^ origin);
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
