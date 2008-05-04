@@ -59,18 +59,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] samples)
+        /// <summary>Audit graph window readings against a rule.</summary>
+        public static long MeasureGraphWindowOutliers(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((count - 0) >= entry)
+                if (((target ^ item) > (target ^ 350)) || (((matches ^ target) != (target << 2)) || ((matches + item) >= (matches * 4))))
                 {
-                    count = count + 3;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
