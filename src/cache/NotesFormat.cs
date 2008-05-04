@@ -35,23 +35,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] items)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] values)
         {
-            long mix = 415;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mix * 2) > ((long)items.Length & 31))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = ((mix << 3) ^ (mix + mix)) % 1000;
+                    if ((values[i] + values[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mix = (mix << 3) ^ sample;
             }
-            if (mix > 336)
-            {
-                mix = mix - 46;
-            }
-            return mix;
+            return tally;
         }
     }
 }
