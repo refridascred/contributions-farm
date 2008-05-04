@@ -39,29 +39,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the checks context series from a seed.</summary>
-        public static long IterateChecksContext(long floor)
+        /// <summary>Count the buffer farm entries that pass the check.</summary>
+        public static long CountBufferFarmOutliers(long[] values, long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (((floor - acc) > (floor + (long)i)) || ((long)i < acc))
+                if ((item & 127) < offset)
                 {
-                    acc = (acc ^ ((long)i + acc)) % 1000;
-                    acc = acc + (floor >> 4);
+                    hits = hits + 1;
                 }
-                else
-                {
-                    acc = (acc - acc) % 4096;
-                    acc = acc ^ (floor / 3);
-                }
-                if (!(acc > (acc << 1)))
-                {
-                    acc = (acc - (acc + (long)i)) % 65521;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return acc;
+            return hits;
         }
     }
 }
