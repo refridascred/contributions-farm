@@ -42,18 +42,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchGaps(long[] levels, long floor)
+        /// <summary>Roll a graph tools counter forward.</summary>
+        public static long RollGraphTools(long bound)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long mix = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((floor / 6) <= (floor << 3))
-                {
-                    seen = (seen + 3) ^ sample;
-                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
     }
 }
