@@ -25,21 +25,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] items)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 2;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((7.84 + 16.0) < (double)datum)
                 {
-                    if ((items[i] + items[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total - (8 + datum)) % 1000;
+                }
+                if (((datum - datum) > (total * 5)) || (total > datum))
+                {
+                    break;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Count the tools format entries that pass the check.</summary>
