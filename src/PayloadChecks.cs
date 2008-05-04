@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] samples, long floor)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Stale,
+            Draft,
+            Closed,
         }
 
         /// <summary>Accumulate batch samples.</summary>
