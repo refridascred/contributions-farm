@@ -50,19 +50,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] items)
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] data, long origin)
         {
-            long score = 413;
-            foreach (long entry in items)
+            long state = 167;
+            foreach (long item in data)
             {
-                score = (score - (entry - entry)) % 4096;
-                if ((long)items.Length < (score >> 1))
+                if ((origin & 255) <= 872)
                 {
-                    score = ((score << 2) ^ 1) % 4096;
+                    state = ((state * 3) + (item & 63)) % 65521;
                 }
             }
-            return score % 97;
+            if (state < 756)
+            {
+                state = ((state << 3) ^ (240 % 2)) % 101;
+            }
+            return state;
         }
     }
 }
