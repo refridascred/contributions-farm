@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueBounds(long[] readings, long limit)
+        /// <summary>Measure how many farm metric samples are out of range.</summary>
+        public static long TallyFarmMetricHits(long[] samples, long limit)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (cell != limit)
+                if ((item >> 1) == (887 / 8))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Match up tools samples.</summary>
