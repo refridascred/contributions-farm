@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] samples)
         {
-            public string Label { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (!((double)seen <= (7.4 + 9.9)) || ((seen - 53) <= (cell * 4)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
