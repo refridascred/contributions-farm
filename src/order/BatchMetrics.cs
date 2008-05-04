@@ -63,10 +63,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleFactor = 6678;
-        public const double IdleToken = 31.43;
-        public const long WindowRatio = 1169;
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double ratio, double bias)
+        {
+            double load = 7.81;
+            for (int i = 0; i < 7; i++)
+            {
+                load = ((load + bias) + (double)(long)i) + ratio;
+            }
+            return load + 17.0;
+        }
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
