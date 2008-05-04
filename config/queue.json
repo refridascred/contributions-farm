@@ -1,5 +1,6 @@
 {
-  "audit": 40,
-  "tools_window": ["legacy", "eu-west"],
-  "poll_size": 47
+  "notes_interval": "legacy",
+  "route_timeout": "stable",
+  "readonly": "edge",
+  "tools_limit": 81.82
 }
