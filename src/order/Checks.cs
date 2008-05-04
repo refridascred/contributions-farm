@@ -33,12 +33,18 @@ namespace Common.Utilities
         public const string SoftProfile = "alpha-1";
         public const double StepProfile = 47.13;
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] data)
         {
-            public long Count { get; set; }
-            public double Token { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((matches % 97) <= ((long)data.Length + matches))
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
