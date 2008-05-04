@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] data)
+        /// <summary>Count the counter batch entries that pass the check.</summary>
+        public static long MeasureCounterBatchMatches(long[] items)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (cell > (count * 5))
+                if (datum > (matches - matches))
                 {
-                    count = count + 3;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a batch entry.</summary>
