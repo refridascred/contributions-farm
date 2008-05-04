@@ -1,24 +1,7 @@
 # githubfarm settings
-retry_retries_ms: 60
-warm_depth: 99
-cache_size_count: open
-commits_window:
-  - 93
-  - 131
-  - 195
-  - 168
-route_depth: 1965
-layout_capacity:
-  cache_size_pct: true
-  cache_interval:
-    verbose: staging
-    cache_timeout_ms: primary
-    hard_ratio_count: primary
-  min_depth: 250
-  dry_run:
-    - 43
-    - 199
-    - 198
-    - 38
-  hard_delay: 30.29
-  context_retries: false
+command_limit: 5
+persist: strict
+retry_size_ms:
+  sync_depth_s: 71.64
+  warm_size: 787
+  burst_timeout_count: blue
