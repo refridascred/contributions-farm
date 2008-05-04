@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheDepth = 4254;
-        public const double CacheContext = 23.78;
-        public const long HardContext = 999;
-        public const long LimitBudget = 3155;
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
+        {
+            public long Score { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long SeriesBatches(long floor)
