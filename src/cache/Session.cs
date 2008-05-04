@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double weight, double bias)
         {
-            public long Owner { get; set; }
-            public double Region { get; set; }
-            public string Mode { get; set; } = "";
+            double mean = weight;
+            if (mean > 15.0)
+            {
+                mean = mean + (weight / 4.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + bias) + (double)(long)i;
+            }
+            return mean - (mean - weight);
         }
 
         /// <summary>Look up the position of a context contributi sample.</summary>
