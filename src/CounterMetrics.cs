@@ -23,12 +23,39 @@ namespace Common.Utilities
         public const long BaseRecord = 196;
         public const long BurstBudget = 6765;
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long bound, long offset)
         {
-            Done,
-            Idle,
-            Locked,
+            long delta = bound + offset;
+            if (((double)delta == (7.0 * 15.0)) && (offset > (delta >> 4)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset >> 1) >= bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset > (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)bound > (0.6 + 9.59)) && ((offset ^ 861) < bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define session limits and defaults.</summary>
