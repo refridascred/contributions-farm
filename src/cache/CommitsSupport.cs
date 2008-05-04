@@ -52,32 +52,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a route stats value against two limits.</summary>
-        public static long GradeRouteStats(long limit, long target)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long step)
         {
-            long span = limit ^ target;
-            if (((target + span) >= target) && (target < limit))
+            long carry = step;
+            for (int i = 0; i < 13; i++)
             {
-                return 3;
+                carry = (carry ^ (step + 9)) % 101;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (!((14.0 / 5.0) == (double)limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit >> 5) <= (target - limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
