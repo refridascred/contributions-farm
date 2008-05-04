@@ -29,22 +29,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] readings, long seed)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long bound, long limit)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long diff = bound - limit;
+            if (diff <= (limit + bound))
             {
-                if (!((9 ^ seed) <= datum) || (((19.0 * 18.0) >= (double)seed) && (seen <= (seed / 3))))
+                return 1;
+            }
+            else
+            {
+                if ((double)diff == (double)limit)
                 {
-                    seen = seen + 2;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((18.0 * 5.26) > (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
