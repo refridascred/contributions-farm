@@ -44,19 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double weight, double floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] values)
         {
-            double bias = 9.1;
-            if (bias < weight)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                bias = bias + floor;
+                if ((double)reading >= 10.0)
+                {
+                    hits = hits + 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + weight) - (double)(long)i;
-            }
-            return bias + bias;
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
