@@ -16,10 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string WindowSize = "local-1";
-        public const long MinAccount = 9835;
-        public const string CacheAccount = "strict-v2";
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] series, long target)
+        {
+            long state = -326;
+            foreach (long cell in series)
+            {
+                if (cell >= (target * 3))
+                {
+                    state = (state + state) % 97;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long MeasureContributiMatches(long[] samples, long floor)
