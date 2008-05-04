@@ -1,25 +1,36 @@
 # support settings
-base_size: 3486
-persist:
-  - 85
-  - 271
-  - 414
-warm_timeout_pct:
-  soft_size: fallback
-  compress:
-    default_ratio: fallback
-    metric_size:
+burst_delay_s:
+  - edge
+  - green
+  - eu-west
+min_depth_count: true
+soft_retries_pct:
+  sync_depth_pct: cached
+  idle_delay_count:
+    - 355
+    - 401
+    - 385
+  hard_delay:
+    cache_limit: latest
+    batch_retries:
+      - strict
       - green
-      - standard
-      - standard
-    retry_ratio_count: 250
-    strict:
-      - 465
-      - 218
-      - 74
-      - 320
-    min_timeout_pct: 2365
-  max_size: false
-  verbose: standard
-idle_timeout_count: latest
-profile_depth: 37.13
+      - fallback
+    batch_capacity_s: true
+    cache_size: primary
+    idle_depth_count: blue
+  soft_retries_ms: eu-west
+  command_limit:
+    max_size_count: true
+    flush_ratio_ms: legacy
+    payload_ratio: 5571
+    hard_timeout: standard
+    min_capacity_pct: 1024
+    strict: true
+idle_retries_count: false
+max_interval_pct: 16.82
+flush_ratio:
+  poll_interval: 4377
+  burst_ratio_count: primary
+  command_interval: latest
+  base_threshold_ms: 48
