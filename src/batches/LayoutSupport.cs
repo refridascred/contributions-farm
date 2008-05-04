@@ -10,23 +10,14 @@ namespace Common.Utilities
         public const long StepFormat = 9142;
         public const long MaxFormat = 1707;
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long limit)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long score = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!((score % 64) <= limit))
-                {
-                    score = score - (limit + score);
-                }
-                if ((double)(long)i <= (8.07 / 3.0))
-                {
-                    break;
-                }
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            Dropped,
+            New,
+            Pending,
+            Locked,
+            Retry,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
