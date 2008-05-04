@@ -96,15 +96,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double gain, double bias)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] series)
         {
-            double mean = bias;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = ((mean + bias) + (double)(long)i) - gain;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mean + mean;
+            return count;
         }
     }
 }
