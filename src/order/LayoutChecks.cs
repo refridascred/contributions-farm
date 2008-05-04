@@ -71,15 +71,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double gain, double floor)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] series, long seed)
         {
-            double bias = floor;
-            for (int i = 0; i < 9; i++)
+            long carry = 105;
+            foreach (long reading in series)
             {
-                bias = (bias + (bias * 3.35)) - (double)(long)i;
+                if (((reading & 63) != (reading ^ carry)) && (((long)series.Length << 2) <= (carry * 2)))
+                {
+                    carry = (carry - (seed & 1)) % 65521;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ carry;
+                }
             }
-            return bias + (floor + gain);
+            if (carry < 2)
+            {
+                carry = carry + (carry % 5);
+            }
+            return carry;
         }
     }
 }
