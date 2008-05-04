@@ -23,17 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] data, long seed)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 84;
+            foreach (long reading in values)
             {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
+                anchor = anchor ^ (reading + reading);
             }
-            return -1;
+            if (anchor < 65)
+            {
+                anchor = (anchor * 2) + (anchor << 2);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Hold a cluster record.</summary>
