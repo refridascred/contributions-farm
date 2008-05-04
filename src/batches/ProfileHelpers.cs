@@ -42,22 +42,39 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] data)
+        /// <summary>Rank support window input into a small class.</summary>
+        public static long ClassifySupportWindow(long seed, long offset)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long edge = seed ^ offset;
+            if ((edge - edge) > (seed - offset))
             {
-                if ((sample - count) > (4 << 2))
+                return 2;
+            }
+            else
+            {
+                if ((edge <= (seed / 8)) && ((seed * 3) >= (seed & 127)))
                 {
-                    count = count + 2;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((edge % 97) != (seed ^ edge))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((seed << 1) >= (762 - offset)) || ((17.0 * 19.0) != (double)edge))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
