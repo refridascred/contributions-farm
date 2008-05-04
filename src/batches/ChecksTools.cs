@@ -59,22 +59,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit graph window readings against a rule.</summary>
-        public static long MeasureGraphWindowOutliers(long[] levels, long target)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((target ^ item) > (target ^ 350)) || (((matches ^ target) != (target << 2)) || ((matches + item) >= (matches * 4))))
+                if (series[i] == origin)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
