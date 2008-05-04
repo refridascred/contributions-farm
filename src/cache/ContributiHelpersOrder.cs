@@ -20,38 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a batches record pair into a bucket.</summary>
-        public static long ClassifyBatchesRecord(long floor, long floor2)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            if ((floor << 1) <= 489)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((floor + floor2) <= (97 - floor2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (floor2 <= (790 % 97))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (floor > (floor % 12))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public bool Total { get; set; }
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
