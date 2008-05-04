@@ -34,39 +34,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long seed, long offset)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long prev = seed + offset;
-            if ((double)prev < (12.0 * 3.5))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)prev >= (4.0 * 8.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)offset < (5.0 * 7.47)) && ((46 * 3) >= (seed - 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)seed > (8.4 + 15.0)) && ((offset / 8) != (offset >> 4)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
