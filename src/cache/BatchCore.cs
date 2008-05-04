@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 4062;
-        public const double LimitNotes = 85.07;
-        public const double WindowNotes = 64.57;
-        public const long StepRatio = 3151;
+        /// <summary>Roll a metric layout counter forward.</summary>
+        public static long SeriesMetricLayout(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = mix + mix;
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
