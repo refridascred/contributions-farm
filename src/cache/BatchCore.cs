@@ -45,17 +45,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] levels, long origin)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] data, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 6;
+            foreach (long reading in data)
             {
-                if (levels[i] > origin)
+                if (mark >= (reading + mark))
                 {
-                    return (long)i;
+                    mark = (mark ^ (reading & 15)) % 255;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (floor + reading)) % 255;
                 }
             }
-            return -1;
+            return mark % 1000;
         }
 
         /// <summary>Hold a cluster header.</summary>
