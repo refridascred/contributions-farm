@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the counter batch entries that pass the check.</summary>
-        public static long MeasureCounterBatchMatches(long[] items)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            double mean = gain;
+            if (mean >= (mean + floor))
             {
-                if (datum > (matches - matches))
-                {
-                    matches = matches + 1;
-                }
+                mean = mean - floor;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - gain) + (double)(long)i;
+            }
+            return mean - gain;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
