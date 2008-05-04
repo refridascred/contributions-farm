@@ -23,17 +23,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] series, long step)
+        /// <summary>Match up command report samples.</summary>
+        public static long OverlapCommandReportCount(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((series[i] >= step) && ((series[i] % 5) != 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Adjust a buffer stats reading.</summary>
