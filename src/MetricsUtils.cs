@@ -55,18 +55,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] levels)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long seed)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long sum = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((count + 1) == (datum * 5))
-                {
-                    count = count + 1;
-                }
+                sum = (sum << 2) ^ sum;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Define record limits and defaults.</summary>
