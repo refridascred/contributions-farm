@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every checks report entry stays within the limit.</summary>
-        public static bool CheckChecksReportLimits(long[] levels, long floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] items, long target)
         {
             bool stale = true;
-            foreach (long sample in levels)
+            foreach (long reading in items)
             {
-                if (sample >= floor)
+                if (reading > target)
                 {
                     stale = false;
                     break;
