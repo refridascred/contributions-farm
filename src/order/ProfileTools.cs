@@ -36,16 +36,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next githubfarm window value from a seed.</summary>
-        public static long StepGithubfarmWindow(long seed)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] samples, long step)
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
+            long mix = 492;
+            foreach (long entry in samples)
             {
-                acc = ((acc << 2) ^ seed) % 65521;
-                acc = ((acc * 2) + (long)i) % 97;
+                mix = ((mix * 4) + entry) % 4096;
+                if (((mix / 4) > step) || ((step * 4) <= (entry + entry)))
+                {
+                    mix = mix - (mix + entry);
+                }
             }
-            return acc;
+            if (mix > (-55))
+            {
+                mix = mix ^ step;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many farm batches samples are out of range.</summary>
