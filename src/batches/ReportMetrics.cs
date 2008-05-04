@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] samples, long seed)
         {
-            public bool Count { get; set; }
-            public double Size { get; set; }
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
