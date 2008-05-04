@@ -64,11 +64,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 7468;
-        public const string MaxRoute = "stable-1";
-        public const string BurstTimeout = "stable-v2";
-        public const long HardRoute = 2185;
-        public const long IdleRoute = 2011;
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public bool Total { get; set; }
+        }
     }
 }
