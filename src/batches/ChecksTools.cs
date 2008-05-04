@@ -48,31 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long bound, long seed)
+        /// <summary>Validate context cluster readings against a bound.</summary>
+        public static bool ValidateContextClusterRange(long[] levels, long bound)
         {
-            if ((bound + bound) > seed)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)301 != (double)seed)
+                if (cell < bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound >> 5) > bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
