@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] series, long seed)
-        {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string WindowDepth = "local-edge";
+        public const long DefaultSize = 8531;
+        public const string BaseDepth = "strict-1";
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long TallyQueueOutliers(long[] data)
