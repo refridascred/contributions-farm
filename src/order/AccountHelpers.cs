@@ -79,18 +79,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] samples)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (!(((tally + entry) <= 872) || ((286 / 8) >= (tally + entry))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
