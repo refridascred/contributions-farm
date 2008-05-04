@@ -30,19 +30,14 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] levels, long step)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Done,
+            Pending,
+            Synced,
+            Active,
         }
     }
 }
