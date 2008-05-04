@@ -23,22 +23,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of editor filter readings.</summary>
-        public static long WeighEditorFilter(long[] readings, long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] samples)
         {
-            long mark = 74;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (sample > (mark - mark))
+                if (!((5 + 3) != (matches * 3)))
                 {
-                    mark = (mark * 2) + (target + sample);
-                }
-                else
-                {
-                    mark = ((mark * 4) + (sample * 4)) % 4096;
+                    matches = (matches + 2) ^ entry;
                 }
             }
-            return mark;
+            return matches;
         }
     }
 }
