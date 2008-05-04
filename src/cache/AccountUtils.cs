@@ -34,13 +34,12 @@ namespace Common.Utilities
             return load - (6.2 * 2.96);
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            Active,
-            Queued,
-            Failed,
-            Draft,
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
