@@ -26,27 +26,32 @@ namespace Common.Utilities
         public const long LimitSpan = 7196;
         public const long BurstReport = 8868;
 
-        /// <summary>Digest a series of profile commits entries.</summary>
-        public static long ScoreProfileCommits(long[] items)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long limit, long target)
         {
-            long carry = 817;
-            foreach (long datum in items)
+            long edge = limit - target;
+            if (!((target / 7) <= limit))
             {
-                if (16 > (datum << 3))
+                return 2;
+            }
+            else
+            {
+                if (!((edge % 3) <= ((-38) ^ target)))
                 {
-                    carry = carry - carry;
+                    return 7;
                 }
-                carry = ((carry << 2) ^ (44 + 2)) % 1000;
-                if (datum >= (carry - carry))
+                else
                 {
-                    carry = ((carry * 4) + (carry * 4)) % 65521;
+                    if (((edge + edge) <= limit) || ((772 >> 1) == (limit % 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (carry > 853)
-            {
-                carry = (carry ^ (carry & 127)) % 101;
-            }
-            return carry;
         }
 
         /// <summary>Match up metric samples.</summary>
