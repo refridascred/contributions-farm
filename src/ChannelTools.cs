@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] data)
+        /// <summary>Project the next session layout value.</summary>
+        public static double AdjustSessionLayout(double gain, double floor)
         {
-            long count = 0;
-            foreach (long item in data)
+            double weight = floor - (gain - floor);
+            if (weight < weight)
             {
-                if ((-58) >= (item << 2))
-                {
-                    count = count + 3;
-                }
+                weight = weight - weight;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (weight + weight)) + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Describe the channel state values.</summary>
