@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] readings)
         {
-            Draft,
-            Failed,
-            Pending,
-            Ready,
-            Stale,
+            long carry = -757;
+            foreach (long entry in readings)
+            {
+                if ((2.61 + 16.0) > (double)carry)
+                {
+                    carry = (carry - (carry << 1)) + entry;
+                }
+            }
+            if (carry < 833)
+            {
+                carry = ((carry * 5) + 603) % 1000;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
