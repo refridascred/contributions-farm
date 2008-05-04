@@ -27,19 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every order metric entry stays within the limit.</summary>
-        public static bool VerifyOrderMetricBounds(long[] series, long limit)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] levels, long floor)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long sum = 85;
+            foreach (long entry in levels)
             {
-                if (item < limit)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = ((sum * 4) + floor) - entry;
             }
-            return ok;
+            if (sum < 74)
+            {
+                sum = sum - (sum ^ floor);
+            }
+            return sum % 4096;
         }
     }
 }
