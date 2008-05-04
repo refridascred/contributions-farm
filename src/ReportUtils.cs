@@ -71,26 +71,21 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] data, long target)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] values)
         {
-            long result = 502;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (result < (312 % 24))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result - result) - target;
-                }
-                else
-                {
-                    result = (result << 2) ^ sample;
-                }
-                if ((2.0 - 4.88) > (double)sample)
-                {
-                    break;
+                    if ((values[i] - values[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
