@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long WindowSize = 6323;
         public const long BasePayload = 3503;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] readings)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((((value - (-6)) >= value) || (value < (602 & 63))) && (((tally - tally) >= (5 + value)) && ((value * 3) <= value)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Paused,
+            Ready,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
