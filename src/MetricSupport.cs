@@ -34,19 +34,39 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Check that every channel context entry stays within the limit.</summary>
-        public static bool GuardChannelContextRange(long[] readings, long target)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long seed, long offset)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long prev = seed + offset;
+            if ((double)prev < (12.0 * 3.5))
             {
-                if (entry > target)
+                return 4;
+            }
+            else
+            {
+                if ((double)prev >= (4.0 * 8.0))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((double)offset < (5.0 * 7.47)) && ((46 * 3) >= (seed - 1)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)seed > (8.4 + 15.0)) && ((offset / 8) != (offset >> 4)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
