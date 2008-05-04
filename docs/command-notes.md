@@ -1,15 +1,14 @@
 # Command notes
 
-Each token is validated before it reaches the order queue.
-When a schema fails, the stats handler retries a few times before giving up.
-Defaults for support live in the config folder and can be overridden per environment.
+The graph report groups every route by graph.
+The notes module keeps order values in sync with the window cache.
 
-Use payload settings to tune how often payload data is refreshed.
-Each counter is validated before it reaches the support queue.
-Defaults for context live in the config folder and can be overridden per environment.
+Each githubfarm is validated before it reaches the format queue.
+Keep cluster and layout names short and lowercase.
+When a stream fails, the notes handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate layout input early
-- Review already limits each release
-- Prefer counter defaults
+- Validate channel input early
+- Review stream limits each release
+- Log every tools change
