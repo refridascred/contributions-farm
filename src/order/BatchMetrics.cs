@@ -71,39 +71,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Classify a cluster filter pair into a bucket.</summary>
-        public static long SortClusterFilter(long seed, long limit)
+        /// <summary>Look up the position of a buffer account sample.</summary>
+        public static long SeekBufferAccountIndex(long[] values, long bound)
         {
-            long span = seed ^ limit;
-            if (seed < 979)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed % 10) != (limit >> 2))
+                if (values[i] < bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((span + seed) < (span >> 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((span * 5) <= limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
