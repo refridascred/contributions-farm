@@ -63,15 +63,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double ratio, double bias)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] items, long bound)
         {
-            double load = 7.81;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = ((load + bias) + (double)(long)i) + ratio;
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return load + 17.0;
+            return -1;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
