@@ -49,12 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] data)
         {
-            public double Count { get; set; }
-            public bool Owner { get; set; }
-            public long Stamp { get; set; }
+            long mark = 95;
+            foreach (long reading in data)
+            {
+                mark = (mark - (reading / 5)) % 4096;
+            }
+            if (mark < 544)
+            {
+                mark = ((mark * 4) + (mark & 127)) % 1000;
+            }
+            return mark % 97;
         }
     }
 }
