@@ -74,19 +74,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricLimits(long[] series, long step)
+        /// <summary>Grade a window tools value against two limits.</summary>
+        public static long ClassifyWindowTools(long seed, long offset)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long bound = seed ^ offset;
+            if ((offset & 3) > (seed + 80))
             {
-                if (value < step)
+                return 8;
+            }
+            else
+            {
+                if (!((71 * 4) != (seed << 2)))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (seed >= offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound + seed) >= (bound / 6))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
