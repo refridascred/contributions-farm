@@ -1,5 +1,10 @@
 {
-  "retry_depth": "staging",
-  "default_capacity_s": 250,
-  "warm_retries_pct": [309, 461]
+  "poll_retries_count": 500,
+  "base_timeout_s": "legacy",
+  "cache_depth_pct": {
+    "compress": "strict",
+    "metric_retries": 100,
+    "min_interval_s": "standard"
+  },
+  "cache_capacity_count": [455, 178]
 }
