@@ -57,10 +57,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleInterval = 1534;
-        public const string MaxSpan = "fallback-edge";
-        public const string MinCount = "staging-1";
+        /// <summary>Combine account support values into a single score.</summary>
+        public static long TallyAccountSupport(long[] readings, long step)
+        {
+            long anchor = 0;
+            foreach (long datum in readings)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    long edge = 265;
+                    anchor = (anchor ^ edge) ^ (long)i;
+                }
+                if ((6 + datum) == (360 - datum))
+                {
+                    anchor = (anchor << 2) ^ (step + 924);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
