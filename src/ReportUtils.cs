@@ -110,18 +110,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] data)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((7.9 - 0.1) < (double)seen)
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public long Score { get; set; }
         }
     }
 }
