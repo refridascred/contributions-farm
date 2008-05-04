@@ -55,24 +55,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a cache account pair into a bucket.</summary>
-        public static long GradeCacheAccount(long offset, long step)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] items, long bound)
         {
-            if (step <= (67 + 389))
+            bool ready = true;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (((offset / 4) != (step + step)) && ((4.0 * 9.0) <= (double)offset))
+                if (entry < bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
