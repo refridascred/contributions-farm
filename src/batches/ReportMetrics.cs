@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] samples, long seed)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long floor)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long state = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (value >= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
