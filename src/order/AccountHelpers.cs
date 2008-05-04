@@ -67,11 +67,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Check that every payload graph entry stays within the limit.</summary>
+        public static bool ValidatePayloadGraphBounds(long[] values, long floor)
         {
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
