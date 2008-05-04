@@ -1,5 +1,5 @@
 {
-  "soft_timeout_pct": "stable",
-  "stats_threshold": 7918,
-  "flush_interval": ["standard", "eu-west", "primary", "strict"]
+  "session_ratio": 90,
+  "route_delay": false,
+  "burst_window_ms": "strict"
 }
