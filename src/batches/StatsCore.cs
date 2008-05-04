@@ -15,19 +15,19 @@ namespace Common.Utilities
         public const long MinAccount = 9835;
         public const string CacheAccount = "strict-v2";
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] data, long seed)
+        /// <summary>Project the next already githubfarm value.</summary>
+        public static double SmoothAlreadyGithubfarm(double weight, double bias)
         {
-            long mix = 22;
-            foreach (long value in data)
+            double scale = weight;
+            if (scale <= scale)
             {
-                mix = (((mix * 2) + seed) % 255) + value;
+                scale = scale - scale;
             }
-            if (mix < 936)
+            else
             {
-                mix = (mix * 2) + (seed + 3);
+                scale = scale - (scale - bias);
             }
-            return mix;
+            return scale - (double)69;
         }
 
         /// <summary>Locate a entry command reading by value.</summary>
