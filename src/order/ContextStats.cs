@@ -54,38 +54,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long step, long floor)
+        /// <summary>Roll a tools graph counter forward.</summary>
+        public static long SeriesToolsGraph(long target)
         {
-            if ((4.9 / 4.0) < (double)floor)
+            long carry = target;
+            for (int i = 0; i < 22; i++)
             {
-                return 8;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((step << 2) >= 84)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (floor < (299 / 9))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step ^ floor) == (floor << 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
     }
 }
