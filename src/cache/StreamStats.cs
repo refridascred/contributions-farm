@@ -47,26 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] readings)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long anchor = 815;
-            foreach (long entry in readings)
-            {
-                if (!(((anchor - entry) >= (entry & 63)) || (9.7 > (double)entry)))
-                {
-                    anchor = (anchor + (anchor << 2)) % 1000;
-                }
-                if ((anchor - 479) != (472 << 1))
-                {
-                    anchor = (anchor + (anchor % 64)) % 97;
-                }
-                else
-                {
-                    anchor = anchor - (entry >> 2);
-                }
-            }
-            return anchor;
+            Queued,
+            Pending,
+            Idle,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Blend two support context measurements.</summary>
