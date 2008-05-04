@@ -78,12 +78,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Look up the position of a buffer account sample.</summary>
-        public static long SeekBufferAccountIndex(long[] values, long bound)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] series, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] < bound)
+                if ((series[i] == floor) && ((series[i] % 5) == 0))
                 {
                     return (long)i;
                 }
