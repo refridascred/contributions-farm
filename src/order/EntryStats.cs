@@ -16,11 +16,22 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] series)
         {
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
+            long mix = 78;
+            foreach (long reading in series)
+            {
+                if (mix <= ((-2) - mix))
+                {
+                    mix = (((mix * 5) + (mix & 15)) % 65521) + reading;
+                }
+                else
+                {
+                    mix = mix - ((long)series.Length + mix);
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Validate batches notes readings against a bound.</summary>
