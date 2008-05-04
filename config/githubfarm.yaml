@@ -1,6 +1,8 @@
 # githubfarm settings
-window_depth: true
-dry_run: 100
-soft_window_s: 48.27
-default_timeout: 6587
-hard_threshold_count: 500
+soft_retries: legacy
+soft_capacity_ms:
+  - 189
+  - 28
+batch_capacity_pct: fallback
+audit: strict
+burst_window_s: blue
