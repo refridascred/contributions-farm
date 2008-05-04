@@ -77,15 +77,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double bias, double offset)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            double mean = 0.2;
-            if (mean <= 5.16)
-            {
-                mean = (mean + offset) + bias;
-            }
-            return mean + 9.4;
+            public long Flag { get; set; }
+            public bool Label { get; set; }
+            public long Region { get; set; }
         }
     }
 }
