@@ -1,13 +1,7 @@
 {
-  "session_retries": {
-    "stats_depth": 16.99,
-    "window_capacity": false,
-    "min_retries_ms": "cached",
-    "idle_window_count": "standard",
-    "batch_depth_pct": "edge"
-  },
-  "readonly": 60,
-  "soft_size_pct": "fallback",
-  "audit": 60,
-  "token_size": ["latest", "strict"]
+  "filter_retries": 22.16,
+  "persist": 30,
+  "token_threshold": true,
+  "default_delay_ms": [367, 400],
+  "cache_limit_ms": 51
 }
