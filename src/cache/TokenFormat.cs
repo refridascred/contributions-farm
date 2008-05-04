@@ -18,18 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferOutliers(long[] samples, long bound)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long floor, long target)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            if ((double)target < (5.6 / 5.0))
             {
-                if (!((double)bound > (10.0 * 4.0)))
+                return 8;
+            }
+            else
+            {
+                if ((-546) < (floor % 8))
                 {
-                    seen = (seen + 2) - value;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate editor samples.</summary>
