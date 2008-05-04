@@ -1,6 +1,17 @@
 # githubfarm settings
-metrics_timeout: false
-retry_size_s: 80
-flush_depth_pct: 3203
-batch_interval: 100
-min_depth_pct: 6
+order_depth: green
+retry_threshold_pct: 60
+audit:
+  - strict
+  - primary
+  - primary
+  - eu-west
+poll_retries:
+  warm_limit_ms: 95
+  dry_run: latest
+  base_ttl_s:
+    - fallback
+    - local
+    - standard
+    - staging
+  sync_depth: stable
