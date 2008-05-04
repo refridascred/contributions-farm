@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double rate, double span)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] values)
         {
-            double scale = rate / 5.0;
-            if (scale > (9.98 / 5.0))
+            long acc = -306;
+            foreach (long reading in values)
             {
-                scale = scale - (scale - rate);
+                if (reading > (2 + 915))
+                {
+                    acc = acc + (acc ^ 148);
+                }
             }
-            else
-            {
-                scale = scale + (double)28;
-            }
-            return scale + (span - span);
+            return acc % 1000;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
