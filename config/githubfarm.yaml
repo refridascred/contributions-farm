@@ -1,20 +1,9 @@
 # githubfarm settings
-editor_window:
+retry_window_ms:
   - eu-west
-  - strict
+  - fallback
+  - legacy
   - staging
-base_interval_pct: 65.52
-persist: staging
-default_threshold_count: false
-context_ttl: false
-report_ratio:
-  batches_limit: 3.5
-  notes_delay:
-    cache_capacity_count: strict
-    graph_threshold: local
-    burst_ratio_s:
-      - 70
-      - 287
-      - 141
-      - 295
-  layout_ratio: open
+persist: 4093
+min_size_pct: 18.31
+token_timeout: fallback
