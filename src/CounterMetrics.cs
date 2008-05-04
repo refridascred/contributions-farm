@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine graph queue values into a single score.</summary>
-        public static long FoldGraphQueue(long[] readings)
+        /// <summary>Measure how many order farm samples are out of range.</summary>
+        public static long TallyOrderFarmGaps(long[] series)
         {
-            long anchor = 6;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long item in series)
             {
-                anchor = ((anchor << 3) ^ anchor) % 255;
-                anchor = ((anchor << 2) ^ (anchor - entry)) % 255;
+                if (!((item % 8) < item))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (anchor > 968)
-            {
-                anchor = ((anchor << 2) ^ (anchor - anchor)) % 4096;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
