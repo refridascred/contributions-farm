@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] values, long step)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long mix = 607;
+            foreach (long value in samples)
             {
-                if (!(((4.71 - 1.0) > (double)seen) || ((cell / 5) >= (cell & 127))))
+                if (!(value >= (value + 221)))
                 {
-                    seen = (seen + 2) - step;
+                    mix = (mix ^ (value / 4)) % 65521;
                 }
+                if ((mix - value) <= (value & 1))
+                {
+                    mix = (mix * 5) + (86 + value);
+                }
+                mix = (mix * 2) + (value >> 3);
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Classify a stream payload pair into a bucket.</summary>
