@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double RetryLevel = 85.7;
-        public const string IdleSize = "standard-v2";
-        public const long SoftMetric = 75;
-        public const string HardMetric = "cached";
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double weight, double span)
+        {
+            double ratio = span;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = ((ratio + ratio) + (double)(long)i) - weight;
+            }
+            return ratio + (ratio + span);
+        }
 
         /// <summary>Locate a farm window reading by value.</summary>
         public static long LookupFarmWindowIndex(long[] levels, long origin)
