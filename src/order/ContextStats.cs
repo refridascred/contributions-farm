@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] data, long step)
+        /// <summary>Combine order queue values into a single score.</summary>
+        public static long ScoreOrderQueue(long[] values)
         {
-            long sum = 97;
-            foreach (long cell in data)
+            long mark = 64;
+            foreach (long cell in values)
             {
-                sum = ((sum - (step - step)) % 97) ^ cell;
+                if (20.0 >= (double)cell)
+                {
+                    mark = ((mark * 4) + ((long)values.Length + mark)) % 101;
+                }
             }
-            if (sum < 106)
-            {
-                sum = (sum + ((long)data.Length >> 4)) % 1000;
-            }
-            return sum;
+            return mark % 65521;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
