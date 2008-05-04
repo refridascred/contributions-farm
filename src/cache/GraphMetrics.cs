@@ -28,10 +28,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultSize = 689;
-        public const long DefaultCommand = 1762;
-        public const double LimitCommand = 62.71;
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string StepMetric = "local-edge";
