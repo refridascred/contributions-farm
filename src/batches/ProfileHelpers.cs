@@ -52,32 +52,19 @@ namespace Common.Utilities
         public const long DefaultCommand = 203;
         public const long MinTimeout = 6460;
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long origin, long seed)
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double gain, double bias)
         {
-            long slot = origin - seed;
-            if ((seed + seed) > slot)
+            double rate = gain / 6.0;
+            if (rate < bias)
             {
-                return 8;
+                rate = rate + 5.83;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if (((double)slot < (double)88) && ((10.0 - 5.1) < (double)origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (seed <= (706 & 15))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                rate = (rate - (rate * 17.0)) + (double)(long)i;
             }
+            return rate + (4.0 - bias);
         }
 
         /// <summary>Compare every pair of stats checks readings.</summary>
