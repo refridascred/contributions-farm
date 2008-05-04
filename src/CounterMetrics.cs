@@ -49,22 +49,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] items)
+        /// <summary>Find the first editor context entry that matches the target.</summary>
+        public static long FindEditorContextIndex(long[] items, long origin)
         {
-            long carry = 6;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((carry + datum) > 3)
+                if (items[i] < origin)
                 {
-                    carry = ((carry * 4) + carry) % 65521;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ ((-41) >> 5)) % 1000;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
     }
 }
