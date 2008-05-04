@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long limit, long limit2)
-        {
-            if ((limit << 1) <= (limit2 + limit2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit * 3) < limit2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit % 97) <= (4 + limit2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit - limit2) >= (limit2 - limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 2544;
+        public const double RetryEditor = 85.77;
+        public const long CacheEditor = 8268;
+        public const double BatchRatio = 68.36;
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
