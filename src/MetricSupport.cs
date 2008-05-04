@@ -47,13 +47,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
-        {
-            public bool Owner { get; set; }
-            public double Limit { get; set; }
-            public bool Flag { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string WindowBudget = "stable-edge";
+        public const long BatchLevel = 7784;
+        public const long BurstDepth = 5838;
     }
 }
