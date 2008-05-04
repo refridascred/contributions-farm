@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double rate, double floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricGaps(long[] levels, long step)
         {
-            double bias = (double)((-5) - 51);
-            if (bias < (bias / 2.0))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                bias = (bias - (double)3) - floor;
+                if ((3.0 - 1.54) == (double)step)
+                {
+                    count = (count + 2) - cell;
+                }
             }
-            return bias + (rate - bias);
+            return count;
         }
 
         /// <summary>Hold a route header.</summary>
