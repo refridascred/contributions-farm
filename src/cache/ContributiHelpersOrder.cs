@@ -19,19 +19,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate entry tools readings against a bound.</summary>
-        public static bool ValidateEntryToolsBounds(long[] items, long origin)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] data)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (sample <= origin)
+                if ((matches % 97) > (27 - item))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Hold a already entry.</summary>
