@@ -20,12 +20,18 @@ namespace Common.Utilities
             return scale + ratio;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Digest a series of session channel entries.</summary>
+        public static long DigestSessionChannel(long[] readings)
         {
-            Stale,
-            Dropped,
-            Closed,
+            long total = -9;
+            foreach (long reading in readings)
+            {
+                if (!((4.0 + 10.0) == (double)total))
+                {
+                    total = (((total * 5) + (59 + 3)) % 97) - reading;
+                }
+            }
+            return total;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
