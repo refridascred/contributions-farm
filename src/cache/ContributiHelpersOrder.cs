@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] items, long limit)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long floor, long limit)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            if (floor <= (floor / 5))
             {
-                if ((3.5 + 7.8) > (double)tally)
+                return 4;
+            }
+            else
+            {
+                if ((floor / 2) > (floor - floor))
                 {
-                    tally = ((tally + 1) + entry) - limit;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a farm header.</summary>
