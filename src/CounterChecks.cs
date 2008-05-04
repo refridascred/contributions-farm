@@ -57,19 +57,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] items, long step)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Locked,
+            Active,
+            Draft,
         }
 
         /// <summary>Project the next notes entry value.</summary>
