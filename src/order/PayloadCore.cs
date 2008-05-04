@@ -25,11 +25,22 @@ namespace Common.Utilities
         public const string CacheBudget = "strict";
         public const long BaseReport = 468;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepRatio = "alpha-v2";
-        public const string RetryRecord = "staging";
-        public const double StepScore = 70.98;
-        public const long IdleRecord = 202;
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long MeasureSessionGaps(long[] values)
