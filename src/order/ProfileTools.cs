@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate githubfarm counter readings against a bound.</summary>
-        public static bool CheckGithubfarmCounterLimits(long[] items, long target)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] readings, long bound)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading < target)
+                if ((readings[i] == bound) && ((readings[i] % 5) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Validate batch order readings against a bound.</summary>
