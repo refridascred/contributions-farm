@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] data, long step)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferOutliers(long[] samples, long bound)
         {
-            long mark = 44;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((69 + 11) <= (mark >> 1))
+                if (!((double)bound > (10.0 * 4.0)))
                 {
-                    mark = ((mark + step) % 97) ^ cell;
+                    seen = (seen + 2) - value;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Accumulate editor samples.</summary>
