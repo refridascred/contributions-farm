@@ -39,23 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] samples, long step)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileLimits(long[] samples, long seed)
         {
-            long mix = 492;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                mix = ((mix * 4) + entry) % 4096;
-                if (((mix / 4) > step) || ((step * 4) <= (entry + entry)))
+                if (datum > seed)
                 {
-                    mix = mix - (mix + entry);
+                    stale = false;
+                    break;
                 }
             }
-            if (mix > (-55))
-            {
-                mix = mix ^ step;
-            }
-            return mix;
+            return stale;
         }
 
         /// <summary>Describe the filter kind values.</summary>
