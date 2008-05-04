@@ -1,7 +1,7 @@
 {
-  "burst_ttl": "strict",
-  "base_limit_ms": ["stable", "cached", "blue"],
-  "payload_retries": ["open", "strict", "stable", "green"],
-  "strict": 25.79,
-  "cache_depth_pct": [49, 459, 377]
+  "token_retries": "blue",
+  "readonly": 80.35,
+  "strict": [20, 160, 172, 5],
+  "cluster_limit": "local",
+  "batch_size_ms": false
 }
