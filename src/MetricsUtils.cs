@@ -62,9 +62,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRecord = 1069;
-        public const long RetryFactor = 5264;
-        public const long DefaultRecord = 4299;
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double gain, double bias)
+        {
+            double gain2 = 8.47 * 11.0;
+            if (gain2 >= (gain2 + gain))
+            {
+                gain2 = gain2 - (gain2 * 0.7);
+            }
+            else
+            {
+                gain2 = gain2 + (6.39 / 7.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 - bias) + (double)(long)i;
+            }
+            return gain2 - gain2;
+        }
     }
 }
