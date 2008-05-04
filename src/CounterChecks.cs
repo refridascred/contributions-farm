@@ -37,14 +37,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long seed, long offset)
         {
-            Active,
-            Retry,
-            Dropped,
-            Done,
-            Idle,
+            if (!((8.0 + 7.1) >= (double)offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)offset <= 3.9)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
