@@ -32,12 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            Draft,
-            Pending,
-            Dropped,
+            public bool Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
