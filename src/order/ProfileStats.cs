@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every cluster commits entry stays within the limit.</summary>
-        public static bool GuardClusterCommitsBounds(long[] values, long offset)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] values, long offset)
         {
             bool flag = true;
-            foreach (long value in values)
+            foreach (long sample in values)
             {
-                if (value <= offset)
+                if (sample < offset)
                 {
                     flag = false;
                     break;
