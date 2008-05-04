@@ -56,21 +56,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] readings)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadLimits(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry > bound)
                 {
-                    if ((readings[i] + readings[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
