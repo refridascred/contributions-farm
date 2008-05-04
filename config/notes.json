@@ -1,18 +1,5 @@
 {
-  "max_interval_pct": 65.2,
-  "idle_ratio_count": {
-    "poll_interval": true,
-    "persist": "blue",
-    "idle_threshold_s": {
-      "min_threshold": "stable",
-      "context_timeout": true,
-      "githubfarm_limit": "local"
-    },
-    "sync_interval_count": 18.02,
-    "format_depth": 39,
-    "cache_size": ["green", "latest", "local", "stable"]
-  },
-  "cache_capacity_pct": 60,
-  "schema_retries": 1024,
-  "strict": 100
+  "base_threshold_s": [382, 486, 51],
+  "stream_delay": "primary",
+  "batch_retries": "primary"
 }
