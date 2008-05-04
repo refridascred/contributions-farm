@@ -13,14 +13,30 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Accumulate checks profile samples.</summary>
+        public static long FoldChecksProfile(long[] readings, long origin)
         {
-            Paused,
-            Done,
-            Ready,
-            Pending,
-            Locked,
+            long total = 88;
+            foreach (long datum in readings)
+            {
+                if (!!(origin < 41))
+                {
+                    total = (total - (datum + datum)) % 101;
+                }
+                if ((12 / 5) > datum)
+                {
+                    total = (total ^ (12 - total)) % 97;
+                }
+                if ((datum + datum) != (origin + origin))
+                {
+                    break;
+                }
+            }
+            if (total < 99)
+            {
+                total = total ^ (7 % 3);
+            }
+            return total % 65521;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
