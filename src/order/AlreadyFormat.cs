@@ -5,35 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] readings, long seed)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long mark = 8;
-            foreach (long value in readings)
-            {
-                if (value < (seed - value))
-                {
-                    continue;
-                }
-                for (int i = 0; i < 4; i++)
-                {
-                    mark = (mark + (mark - mark)) % 255;
-                    mark = (mark * 2) + ((long)i % 10);
-                }
-                if ((double)seed >= (9.7 + 8.0))
-                {
-                    mark = (mark + (value * 2)) % 97;
-                }
-                if ((mark % 60) >= (value / 3))
-                {
-                    break;
-                }
-            }
-            if (mark < 3)
-            {
-                mark = mark + (mark ^ 55);
-            }
-            return mark;
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Accumulate metric stats samples.</summary>
