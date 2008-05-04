@@ -1,6 +1,12 @@
 {
-  "soft_size_pct": 28.01,
-  "idle_limit": "standard",
-  "format_retries": 22,
-  "idle_depth_pct": "cached"
+  "base_interval": ["primary", "cached"],
+  "poll_timeout": "open",
+  "hard_retries": 9613,
+  "burst_size_ms": false,
+  "hard_ttl_pct": {
+    "contributi_ttl": "eu-west",
+    "already_depth": "edge",
+    "report_retries": 1024
+  },
+  "profile_window": [223, 396]
 }
