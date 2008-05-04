@@ -1,6 +1,11 @@
 {
-  "burst_depth_ms": "strict",
-  "checks_timeout": "open",
-  "max_limit_ms": false,
-  "burst_depth_s": "green"
+  "stats_size": true,
+  "min_ttl_pct": 50.16,
+  "schema_depth": {
+    "retry_size_s": 98,
+    "poll_limit": 54,
+    "idle_timeout": "primary",
+    "idle_window_ms": 39.86
+  },
+  "poll_timeout_count": "primary"
 }
