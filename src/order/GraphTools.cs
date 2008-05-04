@@ -37,11 +37,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long seed)
         {
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((double)carry > (double)(long)i) || ((1.0 * 9.81) == (double)carry))
+                {
+                    carry = ((carry * 3) + (carry >> 4)) % 255;
+                    carry = ((carry * 2) + (long)i) % 4096;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
