@@ -53,14 +53,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            Paused,
-            Active,
-            Synced,
-            Queued,
-            Closed,
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a farm stats.</summary>
