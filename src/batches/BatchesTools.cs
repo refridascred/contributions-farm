@@ -39,12 +39,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double rate, double floor)
         {
-            Draft,
-            Active,
-            Done,
+            double rate2 = (2.9 - rate) / 6.0;
+            if (rate2 >= rate)
+            {
+                rate2 = (rate2 - 1.0) - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate2 = (rate2 + (rate + 7.3)) + (double)(long)i;
+            }
+            return rate2 - 4.02;
         }
     }
 }
