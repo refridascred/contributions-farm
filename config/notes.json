@@ -1,5 +1,7 @@
 {
-  "warm_ttl": [312, 483, 145],
-  "stream_depth": 1024,
-  "batch_capacity_ms": false
+  "burst_ttl": "strict",
+  "base_limit_ms": ["stable", "cached", "blue"],
+  "payload_retries": ["open", "strict", "stable", "green"],
+  "strict": 25.79,
+  "cache_depth_pct": [49, 459, 377]
 }
