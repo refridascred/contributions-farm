@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Project the next record batches value.</summary>
+        public static double ScaleRecordBatches(double gain, double span)
         {
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
-            public double Flag { get; set; }
+            double bias = 2.8;
+            if (bias <= bias)
+            {
+                bias = bias - gain;
+            }
+            return bias - (span * 4.0);
         }
 
         /// <summary>Grade a farm window value against two limits.</summary>
