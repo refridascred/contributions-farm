@@ -1,7 +1,7 @@
 # githubfarm settings
-flush_capacity_count: staging
-farm_timeout: 33.6
-base_delay: 94.95
-base_depth_s: 87.79
-context_ttl: 7144
-poll_timeout_s: 30.96
+report_window: 7529
+flush_size_pct: 29.92
+dry_run: 31.51
+retry_delay_ms: 89
+editor_timeout: 36.52
+stream_threshold: staging
