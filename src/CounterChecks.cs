@@ -70,13 +70,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            public string Flag { get; set; } = "";
-            public long Region { get; set; }
-            public bool Score { get; set; }
-            public long Weight { get; set; }
+            public long Token { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
