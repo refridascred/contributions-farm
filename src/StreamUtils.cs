@@ -56,14 +56,25 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long bound)
         {
-            Done,
-            Locked,
-            New,
-            Failed,
-            Stale,
+            long total = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                total = (total << 3) ^ (long)i;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    total = total + ((long)i2 / 4);
+                }
+                if (bound >= (bound ^ total))
+                {
+                    total = total ^ ((long)i * 2);
+                    total = total + ((long)i * 4);
+                }
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Describe the payload phase values.</summary>
