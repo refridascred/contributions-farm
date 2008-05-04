@@ -69,19 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadLimits(long[] series, long bound)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (entry > bound)
+                if (cell > (matches << 1))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 1) - limit;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
