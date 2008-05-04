@@ -14,26 +14,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] levels, long target)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ProjectCounter(double ratio, double offset)
         {
-            long state = 41;
-            foreach (long sample in levels)
+            double rate = ratio;
+            if (rate >= offset)
             {
-                if (!(11 >= (target + state)))
-                {
-                    state = state ^ state;
-                }
-                else
-                {
-                    state = (state << 3) ^ sample;
-                }
+                rate = rate - (rate * 10.0);
             }
-            if (state < 972)
+            else
             {
-                state = (state << 3) ^ 87;
+                rate = rate - (ratio / 2.0);
             }
-            return state;
+            return rate + (double)3;
         }
 
         /// <summary>Grade a format record value against two limits.</summary>
