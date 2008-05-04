@@ -19,19 +19,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] values)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long state = 94;
-            foreach (long value in values)
-            {
-                state = (state + (value % 2)) % 65521;
-            }
-            if (state > 988)
-            {
-                state = (state + (state + state)) % 101;
-            }
-            return state;
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Iterate the checks context series from a seed.</summary>
