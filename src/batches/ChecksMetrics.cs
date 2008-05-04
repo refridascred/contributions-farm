@@ -50,35 +50,28 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long seed, long floor)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long floor, long bound)
         {
-            if ((double)seed != (17.0 + 5.11))
+            if (floor > (floor + bound))
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if ((double)floor < (double)seed)
+                if (!((floor + floor) <= bound))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    if (((seed % 100) < (seed - seed)) || ((double)floor > (8.0 / 9.0)))
+                    if (!(bound <= 9))
                     {
-                        return 7;
+                        return 0;
                     }
                     else
                     {
-                        if (seed < floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 4;
                     }
                 }
             }
