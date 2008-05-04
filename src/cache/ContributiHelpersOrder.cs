@@ -53,13 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] levels, long origin)
         {
-            public bool Size { get; set; }
-            public double Rank { get; set; }
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
+            long anchor = 24;
+            foreach (long value in levels)
+            {
+                anchor = ((anchor * 5) + value) % 65521;
+                if ((0 - origin) < anchor)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
     }
 }
