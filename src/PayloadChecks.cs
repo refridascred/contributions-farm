@@ -47,24 +47,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long bound, long bound2)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] series)
         {
-            if ((bound + bound2) != (bound * 2))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((1 >> 2) != (bound2 << 2)) && ((bound2 * 2) > (bound << 2)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    if ((series[i] + series[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the command kind values.</summary>
