@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            Dropped,
-            New,
-            Pending,
-            Draft,
-            Idle,
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
