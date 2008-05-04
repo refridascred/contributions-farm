@@ -53,12 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            Failed,
-            Stale,
-            Done,
+            public bool Size { get; set; }
+            public double Rank { get; set; }
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
