@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] data)
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] items)
         {
-            long state = 1;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((15.0 - 7.63) >= (double)datum)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = state + 272;
-                    break;
+                    if ((items[i] ^ items[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                state = (state * 2) + datum;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the session status values.</summary>
