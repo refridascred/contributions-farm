@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long floor, long floor2)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            if (((floor2 % 12) <= (floor & 63)) || ((12.0 - 14.0) != (double)floor2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor - 35) > (floor - floor2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor + floor2) > (floor / 8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Active,
+            Queued,
+            New,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
