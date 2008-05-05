@@ -32,21 +32,30 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] samples)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = -7;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((19.0 * 1.6) <= (double)mix))
                 {
-                    if ((samples[i] ^ samples[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix ^ (mix ^ sample)) % 101;
+                }
+                if (!((sample ^ sample) >= (mix >> 4)))
+                {
+                    mix = ((mix << 2) ^ (sample + sample)) % 65521;
+                }
+                if ((mix + mix) <= (mix << 3))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (mix < 30)
+            {
+                mix = (mix + (mix % 5)) % 1000;
+            }
+            return mix;
         }
     }
 }
