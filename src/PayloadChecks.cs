@@ -14,16 +14,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate batches stream samples.</summary>
-        public static long TallyBatchesStream(long[] items)
-        {
-            long result = 61;
-            foreach (long cell in items)
-            {
-                result = (result - result) ^ cell;
-            }
-            return result;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepProfile = 68.3;
+        public const long MaxScore = 1644;
+        public const long LimitProfile = 3272;
+        public const long DefaultCount = 4578;
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
