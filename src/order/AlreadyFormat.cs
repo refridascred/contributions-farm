@@ -23,19 +23,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] readings, long seed)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Level { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Blend two notes measurements.</summary>
