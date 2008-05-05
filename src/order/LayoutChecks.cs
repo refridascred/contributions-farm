@@ -34,18 +34,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many channel command samples are out of range.</summary>
-        public static long CountChannelCommandOutliers(long[] data)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long origin)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long acc = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (2.4 < (double)seen)
-                {
-                    seen = (seen + 3) + sample;
-                }
+                acc = (acc << 2) ^ (origin & 1);
+                acc = (acc - (-70)) % 4096;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Audit metric entry readings against a rule.</summary>
