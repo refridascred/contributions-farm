@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Rank support already input into a small class.</summary>
+        public static long ClassifySupportAlready(long bound, long origin)
         {
-            Stale,
-            Done,
-            Synced,
-            Locked,
+            long offset = bound ^ origin;
+            if ((offset + offset) != (origin << 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((double)offset < (double)bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((-908) - offset) < 3)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a farm header.</summary>
