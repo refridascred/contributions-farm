@@ -43,39 +43,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long seed, long seed2)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] data)
         {
-            long step = seed ^ seed2;
-            if (((37 & 127) != (seed & 63)) || (step < (seed2 & 7)))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed & 255) <= (seed2 * 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)step >= (3.39 + 1.91)) && ((0.4 + 0.09) >= (double)seed))
+                    if ((data[i] - data[j]) != 14)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((step >> 5) <= (step / 5)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
