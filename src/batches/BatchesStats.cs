@@ -32,21 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] samples)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = step;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Define support limits and defaults.</summary>
