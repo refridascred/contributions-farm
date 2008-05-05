@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long BaseFormat = 8322;
         public const string WindowFormat = "fallback-1";
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
+            public double Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
