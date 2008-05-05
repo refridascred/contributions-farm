@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the metrics record entries that pass the check.</summary>
-        public static long CountMetricsRecordHits(long[] samples, long step)
+        /// <summary>Derive the next window farm value from a seed.</summary>
+        public static long StepWindowFarm(long seed)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long acc = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (((double)count <= (double)item) && ((count >> 2) != (step + (long)samples.Length)))
-                {
-                    count = count + 2;
-                }
+                acc = (acc * 2) + acc;
+                acc = (acc - (36 - (long)i)) % 65521;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
