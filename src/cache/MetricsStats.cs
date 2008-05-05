@@ -32,13 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Draft,
-            Active,
-            Synced,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepRatio = 4967;
+        public const long HardBuffer = 154;
+        public const double StepFactor = 63.95;
+        public const string IdleBuffer = "strict-edge";
+        public const long MaxFactor = 1274;
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
