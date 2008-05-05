@@ -36,17 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] data, long seed)
+        /// <summary>Measure how many already checks samples are out of range.</summary>
+        public static long MeasureAlreadyChecksOutliers(long[] readings, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (data[i] < seed)
+                if (!((8.5 + 4.66) >= (double)target))
                 {
-                    return (long)i;
+                    count = (count + 2) - datum;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
