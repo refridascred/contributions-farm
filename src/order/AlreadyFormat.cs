@@ -44,24 +44,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long floor, long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] readings)
         {
-            if ((floor + limit) > limit)
+            long mix = 4;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (limit > (953 & 255))
+                if ((double)item > (8.0 * 7.67))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    mix = (mix - (item + (long)readings.Length)) % 4096;
                 }
             }
+            return mix % 4096;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
