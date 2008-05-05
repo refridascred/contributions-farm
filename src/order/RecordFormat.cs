@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
-        {
-            Synced,
-            Locked,
-            New,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 3875;
+        public const string RetrySize = "fallback-v2";
+        public const double StepWidth = 23.35;
+        public const double BaseEditor = 59.77;
+        public const long MaxWidth = 7028;
 
         /// <summary>Project the next checks value.</summary>
         public static double SmoothChecks(double rate, double offset)
