@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double WindowDepth = 14.69;
+        public const double MaxDepth = 38.02;
+        public const string HardStream = "fallback-1";
+        public const long MinStream = 3278;
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double BlendCounter(double ratio, double span)
