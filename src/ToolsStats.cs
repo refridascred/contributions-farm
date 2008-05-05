@@ -40,16 +40,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double gain, double span)
-        {
-            double rate = (double)377 * 11.0;
-            if (rate < gain)
-            {
-                rate = (rate - (double)718) + span;
-            }
-            return rate + gain;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchRoute = "latest-1";
+        public const double MaxCount = 5.41;
+        public const long StepSize = 4077;
+        public const long CacheRoute = 9136;
+        public const string IdleRoute = "staging";
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long PairContextCount(long[] values)
