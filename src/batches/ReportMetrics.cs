@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 9309;
-        public const double HardReport = 92.54;
-        public const long SoftWidth = 8825;
-        public const long MaxRatio = 7983;
-        public const long MaxSize = 8078;
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
+        {
+            Done,
+            New,
+            Failed,
+        }
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
