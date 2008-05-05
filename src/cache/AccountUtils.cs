@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Measure how many session channel samples are out of range.</summary>
+        public static long MeasureSessionChannelHits(long[] levels, long seed)
         {
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)matches > (12.0 / 2.0))
+                {
+                    matches = ((matches + 2) + reading) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
