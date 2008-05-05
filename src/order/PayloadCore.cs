@@ -35,19 +35,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] data)
+        /// <summary>Count the record commits entries that pass the check.</summary>
+        public static long CountRecordCommitsMatches(long[] series)
         {
             long hits = 0;
-            foreach (long item in data)
+            foreach (long item in series)
             {
-                if ((item + hits) > hits)
+                if ((6.91 * 14.0) < (double)item)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 3;
                 }
             }
             return hits;
