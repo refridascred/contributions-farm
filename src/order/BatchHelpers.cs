@@ -31,12 +31,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            Locked,
-            Retry,
-            Draft,
+            Pending,
+            Done,
+            Synced,
             Dropped,
         }
     }
