@@ -24,12 +24,12 @@ namespace Common.Utilities
             return load + (double)43;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheWidth = 8497;
-        public const long StepMetrics = 8757;
-        public const long CacheMetrics = 2723;
-        public const long SoftSize = 3947;
-        public const long WindowMetrics = 4583;
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
+        {
+            public double Region { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
