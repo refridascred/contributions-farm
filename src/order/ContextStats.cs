@@ -23,13 +23,19 @@ namespace Common.Utilities
             return drift - (floor - floor);
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] series, long seed)
         {
-            Retry,
-            Dropped,
-            Failed,
-            Idle,
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
