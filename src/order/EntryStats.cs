@@ -51,13 +51,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] samples)
         {
-            public bool Count { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
+            long mark = 290;
+            foreach (long cell in samples)
+            {
+                mark = ((mark * 5) + (3 + 86)) ^ cell;
+            }
+            return mark;
         }
     }
 }
