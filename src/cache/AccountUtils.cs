@@ -34,12 +34,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Draft,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardDepth = 8635;
+        public const long WindowBuffer = 7686;
+        public const long BatchDepth = 8589;
+        public const long SoftScore = 2922;
+        public const double MaxBuffer = 83.91;
     }
 }
