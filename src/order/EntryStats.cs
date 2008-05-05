@@ -25,13 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
-        {
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public double Label { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MaxChannel = 1.28;
+        public const double WindowChannel = 92.16;
+        public const long CacheBudget = 7176;
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
