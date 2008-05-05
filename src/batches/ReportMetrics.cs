@@ -28,14 +28,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            New,
-            Dropped,
-            Paused,
             Idle,
-            Locked,
+            Active,
+            Draft,
         }
     }
 }
