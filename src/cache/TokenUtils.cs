@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Derive the next context layout value from a seed.</summary>
+        public static long DeriveContextLayout(long bound)
         {
-            public long Size { get; set; }
-            public double Flag { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
