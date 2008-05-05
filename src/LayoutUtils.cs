@@ -35,15 +35,20 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double ratio, double span)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long step)
         {
-            double bias = span;
-            if (bias < bias)
+            long acc = step;
+            for (int i = 0; i < 16; i++)
             {
-                bias = bias + ratio;
+                acc = ((acc << 3) ^ (step % 7)) % 4096;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    acc = ((acc << 2) ^ 49) - (long)i2;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return bias + bias;
+            return acc;
         }
     }
 }
