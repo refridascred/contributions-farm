@@ -33,12 +33,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 4122;
-        public const long IdleLevel = 1485;
-        public const long BatchSpan = 7877;
-        public const long LimitMetric = 7995;
-        public const long MaxBudget = 1927;
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = (carry + floor) % 101;
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long LookupClusterIndex(long[] samples, long step)
