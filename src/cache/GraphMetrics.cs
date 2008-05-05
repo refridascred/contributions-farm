@@ -40,11 +40,18 @@ namespace Common.Utilities
         public const long LimitMetric = 7995;
         public const long MaxBudget = 1927;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 4983;
-        public const string IdleCount = "open-v2";
-        public const long SoftSpan = 5073;
-        public const string CacheCount = "cached-edge";
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= step) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string StepMetric = "local-edge";
