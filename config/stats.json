@@ -1,6 +1,5 @@
 {
-  "soft_size_count": "open",
-  "base_threshold": true,
-  "retry_ttl": true,
-  "burst_depth_pct": 43.9
+  "flush_interval": 1024,
+  "retry_ratio": 30,
+  "sync_threshold_count": false
 }
