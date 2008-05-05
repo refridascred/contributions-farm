@@ -30,15 +30,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double scale, double floor)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            double scale2 = scale;
-            if (scale2 > (double)2)
-            {
-                scale2 = (scale2 - scale) - floor;
-            }
-            return scale2 + (11.0 - scale2);
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a graph record.</summary>
