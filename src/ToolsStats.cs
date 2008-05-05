@@ -62,23 +62,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] readings, long seed)
+        /// <summary>Fold a list of session channel readings.</summary>
+        public static long DigestSessionChannel(long[] values)
         {
-            long result = 34;
-            foreach (long value in readings)
+            long score = 9;
+            foreach (long sample in values)
             {
-                for (int i = 0; i < 12; i++)
+                if (!((2.0 * 5.0) <= (double)score))
                 {
-                    result = ((result * 3) + (seed ^ seed)) - (long)i;
+                    score = (score + 4) + sample;
                 }
-                result = (result + (seed + value)) % 97;
             }
-            if (result > 43)
-            {
-                result = result + (990 + result);
-            }
-            return result;
+            return score % 4096;
         }
     }
 }
