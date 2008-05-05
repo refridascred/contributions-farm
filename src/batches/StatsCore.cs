@@ -53,16 +53,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double bias, double bias2)
-        {
-            double bias3 = (6.3 / 4.0) * 17.0;
-            if (bias3 >= (bias3 - bias))
-            {
-                bias3 = (bias3 + (double)5) + bias2;
-            }
-            return bias3 - 5.88;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MinLevel = "primary-edge";
+        public const long MaxFactor = 5940;
+        public const long IdleFarm = 2777;
+        public const long SoftTimeout = 3537;
+        public const long BurstBudget = 5149;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long MeasureEntryOutliers(long[] items, long offset)
