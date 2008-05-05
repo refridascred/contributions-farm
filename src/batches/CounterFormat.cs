@@ -18,19 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every support payload entry stays within the limit.</summary>
-        public static bool ValidateSupportPayloadLimits(long[] series, long step)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long bound, long offset)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            if ((bound % 3) >= (offset % 8))
             {
-                if (sample < step)
+                return 2;
+            }
+            else
+            {
+                if ((offset ^ 35) <= (bound ^ offset))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!((bound * 3) > offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)6 > (double)offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Compare every pair of batches support readings.</summary>
