@@ -48,11 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryTimeout = 2672;
-        public const long LimitRatio = 6008;
-        public const double RetryDepth = 8.16;
-        public const double BaseSize = 6.93;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 1863;
+        public const long DefaultContributi = 4411;
+        public const long MinContributi = 1535;
+        public const string MinSpan = "latest-v2";
+        public const string HardContributi = "alpha-edge";
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long CompareToolsCount(long[] readings)
