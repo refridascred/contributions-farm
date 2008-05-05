@@ -56,19 +56,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowBounds(long[] readings, long limit)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryMatches(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (datum > limit)
+                if (!((double)tally < (double)59) || (16.0 > (double)tally))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 1) + entry;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
