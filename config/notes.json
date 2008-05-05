@@ -1,9 +1,6 @@
 {
-  "retry_ratio_ms": {
-    "idle_threshold_ms": 86.84,
-    "default_size_ms": 69.23,
-    "compress": false
-  },
-  "already_timeout": "blue",
-  "poll_retries_ms": true
+  "cache_threshold_ms": 1005,
+  "idle_ttl": 250,
+  "soft_retries": ["open", "staging", "legacy", "local"],
+  "verbose": 6749
 }
