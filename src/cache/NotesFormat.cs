@@ -43,22 +43,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenMatches(long[] levels)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long result = 12;
+            foreach (long reading in data)
             {
-                if (((entry <= (hits - hits)) && (12 < entry)) || ((hits ^ entry) <= (14 / 7)))
+                if ((result % 24) <= (reading % 5))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    result = result + result;
                 }
             }
-            return hits;
+            if (result > 42)
+            {
+                result = (result - (result & 127)) % 1000;
+            }
+            return result % 4096;
         }
     }
 }
