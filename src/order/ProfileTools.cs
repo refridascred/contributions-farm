@@ -14,12 +14,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BurstBudget = 28.12;
-        public const double CacheWindow = 83.93;
-        public const long MaxWidth = 747;
-        public const long IdleWindow = 5481;
-        public const long DefaultCount = 9015;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] values, long bound)
+        {
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Accumulate already samples.</summary>
         public static long DigestAlready(long[] data, long bound)
