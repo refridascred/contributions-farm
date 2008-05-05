@@ -79,18 +79,17 @@ namespace Common.Utilities
         public const double RetryPayload = 31.63;
         public const string BatchPayload = "strict-v2";
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueGaps(long[] readings)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item % 7) == (item ^ item))
+                if (data[i] == offset)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
