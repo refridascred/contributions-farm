@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] values)
+        /// <summary>Derive the next record editor value from a seed.</summary>
+        public static long SeriesRecordEditor(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((5.69 / 9.0) == (double)floor) && ((anchor + anchor) <= 1))
                 {
-                    if ((values[i] + values[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = ((anchor * 3) + ((long)i ^ floor)) % 97;
+                    anchor = ((anchor << 3) ^ floor) % 255;
                 }
+                else
+                {
+                    anchor = (anchor + (long)i) % 1000;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Project the next format value.</summary>
