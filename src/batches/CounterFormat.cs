@@ -22,19 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every contributi support entry stays within the limit.</summary>
-        public static bool VerifyContributiSupportBounds(long[] items, long origin)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double load = bias + ratio;
+            return load + (ratio * 6.4);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
