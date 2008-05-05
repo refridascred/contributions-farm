@@ -65,11 +65,22 @@ namespace Common.Utilities
         public const string StepRatio = "stable-1";
         public const string LimitLevel = "latest-1";
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] series)
         {
-            public long Token { get; set; }
-            public bool Rank { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((335 % 10) > (sample + count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
