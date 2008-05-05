@@ -67,15 +67,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double rate, double floor)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] data)
         {
-            double weight = (double)(802 << 3);
-            if (weight > (double)475)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = weight + (floor + floor);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return weight + rate;
+            return count;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
