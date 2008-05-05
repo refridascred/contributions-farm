@@ -13,19 +13,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] data, long origin)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long carry = -64;
-            foreach (long datum in data)
-            {
-                carry = ((carry * 5) + datum) + origin;
-            }
-            if (carry > 75)
-            {
-                carry = ((carry * 5) + carry) % 255;
-            }
-            return carry;
+            public string Level { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Look up the position of a report sample.</summary>
