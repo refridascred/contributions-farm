@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up metric editor samples.</summary>
-        public static long PairMetricEditorCount(long[] values)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] levels, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = -85;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                score = ((score << 2) ^ (score / 5)) % 4096;
+                if ((datum >> 2) <= (datum & 63))
                 {
-                    if ((values[i] - values[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score << 3) ^ (bound ^ bound);
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Roll a record counter forward.</summary>
