@@ -1,8 +1,6 @@
-id,region,active,state,rank
-1,green,72.94,153,698
-2,primary,244,cached,343
-3,20.78,74.55,831,cached
-4,511,primary,24.0,blue
-5,65.01,41.7,latest,local
-6,5.92,primary,78.16,84.3
-7,385,514,fallback,26.33
+id,active,level,count
+1,15.49,877,699
+2,fallback,527,fallback
+3,161,open,stable
+4,7.33,96.67,960
+5,6.04,661,39.27
