@@ -25,18 +25,22 @@ namespace Common.Utilities
         public const long DefaultTimeout = 3012;
         public const long BaseTimeout = 4710;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] values)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long carry = 7;
+            foreach (long reading in levels)
             {
-                if (entry >= (14 - (-5)))
+                if ((96 - carry) < reading)
                 {
-                    count = count + 1;
+                    carry = (carry << 2) ^ 646;
                 }
             }
-            return count;
+            if (carry > 675)
+            {
+                carry = ((carry << 2) ^ (carry - carry)) % 4096;
+            }
+            return carry % 1000;
         }
     }
 }
