@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy open; do
+for item in fallback stable standard staging; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=123
-log "limit is ${CHANNEL_LIMIT}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-cached}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
