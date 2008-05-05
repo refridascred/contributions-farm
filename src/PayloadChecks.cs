@@ -31,18 +31,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] items, long floor)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((floor >> 3) != ((-2) / 9))
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Grade a route layout value against two limits.</summary>
