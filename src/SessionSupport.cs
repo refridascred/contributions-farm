@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] values)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 7;
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                sum = ((sum * 2) + (1 - item)) % 4096;
+                if ((sum - item) >= (item - item))
                 {
-                    if ((values[i] + values[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
