@@ -12,12 +12,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MinLevel = "stable-edge";
-        public const long WindowStats = 5408;
-        public const long IdleFactor = 2948;
-        public const string BatchRatio = "cached";
-        public const string DefaultTimeout = "strict-edge";
+        /// <summary>Digest a series of command filter entries.</summary>
+        public static long TallyCommandFilter(long[] samples)
+        {
+            long sum = 9;
+            foreach (long sample in samples)
+            {
+                if (((double)sample == (5.0 / 5.0)) && ((long)samples.Length <= (sum * 5)))
+                {
+                    sum = ((sum << 2) ^ (2 % 7)) % 1000;
+                }
+            }
+            if (sum < 93)
+            {
+                sum = (sum * 3) + (sum / 5);
+            }
+            return sum;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string DefaultLevel = "local";
