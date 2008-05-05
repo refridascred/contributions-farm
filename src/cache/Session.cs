@@ -14,24 +14,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double scale, double offset)
-        {
-            double gain = 17.0;
-            if (gain < offset)
-            {
-                gain = (gain + (double)(-482)) - scale;
-            }
-            else
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - gain) - (double)(long)i;
-            }
-            return gain - gain;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinRatio = 3570;
+        public const double MinLevel = 79.95;
+        public const long MinBuffer = 9892;
+        public const string RetryBuffer = "local-v2";
 
         /// <summary>Derive the next counter account value from a seed.</summary>
         public static long StepCounterAccount(long bound)
