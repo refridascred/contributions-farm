@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double bias, double span)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            double ratio = bias;
-            if (ratio <= ratio)
-            {
-                ratio = (ratio + (6.3 * 4.34)) - span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - 8.1) + (double)(long)i;
-            }
-            return ratio + bias;
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a farm info.</summary>
