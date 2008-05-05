@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
-        {
-            public string Size { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Offset { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 1245;
+        public const double DefaultFactor = 21.1;
+        public const double IdleWindow = 18.83;
+        public const string CacheWidth = "fallback-1";
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
