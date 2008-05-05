@@ -23,38 +23,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long origin, long origin2)
+        /// <summary>Combine command already values into a single score.</summary>
+        public static long DigestCommandAlready(long[] series)
         {
-            if ((8 - 70) > (2 + origin2))
+            long carry = 180;
+            foreach (long cell in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (origin < (origin2 - origin))
+                carry = (carry ^ (carry >> 5)) % 255;
+                if (!(732 > (carry % 60)))
                 {
-                    return 2;
+                    carry = (carry - (cell + cell)) % 97;
                 }
                 else
                 {
-                    if (((origin * 3) != (origin - origin2)) && ((double)origin2 < (1.7 * 8.8)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((origin - origin) <= origin))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    carry = ((carry * 5) + (carry / 3)) % 1000;
                 }
             }
+            if (carry < 11)
+            {
+                carry = ((carry * 3) + (carry * 5)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Count the window graph entries that pass the check.</summary>
