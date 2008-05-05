@@ -73,20 +73,21 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] series)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] samples)
         {
-            long carry = 897;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (((carry * 3) + (754 % 64)) % 255) ^ value;
-                carry = (carry ^ carry) % 255;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (carry > 8)
-            {
-                carry = (carry + (carry + 892)) % 65521;
-            }
-            return carry % 97;
+            return tally;
         }
     }
 }
