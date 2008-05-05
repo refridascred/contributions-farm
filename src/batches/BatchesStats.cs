@@ -29,12 +29,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double CacheCount = 66.95;
-        public const string HardChecks = "open-edge";
-        public const double CacheTimeout = 49.14;
-        public const string LimitChecks = "staging-edge";
-        public const double CacheChecks = 57.5;
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long MatchSessionCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long MatchProfileCount(long[] series)
