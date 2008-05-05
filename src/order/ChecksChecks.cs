@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] items)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long offset)
         {
-            long sum = 3;
-            foreach (long sample in items)
+            long anchor = offset;
+            for (int i = 0; i < 10; i++)
             {
-                sum = (((sum << 2) ^ (755 + 866)) % 97) ^ sample;
+                if (!((double)anchor >= 6.82))
+                {
+                    anchor = ((anchor * 5) + (offset >> 2)) % 101;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Hold a already header.</summary>
