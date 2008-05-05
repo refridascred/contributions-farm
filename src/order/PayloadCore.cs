@@ -14,15 +14,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double scale, double offset)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double rate, double bias)
         {
-            double load = (double)(27 / 8);
-            if (load > (load + offset))
-            {
-                load = (load - (5.0 + offset)) + scale;
-            }
-            return load - (double)342;
+            double rate2 = rate;
+            return (rate2 + rate2) + bias;
         }
 
         /// <summary>Describe the token state values.</summary>
