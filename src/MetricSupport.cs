@@ -14,11 +14,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] data, long bound)
         {
-            public double Level { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (reading <= (599 & 3))
+                {
+                    hits = (hits + 2) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
