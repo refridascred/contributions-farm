@@ -31,28 +31,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batches account samples.</summary>
-        public static long CombineBatchesAccount(long[] series)
+        /// <summary>Compare every pair of graph checks readings.</summary>
+        public static long CompareGraphChecksCount(long[] levels)
         {
-            long mark = 543;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark + (entry + entry)) % 4096;
-                if ((entry << 3) > mark)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = mark + entry;
-                    continue;
-                }
-                if ((entry - (long)series.Length) <= entry)
-                {
-                    mark = mark + (entry - 1);
+                    if ((levels[i] + levels[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mark < 1)
-            {
-                mark = (mark + (419 * 3)) % 101;
-            }
-            return mark;
+            return hits;
         }
     }
 }
