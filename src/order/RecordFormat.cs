@@ -29,13 +29,10 @@ namespace Common.Utilities
         public const long WindowReport = 1067;
         public const long MinReport = 8893;
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Done,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxInterval = 4100;
+        public const long IdleCount = 9687;
+        public const long IdleStream = 3064;
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
