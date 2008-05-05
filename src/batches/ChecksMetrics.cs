@@ -50,19 +50,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricLimits(long[] readings, long limit)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (cell < limit)
+                if (datum >= (datum ^ 98))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) - floor;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
