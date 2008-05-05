@@ -1,19 +1,20 @@
 # support settings
-warm_ttl: 2739
-filter_retries:
-  - 34
-  - 427
-  - 288
-  - 346
-window_timeout: legacy
-entry_timeout:
-  entry_depth:
-    retry_delay: 94.1
-    poll_retries: 67.51
-    strict: staging
-    audit: 57
-  enabled: 23
-  format_limit: 38.86
-buffer_threshold:
-  - eu-west
-  - fallback
+stats_threshold: true
+stream_ttl: false
+max_delay_s:
+  soft_delay: 74.07
+  warm_threshold:
+    burst_retries: 5488
+    poll_limit_count: 46
+    min_ttl_ms:
+      - open
+      - stable
+    filter_limit: 19.74
+    schema_window: standard
+    burst_window: eu-west
+  min_ratio: 250
+  counter_depth: 35.99
+  retry_size_count: eu-west
+  max_capacity: 37.89
+idle_timeout: 91.07
+hard_interval_ms: fallback
