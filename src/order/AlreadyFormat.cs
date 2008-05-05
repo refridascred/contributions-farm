@@ -34,18 +34,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] data, long bound)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((double)bound <= (1.3 - 0.8))
-                {
-                    matches = (matches + 3) + item;
-                }
-            }
-            return matches;
+            Synced,
+            New,
+            Paused,
+            Draft,
+            Pending,
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
