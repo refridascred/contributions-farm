@@ -31,11 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesOutliers(long[] levels, long limit)
         {
-            public bool Mode { get; set; }
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((((limit - hits) != (limit - limit)) || ((limit - sample) <= (hits + limit))) || ((limit + limit) <= limit))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
