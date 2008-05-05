@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two tools format measurements.</summary>
-        public static double ScaleToolsFormat(double rate, double bias)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            double scale = (rate - rate) + bias;
-            if (scale >= (bias - scale))
-            {
-                scale = scale + (double)(-71);
-            }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale - rate;
+            public bool Rank { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
