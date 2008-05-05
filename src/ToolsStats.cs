@@ -58,13 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Count the commits payload entries that pass the check.</summary>
+        public static long TallyCommitsPayloadMatches(long[] data)
         {
-            Dropped,
-            Locked,
-            Queued,
-            Done,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((6.6 + 7.7) >= (double)value)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of session channel readings.</summary>
