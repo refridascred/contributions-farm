@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] data)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double weight, double floor)
         {
-            long count = 0;
-            foreach (long datum in data)
+            double load = weight;
+            if (load < (double)82)
             {
-                if ((datum - datum) < (-47))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = load - floor;
             }
-            return count;
+            return load + (load - 3.6);
         }
 
         /// <summary>Combine command already values into a single score.</summary>
