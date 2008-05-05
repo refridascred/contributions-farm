@@ -77,13 +77,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextHits(long[] data)
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((double)tally >= (16.0 * 3.2))
+                {
+                    tally = (tally + 3) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a layout stats.</summary>
