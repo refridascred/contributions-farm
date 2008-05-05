@@ -35,22 +35,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] levels)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] values, long target)
         {
-            long carry = 7;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((96 - carry) < reading)
+                if ((double)value < (4.35 / 5.0))
                 {
-                    carry = (carry << 2) ^ 646;
+                    tally = (tally + 1) + target;
                 }
             }
-            if (carry > 675)
-            {
-                carry = ((carry << 2) ^ (carry - carry)) % 4096;
-            }
-            return carry % 1000;
+            return tally;
         }
     }
 }
