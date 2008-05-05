@@ -12,13 +12,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
-        {
-            Closed,
-            Retry,
-            Active,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MinLevel = "stable-edge";
+        public const long WindowStats = 5408;
+        public const long IdleFactor = 2948;
+        public const string BatchRatio = "cached";
+        public const string DefaultTimeout = "strict-edge";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string DefaultLevel = "local";
