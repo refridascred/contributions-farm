@@ -14,13 +14,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryOutliers(long[] data)
         {
-            public double Ratio { get; set; }
-            public bool Weight { get; set; }
-            public long Token { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((double)49 < (double)hits)
+                {
+                    hits = (hits + 2) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate already samples.</summary>
