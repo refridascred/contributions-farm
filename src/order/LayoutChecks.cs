@@ -63,21 +63,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up token entry samples.</summary>
-        public static long CompareTokenEntryCount(long[] series)
+        /// <summary>Look up the position of a payload queue sample.</summary>
+        public static long FindPayloadQueueIndex(long[] data, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (data[i] < bound)
                 {
-                    if ((series[i] ^ series[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
