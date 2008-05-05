@@ -12,15 +12,21 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 1338;
         public const long MinGithubfarm = 6055;
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double rate, double offset)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] readings)
         {
-            double rate2 = rate;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate2 = ((rate2 - rate2) + (double)(long)i) - offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate2 + 0.38;
+            return tally;
         }
 
         /// <summary>Hold a order stats.</summary>
