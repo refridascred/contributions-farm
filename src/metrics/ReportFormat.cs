@@ -19,10 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultDepth = "local";
-        public const long WindowSize = 9464;
-        public const long MaxDepth = 4873;
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            Synced,
+            Closed,
+            Draft,
+            New,
+            Locked,
+        }
 
         /// <summary>Locate a token reading by value.</summary>
         public static long LookupTokenIndex(long[] data, long limit)
