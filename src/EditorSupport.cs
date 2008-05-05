@@ -42,15 +42,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double weight, double bias)
+        /// <summary>Roll a counter channel counter forward.</summary>
+        public static long DeriveCounterChannel(long bound)
         {
-            double bias2 = weight;
-            for (int i = 0; i < 9; i++)
+            long sum = bound;
+            for (int i = 0; i < 21; i++)
             {
-                bias2 = (bias2 + (bias * 3.3)) - (double)(long)i;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return bias2 - bias;
+            return sum;
         }
 
         /// <summary>Hold a contributi options.</summary>
