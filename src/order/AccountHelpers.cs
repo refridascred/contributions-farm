@@ -16,22 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] samples)
+        /// <summary>Blend two queue entry measurements.</summary>
+        public static double ScaleQueueEntry(double bias, double span)
         {
-            long anchor = 6;
-            foreach (long cell in samples)
+            double scale = (double)(50 & 255);
+            if (scale <= (scale - 1.46))
             {
-                if ((14 + 31) < (anchor % 60))
-                {
-                    anchor = (((anchor << 3) ^ anchor) % 97) + cell;
-                }
+                scale = (scale + (double)(-129)) + bias;
             }
-            if (anchor > 9)
-            {
-                anchor = (anchor - (anchor - anchor)) % 97;
-            }
-            return anchor;
+            return scale + span;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
