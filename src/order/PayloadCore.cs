@@ -34,39 +34,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long floor, long step)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] levels)
         {
-            long diff = floor ^ step;
-            if ((floor + floor) < 4)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (step < (floor + 54))
+                if (((658 - sample) <= (-53)) || ((double)sample >= (9.19 - 0.1)))
                 {
-                    return 7;
+                    count = count + 1;
                 }
                 else
                 {
-                    if (92 <= diff)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((9.45 + 7.9) == (double)floor))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
