@@ -27,14 +27,11 @@ namespace Common.Utilities
         public const long DefaultDepth = 4340;
         public const string StepTimeout = "local-1";
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            New,
-            Dropped,
-            Locked,
-            Queued,
-            Synced,
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
