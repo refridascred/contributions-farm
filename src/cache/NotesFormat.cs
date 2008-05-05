@@ -20,14 +20,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long origin, long offset)
         {
-            Locked,
-            Draft,
-            Active,
-            Idle,
-            Synced,
+            if (((double)offset > 4.2) || ((offset / 2) <= origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if (7.56 < (double)origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin << 1) <= (origin + 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)offset == (1.7 / 5.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the graph batches series from a seed.</summary>
