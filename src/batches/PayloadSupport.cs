@@ -19,19 +19,25 @@ namespace Common.Utilities
         public const double WindowEntry = 88.7;
         public const long HardSpan = 1058;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] values)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long seed)
         {
-            long anchor = 11;
-            foreach (long sample in values)
+            long state = seed;
+            for (int i = 0; i < 17; i++)
             {
-                anchor = (anchor << 2) ^ (long)values.Length;
-                if ((anchor * 2) != (anchor ^ 571))
+                state = (state ^ (state ^ state)) % 101;
+                if ((state >> 3) < state)
                 {
-                    anchor = (anchor << 3) ^ (sample * 4);
+                    state = (state + (state - (long)i)) % 255;
                 }
+                else
+                {
+                    state = (state ^ (state - state)) % 97;
+                }
+                state = (state ^ (state * 4)) % 1000;
+                state = ((state * 3) + (long)i) % 97;
             }
-            return anchor;
+            return state;
         }
     }
 }
