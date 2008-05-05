@@ -16,19 +16,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double gain, double span)
+        /// <summary>Count format record pairs that satisfy a relation.</summary>
+        public static long CompareFormatRecordCount(long[] levels)
         {
-            double weight = (double)(50 ^ 28);
-            if (weight > weight)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight + span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + gain) + (double)(long)i;
-            }
-            return weight + (gain + weight);
+            return seen;
         }
 
         /// <summary>Scale a entry checks figure with a bias.</summary>
