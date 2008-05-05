@@ -22,14 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public double Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftWidth = 3950;
+        public const double CacheQueue = 76.52;
+        public const string RetryQueue = "stable-v2";
+        public const double HardWidth = 24.36;
+        public const long MinRatio = 7502;
 
         /// <summary>Adjust a record reading.</summary>
         public static double AdjustRecord(double ratio, double offset)
