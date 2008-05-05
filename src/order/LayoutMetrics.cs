@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] readings)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long state = 764;
-            foreach (long reading in readings)
-            {
-                if ((double)state != (17.0 + 7.0))
-                {
-                    state = ((state + state) % 101) + reading;
-                }
-            }
-            return state % 4096;
+            New,
+            Done,
+            Synced,
+            Paused,
         }
 
         /// <summary>Digest a series of graph entries.</summary>
