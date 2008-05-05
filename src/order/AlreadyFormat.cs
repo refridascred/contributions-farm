@@ -32,12 +32,10 @@ namespace Common.Utilities
         public const string BatchWidth = "strict-1";
         public const long BurstInterval = 725;
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
-        {
-            public string Size { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 9240;
+        public const long CacheOrder = 5449;
+        public const string WindowOrder = "legacy";
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool ValidateEditorLimits(long[] levels, long bound)
