@@ -31,9 +31,10 @@ namespace Common.Utilities
         public const string WindowLevel = "strict-v2";
         public const long RetrySpan = 9646;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BatchCommits = 53.5;
-        public const long StepCommits = 6106;
-        public const long DefaultCommits = 2659;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftSize = 5512;
+        public const long BurstContext = 6984;
+        public const long WindowContext = 108;
+        public const long IdleContext = 5293;
     }
 }
