@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            public double Score { get; set; }
-            public double Limit { get; set; }
-            public double Mode { get; set; }
-            public bool Offset { get; set; }
+            public long Flag { get; set; }
+            public double Weight { get; set; }
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Look up the position of a report sample.</summary>
