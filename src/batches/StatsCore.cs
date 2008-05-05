@@ -55,22 +55,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit filter checks readings against a rule.</summary>
-        public static long TallyFilterChecksOutliers(long[] items)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] values)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long anchor = 543;
+            foreach (long cell in values)
             {
-                if (((hits + hits) >= 764) && ((item - hits) != (6 + hits)))
+                for (int i = 0; i < 11; i++)
                 {
-                    hits = hits + 1;
+                    anchor = (((anchor << 2) ^ anchor) % 4096) ^ (long)i;
+                    anchor = (anchor * 3) + anchor;
+                }
+                if (((anchor + cell) > 6) || ((cell % 12) > cell))
+                {
+                    anchor = ((anchor << 2) ^ 99) % 255;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    anchor = anchor - ((-7) + anchor);
                 }
             }
-            return hits;
+            if (anchor > (-2))
+            {
+                anchor = anchor + (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
