@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] data, long seed)
         {
-            Active,
-            Dropped,
-            Failed,
-            Locked,
-            Stale,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((456 + 304) <= (seed - 279))
+                {
+                    count = (count + 1) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
