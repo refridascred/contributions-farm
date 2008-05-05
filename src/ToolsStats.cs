@@ -69,21 +69,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of support githubfarm readings.</summary>
-        public static long MatchSupportGithubfarmCount(long[] values)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] values, long target)
         {
-            long tally = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (values[i] < target)
                 {
-                    if ((values[i] ^ values[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Fold a list of session channel readings.</summary>
