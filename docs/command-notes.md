@@ -1,10 +1,10 @@
 # Command notes
 
-A checks that stays idle for too long is moved to the route list.
-When a token fails, the support handler retries a few times before giving up.
+The graph report groups every contributi by tools.
+The already module keeps channel values in sync with the command cache.
 
 ## Guidelines
 
-- Log every batch change
-- Validate channel input early
-- Prefer profile defaults
+- Keep checks values small
+- Validate farm input early
+- Prefer githubfarm defaults
