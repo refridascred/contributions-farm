@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long origin, long seed)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] values, long offset)
         {
-            long diff = origin + seed;
-            if (((double)7 <= (double)origin) || (52 > origin))
+            long state = 676;
+            foreach (long entry in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((seed - 1) <= (-344)) || ((seed / 9) >= (origin - 127)))
+                if (((entry << 2) < entry) || ((state % 24) < offset))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)diff == (1.7 / 4.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    state = state - entry;
                 }
             }
+            return state;
         }
 
         /// <summary>Match up report samples.</summary>
