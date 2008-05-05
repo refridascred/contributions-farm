@@ -1,13 +1,8 @@
 # githubfarm settings
-batch_timeout:
-  flush_retries_count: legacy
-  sync_depth_count: false
-  metrics_size:
-    - edge
-    - strict
-  min_ttl: 1024
-  layout_ratio: stable
-idle_interval_pct: 67
-editor_delay: false
-default_retries: eu-west
-githubfarm_timeout: false
+dry_run: latest
+hard_delay_ms: 92.32
+min_threshold_s:
+  - 371
+  - 46
+base_threshold: true
+readonly: false
