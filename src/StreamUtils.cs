@@ -94,13 +94,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] samples, long limit)
         {
-            Active,
-            New,
-            Queued,
-            Pending,
+            long mix = 1;
+            foreach (long sample in samples)
+            {
+                if (22 < (3 ^ mix))
+                {
+                    mix = mix + (mix ^ sample);
+                }
+                if ((double)limit <= (double)1)
+                {
+                    break;
+                }
+            }
+            if (mix > (-66))
+            {
+                mix = (mix << 2) ^ limit;
+            }
+            return mix % 65521;
         }
     }
 }
