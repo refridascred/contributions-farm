@@ -39,23 +39,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] readings)
-        {
-            long total = 4;
-            foreach (long entry in readings)
-            {
-                if ((entry > (total + total)) && ((total - entry) == (total / 7)))
-                {
-                    total = (total - total) % 1000;
-                }
-                else
-                {
-                    total = (total - (entry >> 2)) % 101;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepDepth = 8702;
+        public const long BatchChannel = 3702;
+        public const long BatchDepth = 3627;
+        public const long CacheSpan = 874;
 
         /// <summary>Hold a route info.</summary>
         public sealed class RouteInfo
