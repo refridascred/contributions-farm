@@ -20,18 +20,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] samples)
+        /// <summary>Look up the position of a githubfarm batches sample.</summary>
+        public static long FindGithubfarmBatchesIndex(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((datum % 16) != (tally / 2)) || ((double)datum > (double)27)))
+                if (series[i] <= floor)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the context kind values.</summary>
