@@ -23,15 +23,11 @@ namespace Common.Utilities
             return rate2 + 0.38;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double SmoothMetric(double bias, double span)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            double scale = bias;
-            if (scale <= (double)346)
-            {
-                scale = scale + bias;
-            }
-            return scale - (span + scale);
+            public double Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
