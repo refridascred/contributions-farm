@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] data)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] data, long step)
         {
-            long mix = 54;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long value in data)
             {
-                if (!(sample < (sample * 3)))
+                if (value != step)
                 {
-                    mix = ((mix << 2) ^ (sample & 127)) % 1000;
-                }
-                if (!((sample + mix) > (sample / 6)))
-                {
+                    found = false;
                     break;
                 }
             }
-            return mix % 4096;
+            return found;
         }
 
         /// <summary>Describe the already mode values.</summary>
