@@ -28,9 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultRatio = 9604;
-        public const long DefaultMetrics = 384;
-        public const long MaxSize = 4987;
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
+        {
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
