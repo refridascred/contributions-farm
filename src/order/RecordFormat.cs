@@ -5,30 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] samples, long seed)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] data)
         {
-            long mark = 7;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (371 > sample)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    continue;
-                }
-                if ((-12) > mark)
-                {
-                    mark = ((mark * 3) + (0 << 1)) % 65521;
-                }
-                else
-                {
-                    mark = (mark ^ (mark - (-439))) % 97;
+                    if ((data[i] ^ data[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mark < (-36))
-            {
-                mark = (mark ^ (2 - seed)) % 4096;
-            }
-            return mark % 4096;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
