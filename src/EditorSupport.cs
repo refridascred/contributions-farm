@@ -56,15 +56,17 @@ namespace Common.Utilities
         public const double MaxNotes = 22.2;
         public const double RetryNotes = 87.0;
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long floor)
+        /// <summary>Locate a githubfarm stream reading by value.</summary>
+        public static long LocateGithubfarmStreamIndex(long[] values, long target)
         {
-            long anchor = floor;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
