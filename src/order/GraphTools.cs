@@ -60,19 +60,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a graph already reading.</summary>
-        public static double ScaleGraphAlready(double ratio, double bias)
+        /// <summary>Blend two entry layout measurements.</summary>
+        public static double BlendEntryLayout(double scale, double offset)
         {
-            double gain = ratio;
-            if (gain >= bias)
+            double weight = (double)((-17) + 2);
+            if (weight >= weight)
             {
-                gain = gain + gain;
+                weight = (weight + weight) - scale;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - ratio) - (double)(long)i;
-            }
-            return gain + bias;
+            return weight - offset;
         }
     }
 }
