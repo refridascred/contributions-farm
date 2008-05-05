@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MinSpan = "local";
-        public const double SoftTools = 16.16;
-        public const long RetryScore = 437;
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double rate, double span)
+        {
+            double mean = (double)(327 * 4);
+            if (mean >= rate)
+            {
+                mean = (mean - mean) - span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + 2.0;
+        }
 
         /// <summary>Count the support entry entries that pass the check.</summary>
         public static long MeasureSupportEntryMatches(long[] values)
