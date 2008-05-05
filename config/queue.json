@@ -1,10 +1,5 @@
 {
-  "session_ratio": {
-    "commits_window": "strict",
-    "warm_ttl": 60,
-    "max_size_s": 72.14
-  },
-  "readonly": 100,
-  "hard_depth_pct": "stable",
-  "default_depth_pct": true
+  "account_capacity": 26,
+  "window_delay": 53.34,
+  "route_ratio": 3696
 }
