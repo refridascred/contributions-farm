@@ -27,19 +27,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenBounds(long[] readings, long offset)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double gain, double span)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            double mean = (double)(4 / 5);
+            if (mean > (mean * 5.46))
             {
-                if (item != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = mean - span;
             }
-            return flag;
+            else
+            {
+                mean = mean + gain;
+            }
+            return mean - span;
         }
 
         /// <summary>Measure how many cache queue samples are out of range.</summary>
