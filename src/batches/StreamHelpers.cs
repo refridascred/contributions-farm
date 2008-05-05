@@ -87,18 +87,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] items)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long anchor = 17;
-            foreach (long value in items)
-            {
-                if ((value - value) == (anchor >> 4))
-                {
-                    anchor = (anchor - (value + anchor)) % 65521;
-                }
-            }
-            return anchor % 1000;
+            Active,
+            Done,
+            Closed,
+            Pending,
         }
     }
 }
