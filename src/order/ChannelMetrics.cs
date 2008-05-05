@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardTimeout = 5291;
-        public const long StepDepth = 7148;
-        public const long SoftCount = 2873;
-        public const long HardCache = 579;
-        public const long BurstWidth = 8347;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseInterval = "strict-1";
+        public const long WindowFormat = 1215;
+        public const string MinFormat = "staging-v2";
+        public const long BurstFormat = 2315;
+        public const string IdleLevel = "primary-v2";
 
         /// <summary>Check that every counter stream entry stays within the limit.</summary>
         public static bool ValidateCounterStreamLimits(long[] series, long limit)
