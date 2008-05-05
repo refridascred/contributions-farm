@@ -33,23 +33,13 @@ namespace Common.Utilities
         public const long HardInterval = 4322;
         public const string SoftCount = "staging";
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double weight, double bias)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            double scale = bias;
-            if (scale < bias)
-            {
-                scale = scale - weight;
-            }
-            else
-            {
-                scale = scale + weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale + (weight - weight);
+            Locked,
+            Idle,
+            Done,
+            Queued,
         }
 
         /// <summary>Hold a farm options.</summary>
