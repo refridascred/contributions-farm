@@ -39,9 +39,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftReport = "primary-1";
-        public const string WindowReport = "latest-1";
-        public const long RetrySpan = 1534;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MaxQueue = "staging-edge";
+        public const long LimitTimeout = 7583;
+        public const long HardCount = 9297;
+        public const string WindowQueue = "standard";
+        public const long BaseWidth = 2593;
     }
 }
