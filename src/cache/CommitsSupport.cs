@@ -46,11 +46,26 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long seed)
         {
-            public bool Size { get; set; }
-            public double Level { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = ((carry * 5) + (carry / 2)) % 101;
+                if ((double)seed < (double)(long)i)
+                {
+                    carry = (carry * 3) + (seed << 2);
+                    continue;
+                }
+                else
+                {
+                    carry = (carry ^ 47) % 255;
+                }
+                carry = carry - seed;
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a metric stats.</summary>
