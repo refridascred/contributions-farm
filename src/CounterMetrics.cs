@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] data, long floor)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
