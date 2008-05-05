@@ -1,6 +1,9 @@
-id,weight,state
-1,30,341
-2,15,518
-3,edge,latest
-4,stable,staging
-5,752,stable
+id,region,state
+1,104,fallback
+2,986,79.97
+3,blue,cached
+4,stable,legacy
+5,cached,965
+6,local,47.37
+7,78.9,strict
+8,80.38,edge
