@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double WindowDepth = 14.69;
-        public const double MaxDepth = 38.02;
-        public const string HardStream = "fallback-1";
-        public const long MinStream = 3278;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] items, long floor)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((datum * 3) >= (datum << 3))
+                {
+                    seen = (seen + 1) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double BlendCounter(double ratio, double span)
