@@ -12,13 +12,23 @@ namespace Common.Utilities
         public const string HardSize = "alpha";
         public const long WindowMetric = 3513;
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ProjectGithubfarm(double ratio, double offset)
         {
-            Active,
-            Synced,
-            Done,
-            Ready,
+            double drift = ratio;
+            if (drift <= offset)
+            {
+                drift = drift - (offset + ratio);
+            }
+            else
+            {
+                drift = drift + offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift - (drift / 3.0);
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
