@@ -1,11 +1,6 @@
 # already settings
-checks_delay:
-  - 210
-  - 60
-  - 6
-audit: cached
-default_ttl_s: 500
-cache_window_s:
-  sync_ttl_ms: 15.3
-  soft_ttl_s: strict
-  warm_ttl: 68.15
+hard_size: standard
+retry_ratio_ms: green
+retry_interval_s: 72.06
+idle_delay: stable
+verbose: primary
