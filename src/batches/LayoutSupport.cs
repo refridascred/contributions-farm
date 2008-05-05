@@ -14,39 +14,17 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long offset, long seed)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] levels, long target)
         {
-            long offset2 = offset + seed;
-            if ((double)seed < (double)offset)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((5.0 + 9.0) <= (double)seed)
+                if (levels[i] < target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (seed >= (seed * 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((offset2 - offset2) != (offset >> 5)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a metric options.</summary>
