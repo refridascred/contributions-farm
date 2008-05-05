@@ -31,18 +31,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] readings, long offset)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long bound, long limit)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            if (!((-4) <= (42 + limit)))
             {
-                if ((17 << 3) >= ((long)readings.Length >> 5))
+                return 3;
+            }
+            else
+            {
+                if (((65 << 3) > (bound - limit)) || ((860 / 2) > limit))
                 {
-                    count = ((count + 3) + cell) - offset;
+                    return 1;
+                }
+                else
+                {
+                    if ((bound & 7) < (limit - bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the support phase values.</summary>
