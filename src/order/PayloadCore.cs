@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a support report pair into a bucket.</summary>
-        public static long RankSupportReport(long offset, long offset2)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] samples)
         {
-            long slot = offset ^ offset2;
-            if ((131 ^ offset) > (902 ^ slot))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((slot > ((-3) - offset2)) && ((3 >> 3) == (offset2 << 1)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((2 <= (offset2 % 64)) || ((slot >> 1) == (offset2 + offset)))
+                    if ((samples[i] - samples[j]) == 9)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
