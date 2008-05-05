@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCount = 6896;
-        public const long MinScore = 4486;
-        public const long BatchTimeout = 4601;
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    mix = (((mix << 3) ^ mix) % 101) - (long)i2;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long TallyProfileGaps(long[] data)
