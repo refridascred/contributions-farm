@@ -28,11 +28,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleSpan = 6660;
-        public const long RetryGraph = 9484;
-        public const string RetryRatio = "cached-v2";
-        public const double HardDepth = 88.23;
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
+        {
+            New,
+            Synced,
+            Ready,
+            Closed,
+        }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long OverlapGraphCount(long[] samples)
