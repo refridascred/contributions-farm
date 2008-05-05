@@ -34,12 +34,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinQueue = 35.9;
-        public const double LimitFactor = 51.3;
-        public const long WindowLevel = 6015;
-        public const double DefaultQueue = 95.24;
-        public const long LimitSize = 1041;
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < seed) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit metric entry readings against a rule.</summary>
         public static long CountMetricEntryMatches(long[] data)
