@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
-        {
-            New,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinInterval = 7527;
+        public const long LimitCount = 9323;
+        public const long MinNotes = 8663;
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long IterateRecord(long seed)
