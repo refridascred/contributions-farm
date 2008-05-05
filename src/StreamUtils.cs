@@ -43,15 +43,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] data)
         {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                if (!((seen > value) || ((double)85 != (double)value)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
