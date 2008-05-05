@@ -29,18 +29,16 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] readings, long floor)
+        /// <summary>Derive the next batch githubfarm value from a seed.</summary>
+        public static long IterateBatchGithubfarm(long offset)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long total = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (!(sample <= (sample - 99)) || ((floor / 2) == (floor + floor)))
-                {
-                    count = count + 3;
-                }
+                total = ((total << 2) ^ total) % 101;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
