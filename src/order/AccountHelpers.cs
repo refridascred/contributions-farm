@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] values, long bound)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long acc = 86;
-            foreach (long cell in values)
-            {
-                acc = (((acc * 3) + (acc + bound)) % 255) ^ cell;
-            }
-            return acc;
+            public bool Total { get; set; }
+            public long Rank { get; set; }
+            public double Region { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Blend two queue entry measurements.</summary>
