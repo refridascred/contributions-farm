@@ -1,8 +1,5 @@
 {
-  "support_depth": ["stable", "open"],
-  "soft_window_count": "green",
-  "batch_window": ["eu-west", "local", "primary", "edge"],
-  "idle_ratio_pct": false,
-  "soft_retries": "strict",
-  "poll_window_pct": "eu-west"
+  "filter_threshold": "green",
+  "readonly": false,
+  "min_ttl_ms": 96
 }
