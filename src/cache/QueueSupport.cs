@@ -14,21 +14,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] values)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Closed,
+            Ready,
+            Active,
+            Done,
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
