@@ -56,20 +56,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long floor)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyBounds(long[] items, long offset)
         {
-            long result = floor;
-            for (int i = 0; i < 24; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (item != offset)
                 {
-                    result = (result - (result + (long)i)) - (long)i2;
+                    valid = false;
+                    break;
                 }
-                result = result - (floor + floor);
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
