@@ -16,11 +16,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double weight, double offset)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long seed, long seed2)
         {
-            double gain = offset;
-            return (gain + (gain * 8.53)) + weight;
+            if ((seed + seed2) <= ((-9) - seed2))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((seed * 3) == (seed % 5)) || ((seed2 + seed2) != (seed ^ seed)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((3.92 - 6.13) == (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of channel entries.</summary>
