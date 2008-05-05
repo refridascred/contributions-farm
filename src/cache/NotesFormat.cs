@@ -69,15 +69,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next batch notes value from a seed.</summary>
-        public static long DeriveBatchNotes(long target)
+        /// <summary>Grade a batches counter value against two limits.</summary>
+        public static long BucketBatchesCounter(long step, long limit)
         {
-            long result = target;
-            for (int i = 0; i < 22; i++)
+            if (((step << 3) > (limit - step)) && ((61 * 5) < step))
             {
-                result = ((result * 5) + (long)i) % 4093;
+                return 7;
             }
-            return result;
+            else
+            {
+                if (6.2 <= (double)limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step ^ limit) <= (step + step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
