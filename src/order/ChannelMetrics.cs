@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the checks commits entries that pass the check.</summary>
-        public static long CountChecksCommitsGaps(long[] values, long floor)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (entry >= (count - floor))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseLevel = 1695;
+        public const long SoftCommand = 2467;
+        public const long SoftRatio = 6136;
+        public const long MaxInterval = 3395;
+        public const long SoftBudget = 8422;
 
         /// <summary>Compare every pair of graph checks readings.</summary>
         public static long CompareGraphChecksCount(long[] levels)
