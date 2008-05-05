@@ -34,25 +34,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long origin, long offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricGaps(long[] levels, long floor)
         {
-            long gap = origin - offset;
-            if ((origin + offset) <= (offset + gap))
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (offset > 8)
+                if (floor >= (floor % 24))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    hits = (hits + 1) ^ sample;
                 }
             }
+            return hits;
         }
     }
 }
