@@ -47,13 +47,19 @@ namespace Common.Utilities
             return scale + (20.0 - 8.59);
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsLimits(long[] readings, long step)
         {
-            Failed,
-            Paused,
-            Queued,
-            Dropped,
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
