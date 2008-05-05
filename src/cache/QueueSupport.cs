@@ -26,13 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Pending,
-            Closed,
-            Done,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string StepDepth = "cached-edge";
+        public const string WindowLevel = "strict-v2";
+        public const long RetrySpan = 9646;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double BatchCommits = 53.5;
