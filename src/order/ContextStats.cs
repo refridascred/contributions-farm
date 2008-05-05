@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Check that every batches cache entry stays within the limit.</summary>
+        public static bool GuardBatchesCacheBounds(long[] values, long target)
         {
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
