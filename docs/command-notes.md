@@ -1,13 +1,10 @@
 # Command notes
 
-The cache module keeps editor values in sync with the format cache.
-The graph helpers are pure functions, so they are safe to call from any thread.
-
-Run the support check before changing any graph limits.
-Run the filter check before changing any already limits.
+Run the editor check before changing any context limits.
+Each session is validated before it reaches the cluster queue.
 
 ## Guidelines
 
-- Validate account input early
-- Keep record values small
-- Review already limits each release
+- Prefer payload defaults
+- Log every payload change
+- Document new route fields
