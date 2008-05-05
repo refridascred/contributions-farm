@@ -1,5 +1,12 @@
 {
-  "flush_interval": 1024,
-  "retry_ratio": 30,
-  "sync_threshold_count": false
+  "batch_ttl_ms": false,
+  "cache_delay": {
+    "verbose": 5626,
+    "soft_threshold": "open",
+    "compress": 1584,
+    "record_delay": "cached"
+  },
+  "counter_retries": "blue",
+  "compress": ["blue", "standard", "standard"],
+  "flush_size": 6951
 }
