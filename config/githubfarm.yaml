@@ -1,5 +1,21 @@
 # githubfarm settings
-cluster_window: 78.32
-hard_ttl: green
-enabled: 78.69
-persist: 3240
+strict: blue
+base_size:
+  metric_delay: true
+  session_size: latest
+  editor_depth:
+    - fallback
+    - standard
+    - fallback
+  soft_ttl_ms: 34.68
+  min_window_count: fallback
+  batch_capacity:
+    - 112
+    - 2
+    - 140
+soft_retries: eu-west
+stats_ratio: false
+burst_timeout_ms:
+  - primary
+  - cached
+base_ttl_pct: local
