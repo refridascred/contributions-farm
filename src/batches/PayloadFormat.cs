@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string DefaultToken = "latest-1";
-        public const long MaxToken = 9421;
-        public const long RetryToken = 8484;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long step, long limit)
+        {
+            long diff = step - limit;
+            if (diff > step)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((1.19 * 16.0) == (double)diff)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit > (214 >> 1)) && ((diff + step) > diff))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (step < (815 % 24))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a cache command value against two limits.</summary>
         public static long BucketCacheCommand(long step, long floor)
