@@ -1,10 +1,25 @@
 # support settings
-warm_depth: false
-persist: false
-retry_capacity_count: 60
-strict:
-  poll_threshold_pct: legacy
-  sync_interval_ms: 88.49
-  retry_limit_count: green
-  compress: 79
-compress: 9354
+sync_threshold_pct:
+  buffer_limit: 0.36
+  flush_ratio_ms:
+    payload_ttl: blue
+    strict: false
+    flush_capacity: 57
+  poll_retries: true
+warm_ratio: 541
+verbose: open
+sync_window: 2793
+batch_capacity_count: 21
+poll_window_ms:
+  contributi_interval:
+    base_depth_count: 52.87
+    retry_interval_pct: 55
+    default_capacity_count: 60
+    order_window: 1139
+    cache_limit_pct: latest
+  batch_timeout_count:
+    - 169
+    - 439
+    - 437
+    - 7
+  flush_threshold_ms: 100
