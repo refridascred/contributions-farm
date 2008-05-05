@@ -1,8 +1,5 @@
 # githubfarm settings
-flush_limit_count: 4928
-cache_timeout_ms: 2901
-support_ttl: fallback
-audit:
-  - standard
-  - legacy
-soft_delay_count: 100
+max_ratio_count: false
+max_delay_count: legacy
+compress: green
+enabled: 60
