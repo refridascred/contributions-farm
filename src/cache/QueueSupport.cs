@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long origin, long seed)
         {
-            Locked,
-            Idle,
-            Queued,
-            Stale,
+            long cur = origin ^ seed;
+            if ((origin ^ origin) < (cur / 6))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((2.3 - 0.4) == (double)seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the cluster class values.</summary>
