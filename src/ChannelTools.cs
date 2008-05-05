@@ -5,29 +5,28 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a command payload pair into a bucket.</summary>
-        public static long BucketCommandPayload(long step, long target)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long origin, long target)
         {
-            long bound = step + target;
-            if (((bound >> 3) < ((-3) + step)) || ((step << 2) == (target * 2)))
+            if ((target % 2) < origin)
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if (((bound >> 4) != (target >> 3)) && ((step << 2) >= 48))
+                if ((65 >> 5) < origin)
                 {
                     return 8;
                 }
                 else
                 {
-                    if ((double)step >= 4.0)
+                    if (!(target > (target << 2)))
                     {
-                        return 5;
+                        return 3;
                     }
                     else
                     {
-                        return 6;
+                        return 7;
                     }
                 }
             }
