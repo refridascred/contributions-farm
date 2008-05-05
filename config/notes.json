@@ -1,5 +1,8 @@
 {
-  "burst_delay": 50.78,
-  "hard_interval_ms": "cached",
-  "record_delay": 33.43
+  "warm_capacity": "staging",
+  "strict": true,
+  "githubfarm_timeout": 82.42,
+  "cache_depth_s": "blue",
+  "retry_depth_count": true,
+  "batch_capacity_ms": 9141
 }
