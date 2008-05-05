@@ -35,12 +35,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long target, long seed)
         {
-            public bool Mode { get; set; }
-            public double Offset { get; set; }
-            public bool Rank { get; set; }
+            if ((seed - target) < (target >> 5))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target - seed) != (target + target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Adjust a editor reading.</summary>
