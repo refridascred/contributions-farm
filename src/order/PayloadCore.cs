@@ -32,18 +32,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the record commits entries that pass the check.</summary>
-        public static long CountRecordCommitsMatches(long[] series)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long seed)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long result = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((6.91 * 14.0) < (double)item)
+                if (((522 + (long)i) > (seed * 4)) || ((0.99 / 5.0) != (double)seed))
                 {
-                    hits = hits + 3;
+                    result = ((result << 3) ^ ((long)i % 12)) % 255;
                 }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
     }
 }
