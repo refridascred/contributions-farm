@@ -60,21 +60,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] levels)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 6;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (cell < (carry + cell))
                 {
-                    if ((levels[i] - levels[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry - 3) % 65521;
                 }
             }
-            return count;
+            if (carry < 429)
+            {
+                carry = ((carry << 2) ^ (carry % 60)) % 97;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Define format limits and defaults.</summary>
