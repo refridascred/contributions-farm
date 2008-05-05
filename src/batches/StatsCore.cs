@@ -76,19 +76,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate batch metrics readings against a bound.</summary>
-        public static bool ValidateBatchMetricsLimits(long[] samples, long offset)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long bound, long origin)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            if (((16.0 - 8.7) > (double)origin) && ((double)6 == (double)origin))
             {
-                if (sample != offset)
+                return 3;
+            }
+            else
+            {
+                if ((double)origin < 9.0)
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return valid;
         }
     }
 }
