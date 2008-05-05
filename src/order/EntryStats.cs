@@ -36,16 +36,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the metric filter series from a seed.</summary>
-        public static long IterateMetricFilter(long limit)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] levels)
         {
-            long result = limit;
-            for (int i = 0; i < 14; i++)
+            long state = 142;
+            foreach (long sample in levels)
             {
-                result = ((result << 3) ^ (limit + 333)) % 1000;
-                result = ((result * 2) + (long)i) % 1000;
+                if ((state - sample) >= (state / 3))
+                {
+                    state = ((state << 2) ^ (sample * 2)) % 4096;
+                }
+                if ((6.7 - 9.68) < (7.0 * 6.45))
+                {
+                    break;
+                }
             }
-            return result;
+            if (state < 4)
+            {
+                state = (state * 2) + (state % 8);
+            }
+            return state;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
