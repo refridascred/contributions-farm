@@ -39,17 +39,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] readings, long target)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Idle,
+            Draft,
         }
 
         /// <summary>Adjust a editor reading.</summary>
