@@ -1,8 +1,5 @@
 {
-  "compress": 17.6,
-  "batch_delay_s": 72.37,
-  "flush_capacity": "latest",
-  "burst_window_ms": "legacy",
-  "flush_capacity_count": "standard",
-  "context_ttl": 10.48
+  "dry_run": "cached",
+  "audit": 30,
+  "flush_capacity_count": 100
 }
