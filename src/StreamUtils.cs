@@ -42,19 +42,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of buffer counter entries.</summary>
-        public static long TotalBufferCounter(long[] values)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double bias, double floor)
         {
-            long state = 91;
-            foreach (long item in values)
+            double ratio = floor;
+            if (ratio > (floor - floor))
             {
-                state = ((state - (-3)) % 65521) + item;
+                ratio = ratio + (ratio + bias);
             }
-            if (state > 132)
+            else
             {
-                state = (state << 3) ^ (state - state);
+                ratio = ratio + bias;
             }
-            return state % 97;
+            return ratio - (bias - floor);
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
