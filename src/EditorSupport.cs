@@ -37,12 +37,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Iterate the route notes series from a seed.</summary>
+        public static long RollRouteNotes(long floor)
         {
-            Idle,
-            New,
-            Paused,
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
