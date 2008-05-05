@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] series, long seed)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] levels, long offset)
         {
-            long mark = -29;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                mark = (mark + (seed % 5)) ^ sample;
+                if (reading < offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark % 97;
+            return ready;
         }
 
         /// <summary>Hold a account snapshot.</summary>
