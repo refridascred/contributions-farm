@@ -66,17 +66,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a payload queue sample.</summary>
-        public static long FindPayloadQueueIndex(long[] data, long bound)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] < bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
