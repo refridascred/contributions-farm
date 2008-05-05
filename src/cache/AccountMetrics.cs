@@ -42,13 +42,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double bias, double offset)
         {
-            public bool Count { get; set; }
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
-            public double Label { get; set; }
+            double rate = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = ((rate + 4.1) - (double)(long)i) - bias;
+            }
+            return rate + (2.9 - offset);
         }
 
         /// <summary>Fold a list of tools payload readings.</summary>
