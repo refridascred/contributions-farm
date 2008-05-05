@@ -40,21 +40,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate token counter samples.</summary>
-        public static long FoldTokenCounter(long[] series)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] levels, long limit)
         {
-            long score = 3;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (score < (value / 6))
+                if (limit >= (value & 1))
                 {
-                    score = (score * 3) + (value << 1);
-                    score = (score - value) % 4096;
+                    matches = matches + 3;
                 }
-                score = score - (score - value);
-                score = (score * 3) + (score - value);
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Project the next context value.</summary>
