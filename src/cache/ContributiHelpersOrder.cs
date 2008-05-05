@@ -41,12 +41,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            Draft,
             Synced,
+            New,
+            Paused,
             Stale,
+            Retry,
         }
     }
 }
