@@ -26,21 +26,21 @@ namespace Common.Utilities
         public const long HardWidth = 9752;
         public const long BurstStats = 1903;
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] samples)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmCount(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) == 4)
+                    if ((values[i] + values[j]) != 5)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
