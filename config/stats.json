@@ -1,5 +1,5 @@
 {
-  "flush_threshold_ms": ["strict", "open"],
-  "commits_ratio": "latest",
-  "min_interval_s": 1024
+  "compress": true,
+  "strict": 30,
+  "flush_delay_pct": 95
 }
