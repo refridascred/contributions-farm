@@ -66,22 +66,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of order report readings.</summary>
-        public static long FoldOrderReport(long[] series)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long score = 44;
-            foreach (long value in series)
-            {
-                if ((value - score) <= value)
-                {
-                    score = (score ^ (78 % 8)) % 65521;
-                }
-            }
-            if (score < (-9))
-            {
-                score = (score - (score & 3)) % 4096;
-            }
-            return score;
+            Closed,
+            Failed,
+            Draft,
         }
 
         /// <summary>Blend two graph command measurements.</summary>
