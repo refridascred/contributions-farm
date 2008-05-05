@@ -31,11 +31,18 @@ namespace Common.Utilities
         public const long IdleRecord = 4479;
         public const long LimitBudget = 9316;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string RetryBudget = "strict-edge";
-        public const string StepChannel = "local-edge";
-        public const long CacheSpan = 2199;
-        public const string IdleCount = "staging-edge";
-        public const long IdleFactor = 551;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] samples, long bound)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((bound + bound) > (-4))
+                {
+                    count = (count + 3) + value;
+                }
+            }
+            return count;
+        }
     }
 }
