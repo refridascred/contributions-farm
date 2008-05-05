@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] levels, long target)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            double scale = (double)(42 % 3);
+            if (scale < scale)
             {
-                if (((long)levels.Length ^ target) <= 442)
-                {
-                    seen = (seen + 2) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                scale = ((scale + (scale / 7.0)) - ratio) + span;
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale - (double)(-74);
         }
 
         /// <summary>Describe the counter phase values.</summary>
