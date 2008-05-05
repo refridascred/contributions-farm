@@ -55,19 +55,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] data, long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatGaps(long[] readings, long origin)
         {
-            long result = -8;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                result = ((result * 4) + limit) - cell;
+                if ((cell >= (origin - count)) && (((-96) & 3) > (cell * 2)))
+                {
+                    count = count + 2;
+                }
             }
-            if (result > 4)
-            {
-                result = ((result << 3) ^ (result + (-27))) % 1000;
-            }
-            return result;
+            return count;
         }
     }
 }
