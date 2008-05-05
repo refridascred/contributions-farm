@@ -32,12 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a account entry reading by value.</summary>
-        public static long LookupAccountEntryIndex(long[] samples, long bound)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] > bound)
+                if (items[i] == step)
                 {
                     return (long)i;
                 }
