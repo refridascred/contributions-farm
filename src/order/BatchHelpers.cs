@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] levels, long offset)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long limit)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long mix = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (reading < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = mix - (long)i;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Hold a account snapshot.</summary>
