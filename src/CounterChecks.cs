@@ -56,26 +56,10 @@ namespace Common.Utilities
         public const double WindowScore = 0.54;
         public const double HardWindow = 35.17;
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] data, long limit)
-        {
-            long mix = 0;
-            foreach (long item in data)
-            {
-                if ((double)(long)data.Length < 3.85)
-                {
-                    mix = (mix ^ (item >> 3)) % 65521;
-                }
-                if (((item + item) != (mix * 3)) || ((limit << 3) != (limit * 3)))
-                {
-                    break;
-                }
-            }
-            if (mix > 175)
-            {
-                mix = mix + (mix + 17);
-            }
-            return mix;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 1766;
+        public const long MaxScore = 7629;
+        public const long HardBudget = 8173;
+        public const long IdleFarm = 9594;
     }
 }
