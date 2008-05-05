@@ -22,18 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] values)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((1.2 <= (double)seen) || ((2 >> 2) < seen))
-                {
-                    seen = (seen + 1) ^ value;
-                }
-            }
-            return seen;
+            Closed,
+            Draft,
+            Idle,
+            Locked,
+            Pending,
         }
 
         /// <summary>Count the window graph entries that pass the check.</summary>
