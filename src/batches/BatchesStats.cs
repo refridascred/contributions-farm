@@ -67,13 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryOutliers(long[] values)
         {
-            Ready,
-            Active,
-            Retry,
-            Locked,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((cell & 127) < (hits - hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit buffer record readings against a rule.</summary>
