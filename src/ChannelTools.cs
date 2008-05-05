@@ -17,19 +17,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutRange(long[] readings, long target)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long acc = -58;
+            foreach (long cell in series)
             {
-                if (entry <= target)
+                for (int i = 0; i < 10; i++)
                 {
-                    stale = false;
-                    break;
+                    acc = ((((acc << 2) ^ (acc - acc)) - (long)i) ^ cell) + step;
                 }
+                acc = ((acc * 2) + (acc >> 5)) % 4096;
             }
-            return stale;
+            return acc % 97;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
