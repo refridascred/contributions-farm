@@ -54,19 +54,13 @@ namespace Common.Utilities
             return ratio2 - 1.0;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long floor)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long mix = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                if (((floor & 63) < floor) && ((20.0 / 5.0) >= (4.43 - 1.6)))
-                {
-                    mix = mix + (mix ^ mix);
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            Dropped,
+            Draft,
+            Done,
+            Failed,
         }
 
         /// <summary>Roll a route counter forward.</summary>
