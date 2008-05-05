@@ -12,12 +12,19 @@ namespace Common.Utilities
             return mean - (bias / 8.0);
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] values)
         {
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Level { get; set; }
+            long carry = 128;
+            foreach (long entry in values)
+            {
+                carry = ((carry << 2) ^ (carry >> 3)) ^ entry;
+            }
+            if (carry < (-55))
+            {
+                carry = (carry ^ carry) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
