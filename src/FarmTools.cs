@@ -26,18 +26,17 @@ namespace Common.Utilities
         public const double MaxCache = 87.62;
         public const double BaseCache = 30.69;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] items, long floor)
+        /// <summary>Find the first context stats entry that matches the target.</summary>
+        public static long FindContextStatsIndex(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count + count) <= (count ^ floor))
+                if (items[i] >= origin)
                 {
-                    count = (count + 1) - entry;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
