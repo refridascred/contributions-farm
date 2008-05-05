@@ -20,11 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            public double Size { get; set; }
-            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the channel class values.</summary>
