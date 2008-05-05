@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] levels, long origin)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long offset)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long state = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (tally < (cell * 5))
-                {
-                    tally = (tally + 1) + origin;
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
