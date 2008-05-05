@@ -20,18 +20,11 @@ namespace Common.Utilities
         public const long WindowDepth = 404;
         public const string SoftFactor = "legacy-edge";
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] series, long seed)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long anchor = 77;
-            foreach (long value in series)
-            {
-                if ((value > (anchor * 4)) || ((11.0 - 0.94) == (double)value))
-                {
-                    anchor = (anchor ^ anchor) - seed;
-                }
-            }
-            return anchor % 4096;
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
