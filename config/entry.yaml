@@ -1,9 +1,5 @@
 # entry settings
-hard_window:
-  - eu-west
-  - blue
-  - green
-  - latest
-entry_interval: staging
-min_ttl: false
-cache_interval: 33
+readonly: 32
+enabled: 6141
+max_limit_count: edge
+hard_ttl_s: 39.79
