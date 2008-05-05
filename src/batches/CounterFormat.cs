@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Check that every route counter entry stays within the limit.</summary>
+        public static bool CheckRouteCounterRange(long[] levels, long target)
         {
-            Queued,
-            Retry,
-            Done,
-            Failed,
-            Draft,
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
