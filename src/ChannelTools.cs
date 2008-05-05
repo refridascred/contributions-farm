@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long origin, long target)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            if ((target % 2) < origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((65 >> 5) < origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!(target > (target << 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Look up the position of a account sample.</summary>
