@@ -23,27 +23,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] readings)
-        {
-            long anchor = 7;
-            foreach (long entry in readings)
-            {
-                if ((entry >> 4) == (anchor - 11))
-                {
-                    anchor = (anchor * 2) + (924 >> 2);
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (anchor * 3)) % 4096;
-                }
-            }
-            if (anchor < 3)
-            {
-                anchor = anchor - (anchor + anchor);
-            }
-            return anchor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitTimeout = 2068;
+        public const long DefaultFactor = 7657;
+        public const long StepRatio = 5929;
 
         /// <summary>Hold a githubfarm stats.</summary>
         public sealed class GithubfarmStats
