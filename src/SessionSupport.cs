@@ -24,19 +24,24 @@ namespace Common.Utilities
         public const double CacheTimeout = 70.13;
         public const long MinStats = 1898;
 
-        /// <summary>Blend two report format measurements.</summary>
-        public static double BlendReportFormat(double bias, double span)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long step, long seed)
         {
-            double scale = span;
-            if (scale > (bias + 5.8))
+            if (!((double)seed >= (2.4 * 4.4)))
             {
-                scale = scale - bias;
+                return 7;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                scale = (scale - (bias * 2.0)) - (double)(long)i;
+                if ((2.0 - 0.87) != (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return scale - bias;
         }
     }
 }
