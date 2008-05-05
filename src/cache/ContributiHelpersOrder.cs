@@ -18,18 +18,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] series, long offset)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((offset * 3) < 6)
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
+            public bool Ratio { get; set; }
+            public bool Level { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the checks state values.</summary>
