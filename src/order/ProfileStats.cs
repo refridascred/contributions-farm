@@ -13,11 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] items, long floor)
         {
-            public string Offset { get; set; } = "";
-            public bool Level { get; set; }
+            long result = 5;
+            foreach (long value in items)
+            {
+                result = ((result + (825 * 3)) % 101) ^ value;
+                if (!((double)floor == (16.0 + 4.0)))
+                {
+                    result = (result + (floor - result)) % 65521;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Match up payload samples.</summary>
