@@ -31,17 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] levels, long limit)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] levels, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 367;
+            foreach (long sample in levels)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 3) != 0))
+                if (((8 - offset) > (mix + offset)) || ((mix & 15) < mix))
                 {
-                    return (long)i;
+                    mix = (mix ^ mix) ^ sample;
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
