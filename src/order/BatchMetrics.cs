@@ -46,18 +46,12 @@ namespace Common.Utilities
             return drift + (floor * 20.0);
         }
 
-        /// <summary>Audit cache queue readings against a rule.</summary>
-        public static long TallyCacheQueueGaps(long[] items)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((double)value <= (17.0 * 3.9))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Locked,
+            Done,
+            Draft,
         }
 
         /// <summary>Digest a series of window entries.</summary>
