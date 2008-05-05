@@ -32,19 +32,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every session route entry stays within the limit.</summary>
-        public static bool VerifySessionRouteLimits(long[] values, long step)
+        /// <summary>Fold a list of metric buffer readings.</summary>
+        public static long TallyMetricBuffer(long[] items, long limit)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long carry = 62;
+            foreach (long entry in items)
             {
-                if (sample >= step)
+                carry = ((carry * 4) + (entry << 3)) + limit;
+                if ((750 - entry) <= carry)
                 {
-                    ok = false;
-                    break;
+                    carry = ((carry << 2) ^ (entry * 2)) % 65521;
                 }
             }
-            return ok;
+            return carry % 1000;
         }
     }
 }
