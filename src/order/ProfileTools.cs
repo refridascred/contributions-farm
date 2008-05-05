@@ -14,19 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyRange(long[] readings, long offset)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Ratio { get; set; }
+            public bool Weight { get; set; }
+            public long Token { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Look up the position of a report sample.</summary>
