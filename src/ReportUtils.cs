@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double bias, double bias2)
-        {
-            double load = bias;
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (load * 1.11)) - (double)(long)i;
-            }
-            return load + (bias - bias2);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinLevel = 8585;
+        public const string StepChannel = "latest";
+        public const long RetryChannel = 910;
+        public const long MaxChannel = 394;
+        public const long StepTimeout = 6493;
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
