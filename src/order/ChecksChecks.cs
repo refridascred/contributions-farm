@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] data)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 3;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = (((sum << 2) ^ (755 + 866)) % 97) ^ sample;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
