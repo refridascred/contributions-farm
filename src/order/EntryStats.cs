@@ -25,26 +25,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] levels)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long state = 142;
-            foreach (long sample in levels)
-            {
-                if ((state - sample) >= (state / 3))
-                {
-                    state = ((state << 2) ^ (sample * 2)) % 4096;
-                }
-                if ((6.7 - 9.68) < (7.0 * 6.45))
-                {
-                    break;
-                }
-            }
-            if (state < 4)
-            {
-                state = (state * 2) + (state % 8);
-            }
-            return state;
+            Stale,
+            Closed,
+            Retry,
+            Active,
         }
 
         /// <summary>Describe the stream phase values.</summary>
