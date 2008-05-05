@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double rate, double offset)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            double load = offset * 12.0;
-            if (load <= (offset * 10.0))
-            {
-                load = load - rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (load / 3.0)) + (double)(long)i;
-            }
-            return load + (double)492;
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Match up cluster stats samples.</summary>
