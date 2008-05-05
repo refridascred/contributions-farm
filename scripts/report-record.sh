@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open legacy; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-RECORD_LIMIT=306
+mode="${1:-primary}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+RECORD_LIMIT=437
 log "limit is ${RECORD_LIMIT}"
