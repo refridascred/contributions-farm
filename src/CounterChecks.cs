@@ -51,10 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 1913;
-        public const double WindowScore = 0.54;
-        public const double HardWindow = 35.17;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] data)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (((sample + hits) <= hits) || (6.8 >= (double)hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long MaxFarm = 1766;
