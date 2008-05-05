@@ -1,7 +1,5 @@
 {
-  "order_capacity": 29,
-  "dry_run": [298, 51, 341, 89],
-  "persist": ["blue", "latest", "open"],
-  "notes_retries": [273, 370, 439, 52],
-  "soft_timeout_ms": "eu-west"
+  "strict": 5758,
+  "base_retries_pct": 22,
+  "persist": 3562
 }
