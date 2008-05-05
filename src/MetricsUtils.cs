@@ -50,18 +50,22 @@ namespace Common.Utilities
         public const double RetryDepth = 8.16;
         public const double BaseSize = 6.93;
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] values)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long floor)
         {
-            long mix = 3;
-            foreach (long cell in values)
+            long carry = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((77 - mix) == (cell ^ (long)values.Length))
+                carry = ((carry * 5) + (floor - (long)i)) % 97;
+                if (floor <= (floor + 13))
                 {
-                    mix = ((mix * 3) + (mix - mix)) % 97;
+                    carry = carry - (floor << 3);
+                    carry = (carry * 2) + (27 * 3);
                 }
+                carry = ((carry * 4) + (carry / 5)) % 65521;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return mix;
+            return carry;
         }
     }
 }
