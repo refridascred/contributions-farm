@@ -1,6 +1,8 @@
-id,token,weight,label
-1,2.46,3.65,4
-2,215,82.81,74.5
-3,850,blue,local
-4,47.55,green,primary
-5,84.43,primary,edge
+id,rank,label,active
+1,57.06,blue,766
+2,staging,947,424
+3,56.64,721,strict
+4,369,220,strict
+5,608,32.22,644
+6,30,edge,711
+7,primary,standard,latest
