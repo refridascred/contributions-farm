@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine buffer channel values into a single score.</summary>
-        public static long DigestBufferChannel(long[] samples)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long sum = 7;
-            foreach (long datum in samples)
-            {
-                sum = (sum - datum) % 65521;
-            }
-            return sum;
+            Pending,
+            Queued,
+            Draft,
         }
 
         /// <summary>Hold a stream entry.</summary>
