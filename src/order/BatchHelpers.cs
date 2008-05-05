@@ -16,16 +16,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long seed)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long acc = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = (acc - ((-2) + acc)) % 1000;
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public long Flag { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a metric snapshot.</summary>
