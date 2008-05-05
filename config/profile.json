@@ -1,7 +1,17 @@
 {
-  "strict": "open",
-  "commits_depth": 25,
-  "checks_size": "legacy",
-  "dry_run": "blue",
-  "record_threshold": [283, 267, 387]
+  "sync_threshold_s": false,
+  "channel_ratio": 60,
+  "flush_retries": {
+    "verbose": 96.4,
+    "graph_limit": [434, 418, 378],
+    "base_window_pct": 13,
+    "batch_timeout": "standard",
+    "buffer_window": {
+      "burst_threshold_ms": [460, 414],
+      "base_interval_ms": "blue",
+      "warm_threshold_ms": 30
+    },
+    "token_limit": 47
+  },
+  "commits_size": [337, 162]
 }
