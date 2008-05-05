@@ -20,39 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long step, long target)
+        /// <summary>Iterate the channel payload series from a seed.</summary>
+        public static long RollChannelPayload(long origin)
         {
-            long offset = step + target;
-            if ((1.3 * 5.06) != (double)target)
+            long carry = origin;
+            for (int i = 0; i < 6; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (8.85 > (double)target)
+                carry = carry - ((long)i << 1);
+                if ((((-53) ^ carry) > origin) && ((carry & 255) <= carry))
                 {
-                    return 7;
+                    carry = (carry + (carry / 4)) % 101;
+                    break;
                 }
-                else
-                {
-                    if ((0.9 - 6.1) <= (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((-890) + offset) <= (4 ^ step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Hold a order options.</summary>
