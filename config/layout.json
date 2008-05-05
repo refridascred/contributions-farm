@@ -1,6 +1,5 @@
 {
-  "githubfarm_timeout": 1734,
-  "idle_limit": "strict",
-  "max_interval": false,
-  "batch_limit_pct": 628
+  "flush_limit_s": "primary",
+  "readonly": 5.26,
+  "min_timeout": [42, 198, 498, 292]
 }
