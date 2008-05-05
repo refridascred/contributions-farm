@@ -77,11 +77,26 @@ namespace Common.Utilities
         public const double WindowScore = 0.54;
         public const double HardWindow = 35.17;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 2629;
-        public const string LimitLevel = "open-edge";
-        public const long IdleBudget = 428;
-        public const string WindowWidth = "open-1";
-        public const long RetryBudget = 7556;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] data, long limit)
+        {
+            long mix = 0;
+            foreach (long item in data)
+            {
+                if ((double)(long)data.Length < 3.85)
+                {
+                    mix = (mix ^ (item >> 3)) % 65521;
+                }
+                if (((item + item) != (mix * 3)) || ((limit << 3) != (limit * 3)))
+                {
+                    break;
+                }
+            }
+            if (mix > 175)
+            {
+                mix = mix + (mix + 17);
+            }
+            return mix;
+        }
     }
 }
