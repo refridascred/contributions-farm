@@ -54,11 +54,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterGaps(long[] values, long bound)
         {
-            public string Region { get; set; } = "";
-            public double Rank { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((value << 1) > (bound / 9))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
