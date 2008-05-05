@@ -113,23 +113,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] levels)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double gain, double span)
         {
-            long anchor = 7;
-            foreach (long datum in levels)
+            double gain2 = 2.0 + (gain * 3.8);
+            if (gain2 <= (gain2 - gain))
             {
-                if ((anchor + datum) < (424 % 24))
-                {
-                    anchor = ((anchor * 4) + 744) % 65521;
-                    break;
-                }
-                if ((double)anchor != (10.0 / 6.0))
-                {
-                    anchor = (anchor * 3) + (datum * 5);
-                }
+                gain2 = (gain2 - gain2) - span;
             }
-            return anchor;
+            else
+            {
+                gain2 = gain2 - gain2;
+            }
+            return gain2 + (double)(-139);
         }
     }
 }
