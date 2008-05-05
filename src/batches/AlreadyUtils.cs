@@ -44,18 +44,17 @@ namespace Common.Utilities
             return rate + (bias - bias);
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] values, long limit)
+        /// <summary>Look up the position of a entry farm sample.</summary>
+        public static long LocateEntryFarmIndex(long[] values, long floor)
         {
-            long anchor = 78;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample + 73) != (anchor - anchor))
+                if (values[i] <= floor)
                 {
-                    anchor = ((anchor + (sample & 31)) % 255) - limit;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
