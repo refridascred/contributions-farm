@@ -1,12 +1,5 @@
 {
-  "account_ratio": "eu-west",
-  "min_timeout": 77.46,
-  "retry_depth_count": true,
-  "hard_depth": 4678,
-  "default_capacity": true,
-  "verbose": {
-    "flush_limit": 1.23,
-    "soft_delay_pct": 68.67,
-    "burst_retries": true
-  }
+  "soft_timeout_pct": true,
+  "warm_size_s": [13, 50, 475, 58],
+  "session_interval": ["eu-west", "local", "legacy", "primary"]
 }
