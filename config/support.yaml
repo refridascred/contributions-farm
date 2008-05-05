@@ -1,5 +1,6 @@
 # support settings
-flush_depth_s: 60
-cache_threshold: 5.48
-enabled: 1.93
-flush_delay: standard
+sync_ratio: edge
+sync_retries_ms: 38.58
+warm_ttl_count: 51.44
+warm_ratio: staging
+cache_interval_count: 5.62
