@@ -1,7 +1,7 @@
-id,owner,label,rank,region
-1,77.04,89.62,245,34.8
-2,33.57,strict,83,cached
-3,stable,12.55,local,86.91
-4,61.8,36,standard,651
-5,259,primary,fallback,primary
-6,open,54.03,891,92.76
+id,region,token,owner,active
+1,981,primary,46.22,54.87
+2,663,327,eu-west,296
+3,554,stable,fallback,384
+4,958,247,21.97,595
+5,92.85,29.78,78.87,20.73
+6,stable,41.03,437,47.86
