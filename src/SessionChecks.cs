@@ -51,15 +51,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double weight, double span)
-        {
-            double bias = weight;
-            if (bias > (18.0 * 18.0))
-            {
-                bias = bias - span;
-            }
-            return bias + bias;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double WindowOrder = 29.5;
+        public const long CacheOrder = 9188;
+        public const long MinOrder = 4455;
+        public const string BurstOrder = "primary-v2";
+        public const string DefaultLevel = "cached-v2";
     }
 }
