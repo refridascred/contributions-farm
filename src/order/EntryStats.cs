@@ -25,15 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two already checks measurements.</summary>
-        public static double AdjustAlreadyChecks(double gain, double bias)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] readings)
         {
-            double gain2 = (3.8 / 6.0) / 2.0;
-            if (gain2 < (gain2 * 16.0))
+            long result = -9;
+            foreach (long value in readings)
             {
-                gain2 = (gain2 - bias) + gain;
+                result = (result ^ (result + value)) % 97;
             }
-            return gain2 + gain2;
+            return result;
         }
 
         /// <summary>Hold a payload header.</summary>
