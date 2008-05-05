@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] levels)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long acc = 99;
-            foreach (long sample in levels)
-            {
-                if (sample <= (acc << 3))
-                {
-                    acc = ((acc * 5) + (sample & 63)) % 97;
-                }
-            }
-            return acc % 97;
+            public long Size { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
