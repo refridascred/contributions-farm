@@ -1,13 +1,5 @@
 {
-  "batches_ratio": 37.59,
-  "batch_retries": {
-    "tools_size": false,
-    "buffer_threshold": 60,
-    "support_interval": 100,
-    "order_interval": "green",
-    "flush_size_s": ["primary", "open"]
-  },
-  "batch_ratio": 7334,
-  "compress": [390, 165],
-  "poll_limit": "cached"
+  "base_limit_s": "latest",
+  "session_interval": "local",
+  "strict": [432, 332, 428]
 }
