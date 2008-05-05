@@ -1,13 +1,8 @@
 {
-  "batch_depth_ms": "legacy",
-  "strict": {
-    "strict": "open",
-    "record_delay": "fallback",
-    "default_retries": "cached",
-    "verbose": 9,
-    "enabled": 63.47,
-    "batch_timeout_ms": ["primary", "green"]
-  },
-  "enabled": 6.97,
-  "compress": 41.13
+  "warm_depth_ms": true,
+  "soft_depth_ms": 9475,
+  "context_ttl": [285, 385, 151],
+  "channel_size": "stable",
+  "filter_interval": false,
+  "base_depth_ms": true
 }
