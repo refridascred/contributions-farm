@@ -1,6 +1,9 @@
-id,active,level,count
-1,15.49,877,699
-2,fallback,527,fallback
-3,161,open,stable
-4,7.33,96.67,960
-5,6.04,661,39.27
+id,label,region,score
+1,cached,617,fallback
+2,latest,51.84,16.91
+3,630,20.32,75.31
+4,37.17,154,edge
+5,65.48,local,primary
+6,77.79,55.98,10
+7,68.73,54.16,strict
+8,79.58,795,44.86
