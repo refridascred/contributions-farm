@@ -39,13 +39,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] values, long bound)
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public double Count { get; set; }
-            public double Score { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= bound) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of cache entry readings.</summary>
