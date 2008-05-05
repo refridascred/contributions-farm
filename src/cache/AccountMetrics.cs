@@ -20,22 +20,21 @@ namespace Common.Utilities
             return bias + (bias * 0.4);
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmOutliers(long[] data, long origin)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((6.4 * 14.0) < (double)origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 1) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((samples[i] ^ samples[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
