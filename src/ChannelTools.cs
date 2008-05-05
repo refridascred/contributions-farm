@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] data, long step)
+        /// <summary>Measure how many support payload samples are out of range.</summary>
+        public static long CountSupportPayloadHits(long[] data)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((item % 12) >= seen)
+                if ((double)matches != (5.9 + 5.0))
                 {
-                    seen = (seen + 1) - step;
+                    matches = (matches + 2) + reading;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
