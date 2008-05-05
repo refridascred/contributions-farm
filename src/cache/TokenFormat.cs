@@ -39,21 +39,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] readings)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] series, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value > limit)
                 {
-                    if ((readings[i] - readings[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
