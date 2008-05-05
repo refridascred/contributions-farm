@@ -22,19 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate session metrics readings against a bound.</summary>
-        public static bool CheckSessionMetricsLimits(long[] values, long target)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample < target)
+                if ((samples[i] < bound) && ((samples[i] % 3) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Project the next payload value.</summary>
