@@ -27,17 +27,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] readings, long target)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long target, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((target / 7) < (seed * 3))
             {
-                if ((readings[i] < target) && ((readings[i] % 2) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((seed >> 1) > (seed - 1))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((target << 1) == (seed % 10))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
