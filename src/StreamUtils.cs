@@ -53,22 +53,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordMatches(long[] levels, long limit)
+        /// <summary>Digest a series of buffer counter entries.</summary>
+        public static long TotalBufferCounter(long[] values)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long state = 91;
+            foreach (long item in values)
             {
-                if (!(value >= tally))
-                {
-                    tally = (tally + 3) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = ((state - (-3)) % 65521) + item;
             }
-            return tally;
+            if (state > 132)
+            {
+                state = (state << 3) ^ (state - state);
+            }
+            return state % 97;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
