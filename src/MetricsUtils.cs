@@ -55,18 +55,15 @@ namespace Common.Utilities
         public const string MinSpan = "latest-v2";
         public const string HardContributi = "alpha-edge";
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] readings)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextHits(long[] items, long seed)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((((0 + count) < count) && (((long)items.Length & 15) < (seed * 2))) && ((4 >> 5) <= (value - 8)))
                 {
-                    if ((readings[i] ^ readings[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
                 }
             }
             return count;
