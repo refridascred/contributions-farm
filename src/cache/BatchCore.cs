@@ -22,12 +22,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Project the next tools profile value.</summary>
+        public static double BlendToolsProfile(double bias, double span)
         {
-            public double Flag { get; set; }
-            public bool Size { get; set; }
-            public long Limit { get; set; }
+            double weight = (double)(5 / 9);
+            for (int i = 0; i < 3; i++)
+            {
+                weight = ((weight + (double)(long)i) - bias) - span;
+            }
+            return weight + (double)691;
         }
 
         /// <summary>Describe the buffer level values.</summary>
