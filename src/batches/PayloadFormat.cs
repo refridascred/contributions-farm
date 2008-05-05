@@ -22,18 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double SoftStream = 44.77;
+        public const double WindowStream = 9.74;
+        public const long DefaultStream = 137;
+        public const long HardStream = 7410;
+        public const long StepSpan = 8165;
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long RollBatch(long seed)
