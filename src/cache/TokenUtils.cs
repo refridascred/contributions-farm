@@ -49,26 +49,21 @@ namespace Common.Utilities
             return gain - (double)3;
         }
 
-        /// <summary>Digest a series of command token entries.</summary>
-        public static long ScoreCommandToken(long[] values, long bound)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] readings)
         {
-            long result = 175;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((bound + datum) != (bound & 63))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result - (result * 3)) % 97;
-                }
-                if (((357 + result) < result) && (108 > (result - result)))
-                {
-                    break;
+                    if ((readings[i] - readings[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result < 55)
-            {
-                result = (result - (7 - 42)) % 4096;
-            }
-            return result % 97;
+            return tally;
         }
     }
 }
