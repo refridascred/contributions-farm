@@ -27,11 +27,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
+            public bool Limit { get; set; }
             public long Count { get; set; }
-            public double Score { get; set; }
+            public bool Size { get; set; }
             public string Mode { get; set; } = "";
         }
 
