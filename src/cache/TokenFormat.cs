@@ -14,22 +14,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Audit contributi editor readings against a rule.</summary>
-        public static long TallyContributiEditorMatches(long[] values)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)value != (10.0 / 7.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] ^ readings[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
