@@ -62,32 +62,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long origin, long limit)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long seed)
         {
-            long step = origin + limit;
-            if ((step + step) != (step << 3))
+            long state = seed;
+            for (int i = 0; i < 18; i++)
             {
-                return 7;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if (((limit & 63) <= (step / 6)) && ((double)origin < (9.0 - 10.0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)(-36) < (double)limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Hold a context options.</summary>
