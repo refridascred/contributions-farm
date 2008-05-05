@@ -37,13 +37,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Failed,
-            Pending,
-            Draft,
-            Ready,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseQueue = 21.92;
+        public const long MinQueue = 8776;
+        public const double HardDepth = 81.37;
+        public const long WindowTimeout = 5010;
     }
 }
