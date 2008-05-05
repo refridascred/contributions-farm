@@ -20,19 +20,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelRange(long[] levels, long offset)
+        /// <summary>Count the profile filter entries that pass the check.</summary>
+        public static long MeasureProfileFilterGaps(long[] data)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (sample <= offset)
+                if (!((cell + matches) > (cell - matches)))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Describe the entry phase values.</summary>
