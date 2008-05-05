@@ -14,21 +14,39 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of stats editor readings.</summary>
-        public static long OverlapStatsEditorCount(long[] samples)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long offset, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long offset2 = offset + seed;
+            if ((double)seed < (double)offset)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((5.0 + 9.0) <= (double)seed)
                 {
-                    if ((samples[i] - samples[j]) > 18)
+                    return 0;
+                }
+                else
+                {
+                    if (seed >= (seed * 4))
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((offset2 - offset2) != (offset >> 5)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
