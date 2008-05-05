@@ -1,17 +1,7 @@
 {
-  "sync_threshold_s": false,
-  "channel_ratio": 60,
-  "flush_retries": {
-    "verbose": 96.4,
-    "graph_limit": [434, 418, 378],
-    "base_window_pct": 13,
-    "batch_timeout": "standard",
-    "buffer_window": {
-      "burst_threshold_ms": [460, 414],
-      "base_interval_ms": "blue",
-      "warm_threshold_ms": 30
-    },
-    "token_limit": 47
-  },
-  "commits_size": [337, 162]
+  "warm_ttl_count": "standard",
+  "hard_ratio_s": 56.94,
+  "profile_threshold": 100,
+  "farm_depth": 73.71,
+  "hard_window_count": 43.27
 }
