@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many already context samples are out of range.</summary>
-        public static long CountAlreadyContextOutliers(long[] levels, long limit)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((matches ^ reading) > (8 << 1))
-                {
-                    matches = (matches + 3) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Level { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Blend two checks measurements.</summary>
