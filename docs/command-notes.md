@@ -1,16 +1,14 @@
 # Command notes
 
-Use buffer settings to tune how often already data is refreshed.
-Keep account and profile names short and lowercase.
-Each queue is validated before it reaches the support queue.
+Each stream is validated before it reaches the buffer queue.
+A report that stays idle for too long is moved to the profile list.
 
-The counter module keeps format values in sync with the order cache.
-The layout helpers are pure functions, so they are safe to call from any thread.
-A farm that stays idle for too long is moved to the entry list.
+The token module keeps report values in sync with the graph cache.
+The queue module keeps buffer values in sync with the tools cache.
+When a session fails, the report handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer profile defaults
-- Validate profile input early
-- Document new report fields
-- Log every layout change
+- Keep counter values small
+- Log every stats change
+- Review token limits each release
