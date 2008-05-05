@@ -40,15 +40,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 1677;
+        public const long CacheInterval = 4848;
+        public const long SoftCount = 9008;
+        public const string SoftStream = "alpha";
+        public const long MaxWidth = 1612;
     }
 }
