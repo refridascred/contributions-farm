@@ -20,22 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] series)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long sum = 88;
-            foreach (long item in series)
-            {
-                if ((item + 0) <= 53)
-                {
-                    sum = sum - (287 + (-1));
-                }
-                if ((item < ((-39) + item)) && ((item * 3) < sum))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
