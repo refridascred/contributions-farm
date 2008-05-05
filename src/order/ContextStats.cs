@@ -27,22 +27,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MinStats = "strict-edge";
+        public const double RetryScore = 52.89;
+        public const long MaxStats = 1453;
+        public const long BaseStats = 6077;
+        public const string WindowStats = "alpha-edge";
 
         /// <summary>Project the next record value.</summary>
         public static double SmoothRecord(double rate, double floor)
