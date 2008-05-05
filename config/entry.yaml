@@ -1,20 +1,16 @@
 # entry settings
-channel_depth:
-  default_ttl_s: 95.06
-  batch_ratio_pct: 1024
-  command_threshold: 49.6
-  record_interval: true
-  farm_capacity: 1024
-  record_limit: latest
-base_depth_s: 38
-base_interval_s:
-  min_interval_s: 9665
-  warm_size_pct: strict
-  notes_depth:
-    - primary
-    - local
-    - cached
-    - blue
-poll_limit_count: eu-west
-queue_limit: 1024
-compress: 1024
+token_threshold:
+  hard_size_s: false
+  min_depth_pct:
+    - 411
+    - 149
+    - 307
+  token_threshold:
+    - 121
+    - 335
+    - 449
+    - 487
+batch_ratio: fallback
+retry_capacity: 67
+profile_threshold: 63
+format_depth: 11.9
