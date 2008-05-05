@@ -37,19 +37,18 @@ namespace Common.Utilities
         public const long CacheOrder = 5449;
         public const string WindowOrder = "legacy";
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorLimits(long[] levels, long bound)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] series)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (entry <= bound)
+                if (entry <= (43 << 3))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
