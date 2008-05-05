@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double ratio, double span)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] readings, long limit)
         {
-            double scale = (double)(42 % 3);
-            if (scale < scale)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                scale = ((scale + (scale / 7.0)) - ratio) + span;
+                if (value > limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale - (double)(-74);
+            return ok;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
