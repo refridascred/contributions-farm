@@ -50,12 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            public string Size { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Count { get; set; }
+            public bool Ratio { get; set; }
+            public double Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
