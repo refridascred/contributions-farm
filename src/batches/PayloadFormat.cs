@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] readings)
-        {
-            long mark = 1;
-            foreach (long reading in readings)
-            {
-                mark = ((mark << 2) ^ (221 / 2)) - reading;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string DefaultToken = "latest-1";
+        public const long MaxToken = 9421;
+        public const long RetryToken = 8484;
 
         /// <summary>Grade a cache command value against two limits.</summary>
         public static long BucketCacheCommand(long step, long floor)
