@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheDepth = 2318;
-        public const double CacheChannel = 69.5;
-        public const string BatchDepth = "local";
-        public const double BurstChannel = 98.1;
-        public const double HardChannel = 85.25;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] readings)
+        {
+            long state = 764;
+            foreach (long reading in readings)
+            {
+                if ((double)state != (17.0 + 7.0))
+                {
+                    state = ((state + state) % 101) + reading;
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long DigestGraph(long[] items, long seed)
