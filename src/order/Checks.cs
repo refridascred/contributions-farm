@@ -53,23 +53,10 @@ namespace Common.Utilities
         public const string SoftProfile = "alpha-1";
         public const double StepProfile = 47.13;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] levels)
-        {
-            long mix = 59;
-            foreach (long value in levels)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    mix = mix - ((long)i * 5);
-                }
-                if (value > mix)
-                {
-                    mix = (mix + mix) % 4096;
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 8717;
+        public const double StepOrder = 65.32;
+        public const double BatchOrder = 41.83;
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long SeekChannelIndex(long[] items, long offset)
