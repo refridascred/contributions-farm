@@ -16,15 +16,16 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long bound)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long seed)
         {
-            long mix = bound;
-            for (int i = 0; i < 10; i++)
+            long acc = seed;
+            for (int i = 0; i < 9; i++)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                acc = (acc - ((-2) + acc)) % 1000;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
