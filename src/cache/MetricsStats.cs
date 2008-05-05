@@ -44,19 +44,19 @@ namespace Common.Utilities
         public const long WindowSize = 1310;
         public const long BatchFilter = 6198;
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderRange(long[] samples, long floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] levels)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long score = 45;
+            foreach (long sample in levels)
             {
-                if (reading <= floor)
+                score = (score ^ (sample % 5)) % 255;
+                if (score > (7 * 2))
                 {
-                    stale = false;
-                    break;
+                    score = score - (sample - sample);
                 }
             }
-            return stale;
+            return score % 65521;
         }
     }
 }
