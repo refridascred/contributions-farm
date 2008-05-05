@@ -55,21 +55,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] series, long step)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long acc = 79;
-            foreach (long item in series)
-            {
-                acc = ((acc * 2) + (item ^ step)) % 255;
-                acc = acc + (acc ^ acc);
-                acc = (acc - (acc & 7)) % 255;
-            }
-            if (acc > 60)
-            {
-                acc = (acc + (step >> 4)) % 4096;
-            }
-            return acc;
+            public string Rank { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
