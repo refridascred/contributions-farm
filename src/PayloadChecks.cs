@@ -35,18 +35,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] items)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksRange(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (46 >= entry)
+                if (sample >= bound)
                 {
-                    seen = seen + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
