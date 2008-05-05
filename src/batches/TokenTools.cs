@@ -14,18 +14,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] samples, long bound)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long result = 5;
-            foreach (long cell in samples)
-            {
-                if ((result % 7) < (cell - cell))
-                {
-                    result = ((result ^ ((-891) & 255)) % 255) + bound;
-                }
-            }
-            return result;
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the contributi level values.</summary>
