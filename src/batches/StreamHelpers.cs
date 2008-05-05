@@ -66,21 +66,13 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] items)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a order options.</summary>
