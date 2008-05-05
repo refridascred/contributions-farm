@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of cache route entries.</summary>
-        public static long ScoreCacheRoute(long[] levels)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long sum = 9;
-            foreach (long reading in levels)
-            {
-                if ((reading >> 5) < reading)
-                {
-                    sum = (sum ^ (sum + sum)) % 1000;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ 83) % 97;
-                }
-                if (((sum ^ 30) <= (sum / 8)) && ((sum << 3) < (reading & 3)))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public double Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the window mode values.</summary>
