@@ -36,12 +36,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Iterate the metric filter series from a seed.</summary>
+        public static long IterateMetricFilter(long limit)
         {
-            public bool Token { get; set; }
-            public bool Label { get; set; }
-            public double Total { get; set; }
+            long result = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                result = ((result << 3) ^ (limit + 333)) % 1000;
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
