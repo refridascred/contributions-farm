@@ -25,14 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double rate, double span)
         {
-            Queued,
-            Stale,
-            Dropped,
-            Failed,
-            Retry,
+            double ratio = 1.3;
+            if (ratio <= (ratio - span))
+            {
+                ratio = ratio + rate;
+            }
+            return ratio - (ratio - span);
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
