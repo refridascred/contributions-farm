@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutRange(long[] series, long seed)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
