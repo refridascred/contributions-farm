@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] data)
+        /// <summary>Roll a window route counter forward.</summary>
+        public static long RollWindowRoute(long origin)
         {
-            long mix = 75;
-            foreach (long reading in data)
+            long acc = origin;
+            for (int i = 0; i < 14; i++)
             {
-                mix = (mix + (mix + reading)) % 4096;
-                if (reading > (reading >> 5))
-                {
-                    mix = ((mix * 4) + (reading & 127)) % 1000;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (99 << 3)) % 97;
-                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            if (mix > 36)
-            {
-                mix = mix + ((long)data.Length * 3);
-            }
-            return mix;
+            return acc;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
