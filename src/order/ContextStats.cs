@@ -34,19 +34,17 @@ namespace Common.Utilities
         public const long BaseStats = 6077;
         public const string WindowStats = "alpha-edge";
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double rate, double floor)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] levels, long bound)
         {
-            double ratio = (double)(5 ^ 992);
-            if (ratio > (double)896)
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = (ratio + rate) + floor;
+                if ((levels[i] <= bound) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (double)67) + (double)(long)i;
-            }
-            return ratio - ratio;
+            return -1;
         }
     }
 }
