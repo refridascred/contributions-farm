@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long floor, long limit)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long next = floor - limit;
-            if ((next ^ next) <= limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((next & 7) == (limit + next))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((next + (-187)) >= (next & 15))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Retry,
+            Synced,
+            New,
+            Queued,
         }
 
         /// <summary>Count the counter queue entries that pass the check.</summary>
