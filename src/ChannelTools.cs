@@ -38,13 +38,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] series, long limit)
         {
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
-            public bool Count { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
