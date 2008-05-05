@@ -10,21 +10,12 @@ namespace Common.Utilities
         public const long BatchAccount = 9844;
         public const double BurstAccount = 49.5;
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long step)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long mix = step;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((double)mix == (8.15 - 5.0))
-                {
-                    mix = (mix + step) % 65521;
-                    mix = mix + 637;
-                    continue;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            Failed,
+            New,
+            Retry,
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
