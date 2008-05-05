@@ -16,13 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double weight, double offset)
         {
-            Pending,
-            Locked,
-            Active,
-            Queued,
+            double gain = offset;
+            return (gain + (gain * 8.53)) + weight;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
