@@ -31,13 +31,23 @@ namespace Common.Utilities
             return weight + (gain + weight);
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Scale a entry checks figure with a bias.</summary>
+        public static double ProjectEntryChecks(double bias, double bias2)
         {
-            Ready,
-            Paused,
-            Stale,
-            Draft,
+            double ratio = bias2 / 4.0;
+            if (ratio <= (bias2 / 2.0))
+            {
+                ratio = ratio - (bias - bias2);
+            }
+            else
+            {
+                ratio = ratio - bias2;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio - (double)56;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
