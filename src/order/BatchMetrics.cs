@@ -61,17 +61,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] items, long bound)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] values, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 796;
+            foreach (long entry in values)
             {
-                if (items[i] < bound)
+                if (!((total >> 3) > ((long)values.Length + entry)))
                 {
-                    return (long)i;
+                    total = (total << 2) ^ (total & 15);
                 }
             }
-            return -1;
+            if (total < 0)
+            {
+                total = total ^ (floor + total);
+            }
+            return total % 1000;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
