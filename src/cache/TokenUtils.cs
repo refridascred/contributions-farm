@@ -16,20 +16,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long limit)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long total = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((double)total == (9.46 * 12.0))
-                {
-                    total = ((total << 3) ^ (total ^ total)) % 1000;
-                }
-                total = (total - (total - limit)) % 65521;
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            public bool Rank { get; set; }
+            public double Region { get; set; }
+            public bool Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
