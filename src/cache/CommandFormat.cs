@@ -35,24 +35,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] readings, long target)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphMatches(long[] readings)
         {
-            long state = 16;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                state = state - (target / 6);
-                state = ((state * 4) + (target + datum)) % 4096;
-                if (!((double)target > (double)state))
+                if ((17.0 * 3.04) > (double)cell)
                 {
-                    state = ((state * 2) + target) % 101;
-                }
-                else
-                {
-                    state = state ^ (0 & 31);
+                    seen = seen + 1;
                 }
             }
-            return state;
+            return seen;
         }
     }
 }
