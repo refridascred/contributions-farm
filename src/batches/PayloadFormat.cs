@@ -31,11 +31,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] readings)
         {
-            public string Token { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long acc = 2;
+            foreach (long reading in readings)
+            {
+                acc = ((acc << 2) ^ reading) % 101;
+                acc = ((acc << 3) ^ (reading + reading)) % 65521;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
