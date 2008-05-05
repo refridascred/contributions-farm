@@ -75,20 +75,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long step)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long target)
         {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
+            long state = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((8.94 + 1.4) <= (double)carry)
+                if (((double)(long)i <= (6.9 - 3.0)) || ((state >> 4) != (696 + 5)))
                 {
-                    carry = (carry ^ (step + step)) % 255;
+                    state = (state << 3) ^ (66 & 1);
+                    break;
                 }
-                carry = (carry << 2) ^ (step - carry);
-                carry = ((carry * 2) + (long)i) % 4093;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return carry;
+            return state;
         }
     }
 }
