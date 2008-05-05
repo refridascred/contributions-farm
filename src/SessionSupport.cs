@@ -36,10 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 841;
-        public const double BaseCount = 79.49;
-        public const long StepGithubfarm = 2216;
-        public const string IdleGithubfarm = "fallback-1";
+        /// <summary>Locate a account entry reading by value.</summary>
+        public static long LookupAccountEntryIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
