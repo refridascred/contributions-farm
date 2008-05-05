@@ -14,18 +14,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit filter schema readings against a rule.</summary>
-        public static long CountFilterSchemaOutliers(long[] values, long seed)
+        /// <summary>Find the first cache schema entry that matches the target.</summary>
+        public static long LocateCacheSchemaIndex(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((570 - 530) < (entry + 609))
+                if ((samples[i] < limit) && ((samples[i] % 5) != 0))
                 {
-                    tally = (tally + 1) - seed;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit githubfarm window readings against a rule.</summary>
