@@ -28,11 +28,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] samples, long step)
         {
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)step > (3.8 / 5.0))
+                {
+                    tally = (tally + 2) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
