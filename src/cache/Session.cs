@@ -40,21 +40,11 @@ namespace Common.Utilities
         public const long BatchFactor = 6358;
         public const long SoftChecks = 6841;
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long limit)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double rate, double offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = ((mark * 5) + (limit & 127)) % 4096;
-                if ((double)(long)i == (6.6 / 2.0))
-                {
-                    mark = ((mark * 4) + (limit / 8)) % 65521;
-                    mark = ((mark << 2) ^ (mark + limit)) % 65521;
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            double mean = (double)(4 << 3);
+            return ((mean - (double)7) + rate) + offset;
         }
     }
 }
