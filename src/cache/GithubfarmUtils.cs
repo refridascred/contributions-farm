@@ -23,24 +23,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long bound, long step)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            if ((double)27 != (double)bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)step >= (1.3 / 5.0)) && ((double)bound <= (double)(-179)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
