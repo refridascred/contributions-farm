@@ -37,12 +37,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] data)
         {
-            Failed,
-            Done,
-            Closed,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two entry layout measurements.</summary>
