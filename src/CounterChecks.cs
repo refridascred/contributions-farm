@@ -17,18 +17,18 @@ namespace Common.Utilities
         public const long HardWidth = 7575;
         public const string CacheLevel = "legacy-v2";
 
-        /// <summary>Measure how many context contributi samples are out of range.</summary>
-        public static long MeasureContextContributiOutliers(long[] series)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderMatches(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((item % 97) > seen)
+                if ((19.0 * 13.0) < (double)datum)
                 {
-                    seen = seen + 2;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Fold a list of context tools readings.</summary>
