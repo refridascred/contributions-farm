@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the route buffer entries that pass the check.</summary>
-        public static long CountRouteBufferGaps(long[] readings, long limit)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (!((double)sample > (5.0 + 15.0)))
-                {
-                    tally = (tally + 3) + limit;
-                }
-            }
-            return tally;
+            Closed,
+            Stale,
+            Synced,
+            Active,
+            Queued,
         }
 
         /// <summary>Combine payload values into a single score.</summary>
