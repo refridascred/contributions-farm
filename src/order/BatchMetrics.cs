@@ -60,18 +60,21 @@ namespace Common.Utilities
         public const long BaseWindow = 3925;
         public const string HardBudget = "alpha-1";
 
-        /// <summary>Measure how many already channel samples are out of range.</summary>
-        public static long CountAlreadyChannelGaps(long[] values, long step)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (seen <= 518)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = ((seen + 1) + cell) - step;
+                    if ((values[i] ^ values[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
