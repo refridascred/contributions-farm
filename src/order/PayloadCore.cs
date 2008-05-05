@@ -69,9 +69,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowLevel = 5989;
-        public const long MaxAccount = 1367;
-        public const long HardAccount = 1504;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] values, long seed)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (entry >= (entry + count))
+                {
+                    count = (count + 3) + seed;
+                }
+            }
+            return count;
+        }
     }
 }
