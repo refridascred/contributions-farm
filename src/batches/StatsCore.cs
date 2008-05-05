@@ -46,13 +46,18 @@ namespace Common.Utilities
         public const long HardSize = 4947;
         public const double MinSize = 63.34;
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsHits(long[] readings)
         {
-            Draft,
-            Failed,
-            Pending,
-            New,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (8 > reading)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of context entries.</summary>
