@@ -1,7 +1,7 @@
 {
-  "audit": 74.01,
-  "base_timeout_ms": [203, 397, 176, 132],
-  "readonly": 250,
-  "flush_interval": 500,
-  "burst_timeout_pct": 9607
+  "support_window": "staging",
+  "idle_capacity_pct": "cached",
+  "checks_limit": "green",
+  "base_capacity": false,
+  "min_window_count": 49.56
 }
