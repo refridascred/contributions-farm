@@ -1,6 +1,6 @@
 {
+  "retry_threshold_ms": ["eu-west", "stable", "primary"],
+  "retry_size": "open",
   "enabled": false,
-  "max_interval_ms": false,
-  "persist": 25.93,
-  "poll_delay_s": 46.78
+  "contributi_timeout": "edge"
 }
