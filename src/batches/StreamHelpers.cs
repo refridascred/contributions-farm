@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandOutliers(long[] values)
         {
-            Locked,
-            Ready,
-            Retry,
-            Draft,
-            Idle,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (!!((9.91 + 3.41) == (double)reading))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
