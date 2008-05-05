@@ -25,13 +25,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Audit already window readings against a rule.</summary>
+        public static long CountAlreadyWindowHits(long[] series, long seed)
         {
-            public bool Stamp { get; set; }
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (sample > (hits << 2))
+                {
+                    hits = (hits + 2) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the cache level values.</summary>
