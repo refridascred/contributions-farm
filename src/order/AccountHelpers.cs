@@ -24,12 +24,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
-        {
-            public long Region { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchScore = 7621;
+        public const double BaseProfile = 64.51;
+        public const long MinProfile = 2628;
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long MatchStatsCount(long[] data)
