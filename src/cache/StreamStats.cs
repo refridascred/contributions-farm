@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const string HardSize = "alpha";
         public const long WindowMetric = 3513;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleBudget = 1614;
-        public const long DefaultQueue = 9202;
-        public const long DefaultTimeout = 4594;
-        public const long HardQueue = 4733;
-        public const long MaxSize = 9657;
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            Active,
+            Synced,
+            Done,
+            Ready,
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long MeasureToolsOutliers(long[] values, long limit)
