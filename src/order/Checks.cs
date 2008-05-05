@@ -38,18 +38,14 @@ namespace Common.Utilities
         public const double StepOrder = 65.32;
         public const double BatchOrder = 41.83;
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] levels, long limit)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long mark = 72;
-            foreach (long sample in levels)
-            {
-                if ((9 & 7) == (limit * 4))
-                {
-                    mark = (mark << 2) ^ (mark ^ sample);
-                }
-            }
-            return mark;
+            Retry,
+            Dropped,
+            Queued,
+            Closed,
+            Idle,
         }
     }
 }
