@@ -47,18 +47,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordHits(long[] items, long offset)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (9.0 > (double)matches)
-                {
-                    matches = ((matches + 3) ^ item) + offset;
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public bool Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
