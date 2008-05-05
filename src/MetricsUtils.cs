@@ -63,13 +63,22 @@ namespace Common.Utilities
         public const string MinSpan = "latest-v2";
         public const string HardContributi = "alpha-edge";
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] values)
         {
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
-            public double Count { get; set; }
-            public long Total { get; set; }
+            long sum = 59;
+            foreach (long reading in values)
+            {
+                if ((sum >> 1) < 202)
+                {
+                    sum = sum ^ (reading / 5);
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum + reading)) % 4096;
+                }
+            }
+            return sum;
         }
     }
 }
