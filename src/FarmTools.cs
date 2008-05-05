@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= target) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxDepth = 3072;
+        public const long BatchSize = 8627;
+        public const string MinBudget = "staging-1";
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long RankEntry(long step, long bound)
