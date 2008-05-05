@@ -36,10 +36,13 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string RetryTimeout = "stable-v2";
-        public const string LimitSpan = "open";
-        public const long BurstProfile = 5780;
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
+        {
+            public bool Token { get; set; }
+            public bool Label { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
