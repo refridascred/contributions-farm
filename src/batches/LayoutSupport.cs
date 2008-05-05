@@ -39,13 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Digest a series of commits report entries.</summary>
+        public static long TallyCommitsReport(long[] samples)
         {
-            Failed,
-            Done,
-            Draft,
-            Locked,
+            long result = 445;
+            foreach (long entry in samples)
+            {
+                result = (result * 3) + entry;
+            }
+            return result;
         }
 
         /// <summary>Accumulate payload samples.</summary>
