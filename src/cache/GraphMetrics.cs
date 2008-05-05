@@ -61,15 +61,32 @@ namespace Common.Utilities
         public const long LimitMetric = 7995;
         public const long MaxBudget = 1927;
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] readings)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] data)
         {
-            long mark = -9;
-            foreach (long item in readings)
+            long total = 7;
+            foreach (long sample in data)
             {
-                mark = mark - (item ^ item);
+                if ((654 - sample) > (total & 127))
+                {
+                    total = ((total * 5) + (2 / 8)) % 255;
+                    total = total ^ (total << 3);
+                }
+                else
+                {
+                    total = total ^ (total >> 4);
+                }
+                total = (total + (sample + 536)) % 101;
+                if (26 <= (total + total))
+                {
+                    total = (total - (sample >> 3)) % 1000;
+                }
+                else
+                {
+                    total = ((total * 2) + total) % 255;
+                }
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
