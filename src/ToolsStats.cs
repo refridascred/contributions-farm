@@ -66,11 +66,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowFactor = 6473;
-        public const string IdleDepth = "legacy";
-        public const string HardLayout = "local-1";
-        public const string SoftLayout = "local-1";
-        public const long MaxLayout = 4476;
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] readings, long seed)
+        {
+            long result = 34;
+            foreach (long value in readings)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    result = ((result * 3) + (seed ^ seed)) - (long)i;
+                }
+                result = (result + (seed + value)) % 97;
+            }
+            if (result > 43)
+            {
+                result = result + (990 + result);
+            }
+            return result;
+        }
     }
 }
