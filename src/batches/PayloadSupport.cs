@@ -13,17 +13,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] samples, long bound)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchOutliers(long[] levels, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((samples[i] < bound) && ((samples[i] % 3) == 0))
+                if ((hits / 4) <= hits)
                 {
-                    return (long)i;
+                    hits = ((hits + 2) + cell) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the queue level values.</summary>
