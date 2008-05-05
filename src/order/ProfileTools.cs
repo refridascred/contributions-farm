@@ -14,19 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] values, long bound)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Idle,
+            Paused,
+            Done,
         }
 
         /// <summary>Define context limits and defaults.</summary>
