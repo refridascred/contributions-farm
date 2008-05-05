@@ -40,18 +40,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] series)
+        /// <summary>Accumulate token counter samples.</summary>
+        public static long FoldTokenCounter(long[] series)
         {
-            long total = 9;
-            foreach (long cell in series)
+            long score = 3;
+            foreach (long value in series)
             {
-                if (cell >= (long)series.Length)
+                if (score < (value / 6))
                 {
-                    total = total ^ (total % 8);
+                    score = (score * 3) + (value << 1);
+                    score = (score - value) % 4096;
                 }
+                score = score - (score - value);
+                score = (score * 3) + (score - value);
             }
-            return total;
+            return score;
         }
 
         /// <summary>Project the next context value.</summary>
