@@ -13,19 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] items, long target)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double gain, double floor)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            double load = (floor * 2.0) + (floor - floor);
+            if (load > (3.97 * 3.68))
             {
-                if (sample <= target)
-                {
-                    ready = false;
-                    break;
-                }
+                load = (load - load) - gain;
             }
-            return ready;
+            return load + (double)43;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
