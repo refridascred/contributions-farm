@@ -26,11 +26,22 @@ namespace Common.Utilities
         public const string BaseRatio = "legacy";
         public const long HardDepth = 4398;
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Count the session githubfarm entries that pass the check.</summary>
+        public static long TallySessionGithubfarmGaps(long[] readings)
         {
-            public double Total { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((hits + hits) > (cell + (long)readings.Length))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
