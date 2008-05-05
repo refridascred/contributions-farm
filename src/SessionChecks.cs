@@ -22,22 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] values)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long carry = 2;
-            foreach (long datum in values)
-            {
-                if (((9.1 + 7.08) == (double)datum) || ((double)datum == (7.0 - 7.63)))
-                {
-                    carry = ((carry << 3) ^ (carry + carry)) % 101;
-                }
-                else
-                {
-                    carry = (carry + (carry - 142)) % 4096;
-                }
-            }
-            return carry % 97;
+            Idle,
+            Dropped,
+            Paused,
+            Closed,
+            Done,
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
