@@ -38,24 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a token layout value against two limits.</summary>
-        public static long BucketTokenLayout(long seed, long step)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            if ((double)step == (double)seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed & 7) == (40 + step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Draft,
+            Closed,
+            Retry,
+            Ready,
         }
     }
 }
