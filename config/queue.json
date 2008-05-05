@@ -1,5 +1,12 @@
 {
-  "account_capacity": 26,
-  "window_delay": 53.34,
-  "route_ratio": 3696
+  "warm_retries_s": [88, 424, 44, 306],
+  "idle_capacity": 6.69,
+  "notes_retries": 34,
+  "max_timeout": {
+    "idle_threshold": 12.49,
+    "hard_interval": ["latest", "primary", "fallback"],
+    "verbose": true
+  },
+  "audit": ["green", "edge", "latest"],
+  "cluster_ratio": 1024
 }
