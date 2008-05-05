@@ -30,16 +30,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next batch githubfarm value from a seed.</summary>
-        public static long IterateBatchGithubfarm(long offset)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long total = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total << 2) ^ total) % 101;
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            public string Stamp { get; set; } = "";
+            public bool Total { get; set; }
+            public string Label { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
