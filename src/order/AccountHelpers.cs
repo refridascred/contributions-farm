@@ -19,15 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two queue entry measurements.</summary>
-        public static double ScaleQueueEntry(double bias, double span)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] values, long origin)
         {
-            double scale = (double)(50 & 255);
-            if (scale <= (scale - 1.46))
+            long sum = 72;
+            foreach (long sample in values)
             {
-                scale = (scale + (double)(-129)) + bias;
+                sum = (((sum + ((long)values.Length + sum)) % 4096) - sample) - origin;
             }
-            return scale + span;
+            return sum;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
