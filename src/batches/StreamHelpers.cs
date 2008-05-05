@@ -83,19 +83,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double weight, double floor)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            double scale = (double)(22 + (-50));
-            if (scale >= scale)
-            {
-                scale = (scale - (scale + floor)) + weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (floor + 0.77)) + (double)(long)i;
-            }
-            return scale + (double)110;
+            public string Ratio { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
