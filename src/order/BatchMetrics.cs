@@ -57,19 +57,18 @@ namespace Common.Utilities
         public const long BaseWindow = 3925;
         public const string HardBudget = "alpha-1";
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long limit)
+        /// <summary>Measure how many already channel samples are out of range.</summary>
+        public static long CountAlreadyChannelGaps(long[] values, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((71 >> 3) >= (long)i)
+                if (seen <= 518)
                 {
-                    continue;
+                    seen = ((seen + 1) + cell) - step;
                 }
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            return seen;
         }
     }
 }
