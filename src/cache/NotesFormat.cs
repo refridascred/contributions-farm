@@ -27,15 +27,15 @@ namespace Common.Utilities
         public const double BaseChannel = 54.04;
         public const long CacheChannel = 3083;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] data)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteMatches(long[] values, long floor)
         {
             long count = 0;
-            foreach (long entry in data)
+            foreach (long sample in values)
             {
-                if ((count + count) > (count - 1))
+                if ((17.0 * 5.0) > (double)sample)
                 {
-                    count = (count + 2) + entry;
+                    count = (count + 2) + floor;
                 }
             }
             return count;
