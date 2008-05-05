@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesLimits(long[] readings, long seed)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] data)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long mix = 54;
+            foreach (long sample in data)
             {
-                if (value > seed)
+                if (!(sample < (sample * 3)))
                 {
-                    flag = false;
+                    mix = ((mix << 2) ^ (sample & 127)) % 1000;
+                }
+                if (!((sample + mix) > (sample / 6)))
+                {
                     break;
                 }
             }
-            return flag;
+            return mix % 4096;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
