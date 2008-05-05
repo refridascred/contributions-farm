@@ -40,18 +40,21 @@ namespace Common.Utilities
             return mean - span;
         }
 
-        /// <summary>Measure how many cache queue samples are out of range.</summary>
-        public static long TallyCacheQueueOutliers(long[] levels)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)matches != (5.6 + 20.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 2) + reading;
+                    if ((samples[i] ^ samples[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
