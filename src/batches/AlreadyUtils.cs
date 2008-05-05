@@ -47,15 +47,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double weight, double bias)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] items)
         {
-            double rate = 1.5;
-            if (rate > (2.0 * 11.0))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = (rate + 5.4) + weight;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return rate + (bias - bias);
+            return hits;
         }
 
         /// <summary>Match up support samples.</summary>
