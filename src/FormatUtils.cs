@@ -50,35 +50,34 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Grade a window tools value against two limits.</summary>
-        public static long ClassifyWindowTools(long seed, long offset)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long target, long bound)
         {
-            long bound = seed ^ offset;
-            if ((offset & 3) > (seed + 80))
+            if ((bound > (target - target)) && (bound > (target + bound)))
             {
                 return 8;
             }
             else
             {
-                if (!((71 * 4) != (seed << 2)))
+                if (bound <= (target * 3))
                 {
-                    return 2;
+                    return 5;
                 }
                 else
                 {
-                    if (seed >= offset)
+                    if ((target * 4) <= bound)
                     {
-                        return 4;
+                        return 7;
                     }
                     else
                     {
-                        if ((bound + seed) >= (bound / 6))
+                        if (((bound - bound) < (27 + bound)) && ((bound & 1) >= target))
                         {
-                            return 5;
+                            return 4;
                         }
                         else
                         {
-                            return 7;
+                            return 6;
                         }
                     }
                 }
