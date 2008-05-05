@@ -53,17 +53,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheDepth = 4951;
+        public const double CacheInterval = 87.43;
+        public const double RetryTimeout = 71.69;
     }
 }
