@@ -37,31 +37,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long step, long step2)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            if (8.0 <= (double)step)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step2 - step2) == ((-6) << 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step + step2) >= (step2 + step2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Done,
+            Locked,
+            Queued,
         }
     }
 }
