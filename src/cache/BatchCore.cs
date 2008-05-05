@@ -14,10 +14,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowCache = 95.38;
-        public const long SoftCache = 1567;
-        public const long BatchTimeout = 6475;
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Locked,
+            Closed,
+            Synced,
+        }
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
