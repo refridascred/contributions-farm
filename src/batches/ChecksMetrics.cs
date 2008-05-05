@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelGaps(long[] series, long step)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            double weight2 = (bias / 3.0) / 9.0;
+            for (int i = 0; i < 2; i++)
             {
-                if ((step * 2) != (datum / 3))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight2 = ((weight2 - (4.0 / 6.0)) + (double)(long)i) - weight;
             }
-            return hits;
+            return weight2 + (bias / 4.0);
         }
 
         /// <summary>Define command limits and defaults.</summary>
