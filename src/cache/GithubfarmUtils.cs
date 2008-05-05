@@ -37,14 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            Locked,
-            Ready,
-            Closed,
-            New,
-            Draft,
+            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
