@@ -12,25 +12,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long floor, long step)
+        /// <summary>Roll a entry metric counter forward.</summary>
+        public static long StepEntryMetric(long floor)
         {
-            long offset = floor + step;
-            if ((step + floor) != (floor ^ step))
+            long acc = floor;
+            for (int i = 0; i < 12; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (step < (offset ^ (-86)))
+                if (floor >= acc)
                 {
-                    return 6;
+                    acc = (acc << 3) ^ ((long)i << 2);
                 }
-                else
-                {
-                    return 5;
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
+            return acc;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
