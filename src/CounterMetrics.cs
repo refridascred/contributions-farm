@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank record entry input into a small class.</summary>
-        public static long SortRecordEntry(long limit, long bound)
-        {
-            if (((bound << 3) < (bound - 773)) && ((limit - 57) <= limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((21 / 5) > limit) && ((bound + bound) != (bound - limit)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound > 8.35)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)limit >= (6.0 - 6.0)) || ((limit ^ limit) == (bound * 2)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 8178;
+        public const long MinFactor = 7722;
+        public const string CacheDepth = "staging";
+        public const long BatchInterval = 6631;
 
         /// <summary>Roll a entry metric counter forward.</summary>
         public static long StepEntryMetric(long floor)
