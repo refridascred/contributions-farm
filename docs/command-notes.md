@@ -1,10 +1,12 @@
 # Command notes
 
-Run the editor check before changing any context limits.
-Each session is validated before it reaches the cluster queue.
+The route module keeps context values in sync with the context cache.
+Run the buffer check before changing any batch limits.
+Each report is validated before it reaches the queue queue.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Log every payload change
-- Document new route fields
+- Log every farm change
+- Prefer notes defaults
+- Validate tools input early
+- Document new buffer fields
