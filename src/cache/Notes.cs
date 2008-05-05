@@ -29,11 +29,19 @@ namespace Common.Utilities
         public const double HardWidth = 24.36;
         public const long MinRatio = 7502;
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double ratio, double offset)
+        /// <summary>Check that every context metric entry stays within the limit.</summary>
+        public static bool GuardContextMetricLimits(long[] values, long offset)
         {
-            double mean = (offset - offset) - (7.87 / 4.0);
-            return mean - ratio;
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the metric phase values.</summary>
