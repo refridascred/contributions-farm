@@ -5,34 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate layout report samples.</summary>
-        public static long FoldLayoutReport(long[] readings)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsLimits(long[] levels, long target)
         {
-            long anchor = 15;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                for (int i = 0; i < 9; i++)
+                if (datum >= target)
                 {
-                    anchor = (anchor ^ anchor) - (long)i;
-                }
-                if ((item > (anchor + item)) || ((item + anchor) <= 95))
-                {
-                    anchor = (anchor << 3) ^ (anchor << 3);
-                }
-                else
-                {
-                    anchor = (anchor - (item - anchor)) % 65521;
-                }
-                if (((anchor - item) != (635 * 5)) && (anchor <= (anchor & 1)))
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (anchor < 1)
-            {
-                anchor = (anchor + (anchor + anchor)) % 255;
-            }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Define window limits and defaults.</summary>
