@@ -18,12 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheCount = 2606;
-        public const long LimitStats = 131;
-        public const long WindowStats = 4962;
-        public const long BaseFactor = 1221;
-        public const long MinScore = 2089;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowCache = 95.38;
+        public const long SoftCache = 1567;
+        public const long BatchTimeout = 6475;
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long GradeSchema(long seed, long offset)
