@@ -34,12 +34,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
-        {
-            public double Label { get; set; }
-            public bool Stamp { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BatchCommits = 53.5;
+        public const long StepCommits = 6106;
+        public const long DefaultCommits = 2659;
     }
 }
