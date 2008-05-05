@@ -43,15 +43,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long bound)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long total = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            public bool Count { get; set; }
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the metric level values.</summary>
