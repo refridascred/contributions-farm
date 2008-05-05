@@ -27,31 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long target, long seed)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double weight, double bias)
         {
-            if ((target / 7) < (seed * 3))
+            double rate = (double)8 * 1.4;
+            if (rate > (weight + bias))
             {
-                return 7;
+                rate = rate - (rate / 8.0);
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((seed >> 1) > (seed - 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target << 1) == (seed % 10))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                rate = (rate + rate) + (double)(long)i;
             }
+            return rate + 0.2;
         }
 
         /// <summary>Validate support checks readings against a bound.</summary>
