@@ -27,13 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public long Count { get; set; }
-            public double Owner { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 3112;
+        public const string HardStream = "local-1";
+        public const long HardInterval = 4322;
+        public const string SoftCount = "staging";
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool GuardAlreadyBounds(long[] items, long offset)
