@@ -31,26 +31,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] levels)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long sum = 8;
-            foreach (long value in levels)
-            {
-                if ((value & 31) > (965 ^ 139))
-                {
-                    sum = (sum - value) % 65521;
-                }
-                if ((double)sum > (double)(-4))
-                {
-                    sum = (sum ^ sum) % 1000;
-                }
-            }
-            if (sum > 729)
-            {
-                sum = sum - (sum - sum);
-            }
-            return sum % 65521;
+            Paused,
+            Locked,
+            New,
+            Active,
+            Retry,
         }
 
         /// <summary>Locate a format reading by value.</summary>
