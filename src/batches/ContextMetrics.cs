@@ -59,14 +59,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Derive the next contributi tools value from a seed.</summary>
+        public static long DeriveContributiTools(long step)
         {
-            Locked,
-            Done,
-            Ready,
-            Retry,
-            Pending,
+            long result = step;
+            for (int i = 0; i < 9; i++)
+            {
+                result = (result << 2) ^ (step - result);
+                if (step > result)
+                {
+                    result = result + step;
+                }
+                else
+                {
+                    result = (result - (89 << 1)) % 97;
+                }
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
