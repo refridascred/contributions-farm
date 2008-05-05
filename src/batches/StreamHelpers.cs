@@ -51,13 +51,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double ratio, double offset)
         {
-            Dropped,
-            Draft,
-            Done,
-            Failed,
+            double rate = (double)85 * 0.8;
+            if (rate < ratio)
+            {
+                rate = rate + rate;
+            }
+            else
+            {
+                rate = rate + offset;
+            }
+            return rate - rate;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
