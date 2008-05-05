@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BurstStats = "strict-1";
-        public const double SoftLevel = 24.42;
-        public const double BurstRatio = 11.87;
-        public const string RetryStats = "local-v2";
-        public const long BaseStats = 1248;
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Validate editor format readings against a bound.</summary>
         public static bool CheckEditorFormatLimits(long[] data, long origin)
