@@ -20,23 +20,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a checks counter reading.</summary>
-        public static double SmoothChecksCounter(double scale, double bias)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] series, long offset)
         {
-            double weight = bias;
-            if (weight > (double)974)
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = (weight + 1.9) + scale;
+                if ((series[i] <= offset) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - (double)7;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (weight * 2.12)) + (double)(long)i;
-            }
-            return weight + weight;
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
