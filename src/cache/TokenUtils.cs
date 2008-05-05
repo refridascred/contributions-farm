@@ -33,12 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] samples)
         {
-            public double Count { get; set; }
-            public string Rank { get; set; } = "";
-            public string Score { get; set; } = "";
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)count == (6.83 / 9.0))
+                {
+                    count = (count + 2) - reading;
+                }
+            }
+            return count;
         }
     }
 }
