@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count command cluster pairs that satisfy a relation.</summary>
-        public static long MatchCommandClusterCount(long[] series)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] data, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 30;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = ((acc << 2) ^ step) ^ reading;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Audit githubfarm entry readings against a rule.</summary>
