@@ -72,14 +72,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            Draft,
-            Failed,
-            Synced,
-            Active,
-            Dropped,
+            Closed,
+            Pending,
+            Locked,
+            New,
+            Idle,
         }
     }
 }
