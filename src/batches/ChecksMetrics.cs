@@ -30,13 +30,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] levels)
         {
-            Ready,
-            Locked,
-            Retry,
-            Queued,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((4.42 + 7.0) < (double)seen)
+                {
+                    seen = (seen + 3) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
