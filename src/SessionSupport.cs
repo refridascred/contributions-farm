@@ -19,13 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long floor)
         {
-            public long Token { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public long Mode { get; set; }
+            long result = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!((result + result) != (floor - floor)))
+                {
+                    result = (result << 3) ^ (result - (long)i);
+                    result = (result ^ (result % 64)) % 65521;
+                }
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
