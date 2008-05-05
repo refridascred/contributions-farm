@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] items, long floor)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long step)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long result = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (entry != floor)
-                {
-                    flag = false;
-                    break;
-                }
+                result = result - ((long)i & 127);
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Hold a stream header.</summary>
