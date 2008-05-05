@@ -37,21 +37,32 @@ namespace Common.Utilities
             return mean + (bias / 6.0);
         }
 
-        /// <summary>Compare every pair of batches support readings.</summary>
-        public static long CompareBatchesSupportCount(long[] values)
+        /// <summary>Grade a counter notes value against two limits.</summary>
+        public static long ClassifyCounterNotes(long target, long target2)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long diff = target ^ target2;
+            if (((target2 << 2) <= (898 / 7)) || ((target - target) >= (target + diff)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((target2 - target) <= diff) || (236 >= target))
                 {
-                    if ((values[i] + values[j]) < 16)
+                    return 1;
+                }
+                else
+                {
+                    if (((target + diff) <= target) || ((7.28 + 5.0) >= (double)diff))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return hits;
         }
     }
 }
