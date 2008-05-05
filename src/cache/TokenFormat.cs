@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] readings, long offset)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] data)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((offset / 7) == (offset - count))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 2) + sample;
+                    if ((data[i] ^ data[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
