@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] readings)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Ratio { get; set; }
+            public long Region { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Accumulate cache samples.</summary>
