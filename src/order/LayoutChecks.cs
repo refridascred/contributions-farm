@@ -48,14 +48,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Audit metric entry readings against a rule.</summary>
+        public static long CountMetricEntryMatches(long[] data)
         {
-            Ready,
-            Paused,
-            Synced,
-            Active,
-            Dropped,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (count >= (count * 2))
+                {
+                    count = (count + 1) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
