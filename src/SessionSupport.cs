@@ -20,13 +20,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Adjust a checks counter reading.</summary>
+        public static double SmoothChecksCounter(double scale, double bias)
         {
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
+            double weight = bias;
+            if (weight > (double)974)
+            {
+                weight = (weight + 1.9) + scale;
+            }
+            else
+            {
+                weight = weight - (double)7;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (weight * 2.12)) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Hold a report header.</summary>
