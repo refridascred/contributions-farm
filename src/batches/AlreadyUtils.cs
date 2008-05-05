@@ -49,17 +49,18 @@ namespace Common.Utilities
             return rate + (bias - bias);
         }
 
-        /// <summary>Look up the position of a entry farm sample.</summary>
-        public static long LocateEntryFarmIndex(long[] values, long floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (values[i] <= floor)
+                if ((double)seen <= (7.64 - 3.92))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + item;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
