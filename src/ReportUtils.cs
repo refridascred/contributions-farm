@@ -54,11 +54,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string DefaultWidth = "staging";
-        public const long DefaultCounter = 4169;
-        public const string MaxBudget = "primary-1";
-        public const long HardCounter = 8546;
+        /// <summary>Validate support checks readings against a bound.</summary>
+        public static bool GuardSupportChecksRange(long[] series, long bound)
+        {
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a report stats.</summary>
         public sealed class ReportStats
