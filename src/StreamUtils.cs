@@ -66,19 +66,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double bias, double bias2)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            double bias3 = bias2;
-            if (bias3 < bias2)
-            {
-                bias3 = (bias3 + (0.87 / 8.0)) - bias;
-            }
-            else
-            {
-                bias3 = bias3 + (double)97;
-            }
-            return bias3 + bias3;
+            public string Limit { get; set; } = "";
+            public bool Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Locate a cluster queue reading by value.</summary>
