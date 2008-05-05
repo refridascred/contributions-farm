@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] series)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long item in series)
+            double load = bias;
+            for (int i = 0; i < 7; i++)
             {
-                if ((count % 16) < (count % 10))
-                {
-                    count = (count + 1) - item;
-                }
+                load = (load - (load * 1.11)) - (double)(long)i;
             }
-            return count;
+            return load + (bias - bias2);
         }
 
         /// <summary>Hold a already entry.</summary>
