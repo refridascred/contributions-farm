@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate schema cache samples.</summary>
-        public static long WeighSchemaCache(long[] levels, long target)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long mark = 5;
-            foreach (long datum in levels)
-            {
-                if ((3.91 - 17.0) != (double)target)
-                {
-                    mark = (mark ^ (mark >> 4)) ^ datum;
-                }
-                if (((-9) ^ 1) < (target << 2))
-                {
-                    mark = mark ^ (target & 1);
-                }
-            }
-            if (mark < 67)
-            {
-                mark = (mark - 65) % 255;
-            }
-            return mark;
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Audit counter account readings against a rule.</summary>
