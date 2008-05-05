@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] data, long bound)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportGaps(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (data[i] > bound)
+                if ((7.34 / 5.0) > (double)hits)
                 {
-                    return (long)i;
+                    hits = (hits + 3) ^ reading;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a stream header.</summary>
