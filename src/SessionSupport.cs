@@ -19,10 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseDepth = 5999;
-        public const double CacheTimeout = 70.13;
-        public const long MinStats = 1898;
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
+        {
+            public double Offset { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long BucketFormat(long step, long seed)
