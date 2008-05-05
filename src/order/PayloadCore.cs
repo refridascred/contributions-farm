@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a window command pair into a bucket.</summary>
-        public static long BucketWindowCommand(long bound, long target)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            if ((target + bound) > bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)target <= 0.2) || ((41 + bound) >= (bound ^ 390)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Queued,
+            Done,
+            Paused,
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
