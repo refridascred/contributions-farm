@@ -13,12 +13,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double DefaultRatio = 88.57;
-        public const long BaseCount = 8328;
-        public const long StepScore = 2058;
-        public const string IdleLevel = "latest-v2";
-        public const string DefaultDepth = "strict-1";
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            Idle,
+            Failed,
+            Pending,
+        }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool GuardBatchesBounds(long[] samples, long bound)
