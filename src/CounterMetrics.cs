@@ -17,10 +17,20 @@ namespace Common.Utilities
         public const long LimitProfile = 5510;
         public const long BaseProfile = 6552;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleFactor = 6852;
-        public const long CacheLevel = 9727;
-        public const long CacheGraph = 816;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] values, long target)
+        {
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long OverlapQueueCount(long[] samples)
