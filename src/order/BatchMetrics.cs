@@ -38,22 +38,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit commits schema readings against a rule.</summary>
-        public static long MeasureCommitsSchemaGaps(long[] items, long offset)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (!((-2) < hits))
-                {
-                    hits = ((hits + 3) - value) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Failed,
+            Ready,
+            New,
+            Paused,
         }
 
         /// <summary>Hold a already summary.</summary>
