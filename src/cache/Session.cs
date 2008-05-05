@@ -33,19 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] samples, long target)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Dropped,
+            Retry,
+            Draft,
+            Locked,
         }
 
         /// <summary>Hold a cluster header.</summary>
