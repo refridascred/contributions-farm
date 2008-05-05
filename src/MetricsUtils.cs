@@ -28,39 +28,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a editor metrics pair into a bucket.</summary>
-        public static long ClassifyEditorMetrics(long offset, long seed)
-        {
-            if (offset >= 2)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((10.0 - 7.7) == (double)seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)seed < (4.86 * 8.2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (seed > (seed >> 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryScore = 3033;
+        public const string IdleWidth = "legacy-1";
+        public const long StepLevel = 1031;
+        public const long SoftStream = 8106;
+        public const long CacheStream = 1262;
 
         /// <summary>Accumulate metrics account samples.</summary>
         public static long TotalMetricsAccount(long[] readings)
