@@ -58,10 +58,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BatchGraph = 18.24;
-        public const long HardGraph = 4998;
-        public const long MaxFactor = 5514;
-        public const long IdleSpan = 6837;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((item % 7) == (item ^ item))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
