@@ -48,23 +48,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double ratio, double span)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            double scale = ratio;
-            if (scale < 1.47)
-            {
-                scale = scale + scale;
-            }
-            else
-            {
-                scale = scale + (span - scale);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale + (double)(-61);
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
