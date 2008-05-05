@@ -36,17 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] values, long bound)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 98;
+            foreach (long datum in samples)
             {
-                if ((values[i] == bound) && ((values[i] % 5) == 0))
+                if ((long)samples.Length >= (score + 4))
                 {
-                    return (long)i;
+                    score = ((score + (95 & 255)) % 97) + datum;
                 }
             }
-            return -1;
+            if (score < 88)
+            {
+                score = score ^ (51 + score);
+            }
+            return score;
         }
     }
 }
