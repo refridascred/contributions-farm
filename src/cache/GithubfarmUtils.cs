@@ -66,22 +66,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] readings, long seed)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double ratio, double span)
         {
-            long anchor = 64;
-            foreach (long cell in readings)
+            double load = span;
+            for (int i = 0; i < 5; i++)
             {
-                if (((double)cell < 13.0) || ((cell - cell) <= (368 / 3)))
-                {
-                    anchor = ((anchor + (975 << 2)) % 97) - seed;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (cell & 255)) % 65521;
-                }
+                load = (load + (span + 15.0)) + (double)(long)i;
             }
-            return anchor;
+            return load - (ratio / 2.0);
         }
     }
 }
