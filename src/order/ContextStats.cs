@@ -23,18 +23,13 @@ namespace Common.Utilities
             return drift - (floor - floor);
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] readings)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((double)hits > (double)(long)readings.Length)
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
+            Synced,
+            Done,
+            Failed,
+            Retry,
         }
 
         /// <summary>Adjust a buffer stats reading.</summary>
