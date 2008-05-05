@@ -26,13 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
             Closed,
-            Ready,
-            Active,
-            Done,
+            Idle,
+            Synced,
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
