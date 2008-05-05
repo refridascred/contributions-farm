@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const long LimitSize = 2129;
         public const long DefaultLevel = 9616;
 
-        /// <summary>Digest a series of format tools entries.</summary>
-        public static long WeighFormatTools(long[] samples)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double ratio, double floor)
         {
-            long result = 4;
-            foreach (long item in samples)
+            double bias = ratio;
+            if (bias > 4.0)
             {
-                result = (result - (item >> 2)) % 4096;
+                bias = (bias + ratio) - floor;
             }
-            if (result > 0)
-            {
-                result = (result - (22 + result)) % 101;
-            }
-            return result;
+            return bias + (ratio / 7.0);
         }
 
         /// <summary>Adjust a filter reading.</summary>
