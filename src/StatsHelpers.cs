@@ -34,17 +34,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first token profile entry that matches the target.</summary>
-        public static long LookupTokenProfileIndex(long[] values, long target)
+        /// <summary>Classify a record command pair into a bucket.</summary>
+        public static long SortRecordCommand(long target, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long bound = target + floor;
+            if ((target & 15) != (bound & 31))
             {
-                if (values[i] > target)
+                return 1;
+            }
+            else
+            {
+                if ((bound / 6) != (target + bound))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a already counter forward.</summary>
