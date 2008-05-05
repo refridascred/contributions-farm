@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double SoftWindow = 15.55;
-        public const double RetryCount = 16.36;
-        public const string CacheWindow = "cached-edge";
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BurstRecord = "legacy-1";
+        public const double BatchRecord = 22.17;
+        public const long DefaultWidth = 6283;
+        public const long BatchInterval = 3779;
 
         /// <summary>Roll a command counter forward.</summary>
         public static long IterateCommand(long step)
