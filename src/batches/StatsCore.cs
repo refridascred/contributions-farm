@@ -56,15 +56,31 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] series, long offset)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long limit, long offset)
         {
-            long acc = -284;
-            foreach (long item in series)
+            if (limit <= 230)
             {
-                acc = (((acc << 2) ^ item) % 65521) + offset;
+                return 0;
             }
-            return acc % 1000;
+            else
+            {
+                if (((-849) * 3) > (offset + offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((limit - limit) < limit) && ((offset & 127) == (offset << 1)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
