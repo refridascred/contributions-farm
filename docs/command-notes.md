@@ -1,14 +1,13 @@
 # Command notes
 
-The layout report groups every route by graph.
-Run the account check before changing any filter limits.
-Run the batch check before changing any account limits.
+The cache module keeps editor values in sync with the format cache.
+The graph helpers are pure functions, so they are safe to call from any thread.
 
-The report report groups every record by token.
-The record report groups every channel by record.
+Run the support check before changing any graph limits.
+Run the filter check before changing any already limits.
 
 ## Guidelines
 
-- Prefer cluster defaults
-- Review schema limits each release
-- Document new checks fields
+- Validate account input early
+- Keep record values small
+- Review already limits each release
