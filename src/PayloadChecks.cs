@@ -64,18 +64,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] readings)
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double rate, double span)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            double mean = (span - rate) - rate;
+            if (mean > 4.87)
             {
-                if ((count << 3) < (count + count))
-                {
-                    count = (count + 2) + datum;
-                }
+                mean = mean - (double)714;
             }
-            return count;
+            return mean + span;
         }
     }
 }
