@@ -19,18 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metric stream samples are out of range.</summary>
-        public static long CountMetricStreamHits(long[] levels)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell % 7) <= (hits & 31))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Closed,
+            Retry,
+            Active,
         }
 
         /// <summary>Fold a list of profile context readings.</summary>
