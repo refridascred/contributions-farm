@@ -21,10 +21,32 @@ namespace Common.Utilities
         public const double StepNotes = 22.21;
         public const double WindowNotes = 97.6;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string CacheSpan = "cached-edge";
-        public const long WindowReport = 1067;
-        public const long MinReport = 8893;
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long step, long target)
+        {
+            if ((double)step <= 5.2)
+            {
+                return 7;
+            }
+            else
+            {
+                if (target > step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step << 1) <= ((-20) + target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count already batches pairs that satisfy a relation.</summary>
         public static long CompareAlreadyBatchesCount(long[] data)
