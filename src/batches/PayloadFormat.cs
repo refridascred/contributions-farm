@@ -19,21 +19,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] items)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Level { get; set; }
+            public double Token { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Compare every pair of account readings.</summary>
