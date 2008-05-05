@@ -19,13 +19,19 @@ namespace Common.Utilities
         public const long HardWidth = 9752;
         public const long BurstStats = 1903;
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] items)
         {
-            Pending,
-            Locked,
-            New,
-            Active,
+            long mark = 23;
+            foreach (long value in items)
+            {
+                mark = ((mark << 2) ^ (690 << 2)) ^ value;
+                if ((double)(long)items.Length <= (3.9 - 9.31))
+                {
+                    break;
+                }
+            }
+            return mark % 4096;
         }
     }
 }
