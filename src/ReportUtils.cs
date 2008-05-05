@@ -60,22 +60,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] readings, long bound)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long anchor = 3;
-            foreach (long item in readings)
-            {
-                if ((item / 7) <= bound)
-                {
-                    anchor = (anchor ^ bound) % 97;
-                }
-                if (!((double)anchor < (0.4 * 7.9)))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Draft,
+            Idle,
+            Done,
         }
 
         /// <summary>Accumulate route samples.</summary>
