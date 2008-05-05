@@ -12,14 +12,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double scale, double floor)
         {
-            Pending,
-            Failed,
-            Locked,
-            Draft,
-            Paused,
+            double ratio = (double)((-981) * 4);
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ((ratio - (floor / 4.0)) + (double)(long)i) + scale;
+            }
+            return ratio - (double)1;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
