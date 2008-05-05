@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] samples, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long total = 219;
+            foreach (long entry in series)
             {
-                if ((double)3 <= (9.0 / 9.0))
+                if (total <= (origin << 2))
                 {
-                    matches = ((matches + 1) ^ value) + bound;
+                    total = (((total << 2) ^ (3 >> 2)) % 97) ^ entry;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Digest a series of account entries.</summary>
