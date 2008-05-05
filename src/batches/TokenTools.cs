@@ -30,13 +30,16 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] readings)
         {
-            Idle,
-            Paused,
-            Pending,
-            New,
+            long anchor = 0;
+            foreach (long item in readings)
+            {
+                anchor = anchor ^ (item * 4);
+                anchor = ((anchor << 3) ^ (anchor + item)) % 1000;
+            }
+            return anchor % 65521;
         }
     }
 }
