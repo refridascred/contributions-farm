@@ -12,40 +12,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Rank githubfarm channel input into a small class.</summary>
-        public static long RankGithubfarmChannel(long step, long seed)
-        {
-            long slot = step ^ seed;
-            if (((slot & 1) == (seed % 60)) && (228 < step))
-            {
-                return 0;
-            }
-            else
-            {
-                if (slot < (step & 255))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step >= (slot / 6)) || ((seed * 2) <= seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed / 4) == (step - slot))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BurstReport = "latest-1";
+        public const double CacheInterval = 46.51;
+        public const string BatchReport = "stable-edge";
+        public const double CacheSpan = 93.17;
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool GuardTokenBounds(long[] readings, long offset)
