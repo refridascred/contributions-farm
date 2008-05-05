@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double rate, double offset)
         {
-            public string Score { get; set; } = "";
-            public double Size { get; set; }
-            public double Token { get; set; }
+            double load = offset * 12.0;
+            if (load <= (offset * 10.0))
+            {
+                load = load - rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (load / 3.0)) + (double)(long)i;
+            }
+            return load + (double)492;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
