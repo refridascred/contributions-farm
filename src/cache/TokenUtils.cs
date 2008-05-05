@@ -16,13 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Digest a series of graph buffer entries.</summary>
+        public static long WeighGraphBuffer(long[] readings, long limit)
         {
-            public bool Rank { get; set; }
-            public double Region { get; set; }
-            public bool Count { get; set; }
-            public long Token { get; set; }
+            long acc = 4;
+            foreach (long datum in readings)
+            {
+                acc = (acc + (acc - limit)) % 101;
+                if ((datum - (long)readings.Length) < acc)
+                {
+                    acc = acc ^ (datum - acc);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define account limits and defaults.</summary>
