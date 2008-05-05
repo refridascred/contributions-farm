@@ -1,14 +1,4 @@
 # entry settings
-sync_delay_s: 66.85
-schema_size:
-  - 422
-  - 413
-  - 146
-burst_threshold_pct: 83
-max_window_count: 1024
-idle_ttl_ms: 28.93
-idle_ratio:
-  - 34
-  - 145
-  - 186
-  - 241
+audit: false
+warm_ratio_pct: 95.35
+max_timeout: 6521
