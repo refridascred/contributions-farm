@@ -27,19 +27,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long floor)
+        /// <summary>Check that every metric session entry stays within the limit.</summary>
+        public static bool GuardMetricSessionBounds(long[] levels, long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 13; i++)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (state < (floor ^ floor))
+                if (item <= offset)
                 {
-                    state = ((state << 2) ^ ((-43) / 9)) % 1000;
+                    valid = false;
+                    break;
                 }
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            return valid;
         }
     }
 }
