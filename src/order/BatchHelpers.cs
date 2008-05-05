@@ -31,21 +31,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] series)
+        /// <summary>Combine graph tools values into a single score.</summary>
+        public static long TotalGraphTools(long[] readings, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = -742;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((cell + cell) >= total)
                 {
-                    if ((series[i] - series[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total - (total ^ total)) % 65521;
                 }
+                total = (total ^ (31 + 36)) % 4096;
             }
-            return tally;
+            if (total < 107)
+            {
+                total = (total << 3) ^ (total + floor);
+            }
+            return total;
         }
     }
 }
