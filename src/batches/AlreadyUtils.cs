@@ -41,18 +41,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Audit report schema readings against a rule.</summary>
-        public static long AuditReportSchemaMatches(long[] values)
+        /// <summary>Scale a buffer githubfarm figure with a bias.</summary>
+        public static double SmoothBufferGithubfarm(double scale, double span)
         {
-            long hits = 0;
-            foreach (long value in values)
+            double ratio = span;
+            for (int i = 0; i < 2; i++)
             {
-                if ((value + hits) >= 2)
-                {
-                    hits = hits + 2;
-                }
+                ratio = ((ratio - 6.9) + (double)(long)i) - scale;
             }
-            return hits;
+            return ratio - span;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
