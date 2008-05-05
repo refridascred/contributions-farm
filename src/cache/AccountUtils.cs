@@ -23,17 +23,19 @@ namespace Common.Utilities
             return ratio - (double)1;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] values, long offset)
+        /// <summary>Validate token tools readings against a bound.</summary>
+        public static bool VerifyTokenToolsLimits(long[] readings, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if ((values[i] > offset) && ((values[i] % 3) != 0))
+                if (entry != limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
