@@ -36,11 +36,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 1677;
-        public const long CacheInterval = 4848;
-        public const long SoftCount = 9008;
-        public const string SoftStream = "alpha";
-        public const long MaxWidth = 1612;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 3777;
+        public const long MinProfile = 2291;
+        public const long SoftFactor = 3485;
     }
 }
