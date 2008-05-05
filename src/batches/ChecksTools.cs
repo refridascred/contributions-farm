@@ -28,11 +28,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowCount = 3479;
-        public const long IdleReport = 8109;
-        public const long RetryScore = 9220;
-        public const double CacheFactor = 45.91;
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long origin, long origin2)
+        {
+            if ((8 - 70) > (2 + origin2))
+            {
+                return 0;
+            }
+            else
+            {
+                if (origin < (origin2 - origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((origin * 3) != (origin - origin2)) && ((double)origin2 < (1.7 * 8.8)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((origin - origin) <= origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long HardBudget = 5218;
