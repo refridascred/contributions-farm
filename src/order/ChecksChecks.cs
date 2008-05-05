@@ -16,12 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            New,
-            Ready,
-            Paused,
+            Pending,
+            Locked,
+            Active,
             Queued,
         }
 
