@@ -27,18 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] series, long bound)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (((double)item != (5.0 + 7.02)) || (9.77 <= (double)matches))
-                {
-                    matches = (matches + 1) - bound;
-                }
-            }
-            return matches;
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Digest a series of session entries.</summary>
