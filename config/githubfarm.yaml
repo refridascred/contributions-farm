@@ -1,7 +1,6 @@
 # githubfarm settings
-base_capacity_s: 80
-compress: local
-dry_run: 75.48
-readonly: fallback
-cluster_size: 87.05
-flush_threshold_pct: fallback
+sync_limit: false
+record_depth: legacy
+max_limit_pct: stable
+batch_ratio: 55
+cluster_limit: 29
