@@ -26,13 +26,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            public long Stamp { get; set; }
-            public double Count { get; set; }
-            public long Total { get; set; }
-            public long Label { get; set; }
+            New,
+            Idle,
+            Locked,
+            Pending,
         }
 
         /// <summary>Hold a editor info.</summary>
