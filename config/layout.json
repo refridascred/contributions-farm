@@ -1,10 +1,5 @@
 {
-  "persist": {
-    "sync_window_count": 71,
-    "min_delay_pct": 2873,
-    "strict": 7869,
-    "min_threshold": "green"
-  },
-  "flush_threshold_count": 37.47,
-  "batch_threshold": "local"
+  "idle_timeout_s": false,
+  "default_ttl_count": 57.04,
+  "max_ratio_ms": "legacy"
 }
