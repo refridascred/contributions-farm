@@ -45,19 +45,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksRange(long[] readings, long step)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
