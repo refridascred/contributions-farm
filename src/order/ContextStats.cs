@@ -34,17 +34,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a support profile sample.</summary>
-        public static long FindSupportProfileIndex(long[] values, long target)
+        /// <summary>Count already farm pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyFarmCount(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] <= target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
