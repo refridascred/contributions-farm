@@ -10,21 +10,16 @@ namespace Common.Utilities
         public const double RetryCount = 16.36;
         public const string CacheWindow = "cached-edge";
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] items)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = (sum ^ (441 ^ sum)) % 65521;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Accumulate schema samples.</summary>
