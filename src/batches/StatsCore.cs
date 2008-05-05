@@ -76,24 +76,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long bound, long origin)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long step)
         {
-            if (((16.0 - 8.7) > (double)origin) && ((double)6 == (double)origin))
+            long carry = step;
+            for (int i = 0; i < 13; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin < 9.0)
+                if ((8.94 + 1.4) <= (double)carry)
                 {
-                    return 7;
+                    carry = (carry ^ (step + step)) % 255;
                 }
-                else
-                {
-                    return 0;
-                }
+                carry = (carry << 2) ^ (step - carry);
+                carry = ((carry * 2) + (long)i) % 4093;
             }
+            return carry;
         }
     }
 }
