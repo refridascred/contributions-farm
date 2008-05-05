@@ -17,12 +17,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            Draft,
-            Queued,
-            Pending,
+            public string Owner { get; set; } = "";
+            public bool Level { get; set; }
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a channel snapshot.</summary>
