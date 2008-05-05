@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((cell - cell) >= (cell - count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstDepth = 108;
+        public const double HardGithubfarm = 81.46;
+        public const long DefaultGithubfarm = 1302;
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long BucketCluster(long bound, long limit)
