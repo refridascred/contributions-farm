@@ -55,16 +55,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long limit)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 24; i++)
+            long score = seed;
+            for (int i = 0; i < 20; i++)
             {
-                result = ((result << 2) ^ result) % 255;
-                result = ((result * 3) + (long)i) % 65521;
+                long lane = (score + seed) >> 4;
+                if ((lane + (long)i) >= (score & 15))
+                {
+                    lane = (lane << 2) ^ 223;
+                    lane = (lane << 3) ^ 9;
+                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return result;
+            return score;
         }
     }
 }
