@@ -25,13 +25,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            Locked,
-            Failed,
-            Retry,
-            Idle,
+            Synced,
+            Dropped,
             Stale,
         }
 
