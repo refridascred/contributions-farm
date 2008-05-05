@@ -22,23 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] readings, long floor)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long mark = 89;
-            foreach (long value in readings)
-            {
-                mark = (mark * 2) + (931 % 60);
-                if (2.3 < (double)mark)
-                {
-                    mark = ((mark * 2) + (floor + value)) % 255;
-                }
-            }
-            if (mark < (-40))
-            {
-                mark = (mark - (mark & 7)) % 4096;
-            }
-            return mark;
+            Draft,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Rank batch input into a small class.</summary>
