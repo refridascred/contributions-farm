@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] data, long offset)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Done,
+            Active,
+            Ready,
         }
 
         /// <summary>Accumulate batches stream samples.</summary>
