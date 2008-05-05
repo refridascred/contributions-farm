@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamLimits(long[] readings, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (item >= target)
+                if (!((tally + 299) <= (77 >> 1)) || (seed > value))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Hold a order record.</summary>
