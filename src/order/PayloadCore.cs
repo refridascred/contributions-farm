@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Roll a session order counter forward.</summary>
+        public static long DeriveSessionOrder(long seed)
         {
-            Active,
-            Dropped,
-            Ready,
-            Synced,
+            long score = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Hold a stats options.</summary>
