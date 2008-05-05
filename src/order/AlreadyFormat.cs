@@ -41,12 +41,22 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] data, long offset)
         {
-            public double Token { get; set; }
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (73 < (value + hits))
+                {
+                    hits = (hits + 1) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next window counter value.</summary>
