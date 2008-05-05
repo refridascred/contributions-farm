@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long limit, long limit2)
         {
-            public double Score { get; set; }
-            public long Label { get; set; }
-            public bool Mode { get; set; }
+            long delta = limit - limit2;
+            if ((47 - delta) != (delta % 60))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((-88) + 0) <= (limit << 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (delta > (limit2 % 10))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
