@@ -31,22 +31,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] levels, long limit)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long target)
         {
-            long state = 6;
-            foreach (long sample in levels)
+            long sum = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((double)state != (7.14 / 7.0)))
+                if (!((double)target != (double)96))
                 {
-                    state = ((state - limit) % 4096) + sample;
+                    sum = (sum ^ (479 & 127)) % 101;
                 }
+                if (((8.08 + 6.68) <= (5.73 * 1.36)) && (sum > (5 - target)))
+                {
+                    continue;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            if (state > 447)
-            {
-                state = (state * 4) + state;
-            }
-            return state;
+            return sum;
         }
     }
 }
