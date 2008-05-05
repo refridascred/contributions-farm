@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double scale, double floor)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            double scale2 = 5.9;
-            if (scale2 < (floor + scale2))
-            {
-                scale2 = scale2 + scale;
-            }
-            else
-            {
-                scale2 = scale2 - (double)783;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = (scale2 + floor) - (double)(long)i;
-            }
-            return scale2 - floor;
+            public long Token { get; set; }
+            public double Limit { get; set; }
+            public long Offset { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
