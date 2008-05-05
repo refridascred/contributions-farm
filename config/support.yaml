@@ -1,23 +1,5 @@
 # support settings
-hard_retries: 8
-commits_limit:
-  - strict
-  - green
-  - open
-  - edge
-filter_timeout: local
-verbose: 1922
-githubfarm_timeout:
-  - staging
-  - open
-enabled:
-  hard_limit_count: true
-  retry_timeout:
-    stream_ttl: 98
-    record_ratio: 51
-    compress: 4584
-    filter_depth: 30
-    retry_depth: legacy
-  default_ratio_s: 92.65
-  compress: 6217
-  max_window_count: 85.02
+flush_depth_s: 60
+cache_threshold: 5.48
+enabled: 1.93
+flush_delay: standard
