@@ -12,13 +12,32 @@ namespace Common.Utilities
         public const long SoftCache = 7582;
         public const long WindowCache = 6014;
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long origin, long offset)
         {
-            Ready,
-            Active,
-            Paused,
-            Draft,
+            long delta = origin - offset;
+            if ((72 * 3) <= delta)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((delta % 12) < (offset << 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset & 1) < offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the checks mode values.</summary>
