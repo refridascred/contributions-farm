@@ -50,18 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the channel cache entries that pass the check.</summary>
-        public static long AuditChannelCacheMatches(long[] samples, long limit)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((seen ^ datum) > (limit - (-1)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double bias = 3.6;
+            return (bias - (weight / 8.0)) + floor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
