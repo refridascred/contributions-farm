@@ -53,18 +53,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many checks report samples are out of range.</summary>
-        public static long MeasureChecksReportHits(long[] data, long target)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((target / 4) >= (target >> 4))
+                if (levels[i] > seed)
                 {
-                    hits = (hits + 3) + value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
