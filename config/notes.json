@@ -1,14 +1,7 @@
 {
-  "min_interval_count": [451, 333, 270],
-  "stats_delay": "eu-west",
-  "idle_window": false,
-  "min_limit_count": {
-    "burst_ratio_count": 76.47,
-    "soft_retries_ms": ["fallback", "standard", "staging", "local"],
-    "poll_limit": true,
-    "cache_delay": false,
-    "warm_capacity": [194, 467, 339]
-  },
-  "compress": "primary",
-  "audit": "fallback"
+  "flush_size_ms": "strict",
+  "poll_timeout_s": 250,
+  "already_size": 93.93,
+  "cluster_size": "staging",
+  "dry_run": 30
 }
