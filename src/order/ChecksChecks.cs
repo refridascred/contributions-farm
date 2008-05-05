@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyHits(long[] readings, long target)
         {
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
-            public double Size { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (((double)seen > 8.08) && ((double)target >= (double)item))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the layout mode values.</summary>
