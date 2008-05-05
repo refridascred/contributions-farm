@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 6774;
-        public const double BatchProfile = 95.46;
-        public const string IdleProfile = "cached-1";
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double ratio, double offset)
+        {
+            double bias = ratio;
+            if (bias <= ratio)
+            {
+                bias = bias + ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (offset / 7.0)) + (double)(long)i;
+            }
+            return bias - (offset / 8.0);
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool VerifyStreamRange(long[] items, long bound)
