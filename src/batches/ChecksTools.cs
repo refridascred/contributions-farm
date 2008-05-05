@@ -68,28 +68,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] values, long seed)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long bound, long origin)
         {
-            long result = 85;
-            foreach (long value in values)
+            if ((bound * 5) > bound)
             {
-                result = (result + (seed + seed)) % 1000;
-                if ((result > (-286)) && ((938 / 3) <= (7 + value)))
+                return 7;
+            }
+            else
+            {
+                if ((bound ^ bound) > (origin + origin))
                 {
-                    result = (result ^ result) % 65521;
-                    result = result - (value << 1);
+                    return 6;
                 }
-                if ((seed <= 27) && ((2 & 127) <= value))
+                else
                 {
-                    result = (result + (result & 1)) % 255;
+                    if ((origin % 97) > 88)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin - bound) > (bound + 6))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (result > 1)
-            {
-                result = (result * 2) + (result & 3);
-            }
-            return result;
         }
     }
 }
