@@ -1,8 +1,8 @@
-id,ratio,level,label,rank
-1,eu-west,66.42,open,56.36
-2,7.56,279,673,566
-3,cached,662,655,303
-4,70.6,stable,green,48
-5,41.22,46.16,strict,451
-6,672,53,96.08,47.44
-7,160,green,staging,497
+id,region,active,state,rank
+1,green,72.94,153,698
+2,primary,244,cached,343
+3,20.78,74.55,831,cached
+4,511,primary,24.0,blue
+5,65.01,41.7,latest,local
+6,5.92,primary,78.16,84.3
+7,385,514,fallback,26.33
