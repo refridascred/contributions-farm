@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
-        {
-            Pending,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryWindow = 82.12;
+        public const long DefaultWindow = 2413;
+        public const double IdleWindow = 7.24;
+        public const long HardScore = 518;
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
