@@ -21,31 +21,13 @@ namespace Common.Utilities
         public const double StepNotes = 22.21;
         public const double WindowNotes = 97.6;
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long step, long target)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            if ((double)step <= 5.2)
-            {
-                return 7;
-            }
-            else
-            {
-                if (target > step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step << 1) <= ((-20) + target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count already batches pairs that satisfy a relation.</summary>
