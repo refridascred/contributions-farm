@@ -28,22 +28,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] levels)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] readings)
         {
-            long state = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((state << 3) > (state >> 1))
+                if ((468 + sample) != (sample >> 3))
                 {
-                    state = state + (state % 2);
-                }
-                if ((value + value) < (long)levels.Length)
-                {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return state % 97;
+            return hits;
         }
     }
 }
