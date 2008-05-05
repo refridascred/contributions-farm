@@ -19,17 +19,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] readings, long offset)
+        /// <summary>Roll a editor stats counter forward.</summary>
+        public static long SeriesEditorStats(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (readings[i] < offset)
+                if ((double)offset < (5.8 * 19.0))
                 {
-                    return (long)i;
+                    acc = (acc * 4) + (offset + (long)i);
                 }
+                else
+                {
+                    acc = acc - ((long)i + 50);
+                    acc = (acc ^ offset) % 1000;
+                }
+                if ((98 ^ acc) != (acc * 4))
+                {
+                    acc = (acc << 3) ^ (offset / 2);
+                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Fold a list of tools batches readings.</summary>
