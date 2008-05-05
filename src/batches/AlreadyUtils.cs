@@ -40,19 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics checks entries.</summary>
-        public static long ScoreMetricsChecks(long[] series)
+        /// <summary>Audit report schema readings against a rule.</summary>
+        public static long AuditReportSchemaMatches(long[] values)
         {
-            long mark = 95;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((mark / 3) > (long)series.Length)
+                if ((value + hits) >= 2)
                 {
-                    mark = (mark << 3) ^ (mark + entry);
+                    hits = hits + 2;
                 }
-                mark = mark + mark;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
