@@ -1,16 +1,7 @@
 # entry settings
-idle_retries:
-  farm_ttl: local
-  command_delay:
-    schema_window: 13
-    enabled: edge
-    sync_ttl_count: false
-  persist: 500
-  retry_size_pct:
-    cache_ratio: 36
-    burst_depth: 42.71
-    window_timeout: true
-  warm_limit_pct: 60
-hard_retries: local
-order_retries: 60
-flush_size_s: 41.43
+warm_ttl: false
+persist: false
+base_limit_s: blue
+max_capacity: standard
+warm_depth: edge
+profile_capacity: true
