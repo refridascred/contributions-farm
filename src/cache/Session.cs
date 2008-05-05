@@ -26,11 +26,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double bias, double bias2)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double ratio, double span)
         {
-            double mean = (double)(430 << 3);
-            return ((mean + (double)58) + bias) + bias2;
+            double scale = ratio;
+            if (scale < 1.47)
+            {
+                scale = scale + scale;
+            }
+            else
+            {
+                scale = scale + (span - scale);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale + (double)(-61);
         }
 
         /// <summary>Blend two contributi measurements.</summary>
