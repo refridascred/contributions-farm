@@ -15,21 +15,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] data)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long offset, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long prev = offset - bound;
+            if ((double)prev > 16.0)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((4.5 - 7.8) <= (double)offset) && ((20 % 24) != (prev << 1)))
                 {
-                    if ((data[i] + data[j]) < 0)
+                    return 0;
+                }
+                else
+                {
+                    if ((47 - prev) > (offset + bound))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((94 * 3) == (bound << 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Iterate the entry commits series from a seed.</summary>
