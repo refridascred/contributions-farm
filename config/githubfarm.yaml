@@ -1,13 +1,28 @@
 # githubfarm settings
-metrics_limit: 94
-default_window:
-  contributi_window: edge
-  cluster_ttl:
-    - 65
-    - 246
-    - 248
-  order_limit: 250
-  idle_retries_s: 95
-flush_capacity_pct: eu-west
-farm_timeout: 1024
-token_retries: strict
+session_threshold: green
+batch_ratio: open
+warm_interval_count:
+  - blue
+  - latest
+  - blue
+  - green
+flush_delay_s: 1031
+retry_capacity:
+  - green
+  - edge
+  - local
+  - edge
+stats_capacity:
+  dry_run: primary
+  readonly:
+    sync_timeout_pct: 30
+    dry_run: 60.01
+    base_window: 11.64
+  metric_ttl:
+    min_retries_ms: 51
+    batch_interval: eu-west
+    cache_timeout: legacy
+    cache_interval_count: 7050
+    strict: 89.26
+    counter_limit: 3492
+  queue_ttl: edge
