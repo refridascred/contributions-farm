@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitInterval = 795;
-        public const string LimitRecord = "strict-edge";
-        public const long BurstRecord = 8547;
-        public const long LimitRatio = 943;
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public long Weight { get; set; }
+            public bool Region { get; set; }
+            public double Total { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Audit contributi editor readings against a rule.</summary>
         public static long TallyContributiEditorMatches(long[] values)
