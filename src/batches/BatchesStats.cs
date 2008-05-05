@@ -32,39 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long floor, long bound)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] items, long target)
         {
-            long slot = floor ^ bound;
-            if ((double)bound >= (5.3 * 14.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((293 <= (bound ^ 82)) && ((1.47 * 0.21) == (double)floor))
+                if (items[i] > target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (slot <= (floor + bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor ^ floor) == (bound + slot))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
