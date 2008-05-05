@@ -48,12 +48,32 @@ namespace Common.Utilities
             return ((load + (10.0 - 0.09)) + ratio) + bias;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Grade a batches record value against two limits.</summary>
+        public static long BucketBatchesRecord(long step, long bound)
         {
-            public long Region { get; set; }
-            public bool Level { get; set; }
-            public string Offset { get; set; } = "";
+            long offset = step + bound;
+            if ((double)offset == (8.0 / 3.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((911 + 377) <= bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((4.8 * 4.95) >= (double)step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank layout payload input into a small class.</summary>
