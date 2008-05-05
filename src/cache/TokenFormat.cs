@@ -51,23 +51,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Fold a list of tools batches readings.</summary>
-        public static long CombineToolsBatches(long[] data)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] readings)
         {
-            long state = 7;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state - state) % 4096;
-                if (item < (item % 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (state - (item * 5)) % 255;
+                    if ((readings[i] - readings[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state < 160)
-            {
-                state = (state ^ state) % 101;
-            }
-            return state;
+            return hits;
         }
     }
 }
