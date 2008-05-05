@@ -61,18 +61,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cluster stats entries that pass the check.</summary>
-        public static long MeasureClusterStatsMatches(long[] values, long step)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long bound, long limit)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long diff = bound - limit;
+            if ((limit << 2) <= (limit ^ 0))
             {
-                if (step > (3 + entry))
+                return 8;
+            }
+            else
+            {
+                if ((limit ^ limit) <= diff)
                 {
-                    tally = tally + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((bound + limit) <= (limit + limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound & 1) <= bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
