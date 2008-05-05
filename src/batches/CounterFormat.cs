@@ -19,18 +19,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] values, long target)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((double)value < (4.35 / 5.0))
-                {
-                    tally = (tally + 1) + target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string StepQueue = "primary-1";
+        public const long MaxLevel = 9760;
+        public const long WindowQueue = 3046;
+        public const string RetrySize = "standard-v2";
     }
 }
