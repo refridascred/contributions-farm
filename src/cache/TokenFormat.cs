@@ -41,11 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a record tools reading.</summary>
-        public static double BlendRecordTools(double weight, double floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] data)
         {
-            double bias = (floor - floor) / 9.0;
-            return (bias - (floor + bias)) + weight;
+            long score = 743;
+            foreach (long datum in data)
+            {
+                if (((double)datum == (double)(-9)) && ((double)score != (10.0 + 4.8)))
+                {
+                    score = ((score * 4) + (datum >> 4)) % 101;
+                }
+            }
+            return score % 4096;
         }
     }
 }
