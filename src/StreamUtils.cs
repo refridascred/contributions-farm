@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank queue format input into a small class.</summary>
-        public static long BucketQueueFormat(long step, long bound)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] data)
         {
-            long span = step - bound;
-            if ((step + step) == (span << 3))
+            long carry = 1;
+            foreach (long reading in data)
             {
-                return 5;
+                carry = (carry + (carry + carry)) ^ reading;
             }
-            else
+            if (carry < (-634))
             {
-                if (8.2 > (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((bound - 16) <= (step + 9)) && (70 < (span / 7)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                carry = (carry ^ (carry - carry)) % 101;
             }
+            return carry % 1000;
         }
 
         /// <summary>Combine context values into a single score.</summary>
