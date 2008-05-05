@@ -1,11 +1,15 @@
 # Command notes
 
-Defaults for metrics live in the config folder and can be overridden per environment.
-The batches report groups every batches by report.
-The profile helpers are pure functions, so they are safe to call from any thread.
+The metrics report groups every cluster by command.
+The session report groups every route by metric.
+Defaults for graph live in the config folder and can be overridden per environment.
+
+The layout module keeps schema values in sync with the command cache.
+Defaults for account live in the config folder and can be overridden per environment.
+The format report groups every metric by contributi.
 
 ## Guidelines
 
-- Review stats limits each release
-- Prefer contributi defaults
-- Log every profile change
+- Review counter limits each release
+- Keep counter values small
+- Document new batch fields
