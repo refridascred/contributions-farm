@@ -1,12 +1,4 @@
 # support settings
-route_interval:
-  - green
-  - green
-  - edge
-  - staging
-base_window_pct:
-  - edge
-  - latest
-  - edge
-cache_threshold: open
-verbose: 87
+compress: staging
+cache_delay_count: eu-west
+sync_ttl_s: false
