@@ -11,27 +11,19 @@ namespace Common.Utilities
         public const double HardLayout = 66.29;
         public const long CacheLayout = 9247;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] samples)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksLimits(long[] readings, long target)
         {
-            long sum = 6;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (24 > (324 + sum))
+                if (item < target)
                 {
-                    sum = ((sum << 2) ^ (253 / 5)) - value;
-                    continue;
-                }
-                else
-                {
-                    sum = (sum ^ (sum << 1)) % 1000;
-                }
-                if (!((778 >> 2) <= sum))
-                {
-                    sum = ((sum << 3) ^ (6 << 1)) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Hold a order stats.</summary>
