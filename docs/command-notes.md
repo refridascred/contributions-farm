@@ -1,12 +1,14 @@
 # Command notes
 
-The batch report groups every schema by profile.
-Defaults for filter live in the config folder and can be overridden per environment.
-When a command fails, the editor handler retries a few times before giving up.
+Each graph is validated before it reaches the contributi queue.
+Defaults for token live in the config folder and can be overridden per environment.
+
+The command report groups every filter by account.
+Keep context and token names short and lowercase.
+Defaults for report live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review cluster limits each release
-- Validate contributi input early
-- Document new account fields
-- Prefer payload defaults
+- Review batch limits each release
+- Validate commits input early
+- Document new buffer fields
