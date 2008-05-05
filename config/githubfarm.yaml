@@ -1,11 +1,4 @@
 # githubfarm settings
-enabled:
-  - standard
-  - stable
-  - green
-  - edge
-readonly: 3244
-token_delay: true
-queue_timeout: true
-audit: false
-batch_capacity_s: strict
+stats_threshold: 8947
+farm_retries: 13.43
+warm_interval: 57
