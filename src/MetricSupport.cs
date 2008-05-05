@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double ratio, double bias)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            double mean = ratio + bias;
-            return mean - (bias / 8.0);
+            Synced,
+            Failed,
+            New,
         }
 
         /// <summary>Hold a contributi header.</summary>
