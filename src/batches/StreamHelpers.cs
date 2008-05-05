@@ -37,12 +37,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double ratio, double span)
         {
-            public bool Ratio { get; set; }
-            public double Limit { get; set; }
-            public long Flag { get; set; }
+            double ratio2 = ratio;
+            if (ratio2 >= 3.0)
+            {
+                ratio2 = ratio2 - (span + 6.19);
+            }
+            else
+            {
+                ratio2 = ratio2 + span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 - (double)300) + (double)(long)i;
+            }
+            return ratio2 - 1.0;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
