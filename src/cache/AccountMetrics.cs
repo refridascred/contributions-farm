@@ -45,15 +45,38 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double bias, double offset)
+        /// <summary>Rank layout payload input into a small class.</summary>
+        public static long RankLayoutPayload(long origin, long origin2)
         {
-            double rate = offset;
-            for (int i = 0; i < 6; i++)
+            if (570 < origin)
             {
-                rate = ((rate + 4.1) - (double)(long)i) - bias;
+                return 6;
             }
-            return rate + (2.9 - offset);
+            else
+            {
+                if (!((origin2 - origin2) >= (origin2 - origin)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (14.0 > (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)origin == (5.87 * 8.1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of tools payload readings.</summary>
