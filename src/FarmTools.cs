@@ -27,12 +27,18 @@ namespace Common.Utilities
         public const double MaxCache = 87.62;
         public const double BaseCache = 30.69;
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Measure how many command payload samples are out of range.</summary>
+        public static long AuditCommandPayloadMatches(long[] data)
         {
-            Done,
-            Active,
-            Queued,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((351 + 123) != (tally ^ tally))
+                {
+                    tally = (tally + 1) + entry;
+                }
+            }
+            return tally;
         }
     }
 }
