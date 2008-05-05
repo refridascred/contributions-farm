@@ -45,18 +45,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] samples)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long origin, long offset)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            if ((91 + 6) < (offset + 137))
             {
-                if ((993 + 3) == ((long)samples.Length - reading))
+                return 7;
+            }
+            else
+            {
+                if ((5.7 * 9.48) != (double)offset)
                 {
-                    matches = matches + 1;
+                    return 2;
+                }
+                else
+                {
+                    if (((offset + 5) <= offset) && ((offset / 9) > origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)origin < (8.2 * 7.15))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
