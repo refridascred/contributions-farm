@@ -1,40 +1,26 @@
 # entry settings
-batch_ttl_pct: 45.02
-enabled:
-  schema_interval: 11
-  notes_threshold:
-    soft_capacity_ms: true
-    base_depth_ms: false
-    schema_timeout:
-      - standard
-      - latest
+sync_delay:
+  - 329
+  - 461
+sync_window:
+  - 61
+  - 24
+  - 444
+persist: true
+buffer_ratio:
+  sync_threshold_s: 20
+  persist:
+    editor_retries: false
+    batch_depth: 22
+    strict:
+      - edge
       - primary
-      - stable
-    soft_depth: 30
-    warm_ratio_s:
-      - 374
-      - 205
-      - 455
-      - 465
-  batch_threshold_ms: 31.65
-  hard_retries:
-    cache_threshold_ms: 92
-    cache_interval_s: 41.79
-    compress:
-      - 68
-      - 222
-    default_limit_pct: 60
-    flush_threshold_count:
-      - 118
-      - 183
-      - 181
-  soft_depth_ms:
+    min_size_ms: 74
+  sync_window_s: cached
+  soft_retries_s:
     - eu-west
-    - legacy
-    - edge
-    - latest
-  audit: true
-burst_depth:
-  - staging
-  - standard
-strict: cached
+    - eu-west
+    - fallback
+  audit: 7779
+  min_ratio: green
+order_threshold: green
