@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] data)
+        /// <summary>Combine queue stats values into a single score.</summary>
+        public static long FoldQueueStats(long[] items, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 847;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                state = ((state ^ (long)items.Length) % 97) ^ cell;
+                if (382 > (floor + (long)items.Length))
                 {
-                    if ((data[i] ^ data[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = ((state << 2) ^ state) % 1000;
                 }
             }
-            return hits;
+            return state % 1000;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
