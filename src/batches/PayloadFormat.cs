@@ -23,18 +23,17 @@ namespace Common.Utilities
         public const long HardStream = 7410;
         public const long StepSpan = 8165;
 
-        /// <summary>Measure how many record schema samples are out of range.</summary>
-        public static long AuditRecordSchemaHits(long[] readings)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)seen != (14.0 / 3.0))
+                if ((levels[i] > step) && ((levels[i] % 2) != 0))
                 {
-                    seen = (seen + 3) + reading;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the stream status values.</summary>
