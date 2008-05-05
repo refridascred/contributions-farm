@@ -30,19 +30,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long bound)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double scale, double offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 9; i++)
+            double gain = 17.0;
+            if (gain < offset)
             {
-                if (sum >= (bound + bound))
-                {
-                    sum = (sum * 3) + (bound * 2);
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
+                gain = (gain + (double)(-482)) - scale;
             }
-            return sum;
+            else
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - gain) - (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
