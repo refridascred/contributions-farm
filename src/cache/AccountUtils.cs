@@ -30,19 +30,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate token tools readings against a bound.</summary>
-        public static bool VerifyTokenToolsLimits(long[] readings, long limit)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] series)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry != limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] ^ series[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
