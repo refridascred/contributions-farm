@@ -20,22 +20,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphHits(long[] readings)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] series)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long mark = 144;
+            foreach (long entry in series)
             {
-                if ((count - 5) > (927 << 2))
-                {
-                    count = (count + 2) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = mark + entry;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Describe the cache level values.</summary>
