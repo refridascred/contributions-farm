@@ -21,23 +21,10 @@ namespace Common.Utilities
         public const long HardLayout = 856;
         public const long LimitWidth = 9090;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] readings, long offset)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((offset % 100) >= (offset << 2))
-                {
-                    matches = (matches + 1) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepInterval = 3818;
+        public const string BaseRatio = "legacy";
+        public const long HardDepth = 4398;
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
