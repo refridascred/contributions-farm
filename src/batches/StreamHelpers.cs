@@ -22,32 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long offset, long offset2)
+        /// <summary>Validate session metrics readings against a bound.</summary>
+        public static bool CheckSessionMetricsLimits(long[] values, long target)
         {
-            long prev = offset - offset2;
-            if (((prev >> 4) > (offset ^ prev)) && ((139 + prev) > (offset & 31)))
+            bool ready = true;
+            foreach (long sample in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((prev & 1) != (prev + offset))
+                if (sample < target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((prev % 97) < (offset & 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a schema header.</summary>
