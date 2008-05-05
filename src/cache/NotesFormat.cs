@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double bias, double span)
-        {
-            double rate = bias;
-            return rate + span;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 2647;
+        public const long BurstFactor = 2726;
+        public const long BurstChannel = 6917;
+        public const double BaseChannel = 54.04;
+        public const long CacheChannel = 3083;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long TallyAccountOutliers(long[] data)
