@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Filter stats helpers.</summary>
     public static class FilterStats
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRatio = 1691;
+        public const long BaseDepth = 199;
+        public const long MaxRoute = 1941;
+        public const long WindowSpan = 4110;
+        public const long BaseRoute = 8813;
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long MatchGithubfarmCount(long[] items)
