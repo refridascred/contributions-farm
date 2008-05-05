@@ -27,26 +27,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] items, long seed)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long floor)
         {
-            long acc = 4;
-            foreach (long reading in items)
+            long state = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((acc - reading) <= reading)
+                if (state < (floor ^ floor))
                 {
-                    acc = ((acc ^ (46 & 31)) % 101) - seed;
+                    state = ((state << 2) ^ ((-43) / 9)) % 1000;
                 }
-                else
-                {
-                    acc = (acc + (865 - reading)) % 101;
-                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            if (acc < 27)
-            {
-                acc = ((acc * 4) + acc) % 255;
-            }
-            return acc;
+            return state;
         }
     }
 }
