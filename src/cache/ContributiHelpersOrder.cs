@@ -29,22 +29,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] samples, long seed)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long acc = 355;
+            foreach (long cell in values)
             {
-                if (((-275) + 44) > (tally + cell))
+                if ((((long)values.Length + cell) > acc) && (cell < acc))
                 {
-                    tally = (tally + 1) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    acc = ((acc * 3) + (cell * 3)) % 4096;
                 }
             }
-            return tally;
+            return acc;
         }
     }
 }
