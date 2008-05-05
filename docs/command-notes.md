@@ -1,11 +1,12 @@
 # Command notes
 
-Keep cluster and token names short and lowercase.
-A tools that stays idle for too long is moved to the context list.
+The cache helpers are pure functions, so they are safe to call from any thread.
+Use stream settings to tune how often context data is refreshed.
+When a token fails, the support handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new commits fields
-- Log every profile change
-- Keep metrics values small
-- Validate command input early
+- Prefer filter defaults
+- Review counter limits each release
+- Log every tools change
+- Validate already input early
