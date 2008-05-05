@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double ratio, double floor)
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] readings)
         {
-            double ratio2 = 8.0;
-            if (ratio2 <= ratio2)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio2 = (ratio2 + (ratio2 - floor)) + ratio;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio2 = (ratio2 + ratio2) + (double)(long)i;
-            }
-            return ratio2 - (floor + 20.0);
+            return hits;
         }
 
         /// <summary>Count the support entry entries that pass the check.</summary>
