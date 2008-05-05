@@ -25,21 +25,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] data)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Locked,
+            Failed,
+            Retry,
+            Idle,
+            Stale,
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
