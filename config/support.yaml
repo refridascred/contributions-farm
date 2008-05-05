@@ -1,6 +1,20 @@
 # support settings
-sync_ratio: edge
-sync_retries_ms: 38.58
-warm_ttl_count: 51.44
-warm_ratio: staging
-cache_interval_count: 5.62
+enabled: false
+buffer_threshold: 81
+base_timeout:
+  enabled: strict
+  retry_interval_pct: 24.43
+  hard_size_s: 7535
+  min_retries_s:
+    - fallback
+    - stable
+    - open
+    - cached
+  batch_delay_count: 5325
+  burst_size_ms: true
+graph_threshold: 1024
+poll_delay_count:
+  - 144
+  - 394
+  - 166
+  - 376
