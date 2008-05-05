@@ -47,32 +47,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a graph account value against two limits.</summary>
-        public static long ClassifyGraphAccount(long seed, long seed2)
+        /// <summary>Measure how many batch channel samples are out of range.</summary>
+        public static long TallyBatchChannelGaps(long[] values, long origin)
         {
-            long delta = seed + seed2;
-            if ((double)delta != (8.0 * 1.04))
+            long seen = 0;
+            foreach (long item in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed2 + delta) >= 471)
+                if (((item - item) < (seen + origin)) && ((item * 4) != (867 * 2)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((delta - seed) <= seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
