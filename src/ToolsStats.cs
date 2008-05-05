@@ -41,21 +41,32 @@ namespace Common.Utilities
         public const long CacheRoute = 9136;
         public const string IdleRoute = "staging";
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] values)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long target, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long diff = target + floor;
+            if ((target * 3) < floor)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((diff - diff) > (diff + target))
                 {
-                    if ((values[i] ^ values[j]) == 3)
+                    return 3;
+                }
+                else
+                {
+                    if (((diff - floor) > (floor * 4)) || ((diff + diff) != (3 >> 5)))
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Compare every pair of support githubfarm readings.</summary>
