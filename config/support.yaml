@@ -1,4 +1,5 @@
 # support settings
-soft_depth_pct: 7581
-min_size: legacy
-tools_delay: 71
+enabled: eu-west
+report_delay: 61.64
+already_delay: open
+command_delay: standard
