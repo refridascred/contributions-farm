@@ -27,19 +27,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Check that every metric session entry stays within the limit.</summary>
-        public static bool GuardMetricSessionBounds(long[] levels, long offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsRange(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long item in items)
             {
-                if (item <= offset)
+                if (item <= target)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
     }
 }
