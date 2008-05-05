@@ -23,12 +23,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long seed)
         {
-            public double Offset { get; set; }
-            public double Level { get; set; }
-            public bool Total { get; set; }
+            long score = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Describe the checks state values.</summary>
