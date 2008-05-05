@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the profile stream entries that pass the check.</summary>
-        public static long AuditProfileStreamOutliers(long[] values, long step)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((cell << 1) != (519 - cell))
-                {
-                    count = (count + 2) - step;
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
