@@ -49,22 +49,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] items)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long limit, long bound)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long span = limit ^ bound;
+            if (span >= 2)
             {
-                if ((double)item > (2.0 * 4.1))
+                return 7;
+            }
+            else
+            {
+                if ((limit & 63) > span)
                 {
-                    matches = matches + 2;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 1;
                 }
             }
-            return matches;
         }
     }
 }
