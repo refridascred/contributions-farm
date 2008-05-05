@@ -14,26 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] levels)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long mark = 7;
-            foreach (long value in levels)
-            {
-                if ((9.99 * 4.74) <= (double)mark)
-                {
-                    mark = (mark ^ (mark / 2)) % 255;
-                }
-                if (mark > (value / 5))
-                {
-                    break;
-                }
-            }
-            if (mark > 62)
-            {
-                mark = ((mark << 2) ^ (mark >> 3)) % 65521;
-            }
-            return mark % 1000;
+            Active,
+            Queued,
+            New,
+            Closed,
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
