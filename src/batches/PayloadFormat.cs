@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long offset)
         {
-            public bool Mode { get; set; }
-            public long Size { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((long)i / 2) >= (offset - carry))
+                {
+                    carry = carry - (offset >> 3);
+                    carry = (carry - (offset & 31)) % 65521;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a context entry.</summary>
