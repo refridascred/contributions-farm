@@ -37,18 +37,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountGaps(long[] readings)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if (sample >= 7)
+                if (sample >= offset)
                 {
-                    seen = seen + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Define order limits and defaults.</summary>
