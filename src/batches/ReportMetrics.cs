@@ -23,23 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stream command values into a single score.</summary>
-        public static long TallyStreamCommand(long[] values, long bound)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] values, long step)
         {
-            long total = 64;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long value in values)
             {
-                total = total - (reading * 2);
-                if (!((2.7 / 6.0) <= (double)bound))
+                if (value < step)
                 {
-                    total = ((total << 2) ^ (bound % 60)) % 65521;
-                }
-                else
-                {
-                    total = total ^ (903 % 10);
+                    ready = false;
+                    break;
                 }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Hold a report snapshot.</summary>
