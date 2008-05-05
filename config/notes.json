@@ -1,6 +1,5 @@
 {
-  "retry_retries_ms": [434, 476, 330, 485],
-  "persist": 54.91,
-  "dry_run": "edge",
-  "retry_size_count": true
+  "queue_timeout": 92,
+  "base_delay_s": "blue",
+  "warm_ratio": "primary"
 }
