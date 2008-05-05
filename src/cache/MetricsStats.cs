@@ -103,15 +103,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a filter batches figure with a bias.</summary>
-        public static double ScaleFilterBatches(double bias, double span)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheGaps(long[] readings)
         {
-            double scale = (double)(3 & 3);
-            if (scale > scale)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                scale = (scale + (double)72) + span;
+                if (((-67) ^ cell) != (seen ^ seen))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return scale + bias;
+            return seen;
         }
     }
 }
