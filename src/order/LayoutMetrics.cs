@@ -28,32 +28,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long bound, long limit)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] samples, long offset)
         {
-            long diff = bound - limit;
-            if (diff <= (limit + bound))
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)diff == (double)limit)
+                if (reading < offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((18.0 * 5.26) > (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
