@@ -1,4 +1,5 @@
 # support settings
-persist: primary
-verbose: stable
-base_window_s: false
+strict: 18
+max_ttl_count: 29.49
+entry_capacity: 67.81
+readonly: 98
