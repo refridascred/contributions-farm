@@ -22,17 +22,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first channel batch entry that matches the target.</summary>
-        public static long LookupChannelBatchIndex(long[] series, long offset)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long step, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (seed <= (-138))
             {
-                if (series[i] <= offset)
+                return 0;
+            }
+            else
+            {
+                if (!((step >> 2) == (step >> 1)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)(-845) != (double)seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)seed <= (double)step)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
