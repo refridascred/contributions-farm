@@ -28,11 +28,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Classify a editor metrics pair into a bucket.</summary>
+        public static long ClassifyEditorMetrics(long offset, long seed)
         {
-            public double Limit { get; set; }
-            public string Token { get; set; } = "";
+            if (offset >= 2)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((10.0 - 7.7) == (double)seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)seed < (4.86 * 8.2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (seed > (seed >> 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a token info.</summary>
