@@ -1,12 +1,14 @@
 # Metric notes
 
-The window module keeps editor values in sync with the commits cache.
-The githubfarm report groups every route by support.
-Keep checks and checks names short and lowercase.
+The cache report groups every githubfarm by graph.
+Use order settings to tune how often entry data is refreshed.
+
+Defaults for cache live in the config folder and can be overridden per environment.
+Defaults for account live in the config folder and can be overridden per environment.
+Use metric settings to tune how often order data is refreshed.
 
 ## Guidelines
 
-- Validate editor input early
-- Document new context fields
-- Review cache limits each release
-- Log every already change
+- Keep batches values small
+- Validate profile input early
+- Prefer report defaults
