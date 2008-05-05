@@ -24,12 +24,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string CacheSpan = "strict";
-        public const long IdleBatches = 2175;
-        public const double StepBatches = 65.51;
-        public const long SoftBatches = 4563;
-        public const long HardBudget = 7678;
+        /// <summary>Find the first token profile entry that matches the target.</summary>
+        public static long LookupTokenProfileIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a already counter forward.</summary>
         public static long RollAlready(long bound)
