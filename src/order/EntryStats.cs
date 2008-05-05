@@ -72,13 +72,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public bool Count { get; set; }
-            public double Level { get; set; }
-            public double Offset { get; set; }
-            public string Mode { get; set; } = "";
+            Draft,
+            Failed,
+            Synced,
+            Active,
+            Dropped,
         }
     }
 }
