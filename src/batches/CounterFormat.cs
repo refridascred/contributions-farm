@@ -22,11 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double ratio, double bias)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double scale, double bias)
         {
-            double load = bias + ratio;
-            return load + (ratio * 6.4);
+            double rate = (9.0 - bias) - (double)43;
+            return (rate + bias) + scale;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
