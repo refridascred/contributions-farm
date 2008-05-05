@@ -53,21 +53,15 @@ namespace Common.Utilities
         public const double MaxNotes = 22.2;
         public const double RetryNotes = 87.0;
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] readings)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
     }
 }
