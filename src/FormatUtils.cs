@@ -44,38 +44,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long target, long bound)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long offset)
         {
-            if ((bound > (target - target)) && (bound > (target + bound)))
+            long state = offset;
+            for (int i = 0; i < 15; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (bound <= (target * 3))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return 5;
+                    state = (((state * 2) + (offset & 7)) % 101) ^ (long)i2;
                 }
-                else
-                {
-                    if ((target * 4) <= bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((bound - bound) < (27 + bound)) && ((bound & 1) >= target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
+            return state;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
