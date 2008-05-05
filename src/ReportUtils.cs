@@ -25,12 +25,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Fold a list of farm order readings.</summary>
+        public static long FoldFarmOrder(long[] values)
         {
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public double Score { get; set; }
+            long mix = 34;
+            foreach (long sample in values)
+            {
+                mix = ((mix - mix) % 255) - sample;
+            }
+            return mix;
         }
 
         /// <summary>Describe the cache level values.</summary>
