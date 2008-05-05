@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a batch record value against two limits.</summary>
-        public static long BucketBatchRecord(long floor, long floor2)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long gap = floor + floor2;
-            if ((gap - 48) > (floor2 - floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((floor / 3) < 232) || (floor > (gap - 63)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor ^ floor) > floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor >> 3) < 6)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public double Label { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a channel snapshot.</summary>
