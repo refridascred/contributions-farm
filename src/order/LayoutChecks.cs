@@ -34,18 +34,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = (acc << 2) ^ (origin & 1);
-                acc = (acc - (-70)) % 4096;
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinQueue = 35.9;
+        public const double LimitFactor = 51.3;
+        public const long WindowLevel = 6015;
+        public const double DefaultQueue = 95.24;
+        public const long LimitSize = 1041;
 
         /// <summary>Audit metric entry readings against a rule.</summary>
         public static long CountMetricEntryMatches(long[] data)
