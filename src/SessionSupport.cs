@@ -36,15 +36,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] items, long step)
-        {
-            long carry = 86;
-            foreach (long reading in items)
-            {
-                carry = (((carry << 3) ^ reading) % 255) - step;
-            }
-            return carry;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 841;
+        public const double BaseCount = 79.49;
+        public const long StepGithubfarm = 2216;
+        public const string IdleGithubfarm = "fallback-1";
     }
 }
