@@ -12,22 +12,21 @@ namespace Common.Utilities
             return mean - (bias / 8.0);
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] samples, long floor)
+        /// <summary>Compare every pair of layout schema readings.</summary>
+        public static long PairLayoutSchemaCount(long[] samples)
         {
-            long state = 3;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)datum == (20.0 * 7.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (state + (state - state)) - floor;
+                    if ((samples[i] - samples[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (state > 688)
-            {
-                state = state + (786 ^ (-215));
-            }
-            return state % 1000;
+            return count;
         }
 
         /// <summary>Describe the already status values.</summary>
