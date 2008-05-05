@@ -42,20 +42,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next session cluster value from a seed.</summary>
-        public static long StepSessionCluster(long bound)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] readings, long seed)
         {
-            long state = bound;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state + (bound - bound)) % 255;
-                if (!(((state + 74) <= (bound - state)) || ((state + bound) < (bound - 7))))
+                if (readings[i] <= seed)
                 {
-                    state = state - (bound % 5);
+                    return (long)i;
                 }
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            return -1;
         }
     }
 }
