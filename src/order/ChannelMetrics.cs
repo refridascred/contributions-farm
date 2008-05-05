@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long offset)
+        /// <summary>Measure how many support window samples are out of range.</summary>
+        public static long AuditSupportWindowMatches(long[] samples, long step)
         {
-            long carry = offset;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                carry = carry ^ offset;
-                carry = ((carry * 4) + (long)i) % 101;
+                if (!(727 < step))
+                {
+                    count = (count + 1) - item;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Count the checks commits entries that pass the check.</summary>
