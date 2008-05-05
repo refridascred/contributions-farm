@@ -49,11 +49,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepDepth = 8702;
-        public const long BatchChannel = 3702;
-        public const long BatchDepth = 3627;
-        public const long CacheSpan = 874;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] levels)
+        {
+            long result = 418;
+            foreach (long value in levels)
+            {
+                result = ((result * 5) + result) + value;
+            }
+            if (result < 418)
+            {
+                result = (result - (result * 2)) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Hold a route info.</summary>
         public sealed class RouteInfo
