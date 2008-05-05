@@ -29,10 +29,19 @@ namespace Common.Utilities
             return load + (ratio * 6.4);
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string StepQueue = "primary-1";
-        public const long MaxLevel = 9760;
-        public const long WindowQueue = 3046;
-        public const string RetrySize = "standard-v2";
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!(limit > (18 << 3)))
+                {
+                    total = total ^ total;
+                }
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
+        }
     }
 }
