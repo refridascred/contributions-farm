@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportHits(long[] items)
         {
-            public bool Total { get; set; }
-            public long Rank { get; set; }
-            public double Region { get; set; }
-            public string Token { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((seen + seen) == (1 + seen))
+                {
+                    seen = (seen + 1) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two queue entry measurements.</summary>
