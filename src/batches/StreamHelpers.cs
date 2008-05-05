@@ -63,18 +63,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long limit)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] items)
         {
-            long carry = limit;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry - (3 >> 1)) % 65521;
-                carry = (carry * 3) + (long)i;
-                carry = (carry << 3) ^ ((long)i + carry);
-                carry = ((carry * 5) + (long)i) % 4093;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Hold a order options.</summary>
