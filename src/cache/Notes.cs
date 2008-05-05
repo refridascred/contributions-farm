@@ -16,20 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a cluster githubfarm figure with a bias.</summary>
-        public static double AdjustClusterGithubfarm(double bias, double span)
-        {
-            double weight = span;
-            if (weight <= (span - span))
-            {
-                weight = weight - (double)297;
-            }
-            else
-            {
-                weight = weight - bias;
-            }
-            return weight - 6.22;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 8175;
+        public const long BurstNotes = 5111;
+        public const long MaxInterval = 2202;
+        public const string BurstDepth = "fallback-v2";
 
         /// <summary>Check that every context metric entry stays within the limit.</summary>
         public static bool GuardContextMetricLimits(long[] values, long offset)
