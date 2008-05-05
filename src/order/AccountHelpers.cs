@@ -33,21 +33,22 @@ namespace Common.Utilities
         public const string BaseStats = "stable-1";
         public const long MinSize = 7601;
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long PairFormatCount(long[] data)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] series, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 1;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (carry > (floor << 1))
                 {
-                    if ((data[i] ^ data[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (((carry << 3) ^ (carry + floor)) % 1000) - datum;
                 }
             }
-            return matches;
+            if (carry > 99)
+            {
+                carry = (carry ^ (carry / 3)) % 255;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
