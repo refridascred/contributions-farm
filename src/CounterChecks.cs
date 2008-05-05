@@ -25,13 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] levels)
         {
-            public double Score { get; set; }
-            public double Limit { get; set; }
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
+            long anchor = 8;
+            foreach (long datum in levels)
+            {
+                if ((datum < (74 % 97)) || ((datum & 1) >= (anchor * 2)))
+                {
+                    anchor = (anchor << 2) ^ (datum & 127);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
