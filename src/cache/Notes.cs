@@ -38,14 +38,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] items)
         {
-            Retry,
-            Done,
-            Locked,
-            Active,
-            Queued,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (((hits / 2) == (sample & 15)) && ((7 >> 5) < (hits - hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
