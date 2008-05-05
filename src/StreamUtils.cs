@@ -20,13 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] readings)
         {
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
-            public long Count { get; set; }
+            long mix = 14;
+            foreach (long value in readings)
+            {
+                if (((value - value) < 789) && ((633 + (-2)) <= mix))
+                {
+                    mix = mix + (mix >> 1);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (mix ^ value)) % 1000;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
