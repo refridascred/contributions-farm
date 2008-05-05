@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BatchDepth = 43.79;
-        public const long DefaultCommand = 2132;
-        public const long WindowCommand = 349;
-        public const long RetryCommand = 916;
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] samples)
+        {
+            long mark = 669;
+            foreach (long item in samples)
+            {
+                if ((mark * 3) == (mark * 5))
+                {
+                    mark = ((mark - (mark - mark)) % 255) ^ item;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
