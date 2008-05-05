@@ -49,18 +49,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] values, long bound)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (bound < hits)
+                if (values[i] <= bound)
                 {
-                    hits = (hits + 1) + reading;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
