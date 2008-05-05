@@ -14,21 +14,21 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Match up cluster stats samples.</summary>
-        public static long OverlapClusterStatsCount(long[] data)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) > 1)
+                    if ((values[i] ^ values[j]) == 1)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a metric header.</summary>
