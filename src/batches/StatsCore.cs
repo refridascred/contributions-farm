@@ -67,20 +67,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 14; i++)
-            {
-                if (((double)(long)i <= (6.9 - 3.0)) || ((state >> 4) != (696 + 5)))
-                {
-                    state = (state << 3) ^ (66 & 1);
-                    break;
-                }
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 6456;
+        public const string BaseInterval = "local-edge";
+        public const long HardBudget = 7373;
     }
 }
