@@ -35,22 +35,18 @@ namespace Common.Utilities
         public const string StepWidth = "strict";
         public const string BatchReport = "strict-v2";
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] data, long limit)
+        /// <summary>Audit cache queue readings against a rule.</summary>
+        public static long TallyCacheQueueGaps(long[] items)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((count * 3) > (count - 3))
+                if ((double)value <= (17.0 * 3.9))
                 {
-                    count = ((count + 1) - cell) - limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Digest a series of window entries.</summary>
