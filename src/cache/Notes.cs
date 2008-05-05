@@ -29,12 +29,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Find the first report format entry that matches the target.</summary>
+        public static long LookupReportFormatIndex(long[] readings, long floor)
         {
-            public double Region { get; set; }
-            public double Rank { get; set; }
-            public bool Count { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= floor) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
