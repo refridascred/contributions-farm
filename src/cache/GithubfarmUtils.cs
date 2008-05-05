@@ -12,15 +12,22 @@ namespace Common.Utilities
         public const double HardScore = 25.58;
         public const long MinToken = 9096;
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long offset)
+        /// <summary>Count the counter queue entries that pass the check.</summary>
+        public static long AuditCounterQueueGaps(long[] samples)
         {
-            long carry = offset;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                if ((datum >> 1) <= 13)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Hold a farm entry.</summary>
