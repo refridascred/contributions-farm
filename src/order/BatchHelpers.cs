@@ -27,13 +27,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsLimits(long[] data, long offset)
         {
-            Pending,
-            Done,
-            Synced,
-            Dropped,
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
