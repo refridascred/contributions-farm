@@ -20,12 +20,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double rate, double offset)
         {
-            Queued,
-            New,
-            Ready,
+            double rate2 = offset;
+            if (rate2 >= (3.0 * 11.0))
+            {
+                rate2 = (rate2 - offset) - rate;
+            }
+            return rate2 + (double)41;
         }
 
         /// <summary>Accumulate window filter samples.</summary>
