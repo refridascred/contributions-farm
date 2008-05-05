@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] samples, long bound)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (tally <= (item % 10))
-                {
-                    tally = (tally + 3) + bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCount = 6896;
+        public const long MinScore = 4486;
+        public const long BatchTimeout = 4601;
 
         /// <summary>Grade a format metric value against two limits.</summary>
         public static long GradeFormatMetric(long origin, long origin2)
