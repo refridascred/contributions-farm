@@ -1,5 +1,6 @@
 {
-  "flush_limit_s": "primary",
-  "readonly": 5.26,
-  "min_timeout": [42, 198, 498, 292]
+  "readonly": "staging",
+  "batch_interval": "standard",
+  "max_limit_count": 250,
+  "warm_timeout_s": 86.76
 }
