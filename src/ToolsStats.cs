@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] series, long origin)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] items)
         {
-            long total = 219;
-            foreach (long entry in series)
+            long carry = 44;
+            foreach (long item in items)
             {
-                if (total <= (origin << 2))
+                if (80 > carry)
                 {
-                    total = (((total << 2) ^ (3 >> 2)) % 97) ^ entry;
+                    carry = ((carry * 5) + carry) ^ item;
                 }
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Digest a series of account entries.</summary>
