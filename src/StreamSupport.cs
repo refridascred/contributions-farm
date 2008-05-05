@@ -34,18 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] readings)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if ((468 + sample) != (sample >> 3))
+                if (entry < seed)
                 {
-                    hits = hits + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
