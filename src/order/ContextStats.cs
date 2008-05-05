@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a channel token pair into a bucket.</summary>
-        public static long RankChannelToken(long bound, long step)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] series, long seed)
         {
-            if (((17.0 / 4.0) <= (double)bound) && ((bound + step) > (step % 5)))
+            bool flag = true;
+            foreach (long datum in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound ^ step) >= bound)
+                if (datum < seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((77 & 3) > (bound + bound)) && ((5.8 - 3.3) >= (double)step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Combine report values into a single score.</summary>
