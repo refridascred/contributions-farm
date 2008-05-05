@@ -44,19 +44,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long offset)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] values, long bound)
         {
-            long state = offset;
-            for (int i = 0; i < 15; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (value <= bound)
                 {
-                    state = (((state * 2) + (offset & 7)) % 101) ^ (long)i2;
+                    valid = false;
+                    break;
                 }
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
