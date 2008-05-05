@@ -1,4 +1,10 @@
 # support settings
-compress: staging
-cache_delay_count: eu-west
-sync_ttl_s: false
+warm_depth: false
+persist: false
+retry_capacity_count: 60
+strict:
+  poll_threshold_pct: legacy
+  sync_interval_ms: 88.49
+  retry_limit_count: green
+  compress: 79
+compress: 9354
