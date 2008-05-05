@@ -47,15 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi stats readings.</summary>
-        public static long CombineContributiStats(long[] values)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long result = 9;
-            foreach (long sample in values)
-            {
-                result = (result ^ (sample - (-42))) % 4096;
-            }
-            return result % 1000;
+            public string Offset { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
