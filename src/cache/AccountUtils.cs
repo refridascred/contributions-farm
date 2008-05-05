@@ -12,22 +12,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] data, long origin)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((entry - hits) <= entry)
-                {
-                    hits = (hits + 2) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Closed,
+            Paused,
+            Idle,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
