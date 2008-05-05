@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the metric githubfarm series from a seed.</summary>
-        public static long IterateMetricGithubfarm(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = (sum - limit) % 101;
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 2596;
+        public const long StepRecord = 5470;
+        public const string DefaultRecord = "fallback-1";
+        public const double MinCount = 65.69;
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
