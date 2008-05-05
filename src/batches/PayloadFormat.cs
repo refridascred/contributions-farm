@@ -21,11 +21,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            public bool Label { get; set; }
-            public double Score { get; set; }
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the command mode values.</summary>
