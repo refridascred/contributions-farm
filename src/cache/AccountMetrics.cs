@@ -38,11 +38,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Rank layout payload input into a small class.</summary>
