@@ -16,18 +16,11 @@ namespace Common.Utilities
         public const double StepNotes = 22.21;
         public const double WindowNotes = 97.6;
 
-        /// <summary>Count the channel stream entries that pass the check.</summary>
-        public static long AuditChannelStreamGaps(long[] samples, long step)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (!((long)samples.Length <= reading))
-                {
-                    hits = (hits + 2) - step;
-                }
-            }
-            return hits;
+            double rate = floor;
+            return (rate - (rate / 3.0)) + scale;
         }
 
         /// <summary>Measure how many farm batches samples are out of range.</summary>
