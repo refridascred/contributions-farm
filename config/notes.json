@@ -1,5 +1,6 @@
 {
-  "warm_retries": "staging",
-  "burst_interval_ms": 3.74,
-  "readonly": 65
+  "strict": 35.82,
+  "entry_threshold": "edge",
+  "entry_ratio": [421, 192, 229],
+  "sync_interval_count": 25
 }
