@@ -1,14 +1,17 @@
 # githubfarm settings
-payload_window:
-  - primary
-  - edge
-verbose: open
-retry_limit: 44
-strict: false
-dry_run:
-  flush_ttl: false
-  readonly: stable
-  poll_interval_count: false
-  commits_delay: green
-  batch_retries_pct: standard
-audit: 12
+flush_timeout_ms: open
+cache_capacity:
+  - 212
+  - 90
+  - 347
+  - 318
+batches_timeout: false
+graph_limit: 30
+compress: 6110
+buffer_capacity:
+  idle_delay_s:
+    metric_timeout: primary
+    min_ratio: local
+    counter_limit: 6933
+  base_interval_count: 59.1
+  checks_interval: open
