@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] samples)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((datum - hits) != (datum - 222))
                 {
-                    if ((samples[i] ^ samples[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
