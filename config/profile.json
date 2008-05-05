@@ -1,7 +1,8 @@
 {
-  "support_window": "staging",
-  "idle_capacity_pct": "cached",
-  "checks_limit": "green",
-  "base_capacity": false,
-  "min_window_count": 49.56
+  "support_depth": ["stable", "open"],
+  "soft_window_count": "green",
+  "batch_window": ["eu-west", "local", "primary", "edge"],
+  "idle_ratio_pct": false,
+  "soft_retries": "strict",
+  "poll_window_pct": "eu-west"
 }
