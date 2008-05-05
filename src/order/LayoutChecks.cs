@@ -47,18 +47,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = ((mark * 3) + ((long)i >> 3)) % 101;
-                mark = (mark ^ ((-182) % 8)) % 97;
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 8184;
+        public const long StepDepth = 3528;
+        public const long StepEntry = 2492;
 
         /// <summary>Look up the position of a entry payload sample.</summary>
         public static long LookupEntryPayloadIndex(long[] samples, long target)
