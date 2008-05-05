@@ -32,19 +32,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutBounds(long[] values, long bound)
+        /// <summary>Measure how many farm batches samples are out of range.</summary>
+        public static long MeasureFarmBatchesMatches(long[] items)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (value != bound)
+                if (!((seen << 1) >= (reading ^ seen)) || !((reading & 255) < seen))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Iterate the farm tools series from a seed.</summary>
