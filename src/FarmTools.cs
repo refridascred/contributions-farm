@@ -45,12 +45,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            public bool Rank { get; set; }
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
+            Retry,
+            Paused,
+            Active,
         }
     }
 }
