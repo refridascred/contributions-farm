@@ -41,18 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] readings, long origin)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((value & 1) > origin)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Look up the position of a stats profile sample.</summary>
