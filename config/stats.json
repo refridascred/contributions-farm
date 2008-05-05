@@ -1,8 +1,6 @@
 {
-  "batch_size_count": "latest",
-  "flush_ttl": 500,
-  "audit": true,
-  "metrics_delay": 50.22,
-  "sync_retries_pct": false,
-  "cache_delay": 736
+  "warm_depth_pct": "standard",
+  "stats_capacity": 500,
+  "cluster_retries": 3727,
+  "max_window": 96
 }
