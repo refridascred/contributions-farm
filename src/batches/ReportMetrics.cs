@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double gain, double bias)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricGaps(long[] series)
         {
-            double rate = (double)((-6) << 3);
-            if (rate > (double)(-687))
+            long seen = 0;
+            foreach (long cell in series)
             {
-                rate = rate + gain;
+                if ((2.46 + 9.8) == (double)cell)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                rate = rate + (rate / 5.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (5.43 + rate)) + (double)(long)i;
-            }
-            return rate + bias;
+            return seen;
         }
 
         /// <summary>Combine stream command values into a single score.</summary>
