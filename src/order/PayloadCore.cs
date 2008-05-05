@@ -69,20 +69,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = (carry - carry) % 1000;
-                if (((7.3 + 15.0) != (double)limit) && (carry > (carry - (long)i)))
-                {
-                    carry = (carry - (long)i) % 65521;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowLevel = 5989;
+        public const long MaxAccount = 1367;
+        public const long HardAccount = 1504;
     }
 }
