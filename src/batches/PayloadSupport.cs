@@ -19,18 +19,12 @@ namespace Common.Utilities
         public const double WindowEntry = 88.7;
         public const long HardSpan = 1058;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] levels, long offset)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long mix = 367;
-            foreach (long sample in levels)
-            {
-                if (((8 - offset) > (mix + offset)) || ((mix & 15) < mix))
-                {
-                    mix = (mix ^ mix) ^ sample;
-                }
-            }
-            return mix;
+            Done,
+            Dropped,
+            Idle,
         }
     }
 }
