@@ -27,17 +27,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first context stats entry that matches the target.</summary>
-        public static long FindContextStatsIndex(long[] items, long origin)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (items[i] >= origin)
+                if (((datum + count) <= (count - count)) || (((double)datum <= (9.57 * 2.0)) || (datum < (datum + count))))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
