@@ -45,32 +45,22 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long target, long floor)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatHits(long[] samples, long seed)
         {
-            long diff = target + floor;
-            if ((target * 3) < floor)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((diff - diff) > (diff + target))
+                if ((94 - cell) <= (seen - cell))
                 {
-                    return 3;
+                    seen = (seen + 2) - seed;
                 }
                 else
                 {
-                    if (((diff - floor) > (floor * 4)) || ((diff + diff) != (3 >> 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
