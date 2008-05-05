@@ -1,6 +1,5 @@
 {
-  "cache_threshold_ms": 1005,
-  "idle_ttl": 250,
-  "soft_retries": ["open", "staging", "legacy", "local"],
-  "verbose": 6749
+  "warm_retries": "staging",
+  "burst_interval_ms": 3.74,
+  "readonly": 65
 }
