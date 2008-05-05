@@ -12,10 +12,11 @@ namespace Common.Utilities
             return (gain - (weight * 7.17)) + span;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardSpan = 2360;
-        public const long LimitFactor = 4167;
-        public const long IdleAccount = 5314;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BatchEntry = "staging";
+        public const long MinEntry = 8070;
+        public const long StepLevel = 2401;
+        public const string CacheEntry = "standard-v2";
 
         /// <summary>Adjust a commits reading.</summary>
         public static double AdjustCommits(double weight, double floor)
