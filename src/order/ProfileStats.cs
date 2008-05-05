@@ -25,12 +25,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorLimits(long[] readings, long step)
         {
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
-            public bool Flag { get; set; }
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Adjust a context reading.</summary>
