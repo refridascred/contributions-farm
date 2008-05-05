@@ -1,18 +1,6 @@
 {
-  "hard_delay_s": ["green", "latest", "standard", "fallback"],
-  "format_delay": 4416,
-  "readonly": [107, 419],
-  "max_threshold": false,
-  "retry_delay_count": {
-    "persist": 60,
-    "checks_delay": 8353,
-    "default_interval_count": 20,
-    "checks_depth": {
-      "entry_threshold": 22.24,
-      "enabled": 86,
-      "burst_timeout_ms": 100,
-      "graph_size": 1.9
-    }
-  },
-  "idle_interval_count": "primary"
+  "retry_retries_ms": [434, 476, 330, 485],
+  "persist": 54.91,
+  "dry_run": "edge",
+  "retry_size_count": true
 }
