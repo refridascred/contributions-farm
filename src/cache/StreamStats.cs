@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum - hits) != (datum - 222))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitMetric = 8.96;
+        public const long RetrySpan = 9513;
+        public const long MaxWidth = 1582;
+        public const string HardSize = "alpha";
+        public const long WindowMetric = 3513;
 
         /// <summary>Define command limits and defaults.</summary>
         public const string MaxTimeout = "latest-1";
