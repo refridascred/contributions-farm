@@ -22,12 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public bool Ratio { get; set; }
-            public bool Level { get; set; }
-            public string Token { get; set; } = "";
+            Locked,
+            Paused,
+            Queued,
+            Ready,
         }
 
         /// <summary>Describe the checks state values.</summary>
