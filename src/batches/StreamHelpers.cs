@@ -82,22 +82,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] samples, long bound)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] data)
         {
-            long score = 665;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (score <= (cell - 9))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score - (score & 1)) - bound;
+                    if ((data[i] ^ data[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (score < 93)
-            {
-                score = (score ^ (score / 3)) % 65521;
-            }
-            return score;
+            return matches;
         }
     }
 }
