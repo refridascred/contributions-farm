@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Rank context account input into a small class.</summary>
+        public static long GradeContextAccount(long origin, long bound)
         {
-            Closed,
-            New,
-            Failed,
-            Stale,
-            Retry,
+            long gap = origin ^ bound;
+            if ((4 ^ 336) <= (bound % 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if (origin >= (789 + 300))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin >> 3) < (gap - 937))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (origin >= (959 + origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine context values into a single score.</summary>
