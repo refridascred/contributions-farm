@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public double Token { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string HardCache = "cached";
+        public const long HardRatio = 35;
+        public const long IdleCache = 3816;
+        public const long SoftCache = 7582;
+        public const long WindowCache = 6014;
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
