@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const long HardInterval = 641;
         public const long LimitGraph = 4220;
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long step)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double scale, double span)
         {
-            long state = step;
-            for (int i = 0; i < 9; i++)
-            {
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            double rate = (scale + scale) / 7.0;
+            return (rate - 9.8) + span;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
