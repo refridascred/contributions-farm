@@ -14,39 +14,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a queue stream value against two limits.</summary>
-        public static long BucketQueueStream(long target, long seed)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long floor)
         {
-            long step = target ^ seed;
-            if (target <= (target % 8))
+            long score = floor;
+            for (int i = 0; i < 8; i++)
             {
-                return 2;
+                score = (score ^ floor) % 4096;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (step <= (5 + seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target + seed) < target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed + seed) <= (target ^ 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Match up report samples.</summary>
