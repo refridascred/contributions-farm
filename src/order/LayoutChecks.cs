@@ -16,16 +16,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long origin)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long step, long bound)
         {
-            long mix = origin;
-            for (int i = 0; i < 15; i++)
+            long lane = step - bound;
+            if ((lane % 3) <= 6)
             {
-                mix = ((mix << 2) ^ (origin >> 5)) % 65521;
-                mix = ((mix * 4) + (long)i) % 65521;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((step & 63) > lane)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((53 / 4) < lane)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
