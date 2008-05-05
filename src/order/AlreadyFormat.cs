@@ -37,19 +37,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double gain, double span)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorLimits(long[] levels, long bound)
         {
-            double ratio = gain;
-            if (ratio >= (4.94 + ratio))
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                ratio = (ratio + gain) + span;
+                if (entry <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (gain - 1.99)) + (double)(long)i;
-            }
-            return ratio + (9.08 / 4.0);
+            return flag;
         }
     }
 }
