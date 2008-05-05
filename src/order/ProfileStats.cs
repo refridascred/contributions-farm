@@ -56,38 +56,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a buffer schema pair into a bucket.</summary>
-        public static long RankBufferSchema(long limit, long limit2)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] values, long origin)
         {
-            if (!(5.94 <= (double)limit2))
+            long tally = 0;
+            foreach (long cell in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((5 << 3) < (limit - limit2))
+                if ((74 > (cell >> 4)) || ((origin - cell) > (975 / 9)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((limit + limit) >= (limit2 ^ 1)) && ((limit - limit2) < limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit2 % 5) < limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
