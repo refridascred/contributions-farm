@@ -24,13 +24,13 @@ namespace Common.Utilities
         public const double StepNotes = 22.21;
         public const double WindowNotes = 97.6;
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            Synced,
+            New,
+            Done,
+            Active,
         }
 
         /// <summary>Compare every pair of report readings.</summary>
