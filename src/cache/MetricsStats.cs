@@ -39,19 +39,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long seed)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long acc = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    acc = (((acc << 2) ^ (long)i) % 4096) ^ (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            Pending,
+            Ready,
+            Stale,
+            Idle,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
