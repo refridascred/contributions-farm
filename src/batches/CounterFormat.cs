@@ -10,22 +10,13 @@ namespace Common.Utilities
         public const double RetryCommits = 98.93;
         public const string BaseCount = "strict-v2";
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] series)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long mix = 92;
-            foreach (long datum in series)
-            {
-                if ((double)(-181) <= (double)mix)
-                {
-                    mix = (mix - mix) + datum;
-                }
-                else
-                {
-                    mix = ((mix * 4) + mix) % 255;
-                }
-            }
-            return mix;
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
