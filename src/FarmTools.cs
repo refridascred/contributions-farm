@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const double MinPayload = 73.35;
         public const long DefaultSpan = 5122;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 4943;
-        public const long IdleDepth = 4225;
-        public const long CacheLevel = 8557;
-        public const long CacheSchema = 7248;
-        public const string WindowSchema = "strict-v2";
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public bool Ratio { get; set; }
+            public bool Size { get; set; }
+            public double Level { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Find the first context stats entry that matches the target.</summary>
         public static long FindContextStatsIndex(long[] items, long origin)
