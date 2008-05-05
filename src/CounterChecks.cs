@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string LimitDepth = "latest-edge";
-        public const double HardBudget = 38.22;
-        public const double IdleInterval = 42.09;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((double)total > (9.23 - 2.8))
+                {
+                    total = ((total << 2) ^ ((-3) & 15)) % 101;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long StepInterval = 9116;
