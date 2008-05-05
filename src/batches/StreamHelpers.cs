@@ -59,11 +59,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstLevel = 2820;
-        public const long RetryCluster = 6668;
-        public const long SoftCluster = 8396;
-        public const long BurstRatio = 2993;
-        public const long WindowWidth = 6497;
+        public const long LimitInterval = 5847;
+        public const double HardCount = 61.96;
+        public const string BaseSpan = "latest-1";
 
         /// <summary>Measure how many stats record samples are out of range.</summary>
         public static long AuditStatsRecordOutliers(long[] readings, long bound)
