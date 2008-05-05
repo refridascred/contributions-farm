@@ -55,17 +55,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] values, long target)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((values[i] == target) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result << 2) ^ result) % 255;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
     }
 }
