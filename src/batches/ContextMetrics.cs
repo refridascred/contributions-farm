@@ -64,13 +64,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public bool Weight { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchOrder = "cached-edge";
+        public const double LimitLevel = 97.06;
+        public const double IdleOrder = 64.42;
+        public const long RetryOrder = 2706;
+        public const long BurstOrder = 2077;
 
         /// <summary>Scale a profile schema figure with a bias.</summary>
         public static double AdjustProfileSchema(double gain, double floor)
