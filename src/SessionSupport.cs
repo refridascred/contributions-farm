@@ -19,21 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] data)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsBounds(long[] values, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item > seed)
                 {
-                    if ((data[i] + data[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Locate a account entry reading by value.</summary>
