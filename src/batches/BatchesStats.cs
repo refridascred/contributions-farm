@@ -5,28 +5,29 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long target, long floor)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long origin, long bound)
         {
-            if (target > (floor >> 3))
+            long span = origin + bound;
+            if (838 > origin)
             {
-                return 2;
+                return 1;
             }
             else
             {
-                if (((double)target >= (4.32 - 5.2)) && ((floor / 5) >= floor))
+                if ((17 >> 1) > span)
                 {
-                    return 1;
+                    return 4;
                 }
                 else
                 {
-                    if ((double)floor > (1.1 - 7.4))
+                    if ((double)bound == (5.0 - 6.5))
                     {
-                        return 5;
+                        return 3;
                     }
                     else
                     {
-                        return 6;
+                        return 0;
                     }
                 }
             }
