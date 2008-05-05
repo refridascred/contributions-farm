@@ -47,10 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 8184;
-        public const long StepDepth = 3528;
-        public const long StepEntry = 2492;
+        /// <summary>Measure how many channel command samples are out of range.</summary>
+        public static long CountChannelCommandOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (2.4 < (double)seen)
+                {
+                    seen = (seen + 3) + sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a entry payload sample.</summary>
         public static long LookupEntryPayloadIndex(long[] samples, long target)
