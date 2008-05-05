@@ -40,12 +40,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 9080;
-        public const long BaseWidth = 542;
-        public const string IdleTimeout = "staging-edge";
-        public const long DefaultCommand = 203;
-        public const long MinTimeout = 6460;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] series)
+        {
+            long total = 9;
+            foreach (long cell in series)
+            {
+                if (cell >= (long)series.Length)
+                {
+                    total = total ^ (total % 8);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Project the next context value.</summary>
         public static double SmoothContext(double gain, double bias)
