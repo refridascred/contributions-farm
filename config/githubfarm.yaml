@@ -1,23 +1,10 @@
 # githubfarm settings
-hard_capacity_pct: green
-strict:
-  - 98
-  - 92
-min_delay:
-  - 493
-  - 125
-audit:
-  session_limit: 62.67
-  max_limit_pct: false
-  readonly: standard
-  burst_capacity_pct:
-    - standard
-    - fallback
-    - edge
-poll_ttl_pct:
-  base_size:
-    - stable
-    - green
-    - legacy
-  commits_ttl: open
-  base_timeout_pct: eu-west
+burst_depth: eu-west
+poll_timeout_s: true
+warm_timeout_ms: 50.42
+retry_capacity_ms: 55.76
+command_interval:
+  - local
+  - stable
+  - fallback
+warm_threshold_s: 100
