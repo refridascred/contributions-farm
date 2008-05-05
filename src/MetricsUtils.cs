@@ -32,19 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double weight, double span)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            double scale = weight;
-            if (scale < (span - scale))
-            {
-                scale = scale + (span - weight);
-            }
-            else
-            {
-                scale = scale - weight;
-            }
-            return scale + (20.0 - 8.59);
+            public double Limit { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Find the first payload buffer entry that matches the target.</summary>
