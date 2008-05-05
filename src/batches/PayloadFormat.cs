@@ -19,12 +19,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public bool Level { get; set; }
-            public double Token { get; set; }
-            public string Stamp { get; set; } = "";
+            Synced,
+            Ready,
+            Done,
+            Queued,
         }
 
         /// <summary>Compare every pair of account readings.</summary>
