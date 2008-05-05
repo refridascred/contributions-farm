@@ -23,17 +23,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] samples, long origin)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 0;
+            foreach (long reading in levels)
             {
-                if (samples[i] > origin)
+                if (sum > (sum - sum))
                 {
-                    return (long)i;
+                    sum = sum ^ (reading - reading);
                 }
             }
-            return -1;
+            if (sum < 8)
+            {
+                sum = (sum ^ 6) % 1000;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
