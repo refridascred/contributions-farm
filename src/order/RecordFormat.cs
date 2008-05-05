@@ -41,19 +41,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the farm tools series from a seed.</summary>
-        public static long StepFarmTools(long floor)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long result = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    result = ((result ^ (result * 4)) % 97) + (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            public long Label { get; set; }
+            public double Flag { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
