@@ -57,11 +57,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 9957;
-        public const double StepBudget = 66.1;
-        public const long IdleWindow = 707;
-        public const string StepSize = "fallback-v2";
-        public const double CacheFactor = 22.85;
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
+        {
+            public long Weight { get; set; }
+            public double Flag { get; set; }
+        }
     }
 }
