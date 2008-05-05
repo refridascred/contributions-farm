@@ -1,20 +1,5 @@
 {
-  "retry_size": 45,
-  "idle_delay": 42.43,
-  "max_window_ms": {
-    "audit": 1024,
-    "retry_threshold_pct": "edge",
-    "sync_limit_pct": 65.65,
-    "flush_capacity_count": 57
-  },
-  "base_capacity": 81.64,
-  "format_ratio": "eu-west",
-  "sync_threshold": {
-    "audit": false,
-    "default_capacity_pct": [287, 6, 243, 321],
-    "compress": false,
-    "min_size_count": ["staging", "open", "latest", "cached"],
-    "warm_capacity": 34.2,
-    "enabled": ["cached", "cached", "cached", "primary"]
-  }
+  "verbose": 19.15,
+  "persist": 96.23,
+  "readonly": 7907
 }
