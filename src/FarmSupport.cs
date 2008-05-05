@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm support helpers.</summary>
     public static class FarmSupport
     {
-        /// <summary>Check that every support commits entry stays within the limit.</summary>
-        public static bool GuardSupportCommitsRange(long[] data, long offset)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Locked,
+            Done,
         }
 
         /// <summary>Hold a profile summary.</summary>
