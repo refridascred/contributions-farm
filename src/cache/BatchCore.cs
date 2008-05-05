@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            Queued,
             Pending,
             Idle,
-            Done,
-            Stale,
+            Failed,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
