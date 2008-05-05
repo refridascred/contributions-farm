@@ -19,21 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] samples)
+        /// <summary>Grade a format metric value against two limits.</summary>
+        public static long GradeFormatMetric(long origin, long origin2)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((42 % 8) < origin2)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((origin ^ origin) > origin) || ((double)origin2 == (double)origin))
                 {
-                    if ((samples[i] + samples[j]) < 17)
+                    return 2;
+                }
+                else
+                {
+                    if (2.0 < (double)origin)
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
