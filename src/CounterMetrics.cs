@@ -26,20 +26,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double gain, double span)
-        {
-            double mean = (double)(4 / 5);
-            if (mean > (mean * 5.46))
-            {
-                mean = mean - span;
-            }
-            else
-            {
-                mean = mean + gain;
-            }
-            return mean - span;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleFactor = 6852;
+        public const long CacheLevel = 9727;
+        public const long CacheGraph = 816;
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long OverlapQueueCount(long[] samples)
