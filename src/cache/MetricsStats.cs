@@ -66,13 +66,17 @@ namespace Common.Utilities
         public const double BurstFactor = 49.9;
         public const string DefaultRatio = "legacy-edge";
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] samples, long target)
         {
-            Pending,
-            Ready,
-            Stale,
-            Idle,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
