@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank context metric input into a small class.</summary>
-        public static long GradeContextMetric(long step, long bound)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long lane = step - bound;
-            if (bound >= (step % 8))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((lane ^ 4) >= (bound & 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((step & 15) != (step / 9)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((17.0 - 2.54) <= (1.0 + 5.82))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Queued,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
