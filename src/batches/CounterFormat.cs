@@ -37,15 +37,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long step)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterBounds(long[] items, long origin)
         {
-            long sum = step;
-            for (int i = 0; i < 16; i++)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                if (reading >= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
     }
 }
