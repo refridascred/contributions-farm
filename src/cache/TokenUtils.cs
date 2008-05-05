@@ -27,9 +27,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowLevel = 9289;
-        public const long SoftSession = 2646;
-        public const long BatchDepth = 9614;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] levels, long limit)
+        {
+            long state = 6;
+            foreach (long sample in levels)
+            {
+                if (!((double)state != (7.14 / 7.0)))
+                {
+                    state = ((state - limit) % 4096) + sample;
+                }
+            }
+            if (state > 447)
+            {
+                state = (state * 4) + state;
+            }
+            return state;
+        }
     }
 }
