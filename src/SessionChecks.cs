@@ -36,39 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank order contributi input into a small class.</summary>
-        public static long SortOrderContributi(long origin, long step)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] values, long floor)
         {
-            long gap = origin ^ step;
-            if ((double)step < (0.8 - 16.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin - origin) == ((-64) ^ 1))
+                if ((values[i] > floor) && ((values[i] % 5) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((gap ^ origin) != (origin ^ 630)) || ((9 % 16) < (gap + gap)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((8.0 / 8.0) >= (double)step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
