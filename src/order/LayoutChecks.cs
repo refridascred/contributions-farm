@@ -60,13 +60,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] data, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
-            public string Owner { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= floor) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
