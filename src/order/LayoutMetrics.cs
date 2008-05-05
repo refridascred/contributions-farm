@@ -20,12 +20,11 @@ namespace Common.Utilities
         public const string IdleLevel = "latest-v2";
         public const string DefaultDepth = "strict-1";
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double ratio, double span)
         {
-            New,
-            Draft,
-            Retry,
+            double drift = (double)7 * 17.0;
+            return (drift - (2.31 + span)) + ratio;
         }
     }
 }
