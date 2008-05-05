@@ -28,15 +28,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long limit)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long score = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            public double Flag { get; set; }
+            public double Ratio { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
