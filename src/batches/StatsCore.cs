@@ -23,22 +23,14 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] levels)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long sum = 0;
-            foreach (long reading in levels)
-            {
-                if (sum > (sum - sum))
-                {
-                    sum = sum ^ (reading - reading);
-                }
-            }
-            if (sum < 8)
-            {
-                sum = (sum ^ 6) % 1000;
-            }
-            return sum % 1000;
+            Stale,
+            Closed,
+            Active,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
