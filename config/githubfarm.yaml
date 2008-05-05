@@ -1,29 +1,14 @@
 # githubfarm settings
-hard_delay_s: edge
-context_threshold:
-  burst_delay_s: edge
-  retry_window:
-    verbose: eu-west
-    hard_threshold_count: open
-    batch_ttl: open
-    batch_threshold_s:
-      - 94
-      - 177
-      - 201
-      - 332
-    counter_delay: open
-    poll_retries_ms:
-      - 433
-      - 498
-      - 30
-  burst_retries_ms:
-    burst_retries_s: false
-    batch_interval: false
-    stream_ttl: 500
-support_capacity: 61
-contributi_ratio: green
-githubfarm_retries:
-  hard_limit_s: 92
-  channel_retries: blue
-  persist: false
-  poll_size: 30
+payload_window:
+  - primary
+  - edge
+verbose: open
+retry_limit: 44
+strict: false
+dry_run:
+  flush_ttl: false
+  readonly: stable
+  poll_interval_count: false
+  commits_delay: green
+  batch_retries_pct: standard
+audit: 12
