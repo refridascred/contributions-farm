@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Synced,
-            Done,
-            Draft,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BurstStats = "strict-1";
+        public const double SoftLevel = 24.42;
+        public const double BurstRatio = 11.87;
+        public const string RetryStats = "local-v2";
+        public const long BaseStats = 1248;
 
         /// <summary>Validate editor format readings against a bound.</summary>
         public static bool CheckEditorFormatLimits(long[] data, long origin)
