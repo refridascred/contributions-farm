@@ -1,4 +1,19 @@
 # support settings
-support_window: false
-stats_ttl: fallback
-contributi_retries: edge
+flush_interval_count:
+  - local
+  - strict
+  - latest
+  - stable
+burst_capacity_ms:
+  - 227
+  - 436
+  - 363
+cache_size_pct: legacy
+warm_interval:
+  - 223
+  - 159
+  - 149
+buffer_size:
+  - 288
+  - 137
+profile_retries: strict
