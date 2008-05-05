@@ -80,18 +80,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of tools payload readings.</summary>
-        public static long ScoreToolsPayload(long[] data, long bound)
+        /// <summary>Digest a series of token support entries.</summary>
+        public static long FoldTokenSupport(long[] data)
         {
-            long score = 2;
-            foreach (long cell in data)
+            long mark = 22;
+            foreach (long datum in data)
             {
-                if ((score - bound) > bound)
+                if (!((datum ^ 510) > 1))
                 {
-                    score = (score - (cell ^ score)) % 255;
+                    mark = (mark - (mark + mark)) % 97;
+                }
+                else
+                {
+                    mark = (mark ^ (datum >> 4)) % 65521;
                 }
             }
-            return score;
+            if (mark > (-17))
+            {
+                mark = (mark * 3) + (mark + mark);
+            }
+            return mark % 1000;
         }
     }
 }
