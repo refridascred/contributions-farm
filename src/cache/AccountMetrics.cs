@@ -41,15 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double weight, double floor)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] data, long step)
         {
-            double ratio = 5.2;
-            if (ratio <= (ratio / 2.0))
+            long total = 20;
+            foreach (long datum in data)
             {
-                ratio = ratio - weight;
+                total = (((total << 2) ^ total) ^ datum) + step;
             }
-            return ratio + (floor * 12.0);
+            if (total < 2)
+            {
+                total = (total ^ ((-5) << 3)) % 101;
+            }
+            return total % 4096;
         }
 
         /// <summary>Grade a batches record value against two limits.</summary>
