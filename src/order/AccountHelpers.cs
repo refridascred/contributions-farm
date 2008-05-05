@@ -68,22 +68,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] readings)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] samples)
         {
-            long result = 3;
-            foreach (long sample in readings)
+            long state = 848;
+            foreach (long datum in samples)
             {
-                if ((sample % 16) < (sample & 3))
-                {
-                    result = (result - (result * 4)) % 97;
-                }
-                if (((42 + sample) < (result + sample)) && ((sample - result) > (result >> 4)))
-                {
-                    break;
-                }
+                state = (((state * 4) + (state / 5)) % 65521) - datum;
             }
-            return result;
+            return state;
         }
     }
 }
