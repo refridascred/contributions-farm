@@ -19,15 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            Ready,
-            Draft,
-            Failed,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseDepth = 5999;
+        public const double CacheTimeout = 70.13;
+        public const long MinStats = 1898;
 
         /// <summary>Blend two report format measurements.</summary>
         public static double BlendReportFormat(double bias, double span)
