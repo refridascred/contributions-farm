@@ -35,19 +35,21 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] series, long seed)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] samples)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum > seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] - samples[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
