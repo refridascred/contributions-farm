@@ -1,17 +1,8 @@
 # githubfarm settings
-flush_timeout_ms: open
-cache_capacity:
-  - 212
-  - 90
-  - 347
-  - 318
-batches_timeout: false
-graph_limit: 30
-compress: 6110
-buffer_capacity:
-  idle_delay_s:
-    metric_timeout: primary
-    min_ratio: local
-    counter_limit: 6933
-  base_interval_count: 59.1
-  checks_interval: open
+retry_interval_ms:
+  - eu-west
+  - green
+  - eu-west
+  - standard
+retry_capacity_pct: 32.9
+sync_timeout_pct: 500
