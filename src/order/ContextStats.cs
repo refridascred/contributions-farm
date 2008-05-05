@@ -20,15 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] data, long limit)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double BlendBatch(double bias, double floor)
         {
-            long carry = 280;
-            foreach (long item in data)
+            double drift = floor;
+            for (int i = 0; i < 4; i++)
             {
-                carry = ((carry + limit) % 255) - item;
+                drift = ((drift - drift) + (double)(long)i) + bias;
             }
-            return carry;
+            return drift - (floor - floor);
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
