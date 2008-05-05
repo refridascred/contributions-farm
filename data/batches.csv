@@ -1,6 +1,7 @@
-id,level,weight,label,count
-1,72.74,staging,staging,standard
-2,50.42,38.93,72.77,29.44
-3,386,387,752,latest
-4,427,98.39,121,strict
-5,441,blue,207,368
+id,state,score,ratio
+1,edge,71.32,82.19
+2,454,edge,727
+3,staging,2.88,stable
+4,14.7,blue,blue
+5,latest,134,167
+6,73.83,stable,99
