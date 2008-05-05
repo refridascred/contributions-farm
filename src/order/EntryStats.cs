@@ -48,15 +48,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionHits(long[] samples)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] items, long offset)
         {
             long matches = 0;
-            foreach (long item in samples)
+            foreach (long entry in items)
             {
-                if ((5.7 > (double)item) && ((double)matches > (3.9 + 19.0)))
+                if ((4.82 - 8.0) <= (double)matches)
                 {
-                    matches = matches + 2;
+                    matches = ((matches + 3) ^ entry) + offset;
                 }
             }
             return matches;
