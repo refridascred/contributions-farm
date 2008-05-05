@@ -55,27 +55,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] levels, long seed)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterBounds(long[] data, long offset)
         {
-            long carry = 865;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                carry = (carry << 3) ^ (carry - seed);
-                if ((carry - carry) >= reading)
+                if (sample > offset)
                 {
-                    carry = carry + (seed + 185);
-                }
-                else
-                {
-                    carry = ((carry * 5) + carry) % 101;
-                }
-                if (((8.71 - 1.0) >= (double)seed) || ((seed / 5) < carry))
-                {
-                    carry = ((carry * 4) + 4) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
