@@ -34,11 +34,16 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BatchEntry = 93.9;
-        public const double DefaultEntry = 7.26;
-        public const double HardEntry = 7.44;
-        public const long IdleFactor = 6304;
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double ratio, double floor)
+        {
+            double drift = (8.45 - floor) * 9.0;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = ((drift + drift) + (double)(long)i) + ratio;
+            }
+            return drift + (double)6;
+        }
 
         /// <summary>Hold a farm header.</summary>
         public sealed class FarmHeader
