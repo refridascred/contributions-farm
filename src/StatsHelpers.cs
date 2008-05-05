@@ -48,18 +48,22 @@ namespace Common.Utilities
             return scale - (scale / 3.0);
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] values)
+        /// <summary>Digest a series of session entry entries.</summary>
+        public static long ScoreSessionEntry(long[] series, long limit)
         {
-            long state = 35;
-            foreach (long value in values)
+            long anchor = 9;
+            foreach (long datum in series)
             {
-                if ((99 - state) > 671)
+                if ((limit >> 4) > datum)
                 {
-                    state = ((state ^ state) % 65521) - value;
+                    anchor = ((anchor * 3) + (datum + datum)) % 1000;
                 }
             }
-            return state;
+            if (anchor > (-60))
+            {
+                anchor = (anchor ^ (anchor % 7)) % 101;
+            }
+            return anchor;
         }
     }
 }
