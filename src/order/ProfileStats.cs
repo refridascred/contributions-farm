@@ -25,19 +25,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] readings, long step)
+        /// <summary>Find the first stats metrics entry that matches the target.</summary>
+        public static long LocateStatsMetricsIndex(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry <= step)
+                if ((items[i] >= step) && ((items[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
