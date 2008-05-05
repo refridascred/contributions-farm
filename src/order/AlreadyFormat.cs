@@ -47,16 +47,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double bias, double offset)
-        {
-            double ratio = (bias * 5.38) / 7.0;
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = ((ratio - bias) + (double)(long)i) + offset;
-            }
-            return ratio + bias;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseRatio = 6224;
+        public const long CacheMetric = 3355;
+        public const double WindowLevel = 4.65;
+        public const long MinCount = 8539;
+        public const long BurstScore = 1612;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long AuditBatchHits(long[] data, long offset)
