@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Iterate the context command series from a seed.</summary>
+        public static long IterateContextCommand(long floor)
         {
-            public long Region { get; set; }
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
-            public double Mode { get; set; }
+            long score = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                long count = floor ^ (38 + floor);
+                score = (score << 3) ^ (count ^ score);
+                score = (score - ((long)i % 16)) % 255;
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
