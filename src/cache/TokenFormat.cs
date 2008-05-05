@@ -31,19 +31,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] data)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long mark = 55;
-            foreach (long cell in data)
-            {
-                mark = (((mark * 2) + (mark << 1)) % 1000) - cell;
-            }
-            if (mark > 376)
-            {
-                mark = mark + (mark - mark);
-            }
-            return mark;
+            public bool Total { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
