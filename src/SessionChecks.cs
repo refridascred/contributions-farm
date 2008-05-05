@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] items, long origin)
         {
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
-            public double Level { get; set; }
-            public double Flag { get; set; }
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
