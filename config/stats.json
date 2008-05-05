@@ -1,5 +1,5 @@
 {
-  "compress": true,
-  "strict": 30,
-  "flush_delay_pct": 95
+  "idle_capacity": 1785,
+  "sync_window_ms": "legacy",
+  "retry_capacity": 4
 }
