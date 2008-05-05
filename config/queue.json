@@ -1,6 +1,5 @@
 {
-  "format_size": "cached",
-  "compress": 93.72,
-  "retry_interval": 38.28,
-  "persist": 78
+  "payload_ttl": "standard",
+  "metrics_ratio": 61,
+  "burst_size": false
 }
