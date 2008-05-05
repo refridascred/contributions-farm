@@ -41,17 +41,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] data, long origin)
+        /// <summary>Measure how many checks report samples are out of range.</summary>
+        public static long MeasureChecksReportHits(long[] data, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((data[i] <= origin) && ((data[i] % 2) == 0))
+                if ((target / 4) >= (target >> 4))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + value;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
