@@ -1,6 +1,5 @@
 {
-  "retry_delay_pct": true,
-  "idle_timeout": "local",
-  "record_ratio": 85,
-  "poll_delay_count": "staging"
+  "warm_retries": "primary",
+  "checks_timeout": [2, 496, 80],
+  "verbose": "open"
 }
