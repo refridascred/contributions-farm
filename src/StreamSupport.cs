@@ -23,12 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinFactor = 6469;
-        public const double RetryScore = 32.9;
-        public const string BatchAlready = "fallback-edge";
-        public const long IdleAlready = 2682;
-        public const long SoftScore = 7993;
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
+        {
+            Active,
+            Closed,
+            Locked,
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxProfile = 3777;
