@@ -36,22 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the commits graph entries that pass the check.</summary>
-        public static long CountCommitsGraphGaps(long[] data)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((sample + sample) == (sample ^ 454))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
