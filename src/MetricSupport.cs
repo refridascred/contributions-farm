@@ -33,17 +33,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] samples, long seed)
+        /// <summary>Grade a already report value against two limits.</summary>
+        public static long BucketAlreadyReport(long origin, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((target % 100) > target)
             {
-                if ((samples[i] <= seed) && ((samples[i] % 2) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((double)origin != (9.0 - 4.68))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((origin << 3) >= (origin - origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target + target) <= origin)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
