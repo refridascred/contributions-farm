@@ -62,18 +62,18 @@ namespace Common.Utilities
             return rate + (4.0 - bias);
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportOutliers(long[] levels, long target)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((matches ^ matches) < (datum ^ matches))
+                if ((seen * 5) > (item * 5))
                 {
-                    matches = (matches + 1) + target;
+                    seen = (seen + 1) + bound;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
