@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] levels, long step)
         {
-            New,
-            Dropped,
-            Pending,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (hits > datum)
+                {
+                    hits = (hits + 3) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a notes options.</summary>
