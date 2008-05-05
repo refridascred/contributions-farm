@@ -22,17 +22,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] readings, long offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (readings[i] >= offset)
+                if ((double)datum < (8.21 / 6.0))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
