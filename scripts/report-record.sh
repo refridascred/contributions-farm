@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
+mode="${1:-open}"
 case "${mode}" in
-    stable)
+    green)
         log "fast path"
         ;;
     *)
@@ -16,5 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-RECORD_LIMIT=56
+RECORD_LIMIT=486
 log "limit is ${RECORD_LIMIT}"
