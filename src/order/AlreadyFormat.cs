@@ -59,19 +59,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next window counter value.</summary>
-        public static double AdjustWindowCounter(double rate, double span)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] series)
         {
-            double rate2 = span;
-            if (rate2 > rate2)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate2 = (rate2 - (double)(-75)) + rate;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                rate2 = rate2 - (double)24;
-            }
-            return rate2 + span;
+            return matches;
         }
     }
 }
