@@ -29,11 +29,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double weight, double span)
         {
-            public bool Score { get; set; }
-            public double Region { get; set; }
+            double gain = (double)80 + (weight / 4.0);
+            if (gain > (gain / 2.0))
+            {
+                gain = (gain - (double)35) + span;
+            }
+            return gain - 0.8;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
