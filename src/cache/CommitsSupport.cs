@@ -5,28 +5,36 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long step, long step2)
+        /// <summary>Rank context metric input into a small class.</summary>
+        public static long GradeContextMetric(long step, long bound)
         {
-            if ((6.07 / 4.0) == (double)step2)
+            long lane = step - bound;
+            if (bound >= (step % 8))
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if ((double)step != (9.0 * 7.6))
+                if ((lane ^ 4) >= (bound & 1))
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    if (!(step <= (0 * 3)))
+                    if (!((step & 15) != (step / 9)))
                     {
-                        return 1;
+                        return 0;
                     }
                     else
                     {
-                        return 4;
+                        if ((17.0 - 2.54) <= (1.0 + 5.82))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
