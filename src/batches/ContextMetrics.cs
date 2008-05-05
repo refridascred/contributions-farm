@@ -29,23 +29,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a entry checks figure with a bias.</summary>
-        public static double ProjectEntryChecks(double bias, double bias2)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] samples, long seed)
         {
-            double ratio = bias2 / 4.0;
-            if (ratio <= (bias2 / 2.0))
+            bool found = true;
+            foreach (long value in samples)
             {
-                ratio = ratio - (bias - bias2);
+                if (value > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - bias2;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio - (double)56;
+            return found;
         }
 
         /// <summary>Hold a token entry.</summary>
