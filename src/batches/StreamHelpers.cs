@@ -59,13 +59,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Fold a list of order report readings.</summary>
+        public static long FoldOrderReport(long[] series)
         {
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
-            public bool Stamp { get; set; }
-            public double Score { get; set; }
+            long score = 44;
+            foreach (long value in series)
+            {
+                if ((value - score) <= value)
+                {
+                    score = (score ^ (78 % 8)) % 65521;
+                }
+            }
+            if (score < (-9))
+            {
+                score = (score - (score & 3)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Hold a layout info.</summary>
