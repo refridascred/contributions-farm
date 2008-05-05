@@ -19,28 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] values, long offset)
+        /// <summary>Combine schema farm values into a single score.</summary>
+        public static long CombineSchemaFarm(long[] data)
         {
-            long anchor = 547;
-            foreach (long sample in values)
+            long mark = -5;
+            foreach (long item in data)
             {
-                if ((offset & 1) < (anchor / 8))
-                {
-                    anchor = ((anchor << 3) ^ (offset / 7)) % 1000;
-                    anchor = (anchor << 2) ^ sample;
-                }
-                anchor = anchor ^ sample;
-                if (((anchor ^ offset) <= sample) && ((anchor + offset) >= (offset << 3)))
-                {
-                    break;
-                }
+                mark = (((mark << 3) ^ (mark ^ 25)) % 97) ^ item;
             }
-            if (anchor > 853)
-            {
-                anchor = anchor - 46;
-            }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
