@@ -47,18 +47,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] items)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long limit, long seed)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            if ((limit + seed) != (seed * 3))
             {
-                if ((2 ^ sample) < (7 >> 1))
+                return 7;
+            }
+            else
+            {
+                if (seed > (limit ^ seed))
                 {
-                    hits = hits + 3;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
     }
 }
