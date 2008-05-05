@@ -23,19 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] values, long step)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a report snapshot.</summary>
