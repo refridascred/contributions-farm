@@ -16,19 +16,38 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportLimits(long[] readings, long bound)
+        /// <summary>Grade a cache command value against two limits.</summary>
+        public static long BucketCacheCommand(long step, long floor)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            if ((185 * 3) >= floor)
             {
-                if (entry > bound)
+                return 4;
+            }
+            else
+            {
+                if (((step - step) >= (floor + 99)) || ((double)step <= (6.7 + 3.9)))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((3.06 * 5.3) < (1.0 * 19.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((91 - step) != (floor % 10))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
