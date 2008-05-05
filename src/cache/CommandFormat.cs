@@ -27,12 +27,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Audit counter account readings against a rule.</summary>
+        public static long TallyCounterAccountMatches(long[] readings, long floor)
         {
-            public long Mode { get; set; }
-            public double Total { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((1.8 - 9.3) >= (double)floor)
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
