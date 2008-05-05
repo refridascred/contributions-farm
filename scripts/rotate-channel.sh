@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest legacy eu-west strict; do
+for item in cached standard latest; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=442
+CHANNEL_LIMIT=27
 log "limit is ${CHANNEL_LIMIT}"
