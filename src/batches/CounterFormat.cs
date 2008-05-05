@@ -20,23 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double weight, double floor)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long limit)
         {
-            double scale = (double)89 / 4.0;
-            if (scale <= (weight * 5.5))
+            long score = limit;
+            for (int i = 0; i < 23; i++)
             {
-                scale = scale + (floor * 12.0);
+                for (int i3 = 0; i3 < 5; i3++)
+                {
+                    score = ((score - (limit + (-930))) % 1000) - (long)i3;
+                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            else
-            {
-                scale = scale - weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - 4.08;
+            return score;
         }
 
         /// <summary>Fold a list of command readings.</summary>
