@@ -87,20 +87,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryOutliers(long[] items, long offset)
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((416 % 97) < (27 ^ tally))
                 {
-                    sum = ((sum - (floor + sum)) % 65521) + (long)i2;
-                    sum = (sum ^ (sum >> 1)) % 101;
+                    tally = ((tally + 3) ^ cell) + offset;
                 }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return tally;
         }
     }
 }
