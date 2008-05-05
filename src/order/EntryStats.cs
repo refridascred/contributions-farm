@@ -47,26 +47,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] series, long origin)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long anchor = 124;
-            foreach (long datum in series)
-            {
-                if ((9.6 + 2.6) >= (double)datum)
-                {
-                    anchor = (anchor * 2) + (anchor * 4);
-                }
-                else
-                {
-                    anchor = (anchor + (anchor * 2)) % 4096;
-                }
-            }
-            if (anchor > (-17))
-            {
-                anchor = anchor + (origin + origin);
-            }
-            return anchor;
+            Retry,
+            Ready,
+            Paused,
+            Locked,
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
