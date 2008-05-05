@@ -20,15 +20,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of farm order readings.</summary>
-        public static long FoldFarmOrder(long[] values)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphHits(long[] readings)
         {
-            long mix = 34;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                mix = ((mix - mix) % 255) - sample;
+                if ((count - 5) > (927 << 2))
+                {
+                    count = (count + 2) + cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the cache level values.</summary>
