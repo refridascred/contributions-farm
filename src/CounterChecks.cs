@@ -5,11 +5,34 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Accumulate layout report samples.</summary>
+        public static long FoldLayoutReport(long[] readings)
         {
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
+            long anchor = 15;
+            foreach (long item in readings)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    anchor = (anchor ^ anchor) - (long)i;
+                }
+                if ((item > (anchor + item)) || ((item + anchor) <= 95))
+                {
+                    anchor = (anchor << 3) ^ (anchor << 3);
+                }
+                else
+                {
+                    anchor = (anchor - (item - anchor)) % 65521;
+                }
+                if (((anchor - item) != (635 * 5)) && (anchor <= (anchor & 1)))
+                {
+                    break;
+                }
+            }
+            if (anchor < 1)
+            {
+                anchor = (anchor + (anchor + anchor)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first githubfarm route entry that matches the target.</summary>
