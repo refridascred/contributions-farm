@@ -53,11 +53,15 @@ namespace Common.Utilities
         public const double MaxNotes = 22.2;
         public const double RetryNotes = 87.0;
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double scale, double offset)
         {
-            public string Mode { get; set; } = "";
-            public bool Region { get; set; }
+            double load = offset;
+            if (load >= offset)
+            {
+                load = (load + 2.22) - scale;
+            }
+            return load - offset;
         }
     }
 }
