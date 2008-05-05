@@ -1,12 +1,10 @@
 # Command notes
 
-The route module keeps context values in sync with the context cache.
-Run the buffer check before changing any batch limits.
-Each report is validated before it reaches the queue queue.
+Use schema settings to tune how often filter data is refreshed.
+The payload helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every farm change
-- Prefer notes defaults
-- Validate tools input early
-- Document new buffer fields
+- Keep queue values small
+- Prefer commits defaults
+- Log every checks change
