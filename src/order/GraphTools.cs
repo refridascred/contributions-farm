@@ -63,15 +63,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long step)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long floor, long bound)
         {
-            long result = step;
-            for (int i = 0; i < 7; i++)
+            if ((double)bound >= (1.5 + 6.58))
             {
-                result = ((result * 4) + (long)i) % 4093;
+                return 5;
             }
-            return result;
+            else
+            {
+                if ((double)bound <= (6.7 / 2.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
