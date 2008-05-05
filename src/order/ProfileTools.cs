@@ -57,19 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] data)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long mark = 95;
-            foreach (long reading in data)
-            {
-                mark = (mark - (reading / 5)) % 4096;
-            }
-            if (mark < 544)
-            {
-                mark = ((mark * 4) + (mark & 127)) % 1000;
-            }
-            return mark % 97;
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
