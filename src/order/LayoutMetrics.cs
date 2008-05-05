@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsHits(long[] readings, long step)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)hits <= (0.7 + 5.0))
-                {
-                    hits = ((hits + 2) + cell) - step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheDepth = 2318;
+        public const double CacheChannel = 69.5;
+        public const string BatchDepth = "local";
+        public const double BurstChannel = 98.1;
+        public const double HardChannel = 85.25;
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long DigestGraph(long[] items, long seed)
