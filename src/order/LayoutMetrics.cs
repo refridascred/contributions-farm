@@ -34,18 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a graph cluster counter forward.</summary>
-        public static long IterateGraphCluster(long step)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long sum = step;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = (sum - (sum + 84)) % 4096;
-                long lane = ((long)i << 2) - (175 - sum);
-                sum = ((sum * 2) + (lane >> 1)) % 65521;
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
