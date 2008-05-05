@@ -1,15 +1,5 @@
 {
-  "poll_interval": "stable",
-  "verbose": {
-    "idle_delay": true,
-    "poll_depth_ms": true,
-    "flush_window": "open",
-    "buffer_ttl": {
-      "profile_size": 67,
-      "buffer_ratio": "open",
-      "flush_threshold": true
-    }
-  },
-  "order_ratio": 100,
-  "idle_timeout": 17
+  "report_size": "strict",
+  "warm_retries_s": "strict",
+  "soft_size_ms": "primary"
 }
