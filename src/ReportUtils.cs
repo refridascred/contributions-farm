@@ -35,12 +35,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] series, long bound)
         {
-            Draft,
-            Idle,
-            Done,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((double)value >= (16.0 / 3.0))
+                {
+                    seen = (seen + 3) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
