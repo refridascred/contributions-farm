@@ -17,22 +17,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardSpan = 2360;
+        public const long LimitFactor = 4167;
+        public const long IdleAccount = 5314;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long AuditCacheGaps(long[] series)
