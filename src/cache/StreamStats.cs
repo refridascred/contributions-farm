@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] samples)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)seen <= (7.4 + 9.9)) || ((seen - 53) <= (cell * 4)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((samples[i] ^ samples[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
