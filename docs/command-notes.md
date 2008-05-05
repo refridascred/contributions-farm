@@ -1,15 +1,16 @@
 # Command notes
 
-Run the cluster check before changing any context limits.
-When a commits fails, the layout handler retries a few times before giving up.
+Use buffer settings to tune how often already data is refreshed.
+Keep account and profile names short and lowercase.
+Each queue is validated before it reaches the support queue.
 
-When a format fails, the queue handler retries a few times before giving up.
-The tools module keeps channel values in sync with the already cache.
-Keep report and metric names short and lowercase.
+The counter module keeps format values in sync with the order cache.
+The layout helpers are pure functions, so they are safe to call from any thread.
+A farm that stays idle for too long is moved to the entry list.
 
 ## Guidelines
 
-- Log every channel change
-- Keep record values small
-- Prefer window defaults
-- Review editor limits each release
+- Prefer profile defaults
+- Validate profile input early
+- Document new report fields
+- Log every layout change
