@@ -11,23 +11,22 @@ namespace Common.Utilities
         public const long BurstRecord = 8547;
         public const long LimitRatio = 943;
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double ratio, double bias)
+        /// <summary>Audit contributi editor readings against a rule.</summary>
+        public static long TallyContributiEditorMatches(long[] values)
         {
-            double drift = ratio;
-            if (drift > (double)35)
+            long seen = 0;
+            foreach (long value in values)
             {
-                drift = (drift - drift) + bias;
+                if ((double)value != (10.0 / 7.0))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                drift = drift + (double)95;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + 8.09) - (double)(long)i;
-            }
-            return drift + ratio;
+            return seen;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
