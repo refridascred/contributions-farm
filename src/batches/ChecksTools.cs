@@ -12,22 +12,18 @@ namespace Common.Utilities
         public const long LimitScore = 7669;
         public const long DefaultBuffer = 3090;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] levels)
+        /// <summary>Count the batch counter entries that pass the check.</summary>
+        public static long TallyBatchCounterMatches(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (((821 & 7) > reading) && ((reading - reading) > (7 << 1)))
+                if (item >= (limit + limit))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
