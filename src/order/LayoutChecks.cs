@@ -47,17 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first filter entry entry that matches the target.</summary>
-        public static long LocateFilterEntryIndex(long[] values, long target)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((values[i] > target) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 3) + ((long)i >> 3)) % 101;
+                mark = (mark ^ ((-182) % 8)) % 97;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Look up the position of a schema profile sample.</summary>
