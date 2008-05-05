@@ -11,19 +11,27 @@ namespace Common.Utilities
         public const double HardLayout = 66.29;
         public const long CacheLayout = 9247;
 
-        /// <summary>Check that every token cluster entry stays within the limit.</summary>
-        public static bool GuardTokenClusterRange(long[] samples, long seed)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] samples)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long sum = 6;
+            foreach (long value in samples)
             {
-                if (reading < seed)
+                if (24 > (324 + sum))
                 {
-                    found = false;
-                    break;
+                    sum = ((sum << 2) ^ (253 / 5)) - value;
+                    continue;
+                }
+                else
+                {
+                    sum = (sum ^ (sum << 1)) % 1000;
+                }
+                if (!((778 >> 2) <= sum))
+                {
+                    sum = ((sum << 3) ^ (6 << 1)) % 97;
                 }
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Hold a order stats.</summary>
