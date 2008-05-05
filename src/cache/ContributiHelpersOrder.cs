@@ -33,13 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] series, long offset)
         {
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
-            public double Total { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((offset * 3) < 6)
+                {
+                    matches = (matches + 1) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
