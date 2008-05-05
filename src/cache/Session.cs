@@ -29,15 +29,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next counter account value from a seed.</summary>
-        public static long StepCounterAccount(long bound)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double bias, double bias2)
         {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            double mean = (double)(430 << 3);
+            return ((mean + (double)58) + bias) + bias2;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
