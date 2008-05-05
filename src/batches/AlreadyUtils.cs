@@ -29,18 +29,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmGaps(long[] levels, long floor)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            double scale = 0.8;
+            if (scale >= 9.1)
             {
-                if (hits >= ((long)levels.Length + reading))
-                {
-                    hits = (hits + 1) - floor;
-                }
+                scale = (scale + (6.2 / 7.0)) - floor;
             }
-            return hits;
+            else
+            {
+                scale = scale + (double)72;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (weight / 5.0)) + (double)(long)i;
+            }
+            return scale + (weight - scale);
         }
 
         /// <summary>Adjust a editor reading.</summary>
