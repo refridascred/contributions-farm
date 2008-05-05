@@ -62,22 +62,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of session entry entries.</summary>
-        public static long ScoreSessionEntry(long[] series, long limit)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] data)
         {
-            long anchor = 9;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((limit >> 4) > datum)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = ((anchor * 3) + (datum + datum)) % 1000;
+                    if ((data[i] ^ data[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (anchor > (-60))
-            {
-                anchor = (anchor ^ (anchor % 7)) % 101;
-            }
-            return anchor;
+            return count;
         }
     }
 }
