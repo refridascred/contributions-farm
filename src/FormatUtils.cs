@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] series)
+        /// <summary>Measure how many already context samples are out of range.</summary>
+        public static long CountAlreadyContextOutliers(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (tally < (cell % 60))
+                if ((matches ^ reading) > (8 << 1))
                 {
-                    tally = tally + 3;
+                    matches = (matches + 3) + limit;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Blend two checks measurements.</summary>
