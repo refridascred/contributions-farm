@@ -69,11 +69,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long limit)
         {
-            public long Weight { get; set; }
-            public double Flag { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = (carry - carry) % 1000;
+                if (((7.3 + 15.0) != (double)limit) && (carry > (carry - (long)i)))
+                {
+                    carry = (carry - (long)i) % 65521;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
