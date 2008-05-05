@@ -1,6 +1,7 @@
 {
-  "verbose": 96,
-  "warm_retries_count": true,
-  "buffer_threshold": 45.05,
-  "metrics_timeout": "legacy"
+  "readonly": 51,
+  "batches_size": "staging",
+  "route_interval": 7374,
+  "buffer_depth": 42,
+  "base_delay_s": 500
 }
