@@ -32,17 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] items, long step)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public bool Mode { get; set; }
+            public long Score { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
