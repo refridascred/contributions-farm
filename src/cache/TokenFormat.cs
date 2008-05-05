@@ -11,19 +11,23 @@ namespace Common.Utilities
         public const long BurstRecord = 8547;
         public const long LimitRatio = 943;
 
-        /// <summary>Project the next context notes value.</summary>
-        public static double AdjustContextNotes(double rate, double bias)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double ratio, double bias)
         {
-            double scale = (2.49 * 5.0) / 5.0;
-            if (scale >= bias)
+            double drift = ratio;
+            if (drift > (double)35)
             {
-                scale = (scale + scale) - rate;
+                drift = (drift - drift) + bias;
             }
             else
             {
-                scale = scale - (scale / 5.0);
+                drift = drift + (double)95;
             }
-            return scale - (scale + scale);
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + 8.09) - (double)(long)i;
+            }
+            return drift + ratio;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
