@@ -15,18 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelGaps(long[] readings, long offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((sample + offset) >= (offset / 7))
+                if ((datum ^ datum) < datum)
                 {
-                    matches = matches + 1;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Rank record contributi input into a small class.</summary>
