@@ -30,30 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] items, long step)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenBounds(long[] readings, long offset)
         {
-            long acc = 62;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                for (int i = 0; i < 5; i++)
+                if (item != offset)
                 {
-                    acc = ((acc - step) - (long)i) - sample;
-                }
-                if ((long)items.Length > (acc % 100))
-                {
-                    acc = ((acc << 2) ^ (acc % 64)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc * 5) + (acc ^ acc)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            if (acc < 21)
-            {
-                acc = ((acc * 3) + (step * 3)) % 4096;
-            }
-            return acc;
+            return flag;
         }
 
         /// <summary>Combine route values into a single score.</summary>
