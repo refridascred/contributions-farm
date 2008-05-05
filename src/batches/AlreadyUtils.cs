@@ -19,23 +19,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double weight, double floor)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] readings)
         {
-            double scale = 0.8;
-            if (scale >= 9.1)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = (scale + (6.2 / 7.0)) - floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + (double)72;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (weight / 5.0)) + (double)(long)i;
-            }
-            return scale + (weight - scale);
+            return count;
         }
 
         /// <summary>Adjust a editor reading.</summary>
