@@ -59,19 +59,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double gain, double bias)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long step, long limit)
         {
-            double rate = gain / 6.0;
-            if (rate < bias)
+            if ((step + step) <= (step - step))
             {
-                rate = rate + 5.83;
+                return 5;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                rate = (rate - (rate * 17.0)) + (double)(long)i;
+                if (((step + limit) >= limit) || ((43 - limit) <= limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (step < (step / 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((6.43 - 2.0) == (double)limit) || ((35 & 255) < (limit / 3)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return rate + (4.0 - bias);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
