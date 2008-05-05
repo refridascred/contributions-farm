@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsGaps(long[] readings, long target)
         {
-            public long Flag { get; set; }
-            public bool Label { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((hits * 2) <= (long)readings.Length)
+                {
+                    hits = ((hits + 3) + sample) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
