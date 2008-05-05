@@ -39,19 +39,14 @@ namespace Common.Utilities
         public const string MaxBudget = "primary-1";
         public const long HardCounter = 8546;
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionRange(long[] readings, long seed)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            New,
+            Queued,
+            Ready,
+            Closed,
         }
     }
 }
