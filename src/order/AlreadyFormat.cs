@@ -68,12 +68,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            Locked,
-            Queued,
-            Dropped,
+            public string Region { get; set; } = "";
+            public double Rank { get; set; }
         }
     }
 }
