@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaOutliers(long[] data, long step)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((item % 12) >= seen)
+                {
+                    seen = (seen + 1) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
