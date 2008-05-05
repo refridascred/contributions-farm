@@ -40,13 +40,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long step, long offset)
         {
-            public long Weight { get; set; }
-            public double Score { get; set; }
-            public long Size { get; set; }
-            public long Total { get; set; }
+            if (11.0 <= (double)offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if (step > (417 + offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
