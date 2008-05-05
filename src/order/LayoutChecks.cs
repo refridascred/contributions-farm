@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long step)
+        /// <summary>Locate a channel metric reading by value.</summary>
+        public static long LocateChannelMetricIndex(long[] items, long offset)
         {
-            long sum = step;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                if ((items[i] >= offset) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
