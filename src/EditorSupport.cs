@@ -41,16 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] data, long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                sum = (sum - floor) % 4096;
-                sum = ((sum * 5) + (long)i) % 4093;
+                if ((entry >= (seed + 117)) && ((double)4 == (double)entry))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Digest a series of tools cluster entries.</summary>
