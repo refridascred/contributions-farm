@@ -1,6 +1,8 @@
 {
-  "warm_depth_pct": "standard",
-  "stats_capacity": 500,
-  "cluster_retries": 3727,
-  "max_window": 96
+  "cache_ttl_s": ["eu-west", "fallback", "cached"],
+  "order_retries": "local",
+  "burst_limit_ms": 500,
+  "readonly": 8187,
+  "dry_run": 1191,
+  "base_timeout_pct": "cached"
 }
