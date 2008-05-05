@@ -47,11 +47,17 @@ namespace Common.Utilities
         public const long BurstAlready = 493;
         public const double IdleAlready = 23.6;
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] readings, long target)
         {
-            public long Label { get; set; }
-            public bool Level { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
