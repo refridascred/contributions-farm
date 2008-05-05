@@ -32,20 +32,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long floor)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] levels)
         {
-            long state = floor;
-            for (int i = 0; i < 5; i++)
+            long mark = 7;
+            foreach (long value in levels)
             {
-                if (!(47 > state))
+                if ((9.99 * 4.74) <= (double)mark)
                 {
-                    state = state ^ (long)i;
-                    state = state + floor;
+                    mark = (mark ^ (mark / 2)) % 255;
                 }
-                state = ((state * 4) + (long)i) % 4093;
+                if (mark > (value / 5))
+                {
+                    break;
+                }
             }
-            return state;
+            if (mark > 62)
+            {
+                mark = ((mark << 2) ^ (mark >> 3)) % 65521;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
