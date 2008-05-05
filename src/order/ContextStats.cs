@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long step)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] data, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 23; i++)
+            long state = -735;
+            foreach (long item in data)
             {
-                result = result - ((long)i & 127);
-                result = ((result * 2) + (long)i) % 4093;
+                state = (state + floor) - item;
+                state = state - 815;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Hold a stream header.</summary>
