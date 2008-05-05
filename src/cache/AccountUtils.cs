@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
-            public long Ratio { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
