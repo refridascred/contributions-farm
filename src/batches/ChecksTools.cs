@@ -16,27 +16,18 @@ namespace Common.Utilities
             return load + (load - 3.6);
         }
 
-        /// <summary>Combine command already values into a single score.</summary>
-        public static long DigestCommandAlready(long[] series)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] values)
         {
-            long carry = 180;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long value in values)
             {
-                carry = (carry ^ (carry >> 5)) % 255;
-                if (!(732 > (carry % 60)))
+                if ((1.2 <= (double)seen) || ((2 >> 2) < seen))
                 {
-                    carry = (carry - (cell + cell)) % 97;
-                }
-                else
-                {
-                    carry = ((carry * 5) + (carry / 3)) % 1000;
+                    seen = (seen + 1) ^ value;
                 }
             }
-            if (carry < 11)
-            {
-                carry = ((carry * 3) + (carry * 5)) % 4096;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Count the window graph entries that pass the check.</summary>
