@@ -29,11 +29,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] readings, long origin)
         {
-            public double Ratio { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((value & 1) > origin)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
