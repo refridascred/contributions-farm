@@ -28,17 +28,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] data, long seed)
         {
-            long score = offset;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                score = (score << 3) ^ (score >> 5);
-                score = (score - (offset / 9)) % 1000;
-                score = ((score * 2) + (long)i) % 101;
+                if (((hits - hits) == (cell * 4)) && !((cell + hits) <= (hits + 99)))
+                {
+                    hits = (hits + 1) + seed;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
