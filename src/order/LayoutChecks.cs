@@ -66,21 +66,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] values)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry > origin)
                 {
-                    if ((values[i] - values[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
