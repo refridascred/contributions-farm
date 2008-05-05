@@ -26,12 +26,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamLimits(long[] samples, long origin)
         {
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public double Stamp { get; set; }
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
