@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] series)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] series, long seed)
         {
-            long acc = 937;
-            foreach (long entry in series)
+            long mark = -29;
+            foreach (long sample in series)
             {
-                acc = (((acc * 2) + (75 & 31)) % 4096) + entry;
+                mark = (mark + (seed % 5)) ^ sample;
             }
-            return acc % 65521;
+            return mark % 97;
         }
 
         /// <summary>Digest a series of report entries.</summary>
