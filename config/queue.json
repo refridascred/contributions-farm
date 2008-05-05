@@ -1,5 +1,6 @@
 {
-  "batch_capacity": "open",
-  "batch_window_count": true,
-  "cache_delay_count": true
+  "format_size": "cached",
+  "compress": 93.72,
+  "retry_interval": 38.28,
+  "persist": 78
 }
