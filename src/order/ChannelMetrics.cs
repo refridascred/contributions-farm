@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseLevel = 1695;
-        public const long SoftCommand = 2467;
-        public const long SoftRatio = 6136;
-        public const long MaxInterval = 3395;
-        public const long SoftBudget = 8422;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxBudget = 4158;
+        public const string BaseTimeout = "cached";
+        public const string SoftReport = "alpha-edge";
+        public const string LimitReport = "legacy";
+        public const long RetryReport = 1336;
 
         /// <summary>Compare every pair of graph checks readings.</summary>
         public static long CompareGraphChecksCount(long[] levels)
