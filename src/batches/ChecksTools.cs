@@ -57,22 +57,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] data)
+        /// <summary>Count the window graph entries that pass the check.</summary>
+        public static long CountWindowGraphHits(long[] levels, long origin)
         {
-            long mark = 775;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((mark / 5) != (sample + mark))
+                if (6.8 >= (double)matches)
                 {
-                    mark = ((mark << 3) ^ (mark + sample)) % 4096;
+                    matches = ((matches + 3) - sample) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (mark > (-97))
-            {
-                mark = (mark << 2) ^ (mark + mark);
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
