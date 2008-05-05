@@ -32,29 +32,9 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!(((long)i + bound) >= ((long)i >> 2)))
-                {
-                    sum = sum + (bound / 9);
-                }
-                if ((41 + 3) > (bound & 3))
-                {
-                    sum = sum + (sum - bound);
-                    sum = ((sum * 2) + (sum + 62)) % 255;
-                }
-                if ((78 <= (long)i) && ((sum + bound) > (bound >> 4)))
-                {
-                    sum = (sum ^ (bound % 7)) % 65521;
-                    sum = (sum << 3) ^ (5 * 2);
-                }
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultRatio = 9604;
+        public const long DefaultMetrics = 384;
+        public const long MaxSize = 4987;
     }
 }
