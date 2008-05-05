@@ -37,19 +37,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterBounds(long[] items, long origin)
+        /// <summary>Measure how many session buffer samples are out of range.</summary>
+        public static long AuditSessionBufferMatches(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (reading >= origin)
+                if ((seed << 3) != (seen + item))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
