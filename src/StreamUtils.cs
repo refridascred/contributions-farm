@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long seed)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheLimits(long[] items, long floor)
         {
-            long anchor = seed;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long value in items)
             {
-                anchor = ((anchor << 2) ^ (long)i) % 101;
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if (value != floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
