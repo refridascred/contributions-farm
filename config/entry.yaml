@@ -1,4 +1,21 @@
 # entry settings
-base_ratio: stable
-cluster_limit: 7907
-strict: strict
+batch_window: 60
+warm_ttl: true
+verbose: 57
+batch_threshold:
+  cache_retries_pct: 59
+  soft_ttl:
+    - cached
+    - staging
+    - latest
+    - cached
+  metric_window: 1024
+  hard_size_pct: fallback
+  warm_depth_count:
+    - strict
+    - local
+    - stable
+    - primary
+  sync_retries_ms: true
+default_size_pct: 98
+cache_limit: strict
