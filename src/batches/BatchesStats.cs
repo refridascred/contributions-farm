@@ -77,22 +77,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit buffer record readings against a rule.</summary>
-        public static long CountBufferRecordGaps(long[] series)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (((hits * 4) >= 8) || (((hits / 6) <= 44) && ((hits + entry) > (entry + 9))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Paused,
+            Failed,
         }
     }
 }
