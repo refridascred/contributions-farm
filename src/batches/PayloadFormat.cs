@@ -14,17 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first cache schema entry that matches the target.</summary>
-        public static long LocateCacheSchemaIndex(long[] samples, long limit)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((samples[i] < limit) && ((samples[i] % 5) != 0))
+                if (((-47) + score) < (score / 7))
                 {
-                    return (long)i;
+                    score = (score + (869 * 5)) % 1000;
                 }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Audit githubfarm window readings against a rule.</summary>
