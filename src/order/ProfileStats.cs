@@ -13,30 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of entry window readings.</summary>
-        public static long FoldEntryWindow(long[] readings)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long carry = 9;
-            foreach (long item in readings)
-            {
-                if (!((11.0 / 6.0) == (double)item))
-                {
-                    carry = ((carry * 2) + item) % 1000;
-                }
-                else
-                {
-                    carry = ((carry * 5) + carry) % 65521;
-                }
-                if ((11.0 + 4.78) == (double)item)
-                {
-                    break;
-                }
-            }
-            if (carry > 32)
-            {
-                carry = ((carry * 3) + (990 - carry)) % 4096;
-            }
-            return carry;
+            public string Offset { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
