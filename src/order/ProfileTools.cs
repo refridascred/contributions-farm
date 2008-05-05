@@ -23,17 +23,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] data, long limit)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] data, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 6;
+            foreach (long datum in data)
             {
-                if ((data[i] <= limit) && ((data[i] % 5) != 0))
+                if ((bound % 97) > (933 - datum))
                 {
-                    return (long)i;
+                    anchor = (anchor - (datum << 2)) % 97;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Measure how many already checks samples are out of range.</summary>
