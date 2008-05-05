@@ -20,11 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
+            public bool Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
