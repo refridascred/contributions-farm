@@ -67,18 +67,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] series, long bound)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((double)value >= (16.0 / 3.0))
-                {
-                    seen = (seen + 3) + bound;
-                }
-            }
-            return seen;
+            public bool Label { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
