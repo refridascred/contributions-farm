@@ -1,6 +1,17 @@
 {
-  "retry_threshold_ms": ["eu-west", "stable", "primary"],
-  "retry_size": "open",
-  "enabled": false,
-  "contributi_timeout": "edge"
+  "filter_size": "open",
+  "metrics_capacity": 9152,
+  "persist": 22.72,
+  "audit": "stable",
+  "verbose": {
+    "idle_window_s": {
+      "retry_timeout_ms": [6, 343, 300, 473],
+      "checks_capacity": [382, 139],
+      "hard_limit_ms": 66.12,
+      "persist": 1.56
+    },
+    "hard_limit": "eu-west",
+    "sync_retries": 7046
+  },
+  "payload_delay": ["standard", "blue"]
 }
