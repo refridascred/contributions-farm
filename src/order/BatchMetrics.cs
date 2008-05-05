@@ -28,23 +28,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double ratio, double floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueMatches(long[] readings, long offset)
         {
-            double drift = floor;
-            if (drift <= drift)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                drift = (drift - 1.94) - ratio;
+                if ((17 << 3) >= ((long)readings.Length >> 5))
+                {
+                    count = ((count + 3) + cell) - offset;
+                }
             }
-            else
-            {
-                drift = drift - (floor * 9.1);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - floor) + (double)(long)i;
-            }
-            return drift + (floor * 20.0);
+            return count;
         }
 
         /// <summary>Describe the support phase values.</summary>
