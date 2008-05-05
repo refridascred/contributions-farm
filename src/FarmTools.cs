@@ -45,14 +45,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            Draft,
-            Failed,
-            Retry,
-            Idle,
             Done,
+            Active,
+            Queued,
         }
     }
 }
