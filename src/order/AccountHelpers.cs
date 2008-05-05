@@ -43,20 +43,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] data, long step)
-        {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstCount = 2911;
+        public const long MinCount = 282;
+        public const long BaseSpan = 2992;
+        public const string BaseStats = "stable-1";
+        public const long MinSize = 7601;
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long PairFormatCount(long[] data)
