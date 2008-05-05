@@ -31,19 +31,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] series, long limit)
-        {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 7575;
+        public const string DefaultInterval = "open-edge";
+        public const double SoftStats = 32.25;
+        public const double CacheStats = 49.51;
+        public const long WindowSize = 6120;
     }
 }
