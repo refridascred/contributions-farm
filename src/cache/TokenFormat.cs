@@ -19,28 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a editor stats counter forward.</summary>
-        public static long SeriesEditorStats(long offset)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] samples)
         {
-            long acc = offset;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)offset < (5.8 * 19.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc * 4) + (offset + (long)i);
+                    if ((samples[i] - samples[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    acc = acc - ((long)i + 50);
-                    acc = (acc ^ offset) % 1000;
-                }
-                if ((98 ^ acc) != (acc * 4))
-                {
-                    acc = (acc << 3) ^ (offset / 2);
-                }
-                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Fold a list of tools batches readings.</summary>
