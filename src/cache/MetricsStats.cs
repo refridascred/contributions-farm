@@ -60,38 +60,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a graph report pair into a bucket.</summary>
-        public static long BucketGraphReport(long origin, long bound)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] data, long bound)
         {
-            if ((bound / 2) <= (bound + bound))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((9.0 + 11.0) == (double)origin)
+                if ((data[i] == bound) && ((data[i] % 2) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((origin + origin) < bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((20.0 + 6.4) != (double)bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the filter phase values.</summary>
