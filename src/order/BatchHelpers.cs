@@ -28,19 +28,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsLimits(long[] data, long offset)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long limit)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long score = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (item >= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return valid;
+            return score;
         }
     }
 }
