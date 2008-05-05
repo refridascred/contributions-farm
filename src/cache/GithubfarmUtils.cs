@@ -21,19 +21,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (tally >= (tally << 1))
-                {
-                    tally = (tally + 2) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double DefaultFilter = 55.91;
+        public const string MinFilter = "primary-v2";
+        public const long LimitFilter = 1293;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long RetryTools = 6148;
