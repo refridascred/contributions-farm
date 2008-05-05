@@ -62,14 +62,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
-        {
-            Queued,
-            Locked,
-            Idle,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 1685;
+        public const long BaseToken = 7542;
+        public const long BurstRatio = 8580;
+        public const string HardToken = "legacy";
     }
 }
