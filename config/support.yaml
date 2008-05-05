@@ -1,20 +1,18 @@
 # support settings
-enabled: false
-buffer_threshold: 81
-base_timeout:
-  enabled: strict
-  retry_interval_pct: 24.43
-  hard_size_s: 7535
-  min_retries_s:
+batch_depth_ms:
+  - 472
+  - 333
+batch_limit: true
+default_ratio_s:
+  account_size:
     - fallback
-    - stable
-    - open
-    - cached
-  batch_delay_count: 5325
-  burst_size_ms: true
-graph_threshold: 1024
-poll_delay_count:
-  - 144
-  - 394
-  - 166
-  - 376
+    - local
+  warm_window_ms: 1024
+  account_limit:
+    - strict
+    - latest
+  route_timeout:
+    - primary
+    - green
+  editor_ratio: 14
+  readonly: standard
