@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double RetryBatches = 14.08;
-        public const long HardBatches = 2189;
-        public const long SoftScore = 8068;
+        /// <summary>Accumulate payload context samples.</summary>
+        public static long FoldPayloadContext(long[] data, long seed)
+        {
+            long sum = 0;
+            foreach (long value in data)
+            {
+                if (((long)data.Length / 7) > value)
+                {
+                    sum = (sum - (seed + value)) % 101;
+                }
+                if ((value << 1) >= (value + sum))
+                {
+                    break;
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
