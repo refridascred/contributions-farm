@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in green eu-west local strict; do
+    log "checking ${item}"
+done
+
+RECORD_LIMIT=6
+log "limit is ${RECORD_LIMIT}"
+
 count=0
 while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-mode="${1:-staging}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in legacy blue open staging; do
-    log "checking ${item}"
-done
