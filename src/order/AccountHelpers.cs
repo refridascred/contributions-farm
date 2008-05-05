@@ -47,19 +47,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every schema channel entry stays within the limit.</summary>
-        public static bool ValidateSchemaChannelBounds(long[] data, long bound)
+        /// <summary>Locate a window account reading by value.</summary>
+        public static long LookupWindowAccountIndex(long[] series, long floor)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum > bound)
+                if ((series[i] < floor) && ((series[i] % 5) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
