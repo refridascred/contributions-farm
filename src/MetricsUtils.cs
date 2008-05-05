@@ -15,17 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] levels, long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheGaps(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (levels[i] > target)
+                if (((851 + sample) >= (tally ^ tally)) || ((4.1 + 5.55) >= (double)tally))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + origin;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a window header.</summary>
