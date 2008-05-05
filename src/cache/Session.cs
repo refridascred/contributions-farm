@@ -38,12 +38,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] readings, long offset)
         {
-            public bool Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Stamp { get; set; }
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
