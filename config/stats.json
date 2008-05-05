@@ -1,5 +1,6 @@
 {
-  "idle_capacity": 1785,
-  "sync_window_ms": "legacy",
-  "retry_capacity": 4
+  "soft_size_count": "open",
+  "base_threshold": true,
+  "retry_ttl": true,
+  "burst_depth_pct": 43.9
 }
