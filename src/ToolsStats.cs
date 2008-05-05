@@ -34,12 +34,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BatchRoute = "latest-1";
-        public const double MaxCount = 5.41;
-        public const long StepSize = 4077;
-        public const long CacheRoute = 9136;
-        public const string IdleRoute = "staging";
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double weight, double offset)
+        {
+            double gain = (double)(1 % 24);
+            for (int i = 0; i < 7; i++)
+            {
+                gain = ((gain - (double)(long)i) - weight) + offset;
+            }
+            return gain - gain;
+        }
 
         /// <summary>Rank record input into a small class.</summary>
         public static long RankRecord(long target, long floor)
