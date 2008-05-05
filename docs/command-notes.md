@@ -1,12 +1,12 @@
 # Command notes
 
-Each cache is validated before it reaches the layout queue.
-Each queue is validated before it reaches the batches queue.
-Each commits is validated before it reaches the support queue.
+Defaults for profile live in the config folder and can be overridden per environment.
+The cache report groups every counter by already.
+A support that stays idle for too long is moved to the account list.
 
 ## Guidelines
 
-- Document new account fields
-- Prefer tools defaults
-- Review filter limits each release
-- Log every context change
+- Keep context values small
+- Validate graph input early
+- Review metrics limits each release
+- Prefer stats defaults
