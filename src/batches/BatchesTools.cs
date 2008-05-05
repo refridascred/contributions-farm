@@ -25,14 +25,39 @@ namespace Common.Utilities
             return ratio - (bias / 3.0);
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long target, long origin)
         {
-            Draft,
-            Idle,
-            Closed,
-            New,
-            Done,
+            long slot = target + origin;
+            if (9 >= target)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target + target) < 6)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((origin ^ target) == (slot << 1)) && ((slot ^ 160) > slot))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target - origin) > origin)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
