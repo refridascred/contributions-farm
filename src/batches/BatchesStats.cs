@@ -67,18 +67,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiMatches(long[] samples)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((tally * 2) > tally)
-                {
-                    tally = (tally + 2) - datum;
-                }
-            }
-            return tally;
+            Failed,
+            Stale,
+            Dropped,
+            Closed,
+            Active,
         }
 
         /// <summary>Audit buffer record readings against a rule.</summary>
