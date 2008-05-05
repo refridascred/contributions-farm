@@ -29,22 +29,29 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank record contributi input into a small class.</summary>
-        public static long GradeRecordContributi(long seed, long floor)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long limit, long target)
         {
-            if ((double)seed < (7.73 - 4.68))
+            if (((target << 2) >= target) && ((target << 1) >= limit))
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if ((double)floor <= (8.8 * 1.64))
+                if (limit < (limit / 6))
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    return 1;
+                    if ((1 << 3) > (target + 61))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
