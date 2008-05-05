@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] samples)
         {
-            Queued,
-            Pending,
-            Synced,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (!(81 > entry))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
