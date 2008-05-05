@@ -28,22 +28,24 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the session githubfarm entries that pass the check.</summary>
-        public static long TallySessionGithubfarmGaps(long[] readings)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long state = 16;
+            foreach (long datum in readings)
             {
-                if ((hits + hits) > (cell + (long)readings.Length))
+                state = state - (target / 6);
+                state = ((state * 4) + (target + datum)) % 4096;
+                if (!((double)target > (double)state))
                 {
-                    hits = hits + 3;
+                    state = ((state * 2) + target) % 101;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    state = state ^ (0 & 31);
                 }
             }
-            return hits;
+            return state;
         }
     }
 }
