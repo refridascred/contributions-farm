@@ -44,12 +44,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            public double Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public string Limit { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Match up entry samples.</summary>
