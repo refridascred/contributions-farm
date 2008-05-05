@@ -21,11 +21,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long bound)
         {
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
+            long mix = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Grade a token layout value against two limits.</summary>
