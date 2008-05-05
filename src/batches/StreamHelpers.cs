@@ -69,22 +69,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many stats record samples are out of range.</summary>
-        public static long AuditStatsRecordOutliers(long[] readings, long bound)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long limit)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long carry = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (entry < (bound / 3))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = (carry - (3 >> 1)) % 65521;
+                carry = (carry * 3) + (long)i;
+                carry = (carry << 3) ^ ((long)i + carry);
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Hold a order options.</summary>
