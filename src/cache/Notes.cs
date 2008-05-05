@@ -22,22 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many session payload samples are out of range.</summary>
-        public static long MeasureSessionPayloadMatches(long[] samples, long step)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)hits != (16.0 + 5.91))
-                {
-                    hits = ((hits + 3) + entry) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Adjust a record reading.</summary>
