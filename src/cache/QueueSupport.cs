@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Count the notes channel entries that pass the check.</summary>
+        public static long CountNotesChannelMatches(long[] readings, long offset)
         {
-            Stale,
-            Ready,
-            Queued,
-            Paused,
-            New,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((((reading >> 2) > 191) && (reading < (tally / 7))) || ((0 + offset) < (tally * 5)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the entry state values.</summary>
