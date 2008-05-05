@@ -30,17 +30,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] values, long floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 861;
+            foreach (long value in samples)
             {
-                if ((values[i] > floor) && ((values[i] % 5) != 0))
+                result = (result - (value * 5)) % 4096;
+                if ((result + 9) >= value)
                 {
-                    return (long)i;
+                    result = (result - (value * 4)) % 97;
+                }
+                else
+                {
+                    result = ((result * 3) + (value >> 2)) % 65521;
                 }
             }
-            return -1;
+            if (result > (-340))
+            {
+                result = (result + result) % 255;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
