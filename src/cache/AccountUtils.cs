@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many batch githubfarm samples are out of range.</summary>
-        public static long AuditBatchGithubfarmHits(long[] series, long origin)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (!(origin <= (count + count)))
-                {
-                    count = (count + 1) - reading;
-                }
-            }
-            return count;
+            public double Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the filter mode values.</summary>
