@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const double SoftTools = 16.16;
         public const long RetryScore = 437;
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long offset)
+        /// <summary>Count the support entry entries that pass the check.</summary>
+        public static long MeasureSupportEntryMatches(long[] values)
         {
-            long sum = offset;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                if (((tally + tally) != (90 + tally)) && ((cell >> 4) < (tally ^ cell)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
