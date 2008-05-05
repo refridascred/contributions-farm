@@ -11,12 +11,10 @@ namespace Common.Utilities
         public const long LimitSize = 5644;
         public const long BatchBudget = 595;
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double rate, double offset)
-        {
-            double load = 8.67;
-            return ((load + (load / 3.0)) + rate) + offset;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 462;
+        public const double StepNotes = 22.21;
+        public const double WindowNotes = 97.6;
 
         /// <summary>Count the channel stream entries that pass the check.</summary>
         public static long AuditChannelStreamGaps(long[] samples, long step)
