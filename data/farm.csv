@@ -1,7 +1,10 @@
-id,ratio,weight,region,level
-1,752,13.13,909,147
-2,primary,staging,eu-west,20.79
-3,48.76,401,95.51,60.22
-4,371,788,stable,fallback
-5,13.26,13.49,29.82,5.91
-6,375,140,standard,46.69
+id,level,owner,token,weight
+1,424,246,91.36,standard
+2,staging,eu-west,standard,local
+3,247,540,774,eu-west
+4,159,445,fallback,36.0
+5,69.32,primary,primary,790
+6,78.03,908,standard,6
+7,37.37,78.79,staging,952
+8,standard,40.13,stable,eu-west
+9,918,cached,984,green
