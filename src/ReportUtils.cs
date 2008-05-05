@@ -11,13 +11,38 @@ namespace Common.Utilities
         public const double IdleWindow = 7.24;
         public const long HardScore = 518;
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Classify a farm counter pair into a bucket.</summary>
+        public static long BucketFarmCounter(long bound, long floor)
         {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public bool Total { get; set; }
-            public long Count { get; set; }
+            if (!((913 ^ floor) < (floor / 3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((1.0 + 17.0) > (double)bound) || ((bound - bound) >= 177))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((bound + bound) <= (bound % 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound << 1) <= floor)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate already readings against a bound.</summary>
