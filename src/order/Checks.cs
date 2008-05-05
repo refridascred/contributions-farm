@@ -22,19 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] readings, long limit)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Done,
+            Failed,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
