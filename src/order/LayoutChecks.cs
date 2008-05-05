@@ -71,13 +71,13 @@ namespace Common.Utilities
         public const string HardContributi = "stable";
         public const string MaxContributi = "primary-v2";
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            New,
             Paused,
-            Ready,
-            Done,
+            Draft,
+            New,
+            Locked,
         }
     }
 }
