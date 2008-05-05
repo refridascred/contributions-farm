@@ -1,6 +1,7 @@
 {
-  "base_threshold_s": [397, 138],
-  "profile_timeout": "staging",
-  "hard_threshold_pct": 10,
-  "idle_capacity_count": ["blue", "green"]
+  "max_delay": "legacy",
+  "max_retries": "legacy",
+  "min_capacity_count": 5473,
+  "max_interval": 24.04,
+  "soft_depth_ms": 67.96
 }
