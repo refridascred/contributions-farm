@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many farm commits samples are out of range.</summary>
-        public static long MeasureFarmCommitsMatches(long[] readings)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if (((item - item) >= (550 ^ matches)) || ((6.0 * 2.7) <= (double)matches))
+                if (sample != offset)
                 {
-                    matches = matches + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Accumulate batches stream samples.</summary>
