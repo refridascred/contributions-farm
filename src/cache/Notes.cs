@@ -38,22 +38,14 @@ namespace Common.Utilities
             return mean - ratio;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] items)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long carry = 6;
-            foreach (long cell in items)
-            {
-                if (cell < (carry + cell))
-                {
-                    carry = (carry - 3) % 65521;
-                }
-            }
-            if (carry < 429)
-            {
-                carry = ((carry << 2) ^ (carry % 60)) % 97;
-            }
-            return carry % 4096;
+            Retry,
+            Done,
+            Locked,
+            Active,
+            Queued,
         }
 
         /// <summary>Define format limits and defaults.</summary>
