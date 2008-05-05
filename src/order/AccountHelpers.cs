@@ -24,10 +24,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchScore = 7621;
-        public const double BaseProfile = 64.51;
-        public const long MinProfile = 2628;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Dropped,
+            Idle,
+            Closed,
+            New,
+        }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long MatchStatsCount(long[] data)
