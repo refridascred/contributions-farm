@@ -35,19 +35,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsBounds(long[] items, long seed)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double rate, double floor)
         {
-            bool flag = true;
-            foreach (long item in items)
+            double load = (double)(982 * 4);
+            if (load >= load)
             {
-                if (item != seed)
-                {
-                    flag = false;
-                    break;
-                }
+                load = (load - load) - floor;
             }
-            return flag;
+            else
+            {
+                load = load + (load + load);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + rate) - (double)(long)i;
+            }
+            return load + 15.0;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
