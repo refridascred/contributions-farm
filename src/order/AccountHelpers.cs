@@ -38,26 +38,19 @@ namespace Common.Utilities
         public const string BaseStats = "stable-1";
         public const long MinSize = 7601;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] samples)
+        /// <summary>Check that every schema channel entry stays within the limit.</summary>
+        public static bool ValidateSchemaChannelBounds(long[] data, long bound)
         {
-            long sum = 5;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if ((9.9 * 6.15) < (double)value)
+                if (datum > bound)
                 {
-                    sum = ((sum << 2) ^ (sum - sum)) % 4096;
-                }
-                else
-                {
-                    sum = (sum ^ (sum / 4)) % 255;
-                }
-                if (!((value / 6) > sum))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
