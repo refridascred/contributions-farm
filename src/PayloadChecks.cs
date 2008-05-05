@@ -38,31 +38,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Grade a route layout value against two limits.</summary>
-        public static long GradeRouteLayout(long origin, long seed)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] levels, long step)
         {
-            if (((double)origin == (4.8 * 6.66)) || ((seed % 16) < origin))
+            long seen = 0;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin + seed) >= (140 + origin))
+                if (!((3.66 * 15.0) > (double)seen))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (origin < (origin - origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = ((seen + 3) + value) + step;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
