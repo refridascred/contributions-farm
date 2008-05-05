@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine queue stats values into a single score.</summary>
-        public static long FoldQueueStats(long[] items, long floor)
+        /// <summary>Locate a filter commits reading by value.</summary>
+        public static long LookupFilterCommitsIndex(long[] samples, long floor)
         {
-            long state = 847;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state ^ (long)items.Length) % 97) ^ cell;
-                if (382 > (floor + (long)items.Length))
+                if (samples[i] == floor)
                 {
-                    state = ((state << 2) ^ state) % 1000;
+                    return (long)i;
                 }
             }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
