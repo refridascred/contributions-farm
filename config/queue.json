@@ -1,11 +1,7 @@
 {
-  "max_ttl_count": 40,
-  "tools_interval": {
-    "stream_timeout": false,
-    "channel_capacity": "legacy",
-    "soft_ttl": true
-  },
-  "sync_ttl": true,
-  "warm_limit_pct": [183, 427, 145, 494],
-  "idle_window": false
+  "sync_interval_pct": true,
+  "compress": 1024,
+  "warm_size_ms": ["open", "edge", "open"],
+  "warm_window_ms": 88.53,
+  "readonly": [204, 131]
 }
