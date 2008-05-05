@@ -76,19 +76,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] levels)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long result = 418;
-            foreach (long value in levels)
-            {
-                result = ((result * 5) + result) + value;
-            }
-            if (result < 418)
-            {
-                result = (result - (result * 2)) % 101;
-            }
-            return result;
+            public string Region { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a route info.</summary>
