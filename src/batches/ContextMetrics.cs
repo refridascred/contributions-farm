@@ -44,12 +44,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
-            public bool Size { get; set; }
+            public double Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Derive the next contributi tools value from a seed.</summary>
