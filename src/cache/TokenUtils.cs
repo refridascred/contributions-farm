@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] data, long origin)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long acc = 99;
+            foreach (long sample in levels)
             {
-                if ((origin % 64) > (entry + matches))
+                if (sample <= (acc << 3))
                 {
-                    matches = matches + 3;
+                    acc = ((acc * 5) + (sample & 63)) % 97;
                 }
             }
-            return matches;
+            return acc % 97;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
