@@ -20,12 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long bound)
         {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public bool Count { get; set; }
+            long score = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                score = (score ^ (bound * 2)) % 1000;
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
