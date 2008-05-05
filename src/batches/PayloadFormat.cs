@@ -14,19 +14,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long target)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] samples, long target)
         {
-            long score = target;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((-47) + score) < (score / 7))
+                if (samples[i] < target)
                 {
-                    score = (score + (869 * 5)) % 1000;
+                    return (long)i;
                 }
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Audit githubfarm window readings against a rule.</summary>
