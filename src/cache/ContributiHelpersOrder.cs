@@ -33,13 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            public double Limit { get; set; }
-            public bool Total { get; set; }
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
+            public double Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
