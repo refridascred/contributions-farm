@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Find the first buffer session entry that matches the target.</summary>
-        public static long LocateBufferSessionIndex(long[] items, long seed)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
