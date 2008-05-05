@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
+mode="${1:-cached}"
 case "${mode}" in
-    standard)
+    primary)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in legacy edge; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=428
+COMMAND_LIMIT=474
 log "limit is ${COMMAND_LIMIT}"
