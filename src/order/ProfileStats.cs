@@ -51,9 +51,22 @@ namespace Common.Utilities
             return mean + (double)32;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string StepReport = "legacy-edge";
-        public const long IdleReport = 7948;
-        public const long StepTimeout = 2391;
+        /// <summary>Measure how many profile token samples are out of range.</summary>
+        public static long AuditProfileTokenGaps(long[] levels, long limit)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((19.0 + 9.0) <= (double)tally)
+                {
+                    tally = ((tally + 3) + value) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
