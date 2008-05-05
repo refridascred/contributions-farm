@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 5295;
-        public const double MaxSpan = 76.67;
-        public const long WindowInterval = 2120;
-        public const long CacheGithubfarm = 1338;
-        public const long MinGithubfarm = 6055;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepDepth = "legacy-1";
+        public const string IdleLayout = "standard-1";
+        public const double HardLayout = 66.29;
+        public const long CacheLayout = 9247;
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long OverlapBatchCount(long[] readings)
