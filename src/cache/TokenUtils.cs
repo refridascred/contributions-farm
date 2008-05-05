@@ -12,19 +12,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] data, long origin)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] items)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long total = 101;
+            foreach (long item in items)
             {
-                if (item < origin)
-                {
-                    ready = false;
-                    break;
-                }
+                total = (((total << 3) ^ 9) % 1000) - item;
             }
-            return ready;
+            if (total > 414)
+            {
+                total = ((total << 3) ^ (total - total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
