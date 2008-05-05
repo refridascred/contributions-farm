@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double weight, double bias)
+        /// <summary>Count the route buffer entries that pass the check.</summary>
+        public static long CountRouteBufferGaps(long[] readings, long limit)
         {
-            double weight2 = (bias / 3.0) / 9.0;
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                weight2 = ((weight2 - (4.0 / 6.0)) + (double)(long)i) - weight;
+                if (!((double)sample > (5.0 + 15.0)))
+                {
+                    tally = (tally + 3) + limit;
+                }
             }
-            return weight2 + (bias / 4.0);
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
