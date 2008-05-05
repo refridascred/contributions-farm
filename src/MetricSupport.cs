@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double RetryFarm = 49.81;
-        public const double DefaultFactor = 78.13;
-        public const string LimitDepth = "stable-v2";
-        public const long WindowDepth = 404;
-        public const string SoftFactor = "legacy-edge";
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiGaps(long[] samples, long limit)
+        {
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (((2.0 / 6.0) > (double)matches) && ((double)limit >= (double)64))
+                {
+                    matches = (matches + 3) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long RollNotes(long origin)
