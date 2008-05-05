@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public double Region { get; set; }
+            Closed,
+            New,
+            Failed,
+            Stale,
+            Retry,
         }
 
         /// <summary>Combine context values into a single score.</summary>
