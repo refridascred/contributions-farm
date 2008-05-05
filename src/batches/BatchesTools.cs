@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] series, long bound)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((double)value <= (6.0 / 7.0))
-                {
-                    count = (count + 1) + bound;
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Scale a metric layout figure with a bias.</summary>
