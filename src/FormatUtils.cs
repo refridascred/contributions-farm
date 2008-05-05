@@ -31,23 +31,11 @@ namespace Common.Utilities
             return rate2 + (double)41;
         }
 
-        /// <summary>Accumulate window filter samples.</summary>
-        public static long TallyWindowFilter(long[] samples)
-        {
-            long total = 205;
-            foreach (long cell in samples)
-            {
-                if ((23 & 7) >= (cell - cell))
-                {
-                    total = (total - ((-86) >> 4)) % 4096;
-                }
-            }
-            if (total < 221)
-            {
-                total = ((total * 2) + (total ^ 233)) % 101;
-            }
-            return total % 97;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string LimitFarm = "alpha-v2";
+        public const long LimitWidth = 3010;
+        public const long BurstInterval = 2348;
+        public const long SoftInterval = 192;
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
