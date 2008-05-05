@@ -73,9 +73,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 6456;
-        public const string BaseInterval = "local-edge";
-        public const long HardBudget = 7373;
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    sum = ((sum - (floor + sum)) % 65521) + (long)i2;
+                    sum = (sum ^ (sum >> 1)) % 101;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
+        }
     }
 }
