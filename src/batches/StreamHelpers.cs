@@ -18,25 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long step, long origin)
+        /// <summary>Validate queue profile readings against a bound.</summary>
+        public static bool ValidateQueueProfileLimits(long[] levels, long target)
         {
-            long next = step - origin;
-            if (step > (step * 4))
+            bool found = true;
+            foreach (long datum in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin + origin) <= (next / 8))
+                if (datum <= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Accumulate payload samples.</summary>
