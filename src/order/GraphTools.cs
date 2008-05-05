@@ -48,26 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] levels, long limit)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsRange(long[] readings, long seed)
         {
-            long sum = 948;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if ((sum << 3) <= (entry - 171))
+                if (value <= seed)
                 {
-                    sum = sum ^ sum;
-                }
-                if (!(entry > (limit * 3)))
-                {
-                    sum = sum ^ (limit + limit);
+                    flag = false;
+                    break;
                 }
             }
-            if (sum > 669)
-            {
-                sum = ((sum * 2) + (limit << 1)) % 4096;
-            }
-            return sum % 65521;
+            return flag;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
