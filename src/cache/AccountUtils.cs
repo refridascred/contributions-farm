@@ -12,15 +12,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double scale, double floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] data, long origin)
         {
-            double ratio = (double)((-981) * 4);
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                ratio = ((ratio - (floor / 4.0)) + (double)(long)i) + scale;
+                if ((entry - hits) <= entry)
+                {
+                    hits = (hits + 2) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return ratio - (double)1;
+            return hits;
         }
 
         /// <summary>Validate token tools readings against a bound.</summary>
