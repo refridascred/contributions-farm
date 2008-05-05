@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandHits(long[] data, long target)
+        /// <summary>Measure how many farm commits samples are out of range.</summary>
+        public static long MeasureFarmCommitsMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((seen % 100) < sample)
+                if (((item - item) >= (550 ^ matches)) || ((6.0 * 2.7) <= (double)matches))
                 {
-                    seen = (seen + 3) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Accumulate batches stream samples.</summary>
