@@ -19,18 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] data, long offset)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (2 >= (offset & 63))
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
+            Ready,
+            Draft,
+            Failed,
+            Closed,
+            Retry,
         }
 
         /// <summary>Blend two report format measurements.</summary>
