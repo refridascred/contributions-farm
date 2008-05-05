@@ -1,8 +1,6 @@
 # support settings
-burst_depth:
-  - 189
-  - 437
-  - 173
-burst_size_s: 27
-contributi_window: 95.16
-poll_depth: 500
+hard_retries_s: local
+min_threshold:
+  - 23
+  - 315
+metric_ttl: 1024
