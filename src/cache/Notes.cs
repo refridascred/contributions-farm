@@ -40,21 +40,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count channel graph pairs that satisfy a relation.</summary>
-        public static long CompareChannelGraphCount(long[] values)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public double Score { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
