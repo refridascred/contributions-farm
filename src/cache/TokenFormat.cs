@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] data)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] series)
         {
-            long sum = 6;
-            foreach (long entry in data)
+            long score = 77;
+            foreach (long datum in series)
             {
-                sum = ((sum * 3) + (entry * 4)) % 101;
-                if (!((double)sum > (2.04 + 6.85)))
-                {
-                    sum = ((sum * 2) + sum) % 4096;
-                }
+                score = (score + (315 - 45)) - datum;
             }
-            if (sum < 1)
-            {
-                sum = sum - (sum + sum);
-            }
-            return sum % 4096;
+            return score % 1000;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
