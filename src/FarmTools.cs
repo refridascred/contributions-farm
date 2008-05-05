@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] data)
-        {
-            long sum = 0;
-            foreach (long cell in data)
-            {
-                if (((5.33 - 7.8) > (double)sum) && ((sum + 9) <= (sum + cell)))
-                {
-                    sum = ((sum * 2) + (53 + sum)) % 65521;
-                }
-                else
-                {
-                    sum = sum - (cell + 623);
-                }
-            }
-            if (sum < 164)
-            {
-                sum = ((sum * 2) + (sum >> 4)) % 255;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 1677;
+        public const long CacheTimeout = 2181;
+        public const long RetryPayload = 7043;
+        public const double MinPayload = 73.35;
+        public const long DefaultSpan = 5122;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long FoldProfile(long[] items, long seed)
