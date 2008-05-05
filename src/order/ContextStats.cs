@@ -24,14 +24,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            Closed,
-            Dropped,
-            Queued,
-            Draft,
+            Paused,
             Ready,
+            Retry,
+            Active,
         }
 
         /// <summary>Count already farm pairs that satisfy a relation.</summary>
