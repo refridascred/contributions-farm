@@ -26,10 +26,21 @@ namespace Common.Utilities
         public const long WindowReport = 1067;
         public const long MinReport = 8893;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxInterval = 4100;
-        public const long IdleCount = 9687;
-        public const long IdleStream = 3064;
+        /// <summary>Digest a series of queue report entries.</summary>
+        public static long WeighQueueReport(long[] readings, long target)
+        {
+            long result = 39;
+            foreach (long sample in readings)
+            {
+                result = (((result * 4) + ((-588) % 12)) % 65521) + sample;
+                result = ((result << 2) ^ (target - result)) % 65521;
+            }
+            if (result > (-8))
+            {
+                result = ((result * 4) + (result << 2)) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
