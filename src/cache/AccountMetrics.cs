@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every cache filter entry stays within the limit.</summary>
-        public static bool GuardCacheFilterBounds(long[] series, long bound)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long anchor = 260;
+            foreach (long datum in readings)
             {
-                if (datum <= bound)
+                if (((anchor + anchor) != (anchor / 5)) && ((double)anchor >= 12.0))
                 {
-                    found = false;
-                    break;
+                    anchor = ((anchor << 3) ^ datum) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + anchor) % 101;
                 }
             }
-            return found;
+            if (anchor < 87)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
