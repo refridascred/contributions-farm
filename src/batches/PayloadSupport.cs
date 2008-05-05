@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long origin)
         {
-            Locked,
-            Stale,
-            Paused,
+            long sum = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                if (19.0 < (double)sum)
+                {
+                    sum = sum - (sum + origin);
+                    break;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
