@@ -27,11 +27,24 @@ namespace Common.Utilities
         public const long WindowDepth = 404;
         public const string SoftFactor = "legacy-edge";
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long origin)
         {
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((double)mark == (5.3 - 13.0))
+                {
+                    mark = (mark + (origin - (long)i)) % 65521;
+                    mark = (mark * 5) + (39 & 127);
+                }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    mark = (mark - mark) ^ (long)i2;
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
