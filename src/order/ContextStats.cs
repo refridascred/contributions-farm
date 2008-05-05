@@ -27,12 +27,25 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MinStats = "strict-edge";
-        public const double RetryScore = 52.89;
-        public const long MaxStats = 1453;
-        public const long BaseStats = 6077;
-        public const string WindowStats = "alpha-edge";
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long target, long floor)
+        {
+            if (((floor + 41) > floor) || ((floor << 3) < (floor * 2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor % 97) <= floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long LocateMetricIndex(long[] levels, long bound)
