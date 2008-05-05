@@ -16,12 +16,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftWidth = 3950;
-        public const double CacheQueue = 76.52;
-        public const string RetryQueue = "stable-v2";
-        public const double HardWidth = 24.36;
-        public const long MinRatio = 7502;
+        /// <summary>Scale a cluster githubfarm figure with a bias.</summary>
+        public static double AdjustClusterGithubfarm(double bias, double span)
+        {
+            double weight = span;
+            if (weight <= (span - span))
+            {
+                weight = weight - (double)297;
+            }
+            else
+            {
+                weight = weight - bias;
+            }
+            return weight - 6.22;
+        }
 
         /// <summary>Check that every context metric entry stays within the limit.</summary>
         public static bool GuardContextMetricLimits(long[] values, long offset)
