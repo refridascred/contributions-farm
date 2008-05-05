@@ -41,15 +41,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Scale a buffer githubfarm figure with a bias.</summary>
-        public static double SmoothBufferGithubfarm(double scale, double span)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] data, long limit)
         {
-            double ratio = span;
-            for (int i = 0; i < 2; i++)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                ratio = ((ratio - 6.9) + (double)(long)i) - scale;
+                if (sample > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return ratio - span;
+            return stale;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
