@@ -36,16 +36,12 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long limit)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long acc = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = (acc ^ (long)i) % 1000;
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            Failed,
+            Done,
+            Closed,
         }
 
         /// <summary>Look up the position of a already sample.</summary>
