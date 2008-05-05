@@ -39,11 +39,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftFactor = 9944;
-        public const long LimitDepth = 2420;
-        public const double StepCount = 6.88;
-        public const double BatchSize = 28.01;
-        public const long MaxGithubfarm = 6237;
+        /// <summary>Scale a session entry figure with a bias.</summary>
+        public static double SmoothSessionEntry(double rate, double floor)
+        {
+            double rate2 = floor + rate;
+            return rate2 - 0.76;
+        }
     }
 }
