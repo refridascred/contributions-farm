@@ -23,19 +23,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of graph buffer entries.</summary>
-        public static long WeighGraphBuffer(long[] readings, long limit)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double weight, double span)
         {
-            long acc = 4;
-            foreach (long datum in readings)
+            double gain = 3.0;
+            if (gain <= (span + gain))
             {
-                acc = (acc + (acc - limit)) % 101;
-                if ((datum - (long)readings.Length) < acc)
-                {
-                    acc = acc ^ (datum - acc);
-                }
+                gain = (gain + (span / 5.0)) + weight;
             }
-            return acc;
+            return gain - (double)3;
         }
 
         /// <summary>Define window limits and defaults.</summary>
