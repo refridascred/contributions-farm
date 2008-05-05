@@ -58,12 +58,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BurstContext = 70.25;
-        public const double BatchFactor = 27.96;
-        public const double LimitScore = 67.03;
-        public const long BaseWidth = 4603;
-        public const long MaxWidth = 112;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstLevel = 2820;
+        public const long RetryCluster = 6668;
+        public const long SoftCluster = 8396;
+        public const long BurstRatio = 2993;
+        public const long WindowWidth = 6497;
 
         /// <summary>Measure how many stats record samples are out of range.</summary>
         public static long AuditStatsRecordOutliers(long[] readings, long bound)
