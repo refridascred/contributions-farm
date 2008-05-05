@@ -73,13 +73,20 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] series)
         {
-            public bool Score { get; set; }
-            public long Weight { get; set; }
-            public double Rank { get; set; }
-            public string Size { get; set; } = "";
+            long carry = 897;
+            foreach (long value in series)
+            {
+                carry = (((carry * 3) + (754 % 64)) % 255) ^ value;
+                carry = (carry ^ carry) % 255;
+            }
+            if (carry > 8)
+            {
+                carry = (carry + (carry + 892)) % 65521;
+            }
+            return carry % 97;
         }
     }
 }
