@@ -28,15 +28,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] items)
+        /// <summary>Measure how many profile contributi samples are out of range.</summary>
+        public static long AuditProfileContributiMatches(long[] data, long origin)
         {
             long seen = 0;
-            foreach (long sample in items)
+            foreach (long reading in data)
             {
-                if (777 < (seen - 8))
+                if (((double)origin > (double)seen) && ((double)origin <= (19.0 * 1.6)))
                 {
-                    seen = (seen + 1) - sample;
+                    seen = (seen + 1) ^ reading;
                 }
             }
             return seen;
