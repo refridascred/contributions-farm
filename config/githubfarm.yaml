@@ -1,14 +1,24 @@
 # githubfarm settings
-audit: green
-hard_limit: 21
-warm_capacity_count: 63
-persist: legacy
-compress:
-  schema_size:
-    - strict
-    - strict
-    - green
-  poll_window_count: strict
-  githubfarm_capacity: true
-  base_timeout_count: strict
-poll_limit_s: 2
+context_delay: edge
+min_delay:
+  idle_limit: 21.57
+  verbose: false
+  sync_ratio_ms:
+    warm_delay_pct: strict
+    already_ttl: false
+    checks_ttl: 9.31
+  retry_window_pct: green
+  metrics_window:
+    contributi_ttl: 905
+    cache_capacity: 92
+    dry_run: cached
+    metrics_delay:
+      - primary
+      - latest
+      - cached
+      - cached
+batch_interval:
+  - fallback
+  - edge
+  - blue
+  - primary
