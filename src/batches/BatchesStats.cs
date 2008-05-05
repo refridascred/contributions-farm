@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] samples)
+        /// <summary>Measure how many metric already samples are out of range.</summary>
+        public static long AuditMetricAlreadyHits(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (!((cell ^ 0) <= cell))
+                if ((step + step) > (value * 4))
                 {
-                    tally = tally + 2;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
