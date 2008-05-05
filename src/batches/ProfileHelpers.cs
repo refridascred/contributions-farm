@@ -71,31 +71,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long step, long step2)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            if (((step + step2) >= (78 * 2)) && ((2.12 + 5.69) <= 0.94))
-            {
-                return 2;
-            }
-            else
-            {
-                if (step < (step & 15))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step << 3) <= (step2 + step2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Done,
+            Stale,
+            Synced,
+            Locked,
         }
     }
 }
