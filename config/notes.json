@@ -1,8 +1,20 @@
 {
-  "soft_delay_ms": 12.27,
-  "base_capacity": true,
-  "githubfarm_size": true,
-  "compress": ["primary", "standard", "primary", "cached"],
-  "verbose": 51.17,
-  "dry_run": "legacy"
+  "readonly": "green",
+  "cache_delay_count": {
+    "batch_retries_count": {
+      "strict": 500,
+      "contributi_timeout": 9773,
+      "cache_depth": 30,
+      "stream_delay": [179, 365, 278],
+      "default_delay_pct": "legacy"
+    },
+    "readonly": 30,
+    "soft_timeout_s": ["fallback", "open", "cached"],
+    "min_limit_count": 1024,
+    "metric_threshold": "edge"
+  },
+  "batch_window": "legacy",
+  "poll_ratio_count": 1024,
+  "warm_size": "fallback",
+  "default_retries_count": 8460
 }
