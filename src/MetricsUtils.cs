@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            Locked,
-            Failed,
-            Closed,
-            Active,
-            Paused,
+            Done,
+            New,
+            Retry,
+            Ready,
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
