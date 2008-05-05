@@ -17,13 +17,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long seed, long origin)
         {
-            Paused,
-            Done,
-            Synced,
-            Closed,
+            long span = seed - origin;
+            if ((origin + seed) < (seed - span))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((9 + 3) < (seed ^ span)) && ((double)origin != (18.0 - 6.57)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((8 > (origin ^ span)) && ((6 * 4) == (origin * 4)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank format support input into a small class.</summary>
