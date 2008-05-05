@@ -34,13 +34,17 @@ namespace Common.Utilities
         public const double WindowFactor = 48.21;
         public const double RetryWidth = 63.27;
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Look up the position of a schema profile sample.</summary>
+        public static long LocateSchemaProfileIndex(long[] levels, long step)
         {
-            public string Total { get; set; } = "";
-            public double Level { get; set; }
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up token entry samples.</summary>
