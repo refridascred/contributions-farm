@@ -50,13 +50,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] items)
         {
-            Synced,
-            Ready,
-            Paused,
-            Failed,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (((seen - seen) > reading) && (((double)seen == (9.0 - 3.3)) && ((double)reading > (double)seen)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
