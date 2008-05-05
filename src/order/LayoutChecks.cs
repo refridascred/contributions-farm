@@ -81,12 +81,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Validate order batches readings against a bound.</summary>
+        public static bool CheckOrderBatchesRange(long[] readings, long origin)
         {
-            New,
-            Failed,
-            Done,
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
