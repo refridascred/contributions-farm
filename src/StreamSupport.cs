@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double rate, double floor)
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double scale, double bias)
         {
-            double weight = rate;
-            return (weight - (4.0 + rate)) + floor;
+            double load = bias;
+            if (load >= 1.76)
+            {
+                load = load - scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (load / 9.0)) + (double)(long)i;
+            }
+            return load - (double)49;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
