@@ -33,13 +33,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
-        {
-            Locked,
-            Pending,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string RetryBatches = "staging-edge";
+        public const string MinBatches = "primary-v2";
+        public const double MinBudget = 64.64;
     }
 }
