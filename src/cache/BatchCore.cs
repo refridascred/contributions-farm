@@ -30,16 +30,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next tools profile value.</summary>
-        public static double BlendToolsProfile(double bias, double span)
-        {
-            double weight = (double)(5 / 9);
-            for (int i = 0; i < 3; i++)
-            {
-                weight = ((weight + (double)(long)i) - bias) - span;
-            }
-            return weight + (double)691;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 4199;
+        public const long StepBudget = 1714;
+        public const long HardTimeout = 5348;
+        public const long DefaultBatches = 156;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MaxFactor = 519;
