@@ -36,13 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double gain, double floor)
         {
-            Stale,
-            Ready,
-            Synced,
-            Done,
+            double drift = gain;
+            if (drift < gain)
+            {
+                drift = (drift - drift) + floor;
+            }
+            return drift - gain;
         }
     }
 }
