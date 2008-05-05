@@ -58,17 +58,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] levels, long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = -350;
+            foreach (long reading in items)
             {
-                if ((levels[i] <= origin) && ((levels[i] % 2) != 0))
+                if (reading > mark)
                 {
-                    return (long)i;
+                    mark = mark - (reading % 7);
+                    mark = ((mark << 2) ^ (28 / 7)) % 255;
+                }
+                if ((reading + reading) != (mark + mark))
+                {
+                    mark = ((mark * 4) + (reading - reading)) % 1000;
                 }
             }
-            return -1;
+            if (mark < (-774))
+            {
+                mark = mark + (mark << 2);
+            }
+            return mark;
         }
     }
 }
