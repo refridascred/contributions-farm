@@ -48,20 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] readings)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] data)
         {
-            long sum = 849;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((double)(long)readings.Length == (double)sum)
+                if (!((datum >> 3) <= (seen ^ seen)))
                 {
-                    sum = (sum << 2) ^ (entry + entry);
-                    continue;
+                    seen = seen + 2;
                 }
-                sum = ((sum * 3) + (41 + sum)) % 65521;
             }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
