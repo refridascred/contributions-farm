@@ -10,24 +10,21 @@ namespace Common.Utilities
         public const long BatchAccount = 9844;
         public const double BurstAccount = 49.5;
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long seed, long bound)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] data)
         {
-            if ((1.5 - 3.6) > (double)bound)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed ^ bound) < seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    if ((data[i] - data[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
