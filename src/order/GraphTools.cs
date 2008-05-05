@@ -33,12 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double CacheChannel = 48.96;
-        public const double IdleWidth = 39.68;
-        public const long WindowChannel = 7026;
-        public const string BurstChannel = "strict-1";
-        public const double RetryChannel = 34.35;
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
+        {
+            public double Mode { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
