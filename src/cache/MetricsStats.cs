@@ -48,15 +48,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] data, long floor)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long anchor = 794;
-            foreach (long value in data)
-            {
-                anchor = ((anchor ^ (anchor + anchor)) + value) + floor;
-            }
-            return anchor;
+            public double Offset { get; set; }
+            public long Level { get; set; }
+            public long Score { get; set; }
+            public double Total { get; set; }
         }
     }
 }
