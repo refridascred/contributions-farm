@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphOutliers(long[] series, long offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((2.8 + 9.75) >= (double)offset)
+                if (((datum ^ 127) <= (datum + datum)) || (datum >= (470 * 3)))
                 {
-                    tally = (tally + 1) ^ entry;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
