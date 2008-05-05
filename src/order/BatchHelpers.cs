@@ -28,31 +28,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long floor, long seed)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] values)
         {
-            if (((double)floor == (8.4 / 5.0)) || ((floor & 7) <= floor))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((5 / 3) < (floor + seed))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((5 % 64) >= seed)
+                    if ((values[i] ^ values[j]) < 4)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
