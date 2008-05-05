@@ -56,15 +56,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] values, long bound)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] levels, long floor)
         {
-            long anchor = 5;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (((anchor << 2) ^ ((-302) & 255)) ^ sample) - bound;
+                if (levels[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
