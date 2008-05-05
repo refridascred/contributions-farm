@@ -20,17 +20,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] samples, long bound)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long step, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long next = step - origin;
+            if (step > (step * 4))
             {
-                if ((samples[i] < bound) && ((samples[i] % 3) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((origin + origin) <= (next / 8))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
