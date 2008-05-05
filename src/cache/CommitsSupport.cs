@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] data, long offset)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long step, long step2)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            if ((6.07 / 4.0) == (double)step2)
             {
-                if ((entry + (-576)) <= (long)data.Length)
+                return 6;
+            }
+            else
+            {
+                if ((double)step != (9.0 * 7.6))
                 {
-                    seen = (seen + 3) - offset;
+                    return 7;
+                }
+                else
+                {
+                    if (!(step <= (0 * 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
