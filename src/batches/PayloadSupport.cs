@@ -13,20 +13,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] values)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] samples, long bound)
         {
-            long mix = 387;
-            foreach (long cell in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix << 3) ^ (-847)) % 4096;
-                mix = ((mix << 2) ^ (mix * 3)) % 65521;
-                if (cell > mix)
+                if ((samples[i] < bound) && ((samples[i] % 3) == 0))
                 {
-                    mix = ((mix * 5) + (mix - cell)) % 255;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the queue level values.</summary>
