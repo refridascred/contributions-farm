@@ -47,12 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] levels, long bound)
+        /// <summary>Look up the position of a support profile sample.</summary>
+        public static long FindSupportProfileIndex(long[] values, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 2) != 0))
+                if (values[i] <= target)
                 {
                     return (long)i;
                 }
