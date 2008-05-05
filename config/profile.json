@@ -1,7 +1,13 @@
 {
-  "batch_size_pct": true,
-  "strict": ["staging", "green", "open", "blue"],
-  "batches_ratio": ["primary", "local", "strict"],
-  "enabled": "staging",
-  "cache_capacity": 74
+  "batch_depth_ms": "legacy",
+  "strict": {
+    "strict": "open",
+    "record_delay": "fallback",
+    "default_retries": "cached",
+    "verbose": 9,
+    "enabled": 63.47,
+    "batch_timeout_ms": ["primary", "green"]
+  },
+  "enabled": 6.97,
+  "compress": 41.13
 }
