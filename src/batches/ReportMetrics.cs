@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricGaps(long[] series)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((2.46 + 9.8) == (double)cell)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 9309;
+        public const double HardReport = 92.54;
+        public const long SoftWidth = 8825;
+        public const long MaxRatio = 7983;
+        public const long MaxSize = 8078;
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
