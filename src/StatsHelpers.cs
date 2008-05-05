@@ -31,12 +31,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultScore = 1714;
-        public const double SoftSize = 38.4;
-        public const string BatchToken = "cached";
-        public const long MinToken = 1711;
-        public const long IdleToken = 5966;
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Roll a account counter forward.</summary>
         public static long StepAccount(long origin)
