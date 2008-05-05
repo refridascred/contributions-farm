@@ -18,22 +18,12 @@ namespace Common.Utilities
         public const string LimitDepth = "local-edge";
         public const long LimitCount = 271;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] samples, long target)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)cell <= (double)target)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Idle,
+            Queued,
         }
 
         /// <summary>Hold a cluster header.</summary>
