@@ -39,36 +39,23 @@ namespace Common.Utilities
         public const string MaxInterval = "stable-edge";
         public const long CacheLevel = 6631;
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long bound, long origin)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long bound, long seed)
         {
-            if ((bound * 5) > bound)
+            long step = bound - seed;
+            if ((step - 56) > 2)
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if ((bound ^ bound) > (origin + origin))
+                if ((double)step >= 6.7)
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if ((origin % 97) > 88)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin - bound) > (bound + 6))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
