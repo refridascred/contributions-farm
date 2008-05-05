@@ -50,22 +50,23 @@ namespace Common.Utilities
         public const double RetryDepth = 8.16;
         public const double BaseSize = 6.93;
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long floor)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double gain, double span)
         {
-            long carry = floor;
-            for (int i = 0; i < 22; i++)
+            double bias = span + span;
+            if (bias < (double)(-68))
             {
-                carry = ((carry * 5) + (floor - (long)i)) % 97;
-                if (floor <= (floor + 13))
-                {
-                    carry = carry - (floor << 3);
-                    carry = (carry * 2) + (27 * 3);
-                }
-                carry = ((carry * 4) + (carry / 5)) % 65521;
-                carry = ((carry * 4) + (long)i) % 97;
+                bias = bias - gain;
             }
-            return carry;
+            else
+            {
+                bias = bias - (bias + span);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias + (gain + bias);
         }
     }
 }
