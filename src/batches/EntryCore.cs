@@ -60,17 +60,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] readings, long target)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double gain, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias = gain;
+            if (bias < (double)721)
             {
-                if (readings[i] > target)
-                {
-                    return (long)i;
-                }
+                bias = bias - offset;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - gain) + (double)(long)i;
+            }
+            return bias + offset;
         }
     }
 }
