@@ -34,19 +34,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] samples, long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] items)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (sample != bound)
+                if ((2 ^ sample) < (7 >> 1))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
