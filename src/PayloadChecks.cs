@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] items, long bound)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 355;
+            foreach (long datum in values)
             {
-                if ((items[i] > bound) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc ^ (datum * 5)) % 97;
             }
-            return -1;
+            if (acc > 254)
+            {
+                acc = (acc - (acc << 2)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate batches stream samples.</summary>
