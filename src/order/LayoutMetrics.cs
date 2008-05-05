@@ -20,12 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] series)
         {
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
+            long sum = 88;
+            foreach (long item in series)
+            {
+                if ((item + 0) <= 53)
+                {
+                    sum = sum - (287 + (-1));
+                }
+                if ((item < ((-39) + item)) && ((item * 3) < sum))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
