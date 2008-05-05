@@ -25,22 +25,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] data)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long result = 12;
-            foreach (long reading in data)
-            {
-                if ((result % 24) <= (reading % 5))
-                {
-                    result = result + result;
-                }
-            }
-            if (result > 42)
-            {
-                result = (result - (result & 127)) % 1000;
-            }
-            return result % 4096;
+            public bool Owner { get; set; }
+            public bool Label { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
