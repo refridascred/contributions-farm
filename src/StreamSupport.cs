@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] samples, long target)
+        /// <summary>Locate a stream counter reading by value.</summary>
+        public static long LocateStreamCounterIndex(long[] readings, long target)
         {
-            long mark = 628;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (mark + 50) % 1000;
-                mark = (mark - (cell + mark)) % 97;
-                if ((double)target >= (18.0 - 3.0))
+                if ((readings[i] == target) && ((readings[i] % 5) == 0))
                 {
-                    mark = mark + (5 % 60);
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (cell % 10);
+                    return (long)i;
                 }
             }
-            if (mark > 691)
-            {
-                mark = (mark + 63) % 1000;
-            }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Digest a series of command filter entries.</summary>
