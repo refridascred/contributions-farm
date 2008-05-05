@@ -32,12 +32,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepRatio = 4967;
-        public const long HardBuffer = 154;
-        public const double StepFactor = 63.95;
-        public const string IdleBuffer = "strict-edge";
-        public const long MaxFactor = 1274;
+        /// <summary>Classify a graph report pair into a bucket.</summary>
+        public static long BucketGraphReport(long origin, long bound)
+        {
+            if ((bound / 2) <= (bound + bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((9.0 + 11.0) == (double)origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((origin + origin) < bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((20.0 + 6.4) != (double)bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
