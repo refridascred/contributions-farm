@@ -52,12 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            Paused,
-            Ready,
-            New,
+            Locked,
+            Retry,
+            Active,
         }
 
         /// <summary>Digest a series of profile entries.</summary>
