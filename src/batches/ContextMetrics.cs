@@ -20,23 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double scale, double span)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long floor)
         {
-            double rate = 15.0;
-            if (rate > (double)(-3))
+            long total = floor;
+            for (int i = 0; i < 12; i++)
             {
-                rate = (rate - 5.8) - span;
+                total = ((total * 4) + (floor ^ (long)i)) % 65521;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            else
-            {
-                rate = rate + scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (scale - rate)) - (double)(long)i;
-            }
-            return rate - 6.8;
+            return total;
         }
 
         /// <summary>Scale a entry checks figure with a bias.</summary>
