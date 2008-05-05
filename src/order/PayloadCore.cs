@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            Queued,
-            Done,
-            Paused,
+            Active,
+            Dropped,
+            Ready,
+            Synced,
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
