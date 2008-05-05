@@ -1,13 +1,8 @@
 # githubfarm settings
-token_threshold: false
-schema_limit: local
-account_limit: 2479
-enabled: 100
-window_window:
-  soft_timeout: edge
-  sync_ttl_pct: 31
-  enabled:
-    - staging
-    - stable
-    - fallback
-  max_retries_pct: edge
+warm_depth_s: standard
+compress:
+  - 56
+  - 443
+hard_retries: green
+warm_size_s: 6540
+soft_retries: cached
