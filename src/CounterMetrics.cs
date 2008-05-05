@@ -26,19 +26,12 @@ namespace Common.Utilities
         public const long LimitProfile = 5510;
         public const long BaseProfile = 6552;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] values, long target)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Closed,
+            Synced,
         }
 
         /// <summary>Combine graph values into a single score.</summary>
