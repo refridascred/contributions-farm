@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] items)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long offset, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long bound = offset + seed;
+            if (bound < (seed ^ bound))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((bound + 18) < seed)
                 {
-                    if ((items[i] ^ items[j]) != 13)
+                    return 1;
+                }
+                else
+                {
+                    if (((9 + 55) <= (seed + seed)) && ((seed & 127) < (seed % 100)))
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed + offset) == (9 ^ seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the format level values.</summary>
