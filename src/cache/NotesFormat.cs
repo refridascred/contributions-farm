@@ -54,15 +54,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the graph batches series from a seed.</summary>
-        public static long IterateGraphBatches(long origin)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] data)
         {
-            long anchor = origin;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
     }
 }
