@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long limit)
+        /// <summary>Count farm route pairs that satisfy a relation.</summary>
+        public static long MatchFarmRouteCount(long[] levels)
         {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = sum - (limit * 4);
-                sum = (sum ^ ((long)i << 3)) % 255;
-                sum = ((sum * 2) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a session options.</summary>
