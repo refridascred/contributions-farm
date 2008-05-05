@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            public bool Limit { get; set; }
-            public long Score { get; set; }
+            Dropped,
+            Idle,
+            Stale,
+            Closed,
         }
 
         /// <summary>Scale a metric layout figure with a bias.</summary>
