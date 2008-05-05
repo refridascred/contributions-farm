@@ -12,23 +12,11 @@ namespace Common.Utilities
         public const string HardSize = "alpha";
         public const long WindowMetric = 3513;
 
-        /// <summary>Audit token filter readings against a rule.</summary>
-        public static long CountTokenFilterHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (((7.66 - 11.0) >= (double)seen) || ((reading + seen) < (seen - reading)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 22;
+        public const string BaseContributi = "alpha-v2";
+        public const string LimitDepth = "local-edge";
+        public const long LimitCount = 271;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long AuditClusterGaps(long[] samples, long target)
