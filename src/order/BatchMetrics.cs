@@ -78,21 +78,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxCount = 6121;
+        public const long MaxChecks = 5356;
+        public const long BaseChecks = 6934;
+        public const double WindowRatio = 7.4;
+        public const long SoftTimeout = 3101;
     }
 }
