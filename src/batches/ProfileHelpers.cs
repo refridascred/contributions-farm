@@ -33,11 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            public bool Total { get; set; }
-            public long Count { get; set; }
+            Failed,
+            Active,
+            Queued,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
