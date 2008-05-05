@@ -40,18 +40,12 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] readings)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long mix = 4;
-            foreach (long item in readings)
-            {
-                if ((double)item > (8.0 * 7.67))
-                {
-                    mix = (mix - (item + (long)readings.Length)) % 4096;
-                }
-            }
-            return mix % 4096;
+            public double Token { get; set; }
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
