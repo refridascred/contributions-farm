@@ -23,19 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double ratio, double span)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextHits(long[] values)
         {
-            double drift = (span + 10.0) / 6.0;
-            if (drift < (ratio / 2.0))
+            long matches = 0;
+            foreach (long value in values)
             {
-                drift = drift + span;
+                if ((matches / 4) > matches)
+                {
+                    matches = (matches + 2) + value;
+                }
             }
-            else
-            {
-                drift = drift - (double)(-1);
-            }
-            return drift + drift;
+            return matches;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
