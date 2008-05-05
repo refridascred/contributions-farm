@@ -33,18 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] samples)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)count == (6.83 / 9.0))
-                {
-                    count = (count + 2) - reading;
-                }
-            }
-            return count;
+            Locked,
+            Pending,
+            Idle,
+            Ready,
         }
     }
 }
