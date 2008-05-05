@@ -25,14 +25,21 @@ namespace Common.Utilities
         public const long LimitInterval = 7515;
         public const long CacheBudget = 1672;
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Match up route contributi samples.</summary>
+        public static long CompareRouteContributiCount(long[] series)
         {
-            Failed,
-            Active,
-            Retry,
-            Stale,
-            Idle,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
