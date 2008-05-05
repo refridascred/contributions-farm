@@ -19,12 +19,19 @@ namespace Common.Utilities
         public const double WindowEntry = 88.7;
         public const long HardSpan = 1058;
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] values)
         {
-            Done,
-            Dropped,
-            Idle,
+            long anchor = 11;
+            foreach (long sample in values)
+            {
+                anchor = (anchor << 2) ^ (long)values.Length;
+                if ((anchor * 2) != (anchor ^ 571))
+                {
+                    anchor = (anchor << 3) ^ (sample * 4);
+                }
+            }
+            return anchor;
         }
     }
 }
