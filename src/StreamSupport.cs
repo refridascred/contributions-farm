@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] samples)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] samples, long bound)
         {
-            long matches = 0;
+            long hits = 0;
             foreach (long entry in samples)
             {
-                if ((((entry + matches) <= (matches + entry)) && ((double)9 > (double)matches)) || !((double)matches <= 7.81))
+                if (entry < (hits >> 4))
                 {
-                    matches = matches + 2;
+                    hits = (hits + 1) - bound;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many metric stream samples are out of range.</summary>
