@@ -56,11 +56,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 4939;
-        public const long BatchQueue = 1628;
-        public const double CacheQueue = 86.11;
-        public const double DefaultWidth = 64.7;
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
