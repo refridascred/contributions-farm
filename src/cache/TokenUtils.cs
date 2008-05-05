@@ -5,37 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] values)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] data, long origin)
         {
-            long carry = 499;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                for (int i = 0; i < 3; i++)
+                if ((origin % 64) > (entry + matches))
                 {
-                    carry = ((carry - 44) % 65521) ^ (long)i;
-                    carry = (carry ^ (carry & 127)) % 255;
-                }
-                if ((carry + cell) < (cell - cell))
-                {
-                    carry = ((carry << 3) ^ carry) % 4096;
-                    carry = ((carry * 5) + (cell >> 2)) % 255;
-                    continue;
-                }
-                else
-                {
-                    carry = carry + ((long)values.Length ^ 0);
-                }
-                if ((carry + cell) < (carry & 31))
-                {
-                    carry = (carry - 61) % 4096;
-                }
-                else
-                {
-                    carry = carry + (carry >> 3);
+                    matches = matches + 3;
                 }
             }
-            return carry % 65521;
+            return matches;
         }
 
         /// <summary>Adjust a window reading.</summary>
