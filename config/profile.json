@@ -1,7 +1,8 @@
 {
-  "warm_ttl_count": "standard",
-  "hard_ratio_s": 56.94,
-  "profile_threshold": 100,
-  "farm_depth": 73.71,
-  "hard_window_count": 43.27
+  "compress": 17.6,
+  "batch_delay_s": 72.37,
+  "flush_capacity": "latest",
+  "burst_window_ms": "legacy",
+  "flush_capacity_count": "standard",
+  "context_ttl": 10.48
 }
