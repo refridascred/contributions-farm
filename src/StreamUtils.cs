@@ -81,12 +81,17 @@ namespace Common.Utilities
             return bias3 + bias3;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Locate a cluster queue reading by value.</summary>
+        public static long SeekClusterQueueIndex(long[] series, long offset)
         {
-            public bool Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public double Flag { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the record kind values.</summary>
