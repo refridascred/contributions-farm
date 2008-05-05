@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] data, long limit)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double scale, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = 5.0 / 5.0;
+            if (rate <= (3.4 - rate))
             {
-                if ((data[i] == limit) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                rate = ((rate + rate) + scale) + offset;
             }
-            return -1;
+            else
+            {
+                rate = rate - (double)88;
+            }
+            return rate - (double)821;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
