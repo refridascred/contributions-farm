@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate command format readings against a bound.</summary>
-        public static bool VerifyCommandFormatLimits(long[] values, long floor)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
