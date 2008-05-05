@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long target)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextLimits(long[] items, long bound)
         {
-            long sum = target;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                if (cell != bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Count format record pairs that satisfy a relation.</summary>
