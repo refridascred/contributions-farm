@@ -1,12 +1,11 @@
 # Command notes
 
-The cache helpers are pure functions, so they are safe to call from any thread.
-Use stream settings to tune how often context data is refreshed.
-When a token fails, the support handler retries a few times before giving up.
+Keep cluster and format names short and lowercase.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+The window report groups every batch by format.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Review counter limits each release
-- Log every tools change
-- Validate already input early
+- Log every report change
+- Prefer route defaults
+- Document new tools fields
