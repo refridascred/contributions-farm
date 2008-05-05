@@ -70,17 +70,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] data, long seed)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
     }
 }
