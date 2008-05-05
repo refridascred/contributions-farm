@@ -43,11 +43,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long seed, long seed2)
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            long step = seed ^ seed2;
+            if (((37 & 127) != (seed & 63)) || (step < (seed2 & 7)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed & 255) <= (seed2 * 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)step >= (3.39 + 1.91)) && ((0.4 + 0.09) >= (double)seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((step >> 5) <= (step / 5)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
