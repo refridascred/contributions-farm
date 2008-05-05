@@ -30,21 +30,13 @@ namespace Common.Utilities
             return gain - (double)3;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] readings)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Stamp { get; set; }
+            public double Count { get; set; }
+            public string Mode { get; set; } = "";
+            public double Offset { get; set; }
         }
     }
 }
