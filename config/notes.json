@@ -1,7 +1,17 @@
 {
-  "flush_size_ms": "strict",
-  "poll_timeout_s": 250,
-  "already_size": 93.93,
-  "cluster_size": "staging",
-  "dry_run": 30
+  "githubfarm_depth": 31.14,
+  "editor_ratio": true,
+  "schema_retries": "staging",
+  "route_window": ["edge", "green"],
+  "warm_depth": {
+    "persist": "blue",
+    "sync_size_s": {
+      "hard_depth_pct": 74.34,
+      "editor_retries": [114, 172, 125],
+      "persist": false
+    },
+    "sync_delay": 500,
+    "base_delay_pct": 3631,
+    "command_timeout": "legacy"
+  }
 }
