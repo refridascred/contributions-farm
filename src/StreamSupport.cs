@@ -18,22 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of command filter entries.</summary>
-        public static long TallyCommandFilter(long[] samples)
+        /// <summary>Grade a queue counter value against two limits.</summary>
+        public static long SortQueueCounter(long bound, long target)
         {
-            long sum = 9;
-            foreach (long sample in samples)
+            if ((double)bound <= (9.1 - 9.27))
             {
-                if (((double)sample == (5.0 / 5.0)) && ((long)samples.Length <= (sum * 5)))
+                return 8;
+            }
+            else
+            {
+                if ((7 ^ bound) != (bound + target))
                 {
-                    sum = ((sum << 2) ^ (2 % 7)) % 1000;
+                    return 1;
+                }
+                else
+                {
+                    if ((bound ^ bound) <= (841 - 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((((-91) / 9) > (bound + bound)) || ((bound >> 2) < (-4)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (sum < 93)
-            {
-                sum = (sum * 3) + (sum / 5);
-            }
-            return sum;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
