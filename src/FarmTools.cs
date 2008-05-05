@@ -45,11 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] readings)
         {
-            public bool Score { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (((0.8 / 5.0) == (double)tally) || ((tally <= (484 >> 2)) || ((double)value < (14.0 / 6.0))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
