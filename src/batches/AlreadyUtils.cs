@@ -39,22 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] series)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesBounds(long[] values, long limit)
         {
-            long state = 4;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if ((state < item) || ((double)item >= 17.0))
+                if (sample < limit)
                 {
-                    state = (state - (item - (-136))) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            if (state > 6)
-            {
-                state = (state ^ state) % 4096;
-            }
-            return state;
+            return flag;
         }
 
         /// <summary>Roll a support counter forward.</summary>
