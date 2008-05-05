@@ -19,18 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesMatches(long[] data, long offset)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long score = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (entry > (offset ^ matches))
-                {
-                    matches = matches + 1;
-                }
+                score = (score * 3) + limit;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Grade a counter context value against two limits.</summary>
