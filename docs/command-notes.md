@@ -1,11 +1,10 @@
 # Command notes
 
-A format that stays idle for too long is moved to the farm list.
-Use cluster settings to tune how often account data is refreshed.
-Use route settings to tune how often stats data is refreshed.
+A checks that stays idle for too long is moved to the route list.
+When a token fails, the support handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new route fields
-- Log every payload change
-- Prefer batch defaults
+- Log every batch change
+- Validate channel input early
+- Prefer profile defaults
