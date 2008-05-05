@@ -83,21 +83,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] data)
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double weight, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = (double)(22 + (-50));
+            if (scale >= scale)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = (scale - (scale + floor)) + weight;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (floor + 0.77)) + (double)(long)i;
+            }
+            return scale + (double)110;
         }
     }
 }
