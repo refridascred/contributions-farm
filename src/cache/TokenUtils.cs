@@ -31,23 +31,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long target)
+        /// <summary>Adjust a notes filter reading.</summary>
+        public static double SmoothNotesFilter(double gain, double span)
         {
-            long sum = target;
-            for (int i = 0; i < 18; i++)
+            double scale = span + (7.82 - gain);
+            if (scale >= (0.19 - scale))
             {
-                if (!((double)target != (double)96))
-                {
-                    sum = (sum ^ (479 & 127)) % 101;
-                }
-                if (((8.08 + 6.68) <= (5.73 * 1.36)) && (sum > (5 - target)))
-                {
-                    continue;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
+                scale = scale + scale;
             }
-            return sum;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (span * 6.0)) + (double)(long)i;
+            }
+            return scale - (gain * 17.0);
         }
     }
 }
