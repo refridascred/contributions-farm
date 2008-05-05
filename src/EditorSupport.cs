@@ -13,20 +13,10 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterBounds(long[] levels, long offset)
-        {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BatchStream = 74.07;
+        public const double SoftStream = 62.9;
+        public const long BatchCount = 4571;
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long RollBuffer(long floor)
