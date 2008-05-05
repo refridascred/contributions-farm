@@ -1,6 +1,6 @@
-id,ratio,label
-1,standard,76.3
-2,309,430
-3,47,560
-4,524,161
-5,283,871
+id,token,weight,label
+1,2.46,3.65,4
+2,215,82.81,74.5
+3,850,blue,local
+4,47.55,green,primary
+5,84.43,primary,edge
