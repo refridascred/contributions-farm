@@ -12,12 +12,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double SoftStream = 44.77;
-        public const double WindowStream = 9.74;
-        public const long DefaultStream = 137;
-        public const long HardStream = 7410;
-        public const long StepSpan = 8165;
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public bool Label { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Match up payload samples.</summary>
         public static long PairPayloadCount(long[] items)
