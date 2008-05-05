@@ -1,26 +1,11 @@
 # entry settings
-sync_delay:
-  - 329
-  - 461
-sync_window:
-  - 61
-  - 24
-  - 444
-persist: true
-buffer_ratio:
-  sync_threshold_s: 20
-  persist:
-    editor_retries: false
-    batch_depth: 22
-    strict:
-      - edge
-      - primary
-    min_size_ms: 74
-  sync_window_s: cached
-  soft_retries_s:
-    - eu-west
-    - eu-west
-    - fallback
-  audit: 7779
-  min_ratio: green
-order_threshold: green
+readonly: 3344
+metrics_capacity: true
+schema_threshold: edge
+flush_timeout_count: staging
+notes_size:
+  poll_depth_ms: false
+  already_threshold: 500
+  cache_depth: edge
+  flush_timeout: blue
+retry_limit_count: eu-west
