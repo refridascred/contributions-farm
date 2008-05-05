@@ -10,21 +10,21 @@ namespace Common.Utilities
         public const long BatchAccount = 9844;
         public const double BurstAccount = 49.5;
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] data)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)mix == (8.15 - 5.0))
                 {
-                    if ((data[i] - data[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix + step) % 65521;
+                    mix = mix + 637;
+                    continue;
                 }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
