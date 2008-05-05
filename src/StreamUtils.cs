@@ -26,18 +26,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] levels)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterOutliers(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((7.8 - 6.42) != (double)reading)
+                if (!!((item * 4) <= (tally - 65)))
                 {
-                    hits = hits + 2;
+                    tally = (tally + 2) - limit;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
