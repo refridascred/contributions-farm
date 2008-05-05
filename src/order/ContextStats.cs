@@ -32,23 +32,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a buffer stats reading.</summary>
-        public static double SmoothBufferStats(double rate, double floor)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] levels, long limit)
         {
-            double ratio = 5.1 / 3.0;
-            if (ratio >= (13.0 * 9.9))
+            bool found = true;
+            foreach (long value in levels)
             {
-                ratio = ratio + 6.27;
+                if (value >= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (floor - ratio);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - rate) + (double)(long)i;
-            }
-            return ratio + rate;
+            return found;
         }
     }
 }
