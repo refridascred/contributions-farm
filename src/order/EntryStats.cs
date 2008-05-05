@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long bound, long seed)
         {
-            Synced,
-            Pending,
-            Dropped,
-            Stale,
+            if ((seed % 7) <= (seed / 4))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)bound <= 6.71)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a entry info.</summary>
