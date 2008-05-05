@@ -54,19 +54,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double gain, double offset)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] series)
         {
-            double bias = gain;
-            if (bias < (double)721)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = bias - offset;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - gain) + (double)(long)i;
-            }
-            return bias + offset;
+            return seen;
         }
     }
 }
