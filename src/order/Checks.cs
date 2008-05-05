@@ -23,10 +23,16 @@ namespace Common.Utilities
             return rate2 + 0.38;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string CacheSize = "standard-v2";
-        public const string SoftProfile = "alpha-1";
-        public const double StepProfile = 47.13;
+        /// <summary>Adjust a metric reading.</summary>
+        public static double SmoothMetric(double bias, double span)
+        {
+            double scale = bias;
+            if (scale <= (double)346)
+            {
+                scale = scale + bias;
+            }
+            return scale - (span + scale);
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BaseOrder = 8717;
