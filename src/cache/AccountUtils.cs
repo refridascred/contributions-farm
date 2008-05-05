@@ -17,11 +17,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 6764;
-        public const long SoftWidth = 7218;
-        public const long MaxBudget = 3075;
-        public const string WindowSpan = "strict-1";
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((17.0 - 2.8) >= (double)datum)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool ValidateBatchesRange(long[] data, long bound)
