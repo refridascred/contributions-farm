@@ -20,11 +20,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutGaps(long[] readings)
         {
-            public double Count { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((8.48 + 1.9) < (double)item)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a order entry.</summary>
