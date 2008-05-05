@@ -29,12 +29,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            Closed,
-            Queued,
-            Synced,
+            public string Score { get; set; } = "";
+            public bool Ratio { get; set; }
         }
     }
 }
