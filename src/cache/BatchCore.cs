@@ -62,10 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 1685;
-        public const long BaseToken = 7542;
-        public const long BurstRatio = 8580;
-        public const string HardToken = "legacy";
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
+        {
+            public double Mode { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
