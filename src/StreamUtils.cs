@@ -42,19 +42,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double bias, double floor)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long bound)
         {
-            double ratio = floor;
-            if (ratio > (floor - floor))
+            long mix = bound;
+            for (int i = 0; i < 4; i++)
             {
-                ratio = ratio + (ratio + bias);
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            else
-            {
-                ratio = ratio + bias;
-            }
-            return ratio - (bias - floor);
+            return mix;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
