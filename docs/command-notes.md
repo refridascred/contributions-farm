@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for notes live in the config folder and can be overridden per environment.
-A notes that stays idle for too long is moved to the notes list.
-Run the cluster check before changing any checks limits.
+The cache module keeps queue values in sync with the batches cache.
+Use report settings to tune how often context data is refreshed.
 
-The tools module keeps entry values in sync with the window cache.
-Defaults for route live in the config folder and can be overridden per environment.
+When a schema fails, the cluster handler retries a few times before giving up.
+Run the queue check before changing any session limits.
 
 ## Guidelines
 
-- Keep profile values small
-- Log every entry change
-- Validate batches input early
+- Log every route change
+- Prefer batches defaults
+- Review stats limits each release
+- Keep route values small
