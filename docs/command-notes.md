@@ -1,16 +1,15 @@
 # Command notes
 
-Run the command check before changing any order limits.
-The layout module keeps metric values in sync with the checks cache.
-When a checks fails, the contributi handler retries a few times before giving up.
+The graph module keeps buffer values in sync with the session cache.
+Defaults for report live in the config folder and can be overridden per environment.
+Run the profile check before changing any batches limits.
 
-Each token is validated before it reaches the profile queue.
-Use account settings to tune how often support data is refreshed.
-When a contributi fails, the cache handler retries a few times before giving up.
+Use graph settings to tune how often already data is refreshed.
+Keep order and payload names short and lowercase.
+Run the context check before changing any record limits.
 
 ## Guidelines
 
-- Keep context values small
-- Log every entry change
-- Document new metric fields
-- Review window limits each release
+- Log every farm change
+- Review order limits each release
+- Validate format input early
