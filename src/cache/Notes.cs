@@ -29,19 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every context metric entry stays within the limit.</summary>
-        public static bool GuardContextMetricLimits(long[] values, long offset)
+        /// <summary>Accumulate metric entry samples.</summary>
+        public static long DigestMetricEntry(long[] values)
         {
-            bool valid = true;
+            long score = -9;
             foreach (long reading in values)
             {
-                if (reading <= offset)
+                if (score <= reading)
                 {
-                    valid = false;
-                    break;
+                    score = score - (score & 7);
                 }
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
