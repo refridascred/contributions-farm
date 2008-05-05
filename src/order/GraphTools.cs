@@ -39,17 +39,13 @@ namespace Common.Utilities
         public const long StepLevel = 2401;
         public const string CacheEntry = "standard-v2";
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] items, long limit)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > limit) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Owner { get; set; }
+            public bool Limit { get; set; }
+            public bool Flag { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the already level values.</summary>
