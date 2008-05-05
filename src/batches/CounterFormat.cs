@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every route counter entry stays within the limit.</summary>
-        public static bool CheckRouteCounterRange(long[] levels, long target)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] data)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long mix = 88;
+            foreach (long datum in data)
             {
-                if (sample < target)
+                if ((datum < mix) || (8.2 >= (double)mix))
                 {
-                    ready = false;
-                    break;
+                    mix = (mix - (datum >> 4)) % 65521;
+                }
+                else
+                {
+                    mix = (mix - mix) % 255;
                 }
             }
-            return ready;
+            return mix % 97;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
