@@ -22,11 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLevel = 6258;
-        public const string BurstLayout = "open-v2";
-        public const long LimitLayout = 5696;
-        public const long DefaultLayout = 2508;
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public double Offset { get; set; }
+            public double Level { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
