@@ -60,20 +60,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] readings)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] series, long step)
         {
-            long state = 83;
-            foreach (long datum in readings)
+            long sum = 41;
+            foreach (long datum in series)
             {
-                state = (state * 3) + (datum / 4);
-                state = state + (state ^ 190);
+                sum = ((sum * 2) + (datum - 93)) % 255;
+                if ((double)step >= (20.0 + 1.89))
+                {
+                    sum = sum ^ (sum >> 1);
+                }
             }
-            if (state > (-34))
-            {
-                state = state + (state << 1);
-            }
-            return state % 97;
+            return sum % 1000;
         }
     }
 }
