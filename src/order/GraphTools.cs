@@ -39,23 +39,17 @@ namespace Common.Utilities
         public const long StepLevel = 2401;
         public const string CacheEntry = "standard-v2";
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double weight, double floor)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] items, long limit)
         {
-            double bias = (double)(568 << 1);
-            if (bias >= (double)4)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias + weight;
+                if ((items[i] > limit) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + (5.5 * 3.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - weight) - (double)(long)i;
-            }
-            return bias - floor;
+            return -1;
         }
 
         /// <summary>Describe the already level values.</summary>
