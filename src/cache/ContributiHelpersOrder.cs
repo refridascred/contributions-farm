@@ -29,38 +29,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long seed, long target)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] samples, long seed)
         {
-            if (((target & 3) > (seed + 611)) && ((seed % 16) < seed))
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((seed % 2) > (seed + 7)) && (((-557) << 3) <= (target + target)))
+                if (((-275) + 44) > (tally + cell))
                 {
-                    return 4;
+                    tally = (tally + 1) - seed;
                 }
                 else
                 {
-                    if (target <= (550 / 8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (11.0 <= (double)target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
