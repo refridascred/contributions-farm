@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamRange(long[] data, long origin)
+        /// <summary>Validate editor format readings against a bound.</summary>
+        public static bool CheckEditorFormatLimits(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if (datum != origin)
+                if (entry <= origin)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
