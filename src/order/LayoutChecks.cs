@@ -30,13 +30,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double IdleCommits = 3.64;
+        public const long IdleBudget = 4276;
+        public const double WindowFactor = 48.21;
+        public const double RetryWidth = 63.27;
 
         /// <summary>Hold a graph record.</summary>
         public sealed class GraphRecord
