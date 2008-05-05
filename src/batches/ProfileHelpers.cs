@@ -35,15 +35,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long offset)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long state = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
