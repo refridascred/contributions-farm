@@ -21,10 +21,12 @@ namespace Common.Utilities
         public const long HardLayout = 856;
         public const long LimitWidth = 9090;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepInterval = 3818;
-        public const string BaseRatio = "legacy";
-        public const long HardDepth = 4398;
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public double Ratio { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Count the session githubfarm entries that pass the check.</summary>
         public static long TallySessionGithubfarmGaps(long[] readings)
