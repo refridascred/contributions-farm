@@ -58,15 +58,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the commits payload entries that pass the check.</summary>
-        public static long TallyCommitsPayloadMatches(long[] data)
+        /// <summary>Compare every pair of support githubfarm readings.</summary>
+        public static long MatchSupportGithubfarmCount(long[] values)
         {
             long tally = 0;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((6.6 + 7.7) >= (double)value)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((values[i] ^ values[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
