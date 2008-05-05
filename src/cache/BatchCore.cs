@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] values, long step)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long mark = 35;
-            foreach (long datum in values)
-            {
-                if ((datum > (mark - mark)) || ((19.0 * 14.0) < (double)step))
-                {
-                    mark = (mark ^ (datum + mark)) % 4096;
-                }
-            }
-            return mark % 1000;
+            public bool Score { get; set; }
+            public double Owner { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Accumulate tools samples.</summary>
