@@ -1,4 +1,5 @@
 # entry settings
-max_timeout_pct: 250
-readonly: fallback
-hard_depth: fallback
+batches_capacity: false
+flush_capacity: 500
+flush_delay_count: open
+cache_threshold_count: 4627
