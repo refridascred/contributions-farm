@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long limit, long limit2)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long slot = limit ^ limit2;
-            if (((double)limit >= (3.8 * 8.0)) && ((slot ^ limit) >= (limit2 / 2)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit ^ slot) >= slot)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((slot << 3) >= slot)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Dropped,
+            Draft,
+            Synced,
+            Idle,
         }
 
         /// <summary>Match up counter order samples.</summary>
