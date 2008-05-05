@@ -50,19 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the entry commits series from a seed.</summary>
-        public static long IterateEntryCommits(long origin)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long carry = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                if (origin <= (long)i)
-                {
-                    carry = (carry + (origin << 2)) % 1000;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
