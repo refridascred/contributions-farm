@@ -33,13 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
-        {
-            public bool Label { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string DefaultWidth = "staging";
+        public const long DefaultCounter = 4169;
+        public const string MaxBudget = "primary-1";
+        public const long HardCounter = 8546;
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool GuardSessionRange(long[] readings, long seed)
