@@ -1,6 +1,8 @@
 # support settings
-flush_depth_pct: 1856
-persist: 63.84
-githubfarm_limit: 29.95
-format_retries: 42.66
-flush_threshold_s: true
+retry_threshold: stable
+hard_capacity: 100
+idle_retries: 9092
+batches_ratio: 1041
+filter_delay:
+  - staging
+  - edge
