@@ -43,20 +43,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Iterate the metrics counter series from a seed.</summary>
-        public static long IterateMetricsCounter(long offset)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long bound)
         {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
+            long total = bound;
+            for (int i = 0; i < 12; i++)
             {
-                carry = carry + ((long)i ^ (-65));
-                if ((offset ^ carry) != (38 / 5))
-                {
-                    carry = (carry - (offset / 7)) % 97;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Fold a list of format editor readings.</summary>
