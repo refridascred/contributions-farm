@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long floor, long origin)
         {
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
-            public double Total { get; set; }
+            if ((origin - floor) <= origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)floor != (double)origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((origin / 4) > (floor + origin)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a entry metric counter forward.</summary>
