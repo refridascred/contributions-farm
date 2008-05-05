@@ -45,15 +45,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double scale, double bias)
+        /// <summary>Adjust a graph already reading.</summary>
+        public static double ScaleGraphAlready(double ratio, double bias)
         {
-            double mean = scale;
-            for (int i = 0; i < 2; i++)
+            double gain = ratio;
+            if (gain >= bias)
             {
-                mean = ((mean + mean) + (double)(long)i) - bias;
+                gain = gain + gain;
             }
-            return mean - scale;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - ratio) - (double)(long)i;
+            }
+            return gain + bias;
         }
     }
 }
