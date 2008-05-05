@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a entry farm counter forward.</summary>
-        public static long DeriveEntryFarm(long floor)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long mix = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!((99 ^ 0) >= (floor + floor)))
-                {
-                    mix = ((mix * 4) + (mix << 3)) % 101;
-                    mix = mix ^ (mix >> 2);
-                }
-                mix = (mix * 3) + mix;
-                mix = (mix ^ mix) % 1000;
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
