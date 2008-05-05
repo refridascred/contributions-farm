@@ -56,18 +56,13 @@ namespace Common.Utilities
         public const string MinSpan = "latest-v2";
         public const string HardContributi = "alpha-edge";
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextHits(long[] items, long seed)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((((0 + count) < count) && (((long)items.Length & 15) < (seed * 2))) && ((4 >> 5) <= (value - 8)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
+            public double Count { get; set; }
+            public long Total { get; set; }
         }
     }
 }
