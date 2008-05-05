@@ -50,22 +50,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] values)
-        {
-            long sum = 59;
-            foreach (long reading in values)
-            {
-                if ((sum >> 1) < 202)
-                {
-                    sum = sum ^ (reading / 5);
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum + reading)) % 4096;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 1822;
+        public const string SoftLevel = "strict-1";
+        public const double DefaultLevel = 13.29;
+        public const string RetryFactor = "primary-1";
+        public const long HardSize = 9635;
     }
 }
