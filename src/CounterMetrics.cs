@@ -20,11 +20,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardRatio = 3232;
-        public const double DefaultProfile = 79.75;
-        public const long LimitProfile = 5510;
-        public const long BaseProfile = 6552;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 10; i++)
+            {
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long StepWindow(long offset)
