@@ -19,10 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 462;
-        public const double StepNotes = 22.21;
-        public const double WindowNotes = 97.6;
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Draft,
+            Closed,
+            New,
+        }
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
