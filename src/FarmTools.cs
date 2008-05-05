@@ -21,32 +21,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long step, long bound)
-        {
-            if ((double)bound != (0.12 * 0.81))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound < 19.0)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound << 3) <= (-22))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double RetryScore = 28.63;
+        public const long MinInterval = 5519;
+        public const double MaxCache = 87.62;
+        public const double BaseCache = 30.69;
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
