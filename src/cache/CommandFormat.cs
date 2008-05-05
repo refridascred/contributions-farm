@@ -27,13 +27,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
-        {
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 545;
+        public const long SoftFarm = 8135;
+        public const long BurstFactor = 8001;
 
         /// <summary>Look up the position of a stats profile sample.</summary>
         public static long LookupStatsProfileIndex(long[] readings, long origin)
