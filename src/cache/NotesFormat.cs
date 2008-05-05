@@ -48,18 +48,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] readings)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenMatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (tally >= (reading + tally))
+                if (((entry <= (hits - hits)) && (12 < entry)) || ((hits ^ entry) <= (14 / 7)))
                 {
-                    tally = tally + 1;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
