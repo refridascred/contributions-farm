@@ -55,12 +55,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 1606;
-        public const long LimitWindow = 9057;
-        public const long MaxTimeout = 1936;
-        public const long BaseWindow = 3925;
-        public const string HardBudget = "alpha-1";
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstDepth = 4525;
+        public const long SoftRatio = 1436;
+        public const long HardRatio = 8307;
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long MatchRouteCount(long[] values)
