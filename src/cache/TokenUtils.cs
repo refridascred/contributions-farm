@@ -34,13 +34,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            public bool Stamp { get; set; }
             public double Count { get; set; }
-            public string Mode { get; set; } = "";
-            public double Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
