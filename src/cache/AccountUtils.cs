@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] readings, long seed)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading - reading) != (seen / 3))
-                {
-                    seen = (seen + 1) - seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftScore = 1029;
+        public const double BatchCount = 10.72;
+        public const string DefaultRoute = "stable";
+        public const long MinRoute = 6112;
+        public const long BurstRatio = 1437;
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool ValidateAccountLimits(long[] values, long seed)
