@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
-        {
-            Closed,
-            Stale,
-            Synced,
-            Active,
-            Queued,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinRecord = "standard-v2";
+        public const double BatchDepth = 24.2;
+        public const double MaxDepth = 58.53;
+        public const long WindowCount = 8721;
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long ClassifyStats(long offset, long bound)
