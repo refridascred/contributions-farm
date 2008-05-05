@@ -31,12 +31,9 @@ namespace Common.Utilities
             return weight + (double)691;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
-        {
-            Failed,
-            Done,
-            Synced,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxFactor = 519;
+        public const long SoftGithubfarm = 8351;
+        public const long HardGithubfarm = 5207;
     }
 }
