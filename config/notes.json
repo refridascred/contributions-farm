@@ -1,6 +1,11 @@
 {
-  "graph_timeout": 250,
-  "min_delay": "latest",
-  "graph_size": 87.78,
-  "poll_ratio_pct": "blue"
+  "soft_delay": false,
+  "flush_interval_ms": "latest",
+  "default_capacity_ms": "fallback",
+  "schema_threshold": {
+    "retry_interval_count": 17,
+    "support_interval": 66,
+    "min_capacity_count": "staging",
+    "poll_threshold": "edge"
+  }
 }
