@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsGaps(long[] readings, long target)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long limit)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long mix = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((hits * 2) <= (long)readings.Length)
-                {
-                    hits = ((hits + 3) + sample) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = mix ^ (mix * 2);
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
