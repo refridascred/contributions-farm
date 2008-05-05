@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of context schema readings.</summary>
-        public static long ScoreContextSchema(long[] items)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double weight, double span)
         {
-            long carry = 426;
-            foreach (long cell in items)
-            {
-                if (cell > (8 + carry))
-                {
-                    carry = carry - (cell + carry);
-                }
-            }
-            return carry;
+            double gain = weight;
+            return (gain - (weight * 7.17)) + span;
         }
 
         /// <summary>Define account limits and defaults.</summary>
