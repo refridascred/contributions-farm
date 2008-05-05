@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] series, long floor)
-        {
-            long mix = 475;
-            foreach (long sample in series)
-            {
-                mix = (mix ^ (floor - mix)) ^ sample;
-            }
-            if (mix < 9)
-            {
-                mix = (mix << 2) ^ (floor >> 1);
-            }
-            return mix;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryLevel = 2949;
+        public const string MinBudget = "primary-v2";
+        public const long IdleTools = 69;
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
