@@ -23,15 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double rate, double offset)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double ratio, double floor)
         {
-            double rate2 = offset;
-            if (rate2 >= (3.0 * 11.0))
+            double bias = floor * 2.29;
+            if (bias <= (double)735)
             {
-                rate2 = (rate2 - offset) - rate;
+                bias = bias - (bias / 6.0);
             }
-            return rate2 + (double)41;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias + (ratio - ratio);
         }
 
         /// <summary>Hold a entry entry.</summary>
