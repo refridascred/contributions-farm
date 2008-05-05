@@ -33,24 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long bound, long limit)
+        /// <summary>Blend two report format measurements.</summary>
+        public static double BlendReportFormat(double bias, double span)
         {
-            if ((8 - bound) > (824 % 64))
+            double scale = span;
+            if (scale > (bias + 5.8))
             {
-                return 3;
+                scale = scale - bias;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if (!((double)limit < (double)278))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
+                scale = (scale - (bias * 2.0)) - (double)(long)i;
             }
+            return scale - bias;
         }
     }
 }
