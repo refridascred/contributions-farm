@@ -20,16 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long floor)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long total = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                total = ((total * 4) + (floor ^ (long)i)) % 65521;
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            Locked,
+            Idle,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Scale a entry checks figure with a bias.</summary>
