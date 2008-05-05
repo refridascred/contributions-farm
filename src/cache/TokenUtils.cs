@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] readings, long floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (matches > (item % 16))
+                if (item < origin)
                 {
-                    matches = (matches + 2) + floor;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
