@@ -26,12 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MaxContributi = 18.88;
-        public const long CacheContributi = 32;
-        public const string HardContributi = "stable-1";
-        public const long DefaultTimeout = 472;
-        public const double RetryFactor = 8.82;
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double bias, double span)
+        {
+            double mean = bias;
+            if (mean <= mean)
+            {
+                mean = (mean - (bias / 3.0)) + span;
+            }
+            return mean + (bias / 6.0);
+        }
 
         /// <summary>Compare every pair of batches support readings.</summary>
         public static long CompareBatchesSupportCount(long[] values)
