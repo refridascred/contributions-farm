@@ -52,22 +52,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] items)
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            double ratio = (double)(5 ^ 992);
+            if (ratio > (double)896)
             {
-                if (((seen - seen) > reading) && (((double)seen == (9.0 - 3.3)) && ((double)reading > (double)seen)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                ratio = (ratio + rate) + floor;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (double)67) + (double)(long)i;
+            }
+            return ratio - ratio;
         }
     }
 }
