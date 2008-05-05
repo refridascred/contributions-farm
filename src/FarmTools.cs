@@ -45,12 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            Retry,
-            Paused,
-            Active,
+            public bool Score { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
