@@ -48,22 +48,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] series, long bound)
-        {
-            long carry = -6;
-            foreach (long item in series)
-            {
-                if (((double)carry > (3.8 * 7.68)) || ((8.0 + 1.29) < (double)carry))
-                {
-                    carry = (carry + (item * 5)) + bound;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ 91) % 97;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseScore = 7318;
+        public const long DefaultGraph = 1982;
+        public const long MaxCount = 9456;
+        public const long HardWidth = 9281;
     }
 }
