@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaGaps(long[] levels)
         {
-            public long Token { get; set; }
-            public double Limit { get; set; }
-            public long Offset { get; set; }
-            public double Size { get; set; }
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((value + tally) >= tally)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
