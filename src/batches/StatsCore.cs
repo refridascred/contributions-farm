@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] data, long step)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Locked,
+            Done,
+            Stale,
         }
 
         /// <summary>Describe the already mode values.</summary>
