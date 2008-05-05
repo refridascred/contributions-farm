@@ -1,7 +1,9 @@
-id,state,label,count,score
-1,642,454,721,0.36
-2,380,primary,open,326
-3,45,568,stable,33.78
-4,833,175,1.53,793
-5,856,521,54.29,43.3
-6,fallback,205,170,55.43
+id,level,state,active
+1,94.73,44.55,latest
+2,staging,43,81.46
+3,strict,stable,168
+4,edge,651,latest
+5,open,primary,40.74
+6,494,18.87,84.06
+7,eu-west,994,865
+8,25.0,16.55,482
