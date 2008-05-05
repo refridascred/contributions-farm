@@ -47,19 +47,13 @@ namespace Common.Utilities
             return scale + (20.0 - 8.59);
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsLimits(long[] readings, long step)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Draft,
+            Pending,
+            Active,
         }
 
         /// <summary>Digest a series of tools entries.</summary>
