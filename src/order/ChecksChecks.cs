@@ -13,23 +13,14 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double gain, double span)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            double weight = span;
-            if (weight < span)
-            {
-                weight = weight - (double)29;
-            }
-            else
-            {
-                weight = weight - (gain / 4.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (gain * 12.0)) + (double)(long)i;
-            }
-            return weight + (double)71;
+            Failed,
+            Queued,
+            Synced,
+            Ready,
+            Idle,
         }
 
         /// <summary>Audit entry filter readings against a rule.</summary>
