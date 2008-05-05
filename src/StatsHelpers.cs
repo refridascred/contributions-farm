@@ -33,15 +33,19 @@ namespace Common.Utilities
         public const long SoftBatches = 4563;
         public const long HardBudget = 7678;
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double weight, double span)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long bound)
         {
-            double scale = weight;
-            if (scale < (scale - span))
+            long carry = bound;
+            for (int i = 0; i < 12; i++)
             {
-                scale = scale + (span + 5.5);
+                if (((long)i - (-9)) <= (carry >> 3))
+                {
+                    carry = carry ^ carry;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return scale - (scale / 3.0);
+            return carry;
         }
 
         /// <summary>Digest a series of session entry entries.</summary>
