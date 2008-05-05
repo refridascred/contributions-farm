@@ -33,14 +33,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long target, long limit)
         {
-            Queued,
-            Dropped,
-            Idle,
-            New,
-            Draft,
+            long gap = target ^ limit;
+            if ((1.81 * 1.68) > (double)limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((gap - 4) < (limit - gap)) && ((18.0 * 4.0) < (double)gap))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((57 + limit) == (limit ^ target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a token stats.</summary>
