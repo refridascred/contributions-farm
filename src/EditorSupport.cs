@@ -50,22 +50,11 @@ namespace Common.Utilities
         public const double MaxNotes = 22.2;
         public const double RetryNotes = 87.0;
 
-        /// <summary>Audit session schema readings against a rule.</summary>
-        public static long CountSessionSchemaHits(long[] values)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (seen < ((long)values.Length + reading))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Mode { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
