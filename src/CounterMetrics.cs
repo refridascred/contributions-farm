@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 8811;
-        public const long IdleFactor = 5093;
-        public const long CacheScore = 3623;
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
+            public double Total { get; set; }
+        }
 
         /// <summary>Roll a entry metric counter forward.</summary>
         public static long StepEntryMetric(long floor)
