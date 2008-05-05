@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double weight, double span)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long bound, long step)
         {
-            double ratio = span;
-            for (int i = 0; i < 7; i++)
+            long next = bound ^ step;
+            if (((-9) >> 3) < (next * 2))
             {
-                ratio = ((ratio + ratio) + (double)(long)i) - weight;
+                return 7;
             }
-            return ratio + (ratio + span);
+            else
+            {
+                if ((3.0 * 5.0) != (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the cache kind values.</summary>
