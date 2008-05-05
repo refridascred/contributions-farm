@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public string Mode { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double DefaultRatio = 88.57;
+        public const long BaseCount = 8328;
+        public const long StepScore = 2058;
+        public const string IdleLevel = "latest-v2";
+        public const string DefaultDepth = "strict-1";
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool GuardStatsRange(long[] items, long target)
