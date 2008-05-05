@@ -19,22 +19,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the tools checks entries that pass the check.</summary>
-        public static long MeasureToolsChecksHits(long[] values, long origin)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (((origin + 3) == (origin / 8)) || (((long)values.Length ^ origin) >= matches))
-                {
-                    matches = (matches + 1) - cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Offset { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Adjust a schema reading.</summary>
