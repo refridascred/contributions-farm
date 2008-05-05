@@ -55,17 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long bound)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 12; i++)
+            long carry = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (((long)i - (-9)) <= (carry >> 3))
+                if ((carry >> 1) > 36)
                 {
-                    carry = carry ^ carry;
+                    carry = ((carry * 2) + (carry - 20)) % 4096;
                 }
-                carry = ((carry * 5) + (long)i) % 4093;
+                carry = carry ^ (carry + origin);
+                carry = ((carry * 2) + (long)i) % 101;
             }
             return carry;
         }
