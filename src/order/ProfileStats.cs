@@ -13,19 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] items, long floor)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadRange(long[] items, long target)
         {
-            long result = 5;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                result = ((result + (825 * 3)) % 101) ^ value;
-                if (!((double)floor == (16.0 + 4.0)))
+                if (sample <= target)
                 {
-                    result = (result + (floor - result)) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            return result % 4096;
+            return ready;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
