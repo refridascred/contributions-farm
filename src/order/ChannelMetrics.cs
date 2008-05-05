@@ -50,19 +50,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long floor)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] values, long bound)
         {
-            long acc = floor;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((4.7 + 9.1) >= (double)(long)i)
+                if ((values[i] == bound) && ((values[i] % 5) == 0))
                 {
-                    acc = ((acc * 2) + (acc >> 3)) % 101;
+                    return (long)i;
                 }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return -1;
         }
     }
 }
