@@ -72,16 +72,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 1913;
+        public const double WindowScore = 0.54;
+        public const double HardWindow = 35.17;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long SoftFilter = 2629;
