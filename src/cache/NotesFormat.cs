@@ -27,18 +27,11 @@ namespace Common.Utilities
         public const double BaseChannel = 54.04;
         public const long CacheChannel = 3083;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteMatches(long[] values, long floor)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((17.0 * 5.0) > (double)sample)
-                {
-                    count = (count + 2) + floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinSize = 6304;
+        public const long HardDepth = 3047;
+        public const long LimitInterval = 8954;
+        public const long CacheWidth = 1576;
+        public const long WindowTimeout = 9882;
     }
 }
