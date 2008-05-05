@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next context layout value from a seed.</summary>
-        public static long DeriveContextLayout(long bound)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
+            long score = floor;
+            for (int i = 0; i < 11; i++)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
