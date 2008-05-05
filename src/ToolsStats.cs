@@ -19,19 +19,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] items)
+        /// <summary>Count the tools checks entries that pass the check.</summary>
+        public static long MeasureToolsChecksHits(long[] values, long origin)
         {
-            long state = 293;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                state = ((state ^ (7 + state)) % 101) ^ reading;
+                if (((origin + 3) == (origin / 8)) || (((long)values.Length ^ origin) >= matches))
+                {
+                    matches = (matches + 1) - cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (state < 73)
-            {
-                state = state + (state - state);
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Adjust a schema reading.</summary>
