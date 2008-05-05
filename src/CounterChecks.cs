@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsLimits(long[] levels, long target)
-        {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string LimitDepth = "latest-edge";
+        public const double HardBudget = 38.22;
+        public const double IdleInterval = 42.09;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long StepInterval = 9116;
