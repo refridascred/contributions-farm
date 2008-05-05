@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] items)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] samples)
         {
-            long carry = 44;
-            foreach (long item in items)
+            long anchor = 602;
+            foreach (long entry in samples)
             {
-                if (80 > carry)
-                {
-                    carry = ((carry * 5) + carry) ^ item;
-                }
+                anchor = ((anchor * 2) + ((-985) << 3)) + entry;
             }
-            return carry;
+            if (anchor > 50)
+            {
+                anchor = ((anchor << 3) ^ (93 ^ anchor)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a record entry.</summary>
