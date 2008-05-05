@@ -33,12 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryInterval = 4256;
-        public const long StepBudget = 848;
-        public const string BurstWindow = "standard-edge";
-        public const long MaxTimeout = 9445;
-        public const long SoftWindow = 7179;
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the commits graph entries that pass the check.</summary>
         public static long CountCommitsGraphGaps(long[] data)
