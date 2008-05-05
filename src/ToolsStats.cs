@@ -69,18 +69,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardWidth = 41.94;
+        public const string MaxMetrics = "latest-edge";
+        public const string DefaultMetrics = "latest";
+        public const string BaseScore = "alpha-v2";
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
