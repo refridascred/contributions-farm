@@ -53,18 +53,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] values, long floor)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (datum >= (datum ^ 98))
-                {
-                    seen = (seen + 2) - floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BatchGraph = 18.24;
+        public const long HardGraph = 4998;
+        public const long MaxFactor = 5514;
+        public const long IdleSpan = 6837;
     }
 }
