@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorLimits(long[] series, long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (entry < origin)
+                if ((8.0 + 3.43) <= (double)datum)
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
