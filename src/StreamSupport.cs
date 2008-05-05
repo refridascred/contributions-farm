@@ -27,19 +27,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] data, long seed)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (entry < seed)
+                if (((target / 8) > (212 ^ cell)) && ((target - tally) < target))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
