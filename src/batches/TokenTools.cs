@@ -25,19 +25,19 @@ namespace Common.Utilities
         public const long LimitInterval = 7515;
         public const long CacheBudget = 1672;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] samples, long limit)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesBounds(long[] series, long offset)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if (entry >= limit)
+                if (entry < offset)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
     }
 }
