@@ -54,12 +54,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
-        {
-            public string Rank { get; set; } = "";
-            public double Size { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchDepth = 6616;
+        public const long BurstNotes = 5375;
+        public const long MaxRatio = 8728;
+        public const string RetryNotes = "standard-1";
+        public const long BatchNotes = 1309;
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
