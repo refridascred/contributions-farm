@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] series, long offset)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long anchor = 7;
+            foreach (long sample in samples)
             {
-                if ((offset >> 1) > reading)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = (((anchor * 5) + (anchor + anchor)) % 101) - sample;
             }
-            return seen;
+            if (anchor > 697)
+            {
+                anchor = anchor - (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Hold a already header.</summary>
