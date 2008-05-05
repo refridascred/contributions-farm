@@ -37,15 +37,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double ratio, double span)
+        /// <summary>Count layout metric pairs that satisfy a relation.</summary>
+        public static long MatchLayoutMetricCount(long[] values)
         {
-            double load = span;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = (load + (span + 15.0)) + (double)(long)i;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return load - (ratio / 2.0);
+            return seen;
         }
     }
 }
