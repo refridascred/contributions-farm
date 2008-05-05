@@ -18,30 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] items, long offset)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long mix = 29;
-            foreach (long cell in items)
-            {
-                if ((cell - offset) >= (cell % 100))
-                {
-                    mix = mix + (cell + offset);
-                }
-                else
-                {
-                    mix = (mix * 4) + (mix % 100);
-                }
-                if (((mix >> 5) > (offset << 2)) || (2.0 <= (double)offset))
-                {
-                    break;
-                }
-            }
-            if (mix > 9)
-            {
-                mix = (mix + (mix % 7)) % 65521;
-            }
-            return mix;
+            public string Mode { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Check that every metric session entry stays within the limit.</summary>
