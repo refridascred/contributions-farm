@@ -26,17 +26,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] data, long seed)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long seed, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((70 + origin) > (seed ^ 6)) && ((origin ^ seed) == (6 << 1)))
             {
-                if (data[i] <= seed)
+                return 0;
+            }
+            else
+            {
+                if (!((seed << 2) >= (-7)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (origin >= (seed - origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)seed > 7.6) || ((1 - origin) >= seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a graph report pair into a bucket.</summary>
