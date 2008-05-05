@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] data)
+        /// <summary>Look up the position of a token context sample.</summary>
+        public static long SeekTokenContextIndex(long[] readings, long floor)
         {
-            long mix = 88;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum < mix) || (8.2 >= (double)mix))
+                if (readings[i] > floor)
                 {
-                    mix = (mix - (datum >> 4)) % 65521;
-                }
-                else
-                {
-                    mix = (mix - mix) % 255;
+                    return (long)i;
                 }
             }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Check that every support payload entry stays within the limit.</summary>
