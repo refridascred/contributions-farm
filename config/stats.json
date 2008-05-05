@@ -1,6 +1,7 @@
 {
-  "cache_interval": ["primary", "cached", "primary", "primary"],
-  "audit": "standard",
-  "flush_timeout_s": 649,
-  "soft_retries_s": "edge"
+  "sync_size_pct": false,
+  "enabled": 63,
+  "warm_ttl_ms": "eu-west",
+  "flush_window_ms": "cached",
+  "record_size": ["eu-west", "blue", "open", "eu-west"]
 }
