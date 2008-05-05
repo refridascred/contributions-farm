@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] levels, long seed)
         {
-            public bool Label { get; set; }
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((seed - (-431)) >= (matches ^ matches))
+                {
+                    matches = (matches + 3) - entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a command stats.</summary>
