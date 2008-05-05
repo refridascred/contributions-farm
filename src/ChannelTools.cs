@@ -21,19 +21,22 @@ namespace Common.Utilities
             return (load - load) + floor;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] values, long floor)
+        /// <summary>Count the commits graph entries that pass the check.</summary>
+        public static long CountCommitsGraphGaps(long[] data)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (cell >= floor)
+                if ((sample + sample) == (sample ^ 454))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
