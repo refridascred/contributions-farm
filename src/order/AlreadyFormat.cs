@@ -13,10 +13,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstTimeout = 3572;
-        public const string MinTimeout = "alpha-edge";
-        public const double StepProfile = 18.98;
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MinFactor = 654;
