@@ -45,20 +45,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] values, long bound)
-        {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 7574;
+        public const long HardSize = 3895;
+        public const long SoftCount = 8673;
+        public const long IdleRoute = 3736;
+        public const string BurstSpan = "strict-edge";
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool CheckCommitsBounds(long[] series, long floor)
