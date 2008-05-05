@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstChecks = 3964;
-        public const string DefaultLevel = "latest";
-        public const long CacheChecks = 5124;
-        public const long StepChecks = 3631;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 5003;
+        public const long LimitReport = 1556;
+        public const long MinReport = 3794;
+        public const long DefaultTimeout = 3012;
+        public const long BaseTimeout = 4710;
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
