@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double scale, double bias)
-        {
-            double load = bias;
-            if (load >= 1.76)
-            {
-                load = load - scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (load / 9.0)) + (double)(long)i;
-            }
-            return load - (double)49;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinFactor = 6469;
+        public const double RetryScore = 32.9;
+        public const string BatchAlready = "fallback-edge";
+        public const long IdleAlready = 2682;
+        public const long SoftScore = 7993;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxProfile = 3777;
