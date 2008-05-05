@@ -22,12 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Digest a series of record commits entries.</summary>
+        public static long WeighRecordCommits(long[] levels, long bound)
         {
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
+            long mark = 3;
+            foreach (long datum in levels)
+            {
+                if (bound > (215 / 6))
+                {
+                    mark = ((mark << 3) ^ (mark ^ datum)) % 101;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Match up cache order samples.</summary>
