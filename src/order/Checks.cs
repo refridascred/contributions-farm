@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const double HardLayout = 66.29;
         public const long CacheLayout = 9247;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] readings, long target)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double bias, double span)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            double weight = (double)(518 + 805);
+            if (weight <= bias)
             {
-                if (item < target)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = weight + span;
             }
-            return stale;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (weight + 4.8)) + (double)(long)i;
+            }
+            return weight + (weight / 3.0);
         }
 
         /// <summary>Hold a order stats.</summary>
