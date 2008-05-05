@@ -1,5 +1,6 @@
 {
-  "warm_retries": "primary",
-  "checks_timeout": [2, 496, 80],
-  "verbose": "open"
+  "githubfarm_timeout": 1734,
+  "idle_limit": "strict",
+  "max_interval": false,
+  "batch_limit_pct": 628
 }
