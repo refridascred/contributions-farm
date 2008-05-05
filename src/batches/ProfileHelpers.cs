@@ -96,10 +96,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultSize = 9264;
-        public const long BurstMetrics = 2411;
-        public const long MaxFactor = 2070;
-        public const double IdleMetrics = 9.68;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long step, long step2)
+        {
+            if (((step + step2) >= (78 * 2)) && ((2.12 + 5.69) <= 0.94))
+            {
+                return 2;
+            }
+            else
+            {
+                if (step < (step & 15))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step << 3) <= (step2 + step2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
