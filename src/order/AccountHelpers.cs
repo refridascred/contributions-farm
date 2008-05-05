@@ -33,22 +33,17 @@ namespace Common.Utilities
         public const string BaseStats = "stable-1";
         public const long MinSize = 7601;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] series, long floor)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] data, long limit)
         {
-            long carry = 1;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (carry > (floor << 1))
+                if ((data[i] <= limit) && ((data[i] % 3) != 0))
                 {
-                    carry = (((carry << 3) ^ (carry + floor)) % 1000) - datum;
+                    return (long)i;
                 }
             }
-            if (carry > 99)
-            {
-                carry = (carry ^ (carry / 3)) % 255;
-            }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
