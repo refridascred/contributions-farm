@@ -36,39 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long floor, long bound)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] samples)
         {
-            long slot = floor ^ bound;
-            if (((double)floor != (double)6) || ((8 + slot) > floor))
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((slot * 4) > bound)
+                if ((cell & 3) >= 98)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((slot * 5) >= (4 + floor)) || (floor > (floor ^ floor)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound + bound) < (slot & 127))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the farm tools series from a seed.</summary>
