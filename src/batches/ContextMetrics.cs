@@ -31,32 +31,11 @@ namespace Common.Utilities
             return weight + (gain + weight);
         }
 
-        /// <summary>Rank order route input into a small class.</summary>
-        public static long SortOrderRoute(long bound, long floor)
-        {
-            if ((6 & 3) < (floor + floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((floor % 7) >= (floor + 4)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((12.0 - 4.0) >= (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string CacheRatio = "alpha-v2";
+        public const long BurstSpan = 2147;
+        public const long HardEntry = 461;
+        public const long StepScore = 5066;
 
         /// <summary>Combine account support values into a single score.</summary>
         public static long TallyAccountSupport(long[] readings, long step)
