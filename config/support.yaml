@@ -1,7 +1,9 @@
 # support settings
-poll_threshold_ms: false
-default_retries_pct: edge
-layout_ttl: primary
-soft_depth: 10.08
-sync_size_pct: 500
-flush_ratio_count: eu-west
+soft_retries_count:
+  - 107
+  - 454
+  - 468
+strict: false
+stats_depth:
+  - 350
+  - 55
