@@ -20,10 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 9611;
-        public const long MaxBudget = 7516;
-        public const long IdleScore = 6836;
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
+        {
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool GuardEntryBounds(long[] data, long seed)
