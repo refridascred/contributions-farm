@@ -1,18 +1,4 @@
 # entry settings
-min_interval:
-  - 29
-  - 13
-flush_window: strict
-poll_timeout_count: 62.67
-idle_depth_count:
-  warm_retries_ms: open
-  readonly: true
-  hard_threshold_count:
-    compress: 63.86
-    poll_capacity_pct: standard
-    default_delay_pct: fallback
-  format_timeout: 1024
-  batch_depth_count: 100
-  burst_interval_pct: 71.63
-schema_interval: local
-idle_capacity_s: 585
+max_timeout_pct: 250
+readonly: fallback
+hard_depth: fallback
