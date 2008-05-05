@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a window route counter forward.</summary>
-        public static long RollWindowRoute(long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] data)
         {
-            long acc = origin;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                if ((datum - datum) < (-47))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
