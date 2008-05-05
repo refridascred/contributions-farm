@@ -25,15 +25,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double gain, double floor)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            double load = (floor * 2.0) + (floor - floor);
-            if (load > (3.97 * 3.68))
-            {
-                load = (load - load) - gain;
-            }
-            return load + (double)43;
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Adjust a context reading.</summary>
