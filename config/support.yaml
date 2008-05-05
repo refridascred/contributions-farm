@@ -1,21 +1,4 @@
 # support settings
-base_size: 43
-burst_ratio: cached
-compress: 13
-warm_threshold_pct:
-  max_ttl: 7380
-  payload_retries: false
-  max_interval_count: 5884
-order_limit:
-  buffer_ratio:
-    enabled: 76.78
-    default_retries_ms: 8
-    cache_threshold: 75
-  flush_size_pct: 7
-  token_retries:
-    base_delay_pct: 9.36
-    burst_interval_count: 9925
-    burst_delay: latest
-    compress: 44.92
-  max_window_count: 60
-  warm_threshold_count: 2023
+poll_size_s: 75.01
+entry_timeout: 25.59
+graph_retries: blue
