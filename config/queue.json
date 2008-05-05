@@ -1,8 +1,12 @@
 {
-  "flush_threshold": 4448,
-  "session_capacity": true,
-  "min_retries_s": 9437,
-  "audit": 4832,
-  "account_timeout": true,
-  "burst_window_s": "open"
+  "strict": true,
+  "min_timeout": "legacy",
+  "sync_timeout": [369, 222, 103],
+  "batch_ratio_count": {
+    "dry_run": false,
+    "hard_depth": "primary",
+    "retry_delay": ["legacy", "legacy", "fallback"],
+    "base_size_s": 90.26
+  },
+  "already_depth": 54.59
 }
