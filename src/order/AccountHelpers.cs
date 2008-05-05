@@ -19,15 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine schema farm values into a single score.</summary>
-        public static long CombineSchemaFarm(long[] data)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long mark = -5;
-            foreach (long item in data)
-            {
-                mark = (((mark << 3) ^ (mark ^ 25)) % 97) ^ item;
-            }
-            return mark;
+            public long Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
