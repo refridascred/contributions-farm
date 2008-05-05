@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long limit)
         {
-            Dropped,
-            New,
-            Stale,
-            Paused,
+            long score = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                score = (score + score) % 255;
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
