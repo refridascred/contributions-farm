@@ -14,16 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate route notes samples.</summary>
-        public static long DigestRouteNotes(long[] samples, long origin)
-        {
-            long anchor = -23;
-            foreach (long datum in samples)
-            {
-                anchor = (anchor + datum) + origin;
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 6764;
+        public const long SoftWidth = 7218;
+        public const long MaxBudget = 3075;
+        public const string WindowSpan = "strict-1";
 
         /// <summary>Iterate the order report series from a seed.</summary>
         public static long RollOrderReport(long target)
