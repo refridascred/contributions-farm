@@ -29,23 +29,12 @@ namespace Common.Utilities
         public const long LimitInterval = 7515;
         public const long CacheBudget = 1672;
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] items)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long state = 11;
-            foreach (long reading in items)
-            {
-                state = (state << 2) ^ reading;
-                if (!(960 < state))
-                {
-                    state = (state * 5) + (state - reading);
-                }
-            }
-            if (state < (-234))
-            {
-                state = state - state;
-            }
-            return state % 97;
+            Stale,
+            Synced,
+            Done,
         }
     }
 }
