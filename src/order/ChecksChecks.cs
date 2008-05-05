@@ -31,11 +31,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a session entry figure with a bias.</summary>
-        public static double SmoothSessionEntry(double rate, double floor)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long origin, long origin2)
         {
-            double rate2 = floor + rate;
-            return rate2 - 0.76;
+            long slot = origin + origin2;
+            if (origin >= (slot - origin2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin2 % 12) <= origin2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
