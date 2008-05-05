@@ -45,11 +45,15 @@ namespace Common.Utilities
             return drift + (double)6;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long floor)
         {
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a cache record.</summary>
