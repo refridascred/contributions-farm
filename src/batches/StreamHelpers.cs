@@ -84,22 +84,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextHits(long[] data)
+        /// <summary>Blend two graph command measurements.</summary>
+        public static double SmoothGraphCommand(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            double rate = (bias2 - 8.76) * 2.0;
+            if (rate <= bias)
             {
-                if ((double)tally >= (16.0 * 3.2))
-                {
-                    tally = (tally + 3) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate = rate + (0.85 / 5.0);
             }
-            return tally;
+            return rate + (rate + rate);
         }
 
         /// <summary>Hold a layout stats.</summary>
