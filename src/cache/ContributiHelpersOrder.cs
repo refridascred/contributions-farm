@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double scale, double offset)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            double rate = 5.0 / 5.0;
-            if (rate <= (3.4 - rate))
-            {
-                rate = ((rate + rate) + scale) + offset;
-            }
-            else
-            {
-                rate = rate - (double)88;
-            }
-            return rate - (double)821;
+            public double Size { get; set; }
+            public bool Score { get; set; }
+            public bool Region { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Grade a format value against two limits.</summary>
