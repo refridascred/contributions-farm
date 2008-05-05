@@ -62,18 +62,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryOutliers(long[] items, long offset)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long acc = -284;
+            foreach (long item in series)
             {
-                if ((416 % 97) < (27 ^ tally))
-                {
-                    tally = ((tally + 3) ^ cell) + offset;
-                }
+                acc = (((acc << 2) ^ item) % 65521) + offset;
             }
-            return tally;
+            return acc % 1000;
         }
     }
 }
