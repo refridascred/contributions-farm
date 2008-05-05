@@ -49,18 +49,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer farm entries that pass the check.</summary>
-        public static long CountBufferFarmOutliers(long[] values, long offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] items)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((item & 127) < offset)
+                if ((double)item > (2.0 * 4.1))
                 {
-                    hits = hits + 1;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
