@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] samples)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] values)
         {
-            long score = 4;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (score > (score & 7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = ((score << 2) ^ (sample << 3)) % 101;
-                }
-                else
-                {
-                    score = ((score * 3) + (score + sample)) % 97;
+                    if ((values[i] + values[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (score < 1)
-            {
-                score = (score ^ (1 - score)) % 65521;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
