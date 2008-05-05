@@ -69,18 +69,12 @@ namespace Common.Utilities
             return rate + (4.0 - bias);
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] values, long bound)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((seen * 5) > (item * 5))
-                {
-                    seen = (seen + 1) + bound;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
