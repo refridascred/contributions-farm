@@ -36,17 +36,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] values, long bound)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long floor, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long delta = floor + limit;
+            if ((double)delta >= (4.0 * 5.7))
             {
-                if (values[i] <= bound)
+                return 5;
+            }
+            else
+            {
+                if ((double)floor != (4.0 - 18.0))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
     }
 }
