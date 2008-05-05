@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            Retry,
-            Synced,
-            New,
-            Queued,
+            public string Size { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Offset { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the profile phase values.</summary>
