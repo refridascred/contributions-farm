@@ -40,23 +40,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine account support values into a single score.</summary>
-        public static long TallyAccountSupport(long[] readings, long step)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] data)
         {
-            long anchor = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                for (int i = 0; i < 12; i++)
+                if (9 < (datum + seen))
                 {
-                    long edge = 265;
-                    anchor = (anchor ^ edge) ^ (long)i;
-                }
-                if ((6 + datum) == (360 - datum))
-                {
-                    anchor = (anchor << 2) ^ (step + 924);
+                    seen = seen + 3;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Derive the next contributi tools value from a seed.</summary>
