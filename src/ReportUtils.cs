@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinLevel = 8585;
-        public const string StepChannel = "latest";
-        public const long RetryChannel = 910;
-        public const long MaxChannel = 394;
-        public const long StepTimeout = 6493;
+        /// <summary>Check that every command graph entry stays within the limit.</summary>
+        public static bool GuardCommandGraphLimits(long[] data, long step)
+        {
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Digest a series of format tools entries.</summary>
         public static long WeighFormatTools(long[] samples)
