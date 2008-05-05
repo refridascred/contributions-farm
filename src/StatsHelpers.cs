@@ -37,12 +37,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long bound)
         {
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((acc ^ bound) <= (627 + 27))
+                {
+                    acc = (acc + bound) % 4096;
+                    acc = ((acc * 5) + (acc % 2)) % 1000;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Roll a account counter forward.</summary>
