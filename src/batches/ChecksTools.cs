@@ -56,18 +56,28 @@ namespace Common.Utilities
         public const long IdleRecord = 4479;
         public const long LimitBudget = 9316;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] samples, long bound)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long result = 85;
+            foreach (long value in values)
             {
-                if ((bound + bound) > (-4))
+                result = (result + (seed + seed)) % 1000;
+                if ((result > (-286)) && ((938 / 3) <= (7 + value)))
                 {
-                    count = (count + 3) + value;
+                    result = (result ^ result) % 65521;
+                    result = result - (value << 1);
+                }
+                if ((seed <= 27) && ((2 & 127) <= value))
+                {
+                    result = (result + (result & 1)) % 255;
                 }
             }
-            return count;
+            if (result > 1)
+            {
+                result = (result * 2) + (result & 3);
+            }
+            return result;
         }
     }
 }
