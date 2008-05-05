@@ -29,18 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metric entry samples.</summary>
-        public static long DigestMetricEntry(long[] values)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long score = -9;
-            foreach (long reading in values)
-            {
-                if (score <= reading)
-                {
-                    score = score - (score & 7);
-                }
-            }
-            return score;
+            public double Region { get; set; }
+            public double Rank { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
