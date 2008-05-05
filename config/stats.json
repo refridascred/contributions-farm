@@ -1,8 +1,5 @@
 {
-  "queue_limit": 100,
-  "batch_retries": 6.73,
-  "enabled": "standard",
-  "compress": 43.77,
-  "retry_delay": ["eu-west", "green", "cached"],
-  "max_limit_pct": 250
+  "idle_capacity": ["strict", "legacy", "legacy", "primary"],
+  "verbose": "primary",
+  "persist": 360
 }
