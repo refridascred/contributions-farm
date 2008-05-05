@@ -1,20 +1,12 @@
 # support settings
-stats_threshold: true
-stream_ttl: false
-max_delay_s:
-  soft_delay: 74.07
-  warm_threshold:
-    burst_retries: 5488
-    poll_limit_count: 46
-    min_ttl_ms:
-      - open
-      - stable
-    filter_limit: 19.74
-    schema_window: standard
-    burst_window: eu-west
-  min_ratio: 250
-  counter_depth: 35.99
-  retry_size_count: eu-west
-  max_capacity: 37.89
-idle_timeout: 91.07
-hard_interval_ms: fallback
+route_interval:
+  - green
+  - green
+  - edge
+  - staging
+base_window_pct:
+  - edge
+  - latest
+  - edge
+cache_threshold: open
+verbose: 87
