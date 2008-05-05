@@ -1,12 +1,15 @@
 {
-  "batch_window_ms": 17,
-  "flush_ratio_s": {
-    "max_timeout_s": ["latest", "legacy", "primary", "blue"],
-    "cluster_retries": "green",
-    "warm_threshold": [255, 487],
-    "checks_window": true,
-    "min_size": false,
-    "farm_window": "latest"
+  "poll_interval": "stable",
+  "verbose": {
+    "idle_delay": true,
+    "poll_depth_ms": true,
+    "flush_window": "open",
+    "buffer_ttl": {
+      "profile_size": 67,
+      "buffer_ratio": "open",
+      "flush_threshold": true
+    }
   },
-  "retry_interval": "cached"
+  "order_ratio": 100,
+  "idle_timeout": 17
 }
