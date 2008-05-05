@@ -35,22 +35,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] levels)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] data)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (((658 - sample) <= (-53)) || ((double)sample >= (9.19 - 0.1)))
+                if ((item + hits) > hits)
                 {
-                    count = count + 1;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
