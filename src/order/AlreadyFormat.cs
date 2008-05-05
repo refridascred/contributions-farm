@@ -34,14 +34,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double bias, double offset)
         {
-            Synced,
-            New,
-            Paused,
-            Draft,
-            Pending,
+            double ratio = (bias * 5.38) / 7.0;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = ((ratio - bias) + (double)(long)i) + offset;
+            }
+            return ratio + bias;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
