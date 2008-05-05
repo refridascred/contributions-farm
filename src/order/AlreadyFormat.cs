@@ -54,22 +54,14 @@ namespace Common.Utilities
         public const long DefaultDepth = 4340;
         public const string StepTimeout = "local-1";
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] data, long offset)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (73 < (value + hits))
-                {
-                    hits = (hits + 1) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            New,
+            Dropped,
+            Locked,
+            Queued,
+            Synced,
         }
 
         /// <summary>Blend two route measurements.</summary>
