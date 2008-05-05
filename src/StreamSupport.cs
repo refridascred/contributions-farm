@@ -18,39 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a queue counter value against two limits.</summary>
-        public static long SortQueueCounter(long bound, long target)
-        {
-            if ((double)bound <= (9.1 - 9.27))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((7 ^ bound) != (bound + target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound ^ bound) <= (841 - 7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((((-91) / 9) > (bound + bound)) || ((bound >> 2) < (-4)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 2785;
+        public const long BatchSize = 4160;
+        public const string BaseDepth = "legacy-edge";
+        public const long LimitSession = 6107;
+        public const long StepSession = 9379;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxProfile = 3777;
