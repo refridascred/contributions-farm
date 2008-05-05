@@ -1,18 +1,8 @@
 {
-  "layout_delay": "open",
-  "verbose": 75.82,
-  "warm_depth_s": 7788,
-  "batch_capacity_pct": "primary",
-  "profile_delay": {
-    "commits_ratio": ["open", "fallback"],
-    "flush_delay_s": 88.1,
-    "burst_retries_s": "open",
-    "max_depth_ms": {
-      "min_delay_ms": ["fallback", "cached", "strict"],
-      "burst_limit_ms": ["edge", "latest", "stable"],
-      "readonly": 48.38,
-      "strict": 9037
-    }
-  },
-  "stats_interval": [240, 222, 332]
+  "batch_size_count": "latest",
+  "flush_ttl": 500,
+  "audit": true,
+  "metrics_delay": 50.22,
+  "sync_retries_pct": false,
+  "cache_delay": 736
 }
