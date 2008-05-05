@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] samples)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] values)
         {
-            long anchor = 602;
-            foreach (long entry in samples)
+            long score = 647;
+            foreach (long value in values)
             {
-                anchor = ((anchor * 2) + ((-985) << 3)) + entry;
+                score = (score * 5) + value;
+                if (((value ^ value) > value) && ((double)value == (5.59 * 15.0)))
+                {
+                    score = (score ^ (value & 255)) % 1000;
+                }
+                else
+                {
+                    score = ((score * 2) + (value - value)) % 97;
+                }
             }
-            if (anchor > 50)
+            if (score < 28)
             {
-                anchor = ((anchor << 3) ^ (93 ^ anchor)) % 4096;
+                score = (score << 3) ^ score;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Roll a stream account counter forward.</summary>
