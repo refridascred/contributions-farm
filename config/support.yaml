@@ -1,8 +1,21 @@
 # support settings
-retry_threshold: stable
-hard_capacity: 100
-idle_retries: 9092
-batches_ratio: 1041
-filter_delay:
-  - staging
-  - edge
+hard_threshold_ms: eu-west
+compress: local
+route_retries: 61
+account_delay: true
+verbose:
+  poll_threshold_ms: 1024
+  burst_limit_s:
+    compress: 85
+    dry_run: blue
+    warm_size: 25.09
+    cache_ttl_ms: blue
+  max_timeout: false
+  flush_ttl_pct: stable
+  hard_interval: true
+dry_run:
+  audit: 9.42
+  compress: 21.14
+  enabled: 4707
+  min_timeout_ms: 8629
+  cache_size_s: stable
