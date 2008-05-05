@@ -14,11 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double rate, double bias)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            double rate2 = rate;
-            return (rate2 + rate2) + bias;
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the token state values.</summary>
