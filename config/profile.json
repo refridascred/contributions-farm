@@ -1,5 +1,7 @@
 {
-  "flush_ratio_s": 11,
-  "persist": true,
-  "base_ratio_count": ["open", "stable"]
+  "batch_size_pct": true,
+  "strict": ["staging", "green", "open", "blue"],
+  "batches_ratio": ["primary", "local", "strict"],
+  "enabled": "staging",
+  "cache_capacity": 74
 }
