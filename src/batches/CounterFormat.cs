@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] levels, long bound)
+        /// <summary>Validate command queue readings against a bound.</summary>
+        public static bool VerifyCommandQueueLimits(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if ((levels[i] == bound) && ((levels[i] % 2) != 0))
+                if (cell <= limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
