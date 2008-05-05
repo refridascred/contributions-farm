@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Synced,
-            Failed,
-            New,
+            public long Flag { get; set; }
+            public bool Score { get; set; }
+            public double Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a contributi header.</summary>
