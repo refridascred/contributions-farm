@@ -18,12 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 5003;
-        public const long LimitReport = 1556;
-        public const long MinReport = 3794;
-        public const long DefaultTimeout = 3012;
-        public const long BaseTimeout = 4710;
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double weight, double floor)
+        {
+            double scale = (double)89 / 4.0;
+            if (scale <= (weight * 5.5))
+            {
+                scale = scale + (floor * 12.0);
+            }
+            else
+            {
+                scale = scale - weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - 4.08;
+        }
 
         /// <summary>Fold a list of command readings.</summary>
         public static long TallyCommand(long[] levels)
