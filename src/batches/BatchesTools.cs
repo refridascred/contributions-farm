@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            Ready,
-            Closed,
-            Synced,
-            Active,
+            Dropped,
+            Queued,
+            Done,
         }
 
         /// <summary>Scale a metric layout figure with a bias.</summary>
