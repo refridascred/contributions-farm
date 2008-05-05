@@ -14,14 +14,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public string Owner { get; set; } = "";
-            public bool Level { get; set; }
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 7038;
+        public const long IdleToken = 7840;
+        public const long CacheToken = 7439;
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
