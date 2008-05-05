@@ -26,21 +26,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] values)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (tally >= (tally << 1))
                 {
-                    if ((values[i] + values[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) + entry;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Adjust a checks reading.</summary>
