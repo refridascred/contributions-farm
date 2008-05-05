@@ -1,21 +1,23 @@
 # githubfarm settings
-enabled: fallback
-idle_timeout_s: cached
-retry_ttl_s: stable
-strict: green
-counter_depth: edge
-idle_threshold:
-  cache_retries:
-    - 274
-    - 48
-    - 23
-  audit: 58
-  account_limit: 37
-  readonly:
-    verbose: 188
-    compress: latest
-    warm_depth_s: fallback
-    poll_depth_count: 34
-    idle_retries: 1024
-  soft_threshold: 19.6
-  retry_window_ms: 5271
+hard_capacity_pct: green
+strict:
+  - 98
+  - 92
+min_delay:
+  - 493
+  - 125
+audit:
+  session_limit: 62.67
+  max_limit_pct: false
+  readonly: standard
+  burst_capacity_pct:
+    - standard
+    - fallback
+    - edge
+poll_ttl_pct:
+  base_size:
+    - stable
+    - green
+    - legacy
+  commits_ttl: open
+  base_timeout_pct: eu-west
