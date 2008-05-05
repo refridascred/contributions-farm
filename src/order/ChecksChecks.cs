@@ -22,12 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double bias, double bias2)
         {
-            Draft,
-            Dropped,
-            Failed,
+            double load = bias2 / 9.0;
+            if (load <= bias2)
+            {
+                load = (load + load) - bias;
+            }
+            return load + 6.4;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
