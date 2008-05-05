@@ -26,19 +26,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] readings, long floor)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Stamp { get; set; }
+            public double Count { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a editor info.</summary>
