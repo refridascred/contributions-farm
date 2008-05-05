@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open staging edge; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
 
-CHANNEL_LIMIT=28
+mode="${1:-fallback}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+CHANNEL_LIMIT=316
 log "limit is ${CHANNEL_LIMIT}"
