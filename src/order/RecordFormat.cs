@@ -32,18 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] samples)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutBounds(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if ((cell & 3) >= 98)
+                if (value != bound)
                 {
-                    seen = seen + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Iterate the farm tools series from a seed.</summary>
