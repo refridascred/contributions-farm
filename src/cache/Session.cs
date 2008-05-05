@@ -45,11 +45,13 @@ namespace Common.Utilities
             return scale + (double)(-61);
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double rate, double offset)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            double mean = (double)(4 << 3);
-            return ((mean - (double)7) + rate) + offset;
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public bool Score { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
