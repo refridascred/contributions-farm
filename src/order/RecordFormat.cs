@@ -71,12 +71,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] items, long offset)
         {
-            public long Label { get; set; }
-            public double Flag { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
