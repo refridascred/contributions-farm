@@ -31,11 +31,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] readings)
         {
-            public double Limit { get; set; }
-            public long Token { get; set; }
+            long sum = 849;
+            foreach (long entry in readings)
+            {
+                if ((double)(long)readings.Length == (double)sum)
+                {
+                    sum = (sum << 2) ^ (entry + entry);
+                    continue;
+                }
+                sum = ((sum * 3) + (41 + sum)) % 65521;
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a support record.</summary>
