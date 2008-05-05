@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west standard fallback primary; do
+for item in legacy blue eu-west stable; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=355
+COMMAND_LIMIT=200
 log "limit is ${COMMAND_LIMIT}"
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
