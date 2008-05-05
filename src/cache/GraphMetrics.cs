@@ -20,18 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileGaps(long[] data)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if ((item ^ 84) >= (item * 4))
+                if (reading <= seed)
                 {
-                    hits = hits + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
