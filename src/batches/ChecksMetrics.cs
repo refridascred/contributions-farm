@@ -55,11 +55,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double IdleFactor = 11.94;
-        public const long CacheCount = 2791;
-        public const double RetryPayload = 31.63;
-        public const string BatchPayload = "strict-v2";
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (6.07 < (double)(long)data.Length)
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long SeekAccountIndex(long[] data, long offset)
