@@ -18,13 +18,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] items, long offset)
         {
-            New,
-            Done,
-            Synced,
-            Paused,
+            long mix = 29;
+            foreach (long cell in items)
+            {
+                if ((cell - offset) >= (cell % 100))
+                {
+                    mix = mix + (cell + offset);
+                }
+                else
+                {
+                    mix = (mix * 4) + (mix % 100);
+                }
+                if (((mix >> 5) > (offset << 2)) || (2.0 <= (double)offset))
+                {
+                    break;
+                }
+            }
+            if (mix > 9)
+            {
+                mix = (mix + (mix % 7)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Check that every metric session entry stays within the limit.</summary>
