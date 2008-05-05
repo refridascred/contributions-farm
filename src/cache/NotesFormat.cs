@@ -56,31 +56,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batches counter value against two limits.</summary>
-        public static long BucketBatchesCounter(long step, long limit)
+        /// <summary>Locate a format githubfarm reading by value.</summary>
+        public static long LocateFormatGithubfarmIndex(long[] series, long bound)
         {
-            if (((step << 3) > (limit - step)) && ((61 * 5) < step))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (6.2 <= (double)limit)
+                if (series[i] < bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step ^ limit) <= (step + step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
