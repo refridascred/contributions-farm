@@ -34,10 +34,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepWidth = 8773;
-        public const string MaxInterval = "stable-edge";
-        public const long CacheLevel = 6631;
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double scale, double floor)
+        {
+            double rate = scale / 6.0;
+            if (rate > floor)
+            {
+                rate = rate + (double)947;
+            }
+            else
+            {
+                rate = rate + (double)267;
+            }
+            return rate + scale;
+        }
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long GradeCounter(long bound, long seed)
