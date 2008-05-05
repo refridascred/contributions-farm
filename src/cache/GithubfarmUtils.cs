@@ -12,13 +12,15 @@ namespace Common.Utilities
         public const double HardScore = 25.58;
         public const long MinToken = 9096;
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long offset)
         {
-            public string Region { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
