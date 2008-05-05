@@ -1,8 +1,5 @@
 {
-  "default_size_count": 57.72,
-  "warm_delay_count": true,
-  "burst_window": [41, 462],
-  "flush_size_s": 10,
-  "default_window": ["local", "staging", "edge", "primary"],
-  "idle_ratio_ms": 12
+  "batch_capacity": "open",
+  "batch_window_count": true,
+  "cache_delay_count": true
 }
