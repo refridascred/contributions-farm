@@ -23,24 +23,14 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] readings)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long sum = 4;
-            foreach (long item in readings)
-            {
-                if ((19.0 / 5.0) < (double)item)
-                {
-                    sum = (sum * 2) + ((-45) / 2);
-                }
-                sum = ((sum << 3) ^ (sum - item)) % 4096;
-                sum = (sum + (item - 886)) % 65521;
-            }
-            if (sum > 15)
-            {
-                sum = (sum + sum) % 4096;
-            }
-            return sum % 97;
+            Draft,
+            Synced,
+            Retry,
+            Closed,
+            Ready,
         }
     }
 }
