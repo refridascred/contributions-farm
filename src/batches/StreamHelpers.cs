@@ -66,12 +66,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] readings, long step)
         {
-            Closed,
-            Failed,
-            Draft,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (step <= 50)
+                {
+                    tally = (tally + 3) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two graph command measurements.</summary>
