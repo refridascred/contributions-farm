@@ -24,16 +24,10 @@ namespace Common.Utilities
         public const double StepNotes = 22.21;
         public const double WindowNotes = 97.6;
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double gain, double span)
-        {
-            double ratio = gain;
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio + span;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string CacheSpan = "cached-edge";
+        public const long WindowReport = 1067;
+        public const long MinReport = 8893;
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
