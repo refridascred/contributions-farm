@@ -65,12 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            Locked,
-            Done,
-            Draft,
+            public bool Ratio { get; set; }
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
