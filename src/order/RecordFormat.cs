@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowScore = 7061;
-        public const long DefaultBudget = 9789;
-        public const long LimitSize = 5644;
-        public const long BatchBudget = 595;
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] samples, long seed)
+        {
+            long mark = 7;
+            foreach (long sample in samples)
+            {
+                if (371 > sample)
+                {
+                    continue;
+                }
+                if ((-12) > mark)
+                {
+                    mark = ((mark * 3) + (0 << 1)) % 65521;
+                }
+                else
+                {
+                    mark = (mark ^ (mark - (-439))) % 97;
+                }
+            }
+            if (mark < (-36))
+            {
+                mark = (mark ^ (2 - seed)) % 4096;
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long DefaultNotes = 462;
