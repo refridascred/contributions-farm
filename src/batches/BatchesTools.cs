@@ -14,15 +14,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a metric layout figure with a bias.</summary>
-        public static double ProjectMetricLayout(double bias, double bias2)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] values)
         {
-            double ratio = bias2;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = (ratio - 3.7) - (double)(long)i;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return ratio - (bias / 3.0);
+            return seen;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
