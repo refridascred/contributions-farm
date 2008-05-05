@@ -39,18 +39,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit entry filter readings against a rule.</summary>
-        public static long TallyEntryFilterGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((matches - (-776)) <= (matches << 1))
-                {
-                    matches = (matches + 2) + entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftFactor = 9944;
+        public const long LimitDepth = 2420;
+        public const double StepCount = 6.88;
+        public const double BatchSize = 28.01;
+        public const long MaxGithubfarm = 6237;
     }
 }
