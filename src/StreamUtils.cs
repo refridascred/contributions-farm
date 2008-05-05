@@ -29,18 +29,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] items, long limit)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (!!((item * 4) <= (tally - 65)))
-                {
-                    tally = (tally + 2) - limit;
-                }
-            }
-            return tally;
+            Locked,
+            New,
+            Failed,
+            Done,
+            Retry,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
