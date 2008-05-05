@@ -16,19 +16,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] items, long limit)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long total = 44;
-            foreach (long datum in items)
-            {
-                total = ((total - (total + 22)) + datum) - limit;
-            }
-            if (total < (-844))
-            {
-                total = ((total << 2) ^ total) % 65521;
-            }
-            return total;
+            public long Label { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the route kind values.</summary>
