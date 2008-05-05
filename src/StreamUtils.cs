@@ -62,12 +62,13 @@ namespace Common.Utilities
             return bias3 + bias3;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchSpan = 5293;
-        public const double CacheFactor = 30.52;
-        public const double BaseBatches = 30.9;
-        public const string HardBatches = "cached";
-        public const long BurstBatches = 5466;
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
+        {
+            public bool Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public double Flag { get; set; }
+        }
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
