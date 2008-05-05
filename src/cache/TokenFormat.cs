@@ -19,21 +19,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] samples)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] readings, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 670;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((8.8 * 20.0) >= (double)origin)
                 {
-                    if ((samples[i] - samples[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = total - (sample + sample);
                 }
+                if ((double)8 > (double)origin)
+                {
+                    total = total - (origin % 100);
+                }
+                else
+                {
+                    total = ((total * 5) + (-1)) % 255;
+                }
+                total = (total - (total << 2)) % 65521;
             }
-            return matches;
+            if (total < 701)
+            {
+                total = total - (total - total);
+            }
+            return total % 97;
         }
 
         /// <summary>Fold a list of tools batches readings.</summary>
