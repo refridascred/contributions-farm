@@ -36,11 +36,15 @@ namespace Common.Utilities
         public const double StepNotes = 22.21;
         public const double WindowNotes = 97.6;
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double scale, double floor)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long target)
         {
-            double rate = floor;
-            return (rate - (rate / 3.0)) + scale;
+            long sum = target;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many farm batches samples are out of range.</summary>
