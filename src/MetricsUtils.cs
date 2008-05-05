@@ -54,23 +54,21 @@ namespace Common.Utilities
         public const double RetryDepth = 8.16;
         public const double BaseSize = 6.93;
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double gain, double span)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] readings)
         {
-            double bias = span + span;
-            if (bias < (double)(-68))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = bias - gain;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias - (bias + span);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias + (gain + bias);
+            return count;
         }
     }
 }
