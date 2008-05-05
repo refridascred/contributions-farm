@@ -34,15 +34,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double ratio, double floor)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            double drift = (8.45 - floor) * 9.0;
-            for (int i = 0; i < 8; i++)
-            {
-                drift = ((drift + drift) + (double)(long)i) + ratio;
-            }
-            return drift + (double)6;
+            Stale,
+            Synced,
+            Retry,
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
