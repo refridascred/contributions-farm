@@ -30,14 +30,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            Draft,
-            Done,
-            Pending,
+            Closed,
+            Queued,
             Synced,
-            Active,
         }
     }
 }
