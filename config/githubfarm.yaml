@@ -1,15 +1,53 @@
 # githubfarm settings
-base_window_count:
-  batches_ratio:
-    - fallback
-    - legacy
-    - cached
-  batches_window:
-    enabled: 9457
-    dry_run: 3
-    session_limit: fallback
-    checks_retries: false
-  stream_capacity: true
-poll_depth: 23.88
-poll_retries_s: false
-soft_ratio_pct: edge
+retry_limit_pct:
+  min_threshold_s: standard
+  default_interval_s:
+    min_interval_count:
+      - primary
+      - green
+    flush_capacity_pct: edge
+    compress: false
+    dry_run: 432
+    batch_window: 9.8
+    enabled: edge
+  batch_depth_s:
+    checks_ratio:
+      - eu-west
+      - open
+    editor_limit: 49.6
+    audit: 86.97
+    warm_size_ms: false
+    persist: staging
+    enabled: 89
+  persist: local
+  enabled:
+    sync_retries_ms: local
+    enabled: 49
+    base_ratio: 81.34
+    stream_capacity:
+      - 370
+      - 18
+      - 257
+    compress:
+      - 408
+      - 178
+      - 54
+    burst_limit: 1629
+batch_window_s:
+  already_limit: eu-west
+  max_timeout_count: false
+  default_ttl: 100
+readonly: open
+farm_ratio:
+  queue_delay: false
+  cache_delay: eu-west
+  graph_interval: 8
+  profile_capacity:
+    order_threshold:
+      - 156
+      - 392
+      - 164
+    batches_ratio: 1537
+    stats_retries:
+      - stable
+      - legacy
