@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    strict)
+    cached)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in open fallback legacy local; do
-    log "checking ${item}"
-done
-
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
+BUFFER_LIMIT=424
+log "limit is ${BUFFER_LIMIT}"
