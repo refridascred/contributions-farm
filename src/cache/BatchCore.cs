@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a already contributi reading by value.</summary>
-        public static long LookupAlreadyContributiIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > origin) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MaxBatches = "stable-edge";
+        public const double LimitSize = 40.23;
+        public const long RetryBatches = 7469;
+        public const long DefaultWidth = 5905;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double WindowCache = 95.38;
