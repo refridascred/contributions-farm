@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long floor, long floor2)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            if ((floor % 10) >= (floor2 & 63))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((floor * 2) <= (floor - 35)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (45 < (floor / 6))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public double Limit { get; set; }
+            public double Mode { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Compare every pair of stats editor readings.</summary>
