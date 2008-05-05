@@ -13,12 +13,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            Idle,
-            Failed,
-            Pending,
+            Dropped,
+            Done,
+            Queued,
+            Synced,
+            Retry,
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
