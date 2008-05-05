@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Digest a series of window context entries.</summary>
+        public static long TallyWindowContext(long[] levels, long offset)
         {
-            public string Flag { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Rank { get; set; }
-            public double Offset { get; set; }
+            long total = 6;
+            foreach (long value in levels)
+            {
+                if (((double)offset >= (double)total) && ((offset << 3) >= ((long)levels.Length + total)))
+                {
+                    total = ((total << 3) ^ (total ^ value)) % 101;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (1 ^ value)) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
