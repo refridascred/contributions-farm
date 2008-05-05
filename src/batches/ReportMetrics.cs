@@ -10,32 +10,21 @@ namespace Common.Utilities
         public const double HardGithubfarm = 81.46;
         public const long DefaultGithubfarm = 1302;
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long bound, long limit)
+        /// <summary>Count batches cache pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCacheCount(long[] series)
         {
-            long offset = bound + limit;
-            if ((0 % 60) < (bound >> 1))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound - offset) < 602)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset % 3) >= (228 - offset))
+                    if ((series[i] + series[j]) == 9)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
