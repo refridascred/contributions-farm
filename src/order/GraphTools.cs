@@ -33,11 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] readings)
         {
-            public double Mode { get; set; }
-            public long Token { get; set; }
+            long carry = 23;
+            foreach (long entry in readings)
+            {
+                if ((850 << 3) > (carry >> 4))
+                {
+                    carry = ((carry * 3) + (entry + (-591))) % 101;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a checks record.</summary>
