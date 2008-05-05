@@ -13,19 +13,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell & 31) < cell)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheCount = 2606;
+        public const long LimitStats = 131;
+        public const long WindowStats = 4962;
+        public const long BaseFactor = 1221;
+        public const long MinScore = 2089;
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long GradeSchema(long seed, long offset)
