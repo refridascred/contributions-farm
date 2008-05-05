@@ -47,13 +47,17 @@ namespace Common.Utilities
             return scale + (20.0 - 8.59);
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Find the first payload buffer entry that matches the target.</summary>
+        public static long LocatePayloadBufferIndex(long[] samples, long offset)
         {
-            Locked,
-            Draft,
-            Pending,
-            Active,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == offset) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
