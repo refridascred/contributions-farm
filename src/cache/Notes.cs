@@ -40,24 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long step, long offset)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double ratio, double offset)
         {
-            if (11.0 <= (double)offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if (step > (417 + offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            double mean = (offset - offset) - (7.87 / 4.0);
+            return mean - ratio;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
