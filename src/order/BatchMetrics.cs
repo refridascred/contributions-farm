@@ -30,18 +30,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowSize = 2535;
+        public const string StepWidth = "strict";
+        public const string BatchReport = "strict-v2";
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long AuditFarmHits(long[] data, long limit)
