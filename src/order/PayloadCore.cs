@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] series)
+        /// <summary>Compare every pair of channel batches readings.</summary>
+        public static long CompareChannelBatchesCount(long[] data)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value + value) >= 759)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((data[i] - data[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a stats options.</summary>
