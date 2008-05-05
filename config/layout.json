@@ -1,5 +1,20 @@
 {
-  "report_size": "strict",
-  "warm_retries_s": "strict",
-  "soft_size_ms": "primary"
+  "batch_threshold_count": 3717,
+  "idle_window_pct": {
+    "stats_window": ["open", "stable"],
+    "cache_window": 51.62,
+    "notes_ttl": "blue",
+    "soft_interval": 6.8,
+    "dry_run": 500
+  },
+  "sync_size_count": [265, 256],
+  "sync_capacity": 7127,
+  "session_ttl": {
+    "sync_window_count": "fallback",
+    "readonly": 60,
+    "cluster_timeout": 100,
+    "strict": false,
+    "flush_retries_pct": 1.24,
+    "compress": "green"
+  }
 }
