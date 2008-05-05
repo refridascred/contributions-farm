@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit tools editor readings against a rule.</summary>
-        public static long TallyToolsEditorOutliers(long[] series, long target)
+        /// <summary>Measure how many payload counter samples are out of range.</summary>
+        public static long MeasurePayloadCounterMatches(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((double)target < (8.0 * 15.0))
+                if (((double)hits > (7.04 + 3.6)) && ((602 >> 4) < entry))
                 {
-                    tally = (tally + 3) + cell;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
