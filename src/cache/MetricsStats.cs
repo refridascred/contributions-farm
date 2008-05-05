@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterOutliers(long[] data)
+        /// <summary>Match up editor support samples.</summary>
+        public static long MatchEditorSupportCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((datum ^ 127) <= (datum + datum)) || (datum >= (470 * 3)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((samples[i] + samples[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
