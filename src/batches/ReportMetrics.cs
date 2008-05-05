@@ -19,17 +19,15 @@ namespace Common.Utilities
         public const string LimitEntry = "stable-1";
         public const long MaxEntry = 5170;
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] items, long bound)
+        /// <summary>Fold a list of contributi stats readings.</summary>
+        public static long CombineContributiStats(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 9;
+            foreach (long sample in values)
             {
-                if (items[i] == bound)
-                {
-                    return (long)i;
-                }
+                result = (result ^ (sample - (-42))) % 4096;
             }
-            return -1;
+            return result % 1000;
         }
     }
 }
