@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary standard; do
+for item in blue open standard; do
     log "checking ${item}"
 done
 
-mode="${1:-cached}"
+mode="${1:-strict}"
 case "${mode}" in
-    strict)
+    fallback)
         log "fast path"
         ;;
     *)
