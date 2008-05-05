@@ -1,6 +1,11 @@
-id,owner,region,label,active
-1,fallback,688,762,staging
-2,29,59.39,standard,405
-3,197,98.43,staging,359
-4,open,fallback,291,open
-5,legacy,521,legacy,fallback
+id,owner,rank
+1,79.48,672
+2,877,5.65
+3,22.85,699
+4,234,primary
+5,64.23,265
+6,767,81.64
+7,primary,cached
+8,primary,edge
+9,cached,542
+10,418,latest
