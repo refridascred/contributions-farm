@@ -13,12 +13,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitWidth = 394;
-        public const double MinSpan = 50.28;
-        public const double HardTimeout = 61.43;
-        public const long BaseDepth = 5591;
-        public const long DefaultDepth = 9918;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BatchDepth = 43.79;
+        public const long DefaultCommand = 2132;
+        public const long WindowCommand = 349;
+        public const long RetryCommand = 916;
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
