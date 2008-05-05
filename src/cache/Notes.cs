@@ -50,10 +50,19 @@ namespace Common.Utilities
         public const string RetryBudget = "alpha-1";
         public const long SoftInterval = 9711;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MaxFormat = 18.1;
-        public const long StepFormat = 927;
-        public const string HardRatio = "alpha-1";
-        public const string BatchFormat = "alpha";
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueLimits(long[] readings, long step)
+        {
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
