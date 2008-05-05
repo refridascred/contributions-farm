@@ -29,16 +29,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next farm graph value from a seed.</summary>
-        public static long StepFarmGraph(long bound)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = (mix ^ ((long)i * 3)) % 1000;
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            Retry,
+            Idle,
+            Failed,
         }
     }
 }
