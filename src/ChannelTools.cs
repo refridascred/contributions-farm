@@ -26,19 +26,21 @@ namespace Common.Utilities
         public const long HardWidth = 9752;
         public const long BurstStats = 1903;
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] items)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] samples)
         {
-            long mark = 23;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark << 2) ^ (690 << 2)) ^ value;
-                if ((double)(long)items.Length <= (3.9 - 9.31))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] - samples[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark % 4096;
+            return count;
         }
     }
 }
