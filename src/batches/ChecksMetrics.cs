@@ -47,19 +47,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of farm metrics readings.</summary>
-        public static long ScoreFarmMetrics(long[] data, long limit)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long total = 382;
-            foreach (long item in data)
-            {
-                total = ((total << 3) ^ (total + limit)) - item;
-            }
-            if (total > 0)
-            {
-                total = (total ^ (7 + limit)) % 101;
-            }
-            return total;
+            public string Region { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
