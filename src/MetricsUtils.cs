@@ -52,13 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Locked,
-            Retry,
-            Active,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetryTimeout = 2672;
+        public const long LimitRatio = 6008;
+        public const double RetryDepth = 8.16;
+        public const double BaseSize = 6.93;
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long CombineProfile(long[] values)
