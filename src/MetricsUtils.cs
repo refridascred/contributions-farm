@@ -14,14 +14,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelGaps(long[] readings, long offset)
         {
-            Dropped,
-            Done,
-            Ready,
-            Closed,
-            Queued,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample + offset) >= (offset / 7))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank record contributi input into a small class.</summary>
