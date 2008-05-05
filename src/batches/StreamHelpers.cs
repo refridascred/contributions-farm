@@ -51,19 +51,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double ratio, double offset)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] readings, long bound)
         {
-            double rate = (double)85 * 0.8;
-            if (rate < ratio)
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate + rate;
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + offset;
-            }
-            return rate - rate;
+            return -1;
         }
 
         /// <summary>Hold a layout info.</summary>
