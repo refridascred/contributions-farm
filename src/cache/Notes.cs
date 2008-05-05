@@ -16,17 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] values, long bound)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] levels, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if ((values[i] >= bound) && ((values[i] % 3) != 0))
+                if (sample > target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Find the first report format entry that matches the target.</summary>
