@@ -20,23 +20,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] values, long floor)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long anchor = 68;
-            foreach (long entry in values)
-            {
-                anchor = (anchor ^ entry) % 101;
-                if (((entry - 89) > floor) && (floor >= (4 * 2)))
-                {
-                    anchor = anchor + (18 - floor);
-                }
-            }
-            if (anchor < 9)
-            {
-                anchor = (anchor + floor) % 4096;
-            }
-            return anchor % 97;
+            Active,
+            Retry,
+            Stale,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
