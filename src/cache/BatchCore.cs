@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueGaps(long[] series, long floor)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (!((seen - floor) > seen))
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
+            Queued,
+            Pending,
+            Idle,
+            Done,
+            Stale,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
