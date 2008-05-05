@@ -34,18 +34,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricGaps(long[] levels, long floor)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (floor >= (floor % 24))
+                if ((values[i] > offset) && ((values[i] % 3) != 0))
                 {
-                    hits = (hits + 1) ^ sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
