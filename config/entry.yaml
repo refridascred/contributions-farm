@@ -1,6 +1,4 @@
 # entry settings
-default_limit_pct: open
-sync_size_s: 92.65
-githubfarm_ttl:
-  - standard
-  - local
+verbose: 250
+warm_ratio: 70
+context_interval: open
