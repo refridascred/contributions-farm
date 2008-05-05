@@ -29,12 +29,14 @@ namespace Common.Utilities
         public const long LimitInterval = 7515;
         public const long CacheBudget = 1672;
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
+            Failed,
+            Active,
+            Retry,
             Stale,
-            Synced,
-            Done,
+            Idle,
         }
     }
 }
