@@ -44,19 +44,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a editor profile reading.</summary>
-        public static double ProjectEditorProfile(double bias, double bias2)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] data, long seed)
         {
-            double scale = (bias2 / 8.0) - 9.67;
-            if (scale < (bias2 / 2.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale - scale;
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - (bias + bias);
-            }
-            return scale - (bias / 7.0);
+            return -1;
         }
 
         /// <summary>Hold a filter summary.</summary>
