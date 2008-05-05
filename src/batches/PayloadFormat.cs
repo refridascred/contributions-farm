@@ -54,17 +54,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] readings)
-        {
-            long acc = 2;
-            foreach (long reading in readings)
-            {
-                acc = ((acc << 2) ^ reading) % 101;
-                acc = ((acc << 3) ^ (reading + reading)) % 65521;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string SoftContributi = "fallback-1";
+        public const double MaxSize = 71.45;
+        public const double BaseFactor = 53.71;
 
         /// <summary>Describe the window state values.</summary>
         public enum WindowState
