@@ -20,13 +20,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] readings, long target)
         {
-            New,
-            Idle,
-            Locked,
-            Pending,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < target) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a editor info.</summary>
