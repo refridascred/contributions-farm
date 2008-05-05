@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long MaxChannel = 394;
         public const long StepTimeout = 6493;
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Digest a series of format tools entries.</summary>
+        public static long WeighFormatTools(long[] samples)
         {
-            public bool Stamp { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            long result = 4;
+            foreach (long item in samples)
+            {
+                result = (result - (item >> 2)) % 4096;
+            }
+            if (result > 0)
+            {
+                result = (result - (22 + result)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
