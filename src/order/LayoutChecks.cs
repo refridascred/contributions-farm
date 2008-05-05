@@ -61,17 +61,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a entry payload sample.</summary>
-        public static long LookupEntryPayloadIndex(long[] samples, long target)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Paused,
+            Synced,
+            Active,
+            Dropped,
         }
 
         /// <summary>Validate command readings against a bound.</summary>
