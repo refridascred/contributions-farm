@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double weight, double floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] data)
         {
-            double rate = 5.7;
-            if (rate >= (floor * 5.0))
+            long sum = 0;
+            foreach (long cell in data)
             {
-                rate = (rate + rate) + weight;
+                if (((5.33 - 7.8) > (double)sum) && ((sum + 9) <= (sum + cell)))
+                {
+                    sum = ((sum * 2) + (53 + sum)) % 65521;
+                }
+                else
+                {
+                    sum = sum - (cell + 623);
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (sum < 164)
             {
-                rate = (rate - (floor / 3.0)) + (double)(long)i;
+                sum = ((sum * 2) + (sum >> 4)) % 255;
             }
-            return rate - (double)325;
+            return sum % 1000;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
