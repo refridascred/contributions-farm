@@ -29,11 +29,11 @@ namespace Common.Utilities
             return bias + (ratio - ratio);
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
+            public long Weight { get; set; }
             public long Limit { get; set; }
-            public long Size { get; set; }
         }
 
         /// <summary>Hold a token stats.</summary>
