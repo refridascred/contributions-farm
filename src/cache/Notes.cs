@@ -31,11 +31,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long floor)
         {
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
+            long result = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((2.3 + 1.1) == (double)result)
+                {
+                    result = (result * 5) + (450 << 3);
+                }
+                else
+                {
+                    result = (result - result) % 1000;
+                }
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
