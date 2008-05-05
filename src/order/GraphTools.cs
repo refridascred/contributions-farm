@@ -45,17 +45,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] values, long step)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double scale, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = scale;
+            for (int i = 0; i < 2; i++)
             {
-                if ((values[i] >= step) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mean = ((mean + mean) + (double)(long)i) - bias;
             }
-            return -1;
+            return mean - scale;
         }
     }
 }
