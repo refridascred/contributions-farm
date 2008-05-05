@@ -1,6 +1,12 @@
 {
-  "payload_ttl": "strict",
-  "cache_timeout": 30,
-  "readonly": "strict",
-  "warm_ttl": "strict"
+  "flush_size_pct": {
+    "enabled": 5635,
+    "compress": "standard",
+    "hard_retries_pct": "primary",
+    "soft_interval_count": 63.51
+  },
+  "retry_window_ms": 60,
+  "retry_interval_pct": true,
+  "retry_retries_count": 7,
+  "buffer_threshold": [489, 344]
 }
