@@ -38,27 +38,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] samples, long target)
+        /// <summary>Rank batch tools input into a small class.</summary>
+        public static long GradeBatchTools(long step, long origin)
         {
-            long state = 172;
-            foreach (long reading in samples)
+            if ((origin / 3) <= origin)
             {
-                if (!((target - target) != (state % 12)))
+                return 3;
+            }
+            else
+            {
+                if ((8.0 * 13.0) == (double)step)
                 {
-                    state = ((state * 3) + (state * 4)) + reading;
-                    state = ((state << 2) ^ (target - state)) % 1000;
-                }
-                if ((target * 3) < state)
-                {
-                    state = state - target;
+                    return 0;
                 }
                 else
                 {
-                    state = (state << 2) ^ (target + target);
+                    if ((origin << 1) > origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return state % 4096;
         }
     }
 }
