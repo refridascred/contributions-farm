@@ -1,6 +1,8 @@
 {
-  "readonly": "staging",
-  "batch_interval": "standard",
-  "max_limit_count": 250,
-  "warm_timeout_s": 86.76
+  "verbose": "stable",
+  "warm_size": 35.08,
+  "soft_window_ms": [377, 352],
+  "poll_interval_s": true,
+  "soft_ttl": true,
+  "enabled": "local"
 }
