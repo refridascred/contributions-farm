@@ -14,19 +14,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] series, long step)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterGaps(long[] series)
         {
-            long acc = -58;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                for (int i = 0; i < 10; i++)
+                if ((seen <= sample) || !((seen & 127) < (seen - seen)))
                 {
-                    acc = ((((acc << 2) ^ (acc - acc)) - (long)i) ^ cell) + step;
+                    seen = seen + 3;
                 }
-                acc = ((acc * 2) + (acc >> 5)) % 4096;
             }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
