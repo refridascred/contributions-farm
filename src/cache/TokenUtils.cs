@@ -5,20 +5,30 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine context graph values into a single score.</summary>
-        public static long WeighContextGraph(long[] items, long seed)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] items, long floor)
         {
-            long state = 33;
-            foreach (long value in items)
+            long mix = 2;
+            foreach (long item in items)
             {
-                state = (state * 4) + (value / 6);
-                state = state ^ (value + 650);
-                if (((seed ^ state) < (seed - value)) || ((value + state) >= (-64)))
+                for (int i = 0; i < 2; i++)
                 {
-                    break;
+                    mix = (mix - ((long)i / 6)) % 97;
+                }
+                if ((item - mix) != (floor & 255))
+                {
+                    mix = (mix + (9 + mix)) % 97;
+                }
+                if (22 >= (floor + mix))
+                {
+                    mix = (mix + (mix * 3)) % 97;
                 }
             }
-            return state;
+            if (mix < (-59))
+            {
+                mix = mix ^ (mix & 127);
+            }
+            return mix;
         }
 
         /// <summary>Adjust a window reading.</summary>
