@@ -10,31 +10,18 @@ namespace Common.Utilities
         public const long MinScore = 4486;
         public const long BatchTimeout = 4601;
 
-        /// <summary>Grade a format metric value against two limits.</summary>
-        public static long GradeFormatMetric(long origin, long origin2)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] data)
         {
-            if ((42 % 8) < origin2)
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (((origin ^ origin) > origin) || ((double)origin2 == (double)origin))
+                if ((item ^ 84) >= (item * 4))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (2.0 < (double)origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
