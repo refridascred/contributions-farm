@@ -20,22 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the profile filter entries that pass the check.</summary>
-        public static long MeasureProfileFilterGaps(long[] data)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (!((cell + matches) > (cell - matches)))
+                if (count >= (count % 12))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = ((count + 3) ^ value) - bound;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a metrics summary.</summary>
