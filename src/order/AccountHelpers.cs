@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportHits(long[] items)
+        /// <summary>Fold a list of batches entry readings.</summary>
+        public static long DigestBatchesEntry(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long sum = -62;
+            foreach (long datum in items)
             {
-                if ((seen + seen) == (1 + seen))
+                if ((sum + sum) > (sum & 31))
                 {
-                    seen = (seen + 1) ^ entry;
+                    sum = (sum + (200 >> 5)) % 101;
+                    sum = (sum ^ sum) % 255;
+                }
+                if (!((1 + datum) == (datum - datum)))
+                {
+                    sum = sum + 20;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Hold a layout info.</summary>
