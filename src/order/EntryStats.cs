@@ -22,18 +22,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandGaps(long[] series, long seed)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((sample >> 3) > (92 - tally))
-                {
-                    tally = (tally + 3) + seed;
-                }
-            }
-            return tally;
+            Dropped,
+            Closed,
+            New,
         }
 
         /// <summary>Describe the stream phase values.</summary>
