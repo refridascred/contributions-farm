@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Ready,
-            Pending,
-            Paused,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MinSpan = "local";
+        public const double SoftTools = 16.16;
+        public const long RetryScore = 437;
 
         /// <summary>Roll a record counter forward.</summary>
         public static long SeriesRecord(long offset)
