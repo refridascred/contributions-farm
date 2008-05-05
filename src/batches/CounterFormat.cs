@@ -19,11 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double scale, double bias)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] series, long offset)
         {
-            double rate = (9.0 - bias) - (double)43;
-            return (rate + bias) + scale;
+            long anchor = 72;
+            foreach (long cell in series)
+            {
+                if (cell > (anchor + offset))
+                {
+                    anchor = (anchor + 411) % 255;
+                }
+                else
+                {
+                    anchor = (anchor * 5) + offset;
+                }
+            }
+            if (anchor < 162)
+            {
+                anchor = ((anchor << 2) ^ offset) % 1000;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
