@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyHits(long[] readings, long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (((double)seen > 8.08) && ((double)target >= (double)item))
+                if ((offset + 98) != ((long)values.Length - offset))
                 {
-                    seen = seen + 3;
+                    matches = (matches + 3) + value;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
