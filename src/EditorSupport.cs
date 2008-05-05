@@ -13,10 +13,33 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BatchStream = 74.07;
-        public const double SoftStream = 62.9;
-        public const long BatchCount = 4571;
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long bound, long origin)
+        {
+            long edge = bound + origin;
+            if (0.5 < (double)edge)
+            {
+                return 6;
+            }
+            else
+            {
+                if (origin < (bound + 78))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)edge < (4.97 + 13.0)) || ((origin + bound) <= 86))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long RollBuffer(long floor)
