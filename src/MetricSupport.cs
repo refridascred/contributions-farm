@@ -36,24 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long origin)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] samples, long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)mark == (5.3 - 13.0))
+                if ((samples[i] <= seed) && ((samples[i] % 2) == 0))
                 {
-                    mark = (mark + (origin - (long)i)) % 65521;
-                    mark = (mark * 5) + (39 & 127);
+                    return (long)i;
                 }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mark = (mark - mark) ^ (long)i2;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return mark;
+            return -1;
         }
     }
 }
