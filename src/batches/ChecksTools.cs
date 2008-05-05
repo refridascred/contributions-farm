@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] series)
+        /// <summary>Combine format tools values into a single score.</summary>
+        public static long DigestFormatTools(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 64;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum <= (datum / 3))
                 {
-                    if ((series[i] - series[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = ((mark << 2) ^ (datum / 7)) % 255;
                 }
             }
-            return tally;
+            return mark % 4096;
         }
 
         /// <summary>Hold a command record.</summary>
