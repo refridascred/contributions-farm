@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] readings, long offset)
+        /// <summary>Digest a series of counter layout entries.</summary>
+        public static long FoldCounterLayout(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long mark = 3;
+            foreach (long datum in data)
             {
-                if (cell < offset)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = ((((mark * 3) + 616) % 4096) + datum) + seed;
             }
-            return valid;
+            if (mark > 75)
+            {
+                mark = mark - mark;
+            }
+            return mark;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
