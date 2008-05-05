@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] values, long bound)
+        /// <summary>Audit githubfarm entry readings against a rule.</summary>
+        public static long MeasureGithubfarmEntryHits(long[] items, long step)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (value >= bound)
+                if ((11.0 * 3.0) == (double)matches)
                 {
-                    ok = false;
-                    break;
+                    matches = ((matches + 2) - value) - step;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Hold a metrics summary.</summary>
