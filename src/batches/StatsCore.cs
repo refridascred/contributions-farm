@@ -41,10 +41,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 6521;
-        public const long HardSize = 4947;
-        public const double MinSize = 63.34;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatMatches(long[] items, long offset)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((offset % 3) < (seen - offset))
+                {
+                    seen = (seen + 1) ^ sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long MeasureCommitsHits(long[] readings)
