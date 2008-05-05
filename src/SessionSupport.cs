@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] samples, long step)
+        /// <summary>Count the filter githubfarm entries that pass the check.</summary>
+        public static long AuditFilterGithubfarmHits(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((double)entry < 4.0)
+                if ((count + count) == (count - cell))
                 {
-                    tally = (tally + 3) - step;
+                    count = (count + 2) + bound;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
