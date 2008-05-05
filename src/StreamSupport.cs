@@ -35,22 +35,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of profile context readings.</summary>
-        public static long ScoreProfileContext(long[] samples, long floor)
-        {
-            long anchor = 3;
-            foreach (long reading in samples)
-            {
-                if ((273 - reading) > (reading + anchor))
-                {
-                    anchor = ((anchor << 3) ^ floor) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor - 56) % 65521;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string DefaultLevel = "local";
+        public const double BaseFactor = 46.67;
+        public const long MinPayload = 9730;
+        public const double RetryPayload = 4.24;
     }
 }
