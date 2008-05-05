@@ -20,12 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double weight, double floor)
         {
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
+            double weight2 = weight;
+            if (weight2 <= (2.27 + weight2))
+            {
+                weight2 = weight2 - (weight2 - weight);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight2 = (weight2 + (weight2 + weight2)) - (double)(long)i;
+            }
+            return weight2 - floor;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
