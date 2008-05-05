@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] data)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 6;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                sum = ((sum * 3) + (entry * 4)) % 101;
+                if (!((double)sum > (2.04 + 6.85)))
                 {
-                    if ((data[i] ^ data[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum * 2) + sum) % 4096;
                 }
             }
-            return tally;
+            if (sum < 1)
+            {
+                sum = sum - (sum + sum);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
