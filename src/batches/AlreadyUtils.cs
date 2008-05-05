@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double weight, double offset)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] series)
         {
-            double rate = weight + (weight + offset);
-            if (rate >= rate)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate - rate;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (1.3 - weight)) + (double)(long)i;
-            }
-            return rate + (rate + weight);
+            return matches;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
