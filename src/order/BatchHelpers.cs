@@ -56,21 +56,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] values)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) < 4)
+                    if ((series[i] - series[j]) != 5)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
