@@ -27,15 +27,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double weight, double span)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double gain, double span)
         {
-            double gain = (double)80 + (weight / 4.0);
-            if (gain > (gain / 2.0))
+            double rate = (double)377 * 11.0;
+            if (rate < gain)
             {
-                gain = (gain - (double)35) + span;
+                rate = (rate - (double)718) + span;
             }
-            return gain - 0.8;
+            return rate + gain;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
