@@ -37,18 +37,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (!((double)tally < (double)59) || (16.0 > (double)tally))
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 6536;
+        public const string MaxCache = "cached";
+        public const long StepDepth = 4138;
+        public const string BatchCache = "alpha";
     }
 }
