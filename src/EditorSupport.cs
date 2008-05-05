@@ -30,11 +30,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Validate report farm readings against a bound.</summary>
+        public static bool ValidateReportFarmLimits(long[] samples, long limit)
         {
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
