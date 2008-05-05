@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] values, long origin)
         {
-            public long Size { get; set; }
-            public double Token { get; set; }
-            public long Ratio { get; set; }
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
