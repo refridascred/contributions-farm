@@ -47,17 +47,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] data, long origin)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a schema summary.</summary>
