@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            Pending,
+            New,
+            Queued,
+            Dropped,
+            Closed,
             Retry,
-            Active,
-            Idle,
-            Draft,
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
