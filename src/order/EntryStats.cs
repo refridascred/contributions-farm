@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long limit, long bound)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            if (bound >= (limit >> 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit + bound) >= (limit >> 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Synced,
+            Pending,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Combine session values into a single score.</summary>
