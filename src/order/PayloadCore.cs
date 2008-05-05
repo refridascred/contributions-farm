@@ -57,9 +57,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheDepth = 4951;
-        public const double CacheInterval = 87.43;
-        public const double RetryTimeout = 71.69;
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mix = (((mix << 3) ^ (limit % 3)) % 1000) ^ (long)i2;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
+        }
     }
 }
