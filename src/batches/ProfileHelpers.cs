@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] samples, long offset)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Retry,
+            Active,
+            Idle,
+            Draft,
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
