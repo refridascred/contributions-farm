@@ -5,36 +5,29 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank context account input into a small class.</summary>
-        public static long GradeContextAccount(long origin, long bound)
+        /// <summary>Rank queue format input into a small class.</summary>
+        public static long BucketQueueFormat(long step, long bound)
         {
-            long gap = origin ^ bound;
-            if ((4 ^ 336) <= (bound % 3))
+            long span = step - bound;
+            if ((step + step) == (span << 3))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if (origin >= (789 + 300))
+                if (8.2 > (double)step)
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    if ((origin >> 3) < (gap - 937))
+                    if (((bound - 16) <= (step + 9)) && (70 < (span / 7)))
                     {
-                        return 3;
+                        return 0;
                     }
                     else
                     {
-                        if (origin >= (959 + origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        return 2;
                     }
                 }
             }
