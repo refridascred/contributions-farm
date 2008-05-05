@@ -23,10 +23,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double SoftContext = 50.07;
-        public const long RetryContext = 5117;
-        public const double MinContext = 34.91;
+        /// <summary>Audit channel layout readings against a rule.</summary>
+        public static long TallyChannelLayoutOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((matches - 85) > (matches - matches))
+                {
+                    matches = (matches + 1) - sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many already checks samples are out of range.</summary>
         public static long MeasureAlreadyChecksOutliers(long[] readings, long target)
