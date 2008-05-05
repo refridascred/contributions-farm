@@ -39,10 +39,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 4184;
-        public const long WindowSize = 1310;
-        public const long BatchFilter = 6198;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    acc = (((acc << 2) ^ (long)i) % 4096) ^ (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long TotalSchema(long[] levels)
