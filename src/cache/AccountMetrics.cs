@@ -38,12 +38,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public double Ratio { get; set; }
+            public long Region { get; set; }
+            public bool Level { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Rank layout payload input into a small class.</summary>
