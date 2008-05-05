@@ -14,18 +14,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] values, long floor)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long result = 5;
+            foreach (long cell in samples)
             {
-                if (hits <= (datum * 2))
+                if ((result % 7) < (cell - cell))
                 {
-                    hits = (hits + 1) + floor;
+                    result = ((result ^ ((-891) & 255)) % 255) + bound;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Describe the contributi level values.</summary>
