@@ -1,19 +1,6 @@
 # support settings
-flush_interval_count:
-  - local
-  - strict
-  - latest
-  - stable
-burst_capacity_ms:
-  - 227
-  - 436
-  - 363
-cache_size_pct: legacy
-warm_interval:
-  - 223
-  - 159
-  - 149
-buffer_size:
-  - 288
-  - 137
-profile_retries: strict
+flush_depth_pct: 1856
+persist: 63.84
+githubfarm_limit: 29.95
+format_retries: 42.66
+flush_threshold_s: true
