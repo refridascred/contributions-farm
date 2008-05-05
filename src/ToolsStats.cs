@@ -45,22 +45,21 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] samples, long seed)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((94 - cell) <= (seen - cell))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 2) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] - samples[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
