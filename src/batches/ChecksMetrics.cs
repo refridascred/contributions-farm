@@ -11,25 +11,18 @@ namespace Common.Utilities
         public const double MaxDepth = 58.53;
         public const long WindowCount = 8721;
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long bound, long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] data)
         {
-            long bound2 = bound - offset;
-            if (((0.04 * 0.1) <= (double)bound2) || ((12.0 * 9.19) != (double)bound))
+            long sum = 155;
+            foreach (long sample in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)bound2 >= (double)offset))
+                if ((5.7 - 15.0) >= (double)sum)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    sum = (((sum * 3) + (122 >> 2)) % 4096) + sample;
                 }
             }
+            return sum;
         }
 
         /// <summary>Hold a editor header.</summary>
