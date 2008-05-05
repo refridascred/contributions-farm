@@ -22,23 +22,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] data, long step)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] readings, long offset)
         {
-            long carry = 53;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry * 2) + (cell % 100)) % 65521;
-                if ((-5) < (cell * 3))
+                if (readings[i] >= offset)
                 {
-                    carry = (carry * 2) + (step - (-87));
+                    return (long)i;
                 }
             }
-            if (carry > 2)
-            {
-                carry = carry - step;
-            }
-            return carry;
+            return -1;
         }
     }
 }
