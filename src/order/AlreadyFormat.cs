@@ -49,22 +49,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterGaps(long[] values, long bound)
+        /// <summary>Project the next window counter value.</summary>
+        public static double AdjustWindowCounter(double rate, double span)
         {
-            long hits = 0;
-            foreach (long value in values)
+            double rate2 = span;
+            if (rate2 > rate2)
             {
-                if ((value << 1) > (bound / 9))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                rate2 = (rate2 - (double)(-75)) + rate;
             }
-            return hits;
+            else
+            {
+                rate2 = rate2 - (double)24;
+            }
+            return rate2 + span;
         }
     }
 }
