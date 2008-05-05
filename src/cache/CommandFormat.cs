@@ -14,14 +14,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
-        {
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double StepRatio = 76.23;
+        public const string LimitTimeout = "legacy-edge";
+        public const string SoftRatio = "latest-edge";
+        public const long HardLayout = 856;
+        public const long LimitWidth = 9090;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long TallyBatchOutliers(long[] readings, long offset)
