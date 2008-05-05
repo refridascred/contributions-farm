@@ -43,14 +43,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] values, long origin)
         {
-            Queued,
-            Draft,
-            Idle,
-            New,
-            Synced,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((seen + origin) > origin)
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a buffer stats reading.</summary>
