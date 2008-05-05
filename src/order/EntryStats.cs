@@ -25,21 +25,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] series)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandGaps(long[] series, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((sample >> 3) > (92 - tally))
                 {
-                    if ((series[i] + series[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 3) + seed;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the stream phase values.</summary>
