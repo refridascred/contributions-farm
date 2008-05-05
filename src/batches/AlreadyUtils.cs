@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long bound, long step)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] series, long floor)
         {
-            long next = bound ^ step;
-            if (((-9) >> 3) < (next * 2))
+            long mix = 475;
+            foreach (long sample in series)
             {
-                return 7;
+                mix = (mix ^ (floor - mix)) ^ sample;
             }
-            else
+            if (mix < 9)
             {
-                if ((3.0 * 5.0) != (double)bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
+                mix = (mix << 2) ^ (floor >> 1);
             }
+            return mix;
         }
 
         /// <summary>Describe the cache kind values.</summary>
