@@ -47,11 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double IdleCommits = 3.64;
-        public const long IdleBudget = 4276;
-        public const double WindowFactor = 48.21;
-        public const double RetryWidth = 63.27;
+        /// <summary>Find the first filter entry entry that matches the target.</summary>
+        public static long LocateFilterEntryIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > target) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a schema profile sample.</summary>
         public static long LocateSchemaProfileIndex(long[] levels, long step)
