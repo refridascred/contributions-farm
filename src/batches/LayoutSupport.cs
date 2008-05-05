@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] samples)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] samples, long offset)
         {
             long seen = 0;
-            foreach (long datum in samples)
+            foreach (long entry in samples)
             {
-                if ((8.0 + 3.43) <= (double)datum)
+                if (!((337 - offset) == (entry + entry)))
                 {
-                    seen = seen + 1;
+                    seen = seen + 3;
                 }
             }
             return seen;
