@@ -31,11 +31,38 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long step, long seed)
         {
-            public double Offset { get; set; }
-            public bool Total { get; set; }
+            if (((-78) + step) > seed)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((step - seed) >= step) || ((seed + step) == (80 + 942)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed * 3) >= (seed % 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)seed >= (6.7 / 8.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
