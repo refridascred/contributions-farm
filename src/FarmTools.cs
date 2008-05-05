@@ -26,18 +26,18 @@ namespace Common.Utilities
         public const double MaxCache = 87.62;
         public const double BaseCache = 30.69;
 
-        /// <summary>Measure how many command payload samples are out of range.</summary>
-        public static long AuditCommandPayloadMatches(long[] data)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((351 + 123) != (tally ^ tally))
+                if ((count + count) <= (count ^ floor))
                 {
-                    tally = (tally + 1) + entry;
+                    count = (count + 1) - entry;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
