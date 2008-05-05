@@ -19,32 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long step, long bound)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long origin)
         {
-            long lane = step - bound;
-            if ((lane % 3) <= 6)
+            long anchor = origin;
+            for (int i = 0; i < 18; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step & 63) > lane)
+                if (!((origin - anchor) < ((long)i & 1)))
                 {
-                    return 7;
+                    anchor = (anchor ^ (origin - anchor)) % 65521;
                 }
-                else
-                {
-                    if ((53 / 4) < lane)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
+            return anchor;
         }
 
         /// <summary>Measure how many channel command samples are out of range.</summary>
