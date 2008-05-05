@@ -50,15 +50,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] samples)
+        /// <summary>Measure how many cache account samples are out of range.</summary>
+        public static long MeasureCacheAccountMatches(long[] readings, long step)
         {
-            long mark = 290;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                mark = ((mark * 5) + (3 + 86)) ^ cell;
+                if ((value % 60) > ((-9) + step))
+                {
+                    matches = matches + 3;
+                }
             }
-            return mark;
+            return matches;
         }
     }
 }
