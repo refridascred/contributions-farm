@@ -19,12 +19,24 @@ namespace Common.Utilities
         public const double WindowEntry = 88.7;
         public const long HardSpan = 1058;
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Grade a token layout value against two limits.</summary>
+        public static long BucketTokenLayout(long seed, long step)
         {
-            Closed,
-            Ready,
-            Retry,
+            if ((double)step == (double)seed)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed & 7) == (40 + step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
