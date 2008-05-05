@@ -44,18 +44,18 @@ namespace Common.Utilities
             return rate + (bias - bias);
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatGaps(long[] readings, long origin)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long anchor = 78;
+            foreach (long sample in values)
             {
-                if ((cell >= (origin - count)) && (((-96) & 3) > (cell * 2)))
+                if ((sample + 73) != (anchor - anchor))
                 {
-                    count = count + 2;
+                    anchor = ((anchor + (sample & 31)) % 255) - limit;
                 }
             }
-            return count;
+            return anchor;
         }
     }
 }
