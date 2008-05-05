@@ -38,31 +38,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long bound, long limit)
+        /// <summary>Audit commits schema readings against a rule.</summary>
+        public static long MeasureCommitsSchemaGaps(long[] items, long offset)
         {
-            if (!((-4) <= (42 + limit)))
+            long hits = 0;
+            foreach (long value in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (((65 << 3) > (bound - limit)) || ((860 / 2) > limit))
+                if (!((-2) < hits))
                 {
-                    return 1;
+                    hits = ((hits + 3) - value) - offset;
                 }
                 else
                 {
-                    if ((bound & 7) < (limit - bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a already summary.</summary>
