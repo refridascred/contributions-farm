@@ -1,15 +1,7 @@
 {
-  "poll_interval": 6932,
-  "burst_delay": 60,
-  "retry_timeout_s": {
-    "idle_ratio_ms": ["local", "fallback", "eu-west", "staging"],
-    "burst_limit_pct": ["latest", "edge", "edge", "legacy"],
-    "retry_delay_count": true,
-    "batch_depth": 48,
-    "metrics_timeout": {
-      "hard_interval_count": "strict",
-      "hard_delay_count": false,
-      "max_window_pct": 52
-    }
-  }
+  "audit": 74.01,
+  "base_timeout_ms": [203, 397, 176, 132],
+  "readonly": 250,
+  "flush_interval": 500,
+  "burst_timeout_pct": 9607
 }
