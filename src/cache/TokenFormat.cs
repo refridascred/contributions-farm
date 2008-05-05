@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] values, long offset)
+        /// <summary>Project the next context notes value.</summary>
+        public static double AdjustContextNotes(double rate, double bias)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            double scale = (2.49 * 5.0) / 5.0;
+            if (scale >= bias)
             {
-                if (reading != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = (scale + scale) - rate;
             }
-            return stale;
+            else
+            {
+                scale = scale - (scale / 5.0);
+            }
+            return scale - (scale + scale);
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
