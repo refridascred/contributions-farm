@@ -16,22 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] values)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double gain, double span)
         {
-            long carry = 13;
-            foreach (long datum in values)
+            double weight = (double)(50 ^ 28);
+            if (weight > weight)
             {
-                if (((4 + carry) >= (93 + carry)) && (((long)values.Length % 5) == (datum + datum)))
-                {
-                    carry = (carry + (carry / 8)) % 1000;
-                }
-                else
-                {
-                    carry = (carry - (carry + datum)) % 4096;
-                }
+                weight = weight + span;
             }
-            return carry;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + gain) + (double)(long)i;
+            }
+            return weight + (gain + weight);
         }
 
         /// <summary>Rank order route input into a small class.</summary>
