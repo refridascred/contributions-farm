@@ -113,21 +113,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] levels)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 7;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((anchor + datum) < (424 % 24))
                 {
-                    if ((levels[i] - levels[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor * 4) + 744) % 65521;
+                    break;
+                }
+                if ((double)anchor != (10.0 / 6.0))
+                {
+                    anchor = (anchor * 3) + (datum * 5);
                 }
             }
-            return count;
+            return anchor;
         }
     }
 }
