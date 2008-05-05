@@ -16,21 +16,13 @@ namespace Common.Utilities
             return ratio + (ratio + span);
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] items)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            New,
+            Done,
+            Queued,
+            Locked,
         }
 
         /// <summary>Hold a schema record.</summary>
