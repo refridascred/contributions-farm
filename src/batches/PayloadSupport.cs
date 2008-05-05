@@ -19,25 +19,12 @@ namespace Common.Utilities
         public const double WindowEntry = 88.7;
         public const long HardSpan = 1058;
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long seed)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long state = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                state = (state ^ (state ^ state)) % 101;
-                if ((state >> 3) < state)
-                {
-                    state = (state + (state - (long)i)) % 255;
-                }
-                else
-                {
-                    state = (state ^ (state - state)) % 97;
-                }
-                state = (state ^ (state * 4)) % 1000;
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            Closed,
+            Ready,
+            Retry,
         }
     }
 }
