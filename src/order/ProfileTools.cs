@@ -44,17 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] series, long offset)
+        /// <summary>Adjust a editor profile reading.</summary>
+        public static double ProjectEditorProfile(double bias, double bias2)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = (bias2 / 8.0) - 9.67;
+            if (scale < (bias2 / 2.0))
             {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
+                scale = scale - scale;
             }
-            return -1;
+            else
+            {
+                scale = scale - (bias + bias);
+            }
+            return scale - (bias / 7.0);
         }
 
         /// <summary>Hold a filter summary.</summary>
