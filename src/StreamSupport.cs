@@ -31,9 +31,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 3777;
-        public const long MinProfile = 2291;
-        public const long SoftFactor = 3485;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] levels)
+        {
+            long state = 0;
+            foreach (long value in levels)
+            {
+                if ((state << 3) > (state >> 1))
+                {
+                    state = state + (state % 2);
+                }
+                if ((value + value) < (long)levels.Length)
+                {
+                    break;
+                }
+            }
+            return state % 97;
+        }
     }
 }
