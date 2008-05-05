@@ -1,11 +1,5 @@
 {
-  "verbose": [340, 195],
-  "context_size": "fallback",
-  "compress": {
-    "soft_window": 8,
-    "session_interval": "primary",
-    "audit": "eu-west",
-    "soft_depth_s": 98
-  },
-  "soft_capacity": 15.59
+  "flush_ratio_s": 11,
+  "persist": true,
+  "base_ratio_count": ["open", "stable"]
 }
