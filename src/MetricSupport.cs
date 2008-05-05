@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            public long Flag { get; set; }
-            public bool Score { get; set; }
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
+            public long Size { get; set; }
+            public double Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
