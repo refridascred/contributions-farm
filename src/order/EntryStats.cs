@@ -14,15 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] readings)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long result = -9;
-            foreach (long value in readings)
-            {
-                result = (result ^ (result + value)) % 97;
-            }
-            return result;
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
