@@ -1,6 +1,5 @@
 {
-  "batch_interval_ms": 2718,
-  "hard_depth_s": 97,
-  "enabled": 0.37,
-  "hard_delay_ms": false
+  "idle_interval_ms": false,
+  "readonly": "fallback",
+  "poll_interval": [333, 184]
 }
