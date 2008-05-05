@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] values, long offset)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
