@@ -12,22 +12,39 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] samples)
+        /// <summary>Rank githubfarm channel input into a small class.</summary>
+        public static long RankGithubfarmChannel(long step, long seed)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long slot = step ^ seed;
+            if (((slot & 1) == (seed % 60)) && (228 < step))
             {
-                if (!((15.0 / 7.0) < (double)entry))
+                return 0;
+            }
+            else
+            {
+                if (slot < (step & 255))
                 {
-                    matches = matches + 1;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((step >= (slot / 6)) || ((seed * 2) <= seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed / 4) == (step - slot))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
