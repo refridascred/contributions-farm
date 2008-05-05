@@ -37,12 +37,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] readings, long bound)
         {
-            Failed,
-            Active,
-            Queued,
+            long carry = 8;
+            foreach (long datum in readings)
+            {
+                carry = (carry - ((long)readings.Length ^ bound)) ^ datum;
+            }
+            return carry % 97;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
