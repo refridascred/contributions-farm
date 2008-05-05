@@ -33,19 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] samples, long origin)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
