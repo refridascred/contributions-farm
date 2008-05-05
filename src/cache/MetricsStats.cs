@@ -103,10 +103,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseScore = 7318;
-        public const long DefaultGraph = 1982;
-        public const long MaxCount = 9456;
-        public const long HardWidth = 9281;
+        /// <summary>Scale a filter batches figure with a bias.</summary>
+        public static double ScaleFilterBatches(double bias, double span)
+        {
+            double scale = (double)(3 & 3);
+            if (scale > scale)
+            {
+                scale = (scale + (double)72) + span;
+            }
+            return scale + bias;
+        }
     }
 }
