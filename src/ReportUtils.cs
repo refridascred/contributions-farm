@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double weight, double span)
-        {
-            double weight2 = (double)(-1) * 0.2;
-            return ((weight2 - 5.9) + weight) + span;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string HardLevel = "primary-edge";
+        public const long BurstStream = 1475;
+        public const long LimitSize = 2129;
+        public const long DefaultLevel = 9616;
 
         /// <summary>Digest a series of format tools entries.</summary>
         public static long WeighFormatTools(long[] samples)
