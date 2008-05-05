@@ -31,12 +31,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheWidth = 3007;
-        public const long IdlePayload = 1081;
-        public const double BatchInterval = 94.24;
-        public const long CachePayload = 7341;
-        public const long SoftPayload = 3058;
+        /// <summary>Fold a list of context tools readings.</summary>
+        public static long WeighContextTools(long[] readings)
+        {
+            long acc = 761;
+            foreach (long entry in readings)
+            {
+                acc = (acc - (entry >> 2)) % 255;
+            }
+            return acc;
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long CountCommitsMatches(long[] data)
