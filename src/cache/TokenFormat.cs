@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate entry batches samples.</summary>
-        public static long TallyEntryBatches(long[] items, long floor)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long score = 43;
-            foreach (long reading in items)
-            {
-                score = (score ^ (score + score)) % 1000;
-                if ((reading - floor) < (596 / 4))
-                {
-                    score = ((score << 2) ^ (score + 61)) % 255;
-                }
-            }
-            if (score < 73)
-            {
-                score = score - floor;
-            }
-            return score;
+            Pending,
+            New,
+            Done,
+            Active,
         }
 
         /// <summary>Compare every pair of format readings.</summary>
