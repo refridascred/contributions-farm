@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelGaps(long[] series, long step)
         {
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((step * 2) != (datum / 3))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
