@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] data)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long carry = 103;
-            foreach (long item in data)
-            {
-                if ((carry ^ carry) <= (carry - item))
-                {
-                    carry = carry ^ (item / 4);
-                }
-            }
-            if (carry < 694)
-            {
-                carry = ((carry << 3) ^ ((-73) * 2)) % 255;
-            }
-            return carry;
+            Locked,
+            Idle,
+            Queued,
+            Stale,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
