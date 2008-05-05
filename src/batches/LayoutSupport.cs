@@ -49,31 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] data, long origin)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamLimits(long[] values, long offset)
         {
-            long acc = 6;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if (((double)origin < (5.1 + 6.97)) && ((42 * 4) > (value + origin)))
+                if (reading != offset)
                 {
-                    long prev = (value - origin) - (origin + origin);
-                    acc = (acc * 4) + prev;
-                }
-                for (int i = 0; i < 12; i++)
-                {
-                    acc = acc + ((long)i << 1);
-                }
-                if ((0.36 * 6.88) > (double)value)
-                {
-                    acc = (acc - (long)data.Length) % 1000;
-                }
-                else
-                {
-                    acc = (acc - (2 + value)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
