@@ -30,12 +30,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] items, long seed)
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
+            long acc = 4;
+            foreach (long reading in items)
+            {
+                if ((acc - reading) <= reading)
+                {
+                    acc = ((acc ^ (46 & 31)) % 101) - seed;
+                }
+                else
+                {
+                    acc = (acc + (865 - reading)) % 101;
+                }
+            }
+            if (acc < 27)
+            {
+                acc = ((acc * 4) + acc) % 255;
+            }
+            return acc;
         }
     }
 }
