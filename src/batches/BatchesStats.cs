@@ -19,22 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of window token readings.</summary>
-        public static long TallyWindowToken(long[] levels)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] items)
         {
-            long anchor = 2;
-            foreach (long entry in levels)
+            long result = 196;
+            foreach (long datum in items)
             {
-                if ((2.0 / 6.0) == (double)anchor)
-                {
-                    anchor = (anchor + (entry * 5)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor + (entry + anchor)) % 255;
-                }
+                result = ((result << 3) ^ (result + (-34))) ^ datum;
             }
-            return anchor % 4096;
+            return result;
         }
 
         /// <summary>Derive the next batch githubfarm value from a seed.</summary>
