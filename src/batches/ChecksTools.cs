@@ -32,15 +32,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Locked,
-            Failed,
-            New,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepWidth = 8773;
+        public const string MaxInterval = "stable-edge";
+        public const long CacheLevel = 6631;
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long BucketChannel(long bound, long origin)
