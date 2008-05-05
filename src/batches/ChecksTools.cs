@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double weight, double floor)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long MatchQueueCount(long[] series)
         {
-            double load = weight;
-            if (load < (double)82)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = load - floor;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return load + (load - 3.6);
+            return tally;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
