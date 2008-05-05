@@ -1,5 +1,8 @@
 {
-  "soft_retries_s": 4390,
-  "cache_depth": "cached",
-  "enabled": 3813
+  "max_threshold_count": "open",
+  "persist": 38.76,
+  "tools_retries": 29.26,
+  "default_limit": "open",
+  "batch_ratio_s": "strict",
+  "sync_threshold_count": 64
 }
