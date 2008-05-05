@@ -22,38 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long step, long seed)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] items, long limit)
         {
-            if (seed <= (-138))
+            long total = 44;
+            foreach (long datum in items)
             {
-                return 0;
+                total = ((total - (total + 22)) + datum) - limit;
             }
-            else
+            if (total < (-844))
             {
-                if (!((step >> 2) == (step >> 1)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)(-845) != (double)seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)seed <= (double)step)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                total = ((total << 2) ^ total) % 65521;
             }
+            return total;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
