@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many payload counter samples are out of range.</summary>
-        public static long MeasurePayloadCounterMatches(long[] series)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (((double)hits > (7.04 + 3.6)) && ((602 >> 4) < entry))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Queued,
+            Retry,
+            Done,
+            Failed,
+            Draft,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
