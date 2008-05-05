@@ -15,22 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] levels)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadRange(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if ((double)tally > (double)value)
+                if (sample < bound)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Hold a command stats.</summary>
