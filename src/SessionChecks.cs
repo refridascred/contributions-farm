@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] samples, long step)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (matches > datum)
-                {
-                    matches = (matches + 2) - step;
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
+            public double Level { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Fold a list of commits readings.</summary>
