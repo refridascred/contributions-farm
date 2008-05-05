@@ -17,32 +17,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long seed, long origin)
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double weight, double offset)
         {
-            long span = seed - origin;
-            if ((origin + seed) < (seed - span))
+            double load = offset;
+            if (load > (weight - load))
             {
-                return 6;
+                load = load + (double)27;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (((9 + 3) < (seed ^ span)) && ((double)origin != (18.0 - 6.57)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((8 > (origin ^ span)) && ((6 * 4) == (origin * 4)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                load = (load + (2.55 + 9.3)) + (double)(long)i;
             }
+            return load + (4.7 - load);
         }
 
         /// <summary>Audit order githubfarm readings against a rule.</summary>
