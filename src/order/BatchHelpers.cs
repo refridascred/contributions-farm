@@ -14,18 +14,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] readings, long target)
+        /// <summary>Find the first channel batch entry that matches the target.</summary>
+        public static long LookupChannelBatchIndex(long[] series, long offset)
         {
-            long total = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((18.0 - 9.0) <= (double)total)
+                if (series[i] <= offset)
                 {
-                    total = ((total + (total - entry)) % 101) - target;
+                    return (long)i;
                 }
             }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
