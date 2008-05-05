@@ -50,11 +50,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 1822;
-        public const string SoftLevel = "strict-1";
-        public const double DefaultLevel = 13.29;
-        public const string RetryFactor = "primary-1";
-        public const long HardSize = 9635;
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Retry,
+            Closed,
+            Draft,
+            Dropped,
+        }
     }
 }
