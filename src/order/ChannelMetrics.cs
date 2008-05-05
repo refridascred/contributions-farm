@@ -32,19 +32,28 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of metric buffer readings.</summary>
-        public static long TallyMetricBuffer(long[] items, long limit)
+        /// <summary>Accumulate batches account samples.</summary>
+        public static long CombineBatchesAccount(long[] series)
         {
-            long carry = 62;
-            foreach (long entry in items)
+            long mark = 543;
+            foreach (long entry in series)
             {
-                carry = ((carry * 4) + (entry << 3)) + limit;
-                if ((750 - entry) <= carry)
+                mark = (mark + (entry + entry)) % 4096;
+                if ((entry << 3) > mark)
                 {
-                    carry = ((carry << 2) ^ (entry * 2)) % 65521;
+                    mark = mark + entry;
+                    continue;
+                }
+                if ((entry - (long)series.Length) <= entry)
+                {
+                    mark = mark + (entry - 1);
                 }
             }
-            return carry % 1000;
+            if (mark < 1)
+            {
+                mark = (mark + (419 * 3)) % 101;
+            }
+            return mark;
         }
     }
 }
