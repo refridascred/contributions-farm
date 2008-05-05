@@ -1,11 +1,11 @@
 # already settings
-warm_capacity_ms:
-  - eu-west
-  - green
-  - fallback
-  - local
-metrics_window:
-  - local
-  - edge
-  - stable
-filter_timeout: 1024
+checks_delay:
+  - 210
+  - 60
+  - 6
+audit: cached
+default_ttl_s: 500
+cache_window_s:
+  sync_ttl_ms: 15.3
+  soft_ttl_s: strict
+  warm_ttl: 68.15
