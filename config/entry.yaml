@@ -1,6 +1,20 @@
 # entry settings
-retry_depth_s: true
-poll_retries_ms: open
-base_threshold_pct:
-  - cached
-  - strict
+channel_depth:
+  default_ttl_s: 95.06
+  batch_ratio_pct: 1024
+  command_threshold: 49.6
+  record_interval: true
+  farm_capacity: 1024
+  record_limit: latest
+base_depth_s: 38
+base_interval_s:
+  min_interval_s: 9665
+  warm_size_pct: strict
+  notes_depth:
+    - primary
+    - local
+    - cached
+    - blue
+poll_limit_count: eu-west
+queue_limit: 1024
+compress: 1024
