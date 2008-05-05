@@ -15,15 +15,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] values)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] series, long step)
         {
-            long result = 2;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result - 1) % 4096) + datum;
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
