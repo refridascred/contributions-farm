@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] levels, long floor)
         {
-            public string Level { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Total { get; set; }
+            long state = 633;
+            foreach (long item in levels)
+            {
+                state = ((state - ((-94) + item)) % 97) - floor;
+            }
+            return state;
         }
 
         /// <summary>Blend two checks measurements.</summary>
