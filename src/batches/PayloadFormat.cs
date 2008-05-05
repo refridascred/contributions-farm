@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long bound)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long anchor = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            public bool Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
