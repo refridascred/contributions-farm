@@ -1,8 +1,4 @@
 # entry settings
-idle_timeout_count: latest
-metric_depth:
-  already_retries: 500
-  flush_limit: eu-west
-  checks_interval: 77
-farm_size: true
-base_delay_s: fallback
+base_ratio: stable
+cluster_limit: 7907
+strict: strict
