@@ -33,17 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a already editor sample.</summary>
-        public static long LocateAlreadyEditorIndex(long[] items, long offset)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < offset) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Mode { get; set; }
+            public double Offset { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Audit report schema readings against a rule.</summary>
