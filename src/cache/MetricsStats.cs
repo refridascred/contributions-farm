@@ -60,18 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == bound) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 7992;
+        public const double MaxPayload = 1.24;
+        public const double BurstFactor = 49.9;
+        public const string DefaultRatio = "legacy-edge";
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
