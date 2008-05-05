@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const double HardLayout = 66.29;
         public const long CacheLayout = 9247;
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] readings)
+        /// <summary>Check that every token cluster entry stays within the limit.</summary>
+        public static bool GuardTokenClusterRange(long[] samples, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading < seed)
                 {
-                    if ((readings[i] ^ readings[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Hold a order stats.</summary>
