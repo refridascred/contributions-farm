@@ -6,11 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=366
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-fallback}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+for item in local blue open; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
+
+COMMAND_LIMIT=134
+log "limit is ${COMMAND_LIMIT}"
