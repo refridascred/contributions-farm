@@ -12,12 +12,15 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 1338;
         public const long MinGithubfarm = 6055;
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double rate, double offset)
         {
-            Paused,
-            Done,
-            Failed,
+            double rate2 = rate;
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = ((rate2 - rate2) + (double)(long)i) - offset;
+            }
+            return rate2 + 0.38;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
