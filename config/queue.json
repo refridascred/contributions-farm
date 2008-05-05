@@ -1,5 +1,5 @@
 {
-  "verbose": [405, 427, 221, 239],
-  "channel_delay": "staging",
-  "contributi_timeout": false
+  "report_window": false,
+  "persist": 43,
+  "min_depth_pct": 96.72
 }
