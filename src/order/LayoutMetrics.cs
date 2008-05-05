@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long target, long offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] samples)
         {
-            if ((2 * 3) > target)
+            long mark = 135;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)target <= (1.0 - 2.1))
+                mark = (mark << 2) ^ entry;
+                if (mark < (mark & 15))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    break;
                 }
             }
+            if (mark > 885)
+            {
+                mark = (mark - 4) % 1000;
+            }
+            return mark % 97;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
