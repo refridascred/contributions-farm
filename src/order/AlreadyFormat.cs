@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] samples)
+        /// <summary>Grade a batch record value against two limits.</summary>
+        public static long BucketBatchRecord(long floor, long floor2)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long gap = floor + floor2;
+            if ((gap - 48) > (floor2 - floor))
             {
-                if (((long)samples.Length * 5) == (reading + matches))
+                return 2;
+            }
+            else
+            {
+                if (((floor / 3) < 232) || (floor > (gap - 63)))
                 {
-                    matches = matches + 2;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((floor ^ floor) > floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor >> 3) < 6)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
