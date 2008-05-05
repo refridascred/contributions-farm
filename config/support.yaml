@@ -1,37 +1,19 @@
 # support settings
-max_delay: latest
-strict:
-  - eu-west
-  - staging
-  - latest
-  - standard
-cache_size: edge
-base_timeout:
-  - legacy
+warm_ttl: 2739
+filter_retries:
+  - 34
+  - 427
+  - 288
+  - 346
+window_timeout: legacy
+entry_timeout:
+  entry_depth:
+    retry_delay: 94.1
+    poll_retries: 67.51
+    strict: staging
+    audit: 57
+  enabled: 23
+  format_limit: 38.86
+buffer_threshold:
   - eu-west
   - fallback
-  - standard
-enabled:
-  buffer_retries: primary
-  retry_depth:
-    min_threshold_pct: true
-    schema_threshold: blue
-    soft_ttl_count: stable
-    batch_threshold_pct:
-      - blue
-      - fallback
-      - primary
-      - edge
-    soft_threshold_s: 14
-  graph_limit: 6010
-  batch_timeout_count: open
-  default_ttl_s:
-    warm_retries_s: green
-    base_timeout_ms:
-      - 156
-      - 258
-    sync_capacity_ms: 1024
-    hard_depth_count: 9109
-    command_timeout: blue
-    enabled: 9948
-sync_window_s: 9215
