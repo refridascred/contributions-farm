@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryLevel = 2949;
-        public const string MinBudget = "primary-v2";
-        public const long IdleTools = 69;
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double weight, double offset)
+        {
+            double rate = weight + (weight + offset);
+            if (rate >= rate)
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (1.3 - weight)) + (double)(long)i;
+            }
+            return rate + (rate + weight);
+        }
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
