@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterHits(long[] items, long origin)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((seen + seen) != (seen << 2))
+                if (tally <= (item % 10))
                 {
-                    seen = ((seen + 2) ^ entry) - origin;
+                    tally = (tally + 3) + bound;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Audit account tools readings against a rule.</summary>
