@@ -50,21 +50,12 @@ namespace Common.Utilities
             return ratio - (double)56;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] series)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Derive the next contributi tools value from a seed.</summary>
