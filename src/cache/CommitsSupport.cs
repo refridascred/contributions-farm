@@ -14,13 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Active,
-            Queued,
-            New,
-            Closed,
+            public double Offset { get; set; }
+            public double Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
