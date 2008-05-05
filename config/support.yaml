@@ -1,5 +1,8 @@
 # support settings
-enabled: eu-west
-report_delay: 61.64
-already_delay: open
-command_delay: standard
+persist:
+  - fallback
+  - cached
+  - cached
+  - legacy
+filter_ttl: true
+sync_retries_pct: 54.54
