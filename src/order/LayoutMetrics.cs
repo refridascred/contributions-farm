@@ -31,19 +31,10 @@ namespace Common.Utilities
         public const string IdleLevel = "latest-v2";
         public const string DefaultDepth = "strict-1";
 
-        /// <summary>Combine entry batch values into a single score.</summary>
-        public static long TotalEntryBatch(long[] readings, long seed)
-        {
-            long total = 985;
-            foreach (long sample in readings)
-            {
-                total = (total ^ (sample / 6)) % 255;
-                if ((total * 3) != (seed % 24))
-                {
-                    total = (total * 2) + (seed + 68);
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double SoftLevel = 29.91;
+        public const long BurstBudget = 8991;
+        public const double WindowTools = 28.44;
+        public const long WindowInterval = 7155;
     }
 }
