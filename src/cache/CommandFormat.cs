@@ -13,19 +13,10 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Audit counter account readings against a rule.</summary>
-        public static long TallyCounterAccountMatches(long[] readings, long floor)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((1.8 - 9.3) >= (double)floor)
-                {
-                    tally = (tally + 1) ^ datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 9630;
+        public const long BatchSize = 8816;
+        public const double StepCount = 76.57;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long HardFarm = 545;
