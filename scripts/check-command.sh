@@ -6,13 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue open standard; do
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+for item in strict legacy staging local; do
     log "checking ${item}"
 done
 
-mode="${1:-strict}"
+mode="${1:-local}"
 case "${mode}" in
-    fallback)
+    open)
         log "fast path"
         ;;
     *)
