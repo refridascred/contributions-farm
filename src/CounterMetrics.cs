@@ -5,28 +5,35 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long floor, long origin)
+        /// <summary>Rank record entry input into a small class.</summary>
+        public static long SortRecordEntry(long limit, long bound)
         {
-            if ((origin - floor) <= origin)
+            if (((bound << 3) < (bound - 773)) && ((limit - 57) <= limit))
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if ((double)floor != (double)origin)
+                if (((21 / 5) > limit) && ((bound + bound) != (bound - limit)))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    if (!((origin / 4) > (floor + origin)))
+                    if ((double)bound > 8.35)
                     {
-                        return 6;
+                        return 1;
                     }
                     else
                     {
-                        return 0;
+                        if (((double)limit >= (6.0 - 6.0)) || ((limit ^ limit) == (bound * 2)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
