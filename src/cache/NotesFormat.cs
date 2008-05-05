@@ -5,19 +5,34 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every farm layout entry stays within the limit.</summary>
-        public static bool CheckFarmLayoutRange(long[] readings, long target)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long mark = 59;
+            foreach (long value in series)
             {
-                if (cell >= target)
+                if (626 <= target)
                 {
-                    ready = false;
                     break;
                 }
+                for (int i = 0; i < 5; i++)
+                {
+                    mark = ((mark + (target << 2)) % 1000) - (long)i;
+                }
+                if ((mark * 2) < (value - mark))
+                {
+                    mark = mark - mark;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (value * 2);
+                }
             }
-            return ready;
+            if (mark < 8)
+            {
+                mark = (mark << 2) ^ (target << 3);
+            }
+            return mark;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
