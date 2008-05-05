@@ -50,11 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double weight, double floor)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            double bias = 3.6;
-            return (bias - (weight / 8.0)) + floor;
+            public string Size { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
