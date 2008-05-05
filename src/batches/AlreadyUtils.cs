@@ -58,18 +58,21 @@ namespace Common.Utilities
             return rate + (bias - bias);
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] readings)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] items)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)seen <= (7.64 - 3.92))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 3) + item;
+                    if ((items[i] ^ items[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
