@@ -32,22 +32,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the window graph entries that pass the check.</summary>
-        public static long CountWindowGraphHits(long[] levels, long origin)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (6.8 >= (double)matches)
-                {
-                    matches = ((matches + 3) - sample) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Locked,
+            Failed,
+            New,
+            Queued,
+            Idle,
         }
 
         /// <summary>Rank channel input into a small class.</summary>
