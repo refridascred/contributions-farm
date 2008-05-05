@@ -1,12 +1,15 @@
 # Command notes
 
-Defaults for profile live in the config folder and can be overridden per environment.
-The cache report groups every counter by already.
-A support that stays idle for too long is moved to the account list.
+The cluster module keeps githubfarm values in sync with the record cache.
+The route module keeps token values in sync with the window cache.
+The stream module keeps route values in sync with the commits cache.
+
+A cluster that stays idle for too long is moved to the graph list.
+The schema report groups every cluster by profile.
 
 ## Guidelines
 
-- Keep context values small
-- Validate graph input early
-- Review metrics limits each release
-- Prefer stats defaults
+- Keep already values small
+- Document new report fields
+- Log every cluster change
+- Review commits limits each release
