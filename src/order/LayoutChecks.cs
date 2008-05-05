@@ -81,18 +81,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many metric stats samples are out of range.</summary>
-        public static long CountMetricStatsGaps(long[] series)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (!((hits < datum) || ((18.0 * 3.63) > (double)datum)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            New,
+            Failed,
+            Done,
         }
     }
 }
