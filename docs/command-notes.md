@@ -1,10 +1,14 @@
 # Command notes
 
-Use schema settings to tune how often filter data is refreshed.
-The payload helpers are pure functions, so they are safe to call from any thread.
+When a stream fails, the graph handler retries a few times before giving up.
+Keep format and schema names short and lowercase.
+
+The command helpers are pure functions, so they are safe to call from any thread.
+Run the editor check before changing any contributi limits.
 
 ## Guidelines
 
-- Keep queue values small
-- Prefer commits defaults
-- Log every checks change
+- Keep stats values small
+- Document new cluster fields
+- Validate order input early
+- Log every profile change
