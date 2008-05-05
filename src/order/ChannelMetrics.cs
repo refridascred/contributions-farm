@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] values, long offset)
-        {
-            long state = 676;
-            foreach (long entry in values)
-            {
-                if (((entry << 2) < entry) || ((state % 24) < offset))
-                {
-                    state = state - entry;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double SoftWindow = 15.55;
+        public const double RetryCount = 16.36;
+        public const string CacheWindow = "cached-edge";
 
         /// <summary>Match up report samples.</summary>
         public static long PairReportCount(long[] items)
