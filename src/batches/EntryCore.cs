@@ -38,13 +38,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Queued,
-            New,
-            Draft,
-            Synced,
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public double Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Measure how many batch channel samples are out of range.</summary>
