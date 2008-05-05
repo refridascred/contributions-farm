@@ -22,14 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Locked,
-            Paused,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLevel = 6258;
+        public const string BurstLayout = "open-v2";
+        public const long LimitLayout = 5696;
+        public const long DefaultLayout = 2508;
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
