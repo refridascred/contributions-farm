@@ -35,25 +35,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a window channel value against two limits.</summary>
-        public static long SortWindowChannel(long target, long offset)
+        /// <summary>Derive the next entry batches value from a seed.</summary>
+        public static long RollEntryBatches(long origin)
         {
-            long gap = target ^ offset;
-            if ((double)target == (double)gap)
+            long acc = origin;
+            for (int i = 0; i < 11; i++)
             {
-                return 3;
+                acc = (acc + (origin ^ (long)i)) % 97;
+                acc = ((acc * 3) + (-843)) % 4096;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((51 + target) > (offset / 6))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Locate a format githubfarm reading by value.</summary>
