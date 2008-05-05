@@ -1,5 +1,14 @@
 # githubfarm settings
-max_ratio_count: false
-max_delay_count: legacy
-compress: green
-enabled: 60
+counter_limit: 7635
+flush_capacity_count: 15
+idle_ratio_count:
+  batch_delay_s: 9.92
+  notes_size: 30
+  compress: false
+compress:
+  - 279
+  - 70
+  - 13
+  - 474
+metric_interval: blue
+verbose: false
