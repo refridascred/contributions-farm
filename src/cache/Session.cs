@@ -33,14 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] values, long origin)
         {
-            Ready,
-            New,
-            Done,
-            Retry,
-            Closed,
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a checks info.</summary>
