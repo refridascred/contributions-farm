@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] levels, long seed)
         {
-            public double Size { get; set; }
-            public bool Score { get; set; }
-            public bool Region { get; set; }
-            public double Flag { get; set; }
+            long score = 1;
+            foreach (long reading in levels)
+            {
+                if ((((-983) / 4) > score) || ((reading + reading) <= (reading + seed)))
+                {
+                    score = score - (reading + reading);
+                }
+                if ((seed + seed) < (reading * 3))
+                {
+                    break;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Audit farm support readings against a rule.</summary>
