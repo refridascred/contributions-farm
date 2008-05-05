@@ -16,15 +16,21 @@ namespace Common.Utilities
             return ratio + (ratio + span);
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double weight, double bias)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] items)
         {
-            double gain = weight - (double)66;
-            if (gain < bias)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain + weight;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return gain - (bias / 2.0);
+            return count;
         }
 
         /// <summary>Look up the position of a already editor sample.</summary>
