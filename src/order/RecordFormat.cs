@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] data)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] levels, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (tally < (cell * 5))
                 {
-                    if ((data[i] ^ data[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) + origin;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
