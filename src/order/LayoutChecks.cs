@@ -81,19 +81,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate order batches readings against a bound.</summary>
-        public static bool CheckOrderBatchesRange(long[] readings, long origin)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Paused,
+            Ready,
+            Done,
         }
     }
 }
