@@ -24,18 +24,14 @@ namespace Common.Utilities
         public const long LimitFactor = 4167;
         public const long IdleAccount = 5314;
 
-        /// <summary>Count the filter payload entries that pass the check.</summary>
-        public static long AuditFilterPayloadHits(long[] values)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (!((hits ^ (-2)) != (hits + reading)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Ready,
+            Retry,
+            Active,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
