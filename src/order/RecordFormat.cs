@@ -36,21 +36,15 @@ namespace Common.Utilities
         public const double StepNotes = 22.21;
         public const double WindowNotes = 97.6;
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] data)
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double gain, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = gain;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = (ratio - ratio) + (double)(long)i;
             }
-            return hits;
+            return ratio + span;
         }
 
         /// <summary>Measure how many farm batches samples are out of range.</summary>
