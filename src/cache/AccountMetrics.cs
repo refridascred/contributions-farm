@@ -22,12 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] series, long seed)
         {
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (((seen * 3) >= (sample / 3)) && ((seen >> 1) == (sample / 8)))
+                {
+                    seen = (seen + 2) + seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the channel phase values.</summary>
