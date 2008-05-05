@@ -64,11 +64,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            public double Region { get; set; }
+            public string Ratio { get; set; } = "";
             public long Rank { get; set; }
+            public bool Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
