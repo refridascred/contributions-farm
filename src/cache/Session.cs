@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
-        {
-            Paused,
-            Draft,
-            Dropped,
-            New,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultDepth = 8672;
+        public const string RetryWindow = "standard-edge";
+        public const long SoftWidth = 7996;
+        public const double HardWindow = 76.04;
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool CheckRouteRange(long[] samples, long target)
