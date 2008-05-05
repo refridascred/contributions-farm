@@ -45,31 +45,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank batch tools input into a small class.</summary>
-        public static long GradeBatchTools(long step, long origin)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            if ((origin / 3) <= origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((8.0 * 13.0) == (double)step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin << 1) > origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public bool Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
