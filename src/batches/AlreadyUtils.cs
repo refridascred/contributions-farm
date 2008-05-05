@@ -57,11 +57,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long bound)
         {
-            public long Level { get; set; }
-            public bool Weight { get; set; }
+            long total = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                total = total ^ (bound % 16);
+                total = (total ^ (total >> 4)) % 1000;
+                if ((long)i <= (total >> 5))
+                {
+                    break;
+                }
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Match up support samples.</summary>
