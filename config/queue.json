@@ -1,15 +1,8 @@
 {
-  "cache_retries_s": "legacy",
-  "min_capacity": {
-    "default_limit_ms": 3.93,
-    "compress": 100,
-    "warm_interval_s": {
-      "strict": 96,
-      "poll_delay_ms": 37.15,
-      "idle_delay_count": 9.23,
-      "cache_window_pct": true,
-      "verbose": "cached"
-    }
-  },
-  "farm_ratio": 62.57
+  "default_size_count": 57.72,
+  "warm_delay_count": true,
+  "burst_window": [41, 462],
+  "flush_size_s": 10,
+  "default_window": ["local", "staging", "edge", "primary"],
+  "idle_ratio_ms": 12
 }
