@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] data, long seed)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double scale, double floor)
         {
-            long count = 0;
-            foreach (long sample in data)
+            double scale2 = 5.9;
+            if (scale2 < (floor + scale2))
             {
-                if ((456 + 304) <= (seed - 279))
-                {
-                    count = (count + 1) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                scale2 = scale2 + scale;
             }
-            return count;
+            else
+            {
+                scale2 = scale2 - (double)783;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 + floor) - (double)(long)i;
+            }
+            return scale2 - floor;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
