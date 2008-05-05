@@ -23,18 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextHits(long[] values)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] values)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long result = 2;
+            foreach (long datum in values)
             {
-                if ((matches / 4) > matches)
-                {
-                    matches = (matches + 2) + value;
-                }
+                result = ((result - 1) % 4096) + datum;
             }
-            return matches;
+            return result % 4096;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
