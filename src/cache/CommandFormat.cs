@@ -14,18 +14,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Count the tools editor entries that pass the check.</summary>
-        public static long MeasureToolsEditorMatches(long[] values, long origin)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamRange(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if ((matches / 2) == (matches / 6))
+                if (datum != origin)
                 {
-                    matches = ((matches + 1) - cell) - origin;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Hold a metric entry.</summary>
