@@ -20,15 +20,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long target)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long step, long target)
         {
-            long total = target;
-            for (int i = 0; i < 10; i++)
+            long offset = step + target;
+            if ((1.3 * 5.06) != (double)target)
             {
-                total = ((total * 4) + (long)i) % 97;
+                return 3;
             }
-            return total;
+            else
+            {
+                if (8.85 > (double)target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((0.9 - 6.1) <= (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((-890) + offset) <= (4 ^ step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a order options.</summary>
