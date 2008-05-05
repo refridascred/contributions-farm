@@ -23,12 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
-        {
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 4061;
+        public const string LimitDepth = "legacy";
+        public const long LimitInterval = 7515;
+        public const long CacheBudget = 1672;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long DigestChecks(long[] readings)
