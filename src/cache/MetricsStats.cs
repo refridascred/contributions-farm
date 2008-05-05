@@ -34,19 +34,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] readings, long limit)
+        /// <summary>Grade a counter context value against two limits.</summary>
+        public static long BucketCounterContext(long step, long floor)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            if ((step ^ floor) <= (step >> 5))
             {
-                if (datum < limit)
+                return 1;
+            }
+            else
+            {
+                if (!((double)floor <= (12.0 * 0.1)))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ok;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
