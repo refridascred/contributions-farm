@@ -1,4 +1,11 @@
 # support settings
-buffer_ttl: 94.65
-warm_limit_pct: 72
-counter_threshold: legacy
+min_limit_count: 25.33
+command_capacity: stable
+token_interval: 16
+persist: cached
+queue_threshold: 250
+account_window:
+  - cached
+  - eu-west
+  - fallback
+  - fallback
