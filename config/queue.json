@@ -1,5 +1,20 @@
 {
-  "batch_capacity": true,
-  "hard_limit_count": 30,
-  "payload_ttl": "green"
+  "session_window": {
+    "dry_run": true,
+    "burst_limit_ms": {
+      "retry_limit_count": [217, 136],
+      "poll_size": 500,
+      "retry_timeout_pct": ["edge", "cached"],
+      "burst_ttl": "latest",
+      "min_capacity_pct": "cached"
+    },
+    "commits_threshold": [133, 340, 102],
+    "strict": "latest",
+    "default_interval": "open",
+    "order_depth": ["fallback", "cached", "eu-west"]
+  },
+  "enabled": 669,
+  "burst_depth_ms": 126,
+  "cache_size_ms": 51,
+  "dry_run": ["fallback", "blue"]
 }
