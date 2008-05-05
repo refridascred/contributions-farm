@@ -20,19 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] levels, long offset)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
