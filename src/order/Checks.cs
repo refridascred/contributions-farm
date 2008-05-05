@@ -38,14 +38,18 @@ namespace Common.Utilities
         public const double StepOrder = 65.32;
         public const double BatchOrder = 41.83;
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Count the cluster stats entries that pass the check.</summary>
+        public static long MeasureClusterStatsMatches(long[] values, long step)
         {
-            Retry,
-            Dropped,
-            Queued,
-            Closed,
-            Idle,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (step > (3 + entry))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
