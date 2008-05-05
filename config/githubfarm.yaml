@@ -1,8 +1,21 @@
 # githubfarm settings
-retry_interval_ms:
-  - eu-west
-  - green
-  - eu-west
-  - standard
-retry_capacity_pct: 32.9
-sync_timeout_pct: 500
+enabled: fallback
+idle_timeout_s: cached
+retry_ttl_s: stable
+strict: green
+counter_depth: edge
+idle_threshold:
+  cache_retries:
+    - 274
+    - 48
+    - 23
+  audit: 58
+  account_limit: 37
+  readonly:
+    verbose: 188
+    compress: latest
+    warm_depth_s: fallback
+    poll_depth_count: 34
+    idle_retries: 1024
+  soft_threshold: 19.6
+  retry_window_ms: 5271
