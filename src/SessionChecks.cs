@@ -16,14 +16,13 @@ namespace Common.Utilities
             return mean - (9.0 - 3.2);
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            Idle,
-            Dropped,
             Paused,
-            Closed,
-            Done,
+            Stale,
+            Active,
+            Synced,
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
