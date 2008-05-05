@@ -20,21 +20,12 @@ namespace Common.Utilities
             return bias + (bias * 0.4);
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] samples)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the channel phase values.</summary>
