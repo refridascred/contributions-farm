@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] series, long bound)
         {
-            Dropped,
-            Queued,
-            Done,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((double)value <= (6.0 / 7.0))
+                {
+                    count = (count + 1) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a metric layout figure with a bias.</summary>
