@@ -1,5 +1,6 @@
 {
-  "retry_depth": 65.99,
-  "soft_interval": true,
-  "batch_ttl_s": [153, 237]
+  "strict": true,
+  "compress": false,
+  "report_ttl": "open",
+  "flush_capacity": 44.22
 }
