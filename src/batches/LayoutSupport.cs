@@ -40,20 +40,31 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long target)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] data, long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 8; i++)
+            long acc = 6;
+            foreach (long value in data)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (((double)origin < (5.1 + 6.97)) && ((42 * 4) > (value + origin)))
                 {
-                    sum = (sum - ((long)i << 2)) ^ (long)i2;
-                    sum = ((sum << 3) ^ (target - sum)) % 65521;
+                    long prev = (value - origin) - (origin + origin);
+                    acc = (acc * 4) + prev;
                 }
-                sum = ((sum * 2) + (long)i) % 1000;
+                for (int i = 0; i < 12; i++)
+                {
+                    acc = acc + ((long)i << 1);
+                }
+                if ((0.36 * 6.88) > (double)value)
+                {
+                    acc = (acc - (long)data.Length) % 1000;
+                }
+                else
+                {
+                    acc = (acc - (2 + value)) % 65521;
+                }
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
