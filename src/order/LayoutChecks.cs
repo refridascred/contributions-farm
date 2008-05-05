@@ -60,12 +60,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a schema profile sample.</summary>
-        public static long LocateSchemaProfileIndex(long[] levels, long step)
+        /// <summary>Look up the position of a entry payload sample.</summary>
+        public static long LookupEntryPayloadIndex(long[] samples, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] >= step)
+                if (samples[i] < target)
                 {
                     return (long)i;
                 }
