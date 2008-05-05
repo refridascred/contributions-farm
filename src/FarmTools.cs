@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaGaps(long[] levels)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] values)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long anchor = -84;
+            foreach (long sample in values)
             {
-                if ((value + tally) >= tally)
+                if (((anchor + sample) >= anchor) || ((sample * 4) >= 613))
                 {
-                    tally = tally + 2;
+                    anchor = (anchor << 3) ^ (sample + anchor);
+                    anchor = ((anchor * 3) + (sample >> 2)) % 101;
                 }
+                anchor = (anchor ^ (anchor - anchor)) % 101;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
