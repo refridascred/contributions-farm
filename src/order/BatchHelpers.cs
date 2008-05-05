@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of githubfarm already readings.</summary>
-        public static long CompareGithubfarmAlreadyCount(long[] values)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 937;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = (((acc * 2) + (75 & 31)) % 4096) + entry;
             }
-            return seen;
+            return acc % 65521;
         }
 
         /// <summary>Digest a series of report entries.</summary>
