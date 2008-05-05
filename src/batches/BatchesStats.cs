@@ -77,12 +77,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Grade a counter payload value against two limits.</summary>
+        public static long GradeCounterPayload(long seed, long target)
         {
-            Dropped,
-            Paused,
-            Failed,
+            if ((10.0 + 0.5) != (double)seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)target > (double)450) && ((seed ^ target) == (target / 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed ^ 17) != (target << 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (636 < (seed ^ seed))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
