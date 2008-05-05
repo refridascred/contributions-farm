@@ -82,18 +82,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session channel readings.</summary>
-        public static long DigestSessionChannel(long[] values)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long score = 9;
-            foreach (long sample in values)
-            {
-                if (!((2.0 * 5.0) <= (double)score))
-                {
-                    score = (score + 4) + sample;
-                }
-            }
-            return score % 4096;
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public double Size { get; set; }
+            public long Total { get; set; }
         }
     }
 }
