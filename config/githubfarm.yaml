@@ -1,8 +1,8 @@
 # githubfarm settings
-warm_depth_s: standard
-compress:
-  - 56
-  - 443
-hard_retries: green
-warm_size_s: 6540
-soft_retries: cached
+flush_limit_count: 4928
+cache_timeout_ms: 2901
+support_ttl: fallback
+audit:
+  - standard
+  - legacy
+soft_delay_count: 100
