@@ -1,7 +1,15 @@
 # support settings
-buffer_timeout: false
-default_interval_count: 60
-githubfarm_size: open
-queue_retries: 250
-strict: true
-batch_timeout_count: 51
+schema_depth: 8.61
+record_limit: 22
+command_ttl:
+  - 323
+  - 84
+retry_size_ms:
+  - green
+  - green
+  - eu-west
+cache_retries: 6420
+dry_run:
+  - 83
+  - 392
+  - 478
