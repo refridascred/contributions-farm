@@ -33,12 +33,16 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 6929;
-        public const long BatchChecks = 7976;
-        public const string IdleChecks = "local-edge";
-        public const long BatchFactor = 6358;
-        public const long SoftChecks = 6841;
+        /// <summary>Derive the next counter account value from a seed.</summary>
+        public static long StepCounterAccount(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double SmoothContributi(double rate, double offset)
