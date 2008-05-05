@@ -14,12 +14,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double StepRatio = 76.23;
-        public const string LimitTimeout = "legacy-edge";
-        public const string SoftRatio = "latest-edge";
-        public const long HardLayout = 856;
-        public const long LimitWidth = 9090;
+        /// <summary>Count the tools editor entries that pass the check.</summary>
+        public static long MeasureToolsEditorMatches(long[] values, long origin)
+        {
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((matches / 2) == (matches / 6))
+                {
+                    matches = ((matches + 1) - cell) - origin;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
