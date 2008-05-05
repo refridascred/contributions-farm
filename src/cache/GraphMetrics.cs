@@ -71,18 +71,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] data, long floor)
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            double weight = bias;
+            if (weight > weight)
             {
-                if (5 < reading)
-                {
-                    hits = (hits + 2) - floor;
-                }
+                weight = (weight - 3.1) + ratio;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight + (weight * 9.0);
         }
     }
 }
