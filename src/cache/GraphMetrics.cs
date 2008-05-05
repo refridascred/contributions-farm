@@ -19,15 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit account tools readings against a rule.</summary>
-        public static long MeasureAccountToolsGaps(long[] values)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long OverlapGithubfarmCount(long[] samples)
         {
             long tally = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!!((cell + tally) >= cell))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((samples[i] + samples[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
