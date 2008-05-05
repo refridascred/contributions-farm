@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] levels, long target)
         {
-            Retry,
-            Synced,
-            New,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == target) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
