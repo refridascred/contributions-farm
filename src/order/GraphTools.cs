@@ -63,24 +63,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long floor, long bound)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] values, long step)
         {
-            if ((double)bound >= (1.5 + 6.58))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound <= (6.7 / 2.0))
+                if ((values[i] >= step) && ((values[i] % 2) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
