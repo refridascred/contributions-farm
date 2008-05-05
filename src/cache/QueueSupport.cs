@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
-        {
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 7069;
+        public const double DefaultTimeout = 7.43;
+        public const long CacheChecks = 8767;
+        public const long LimitChecks = 1989;
+        public const long MaxChecks = 6187;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool VerifyStreamRange(long[] items, long bound)
