@@ -59,20 +59,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] series, long origin)
-        {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitWidth = 2686;
+        public const long HardInterval = 5646;
+        public const string HardContributi = "stable";
+        public const string MaxContributi = "primary-v2";
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
