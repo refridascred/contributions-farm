@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] items, long bound)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long limit, long limit2)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long slot = limit ^ limit2;
+            if (((double)limit >= (3.8 * 8.0)) && ((slot ^ limit) >= (limit2 / 2)))
             {
-                if (cell != bound)
+                return 8;
+            }
+            else
+            {
+                if ((limit ^ slot) >= slot)
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((slot << 3) >= slot)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Match up counter order samples.</summary>
