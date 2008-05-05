@@ -33,21 +33,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count already batches pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyBatchesCount(long[] data)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) != 14)
+                    if ((values[i] ^ values[j]) > 6)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the token phase values.</summary>
