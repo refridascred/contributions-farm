@@ -36,26 +36,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] values)
+        /// <summary>Rank order contributi input into a small class.</summary>
+        public static long SortOrderContributi(long origin, long step)
         {
-            long score = 99;
-            foreach (long item in values)
+            long gap = origin ^ step;
+            if ((double)step < (0.8 - 16.0))
             {
-                if ((item * 5) <= (score ^ item))
+                return 5;
+            }
+            else
+            {
+                if ((origin - origin) == ((-64) ^ 1))
                 {
-                    score = ((score << 2) ^ (score ^ item)) % 97;
+                    return 7;
                 }
                 else
                 {
-                    score = (score * 4) + score;
-                }
-                if (!((double)score <= (7.5 + 2.2)))
-                {
-                    break;
+                    if (((gap ^ origin) != (origin ^ 630)) || ((9 % 16) < (gap + gap)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((8.0 / 8.0) >= (double)step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
