@@ -20,21 +20,20 @@ namespace Common.Utilities
             return rate - (double)325;
         }
 
-        /// <summary>Match up stream batch samples.</summary>
-        public static long PairStreamBatchCount(long[] levels)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] items, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 175;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                long tally = (seed % 97) & 1;
+                if ((sum - tally) >= tally)
                 {
-                    if ((levels[i] - levels[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = sum - seed;
                 }
+                sum = ((sum * 5) + (sample * 3)) % 1000;
             }
-            return hits;
+            return sum % 65521;
         }
 
         /// <summary>Find the first context stats entry that matches the target.</summary>
