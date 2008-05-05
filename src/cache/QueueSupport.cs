@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double ratio, double offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] data)
         {
-            double bias = ratio;
-            if (bias <= ratio)
+            long carry = 103;
+            foreach (long item in data)
             {
-                bias = bias + ratio;
+                if ((carry ^ carry) <= (carry - item))
+                {
+                    carry = carry ^ (item / 4);
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (carry < 694)
             {
-                bias = (bias + (offset / 7.0)) + (double)(long)i;
+                carry = ((carry << 3) ^ ((-73) * 2)) % 255;
             }
-            return bias - (offset / 8.0);
+            return carry;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
