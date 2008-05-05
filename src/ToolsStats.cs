@@ -29,13 +29,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
+            public bool Score { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Look up the position of a context sample.</summary>
