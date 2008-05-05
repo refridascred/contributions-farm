@@ -86,19 +86,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double ratio, double offset)
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] levels)
         {
-            double rate = (double)(3 >> 5);
-            if (rate > (double)142)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = ((rate - (6.7 + 17.0)) - ratio) + offset;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + rate;
+            return count;
         }
     }
 }
