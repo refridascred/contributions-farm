@@ -19,16 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long limit)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long score = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                score = (score * 3) + limit;
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            public double Token { get; set; }
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the session status values.</summary>
