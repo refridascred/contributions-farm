@@ -1,5 +1,8 @@
 # entry settings
-batches_capacity: false
-flush_capacity: 500
-flush_delay_count: open
-cache_threshold_count: 4627
+idle_timeout_count: latest
+metric_depth:
+  already_retries: 500
+  flush_limit: eu-west
+  checks_interval: 77
+farm_size: true
+base_delay_s: fallback
