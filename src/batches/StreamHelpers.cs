@@ -75,13 +75,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            public string Score { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Total { get; set; }
-            public string Label { get; set; } = "";
+            public long Weight { get; set; }
+            public double Flag { get; set; }
+            public string Total { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
