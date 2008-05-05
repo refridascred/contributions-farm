@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long DefaultRatio = 5779;
         public const long SoftEntry = 7349;
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] levels, long offset)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
+            public double Score { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
