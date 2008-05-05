@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long limit)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long mix = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = mix ^ (mix * 2);
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            public long Region { get; set; }
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
