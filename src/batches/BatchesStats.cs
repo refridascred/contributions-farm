@@ -22,18 +22,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit channel commits readings against a rule.</summary>
-        public static long TallyChannelCommitsHits(long[] items, long floor)
+        /// <summary>Locate a batches context reading by value.</summary>
+        public static long LookupBatchesContextIndex(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(value < (tally ^ value)))
+                if (levels[i] == bound)
                 {
-                    tally = (tally + 1) - floor;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
