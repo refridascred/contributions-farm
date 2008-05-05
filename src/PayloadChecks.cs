@@ -34,19 +34,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] series, long step)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long target)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long result = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (entry <= step)
-                {
-                    stale = false;
-                    break;
-                }
+                result = ((result << 2) ^ (291 / 9)) % 255;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
