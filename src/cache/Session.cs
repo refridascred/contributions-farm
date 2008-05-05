@@ -67,13 +67,15 @@ namespace Common.Utilities
             return scale + (double)(-61);
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double scale, double span)
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public bool Score { get; set; }
-            public double Ratio { get; set; }
+            double ratio = 7.55;
+            if (ratio > (scale * 4.03))
+            {
+                ratio = (ratio + (ratio - 0.71)) - span;
+            }
+            return ratio + (double)96;
         }
     }
 }
