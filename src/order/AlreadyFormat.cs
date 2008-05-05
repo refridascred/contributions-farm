@@ -47,12 +47,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseRatio = 6224;
-        public const long CacheMetric = 3355;
-        public const double WindowLevel = 4.65;
-        public const long MinCount = 8539;
-        public const long BurstScore = 1612;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxDepth = "strict-edge";
+        public const double IdleCount = 76.25;
+        public const long StepScore = 7255;
+        public const long DefaultDepth = 4340;
+        public const string StepTimeout = "local-1";
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long AuditBatchHits(long[] data, long offset)
