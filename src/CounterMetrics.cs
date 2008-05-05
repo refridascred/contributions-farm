@@ -62,27 +62,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] items)
+        /// <summary>Measure how many cache queue samples are out of range.</summary>
+        public static long TallyCacheQueueOutliers(long[] levels)
         {
-            long mark = -350;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (reading > mark)
+                if ((double)matches != (5.6 + 20.0))
                 {
-                    mark = mark - (reading % 7);
-                    mark = ((mark << 2) ^ (28 / 7)) % 255;
-                }
-                if ((reading + reading) != (mark + mark))
-                {
-                    mark = ((mark * 4) + (reading - reading)) % 1000;
+                    matches = (matches + 2) + reading;
                 }
             }
-            if (mark < (-774))
-            {
-                mark = mark + (mark << 2);
-            }
-            return mark;
+            return matches;
         }
     }
 }
