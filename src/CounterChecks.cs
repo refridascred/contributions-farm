@@ -17,18 +17,13 @@ namespace Common.Utilities
         public const long HardWidth = 7575;
         public const string CacheLevel = "legacy-v2";
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderMatches(long[] samples)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((19.0 * 13.0) < (double)datum)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Offset { get; set; }
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Fold a list of context tools readings.</summary>
