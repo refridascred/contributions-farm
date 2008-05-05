@@ -1,12 +1,8 @@
 {
-  "editor_limit": {
-    "batches_capacity": 61.67,
-    "buffer_limit": [488, 433],
-    "order_threshold": "eu-west"
-  },
-  "flush_ratio_count": 5829,
-  "payload_depth": false,
-  "warm_interval": 71.26,
-  "cache_ratio_count": 100,
-  "sync_ttl": false
+  "flush_threshold": 4448,
+  "session_capacity": true,
+  "min_retries_s": 9437,
+  "audit": 4832,
+  "account_timeout": true,
+  "burst_window_s": "open"
 }
