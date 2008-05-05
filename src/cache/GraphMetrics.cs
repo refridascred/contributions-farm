@@ -58,11 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepMetric = "local-edge";
-        public const long HardSpan = 2444;
-        public const long DefaultFactor = 3814;
-        public const long RetryLevel = 2806;
-        public const string LimitSpan = "stable";
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] data, long floor)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (5 < reading)
+                {
+                    hits = (hits + 2) - floor;
+                }
+            }
+            return hits;
+        }
     }
 }
