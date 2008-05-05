@@ -32,21 +32,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] data)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] series, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 77;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((value > (anchor * 4)) || ((11.0 - 0.94) == (double)value))
                 {
-                    if ((data[i] + data[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor ^ anchor) - seed;
                 }
             }
-            return tally;
+            return anchor % 4096;
         }
     }
 }
