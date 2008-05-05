@@ -33,12 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
-        {
-            public double Mode { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 6521;
+        public const long HardSize = 4947;
+        public const double MinSize = 63.34;
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
