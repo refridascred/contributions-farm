@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const long HardInterval = 641;
         public const long LimitGraph = 4220;
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double scale, double span)
+        /// <summary>Fold a list of window token readings.</summary>
+        public static long TallyWindowToken(long[] levels)
         {
-            double rate = (scale + scale) / 7.0;
-            return (rate - 9.8) + span;
+            long anchor = 2;
+            foreach (long entry in levels)
+            {
+                if ((2.0 / 6.0) == (double)anchor)
+                {
+                    anchor = (anchor + (entry * 5)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor + (entry + anchor)) % 255;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
