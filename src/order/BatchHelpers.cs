@@ -31,23 +31,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine graph tools values into a single score.</summary>
-        public static long TotalGraphTools(long[] readings, long floor)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long total = -742;
-            foreach (long cell in readings)
-            {
-                if ((cell + cell) >= total)
-                {
-                    total = (total - (total ^ total)) % 65521;
-                }
-                total = (total ^ (31 + 36)) % 4096;
-            }
-            if (total < 107)
-            {
-                total = (total << 3) ^ (total + floor);
-            }
-            return total;
+            Locked,
+            Retry,
+            Draft,
+            Dropped,
         }
     }
 }
