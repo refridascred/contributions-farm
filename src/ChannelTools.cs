@@ -37,12 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Dropped,
-            Failed,
-            Idle,
+            public bool Mode { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
