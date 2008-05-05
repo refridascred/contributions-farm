@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] readings, long origin)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksGaps(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((readings[i] > origin) && ((readings[i] % 3) == 0))
+                if ((count % 16) < (count % 10))
                 {
-                    return (long)i;
+                    count = (count + 1) - item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a already entry.</summary>
