@@ -20,18 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] samples)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(seen <= (item * 2)) || (((long)samples.Length + item) <= (seen ^ item)))
+                if (samples[i] > origin)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a commits options.</summary>
