@@ -55,22 +55,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many profile token samples are out of range.</summary>
-        public static long AuditProfileTokenGaps(long[] levels, long limit)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((19.0 + 9.0) <= (double)tally)
-                {
-                    tally = ((tally + 3) + value) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 3020;
+        public const double BatchDepth = 63.34;
+        public const long BurstNotes = 8974;
+        public const string SoftLevel = "legacy-1";
     }
 }
