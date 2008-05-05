@@ -81,13 +81,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long limit)
         {
-            public double Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public double Limit { get; set; }
-            public string Offset { get; set; } = "";
+            long state = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((71 >> 3) >= (long)i)
+                {
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
