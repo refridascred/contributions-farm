@@ -32,13 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Combine stream command values into a single score.</summary>
+        public static long TallyStreamCommand(long[] values, long bound)
         {
-            New,
-            Stale,
-            Dropped,
-            Paused,
+            long total = 64;
+            foreach (long reading in values)
+            {
+                total = total - (reading * 2);
+                if (!((2.7 / 6.0) <= (double)bound))
+                {
+                    total = ((total << 2) ^ (bound % 60)) % 65521;
+                }
+                else
+                {
+                    total = total ^ (903 % 10);
+                }
+            }
+            return total;
         }
 
         /// <summary>Hold a report snapshot.</summary>
