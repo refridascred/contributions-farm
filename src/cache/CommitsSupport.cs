@@ -84,13 +84,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            Idle,
-            Active,
-            Failed,
-            Stale,
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
+            public double Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
