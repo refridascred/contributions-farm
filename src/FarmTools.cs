@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long floor)
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double weight, double floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 15; i++)
+            double rate = 5.7;
+            if (rate >= (floor * 5.0))
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                rate = (rate + rate) + weight;
             }
-            return anchor;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - (floor / 3.0)) + (double)(long)i;
+            }
+            return rate - (double)325;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
