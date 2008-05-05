@@ -41,24 +41,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long offset, long floor)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            if (207 > (floor + offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((offset + floor) > offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Stale,
+            Idle,
+            Closed,
+            Done,
+            Queued,
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
