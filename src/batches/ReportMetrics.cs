@@ -28,12 +28,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] data, long step)
         {
-            Idle,
-            Active,
-            Draft,
+            long carry = 53;
+            foreach (long cell in data)
+            {
+                carry = ((carry * 2) + (cell % 100)) % 65521;
+                if ((-5) < (cell * 3))
+                {
+                    carry = (carry * 2) + (step - (-87));
+                }
+            }
+            if (carry > 2)
+            {
+                carry = carry - step;
+            }
+            return carry;
         }
     }
 }
