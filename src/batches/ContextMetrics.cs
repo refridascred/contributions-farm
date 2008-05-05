@@ -20,13 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Locked,
-            Idle,
-            Failed,
-            Dropped,
+            public bool Owner { get; set; }
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
