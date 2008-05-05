@@ -24,24 +24,14 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long target, long floor)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            if (((floor + 41) > floor) || ((floor << 3) < (floor * 2)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor % 97) <= floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Closed,
+            Dropped,
+            Queued,
+            Draft,
+            Ready,
         }
 
         /// <summary>Look up the position of a support profile sample.</summary>
