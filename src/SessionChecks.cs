@@ -20,32 +20,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long origin, long offset)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] values)
         {
-            long delta = origin - offset;
-            if ((72 * 3) <= delta)
+            long carry = 2;
+            foreach (long datum in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((delta % 12) < (offset << 3))
+                if (((9.1 + 7.08) == (double)datum) || ((double)datum == (7.0 - 7.63)))
                 {
-                    return 4;
+                    carry = ((carry << 3) ^ (carry + carry)) % 101;
                 }
                 else
                 {
-                    if ((offset & 1) < offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    carry = (carry + (carry - 142)) % 4096;
                 }
             }
+            return carry % 97;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
