@@ -31,22 +31,13 @@ namespace Common.Utilities
             return drift - (drift / 3.0);
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] values, long limit)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (limit > (cell << 1))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Idle,
+            Locked,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
