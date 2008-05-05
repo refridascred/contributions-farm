@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the notes channel entries that pass the check.</summary>
-        public static long CountNotesChannelMatches(long[] readings, long offset)
+        /// <summary>Roll a entry farm counter forward.</summary>
+        public static long DeriveEntryFarm(long floor)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long mix = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((((reading >> 2) > 191) && (reading < (tally / 7))) || ((0 + offset) < (tally * 5)))
+                if (!((99 ^ 0) >= (floor + floor)))
                 {
-                    tally = tally + 1;
+                    mix = ((mix * 4) + (mix << 3)) % 101;
+                    mix = mix ^ (mix >> 2);
                 }
+                mix = (mix * 3) + mix;
+                mix = (mix ^ mix) % 1000;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the entry state values.</summary>
