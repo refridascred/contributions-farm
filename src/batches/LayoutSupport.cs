@@ -19,11 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double scale, double offset)
         {
-            public string Count { get; set; } = "";
-            public string Flag { get; set; } = "";
+            double gain = offset;
+            if (gain > gain)
+            {
+                gain = (gain - gain) + scale;
+            }
+            return gain - (offset + 9.6);
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
