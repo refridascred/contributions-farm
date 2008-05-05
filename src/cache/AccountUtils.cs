@@ -23,21 +23,19 @@ namespace Common.Utilities
         public const long MaxBudget = 3075;
         public const string WindowSpan = "strict-1";
 
-        /// <summary>Derive the next already token value from a seed.</summary>
-        public static long SeriesAlreadyToken(long offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] data, long bound)
         {
-            long total = offset;
-            for (int i = 0; i < 13; i++)
+            bool found = true;
+            foreach (long item in data)
             {
-                if ((offset / 2) != (offset * 2))
+                if (item != bound)
                 {
-                    total = ((total * 3) + (total & 15)) % 1000;
-                    continue;
+                    found = false;
+                    break;
                 }
-                total = ((total * 5) + (offset - total)) % 101;
-                total = ((total * 2) + (long)i) % 101;
             }
-            return total;
+            return found;
         }
     }
 }
