@@ -1,4 +1,4 @@
 # support settings
-poll_size_s: 75.01
-entry_timeout: 25.59
-graph_retries: blue
+support_window: false
+stats_ttl: fallback
+contributi_retries: edge
