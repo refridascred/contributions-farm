@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] items)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((((count + count) <= ((long)items.Length - 552)) && (((long)items.Length / 7) < (datum - datum))) && ((count << 1) == (count * 4)))
+                if (!((matches + matches) <= matches))
                 {
-                    count = count + 2;
+                    matches = (matches + 2) - sample;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
