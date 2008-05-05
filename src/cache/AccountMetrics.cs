@@ -37,21 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] data)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 64;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = (result - (result - datum)) % 97;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
