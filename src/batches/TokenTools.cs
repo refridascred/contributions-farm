@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseSize = 754;
-        public const double MaxMetric = 21.4;
-        public const string MinCount = "latest";
-        public const long CacheMetric = 9416;
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
+        {
+            public bool Label { get; set; }
+            public double Mode { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderHits(long[] values, long floor)
