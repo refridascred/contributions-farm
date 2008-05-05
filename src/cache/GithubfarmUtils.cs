@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheScore = 4140;
-        public const long BaseToken = 348;
-        public const long IdleToken = 9388;
-        public const double HardScore = 25.58;
-        public const long MinToken = 9096;
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long floor, long limit)
+        {
+            long next = floor - limit;
+            if ((next ^ next) <= limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((next & 7) == (limit + next))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((next + (-187)) >= (next & 15))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the counter queue entries that pass the check.</summary>
         public static long AuditCounterQueueGaps(long[] samples)
