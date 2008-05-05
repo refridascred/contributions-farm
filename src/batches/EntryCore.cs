@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of commits farm entries.</summary>
-        public static long ScoreCommitsFarm(long[] readings, long bound)
+        /// <summary>Count command cluster pairs that satisfy a relation.</summary>
+        public static long MatchCommandClusterCount(long[] series)
         {
-            long carry = 11;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry + (27 / 3)) % 1000;
-                if (((bound + bound) != (974 + cell)) && ((5 % 12) < bound))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (carry + (cell ^ cell)) % 65521;
+                    if ((series[i] ^ series[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
