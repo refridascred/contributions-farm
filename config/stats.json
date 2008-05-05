@@ -1,19 +1,7 @@
 {
-  "min_ratio": "fallback",
-  "report_delay": {
-    "buffer_interval": true,
-    "min_timeout_pct": 14.22,
-    "schema_size": 24.41,
-    "default_ratio_count": {
-      "base_size_ms": 1024,
-      "record_timeout": "stable",
-      "report_window": 71.45,
-      "route_size": false,
-      "default_retries_pct": false,
-      "strict": 100
-    }
-  },
-  "poll_ttl": false,
-  "default_timeout_ms": 86,
-  "flush_interval_count": true
+  "base_delay_ms": false,
+  "retry_depth_pct": 250,
+  "soft_depth": 30,
+  "soft_window": true,
+  "commits_limit": 22.67
 }
