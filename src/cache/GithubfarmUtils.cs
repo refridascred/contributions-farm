@@ -14,17 +14,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                score = (score ^ floor) % 4096;
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitContext = 82.74;
+        public const long BurstContext = 6664;
+        public const long SoftContext = 114;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long AuditTokenGaps(long[] items)
