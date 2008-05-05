@@ -37,12 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
-        {
-            public long Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 6148;
+        public const double HardTools = 77.52;
+        public const long RetryLevel = 1848;
+        public const string WindowTools = "cached-v2";
+        public const long LimitBudget = 3270;
     }
 }
