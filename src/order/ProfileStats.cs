@@ -25,17 +25,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first stats metrics entry that matches the target.</summary>
-        public static long LocateStatsMetricsIndex(long[] items, long step)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((items[i] >= step) && ((items[i] % 3) != 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
