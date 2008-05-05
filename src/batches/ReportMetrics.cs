@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public bool Total { get; set; }
+            New,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Hold a farm info.</summary>
