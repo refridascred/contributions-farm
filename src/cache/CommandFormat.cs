@@ -16,19 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate editor format readings against a bound.</summary>
-        public static bool CheckEditorFormatLimits(long[] data, long origin)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Mode { get; set; }
+            public double Total { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
