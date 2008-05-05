@@ -28,12 +28,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            public string Offset { get; set; } = "";
-            public bool Weight { get; set; }
-            public string Level { get; set; } = "";
+            public long Size { get; set; }
+            public string Flag { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
