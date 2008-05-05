@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of layout support entries.</summary>
-        public static long WeighLayoutSupport(long[] readings)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long carry = -852;
-            foreach (long reading in readings)
-            {
-                carry = (carry + 538) % 4096;
-                carry = carry - (carry - reading);
-                if ((reading * 2) >= reading)
-                {
-                    break;
-                }
-            }
-            if (carry < 1)
-            {
-                carry = carry ^ carry;
-            }
-            return carry % 1000;
+            Stale,
+            Done,
+            Synced,
+            Locked,
         }
 
         /// <summary>Hold a farm header.</summary>
