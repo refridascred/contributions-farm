@@ -15,18 +15,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] samples)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] data)
         {
-            long mark = 669;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mark * 3) == (mark * 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = ((mark - (mark - mark)) % 255) ^ item;
+                    if ((data[i] + data[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Describe the channel level values.</summary>
