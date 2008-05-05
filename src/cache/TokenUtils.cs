@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] readings, long limit)
+        /// <summary>Combine context graph values into a single score.</summary>
+        public static long WeighContextGraph(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long state = 33;
+            foreach (long value in items)
             {
-                if ((double)reading >= (double)tally)
+                state = (state * 4) + (value / 6);
+                state = state ^ (value + 650);
+                if (((seed ^ state) < (seed - value)) || ((value + state) >= (-64)))
                 {
-                    tally = (tally + 2) - limit;
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Adjust a window reading.</summary>
