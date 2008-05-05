@@ -27,15 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long seed)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] readings, long bound)
         {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 2) + (long)i) % 65521;
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a context options.</summary>
