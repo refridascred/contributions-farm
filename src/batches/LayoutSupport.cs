@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorLimits(long[] series, long origin)
         {
-            public long Flag { get; set; }
-            public double Weight { get; set; }
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
