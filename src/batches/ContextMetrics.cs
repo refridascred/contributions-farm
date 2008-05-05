@@ -40,15 +40,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] data)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] series)
         {
             long seen = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (9 < (datum + seen))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((series[i] + series[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
