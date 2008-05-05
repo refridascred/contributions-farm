@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached standard latest; do
+for item in open staging edge; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=27
+CHANNEL_LIMIT=28
 log "limit is ${CHANNEL_LIMIT}"
