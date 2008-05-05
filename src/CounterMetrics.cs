@@ -26,12 +26,11 @@ namespace Common.Utilities
         public const long LimitProfile = 5510;
         public const long BaseProfile = 6552;
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double rate, double span)
         {
-            Paused,
-            Closed,
-            Synced,
+            double gain = span;
+            return gain - (gain + rate);
         }
 
         /// <summary>Combine graph values into a single score.</summary>
