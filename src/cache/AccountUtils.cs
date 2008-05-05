@@ -19,22 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] readings, long target)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountLimits(long[] values, long seed)
         {
-            long state = 775;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if (56 > state)
+                if (sample > seed)
                 {
-                    state = state - (state / 4);
-                }
-                if ((target ^ datum) <= datum)
-                {
+                    ok = false;
                     break;
                 }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Hold a entry options.</summary>
