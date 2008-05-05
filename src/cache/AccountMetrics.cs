@@ -36,12 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double ratio, double bias)
         {
-            Dropped,
-            Synced,
-            Ready,
+            double load = (double)(8 + 422);
+            return ((load + (10.0 - 0.09)) + ratio) + bias;
         }
 
         /// <summary>Hold a route info.</summary>
