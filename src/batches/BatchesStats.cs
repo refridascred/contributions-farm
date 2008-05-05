@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double WindowGraph = 12.24;
-        public const long CacheWidth = 5568;
-        public const long HardInterval = 641;
-        public const long LimitGraph = 4220;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] samples)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (!((cell ^ 0) <= cell))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of window token readings.</summary>
         public static long TallyWindowToken(long[] levels)
