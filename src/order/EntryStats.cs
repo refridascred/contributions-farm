@@ -47,21 +47,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] items)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 124;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((9.6 + 2.6) >= (double)datum)
                 {
-                    if ((items[i] ^ items[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor * 2) + (anchor * 4);
+                }
+                else
+                {
+                    anchor = (anchor + (anchor * 2)) % 4096;
                 }
             }
-            return count;
+            if (anchor > (-17))
+            {
+                anchor = anchor + (origin + origin);
+            }
+            return anchor;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
