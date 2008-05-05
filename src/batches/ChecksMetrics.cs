@@ -25,14 +25,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
-        {
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double SoftInterval = 70.65;
+        public const long HardBatches = 4307;
+        public const double MinBatches = 56.26;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long CountToolsGaps(long[] levels)
