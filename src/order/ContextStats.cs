@@ -20,15 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double BlendBatch(double bias, double floor)
+        /// <summary>Blend two tools format measurements.</summary>
+        public static double ScaleToolsFormat(double rate, double bias)
         {
-            double drift = floor;
-            for (int i = 0; i < 4; i++)
+            double scale = (rate - rate) + bias;
+            if (scale >= (bias - scale))
             {
-                drift = ((drift - drift) + (double)(long)i) + bias;
+                scale = scale + (double)(-71);
             }
-            return drift - (floor - floor);
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale - rate;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
