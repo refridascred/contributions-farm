@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit token entry readings against a rule.</summary>
-        public static long TallyTokenEntryOutliers(long[] levels)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long step, long target)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long next = step - target;
+            if ((6 - 14) != (step + step))
             {
-                if ((0 << 1) == (entry + entry))
+                return 5;
+            }
+            else
+            {
+                if ((double)next != (13.0 * 4.7))
                 {
-                    seen = seen + 3;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
