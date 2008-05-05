@@ -12,13 +12,19 @@ namespace Common.Utilities
             return (rate + (ratio * 7.5)) + bias;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterBounds(long[] items, long offset)
         {
-            public bool Ratio { get; set; }
-            public bool Size { get; set; }
-            public double Level { get; set; }
-            public long Token { get; set; }
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Find the first context stats entry that matches the target.</summary>
