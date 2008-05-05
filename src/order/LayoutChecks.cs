@@ -68,11 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitWidth = 2686;
-        public const long HardInterval = 5646;
-        public const string HardContributi = "stable";
-        public const string MaxContributi = "primary-v2";
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (((double)cell <= (9.72 + 3.1)) || ((cell + 90) <= 54))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
