@@ -19,20 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long floor)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] data)
         {
-            long result = floor;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((result + result) != (floor - floor)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result << 3) ^ (result - (long)i);
-                    result = (result ^ (result % 64)) % 65521;
+                    if ((data[i] + data[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Accumulate entry samples.</summary>
