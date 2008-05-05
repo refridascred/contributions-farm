@@ -1,6 +1,6 @@
-id,state,owner,score,active
-1,standard,53.66,primary,standard
-2,57.97,eu-west,270,23.05
-3,60.99,legacy,888,cached
-4,open,658,926,staging
-5,405,573,staging,451
+id,weight,state
+1,30,341
+2,15,518
+3,edge,latest
+4,stable,staging
+5,752,stable
