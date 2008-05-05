@@ -14,11 +14,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepProfile = 68.3;
-        public const long MaxScore = 1644;
-        public const long LimitProfile = 3272;
-        public const long DefaultCount = 4578;
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
