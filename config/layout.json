@@ -1,5 +1,7 @@
 {
-  "verbose": 19.15,
-  "persist": 96.23,
-  "readonly": 7907
+  "window_threshold": "strict",
+  "command_capacity": "legacy",
+  "poll_ratio_count": 8073,
+  "retry_depth_s": 1024,
+  "compress": 500
 }
