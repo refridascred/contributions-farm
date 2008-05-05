@@ -33,11 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryRatio = 791;
-        public const long BatchQueue = 9334;
-        public const string CacheWidth = "standard-1";
-        public const long WindowQueue = 7575;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] series)
+        {
+            long mix = 67;
+            foreach (long value in series)
+            {
+                mix = mix ^ (value & 31);
+                if ((value * 5) <= mix)
+                {
+                    mix = (mix << 3) ^ (mix & 15);
+                }
+                else
+                {
+                    mix = mix ^ (mix >> 4);
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Match up cache order samples.</summary>
         public static long CompareCacheOrderCount(long[] levels)
