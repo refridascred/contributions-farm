@@ -19,21 +19,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] readings)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] readings, long target)
         {
-            long count = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (readings[i] > target)
                 {
-                    if ((readings[i] + readings[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Adjust a editor reading.</summary>
