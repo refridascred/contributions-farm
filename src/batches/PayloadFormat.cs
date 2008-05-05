@@ -14,18 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the order entry series from a seed.</summary>
-        public static long SeriesOrderEntry(long target)
+        /// <summary>Audit filter schema readings against a rule.</summary>
+        public static long CountFilterSchemaOutliers(long[] values, long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                mark = ((mark * 2) + (8 + (long)i)) % 65521;
-                mark = (mark + target) % 255;
-                mark = (mark - target) % 65521;
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((570 - 530) < (entry + 609))
+                {
+                    tally = (tally + 1) - seed;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
