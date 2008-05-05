@@ -1,5 +1,7 @@
 {
-  "idle_capacity": ["strict", "legacy", "legacy", "primary"],
-  "verbose": "primary",
-  "persist": 360
+  "flush_retries": "local",
+  "verbose": true,
+  "contributi_depth": "green",
+  "compress": "fallback",
+  "min_interval_pct": ["strict", "fallback", "local", "standard"]
 }
