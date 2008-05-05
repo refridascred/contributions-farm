@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] data)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long seed)
         {
-            long carry = 1;
-            foreach (long reading in data)
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
             {
-                carry = (carry + (carry + carry)) ^ reading;
+                anchor = ((anchor << 2) ^ (long)i) % 101;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            if (carry < (-634))
-            {
-                carry = (carry ^ (carry - carry)) % 101;
-            }
-            return carry % 1000;
+            return anchor;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
