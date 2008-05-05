@@ -48,12 +48,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double WindowTimeout = 45.08;
-        public const double HardInterval = 21.53;
-        public const string BurstSpan = "stable-edge";
-        public const string StepRatio = "stable-1";
-        public const string LimitLevel = "latest-1";
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Validate metric batch readings against a bound.</summary>
         public static bool CheckMetricBatchLimits(long[] items, long step)
