@@ -51,26 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] values)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long result = 893;
-            foreach (long cell in values)
-            {
-                if (!((1 - result) < cell))
-                {
-                    result = (result << 3) ^ (cell + result);
-                }
-                else
-                {
-                    result = (result - 926) % 65521;
-                }
-            }
-            if (result < 7)
-            {
-                result = result ^ (result - 431);
-            }
-            return result % 97;
+            public bool Stamp { get; set; }
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
