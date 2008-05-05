@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double BlendGithubfarm(double ratio, double offset)
         {
-            public double Total { get; set; }
-            public long Size { get; set; }
+            double drift = (double)(886 + 3);
+            if (drift < (double)781)
+            {
+                drift = (drift + (drift * 13.0)) - ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (drift / 2.0)) - (double)(long)i;
+            }
+            return drift - (offset * 7.66);
         }
 
         /// <summary>Accumulate route notes samples.</summary>
