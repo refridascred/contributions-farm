@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MaxBatches = "stable-edge";
-        public const double LimitSize = 40.23;
-        public const long RetryBatches = 7469;
-        public const long DefaultWidth = 5905;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (((0 & 7) < (target % 10)) && ((item % 64) <= target))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double WindowCache = 95.38;
