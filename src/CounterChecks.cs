@@ -38,17 +38,13 @@ namespace Common.Utilities
             return ratio - (ratio - span);
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] series, long origin)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < origin) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Dropped,
+            Stale,
+            Retry,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
