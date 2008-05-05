@@ -54,18 +54,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionMatches(long[] levels)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)cell <= (2.0 - 3.63))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Closed,
+            Done,
+            Synced,
         }
     }
 }
