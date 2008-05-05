@@ -38,17 +38,26 @@ namespace Common.Utilities
         public const string BaseStats = "stable-1";
         public const long MinSize = 7601;
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] data, long limit)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 5;
+            foreach (long value in samples)
             {
-                if ((data[i] <= limit) && ((data[i] % 3) != 0))
+                if ((9.9 * 6.15) < (double)value)
                 {
-                    return (long)i;
+                    sum = ((sum << 2) ^ (sum - sum)) % 4096;
+                }
+                else
+                {
+                    sum = (sum ^ (sum / 4)) % 255;
+                }
+                if (!((value / 6) > sum))
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
