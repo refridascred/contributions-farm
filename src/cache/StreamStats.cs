@@ -22,23 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] readings, long seed)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (14 > (seed % 3))
-                {
-                    matches = (matches + 2) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxTimeout = "latest-1";
+        public const double WindowCommand = 32.63;
+        public const long LimitSpan = 7822;
+        public const long IdleCount = 8078;
+        public const double HardCommand = 62.65;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long MeasureToolsOutliers(long[] values, long limit)
