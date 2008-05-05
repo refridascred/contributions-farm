@@ -1,14 +1,15 @@
 # Command notes
 
-When a stream fails, the graph handler retries a few times before giving up.
-Keep format and schema names short and lowercase.
+Run the cluster check before changing any context limits.
+When a commits fails, the layout handler retries a few times before giving up.
 
-The command helpers are pure functions, so they are safe to call from any thread.
-Run the editor check before changing any contributi limits.
+When a format fails, the queue handler retries a few times before giving up.
+The tools module keeps channel values in sync with the already cache.
+Keep report and metric names short and lowercase.
 
 ## Guidelines
 
-- Keep stats values small
-- Document new cluster fields
-- Validate order input early
-- Log every profile change
+- Log every channel change
+- Keep record values small
+- Prefer window defaults
+- Review editor limits each release
