@@ -12,11 +12,26 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BurstReport = "latest-1";
-        public const double CacheInterval = 46.51;
-        public const string BatchReport = "stable-edge";
-        public const double CacheSpan = 93.17;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long floor, long step)
+        {
+            long offset = floor + step;
+            if ((step + floor) != (floor ^ step))
+            {
+                return 2;
+            }
+            else
+            {
+                if (step < (offset ^ (-86)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool GuardTokenBounds(long[] readings, long offset)
