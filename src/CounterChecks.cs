@@ -31,32 +31,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a cluster stats pair into a bucket.</summary>
-        public static long GradeClusterStats(long step, long origin)
-        {
-            if ((18 >> 1) <= step)
-            {
-                return 1;
-            }
-            else
-            {
-                if (step <= (99 + origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin ^ 83) < step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheWidth = 3007;
+        public const long IdlePayload = 1081;
+        public const double BatchInterval = 94.24;
+        public const long CachePayload = 7341;
+        public const long SoftPayload = 3058;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long CountCommitsMatches(long[] data)
