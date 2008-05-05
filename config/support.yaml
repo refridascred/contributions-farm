@@ -1,7 +1,4 @@
 # support settings
-burst_ttl_ms: 30
-soft_depth_s: false
-base_size_ms: 34.12
-min_timeout: false
-warm_capacity: 12.21
-persist: true
+soft_depth_pct: 7581
+min_size: legacy
+tools_delay: 71
