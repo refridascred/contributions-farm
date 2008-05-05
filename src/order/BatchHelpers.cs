@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Compare every pair of githubfarm already readings.</summary>
+        public static long CompareGithubfarmAlreadyCount(long[] values)
         {
-            public double Weight { get; set; }
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
-            public bool Size { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first channel batch entry that matches the target.</summary>
