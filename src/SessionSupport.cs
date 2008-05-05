@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] samples, long target)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] samples, long step)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (sample != target)
+                if ((double)entry < 4.0)
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 3) - step;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
