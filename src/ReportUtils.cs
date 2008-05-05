@@ -22,12 +22,18 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepScore = 6498;
-        public const long BurstScore = 449;
-        public const double RetryMetrics = 53.31;
-        public const long WindowScore = 5203;
-        public const long SoftSize = 7779;
+        /// <summary>Look up the position of a commits notes sample.</summary>
+        public static long SeekCommitsNotesIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate support checks readings against a bound.</summary>
         public static bool GuardSupportChecksRange(long[] series, long bound)
