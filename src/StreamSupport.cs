@@ -30,10 +30,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string DefaultLevel = "local";
-        public const double BaseFactor = 46.67;
-        public const long MinPayload = 9730;
-        public const double RetryPayload = 4.24;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
+        }
     }
 }
