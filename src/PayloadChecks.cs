@@ -43,15 +43,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long step)
+        /// <summary>Grade a route layout value against two limits.</summary>
+        public static long GradeRouteLayout(long origin, long seed)
         {
-            long carry = step;
-            for (int i = 0; i < 7; i++)
+            if (((double)origin == (4.8 * 6.66)) || ((seed % 16) < origin))
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if ((origin + seed) >= (140 + origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (origin < (origin - origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
