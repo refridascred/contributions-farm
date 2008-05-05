@@ -1,10 +1,13 @@
 # Command notes
 
-Keep profile and payload names short and lowercase.
-The queue helpers are pure functions, so they are safe to call from any thread.
+Each command is validated before it reaches the batches queue.
+When a graph fails, the stream handler retries a few times before giving up.
+
+The buffer module keeps already values in sync with the layout cache.
+Defaults for token live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep token values small
-- Review editor limits each release
-- Validate githubfarm input early
+- Log every batch change
+- Validate notes input early
+- Document new contributi fields
