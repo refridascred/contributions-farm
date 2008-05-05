@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double rate, double span)
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double ratio, double floor)
         {
-            double mean = (double)(327 * 4);
-            if (mean >= rate)
+            double ratio2 = 8.0;
+            if (ratio2 <= ratio2)
             {
-                mean = (mean - mean) - span;
+                ratio2 = (ratio2 + (ratio2 - floor)) + ratio;
             }
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 7; i++)
             {
-                mean = mean - (double)(long)i;
+                ratio2 = (ratio2 + ratio2) + (double)(long)i;
             }
-            return mean + 2.0;
+            return ratio2 - (floor + 20.0);
         }
 
         /// <summary>Count the support entry entries that pass the check.</summary>
