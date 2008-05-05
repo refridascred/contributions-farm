@@ -32,17 +32,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BurstDepth = "local-v2";
+        public const long RetryFormat = 3874;
+        public const long WindowTimeout = 6029;
     }
 }
