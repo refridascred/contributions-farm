@@ -26,13 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            Active,
-            Stale,
-            Locked,
-            Synced,
+            Pending,
+            Closed,
+            Done,
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
