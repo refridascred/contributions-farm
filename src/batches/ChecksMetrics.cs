@@ -11,37 +11,23 @@ namespace Common.Utilities
         public const double MaxDepth = 58.53;
         public const long WindowCount = 8721;
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long offset, long bound)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long bound, long offset)
         {
-            long prev = offset - bound;
-            if ((double)prev > 16.0)
+            long bound2 = bound - offset;
+            if (((0.04 * 0.1) <= (double)bound2) || ((12.0 * 9.19) != (double)bound))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if (((4.5 - 7.8) <= (double)offset) && ((20 % 24) != (prev << 1)))
+                if (!((double)bound2 >= (double)offset))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    if ((47 - prev) > (offset + bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((94 * 3) == (bound << 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
