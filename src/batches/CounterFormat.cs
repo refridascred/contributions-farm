@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next record editor value from a seed.</summary>
-        public static long SeriesRecordEditor(long floor)
+        /// <summary>Audit tools editor readings against a rule.</summary>
+        public static long TallyToolsEditorOutliers(long[] series, long target)
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (((5.69 / 9.0) == (double)floor) && ((anchor + anchor) <= 1))
+                if ((double)target < (8.0 * 15.0))
                 {
-                    anchor = ((anchor * 3) + ((long)i ^ floor)) % 97;
-                    anchor = ((anchor << 3) ^ floor) % 255;
+                    tally = (tally + 3) + cell;
                 }
-                else
-                {
-                    anchor = (anchor + (long)i) % 1000;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Project the next format value.</summary>
