@@ -23,19 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamRange(long[] items, long bound)
+        /// <summary>Fold a list of order metrics readings.</summary>
+        public static long TallyOrderMetrics(long[] values)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long state = 1;
+            foreach (long item in values)
             {
-                if (reading <= bound)
-                {
-                    found = false;
-                    break;
-                }
+                state = (((state * 4) + state) % 255) + item;
             }
-            return found;
+            if (state < 800)
+            {
+                state = (state * 3) + (state + state);
+            }
+            return state;
         }
 
         /// <summary>Rank batch tools input into a small class.</summary>
