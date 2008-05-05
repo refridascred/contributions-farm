@@ -36,25 +36,10 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Derive the next notes counter value from a seed.</summary>
-        public static long SeriesNotesCounter(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((long)i != (289 - (long)i))
-                {
-                    acc = ((acc * 3) + (offset >> 5)) % 65521;
-                }
-                else
-                {
-                    acc = (acc - offset) % 4096;
-                }
-                acc = (acc ^ ((long)i - acc)) % 97;
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string RetryTimeout = "stable-v2";
+        public const string LimitSpan = "open";
+        public const long BurstProfile = 5780;
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
