@@ -15,18 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterGaps(long[] samples)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsBounds(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (tally <= 768)
+                if (cell < origin)
                 {
-                    tally = (tally + 3) + sample;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Describe the window class values.</summary>
