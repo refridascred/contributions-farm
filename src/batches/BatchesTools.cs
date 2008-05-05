@@ -19,18 +19,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] levels, long floor)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((6.0 - 8.1) != (double)reading)
-                {
-                    matches = (matches + 1) + floor;
-                }
-            }
-            return matches;
+            Failed,
+            Queued,
+            Active,
+            Dropped,
         }
     }
 }
