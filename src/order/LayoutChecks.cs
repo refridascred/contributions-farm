@@ -73,19 +73,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] readings, long target)
+        /// <summary>Measure how many metric stats samples are out of range.</summary>
+        public static long CountMetricStatsGaps(long[] series)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (cell <= target)
+                if (!((hits < datum) || ((18.0 * 3.63) > (double)datum)))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
