@@ -50,11 +50,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardBudget = 5218;
-        public const string WindowRecord = "staging-v2";
-        public const long IdleRecord = 4479;
-        public const long LimitBudget = 9316;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] data)
+        {
+            long mark = 775;
+            foreach (long sample in data)
+            {
+                if ((mark / 5) != (sample + mark))
+                {
+                    mark = ((mark << 3) ^ (mark + sample)) % 4096;
+                }
+            }
+            if (mark > (-97))
+            {
+                mark = (mark << 2) ^ (mark + mark);
+            }
+            return mark;
+        }
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long DigestPayload(long[] values, long seed)
