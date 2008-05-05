@@ -1,5 +1,15 @@
 {
-  "payload_ttl": "standard",
-  "metrics_ratio": 61,
-  "burst_size": false
+  "support_window": {
+    "batch_window": 100,
+    "notes_ttl": 95.61,
+    "retry_timeout_s": 41,
+    "cache_ratio_ms": [213, 147],
+    "hard_ttl": 8808,
+    "format_threshold": 1
+  },
+  "batch_delay": 45.88,
+  "cache_delay": true,
+  "notes_capacity": "stable",
+  "tools_ttl": ["cached", "green"],
+  "payload_capacity": 23
 }
