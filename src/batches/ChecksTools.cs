@@ -12,13 +12,22 @@ namespace Common.Utilities
         public const long LimitScore = 7669;
         public const long DefaultBuffer = 3090;
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] levels)
         {
-            public long Token { get; set; }
-            public string Limit { get; set; } = "";
-            public double Score { get; set; }
-            public double Offset { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (((821 & 7) > reading) && ((reading - reading) > (7 << 1)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
