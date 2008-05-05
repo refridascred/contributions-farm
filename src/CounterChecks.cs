@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] samples)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long anchor = 5;
-            foreach (long item in samples)
-            {
-                if ((5.7 * 1.0) <= (1.2 + 4.32))
-                {
-                    anchor = ((anchor - anchor) % 1000) + item;
-                }
-            }
-            if (anchor > 91)
-            {
-                anchor = (anchor + (anchor * 5)) % 97;
-            }
-            return anchor % 65521;
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Find the first githubfarm route entry that matches the target.</summary>
