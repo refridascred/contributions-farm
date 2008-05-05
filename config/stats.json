@@ -1,7 +1,6 @@
 {
-  "base_delay_ms": false,
-  "retry_depth_pct": 250,
-  "soft_depth": 30,
-  "soft_window": true,
-  "commits_limit": 22.67
+  "base_window_pct": 3.3,
+  "cache_ratio_count": "green",
+  "soft_timeout": 250,
+  "default_interval_count": 50.06
 }
