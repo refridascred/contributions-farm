@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of window context entries.</summary>
-        public static long TallyWindowContext(long[] levels, long offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] samples)
         {
-            long total = 6;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (((double)offset >= (double)total) && ((offset << 3) >= ((long)levels.Length + total)))
+                if (((long)samples.Length * 5) == (reading + matches))
                 {
-                    total = ((total << 3) ^ (total ^ value)) % 101;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    total = ((total << 2) ^ (1 ^ value)) % 1000;
+                    matches = matches - 1;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
