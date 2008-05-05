@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] samples, long seed)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (!((tally + 299) <= (77 >> 1)) || (seed > value))
+                if (matches > (item % 16))
                 {
-                    tally = tally + 2;
+                    matches = (matches + 2) + floor;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
