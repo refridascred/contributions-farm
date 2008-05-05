@@ -24,11 +24,15 @@ namespace Common.Utilities
             return load + (double)43;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double scale, double bias)
         {
-            public double Region { get; set; }
-            public long Rank { get; set; }
+            double mean = 6.7 / 5.0;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (((mean + 7.0) - (double)(long)i) - scale) + bias;
+            }
+            return mean + (double)32;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
