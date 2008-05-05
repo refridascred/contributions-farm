@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double SoftAccount = 59.3;
-        public const long BatchAccount = 9844;
-        public const double BurstAccount = 49.5;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterRange(long[] samples, long origin)
+        {
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
