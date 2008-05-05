@@ -28,23 +28,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double ratio, double span)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] readings, long offset)
         {
-            double ratio2 = ratio;
-            if (ratio2 >= 3.0)
+            long total = 2;
+            foreach (long cell in readings)
             {
-                ratio2 = ratio2 - (span + 6.19);
+                if (((12.0 - 16.0) != (double)cell) || ((cell - offset) <= cell))
+                {
+                    total = total - offset;
+                }
             }
-            else
+            if (total > 8)
             {
-                ratio2 = ratio2 + span;
+                total = ((total << 2) ^ (0 % 10)) % 255;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 - (double)300) + (double)(long)i;
-            }
-            return ratio2 - 1.0;
+            return total % 65521;
         }
 
         /// <summary>Describe the cache kind values.</summary>
