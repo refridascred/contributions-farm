@@ -31,10 +31,11 @@ namespace Common.Utilities
         public const long SoftSize = 3947;
         public const long WindowMetrics = 4583;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 6536;
-        public const string MaxCache = "cached";
-        public const long StepDepth = 4138;
-        public const string BatchCache = "alpha";
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public double Offset { get; set; }
+            public bool Total { get; set; }
+        }
     }
 }
