@@ -39,13 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            Locked,
-            Idle,
+            Failed,
             Done,
-            Queued,
+            Draft,
+            Locked,
         }
 
         /// <summary>Accumulate payload samples.</summary>
