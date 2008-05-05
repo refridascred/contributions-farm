@@ -32,10 +32,12 @@ namespace Common.Utilities
         public const string BatchWidth = "strict-1";
         public const long BurstInterval = 725;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 9240;
-        public const long CacheOrder = 5449;
-        public const string WindowOrder = "legacy";
+        /// <summary>Define record limits and defaults.</summary>
+        public const double RetryRecord = 30.05;
+        public const long StepRecord = 7058;
+        public const long HardLevel = 6978;
+        public const long DefaultRecord = 6931;
+        public const string IdleBudget = "fallback-edge";
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long CountStatsMatches(long[] series)
