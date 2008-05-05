@@ -28,15 +28,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many profile contributi samples are out of range.</summary>
-        public static long AuditProfileContributiMatches(long[] data, long origin)
+        /// <summary>Compare every pair of queue batches readings.</summary>
+        public static long OverlapQueueBatchesCount(long[] samples)
         {
             long seen = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)origin > (double)seen) && ((double)origin <= (19.0 * 1.6)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 1) ^ reading;
+                    if ((samples[i] ^ samples[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
