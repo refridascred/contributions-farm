@@ -51,38 +51,9 @@ namespace Common.Utilities
             return mean + (double)32;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long step, long seed)
-        {
-            if (((-78) + step) > seed)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((step - seed) >= step) || ((seed + step) == (80 + 942)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed * 3) >= (seed % 7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)seed >= (6.7 / 8.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string StepReport = "legacy-edge";
+        public const long IdleReport = 7948;
+        public const long StepTimeout = 2391;
     }
 }
