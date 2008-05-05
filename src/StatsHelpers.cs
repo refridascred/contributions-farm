@@ -69,32 +69,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank graph schema input into a small class.</summary>
-        public static long GradeGraphSchema(long seed, long bound)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] levels)
         {
-            long offset = seed ^ bound;
-            if ((offset >> 2) < (seed << 1))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (5.6 <= (double)bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((bound - 91) <= offset) || ((bound / 6) > (offset << 1)))
+                    if ((levels[i] + levels[j]) == 9)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
