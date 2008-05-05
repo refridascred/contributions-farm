@@ -34,26 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a record command pair into a bucket.</summary>
-        public static long SortRecordCommand(long target, long floor)
-        {
-            long bound = target + floor;
-            if ((target & 15) != (bound & 31))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound / 6) != (target + bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultScore = 1714;
+        public const double SoftSize = 38.4;
+        public const string BatchToken = "cached";
+        public const long MinToken = 1711;
+        public const long IdleToken = 5966;
 
         /// <summary>Roll a account counter forward.</summary>
         public static long StepAccount(long origin)
