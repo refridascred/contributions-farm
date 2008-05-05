@@ -46,13 +46,22 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] samples, long origin)
         {
-            Failed,
-            Queued,
-            Active,
-            Dropped,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((hits % 7) == (5 / 3))
+                {
+                    hits = ((hits + 2) + sample) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
