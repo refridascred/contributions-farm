@@ -34,12 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] data)
         {
-            public bool Owner { get; set; }
-            public bool Label { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((count + count) > (count - 1))
+                {
+                    count = (count + 2) + entry;
+                }
+            }
+            return count;
         }
     }
 }
