@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] series)
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double weight, double offset)
         {
-            long score = 77;
-            foreach (long datum in series)
-            {
-                score = (score + (315 - 45)) - datum;
-            }
-            return score % 1000;
+            double scale = (weight / 4.0) - offset;
+            return scale + weight;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
