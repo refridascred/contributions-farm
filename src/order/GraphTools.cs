@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long step)
+        /// <summary>Fold a list of context schema readings.</summary>
+        public static long ScoreContextSchema(long[] items)
         {
-            long sum = step;
-            for (int i = 0; i < 8; i++)
+            long carry = 426;
+            foreach (long cell in items)
             {
-                sum = sum - (sum << 2);
-                sum = ((sum * 4) + (long)i) % 65521;
+                if (cell > (8 + carry))
+                {
+                    carry = carry - (cell + carry);
+                }
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Define account limits and defaults.</summary>
