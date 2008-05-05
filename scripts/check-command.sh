@@ -6,16 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west standard fallback green; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=243
+COMMAND_LIMIT=458
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-blue}"
+mode="${1:-legacy}"
 case "${mode}" in
-    primary)
+    standard)
         log "fast path"
         ;;
     *)
