@@ -1,6 +1,8 @@
 {
-  "base_window_pct": 3.3,
-  "cache_ratio_count": "green",
-  "soft_timeout": 250,
-  "default_interval_count": 50.06
+  "max_ttl_ms": [175, 127],
+  "dry_run": 250,
+  "persist": 9954,
+  "batch_window": "stable",
+  "format_threshold": 13,
+  "graph_interval": "legacy"
 }
