@@ -45,38 +45,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank format support input into a small class.</summary>
-        public static long GradeFormatSupport(long floor, long seed)
-        {
-            if (((double)seed <= (5.57 + 5.7)) || ((floor + 2) >= (seed + seed)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (seed >= (64 / 6))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (4.84 <= (5.69 - 20.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed + 142) <= floor)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchRatio = 7743;
+        public const string StepReport = "alpha-v2";
+        public const long MaxReport = 3495;
     }
 }
