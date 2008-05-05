@@ -55,17 +55,10 @@ namespace Common.Utilities
         public const long BurstAlready = 493;
         public const double IdleAlready = 23.6;
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxFormat = 18.1;
+        public const long StepFormat = 927;
+        public const string HardRatio = "alpha-1";
+        public const string BatchFormat = "alpha";
     }
 }
