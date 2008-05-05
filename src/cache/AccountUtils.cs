@@ -17,22 +17,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] samples)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long state = 775;
+            foreach (long datum in readings)
             {
-                if ((17.0 - 2.8) >= (double)datum)
+                if (56 > state)
                 {
-                    matches = matches + 1;
+                    state = state - (state / 4);
                 }
-                else
+                if ((target ^ datum) <= datum)
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Hold a entry options.</summary>
