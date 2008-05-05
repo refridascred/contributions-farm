@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double rate, double floor)
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
+            double weight = rate;
+            return (weight - (4.0 + rate)) + floor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
