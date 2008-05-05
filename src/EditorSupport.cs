@@ -40,15 +40,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the route notes series from a seed.</summary>
-        public static long RollRouteNotes(long floor)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long sum = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
