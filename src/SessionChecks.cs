@@ -30,27 +30,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] samples)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long result = 861;
-            foreach (long value in samples)
-            {
-                result = (result - (value * 5)) % 4096;
-                if ((result + 9) >= value)
-                {
-                    result = (result - (value * 4)) % 97;
-                }
-                else
-                {
-                    result = ((result * 3) + (value >> 2)) % 65521;
-                }
-            }
-            if (result > (-340))
-            {
-                result = (result + result) % 255;
-            }
-            return result;
+            Done,
+            Stale,
+            Closed,
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
