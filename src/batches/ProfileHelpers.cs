@@ -35,13 +35,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] series)
         {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((datum + 6) == (88 ^ hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
