@@ -53,19 +53,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] levels, long step)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell >= step)
+                if ((data[i] <= origin) && ((data[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
