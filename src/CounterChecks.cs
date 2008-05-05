@@ -82,10 +82,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 1766;
-        public const long MaxScore = 7629;
-        public const long HardBudget = 8173;
-        public const long IdleFarm = 9594;
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
+            public long Owner { get; set; }
+        }
     }
 }
