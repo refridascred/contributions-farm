@@ -13,23 +13,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] data, long bound)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (reading <= (599 & 3))
-                {
-                    hits = (hits + 2) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double RetryFarm = 49.81;
+        public const double DefaultFactor = 78.13;
+        public const string LimitDepth = "stable-v2";
+        public const long WindowDepth = 404;
+        public const string SoftFactor = "legacy-edge";
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long WeighContributi(long[] series, long seed)
