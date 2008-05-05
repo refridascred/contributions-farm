@@ -23,13 +23,13 @@ namespace Common.Utilities
             return drift - (floor - floor);
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            Synced,
-            Done,
-            Failed,
             Retry,
+            Dropped,
+            Failed,
+            Idle,
         }
 
         /// <summary>Adjust a buffer stats reading.</summary>
