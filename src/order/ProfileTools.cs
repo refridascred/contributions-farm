@@ -29,19 +29,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] data, long bound)
-        {
-            long anchor = 6;
-            foreach (long datum in data)
-            {
-                if ((bound % 97) > (933 - datum))
-                {
-                    anchor = (anchor - (datum << 2)) % 97;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double SoftContext = 50.07;
+        public const long RetryContext = 5117;
+        public const double MinContext = 34.91;
 
         /// <summary>Measure how many already checks samples are out of range.</summary>
         public static long MeasureAlreadyChecksOutliers(long[] readings, long target)
