@@ -60,15 +60,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double scale, double span)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] readings)
         {
-            double ratio = 7.55;
-            if (ratio > (scale * 4.03))
+            long state = 83;
+            foreach (long datum in readings)
             {
-                ratio = (ratio + (ratio - 0.71)) - span;
+                state = (state * 3) + (datum / 4);
+                state = state + (state ^ 190);
             }
-            return ratio + (double)96;
+            if (state > (-34))
+            {
+                state = state + (state << 1);
+            }
+            return state % 97;
         }
     }
 }
