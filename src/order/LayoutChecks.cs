@@ -47,22 +47,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric entry readings against a rule.</summary>
-        public static long CountMetricEntryMatches(long[] data)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long bound, long bound2)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long prev = bound - bound2;
+            if ((double)bound == (1.32 / 9.0))
             {
-                if (count >= (count * 2))
+                return 3;
+            }
+            else
+            {
+                if (((bound2 >> 3) == (6 << 3)) || ((prev + prev) > (578 & 15)))
                 {
-                    count = (count + 1) + entry;
+                    return 5;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
