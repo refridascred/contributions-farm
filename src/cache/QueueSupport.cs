@@ -26,11 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            Closed,
-            Idle,
+            Active,
+            Stale,
+            Locked,
             Synced,
         }
 
