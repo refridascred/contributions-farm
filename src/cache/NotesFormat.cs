@@ -48,17 +48,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a format githubfarm reading by value.</summary>
-        public static long LocateFormatGithubfarmIndex(long[] series, long bound)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (series[i] < bound)
+                if (tally >= (reading + tally))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
