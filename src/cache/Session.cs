@@ -14,11 +14,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinRatio = 3570;
-        public const double MinLevel = 79.95;
-        public const long MinBuffer = 9892;
-        public const string RetryBuffer = "local-v2";
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] samples, long target)
+        {
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Derive the next counter account value from a seed.</summary>
         public static long StepCounterAccount(long bound)
