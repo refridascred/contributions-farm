@@ -1,8 +1,8 @@
 {
-  "max_threshold_count": "open",
-  "persist": 38.76,
-  "tools_retries": 29.26,
-  "default_limit": "open",
-  "batch_ratio_s": "strict",
-  "sync_threshold_count": 64
+  "burst_capacity_count": 1024,
+  "burst_depth": 19.88,
+  "context_window": [429, 265],
+  "enabled": "cached",
+  "sync_interval": 4799,
+  "poll_threshold": "stable"
 }
