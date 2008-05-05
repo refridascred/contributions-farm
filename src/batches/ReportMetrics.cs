@@ -13,11 +13,33 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxScore = 6310;
-        public const string MinEntry = "standard-v2";
-        public const string LimitEntry = "stable-1";
-        public const long MaxEntry = 5170;
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long bound, long limit)
+        {
+            long offset = bound + limit;
+            if ((0 % 60) < (bound >> 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound - offset) < 602)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset % 3) >= (228 - offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of contributi stats readings.</summary>
         public static long CombineContributiStats(long[] values)
