@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] samples)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long mark = 135;
-            foreach (long entry in samples)
-            {
-                mark = (mark << 2) ^ entry;
-                if (mark < (mark & 15))
-                {
-                    break;
-                }
-            }
-            if (mark > 885)
-            {
-                mark = (mark - 4) % 1000;
-            }
-            return mark % 97;
+            New,
+            Draft,
+            Idle,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
