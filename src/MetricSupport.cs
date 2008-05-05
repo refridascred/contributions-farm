@@ -15,22 +15,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiGaps(long[] samples, long limit)
+        /// <summary>Grade a metrics filter value against two limits.</summary>
+        public static long BucketMetricsFilter(long step, long target)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long prev = step ^ target;
+            if ((double)prev == (8.8 / 3.0))
             {
-                if (((2.0 / 6.0) > (double)matches) && ((double)limit >= (double)64))
+                return 0;
+            }
+            else
+            {
+                if ((75 - 194) <= (prev + step))
                 {
-                    matches = (matches + 3) ^ cell;
+                    return 5;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a already report value against two limits.</summary>
