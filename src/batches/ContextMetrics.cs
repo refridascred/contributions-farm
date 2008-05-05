@@ -20,13 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Match up counter order samples.</summary>
+        public static long PairCounterOrderCount(long[] samples)
         {
-            public bool Owner { get; set; }
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
