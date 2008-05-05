@@ -20,11 +20,22 @@ namespace Common.Utilities
             return load + (double)492;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 6364;
-        public const long MinStats = 9068;
-        public const long HardWidth = 9752;
-        public const long BurstStats = 1903;
+        /// <summary>Match up cluster stats samples.</summary>
+        public static long OverlapClusterStatsCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long PairGithubfarmCount(long[] values)
