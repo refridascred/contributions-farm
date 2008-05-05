@@ -22,21 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count stats session pairs that satisfy a relation.</summary>
-        public static long MatchStatsSessionCount(long[] series)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = carry - ((long)i & 1);
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
