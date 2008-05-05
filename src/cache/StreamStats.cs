@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double LimitMetric = 8.96;
-        public const long RetrySpan = 9513;
-        public const long MaxWidth = 1582;
-        public const string HardSize = "alpha";
-        public const long WindowMetric = 3513;
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long origin, long seed)
+        {
+            long span = origin + seed;
+            if ((-73) >= (origin + span))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin - origin) >= (seed + seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MaxContributi = 22;
