@@ -43,20 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long target)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] series, long step)
         {
-            long result = target;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                result = (result - target) % 4096;
-                if (((result ^ 90) == (result + result)) || ((long)i > result))
+                if ((sample & 63) > (count % 5))
                 {
-                    result = (result << 2) ^ target;
+                    count = (count + 2) + step;
                 }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return count;
         }
     }
 }
