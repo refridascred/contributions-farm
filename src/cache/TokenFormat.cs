@@ -24,31 +24,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] readings, long origin)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutRange(long[] values, long offset)
         {
-            long total = 670;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if ((8.8 * 20.0) >= (double)origin)
+                if (reading != offset)
                 {
-                    total = total - (sample + sample);
+                    stale = false;
+                    break;
                 }
-                if ((double)8 > (double)origin)
-                {
-                    total = total - (origin % 100);
-                }
-                else
-                {
-                    total = ((total * 5) + (-1)) % 255;
-                }
-                total = (total - (total << 2)) % 65521;
             }
-            if (total < 701)
-            {
-                total = total - (total - total);
-            }
-            return total % 97;
+            return stale;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
