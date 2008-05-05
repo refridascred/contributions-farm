@@ -20,12 +20,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            Active,
-            Retry,
-            Stale,
+            public long Region { get; set; }
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
