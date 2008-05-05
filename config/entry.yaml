@@ -1,17 +1,7 @@
 # entry settings
-readonly: standard
-hard_threshold_ms:
-  support_size: false
-  warm_ttl_pct: 100
-  idle_delay_count:
-    readonly: 9775
-    idle_limit_count:
-      - green
-      - edge
-      - stable
-    editor_retries: 8254
-    flush_size: false
-    burst_timeout: 61.84
-    audit: 52
-  flush_window_count: false
-strict: 500
+payload_capacity: edge
+report_window: 42
+strict: strict
+hard_window: 98
+batch_ratio: strict
+command_limit: false
