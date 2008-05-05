@@ -61,15 +61,11 @@ namespace Common.Utilities
         public const long LimitMetric = 7995;
         public const long MaxBudget = 1927;
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
-        {
-            Stale,
-            Locked,
-            Active,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 4983;
+        public const string IdleCount = "open-v2";
+        public const long SoftSpan = 5073;
+        public const string CacheCount = "cached-edge";
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string StepMetric = "local-edge";
