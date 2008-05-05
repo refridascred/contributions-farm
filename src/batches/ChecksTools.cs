@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the checks batches entries that pass the check.</summary>
-        public static long MeasureChecksBatchesOutliers(long[] items)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long mix = 75;
+            foreach (long reading in data)
             {
-                if (!((hits * 5) > (reading & 3)) && ((612 << 3) > (990 ^ hits)))
+                mix = (mix + (mix + reading)) % 4096;
+                if (reading > (reading >> 5))
                 {
-                    hits = hits + 3;
+                    mix = ((mix * 4) + (reading & 127)) % 1000;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (99 << 3)) % 97;
                 }
             }
-            return hits;
+            if (mix > 36)
+            {
+                mix = mix + ((long)data.Length * 3);
+            }
+            return mix;
         }
 
         /// <summary>Define report limits and defaults.</summary>
