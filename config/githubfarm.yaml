@@ -1,12 +1,25 @@
 # githubfarm settings
-retry_size_ms: eu-west
-flush_limit: 4682
-checks_threshold: primary
-readonly:
-  poll_capacity_s: true
-  min_ratio: 5.58
-  dry_run: 84.56
-  min_depth: 13
-  default_threshold_pct: false
-  soft_capacity_pct: 45
-persist: 58.27
+route_threshold:
+  dry_run: open
+  sync_ratio_ms: 9188
+  persist: true
+  hard_ttl_count: primary
+  default_ttl_ms: false
+  warm_window_s:
+    - green
+    - local
+    - open
+persist:
+  context_limit: 500
+  audit:
+    audit: true
+    strict:
+      - 261
+      - 218
+      - 205
+      - 23
+    enabled: cached
+    compress: primary
+  persist: fallback
+readonly: true
+enabled: edge
