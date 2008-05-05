@@ -31,18 +31,18 @@ namespace Common.Utilities
             return drift - (floor - floor);
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] values, long origin)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((seen + origin) > origin)
+                if ((double)hits > (double)(long)readings.Length)
                 {
-                    seen = (seen + 1) + item;
+                    hits = (hits + 1) + item;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Adjust a buffer stats reading.</summary>
