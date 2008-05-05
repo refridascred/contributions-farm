@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric helpers.</summary>
     public static class Metric
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowInterval = 3802;
-        public const long WindowToken = 9779;
-        public const long BurstToken = 7686;
-        public const long BurstBudget = 8557;
+        /// <summary>Measure how many filter queue samples are out of range.</summary>
+        public static long TallyFilterQueueOutliers(long[] data, long floor)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((floor << 2) >= (datum * 2))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long RankChecks(long step, long limit)
