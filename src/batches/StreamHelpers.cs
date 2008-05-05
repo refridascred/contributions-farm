@@ -45,10 +45,20 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitInterval = 5847;
-        public const double HardCount = 61.96;
-        public const string BaseSpan = "latest-1";
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if (((floor & 63) < floor) && ((20.0 / 5.0) >= (4.43 - 1.6)))
+                {
+                    mix = mix + (mix ^ mix);
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many stats record samples are out of range.</summary>
         public static long AuditStatsRecordOutliers(long[] readings, long bound)
