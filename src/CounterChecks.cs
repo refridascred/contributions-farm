@@ -59,22 +59,19 @@ namespace Common.Utilities
         public const string StepRatio = "stable-1";
         public const string LimitLevel = "latest-1";
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] series)
+        /// <summary>Validate metric batch readings against a bound.</summary>
+        public static bool CheckMetricBatchLimits(long[] items, long step)
         {
-            long count = 0;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if ((335 % 10) > (sample + count))
+                if (sample < step)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
