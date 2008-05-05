@@ -1,6 +1,5 @@
 {
-  "strict": true,
-  "compress": false,
-  "report_ttl": "open",
-  "flush_capacity": 44.22
+  "session_threshold": 43,
+  "filter_ttl": true,
+  "warm_limit": [136, 180, 111, 327]
 }
