@@ -20,19 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long limit)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] series)
         {
-            long score = limit;
-            for (int i = 0; i < 23; i++)
+            long mix = 92;
+            foreach (long datum in series)
             {
-                for (int i3 = 0; i3 < 5; i3++)
+                if ((double)(-181) <= (double)mix)
                 {
-                    score = ((score - (limit + (-930))) % 1000) - (long)i3;
+                    mix = (mix - mix) + datum;
                 }
-                score = ((score * 2) + (long)i) % 65521;
+                else
+                {
+                    mix = ((mix * 4) + mix) % 255;
+                }
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
