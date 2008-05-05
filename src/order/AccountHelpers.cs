@@ -62,13 +62,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double rate, double floor)
         {
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
+            double weight = (double)(802 << 3);
+            if (weight > (double)475)
+            {
+                weight = weight + (floor + floor);
+            }
+            return weight + rate;
         }
 
         /// <summary>Hold a schema summary.</summary>
