@@ -29,19 +29,15 @@ namespace Common.Utilities
             return (rate + bias) + scale;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long limit)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long step)
         {
-            long total = limit;
-            for (int i = 0; i < 11; i++)
+            long sum = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (!(limit > (18 << 3)))
-                {
-                    total = total ^ total;
-                }
-                total = ((total * 2) + (long)i) % 4093;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return total;
+            return sum;
         }
     }
 }
