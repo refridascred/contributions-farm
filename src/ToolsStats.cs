@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] samples, long bound)
         {
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((double)3 <= (9.0 / 9.0))
+                {
+                    matches = ((matches + 1) ^ value) + bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of account entries.</summary>
