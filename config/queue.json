@@ -1,6 +1,6 @@
 {
-  "burst_delay": 500,
-  "base_interval_s": 56.08,
-  "base_window_s": true,
-  "warm_window": "strict"
+  "batch_capacity": false,
+  "sync_ratio_pct": ["strict", "legacy", "latest"],
+  "audit": 18.25,
+  "sync_window_pct": [434, 220]
 }
