@@ -55,11 +55,28 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinAccount = 7.16;
-        public const long MaxCount = 7550;
-        public const long WindowDepth = 879;
-        public const double BurstAccount = 22.78;
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] levels, long seed)
+        {
+            long carry = 865;
+            foreach (long reading in levels)
+            {
+                carry = (carry << 3) ^ (carry - seed);
+                if ((carry - carry) >= reading)
+                {
+                    carry = carry + (seed + 185);
+                }
+                else
+                {
+                    carry = ((carry * 5) + carry) % 101;
+                }
+                if (((8.71 - 1.0) >= (double)seed) || ((seed / 5) < carry))
+                {
+                    carry = ((carry * 4) + 4) % 101;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long MatchRouteCount(long[] values)
