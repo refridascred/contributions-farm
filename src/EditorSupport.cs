@@ -45,13 +45,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
-        {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BurstNotes = "strict-1";
+        public const double MaxNotes = 22.2;
+        public const double RetryNotes = 87.0;
 
         /// <summary>Audit session schema readings against a rule.</summary>
         public static long CountSessionSchemaHits(long[] values)
