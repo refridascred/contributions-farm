@@ -44,12 +44,14 @@ namespace Common.Utilities
             return scale + (20.0 - 8.59);
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 1863;
-        public const long DefaultContributi = 4411;
-        public const long MinContributi = 1535;
-        public const string MinSpan = "latest-v2";
-        public const string HardContributi = "alpha-edge";
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Failed,
+            Paused,
+            Queued,
+            Dropped,
+        }
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long TallyTools(long[] values)
