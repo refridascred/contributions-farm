@@ -1,12 +1,19 @@
 {
-  "batch_ttl_ms": false,
-  "cache_delay": {
-    "verbose": 5626,
-    "soft_threshold": "open",
-    "compress": 1584,
-    "record_delay": "cached"
+  "min_ratio": "fallback",
+  "report_delay": {
+    "buffer_interval": true,
+    "min_timeout_pct": 14.22,
+    "schema_size": 24.41,
+    "default_ratio_count": {
+      "base_size_ms": 1024,
+      "record_timeout": "stable",
+      "report_window": 71.45,
+      "route_size": false,
+      "default_retries_pct": false,
+      "strict": 100
+    }
   },
-  "counter_retries": "blue",
-  "compress": ["blue", "standard", "standard"],
-  "flush_size": 6951
+  "poll_ttl": false,
+  "default_timeout_ms": 86,
+  "flush_interval_count": true
 }
