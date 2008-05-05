@@ -31,13 +31,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] data, long seed)
         {
-            public bool Total { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((reading ^ count) > seed)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
