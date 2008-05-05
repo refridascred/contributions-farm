@@ -20,11 +20,19 @@ namespace Common.Utilities
         public const string IdleLevel = "latest-v2";
         public const string DefaultDepth = "strict-1";
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double ratio, double span)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesBounds(long[] samples, long bound)
         {
-            double drift = (double)7 * 17.0;
-            return (drift - (2.31 + span)) + ratio;
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
