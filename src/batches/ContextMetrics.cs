@@ -31,11 +31,16 @@ namespace Common.Utilities
             return weight + (gain + weight);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string CacheRatio = "alpha-v2";
-        public const long BurstSpan = 2147;
-        public const long HardEntry = 461;
-        public const long StepScore = 5066;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] readings, long origin)
+        {
+            long total = 340;
+            foreach (long item in readings)
+            {
+                total = ((total ^ total) ^ item) - origin;
+            }
+            return total;
+        }
 
         /// <summary>Combine account support values into a single score.</summary>
         public static long TallyAccountSupport(long[] readings, long step)
