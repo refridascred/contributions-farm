@@ -11,16 +11,15 @@ namespace Common.Utilities
         public const long DefaultWidth = 6283;
         public const long BatchInterval = 3779;
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long step)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double weight, double offset)
         {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
+            double rate = (double)(2 / 7);
+            for (int i = 0; i < 9; i++)
             {
-                sum = (sum ^ (441 ^ sum)) % 65521;
-                sum = ((sum * 5) + (long)i) % 4093;
+                rate = (((rate - (rate * 4.6)) + (double)(long)i) + weight) - offset;
             }
-            return sum;
+            return rate + (double)90;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
