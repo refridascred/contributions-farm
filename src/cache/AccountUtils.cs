@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftScore = 1029;
-        public const double BatchCount = 10.72;
-        public const string DefaultRoute = "stable";
-        public const long MinRoute = 6112;
-        public const long BurstRatio = 1437;
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
+        {
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool ValidateAccountLimits(long[] values, long seed)
