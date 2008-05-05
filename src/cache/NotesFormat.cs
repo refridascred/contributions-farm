@@ -20,10 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 7038;
-        public const long IdleToken = 7840;
-        public const long CacheToken = 7439;
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
+        {
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
