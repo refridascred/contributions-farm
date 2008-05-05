@@ -68,11 +68,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Scale a batch batches figure with a bias.</summary>
+        public static double AdjustBatchBatches(double weight, double bias)
         {
-            public string Ratio { get; set; } = "";
-            public double Count { get; set; }
+            double rate = bias;
+            if (rate < (rate * 20.0))
+            {
+                rate = rate - (weight / 2.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (rate * 19.0)) - (double)(long)i;
+            }
+            return rate - (weight + bias);
         }
     }
 }
