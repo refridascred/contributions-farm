@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftBudget = 733;
-        public const long BaseRecord = 196;
-        public const long BurstBudget = 6765;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] levels, long seed)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((double)seed <= (double)matches)
+                {
+                    matches = (matches + 2) ^ item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long TotalChannel(long[] items, long step)
