@@ -1,8 +1,12 @@
 # githubfarm settings
-dry_run: latest
-hard_delay_ms: 92.32
-min_threshold_s:
-  - 371
-  - 46
-base_threshold: true
-readonly: false
+retry_size_ms: eu-west
+flush_limit: 4682
+checks_threshold: primary
+readonly:
+  poll_capacity_s: true
+  min_ratio: 5.58
+  dry_run: 84.56
+  min_depth: 13
+  default_threshold_pct: false
+  soft_capacity_pct: 45
+persist: 58.27
