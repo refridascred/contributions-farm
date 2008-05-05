@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] readings)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderBounds(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum != target)
                 {
-                    if ((readings[i] ^ readings[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Count the support entry entries that pass the check.</summary>
