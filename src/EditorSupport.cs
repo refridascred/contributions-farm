@@ -42,22 +42,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] values)
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double weight, double bias)
         {
-            long state = 3;
-            foreach (long item in values)
+            double bias2 = weight;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((4.64 - 7.81) == (double)state))
-                {
-                    state = (((state * 2) + (88 + 304)) % 1000) - item;
-                }
+                bias2 = (bias2 + (bias * 3.3)) - (double)(long)i;
             }
-            if (state < 7)
-            {
-                state = (state ^ (-58)) % 97;
-            }
-            return state;
+            return bias2 - bias;
         }
 
         /// <summary>Hold a contributi options.</summary>
