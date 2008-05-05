@@ -1,5 +1,6 @@
 {
-  "session_threshold": 43,
-  "filter_ttl": true,
-  "warm_limit": [136, 180, 111, 327]
+  "burst_threshold": "standard",
+  "enabled": 0.75,
+  "max_limit_count": "staging",
+  "warm_timeout_s": "primary"
 }
