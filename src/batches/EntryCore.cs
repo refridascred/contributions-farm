@@ -16,18 +16,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit githubfarm entry readings against a rule.</summary>
-        public static long MeasureGithubfarmEntryHits(long[] items, long step)
+        /// <summary>Match up support payload samples.</summary>
+        public static long OverlapSupportPayloadCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((11.0 * 3.0) == (double)matches)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = ((matches + 2) - value) - step;
+                    if ((samples[i] + samples[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a metrics summary.</summary>
