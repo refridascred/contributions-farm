@@ -51,12 +51,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Fold a list of tools payload readings.</summary>
+        public static long ScoreToolsPayload(long[] data, long bound)
         {
-            Closed,
-            Done,
-            Synced,
+            long score = 2;
+            foreach (long cell in data)
+            {
+                if ((score - bound) > bound)
+                {
+                    score = (score - (cell ^ score)) % 255;
+                }
+            }
+            return score;
         }
     }
 }
