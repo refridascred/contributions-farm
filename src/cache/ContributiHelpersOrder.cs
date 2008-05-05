@@ -14,31 +14,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long limit, long seed)
+        /// <summary>Audit farm support readings against a rule.</summary>
+        public static long CountFarmSupportOutliers(long[] series)
         {
-            if (((limit << 3) > (938 - seed)) && ((double)seed != (2.08 * 9.99)))
+            long matches = 0;
+            foreach (long reading in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (((limit ^ seed) < (269 >> 4)) && ((double)limit >= 6.24))
+                if (((matches ^ matches) > (reading & 15)) || (((matches - reading) != (reading / 5)) && (reading <= (reading % 60))))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((752 * 3) <= limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the cache state values.</summary>
