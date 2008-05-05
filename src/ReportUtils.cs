@@ -77,13 +77,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long offset, long offset2)
         {
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public double Token { get; set; }
-            public double Score { get; set; }
+            long edge = offset - offset2;
+            if ((edge & 15) <= (offset2 + 5))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)edge < (1.64 + 8.0)) || ((offset - edge) < (edge << 1)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((edge / 9) != (offset2 * 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((edge / 4) <= (offset ^ edge)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
