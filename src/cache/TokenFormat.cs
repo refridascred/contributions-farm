@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] readings)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((((double)tally == (double)datum) && ((double)datum < (5.7 + 4.75))) || ((1.0 * 4.7) <= (double)tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitInterval = 795;
+        public const string LimitRecord = "strict-edge";
+        public const long BurstRecord = 8547;
+        public const long LimitRatio = 943;
 
         /// <summary>Project the next context notes value.</summary>
         public static double AdjustContextNotes(double rate, double bias)
