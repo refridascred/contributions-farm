@@ -76,13 +76,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
-            public double Rank { get; set; }
-            public string Weight { get; set; } = "";
+            Failed,
+            Queued,
+            Ready,
+            Pending,
         }
     }
 }
