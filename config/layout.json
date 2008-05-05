@@ -1,7 +1,12 @@
 {
-  "max_delay": "legacy",
-  "max_retries": "legacy",
-  "min_capacity_count": 5473,
-  "max_interval": 24.04,
-  "soft_depth_ms": 67.96
+  "batch_window_ms": 17,
+  "flush_ratio_s": {
+    "max_timeout_s": ["latest", "legacy", "primary", "blue"],
+    "cluster_retries": "green",
+    "warm_threshold": [255, 487],
+    "checks_window": true,
+    "min_size": false,
+    "farm_window": "latest"
+  },
+  "retry_interval": "cached"
 }
