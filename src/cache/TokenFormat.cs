@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double weight, double offset)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] readings)
         {
-            double scale = (weight / 4.0) - offset;
-            return scale + weight;
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((((double)tally == (double)datum) && ((double)datum < (5.7 + 4.75))) || ((1.0 * 4.7) <= (double)tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
