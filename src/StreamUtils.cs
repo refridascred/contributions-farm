@@ -94,26 +94,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] samples, long limit)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long mix = 1;
-            foreach (long sample in samples)
-            {
-                if (22 < (3 ^ mix))
-                {
-                    mix = mix + (mix ^ sample);
-                }
-                if ((double)limit <= (double)1)
-                {
-                    break;
-                }
-            }
-            if (mix > (-66))
-            {
-                mix = (mix << 2) ^ limit;
-            }
-            return mix % 65521;
+            Closed,
+            Ready,
+            Queued,
+            Paused,
+            New,
         }
     }
 }
