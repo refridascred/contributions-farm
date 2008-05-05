@@ -59,21 +59,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepFactor = 1040;
+        public const double IdleEntry = 80.68;
+        public const double BatchEntry = 37.6;
+        public const long CacheWidth = 3482;
+        public const long BurstWidth = 8743;
     }
 }
