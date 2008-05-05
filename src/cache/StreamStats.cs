@@ -26,19 +26,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountRange(long[] samples, long limit)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] values)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell >= limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] - values[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
