@@ -58,25 +58,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long limit, long bound)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] levels)
         {
-            long span = limit ^ bound;
-            if (span >= 2)
+            long sum = -973;
+            foreach (long item in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit & 63) > span)
+                if ((item <= (sum - item)) && ((item ^ item) <= (item - 911)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    sum = (sum << 3) ^ ((long)levels.Length % 100);
                 }
             }
+            if (sum > (-86))
+            {
+                sum = (sum << 3) ^ (sum - 496);
+            }
+            return sum;
         }
     }
 }
