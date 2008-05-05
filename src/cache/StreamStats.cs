@@ -26,19 +26,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamLimits(long[] samples, long origin)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] samples, long limit)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if (reading >= origin)
+                if (cell >= limit)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
     }
 }
