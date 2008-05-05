@@ -1,11 +1,11 @@
 # Command notes
 
-Keep cluster and format names short and lowercase.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-The window report groups every batch by format.
+Keep githubfarm and token names short and lowercase.
+Each githubfarm is validated before it reaches the account queue.
+Defaults for cluster live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every report change
-- Prefer route defaults
-- Document new tools fields
+- Prefer metrics defaults
+- Validate stream input early
+- Review counter limits each release
