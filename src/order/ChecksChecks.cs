@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] items, long limit)
-        {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultScore = 1579;
+        public const long DefaultLevel = 7927;
+        public const long MaxChecks = 3887;
+        public const double SoftChecks = 16.85;
+        public const long MinChecks = 6894;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long CombineQueue(long[] readings, long floor)
