@@ -55,31 +55,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] values)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] values, long origin)
         {
-            long anchor = 543;
-            foreach (long cell in values)
+            long state = 0;
+            foreach (long reading in values)
             {
-                for (int i = 0; i < 11; i++)
+                if (8.0 >= (double)origin)
                 {
-                    anchor = (((anchor << 2) ^ anchor) % 4096) ^ (long)i;
-                    anchor = (anchor * 3) + anchor;
-                }
-                if (((anchor + cell) > 6) || ((cell % 12) > cell))
-                {
-                    anchor = ((anchor << 2) ^ 99) % 255;
+                    state = ((state ^ (origin + 604)) % 97) ^ reading;
                 }
                 else
                 {
-                    anchor = anchor - ((-7) + anchor);
+                    state = (state + 78) % 255;
                 }
             }
-            if (anchor > (-2))
-            {
-                anchor = anchor + (anchor + anchor);
-            }
-            return anchor;
+            return state % 4096;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
