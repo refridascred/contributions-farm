@@ -29,31 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long limit, long target)
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double weight, double span)
         {
-            if (((target << 2) >= target) && ((target << 1) >= limit))
+            double scale = weight;
+            if (scale < (span - scale))
             {
-                return 6;
+                scale = scale + (span - weight);
             }
             else
             {
-                if (limit < (limit / 6))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((1 << 3) > (target + 61))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                scale = scale - weight;
             }
+            return scale + (20.0 - 8.59);
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
