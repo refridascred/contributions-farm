@@ -30,17 +30,18 @@ namespace Common.Utilities
         public const double StepOrder = 65.32;
         public const double BatchOrder = 41.83;
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] items, long offset)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] levels, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 72;
+            foreach (long sample in levels)
             {
-                if (items[i] < offset)
+                if ((9 & 7) == (limit * 4))
                 {
-                    return (long)i;
+                    mark = (mark << 2) ^ (mark ^ sample);
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
