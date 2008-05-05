@@ -28,22 +28,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheWidth = 8497;
+        public const long StepMetrics = 8757;
+        public const long CacheMetrics = 2723;
+        public const long SoftSize = 3947;
+        public const long WindowMetrics = 4583;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BaseCache = 6536;
