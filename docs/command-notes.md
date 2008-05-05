@@ -1,12 +1,12 @@
 # Command notes
 
-The cache helpers are pure functions, so they are safe to call from any thread.
-A report that stays idle for too long is moved to the account list.
-When a context fails, the filter handler retries a few times before giving up.
+The batch report groups every schema by profile.
+Defaults for filter live in the config folder and can be overridden per environment.
+When a command fails, the editor handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Keep githubfarm values small
-- Validate order input early
-- Log every record change
+- Review cluster limits each release
+- Validate contributi input early
+- Document new account fields
+- Prefer payload defaults
