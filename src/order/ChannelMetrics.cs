@@ -11,14 +11,19 @@ namespace Common.Utilities
         public const long DefaultWidth = 6283;
         public const long BatchInterval = 3779;
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Check that every counter stream entry stays within the limit.</summary>
+        public static bool ValidateCounterStreamLimits(long[] series, long limit)
         {
-            Paused,
-            Active,
-            Draft,
-            Synced,
-            Idle,
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
