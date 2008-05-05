@@ -29,12 +29,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            public string Stamp { get; set; } = "";
-            public double Size { get; set; }
-            public long Owner { get; set; }
+            Draft,
+            Dropped,
+            Pending,
         }
     }
 }
