@@ -40,21 +40,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long bound)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long total = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                total = (total ^ (total ^ 60)) % 1000;
-                if ((total ^ bound) <= (total / 6))
-                {
-                    total = total - total;
-                    total = ((total * 3) + bound) % 97;
-                }
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            Draft,
+            Failed,
+            Pending,
+            New,
         }
 
         /// <summary>Audit filter checks readings against a rule.</summary>
