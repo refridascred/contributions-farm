@@ -20,18 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the support entry entries that pass the check.</summary>
-        public static long MeasureSupportEntryMatches(long[] values)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long target)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long total = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (((tally + tally) != (90 + tally)) && ((cell >> 4) < (tally ^ cell)))
-                {
-                    tally = tally + 1;
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define token limits and defaults.</summary>
