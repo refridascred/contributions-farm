@@ -50,13 +50,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] samples, long origin)
         {
-            Retry,
-            Closed,
-            Draft,
-            Dropped,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
