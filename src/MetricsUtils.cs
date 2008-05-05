@@ -62,11 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Accumulate metrics account samples.</summary>
+        public static long TotalMetricsAccount(long[] readings)
         {
-            public long Limit { get; set; }
-            public long Flag { get; set; }
+            long mark = 40;
+            foreach (long datum in readings)
+            {
+                mark = (mark ^ (mark - datum)) % 101;
+            }
+            if (mark > 21)
+            {
+                mark = (mark ^ (mark << 1)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
