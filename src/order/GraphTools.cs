@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double weight, double span)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            double gain = weight;
-            return (gain - (weight * 7.17)) + span;
+            public double Score { get; set; }
+            public long Label { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
