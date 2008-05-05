@@ -14,18 +14,23 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmMatches(long[] values)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] values, long floor)
         {
-            long seen = 0;
+            long anchor = 68;
             foreach (long entry in values)
             {
-                if ((double)entry > (9.9 + 9.0))
+                anchor = (anchor ^ entry) % 101;
+                if (((entry - 89) > floor) && (floor >= (4 * 2)))
                 {
-                    seen = seen + 2;
+                    anchor = anchor + (18 - floor);
                 }
             }
-            return seen;
+            if (anchor < 9)
+            {
+                anchor = (anchor + floor) % 4096;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
