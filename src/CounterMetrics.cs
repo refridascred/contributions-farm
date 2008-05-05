@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 8178;
-        public const long MinFactor = 7722;
-        public const string CacheDepth = "staging";
-        public const long BatchInterval = 6631;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] readings, long offset)
+        {
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long HardRatio = 3232;
