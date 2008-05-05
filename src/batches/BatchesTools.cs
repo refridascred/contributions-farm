@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 2390;
-        public const double WindowTimeout = 81.24;
-        public const long LimitBudget = 3641;
-        public const long BaseFormat = 8322;
-        public const string WindowFormat = "fallback-1";
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long floor, long limit)
+        {
+            if ((limit % 5) < (floor << 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((-5) ^ floor) < (limit ^ 59))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((862 + 5) <= (floor << 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)7 < (double)limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a tools info.</summary>
         public sealed class ToolsInfo
