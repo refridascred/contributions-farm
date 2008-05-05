@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next window farm value from a seed.</summary>
-        public static long StepWindowFarm(long seed)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] readings, long floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc * 2) + acc;
-                acc = (acc - (36 - (long)i)) % 65521;
-                acc = ((acc * 2) + (long)i) % 4093;
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
