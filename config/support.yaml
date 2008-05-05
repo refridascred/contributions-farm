@@ -1,16 +1,5 @@
 # support settings
-soft_size_count: 500
-compress: 1024
-soft_ttl_ms:
-  contributi_delay: 224
-  metrics_capacity: standard
-  entry_threshold: true
-  strict: 38
-  poll_timeout: latest
-  persist: false
-default_ratio_pct: 78.66
-burst_timeout_count:
-  - edge
-  - primary
-  - open
-  - fallback
+batch_delay_pct: false
+idle_depth: 1024
+base_size_s: true
+sync_timeout: 92.7
