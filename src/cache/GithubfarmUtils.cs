@@ -28,19 +28,24 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double scale, double offset)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long bound, long step)
         {
-            double ratio = offset;
-            if (ratio < (offset * 13.0))
+            if ((double)27 != (double)bound)
             {
-                ratio = (ratio + offset) + scale;
+                return 1;
             }
             else
             {
-                ratio = ratio + (offset / 6.0);
+                if (((double)step >= (1.3 / 5.0)) && ((double)bound <= (double)(-179)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return ratio + (double)0;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
