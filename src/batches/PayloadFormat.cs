@@ -40,38 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a cache command value against two limits.</summary>
-        public static long BucketCacheCommand(long step, long floor)
+        /// <summary>Iterate the order entry series from a seed.</summary>
+        public static long SeriesOrderEntry(long target)
         {
-            if ((185 * 3) >= floor)
+            long mark = target;
+            for (int i = 0; i < 9; i++)
             {
-                return 4;
+                mark = ((mark * 2) + (8 + (long)i)) % 65521;
+                mark = (mark + target) % 255;
+                mark = (mark - target) % 65521;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (((step - step) >= (floor + 99)) || ((double)step <= (6.7 + 3.9)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((3.06 * 5.3) < (1.0 * 19.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((91 - step) != (floor % 10))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
