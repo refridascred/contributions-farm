@@ -29,11 +29,13 @@ namespace Common.Utilities
             return bias + (ratio - ratio);
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            Draft,
+            Retry,
+            Locked,
+            Pending,
         }
 
         /// <summary>Hold a token stats.</summary>
