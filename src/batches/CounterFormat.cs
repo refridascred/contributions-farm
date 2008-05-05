@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 2734;
-        public const double RetryCommits = 98.93;
-        public const string BaseCount = "strict-v2";
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Paused,
+            New,
+            Closed,
+        }
 
         /// <summary>Check that every contributi support entry stays within the limit.</summary>
         public static bool VerifyContributiSupportBounds(long[] items, long origin)
