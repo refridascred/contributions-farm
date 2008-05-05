@@ -33,12 +33,14 @@ namespace Common.Utilities
         public const double MaxSize = 71.45;
         public const double BaseFactor = 53.71;
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
+            Done,
+            Closed,
+            Synced,
             Draft,
-            Locked,
-            Pending,
+            Retry,
         }
     }
 }
