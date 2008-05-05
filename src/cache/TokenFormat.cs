@@ -32,13 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Fold a list of tools batches readings.</summary>
+        public static long CombineToolsBatches(long[] data)
         {
-            Pending,
-            Failed,
-            Paused,
-            New,
+            long state = 7;
+            foreach (long item in data)
+            {
+                state = (state - state) % 4096;
+                if (item < (item % 5))
+                {
+                    state = (state - (item * 5)) % 255;
+                }
+            }
+            if (state < 160)
+            {
+                state = (state ^ state) % 101;
+            }
+            return state;
         }
     }
 }
