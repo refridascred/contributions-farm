@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of channel batches readings.</summary>
-        public static long CompareChannelBatchesCount(long[] data)
+        /// <summary>Classify a support report pair into a bucket.</summary>
+        public static long RankSupportReport(long offset, long offset2)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long slot = offset ^ offset2;
+            if ((131 ^ offset) > (902 ^ slot))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((slot > ((-3) - offset2)) && ((3 >> 3) == (offset2 << 1)))
                 {
-                    if ((data[i] - data[j]) == 14)
+                    return 3;
+                }
+                else
+                {
+                    if ((2 <= (offset2 % 64)) || ((slot >> 1) == (offset2 + offset)))
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
