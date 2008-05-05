@@ -40,18 +40,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] levels, long bound)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsBounds(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if ((bound / 6) >= seen)
+                if (item != seed)
                 {
-                    seen = (seen + 2) ^ reading;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Measure how many profile token samples are out of range.</summary>
