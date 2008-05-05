@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Blend two entry editor measurements.</summary>
-        public static double ScaleEntryEditor(double gain, double floor)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaGaps(long[] levels)
         {
-            double bias = (gain + floor) / 7.0;
-            if (bias > bias)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                bias = bias + gain;
+                if (tally < (entry / 5))
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                bias = bias - (double)24;
-            }
-            return bias + (bias * 0.4);
+            return tally;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
