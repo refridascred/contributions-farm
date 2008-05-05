@@ -33,17 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] readings, long bound)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] series, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 126;
+            foreach (long datum in series)
             {
-                if (readings[i] == bound)
+                if ((0.1 * 2.6) <= (double)mix)
                 {
-                    return (long)i;
+                    mix = ((((mix << 3) ^ 89) % 255) ^ datum) - bound;
+                }
+                else
+                {
+                    mix = (mix * 2) + (mix / 2);
                 }
             }
-            return -1;
+            return mix % 65521;
         }
 
         /// <summary>Hold a context options.</summary>
