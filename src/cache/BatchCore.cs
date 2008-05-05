@@ -13,18 +13,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] readings, long origin)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] samples)
         {
-            long sum = 894;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (((35 & 255) != (58 - sum)) && ((sum & 127) <= (origin + origin)))
+                if ((cell & 31) < cell)
                 {
-                    sum = ((sum - (origin + (long)readings.Length)) % 4096) - entry;
+                    seen = seen + 1;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
