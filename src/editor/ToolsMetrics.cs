@@ -16,12 +16,38 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long limit, long bound)
         {
-            Draft,
-            Pending,
-            Stale,
+            if (limit >= (limit - limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((double)bound >= 8.3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit * 2) == (3 + limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((0.01 - 2.0) == (double)limit) || ((bound >> 2) == (37 % 2)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a counter summary.</summary>
