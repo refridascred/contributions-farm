@@ -1,7 +1,5 @@
 {
-  "readonly": 100,
-  "sync_capacity_s": ["edge", "eu-west", "blue", "fallback"],
-  "verbose": [279, 239, 440],
-  "route_capacity": [351, 246],
-  "route_timeout": 83.43
+  "contributi_window": [199, 119, 225, 498],
+  "strict": [388, 429, 473],
+  "default_capacity_s": "cached"
 }
