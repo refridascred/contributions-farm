@@ -22,18 +22,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionMatches(long[] items)
+        /// <summary>Audit channel commits readings against a rule.</summary>
+        public static long TallyChannelCommitsHits(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (((double)count > (double)reading) && ((count + reading) < (count / 3)))
+                if (!(value < (tally ^ value)))
                 {
-                    count = count + 2;
+                    tally = (tally + 1) - floor;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
