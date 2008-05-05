@@ -29,13 +29,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long seed, long target)
         {
-            Dropped,
-            New,
-            Retry,
-            Failed,
+            if (((target & 3) > (seed + 611)) && ((seed % 16) < seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((seed % 2) > (seed + 7)) && (((-557) << 3) <= (target + target)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (target <= (550 / 8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (11.0 <= (double)target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
