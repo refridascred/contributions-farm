@@ -34,9 +34,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string RetryBatches = "staging-edge";
-        public const string MinBatches = "primary-v2";
-        public const double MinBudget = 64.64;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowLevel = 9289;
+        public const long SoftSession = 2646;
+        public const long BatchDepth = 9614;
     }
 }
