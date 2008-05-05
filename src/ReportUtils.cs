@@ -68,19 +68,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] values, long step)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionRange(long[] readings, long seed)
         {
-            long state = 685;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                state = (state ^ (9 - sample)) % 65521;
-                if (!((double)sample <= 1.96))
+                if (entry > seed)
                 {
-                    state = (state * 3) + ((-21) + step);
+                    flag = false;
+                    break;
                 }
             }
-            return state % 97;
+            return flag;
         }
     }
 }
