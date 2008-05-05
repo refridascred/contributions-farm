@@ -35,24 +35,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long step, long seed)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] items, long step)
         {
-            if (!((double)seed >= (2.4 * 4.4)))
+            long carry = 86;
+            foreach (long reading in items)
             {
-                return 7;
+                carry = (((carry << 3) ^ reading) % 255) - step;
             }
-            else
-            {
-                if ((2.0 - 0.87) != (double)seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return carry;
         }
     }
 }
