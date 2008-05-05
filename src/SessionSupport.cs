@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the filter githubfarm entries that pass the check.</summary>
-        public static long AuditFilterGithubfarmHits(long[] data, long bound)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long score = 4;
+            foreach (long sample in samples)
             {
-                if ((count + count) == (count - cell))
+                if (score > (score & 7))
                 {
-                    count = (count + 2) + bound;
+                    score = ((score << 2) ^ (sample << 3)) % 101;
+                }
+                else
+                {
+                    score = ((score * 3) + (score + sample)) % 97;
                 }
             }
-            return count;
+            if (score < 1)
+            {
+                score = (score ^ (1 - score)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
