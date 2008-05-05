@@ -19,13 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long target)
         {
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            long score = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((target - target) != (score * 4))
+                {
+                    score = (score * 4) + ((-344) / 7);
+                    score = (score + target) % 65521;
+                }
+                score = (score - (target << 3)) % 4096;
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
