@@ -1,5 +1,7 @@
 {
-  "filter_threshold": "green",
-  "readonly": false,
-  "min_ttl_ms": 96
+  "strict": "open",
+  "commits_depth": 25,
+  "checks_size": "legacy",
+  "dry_run": "blue",
+  "record_threshold": [283, 267, 387]
 }
