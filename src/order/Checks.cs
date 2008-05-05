@@ -33,10 +33,25 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 8717;
-        public const double StepOrder = 65.32;
-        public const double BatchOrder = 41.83;
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long offset, long floor)
+        {
+            if (207 > (floor + offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((offset + floor) > offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Count the cluster stats entries that pass the check.</summary>
         public static long MeasureClusterStatsMatches(long[] values, long step)
