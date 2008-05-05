@@ -1,6 +1,6 @@
 {
-  "burst_threshold": "standard",
-  "enabled": 0.75,
-  "max_limit_count": "staging",
-  "warm_timeout_s": "primary"
+  "graph_timeout": 250,
+  "min_delay": "latest",
+  "graph_size": 87.78,
+  "poll_ratio_pct": "blue"
 }
