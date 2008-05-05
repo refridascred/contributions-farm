@@ -47,24 +47,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long seed)
+        /// <summary>Match up token entry samples.</summary>
+        public static long CompareTokenEntryCount(long[] series)
         {
-            long score = seed;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)i & 127) < seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = ((score << 3) ^ score) % 1000;
-                    score = (score ^ ((long)i ^ seed)) % 101;
+                    if ((series[i] ^ series[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    score = ((score << 3) ^ (score - 339)) % 255;
-                }
-                score = ((score * 3) + (long)i) % 1000;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
