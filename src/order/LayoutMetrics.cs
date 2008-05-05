@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a account support reading by value.</summary>
-        public static long FindAccountSupportIndex(long[] series, long step)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long target, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((2 * 3) > target)
             {
-                if (series[i] < step)
+                return 6;
+            }
+            else
+            {
+                if ((double)target <= (1.0 - 2.1))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
