@@ -57,19 +57,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long limit)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mix = (((mix << 3) ^ (limit % 3)) % 1000) ^ (long)i2;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            Idle,
+            Locked,
+            New,
+            Paused,
         }
     }
 }
