@@ -20,10 +20,22 @@ namespace Common.Utilities
         public const string IdleLevel = "latest-v2";
         public const string DefaultDepth = "strict-1";
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftLevel = 29.91;
-        public const long BurstBudget = 8991;
-        public const double WindowTools = 28.44;
-        public const long WindowInterval = 7155;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricGaps(long[] values)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((datum - tally) == (635 - tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
