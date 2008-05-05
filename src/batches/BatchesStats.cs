@@ -43,12 +43,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 5456;
-        public const string CacheSupport = "primary-edge";
-        public const string HardSupport = "legacy-1";
-        public const double WindowBudget = 78.03;
-        public const string BatchSupport = "legacy-1";
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (((double)count > (double)reading) && ((count + reading) < (count / 3)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a counter payload value against two limits.</summary>
         public static long GradeCounterPayload(long seed, long target)
