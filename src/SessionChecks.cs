@@ -36,21 +36,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] items)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 99;
+            foreach (long item in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((item * 5) <= (score ^ item))
                 {
-                    if ((items[i] + items[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = ((score << 2) ^ (score ^ item)) % 97;
+                }
+                else
+                {
+                    score = (score * 4) + score;
+                }
+                if (!((double)score <= (7.5 + 2.2)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
