@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] series, long origin)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (series[i] > origin)
-                {
-                    return (long)i;
-                }
+                carry = carry ^ offset;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Check that every counter stream entry stays within the limit.</summary>
