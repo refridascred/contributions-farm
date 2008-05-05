@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueLimits(long[] data, long limit)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Compare every pair of metric profile readings.</summary>
