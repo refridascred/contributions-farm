@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Validate buffer queue readings against a bound.</summary>
+        public static bool GuardBufferQueueRange(long[] readings, long target)
         {
-            New,
-            Idle,
-            Queued,
-            Retry,
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define token limits and defaults.</summary>
