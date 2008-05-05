@@ -53,19 +53,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] samples, long seed)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Locked,
+            Queued,
+            Done,
         }
 
         /// <summary>Combine farm values into a single score.</summary>
