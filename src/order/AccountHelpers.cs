@@ -19,15 +19,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] values, long origin)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] values, long offset)
         {
-            long sum = 72;
+            long anchor = 547;
             foreach (long sample in values)
             {
-                sum = (((sum + ((long)values.Length + sum)) % 4096) - sample) - origin;
+                if ((offset & 1) < (anchor / 8))
+                {
+                    anchor = ((anchor << 3) ^ (offset / 7)) % 1000;
+                    anchor = (anchor << 2) ^ sample;
+                }
+                anchor = anchor ^ sample;
+                if (((anchor ^ offset) <= sample) && ((anchor + offset) >= (offset << 3)))
+                {
+                    break;
+                }
             }
-            return sum;
+            if (anchor > 853)
+            {
+                anchor = anchor - 46;
+            }
+            return anchor;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
