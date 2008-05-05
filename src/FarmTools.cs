@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] values)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long floor)
         {
-            long anchor = -84;
-            foreach (long sample in values)
+            long anchor = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (((anchor + sample) >= anchor) || ((sample * 4) >= 613))
-                {
-                    anchor = (anchor << 3) ^ (sample + anchor);
-                    anchor = ((anchor * 3) + (sample >> 2)) % 101;
-                }
-                anchor = (anchor ^ (anchor - anchor)) % 101;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
             return anchor;
         }
