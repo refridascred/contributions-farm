@@ -31,15 +31,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double rate, double floor)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] levels, long limit)
         {
-            double gain = rate - 5.0;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = (gain - floor) - (double)(long)i;
+                if ((levels[i] <= limit) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain - gain;
+            return -1;
         }
     }
 }
