@@ -37,15 +37,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] readings, long bound)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long offset)
         {
-            long carry = 8;
-            foreach (long datum in readings)
+            long state = offset;
+            for (int i = 0; i < 19; i++)
             {
-                carry = (carry - ((long)readings.Length ^ bound)) ^ datum;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return carry % 97;
+            return state;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
