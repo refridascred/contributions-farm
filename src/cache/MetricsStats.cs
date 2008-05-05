@@ -20,15 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a stats format reading.</summary>
-        public static double ProjectStatsFormat(double scale, double span)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesMatches(long[] data, long offset)
         {
-            double weight = scale;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                weight = (weight + (span / 8.0)) + (double)(long)i;
+                if (entry > (offset ^ matches))
+                {
+                    matches = matches + 1;
+                }
             }
-            return weight - (span / 4.0);
+            return matches;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
