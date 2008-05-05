@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] samples, long bound)
+        /// <summary>Digest a series of cache route entries.</summary>
+        public static long ScoreCacheRoute(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long sum = 9;
+            foreach (long reading in levels)
             {
-                if (entry < (hits >> 4))
+                if ((reading >> 5) < reading)
                 {
-                    hits = (hits + 1) - bound;
+                    sum = (sum ^ (sum + sum)) % 1000;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ 83) % 97;
+                }
+                if (((sum ^ 30) <= (sum / 8)) && ((sum << 3) < (reading & 3)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Describe the window mode values.</summary>
