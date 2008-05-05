@@ -67,18 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryOutliers(long[] values)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((cell & 127) < (hits - hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Draft,
+            Closed,
+            Retry,
         }
 
         /// <summary>Audit buffer record readings against a rule.</summary>
