@@ -37,19 +37,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] samples, long seed)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long origin, long bound)
         {
-            bool found = true;
-            foreach (long value in samples)
+            if ((origin + bound) > (666 << 1))
             {
-                if (value > seed)
+                return 7;
+            }
+            else
+            {
+                if ((double)origin < 3.4)
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound >> 3) >= (bound * 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((double)bound < 5.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a support record.</summary>
