@@ -23,17 +23,25 @@ namespace Common.Utilities
         public const long SoftFarm = 8135;
         public const long BurstFactor = 8001;
 
-        /// <summary>Look up the position of a stats profile sample.</summary>
-        public static long LookupStatsProfileIndex(long[] readings, long origin)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long offset, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long prev = offset + bound;
+            if (bound >= (offset << 3))
             {
-                if ((readings[i] >= origin) && ((readings[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((offset ^ prev) < (88 & 3))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
