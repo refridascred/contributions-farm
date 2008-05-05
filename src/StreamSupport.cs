@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 2785;
-        public const long BatchSize = 4160;
-        public const string BaseDepth = "legacy-edge";
-        public const long LimitSession = 6107;
-        public const long StepSession = 9379;
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public long Rank { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxProfile = 3777;
