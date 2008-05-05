@@ -1,4 +1,18 @@
 # support settings
-default_ttl_pct: cached
-batch_interval_s: 2661
-poll_window: 80
+context_ttl: 28.37
+enabled: 33.53
+idle_ttl_pct: fallback
+dry_run:
+  - 388
+  - 239
+  - 96
+record_ttl: blue
+commits_size:
+  poll_limit_ms:
+    dry_run: true
+    poll_ttl_ms: green
+    idle_threshold: 40
+    flush_depth_pct: 46
+    enabled: 47.96
+  flush_capacity: staging
+  min_interval_pct: 30
