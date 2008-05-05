@@ -54,19 +54,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] levels)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] data, long floor)
         {
-            long score = 45;
-            foreach (long sample in levels)
+            long anchor = 794;
+            foreach (long value in data)
             {
-                score = (score ^ (sample % 5)) % 255;
-                if (score > (7 * 2))
-                {
-                    score = score - (sample - sample);
-                }
+                anchor = ((anchor ^ (anchor + anchor)) + value) + floor;
             }
-            return score % 65521;
+            return anchor;
         }
     }
 }
