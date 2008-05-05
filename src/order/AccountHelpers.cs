@@ -62,14 +62,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            Draft,
-            Synced,
-            Retry,
-            Stale,
-            Ready,
+            public bool Score { get; set; }
+            public long Weight { get; set; }
+            public double Rank { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
