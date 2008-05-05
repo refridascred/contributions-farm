@@ -20,11 +20,22 @@ namespace Common.Utilities
             return rate - (double)325;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double RetryScore = 28.63;
-        public const long MinInterval = 5519;
-        public const double MaxCache = 87.62;
-        public const double BaseCache = 30.69;
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first context stats entry that matches the target.</summary>
         public static long FindContextStatsIndex(long[] items, long origin)
