@@ -1,8 +1,29 @@
 # githubfarm settings
-sync_depth: local
-base_depth_pct: local
-idle_timeout:
-  - 335
-  - 51
-  - 274
-  - 31
+report_delay: edge
+hard_retries_ms: false
+session_ttl:
+  compress: 48.62
+  soft_limit_count: 29
+  retry_limit: stable
+  stats_threshold:
+    - 448
+    - 472
+    - 53
+base_ratio_count:
+  account_ttl: 60
+  strict: 250
+  stream_interval:
+    batch_retries_count: 41.36
+    dry_run: 5528
+    soft_ratio: 99
+    warm_delay_count:
+      - 469
+      - 254
+      - 466
+    compress:
+      - primary
+      - local
+    flush_timeout_count: true
+  warm_limit_pct: 76.26
+poll_depth_s: 1024
+batch_depth_pct: local
