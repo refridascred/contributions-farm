@@ -25,11 +25,18 @@ namespace Common.Utilities
         public const long DefaultTimeout = 3012;
         public const long BaseTimeout = 4710;
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] values)
         {
-            public double Offset { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (entry >= (14 - (-5)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
