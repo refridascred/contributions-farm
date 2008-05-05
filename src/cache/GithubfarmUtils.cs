@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of already batches readings.</summary>
-        public static long CombineAlreadyBatches(long[] data, long seed)
-        {
-            long mix = 5;
-            foreach (long value in data)
-            {
-                if (!((1.01 / 7.0) <= (double)seed))
-                {
-                    mix = mix ^ (value * 5);
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheScore = 4140;
+        public const long BaseToken = 348;
+        public const long IdleToken = 9388;
+        public const double HardScore = 25.58;
+        public const long MinToken = 9096;
 
         /// <summary>Hold a channel summary.</summary>
         public sealed class ChannelSummary
