@@ -44,11 +44,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionHits(long[] samples)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((5.7 > (double)item) && ((double)matches > (3.9 + 19.0)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a profile options.</summary>
