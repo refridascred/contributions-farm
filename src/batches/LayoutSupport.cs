@@ -42,11 +42,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Derive the next session cluster value from a seed.</summary>
+        public static long StepSessionCluster(long bound)
         {
-            public double Flag { get; set; }
-            public bool Stamp { get; set; }
+            long state = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                state = (state + (bound - bound)) % 255;
+                if (!(((state + 74) <= (bound - state)) || ((state + bound) < (bound - 7))))
+                {
+                    state = state - (bound % 5);
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
