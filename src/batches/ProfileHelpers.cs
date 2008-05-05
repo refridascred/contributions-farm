@@ -74,17 +74,10 @@ namespace Common.Utilities
             return rate + (4.0 - bias);
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= target) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultSize = 9264;
+        public const long BurstMetrics = 2411;
+        public const long MaxFactor = 2070;
+        public const double IdleMetrics = 9.68;
     }
 }
