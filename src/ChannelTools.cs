@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many support payload samples are out of range.</summary>
-        public static long CountSupportPayloadHits(long[] data)
+        /// <summary>Classify a command payload pair into a bucket.</summary>
+        public static long BucketCommandPayload(long step, long target)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long bound = step + target;
+            if (((bound >> 3) < ((-3) + step)) || ((step << 2) == (target * 2)))
             {
-                if ((double)matches != (5.9 + 5.0))
+                return 7;
+            }
+            else
+            {
+                if (((bound >> 4) != (target >> 3)) && ((step << 2) >= 48))
                 {
-                    matches = (matches + 2) + reading;
+                    return 8;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((double)step >= 4.0)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
