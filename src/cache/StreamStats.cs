@@ -31,13 +31,22 @@ namespace Common.Utilities
             return drift - (drift / 3.0);
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] samples, long target)
         {
-            Idle,
-            Locked,
-            Dropped,
-            Synced,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)cell <= (double)target)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
