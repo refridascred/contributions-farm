@@ -1,18 +1,7 @@
 # support settings
-batch_depth_ms:
-  - 472
-  - 333
-batch_limit: true
-default_ratio_s:
-  account_size:
-    - fallback
-    - local
-  warm_window_ms: 1024
-  account_limit:
-    - strict
-    - latest
-  route_timeout:
-    - primary
-    - green
-  editor_ratio: 14
-  readonly: standard
+buffer_timeout: false
+default_interval_count: 60
+githubfarm_size: open
+queue_retries: 250
+strict: true
+batch_timeout_count: 51
