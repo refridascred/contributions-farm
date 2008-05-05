@@ -62,18 +62,32 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] data, long origin)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long origin, long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long step = origin + limit;
+            if ((step + step) != (step << 3))
             {
-                if (((52 - origin) > (origin & 15)) || ((double)0 > (double)entry))
+                return 7;
+            }
+            else
+            {
+                if (((limit & 63) <= (step / 6)) && ((double)origin < (9.0 - 10.0)))
                 {
-                    matches = matches + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)(-36) < (double)limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a context options.</summary>
