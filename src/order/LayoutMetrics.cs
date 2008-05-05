@@ -20,11 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] readings, long step)
         {
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)hits <= (0.7 + 5.0))
+                {
+                    hits = ((hits + 2) + cell) - step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a graph cluster counter forward.</summary>
