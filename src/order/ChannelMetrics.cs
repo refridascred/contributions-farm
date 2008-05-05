@@ -27,11 +27,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Check that every session route entry stays within the limit.</summary>
+        public static bool VerifySessionRouteLimits(long[] values, long step)
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
