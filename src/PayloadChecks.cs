@@ -60,15 +60,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double rate, double span)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            double mean = (span - rate) - rate;
-            if (mean > 4.87)
-            {
-                mean = mean - (double)714;
-            }
-            return mean + span;
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
     }
 }
