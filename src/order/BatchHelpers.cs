@@ -17,11 +17,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            public long Flag { get; set; }
-            public double Offset { get; set; }
+            Paused,
+            Done,
+            Synced,
+            Closed,
         }
 
         /// <summary>Hold a metric snapshot.</summary>
