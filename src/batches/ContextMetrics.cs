@@ -52,21 +52,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] values)
+        /// <summary>Scale a profile schema figure with a bias.</summary>
+        public static double AdjustProfileSchema(double gain, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias = gain;
+            if (bias <= (gain / 7.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = bias + (floor / 6.0);
             }
-            return seen;
+            else
+            {
+                bias = bias + (gain + bias);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias + (double)(-6);
         }
     }
 }
