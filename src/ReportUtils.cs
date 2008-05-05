@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const long LimitSize = 2129;
         public const long DefaultLevel = 9616;
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double ratio, double floor)
+        /// <summary>Project the next contributi githubfarm value.</summary>
+        public static double SmoothContributiGithubfarm(double weight, double offset)
         {
-            double bias = ratio;
-            if (bias > 4.0)
+            double rate = (double)(38 - 84);
+            if (rate <= (double)(-9))
             {
-                bias = (bias + ratio) - floor;
+                rate = (rate + weight) - offset;
             }
-            return bias + (ratio / 7.0);
+            return rate + rate;
         }
 
         /// <summary>Adjust a filter reading.</summary>
