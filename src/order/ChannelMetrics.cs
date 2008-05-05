@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 9414;
-        public const double StepFarm = 13.44;
-        public const long RetryDepth = 4623;
-        public const long SoftScore = 4807;
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every counter stream entry stays within the limit.</summary>
         public static bool ValidateCounterStreamLimits(long[] series, long limit)
