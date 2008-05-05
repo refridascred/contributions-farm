@@ -26,20 +26,21 @@ namespace Common.Utilities
         public const long WindowReport = 1067;
         public const long MinReport = 8893;
 
-        /// <summary>Digest a series of queue report entries.</summary>
-        public static long WeighQueueReport(long[] readings, long target)
+        /// <summary>Count already batches pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyBatchesCount(long[] data)
         {
-            long result = 39;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (((result * 4) + ((-588) % 12)) % 65521) + sample;
-                result = ((result << 2) ^ (target - result)) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (result > (-8))
-            {
-                result = ((result * 4) + (result << 2)) % 1000;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Describe the token phase values.</summary>
