@@ -1,5 +1,6 @@
 {
-  "soft_timeout_pct": true,
-  "warm_size_s": [13, 50, 475, 58],
-  "session_interval": ["eu-west", "local", "legacy", "primary"]
+  "enabled": false,
+  "max_interval_ms": false,
+  "persist": 25.93,
+  "poll_delay_s": 46.78
 }
