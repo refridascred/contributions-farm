@@ -71,22 +71,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] values, long step)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!!(item > (329 + 8)))
+                if (items[i] < offset)
                 {
-                    hits = (hits + 3) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
