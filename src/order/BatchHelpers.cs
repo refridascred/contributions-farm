@@ -45,9 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchRatio = 7743;
-        public const string StepReport = "alpha-v2";
-        public const long MaxReport = 3495;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] samples)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((993 + 3) == ((long)samples.Length - reading))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
