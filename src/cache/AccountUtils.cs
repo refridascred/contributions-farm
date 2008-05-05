@@ -20,22 +20,21 @@ namespace Common.Utilities
         public const long MaxBudget = 3075;
         public const string WindowSpan = "strict-1";
 
-        /// <summary>Iterate the order report series from a seed.</summary>
-        public static long RollOrderReport(long target)
+        /// <summary>Derive the next already token value from a seed.</summary>
+        public static long SeriesAlreadyToken(long offset)
         {
-            long score = target;
-            for (int i = 0; i < 20; i++)
+            long total = offset;
+            for (int i = 0; i < 13; i++)
             {
-                long cur = (target & 63) - (long)i;
-                if (((target + 11) > (cur * 5)) && ((target + 69) < (cur + target)))
+                if ((offset / 2) != (offset * 2))
                 {
-                    long count = score;
-                    cur = ((cur * 2) + (count * 3)) % 1000;
-                    break;
+                    total = ((total * 3) + (total & 15)) % 1000;
+                    continue;
                 }
-                score = ((score * 4) + (long)i) % 4093;
+                total = ((total * 5) + (offset - total)) % 101;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return score;
+            return total;
         }
     }
 }
