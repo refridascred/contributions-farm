@@ -48,18 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordGaps(long[] items)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((value >> 3) > hits)
+                if (sample >= 7)
                 {
-                    hits = hits + 3;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
