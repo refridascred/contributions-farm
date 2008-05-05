@@ -58,19 +58,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric notes samples are out of range.</summary>
-        public static long AuditMetricNotesHits(long[] data)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((((double)cell < 8.04) && ((matches + 771) < cell)) || !(matches >= (matches / 3)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowTimeout = 45.08;
+        public const double HardInterval = 21.53;
+        public const string BurstSpan = "stable-edge";
+        public const string StepRatio = "stable-1";
+        public const string LimitLevel = "latest-1";
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
