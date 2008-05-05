@@ -37,10 +37,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BaseQueue = 21.92;
-        public const long MinQueue = 8776;
-        public const double HardDepth = 81.37;
-        public const long WindowTimeout = 5010;
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long step, long step2)
+        {
+            if (8.0 <= (double)step)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step2 - step2) == ((-6) << 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step + step2) >= (step2 + step2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
