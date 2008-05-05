@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge staging; do
+for item in eu-west standard fallback green; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=474
+COMMAND_LIMIT=243
 log "limit is ${COMMAND_LIMIT}"
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
+mode="${1:-blue}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
