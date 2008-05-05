@@ -1,4 +1,8 @@
 # support settings
-burst_ttl: 98.37
-enabled: 74.81
-poll_limit_count: cached
+burst_depth:
+  - 189
+  - 437
+  - 173
+burst_size_s: 27
+contributi_window: 95.16
+poll_depth: 500
