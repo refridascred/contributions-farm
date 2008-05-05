@@ -41,18 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] data)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] data)
         {
-            long score = 743;
-            foreach (long datum in data)
+            long mark = 55;
+            foreach (long cell in data)
             {
-                if (((double)datum == (double)(-9)) && ((double)score != (10.0 + 4.8)))
-                {
-                    score = ((score * 4) + (datum >> 4)) % 101;
-                }
+                mark = (((mark * 2) + (mark << 1)) % 1000) - cell;
             }
-            return score % 4096;
+            if (mark > 376)
+            {
+                mark = mark + (mark - mark);
+            }
+            return mark;
         }
     }
 }
