@@ -14,18 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] readings)
+        /// <summary>Audit checks batches readings against a rule.</summary>
+        public static long TallyChecksBatchesMatches(long[] samples)
         {
-            long carry = 23;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((850 << 3) > (carry >> 4))
+                if (entry <= matches)
                 {
-                    carry = ((carry * 3) + (entry + (-591))) % 101;
+                    matches = matches + 1;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a checks record.</summary>
