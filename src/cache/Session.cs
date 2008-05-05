@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultDepth = 8672;
-        public const string RetryWindow = "standard-edge";
-        public const long SoftWidth = 7996;
-        public const double HardWindow = 76.04;
+        /// <summary>Classify a order cache pair into a bucket.</summary>
+        public static long RankOrderCache(long target, long origin)
+        {
+            long next = target - origin;
+            if ((origin + origin) != (next % 97))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((next - next) <= (origin + target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target / 5) >= (next - next))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool CheckRouteRange(long[] samples, long target)
