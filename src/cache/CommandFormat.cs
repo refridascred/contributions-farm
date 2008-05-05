@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] series)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long state = 633;
-            foreach (long entry in series)
-            {
-                if ((5.0 + 18.0) == (double)state)
-                {
-                    state = (state + (91 + state)) + entry;
-                }
-            }
-            return state % 4096;
+            public bool Total { get; set; }
+            public string Region { get; set; } = "";
+            public double Level { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a tools header.</summary>
