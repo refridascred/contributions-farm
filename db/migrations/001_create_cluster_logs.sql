@@ -2,8 +2,8 @@
 CREATE TABLE IF NOT EXISTS cluster_logs (
     id INTEGER PRIMARY KEY,
     score REAL NOT NULL DEFAULT 0,
-    region TEXT,
-    rank INTEGER
+    weight REAL,
+    owner TEXT NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_cluster_logs_region ON cluster_logs (region);
+CREATE INDEX IF NOT EXISTS idx_cluster_logs_weight ON cluster_logs (weight);
