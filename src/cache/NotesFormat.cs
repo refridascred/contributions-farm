@@ -69,21 +69,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] data)
+        /// <summary>Derive the next batch notes value from a seed.</summary>
+        public static long DeriveBatchNotes(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = target;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
     }
 }
