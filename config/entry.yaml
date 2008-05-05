@@ -1,7 +1,10 @@
 # entry settings
-payload_capacity: edge
-report_window: 42
-strict: strict
-hard_window: 98
-batch_ratio: strict
-command_limit: false
+compress: 25.37
+hard_depth_s: 6678
+sync_ttl_ms:
+  min_size_s:
+    - fallback
+    - local
+    - fallback
+  command_threshold: false
+  stream_size: 8834
