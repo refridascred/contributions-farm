@@ -45,15 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
-        {
-            Failed,
-            Stale,
-            Dropped,
-            Closed,
-            Active,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 5456;
+        public const string CacheSupport = "primary-edge";
+        public const string HardSupport = "legacy-1";
+        public const double WindowBudget = 78.03;
+        public const string BatchSupport = "legacy-1";
 
         /// <summary>Grade a counter payload value against two limits.</summary>
         public static long GradeCounterPayload(long seed, long target)
