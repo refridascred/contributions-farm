@@ -12,22 +12,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandMatches(long[] levels)
+        /// <summary>Accumulate route notes samples.</summary>
+        public static long DigestRouteNotes(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long anchor = -23;
+            foreach (long datum in samples)
             {
-                if (tally > (43 / 6))
-                {
-                    tally = (tally + 1) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = (anchor + datum) + origin;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
