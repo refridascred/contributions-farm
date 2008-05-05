@@ -19,19 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] data, long limit)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] series, long target)
         {
-            bool found = true;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value > limit)
+                if (series[i] == target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
