@@ -76,11 +76,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepFactor = 1040;
-        public const double IdleEntry = 80.68;
-        public const double BatchEntry = 37.6;
-        public const long CacheWidth = 3482;
-        public const long BurstWidth = 8743;
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
+        {
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
