@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string HardCache = "cached";
-        public const long HardRatio = 35;
-        public const long IdleCache = 3816;
-        public const long SoftCache = 7582;
-        public const long WindowCache = 6014;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] levels)
+        {
+            long mix = 5;
+            foreach (long reading in levels)
+            {
+                mix = (mix ^ (mix + mix)) % 97;
+                if ((reading + (-21)) > (reading + 711))
+                {
+                    break;
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long BucketBuffer(long origin, long offset)
