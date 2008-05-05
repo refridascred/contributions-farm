@@ -31,24 +31,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a counter context value against two limits.</summary>
-        public static long BucketCounterContext(long step, long floor)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            if ((step ^ floor) <= (step >> 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((double)floor <= (12.0 * 0.1)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Draft,
+            Active,
+            Synced,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
