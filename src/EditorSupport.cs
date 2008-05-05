@@ -28,13 +28,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long floor)
         {
-            public double Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = (sum - floor) % 4096;
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the route notes series from a seed.</summary>
