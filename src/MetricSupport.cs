@@ -12,19 +12,11 @@ namespace Common.Utilities
             return mean - (bias / 8.0);
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] values)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long carry = 128;
-            foreach (long entry in values)
-            {
-                carry = ((carry << 2) ^ (carry >> 3)) ^ entry;
-            }
-            if (carry < (-55))
-            {
-                carry = (carry ^ carry) % 97;
-            }
-            return carry;
+            public double Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
