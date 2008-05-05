@@ -1,11 +1,6 @@
-id,level,score,count,rank
-1,66.74,31.29,68.2,open
-2,eu-west,eu-west,local,50.98
-3,78.99,eu-west,730,open
-4,staging,edge,39.73,blue
-5,92,413,66.65,675
-6,21,70.81,70,683
-7,cached,628,legacy,739
-8,98.41,standard,149,stable
-9,42.57,primary,65,eu-west
-10,516,811,49.46,78
+id,owner,region,label,active
+1,fallback,688,762,staging
+2,29,59.39,standard,405
+3,197,98.43,staging,359
+4,open,fallback,291,open
+5,legacy,521,legacy,fallback
