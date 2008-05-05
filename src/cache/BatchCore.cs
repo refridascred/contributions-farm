@@ -36,11 +36,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 4199;
-        public const long StepBudget = 1714;
-        public const long HardTimeout = 5348;
-        public const long DefaultBatches = 156;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] samples, long origin)
+        {
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MaxFactor = 519;
