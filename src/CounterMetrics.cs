@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatHits(long[] levels, long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] samples)
         {
             long matches = 0;
-            foreach (long item in levels)
+            foreach (long entry in samples)
             {
-                if ((double)seed <= (double)matches)
+                if (!((15.0 / 7.0) < (double)entry))
                 {
-                    matches = (matches + 2) ^ item;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
