@@ -38,19 +38,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] levels, long step)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (!((3.66 * 15.0) > (double)seen))
-                {
-                    seen = ((seen + 3) + value) + step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BatchEntry = 93.9;
+        public const double DefaultEntry = 7.26;
+        public const double HardEntry = 7.44;
+        public const long IdleFactor = 6304;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BatchDepth = 6616;
