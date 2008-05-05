@@ -22,14 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            Closed,
-            Draft,
-            Idle,
-            Locked,
-            Pending,
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public bool Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
