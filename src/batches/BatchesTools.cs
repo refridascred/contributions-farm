@@ -39,11 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public double Owner { get; set; }
-            public string Flag { get; set; } = "";
+            Active,
+            Retry,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
