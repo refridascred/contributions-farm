@@ -48,12 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] items)
         {
-            Done,
-            Stale,
-            Closed,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((value >> 3) > hits)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
