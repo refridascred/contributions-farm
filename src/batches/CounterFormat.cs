@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const double RetryCommits = 98.93;
         public const string BaseCount = "strict-v2";
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Check that every contributi support entry stays within the limit.</summary>
+        public static bool VerifyContributiSupportBounds(long[] items, long origin)
         {
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
