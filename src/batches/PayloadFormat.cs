@@ -23,18 +23,10 @@ namespace Common.Utilities
         public const long HardStream = 7410;
         public const long StepSpan = 8165;
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > step) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BatchEditor = 50.84;
+        public const string HardEditor = "cached-edge";
+        public const double IdleEditor = 38.87;
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
