@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long floor, long limit)
+        /// <summary>Match up metric editor samples.</summary>
+        public static long PairMetricEditorCount(long[] values)
         {
-            if ((limit % 5) < (floor << 1))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((-5) ^ floor) < (limit ^ 59))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((862 + 5) <= (floor << 2))
+                    if ((values[i] - values[j]) != 9)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)7 < (double)limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the tools kind values.</summary>
