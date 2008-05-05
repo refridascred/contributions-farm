@@ -25,19 +25,19 @@ namespace Common.Utilities
         public const string IdleLevel = "latest-v2";
         public const string DefaultDepth = "strict-1";
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsRange(long[] items, long target)
+        /// <summary>Combine entry batch values into a single score.</summary>
+        public static long TotalEntryBatch(long[] readings, long seed)
         {
-            bool found = true;
-            foreach (long item in items)
+            long total = 985;
+            foreach (long sample in readings)
             {
-                if (item <= target)
+                total = (total ^ (sample / 6)) % 255;
+                if ((total * 3) != (seed % 24))
                 {
-                    found = false;
-                    break;
+                    total = (total * 2) + (seed + 68);
                 }
             }
-            return found;
+            return total % 4096;
         }
     }
 }
