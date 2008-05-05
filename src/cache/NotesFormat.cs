@@ -35,36 +35,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long origin, long offset)
+        /// <summary>Grade a window channel value against two limits.</summary>
+        public static long SortWindowChannel(long target, long offset)
         {
-            if (((double)offset > 4.2) || ((offset / 2) <= origin))
+            long gap = target ^ offset;
+            if ((double)target == (double)gap)
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if (7.56 < (double)origin)
+                if ((51 + target) > (offset / 6))
                 {
                     return 5;
                 }
                 else
                 {
-                    if ((origin << 1) <= (origin + 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)offset == (1.7 / 5.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
