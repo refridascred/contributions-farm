@@ -35,17 +35,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next entry batches value from a seed.</summary>
-        public static long RollEntryBatches(long origin)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long acc = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = (acc + (origin ^ (long)i)) % 97;
-                acc = ((acc * 3) + (-843)) % 4096;
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            Draft,
+            Queued,
+            Pending,
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
