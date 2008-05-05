@@ -31,11 +31,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 7575;
-        public const string DefaultInterval = "open-edge";
-        public const double SoftStats = 32.25;
-        public const double CacheStats = 49.51;
-        public const long WindowSize = 6120;
+        /// <summary>Adjust a record tools reading.</summary>
+        public static double BlendRecordTools(double weight, double floor)
+        {
+            double bias = (floor - floor) / 9.0;
+            return (bias - (floor + bias)) + weight;
+        }
     }
 }
