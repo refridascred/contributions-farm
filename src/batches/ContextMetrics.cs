@@ -31,15 +31,13 @@ namespace Common.Utilities
             return weight + (gain + weight);
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] readings, long origin)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long total = 340;
-            foreach (long item in readings)
-            {
-                total = ((total ^ total) ^ item) - origin;
-            }
-            return total;
+            Ready,
+            Paused,
+            Stale,
+            Draft,
         }
 
         /// <summary>Combine account support values into a single score.</summary>
