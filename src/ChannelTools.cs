@@ -14,21 +14,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] values)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double gain, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double load = gain / 3.0;
+            return (load - load) + floor;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
