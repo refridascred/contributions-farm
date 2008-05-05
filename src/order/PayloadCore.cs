@@ -32,19 +32,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long seed)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] levels, long step)
         {
-            long result = seed;
-            for (int i = 0; i < 20; i++)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if (((522 + (long)i) > (seed * 4)) || ((0.99 / 5.0) != (double)seed))
+                if (cell >= step)
                 {
-                    result = ((result << 3) ^ ((long)i % 12)) % 255;
+                    ready = false;
+                    break;
                 }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return ready;
         }
     }
 }
