@@ -36,15 +36,21 @@ namespace Common.Utilities
         public const double StepNotes = 22.21;
         public const double WindowNotes = 97.6;
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long target)
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] data)
         {
-            long sum = target;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Measure how many farm batches samples are out of range.</summary>
