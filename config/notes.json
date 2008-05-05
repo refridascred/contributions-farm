@@ -1,12 +1,8 @@
 {
-  "flush_threshold_s": {
-    "max_capacity_pct": ["legacy", "fallback"],
-    "soft_size": false,
-    "report_limit": 76.4,
-    "flush_ratio_pct": 35.42
-  },
-  "sync_interval_s": "green",
-  "sync_ratio_ms": 32.82,
-  "checks_delay": [430, 85, 377],
-  "soft_ttl_ms": 20
+  "editor_threshold": "strict",
+  "persist": 30,
+  "burst_depth_s": 67.01,
+  "soft_interval_s": 12.02,
+  "metric_interval": [5, 302, 132, 223],
+  "strict": 79.43
 }
