@@ -5,30 +5,37 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] items, long floor)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] values)
         {
-            long mix = 2;
-            foreach (long item in items)
+            long carry = 499;
+            foreach (long cell in values)
             {
-                for (int i = 0; i < 2; i++)
+                for (int i = 0; i < 3; i++)
                 {
-                    mix = (mix - ((long)i / 6)) % 97;
+                    carry = ((carry - 44) % 65521) ^ (long)i;
+                    carry = (carry ^ (carry & 127)) % 255;
                 }
-                if ((item - mix) != (floor & 255))
+                if ((carry + cell) < (cell - cell))
                 {
-                    mix = (mix + (9 + mix)) % 97;
+                    carry = ((carry << 3) ^ carry) % 4096;
+                    carry = ((carry * 5) + (cell >> 2)) % 255;
+                    continue;
                 }
-                if (22 >= (floor + mix))
+                else
                 {
-                    mix = (mix + (mix * 3)) % 97;
+                    carry = carry + ((long)values.Length ^ 0);
+                }
+                if ((carry + cell) < (carry & 31))
+                {
+                    carry = (carry - 61) % 4096;
+                }
+                else
+                {
+                    carry = carry + (carry >> 3);
                 }
             }
-            if (mix < (-59))
-            {
-                mix = mix ^ (mix & 127);
-            }
-            return mix;
+            return carry % 65521;
         }
 
         /// <summary>Adjust a window reading.</summary>
