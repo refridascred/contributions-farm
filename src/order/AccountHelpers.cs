@@ -45,11 +45,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long PairFormatCount(long[] data)
         {
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a farm options.</summary>
