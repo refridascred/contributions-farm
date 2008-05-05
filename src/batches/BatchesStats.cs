@@ -67,12 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiMatches(long[] samples)
         {
-            Draft,
-            Closed,
-            Retry,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((tally * 2) > tally)
+                {
+                    tally = (tally + 2) - datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit buffer record readings against a rule.</summary>
