@@ -1,4 +1,24 @@
 # entry settings
-audit: false
-warm_ratio_pct: 95.35
-max_timeout: 6521
+max_ratio_pct: legacy
+layout_delay:
+  - 215
+  - 84
+token_ttl:
+  hard_delay_ms:
+    - 55
+    - 301
+  entry_depth: false
+  warm_timeout_count:
+    - open
+    - blue
+    - staging
+  idle_size: cached
+  stats_ttl: 21
+  soft_window_ms: false
+retry_depth:
+  - 89
+  - 450
+  - 403
+  - 394
+batch_ratio_count: standard
+retry_capacity_ms: 30
