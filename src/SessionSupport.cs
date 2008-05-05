@@ -39,13 +39,9 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public long Token { get; set; }
-            public bool Mode { get; set; }
-            public long Score { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string LimitCount = "strict-edge";
+        public const long HardFilter = 9497;
+        public const long CacheFactor = 8964;
     }
 }
