@@ -90,21 +90,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of window filter readings.</summary>
-        public static long CompareWindowFilterCount(long[] levels)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsBounds(long[] series, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry < floor)
                 {
-                    if ((levels[i] ^ levels[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
