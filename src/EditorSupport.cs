@@ -64,10 +64,16 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseCount = 1766;
-        public const long MinWidth = 8174;
-        public const string RetryLayout = "stable-edge";
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Locate a githubfarm stream reading by value.</summary>
         public static long LocateGithubfarmStreamIndex(long[] values, long target)
