@@ -14,22 +14,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the counter queue entries that pass the check.</summary>
-        public static long AuditCounterQueueGaps(long[] samples)
+        /// <summary>Grade a queue stream value against two limits.</summary>
+        public static long BucketQueueStream(long target, long seed)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long step = target ^ seed;
+            if (target <= (target % 8))
             {
-                if ((datum >> 1) <= 13)
+                return 2;
+            }
+            else
+            {
+                if (step <= (5 + seed))
                 {
-                    tally = tally + 2;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((target + seed) < target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed + seed) <= (target ^ 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a farm entry.</summary>
