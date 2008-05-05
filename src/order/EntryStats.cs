@@ -58,18 +58,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] items, long offset)
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((4.82 - 8.0) <= (double)matches)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = ((matches + 3) ^ entry) + offset;
+                    if ((items[i] ^ items[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the layout state values.</summary>
