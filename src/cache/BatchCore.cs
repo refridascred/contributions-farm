@@ -55,11 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public double Mode { get; set; }
-            public long Count { get; set; }
+            Failed,
+            Done,
+            Synced,
         }
     }
 }
