@@ -20,21 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count format record pairs that satisfy a relation.</summary>
-        public static long CompareFormatRecordCount(long[] levels)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double scale, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate = 15.0;
+            if (rate > (double)(-3))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = (rate - 5.8) - span;
             }
-            return seen;
+            else
+            {
+                rate = rate + scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (scale - rate)) - (double)(long)i;
+            }
+            return rate - 6.8;
         }
 
         /// <summary>Scale a entry checks figure with a bias.</summary>
