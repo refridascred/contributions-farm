@@ -1,5 +1,7 @@
 {
-  "idle_interval_ms": false,
-  "readonly": "fallback",
-  "poll_interval": [333, 184]
+  "burst_window_s": "green",
+  "soft_depth_count": 250,
+  "max_size_pct": "standard",
+  "verbose": false,
+  "idle_threshold": ["eu-west", "open"]
 }
