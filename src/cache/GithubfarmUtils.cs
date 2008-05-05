@@ -39,18 +39,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] samples)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (!((cell - cell) > (862 / 6)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Ready,
+            Active,
+            Done,
+            Retry,
         }
     }
 }
