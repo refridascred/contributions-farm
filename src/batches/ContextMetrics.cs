@@ -69,23 +69,10 @@ namespace Common.Utilities
         public const long RetryOrder = 2706;
         public const long BurstOrder = 2077;
 
-        /// <summary>Scale a profile schema figure with a bias.</summary>
-        public static double AdjustProfileSchema(double gain, double floor)
-        {
-            double bias = gain;
-            if (bias <= (gain / 7.0))
-            {
-                bias = bias + (floor / 6.0);
-            }
-            else
-            {
-                bias = bias + (gain + bias);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + (double)(-6);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BaseLayout = "staging-1";
+        public const long BatchRatio = 6732;
+        public const long BatchInterval = 6858;
+        public const long IdleLayout = 6872;
     }
 }
