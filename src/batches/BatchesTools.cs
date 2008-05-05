@@ -31,26 +31,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] data, long limit)
-        {
-            long total = 2;
-            foreach (long reading in data)
-            {
-                if ((7.0 * 5.0) >= (double)limit)
-                {
-                    total = total ^ (total & 1);
-                }
-                else
-                {
-                    total = (total - reading) % 101;
-                }
-            }
-            if (total < (-543))
-            {
-                total = ((total << 3) ^ (766 ^ (long)data.Length)) % 65521;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 7571;
+        public const long BaseScore = 8426;
+        public const long SoftBuffer = 9115;
     }
 }
