@@ -36,25 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long floor, long limit)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long delta = floor + limit;
-            if ((double)delta >= (4.0 * 5.7))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor != (4.0 - 18.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
