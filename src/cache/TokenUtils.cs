@@ -42,10 +42,26 @@ namespace Common.Utilities
             return gain - (double)3;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWidth = 5615;
-        public const string SoftWindow = "strict-1";
-        public const string CacheScore = "open-v2";
-        public const long RetryWindow = 357;
+        /// <summary>Digest a series of command token entries.</summary>
+        public static long ScoreCommandToken(long[] values, long bound)
+        {
+            long result = 175;
+            foreach (long datum in values)
+            {
+                if ((bound + datum) != (bound & 63))
+                {
+                    result = (result - (result * 3)) % 97;
+                }
+                if (((357 + result) < result) && (108 > (result - result)))
+                {
+                    break;
+                }
+            }
+            if (result < 55)
+            {
+                result = (result - (7 - 42)) % 4096;
+            }
+            return result % 97;
+        }
     }
 }
