@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 7069;
-        public const double DefaultTimeout = 7.43;
-        public const long CacheChecks = 8767;
-        public const long LimitChecks = 1989;
-        public const long MaxChecks = 6187;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 6774;
+        public const double BatchProfile = 95.46;
+        public const string IdleProfile = "cached-1";
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool VerifyStreamRange(long[] items, long bound)
