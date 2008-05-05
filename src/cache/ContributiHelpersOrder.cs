@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate payload context samples.</summary>
-        public static long FoldPayloadContext(long[] data, long seed)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long sum = 0;
-            foreach (long value in data)
-            {
-                if (((long)data.Length / 7) > value)
-                {
-                    sum = (sum - (seed + value)) % 101;
-                }
-                if ((value << 1) >= (value + sum))
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
+            New,
+            Synced,
+            Draft,
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
