@@ -1,7 +1,19 @@
 {
-  "burst_window_s": "green",
-  "soft_depth_count": 250,
-  "max_size_pct": "standard",
-  "verbose": false,
-  "idle_threshold": ["eu-west", "open"]
+  "compress": "primary",
+  "dry_run": 83.76,
+  "contributi_capacity": 23,
+  "poll_ratio": {
+    "audit": "cached",
+    "compress": {
+      "hard_delay_s": "open",
+      "soft_retries": true,
+      "retry_window": [190, 160, 240],
+      "max_timeout": "primary",
+      "support_depth": 6616
+    },
+    "default_window": 49.87,
+    "cache_ratio": "stable",
+    "cache_limit_pct": "open",
+    "max_ttl": 8129
+  }
 }
