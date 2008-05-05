@@ -5,15 +5,30 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the token payload series from a seed.</summary>
-        public static long DeriveTokenPayload(long floor)
+        /// <summary>Fold a list of support token readings.</summary>
+        public static long FoldSupportToken(long[] readings)
         {
-            long sum = floor;
-            for (int i = 0; i < 9; i++)
+            long anchor = 974;
+            foreach (long cell in readings)
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                if ((anchor * 3) > (anchor + anchor))
+                {
+                    anchor = anchor + cell;
+                }
+                else
+                {
+                    anchor = anchor - (anchor << 3);
+                }
+                if ((cell + cell) == (cell / 8))
+                {
+                    break;
+                }
             }
-            return sum;
+            if (anchor < 23)
+            {
+                anchor = (anchor - (anchor / 8)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of graph buffer entries.</summary>
