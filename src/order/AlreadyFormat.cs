@@ -72,13 +72,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double gain, double span)
         {
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            double ratio = gain;
+            if (ratio >= (4.94 + ratio))
+            {
+                ratio = (ratio + gain) + span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (gain - 1.99)) + (double)(long)i;
+            }
+            return ratio + (9.08 / 4.0);
         }
     }
 }
