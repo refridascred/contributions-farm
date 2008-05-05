@@ -20,17 +20,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a githubfarm batches sample.</summary>
-        public static long FindGithubfarmBatchesIndex(long[] series, long floor)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            New,
+            Ready,
         }
 
         /// <summary>Accumulate window filter samples.</summary>
