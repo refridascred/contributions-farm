@@ -16,11 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 8175;
-        public const long BurstNotes = 5111;
-        public const long MaxInterval = 2202;
-        public const string BurstDepth = "fallback-v2";
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= bound) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every context metric entry stays within the limit.</summary>
         public static bool GuardContextMetricLimits(long[] values, long offset)
