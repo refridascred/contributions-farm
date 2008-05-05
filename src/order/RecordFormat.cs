@@ -38,22 +38,12 @@ namespace Common.Utilities
             return ratio + span;
         }
 
-        /// <summary>Measure how many farm batches samples are out of range.</summary>
-        public static long MeasureFarmBatchesMatches(long[] items)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (!((seen << 1) >= (reading ^ seen)) || !((reading & 255) < seen))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Done,
+            Locked,
+            Synced,
         }
 
         /// <summary>Describe the payload phase values.</summary>
