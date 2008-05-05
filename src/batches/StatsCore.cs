@@ -30,18 +30,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatMatches(long[] items, long offset)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((offset % 3) < (seen - offset))
-                {
-                    seen = (seen + 1) ^ sample;
-                }
-            }
-            return seen;
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
+            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Audit record readings against a rule.</summary>
