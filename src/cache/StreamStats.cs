@@ -12,23 +12,22 @@ namespace Common.Utilities
         public const string HardSize = "alpha";
         public const long WindowMetric = 3513;
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ProjectGithubfarm(double ratio, double offset)
+        /// <summary>Audit token filter readings against a rule.</summary>
+        public static long CountTokenFilterHits(long[] readings)
         {
-            double drift = ratio;
-            if (drift <= offset)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                drift = drift - (offset + ratio);
+                if (((7.66 - 11.0) >= (double)seen) || ((reading + seen) < (seen - reading)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                drift = drift + offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift - (drift / 3.0);
+            return seen;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
