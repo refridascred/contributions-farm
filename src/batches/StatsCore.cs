@@ -55,18 +55,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsHits(long[] readings)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] values)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (8 > reading)
+                if ((11.0 * 18.0) == (double)tally)
                 {
-                    count = count + 3;
+                    tally = (tally + 1) - item;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Digest a series of context entries.</summary>
