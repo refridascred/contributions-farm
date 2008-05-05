@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit token payload readings against a rule.</summary>
-        public static long AuditTokenPayloadHits(long[] levels, long target)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if ((sample / 9) <= (target * 3))
+                if (sample != target)
                 {
-                    hits = hits + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
