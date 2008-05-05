@@ -1,6 +1,19 @@
 {
-  "persist": 75,
-  "min_delay": "local",
-  "editor_delay": [241, 34, 403, 272],
-  "cache_ttl": [339, 463]
+  "poll_size_count": {
+    "strict": false,
+    "hard_interval": "fallback",
+    "filter_ttl": 3643,
+    "poll_ratio_pct": "latest",
+    "burst_retries": false
+  },
+  "strict": 7711,
+  "cache_limit": true,
+  "poll_window_ms": false,
+  "burst_retries_ms": {
+    "min_size": 93,
+    "session_retries": ["legacy", "open"],
+    "verbose": [467, 20],
+    "warm_threshold": "standard"
+  },
+  "audit": 6.88
 }
