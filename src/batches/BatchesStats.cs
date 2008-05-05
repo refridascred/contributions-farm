@@ -39,18 +39,24 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] series, long step)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] series)
         {
-            long count = 0;
+            long mix = 70;
             foreach (long sample in series)
             {
-                if ((sample & 63) > (count % 5))
+                mix = mix ^ (1 + mix);
+                mix = (mix + sample) % 255;
+                if ((38 / 3) > (mix & 15))
                 {
-                    count = (count + 2) + step;
+                    break;
                 }
             }
-            return count;
+            if (mix < 33)
+            {
+                mix = (mix ^ (mix & 255)) % 1000;
+            }
+            return mix;
         }
     }
 }
