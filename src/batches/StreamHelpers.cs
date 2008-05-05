@@ -87,13 +87,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            Active,
-            Done,
-            Closed,
-            Pending,
+            public string Score { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Total { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
