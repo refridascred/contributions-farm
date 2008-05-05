@@ -1,6 +1,6 @@
-id,weight,label
-1,206,latest
-2,51.34,601
-3,48.6,16.61
-4,82.96,368
-5,463,762
+id,state,owner,score,active
+1,standard,53.66,primary,standard
+2,57.97,eu-west,270,23.05
+3,60.99,legacy,888,cached
+4,open,658,926,staging
+5,405,573,staging,451
