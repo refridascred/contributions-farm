@@ -53,12 +53,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MinLevel = "primary-edge";
-        public const long MaxFactor = 5940;
-        public const long IdleFarm = 2777;
-        public const long SoftTimeout = 3537;
-        public const long BurstBudget = 5149;
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
+        {
+            public long Offset { get; set; }
+            public bool Level { get; set; }
+            public string Rank { get; set; } = "";
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long MeasureEntryOutliers(long[] items, long offset)
