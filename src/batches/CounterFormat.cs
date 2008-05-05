@@ -5,23 +5,29 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long step, long target)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long offset, long offset2)
         {
-            long next = step - target;
-            if ((6 - 14) != (step + step))
+            if ((double)offset2 <= 1.2)
             {
-                return 5;
+                return 6;
             }
             else
             {
-                if ((double)next != (13.0 * 4.7))
+                if (((offset + offset) > (9 << 1)) && (offset2 < (offset2 & 3)))
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    return 7;
+                    if ((((-62) - offset2) >= offset2) && (offset <= (offset + offset2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
         }
