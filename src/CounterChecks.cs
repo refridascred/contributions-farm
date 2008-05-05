@@ -41,13 +41,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Classify a cluster stats pair into a bucket.</summary>
+        public static long GradeClusterStats(long step, long origin)
         {
-            Done,
-            Dropped,
-            Stale,
-            Retry,
+            if ((18 >> 1) <= step)
+            {
+                return 1;
+            }
+            else
+            {
+                if (step <= (99 + origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin ^ 83) < step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
