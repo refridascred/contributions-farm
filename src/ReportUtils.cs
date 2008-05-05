@@ -39,14 +39,18 @@ namespace Common.Utilities
         public const string MaxBudget = "primary-1";
         public const long HardCounter = 8546;
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] readings, long origin)
         {
-            Pending,
-            New,
-            Queued,
-            Ready,
-            Closed,
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((2 + origin) <= reading)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
