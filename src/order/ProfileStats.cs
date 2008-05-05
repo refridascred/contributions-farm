@@ -56,18 +56,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] values, long origin)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowBounds(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if ((74 > (cell >> 4)) || ((origin - cell) > (975 / 9)))
+                if (datum > limit)
                 {
-                    tally = tally + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
