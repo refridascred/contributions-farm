@@ -33,22 +33,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many session buffer samples are out of range.</summary>
-        public static long AuditSessionBufferMatches(long[] values, long seed)
+        /// <summary>Compare every pair of batches support readings.</summary>
+        public static long CompareBatchesSupportCount(long[] values)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seed << 3) != (seen + item))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] + values[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
