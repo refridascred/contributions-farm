@@ -33,14 +33,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            Stale,
-            Idle,
-            Closed,
-            Done,
-            Queued,
+            public long Count { get; set; }
+            public double Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
