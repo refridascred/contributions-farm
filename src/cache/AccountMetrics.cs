@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaGaps(long[] levels)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (tally < (entry / 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((readings[i] + readings[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
