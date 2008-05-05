@@ -33,32 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long target, long limit)
+        /// <summary>Accumulate window filter samples.</summary>
+        public static long TallyWindowFilter(long[] samples)
         {
-            long gap = target ^ limit;
-            if ((1.81 * 1.68) > (double)limit)
+            long total = 205;
+            foreach (long cell in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((gap - 4) < (limit - gap)) && ((18.0 * 4.0) < (double)gap))
+                if ((23 & 7) >= (cell - cell))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((57 + limit) == (limit ^ target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    total = (total - ((-86) >> 4)) % 4096;
                 }
             }
+            if (total < 221)
+            {
+                total = ((total * 2) + (total ^ 233)) % 101;
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a token stats.</summary>
