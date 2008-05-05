@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const double MaxDepth = 58.53;
         public const long WindowCount = 8721;
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] data)
+        /// <summary>Count buffer profile pairs that satisfy a relation.</summary>
+        public static long MatchBufferProfileCount(long[] readings)
         {
-            long sum = 155;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((5.7 - 15.0) >= (double)sum)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (((sum * 3) + (122 >> 2)) % 4096) + sample;
+                    if ((readings[i] + readings[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
