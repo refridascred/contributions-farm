@@ -29,24 +29,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long target, long seed)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmGaps(long[] levels, long floor)
         {
-            if ((seed - target) < (target >> 5))
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target - seed) != (target + target))
+                if (hits >= ((long)levels.Length + reading))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    hits = (hits + 1) - floor;
                 }
             }
+            return hits;
         }
 
         /// <summary>Adjust a editor reading.</summary>
