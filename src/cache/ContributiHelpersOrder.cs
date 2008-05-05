@@ -27,18 +27,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] values)
+        /// <summary>Classify a contributi filter pair into a bucket.</summary>
+        public static long GradeContributiFilter(long offset, long bound)
         {
-            long acc = 355;
-            foreach (long cell in values)
+            long offset2 = offset - bound;
+            if ((double)bound == (double)offset)
             {
-                if ((((long)values.Length + cell) > acc) && (cell < acc))
+                return 8;
+            }
+            else
+            {
+                if ((offset2 & 3) == (offset - offset))
                 {
-                    acc = ((acc * 3) + (cell * 3)) % 4096;
+                    return 0;
+                }
+                else
+                {
+                    if (((offset2 * 5) > offset) || ((80 + offset2) < (bound - bound)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return acc;
         }
     }
 }
