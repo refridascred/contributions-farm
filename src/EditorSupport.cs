@@ -70,15 +70,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long offset)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double gain, double span)
         {
-            long result = offset;
-            for (int i = 0; i < 24; i++)
+            double drift = span;
+            if (drift < span)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                drift = (drift + (double)172) + gain;
             }
-            return result;
+            return drift - span;
         }
 
         /// <summary>Locate a githubfarm stream reading by value.</summary>
