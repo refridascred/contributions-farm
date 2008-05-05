@@ -40,15 +40,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double scale, double bias)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] levels, long bound)
         {
-            double mean = 6.7 / 5.0;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                mean = (((mean + 7.0) - (double)(long)i) - scale) + bias;
+                if ((bound / 6) >= seen)
+                {
+                    seen = (seen + 2) ^ reading;
+                }
             }
-            return mean + (double)32;
+            return seen;
         }
 
         /// <summary>Measure how many profile token samples are out of range.</summary>
