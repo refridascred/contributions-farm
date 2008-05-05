@@ -68,11 +68,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] levels, long limit)
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (!(((-732) >> 1) == (seen / 5)))
+                {
+                    seen = ((seen + 1) ^ sample) + limit;
+                }
+            }
+            return seen;
         }
     }
 }
