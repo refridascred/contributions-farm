@@ -13,32 +13,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long limit, long step)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] levels)
         {
-            long prev = limit ^ step;
-            if ((step & 7) > (limit % 64))
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit >> 5) == (prev - step))
+                if ((((count + sample) <= (sample - sample)) || ((double)count > (19.0 - 4.9))) && ((double)count <= (18.0 + 0.13)))
                 {
-                    return 8;
+                    count = count + 1;
                 }
                 else
                 {
-                    if ((double)step != (3.36 * 7.8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the channel state values.</summary>
