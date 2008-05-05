@@ -58,11 +58,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MaxQueue = "staging-edge";
-        public const long LimitTimeout = 7583;
-        public const long HardCount = 9297;
-        public const string WindowQueue = "standard";
-        public const long BaseWidth = 2593;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] readings, long seed)
+        {
+            long anchor = 64;
+            foreach (long cell in readings)
+            {
+                if (((double)cell < 13.0) || ((cell - cell) <= (368 / 3)))
+                {
+                    anchor = ((anchor + (975 << 2)) % 97) - seed;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (cell & 255)) % 65521;
+                }
+            }
+            return anchor;
+        }
     }
 }
