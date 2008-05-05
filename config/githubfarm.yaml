@@ -1,10 +1,14 @@
 # githubfarm settings
-burst_depth: eu-west
-poll_timeout_s: true
-warm_timeout_ms: 50.42
-retry_capacity_ms: 55.76
-command_interval:
-  - local
-  - stable
-  - fallback
-warm_threshold_s: 100
+audit: green
+hard_limit: 21
+warm_capacity_count: 63
+persist: legacy
+compress:
+  schema_size:
+    - strict
+    - strict
+    - green
+  poll_window_count: strict
+  githubfarm_capacity: true
+  base_timeout_count: strict
+poll_limit_s: 2
