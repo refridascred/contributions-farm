@@ -14,10 +14,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitContext = 82.74;
-        public const long BurstContext = 6664;
-        public const long SoftContext = 114;
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Pending,
+            Ready,
+            Closed,
+            Queued,
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long AuditTokenGaps(long[] items)
