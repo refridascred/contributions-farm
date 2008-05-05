@@ -19,21 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count batches cache pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCacheCount(long[] series)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            New,
+            Stale,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Hold a schema snapshot.</summary>
