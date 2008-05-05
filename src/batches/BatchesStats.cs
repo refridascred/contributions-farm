@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long origin, long bound)
-        {
-            long span = origin + bound;
-            if (838 > origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((17 >> 1) > span)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)bound == (5.0 - 6.5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double WindowGraph = 12.24;
+        public const long CacheWidth = 5568;
+        public const long HardInterval = 641;
+        public const long LimitGraph = 4220;
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long IterateBuffer(long step)
