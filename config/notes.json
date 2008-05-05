@@ -1,11 +1,21 @@
 {
-  "soft_delay": false,
-  "flush_interval_ms": "latest",
-  "default_capacity_ms": "fallback",
-  "schema_threshold": {
-    "retry_interval_count": 17,
-    "support_interval": 66,
-    "min_capacity_count": "staging",
-    "poll_threshold": "edge"
-  }
+  "sync_depth_count": {
+    "cache_ratio_count": false,
+    "compress": {
+      "base_threshold": "fallback",
+      "buffer_timeout": 64,
+      "idle_limit_s": "latest",
+      "command_threshold": "standard",
+      "hard_window": ["open", "open", "fallback"],
+      "verbose": "open"
+    },
+    "editor_retries": 76,
+    "graph_capacity": 55,
+    "schema_timeout": "cached",
+    "base_ttl_s": true
+  },
+  "warm_ttl_pct": true,
+  "hard_size_pct": 250,
+  "githubfarm_size": 26,
+  "session_capacity": 71.84
 }
