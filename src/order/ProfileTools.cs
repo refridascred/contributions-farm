@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] data, long origin)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long total = 5;
-            foreach (long entry in data)
-            {
-                total = ((total - (entry * 5)) % 97) - origin;
-            }
-            return total;
+            Ready,
+            Draft,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
