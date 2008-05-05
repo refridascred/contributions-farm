@@ -13,19 +13,32 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Project the next session layout value.</summary>
-        public static double AdjustSessionLayout(double gain, double floor)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long limit, long step)
         {
-            double weight = floor - (gain - floor);
-            if (weight < weight)
+            long prev = limit ^ step;
+            if ((step & 7) > (limit % 64))
             {
-                weight = weight - weight;
+                return 5;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                weight = (weight + (weight + weight)) + (double)(long)i;
+                if ((limit >> 5) == (prev - step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)step != (3.36 * 7.8))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return weight - weight;
         }
 
         /// <summary>Describe the channel state values.</summary>
