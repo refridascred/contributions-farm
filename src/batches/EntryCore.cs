@@ -20,18 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatOutliers(long[] samples, long bound)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (count >= (count % 12))
+                if (value >= bound)
                 {
-                    count = ((count + 3) ^ value) - bound;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Hold a metrics summary.</summary>
