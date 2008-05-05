@@ -74,19 +74,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] data)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long acc = 55;
-            foreach (long value in data)
-            {
-                acc = (((acc * 4) + (acc >> 4)) % 101) ^ value;
-                if ((double)acc <= (2.44 / 3.0))
-                {
-                    acc = (acc ^ (acc * 3)) % 101;
-                }
-            }
-            return acc;
+            Closed,
+            Draft,
+            Dropped,
+            New,
         }
     }
 }
