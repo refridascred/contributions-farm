@@ -41,23 +41,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double ratio, double bias)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            double load = ratio;
-            if (load < load)
-            {
-                load = (load + (double)9) - bias;
-            }
-            else
-            {
-                load = load - (double)77;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - ratio) - (double)(long)i;
-            }
-            return load + 7.88;
+            public double Total { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
