@@ -74,14 +74,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricRange(long[] data, long origin)
         {
-            Failed,
-            Retry,
-            New,
-            Closed,
-            Locked,
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the cluster state values.</summary>
