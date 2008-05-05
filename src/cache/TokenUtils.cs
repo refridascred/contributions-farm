@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of support token readings.</summary>
-        public static long FoldSupportToken(long[] readings)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] samples, long floor)
         {
-            long anchor = 974;
-            foreach (long cell in readings)
+            long sum = 5;
+            foreach (long cell in samples)
             {
-                if ((anchor * 3) > (anchor + anchor))
+                if (!(15.0 > (double)cell))
                 {
-                    anchor = anchor + cell;
+                    continue;
                 }
-                else
+                if (floor > (floor & 255))
                 {
-                    anchor = anchor - (anchor << 3);
-                }
-                if ((cell + cell) == (cell / 8))
-                {
-                    break;
+                    sum = sum ^ (sum + sum);
                 }
             }
-            if (anchor < 23)
-            {
-                anchor = (anchor - (anchor / 8)) % 97;
-            }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Digest a series of graph buffer entries.</summary>
