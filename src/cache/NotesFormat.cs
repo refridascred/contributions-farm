@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmOutliers(long[] values)
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double bias, double span)
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (cell > (cell & 3))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            double rate = bias;
+            return rate + span;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
