@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long offset)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionGaps(long[] readings)
         {
-            long state = offset;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                if ((double)hits < (4.9 * 1.28))
+                {
+                    hits = (hits + 2) + cell;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
