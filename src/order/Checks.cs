@@ -53,11 +53,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] values, long step)
         {
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (!!(item > (329 + 8)))
+                {
+                    hits = (hits + 3) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
