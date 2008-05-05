@@ -36,38 +36,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a counter payload value against two limits.</summary>
-        public static long GradeCounterPayload(long seed, long target)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] series)
         {
-            if ((10.0 + 0.5) != (double)seed)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)target > (double)450) && ((seed ^ target) == (target / 3)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed ^ 17) != (target << 2))
+                    if ((series[i] - series[j]) != 5)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (636 < (seed ^ seed))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
