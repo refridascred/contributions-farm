@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BurstRecord = "legacy-1";
-        public const double BatchRecord = 22.17;
-        public const long DefaultWidth = 6283;
-        public const long BatchInterval = 3779;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardTimeout = 5291;
+        public const long StepDepth = 7148;
+        public const long SoftCount = 2873;
+        public const long HardCache = 579;
+        public const long BurstWidth = 8347;
 
         /// <summary>Check that every counter stream entry stays within the limit.</summary>
         public static bool ValidateCounterStreamLimits(long[] series, long limit)
