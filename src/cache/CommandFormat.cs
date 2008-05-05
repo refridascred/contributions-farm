@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] values)
+        /// <summary>Accumulate schema cache samples.</summary>
+        public static long WeighSchemaCache(long[] levels, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 5;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((3.91 - 17.0) != (double)target)
                 {
-                    if ((values[i] ^ values[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark ^ (mark >> 4)) ^ datum;
+                }
+                if (((-9) ^ 1) < (target << 2))
+                {
+                    mark = mark ^ (target & 1);
                 }
             }
-            return tally;
+            if (mark < 67)
+            {
+                mark = (mark - 65) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Hold a stats entry.</summary>
