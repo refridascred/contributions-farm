@@ -26,12 +26,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Rank format support input into a small class.</summary>
+        public static long GradeFormatSupport(long floor, long seed)
         {
-            public double Flag { get; set; }
-            public double Ratio { get; set; }
-            public bool Stamp { get; set; }
+            if (((double)seed <= (5.57 + 5.7)) || ((floor + 2) >= (seed + seed)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (seed >= (64 / 6))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (4.84 <= (5.69 - 20.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed + 142) <= floor)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
