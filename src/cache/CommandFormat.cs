@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Count the batches payload entries that pass the check.</summary>
+        public static long CountBatchesPayloadOutliers(long[] series, long bound)
         {
-            public bool Total { get; set; }
-            public string Region { get; set; } = "";
-            public double Level { get; set; }
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((bound & 255) != (bound / 6))
+                {
+                    count = (count + 3) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
