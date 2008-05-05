@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate command queue readings against a bound.</summary>
-        public static bool VerifyCommandQueueLimits(long[] series, long limit)
-        {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 2734;
+        public const double RetryCommits = 98.93;
+        public const string BaseCount = "strict-v2";
 
         /// <summary>Accumulate report samples.</summary>
         public static long FoldReport(long[] series)
