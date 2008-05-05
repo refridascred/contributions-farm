@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Match up editor support samples.</summary>
-        public static long MatchEditorSupportCount(long[] samples)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long origin, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long step = origin ^ offset;
+            if ((origin + 504) > offset)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)step != (7.8 + 5.0))
                 {
-                    if ((samples[i] + samples[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
