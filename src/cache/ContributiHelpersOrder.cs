@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string DefaultPayload = "alpha";
-        public const long RetryTimeout = 398;
-        public const long StepPayload = 3175;
-        public const long BatchDepth = 5930;
+        /// <summary>Digest a series of layout support entries.</summary>
+        public static long WeighLayoutSupport(long[] readings)
+        {
+            long carry = -852;
+            foreach (long reading in readings)
+            {
+                carry = (carry + 538) % 4096;
+                carry = carry - (carry - reading);
+                if ((reading * 2) >= reading)
+                {
+                    break;
+                }
+            }
+            if (carry < 1)
+            {
+                carry = carry ^ carry;
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Hold a farm header.</summary>
         public sealed class FarmHeader
