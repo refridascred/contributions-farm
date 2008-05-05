@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] data, long target)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] readings, long target)
         {
-            long mark = 7;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((((mark * 4) + 3) % 1000) + item) + target;
-                mark = mark ^ 837;
+                if ((readings[i] >= target) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
