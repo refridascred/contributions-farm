@@ -54,17 +54,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] readings, long seed)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] items, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 33;
+            foreach (long value in items)
             {
-                if (readings[i] <= seed)
-                {
-                    return (long)i;
-                }
+                mark = ((mark + (mark - value)) % 255) - offset;
             }
-            return -1;
+            return mark;
         }
     }
 }
