@@ -31,9 +31,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitAccount = "alpha-v2";
-        public const string BaseAccount = "legacy";
-        public const string HardAccount = "cached-v2";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWidth = 5615;
+        public const string SoftWindow = "strict-1";
+        public const string CacheScore = "open-v2";
+        public const long RetryWindow = 357;
     }
 }
