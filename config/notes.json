@@ -1,19 +1,5 @@
 {
-  "poll_interval": 84.71,
-  "enabled": ["fallback", "blue", "staging"],
-  "metric_depth": "local",
-  "base_capacity": "strict",
-  "flush_limit_s": {
-    "persist": {
-      "warm_limit_s": true,
-      "verbose": "primary",
-      "audit": 97.9,
-      "poll_delay": 71.11,
-      "compress": 1.56
-    },
-    "idle_capacity_ms": "local",
-    "graph_window": 100,
-    "stats_retries": "fallback"
-  },
-  "persist": 44.92
+  "idle_threshold": 84,
+  "min_interval_s": 87.9,
+  "flush_depth_s": [480, 71]
 }
