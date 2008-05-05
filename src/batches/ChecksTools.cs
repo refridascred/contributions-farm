@@ -19,13 +19,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueLimits(long[] levels, long offset)
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public bool Score { get; set; }
-            public long Total { get; set; }
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
