@@ -1,7 +1,8 @@
-id,level,owner,weight
-1,600,90.17,staging
-2,open,333,27.53
-3,89.92,strict,930
-4,7,3,729
-5,17.13,8.24,cached
-6,edge,38.17,49.68
+id,score,weight,label
+1,59.63,980,stable
+2,open,92.68,local
+3,69.12,750,953
+4,210,89.71,31.4
+5,335,102,674
+6,449,3.35,93.74
+7,green,57.31,staging
