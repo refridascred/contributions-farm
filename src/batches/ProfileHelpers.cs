@@ -61,17 +61,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] samples, long origin)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((samples[i] <= origin) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result << 2) ^ 56) % 255;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the checks kind values.</summary>
