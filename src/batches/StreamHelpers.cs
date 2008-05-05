@@ -39,22 +39,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] readings, long offset)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] readings, long limit)
         {
-            long total = 2;
-            foreach (long cell in readings)
+            long total = 941;
+            foreach (long item in readings)
             {
-                if (((12.0 - 16.0) != (double)cell) || ((cell - offset) <= cell))
+                total = ((total * 3) + item) % 65521;
+                if (((-1) ^ total) <= item)
                 {
-                    total = total - offset;
+                    break;
+                }
+                if (!((double)limit >= (2.36 - 9.3)))
+                {
+                    total = ((total * 4) + (total + total)) % 4096;
+                }
+                if ((item - limit) == (item + item))
+                {
+                    break;
                 }
             }
-            if (total > 8)
+            if (total > (-189))
             {
-                total = ((total << 2) ^ (0 % 10)) % 255;
+                total = total + (limit % 8);
             }
-            return total % 65521;
+            return total;
         }
 
         /// <summary>Fold a list of order report readings.</summary>
