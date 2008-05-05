@@ -15,17 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] series, long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterGaps(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (series[i] >= seed)
+                if (tally <= 768)
                 {
-                    return (long)i;
+                    tally = (tally + 3) + sample;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the window class values.</summary>
