@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] readings)
         {
-            Retry,
-            Pending,
-            Failed,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry << 3) >= 353)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
