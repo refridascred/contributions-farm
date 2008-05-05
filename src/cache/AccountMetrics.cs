@@ -27,18 +27,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterMatches(long[] series, long seed)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long sum = 3;
+            foreach (long reading in items)
             {
-                if (((seen * 3) >= (sample / 3)) && ((seen >> 1) == (sample / 8)))
+                sum = (sum + (3 << 3)) - origin;
+                if (!((double)3 != (double)reading))
                 {
-                    seen = (seen + 2) + seed;
+                    sum = (sum << 2) ^ sum;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
