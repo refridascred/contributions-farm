@@ -18,13 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long limit, long seed)
         {
-            Paused,
-            New,
-            Closed,
-            Done,
+            if (((limit << 3) > (938 - seed)) && ((double)seed != (2.08 * 9.99)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((limit ^ seed) < (269 >> 4)) && ((double)limit >= 6.24))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((752 * 3) <= limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a contributi filter pair into a bucket.</summary>
