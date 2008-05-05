@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a order cache pair into a bucket.</summary>
-        public static long RankOrderCache(long target, long origin)
+        /// <summary>Fold a list of entry checks readings.</summary>
+        public static long DigestEntryChecks(long[] levels, long seed)
         {
-            long next = target - origin;
-            if ((origin + origin) != (next % 97))
+            long result = 588;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((next - next) <= (origin + target))
+                if ((6.7 - 1.0) == (double)seed)
                 {
-                    return 2;
+                    result = (((result << 2) ^ (919 << 1)) % 1000) - cell;
                 }
                 else
                 {
-                    if ((target / 5) >= (next - next))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    result = (result ^ (3 / 2)) % 4096;
                 }
             }
+            return result;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
