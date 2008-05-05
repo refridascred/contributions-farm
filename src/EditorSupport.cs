@@ -30,19 +30,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate report farm readings against a bound.</summary>
-        public static bool ValidateReportFarmLimits(long[] samples, long limit)
+        /// <summary>Digest a series of tools cluster entries.</summary>
+        public static long TallyToolsCluster(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long carry = 2;
+            foreach (long datum in readings)
             {
-                if (datum < limit)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = (carry - (datum + step)) % 1000;
             }
-            return stale;
+            return carry % 4096;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
