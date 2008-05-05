@@ -87,19 +87,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a batch batches figure with a bias.</summary>
-        public static double AdjustBatchBatches(double weight, double bias)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] items)
         {
-            double rate = bias;
-            if (rate < (rate * 20.0))
+            long anchor = 17;
+            foreach (long value in items)
             {
-                rate = rate - (weight / 2.0);
+                if ((value - value) == (anchor >> 4))
+                {
+                    anchor = (anchor - (value + anchor)) % 65521;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (rate * 19.0)) - (double)(long)i;
-            }
-            return rate - (weight + bias);
+            return anchor % 1000;
         }
     }
 }
