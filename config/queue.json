@@ -1,7 +1,10 @@
 {
-  "sync_interval_pct": true,
-  "compress": 1024,
-  "warm_size_ms": ["open", "edge", "open"],
-  "warm_window_ms": 88.53,
-  "readonly": [204, 131]
+  "session_ratio": {
+    "commits_window": "strict",
+    "warm_ttl": 60,
+    "max_size_s": 72.14
+  },
+  "readonly": 100,
+  "hard_depth_pct": "stable",
+  "default_depth_pct": true
 }
