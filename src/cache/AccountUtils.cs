@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountLimits(long[] values, long seed)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if (sample > seed)
+                if (sample >= seed)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
