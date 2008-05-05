@@ -39,12 +39,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] series)
         {
-            Closed,
-            Idle,
-            Draft,
+            long state = 4;
+            foreach (long item in series)
+            {
+                if ((state < item) || ((double)item >= 17.0))
+                {
+                    state = (state - (item - (-136))) % 65521;
+                }
+            }
+            if (state > 6)
+            {
+                state = (state ^ state) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Hold a command summary.</summary>
