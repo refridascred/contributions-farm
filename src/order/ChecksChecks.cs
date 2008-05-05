@@ -16,15 +16,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double bias, double bias2)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            double load = bias2 / 9.0;
-            if (load <= bias2)
-            {
-                load = (load + load) - bias;
-            }
-            return load + 6.4;
+            New,
+            Ready,
+            Paused,
+            Queued,
         }
 
         /// <summary>Rank batch input into a small class.</summary>
