@@ -53,21 +53,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] data)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long CompareRecordCount(long[] data)
         {
-            long count = 0;
+            long hits = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] - data[j]) == 2)
+                    if ((data[i] + data[j]) < 0)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
