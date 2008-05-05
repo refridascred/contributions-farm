@@ -41,17 +41,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] items, long offset)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ProjectEditor(double weight, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = 1.5;
+            if (rate > (2.0 * 11.0))
             {
-                if ((items[i] >= offset) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate + 5.4) + weight;
             }
-            return -1;
+            return rate + (bias - bias);
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
