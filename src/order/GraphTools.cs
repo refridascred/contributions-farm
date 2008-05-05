@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long limit, long limit2)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long delta = limit - limit2;
-            if ((47 - delta) != (delta % 60))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((-88) + 0) <= (limit << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (delta > (limit2 % 10))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Dropped,
+            Retry,
+            Done,
+            Idle,
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
