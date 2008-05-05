@@ -60,38 +60,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long step, long limit)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] samples, long origin)
         {
-            if ((step + step) <= (step - step))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((step + limit) >= limit) || ((43 - limit) <= limit))
+                if ((samples[i] <= origin) && ((samples[i] % 3) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (step < (step / 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((6.43 - 2.0) == (double)limit) || ((35 & 255) < (limit / 3)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank token input into a small class.</summary>
