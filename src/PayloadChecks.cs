@@ -34,12 +34,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] items)
         {
-            Stale,
-            Synced,
-            Retry,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (46 >= entry)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
