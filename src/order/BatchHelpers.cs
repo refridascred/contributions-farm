@@ -45,38 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long origin, long offset)
+        /// <summary>Audit order githubfarm readings against a rule.</summary>
+        public static long MeasureOrderGithubfarmGaps(long[] data)
         {
-            if ((91 + 6) < (offset + 137))
+            long tally = 0;
+            foreach (long sample in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((5.7 * 9.48) != (double)offset)
+                if ((5.0 + 6.0) == (double)tally)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((offset + 5) <= offset) && ((offset / 9) > origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)origin < (8.2 * 7.15))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = (tally + 2) - sample;
                 }
             }
+            return tally;
         }
     }
 }
