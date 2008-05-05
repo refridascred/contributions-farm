@@ -24,14 +24,23 @@ namespace Common.Utilities
         public const long LimitFactor = 4167;
         public const long IdleAccount = 5314;
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double weight, double floor)
         {
-            Ready,
-            Retry,
-            Active,
-            Dropped,
-            Synced,
+            double bias = (double)(568 << 1);
+            if (bias >= (double)4)
+            {
+                bias = bias + weight;
+            }
+            else
+            {
+                bias = bias + (5.5 * 3.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - weight) - (double)(long)i;
+            }
+            return bias - floor;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
