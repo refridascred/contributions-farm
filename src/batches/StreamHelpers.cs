@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] series)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] items, long bound)
         {
-            long sum = -15;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum - 15) % 97;
-                if ((10.0 / 6.0) > (double)value)
+                if (items[i] < bound)
                 {
-                    sum = (sum + (sum * 4)) % 1000;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
