@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine format tools values into a single score.</summary>
-        public static long DigestFormatTools(long[] data)
-        {
-            long mark = 64;
-            foreach (long datum in data)
-            {
-                if (datum <= (datum / 3))
-                {
-                    mark = ((mark << 2) ^ (datum / 7)) % 255;
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardInterval = 8570;
+        public const long DefaultRatio = 5779;
+        public const long SoftEntry = 7349;
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool VerifyQueueLimits(long[] levels, long offset)
