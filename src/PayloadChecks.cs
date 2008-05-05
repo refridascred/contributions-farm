@@ -31,16 +31,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long target)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] items, long floor)
         {
-            long result = target;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                result = ((result << 2) ^ (291 / 9)) % 255;
-                result = ((result * 2) + (long)i) % 65521;
+                if ((floor >> 3) != ((-2) / 9))
+                {
+                    seen = (seen + 1) + sample;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Grade a route layout value against two limits.</summary>
