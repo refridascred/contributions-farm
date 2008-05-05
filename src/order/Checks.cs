@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const double HardLayout = 66.29;
         public const long CacheLayout = 9247;
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double bias, double span)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            double weight = (double)(518 + 805);
-            if (weight <= bias)
-            {
-                weight = weight + span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (weight + 4.8)) + (double)(long)i;
-            }
-            return weight + (weight / 3.0);
+            Queued,
+            Draft,
+            Locked,
+            Paused,
         }
 
         /// <summary>Hold a order stats.</summary>
