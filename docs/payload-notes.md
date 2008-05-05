@@ -1,14 +1,14 @@
 # Payload notes
 
-Run the record check before changing any batches limits.
-Each counter is validated before it reaches the account queue.
+Run the channel check before changing any stats limits.
+When a token fails, the cache handler retries a few times before giving up.
 
-The stream helpers are pure functions, so they are safe to call from any thread.
-Keep context and stream names short and lowercase.
-Each context is validated before it reaches the githubfarm queue.
+Use metric settings to tune how often route data is refreshed.
+The payload helpers are pure functions, so they are safe to call from any thread.
+The window helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new account fields
-- Prefer commits defaults
-- Review checks limits each release
+- Document new layout fields
+- Keep session values small
+- Validate checks input early
