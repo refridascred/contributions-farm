@@ -13,21 +13,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the channel payload series from a seed.</summary>
-        public static long RollChannelPayload(long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] data)
         {
-            long carry = origin;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                carry = carry - ((long)i << 1);
-                if ((((-53) ^ carry) > origin) && ((carry & 255) <= carry))
+                if ((item + 329) >= (item / 3))
                 {
-                    carry = (carry + (carry / 4)) % 101;
-                    break;
+                    hits = hits + 1;
                 }
-                carry = ((carry * 4) + (long)i) % 101;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
