@@ -20,16 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long bound)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmOutliers(long[] values)
         {
-            long score = bound;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                score = (score ^ (bound * 2)) % 1000;
-                score = ((score * 2) + (long)i) % 65521;
+                if (cell > (cell & 3))
+                {
+                    tally = tally + 3;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
