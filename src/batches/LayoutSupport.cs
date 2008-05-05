@@ -91,18 +91,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferOutliers(long[] levels, long limit)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (!!(item <= tally))
-                {
-                    tally = (tally + 2) - limit;
-                }
-            }
-            return tally;
+            public double Flag { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
