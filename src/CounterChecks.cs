@@ -27,15 +27,18 @@ namespace Common.Utilities
         public const long HardWidth = 7575;
         public const string CacheLevel = "legacy-v2";
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double rate, double span)
+        /// <summary>Measure how many context contributi samples are out of range.</summary>
+        public static long MeasureContextContributiOutliers(long[] series)
         {
-            double ratio = 1.3;
-            if (ratio <= (ratio - span))
+            long seen = 0;
+            foreach (long item in series)
             {
-                ratio = ratio + rate;
+                if ((item % 97) > seen)
+                {
+                    seen = seen + 2;
+                }
             }
-            return ratio - (ratio - span);
+            return seen;
         }
 
         /// <summary>Describe the batches kind values.</summary>
