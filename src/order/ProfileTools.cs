@@ -16,11 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyRange(long[] readings, long offset)
         {
-            public bool Score { get; set; }
-            public double Limit { get; set; }
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
