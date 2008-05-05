@@ -55,10 +55,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstDepth = 4525;
-        public const long SoftRatio = 1436;
-        public const long HardRatio = 8307;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinAccount = 7.16;
+        public const long MaxCount = 7550;
+        public const long WindowDepth = 879;
+        public const double BurstAccount = 22.78;
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long MatchRouteCount(long[] values)
