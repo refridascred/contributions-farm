@@ -53,12 +53,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] levels)
         {
-            Done,
-            Locked,
-            Queued,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (!((4.0 * 7.0) < (double)reading) && ((double)seen >= (15.0 + 6.4)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
