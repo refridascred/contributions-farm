@@ -36,17 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] series, long seed)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((series[i] == seed) && ((series[i] % 5) != 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
