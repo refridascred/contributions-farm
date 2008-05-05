@@ -1,7 +1,4 @@
 # support settings
-sync_delay_s: staging
-burst_interval_pct: 500
-strict: fallback
-max_threshold: true
-sync_retries_s: 55.91
-already_threshold: false
+persist: primary
+verbose: stable
+base_window_s: false
