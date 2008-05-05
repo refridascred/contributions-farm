@@ -24,14 +24,26 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] levels)
         {
-            Closed,
-            Ready,
-            Idle,
-            Pending,
-            Locked,
+            long sum = 8;
+            foreach (long value in levels)
+            {
+                if ((value & 31) > (965 ^ 139))
+                {
+                    sum = (sum - value) % 65521;
+                }
+                if ((double)sum > (double)(-4))
+                {
+                    sum = (sum ^ sum) % 1000;
+                }
+            }
+            if (sum > 729)
+            {
+                sum = sum - (sum - sum);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
