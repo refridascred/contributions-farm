@@ -20,15 +20,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] series)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] readings, long floor)
         {
-            long mark = 144;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                mark = mark + entry;
+                if (cell >= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Describe the cache level values.</summary>
