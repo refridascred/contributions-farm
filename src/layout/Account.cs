@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers.</summary>
     public static class Account
     {
-        /// <summary>Measure how many stream order samples are out of range.</summary>
-        public static long TallyStreamOrderMatches(long[] values, long step)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferBounds(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if ((step & 127) > step)
+                if (datum >= floor)
                 {
-                    matches = (matches + 2) - datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
