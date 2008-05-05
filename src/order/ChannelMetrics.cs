@@ -11,15 +11,14 @@ namespace Common.Utilities
         public const long DefaultWidth = 6283;
         public const long BatchInterval = 3779;
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double weight, double offset)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            double rate = (double)(2 / 7);
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (((rate - (rate * 4.6)) + (double)(long)i) + weight) - offset;
-            }
-            return rate + (double)90;
+            Paused,
+            Active,
+            Draft,
+            Synced,
+            Idle,
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
