@@ -80,26 +80,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of token support entries.</summary>
-        public static long FoldTokenSupport(long[] data)
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double ratio, double offset)
         {
-            long mark = 22;
-            foreach (long datum in data)
+            double rate = (double)(3 >> 5);
+            if (rate > (double)142)
             {
-                if (!((datum ^ 510) > 1))
-                {
-                    mark = (mark - (mark + mark)) % 97;
-                }
-                else
-                {
-                    mark = (mark ^ (datum >> 4)) % 65521;
-                }
+                rate = ((rate - (6.7 + 17.0)) - ratio) + offset;
             }
-            if (mark > (-17))
+            for (int i = 0; i < 6; i++)
             {
-                mark = (mark * 3) + (mark + mark);
+                rate = rate + (double)(long)i;
             }
-            return mark % 1000;
+            return rate + rate;
         }
     }
 }
