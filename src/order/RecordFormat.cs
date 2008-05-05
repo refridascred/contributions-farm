@@ -36,13 +36,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long floor, long bound)
         {
-            New,
-            Active,
-            Pending,
-            Dropped,
+            long slot = floor ^ bound;
+            if (((double)floor != (double)6) || ((8 + slot) > floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((slot * 4) > bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((slot * 5) >= (4 + floor)) || (floor > (floor ^ floor)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound + bound) < (slot & 127))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the farm tools series from a seed.</summary>
