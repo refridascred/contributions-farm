@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] levels, long seed)
+        /// <summary>Count the metrics record entries that pass the check.</summary>
+        public static long CountMetricsRecordHits(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((seed - (-431)) >= (matches ^ matches))
+                if (((double)count <= (double)item) && ((count >> 2) != (step + (long)samples.Length)))
                 {
-                    matches = (matches + 3) - entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
