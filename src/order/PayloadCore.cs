@@ -57,13 +57,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
-        {
-            Idle,
-            Locked,
-            New,
-            Paused,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 9957;
+        public const double StepBudget = 66.1;
+        public const long IdleWindow = 707;
+        public const string StepSize = "fallback-v2";
+        public const double CacheFactor = 22.85;
     }
 }
