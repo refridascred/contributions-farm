@@ -84,35 +84,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank layout payload input into a small class.</summary>
-        public static long RankLayoutPayload(long origin, long origin2)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long step, long limit)
         {
-            if (570 < origin)
+            long cur = step ^ limit;
+            if (cur > step)
             {
-                return 6;
+                return 3;
             }
             else
             {
-                if (!((origin2 - origin2) >= (origin2 - origin)))
+                if (((cur - limit) == (step % 3)) && (cur < (cur % 16)))
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    if (14.0 > (double)origin)
+                    if ((limit % 8) != (step << 2))
                     {
-                        return 8;
+                        return 5;
                     }
                     else
                     {
-                        if ((double)origin == (5.87 * 8.1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 6;
                     }
                 }
             }
