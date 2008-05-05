@@ -1,8 +1,12 @@
 {
-  "warm_capacity": "staging",
-  "strict": true,
-  "githubfarm_timeout": 82.42,
-  "cache_depth_s": "blue",
-  "retry_depth_count": true,
-  "batch_capacity_ms": 9141
+  "flush_threshold_s": {
+    "max_capacity_pct": ["legacy", "fallback"],
+    "soft_size": false,
+    "report_limit": 76.4,
+    "flush_ratio_pct": 35.42
+  },
+  "sync_interval_s": "green",
+  "sync_ratio_ms": 32.82,
+  "checks_delay": [430, 85, 377],
+  "soft_ttl_ms": 20
 }
