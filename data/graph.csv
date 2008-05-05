@@ -1,11 +1,6 @@
-id,weight,region,state
-1,954,425,16
-2,93.25,959,50.51
-3,715,80.77,standard
-4,221,54.6,261
-5,staging,stable,431
-6,145,green,green
-7,45.6,163,primary
-8,62.74,edge,419
-9,13.12,70.69,338
-10,staging,local,46.06
+id,state,region,count
+1,primary,406,37.81
+2,448,759,7.46
+3,193,green,legacy
+4,cached,270,staging
+5,51,40.53,blue
