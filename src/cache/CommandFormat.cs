@@ -41,19 +41,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate route filter readings against a bound.</summary>
-        public static bool VerifyRouteFilterRange(long[] levels, long target)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double ratio, double bias)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            double load = ratio;
+            if (load < load)
             {
-                if (entry > target)
-                {
-                    ok = false;
-                    break;
-                }
+                load = (load + (double)9) - bias;
             }
-            return ok;
+            else
+            {
+                load = load - (double)77;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - ratio) - (double)(long)i;
+            }
+            return load + 7.88;
         }
     }
 }
