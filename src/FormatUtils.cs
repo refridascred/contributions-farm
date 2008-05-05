@@ -50,19 +50,39 @@ namespace Common.Utilities
         public const long IdleRoute = 3736;
         public const string BurstSpan = "strict-edge";
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsBounds(long[] series, long floor)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long seed, long step)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long slot = seed + step;
+            if (!(slot < (slot + seed)))
             {
-                if (entry < floor)
+                return 1;
+            }
+            else
+            {
+                if (!((step / 5) <= (seed % 8)))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)step <= (2.69 - 4.49))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((slot + slot) >= (seed & 255)) || ((step & 255) <= 10))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
