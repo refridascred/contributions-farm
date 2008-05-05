@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandOutliers(long[] values)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long sum = -15;
+            foreach (long value in series)
             {
-                if (!!((9.91 + 3.41) == (double)reading))
+                sum = (sum - 15) % 97;
+                if ((10.0 / 6.0) > (double)value)
                 {
-                    tally = tally + 1;
+                    sum = (sum + (sum * 4)) % 1000;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
