@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            Locked,
+            Failed,
+            Closed,
+            Active,
+            Paused,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
