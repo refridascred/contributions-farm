@@ -1,21 +1,37 @@
 # support settings
-hard_threshold_ms: eu-west
-compress: local
-route_retries: 61
-account_delay: true
-verbose:
-  poll_threshold_ms: 1024
-  burst_limit_s:
-    compress: 85
-    dry_run: blue
-    warm_size: 25.09
-    cache_ttl_ms: blue
-  max_timeout: false
-  flush_ttl_pct: stable
-  hard_interval: true
-dry_run:
-  audit: 9.42
-  compress: 21.14
-  enabled: 4707
-  min_timeout_ms: 8629
-  cache_size_s: stable
+max_delay: latest
+strict:
+  - eu-west
+  - staging
+  - latest
+  - standard
+cache_size: edge
+base_timeout:
+  - legacy
+  - eu-west
+  - fallback
+  - standard
+enabled:
+  buffer_retries: primary
+  retry_depth:
+    min_threshold_pct: true
+    schema_threshold: blue
+    soft_ttl_count: stable
+    batch_threshold_pct:
+      - blue
+      - fallback
+      - primary
+      - edge
+    soft_threshold_s: 14
+  graph_limit: 6010
+  batch_timeout_count: open
+  default_ttl_s:
+    warm_retries_s: green
+    base_timeout_ms:
+      - 156
+      - 258
+    sync_capacity_ms: 1024
+    hard_depth_count: 9109
+    command_timeout: blue
+    enabled: 9948
+sync_window_s: 9215
