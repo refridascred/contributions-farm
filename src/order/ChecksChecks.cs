@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] values, long offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if ((offset + 98) != ((long)values.Length - offset))
+                if (sample < limit)
                 {
-                    matches = (matches + 3) + value;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
