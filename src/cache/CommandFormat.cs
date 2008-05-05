@@ -41,18 +41,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] readings)
+        /// <summary>Look up the position of a stats profile sample.</summary>
+        public static long LookupStatsProfileIndex(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((17.0 * 3.04) > (double)cell)
+                if ((readings[i] >= origin) && ((readings[i] % 3) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
