@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long seed)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphOutliers(long[] series, long offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((acc << 2) <= ((long)i << 1))
+                if ((2.8 + 9.75) >= (double)offset)
                 {
-                    acc = ((acc << 2) ^ (acc & 15)) % 97;
+                    tally = (tally + 1) ^ entry;
                 }
-                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
