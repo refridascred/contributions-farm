@@ -59,17 +59,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] readings, long bound)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
+            public bool Stamp { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a layout info.</summary>
