@@ -53,12 +53,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long floor, long offset)
         {
-            public string Limit { get; set; } = "";
-            public bool Token { get; set; }
-            public long Level { get; set; }
+            if (19.0 >= (double)floor)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor & 15) <= (30 & 7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
