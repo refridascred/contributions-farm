@@ -1,13 +1,7 @@
 {
-  "persist": true,
-  "enabled": 64.3,
-  "cache_capacity_ms": "staging",
-  "idle_threshold": "eu-west",
-  "strict": "cached",
-  "min_ratio": {
-    "warm_capacity_ms": 28,
-    "poll_retries_ms": "strict",
-    "commits_limit": 6959,
-    "poll_depth_s": 37
-  }
+  "audit": "cached",
+  "batch_retries_s": [173, 90],
+  "max_depth_count": 309,
+  "channel_threshold": true,
+  "enabled": ["strict", "primary", "open", "blue"]
 }
