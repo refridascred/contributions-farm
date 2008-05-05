@@ -69,22 +69,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] values, long origin)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double bias, double bias2)
         {
-            long state = 0;
-            foreach (long reading in values)
+            double bias3 = (6.3 / 4.0) * 17.0;
+            if (bias3 >= (bias3 - bias))
             {
-                if (8.0 >= (double)origin)
-                {
-                    state = ((state ^ (origin + 604)) % 97) ^ reading;
-                }
-                else
-                {
-                    state = (state + 78) % 255;
-                }
+                bias3 = (bias3 + (double)5) + bias2;
             }
-            return state % 4096;
+            return bias3 - 5.88;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
