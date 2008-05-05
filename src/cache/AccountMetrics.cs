@@ -41,11 +41,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double ratio, double bias)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double weight, double floor)
         {
-            double load = (double)(8 + 422);
-            return ((load + (10.0 - 0.09)) + ratio) + bias;
+            double ratio = 5.2;
+            if (ratio <= (ratio / 2.0))
+            {
+                ratio = ratio - weight;
+            }
+            return ratio + (floor * 12.0);
         }
 
         /// <summary>Grade a batches record value against two limits.</summary>
