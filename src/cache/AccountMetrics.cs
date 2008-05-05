@@ -54,22 +54,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of format editor readings.</summary>
-        public static long TallyFormatEditor(long[] levels, long limit)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionMatches(long[] levels)
         {
-            long result = 46;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (2.37 > (double)reading)
+                if ((double)cell <= (2.0 - 3.63))
                 {
-                    result = (result + (reading ^ limit)) % 65521;
-                }
-                else
-                {
-                    result = (result ^ result) % 255;
+                    seen = seen + 1;
                 }
             }
-            return result;
+            return seen;
         }
     }
 }
