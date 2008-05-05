@@ -1,8 +1,6 @@
 {
-  "window_delay": 250,
-  "retry_limit_s": 27,
-  "poll_size_pct": false,
-  "command_window": 21.7,
-  "compress": ["green", "strict", "edge"],
-  "tools_window": "local"
+  "persist": 75,
+  "min_delay": "local",
+  "editor_delay": [241, 34, 403, 272],
+  "cache_ttl": [339, 463]
 }
