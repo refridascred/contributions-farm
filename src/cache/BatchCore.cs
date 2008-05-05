@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] readings, long target)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (((0 & 7) < (target % 10)) && ((item % 64) <= target))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Mode { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
