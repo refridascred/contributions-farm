@@ -27,19 +27,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] samples, long offset)
+        /// <summary>Roll a graph cluster counter forward.</summary>
+        public static long IterateGraphCluster(long step)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long sum = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (reading < offset)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = (sum - (sum + 84)) % 4096;
+                long lane = ((long)i << 2) - (175 - sum);
+                sum = ((sum * 2) + (lane >> 1)) % 65521;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return flag;
+            return sum;
         }
     }
 }
