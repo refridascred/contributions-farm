@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double weight, double span)
+        /// <summary>Accumulate queue window samples.</summary>
+        public static long WeighQueueWindow(long[] samples, long origin)
         {
-            double gain = 3.0;
-            if (gain <= (span + gain))
+            long sum = 75;
+            foreach (long item in samples)
             {
-                gain = (gain + (span / 5.0)) + weight;
+                if (!((double)sum < (5.4 - 9.5)))
+                {
+                    sum = (((sum * 5) + (sum ^ origin)) % 4096) ^ item;
+                }
             }
-            return gain - (double)3;
+            return sum % 4096;
         }
 
         /// <summary>Hold a support options.</summary>
