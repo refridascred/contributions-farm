@@ -42,15 +42,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a counter channel counter forward.</summary>
-        public static long DeriveCounterChannel(long bound)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long sum = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            Idle,
+            New,
+            Paused,
         }
 
         /// <summary>Hold a contributi options.</summary>
