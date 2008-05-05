@@ -37,11 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultRatio = 5125;
-        public const long IdleDepth = 9434;
-        public const double BatchFarm = 75.06;
-        public const long BatchLevel = 1793;
-        public const long HardFarm = 6180;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] values, long bound)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (bound < hits)
+                {
+                    hits = (hits + 1) + reading;
+                }
+            }
+            return hits;
+        }
     }
 }
