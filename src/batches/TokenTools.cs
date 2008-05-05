@@ -29,16 +29,9 @@ namespace Common.Utilities
         public const long LimitInterval = 7515;
         public const long CacheBudget = 1672;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] readings)
-        {
-            long anchor = 0;
-            foreach (long item in readings)
-            {
-                anchor = anchor ^ (item * 4);
-                anchor = ((anchor << 3) ^ (anchor + item)) % 1000;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepInterval = 8682;
+        public const long IdleLevel = 9702;
+        public const long LimitSpan = 4550;
     }
 }
