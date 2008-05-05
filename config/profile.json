@@ -1,18 +1,13 @@
 {
-  "cache_capacity": true,
-  "flush_limit_ms": 76.52,
-  "support_threshold": "staging",
-  "already_ratio": {
-    "hard_capacity_pct": {
-      "base_depth_pct": 6097,
-      "poll_depth_ms": "latest",
-      "retry_depth_ms": "blue",
-      "sync_depth_count": 100
+  "burst_ttl": true,
+  "warm_ratio_s": 772,
+  "report_window": {
+    "readonly": "green",
+    "report_depth": {
+      "flush_ratio": 3004,
+      "channel_ttl": [304, 125],
+      "farm_ratio": 49
     },
-    "audit": 20,
-    "compress": "eu-west",
-    "readonly": "latest",
-    "burst_size_count": [64, 479, 199, 396]
-  },
-  "retry_window_count": "open"
+    "filter_timeout": 4018
+  }
 }
