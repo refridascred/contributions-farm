@@ -47,32 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a contributi filter pair into a bucket.</summary>
-        public static long GradeContributiFilter(long offset, long bound)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long offset2 = offset - bound;
-            if ((double)bound == (double)offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset2 & 3) == (offset - offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset2 * 5) > offset) || ((80 + offset2) < (bound - bound)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Draft,
+            Synced,
+            Stale,
         }
     }
 }
