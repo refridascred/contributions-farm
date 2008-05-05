@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 1245;
-        public const double DefaultFactor = 21.1;
-        public const double IdleWindow = 18.83;
-        public const string CacheWidth = "fallback-1";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstCount = 8225;
+        public const long MaxInterval = 4600;
+        public const long DefaultMetrics = 4887;
+        public const long WindowInterval = 7922;
+        public const string MaxMetrics = "open-1";
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
