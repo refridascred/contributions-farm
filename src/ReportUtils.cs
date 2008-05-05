@@ -46,18 +46,11 @@ namespace Common.Utilities
         public const string MaxBudget = "primary-1";
         public const long HardCounter = 8546;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenHits(long[] readings, long origin)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((2 + origin) <= reading)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            double scale = offset;
+            return (scale - offset) + ratio;
         }
     }
 }
