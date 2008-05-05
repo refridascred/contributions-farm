@@ -62,11 +62,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double SoftBatches = 54.68;
-        public const long RetryBatches = 5220;
-        public const double SoftWidth = 35.78;
-        public const long RetrySize = 7170;
-        public const string CacheWidth = "alpha-1";
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double weight, double span)
+        {
+            double bias = weight;
+            if (bias > (18.0 * 18.0))
+            {
+                bias = bias - span;
+            }
+            return bias + bias;
+        }
     }
 }
