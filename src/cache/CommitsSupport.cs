@@ -52,12 +52,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public double Total { get; set; }
+            Idle,
+            Active,
+            Failed,
+            Stale,
         }
     }
 }
