@@ -28,11 +28,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftDepth = 2876;
-        public const string WindowBudget = "latest-edge";
-        public const string LimitCache = "legacy";
-        public const double MaxTimeout = 14.24;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleSpan = 6660;
+        public const long RetryGraph = 9484;
+        public const string RetryRatio = "cached-v2";
+        public const double HardDepth = 88.23;
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long OverlapGraphCount(long[] samples)
