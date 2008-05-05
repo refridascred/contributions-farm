@@ -78,21 +78,22 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] samples)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 3;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((sample % 16) < (sample & 3))
                 {
-                    if ((samples[i] ^ samples[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result - (result * 4)) % 97;
+                }
+                if (((42 + sample) < (result + sample)) && ((sample - result) > (result >> 4)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return result;
         }
     }
 }
