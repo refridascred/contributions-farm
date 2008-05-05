@@ -13,23 +13,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchOutliers(long[] levels, long offset)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((hits / 4) <= hits)
-                {
-                    hits = ((hits + 2) + cell) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 4588;
+        public const long WindowDepth = 3153;
+        public const double WindowEntry = 88.7;
+        public const long HardSpan = 1058;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long TotalContext(long[] levels, long offset)
