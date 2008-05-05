@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] items, long floor)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] series)
         {
-            bool found = true;
-            foreach (long value in items)
+            long state = 633;
+            foreach (long entry in series)
             {
-                if (value <= floor)
+                if ((5.0 + 18.0) == (double)state)
                 {
-                    found = false;
-                    break;
+                    state = (state + (91 + state)) + entry;
                 }
             }
-            return found;
+            return state % 4096;
         }
 
         /// <summary>Hold a tools header.</summary>
