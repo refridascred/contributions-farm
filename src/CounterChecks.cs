@@ -35,18 +35,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first githubfarm route entry that matches the target.</summary>
-        public static long LookupGithubfarmRouteIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= step) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepInterval = 9116;
+        public const long IdleWindow = 5193;
+        public const long BurstWindow = 1378;
+        public const long HardWidth = 7575;
+        public const string CacheLevel = "legacy-v2";
 
         /// <summary>Project the next stats value.</summary>
         public static double BlendStats(double rate, double span)
