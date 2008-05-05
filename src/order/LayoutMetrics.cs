@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the entry filter series from a seed.</summary>
-        public static long StepEntryFilter(long origin)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] samples, long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
