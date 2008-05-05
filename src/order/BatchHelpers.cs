@@ -16,11 +16,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long bound)
         {
-            public long Label { get; set; }
-            public double Rank { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Describe the route kind values.</summary>
