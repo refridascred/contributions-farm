@@ -5,34 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] series, long target)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long step)
         {
-            long mark = 59;
-            foreach (long value in series)
+            long score = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (626 <= target)
-                {
-                    break;
-                }
-                for (int i = 0; i < 5; i++)
-                {
-                    mark = ((mark + (target << 2)) % 1000) - (long)i;
-                }
-                if ((mark * 2) < (value - mark))
-                {
-                    mark = mark - mark;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (value * 2);
-                }
+                score = ((score * 3) + ((long)i ^ (long)i)) % 1000;
+                score = ((score * 2) + (long)i) % 101;
             }
-            if (mark < 8)
-            {
-                mark = (mark << 2) ^ (target << 3);
-            }
-            return mark;
+            return score;
         }
 
         /// <summary>Describe the batches state values.</summary>
