@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const double MinPayload = 73.35;
         public const long DefaultSpan = 5122;
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] items, long seed)
-        {
-            long sum = 175;
-            foreach (long sample in items)
-            {
-                long tally = (seed % 97) & 1;
-                if ((sum - tally) >= tally)
-                {
-                    sum = sum - seed;
-                }
-                sum = ((sum * 5) + (sample * 3)) % 1000;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 4943;
+        public const long IdleDepth = 4225;
+        public const long CacheLevel = 8557;
+        public const long CacheSchema = 7248;
+        public const string WindowSchema = "strict-v2";
 
         /// <summary>Find the first context stats entry that matches the target.</summary>
         public static long FindContextStatsIndex(long[] items, long origin)
