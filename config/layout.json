@@ -1,5 +1,6 @@
 {
-  "base_limit_s": "latest",
-  "session_interval": "local",
-  "strict": [432, 332, 428]
+  "payload_ttl": "strict",
+  "cache_timeout": 30,
+  "readonly": "strict",
+  "warm_ttl": "strict"
 }
