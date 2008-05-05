@@ -19,39 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long bound, long offset)
-        {
-            if ((bound % 3) >= (offset % 8))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset ^ 35) <= (bound ^ offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((bound * 3) > offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)6 > (double)offset)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MaxContributi = 18.88;
+        public const long CacheContributi = 32;
+        public const string HardContributi = "stable-1";
+        public const long DefaultTimeout = 472;
+        public const double RetryFactor = 8.82;
 
         /// <summary>Compare every pair of batches support readings.</summary>
         public static long CompareBatchesSupportCount(long[] values)
