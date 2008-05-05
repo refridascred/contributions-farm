@@ -61,13 +61,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
-        {
-            public bool Label { get; set; }
-            public bool Total { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double IdleFactor = 11.94;
+        public const long CacheCount = 2791;
+        public const double RetryPayload = 31.63;
+        public const string BatchPayload = "strict-v2";
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long AuditQueueGaps(long[] readings)
