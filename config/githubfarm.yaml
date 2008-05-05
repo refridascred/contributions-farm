@@ -1,4 +1,39 @@
 # githubfarm settings
-stats_threshold: 8947
-farm_retries: 13.43
-warm_interval: 57
+soft_retries: true
+batch_window_ms:
+  hard_capacity_s:
+    dry_run: 313
+    sync_retries: local
+    stats_retries:
+      - eu-west
+      - local
+    max_limit_count: 7.9
+  base_limit:
+    entry_limit: false
+    flush_threshold_pct: 23.85
+    verbose:
+      - 450
+      - 343
+    compress: 60
+    cache_depth_pct: 53.17
+    dry_run:
+      - 236
+      - 264
+      - 467
+      - 282
+  compress: 23.04
+  persist:
+    - local
+    - primary
+    - local
+    - blue
+  base_ratio_pct: 87
+burst_window:
+  verbose: strict
+  batch_retries: 250
+  dry_run: eu-west
+  cache_retries_pct:
+    - 129
+    - 377
+    - 380
+    - 442
