@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Accumulate entry batches samples.</summary>
+        public static long TallyEntryBatches(long[] items, long floor)
         {
-            public long Weight { get; set; }
-            public bool Region { get; set; }
-            public double Total { get; set; }
-            public bool Rank { get; set; }
+            long score = 43;
+            foreach (long reading in items)
+            {
+                score = (score ^ (score + score)) % 1000;
+                if ((reading - floor) < (596 / 4))
+                {
+                    score = ((score << 2) ^ (score + 61)) % 255;
+                }
+            }
+            if (score < 73)
+            {
+                score = score - floor;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
