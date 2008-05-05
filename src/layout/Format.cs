@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Format helpers.</summary>
     public static class Format
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long floor)
+        /// <summary>Hold a booking summary.</summary>
+        public sealed class BookingSummary
         {
-            long score = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            public long Region { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a contributi entry.</summary>
