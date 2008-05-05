@@ -1,12 +1,15 @@
 {
-  "strict": true,
-  "min_timeout": "legacy",
-  "sync_timeout": [369, 222, 103],
-  "batch_ratio_count": {
-    "dry_run": false,
-    "hard_depth": "primary",
-    "retry_delay": ["legacy", "legacy", "fallback"],
-    "base_size_s": 90.26
-  },
-  "already_depth": 54.59
+  "verbose": 35,
+  "schema_interval": 60,
+  "farm_timeout": [286, 48, 16, 289],
+  "context_ratio": "eu-west",
+  "default_timeout_count": "green",
+  "persist": {
+    "cache_window_count": "primary",
+    "audit": true,
+    "editor_interval": 247,
+    "poll_size_count": "local",
+    "compress": false,
+    "retry_size_ms": 13
+  }
 }
