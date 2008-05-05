@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit buffer support readings against a rule.</summary>
-        public static long TallyBufferSupportGaps(long[] series, long offset)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((tally << 2) >= (offset - 3))
-                {
-                    tally = (tally + 3) - item;
-                }
-            }
-            return tally;
+            public double Token { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count channel queue pairs that satisfy a relation.</summary>
