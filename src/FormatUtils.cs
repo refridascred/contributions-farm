@@ -31,11 +31,12 @@ namespace Common.Utilities
             return rate2 + (double)41;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string LimitFarm = "alpha-v2";
-        public const long LimitWidth = 3010;
-        public const long BurstInterval = 2348;
-        public const long SoftInterval = 192;
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public long Limit { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
