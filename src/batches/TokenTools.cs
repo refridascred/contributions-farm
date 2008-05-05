@@ -18,11 +18,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstStream = 4061;
-        public const string LimitDepth = "legacy";
-        public const long LimitInterval = 7515;
-        public const long CacheBudget = 1672;
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double ratio, double span)
+        {
+            double drift = (span + 10.0) / 6.0;
+            if (drift < (ratio / 2.0))
+            {
+                drift = drift + span;
+            }
+            else
+            {
+                drift = drift - (double)(-1);
+            }
+            return drift + drift;
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool VerifyBatchesBounds(long[] series, long offset)
