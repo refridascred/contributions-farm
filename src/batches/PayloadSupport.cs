@@ -21,24 +21,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long origin, long step)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            if ((step / 7) < origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin - step) < origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Grade a token layout value against two limits.</summary>
