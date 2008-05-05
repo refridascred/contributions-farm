@@ -1,5 +1,14 @@
 # entry settings
-readonly: 32
-enabled: 6141
-max_limit_count: edge
-hard_ttl_s: 39.79
+flush_ratio: 5.39
+contributi_limit: stable
+flush_ratio_s:
+  idle_threshold: true
+  compress: legacy
+  flush_size_ms: 16.97
+  payload_size:
+    - stable
+    - blue
+    - green
+  farm_ttl: cached
+context_interval: 34.75
+enabled: 61.45
