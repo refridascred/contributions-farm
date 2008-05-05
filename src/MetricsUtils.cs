@@ -39,17 +39,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Find the first payload buffer entry that matches the target.</summary>
-        public static long LocatePayloadBufferIndex(long[] samples, long offset)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == offset) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Digest a series of tools entries.</summary>
