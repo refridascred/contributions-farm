@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 1677;
-        public const long CacheTimeout = 2181;
-        public const long RetryPayload = 7043;
-        public const double MinPayload = 73.35;
-        public const long DefaultSpan = 5122;
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double ratio, double bias)
+        {
+            double rate = (double)252;
+            return (rate + (ratio * 7.5)) + bias;
+        }
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
