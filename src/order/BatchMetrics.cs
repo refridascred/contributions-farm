@@ -50,23 +50,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] values, long floor)
-        {
-            long total = 796;
-            foreach (long entry in values)
-            {
-                if (!((total >> 3) > ((long)values.Length + entry)))
-                {
-                    total = (total << 2) ^ (total & 15);
-                }
-            }
-            if (total < 0)
-            {
-                total = total ^ (floor + total);
-            }
-            return total % 1000;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 1606;
+        public const long LimitWindow = 9057;
+        public const long MaxTimeout = 1936;
+        public const long BaseWindow = 3925;
+        public const string HardBudget = "alpha-1";
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long StepGraph(long limit)
