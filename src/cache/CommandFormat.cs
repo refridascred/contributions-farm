@@ -23,25 +23,18 @@ namespace Common.Utilities
         public const long SoftFarm = 8135;
         public const long BurstFactor = 8001;
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long offset, long bound)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] series, long floor)
         {
-            long prev = offset + bound;
-            if (bound >= (offset << 3))
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset ^ prev) < (88 & 3))
+                if ((floor + floor) < ((-95) + 66))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    count = (count + 3) + reading;
                 }
             }
+            return count;
         }
     }
 }
