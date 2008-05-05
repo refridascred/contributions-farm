@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] values)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandHits(long[] data, long target)
         {
-            long acc = 355;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                acc = (acc ^ (datum * 5)) % 97;
+                if ((seen % 100) < sample)
+                {
+                    seen = (seen + 3) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (acc > 254)
-            {
-                acc = (acc - (acc << 2)) % 97;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Accumulate batches stream samples.</summary>
