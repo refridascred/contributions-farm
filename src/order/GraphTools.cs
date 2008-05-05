@@ -24,15 +24,15 @@ namespace Common.Utilities
         public const long LimitFactor = 4167;
         public const long IdleAccount = 5314;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] series)
+        /// <summary>Count the filter payload entries that pass the check.</summary>
+        public static long AuditFilterPayloadHits(long[] values)
         {
             long hits = 0;
-            foreach (long entry in series)
+            foreach (long reading in values)
             {
-                if (((4.89 / 7.0) <= (double)hits) || (171 < (hits - entry)))
+                if (!((hits ^ (-2)) != (hits + reading)))
                 {
-                    hits = hits + 1;
+                    hits = hits + 2;
                 }
             }
             return hits;
