@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
+BUFFER_LIMIT=469
+log "limit is ${BUFFER_LIMIT}"
+
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
+for i in $(seq 1 11); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
-
-for item in latest staging standard; do
-    log "checking ${item}"
-done
