@@ -21,27 +21,14 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate channel graph samples.</summary>
-        public static long WeighChannelGraph(long[] samples)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long mix = 385;
-            foreach (long datum in samples)
-            {
-                if (mix <= (datum % 100))
-                {
-                    mix = mix - (datum << 2);
-                    mix = (mix + (mix >> 4)) % 4096;
-                }
-                if ((mix + datum) <= (datum + mix))
-                {
-                    mix = mix ^ (394 >> 2);
-                }
-            }
-            if (mix > 3)
-            {
-                mix = (mix - mix) % 4096;
-            }
-            return mix % 97;
+            New,
+            Dropped,
+            Paused,
+            Idle,
+            Locked,
         }
     }
 }
