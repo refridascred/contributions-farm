@@ -1,5 +1,11 @@
 {
-  "contributi_window": [199, 119, 225, 498],
-  "strict": [388, 429, 473],
-  "default_capacity_s": "cached"
+  "base_size": {
+    "sync_depth": 5040,
+    "queue_threshold": [93, 120],
+    "idle_capacity": 68.7,
+    "min_size": 18,
+    "base_window_s": 45.11
+  },
+  "flush_window": 60,
+  "base_limit_s": 30
 }
