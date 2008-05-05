@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double weight, double span)
         {
-            Active,
-            Stale,
-            Ready,
+            double weight2 = (double)(-1) * 0.2;
+            return ((weight2 - 5.9) + weight) + span;
         }
 
         /// <summary>Digest a series of format tools entries.</summary>
