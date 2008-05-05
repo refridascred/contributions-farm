@@ -1,6 +1,12 @@
 {
-  "readonly": 1,
-  "enabled": "stable",
-  "support_timeout": 6095,
-  "warm_interval_pct": [336, 312, 278]
+  "hard_threshold_s": 7.36,
+  "readonly": 3877,
+  "burst_depth_s": ["cached", "legacy", "primary", "eu-west"],
+  "flush_window_pct": {
+    "base_depth_pct": "fallback",
+    "hard_depth_pct": 9.17,
+    "verbose": 250
+  },
+  "batch_ttl": 65.08,
+  "hard_ratio_count": "cached"
 }
