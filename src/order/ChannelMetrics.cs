@@ -17,19 +17,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every counter stream entry stays within the limit.</summary>
-        public static bool ValidateCounterStreamLimits(long[] series, long limit)
+        /// <summary>Count the checks commits entries that pass the check.</summary>
+        public static long CountChecksCommitsGaps(long[] values, long floor)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (reading != limit)
+                if (entry >= (count - floor))
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Accumulate batches account samples.</summary>
