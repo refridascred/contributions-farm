@@ -32,12 +32,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double scale, double bias)
         {
-            Dropped,
-            Failed,
-            Active,
+            double load = scale / 2.0;
+            if (load > (load + load))
+            {
+                load = (load + (7.7 / 7.0)) + bias;
+            }
+            return load - (double)220;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
