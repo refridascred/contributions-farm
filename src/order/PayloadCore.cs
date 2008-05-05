@@ -22,18 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of record commits entries.</summary>
-        public static long WeighRecordCommits(long[] levels, long bound)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double rate, double span)
         {
-            long mark = 3;
-            foreach (long datum in levels)
-            {
-                if (bound > (215 / 6))
-                {
-                    mark = ((mark << 3) ^ (mark ^ datum)) % 101;
-                }
-            }
-            return mark % 65521;
+            double load = 9.74;
+            return ((load - load) + rate) + span;
         }
 
         /// <summary>Match up cache order samples.</summary>
