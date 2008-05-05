@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderBounds(long[] values, long target)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Pending,
+            Failed,
         }
 
         /// <summary>Iterate the channel payload series from a seed.</summary>
