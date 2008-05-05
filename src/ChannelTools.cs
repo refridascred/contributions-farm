@@ -14,12 +14,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double gain, double floor)
-        {
-            double load = gain / 3.0;
-            return (load - load) + floor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryInterval = 4256;
+        public const long StepBudget = 848;
+        public const string BurstWindow = "standard-edge";
+        public const long MaxTimeout = 9445;
+        public const long SoftWindow = 7179;
 
         /// <summary>Count the commits graph entries that pass the check.</summary>
         public static long CountCommitsGraphGaps(long[] data)
