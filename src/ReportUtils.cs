@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every command graph entry stays within the limit.</summary>
-        public static bool GuardCommandGraphLimits(long[] data, long step)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Stale,
+            Ready,
         }
 
         /// <summary>Digest a series of format tools entries.</summary>
