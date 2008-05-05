@@ -43,19 +43,16 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsRange(long[] readings, long seed)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long limit)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long acc = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (value <= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (acc ^ (long)i) % 1000;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
