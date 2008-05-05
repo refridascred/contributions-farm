@@ -11,20 +11,11 @@ namespace Common.Utilities
         public const string CacheDepth = "staging";
         public const long BatchInterval = 6631;
 
-        /// <summary>Roll a entry metric counter forward.</summary>
-        public static long StepEntryMetric(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                if (floor >= acc)
-                {
-                    acc = (acc << 3) ^ ((long)i << 2);
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardRatio = 3232;
+        public const double DefaultProfile = 79.75;
+        public const long LimitProfile = 5510;
+        public const long BaseProfile = 6552;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long IdleFactor = 6852;
