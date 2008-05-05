@@ -1,14 +1,11 @@
 # Command notes
 
-Each graph is validated before it reaches the contributi queue.
-Defaults for token live in the config folder and can be overridden per environment.
-
-The command report groups every filter by account.
-Keep context and token names short and lowercase.
-Defaults for report live in the config folder and can be overridden per environment.
+Defaults for metrics live in the config folder and can be overridden per environment.
+The batches report groups every batches by report.
+The profile helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review batch limits each release
-- Validate commits input early
-- Document new buffer fields
+- Review stats limits each release
+- Prefer contributi defaults
+- Log every profile change
