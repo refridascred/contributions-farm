@@ -20,12 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long floor)
         {
-            Failed,
-            New,
-            Retry,
+            long anchor = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
