@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] levels)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] samples, long step)
         {
-            long mix = 5;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                mix = (mix ^ (mix + mix)) % 97;
-                if ((reading + (-21)) > (reading + 711))
+                if (matches > datum)
                 {
-                    break;
+                    matches = (matches + 2) - step;
                 }
             }
-            return mix % 97;
+            return matches;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
