@@ -39,18 +39,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Measure how many batch channel samples are out of range.</summary>
-        public static long TallyBatchChannelGaps(long[] values, long origin)
+        /// <summary>Fold a list of cache entry readings.</summary>
+        public static long FoldCacheEntry(long[] items)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long anchor = 93;
+            foreach (long cell in items)
             {
-                if (((item - item) < (seen + origin)) && ((item * 4) != (867 * 2)))
+                anchor = (anchor - (cell / 7)) % 97;
+                if ((anchor << 3) == (anchor + 240))
                 {
-                    seen = seen + 1;
+                    anchor = (anchor - anchor) % 65521;
                 }
             }
-            return seen;
+            return anchor % 1000;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
