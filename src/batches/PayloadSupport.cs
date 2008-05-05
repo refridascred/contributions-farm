@@ -31,12 +31,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double rate, double floor)
         {
-            Retry,
-            Idle,
-            Failed,
+            double gain = rate - 5.0;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - floor) - (double)(long)i;
+            }
+            return gain - gain;
         }
     }
 }
