@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphLimits(long[] series, long offset)
+        /// <summary>Iterate the entry filter series from a seed.</summary>
+        public static long StepEntryFilter(long origin)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long mark = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (reading > offset)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
