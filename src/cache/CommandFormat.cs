@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double bias, double offset)
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            double rate = offset;
+            if (rate >= (double)194)
+            {
+                rate = rate - (double)3;
+            }
+            else
+            {
+                rate = rate - (double)96;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (bias - rate)) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Define window limits and defaults.</summary>
