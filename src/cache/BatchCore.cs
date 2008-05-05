@@ -28,14 +28,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
-        {
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftDepth = 2876;
+        public const string WindowBudget = "latest-edge";
+        public const string LimitCache = "legacy";
+        public const double MaxTimeout = 14.24;
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long OverlapGraphCount(long[] samples)
