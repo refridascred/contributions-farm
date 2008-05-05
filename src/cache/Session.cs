@@ -5,29 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long seed)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long result = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((result - seed) > 2)
-                {
-                    result = (result + (208 + seed)) % 4096;
-                    result = ((result * 4) + (327 + seed)) % 1000;
-                }
-                if ((double)seed <= (double)result)
-                {
-                    result = (result + result) % 97;
-                    result = (result + result) % 97;
-                }
-                if ((seed >= (seed * 4)) || (((-48) ^ result) < (seed << 1)))
-                {
-                    continue;
-                }
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            Paused,
+            Draft,
+            Dropped,
+            New,
         }
 
         /// <summary>Adjust a command reading.</summary>
