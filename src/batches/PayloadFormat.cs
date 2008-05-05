@@ -35,18 +35,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm window readings against a rule.</summary>
-        public static long MeasureGithubfarmWindowGaps(long[] samples)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long seed)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long result = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if ((sample + 473) >= (matches - matches))
+                if ((result % 24) < seed)
                 {
-                    matches = matches + 3;
+                    result = result - (long)i;
+                    continue;
                 }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    result = ((result ^ (seed + (-7))) % 101) - (long)i2;
+                    result = result - result;
+                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Describe the stream status values.</summary>
