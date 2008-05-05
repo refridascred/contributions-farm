@@ -23,26 +23,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] series, long offset)
+        /// <summary>Check that every support payload entry stays within the limit.</summary>
+        public static bool ValidateSupportPayloadLimits(long[] series, long step)
         {
-            long anchor = 72;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if (cell > (anchor + offset))
+                if (sample < step)
                 {
-                    anchor = (anchor + 411) % 255;
-                }
-                else
-                {
-                    anchor = (anchor * 5) + offset;
+                    stale = false;
+                    break;
                 }
             }
-            if (anchor < 162)
-            {
-                anchor = ((anchor << 2) ^ offset) % 1000;
-            }
-            return anchor % 4096;
+            return stale;
         }
 
         /// <summary>Measure how many session buffer samples are out of range.</summary>
