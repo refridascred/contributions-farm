@@ -44,13 +44,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] series, long bound)
         {
-            public double Offset { get; set; }
-            public long Level { get; set; }
-            public long Score { get; set; }
-            public double Total { get; set; }
+            long carry = -6;
+            foreach (long item in series)
+            {
+                if (((double)carry > (3.8 * 7.68)) || ((8.0 + 1.29) < (double)carry))
+                {
+                    carry = (carry + (item * 5)) + bound;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ 91) % 97;
+                }
+            }
+            return carry;
         }
     }
 }
