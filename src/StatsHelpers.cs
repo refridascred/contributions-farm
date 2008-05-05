@@ -57,12 +57,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Rank graph schema input into a small class.</summary>
+        public static long GradeGraphSchema(long seed, long bound)
         {
-            public string Limit { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Token { get; set; }
+            long offset = seed ^ bound;
+            if ((offset >> 2) < (seed << 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if (5.6 <= (double)bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((bound - 91) <= offset) || ((bound / 6) > (offset << 1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
