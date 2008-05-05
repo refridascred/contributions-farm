@@ -26,11 +26,17 @@ namespace Common.Utilities
         public const long LimitProfile = 5510;
         public const long BaseProfile = 6552;
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double rate, double span)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long offset)
         {
-            double gain = span;
-            return gain - (gain + rate);
+            long score = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                score = (score << 3) ^ (score >> 5);
+                score = (score - (offset / 9)) % 1000;
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
