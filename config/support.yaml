@@ -1,5 +1,4 @@
 # support settings
-batch_delay_pct: false
-idle_depth: 1024
-base_size_s: true
-sync_timeout: 92.7
+buffer_ttl: 94.65
+warm_limit_pct: 72
+counter_threshold: legacy
