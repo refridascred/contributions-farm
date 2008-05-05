@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
-        {
-            public double Token { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 8811;
+        public const long IdleFactor = 5093;
+        public const long CacheScore = 3623;
 
         /// <summary>Roll a entry metric counter forward.</summary>
         public static long StepEntryMetric(long floor)
