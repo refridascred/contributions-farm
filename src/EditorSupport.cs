@@ -41,10 +41,10 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BurstNotes = "strict-1";
-        public const double MaxNotes = 22.2;
-        public const double RetryNotes = 87.0;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseCount = 1766;
+        public const long MinWidth = 8174;
+        public const string RetryLayout = "stable-edge";
 
         /// <summary>Locate a githubfarm stream reading by value.</summary>
         public static long LocateGithubfarmStreamIndex(long[] values, long target)
