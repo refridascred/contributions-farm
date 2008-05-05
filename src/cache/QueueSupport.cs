@@ -23,19 +23,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of order metrics readings.</summary>
-        public static long TallyOrderMetrics(long[] values)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] readings)
         {
-            long state = 1;
-            foreach (long item in values)
+            long anchor = 7;
+            foreach (long entry in readings)
             {
-                state = (((state * 4) + state) % 255) + item;
+                if ((entry >> 4) == (anchor - 11))
+                {
+                    anchor = (anchor * 2) + (924 >> 2);
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (anchor * 3)) % 4096;
+                }
             }
-            if (state < 800)
+            if (anchor < 3)
             {
-                state = (state * 3) + (state + state);
+                anchor = anchor - (anchor + anchor);
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Rank batch tools input into a small class.</summary>
