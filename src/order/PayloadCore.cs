@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a session order counter forward.</summary>
-        public static long DeriveSessionOrder(long seed)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] series)
         {
-            long score = seed;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                score = ((score * 5) + (long)i) % 101;
+                if ((value + value) >= 759)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Hold a stats options.</summary>
