@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] values)
+        /// <summary>Match up metric commits samples.</summary>
+        public static long OverlapMetricCommitsCount(long[] series)
         {
-            long score = 647;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score * 5) + value;
-                if (((value ^ value) > value) && ((double)value == (5.59 * 15.0)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (score ^ (value & 255)) % 1000;
-                }
-                else
-                {
-                    score = ((score * 2) + (value - value)) % 97;
+                    if ((series[i] ^ series[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (score < 28)
-            {
-                score = (score << 3) ^ score;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Roll a stream account counter forward.</summary>
