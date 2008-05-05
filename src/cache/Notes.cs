@@ -31,17 +31,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first report format entry that matches the target.</summary>
-        public static long LookupReportFormatIndex(long[] readings, long floor)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= floor) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define batch limits and defaults.</summary>
