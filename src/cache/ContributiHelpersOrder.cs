@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long limit)
         {
-            New,
-            Done,
-            Idle,
-            Failed,
-            Retry,
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = sum - (limit * 4);
+                sum = (sum ^ ((long)i << 3)) % 255;
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
