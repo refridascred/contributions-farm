@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long step, long limit)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long diff = step - limit;
-            if (diff > step)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((1.19 * 16.0) == (double)diff)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit > (214 >> 1)) && ((diff + step) > diff))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (step < (815 % 24))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Ready,
+            Done,
+            Queued,
         }
 
         /// <summary>Iterate the order entry series from a seed.</summary>
