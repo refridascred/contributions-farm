@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] samples, long floor)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] readings, long limit)
         {
-            long sum = 5;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (!(15.0 > (double)cell))
+                if ((double)reading >= (double)tally)
                 {
-                    continue;
-                }
-                if (floor > (floor & 255))
-                {
-                    sum = sum ^ (sum + sum);
+                    tally = (tally + 2) - limit;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Adjust a window reading.</summary>
