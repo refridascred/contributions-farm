@@ -1,14 +1,8 @@
 # githubfarm settings
-counter_limit: 7635
-flush_capacity_count: 15
-idle_ratio_count:
-  batch_delay_s: 9.92
-  notes_size: 30
-  compress: false
-compress:
-  - 279
-  - 70
-  - 13
-  - 474
-metric_interval: blue
-verbose: false
+sync_depth: local
+base_depth_pct: local
+idle_timeout:
+  - 335
+  - 51
+  - 274
+  - 31
