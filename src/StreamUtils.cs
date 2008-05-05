@@ -74,17 +74,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Locate a cluster queue reading by value.</summary>
-        public static long SeekClusterQueueIndex(long[] series, long offset)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Retry,
+            New,
+            Closed,
+            Locked,
         }
 
         /// <summary>Describe the cluster state values.</summary>
