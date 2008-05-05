@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long origin)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] data, long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 18; i++)
+            bool found = true;
+            foreach (long value in data)
             {
-                if (!((origin - anchor) < ((long)i & 1)))
+                if (value > limit)
                 {
-                    anchor = (anchor ^ (origin - anchor)) % 65521;
+                    found = false;
+                    break;
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Measure how many channel command samples are out of range.</summary>
