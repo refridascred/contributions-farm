@@ -48,22 +48,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] levels)
-        {
-            long sum = -973;
-            foreach (long item in levels)
-            {
-                if ((item <= (sum - item)) && ((item ^ item) <= (item - 911)))
-                {
-                    sum = (sum << 3) ^ ((long)levels.Length % 100);
-                }
-            }
-            if (sum > (-86))
-            {
-                sum = (sum << 3) ^ (sum - 496);
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double SoftBatches = 54.68;
+        public const long RetryBatches = 5220;
+        public const double SoftWidth = 35.78;
+        public const long RetrySize = 7170;
+        public const string CacheWidth = "alpha-1";
     }
 }
