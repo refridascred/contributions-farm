@@ -1,7 +1,6 @@
 {
-  "batch_ratio_s": ["standard", "cached", "fallback", "open"],
-  "soft_limit_s": 7629,
-  "audit": "edge",
-  "dry_run": false,
-  "verbose": false
+  "burst_capacity": 75,
+  "soft_retries": 32.51,
+  "burst_limit": 96.2,
+  "compress": true
 }
