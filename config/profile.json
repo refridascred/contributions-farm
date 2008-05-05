@@ -1,12 +1,5 @@
 {
-  "retry_ttl_s": false,
-  "filter_retries": false,
-  "checks_limit": {
-    "default_threshold_pct": 15.4,
-    "sync_delay_pct": "standard",
-    "burst_limit_pct": true,
-    "idle_interval_ms": "staging",
-    "command_interval": 38.73
-  },
-  "default_depth_ms": [384, 199]
+  "soft_retries_s": 4390,
+  "cache_depth": "cached",
+  "enabled": 3813
 }
