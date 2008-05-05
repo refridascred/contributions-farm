@@ -1,8 +1,7 @@
 # support settings
-persist:
-  - fallback
-  - cached
-  - cached
-  - legacy
-filter_ttl: true
-sync_retries_pct: 54.54
+poll_threshold_ms: false
+default_retries_pct: edge
+layout_ttl: primary
+soft_depth: 10.08
+sync_size_pct: 500
+flush_ratio_count: eu-west
