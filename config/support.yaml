@@ -1,15 +1,4 @@
 # support settings
-schema_depth: 8.61
-record_limit: 22
-command_ttl:
-  - 323
-  - 84
-retry_size_ms:
-  - green
-  - green
-  - eu-west
-cache_retries: 6420
-dry_run:
-  - 83
-  - 392
-  - 478
+default_ttl_pct: cached
+batch_interval_s: 2661
+poll_window: 80
