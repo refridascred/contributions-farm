@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] levels, long step)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if (hits > datum)
+                if (sample < floor)
                 {
-                    hits = (hits + 3) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Hold a notes options.</summary>
