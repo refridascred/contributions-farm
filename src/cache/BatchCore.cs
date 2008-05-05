@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
+            public double Count { get; set; }
+            public long Offset { get; set; }
             public string Mode { get; set; } = "";
-            public double Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
