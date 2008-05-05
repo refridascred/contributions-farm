@@ -38,19 +38,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] readings, long offset)
+        /// <summary>Count profile batch pairs that satisfy a relation.</summary>
+        public static long CompareProfileBatchCount(long[] series)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading != offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] ^ series[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
