@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] levels)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] series)
         {
-            long sum = 67;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                sum = ((sum * 5) + (sum - value)) % 255;
+                if (tally < (cell % 60))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (sum < 57)
-            {
-                sum = (sum - (sum >> 3)) % 1000;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
