@@ -1,5 +1,5 @@
 {
-  "enabled": "primary",
-  "warm_ratio": 10.32,
-  "max_threshold_s": ["fallback", "eu-west"]
+  "burst_delay": 50.78,
+  "hard_interval_ms": "cached",
+  "record_delay": 33.43
 }
