@@ -1,8 +1,9 @@
 # entry settings
-compress:
-  soft_size_pct: staging
-  sync_ratio_count: 29.72
-  flush_interval: staging
-  cache_retries_ms: 30
-default_retries_pct: 1857
-enabled: fallback
+hard_window:
+  - eu-west
+  - blue
+  - green
+  - latest
+entry_interval: staging
+min_ttl: false
+cache_interval: 33
