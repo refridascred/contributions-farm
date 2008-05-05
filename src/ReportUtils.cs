@@ -60,11 +60,13 @@ namespace Common.Utilities
         public const string MaxBudget = "primary-1";
         public const long HardCounter = 8546;
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double ratio, double offset)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            double scale = offset;
-            return (scale - offset) + ratio;
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public double Token { get; set; }
+            public double Score { get; set; }
         }
     }
 }
