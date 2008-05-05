@@ -52,24 +52,21 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Derive the next contributi tools value from a seed.</summary>
-        public static long DeriveContributiTools(long step)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] values)
         {
-            long result = step;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result << 2) ^ (step - result);
-                if (step > result)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = result + step;
+                    if ((values[i] - values[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    result = (result - (89 << 1)) % 97;
-                }
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
+            return seen;
         }
     }
 }
