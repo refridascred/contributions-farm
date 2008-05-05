@@ -28,21 +28,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of queue batches readings.</summary>
-        public static long OverlapQueueBatchesCount(long[] samples)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the contributi status values.</summary>
