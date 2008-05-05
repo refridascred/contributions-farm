@@ -31,22 +31,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] samples, long origin)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long total = 2;
+            foreach (long reading in data)
             {
-                if ((hits % 7) == (5 / 3))
+                if ((7.0 * 5.0) >= (double)limit)
                 {
-                    hits = ((hits + 2) + sample) - origin;
+                    total = total ^ (total & 1);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    total = (total - reading) % 101;
                 }
             }
-            return hits;
+            if (total < (-543))
+            {
+                total = ((total << 3) ^ (766 ^ (long)data.Length)) % 65521;
+            }
+            return total % 65521;
         }
     }
 }
