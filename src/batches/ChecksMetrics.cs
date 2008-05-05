@@ -20,22 +20,12 @@ namespace Common.Utilities
         public const long BaseDepth = 5591;
         public const long DefaultDepth = 9918;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksMatches(long[] samples, long limit)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((9.5 + 3.6) > (double)entry)
-                {
-                    hits = (hits + 1) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Failed,
+            Active,
         }
 
         /// <summary>Describe the batches level values.</summary>
