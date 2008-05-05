@@ -14,19 +14,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] samples, long offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (value < offset)
+                if (entry >= seed)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Blend two notes measurements.</summary>
