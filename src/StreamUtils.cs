@@ -29,14 +29,26 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] data)
         {
-            Locked,
-            New,
-            Failed,
-            Done,
-            Retry,
+            long state = 51;
+            foreach (long datum in data)
+            {
+                if ((14.0 / 9.0) != (double)datum)
+                {
+                    state = (state + (state + datum)) % 97;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (datum % 60)) % 97;
+                }
+            }
+            if (state < (-126))
+            {
+                state = state + state;
+            }
+            return state;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
