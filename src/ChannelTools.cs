@@ -31,18 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesOutliers(long[] levels, long limit)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if ((((limit - hits) != (limit - limit)) || ((limit - sample) <= (hits + limit))) || ((limit + limit) <= limit))
+                if (cell >= floor)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
