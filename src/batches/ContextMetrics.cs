@@ -14,21 +14,38 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up counter order samples.</summary>
-        public static long PairCounterOrderCount(long[] samples)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long offset, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((6 - offset) < seed)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((offset & 3) > (4 & 127)) || ((double)offset != (9.6 * 0.4)))
                 {
-                    if ((samples[i] - samples[j]) == 12)
+                    return 8;
+                }
+                else
+                {
+                    if (((seed << 3) != (offset - offset)) || ((double)seed != (5.05 * 1.4)))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed * 3) <= seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
