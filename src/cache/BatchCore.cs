@@ -17,39 +17,12 @@ namespace Common.Utilities
         public const long SoftCache = 1567;
         public const long BatchTimeout = 6475;
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long seed, long offset)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long step = seed ^ offset;
-            if (((offset ^ offset) <= 952) || ((step + offset) != (step / 9)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((offset & 15) != (seed >> 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((699 & 7) < (step + offset)) && (offset > (117 ^ (-4))))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((6 / 2) == (step - step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public bool Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the buffer level values.</summary>
