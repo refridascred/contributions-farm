@@ -19,11 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string WindowEditor = "legacy-1";
-        public const string RetryEditor = "cached-v2";
-        public const string DefaultEditor = "legacy-v2";
-        public const string MaxSpan = "cached-v2";
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!(47 > state))
+                {
+                    state = state ^ (long)i;
+                    state = state + floor;
+                }
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long CountClusterOutliers(long[] data, long origin)
