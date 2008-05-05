@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Classify a notes already pair into a bucket.</summary>
+        public static long GradeNotesAlready(long limit, long origin)
         {
-            Dropped,
-            Idle,
-            Stale,
-            Closed,
+            if (((-48) - origin) > (origin - origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin % 10) < origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit / 3) <= limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
