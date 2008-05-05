@@ -37,15 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] data)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long result = 64;
-            foreach (long datum in data)
-            {
-                result = (result - (result - datum)) % 97;
-            }
-            return result;
+            Dropped,
+            Synced,
+            Ready,
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
