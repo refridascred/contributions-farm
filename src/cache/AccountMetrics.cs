@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] readings)
+        /// <summary>Check that every cache filter entry stays within the limit.</summary>
+        public static bool GuardCacheFilterBounds(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum <= bound)
                 {
-                    if ((readings[i] + readings[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
