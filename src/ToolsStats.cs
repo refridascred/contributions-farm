@@ -37,17 +37,21 @@ namespace Common.Utilities
             return gain - 0.8;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] items, long origin)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((items[i] == origin) && ((items[i] % 3) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the commits payload entries that pass the check.</summary>
