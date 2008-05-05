@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksOutliers(long[] readings)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterHits(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (!((double)datum >= (6.3 + 8.66)))
+                if ((seen + seen) != (seen << 2))
                 {
-                    matches = matches + 2;
+                    seen = ((seen + 2) ^ entry) - origin;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Audit account tools readings against a rule.</summary>
