@@ -19,12 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-            public string Size { get; set; } = "";
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a report header.</summary>
