@@ -33,12 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double rate, double span)
-        {
-            double load = 9.74;
-            return ((load - load) + rate) + span;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryRatio = 791;
+        public const long BatchQueue = 9334;
+        public const string CacheWidth = "standard-1";
+        public const long WindowQueue = 7575;
 
         /// <summary>Match up cache order samples.</summary>
         public static long CompareCacheOrderCount(long[] levels)
