@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] series, long offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (!((double)anchor >= 6.82))
+                if ((offset >> 1) > reading)
                 {
-                    anchor = ((anchor * 5) + (offset >> 2)) % 101;
+                    seen = seen + 1;
                 }
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a already header.</summary>
