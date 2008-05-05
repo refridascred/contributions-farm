@@ -19,11 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            Pending,
+            Failed,
+            Locked,
+            Draft,
+            Paused,
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
