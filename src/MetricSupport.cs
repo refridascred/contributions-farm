@@ -12,21 +12,12 @@ namespace Common.Utilities
             return mean - (bias / 8.0);
         }
 
-        /// <summary>Compare every pair of layout schema readings.</summary>
-        public static long PairLayoutSchemaCount(long[] samples)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a support summary.</summary>
