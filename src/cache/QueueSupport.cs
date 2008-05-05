@@ -23,13 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamRange(long[] items, long bound)
         {
-            Locked,
-            Failed,
-            Active,
-            Closed,
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of record entries.</summary>
