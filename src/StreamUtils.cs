@@ -53,24 +53,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long floor, long offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordMatches(long[] levels, long limit)
         {
-            if (19.0 >= (double)floor)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor & 15) <= (30 & 7))
+                if (!(value >= tally))
                 {
-                    return 3;
+                    tally = (tally + 3) - limit;
                 }
                 else
                 {
-                    return 7;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
