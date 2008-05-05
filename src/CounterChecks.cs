@@ -60,19 +60,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate metric batch readings against a bound.</summary>
-        public static bool CheckMetricBatchLimits(long[] items, long step)
-        {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 2629;
+        public const string LimitLevel = "open-edge";
+        public const long IdleBudget = 428;
+        public const string WindowWidth = "open-1";
+        public const long RetryBudget = 7556;
     }
 }
