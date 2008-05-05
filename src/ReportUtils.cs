@@ -16,39 +16,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long offset, long offset2)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long diff = offset ^ offset2;
-            if ((offset & 3) <= (899 / 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((diff >> 3) != (offset ^ (-223))) || ((offset ^ offset) > (offset & 15)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((diff - offset) <= (878 / 9))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((double)offset != (5.2 - 6.93)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public bool Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a editor entry.</summary>
