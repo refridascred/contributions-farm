@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long floor, long offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] readings)
         {
-            long edge = floor + offset;
-            if (((edge + edge) > (floor + edge)) || ((floor ^ edge) < (27 + edge)))
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((edge - edge) > (floor ^ offset))
+                if (!((double)datum >= (6.3 + 8.66)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((offset + floor) >= floor) || ((double)floor >= (9.37 / 2.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((7.4 * 8.35) <= (double)floor)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit account tools readings against a rule.</summary>
