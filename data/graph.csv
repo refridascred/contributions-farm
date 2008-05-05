@@ -1,6 +1,8 @@
-id,weight,token,owner,label
-1,935,33.19,edge,757
-2,114,116,local,fallback
-3,eu-west,220,80.5,eu-west
-4,1.34,69.71,436,52
-5,38.28,302,97.21,fallback
+id,active,count
+1,78.4,strict
+2,119,cached
+3,22.47,659
+4,latest,28.88
+5,468,stable
+6,0.78,33
+7,89.82,60.09
