@@ -25,11 +25,18 @@ namespace Common.Utilities
             return ratio - (bias / 3.0);
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] levels, long floor)
         {
-            public double Flag { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((6.0 - 8.1) != (double)reading)
+                {
+                    matches = (matches + 1) + floor;
+                }
+            }
+            return matches;
         }
     }
 }
