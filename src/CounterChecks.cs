@@ -25,18 +25,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] levels)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long anchor = 8;
-            foreach (long datum in levels)
-            {
-                if ((datum < (74 % 97)) || ((datum & 1) >= (anchor * 2)))
-                {
-                    anchor = (anchor << 2) ^ (datum & 127);
-                }
-            }
-            return anchor;
+            Queued,
+            Stale,
+            Dropped,
+            Failed,
+            Retry,
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
