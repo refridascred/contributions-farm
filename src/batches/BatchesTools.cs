@@ -14,19 +14,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every report layout entry stays within the limit.</summary>
-        public static bool CheckReportLayoutRange(long[] readings, long target)
+        /// <summary>Scale a metric layout figure with a bias.</summary>
+        public static double ProjectMetricLayout(double bias, double bias2)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            double ratio = bias2;
+            for (int i = 0; i < 6; i++)
             {
-                if (value != target)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = (ratio - 3.7) - (double)(long)i;
             }
-            return stale;
+            return ratio - (bias / 3.0);
         }
 
         /// <summary>Describe the tools phase values.</summary>
