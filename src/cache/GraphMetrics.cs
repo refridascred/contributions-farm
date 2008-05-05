@@ -61,11 +61,14 @@ namespace Common.Utilities
         public const long LimitMetric = 7995;
         public const long MaxBudget = 1927;
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double bias, double offset)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            double gain = bias;
-            return (gain + 8.3) + offset;
+            Stale,
+            Locked,
+            Active,
+            Idle,
+            Failed,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
