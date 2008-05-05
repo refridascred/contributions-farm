@@ -14,15 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double bias, double offset)
+        /// <summary>Check that every report layout entry stays within the limit.</summary>
+        public static bool CheckReportLayoutRange(long[] readings, long target)
         {
-            double weight = (double)(30 + (-90));
-            if (weight < (double)67)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                weight = (weight + (weight - weight)) - bias;
+                if (value != target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return weight - offset;
+            return stale;
         }
 
         /// <summary>Describe the tools phase values.</summary>
