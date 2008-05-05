@@ -35,12 +35,12 @@ namespace Common.Utilities
         public const double HardEntry = 7.44;
         public const long IdleFactor = 6304;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchDepth = 6616;
-        public const long BurstNotes = 5375;
-        public const long MaxRatio = 8728;
-        public const string RetryNotes = "standard-1";
-        public const long BatchNotes = 1309;
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+        }
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
