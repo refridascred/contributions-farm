@@ -13,12 +13,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
-        {
-            public double Level { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstTimeout = 3572;
+        public const string MinTimeout = "alpha-edge";
+        public const double StepProfile = 18.98;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string MaxDepth = "strict-edge";
