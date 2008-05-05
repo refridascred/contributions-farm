@@ -53,15 +53,21 @@ namespace Common.Utilities
         public const double MaxNotes = 22.2;
         public const double RetryNotes = 87.0;
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double scale, double offset)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] readings)
         {
-            double load = offset;
-            if (load >= offset)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (load + 2.22) - scale;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return load - offset;
+            return seen;
         }
     }
 }
