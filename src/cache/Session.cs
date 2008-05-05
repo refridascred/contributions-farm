@@ -33,14 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            Stale,
-            Dropped,
+            Ready,
+            New,
+            Done,
             Retry,
-            Draft,
-            Locked,
+            Closed,
         }
 
         /// <summary>Match up notes samples.</summary>
