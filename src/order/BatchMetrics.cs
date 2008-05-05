@@ -20,15 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] items)
         {
-            long anchor = floor;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if ((double)0 != (double)cell)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
