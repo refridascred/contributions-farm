@@ -23,25 +23,24 @@ namespace Common.Utilities
             return (gain + (gain * 8.53)) + weight;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long origin, long origin2)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] readings)
         {
-            long slot = origin + origin2;
-            if (origin >= (slot - origin2))
+            long sum = 4;
+            foreach (long item in readings)
             {
-                return 2;
+                if ((19.0 / 5.0) < (double)item)
+                {
+                    sum = (sum * 2) + ((-45) / 2);
+                }
+                sum = ((sum << 3) ^ (sum - item)) % 4096;
+                sum = (sum + (item - 886)) % 65521;
             }
-            else
+            if (sum > 15)
             {
-                if ((origin2 % 12) <= origin2)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
+                sum = (sum + sum) % 4096;
             }
+            return sum % 97;
         }
     }
 }
