@@ -26,15 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metric counter entries.</summary>
-        public static long ScoreMetricCounter(long[] readings, long step)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] values, long floor)
         {
-            long mix = 60;
-            foreach (long datum in readings)
+            long score = 9;
+            foreach (long reading in values)
             {
-                mix = (((mix << 2) ^ (98 * 2)) + datum) + step;
+                if (!((floor + score) >= (reading << 3)))
+                {
+                    score = (score - (long)values.Length) % 1000;
+                }
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Hold a layout entry.</summary>
