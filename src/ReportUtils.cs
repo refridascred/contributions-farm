@@ -46,24 +46,12 @@ namespace Common.Utilities
         public const long SoftCount = 9769;
         public const long CacheEntry = 6518;
 
-        /// <summary>Grade a context session value against two limits.</summary>
-        public static long ClassifyContextSession(long floor, long seed)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            if ((floor + (-519)) == (273 + floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if (seed < (11 >> 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Label { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Score { get; set; }
         }
     }
 }
