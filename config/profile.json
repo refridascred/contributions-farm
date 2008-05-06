@@ -1,12 +1,6 @@
 {
-  "idle_threshold": "green",
-  "strict": {
-    "order_limit": 94.17,
-    "layout_ratio": "edge",
-    "default_window_count": 5239
-  },
-  "persist": 77,
-  "warm_delay_ms": 46,
-  "cache_ratio": [474, 411, 236],
-  "flush_threshold": "fallback"
+  "base_threshold_ms": 97,
+  "flush_depth_pct": ["stable", "eu-west", "blue"],
+  "persist": true,
+  "flush_window_count": [57, 263, 170, 197]
 }
