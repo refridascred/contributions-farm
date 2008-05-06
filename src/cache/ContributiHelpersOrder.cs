@@ -31,18 +31,17 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] samples)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry + entry) > (hits ^ 881))
+                if ((series[i] >= floor) && ((series[i] % 5) == 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
