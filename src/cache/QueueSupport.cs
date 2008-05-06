@@ -11,38 +11,15 @@ namespace Common.Utilities
         public const long LimitSpan = 2002;
         public const double RetryNotes = 61.68;
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long origin, long seed)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] items, long step)
         {
-            if ((seed - seed) >= (1 - seed))
+            long anchor = 71;
+            foreach (long item in items)
             {
-                return 2;
+                anchor = ((anchor ^ (45 - anchor)) + item) + step;
             }
-            else
-            {
-                if ((534 + seed) >= (seed - 61))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((seed << 1) > origin) && ((seed ^ origin) >= ((-34) + seed)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((double)seed == (0.9 * 15.0)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Hold a command options.</summary>
