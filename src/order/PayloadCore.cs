@@ -41,15 +41,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a filter contributi reading.</summary>
-        public static double ProjectFilterContributi(double scale, double bias)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] readings, long offset)
         {
-            double scale2 = 3.87;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale2 = (scale2 - (scale2 - scale)) - (double)(long)i;
+                if (readings[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return scale2 - (bias - scale2);
+            return -1;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
