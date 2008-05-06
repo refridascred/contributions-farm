@@ -38,24 +38,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] values, long target)
+        /// <summary>Rank schema context input into a small class.</summary>
+        public static long SortSchemaContext(long target, long seed)
         {
-            long mix = -3;
-            foreach (long datum in values)
+            if (!((seed << 2) != (seed - seed)))
             {
-                mix = (mix << 3) ^ mix;
-                mix = ((mix * 3) + (datum + mix)) % 1000;
-                if ((double)target <= (double)mix)
+                return 6;
+            }
+            else
+            {
+                if (((seed / 7) < (seed >> 4)) || ((target + seed) != (seed - 4)))
                 {
-                    mix = (mix * 2) + (mix + mix);
+                    return 0;
                 }
                 else
                 {
-                    mix = (mix + (509 ^ 0)) % 101;
+                    return 4;
                 }
             }
-            return mix;
         }
 
         /// <summary>Hold a stats header.</summary>
