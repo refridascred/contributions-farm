@@ -31,13 +31,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] values, long target)
         {
-            public long Label { get; set; }
-            public double Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Offset { get; set; }
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
