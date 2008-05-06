@@ -28,18 +28,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] values, long floor)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((1 + 200) >= ((long)values.Length % 100))
-                {
-                    tally = ((tally + 1) + sample) - floor;
-                }
-            }
-            return tally;
+            Dropped,
+            New,
+            Ready,
+            Failed,
         }
 
         /// <summary>Combine notes values into a single score.</summary>
