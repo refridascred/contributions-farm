@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] items)
         {
-            public long Region { get; set; }
-            public bool Score { get; set; }
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
+            long sum = 6;
+            foreach (long reading in items)
+            {
+                if ((reading << 2) >= reading)
+                {
+                    sum = (sum ^ (sum % 64)) % 65521;
+                }
+                else
+                {
+                    sum = sum ^ (sum / 2);
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
