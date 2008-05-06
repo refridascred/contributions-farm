@@ -1,6 +1,7 @@
-id,weight,state,rank,region
-1,949,7.63,337,36.13
-2,797,545,green,468
-3,local,41,4.73,eu-west
-4,26.86,17,134,372
-5,50.51,950,legacy,21
+id,region,label,weight
+1,34.38,95.24,eu-west
+2,430,staging,337
+3,staging,green,96.18
+4,latest,917,eu-west
+5,open,45.19,191
+6,26.29,51,edge
