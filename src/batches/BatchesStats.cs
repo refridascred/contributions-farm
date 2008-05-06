@@ -30,14 +30,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
-        {
-            public string Stamp { get; set; } = "";
-            public bool Total { get; set; }
-            public string Label { get; set; } = "";
-            public bool Level { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 7809;
+        public const double DefaultSchema = 46.93;
+        public const long DefaultBudget = 5092;
+        public const double HardBudget = 92.65;
+        public const double HardWidth = 1.38;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long WeighFilter(long[] series)
