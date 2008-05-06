@@ -34,11 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSpan = 387;
-        public const long WindowWidth = 4032;
-        public const double LimitSchema = 27.48;
-        public const long RetrySize = 9136;
-        public const string BatchCount = "stable";
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
+        {
+            Locked,
+            Retry,
+            Draft,
+        }
     }
 }
