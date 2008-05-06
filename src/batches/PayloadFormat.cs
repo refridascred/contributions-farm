@@ -36,18 +36,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelHits(long[] data, long target)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((545 < (target + target)) || (((double)seen < (double)target) || ((double)cell < (8.2 + 5.0))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Idle,
+            Active,
+            Queued,
+            Failed,
         }
 
         /// <summary>Define account limits and defaults.</summary>
