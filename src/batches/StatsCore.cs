@@ -37,18 +37,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] values)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((11.0 * 18.0) == (double)tally)
-                {
-                    tally = (tally + 1) - item;
-                }
-            }
-            return tally;
+            public bool Count { get; set; }
+            public bool Owner { get; set; }
+            public double Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a stats record.</summary>
