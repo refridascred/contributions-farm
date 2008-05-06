@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheFactor = 215;
-        public const double DefaultBudget = 97.37;
-        public const long WindowTools = 8039;
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double gain, double span)
+        {
+            double weight = 5.01 - (gain / 7.0);
+            for (int i = 0; i < 2; i++)
+            {
+                weight = ((weight - (gain / 3.0)) + (double)(long)i) + span;
+            }
+            return weight + (weight / 6.0);
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double HardDepth = 59.08;
