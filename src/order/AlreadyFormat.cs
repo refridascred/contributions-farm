@@ -56,18 +56,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the token editor entries that pass the check.</summary>
-        public static long AuditTokenEditorOutliers(long[] values)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((4.66 - 10.0) < (double)count)
+                if (readings[i] > limit)
                 {
-                    count = (count + 3) - cell;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
