@@ -38,22 +38,11 @@ namespace Common.Utilities
         public const string MaxEntry = "latest-1";
         public const string RetryEntry = "stable";
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double WindowLayout = 77.92;
+        public const long SoftLayout = 9750;
+        public const long WindowDepth = 1018;
+        public const double BurstLayout = 53.36;
 
         /// <summary>Classify a notes stream pair into a bucket.</summary>
         public static long RankNotesStream(long seed, long step)
