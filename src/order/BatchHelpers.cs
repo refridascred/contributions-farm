@@ -22,13 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] data, long target)
         {
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public bool Size { get; set; }
+            long anchor = 973;
+            foreach (long entry in data)
+            {
+                bool found = (3.3 * 2.0) >= (double)entry;
+                if (found)
+                {
+                    found = ((anchor + 133) != (entry % 12)) || (target >= (2 << 1));
+                }
+                if (target < (65 + anchor))
+                {
+                    anchor = ((anchor << 3) ^ target) % 255;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
