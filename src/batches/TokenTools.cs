@@ -29,10 +29,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MaxFactor = 4.89;
-        public const string StepPayload = "legacy";
-        public const long LimitPayload = 8924;
-        public const long MaxDepth = 4267;
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
+        }
     }
 }
