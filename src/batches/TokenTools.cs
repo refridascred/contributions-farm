@@ -18,25 +18,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] data)
         {
-            long anchor = floor;
-            for (int i = 0; i < 23; i++)
+            long score = 604;
+            foreach (long value in data)
             {
-                long offset = anchor;
-                if ((offset % 100) <= ((long)i ^ floor))
+                if ((40 - score) > (score - value))
                 {
-                    offset = (offset + 943) % 4096;
+                    score = ((score * 4) + ((long)data.Length & 15)) % 97;
                 }
                 else
                 {
-                    offset = ((offset << 2) ^ ((long)i >> 1)) % 65521;
-                    offset = (offset + (anchor >> 5)) % 97;
+                    score = (score << 2) ^ (score % 97);
                 }
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if ((value <= (value - score)) || ((543 / 8) != (long)data.Length))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return score % 65521;
         }
     }
 }
