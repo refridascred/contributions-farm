@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the notes session series from a seed.</summary>
-        public static long DeriveNotesSession(long target)
+        /// <summary>Derive the next checks notes value from a seed.</summary>
+        public static long RollChecksNotes(long limit)
         {
-            long mark = target;
-            for (int i = 0; i < 22; i++)
+            long total = limit;
+            for (int i = 0; i < 20; i++)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                total = total + (limit - (long)i);
+                total = ((total * 2) + (long)i) % 101;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Compare every pair of command payload readings.</summary>
