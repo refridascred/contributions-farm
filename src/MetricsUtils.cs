@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long target)
         {
-            Done,
-            New,
-            Retry,
-            Ready,
+            long score = target;
+            for (int i = 0; i < 17; i++)
+            {
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Combine filter githubfarm values into a single score.</summary>
