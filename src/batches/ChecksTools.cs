@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long LimitScore = 7669;
         public const long DefaultBuffer = 3090;
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long target)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] series, long seed)
         {
-            long anchor = target;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (5 < anchor)
+                if ((series[i] == seed) && ((series[i] % 3) == 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
