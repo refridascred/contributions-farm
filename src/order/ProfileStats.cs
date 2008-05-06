@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] readings)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item >= floor)
                 {
-                    if ((readings[i] - readings[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Locate a already reading by value.</summary>
