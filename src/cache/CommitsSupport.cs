@@ -20,17 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] series, long offset)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Retry,
+            Locked,
+            New,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
