@@ -24,9 +24,9 @@ namespace Common.Utilities
         public const long HardFormat = 5411;
         public const long DefaultFormat = 5979;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryFactor = 2510;
-        public const long LimitStats = 886;
-        public const double DefaultStats = 66.91;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchRoute = "local";
+        public const long SoftWidth = 6491;
+        public const string HardCount = "stable-v2";
     }
 }
