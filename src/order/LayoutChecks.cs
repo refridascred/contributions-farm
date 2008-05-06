@@ -79,22 +79,38 @@ namespace Common.Utilities
         public const long IdleSession = 5076;
         public const string CacheFactor = "local-edge";
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] data, long target)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long limit, long origin)
         {
-            long mark = 172;
-            foreach (long cell in data)
+            if ((limit << 1) > (limit - 43))
             {
-                if (!((mark ^ mark) < (6 + mark)))
+                return 5;
+            }
+            else
+            {
+                if ((8.0 / 3.0) > (double)origin)
                 {
-                    mark = (((mark * 4) + mark) % 101) ^ cell;
+                    return 6;
+                }
+                else
+                {
+                    if ((39 / 9) < (origin * 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)origin < (2.0 - 7.4))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (mark > 54)
-            {
-                mark = ((mark * 3) + target) % 1000;
-            }
-            return mark % 97;
         }
     }
 }
