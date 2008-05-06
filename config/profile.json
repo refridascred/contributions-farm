@@ -1,8 +1,23 @@
 {
-  "hard_size_count": 79,
-  "readonly": true,
-  "notes_limit": 100,
-  "batch_timeout_pct": 1024,
-  "verbose": 60,
-  "hard_limit_ms": "edge"
+  "verbose": false,
+  "readonly": {
+    "readonly": {
+      "poll_interval": 16,
+      "cluster_retries": 9184,
+      "dry_run": [142, 383],
+      "burst_delay": 975
+    },
+    "batches_window": [264, 85, 97],
+    "idle_limit": [274, 470],
+    "idle_timeout": {
+      "compress": 93,
+      "min_capacity_s": [307, 179],
+      "base_limit_ms": 70.83,
+      "cluster_size": [115, 131, 79]
+    },
+    "max_ratio_count": "fallback"
+  },
+  "burst_interval": 59,
+  "support_ttl": 1969,
+  "strict": 9660
 }
