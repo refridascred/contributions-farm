@@ -77,24 +77,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long origin, long limit)
-        {
-            if ((3 + limit) != (origin / 6))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((origin >> 1) <= (limit + origin)) && ((limit + origin) == (origin & 255)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string WindowCounter = "legacy-1";
+        public const long SoftCounter = 382;
+        public const string CacheCounter = "alpha";
     }
 }
