@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] readings, long origin)
+        /// <summary>Rank editor report input into a small class.</summary>
+        public static long BucketEditorReport(long bound, long origin)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            if ((8.2 / 6.0) > (double)bound)
             {
-                if (sample <= origin)
+                return 7;
+            }
+            else
+            {
+                if (!((bound + origin) <= (origin << 1)))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return ready;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
