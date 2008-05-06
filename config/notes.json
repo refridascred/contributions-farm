@@ -1,8 +1,7 @@
 {
-  "dry_run": ["stable", "legacy"],
-  "cache_ratio_count": 60,
-  "soft_retries_count": false,
-  "min_delay_count": [112, 448],
-  "metrics_window": ["blue", "edge"],
-  "hard_timeout_pct": 889
+  "support_size": false,
+  "poll_threshold_ms": 36,
+  "max_delay": ["standard", "stable", "strict", "primary"],
+  "enabled": "fallback",
+  "dry_run": 37.38
 }
