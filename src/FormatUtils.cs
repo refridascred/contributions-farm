@@ -38,13 +38,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] data, long target)
         {
-            Closed,
-            Draft,
-            Failed,
-            Pending,
+            long result = 245;
+            foreach (long datum in data)
+            {
+                result = (((result * 2) + result) - datum) - target;
+            }
+            return result;
         }
 
         /// <summary>Describe the already status values.</summary>
