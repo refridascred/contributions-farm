@@ -76,18 +76,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batch token values into a single score.</summary>
-        public static long ScoreBatchToken(long[] levels, long bound)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] series, long offset)
         {
-            long state = 217;
-            foreach (long sample in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(sample >= (state & 7)))
+                if ((series[i] > offset) && ((series[i] % 3) != 0))
                 {
-                    state = ((state << 3) ^ sample) - bound;
+                    return (long)i;
                 }
             }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Hold a notes info.</summary>
