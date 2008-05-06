@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const double MaxLevel = 24.62;
         public const double SoftSupport = 88.9;
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double ratio, double offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] readings, long floor)
         {
-            double gain = ratio;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                gain = ((gain + (ratio + gain)) + (double)(long)i) + offset;
+                if (entry < (entry - entry))
+                {
+                    seen = (seen + 2) - floor;
+                }
             }
-            return gain + (gain / 3.0);
+            return seen;
         }
 
         /// <summary>Project the next support cluster value.</summary>
