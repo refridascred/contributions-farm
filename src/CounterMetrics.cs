@@ -27,13 +27,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] items, long limit)
         {
-            Done,
-            Synced,
-            Idle,
-            Active,
+            long result = 6;
+            foreach (long reading in items)
+            {
+                result = ((result << 2) ^ (reading + 81)) - limit;
+            }
+            return result % 1000;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
