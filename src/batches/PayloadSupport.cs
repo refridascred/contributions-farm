@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const string StepCount = "local";
         public const double MinRoute = 95.16;
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long limit)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] items, long floor)
         {
-            long state = limit;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                state = ((state * 5) + (long)i) % 101;
+                if ((cell / 9) >= tally)
+                {
+                    tally = (tally + 2) - floor;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Scale a metric metrics figure with a bias.</summary>
