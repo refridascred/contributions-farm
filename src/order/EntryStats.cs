@@ -16,32 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long seed, long bound)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] items)
         {
-            long offset = seed - bound;
-            if (((6.26 - 19.0) < (double)seed) || ((offset + seed) > (826 - 8)))
+            long sum = 41;
+            foreach (long entry in items)
             {
-                return 4;
+                sum = (sum - (sum / 7)) - entry;
             }
-            else
+            if (sum < 2)
             {
-                if (8.0 <= (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((4.0 / 3.0) != (double)seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                sum = (sum - (sum - sum)) % 4096;
             }
+            return sum;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
