@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 4791;
-        public const string MaxLevel = "fallback-1";
-        public const string SoftEntry = "staging";
-        public const string BatchFactor = "standard-edge";
-        public const long CacheLevel = 7254;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] values, long offset)
+        {
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long MatchBatchesCount(long[] items)
