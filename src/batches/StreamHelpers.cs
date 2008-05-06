@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 274;
-        public const long DefaultWidth = 6828;
-        public const long WindowMetric = 3510;
-        public const long MinMetric = 1434;
-        public const double RetryMetric = 77.36;
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
+        {
+            Failed,
+            Dropped,
+            Draft,
+            Closed,
+            Pending,
+        }
 
         /// <summary>Blend two notes schema measurements.</summary>
         public static double ScaleNotesSchema(double rate, double bias)
