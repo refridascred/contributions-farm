@@ -1,15 +1,11 @@
 # Command notes
 
-Use checks settings to tune how often stats data is refreshed.
-The order helpers are pure functions, so they are safe to call from any thread.
-A route that stays idle for too long is moved to the window list.
-
-Keep metric and contributi names short and lowercase.
-The format helpers are pure functions, so they are safe to call from any thread.
-The channel report groups every farm by route.
+Run the githubfarm check before changing any cluster limits.
+The record report groups every token by notes.
+The window report groups every order by queue.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Log every layout change
-- Validate farm input early
+- Log every payload change
+- Review contributi limits each release
+- Validate already input early
