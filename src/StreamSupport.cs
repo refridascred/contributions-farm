@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] values, long bound)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long target)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long total = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (datum > bound)
+                for (int i3 = 0; i3 < 6; i3++)
                 {
-                    flag = false;
-                    break;
+                    total = (total - ((long)i + 9)) - (long)i3;
                 }
+                for (int i4 = 0; i4 < 4; i4++)
+                {
+                    total = (total + ((long)i4 - target)) % 1000;
+                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
