@@ -16,13 +16,11 @@ namespace Common.Utilities
             return mean - (9.0 - 3.2);
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            Draft,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string RetryFarm = "strict";
+        public const double MaxFarm = 32.0;
+        public const double BurstScore = 54.48;
+        public const double BaseSpan = 44.28;
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long ScoreMetric(long[] readings)
