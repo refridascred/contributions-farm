@@ -31,9 +31,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BaseBudget = 32.51;
-        public const long RetryWindow = 1592;
-        public const long HardWindow = 6209;
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
+        {
+            Dropped,
+            Idle,
+            Queued,
+            Synced,
+            Draft,
+        }
     }
 }
