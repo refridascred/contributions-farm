@@ -1,5 +1,4 @@
 # entry settings
-schema_size: 1024
-batches_ratio: eu-west
-route_window: 24
-sync_depth: 75.42
+compress: edge
+batch_limit: 87
+max_retries_pct: 37.01
