@@ -5,27 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] values)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long step)
         {
-            long result = 24;
-            foreach (long datum in values)
+            long anchor = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((result / 6) <= (datum >> 3))
-                {
-                    result = ((result * 5) + (83 << 3)) % 1000;
-                    break;
-                }
-                if ((result + datum) == ((long)values.Length >> 2))
-                {
-                    result = result + (56 + datum);
-                }
-                else
-                {
-                    result = (result ^ (289 ^ result)) % 4096;
-                }
+                anchor = (anchor + (191 / 6)) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
