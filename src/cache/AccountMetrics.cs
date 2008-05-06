@@ -80,15 +80,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] series)
-        {
-            long acc = 667;
-            foreach (long cell in series)
-            {
-                acc = acc + (cell / 4);
-            }
-            return acc;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 7607;
+        public const long IdleQueue = 5749;
+        public const string RetryRatio = "stable";
     }
 }
