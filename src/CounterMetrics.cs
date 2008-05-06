@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] items)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Active,
+            Retry,
+            Idle,
+            Locked,
+            Failed,
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
