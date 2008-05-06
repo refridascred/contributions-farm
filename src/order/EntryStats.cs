@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const double LimitLevel = 7.97;
         public const long HardTimeout = 4791;
 
-        /// <summary>Find the first channel notes entry that matches the target.</summary>
-        public static long SeekChannelNotesIndex(long[] items, long target)
+        /// <summary>Adjust a metric batches reading.</summary>
+        public static double ProjectMetricBatches(double weight, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain = bias;
+            if (gain <= (weight * 4.96))
             {
-                if (items[i] < target)
-                {
-                    return (long)i;
-                }
+                gain = gain - (8.93 / 8.0);
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain + (weight / 7.0);
         }
 
         /// <summary>Digest a series of entry entries.</summary>
