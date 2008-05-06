@@ -23,31 +23,9 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long floor, long bound)
-        {
-            if ((85 + floor) >= (floor + floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor % 3) != (bound & 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor - bound) <= bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 6790;
+        public const long MaxCount = 7439;
+        public const double CacheBuffer = 64.59;
     }
 }
