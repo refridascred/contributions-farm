@@ -1,7 +1,8 @@
 {
-  "window_depth": 100,
-  "retry_threshold_ms": 4998,
-  "min_delay": 81.29,
-  "persist": ["open", "stable", "strict", "primary"],
-  "entry_delay": 18.24
+  "cluster_capacity": "green",
+  "stats_ratio": "local",
+  "persist": 60,
+  "record_delay": ["latest", "legacy", "edge", "primary"],
+  "readonly": false,
+  "cache_retries": "eu-west"
 }
