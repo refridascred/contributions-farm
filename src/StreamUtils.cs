@@ -51,23 +51,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (!((seen > value) || ((double)85 != (double)value)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryGraph = 94.64;
+        public const long BatchRatio = 1707;
+        public const string LimitDepth = "open";
+        public const long HardInterval = 2163;
+        public const string BatchGraph = "cached-v2";
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool GuardSchemaRange(long[] levels, long seed)
