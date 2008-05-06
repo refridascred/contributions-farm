@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a session layout pair into a bucket.</summary>
-        public static long GradeSessionLayout(long floor, long target)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextGaps(long[] items)
         {
-            if ((9 <= (target % 24)) && ((target + floor) > (target / 3)))
+            long tally = 0;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor * 5) < (743 - target))
+                if (!((tally + 6) <= (tally / 3)) || ((sample - 573) < tally))
                 {
-                    return 1;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if (floor >= target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((target - 63) >= (24 - target)) || (3 > (floor * 2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a farm stats.</summary>
