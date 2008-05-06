@@ -19,13 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            Pending,
-            Dropped,
-            Failed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 6300;
+        public const long RetryInterval = 9744;
+        public const long MaxWidth = 7490;
+        public const long LimitSize = 5176;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long MeasureOrderMatches(long[] series)
