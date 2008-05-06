@@ -55,19 +55,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every account profile entry stays within the limit.</summary>
-        public static bool VerifyAccountProfileLimits(long[] levels, long limit)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long limit, long step)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long edge = limit + step;
+            if ((step + limit) < edge)
             {
-                if (sample < limit)
+                return 5;
+            }
+            else
+            {
+                if ((11.0 + 8.58) > (double)edge)
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((double)edge >= (7.1 * 7.09)) || ((step & 15) == (limit + edge)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
