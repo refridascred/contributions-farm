@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] items)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long carry = 51;
-            foreach (long datum in items)
-            {
-                if ((carry > (datum >> 4)) || ((carry ^ 62) > datum))
-                {
-                    carry = (carry ^ (carry >> 1)) % 4096;
-                }
-            }
-            return carry;
+            Draft,
+            Idle,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Describe the buffer state values.</summary>
