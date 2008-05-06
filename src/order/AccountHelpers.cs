@@ -80,17 +80,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] data, long seed)
+        /// <summary>Validate notes profile readings against a bound.</summary>
+        public static bool ValidateNotesProfileRange(long[] items, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if (data[i] < seed)
+                if (entry >= bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
