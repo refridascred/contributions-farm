@@ -23,18 +23,14 @@ namespace Common.Utilities
         public const long LimitLevel = 1614;
         public const double MaxFactor = 94.8;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferMatches(long[] data)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (((long)data.Length - entry) > (21 << 2))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Dropped,
+            Paused,
+            New,
+            Pending,
+            Done,
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
