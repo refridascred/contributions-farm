@@ -15,22 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] levels, long seed)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long mix = 897;
+            foreach (long item in items)
             {
-                if ((double)(long)levels.Length != (6.6 - 9.4))
-                {
-                    matches = ((matches + 1) - reading) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = (((mix * 2) + (3 & 3)) ^ item) + step;
             }
-            return matches;
+            if (mix < 30)
+            {
+                mix = ((mix * 5) + mix) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
