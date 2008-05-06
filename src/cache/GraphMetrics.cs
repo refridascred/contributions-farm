@@ -50,13 +50,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] series, long bound)
         {
-            public long Level { get; set; }
-            public double Stamp { get; set; }
-            public double Limit { get; set; }
-            public string Token { get; set; } = "";
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((2.0 / 6.0) < (double)count)
+                {
+                    count = ((count + 2) + sample) - bound;
+                }
+            }
+            return count;
         }
     }
 }
