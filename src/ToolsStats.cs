@@ -44,17 +44,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] data, long target)
+        /// <summary>Accumulate window cache samples.</summary>
+        public static long DigestWindowCache(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 413;
+            foreach (long value in levels)
             {
-                if ((data[i] < target) && ((data[i] % 5) != 0))
+                if (acc >= value)
                 {
-                    return (long)i;
+                    acc = (acc - (value - value)) % 65521;
                 }
             }
-            return -1;
+            if (acc > 485)
+            {
+                acc = (acc << 3) ^ 416;
+            }
+            return acc;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
