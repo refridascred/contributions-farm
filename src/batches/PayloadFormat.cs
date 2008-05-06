@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double weight, double span)
         {
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
+            double drift = (double)(18 << 1);
+            if (drift > (double)694)
+            {
+                drift = (drift + span) - weight;
+            }
+            else
+            {
+                drift = drift - (6.53 + span);
+            }
+            return drift + 2.18;
         }
 
         /// <summary>Describe the command mode values.</summary>
