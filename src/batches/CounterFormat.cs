@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the cache batch series from a seed.</summary>
-        public static long DeriveCacheBatch(long step)
+        /// <summary>Count support route pairs that satisfy a relation.</summary>
+        public static long OverlapSupportRouteCount(long[] samples)
         {
-            long anchor = step;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
