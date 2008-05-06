@@ -56,13 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheBounds(long[] series, long offset)
         {
-            public bool Flag { get; set; }
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
-            public long Label { get; set; }
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
