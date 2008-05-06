@@ -48,22 +48,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportMatches(long[] items, long target)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (1.0 <= (double)target)
-                {
-                    hits = (hits + 1) - datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Idle,
+            Closed,
+            New,
+            Failed,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
