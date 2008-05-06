@@ -36,18 +36,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsMatches(long[] levels)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((6.5 + 2.1) <= (double)seen)
+                if (levels[i] >= floor)
                 {
-                    seen = (seen + 2) + item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
