@@ -37,18 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the command payload entries that pass the check.</summary>
-        public static long CountCommandPayloadOutliers(long[] series)
+        /// <summary>Check that every notes metrics entry stays within the limit.</summary>
+        public static bool VerifyNotesMetricsRange(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if ((hits * 4) >= (item - item))
+                if (reading > seed)
                 {
-                    hits = hits + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
