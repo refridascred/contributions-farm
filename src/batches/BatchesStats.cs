@@ -30,18 +30,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] levels, long floor)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long acc = 919;
-            foreach (long item in levels)
-            {
-                if (!((acc * 3) <= (acc * 5)))
-                {
-                    acc = (((acc * 2) + (floor + floor)) % 101) - item;
-                }
-            }
-            return acc;
+            public bool Total { get; set; }
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a buffer header.</summary>
