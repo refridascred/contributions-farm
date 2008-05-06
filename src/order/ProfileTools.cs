@@ -49,10 +49,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxRatio = 9965;
-        public const long WindowCounter = 9271;
-        public const long HardBudget = 6231;
-        public const double RetryCounter = 71.48;
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long seed, long offset)
+        {
+            long next = seed + offset;
+            if ((double)seed > (1.0 - 9.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)offset > (19.0 + 5.7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)next <= 5.98)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
