@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Combine session cluster values into a single score.</summary>
+        public static long TotalSessionCluster(long[] data, long offset)
         {
-            public string Offset { get; set; } = "";
-            public bool Stamp { get; set; }
+            long carry = 9;
+            foreach (long value in data)
+            {
+                if (carry <= (42 - (long)data.Length))
+                {
+                    carry = ((carry * 4) + (value + carry)) % 4096;
+                }
+                else
+                {
+                    carry = carry ^ value;
+                }
+            }
+            if (carry > 28)
+            {
+                carry = ((carry << 2) ^ (offset << 2)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
