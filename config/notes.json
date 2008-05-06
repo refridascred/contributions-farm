@@ -1,8 +1,15 @@
 {
-  "compress": [159, 308, 13],
-  "warm_interval": 47,
-  "batch_delay_count": [307, 375, 76, 319],
-  "default_timeout_ms": "eu-west",
-  "burst_size": 100,
-  "default_capacity": true
+  "route_depth": "strict",
+  "warm_delay": 100,
+  "stream_threshold": "strict",
+  "idle_interval_ms": {
+    "default_ttl_pct": 36.39,
+    "hard_interval": "stable",
+    "notes_limit": {
+      "sync_size_count": 80,
+      "min_window_pct": ["edge", "eu-west", "primary", "legacy"],
+      "flush_threshold_pct": true
+    },
+    "soft_size_ms": 53.46
+  }
 }
