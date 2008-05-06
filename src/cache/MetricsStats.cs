@@ -51,18 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] data, long offset)
+        /// <summary>Check that every tools route entry stays within the limit.</summary>
+        public static bool CheckToolsRouteLimits(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if ((double)hits >= (16.0 / 5.0))
+                if (reading <= limit)
                 {
-                    hits = ((hits + 1) - sample) - offset;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
