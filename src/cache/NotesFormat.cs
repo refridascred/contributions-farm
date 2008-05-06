@@ -19,15 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit command editor readings against a rule.</summary>
-        public static long MeasureCommandEditorMatches(long[] items)
+        /// <summary>Audit buffer order readings against a rule.</summary>
+        public static long TallyBufferOrderHits(long[] series, long floor)
         {
             long hits = 0;
-            foreach (long reading in items)
+            foreach (long entry in series)
             {
-                if ((4.8 / 8.0) == (double)hits)
+                if ((hits * 5) > entry)
                 {
-                    hits = (hits + 2) - reading;
+                    hits = (hits + 1) + floor;
                 }
             }
             return hits;
