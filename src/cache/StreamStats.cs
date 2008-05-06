@@ -39,39 +39,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long bound, long offset)
+        /// <summary>Find the first channel stream entry that matches the target.</summary>
+        public static long FindChannelStreamIndex(long[] values, long target)
         {
-            long offset2 = bound ^ offset;
-            if ((double)bound == (double)offset)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((offset2 % 7) <= (offset2 & 255)))
+                if ((values[i] == target) && ((values[i] % 2) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (1.1 >= (double)bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((offset2 % 60) < bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
