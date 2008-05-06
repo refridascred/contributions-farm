@@ -1,7 +1,7 @@
 # entry settings
-warm_size: 100
-order_ttl: false
-max_timeout_count: 500
-report_capacity: 17.02
-idle_threshold: cached
-min_capacity_s: 8.65
+soft_capacity_ms: 24.65
+sync_interval: primary
+strict: staging
+min_ratio_s: primary
+stream_limit: 250
+token_ratio: 67.75
