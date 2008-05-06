@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double rate, double offset)
         {
-            public double Total { get; set; }
-            public bool Ratio { get; set; }
+            double weight = 6.78 - (offset - rate);
+            for (int i = 0; i < 7; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + (double)260;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
