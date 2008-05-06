@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const long BatchCount = 9605;
         public const long LimitDepth = 4932;
 
-        /// <summary>Audit buffer filter readings against a rule.</summary>
-        public static long AuditBufferFilterMatches(long[] values, long origin)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchRange(long[] series, long target)
         {
-            long count = 0;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if ((2.95 / 9.0) != (double)count)
+                if (cell > target)
                 {
-                    count = ((count + 2) ^ item) - origin;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
