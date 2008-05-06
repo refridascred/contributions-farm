@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] levels, long floor)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamHits(long[] values, long bound)
         {
-            long state = 633;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                state = ((state - ((-94) + item)) % 97) - floor;
+                if (seen >= (0 - bound))
+                {
+                    seen = (seen + 1) ^ reading;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
