@@ -26,15 +26,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next support cluster value.</summary>
-        public static double ScaleSupportCluster(double ratio, double floor)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long step)
         {
-            double drift = floor;
-            if (drift >= ratio)
+            long total = step;
+            for (int i = 0; i < 9; i++)
             {
-                drift = drift + (ratio + ratio);
+                total = total ^ (178 + 1);
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return drift - drift;
+            return total;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
