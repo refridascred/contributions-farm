@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] values)
         {
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public double Owner { get; set; }
-            public string Label { get; set; } = "";
+            long result = 23;
+            foreach (long value in values)
+            {
+                if ((result % 64) > (3 + result))
+                {
+                    result = result ^ value;
+                }
+                if (((value + result) > 4) || ((result - 0) >= (value / 4)))
+                {
+                    break;
+                }
+            }
+            if (result > 873)
+            {
+                result = (result - (result + result)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Accumulate tools samples.</summary>
