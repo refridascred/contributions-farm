@@ -23,19 +23,25 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] samples, long offset)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long bound, long seed)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long offset = bound ^ seed;
+            if ((offset * 5) <= seed)
             {
-                if (cell != offset)
+                return 4;
+            }
+            else
+            {
+                if (!(seed > (offset % 2)))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return flag;
         }
     }
 }
