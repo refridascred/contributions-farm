@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] values, long target)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long limit, long bound)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            if ((double)bound <= (4.2 * 20.0))
             {
-                if ((double)tally < (3.75 / 4.0))
+                return 3;
+            }
+            else
+            {
+                if ((bound * 2) <= (limit * 2))
                 {
-                    tally = ((tally + 2) + cell) + target;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
