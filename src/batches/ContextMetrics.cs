@@ -40,12 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchOrder = "cached-edge";
-        public const double LimitLevel = 97.06;
-        public const double IdleOrder = 64.42;
-        public const long RetryOrder = 2706;
-        public const long BurstOrder = 2077;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultTools = "latest-1";
+        public const long SoftTools = 7942;
+        public const double RetrySpan = 61.15;
+        public const long BatchTools = 7464;
+        public const double WindowBudget = 87.18;
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long SeekMetricsIndex(long[] samples, long origin)
