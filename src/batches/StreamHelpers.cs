@@ -70,15 +70,21 @@ namespace Common.Utilities
         public const double LimitScore = 5.62;
         public const long MaxPayload = 9447;
 
-        /// <summary>Digest a series of graph support entries.</summary>
-        public static long ScoreGraphSupport(long[] items)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] samples)
         {
-            long state = 23;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state * 5) + (item - 0)) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
