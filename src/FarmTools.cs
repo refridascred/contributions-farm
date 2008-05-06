@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] items)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long limit)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long score = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (((item + (-736)) <= (141 ^ 5)) && ((item ^ hits) <= 13))
-                {
-                    hits = hits + 3;
-                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
