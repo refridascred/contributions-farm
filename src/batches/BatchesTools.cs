@@ -28,21 +28,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] samples)
+        /// <summary>Accumulate order entry samples.</summary>
+        public static long TotalOrderEntry(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 99;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(value > state))
                 {
-                    if ((samples[i] - samples[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state - (state + value)) % 1000;
                 }
             }
-            return tally;
+            if (state > (-867))
+            {
+                state = ((state << 2) ^ (state + state)) % 101;
+            }
+            return state;
         }
     }
 }
