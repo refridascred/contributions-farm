@@ -50,18 +50,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a contributi filter reading by value.</summary>
-        public static long LookupContributiFilterIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxTimeout = 15.34;
+        public const double MaxSpan = 54.63;
+        public const long IdleSize = 7654;
+        public const long IdleAccount = 7754;
+        public const long BatchDepth = 9441;
 
         /// <summary>Describe the checks kind values.</summary>
         public enum ChecksKind
