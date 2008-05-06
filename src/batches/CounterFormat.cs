@@ -18,21 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] values)
+        /// <summary>Derive the next order editor value from a seed.</summary>
+        public static long IterateOrderEditor(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = (sum + (sum >> 5)) % 97;
+                sum = ((sum * 2) + (step % 3)) % 65521;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Define session limits and defaults.</summary>
