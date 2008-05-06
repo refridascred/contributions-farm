@@ -39,12 +39,21 @@ namespace Common.Utilities
         public const long CacheDepth = 1983;
         public const long SoftWidth = 2486;
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] values)
         {
-            public string Region { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
