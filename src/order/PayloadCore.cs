@@ -20,22 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double CachePayload = 94.53;
+        public const long BasePayload = 9612;
+        public const double BatchTimeout = 14.83;
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long ClassifyOrder(long step, long floor)
