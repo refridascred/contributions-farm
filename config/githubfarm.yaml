@@ -1,16 +1,4 @@
 # githubfarm settings
-retry_ratio_pct: edge
-soft_window_count: standard
-context_capacity: latest
-batch_size_count: 500
-warm_ratio:
-  - local
-  - open
-idle_delay_pct:
-  verbose: 5494
-  max_depth_count: true
-  retry_delay_s:
-    sync_ttl_s: 500
-    soft_interval_s: primary
-    sync_ttl: primary
-    graph_size: false
+enabled: false
+poll_limit_ms: false
+cache_window_count: blue
