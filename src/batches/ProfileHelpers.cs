@@ -50,16 +50,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long bound)
+        /// <summary>Locate a contributi filter reading by value.</summary>
+        public static long LookupContributiFilterIndex(long[] items, long offset)
         {
-            long result = bound;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result << 2) ^ 56) % 255;
-                result = ((result * 5) + (long)i) % 97;
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the checks kind values.</summary>
