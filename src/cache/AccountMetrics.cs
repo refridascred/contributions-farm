@@ -27,13 +27,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long bound)
         {
-            Idle,
-            Stale,
-            Synced,
-            Done,
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((double)bound > (double)(long)i)
+                {
+                    anchor = (anchor - (anchor % 7)) % 101;
+                    anchor = (anchor * 3) + (bound ^ 4);
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate counter stream samples.</summary>
