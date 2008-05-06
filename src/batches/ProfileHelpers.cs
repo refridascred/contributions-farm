@@ -15,13 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Fold a list of profile contributi readings.</summary>
+        public static long DigestProfileContributi(long[] levels)
         {
-            public long Label { get; set; }
-            public double Count { get; set; }
-            public double Mode { get; set; }
-            public string Region { get; set; } = "";
+            long result = 371;
+            foreach (long reading in levels)
+            {
+                if (reading > (result ^ reading))
+                {
+                    result = ((result << 3) ^ result) % 4096;
+                }
+            }
+            return result;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
