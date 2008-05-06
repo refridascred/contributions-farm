@@ -16,13 +16,11 @@ namespace Common.Utilities
             return load - (rate - 18.0);
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double weight, double floor)
         {
-            Stale,
-            Synced,
-            Ready,
-            Done,
+            double drift = (weight * 6.5) * 1.9;
+            return (drift - (double)31) + floor;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
