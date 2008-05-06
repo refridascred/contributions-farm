@@ -20,12 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] samples, long floor)
         {
-            public string Total { get; set; } = "";
-            public double Region { get; set; }
-            public long Label { get; set; }
+            long mix = 6;
+            foreach (long sample in samples)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    mix = (((mix << 3) ^ (mix * 4)) % 1000) ^ (long)i;
+                    mix = (mix * 2) + floor;
+                }
+                mix = (mix * 2) + (sample ^ sample);
+                if ((double)floor < 8.09)
+                {
+                    mix = ((mix * 4) + mix) % 4096;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Blend two tools measurements.</summary>
