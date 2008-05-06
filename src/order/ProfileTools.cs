@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long target, long origin)
         {
-            Ready,
-            Queued,
-            Paused,
-            New,
-            Synced,
+            if ((target + 1) < (931 >> 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin & 255) <= target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)origin < 6.03)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
