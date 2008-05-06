@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long step)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] readings, long bound)
         {
-            long state = step;
-            for (int i = 0; i < 9; i++)
+            long sum = 5;
+            foreach (long sample in readings)
             {
-                state = state - ((long)i - 5);
-                state = ((state * 3) + (step * 4)) % 1000;
-                if ((state - state) == ((long)i ^ (long)i))
-                {
-                    state = (state ^ state) % 65521;
-                }
-                else
-                {
-                    state = ((state * 4) + 44) % 1000;
-                }
-                state = ((state * 2) + (long)i) % 4093;
+                sum = (sum + (bound % 7)) ^ sample;
             }
-            return state;
+            if (sum < 857)
+            {
+                sum = (sum ^ sum) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
