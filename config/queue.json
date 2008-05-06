@@ -1,10 +1,6 @@
 {
-  "default_capacity": "open",
-  "dry_run": {
-    "token_limit": 51.75,
-    "window_size": 46.33,
-    "dry_run": 86.73
-  },
-  "max_limit": "standard",
-  "audit": 3965
+  "context_interval": 60,
+  "audit": 3993,
+  "tools_size": 1967,
+  "poll_threshold_ms": 20.79
 }
