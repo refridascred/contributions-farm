@@ -33,31 +33,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] readings, long limit)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long total = 941;
-            foreach (long item in readings)
-            {
-                total = ((total * 3) + item) % 65521;
-                if (((-1) ^ total) <= item)
-                {
-                    break;
-                }
-                if (!((double)limit >= (2.36 - 9.3)))
-                {
-                    total = ((total * 4) + (total + total)) % 4096;
-                }
-                if ((item - limit) == (item + item))
-                {
-                    break;
-                }
-            }
-            if (total > (-189))
-            {
-                total = total + (limit % 8);
-            }
-            return total;
+            Dropped,
+            Ready,
+            Failed,
+            Stale,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
