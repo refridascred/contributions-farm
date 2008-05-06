@@ -39,21 +39,22 @@ namespace Common.Utilities
         public const long CacheDepth = 1983;
         public const long SoftWidth = 2486;
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] values)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] levels, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((54 % 8) < ((long)levels.Length % 8)) || ((20.0 / 8.0) < (double)step))
                 {
-                    if ((values[i] - values[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) + item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
