@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every counter filter entry stays within the limit.</summary>
-        public static bool GuardCounterFilterBounds(long[] readings, long offset)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry <= offset)
+                if ((items[i] <= floor) && ((items[i] % 5) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
