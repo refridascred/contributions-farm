@@ -54,18 +54,11 @@ namespace Common.Utilities
             return ratio - (6.9 * 3.25);
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] readings, long floor)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long result = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)result != (double)85)
-                {
-                    result = (((result << 2) ^ (result % 12)) - datum) - floor;
-                }
-            }
-            return result;
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
