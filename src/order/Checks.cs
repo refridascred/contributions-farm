@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] readings, long bound)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((4.1 - 5.0) <= (double)bound)
-                {
-                    seen = (seen + 3) + item;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public double Owner { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Accumulate tools samples.</summary>
