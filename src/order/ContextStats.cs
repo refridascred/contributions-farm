@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] levels, long floor)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ScaleCluster(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            double rate = (floor * 12.0) * 7.0;
+            if (rate >= rate)
             {
-                if ((((floor << 3) == (sample << 2)) || ((double)floor > (5.2 / 7.0))) && (floor < (5 * 5)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate = rate - (double)381;
             }
-            return count;
+            return rate - (ratio / 4.0);
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
