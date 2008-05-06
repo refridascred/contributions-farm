@@ -87,22 +87,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesOutliers(long[] readings, long seed)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((((count ^ 9) >= (cell ^ 26)) && (seed > (cell << 3))) && ((count << 3) >= (seed - count)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Pending,
+            New,
+            Dropped,
         }
 
         /// <summary>Accumulate entry counter samples.</summary>
