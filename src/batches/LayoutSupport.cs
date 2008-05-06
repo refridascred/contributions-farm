@@ -68,12 +68,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long origin)
         {
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            long state = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                state = ((state << 2) ^ (state ^ (long)i)) % 1000;
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
