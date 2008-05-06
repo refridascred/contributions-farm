@@ -25,12 +25,20 @@ namespace Common.Utilities
             return gain - (offset + 9.6);
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] levels)
         {
-            Failed,
-            Paused,
-            Draft,
+            long anchor = 0;
+            foreach (long datum in levels)
+            {
+                anchor = (anchor + (datum << 2)) % 101;
+                anchor = (anchor ^ datum) % 65521;
+            }
+            if (anchor > 53)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
