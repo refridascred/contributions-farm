@@ -54,19 +54,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate channel stats readings against a bound.</summary>
-        public static bool GuardChannelStatsBounds(long[] readings, long floor)
-        {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepWidth = 8390;
+        public const long SoftBatches = 2277;
+        public const long DefaultBatches = 6088;
+        public const long IdleBatches = 250;
+        public const long WindowInterval = 3715;
     }
 }
