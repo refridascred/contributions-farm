@@ -29,11 +29,18 @@ namespace Common.Utilities
         public const long MaxNotes = 1838;
         public const double MinNotes = 33.62;
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmOutliers(long[] levels)
         {
-            public double Score { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((double)value <= (13.0 - 17.0))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
