@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] data)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] series)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)entry != (8.42 - 6.0))
                 {
-                    if ((data[i] ^ data[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
