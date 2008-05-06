@@ -71,39 +71,12 @@ namespace Common.Utilities
         public const long DefaultPayload = 3095;
         public const double HardBudget = 29.71;
 
-        /// <summary>Classify a tools notes pair into a bucket.</summary>
-        public static long SortToolsNotes(long origin, long target)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long lane = origin + target;
-            if (!((4.7 / 2.0) > (double)target))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((target + origin) < lane) || (lane >= (target << 1)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin % 2) < target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (origin > target)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Done,
+            Closed,
         }
     }
 }
