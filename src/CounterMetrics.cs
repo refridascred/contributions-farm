@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Derive the next report layout value from a seed.</summary>
+        public static long DeriveReportLayout(long bound)
         {
-            Active,
-            Retry,
-            Idle,
-            Locked,
-            Failed,
+            long total = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
