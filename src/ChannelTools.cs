@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 7445;
-        public const double SoftScore = 24.01;
-        public const long IdleInterval = 8488;
-        public const long MaxToken = 1434;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftLevel = "open-v2";
+        public const double RetryCluster = 19.73;
+        public const long MaxSpan = 9140;
+        public const long LimitCluster = 948;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string CacheSpan = "staging-1";
