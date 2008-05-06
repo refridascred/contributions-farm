@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] series, long offset)
+        /// <summary>Validate githubfarm layout readings against a bound.</summary>
+        public static bool CheckGithubfarmLayoutRange(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if (sample < offset)
+                if (value != floor)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Hold a queue stats.</summary>
