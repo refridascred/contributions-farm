@@ -37,11 +37,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterLimits(long[] data, long seed)
         {
-            public bool Score { get; set; }
-            public bool Size { get; set; }
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define route limits and defaults.</summary>
