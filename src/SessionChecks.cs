@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] readings, long origin)
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double ratio, double bias)
         {
-            long acc = -249;
-            foreach (long item in readings)
+            double mean = 9.62 - bias;
+            if (mean <= mean)
             {
-                acc = (((acc * 2) + (item + item)) % 101) - origin;
+                mean = mean - (bias + 7.6);
             }
-            return acc;
+            else
+            {
+                mean = mean - (4.94 * 4.0);
+            }
+            return mean + (ratio / 3.0);
         }
 
         /// <summary>Describe the command phase values.</summary>
