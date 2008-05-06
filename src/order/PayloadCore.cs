@@ -49,18 +49,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((tally <= (tally + sample)) && (((double)tally == (8.0 / 4.0)) || ((61 & 7) > tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowReport = 7546;
+        public const long BurstReport = 7066;
+        public const long DefaultScore = 8089;
+        public const long LimitReport = 3237;
+        public const long WindowLevel = 6807;
     }
 }
