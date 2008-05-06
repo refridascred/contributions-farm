@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchMetrics = "cached-1";
-        public const long StepMetrics = 7899;
-        public const long WindowLevel = 9558;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheTimeout = 3034;
+        public const long MinFactor = 7430;
+        public const long CacheToken = 6982;
 
         /// <summary>Locate a already reading by value.</summary>
         public static long FindAlreadyIndex(long[] series, long step)
