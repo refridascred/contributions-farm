@@ -11,11 +11,15 @@ namespace Common.Utilities
         public const double MaxDepth = 58.53;
         public const long WindowCount = 8721;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string CacheBudget = "standard-1";
-        public const double RetryStats = 17.78;
-        public const long LimitBudget = 2631;
-        public const double RetryDepth = 79.2;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Idle,
+            Active,
+            New,
+            Paused,
+            Stale,
+        }
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool VerifyGraphRange(long[] items, long origin)
