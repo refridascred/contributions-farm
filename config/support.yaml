@@ -1,17 +1,8 @@
 # support settings
-buffer_capacity:
-  sync_limit: true
-  audit: 19.98
-  retry_ratio: 31.13
-  burst_ttl_s: 90.83
-  sync_ttl_ms:
-    - 2
-    - 475
-verbose: 1407
-metric_depth:
-  - green
-  - stable
-  - stable
+warm_ttl: staging
+default_ratio_count:
+  - cached
+  - strict
+  - eu-west
   - fallback
-session_limit: 67
-cache_interval: strict
+batch_threshold_count: strict
