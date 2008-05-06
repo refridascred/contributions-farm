@@ -60,22 +60,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] values)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long acc = 3;
+            foreach (long entry in samples)
             {
-                if (!(seen < (sample - 31)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = (((acc << 2) ^ bound) % 1000) ^ entry;
+                acc = ((acc << 2) ^ bound) % 255;
             }
-            return seen;
+            return acc % 65521;
         }
     }
 }
