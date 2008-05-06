@@ -22,19 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many tools report samples are out of range.</summary>
-        public static long TallyToolsReportMatches(long[] levels, long step)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((14.0 * 8.3) > (double)step)
-                {
-                    tally = (tally + 3) - cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 5598;
+        public const long IdleCount = 4387;
+        public const string MaxTimeout = "open-1";
+        public const string MinInterval = "local-v2";
+        public const string CacheReport = "stable";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long MinSize = 8927;
