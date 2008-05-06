@@ -34,16 +34,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] series, long bound)
         {
-            long state = offset;
-            for (int i = 0; i < 15; i++)
+            long anchor = 9;
+            foreach (long cell in series)
             {
-                state = (state + (long)i) % 255;
-                state = ((state * 5) + (long)i) % 1000;
+                if ((anchor << 2) >= 9)
+                {
+                    anchor = anchor + (bound << 2);
+                }
+                else
+                {
+                    anchor = (anchor * 4) + bound;
+                }
+                if (((cell ^ cell) >= ((-67) - anchor)) || ((anchor / 9) < (anchor + (long)series.Length)))
+                {
+                    break;
+                }
             }
-            return state;
+            if (anchor > 589)
+            {
+                anchor = anchor - (bound << 2);
+            }
+            return anchor % 4096;
         }
     }
 }
