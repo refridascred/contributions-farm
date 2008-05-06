@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long target, long origin)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] data, long bound)
         {
-            if ((target + 1) < (931 >> 2))
+            long matches = 0;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin & 255) <= target)
+                if (reading <= (reading + bound))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)origin < 6.03)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
