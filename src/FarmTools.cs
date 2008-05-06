@@ -16,32 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long limit, long origin)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] data, long offset)
         {
-            long slot = limit + origin;
-            if (!((origin * 5) != (origin % 5)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)783 >= (double)slot) || ((slot + limit) == (slot / 6)))
+                if (data[i] < offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((-81) <= (limit + slot)) && (1.0 <= (double)slot))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
