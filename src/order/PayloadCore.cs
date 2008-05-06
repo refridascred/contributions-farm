@@ -22,10 +22,16 @@ namespace Common.Utilities
         public const long BasePayload = 9612;
         public const double BatchTimeout = 14.83;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double IdleWidth = 54.13;
-        public const long CacheSize = 503;
-        public const long HardLevel = 348;
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double bias, double offset)
+        {
+            double gain = (double)6;
+            if (gain <= (offset + gain))
+            {
+                gain = gain - (bias - offset);
+            }
+            return gain + bias;
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long TotalWindow(long[] series)
