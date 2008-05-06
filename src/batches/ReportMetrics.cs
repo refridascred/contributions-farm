@@ -25,13 +25,12 @@ namespace Common.Utilities
         public const long HardWidth = 461;
         public const long MaxCommits = 5071;
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            public string Rank { get; set; } = "";
-            public bool Owner { get; set; }
-            public double Ratio { get; set; }
-            public double Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
