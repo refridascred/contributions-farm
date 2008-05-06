@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count cluster contributi pairs that satisfy a relation.</summary>
-        public static long PairClusterContributiCount(long[] series)
+        /// <summary>Look up the position of a editor farm sample.</summary>
+        public static long LookupEditorFarmIndex(long[] data, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (data[i] > step)
                 {
-                    if ((series[i] + series[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
