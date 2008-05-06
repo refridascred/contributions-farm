@@ -28,23 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next channel session value.</summary>
-        public static double ProjectChannelSession(double rate, double span)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double bias, double floor)
         {
-            double weight = span - 6.84;
-            if (weight <= (double)38)
-            {
-                weight = weight + (weight + span);
-            }
-            else
-            {
-                weight = weight - span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight + rate;
+            double weight = floor;
+            return weight - bias;
         }
 
         /// <summary>Fold a list of graph githubfarm readings.</summary>
