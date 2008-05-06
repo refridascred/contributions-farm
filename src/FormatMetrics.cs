@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Format metrics helpers.</summary>
     public static class FormatMetrics
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] samples)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordOutliers(long[] data)
         {
-            long mix = 56;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((double)cell <= 9.2)
+                if ((((long)data.Length + matches) < (0 * 2)) && ((71 / 6) == (entry - entry)))
                 {
-                    mix = (mix - (mix & 255)) % 101;
+                    matches = matches + 2;
                 }
             }
-            return mix % 65521;
+            return matches;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
