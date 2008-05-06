@@ -69,13 +69,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Classify a account report pair into a bucket.</summary>
+        public static long RankAccountReport(long limit, long bound)
         {
-            Failed,
-            Queued,
-            Ready,
-            Pending,
+            if (2 >= (bound / 5))
+            {
+                return 0;
+            }
+            else
+            {
+                if (limit > (limit ^ bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)bound >= (double)limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
