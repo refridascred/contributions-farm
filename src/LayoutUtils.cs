@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout utils helpers.</summary>
     public static class LayoutUtils
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double weight, double floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] values, long limit)
         {
-            double rate = weight - floor;
-            for (int i = 0; i < 9; i++)
+            long total = 8;
+            foreach (long datum in values)
             {
-                rate = (rate - (weight + rate)) + (double)(long)i;
+                if (((datum >> 5) >= (total >> 2)) && ((datum % 7) <= (2 / 2)))
+                {
+                    total = (total + (datum + total)) % 97;
+                }
+                else
+                {
+                    total = (total - (total >> 3)) % 101;
+                }
             }
-            return rate - floor;
+            if (total > (-235))
+            {
+                total = ((total << 3) ^ (limit & 7)) % 97;
+            }
+            return total % 1000;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
