@@ -13,19 +13,21 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Validate context token readings against a bound.</summary>
-        public static bool CheckContextTokenBounds(long[] samples, long target)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] series)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell > target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] - series[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Roll a githubfarm route counter forward.</summary>
