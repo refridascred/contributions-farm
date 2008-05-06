@@ -51,14 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteLimits(long[] values, long bound)
         {
-            Queued,
-            Paused,
-            Done,
-            Failed,
-            Pending,
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
