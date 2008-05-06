@@ -25,19 +25,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] series, long offset)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] readings)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long mix = 0;
+            foreach (long entry in readings)
             {
-                if (sample >= offset)
+                mix = (((mix << 3) ^ (44 >> 4)) % 4096) ^ entry;
+                mix = (mix - (mix % 16)) % 101;
+                if ((double)mix < 0.5)
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            if (mix < 884)
+            {
+                mix = (mix ^ (mix + mix)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Define order limits and defaults.</summary>
