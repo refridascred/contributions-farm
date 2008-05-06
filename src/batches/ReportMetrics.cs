@@ -28,13 +28,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            Stale,
-            Idle,
-            Done,
-            Retry,
+            public bool Offset { get; set; }
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
