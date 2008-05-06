@@ -20,21 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up support payload samples.</summary>
-        public static long OverlapSupportPayloadCount(long[] samples)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (levels[i] == floor)
                 {
-                    if ((samples[i] + samples[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
