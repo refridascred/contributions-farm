@@ -14,22 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of cluster commits readings.</summary>
-        public static long MatchClusterCommitsCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 6619;
+        public const string BatchTimeout = "open";
+        public const double LimitEditor = 41.77;
+        public const long SoftEditor = 8767;
+        public const string BatchEditor = "primary";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string SoftBudget = "legacy-edge";
