@@ -20,23 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of order report readings.</summary>
-        public static long TotalOrderReport(long[] series)
-        {
-            long sum = 8;
-            foreach (long sample in series)
-            {
-                if ((sum >> 5) > (sample + sum))
-                {
-                    sum = (sum + (sample << 2)) % 97;
-                }
-                else
-                {
-                    sum = ((sum * 2) + (sample - sample)) % 1000;
-                }
-            }
-            return sum % 97;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string WindowGithubfarm = "latest-edge";
+        public const string DefaultScore = "open-1";
+        public const string HardGithubfarm = "cached";
+        public const long CacheGithubfarm = 1756;
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
