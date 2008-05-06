@@ -1,11 +1,11 @@
 # Command notes
 
-Keep support and farm names short and lowercase.
-The profile helpers are pure functions, so they are safe to call from any thread.
+The metrics report groups every token by stream.
+Keep entry and channel names short and lowercase.
+When a profile fails, the channel handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep record values small
-- Log every stream change
-- Validate report input early
-- Prefer checks defaults
+- Document new stream fields
+- Keep editor values small
+- Log every queue change
