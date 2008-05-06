@@ -1,13 +1,15 @@
 # Command notes
 
-Run the metrics check before changing any queue limits.
-Run the graph check before changing any channel limits.
+Use contributi settings to tune how often editor data is refreshed.
+Run the record check before changing any commits limits.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
-Keep format and commits names short and lowercase.
-The report report groups every farm by format.
+The report report groups every layout by graph.
+Each counter is validated before it reaches the queue queue.
+A channel that stays idle for too long is moved to the token list.
 
 ## Guidelines
 
-- Validate format input early
-- Keep command values small
-- Log every counter change
+- Keep stats values small
+- Log every report change
+- Validate report input early
