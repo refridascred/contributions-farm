@@ -26,12 +26,12 @@ namespace Common.Utilities
             return gain - (offset + 9.6);
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
+            Failed,
+            Paused,
+            Draft,
         }
 
         /// <summary>Validate context metrics readings against a bound.</summary>
