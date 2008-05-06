@@ -1,12 +1,9 @@
 # support settings
-retry_size: eu-west
-idle_capacity: 47
-session_window: blue
-profile_capacity: 1057
-tools_size:
-  batch_capacity_s: 43
-  poll_interval:
-    queue_window: 1024
-    burst_window: 500
-    hard_retries_ms: true
-  dry_run: true
+persist:
+  - standard
+  - fallback
+  - fallback
+  - legacy
+poll_depth_count: staging
+burst_timeout_pct: 1024
+contributi_ratio: 80.95
