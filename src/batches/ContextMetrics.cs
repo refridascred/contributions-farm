@@ -23,38 +23,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long offset, long seed)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long step)
         {
-            if ((6 - offset) < seed)
+            long state = step;
+            for (int i = 0; i < 7; i++)
             {
-                return 6;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (((offset & 3) > (4 & 127)) || ((double)offset != (9.6 * 0.4)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((seed << 3) != (offset - offset)) || ((double)seed != (5.05 * 1.4)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed * 3) <= seed)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
