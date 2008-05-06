@@ -58,11 +58,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
+            public string Level { get; set; } = "";
+            public double Region { get; set; }
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
