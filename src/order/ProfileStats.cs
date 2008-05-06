@@ -20,21 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of graph cache readings.</summary>
-        public static long OverlapGraphCacheCount(long[] data)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                long slot = score;
+                score = (score + (score - slot)) % 1000;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
