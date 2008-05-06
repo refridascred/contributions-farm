@@ -1,11 +1,8 @@
 # githubfarm settings
-batches_retries:
-  metric_delay: 1458
-  flush_delay_pct: 1616
-  compress: 53
-  format_ratio: 54.65
-  checks_limit: 500
-default_timeout: true
-default_threshold_count: 11.99
-profile_ttl: true
-idle_retries_s: staging
+payload_ratio: blue
+audit:
+  - green
+  - staging
+  - edge
+  - eu-west
+strict: eu-west
