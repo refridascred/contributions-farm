@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public bool Size { get; set; }
-            public long Token { get; set; }
-            public bool Offset { get; set; }
+            Pending,
+            Dropped,
+            Retry,
+            Idle,
+            Closed,
         }
 
         /// <summary>Blend two format measurements.</summary>
