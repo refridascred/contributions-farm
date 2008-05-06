@@ -25,11 +25,19 @@ namespace Common.Utilities
         public const long RetryMetrics = 4543;
         public const long CacheMetrics = 5895;
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] readings, long offset)
         {
-            public bool Score { get; set; }
-            public double Ratio { get; set; }
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
