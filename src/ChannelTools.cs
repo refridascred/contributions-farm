@@ -34,19 +34,19 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Check that every report githubfarm entry stays within the limit.</summary>
-        public static bool VerifyReportGithubfarmRange(long[] items, long origin)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowRange(long[] data, long bound)
         {
-            bool found = true;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if (cell != origin)
+                if (reading < bound)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
     }
 }
