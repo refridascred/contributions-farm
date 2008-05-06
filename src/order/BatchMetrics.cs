@@ -20,12 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] data, long seed)
         {
-            Idle,
-            Locked,
-            Ready,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (((double)seed >= 5.0) && !(((long)data.Length - seed) >= (369 ^ cell)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the tools level values.</summary>
