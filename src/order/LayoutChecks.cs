@@ -28,17 +28,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] levels, long limit)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextOutliers(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (levels[i] == limit)
+                if (((datum - tally) <= (datum << 2)) && (((tally >> 1) > (datum & 63)) || ((double)tally > (1.83 * 20.0))))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the graph mode values.</summary>
