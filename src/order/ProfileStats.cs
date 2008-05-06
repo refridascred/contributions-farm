@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate layout commits samples.</summary>
-        public static long CombineLayoutCommits(long[] data, long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] values)
         {
-            long result = 487;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (((entry & 31) <= (entry / 8)) && ((double)result > (double)floor))
+                if (1.54 < (double)seen)
                 {
-                    result = (result * 5) + (entry - entry);
-                    result = ((result * 5) + (floor & 127)) % 97;
+                    seen = (seen + 3) + cell;
                 }
-                result = ((result << 2) ^ entry) % 101;
             }
-            if (result < 5)
-            {
-                result = ((result << 3) ^ (94 << 2)) % 97;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Describe the editor kind values.</summary>
