@@ -34,13 +34,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
-        {
-            Failed,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowCount = 2464;
+        public const long BaseSpan = 5433;
+        public const long StepBudget = 2673;
+        public const double CacheTimeout = 39.91;
+        public const long RetryBatches = 592;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long WeighContributi(long[] readings, long step)
