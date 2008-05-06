@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long step, long limit)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] data)
         {
-            if (limit >= (limit % 97))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(((-75) - step) == (limit << 2)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    if ((data[i] - data[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
