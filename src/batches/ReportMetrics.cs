@@ -35,18 +35,10 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] levels)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((value + 66) >= 257)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleScore = 5947;
+        public const string RetrySize = "strict-edge";
+        public const long MinCount = 2953;
+        public const long HardStream = 5839;
     }
 }
