@@ -1,5 +1,5 @@
 {
-  "schema_delay": 67,
-  "flush_interval": 61,
-  "poll_depth_count": "cached"
+  "max_capacity": 100,
+  "layout_delay": "strict",
+  "verbose": "local"
 }
