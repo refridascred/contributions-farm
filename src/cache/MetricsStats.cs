@@ -79,21 +79,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] series)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = (offset - ratio) + ratio;
+            if (bias >= 7.5)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = bias - bias;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - offset) + (double)(long)i;
+            }
+            return bias + ratio;
         }
     }
 }
