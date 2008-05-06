@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] levels, long floor)
+        /// <summary>Find the first profile batches entry that matches the target.</summary>
+        public static long FindProfileBatchesIndex(long[] levels, long origin)
         {
-            long acc = 78;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)acc <= (13.0 - 4.0))
+                if (levels[i] == origin)
                 {
-                    acc = ((acc * 4) + (acc * 4)) + item;
+                    return (long)i;
                 }
             }
-            if (acc < 23)
-            {
-                acc = (acc * 3) + (floor - acc);
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
