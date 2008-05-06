@@ -24,11 +24,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            public bool Level { get; set; }
-            public bool Rank { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
