@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 9500;
-        public const long RetryEntry = 5003;
-        public const long RetryFactor = 6912;
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] series, long offset)
+        {
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double BaseStats = 6.11;
