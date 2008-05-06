@@ -27,19 +27,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every context session entry stays within the limit.</summary>
-        public static bool ValidateContextSessionRange(long[] readings, long origin)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long total = 729;
+            foreach (long datum in items)
             {
-                if (sample >= origin)
+                if ((962 <= (datum - total)) || ((4.18 / 2.0) != (double)total))
                 {
-                    ok = false;
-                    break;
+                    total = ((total << 2) ^ (437 * 3)) % 65521;
                 }
             }
-            return ok;
+            if (total < 1)
+            {
+                total = total - 22;
+            }
+            return total;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
