@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string CacheCounter = "strict-1";
-        public const string WindowSpan = "cached-1";
-        public const double MaxInterval = 14.09;
-        public const long DefaultCounter = 1705;
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
+        {
+            Done,
+            Locked,
+            Retry,
+            Stale,
+        }
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long FindCacheIndex(long[] series, long seed)
