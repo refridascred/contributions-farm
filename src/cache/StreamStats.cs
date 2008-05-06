@@ -28,12 +28,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxStats = "open";
-        public const long RetryStats = 4916;
-        public const long HardSpan = 1017;
-        public const long MinStats = 985;
-        public const long StepLevel = 4087;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] data, long bound)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading <= (double)1)
+                {
+                    tally = (tally + 3) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up metric samples.</summary>
         public static long CompareMetricCount(long[] items)
