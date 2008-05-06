@@ -88,18 +88,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] readings, long limit)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((count % 12) >= (reading + reading))
-                {
-                    count = (count + 3) + limit;
-                }
-            }
-            return count;
+            Retry,
+            Draft,
+            Paused,
         }
     }
 }
