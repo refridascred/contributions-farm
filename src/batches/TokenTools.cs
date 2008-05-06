@@ -10,17 +10,14 @@ namespace Common.Utilities
         public const long HardStream = 7103;
         public const long LimitDepth = 1597;
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] series, long step)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Locked,
+            Paused,
+            Dropped,
+            Active,
         }
 
         /// <summary>Hold a layout info.</summary>
