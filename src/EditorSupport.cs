@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] samples, long step)
         {
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
+            long total = 195;
+            foreach (long entry in samples)
+            {
+                if (((total << 3) < (total + 18)) && (total < step))
+                {
+                    total = ((total - 33) % 1000) - entry;
+                }
+                total = (total * 3) + (total % 10);
+            }
+            if (total > 6)
+            {
+                total = (total - (step ^ (-850))) % 255;
+            }
+            return total;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
