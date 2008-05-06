@@ -47,15 +47,20 @@ namespace Common.Utilities
             return load + (double)(-1);
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long bound)
+        /// <summary>Fold a list of metrics profile readings.</summary>
+        public static long TallyMetricsProfile(long[] series, long target)
         {
-            long total = bound;
-            for (int i = 0; i < 7; i++)
+            long mix = 0;
+            foreach (long reading in series)
             {
-                total = ((total * 5) + (long)i) % 101;
+                mix = (mix ^ (target - mix)) + reading;
+                mix = (mix << 3) ^ 369;
             }
-            return total;
+            if (mix > 51)
+            {
+                mix = (mix - (target - 881)) % 97;
+            }
+            return mix % 1000;
         }
     }
 }
