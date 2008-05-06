@@ -1,6 +1,8 @@
 {
-  "dry_run": true,
-  "idle_ttl_count": "latest",
-  "flush_threshold_s": ["edge", "open", "open"],
-  "min_limit_pct": 83.83
+  "record_retries": 6611,
+  "dry_run": 3301,
+  "base_depth_count": 100,
+  "retry_capacity_count": 41.7,
+  "persist": false,
+  "order_ttl": 35.98
 }
