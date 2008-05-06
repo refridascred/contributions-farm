@@ -20,12 +20,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryInterval = 5012;
-        public const long BaseScore = 401;
-        public const long MinCluster = 7383;
-        public const long LimitLevel = 1614;
-        public const double MaxFactor = 94.8;
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
+        {
+            Idle,
+            Pending,
+            Done,
+            Stale,
+            Locked,
+        }
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
