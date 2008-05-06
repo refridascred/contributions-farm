@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long seed)
         {
-            Dropped,
-            Done,
-            Failed,
-            Ready,
-            Active,
+            long anchor = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                long edge = (81 << 2) - (anchor / 8);
+                if ((801 * 2) <= edge)
+                {
+                    edge = (edge << 3) ^ (seed << 1);
+                    edge = (edge + (seed - seed)) % 97;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a context reading by value.</summary>
