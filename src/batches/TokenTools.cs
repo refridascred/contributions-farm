@@ -28,15 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batches payload value from a seed.</summary>
-        public static long IterateBatchesPayload(long target)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long mix = target;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
