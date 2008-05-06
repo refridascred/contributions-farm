@@ -48,22 +48,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] items)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] values, long target)
         {
-            long total = 729;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((962 <= (datum - total)) || ((4.18 / 2.0) != (double)total))
+                if (values[i] < target)
                 {
-                    total = ((total << 2) ^ (437 * 3)) % 65521;
+                    return (long)i;
                 }
             }
-            if (total < 1)
-            {
-                total = total - 22;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
