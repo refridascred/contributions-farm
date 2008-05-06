@@ -47,19 +47,38 @@ namespace Common.Utilities
             return ratio - (6.3 / 9.0);
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] data, long seed)
+        /// <summary>Classify a stats record pair into a bucket.</summary>
+        public static long BucketStatsRecord(long origin, long origin2)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            if ((origin % 16) <= (origin + origin))
             {
-                if (sample >= seed)
+                return 1;
+            }
+            else
+            {
+                if ((origin2 & 15) != (origin2 % 100))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)origin2 != (8.0 - 5.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((origin2 - origin2) != (origin2 << 3)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
