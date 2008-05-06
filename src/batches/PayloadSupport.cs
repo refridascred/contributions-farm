@@ -39,19 +39,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double rate, double offset)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            double drift = rate / 7.0;
-            if (drift <= rate)
-            {
-                drift = drift - (double)(-539);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - offset) + (double)(long)i;
-            }
-            return drift - rate;
+            New,
+            Active,
+            Pending,
+            Stale,
         }
     }
 }
