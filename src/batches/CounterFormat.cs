@@ -32,15 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double bias, double span)
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double ratio, double offset)
         {
-            double mean = bias;
-            if (mean <= mean)
+            double scale = (double)286 - (double)3;
+            if (scale >= (ratio + offset))
             {
-                mean = (mean - (bias / 3.0)) + span;
+                scale = scale - (scale - scale);
             }
-            return mean + (bias / 6.0);
+            for (int i = 0; i < 6; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale - (double)4;
         }
 
         /// <summary>Adjust a format reading.</summary>
