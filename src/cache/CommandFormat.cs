@@ -31,11 +31,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 5314;
-        public const long MaxQueue = 6622;
-        public const string HardQueue = "legacy-1";
-        public const long CacheQueue = 6256;
-        public const double HardSize = 48.51;
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = (sum * 2) + (43 + seed);
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
     }
 }
