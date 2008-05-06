@@ -66,13 +66,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            Paused,
-            Draft,
-            New,
-            Locked,
+            public double Region { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Token { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
