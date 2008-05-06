@@ -46,24 +46,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long origin, long seed)
+        /// <summary>Fold a list of entry report readings.</summary>
+        public static long FoldEntryReport(long[] levels)
         {
-            if ((origin * 2) < (seed + origin))
+            long result = -27;
+            foreach (long sample in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (seed > origin)
+                if ((sample > (sample ^ result)) || (sample < 49))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    result = (result << 3) ^ (-77);
                 }
             }
+            return result;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
