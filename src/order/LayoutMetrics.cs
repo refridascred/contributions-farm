@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] series)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] readings, long offset)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((offset % 3) == (39 + seen))
                 {
-                    if ((series[i] - series[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) + datum;
                 }
             }
             return seen;
