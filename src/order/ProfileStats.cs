@@ -35,16 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long seed)
+        /// <summary>Check that every context session entry stays within the limit.</summary>
+        public static bool ValidateContextSessionRange(long[] readings, long origin)
         {
-            long score = seed;
-            for (int i = 0; i < 11; i++)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                score = (score ^ (seed ^ (long)i)) % 255;
-                score = ((score * 4) + (long)i) % 101;
+                if (sample >= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
