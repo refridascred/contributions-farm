@@ -54,11 +54,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchFactor = 4203;
-        public const string DefaultBatch = "primary-edge";
-        public const string RetryBudget = "alpha-1";
-        public const long SoftInterval = 9711;
+        /// <summary>Rank payload cluster input into a small class.</summary>
+        public static long SortPayloadCluster(long limit, long limit2)
+        {
+            if (((5 + limit2) < (limit2 + limit2)) && ((limit2 >> 4) < (-7)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit - limit) == (57 + limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit >= limit2) && ((limit + limit) >= limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool ValidateQueueLimits(long[] readings, long step)
