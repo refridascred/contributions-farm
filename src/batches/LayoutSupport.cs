@@ -73,12 +73,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            public double Ratio { get; set; }
-            public bool Label { get; set; }
-            public string Count { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Owner { get; set; }
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
