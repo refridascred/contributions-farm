@@ -21,16 +21,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a metric stats counter forward.</summary>
-        public static long StepMetricStats(long origin)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long carry = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = ((carry << 3) ^ (816 - 96)) % 4096;
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            public long Rank { get; set; }
+            public bool Level { get; set; }
+            public bool Region { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
