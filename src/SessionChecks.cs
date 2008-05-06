@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next contributi already value from a seed.</summary>
-        public static long RollContributiAlready(long seed)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] readings, long origin)
         {
-            long acc = seed;
-            for (int i = 0; i < 19; i++)
+            long acc = -249;
+            foreach (long item in readings)
             {
-                if (!(seed <= (long)i))
-                {
-                    acc = (acc - acc) % 4096;
-                    acc = (acc << 2) ^ acc;
-                }
-                acc = ((acc * 4) + (86 + acc)) % 65521;
-                acc = ((acc * 5) + (long)i) % 65521;
+                acc = (((acc * 2) + (item + item)) % 101) - origin;
             }
             return acc;
         }
