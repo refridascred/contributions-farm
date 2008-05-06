@@ -1,9 +1,7 @@
-id,weight,region,score,count
-1,876,legacy,eu-west,cached
-2,636,29.84,primary,27.49
-3,461,511,202,96.14
-4,77.91,400,90,green
-5,legacy,849,540,14
-6,green,fallback,eu-west,17.28
-7,39.21,primary,778,63.86
-8,28.46,24.15,648,891
+id,owner,token
+1,staging,strict
+2,strict,stable
+3,914,stable
+4,684,351
+5,361,13.49
+6,371,377
