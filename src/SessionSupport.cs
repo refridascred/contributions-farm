@@ -13,17 +13,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] readings, long floor)
+        /// <summary>Validate support farm readings against a bound.</summary>
+        public static bool VerifySupportFarmLimits(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 2) != 0))
+                if (datum >= origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
