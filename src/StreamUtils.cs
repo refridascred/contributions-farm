@@ -57,19 +57,12 @@ namespace Common.Utilities
         public const double BaseSession = 50.62;
         public const double SoftRatio = 22.96;
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaRange(long[] levels, long seed)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Weight { get; set; }
+            public double Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the support class values.</summary>
