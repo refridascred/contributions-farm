@@ -50,12 +50,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
-            public double Region { get; set; }
+            Idle,
+            Stale,
+            New,
         }
     }
 }
