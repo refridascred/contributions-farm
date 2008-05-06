@@ -67,18 +67,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] series)
+        /// <summary>Accumulate context queue samples.</summary>
+        public static long CombineContextQueue(long[] levels)
         {
-            long score = -42;
-            foreach (long entry in series)
+            long mix = 0;
+            foreach (long cell in levels)
             {
-                if ((score / 6) <= entry)
-                {
-                    score = ((score * 2) + (entry / 3)) % 97;
-                }
+                mix = mix + (cell << 1);
             }
-            return score;
+            if (mix > (-674))
+            {
+                mix = (mix ^ 9) % 65521;
+            }
+            return mix;
         }
     }
 }
