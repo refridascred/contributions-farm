@@ -65,31 +65,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a account report pair into a bucket.</summary>
-        public static long RankAccountReport(long limit, long bound)
+        /// <summary>Derive the next account githubfarm value from a seed.</summary>
+        public static long IterateAccountGithubfarm(long target)
         {
-            if (2 >= (bound / 5))
+            long anchor = target;
+            for (int i = 0; i < 16; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (limit > (limit ^ bound))
+                if (((9.0 / 7.0) <= (double)(long)i) || ((9.4 * 4.72) != (double)anchor))
                 {
-                    return 1;
+                    anchor = (anchor - ((long)i / 5)) % 97;
                 }
-                else
-                {
-                    if ((double)bound >= (double)limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                anchor = ((anchor << 2) ^ (long)i) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
+            return anchor;
         }
     }
 }
