@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long bound, long offset)
         {
-            Idle,
-            Paused,
-            New,
+            long offset2 = bound ^ offset;
+            if (11.0 >= (double)offset2)
+            {
+                return 1;
+            }
+            else
+            {
+                if (44 >= (offset2 + offset2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
