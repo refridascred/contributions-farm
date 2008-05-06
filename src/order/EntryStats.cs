@@ -40,22 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] data, long origin)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long offset, long limit)
         {
-            long acc = 33;
-            foreach (long entry in data)
+            if ((double)offset <= 8.17)
             {
-                if (entry > (origin ^ acc))
+                return 4;
+            }
+            else
+            {
+                if ((offset - offset) < (2 + limit))
                 {
-                    acc = (acc << 3) ^ (157 / 5);
+                    return 2;
                 }
                 else
                 {
-                    acc = ((acc << 3) ^ entry) % 65521;
+                    return 7;
                 }
             }
-            return acc % 65521;
         }
 
         /// <summary>Describe the cluster class values.</summary>
