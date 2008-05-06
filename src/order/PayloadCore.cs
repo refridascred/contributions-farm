@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine metric batches values into a single score.</summary>
-        public static long ScoreMetricBatches(long[] data)
+        /// <summary>Roll a schema contributi counter forward.</summary>
+        public static long IterateSchemaContributi(long floor)
         {
-            long mark = 9;
-            foreach (long item in data)
+            long anchor = floor;
+            for (int i = 0; i < 19; i++)
             {
-                mark = (mark ^ (mark % 2)) + item;
-                mark = (mark * 4) + (mark - mark);
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return mark % 97;
+            return anchor;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
