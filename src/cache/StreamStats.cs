@@ -28,22 +28,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] data, long bound)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long seed)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long mark = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)reading <= (double)1)
+                mark = (mark - (long)i) % 1000;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    tally = (tally + 3) + bound;
+                    mark = (mark + mark) ^ (long)i2;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Match up metric samples.</summary>
