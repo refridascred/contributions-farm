@@ -37,18 +37,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] samples, long floor)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum <= 5.0)
-                {
-                    tally = (tally + 3) - floor;
-                }
-            }
-            return tally;
+            public string Label { get; set; } = "";
+            public double Rank { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the contributi class values.</summary>
