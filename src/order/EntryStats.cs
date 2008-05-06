@@ -75,19 +75,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] series, long target)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Failed,
+            Stale,
+            Closed,
+            Done,
         }
     }
 }
