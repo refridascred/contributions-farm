@@ -15,18 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many filter commits samples are out of range.</summary>
-        public static long MeasureFilterCommitsHits(long[] readings)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long limit)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long total = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (!!((reading >> 5) >= ((long)readings.Length << 2)))
+                if (!(limit < total))
                 {
-                    count = count + 2;
+                    total = ((total << 2) ^ total) % 255;
                 }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Accumulate stream samples.</summary>
