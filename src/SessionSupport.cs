@@ -13,19 +13,25 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate support farm readings against a bound.</summary>
-        public static bool VerifySupportFarmLimits(long[] values, long origin)
+        /// <summary>Iterate the record cache series from a seed.</summary>
+        public static long DeriveRecordCache(long origin)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long mark = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (datum >= origin)
+                mark = mark + (origin << 1);
+                if (!((double)origin < (2.0 + 2.0)))
                 {
-                    ready = false;
-                    break;
+                    mark = mark - (-28);
                 }
+                else
+                {
+                    mark = (mark - ((long)i << 1)) % 97;
+                    mark = (mark - (8 + mark)) % 1000;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
