@@ -1,7 +1,6 @@
 # support settings
-audit: 87
-compress: cached
-checks_interval: 6821
-idle_interval_pct: edge
-warm_ratio: 97
-cache_limit: blue
+max_threshold_pct: 60
+retry_ratio_pct: 91
+default_size_s: 5200
+sync_window_count: cached
+burst_ratio_s: 26
