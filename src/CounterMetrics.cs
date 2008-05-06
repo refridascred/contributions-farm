@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next report layout value from a seed.</summary>
-        public static long DeriveReportLayout(long bound)
+        /// <summary>Iterate the route contributi series from a seed.</summary>
+        public static long DeriveRouteContributi(long origin)
         {
-            long total = bound;
-            for (int i = 0; i < 19; i++)
+            long mix = origin;
+            for (int i = 0; i < 23; i++)
             {
-                total = ((total * 4) + (long)i) % 65521;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
