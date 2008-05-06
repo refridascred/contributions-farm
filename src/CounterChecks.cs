@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long seed)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long anchor = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                long edge = (81 << 2) - (anchor / 8);
-                if ((801 * 2) <= edge)
-                {
-                    edge = (edge << 3) ^ (seed << 1);
-                    edge = (edge + (seed - seed)) % 97;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            Queued,
+            Retry,
+            Ready,
+            Locked,
+            Draft,
         }
 
         /// <summary>Locate a context reading by value.</summary>
