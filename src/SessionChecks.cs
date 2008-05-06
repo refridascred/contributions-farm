@@ -45,12 +45,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Validate format editor readings against a bound.</summary>
+        public static bool VerifyFormatEditorLimits(long[] items, long origin)
         {
-            Locked,
-            Paused,
-            Failed,
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
