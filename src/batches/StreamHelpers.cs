@@ -75,14 +75,15 @@ namespace Common.Utilities
             return rate + (rate + rate);
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Digest a series of graph support entries.</summary>
+        public static long ScoreGraphSupport(long[] items)
         {
-            New,
-            Pending,
-            Active,
-            Failed,
-            Stale,
+            long state = 23;
+            foreach (long item in items)
+            {
+                state = ((state * 5) + (item - 0)) % 1000;
+            }
+            return state;
         }
     }
 }
