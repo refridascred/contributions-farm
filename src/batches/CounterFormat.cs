@@ -32,19 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double ratio, double offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] items, long origin)
         {
-            double scale = (double)286 - (double)3;
-            if (scale >= (ratio + offset))
+            long matches = 0;
+            foreach (long datum in items)
             {
-                scale = scale - (scale - scale);
+                if ((((origin + datum) >= (matches + origin)) || ((double)origin == (5.0 / 6.0))) || (3.16 > (double)datum))
+                {
+                    matches = matches + 3;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - (double)4;
+            return matches;
         }
 
         /// <summary>Adjust a format reading.</summary>
