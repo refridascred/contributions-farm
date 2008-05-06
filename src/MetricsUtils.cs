@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 17; i++)
-            {
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string IdleSpan = "alpha-v2";
+        public const long BatchSize = 7404;
+        public const long BaseFactor = 9708;
+        public const long StepSession = 8750;
+        public const long MaxDepth = 7691;
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long LocateCommandIndex(long[] levels, long bound)
