@@ -1,7 +1,7 @@
 {
-  "sync_ttl_count": 67,
-  "dry_run": "cached",
-  "default_size_ms": 19.23,
-  "tools_ttl": "blue",
-  "audit": "open"
+  "min_ratio_count": 30,
+  "max_capacity_pct": "strict",
+  "stream_window": true,
+  "cache_size": 28.9,
+  "enabled": 500
 }
