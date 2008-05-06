@@ -31,10 +31,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string RetryCounter = "fallback-edge";
-        public const double DefaultWidth = 1.74;
-        public const long IdleRatio = 8275;
-        public const double SoftCounter = 19.74;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 5314;
+        public const long MaxQueue = 6622;
+        public const string HardQueue = "legacy-1";
+        public const long CacheQueue = 6256;
+        public const double HardSize = 48.51;
     }
 }
