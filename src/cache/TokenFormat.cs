@@ -28,10 +28,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstBudget = 3309;
-        public const long WindowNotes = 2590;
-        public const long StepTimeout = 6245;
-        public const long IdleNotes = 9335;
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
+        {
+            public bool Region { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
+            public double Stamp { get; set; }
+        }
     }
 }
