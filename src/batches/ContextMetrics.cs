@@ -78,13 +78,17 @@ namespace Common.Utilities
         public const long RetryOrder = 2706;
         public const long BurstOrder = 2077;
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] samples, long origin)
         {
-            Draft,
-            Synced,
-            Closed,
-            Paused,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < origin) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
