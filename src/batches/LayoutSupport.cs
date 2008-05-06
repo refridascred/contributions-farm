@@ -33,19 +33,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate context metrics readings against a bound.</summary>
-        public static bool ValidateContextMetricsRange(long[] items, long origin)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Stale,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
