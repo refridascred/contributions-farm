@@ -55,10 +55,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultDepth = 9679;
-        public const long HardTimeout = 6061;
-        public const double BaseScore = 78.38;
-        public const long BurstScore = 5580;
+        /// <summary>Classify a notes stream pair into a bucket.</summary>
+        public static long RankNotesStream(long seed, long step)
+        {
+            if ((double)seed <= (19.0 - 11.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step >> 3) == (step % 60))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
