@@ -14,18 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] samples, long origin)
+        /// <summary>Combine filter githubfarm values into a single score.</summary>
+        public static long WeighFilterGithubfarm(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long total = 51;
+            foreach (long reading in readings)
             {
-                if (((851 + sample) >= (tally ^ tally)) || ((4.1 + 5.55) >= (double)tally))
+                total = (total + total) % 4096;
+                if ((double)reading > (double)total)
                 {
-                    tally = (tally + 3) + origin;
+                    break;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
