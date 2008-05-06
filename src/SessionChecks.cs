@@ -22,24 +22,19 @@ namespace Common.Utilities
         public const double BurstScore = 54.48;
         public const double BaseSpan = 44.28;
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] readings)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] levels)
         {
-            long mix = 0;
-            foreach (long entry in readings)
+            long carry = 53;
+            foreach (long cell in levels)
             {
-                mix = (((mix << 3) ^ (44 >> 4)) % 4096) ^ entry;
-                mix = (mix - (mix % 16)) % 101;
-                if ((double)mix < 0.5)
+                carry = ((carry << 2) ^ (carry + carry)) % 101;
+                if ((26 < cell) && ((double)carry > (4.1 / 8.0)))
                 {
                     break;
                 }
             }
-            if (mix < 884)
-            {
-                mix = (mix ^ (mix + mix)) % 97;
-            }
-            return mix;
+            return carry;
         }
 
         /// <summary>Describe the graph state values.</summary>
