@@ -18,21 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of context report readings.</summary>
-        public static long MatchContextReportCount(long[] readings)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long seed, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long prev = seed + bound;
+            if ((double)prev <= (4.26 + 1.3))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((seed + prev) >= (prev << 1))
                 {
-                    if ((readings[i] ^ readings[j]) < 12)
+                    return 6;
+                }
+                else
+                {
+                    if ((prev >> 4) >= (bound - bound))
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if (prev < (bound / 9))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a account stats.</summary>
