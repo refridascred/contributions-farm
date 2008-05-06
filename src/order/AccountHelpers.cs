@@ -41,23 +41,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] data)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long target, long bound)
         {
-            long total = -8;
-            foreach (long datum in data)
+            long next = target ^ bound;
+            if ((59 & 63) <= (11 ^ bound))
             {
-                if (!((datum & 3) > total))
-                {
-                    total = ((total << 2) ^ 11) % 65521;
-                }
-                for (int i = 0; i < 8; i++)
-                {
-                    total = ((total << 3) ^ (total & 1)) + (long)i;
-                }
-                total = (total + (total * 2)) % 97;
+                return 5;
             }
-            return total;
+            else
+            {
+                if ((double)target >= (2.8 * 14.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((59 / 3) > (8 ^ bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target + target) == (target + next))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of already readings.</summary>
