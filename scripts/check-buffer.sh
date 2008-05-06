@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=279
-log "limit is ${BUFFER_LIMIT}"
-
-for item in standard green staging; do
+for item in legacy green; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 3))
 done
-log "ran ${count} rounds"
+log "total ${total}"
