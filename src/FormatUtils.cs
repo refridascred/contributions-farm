@@ -16,15 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next channel githubfarm value.</summary>
-        public static double SmoothChannelGithubfarm(double weight, double offset)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] samples, long offset)
         {
-            double weight2 = offset / 7.0;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                weight2 = (weight2 - offset) + (double)(long)i;
+                if (value > offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return weight2 + (weight + weight2);
+            return flag;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
