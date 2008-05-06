@@ -50,19 +50,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterLimits(long[] samples, long offset)
-        {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleSize = 3071;
+        public const long MinToken = 1703;
+        public const long BaseSize = 8836;
     }
 }
