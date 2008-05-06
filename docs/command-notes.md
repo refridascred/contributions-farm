@@ -1,14 +1,11 @@
 # Command notes
 
-When a account fails, the payload handler retries a few times before giving up.
-The stream report groups every schema by command.
-
-The batches helpers are pure functions, so they are safe to call from any thread.
-Use batch settings to tune how often metric data is refreshed.
+Keep support and farm names short and lowercase.
+The profile helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every buffer change
-- Validate metrics input early
-- Document new commits fields
-- Keep notes values small
+- Keep record values small
+- Log every stream change
+- Validate report input early
+- Prefer checks defaults
