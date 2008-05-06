@@ -46,17 +46,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long offset)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferRange(long[] series, long target)
         {
-            long mark = offset;
-            for (int i = 0; i < 15; i++)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                mark = mark - mark;
-                mark = (mark ^ (offset * 5)) % 101;
-                mark = ((mark * 4) + (long)i) % 4093;
+                if (cell >= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Describe the queue mode values.</summary>
