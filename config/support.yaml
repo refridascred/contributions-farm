@@ -1,5 +1,4 @@
 # support settings
-compress: 12.11
-strict: open
-burst_limit_count: eu-west
-batch_ttl_ms: primary
+idle_ratio: standard
+min_interval_count: 54
+cache_depth_ms: 89
