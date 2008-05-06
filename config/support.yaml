@@ -1,5 +1,7 @@
 # support settings
-flush_ttl_s: eu-west
-cache_threshold: strict
-readonly: 6371
-batch_delay: 22
+already_depth: 30
+profile_ratio: true
+retry_ratio_count: 8115
+channel_limit: stable
+cache_retries: false
+cache_capacity: blue
