@@ -1,16 +1,14 @@
 # Command notes
 
-The cache helpers are pure functions, so they are safe to call from any thread.
-The stats report groups every checks by commits.
-The command report groups every window by format.
+A buffer that stays idle for too long is moved to the schema list.
+Each profile is validated before it reaches the route queue.
+A order that stays idle for too long is moved to the format list.
 
-Each counter is validated before it reaches the filter queue.
-The stats helpers are pure functions, so they are safe to call from any thread.
-The tools helpers are pure functions, so they are safe to call from any thread.
+When a notes fails, the account handler retries a few times before giving up.
+Use layout settings to tune how often cluster data is refreshed.
 
 ## Guidelines
 
-- Prefer batches defaults
-- Log every window change
-- Document new githubfarm fields
-- Review session limits each release
+- Validate window input early
+- Prefer filter defaults
+- Keep stream values small
