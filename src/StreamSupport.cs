@@ -20,12 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            public double Total { get; set; }
-            public bool Rank { get; set; }
-            public double Token { get; set; }
+            Paused,
+            Active,
+            Locked,
+            Retry,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
