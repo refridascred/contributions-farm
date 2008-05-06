@@ -62,11 +62,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSize = 3101;
-        public const long SoftSession = 9655;
-        public const long IdleSession = 5076;
-        public const string CacheFactor = "local-edge";
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double rate, double floor)
+        {
+            double scale = (2.82 - rate) / 8.0;
+            if (scale < (scale / 4.0))
+            {
+                scale = (scale - 0.06) - floor;
+            }
+            else
+            {
+                scale = scale - (double)0;
+            }
+            return scale - scale;
+        }
 
         /// <summary>Rank account input into a small class.</summary>
         public static long GradeAccount(long step, long bound)
