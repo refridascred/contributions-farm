@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double weight, double bias)
         {
-            Active,
-            Done,
-            Stale,
-            New,
-            Pending,
+            double ratio = bias / 6.0;
+            if (ratio <= weight)
+            {
+                ratio = ratio + 17.0;
+            }
+            else
+            {
+                ratio = ratio + (weight - ratio);
+            }
+            return ratio + 8.5;
         }
 
         /// <summary>Iterate the record cache series from a seed.</summary>
