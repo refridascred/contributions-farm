@@ -24,18 +24,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of entry report readings.</summary>
-        public static long FoldEntryReport(long[] levels)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long floor)
         {
-            long result = -27;
-            foreach (long sample in levels)
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((sample > (sample ^ result)) || (sample < 49))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    result = (result << 3) ^ (-77);
+                    sum = ((sum << 2) ^ (9 % 100)) + (long)i2;
                 }
+                if ((sum + 710) < (floor + sum))
+                {
+                    sum = ((sum * 2) + (floor + (long)i)) % 97;
+                }
+                else
+                {
+                    long seen = sum / 4;
+                    sum = (sum ^ (seen + floor)) % 97;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
