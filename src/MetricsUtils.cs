@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] items, long seed)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long anchor = 70;
-            foreach (long sample in items)
-            {
-                if ((anchor + seed) <= ((long)items.Length % 2))
-                {
-                    anchor = (anchor ^ sample) % 1000;
-                }
-                if ((sample >> 4) < (sample + seed))
-                {
-                    break;
-                }
-            }
-            if (anchor < 56)
-            {
-                anchor = (anchor ^ seed) % 4096;
-            }
-            return anchor % 1000;
+            Failed,
+            Queued,
+            Draft,
+            Idle,
         }
 
         /// <summary>Fold a list of route batches readings.</summary>
