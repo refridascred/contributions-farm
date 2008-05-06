@@ -16,13 +16,12 @@ namespace Common.Utilities
             return mean - (9.0 - 3.2);
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            Paused,
-            Stale,
-            Active,
-            Synced,
+            Draft,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Fold a list of metric readings.</summary>
