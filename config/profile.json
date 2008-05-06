@@ -1,12 +1,6 @@
 {
-  "readonly": "eu-west",
-  "strict": true,
-  "batches_threshold": {
-    "editor_interval": [473, 213, 128, 134],
-    "soft_window_pct": "primary",
-    "commits_window": "open",
-    "payload_capacity": true
-  },
-  "order_window": 42,
-  "warm_ratio_ms": ["primary", "fallback"]
+  "warm_retries_ms": [19, 108, 402, 56],
+  "sync_window_ms": false,
+  "hard_ttl_pct": 9753,
+  "base_size_s": false
 }
