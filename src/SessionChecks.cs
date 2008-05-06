@@ -45,19 +45,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate format editor readings against a bound.</summary>
-        public static bool VerifyFormatEditorLimits(long[] items, long origin)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Locked,
+            Retry,
+            Paused,
+            Closed,
         }
     }
 }
