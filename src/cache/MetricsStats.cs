@@ -43,24 +43,18 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long origin)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenGaps(long[] levels, long offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((long)i < mark)
+                if ((matches >= (matches + (-73))) || ((4.5 / 4.0) > (double)sample))
                 {
-                    mark = (mark + 7) % 101;
-                    mark = (mark * 3) + origin;
+                    matches = (matches + 3) - offset;
                 }
-                if (!(((long)i + (long)i) > origin))
-                {
-                    mark = (mark ^ (origin - mark)) % 65521;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
