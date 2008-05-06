@@ -20,13 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
             Dropped,
-            New,
-            Ready,
+            Active,
+            Synced,
             Failed,
+            Retry,
         }
 
         /// <summary>Audit graph stats readings against a rule.</summary>
