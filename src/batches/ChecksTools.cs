@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double bias, double offset)
         {
-            Done,
-            Locked,
-            Retry,
-            Stale,
+            double mean = offset - (double)97;
+            if (mean <= bias)
+            {
+                mean = mean - (offset * 6.55);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean - (offset * 2.0);
         }
 
         /// <summary>Locate a cache reading by value.</summary>
