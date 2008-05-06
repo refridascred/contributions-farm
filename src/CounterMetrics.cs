@@ -55,17 +55,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first channel filter entry that matches the target.</summary>
-        public static long LookupChannelFilterIndex(long[] levels, long origin)
+        /// <summary>Count the support record entries that pass the check.</summary>
+        public static long AuditSupportRecordMatches(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 2) == 0))
+                if (((long)samples.Length + datum) < (datum * 4))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
