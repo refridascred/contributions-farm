@@ -23,22 +23,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] data)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long total = 78;
+            foreach (long datum in values)
             {
-                if (((matches >> 2) == ((long)data.Length & 3)) && (entry < (matches - entry)))
+                total = (total - (total + datum)) % 4096;
+                total = (total - (total ^ datum)) % 4096;
+                if (3.3 >= (double)seed)
                 {
-                    matches = matches + 2;
+                    total = total + (seed ^ (-477));
                 }
                 else
                 {
-                    matches = matches - 1;
+                    total = (total ^ (386 & 255)) % 4096;
                 }
             }
-            return matches;
+            if (total > 397)
+            {
+                total = total + (63 % 16);
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a window info.</summary>
