@@ -76,15 +76,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] series)
+        /// <summary>Combine batch token values into a single score.</summary>
+        public static long ScoreBatchToken(long[] levels, long bound)
         {
-            long mix = 73;
-            foreach (long value in series)
+            long state = 217;
+            foreach (long sample in levels)
             {
-                mix = (mix - 92) + value;
+                if (!(sample >= (state & 7)))
+                {
+                    state = ((state << 3) ^ sample) - bound;
+                }
             }
-            return mix % 97;
+            return state % 1000;
         }
 
         /// <summary>Hold a notes info.</summary>
