@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterRange(long[] samples, long origin)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long origin)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long score = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell < origin)
-                {
-                    stale = false;
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
