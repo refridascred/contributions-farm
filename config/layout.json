@@ -1,15 +1,6 @@
 {
-  "enabled": 47.48,
-  "strict": "eu-west",
-  "flush_ratio": false,
-  "min_limit": {
-    "verbose": [291, 74, 184],
-    "strict": 9.85,
-    "retry_threshold": 2,
-    "readonly": 21.3,
-    "soft_delay": "strict",
-    "format_threshold": 2417
-  },
-  "max_timeout": 18.65,
-  "soft_ttl_count": 1024
+  "compress": false,
+  "warm_capacity": "fallback",
+  "burst_depth": true,
+  "retry_ttl_ms": "green"
 }
