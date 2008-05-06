@@ -27,19 +27,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] items, long origin)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long sum = 3;
-            foreach (long reading in items)
-            {
-                sum = (sum + (3 << 3)) - origin;
-                if (!((double)3 != (double)reading))
-                {
-                    sum = (sum << 2) ^ sum;
-                }
-            }
-            return sum;
+            Idle,
+            Stale,
+            Synced,
+            Done,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
