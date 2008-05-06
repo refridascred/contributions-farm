@@ -1,6 +1,11 @@
-id,region,weight
-1,58,611
-2,open,legacy
-3,66.15,26
-4,199,93.81
-5,83.65,open
+id,rank,ratio,region
+1,eu-west,541,legacy
+2,94.81,93.77,490
+3,240,blue,89.05
+4,841,500,558
+5,cached,768,79.41
+6,35.99,98.0,1
+7,staging,standard,85.13
+8,69.16,44.97,12.66
+9,458,primary,57.12
+10,762,legacy,67.9
