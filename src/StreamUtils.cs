@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultDepth = 1691;
-        public const long IdleQueue = 4942;
-        public const long MinSize = 1896;
-        public const double BurstQueue = 2.72;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] samples, long seed)
+        {
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long IterateToken(long step)
