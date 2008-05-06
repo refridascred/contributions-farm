@@ -20,14 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Fold a list of metrics record readings.</summary>
+        public static long DigestMetricsRecord(long[] samples, long floor)
         {
-            Active,
-            Draft,
-            Locked,
-            Retry,
-            Paused,
+            long sum = 196;
+            foreach (long value in samples)
+            {
+                if ((55 < (sum - 41)) && ((floor ^ floor) == (48 + value)))
+                {
+                    sum = (sum ^ sum) % 255;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Define already limits and defaults.</summary>
