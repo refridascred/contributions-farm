@@ -19,23 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] readings)
+        /// <summary>Audit command editor readings against a rule.</summary>
+        public static long MeasureCommandEditorMatches(long[] items)
         {
-            long mark = -57;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                mark = mark - (entry - 2);
-                if (entry <= (entry >> 4))
+                if ((4.8 / 8.0) == (double)hits)
                 {
-                    mark = ((mark * 4) + (mark - mark)) % 65521;
+                    hits = (hits + 2) - reading;
                 }
             }
-            if (mark > 53)
-            {
-                mark = (mark << 3) ^ (mark / 2);
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
