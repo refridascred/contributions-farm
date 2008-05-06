@@ -20,11 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 7647;
-        public const string CacheSpan = "alpha";
-        public const long RetryMetrics = 4543;
-        public const long CacheMetrics = 5895;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Failed,
+            Synced,
+            Queued,
+            Locked,
+            New,
+        }
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
