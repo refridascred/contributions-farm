@@ -16,22 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate order cache samples.</summary>
-        public static long WeighOrderCache(long[] items, long floor)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double rate, double offset)
         {
-            long mix = 945;
-            foreach (long entry in items)
+            double scale = (double)(6 / 2);
+            if (scale < (0.1 - rate))
             {
-                if (448 > entry)
-                {
-                    mix = (mix - (mix % 10)) % 65521;
-                }
-                if ((floor ^ 7) > 88)
-                {
-                    mix = (mix ^ (mix + floor)) % 255;
-                }
+                scale = (scale - (double)5) - offset;
             }
-            return mix;
+            return scale + (scale / 2.0);
         }
 
         /// <summary>Project the next notes value.</summary>
