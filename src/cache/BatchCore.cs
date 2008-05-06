@@ -13,25 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a farm window value against two limits.</summary>
-        public static long BucketFarmWindow(long bound, long seed)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderLimits(long[] readings, long target)
         {
-            long delta = bound - seed;
-            if (seed < (seed & 15))
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)delta < (6.84 * 5.71))
+                if (datum != target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a order summary.</summary>
