@@ -31,18 +31,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] values)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long bound)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long state = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (92 >= (matches * 5))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
+                state = (state << 3) ^ (96 & 31);
+                state = state - bound;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
     }
 }
