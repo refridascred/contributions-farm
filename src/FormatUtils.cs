@@ -69,18 +69,19 @@ namespace Common.Utilities
         public const string RetryCount = "local-1";
         public const long CacheCount = 5006;
 
-        /// <summary>Combine stream support values into a single score.</summary>
-        public static long ScoreStreamSupport(long[] levels, long target)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] values, long target)
         {
-            long anchor = 505;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if ((anchor <= (target << 1)) || ((anchor >> 5) > item))
+                if (sample < target)
                 {
-                    anchor = anchor - anchor;
+                    found = false;
+                    break;
                 }
             }
-            return anchor % 97;
+            return found;
         }
     }
 }
