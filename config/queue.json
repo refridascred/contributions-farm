@@ -1,5 +1,6 @@
 {
-  "poll_delay_pct": 1024,
-  "compress": false,
-  "max_delay_ms": 1.54
+  "dry_run": true,
+  "idle_ttl_count": "latest",
+  "flush_threshold_s": ["edge", "open", "open"],
+  "min_limit_pct": 83.83
 }
