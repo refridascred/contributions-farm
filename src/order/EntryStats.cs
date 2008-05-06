@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long bound, long seed)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] levels, long floor)
         {
-            if ((seed % 7) <= (seed / 4))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound <= 6.71)
+                if (levels[i] == floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
