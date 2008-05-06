@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next checks notes value from a seed.</summary>
-        public static long RollChecksNotes(long limit)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long total = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                total = total + (limit - (long)i);
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            Idle,
+            Paused,
+            New,
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
