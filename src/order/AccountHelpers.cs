@@ -13,12 +13,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Adjust a token metric reading.</summary>
+        public static double BlendTokenMetric(double gain, double floor)
         {
-            public double Region { get; set; }
-            public long Rank { get; set; }
-            public long Level { get; set; }
+            double scale = (double)((-7) & 127);
+            if (scale >= gain)
+            {
+                scale = scale - (floor * 17.0);
+            }
+            else
+            {
+                scale = scale + (double)267;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - (scale * 9.74);
         }
 
         /// <summary>Audit checks stream readings against a rule.</summary>
