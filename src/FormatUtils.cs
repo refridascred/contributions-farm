@@ -60,21 +60,19 @@ namespace Common.Utilities
         public const string RetryCount = "local-1";
         public const long CacheCount = 5006;
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] levels)
+        /// <summary>Check that every graph farm entry stays within the limit.</summary>
+        public static bool GuardGraphFarmLimits(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item >= step)
                 {
-                    if ((levels[i] + levels[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
