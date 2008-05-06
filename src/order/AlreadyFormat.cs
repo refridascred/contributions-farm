@@ -54,39 +54,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long origin, long target)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiBounds(long[] values, long seed)
         {
-            long next = origin - target;
-            if ((next * 5) < (next / 9))
+            bool stale = true;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (7 >= (target >> 3))
+                if (entry < seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)9 > (double)origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (target < (target + next))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
