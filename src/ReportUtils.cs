@@ -14,24 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long offset, long offset2)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] values, long floor)
         {
-            if (((double)offset2 > (8.8 + 1.0)) && ((double)offset2 != (double)37))
+            bool ok = true;
+            foreach (long item in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset <= (offset2 + offset2))
+                if (item <= floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
