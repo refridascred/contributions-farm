@@ -68,12 +68,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] readings, long bound)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] readings, long floor)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if ((readings[i] == bound) && ((readings[i] % 3) == 0))
+                if ((readings[i] > floor) && ((readings[i] % 2) == 0))
                 {
                     return (long)i;
                 }
