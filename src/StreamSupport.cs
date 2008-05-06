@@ -20,10 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BaseStats = 6.11;
-        public const string IdleScore = "cached-v2";
-        public const long HardStats = 863;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutMatches(long[] samples, long seed)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (!(((datum & 15) != (count + count)) || (datum >= (datum << 1))))
+                {
+                    count = (count + 1) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long TotalLayout(long[] readings)
