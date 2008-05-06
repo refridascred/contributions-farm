@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] items, long seed)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryBounds(long[] readings, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if (items[i] > seed)
+                if (datum < target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Describe the account phase values.</summary>
