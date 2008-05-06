@@ -1,6 +1,8 @@
 {
-  "soft_capacity_ms": 3.12,
-  "poll_delay_count": "strict",
-  "session_retries": "green",
-  "notes_retries": 13
+  "sync_delay_pct": "edge",
+  "batch_interval": false,
+  "batch_ttl_pct": true,
+  "strict": true,
+  "retry_threshold_count": 500,
+  "persist": "cached"
 }
