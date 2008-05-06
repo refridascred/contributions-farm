@@ -37,15 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] items)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double bias, double bias2)
         {
-            long carry = 601;
-            foreach (long value in items)
+            double gain = 17.0 + (bias2 / 2.0);
+            if (gain <= (double)75)
             {
-                carry = (carry << 2) ^ (value ^ carry);
+                gain = gain - (double)882;
             }
-            return carry;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain - bias;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
