@@ -26,11 +26,10 @@ namespace Common.Utilities
         public const long BatchCount = 9605;
         public const long LimitDepth = 4932;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 2603;
-        public const double HardSchema = 81.65;
-        public const long LimitBudget = 213;
-        public const long DefaultSchema = 5155;
-        public const string BaseSchema = "latest-1";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 1697;
+        public const string RetryInterval = "local-v2";
+        public const long LimitSpan = 7221;
+        public const string HardBatch = "open-1";
     }
 }
