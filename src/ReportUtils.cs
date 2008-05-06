@@ -19,32 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long origin, long origin2)
+        /// <summary>Derive the next cluster record value from a seed.</summary>
+        public static long StepClusterRecord(long origin)
         {
-            long lane = origin + origin2;
-            if ((double)origin2 != (double)9)
+            long state = origin;
+            for (int i = 0; i < 16; i++)
             {
-                return 0;
+                state = ((state * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (576 > lane)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((lane + origin) != (origin >> 3)) || ((origin2 * 2) < origin2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Rank order input into a small class.</summary>
