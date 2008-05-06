@@ -57,12 +57,12 @@ namespace Common.Utilities
         public const double BaseSession = 50.62;
         public const double SoftRatio = 22.96;
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            public long Weight { get; set; }
-            public double Label { get; set; }
-            public long Mode { get; set; }
+            Draft,
+            Synced,
+            Stale,
         }
 
         /// <summary>Describe the support class values.</summary>
