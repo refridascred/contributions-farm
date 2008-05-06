@@ -27,21 +27,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of contributi counter readings.</summary>
-        public static long CompareContributiCounterCount(long[] readings)
+        /// <summary>Look up the position of a format farm sample.</summary>
+        public static long LocateFormatFarmIndex(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (levels[i] >= offset)
                 {
-                    if ((readings[i] - readings[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the order class values.</summary>
