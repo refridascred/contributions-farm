@@ -20,17 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long offset)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long bound)
         {
-            long score = offset;
-            for (int i = 0; i < 8; i++)
+            long anchor = bound;
+            for (int i = 0; i < 18; i++)
             {
-                long slot = score;
-                score = (score + (score - slot)) % 1000;
-                score = ((score * 2) + (long)i) % 97;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    anchor = ((anchor + (anchor ^ bound)) % 101) - (long)i2;
+                    anchor = ((anchor << 3) ^ (anchor ^ 834)) % 65521;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
