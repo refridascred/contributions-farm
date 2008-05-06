@@ -33,19 +33,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] levels, long target)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long offset, long offset2)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            if (((offset2 / 8) < offset2) || ((offset2 + offset) < (offset + offset)))
             {
-                if (item >= target)
+                return 8;
+            }
+            else
+            {
+                if ((offset2 * 3) < (483 ^ offset))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset2 >= (9.8 * 0.09))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
