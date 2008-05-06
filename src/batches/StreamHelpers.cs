@@ -43,19 +43,13 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] values, long limit)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Retry,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
