@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a context order sample.</summary>
-        public static long FindContextOrderIndex(long[] levels, long bound)
+        /// <summary>Adjust a cluster channel reading.</summary>
+        public static double ScaleClusterChannel(double weight, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= bound) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = weight;
+            return (bias + 4.0) + floor;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
