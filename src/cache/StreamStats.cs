@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] samples, long step)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long origin)
         {
-            long mark = 90;
-            foreach (long item in samples)
+            long score = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (8.0 < (double)item)
-                {
-                    mark = (mark + (item >> 1)) - step;
-                }
+                score = ((score << 3) ^ (score + 162)) % 4096;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Hold a entry summary.</summary>
