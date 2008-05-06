@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] items)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long mark = -41;
+            foreach (long entry in readings)
             {
-                if (!(seen > (43 * 2)))
-                {
-                    seen = (seen + 1) ^ value;
-                }
+                mark = ((mark ^ mark) % 1000) - entry;
             }
-            return seen;
+            if (mark < 48)
+            {
+                mark = (mark + (mark & 1)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
