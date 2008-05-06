@@ -1,36 +1,9 @@
 # githubfarm settings
-enabled: 1024
-readonly:
-  - 202
-  - 156
-  - 489
-  - 89
-flush_ttl_s:
-  hard_window: edge
-  poll_ratio_pct:
-    - 450
-    - 281
-  min_retries_count:
-    verbose:
-      - eu-west
-      - green
-    base_threshold_count: 78.13
-    max_retries: 250
-    default_ratio: 12.43
-    hard_limit_pct: true
-    support_ratio: false
-  soft_size: true
-  sync_ratio_ms: true
-  metrics_window:
-    notes_depth: local
-    queue_interval: 30
-    batch_ratio_pct: false
-    channel_ratio: 63.38
-burst_size_pct: latest
-batch_ratio_s: open
-default_timeout:
-  persist: false
-  hard_interval_pct: primary
-  tools_interval: 18
-  warm_ttl_pct: 22
-  verbose: strict
+tools_interval: latest
+audit:
+  - strict
+  - edge
+  - edge
+batch_interval_ms: 30
+entry_ratio: strict
+dry_run: 3650
