@@ -24,11 +24,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryInterval = 7258;
-        public const long SoftTimeout = 1633;
-        public const long BatchLevel = 8007;
-        public const double BatchChannel = 51.94;
-        public const long MaxChannel = 3003;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((hits + entry) >= (hits << 3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
