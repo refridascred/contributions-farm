@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double gain, double span)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportGaps(long[] data)
         {
-            double load = (6.3 - 3.0) * 4.4;
-            if (load <= load)
+            long count = 0;
+            foreach (long value in data)
             {
-                load = ((load - (load - load)) - gain) - span;
+                if (((value * 5) <= (count ^ value)) && ((9.2 - 6.02) <= (double)value))
+                {
+                    count = count + 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + 19.0) + (double)(long)i;
-            }
-            return load + load;
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
