@@ -33,18 +33,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionMatches(long[] data)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (!((entry + tally) != (entry - entry)))
+                if (((15.0 / 9.0) <= (double)sample) && (((hits * 4) >= sample) && (sample <= 96)))
                 {
-                    tally = tally + 2;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
