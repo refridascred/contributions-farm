@@ -13,17 +13,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] series, long seed)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double gain, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain2 = bias;
+            for (int i = 0; i < 4; i++)
             {
-                if ((series[i] == seed) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                gain2 = (gain2 - gain) + (double)(long)i;
             }
-            return -1;
+            return gain2 + 8.72;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
