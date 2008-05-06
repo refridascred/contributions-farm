@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long limit, long target)
         {
-            Paused,
-            Failed,
-            Idle,
+            long lane = limit + target;
+            if ((target + (-821)) > (limit * 4))
+            {
+                return 2;
+            }
+            else
+            {
+                if (3.5 >= (double)lane)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((limit / 7) == (limit ^ lane)) || ((46 * 3) >= (lane << 1)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((lane ^ 569) != (limit >> 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the editor kind values.</summary>
