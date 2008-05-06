@@ -28,23 +28,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double gain, double span)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] readings)
         {
-            double mean = gain;
-            if (mean <= (double)19)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean - (double)0;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (span - gain)) + (double)(long)i;
-            }
-            return mean + (double)(-294);
+            return matches;
         }
     }
 }
