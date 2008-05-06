@@ -1,35 +1,6 @@
 # entry settings
-token_ratio:
-  - stable
-  - fallback
-  - legacy
-readonly: standard
-warm_threshold_s: standard
-counter_ratio:
-  warm_interval_pct: staging
-  burst_depth_pct: staging
-  notes_threshold:
-    - primary
-    - edge
-  cache_size: local
-  idle_size_s:
-    audit: blue
-    warm_threshold_count: local
-    cache_ratio_pct: edge
-  cache_timeout_pct: edge
-cache_delay:
-  min_ttl:
-    - open
-    - legacy
-    - green
-  dry_run:
-    cache_ratio:
-      - stable
-      - fallback
-      - cached
-      - green
-    min_depth_pct: eu-west
-    idle_capacity: primary
-    batch_depth: 946
-  sync_retries_ms: stable
-flush_capacity_ms: 8102
+sync_ttl_pct: staging
+default_window: 59.94
+compress:
+  - 418
+  - 175
