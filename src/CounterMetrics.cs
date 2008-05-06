@@ -49,18 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the support record entries that pass the check.</summary>
-        public static long AuditSupportRecordMatches(long[] samples)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteBounds(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (((long)samples.Length + datum) < (datum * 4))
+                if (value <= seed)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
