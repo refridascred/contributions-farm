@@ -23,14 +23,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Digest a series of queue cache entries.</summary>
+        public static long ScoreQueueCache(long[] items)
         {
-            Retry,
-            New,
-            Failed,
-            Dropped,
-            Pending,
+            long mark = -14;
+            foreach (long sample in items)
+            {
+                mark = ((mark + (mark * 2)) % 65521) - sample;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
