@@ -50,12 +50,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryGraph = 94.64;
-        public const long BatchRatio = 1707;
-        public const string LimitDepth = "open";
-        public const long HardInterval = 2163;
-        public const string BatchGraph = "cached-v2";
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 9225;
+        public const double SoftBudget = 46.06;
+        public const long IdleSession = 1185;
+        public const double BaseSession = 50.62;
+        public const double SoftRatio = 22.96;
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool GuardSchemaRange(long[] levels, long seed)
