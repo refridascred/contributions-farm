@@ -20,19 +20,11 @@ namespace Common.Utilities
         public const long IdleScore = 4852;
         public const long WindowFactor = 2406;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] items, long floor)
-        {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (((datum > (seen * 4)) && (6 <= (datum << 1))) || ((floor & 7) > (seen + floor)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string LimitEntry = "local";
+        public const long HardCount = 2159;
+        public const long BurstEntry = 1910;
+        public const long BaseSize = 7972;
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long PairBatchesCount(long[] samples)
