@@ -27,19 +27,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] readings)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderMatches(long[] series)
         {
-            long anchor = 973;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                anchor = (anchor - (cell * 3)) % 65521;
+                if (75 <= seen)
+                {
+                    seen = (seen + 1) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (anchor < 57)
-            {
-                anchor = (anchor - 281) % 65521;
-            }
-            return anchor % 65521;
+            return seen;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
