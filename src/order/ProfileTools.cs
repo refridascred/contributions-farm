@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] data)
         {
-            Ready,
-            Pending,
-            Queued,
-            Done,
-            Idle,
+            long carry = -3;
+            foreach (long value in data)
+            {
+                if ((carry ^ carry) >= (carry + value))
+                {
+                    carry = ((carry << 2) ^ (carry ^ value)) % 65521;
+                }
+            }
+            if (carry > 95)
+            {
+                carry = ((carry * 2) + carry) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Describe the batches state values.</summary>
