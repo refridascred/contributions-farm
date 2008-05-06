@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public long Total { get; set; }
-            public double Mode { get; set; }
-            public long Token { get; set; }
-            public long Region { get; set; }
+            Done,
+            Idle,
+            Retry,
+            Queued,
+            Active,
         }
 
         /// <summary>Fold a list of profile readings.</summary>
