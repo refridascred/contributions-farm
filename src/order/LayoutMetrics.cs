@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] items)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long sum = 6;
-            foreach (long reading in items)
-            {
-                if ((reading << 2) >= reading)
-                {
-                    sum = (sum ^ (sum % 64)) % 65521;
-                }
-                else
-                {
-                    sum = sum ^ (sum / 2);
-                }
-            }
-            return sum % 4096;
+            public string Limit { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
