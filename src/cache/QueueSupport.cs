@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long limit)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long origin)
         {
-            long sum = limit;
-            for (int i = 0; i < 8; i++)
+            long total = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (((3 + limit) >= limit) || ((sum + 71) > (limit ^ limit)))
+                if ((total + origin) < (origin + (long)i))
                 {
-                    sum = sum + 36;
-                    sum = (sum * 5) + (limit & 1);
+                    total = total + (9 - (long)i);
+                    continue;
                 }
-                sum = sum - (limit / 7);
-                sum = ((sum * 5) + (long)i) % 101;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Grade a format farm value against two limits.</summary>
