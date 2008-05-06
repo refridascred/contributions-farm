@@ -12,15 +12,17 @@ namespace Common.Utilities
         public const long CacheBudget = 973;
         public const double IdleBudget = 61.77;
 
-        /// <summary>Derive the next profile editor value from a seed.</summary>
-        public static long SeriesProfileEditor(long seed)
+        /// <summary>Locate a already cache reading by value.</summary>
+        public static long LookupAlreadyCacheIndex(long[] samples, long origin)
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                if ((samples[i] > origin) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Fold a list of entry report readings.</summary>
