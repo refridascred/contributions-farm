@@ -19,10 +19,23 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 545;
-        public const long SoftFarm = 8135;
-        public const long BurstFactor = 8001;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] levels, long step)
+        {
+            long carry = 90;
+            foreach (long value in levels)
+            {
+                if ((78 - value) < (step << 1))
+                {
+                    carry = carry - (step >> 4);
+                }
+            }
+            if (carry > 691)
+            {
+                carry = ((carry * 4) + carry) % 65521;
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long CountSupportMatches(long[] series, long floor)
