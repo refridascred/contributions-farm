@@ -1,8 +1,5 @@
 {
-  "cache_ttl": "blue",
-  "verbose": "primary",
-  "base_ratio_s": 29,
-  "hard_retries_ms": [103, 132, 484],
-  "max_window_pct": 8,
-  "compress": 65.84
+  "farm_retries": false,
+  "poll_window": false,
+  "compress": 89.29
 }
