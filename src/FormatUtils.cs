@@ -43,26 +43,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] samples, long target)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long origin)
         {
-            long sum = -346;
-            foreach (long entry in samples)
+            long acc = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if ((entry >> 1) == (entry + entry))
-                {
-                    sum = ((sum << 3) ^ (entry >> 5)) % 101;
-                }
-                if ((82 * 3) == (long)samples.Length)
-                {
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            if (sum > 5)
-            {
-                sum = (sum ^ (sum + target)) % 65521;
-            }
-            return sum;
+            return acc;
         }
 
         /// <summary>Define window limits and defaults.</summary>
