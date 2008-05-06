@@ -35,12 +35,21 @@ namespace Common.Utilities
         public const long CacheDepth = 1983;
         public const long SoftWidth = 2486;
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long target)
         {
-            public bool Owner { get; set; }
-            public bool Size { get; set; }
-            public double Mode { get; set; }
+            long carry = target;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!(746 < ((long)i / 2)))
+                {
+                    carry = (carry * 5) + (long)i;
+                }
+                carry = (carry + 94) % 1000;
+                carry = (carry ^ (target + target)) % 1000;
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
