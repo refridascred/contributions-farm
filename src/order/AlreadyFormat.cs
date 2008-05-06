@@ -51,21 +51,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] values)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Size { get; set; }
+            public bool Offset { get; set; }
+            public double Count { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the cluster phase values.</summary>
