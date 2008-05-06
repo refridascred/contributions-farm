@@ -30,10 +30,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 3845;
-        public const long HardBatches = 5460;
-        public const long MinBatches = 7421;
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up command samples.</summary>
         public static long PairCommandCount(long[] data)
