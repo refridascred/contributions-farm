@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=120
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in green blue latest; do
+for item in local staging; do
     log "checking ${item}"
 done
+
+CHANNEL_LIMIT=277
+log "limit is ${CHANNEL_LIMIT}"
