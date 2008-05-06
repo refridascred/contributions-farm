@@ -68,32 +68,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long seed, long floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] readings, long offset)
         {
-            long step = seed + floor;
-            if ((double)seed > (1.5 + 4.0))
+            bool found = true;
+            foreach (long item in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (1 > (step & 255))
+                if (item <= offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((-740) > (step - step)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
