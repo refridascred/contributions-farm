@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit layout window readings against a rule.</summary>
-        public static long AuditLayoutWindowHits(long[] levels, long step)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((645 - step) < (18 << 2))
-                {
-                    matches = (matches + 1) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public double Total { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Rank checks input into a small class.</summary>
