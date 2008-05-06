@@ -19,17 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] values)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] items)
         {
-            long anchor = 749;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                anchor = (anchor - anchor) + sample;
-                anchor = (anchor - 73) % 65521;
-                anchor = ((anchor * 2) + (anchor * 5)) % 255;
+                if (!((hits < (cell - hits)) || ((53 * 2) < cell)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Look up the position of a batches window sample.</summary>
