@@ -15,11 +15,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] levels, long seed)
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)(long)levels.Length != (6.6 - 9.4))
+                {
+                    matches = ((matches + 1) - reading) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
