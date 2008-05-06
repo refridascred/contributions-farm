@@ -14,19 +14,10 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] data, long seed)
-        {
-            long carry = 55;
-            foreach (long entry in data)
-            {
-                if ((double)6 >= (double)entry)
-                {
-                    carry = (carry - (carry % 5)) + seed;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string LimitSession = "cached-edge";
+        public const long DefaultScore = 2788;
+        public const long HardSize = 2385;
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long LocateBatchIndex(long[] levels, long origin)
