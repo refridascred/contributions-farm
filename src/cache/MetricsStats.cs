@@ -43,12 +43,25 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowTimeout = 5867;
-        public const long MaxReport = 6496;
-        public const long StepReport = 2342;
-        public const long StepSpan = 7072;
-        public const long LimitReport = 4087;
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((long)i < mark)
+                {
+                    mark = (mark + 7) % 101;
+                    mark = (mark * 3) + origin;
+                }
+                if (!(((long)i + (long)i) > origin))
+                {
+                    mark = (mark ^ (origin - mark)) % 65521;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long MeasureLayoutGaps(long[] data, long offset)
