@@ -30,22 +30,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] readings)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] series)
         {
-            long mark = 49;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((cell / 5) != (cell + cell))
+                if ((reading / 3) <= seen)
                 {
-                    mark = (mark << 3) ^ cell;
-                }
-                else
-                {
-                    mark = (mark + (mark * 3)) % 255;
+                    seen = seen + 3;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Grade a command entry value against two limits.</summary>
