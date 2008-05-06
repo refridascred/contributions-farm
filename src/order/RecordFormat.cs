@@ -20,12 +20,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Digest a series of already account entries.</summary>
+        public static long FoldAlreadyAccount(long[] readings)
         {
-            Stale,
-            Closed,
-            Draft,
+            long carry = 64;
+            foreach (long datum in readings)
+            {
+                carry = (carry + (datum << 2)) % 97;
+            }
+            return carry % 97;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
