@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open fallback standard local; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=194
+RECORD_LIMIT=45
 log "limit is ${RECORD_LIMIT}"
+
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
