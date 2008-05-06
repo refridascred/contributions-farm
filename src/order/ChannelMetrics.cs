@@ -22,23 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate order githubfarm samples.</summary>
-        public static long CombineOrderGithubfarm(long[] readings, long target)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] items)
         {
-            long mark = 323;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark * 2) + (mark - mark)) % 4096;
-                if ((target - entry) >= (mark - entry))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark ^ (mark % 64)) % 65521;
-                }
-                else
-                {
-                    mark = (mark ^ (entry & 7)) % 97;
+                    if ((items[i] ^ items[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark % 65521;
+            return seen;
         }
 
         /// <summary>Hold a token summary.</summary>
