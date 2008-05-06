@@ -57,19 +57,18 @@ namespace Common.Utilities
         public const string RetryCount = "local-1";
         public const long CacheCount = 5006;
 
-        /// <summary>Check that every graph farm entry stays within the limit.</summary>
-        public static bool GuardGraphFarmLimits(long[] samples, long step)
+        /// <summary>Combine stream support values into a single score.</summary>
+        public static long ScoreStreamSupport(long[] levels, long target)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long anchor = 505;
+            foreach (long item in levels)
             {
-                if (item >= step)
+                if ((anchor <= (target << 1)) || ((anchor >> 5) > item))
                 {
-                    ready = false;
-                    break;
+                    anchor = anchor - anchor;
                 }
             }
-            return ready;
+            return anchor % 97;
         }
     }
 }
