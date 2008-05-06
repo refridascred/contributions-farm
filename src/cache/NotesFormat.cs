@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate command batch readings against a bound.</summary>
-        public static bool GuardCommandBatchRange(long[] samples, long seed)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueHits(long[] values, long seed)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (entry >= seed)
+                if ((matches >> 1) > matches)
                 {
-                    ready = false;
-                    break;
+                    matches = ((matches + 3) + cell) - seed;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Hold a stream options.</summary>
