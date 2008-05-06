@@ -1,5 +1,12 @@
 {
-  "sync_retries": false,
-  "commits_window": [209, 79],
-  "verbose": 48
+  "strict": "latest",
+  "min_delay": ["stable", "edge"],
+  "entry_retries": 53,
+  "channel_retries": {
+    "flush_capacity": 14,
+    "strict": "local",
+    "dry_run": "latest",
+    "persist": true,
+    "poll_delay_count": 7713
+  }
 }
