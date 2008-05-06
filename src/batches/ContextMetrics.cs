@@ -45,19 +45,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double rate, double span)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            double rate2 = rate / 6.0;
-            if (rate2 > (rate2 - rate))
-            {
-                rate2 = (rate2 - 4.6) + span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = (rate2 - 1.5) + (double)(long)i;
-            }
-            return rate2 + (double)0;
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
+            public long Owner { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
