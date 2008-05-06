@@ -20,22 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up batches report samples.</summary>
-        public static long MatchBatchesReportCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 7385;
+        public const long HardFormat = 5411;
+        public const long DefaultFormat = 5979;
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long LookupGithubfarmIndex(long[] data, long target)
