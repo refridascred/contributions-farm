@@ -29,19 +29,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every record account entry stays within the limit.</summary>
-        public static bool CheckRecordAccountBounds(long[] data, long target)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if (datum <= target)
+                if (datum <= limit)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
