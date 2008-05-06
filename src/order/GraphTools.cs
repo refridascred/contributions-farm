@@ -14,24 +14,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a support cache pair into a bucket.</summary>
-        public static long RankSupportCache(long target, long floor)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] items, long floor)
         {
-            if ((target & 15) <= (target % 64))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (0.5 < (double)target)
+                if (items[i] == floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
