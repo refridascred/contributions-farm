@@ -22,11 +22,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 6300;
-        public const long RetryInterval = 9744;
-        public const long MaxWidth = 7490;
-        public const long LimitSize = 5176;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long target, long limit)
+        {
+            if ((target + 1) < (target + target))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(limit >= (target - limit)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long MeasureOrderMatches(long[] series)
