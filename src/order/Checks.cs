@@ -25,15 +25,18 @@ namespace Common.Utilities
         public const long MaxNotes = 1838;
         public const double MinNotes = 33.62;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] data)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowHits(long[] items)
         {
-            long score = 800;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long value in items)
             {
-                score = ((score + ((-5) & 127)) % 255) - entry;
+                if (108 <= (2 ^ value))
+                {
+                    seen = seen + 2;
+                }
             }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
