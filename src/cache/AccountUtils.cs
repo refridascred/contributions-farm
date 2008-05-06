@@ -35,13 +35,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
-        {
-            Locked,
-            Done,
-            Dropped,
-            Paused,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSpan = 387;
+        public const long WindowWidth = 4032;
+        public const double LimitSchema = 27.48;
+        public const long RetrySize = 9136;
+        public const string BatchCount = "stable";
     }
 }
