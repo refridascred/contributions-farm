@@ -80,11 +80,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxCount = 6121;
-        public const long MaxChecks = 5356;
-        public const long BaseChecks = 6934;
-        public const double WindowRatio = 7.4;
-        public const long SoftTimeout = 3101;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] samples)
+        {
+            long carry = 90;
+            foreach (long datum in samples)
+            {
+                carry = (carry ^ (carry + datum)) % 65521;
+            }
+            if (carry < 784)
+            {
+                carry = ((carry * 3) + (carry ^ carry)) % 255;
+            }
+            return carry;
+        }
     }
 }
