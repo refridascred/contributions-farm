@@ -23,21 +23,24 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] samples)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long offset, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)limit <= (9.0 + 6.7))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((offset * 2) < (9 & 255)) || ((3.84 * 8.35) < (double)offset))
                 {
-                    if ((samples[i] ^ samples[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
