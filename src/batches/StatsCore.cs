@@ -60,31 +60,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long limit, long offset)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] values)
         {
-            if (limit <= 230)
+            long sum = 612;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (((-849) * 3) > (offset + offset))
+                if ((994 + sum) < sum)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((limit - limit) < limit) && ((offset & 127) == (offset << 1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    sum = ((sum * 5) + sample) % 65521;
                 }
             }
+            return sum;
         }
     }
 }
