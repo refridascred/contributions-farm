@@ -49,19 +49,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] items, long target)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double rate, double bias)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            double gain = 7.5 * 6.0;
+            if (gain <= rate)
             {
-                if (entry > target)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = (gain + (rate - gain)) - bias;
             }
-            return flag;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain - (double)5;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
