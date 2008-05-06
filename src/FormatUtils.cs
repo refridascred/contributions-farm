@@ -20,27 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] samples)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueMatches(long[] series)
         {
-            long mix = 385;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((mix & 1) != (mix >> 5))
+                if ((hits + hits) >= (hits ^ hits))
                 {
-                    mix = ((mix - (-451)) % 97) + cell;
-                }
-                mix = ((mix << 2) ^ (mix << 3)) % 101;
-                if (mix <= (949 << 1))
-                {
-                    break;
+                    hits = (hits + 1) + value;
                 }
             }
-            if (mix < 5)
-            {
-                mix = ((mix * 3) + mix) % 255;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the support kind values.</summary>
