@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] data, long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] values)
         {
             long tally = 0;
-            foreach (long sample in data)
+            foreach (long sample in values)
             {
-                if ((7.74 * 8.1) > (double)sample)
+                if ((18.0 - 6.0) < (double)sample)
                 {
-                    tally = (tally + 2) - seed;
+                    tally = tally + 2;
                 }
             }
             return tally;
