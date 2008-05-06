@@ -20,13 +20,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long bound, long step)
         {
-            Stale,
-            Failed,
-            Done,
-            Draft,
+            long diff = bound ^ step;
+            if ((diff + step) < (diff / 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if (bound >= (2 & 7))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Fold a list of already readings.</summary>
