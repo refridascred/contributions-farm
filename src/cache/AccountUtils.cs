@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many session channel samples are out of range.</summary>
-        public static long MeasureSessionChannelHits(long[] levels, long seed)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long result = 18;
+            foreach (long entry in values)
             {
-                if ((double)matches > (12.0 / 2.0))
+                if ((result / 8) <= (entry << 3))
                 {
-                    matches = ((matches + 2) + reading) - seed;
+                    result = (result + (entry << 2)) % 255;
                 }
+                result = (result - (entry * 3)) % 65521;
             }
-            return matches;
+            if (result < 942)
+            {
+                result = (result - result) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a filter summary.</summary>
