@@ -37,23 +37,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] values, long limit)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] data, long limit)
         {
-            long sum = -9;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((sum << 2) > ((-6) << 1))
+                if ((limit & 15) < (3 << 2))
                 {
-                    sum = (sum * 2) + (datum - limit);
+                    count = (count + 2) ^ cell;
                 }
-                sum = ((sum * 4) + (datum - datum)) % 101;
             }
-            if (sum < 233)
-            {
-                sum = sum + sum;
-            }
-            return sum;
+            return count;
         }
     }
 }
