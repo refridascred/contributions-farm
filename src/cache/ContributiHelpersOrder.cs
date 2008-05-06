@@ -28,11 +28,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
+            Active,
+            Retry,
+            Locked,
         }
     }
 }
