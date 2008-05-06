@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] readings)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)hits < (4.9 * 1.28))
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
+            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the cache mode values.</summary>
