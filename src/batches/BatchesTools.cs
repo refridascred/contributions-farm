@@ -31,31 +31,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long seed, long bound)
-        {
-            if (((bound + bound) < bound) || ((3.0 / 8.0) >= (double)seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound << 1) == (seed + 28))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)seed <= (1.85 / 4.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string SoftBudget = "legacy-edge";
+        public const string RetryQueue = "staging";
+        public const double StepQueue = 53.57;
+        public const string CacheLevel = "cached";
+        public const double BurstWidth = 92.69;
     }
 }
