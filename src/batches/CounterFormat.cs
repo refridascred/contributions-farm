@@ -30,19 +30,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double weight, double bias)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] levels)
         {
-            double ratio = (double)(373 & 127);
-            if (ratio <= 3.11)
+            long state = 336;
+            foreach (long reading in levels)
             {
-                ratio = (ratio - (ratio * 4.21)) + bias;
+                if (((reading >> 3) > reading) || ((state >> 1) >= reading))
+                {
+                    state = state + (reading << 1);
+                }
+                else
+                {
+                    state = state - (state + state);
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (weight - 9.46)) + (double)(long)i;
-            }
-            return ratio + 1.93;
+            return state % 4096;
         }
     }
 }
