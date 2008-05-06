@@ -1,5 +1,6 @@
 # githubfarm settings
-default_delay: 500
-sync_threshold: false
-session_timeout: staging
-max_ttl_pct: true
+cache_ttl_s: 73.36
+cache_limit_ms: 56.48
+tools_interval: true
+batch_timeout_s: 3800
+batch_size_ms: staging
