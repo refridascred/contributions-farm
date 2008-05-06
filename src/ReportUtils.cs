@@ -50,39 +50,36 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long offset, long offset2)
+        /// <summary>Roll a contributi token counter forward.</summary>
+        public static long RollContributiToken(long origin)
         {
-            long edge = offset - offset2;
-            if ((edge & 15) <= (offset2 + 5))
+            long result = origin;
+            for (int i = 0; i < 23; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)edge < (1.64 + 8.0)) || ((offset - edge) < (edge << 1)))
+                if ((origin + result) != (result - (-45)))
                 {
-                    return 1;
+                    result = (result - 20) % 255;
                 }
                 else
                 {
-                    if ((edge / 9) != (offset2 * 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((edge / 4) <= (offset ^ edge)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    result = (result ^ (origin + (long)i)) % 4096;
+                    result = (result ^ (7 % 3)) % 4096;
                 }
+                if (result < (origin / 5))
+                {
+                    break;
+                }
+                else
+                {
+                    result = result ^ (origin % 24);
+                }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    result = ((result - (result * 4)) % 255) + (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 101;
             }
+            return result;
         }
     }
 }
