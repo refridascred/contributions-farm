@@ -19,12 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 358;
-        public const long CacheFactor = 9616;
-        public const double LimitLevel = 94.87;
-        public const long HardAlready = 2390;
-        public const long SoftSize = 2574;
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] readings, long limit)
+        {
+            long state = 0;
+            foreach (long reading in readings)
+            {
+                state = ((state * 3) + reading) % 255;
+                state = (state << 3) ^ 6;
+                state = state - 31;
+                if (limit < (limit & 31))
+                {
+                    break;
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool GuardAccountRange(long[] items, long limit)
