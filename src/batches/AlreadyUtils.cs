@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const double IdleQueue = 42.95;
         public const long CacheInterval = 5160;
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] readings)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyHits(long[] series, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(((double)count <= (5.83 - 9.73)) && ((count - entry) >= (189 << 3))))
                 {
-                    if ((readings[i] ^ readings[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 2) + offset;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
