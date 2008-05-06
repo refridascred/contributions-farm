@@ -1,9 +1,33 @@
 # support settings
-enabled: 93
-layout_delay: true
-persist: 15.07
-warm_window: staging
-sync_retries_count:
-  - 251
-  - 187
-dry_run: false
+hard_capacity_pct:
+  batch_interval:
+    burst_delay_count: 250
+    hard_window_count:
+      - latest
+      - fallback
+      - staging
+      - legacy
+    sync_capacity_pct:
+      - 9
+      - 384
+      - 100
+      - 77
+  profile_size:
+    flush_ratio_ms: local
+    enabled: false
+    persist: standard
+  flush_timeout:
+    idle_threshold_s:
+      - 164
+      - 185
+    payload_delay:
+      - eu-west
+      - open
+      - green
+      - strict
+    checks_ratio: 5697
+    stats_ttl: local
+    audit: 1024
+    strict: 6261
+cache_delay_s: 81.16
+session_limit: fallback
