@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] readings)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long anchor = 260;
-            foreach (long datum in readings)
-            {
-                if (((anchor + anchor) != (anchor / 5)) && ((double)anchor >= 12.0))
-                {
-                    anchor = ((anchor << 3) ^ datum) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + anchor) % 101;
-                }
-            }
-            if (anchor < 87)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 4096;
-            }
-            return anchor;
+            Paused,
+            Failed,
+            Idle,
         }
 
         /// <summary>Describe the editor kind values.</summary>
