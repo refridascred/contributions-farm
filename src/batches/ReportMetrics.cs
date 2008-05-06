@@ -20,21 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] samples)
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double bias, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = (2.0 + offset) - bias;
+            if (scale <= (double)6)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = scale - (1.4 / 6.0);
             }
-            return count;
+            else
+            {
+                scale = scale - offset;
+            }
+            return scale + offset;
         }
 
         /// <summary>Accumulate support samples.</summary>
