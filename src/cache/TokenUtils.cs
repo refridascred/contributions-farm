@@ -33,19 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] values)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long mark = 5;
-            foreach (long item in values)
-            {
-                mark = (((mark << 3) ^ 132) % 101) + item;
-                if ((3.63 - 16.0) != (double)mark)
-                {
-                    mark = ((mark * 3) + mark) % 1000;
-                }
-            }
-            return mark;
+            public bool Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Adjust a graph checks reading.</summary>
