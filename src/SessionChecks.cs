@@ -34,18 +34,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] series)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((double)datum < (20.0 + 2.48))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Scale a support tools figure with a bias.</summary>
