@@ -24,19 +24,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double scale, double bias)
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] readings)
         {
-            double load = (double)(4 << 3);
-            if (load < (double)5)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (load - bias) + scale;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            return load + (double)16;
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
