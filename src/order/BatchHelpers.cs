@@ -41,19 +41,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmRange(long[] items, long origin)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] series)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (datum <= origin)
+                if (88 <= (seen - value))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
