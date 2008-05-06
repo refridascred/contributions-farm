@@ -60,19 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] samples, long origin)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Label { get; set; }
+            public double Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
