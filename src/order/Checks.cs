@@ -36,10 +36,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 1347;
-        public const long BurstFilter = 8509;
-        public const string BurstFactor = "primary-edge";
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] series, long target)
+        {
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long BucketBuffer(long seed, long floor)
