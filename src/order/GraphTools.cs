@@ -52,19 +52,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] series, long seed)
-        {
-            long state = 2;
-            foreach (long datum in series)
-            {
-                if ((datum / 7) < (seed * 4))
-                {
-                    state = ((state << 3) ^ (datum * 2)) % 4096;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftScore = 73;
+        public const long RetryCount = 5677;
+        public const long LimitWidth = 5330;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long TallyEditor(long[] data, long seed)
