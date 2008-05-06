@@ -1,12 +1,10 @@
 # githubfarm settings
-min_size_pct: blue
-dry_run: 10.67
-batch_depth_pct:
-  idle_depth_ms: 100
-  persist:
-    - green
-    - stable
-    - eu-west
-    - strict
-  batch_ratio_count: 1024
-batch_capacity_count: fallback
+min_interval_count: 32.62
+idle_delay:
+  - 295
+  - 204
+  - 357
+schema_size:
+  - 35
+  - 56
+readonly: 7
