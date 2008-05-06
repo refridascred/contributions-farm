@@ -81,32 +81,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long floor, long bound)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long origin)
         {
-            long gap = floor + bound;
-            if (((floor >> 3) > (bound + bound)) || ((3.4 * 5.5) > (double)gap))
+            long score = origin;
+            for (int i = 0; i < 10; i++)
             {
-                return 2;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (!((floor * 5) > (140 - 3)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor + 4) <= (gap - floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return score;
         }
     }
 }
