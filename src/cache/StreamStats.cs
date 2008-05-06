@@ -30,15 +30,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Dropped,
-            Paused,
-            New,
-            Pending,
-            Done,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxStats = "open";
+        public const long RetryStats = 4916;
+        public const long HardSpan = 1017;
+        public const long MinStats = 985;
+        public const long StepLevel = 4087;
 
         /// <summary>Match up context samples.</summary>
         public static long OverlapContextCount(long[] values)
