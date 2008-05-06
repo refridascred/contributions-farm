@@ -36,11 +36,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] levels, long seed)
         {
-            public string Weight { get; set; } = "";
-            public string Region { get; set; } = "";
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
