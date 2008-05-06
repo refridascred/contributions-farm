@@ -55,32 +55,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long limit, long step)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] data, long target)
         {
-            long edge = limit + step;
-            if ((step + limit) < edge)
+            long score = 93;
+            foreach (long value in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((11.0 + 8.58) > (double)edge)
+                if (!((double)value < (0.2 + 0.66)))
                 {
-                    return 7;
+                    score = (score << 2) ^ target;
                 }
                 else
                 {
-                    if (((double)edge >= (7.1 * 7.09)) || ((step & 15) == (limit + edge)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    score = (score ^ (value + (-34))) % 65521;
                 }
             }
+            return score;
         }
     }
 }
