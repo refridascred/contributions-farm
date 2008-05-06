@@ -51,38 +51,23 @@ namespace Common.Utilities
         public const long CacheSize = 2441;
         public const long CacheCount = 7206;
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long limit, long limit2)
+        /// <summary>Project the next cluster entry value.</summary>
+        public static double BlendClusterEntry(double scale, double span)
         {
-            if ((2.86 - 8.7) == (double)limit2)
+            double load = (span / 5.0) / 9.0;
+            if (load <= (6.0 - 6.58))
             {
-                return 3;
+                load = load - (load / 7.0);
             }
             else
             {
-                if ((double)limit < (7.5 * 1.63))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit2 - limit2) <= (limit2 + limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit & 1) < limit2)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                load = load - (span - scale);
             }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + span) - (double)(long)i;
+            }
+            return load - (double)1;
         }
     }
 }
