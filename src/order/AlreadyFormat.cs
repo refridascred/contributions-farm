@@ -32,12 +32,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] items, long floor)
+        /// <summary>Look up the position of a batches window sample.</summary>
+        public static long FindBatchesWindowIndex(long[] series, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] > floor)
+                if (series[i] <= floor)
                 {
                     return (long)i;
                 }
