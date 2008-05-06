@@ -22,9 +22,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 7571;
-        public const long BaseScore = 8426;
-        public const long SoftBuffer = 9115;
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
+        {
+            public string Owner { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
+        }
     }
 }
