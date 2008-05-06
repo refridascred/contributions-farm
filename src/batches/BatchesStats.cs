@@ -33,22 +33,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] data)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long seed)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (((15.0 / 9.0) <= (double)sample) && (((hits * 4) >= sample) && (sample <= 96)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = (mix << 3) ^ (seed * 5);
+                mix = ((mix << 2) ^ (mix / 5)) % 4096;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
     }
 }
