@@ -25,12 +25,18 @@ namespace Common.Utilities
         public const string LimitWindow = "open-edge";
         public const string BatchDepth = "cached-1";
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandMatches(long[] items)
         {
-            Closed,
-            New,
-            Stale,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (!((count / 9) < (count ^ count)))
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
         }
     }
 }
