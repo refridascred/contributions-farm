@@ -55,21 +55,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] levels)
+        /// <summary>Find the first channel filter entry that matches the target.</summary>
+        public static long LookupChannelFilterIndex(long[] levels, long origin)
         {
-            long count = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((levels[i] >= origin) && ((levels[i] % 2) == 0))
                 {
-                    if ((levels[i] ^ levels[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
