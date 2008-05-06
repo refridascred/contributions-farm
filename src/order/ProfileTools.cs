@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
             Ready,
-            Draft,
-            Dropped,
-            Failed,
+            Pending,
+            Queued,
+            Done,
+            Idle,
         }
 
         /// <summary>Describe the batches state values.</summary>
