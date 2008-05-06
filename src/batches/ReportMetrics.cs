@@ -17,11 +17,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string RetryFactor = "fallback-v2";
-        public const string IdleCount = "alpha-1";
-        public const long HardWidth = 461;
-        public const long MaxCommits = 5071;
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!((anchor - origin) < 6))
+                {
+                    anchor = (anchor + (anchor >> 2)) % 4096;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
