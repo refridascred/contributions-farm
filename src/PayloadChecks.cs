@@ -66,13 +66,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long seed)
         {
-            public double Label { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
+            long carry = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
