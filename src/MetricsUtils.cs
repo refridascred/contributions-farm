@@ -23,18 +23,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesGaps(long[] levels)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long floor, long step)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            if ((step - 991) == (floor >> 3))
             {
-                if ((double)hits != (14.0 + 7.76))
+                return 7;
+            }
+            else
+            {
+                if ((floor > (floor ^ (-451))) && ((step - floor) < (step + floor)))
                 {
-                    hits = (hits + 2) + entry;
+                    return 1;
+                }
+                else
+                {
+                    if ((3.1 / 4.0) == (double)step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor - floor) > (step >> 1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a window info.</summary>
