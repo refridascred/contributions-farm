@@ -37,18 +37,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the channel cache entries that pass the check.</summary>
-        public static long AuditChannelCacheMatches(long[] levels, long target)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (!(target <= (datum - target)))
+                if ((15.0 >= (double)count) || !((3.4 - 8.0) >= (double)count))
                 {
-                    seen = seen + 3;
+                    count = ((count + 3) ^ item) - offset;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
