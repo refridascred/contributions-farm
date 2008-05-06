@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many metrics schema samples are out of range.</summary>
-        public static long TallyMetricsSchemaHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (seen < (value + 8))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string WindowBuffer = "alpha-v2";
+        public const long BatchBuffer = 8113;
+        public const string HardBuffer = "alpha-1";
 
         /// <summary>Count editor session pairs that satisfy a relation.</summary>
         public static long CompareEditorSessionCount(long[] series)
