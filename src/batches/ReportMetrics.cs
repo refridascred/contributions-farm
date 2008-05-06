@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiGaps(long[] series, long target)
         {
-            Active,
-            Failed,
-            Queued,
-            Draft,
-            Stale,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (!((767 >> 1) == (datum & 15)))
+                {
+                    seen = (seen + 1) - target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate support samples.</summary>
