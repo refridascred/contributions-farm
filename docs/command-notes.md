@@ -1,11 +1,13 @@
 # Command notes
 
-Run the tools check before changing any queue limits.
-When a profile fails, the editor handler retries a few times before giving up.
-The channel report groups every report by metric.
+Run the metrics check before changing any queue limits.
+Run the graph check before changing any channel limits.
+
+Keep format and commits names short and lowercase.
+The report report groups every farm by format.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Log every notes change
-- Document new cache fields
+- Validate format input early
+- Keep command values small
+- Log every counter change
