@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many record cache samples are out of range.</summary>
-        public static long AuditRecordCacheOutliers(long[] items)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long anchor = 70;
+            foreach (long sample in items)
             {
-                if (((long)items.Length + cell) != (tally / 9))
+                if ((anchor + seed) <= ((long)items.Length % 2))
                 {
-                    tally = tally + 1;
+                    anchor = (anchor ^ sample) % 1000;
+                }
+                if ((sample >> 4) < (sample + seed))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (anchor < 56)
+            {
+                anchor = (anchor ^ seed) % 4096;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Fold a list of route batches readings.</summary>
