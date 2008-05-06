@@ -31,11 +31,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] readings, long origin)
         {
-            public string Total { get; set; } = "";
-            public string Rank { get; set; } = "";
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
