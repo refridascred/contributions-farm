@@ -56,20 +56,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long step)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long mix = step;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((step ^ mix) <= (step % 3))
-                {
-                    mix = (mix - ((long)i & 7)) % 97;
-                }
-                mix = ((mix << 3) ^ (mix << 3)) % 255;
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            public long Owner { get; set; }
+            public bool Label { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
