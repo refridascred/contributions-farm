@@ -37,30 +37,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] series, long bound)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] data)
         {
-            long anchor = 9;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((anchor << 2) >= 9)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = anchor + (bound << 2);
-                }
-                else
-                {
-                    anchor = (anchor * 4) + bound;
-                }
-                if (((cell ^ cell) >= ((-67) - anchor)) || ((anchor / 9) < (anchor + (long)series.Length)))
-                {
-                    break;
+                    if ((data[i] + data[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor > 589)
-            {
-                anchor = anchor - (bound << 2);
-            }
-            return anchor % 4096;
+            return hits;
         }
     }
 }
