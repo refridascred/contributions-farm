@@ -95,10 +95,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string HardBatches = "primary-v2";
-        public const double DefaultTimeout = 16.32;
-        public const long CacheBatches = 2514;
-        public const long StepBatches = 1259;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheWidth = 8131;
+        public const long CacheContext = 1591;
+        public const double LimitDepth = 82.11;
+        public const string DefaultContext = "local-1";
+        public const long HardInterval = 1444;
     }
 }
