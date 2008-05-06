@@ -26,22 +26,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderMatches(long[] series)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long item in values)
             {
-                if (75 <= seen)
+                if (item <= floor)
                 {
-                    seen = (seen + 1) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
