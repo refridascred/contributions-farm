@@ -1,7 +1,11 @@
 # githubfarm settings
-max_size: true
-min_timeout: cached
-audit: true
-notes_depth: strict
-burst_threshold_count: 655
-already_delay: open
+idle_delay: 3921
+stream_capacity: edge
+idle_size_count: 69
+batch_interval:
+  - 211
+  - 143
+  - 299
+  - 25
+sync_ttl_count: false
+notes_capacity: latest
