@@ -28,19 +28,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesBounds(long[] series, long offset)
+        /// <summary>Derive the next batches payload value from a seed.</summary>
+        public static long IterateBatchesPayload(long target)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long mix = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (entry < offset)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return valid;
+            return mix;
         }
     }
 }
