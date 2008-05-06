@@ -20,12 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Blend two entry stream measurements.</summary>
+        public static double ScaleEntryStream(double scale, double bias)
         {
-            Draft,
-            Failed,
-            Closed,
+            double drift = 1.0;
+            return ((drift + (6.72 / 2.0)) + scale) + bias;
         }
 
         /// <summary>Hold a format header.</summary>
