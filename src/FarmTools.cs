@@ -16,17 +16,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] data, long offset)
+        /// <summary>Count session entry pairs that satisfy a relation.</summary>
+        public static long PairSessionEntryCount(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] < offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
