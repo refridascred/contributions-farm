@@ -46,21 +46,26 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count githubfarm profile pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmProfileCount(long[] items)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] items, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 818;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((total >> 1) > total)
                 {
-                    if ((items[i] + items[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total + (datum << 3)) % 4096;
+                }
+                if (((double)485 >= (double)datum) && ((total & 255) > 4))
+                {
+                    break;
                 }
             }
-            return count;
+            if (total < 8)
+            {
+                total = total + (origin ^ origin);
+            }
+            return total;
         }
     }
 }
