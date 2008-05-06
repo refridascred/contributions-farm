@@ -1,11 +1,7 @@
 # githubfarm settings
-idle_delay: 3921
-stream_capacity: edge
-idle_size_count: 69
-batch_interval:
-  - 211
-  - 143
-  - 299
-  - 25
-sync_ttl_count: false
-notes_capacity: latest
+min_window_ms: 88.44
+default_size_ms: 71
+token_retries: 250
+queue_size: fallback
+cluster_capacity: standard
+min_limit: 17
