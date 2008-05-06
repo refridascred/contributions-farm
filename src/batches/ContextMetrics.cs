@@ -12,15 +12,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long step)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] data, long seed)
         {
-            long state = step;
-            for (int i = 0; i < 7; i++)
+            long carry = 55;
+            foreach (long entry in data)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                if ((double)6 >= (double)entry)
+                {
+                    carry = (carry - (carry % 5)) + seed;
+                }
             }
-            return state;
+            return carry % 1000;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
