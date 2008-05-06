@@ -75,22 +75,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] series, long bound)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionRange(long[] series, long target)
         {
-            long state = 31;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if ((double)state < 6.7)
+                if (entry > target)
                 {
-                    state = ((state << 3) ^ (1 / 2)) ^ cell;
-                }
-                else
-                {
-                    state = state - (state + bound);
+                    flag = false;
+                    break;
                 }
             }
-            return state % 4096;
+            return flag;
         }
     }
 }
