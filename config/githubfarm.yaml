@@ -1,16 +1,20 @@
 # githubfarm settings
-soft_interval_ms:
-  - staging
-  - staging
-soft_delay_pct: open
-idle_ratio:
-  - open
-  - green
-  - eu-west
-  - latest
-verbose:
-  - 251
-  - 386
-  - 47
-persist: 6038
-poll_retries_pct: 40.87
+poll_delay_count: legacy
+enabled: 6601
+audit: 500
+strict:
+  default_ttl_pct:
+    - 194
+    - 21
+  tools_interval:
+    - legacy
+    - staging
+  buffer_ratio: 16.92
+  soft_ratio_ms: 75
+  payload_ratio: 92.11
+  filter_retries: 54
+retry_timeout: 32.26
+profile_window:
+  - standard
+  - fallback
+  - strict
