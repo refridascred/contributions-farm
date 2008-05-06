@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long step)
         {
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Region { get; set; }
-            public double Limit { get; set; }
+            long state = step;
+            for (int i = 0; i < 10; i++)
+            {
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
