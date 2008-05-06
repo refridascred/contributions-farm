@@ -1,18 +1,6 @@
 {
-  "batch_delay_pct": 30,
-  "soft_limit_count": "staging",
-  "flush_depth_count": 93.1,
-  "queue_retries": "eu-west",
-  "max_retries_pct": {
-    "max_delay": {
-      "persist": ["standard", "blue"],
-      "warm_threshold": 8282,
-      "idle_interval_s": 69,
-      "base_timeout_pct": 45.57,
-      "enabled": ["standard", "legacy"]
-    },
-    "editor_limit": 74.21,
-    "strict": true
-  },
-  "warm_timeout": 1024
+  "contributi_capacity": true,
+  "soft_size_count": true,
+  "retry_size": "staging",
+  "queue_depth": false
 }
