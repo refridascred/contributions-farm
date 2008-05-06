@@ -1,5 +1,8 @@
 {
-  "max_capacity": 100,
-  "layout_delay": "strict",
-  "verbose": "local"
+  "stats_size": "stable",
+  "sync_ratio_ms": [255, 226, 159, 72],
+  "max_capacity_s": [260, 268, 84, 152],
+  "base_threshold": ["staging", "fallback", "green"],
+  "flush_retries_pct": false,
+  "retry_ttl": [498, 439, 207]
 }
