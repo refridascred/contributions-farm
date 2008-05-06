@@ -1,18 +1,16 @@
 # githubfarm settings
-soft_window_ms: 1024
-sync_delay:
-  cache_ratio: true
-  min_threshold_ms: 6.52
-  sync_interval_count: strict
-  soft_interval_ms: primary
-  idle_ttl_s:
-    warm_retries: 66.25
-    idle_timeout_ms: 250
-    hard_interval_pct: 1320
-    cache_retries_ms: 69.31
-    token_timeout:
-      - 96
-      - 498
-      - 451
-      - 196
-route_threshold: latest
+max_threshold_s: green
+audit: true
+soft_window: true
+default_timeout_ms: 17.84
+soft_timeout_pct:
+  metrics_ttl: 93
+  editor_timeout: 49.24
+  cache_threshold_pct: 81.1
+  flush_interval_pct:
+    - 83
+    - 191
+    - 348
+max_window_s:
+  - eu-west
+  - cached
