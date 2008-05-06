@@ -1,8 +1,6 @@
 {
-  "persist": "green",
-  "cache_delay": 51.79,
-  "compress": 38.91,
-  "soft_timeout": ["edge", "cached"],
-  "flush_timeout_ms": 2,
-  "cluster_threshold": "local"
+  "persist": "standard",
+  "poll_limit_s": 4445,
+  "idle_depth": 18.43,
+  "payload_delay": 62
 }
