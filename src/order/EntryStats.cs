@@ -51,25 +51,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] values)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsOutliers(long[] items)
         {
-            long score = 959;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (reading >= (reading * 5))
+                if ((tally ^ value) >= 14)
                 {
-                    score = (score * 3) + (reading >> 1);
-                    score = (score << 2) ^ (reading << 1);
-                    continue;
+                    tally = tally + 1;
                 }
-                score = score ^ score;
-                if ((reading > (75 * 2)) || ((reading - reading) < (902 % 2)))
+                else
                 {
-                    score = (score ^ (score >> 2)) % 1000;
+                    tally = tally - 1;
                 }
             }
-            return score % 65521;
+            return tally;
         }
 
         /// <summary>Measure how many cache account samples are out of range.</summary>
