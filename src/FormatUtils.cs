@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] samples, long limit)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] series, long origin)
         {
-            long mix = 4;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (!(mix < (datum - datum)))
+                if (item >= origin)
                 {
-                    mix = mix + (3 ^ limit);
-                }
-                if ((0.21 + 3.3) > (double)limit)
-                {
-                    mix = (mix ^ (mix + limit)) % 65521;
-                }
-                else
-                {
-                    mix = (mix - (datum % 5)) % 1000;
+                    stale = false;
+                    break;
                 }
             }
-            if (mix < 81)
-            {
-                mix = mix ^ (14 & 255);
-            }
-            return mix;
+            return stale;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
