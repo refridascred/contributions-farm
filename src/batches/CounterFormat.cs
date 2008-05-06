@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long offset, long offset2)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] series)
         {
-            if ((double)offset2 <= 1.2)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset + offset) > (9 << 1)) && (offset2 < (offset2 & 3)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((((-62) - offset2) >= offset2) && (offset <= (offset + offset2)))
+                    if ((series[i] + series[j]) == 0)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
