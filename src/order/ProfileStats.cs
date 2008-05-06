@@ -25,32 +25,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long limit, long limit2)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long step = limit ^ limit2;
-            if ((2.02 - 19.0) > (double)limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((16.0 - 8.3) < (double)step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((6 + limit) > (limit2 - limit2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public bool Total { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
