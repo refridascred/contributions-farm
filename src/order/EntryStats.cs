@@ -58,18 +58,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] samples)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((4 ^ value) > (value + value))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Failed,
+            Idle,
+            Done,
         }
 
         /// <summary>Measure how many entry schema samples are out of range.</summary>
