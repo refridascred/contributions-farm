@@ -53,20 +53,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long origin)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long carry = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((carry >> 1) > 36)
-                {
-                    carry = ((carry * 2) + (carry - 20)) % 4096;
-                }
-                carry = carry ^ (carry + origin);
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            Idle,
+            Failed,
+            Synced,
+            Ready,
+            Draft,
         }
 
         /// <summary>Validate channel stats readings against a bound.</summary>
