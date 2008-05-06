@@ -28,21 +28,20 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Count counter schema pairs that satisfy a relation.</summary>
-        public static long MatchCounterSchemaCount(long[] samples)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = step;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                total = (total - step) % 97;
+                if (step <= (22 + (long)i))
                 {
-                    if ((samples[i] + samples[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    continue;
                 }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return hits;
+            return total;
         }
     }
 }
