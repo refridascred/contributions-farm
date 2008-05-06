@@ -22,11 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long limit, long origin)
         {
-            public double Label { get; set; }
-            public bool Rank { get; set; }
+            if ((origin / 7) < (origin - limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)limit >= (14.0 / 3.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a layout header.</summary>
