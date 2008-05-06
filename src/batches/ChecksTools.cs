@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double bias, double offset)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            double mean = offset - (double)97;
-            if (mean <= bias)
-            {
-                mean = mean - (offset * 6.55);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - (offset * 2.0);
+            public long Mode { get; set; }
+            public double Count { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Locate a cache reading by value.</summary>
