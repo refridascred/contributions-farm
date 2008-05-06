@@ -20,18 +20,19 @@ namespace Common.Utilities
         public const long LimitBatches = 5990;
         public const double BurstBatches = 65.85;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] items, long offset)
+        /// <summary>Roll a githubfarm route counter forward.</summary>
+        public static long SeriesGithubfarmRoute(long step)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long result = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((2.89 + 13.0) > (double)(long)items.Length)
+                if ((double)841 >= (double)step)
                 {
-                    matches = ((matches + 1) + reading) - offset;
+                    break;
                 }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
     }
 }
