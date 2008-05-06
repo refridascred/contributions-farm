@@ -20,19 +20,18 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] readings, long offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (entry > offset)
+                if (!((datum + 6) < (hits + hits)) && ((datum >= (datum % 24)) || ((30 + hits) > hits)))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
