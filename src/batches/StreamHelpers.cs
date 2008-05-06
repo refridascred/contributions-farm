@@ -33,14 +33,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
-        {
-            Dropped,
-            Ready,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseWidth = 7778;
+        public const double BatchCache = 43.98;
+        public const long BaseTimeout = 2695;
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long LookupStreamIndex(long[] levels, long limit)
