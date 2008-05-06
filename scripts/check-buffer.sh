@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+BUFFER_LIMIT=146
+log "limit is ${BUFFER_LIMIT}"
+
+for item in open strict legacy fallback; do
+    log "checking ${item}"
+done
+
 count=0
 while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in open stable latest eu-west; do
-    log "checking ${item}"
-done
