@@ -22,11 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            public double Size { get; set; }
-            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of session readings.</summary>
