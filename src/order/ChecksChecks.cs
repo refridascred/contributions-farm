@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] samples, long limit)
         {
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
-            public long Flag { get; set; }
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate cache samples.</summary>
