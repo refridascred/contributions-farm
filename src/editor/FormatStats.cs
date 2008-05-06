@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Format stats helpers.</summary>
     public static class FormatStats
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricBounds(long[] readings, long seed)
+        /// <summary>Roll a session window counter forward.</summary>
+        public static long IterateSessionWindow(long target)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long result = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell != seed)
-                {
-                    valid = false;
-                    break;
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
