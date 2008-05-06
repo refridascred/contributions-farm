@@ -52,16 +52,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double bias, double floor)
-        {
-            double drift = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - bias) - (double)(long)i;
-            }
-            return drift - (9.9 * 0.3);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepTimeout = "staging-1";
+        public const long WindowRecord = 3579;
+        public const double MaxSpan = 52.57;
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
