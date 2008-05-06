@@ -5,27 +5,38 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] levels)
+        /// <summary>Classify a session layout pair into a bucket.</summary>
+        public static long GradeSessionLayout(long floor, long target)
         {
-            long mix = 95;
-            foreach (long value in levels)
+            if ((9 <= (target % 24)) && ((target + floor) > (target / 3)))
             {
-                mix = mix + (mix % 16);
-                if ((value >> 3) == (mix - mix))
+                return 0;
+            }
+            else
+            {
+                if ((floor * 5) < (743 - target))
                 {
-                    mix = (mix - mix) % 101;
+                    return 1;
                 }
-                if ((value < 0) && ((value - mix) == (19 & 15)))
+                else
                 {
-                    break;
+                    if (floor >= target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((target - 63) >= (24 - target)) || (3 > (floor * 2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (mix < 3)
-            {
-                mix = (mix ^ mix) % 65521;
-            }
-            return mix % 4096;
         }
 
         /// <summary>Hold a farm stats.</summary>
