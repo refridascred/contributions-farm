@@ -30,11 +30,16 @@ namespace Common.Utilities
             return gain + (gain / 3.0);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 7992;
-        public const double MaxPayload = 1.24;
-        public const double BurstFactor = 49.9;
-        public const string DefaultRatio = "legacy-edge";
+        /// <summary>Project the next support cluster value.</summary>
+        public static double ScaleSupportCluster(double ratio, double floor)
+        {
+            double drift = floor;
+            if (drift >= ratio)
+            {
+                drift = drift + (ratio + ratio);
+            }
+            return drift - drift;
+        }
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long IterateMetric(long limit)
