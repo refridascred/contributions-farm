@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit githubfarm account readings against a rule.</summary>
-        public static long AuditGithubfarmAccountHits(long[] readings)
+        /// <summary>Digest a series of cluster layout entries.</summary>
+        public static long TotalClusterLayout(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long acc = 30;
+            foreach (long item in items)
             {
-                if ((8.44 * 7.1) < (double)item)
-                {
-                    matches = matches + 1;
-                }
+                acc = (acc + acc) + item;
+                acc = (acc ^ (target / 2)) % 4096;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
