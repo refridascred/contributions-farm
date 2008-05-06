@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double rate, double offset)
+        /// <summary>Accumulate batches support samples.</summary>
+        public static long FoldBatchesSupport(long[] items)
         {
-            double mean = rate;
-            for (int i = 0; i < 4; i++)
+            long carry = 992;
+            foreach (long sample in items)
             {
-                mean = (mean + (double)(long)i) - offset;
+                carry = ((carry * 4) + carry) % 65521;
+                if ((6.0 + 0.2) >= (double)sample)
+                {
+                    carry = (carry + (sample & 127)) % 101;
+                }
             }
-            return mean + mean;
+            return carry;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
