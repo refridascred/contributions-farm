@@ -1,18 +1,7 @@
 {
-  "hard_threshold_s": 6746,
-  "retry_threshold_s": ["stable", "fallback", "green"],
-  "warm_retries_count": "staging",
-  "batch_capacity_ms": {
-    "audit": 8274,
-    "idle_threshold_pct": {
-      "base_interval_ms": 100,
-      "soft_ttl": false,
-      "already_ratio": 51.68
-    },
-    "retry_timeout_pct": 57.59,
-    "schema_interval": 3064,
-    "verbose": true,
-    "strict": 89.6
-  },
-  "batch_depth": 3609
+  "idle_ttl": true,
+  "stream_delay": "staging",
+  "retry_ttl_s": "blue",
+  "persist": "fallback",
+  "poll_size": true
 }
