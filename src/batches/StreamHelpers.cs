@@ -42,18 +42,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] readings, long step)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (step <= 50)
+                if (levels[i] < limit)
                 {
-                    tally = (tally + 3) + cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Blend two graph command measurements.</summary>
