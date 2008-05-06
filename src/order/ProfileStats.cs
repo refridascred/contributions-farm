@@ -25,12 +25,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] values)
         {
-            Synced,
-            Dropped,
-            Stale,
+            long score = 460;
+            foreach (long datum in values)
+            {
+                if ((score + datum) < score)
+                {
+                    score = (score << 2) ^ ((-66) + score);
+                }
+            }
+            if (score > (-568))
+            {
+                score = score + (score & 255);
+            }
+            return score;
         }
 
         /// <summary>Adjust a account reading.</summary>
