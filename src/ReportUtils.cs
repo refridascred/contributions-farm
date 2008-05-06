@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Validate route profile readings against a bound.</summary>
+        public static bool CheckRouteProfileLimits(long[] levels, long step)
         {
-            New,
-            Ready,
-            Paused,
-            Stale,
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Roll a context counter forward.</summary>
