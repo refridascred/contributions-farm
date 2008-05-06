@@ -13,14 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
-        {
-            public double Weight { get; set; }
-            public long Flag { get; set; }
-            public bool Count { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 358;
+        public const long CacheFactor = 9616;
+        public const double LimitLevel = 94.87;
+        public const long HardAlready = 2390;
+        public const long SoftSize = 2574;
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool GuardAccountRange(long[] items, long limit)
