@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] values)
+        /// <summary>Iterate the commits buffer series from a seed.</summary>
+        public static long RollCommitsBuffer(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((offset << 1) > (acc + (-37)))
                 {
-                    if ((values[i] + values[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = acc + (acc - acc);
+                    break;
                 }
+                else
+                {
+                    acc = acc - ((long)i - acc);
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
