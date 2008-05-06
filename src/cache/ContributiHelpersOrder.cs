@@ -16,15 +16,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] series, long limit)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long seed)
         {
-            long state = 272;
-            foreach (long sample in series)
+            long mix = seed;
+            for (int i = 0; i < 12; i++)
             {
-                state = (state + sample) - limit;
+                mix = (mix * 3) + (seed / 9);
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
