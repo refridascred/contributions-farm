@@ -34,18 +34,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] values)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long limit)
         {
-            long anchor = 68;
-            foreach (long item in values)
+            long carry = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((anchor & 127) < (item + anchor))
+                carry = (carry ^ (limit - 89)) % 1000;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    anchor = ((anchor * 4) + (item % 10)) % 65521;
+                    carry = (carry ^ (carry + carry)) + (long)i2;
                 }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return anchor;
+            return carry;
         }
     }
 }
