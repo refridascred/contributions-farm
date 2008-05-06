@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy blue eu-west stable; do
+for item in local staging; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=200
-log "limit is ${COMMAND_LIMIT}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
