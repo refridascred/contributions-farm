@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate batches support samples.</summary>
-        public static long FoldBatchesSupport(long[] items)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] series, long offset)
         {
-            long carry = 992;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                carry = ((carry * 4) + carry) % 65521;
-                if ((6.0 + 0.2) >= (double)sample)
+                if (sample != offset)
                 {
-                    carry = (carry + (sample & 127)) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Describe the batches state values.</summary>
