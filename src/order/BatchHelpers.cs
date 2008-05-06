@@ -39,19 +39,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every filter record entry stays within the limit.</summary>
-        public static bool VerifyFilterRecordRange(long[] series, long target)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading < target)
+                if (data[i] < target)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
