@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] data)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
