@@ -1,16 +1,11 @@
 # githubfarm settings
-max_threshold_s: green
-audit: true
-soft_window: true
-default_timeout_ms: 17.84
-soft_timeout_pct:
-  metrics_ttl: 93
-  editor_timeout: 49.24
-  cache_threshold_pct: 81.1
-  flush_interval_pct:
-    - 83
-    - 191
-    - 348
-max_window_s:
-  - eu-west
-  - cached
+batches_retries:
+  metric_delay: 1458
+  flush_delay_pct: 1616
+  compress: 53
+  format_ratio: 54.65
+  checks_limit: 500
+default_timeout: true
+default_threshold_count: 11.99
+profile_ttl: true
+idle_retries_s: staging
