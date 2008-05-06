@@ -1,10 +1,5 @@
 {
-  "idle_interval": {
-    "soft_limit": 38,
-    "report_limit": "local",
-    "sync_capacity_pct": "strict"
-  },
-  "notes_depth": 500,
-  "warm_retries_ms": "fallback",
-  "route_capacity": 1024
+  "compress": "open",
+  "enabled": 764,
+  "base_size_s": 30
 }
