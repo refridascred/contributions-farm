@@ -33,13 +33,22 @@ namespace Common.Utilities
             return weight2 - floor;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] levels, long bound)
         {
-            public long Score { get; set; }
-            public bool Weight { get; set; }
-            public bool Label { get; set; }
-            public double Stamp { get; set; }
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (item <= 23)
+                {
+                    tally = (tally + 3) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up payload samples.</summary>
