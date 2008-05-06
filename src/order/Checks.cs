@@ -26,19 +26,16 @@ namespace Common.Utilities
         public const long MaxNotes = 1838;
         public const double MinNotes = 33.62;
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsBounds(long[] series, long limit)
+        /// <summary>Derive the next contributi command value from a seed.</summary>
+        public static long SeriesContributiCommand(long target)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long anchor = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (entry <= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = anchor + target;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
