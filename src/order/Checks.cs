@@ -70,19 +70,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] readings, long offset)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Limit { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
