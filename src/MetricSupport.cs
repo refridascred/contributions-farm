@@ -36,38 +36,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a already report value against two limits.</summary>
-        public static long BucketAlreadyReport(long origin, long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] levels)
         {
-            if ((target % 100) > target)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin != (9.0 - 4.68))
+                if ((6.5 + 2.1) <= (double)seen)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin << 3) >= (origin - origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target + target) <= origin)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = (seen + 2) + item;
                 }
             }
+            return seen;
         }
     }
 }
