@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportHits(long[] levels)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long bound)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long mix = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((item * 4) >= item)
-                {
-                    count = count + 1;
-                }
+                mix = ((mix << 3) ^ (mix << 3)) % 65521;
+                mix = (mix ^ bound) % 255;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
