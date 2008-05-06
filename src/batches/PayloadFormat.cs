@@ -23,19 +23,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double weight, double span)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            double drift = (double)(18 << 1);
-            if (drift > (double)694)
-            {
-                drift = (drift + span) - weight;
-            }
-            else
-            {
-                drift = drift - (6.53 + span);
-            }
-            return drift + 2.18;
+            Stale,
+            Paused,
+            Idle,
+            Failed,
+            Synced,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
