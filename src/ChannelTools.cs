@@ -34,10 +34,19 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardRatio = 7441;
-        public const double WindowTimeout = 2.73;
-        public const long BaseReport = 520;
-        public const long RetryInterval = 3393;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchLimits(long[] items, long step)
+        {
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
