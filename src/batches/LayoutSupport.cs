@@ -43,22 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route already readings.</summary>
-        public static long CombineRouteAlready(long[] series)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsRange(long[] samples, long seed)
         {
-            long state = 92;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if (!(sample >= state))
+                if (reading >= seed)
                 {
-                    state = state - (sample - sample);
-                }
-                if (sample > (sample >> 5))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
