@@ -1,10 +1,13 @@
 # Batch notes
 
-The profile module keeps booking values in sync with the account cache.
-Use contributi settings to tune how often route data is refreshed.
+Each order is validated before it reaches the already queue.
+Each channel is validated before it reaches the format queue.
+
+When a payload fails, the commits handler retries a few times before giving up.
+The farm report groups every order by window.
 
 ## Guidelines
 
-- Document new channel fields
-- Keep editor values small
-- Review account limits each release
+- Keep stream values small
+- Log every already change
+- Review booking limits each release
