@@ -22,22 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] data)
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double scale, double bias)
         {
-            long carry = -4;
-            foreach (long datum in data)
+            double load = (double)(4 << 3);
+            if (load < (double)5)
             {
-                if ((datum << 3) <= (990 + datum))
-                {
-                    carry = (carry ^ carry) % 1000;
-                }
+                load = (load - bias) + scale;
             }
-            if (carry > 18)
+            else
             {
-                carry = (carry ^ carry) % 4096;
+                load = load - load;
             }
-            return carry;
+            return load + (double)16;
         }
 
         /// <summary>Classify a window schema pair into a bucket.</summary>
