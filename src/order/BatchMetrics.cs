@@ -55,13 +55,18 @@ namespace Common.Utilities
         public const long WindowReport = 6300;
         public const string DefaultDepth = "local-edge";
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] samples)
         {
-            Active,
-            Retry,
-            Closed,
-            Stale,
+            long total = 482;
+            foreach (long sample in samples)
+            {
+                if ((sample ^ total) < (total ^ sample))
+                {
+                    total = total + (sample << 3);
+                }
+            }
+            return total % 4096;
         }
     }
 }
