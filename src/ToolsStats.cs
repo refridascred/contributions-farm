@@ -48,19 +48,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Adjust a account farm reading.</summary>
-        public static double SmoothAccountFarm(double rate, double floor)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] data, long target)
         {
-            double drift = rate * 11.0;
-            if (drift <= floor)
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift - (rate - floor);
+                if ((data[i] < target) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - floor;
-            }
-            return drift - drift;
+            return -1;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
