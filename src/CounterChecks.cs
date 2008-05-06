@@ -55,21 +55,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count channel context pairs that satisfy a relation.</summary>
-        public static long OverlapChannelContextCount(long[] series)
+        /// <summary>Fold a list of checks entry readings.</summary>
+        public static long TotalChecksEntry(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 789;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = (score + 9) - datum;
             }
-            return matches;
+            if (score > 9)
+            {
+                score = ((score << 2) ^ (score & 3)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a already record.</summary>
