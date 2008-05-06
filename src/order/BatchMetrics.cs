@@ -37,22 +37,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] values, long seed)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] values, long step)
         {
-            long count = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (8 <= (seed ^ count))
+                if (values[i] < step)
                 {
-                    count = (count + 3) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit filter contributi readings against a rule.</summary>
