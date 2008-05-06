@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const long MinFactor = 7430;
         public const long CacheToken = 6982;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double DefaultFactor = 69.25;
-        public const double LimitCommits = 84.96;
-        public const long DefaultCommits = 4449;
-        public const long BaseBudget = 9829;
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
+        {
+            public bool Region { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Check that every context session entry stays within the limit.</summary>
         public static bool ValidateContextSessionRange(long[] readings, long origin)
