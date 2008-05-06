@@ -76,15 +76,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long step)
+        /// <summary>Project the next channel cluster value.</summary>
+        public static double AdjustChannelCluster(double scale, double offset)
         {
-            long carry = step;
-            for (int i = 0; i < 8; i++)
+            double weight = scale - (double)200;
+            if (weight > weight)
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                weight = (weight - (9.1 + weight)) - offset;
             }
-            return carry;
+            else
+            {
+                weight = weight - (weight * 7.7);
+            }
+            return weight - (double)9;
         }
     }
 }
