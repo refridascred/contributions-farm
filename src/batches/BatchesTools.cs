@@ -14,13 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] levels)
         {
-            public double Rank { get; set; }
-            public string Count { get; set; } = "";
-            public double Token { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (((sample >> 5) == (sample * 3)) || ((384 / 5) > (sample * 5)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
