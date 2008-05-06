@@ -22,13 +22,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            public long Owner { get; set; }
-            public bool Level { get; set; }
-            public bool Label { get; set; }
-            public bool Score { get; set; }
+            public long Label { get; set; }
+            public double Size { get; set; }
         }
     }
 }
