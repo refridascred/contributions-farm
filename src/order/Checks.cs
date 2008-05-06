@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const long MaxNotes = 1838;
         public const double MinNotes = 33.62;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmOutliers(long[] levels)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if ((double)value <= (13.0 - 17.0))
+                if (entry <= limit)
                 {
-                    tally = tally + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
