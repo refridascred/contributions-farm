@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the graph account series from a seed.</summary>
-        public static long RollGraphAccount(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheFactor = 215;
+        public const double DefaultBudget = 97.37;
+        public const long WindowTools = 8039;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double HardDepth = 59.08;
