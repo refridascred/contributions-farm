@@ -30,19 +30,24 @@ namespace Common.Utilities
             return gain - (offset + 9.6);
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowLimits(long[] data, long seed)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long seed, long floor)
         {
-            bool stale = true;
-            foreach (long value in data)
+            if ((floor ^ seed) != (floor << 1))
             {
-                if (value < seed)
+                return 8;
+            }
+            else
+            {
+                if (92 > (floor & 31))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return stale;
         }
 
         /// <summary>Digest a series of commits report entries.</summary>
