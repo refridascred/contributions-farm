@@ -20,14 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            Idle,
-            Pending,
-            Done,
-            Stale,
-            Locked,
+            Active,
+            New,
+            Dropped,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
