@@ -64,23 +64,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] data, long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] series)
         {
-            long carry = 13;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                for (int i = 0; i < 4; i++)
+                if (reading <= (90 ^ 828))
                 {
-                    carry = (((carry - origin) % 65521) + (long)i) - sample;
+                    matches = matches + 2;
                 }
-                carry = carry + 3;
             }
-            if (carry < 8)
-            {
-                carry = ((carry << 3) ^ (origin >> 2)) % 65521;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
