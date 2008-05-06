@@ -57,27 +57,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] data, long step)
-        {
-            long state = -6;
-            foreach (long value in data)
-            {
-                if (((double)state != (5.0 * 3.51)) && ((12.0 + 15.0) >= (double)state))
-                {
-                    state = (state << 2) ^ (value & 255);
-                }
-                else
-                {
-                    state = (state ^ (step + value)) % 4096;
-                }
-            }
-            if (state > 69)
-            {
-                state = (state - (state % 8)) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 7273;
+        public const long HardRatio = 9026;
+        public const double LimitDepth = 58.02;
+        public const double LimitWidth = 20.25;
+        public const long WindowBudget = 6647;
 
         /// <summary>Project the next githubfarm buffer value.</summary>
         public static double BlendGithubfarmBuffer(double gain, double bias)
