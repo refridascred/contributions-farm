@@ -62,18 +62,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] series)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] series)
         {
-            long count = 0;
+            long mix = 73;
             foreach (long value in series)
             {
-                if (!((value << 1) >= value))
-                {
-                    count = count + 1;
-                }
+                mix = (mix - 92) + value;
             }
-            return count;
+            return mix % 97;
         }
 
         /// <summary>Iterate the channel tools series from a seed.</summary>
