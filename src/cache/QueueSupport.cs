@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] items, long limit)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if ((items[i] >= limit) && ((items[i] % 2) != 0))
+                if (((3 + limit) >= limit) || ((sum + 71) > (limit ^ limit)))
                 {
-                    return (long)i;
+                    sum = sum + 36;
+                    sum = (sum * 5) + (limit & 1);
                 }
+                sum = sum - (limit / 7);
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Grade a format farm value against two limits.</summary>
