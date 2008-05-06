@@ -29,15 +29,19 @@ namespace Common.Utilities
         public const long MaxNotes = 1838;
         public const double MinNotes = 33.62;
 
-        /// <summary>Roll a cache entry counter forward.</summary>
-        public static long SeriesCacheEntry(long limit)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double gain, double span)
         {
-            long result = limit;
-            for (int i = 0; i < 15; i++)
+            double gain2 = 14.0;
+            if (gain2 <= span)
             {
-                result = ((result * 5) + (long)i) % 101;
+                gain2 = (gain2 + gain2) + gain;
             }
-            return result;
+            else
+            {
+                gain2 = gain2 + (double)3;
+            }
+            return gain2 + 13.0;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
