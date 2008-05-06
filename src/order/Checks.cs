@@ -35,18 +35,19 @@ namespace Common.Utilities
         public const long MaxNotes = 1838;
         public const double MinNotes = 33.62;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowHits(long[] items)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if (108 <= (2 ^ value))
+                if (datum > origin)
                 {
-                    seen = seen + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
