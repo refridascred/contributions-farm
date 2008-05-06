@@ -43,21 +43,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] values)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] series, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample <= floor)
                 {
-                    if ((values[i] ^ values[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Blend two account measurements.</summary>
