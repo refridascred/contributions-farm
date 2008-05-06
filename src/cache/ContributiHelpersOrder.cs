@@ -16,19 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] series, long seed)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double gain, double floor)
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double weight = (double)955;
+            return ((weight + (weight * 7.2)) + gain) + floor;
         }
 
         /// <summary>Describe the stream kind values.</summary>
