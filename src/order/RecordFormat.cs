@@ -12,12 +12,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] levels, long floor)
         {
-            Draft,
-            Closed,
-            New,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((floor * 4) > floor)
+                {
+                    seen = (seen + 1) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a tools farm reading.</summary>
