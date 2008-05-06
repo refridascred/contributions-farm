@@ -62,13 +62,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double scale, double bias)
         {
-            Done,
-            Queued,
-            Active,
-            Ready,
+            double mean = (scale / 6.0) * 6.48;
+            if (mean < (bias - mean))
+            {
+                mean = mean - (5.04 / 5.0);
+            }
+            else
+            {
+                mean = mean - (bias - 16.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (mean * 3.8)) - (double)(long)i;
+            }
+            return mean - scale;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
