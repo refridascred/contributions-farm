@@ -1,8 +1,6 @@
 {
-  "cluster_capacity": "green",
-  "stats_ratio": "local",
-  "persist": 60,
-  "record_delay": ["latest", "legacy", "edge", "primary"],
-  "readonly": false,
-  "cache_retries": "eu-west"
+  "notes_interval": 60,
+  "command_ttl": 33.87,
+  "sync_ratio_s": "fallback",
+  "flush_interval_pct": true
 }
