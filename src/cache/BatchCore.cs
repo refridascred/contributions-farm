@@ -37,21 +37,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] samples)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] readings, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((readings[i] == bound) && ((readings[i] % 3) == 0))
                 {
-                    if ((samples[i] ^ samples[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
