@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] series, long offset)
-        {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 7942;
+        public const long BaseContext = 3503;
+        public const long CacheContext = 2039;
+        public const long MinContext = 4626;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BatchFormat = 7385;
