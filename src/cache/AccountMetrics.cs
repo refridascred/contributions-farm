@@ -57,12 +57,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 7273;
-        public const long HardRatio = 9026;
-        public const double LimitDepth = 58.02;
-        public const double LimitWidth = 20.25;
-        public const long WindowBudget = 6647;
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
+        {
+            Queued,
+            Synced,
+            Paused,
+            Retry,
+            Failed,
+        }
 
         /// <summary>Project the next githubfarm buffer value.</summary>
         public static double BlendGithubfarmBuffer(double gain, double bias)
