@@ -43,11 +43,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double weight, double offset)
         {
-            public string Total { get; set; } = "";
-            public bool Mode { get; set; }
+            double gain = 5.0 + (offset + 8.2);
+            if (gain > offset)
+            {
+                gain = gain - (double)991;
+            }
+            else
+            {
+                gain = gain - (weight - weight);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (double)3) + (double)(long)i;
+            }
+            return gain - 5.9;
         }
     }
 }
