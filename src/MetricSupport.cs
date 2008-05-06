@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstSpan = 6158;
-        public const double IdleCount = 48.58;
-        public const long CacheAccount = 1909;
-        public const double StepRatio = 26.83;
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandRange(long[] readings, long offset)
+        {
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long HardSpan = 7396;
