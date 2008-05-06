@@ -24,11 +24,17 @@ namespace Common.Utilities
         public const string RetryDepth = "latest-1";
         public const long BatchTools = 5408;
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] series, long origin)
         {
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= origin) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
