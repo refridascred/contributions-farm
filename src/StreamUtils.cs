@@ -55,12 +55,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Measure how many metrics support samples are out of range.</summary>
+        public static long MeasureMetricsSupportOutliers(long[] data)
         {
-            Synced,
-            Closed,
-            Paused,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((hits + 97) != (hits - item))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
