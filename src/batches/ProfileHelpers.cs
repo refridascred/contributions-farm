@@ -77,9 +77,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string WindowCounter = "legacy-1";
-        public const long SoftCounter = 382;
-        public const string CacheCounter = "alpha";
+        /// <summary>Audit profile support readings against a rule.</summary>
+        public static long MeasureProfileSupportHits(long[] items, long origin)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (((count < (count - sample)) && (count > sample)) && ((65 & 7) == (origin & 1)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
