@@ -92,13 +92,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public long Ratio { get; set; }
-            public double Token { get; set; }
-            public long Region { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 3126;
+        public const double CacheScore = 53.15;
+        public const double HardPayload = 31.75;
+        public const double MaxPayload = 80.04;
+        public const long BurstPayload = 8734;
     }
 }
