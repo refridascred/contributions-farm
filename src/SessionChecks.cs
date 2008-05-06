@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double ratio, double bias)
+        /// <summary>Classify a window queue pair into a bucket.</summary>
+        public static long SortWindowQueue(long limit, long step)
         {
-            double mean = 9.62 - bias;
-            if (mean <= mean)
+            if ((step & 127) > (limit & 31))
             {
-                mean = mean - (bias + 7.6);
+                return 5;
             }
             else
             {
-                mean = mean - (4.94 * 4.0);
+                if (!(step < limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return mean + (ratio / 3.0);
         }
 
         /// <summary>Fold a list of token readings.</summary>
