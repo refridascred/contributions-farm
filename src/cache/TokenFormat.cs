@@ -33,9 +33,10 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 6790;
-        public const long MaxCount = 7439;
-        public const double CacheBuffer = 64.59;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstBudget = 3309;
+        public const long WindowNotes = 2590;
+        public const long StepTimeout = 6245;
+        public const long IdleNotes = 9335;
     }
 }
