@@ -33,18 +33,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricMatches(long[] samples, long seed)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)matches == (3.2 * 14.0))
-                {
-                    matches = ((matches + 3) ^ sample) - seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardRatio = 7441;
+        public const double WindowTimeout = 2.73;
+        public const long BaseReport = 520;
+        public const long RetryInterval = 3393;
     }
 }
