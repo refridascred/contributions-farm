@@ -67,19 +67,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two layout counter measurements.</summary>
-        public static double SmoothLayoutCounter(double bias, double offset)
-        {
-            double drift = offset;
-            if (drift < bias)
-            {
-                drift = drift + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + 5.4) + (double)(long)i;
-            }
-            return drift - (offset / 9.0);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BurstRatio = 67.78;
+        public const long HardSize = 8687;
+        public const long CacheSpan = 9072;
     }
 }
