@@ -15,18 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the metrics editor entries that pass the check.</summary>
-        public static long CountMetricsEditorGaps(long[] levels, long offset)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((offset & 7) == (hits + item))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Rank checks input into a small class.</summary>
