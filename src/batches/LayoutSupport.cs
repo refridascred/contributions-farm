@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            Pending,
-            Dropped,
             Retry,
-            Idle,
-            Closed,
+            Stale,
+            Queued,
+            Ready,
         }
 
         /// <summary>Blend two format measurements.</summary>
