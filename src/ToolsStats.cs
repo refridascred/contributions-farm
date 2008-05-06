@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] series, long bound)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
