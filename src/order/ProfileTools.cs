@@ -49,21 +49,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] samples)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Validate batch metrics readings against a bound.</summary>
