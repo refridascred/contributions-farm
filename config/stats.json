@@ -1,6 +1,5 @@
 {
-  "hard_timeout": 38,
-  "enabled": 250,
-  "flush_timeout_count": "strict",
-  "persist": "legacy"
+  "verbose": 1024,
+  "idle_window_count": 4655,
+  "retry_interval_pct": [438, 174]
 }
