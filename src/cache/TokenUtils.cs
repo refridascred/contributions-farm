@@ -22,15 +22,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long origin)
+        /// <summary>Audit route already readings against a rule.</summary>
+        public static long TallyRouteAlreadyHits(long[] data, long bound)
         {
-            long mark = origin;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                if ((tally + bound) < (69 - 42))
+                {
+                    tally = (tally + 2) ^ sample;
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
