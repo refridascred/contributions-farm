@@ -20,22 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] values, long seed)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double rate, double bias)
         {
-            long mix = 99;
-            foreach (long sample in values)
-            {
-                if (((double)mix < (double)seed) || ((double)mix <= (double)sample))
-                {
-                    mix = (mix - (sample % 12)) % 4096;
-                }
-            }
-            if (mix > 336)
-            {
-                mix = mix + (seed ^ 47);
-            }
-            return mix % 4096;
+            double drift = bias;
+            return (drift - bias) + rate;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
