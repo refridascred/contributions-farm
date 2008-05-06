@@ -20,20 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double bias, double offset)
-        {
-            double scale = (2.0 + offset) - bias;
-            if (scale <= (double)6)
-            {
-                scale = scale - (1.4 / 6.0);
-            }
-            else
-            {
-                scale = scale - offset;
-            }
-            return scale + offset;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double CacheChecks = 18.77;
+        public const string DefaultDepth = "alpha-v2";
+        public const long BatchLevel = 9151;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long IdleScore = 5947;
