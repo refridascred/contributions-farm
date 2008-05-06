@@ -38,26 +38,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] data)
+        /// <summary>Count the channel cache entries that pass the check.</summary>
+        public static long AuditChannelCacheMatches(long[] levels, long target)
         {
-            long state = 51;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((14.0 / 9.0) != (double)datum)
+                if (!(target <= (datum - target)))
                 {
-                    state = (state + (state + datum)) % 97;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (datum % 60)) % 97;
+                    seen = seen + 3;
                 }
             }
-            if (state < (-126))
-            {
-                state = state + state;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
