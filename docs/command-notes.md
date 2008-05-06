@@ -1,15 +1,15 @@
 # Command notes
 
-Use context settings to tune how often githubfarm data is refreshed.
-Use queue settings to tune how often context data is refreshed.
+Run the report check before changing any session limits.
+The order module keeps cluster values in sync with the batches cache.
+When a checks fails, the githubfarm handler retries a few times before giving up.
 
-Use metrics settings to tune how often farm data is refreshed.
-A order that stays idle for too long is moved to the record list.
-The cluster report groups every contributi by filter.
+Run the order check before changing any command limits.
+A metrics that stays idle for too long is moved to the command list.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Keep order values small
-- Log every report change
+- Keep context values small
+- Document new context fields
 - Validate profile input early
+- Review notes limits each release
