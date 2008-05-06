@@ -31,14 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] values)
         {
-            Dropped,
-            Idle,
-            Queued,
-            Synced,
-            Draft,
+            long anchor = 68;
+            foreach (long item in values)
+            {
+                if ((anchor & 127) < (item + anchor))
+                {
+                    anchor = ((anchor * 4) + (item % 10)) % 65521;
+                }
+            }
+            return anchor;
         }
     }
 }
