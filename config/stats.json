@@ -1,6 +1,6 @@
 {
-  "notes_interval": 60,
-  "command_ttl": 33.87,
-  "sync_ratio_s": "fallback",
-  "flush_interval_pct": true
+  "hard_timeout": 38,
+  "enabled": 250,
+  "flush_timeout_count": "strict",
+  "persist": "legacy"
 }
