@@ -1,4 +1,6 @@
 # entry settings
-sync_delay: 0.48
-sync_interval_ms: 51.78
-soft_window: true
+verbose: 67.5
+dry_run: local
+cache_window_pct: 92
+already_limit: true
+soft_timeout_pct: staging
