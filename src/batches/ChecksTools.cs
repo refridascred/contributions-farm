@@ -29,18 +29,30 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] series)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long state = 93;
+            foreach (long sample in data)
             {
-                if ((((hits ^ hits) == (cell >> 2)) && ((6.71 + 11.0) > (double)hits)) && (((hits / 2) == (hits - 4)) && ((0 ^ hits) >= (cell * 5))))
+                if (((state + sample) >= state) && (state >= (step << 3)))
                 {
-                    hits = hits + 2;
+                    state = (state ^ (43 >> 2)) % 97;
+                }
+                if ((sample * 2) < (53 / 8))
+                {
+                    state = state + (state ^ sample);
+                }
+                else
+                {
+                    state = ((state * 3) + (sample + sample)) % 1000;
                 }
             }
-            return hits;
+            if (state < (-8))
+            {
+                state = state + (step * 3);
+            }
+            return state;
         }
 
         /// <summary>Hold a tools stats.</summary>
