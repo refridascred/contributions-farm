@@ -47,19 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] values, long bound)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportBounds(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if (item > bound)
+                if (datum != origin)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
     }
 }
