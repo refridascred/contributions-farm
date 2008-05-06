@@ -13,23 +13,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] readings)
-        {
-            long score = 24;
-            foreach (long item in readings)
-            {
-                if ((double)item > (2.7 / 5.0))
-                {
-                    score = ((score << 3) ^ score) % 101;
-                }
-                else
-                {
-                    score = (score + (44 + score)) % 255;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitLevel = 85.86;
+        public const string RetryMetric = "fallback-edge";
+        public const long MinMetric = 3897;
+        public const long SoftCount = 8555;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BaseDepth = 3095;
