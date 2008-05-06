@@ -25,19 +25,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a metric metrics figure with a bias.</summary>
-        public static double ProjectMetricMetrics(double weight, double span)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] items)
         {
-            double ratio = (double)(372 << 3);
-            if (ratio >= (ratio * 14.0))
+            long acc = 52;
+            foreach (long reading in items)
             {
-                ratio = (ratio + (4.5 / 2.0)) + weight;
+                acc = (((acc * 2) + ((-50) + 3)) % 97) ^ reading;
             }
-            else
+            if (acc > 9)
             {
-                ratio = ratio + span;
+                acc = (acc * 4) + (acc ^ acc);
             }
-            return ratio - (double)9;
+            return acc;
         }
     }
 }
