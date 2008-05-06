@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double scale, double floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionMatches(long[] readings, long bound)
         {
-            double ratio = floor;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                ratio = (ratio - (20.0 + scale)) + (double)(long)i;
+                if (!((seen - value) > (value - value)))
+                {
+                    seen = (seen + 2) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return ratio + floor;
+            return seen;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
