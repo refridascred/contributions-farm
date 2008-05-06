@@ -1,5 +1,4 @@
 # entry settings
-audit: 91
-base_limit_pct: 4957
-contributi_size: 1411
-base_size_s: 4.68
+sync_delay: 0.48
+sync_interval_ms: 51.78
+soft_window: true
