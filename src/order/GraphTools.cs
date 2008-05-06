@@ -34,10 +34,23 @@ namespace Common.Utilities
         public const long LimitCommits = 981;
         public const double WindowCommits = 70.33;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BurstTimeout = 32.34;
-        public const long BurstSession = 403;
-        public const long WindowSession = 3003;
+        /// <summary>Audit filter layout readings against a rule.</summary>
+        public static long CountFilterLayoutHits(long[] series)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((entry - 6) != (entry ^ entry))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
