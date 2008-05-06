@@ -1,6 +1,7 @@
-id,level,count
-1,293,826
-2,523,538
-3,26.57,274
-4,61.02,646
-5,38.51,847
+id,region,active,weight,rank
+1,edge,eu-west,blue,69.67
+2,primary,primary,623,98.19
+3,legacy,333,28.4,649
+4,970,21,790,blue
+5,851,39,738,blue
+6,809,579,310,414
