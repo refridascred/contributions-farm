@@ -23,18 +23,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] items, long origin)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long state = 169;
-            foreach (long sample in items)
-            {
-                if ((state % 64) != (long)items.Length)
-                {
-                    state = (((state << 2) ^ (sample % 64)) % 1000) - origin;
-                }
-            }
-            return state;
+            Retry,
+            New,
+            Failed,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
