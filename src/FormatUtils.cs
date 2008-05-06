@@ -16,19 +16,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long bound)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] series, long offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((carry + carry) > (bound / 8))
+                if ((double)offset >= (0.99 - 0.5))
                 {
-                    break;
+                    seen = (seen + 1) ^ datum;
                 }
-                carry = ((carry * 2) + (long)i) % 97;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
