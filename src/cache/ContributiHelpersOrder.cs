@@ -37,10 +37,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseDepth = 3095;
-        public const string HardScore = "staging";
-        public const long CacheLevel = 3143;
-        public const string LimitContributi = "alpha-1";
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= floor) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
