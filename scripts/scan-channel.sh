@@ -7,21 +7,14 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-fallback}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=193
+log "limit is ${CHANNEL_LIMIT}"
 
-for item in local standard strict fallback; do
+for item in strict eu-west legacy primary; do
     log "checking ${item}"
 done
