@@ -26,12 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Digest a series of metric counter entries.</summary>
+        public static long ScoreMetricCounter(long[] readings, long step)
         {
-            Synced,
-            Active,
-            Stale,
+            long mix = 60;
+            foreach (long datum in readings)
+            {
+                mix = (((mix << 2) ^ (98 * 2)) + datum) + step;
+            }
+            return mix;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
