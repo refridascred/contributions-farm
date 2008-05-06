@@ -15,23 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double rate, double bias)
+        /// <summary>Count the schema metrics entries that pass the check.</summary>
+        public static long CountSchemaMetricsHits(long[] values, long offset)
         {
-            double rate2 = rate * 1.0;
-            if (rate2 > (double)9)
+            long count = 0;
+            foreach (long sample in values)
             {
-                rate2 = rate2 + rate;
+                if ((0 >> 4) > (count / 6))
+                {
+                    count = ((count + 3) - sample) + offset;
+                }
             }
-            else
-            {
-                rate2 = rate2 + (double)6;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = (rate2 + bias) + (double)(long)i;
-            }
-            return rate2 + 3.0;
+            return count;
         }
 
         /// <summary>Describe the stream status values.</summary>
