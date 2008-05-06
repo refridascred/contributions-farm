@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteGaps(long[] samples, long seed)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (((double)seed < (9.62 - 5.8)) && ((326 % 64) == (entry + matches)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Synced,
+            Closed,
+            Stale,
         }
 
         /// <summary>Describe the metric state values.</summary>
