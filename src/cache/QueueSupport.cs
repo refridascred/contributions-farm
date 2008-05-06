@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long origin, long seed)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long cur = origin ^ seed;
-            if ((origin ^ origin) < (cur / 6))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((2.3 - 0.4) == (double)seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Failed,
+            Stale,
+            Ready,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
