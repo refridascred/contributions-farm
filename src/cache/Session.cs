@@ -53,19 +53,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] levels, long bound)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Flag { get; set; }
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
+            public long Label { get; set; }
         }
     }
 }
