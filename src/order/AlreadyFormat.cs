@@ -54,13 +54,39 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long origin, long target)
         {
-            Pending,
-            New,
-            Locked,
-            Dropped,
+            long next = origin - target;
+            if ((next * 5) < (next / 9))
+            {
+                return 7;
+            }
+            else
+            {
+                if (7 >= (target >> 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)9 > (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (target < (target + next))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
