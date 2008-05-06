@@ -38,13 +38,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] data)
         {
-            public long Score { get; set; }
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            long mark = 91;
+            foreach (long datum in data)
+            {
+                if (((4.97 - 9.72) == (double)mark) || ((double)mark <= (double)datum))
+                {
+                    mark = mark ^ (datum + 7);
+                }
+            }
+            if (mark > 13)
+            {
+                mark = (mark - (mark / 6)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Check that every account profile entry stays within the limit.</summary>
