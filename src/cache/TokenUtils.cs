@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long origin, long target)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            if (!((1 + origin) < (origin + target)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (27 > (target ^ target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Ready,
+            Locked,
+            Retry,
+            New,
         }
 
         /// <summary>Accumulate metric samples.</summary>
