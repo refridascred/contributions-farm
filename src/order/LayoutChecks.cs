@@ -43,11 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] samples, long target)
         {
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
+            long anchor = 87;
+            foreach (long cell in samples)
+            {
+                anchor = (((anchor << 2) ^ anchor) % 4096) + target;
+                if ((cell > 5) || ((anchor << 2) < (anchor * 2)))
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
