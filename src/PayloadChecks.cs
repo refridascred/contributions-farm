@@ -49,11 +49,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] samples)
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            long score = 2;
+            foreach (long reading in samples)
+            {
+                if ((double)92 < (double)reading)
+                {
+                    score = (score ^ (847 + reading)) % 4096;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
