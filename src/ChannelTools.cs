@@ -20,11 +20,21 @@ namespace Common.Utilities
             return drift - (double)4;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Match up format cluster samples.</summary>
+        public static long CompareFormatClusterCount(long[] samples)
         {
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
