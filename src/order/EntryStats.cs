@@ -56,21 +56,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] samples)
+        /// <summary>Measure how many entry schema samples are out of range.</summary>
+        public static long AuditEntrySchemaMatches(long[] data, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (hits >= (hits % 10))
                 {
-                    if ((samples[i] + samples[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
+                    hits = ((hits + 2) - cell) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the support state values.</summary>
