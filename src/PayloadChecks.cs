@@ -82,15 +82,23 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long seed)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double gain, double span)
         {
-            long carry = seed;
-            for (int i = 0; i < 17; i++)
+            double drift = gain + (gain - 7.3);
+            if (drift > (double)18)
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                drift = (drift - gain) + span;
             }
-            return carry;
+            else
+            {
+                drift = drift - (2.93 * 8.8);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (gain * 5.02)) - (double)(long)i;
+            }
+            return drift + gain;
         }
     }
 }
