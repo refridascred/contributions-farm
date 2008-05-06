@@ -20,21 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] samples)
+        /// <summary>Fold a list of order report readings.</summary>
+        public static long TotalOrderReport(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 8;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((sum >> 5) > (sample + sum))
                 {
-                    if ((samples[i] ^ samples[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum + (sample << 2)) % 97;
+                }
+                else
+                {
+                    sum = ((sum * 2) + (sample - sample)) % 1000;
                 }
             }
-            return count;
+            return sum % 97;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
