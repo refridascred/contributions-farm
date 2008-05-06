@@ -23,19 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stream batch readings.</summary>
-        public static long TotalStreamBatch(long[] levels, long origin)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long state = -75;
-            foreach (long item in levels)
-            {
-                state = (((state << 2) ^ item) % 255) - origin;
-            }
-            if (state > 778)
-            {
-                state = (state << 2) ^ state;
-            }
-            return state;
+            Queued,
+            Active,
+            Retry,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
