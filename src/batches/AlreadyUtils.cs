@@ -50,10 +50,32 @@ namespace Common.Utilities
         public const long BaseInterval = 4296;
         public const long LimitCommits = 8776;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BatchSupport = "fallback-v2";
-        public const long MinScore = 9442;
-        public const long MinSupport = 874;
-        public const long BurstBudget = 9182;
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long target, long offset)
+        {
+            long cur = target + offset;
+            if (16 < (offset * 5))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((offset / 8) != (target & 7)) && ((double)offset >= (1.7 / 4.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset != (double)cur)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
