@@ -1,8 +1,7 @@
 {
-  "format_threshold": true,
-  "profile_capacity": [361, 40, 186],
-  "default_ttl_pct": 5860,
-  "base_limit_pct": "latest",
-  "min_timeout_s": 100,
-  "payload_timeout": false
+  "window_depth": 100,
+  "retry_threshold_ms": 4998,
+  "min_delay": 81.29,
+  "persist": ["open", "stable", "strict", "primary"],
+  "entry_delay": 18.24
 }
