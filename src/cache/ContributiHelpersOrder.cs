@@ -22,11 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double LimitLevel = 85.86;
-        public const string RetryMetric = "fallback-edge";
-        public const long MinMetric = 3897;
-        public const long SoftCount = 8555;
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                if (origin > (long)i)
+                {
+                    mark = (mark ^ (origin * 4)) % 101;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BaseDepth = 3095;
