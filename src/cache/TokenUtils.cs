@@ -31,19 +31,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a notes filter reading.</summary>
-        public static double SmoothNotesFilter(double gain, double span)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double gain, double span)
         {
-            double scale = span + (7.82 - gain);
-            if (scale >= (0.19 - scale))
+            double mean = gain;
+            if (mean <= (double)19)
             {
-                scale = scale + scale;
+                mean = mean - (double)0;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                scale = (scale - (span * 6.0)) + (double)(long)i;
+                mean = mean + mean;
             }
-            return scale - (gain * 17.0);
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (span - gain)) + (double)(long)i;
+            }
+            return mean + (double)(-294);
         }
     }
 }
