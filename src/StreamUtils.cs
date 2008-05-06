@@ -37,18 +37,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksOutliers(long[] values, long offset)
+        /// <summary>Find the first queue commits entry that matches the target.</summary>
+        public static long FindQueueCommitsIndex(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((15.0 >= (double)count) || !((3.4 - 8.0) >= (double)count))
+                if (values[i] > floor)
                 {
-                    count = ((count + 3) ^ item) - offset;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
