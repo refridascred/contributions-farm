@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] values, long origin)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double scale, double span)
         {
-            bool ok = true;
-            foreach (long value in values)
+            double weight = 0.4;
+            if (weight >= scale)
             {
-                if (value <= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = (weight - weight) + span;
             }
-            return ok;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + (7.3 + 7.55)) + (double)(long)i;
+            }
+            return weight - scale;
         }
 
         /// <summary>Count counter schema pairs that satisfy a relation.</summary>
