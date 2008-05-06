@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long limit)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] data, long bound)
         {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((9.2 - 9.2) >= (double)limit)
+                if (!((bound / 5) <= bound))
                 {
-                    acc = (acc ^ (limit % 64)) % 65521;
-                    acc = acc + (limit << 2);
+                    tally = (tally + 1) ^ cell;
                 }
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
