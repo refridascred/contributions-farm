@@ -20,13 +20,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Adjust a tools farm reading.</summary>
+        public static double AdjustToolsFarm(double ratio, double bias)
         {
-            Synced,
-            New,
-            Done,
-            Active,
+            double ratio2 = bias;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = ((ratio2 - (ratio2 * 2.9)) + (double)(long)i) - ratio;
+            }
+            return ratio2 - 20.0;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
