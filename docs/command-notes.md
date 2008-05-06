@@ -1,11 +1,13 @@
 # Command notes
 
-Keep batches and entry names short and lowercase.
-Use counter settings to tune how often schema data is refreshed.
+The farm report groups every commits by route.
+Keep entry and format names short and lowercase.
+
+Keep profile and batches names short and lowercase.
+The buffer module keeps notes values in sync with the stats cache.
 
 ## Guidelines
 
-- Document new metrics fields
-- Prefer notes defaults
-- Validate editor input early
-- Review githubfarm limits each release
+- Log every record change
+- Keep report values small
+- Prefer report defaults
