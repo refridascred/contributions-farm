@@ -34,10 +34,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string IdleScore = "standard-1";
-        public const string HardRatio = "standard-1";
-        public const long CacheAlready = 3172;
-        public const long StepAlready = 7782;
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double ratio, double span)
+        {
+            double drift = (double)(258 ^ 122);
+            return ((drift - (double)4) + ratio) + span;
+        }
     }
 }
