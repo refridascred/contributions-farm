@@ -23,24 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long offset, long limit)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] items, long origin)
         {
-            if ((double)limit <= (9.0 + 6.7))
+            long state = 169;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((offset * 2) < (9 & 255)) || ((3.84 * 8.35) < (double)offset))
+                if ((state % 64) != (long)items.Length)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    state = (((state << 2) ^ (sample % 64)) % 1000) - origin;
                 }
             }
+            return state;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
