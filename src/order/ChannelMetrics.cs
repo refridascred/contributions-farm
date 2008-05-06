@@ -41,23 +41,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Roll a channel account counter forward.</summary>
-        public static long SeriesChannelAccount(long seed)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long total = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                if (((double)total < (4.8 - 5.0)) && (6.7 >= (double)seed))
-                {
-                    total = (total + (total * 3)) % 1000;
-                }
-                if ((7.0 / 7.0) > (double)(long)i)
-                {
-                    total = (total - (seed + 738)) % 101;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            public bool Score { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
