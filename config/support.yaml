@@ -1,13 +1,5 @@
 # support settings
-report_threshold:
-  - 306
-  - 7
-  - 34
-persist: 4024
-compress:
-  base_delay_count: 2466
-  strict: legacy
-  report_capacity: cached
-  hard_limit: 500
-metrics_threshold: 88
-min_threshold_count: standard
+cache_size_s: 64.16
+support_timeout: 100
+hard_window_s: false
+cache_retries: false
