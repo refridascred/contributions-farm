@@ -20,13 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public double Rank { get; set; }
-            public string Level { get; set; } = "";
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 553;
+        public const double HardWindow = 59.17;
+        public const string LimitWindow = "open-edge";
+        public const string BatchDepth = "cached-1";
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
