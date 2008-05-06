@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a layout batch reading by value.</summary>
-        public static long LookupLayoutBatchIndex(long[] readings, long origin)
+        /// <summary>Project the next farm schema value.</summary>
+        public static double ScaleFarmSchema(double gain, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain2 = (double)(926 - 7);
+            return ((gain2 + gain2) + gain) + bias;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
