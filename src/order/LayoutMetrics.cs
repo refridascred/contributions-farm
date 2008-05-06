@@ -14,10 +14,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 173;
-        public const long StepCommits = 474;
-        public const double BaseCommits = 33.83;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 1959;
+        public const double DefaultBudget = 86.42;
+        public const long LimitBatches = 5990;
+        public const double BurstBatches = 65.85;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long MeasureProfileMatches(long[] items, long offset)
