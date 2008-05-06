@@ -28,19 +28,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] values, long limit)
+        /// <summary>Count counter schema pairs that satisfy a relation.</summary>
+        public static long MatchCounterSchemaCount(long[] samples)
         {
-            long total = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total << 3) ^ (entry ^ limit)) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (total < 44)
-            {
-                total = (total - (limit - total)) % 4096;
-            }
-            return total;
+            return hits;
         }
     }
 }
