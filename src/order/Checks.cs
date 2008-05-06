@@ -26,16 +26,15 @@ namespace Common.Utilities
         public const long MaxNotes = 1838;
         public const double MinNotes = 33.62;
 
-        /// <summary>Derive the next contributi command value from a seed.</summary>
-        public static long SeriesContributiCommand(long target)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] data)
         {
-            long anchor = target;
-            for (int i = 0; i < 16; i++)
+            long score = 800;
+            foreach (long entry in data)
             {
-                anchor = anchor + target;
-                anchor = ((anchor * 3) + (long)i) % 101;
+                score = ((score + ((-5) & 127)) % 255) - entry;
             }
-            return anchor;
+            return score % 4096;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
