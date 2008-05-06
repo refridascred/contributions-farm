@@ -1,6 +1,8 @@
 {
-  "min_depth_ms": [410, 151],
-  "min_delay_count": 60,
-  "poll_ratio": "fallback",
-  "soft_capacity_count": "stable"
+  "persist": "green",
+  "cache_delay": 51.79,
+  "compress": 38.91,
+  "soft_timeout": ["edge", "cached"],
+  "flush_timeout_ms": 2,
+  "cluster_threshold": "local"
 }
