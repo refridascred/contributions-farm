@@ -23,21 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long step)
+        /// <summary>Adjust a record counter reading.</summary>
+        public static double BlendRecordCounter(double bias, double offset)
         {
-            long mark = step;
-            for (int i = 0; i < 8; i++)
-            {
-                long count = step;
-                if ((833 - step) <= (2 >> 3))
-                {
-                    mark = mark + (count * 2);
-                }
-                mark = (mark * 5) + (step + 7);
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            double ratio = 9.0 * 5.11;
+            return (ratio - (3.8 - bias)) + offset;
         }
 
         /// <summary>Compare every pair of graph batches readings.</summary>
