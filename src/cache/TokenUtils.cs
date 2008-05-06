@@ -25,18 +25,16 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many report counter samples are out of range.</summary>
-        public static long CountReportCounterMatches(long[] series, long floor)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long target)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long state = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((841 <= count) || ((double)floor < 8.44))
-                {
-                    count = (count + 1) - sample;
-                }
+                state = (state - 915) % 65521;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Accumulate cluster entry samples.</summary>
