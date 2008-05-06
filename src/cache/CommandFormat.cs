@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchBounds(long[] items, long limit)
         {
-            public string Size { get; set; } = "";
-            public double Limit { get; set; }
-            public long Offset { get; set; }
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the layout kind values.</summary>
