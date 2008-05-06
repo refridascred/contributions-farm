@@ -1,4 +1,21 @@
 # entry settings
-warm_depth_pct: true
-batch_depth: 30
-poll_ratio_ms: blue
+warm_ratio: 77
+cache_ttl_count: false
+warm_window_count: cached
+soft_depth: 7758
+audit:
+  editor_limit:
+    flush_ttl_count: false
+    hard_threshold_pct: 72.58
+    strict: 500
+    support_timeout:
+      - eu-west
+      - strict
+      - strict
+    soft_capacity_pct:
+      - 259
+      - 472
+    batch_ratio_count: 7980
+  strict: 97
+  sync_ttl: 26.03
+  support_retries: 100
