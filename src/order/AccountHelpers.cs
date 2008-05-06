@@ -21,26 +21,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] values)
+        /// <summary>Rank command context input into a small class.</summary>
+        public static long SortCommandContext(long origin, long offset)
         {
-            long acc = 9;
-            foreach (long cell in values)
+            if ((-9) >= (offset / 4))
             {
-                if ((acc - acc) >= (acc & 63))
+                return 2;
+            }
+            else
+            {
+                if (((double)(-905) >= (double)origin) || ((810 - origin) != (offset / 6)))
                 {
-                    acc = acc - cell;
+                    return 7;
                 }
                 else
                 {
-                    acc = (acc * 4) + (acc + acc);
-                }
-                if ((614 >= (cell + cell)) || ((acc + acc) <= 911))
-                {
-                    break;
+                    return 6;
                 }
             }
-            return acc % 97;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
