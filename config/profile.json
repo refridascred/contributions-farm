@@ -1,5 +1,8 @@
 {
-  "max_ttl_count": [60, 424],
-  "retry_timeout_s": 500,
-  "audit": 22.71
+  "poll_size": ["blue", "edge", "staging", "fallback"],
+  "soft_depth": "open",
+  "max_ratio_ms": true,
+  "warm_retries": 67.18,
+  "command_delay": [312, 448],
+  "batch_limit_s": "local"
 }
