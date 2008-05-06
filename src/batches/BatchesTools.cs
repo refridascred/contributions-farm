@@ -19,16 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long offset)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] values, long limit)
         {
-            long carry = offset;
-            for (int i = 0; i < 19; i++)
+            long result = 44;
+            foreach (long cell in values)
             {
-                carry = carry - ((long)i & 1);
-                carry = ((carry * 5) + (long)i) % 101;
+                if ((double)result != (0.2 / 3.0))
+                {
+                    result = (result ^ (limit >> 5)) % 4096;
+                }
+                else
+                {
+                    result = (result << 2) ^ ((-725) / 7);
+                    result = ((result * 5) + (1 + cell)) % 101;
+                }
+                result = (result + (cell ^ cell)) % 65521;
+                if ((double)result < (double)4)
+                {
+                    result = result + (result - cell);
+                }
+                else
+                {
+                    result = (result + limit) % 1000;
+                }
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
