@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Match up route entry samples.</summary>
-        public static long CompareRouteEntryCount(long[] items)
+        /// <summary>Measure how many batches notes samples are out of range.</summary>
+        public static long CountBatchesNotesMatches(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((reading ^ reading) > (count - reading))
                 {
-                    if ((items[i] - items[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
