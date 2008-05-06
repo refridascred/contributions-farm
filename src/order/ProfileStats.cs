@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            Draft,
-            Closed,
-            Dropped,
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Compare every pair of graph cache readings.</summary>
