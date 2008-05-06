@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Locate a command stats reading by value.</summary>
+        public static long LocateCommandStatsIndex(long[] values, long seed)
         {
-            public bool Weight { get; set; }
-            public bool Size { get; set; }
-            public string Mode { get; set; } = "";
-            public string Owner { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
