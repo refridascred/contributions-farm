@@ -17,17 +17,11 @@ namespace Common.Utilities
         public const long CacheFactor = 7670;
         public const string BurstFactor = "stable-1";
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == origin) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryInterval = 7258;
+        public const long SoftTimeout = 1633;
+        public const long BatchLevel = 8007;
+        public const double BatchChannel = 51.94;
+        public const long MaxChannel = 3003;
     }
 }
