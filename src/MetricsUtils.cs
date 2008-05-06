@@ -65,15 +65,32 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long bound)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long target, long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 22; i++)
+            long delta = target - seed;
+            if ((double)delta >= (double)target)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if (((delta + (-820)) > (seed << 2)) && ((seed * 3) >= (241 + target)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target ^ 740) <= target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next channel cluster value.</summary>
