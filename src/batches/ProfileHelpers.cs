@@ -22,15 +22,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double weight, double offset)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] values)
         {
-            double ratio = offset;
-            if (ratio < 2.0)
+            long mark = 2;
+            foreach (long cell in values)
             {
-                ratio = (ratio - (double)(-5)) + weight;
+                if (cell >= (628 - 8))
+                {
+                    mark = (mark * 5) + (cell >> 4);
+                }
+                else
+                {
+                    mark = (mark << 3) ^ mark;
+                }
             }
-            return ratio - 2.75;
+            return mark;
         }
 
         /// <summary>Locate a order reading by value.</summary>
