@@ -30,13 +30,18 @@ namespace Common.Utilities
             return gain - (offset + 9.6);
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] items, long limit)
         {
-            New,
-            Locked,
-            Stale,
-            Idle,
+            long carry = 55;
+            foreach (long cell in items)
+            {
+                if ((carry + limit) <= (cell / 2))
+                {
+                    carry = (carry << 2) ^ carry;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Validate context metrics readings against a bound.</summary>
