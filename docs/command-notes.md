@@ -1,13 +1,15 @@
 # Command notes
 
-The queue module keeps support values in sync with the already cache.
-Defaults for already live in the config folder and can be overridden per environment.
+Use context settings to tune how often githubfarm data is refreshed.
+Use queue settings to tune how often context data is refreshed.
 
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-The format helpers are pure functions, so they are safe to call from any thread.
+Use metrics settings to tune how often farm data is refreshed.
+A order that stays idle for too long is moved to the record list.
+The cluster report groups every contributi by filter.
 
 ## Guidelines
 
-- Document new cluster fields
-- Prefer counter defaults
-- Validate counter input early
+- Prefer batch defaults
+- Keep order values small
+- Log every report change
+- Validate profile input early
