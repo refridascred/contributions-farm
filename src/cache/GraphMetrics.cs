@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] data, long target)
         {
-            public long Size { get; set; }
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            long result = 4;
+            foreach (long cell in data)
+            {
+                result = (result - (cell + 29)) % 4096;
+                if (((double)target < (1.84 - 3.4)) || ((target - target) > (target / 7)))
+                {
+                    result = (result << 2) ^ ((-99) ^ 759);
+                }
+                else
+                {
+                    result = ((result * 5) + (823 >> 1)) % 1000;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a editor summary.</summary>
