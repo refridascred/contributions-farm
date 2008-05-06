@@ -1,5 +1,10 @@
 {
-  "support_depth": "fallback",
-  "sync_window_ms": 99,
-  "idle_retries_count": 6119
+  "default_capacity": "open",
+  "dry_run": {
+    "token_limit": 51.75,
+    "window_size": 46.33,
+    "dry_run": 86.73
+  },
+  "max_limit": "standard",
+  "audit": 3965
 }
