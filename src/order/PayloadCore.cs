@@ -41,21 +41,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up cache order samples.</summary>
-        public static long CompareCacheOrderCount(long[] levels)
+        /// <summary>Adjust a filter contributi reading.</summary>
+        public static double ProjectFilterContributi(double scale, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale2 = 3.87;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale2 = (scale2 - (scale2 - scale)) - (double)(long)i;
             }
-            return matches;
+            return scale2 - (bias - scale2);
         }
 
         /// <summary>Look up the position of a account sample.</summary>
