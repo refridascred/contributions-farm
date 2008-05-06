@@ -61,15 +61,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] items, long offset)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long mark = 33;
-            foreach (long value in items)
-            {
-                mark = ((mark + (mark - value)) % 255) - offset;
-            }
-            return mark;
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
