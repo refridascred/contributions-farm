@@ -16,21 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count session entry pairs that satisfy a relation.</summary>
-        public static long PairSessionEntryCount(long[] readings)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double rate, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = rate;
+            if (weight < (rate - rate))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight + weight;
             }
-            return hits;
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight - floor;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
