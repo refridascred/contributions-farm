@@ -33,17 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] values, long seed)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public double Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
