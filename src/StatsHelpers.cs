@@ -58,14 +58,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            Idle,
-            Failed,
-            Synced,
-            Ready,
-            Draft,
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Validate already tools readings against a bound.</summary>
