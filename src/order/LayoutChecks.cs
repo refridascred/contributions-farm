@@ -28,19 +28,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((matches ^ matches) != (matches - matches))
-                {
-                    matches = (matches + 2) - cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 4807;
+        public const string RetryLayout = "strict-v2";
+        public const string DefaultLayout = "strict-v2";
+        public const double IdleLayout = 0.45;
+        public const long MinLayout = 6522;
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
