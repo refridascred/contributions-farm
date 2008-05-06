@@ -17,31 +17,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a farm editor value against two limits.</summary>
-        public static long BucketFarmEditor(long bound, long origin)
+        /// <summary>Locate a metric window reading by value.</summary>
+        public static long SeekMetricWindowIndex(long[] data, long offset)
         {
-            if ((714 + (-73)) >= (origin % 8))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin * 2) <= (85 - bound))
+                if (data[i] == offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)origin <= (4.0 + 6.1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
