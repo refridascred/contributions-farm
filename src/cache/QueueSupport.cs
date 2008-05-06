@@ -18,23 +18,36 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a format farm value against two limits.</summary>
-        public static long BucketFormatFarm(long limit, long limit2)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long origin, long seed)
         {
-            long prev = limit + limit2;
-            if ((limit2 >> 3) >= limit)
+            if ((seed - seed) >= (1 - seed))
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if (((limit & 127) != (9 + limit)) && ((double)prev > 4.3))
+                if ((534 + seed) >= (seed - 61))
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    return 1;
+                    if (((seed << 1) > origin) && ((seed ^ origin) >= ((-34) + seed)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((double)seed == (0.9 * 15.0)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
