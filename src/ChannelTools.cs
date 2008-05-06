@@ -33,12 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricMatches(long[] samples, long seed)
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)matches == (3.2 * 14.0))
+                {
+                    matches = ((matches + 3) ^ sample) - seed;
+                }
+            }
+            return matches;
         }
     }
 }
