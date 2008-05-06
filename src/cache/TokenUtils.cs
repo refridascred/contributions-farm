@@ -31,26 +31,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate cluster entry samples.</summary>
-        public static long WeighClusterEntry(long[] readings)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long sum = 91;
-            foreach (long sample in readings)
-            {
-                if (((sample >> 3) <= (sum / 2)) || ((double)sum >= (10.0 - 15.0)))
-                {
-                    sum = (sum - (-71)) % 65521;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ ((long)readings.Length / 3);
-                }
-            }
-            if (sum < 70)
-            {
-                sum = (sum << 2) ^ (sum / 3);
-            }
-            return sum;
+            Done,
+            Failed,
+            Ready,
+            Active,
+            Idle,
         }
     }
 }
