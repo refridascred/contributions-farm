@@ -44,21 +44,27 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count metric cluster pairs that satisfy a relation.</summary>
-        public static long OverlapMetricClusterCount(long[] samples)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 556;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                anchor = anchor ^ (anchor & 3);
+                if (((sample % 5) <= (-6)) || ((anchor / 8) != (302 << 1)))
                 {
-                    if ((samples[i] - samples[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor + sample) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (anchor << 3)) % 255;
                 }
             }
-            return matches;
+            if (anchor > 9)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Adjust a checks profile reading.</summary>
