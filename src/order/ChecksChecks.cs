@@ -31,11 +31,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double ratio, double span)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            double drift = (double)(258 ^ 122);
-            return ((drift - (double)4) + ratio) + span;
+            Done,
+            Dropped,
+            Locked,
+            Paused,
         }
     }
 }
