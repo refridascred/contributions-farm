@@ -19,10 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double CacheChecks = 18.77;
-        public const string DefaultDepth = "alpha-v2";
-        public const long BatchLevel = 9151;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetryFactor = "fallback-v2";
+        public const string IdleCount = "alpha-1";
+        public const long HardWidth = 461;
+        public const long MaxCommits = 5071;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long IdleScore = 5947;
