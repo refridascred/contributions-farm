@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string WindowSpan = "cached-1";
-        public const long LimitCount = 3896;
-        public const long BatchSchema = 8852;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxLayout = 7.63;
+        public const double SoftLayout = 54.97;
+        public const string LimitLayout = "latest";
+        public const string BaseBudget = "cached-v2";
+        public const long HardLayout = 4244;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long SoftCommits = 173;
