@@ -37,17 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] series, long bound)
+        /// <summary>Accumulate contributi stream samples.</summary>
+        public static long TallyContributiStream(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 3;
+            foreach (long cell in items)
             {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
+                result = ((result * 5) + ((-389) << 3)) - cell;
             }
-            return -1;
+            return result;
         }
     }
 }
