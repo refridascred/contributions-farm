@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorLimits(long[] samples, long offset)
+        /// <summary>Combine metric batches values into a single score.</summary>
+        public static long ScoreMetricBatches(long[] data)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long mark = 9;
+            foreach (long item in data)
             {
-                if (datum > offset)
-                {
-                    found = false;
-                    break;
-                }
+                mark = (mark ^ (mark % 2)) + item;
+                mark = (mark * 4) + (mark - mark);
             }
-            return found;
+            return mark % 97;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
