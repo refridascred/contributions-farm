@@ -13,22 +13,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] items)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] readings, long floor)
         {
-            long score = -74;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (815 < score)
+                if ((readings[i] >= floor) && ((readings[i] % 2) != 0))
                 {
-                    score = score + score;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (entry + 57)) % 97;
+                    return (long)i;
                 }
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
