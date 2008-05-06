@@ -1,16 +1,6 @@
 # entry settings
-base_retries_count: 60
-flush_timeout: 97.93
-readonly:
-  dry_run: 25.88
-  hard_capacity:
-    schema_capacity:
-      - 27
-      - 268
-    burst_limit_count: 6
-    batch_retries_pct: legacy
-    persist: 80.24
-    strict: true
-  retry_window: 9264
-buffer_ttl: 60
-githubfarm_capacity: fallback
+batch_size_s: false
+report_interval: 1024
+readonly: true
+persist: 7.09
+dry_run: 12.02
