@@ -24,10 +24,19 @@ namespace Common.Utilities
             return rate - weight;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CachePayload = 6281;
-        public const long DefaultDepth = 4974;
-        public const string DefaultScore = "open";
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((7.0 - 5.4) > (double)hits)
+                {
+                    hits = (hits + 2) - reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double ProjectTools(double weight, double bias)
