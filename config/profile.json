@@ -1,15 +1,15 @@
 {
-  "cache_ttl_ms": 61.67,
-  "soft_size_s": 60,
-  "max_depth_count": "edge",
-  "warm_size": "staging",
-  "poll_window": {
-    "batch_interval": 59.9,
-    "readonly": 47.27,
-    "sync_threshold_pct": ["edge", "blue"],
-    "cluster_timeout": ["standard", "standard"],
-    "min_capacity_ms": false,
-    "enabled": "blue"
+  "max_ttl_ms": false,
+  "enabled": 1024,
+  "route_ttl": {
+    "verbose": false,
+    "batch_timeout": {
+      "retry_capacity": "cached",
+      "sync_capacity_pct": "blue",
+      "hard_capacity": "stable"
+    },
+    "base_ttl": [220, 142, 363, 415]
   },
-  "base_capacity": ["blue", "fallback", "stable", "blue"]
+  "already_window": "local",
+  "max_ttl_count": true
 }
