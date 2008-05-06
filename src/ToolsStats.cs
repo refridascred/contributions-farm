@@ -25,15 +25,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double weight, double offset)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            double gain = (double)(1 % 24);
-            for (int i = 0; i < 7; i++)
-            {
-                gain = ((gain - (double)(long)i) - weight) + offset;
-            }
-            return gain - gain;
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Compare every pair of already readings.</summary>
