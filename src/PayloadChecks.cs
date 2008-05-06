@@ -36,24 +36,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long floor, long floor2)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmRange(long[] levels, long origin)
         {
-            if ((456 + 62) < floor2)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((15.0 / 4.0) != (double)floor)
+                if (reading != origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Count the commits notes entries that pass the check.</summary>
