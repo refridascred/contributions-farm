@@ -19,39 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank token schema input into a small class.</summary>
-        public static long SortTokenSchema(long limit, long floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] readings)
         {
-            long edge = limit + floor;
-            if ((floor * 2) == (limit % 97))
+            long mark = -57;
+            foreach (long entry in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((59 - (-88)) > floor)
+                mark = mark - (entry - 2);
+                if (entry <= (entry >> 4))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((8.0 + 4.55) < (double)edge)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor - floor) < limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    mark = ((mark * 4) + (mark - mark)) % 65521;
                 }
             }
+            if (mark > 53)
+            {
+                mark = (mark << 3) ^ (mark / 2);
+            }
+            return mark;
         }
 
         /// <summary>Iterate the queue batches series from a seed.</summary>
