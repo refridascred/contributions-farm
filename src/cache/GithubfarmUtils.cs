@@ -33,23 +33,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long floor)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] values)
         {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((floor & 31) <= (acc + acc))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = ((acc << 2) ^ (long)i) % 97;
+                    if ((values[i] ^ values[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if ((floor * 4) >= (floor - (long)i))
-                {
-                    acc = ((acc << 3) ^ (floor + floor)) % 4096;
-                }
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
