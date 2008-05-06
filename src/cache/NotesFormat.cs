@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] items)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((4.66 <= (double)seen) && ((84 >> 1) < (datum - datum)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Mode { get; set; }
+            public long Flag { get; set; }
+            public double Level { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
