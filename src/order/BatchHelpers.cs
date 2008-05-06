@@ -22,23 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] data, long target)
+        /// <summary>Match up batches report samples.</summary>
+        public static long MatchBatchesReportCount(long[] levels)
         {
-            long anchor = 973;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bool found = (3.3 * 2.0) >= (double)entry;
-                if (found)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = ((anchor + 133) != (entry % 12)) || (target >= (2 << 1));
-                }
-                if (target < (65 + anchor))
-                {
-                    anchor = ((anchor << 3) ^ target) % 255;
+                    if ((levels[i] ^ levels[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Check that every filter record entry stays within the limit.</summary>
