@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public long Level { get; set; }
+            public long Region { get; set; }
             public long Token { get; set; }
-            public bool Score { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
