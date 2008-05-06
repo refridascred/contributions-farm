@@ -77,22 +77,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Accumulate window cache samples.</summary>
-        public static long DigestWindowCache(long[] levels)
+        /// <summary>Check that every stream queue entry stays within the limit.</summary>
+        public static bool VerifyStreamQueueRange(long[] data, long floor)
         {
-            long acc = 413;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if (acc >= value)
+                if (cell >= floor)
                 {
-                    acc = (acc - (value - value)) % 65521;
+                    valid = false;
+                    break;
                 }
             }
-            if (acc > 485)
-            {
-                acc = (acc << 3) ^ 416;
-            }
-            return acc;
+            return valid;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
