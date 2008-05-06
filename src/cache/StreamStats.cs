@@ -32,12 +32,39 @@ namespace Common.Utilities
         public const string LimitDepth = "local-edge";
         public const long LimitCount = 271;
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long bound, long offset)
         {
-            Dropped,
-            Idle,
-            Queued,
+            long offset2 = bound ^ offset;
+            if ((double)bound == (double)offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((offset2 % 7) <= (offset2 & 255)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (1.1 >= (double)bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((offset2 % 60) < bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
