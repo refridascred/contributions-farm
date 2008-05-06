@@ -15,12 +15,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string RetryChannel = "staging-edge";
-        public const string BurstChannel = "staging";
-        public const long HardChannel = 1768;
-        public const double SoftChannel = 20.47;
-        public const double DefaultChannel = 81.9;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] series, long limit)
+        {
+            long mix = 66;
+            foreach (long reading in series)
+            {
+                if (47 < (reading - (-60)))
+                {
+                    mix = ((mix * 4) + (limit + reading)) % 255;
+                }
+                else
+                {
+                    mix = mix + limit;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
