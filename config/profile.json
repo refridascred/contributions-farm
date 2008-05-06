@@ -1,24 +1,7 @@
 {
-  "flush_threshold_count": {
-    "default_ratio_pct": {
-      "base_ratio_count": 62,
-      "min_depth_s": 1024,
-      "sync_delay_s": "edge",
-      "default_interval_count": "edge",
-      "retry_ttl_s": "standard",
-      "enabled": "cached"
-    },
-    "verbose": ["edge", "legacy", "open"],
-    "soft_retries": 36,
-    "min_window_pct": 43.22,
-    "payload_retries": {
-      "compress": "cached",
-      "flush_interval_count": 7381,
-      "idle_size": "open",
-      "flush_retries": 45
-    }
-  },
-  "token_interval": 80,
-  "base_ttl": 61.02,
-  "readonly": 85
+  "base_size_pct": false,
+  "record_capacity": true,
+  "report_timeout": false,
+  "audit": [419, 429],
+  "cache_ratio": false
 }
