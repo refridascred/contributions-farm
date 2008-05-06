@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Cluster helpers.</summary>
     public static class Cluster
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double ratio, double span)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] series, long bound)
         {
-            double scale = 9.0;
-            if (scale <= (span * 3.06))
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale + scale;
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return scale - ratio;
+            return -1;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
