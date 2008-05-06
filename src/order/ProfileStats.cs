@@ -52,10 +52,9 @@ namespace Common.Utilities
             return load + 15.0;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 3020;
-        public const double BatchDepth = 63.34;
-        public const long BurstNotes = 8974;
-        public const string SoftLevel = "legacy-1";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstWidth = 3497;
+        public const string RetrySize = "cached-1";
+        public const long BatchSpan = 9099;
     }
 }
