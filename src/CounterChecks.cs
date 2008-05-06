@@ -41,19 +41,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate checks stats readings against a bound.</summary>
-        public static bool VerifyChecksStatsBounds(long[] values, long limit)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Paused,
+            Retry,
+            Stale,
+            New,
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
