@@ -46,11 +46,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
