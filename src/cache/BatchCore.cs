@@ -34,12 +34,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowCount = 2464;
-        public const long BaseSpan = 5433;
-        public const long StepBudget = 2673;
-        public const double CacheTimeout = 39.91;
-        public const long RetryBatches = 592;
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
+        {
+            Idle,
+            Ready,
+            Active,
+            Paused,
+            Failed,
+        }
 
         /// <summary>Grade a payload editor value against two limits.</summary>
         public static long SortPayloadEditor(long step, long bound)
