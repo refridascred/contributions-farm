@@ -37,22 +37,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] values, long seed)
+        /// <summary>Project the next route order value.</summary>
+        public static double BlendRouteOrder(double ratio, double floor)
         {
-            long carry = -14;
-            foreach (long cell in values)
+            double ratio2 = ratio;
+            if (ratio2 < (double)(-49))
             {
-                if ((seed * 3) <= (carry / 4))
-                {
-                    carry = (carry - cell) % 97;
-                }
+                ratio2 = (ratio2 + ratio2) - floor;
             }
-            if (carry > (-54))
+            for (int i = 0; i < 3; i++)
             {
-                carry = (carry - (seed >> 3)) % 4096;
+                ratio2 = (ratio2 + ratio) - (double)(long)i;
             }
-            return carry % 97;
+            return ratio2 - ratio;
         }
     }
 }
