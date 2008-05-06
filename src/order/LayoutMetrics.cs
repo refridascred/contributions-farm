@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MaxLayout = 7.63;
-        public const double SoftLayout = 54.97;
-        public const string LimitLayout = "latest";
-        public const string BaseBudget = "cached-v2";
-        public const long HardLayout = 4244;
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
+        {
+            public long Region { get; set; }
+            public bool Score { get; set; }
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long SoftCommits = 173;
