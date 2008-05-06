@@ -44,20 +44,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long floor)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long mix = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                long count = floor;
-                if (((long)i + mix) == (count % 12))
-                {
-                    break;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            Failed,
+            Draft,
+            Done,
+            Active,
+            Synced,
         }
     }
 }
