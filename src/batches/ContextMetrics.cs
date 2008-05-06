@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            public bool Total { get; set; }
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Accumulate contributi samples.</summary>
