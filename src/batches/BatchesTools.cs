@@ -31,19 +31,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a command channel reading.</summary>
-        public static double ScaleCommandChannel(double rate, double bias)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] values)
         {
-            double mean = bias;
-            if (mean > (double)8)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                mean = (mean - bias) + rate;
+                if (92 >= (matches * 5))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (mean - bias)) - (double)(long)i;
-            }
-            return mean - (double)(-765);
+            return matches;
         }
     }
 }
