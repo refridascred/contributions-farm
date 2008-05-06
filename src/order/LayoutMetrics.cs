@@ -10,17 +10,10 @@ namespace Common.Utilities
         public const long LimitCount = 3896;
         public const long BatchSchema = 8852;
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                score = (score - (floor ^ floor)) % 4096;
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 173;
+        public const long StepCommits = 474;
+        public const double BaseCommits = 33.83;
 
         /// <summary>Scale a cluster filter figure with a bias.</summary>
         public static double BlendClusterFilter(double rate, double offset)
