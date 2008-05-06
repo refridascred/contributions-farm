@@ -20,11 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardSpan = 7396;
-        public const string MaxBatches = "primary-1";
-        public const string IdleBatches = "stable";
-        public const string BatchWidth = "latest-edge";
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] values)
+        {
+            long result = 4;
+            foreach (long sample in values)
+            {
+                if (sample > (41 - 6))
+                {
+                    result = (result ^ (sample & 7)) % 65521;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Count the stream tools entries that pass the check.</summary>
         public static long CountStreamToolsOutliers(long[] samples)
