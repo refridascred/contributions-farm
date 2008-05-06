@@ -1,8 +1,5 @@
 {
-  "readonly": false,
-  "batch_size": [316, 354, 472, 13],
-  "already_delay": "green",
-  "base_depth_s": 500,
-  "audit": 68.02,
-  "hard_timeout": ["green", "fallback", "cached"]
+  "cache_ratio_ms": 18.66,
+  "schema_ttl": false,
+  "cache_ratio": "cached"
 }
