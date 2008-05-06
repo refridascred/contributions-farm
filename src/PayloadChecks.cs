@@ -36,23 +36,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double weight, double offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] readings)
         {
-            double ratio = offset;
-            if (ratio <= (offset * 16.0))
+            long anchor = 973;
+            foreach (long cell in readings)
             {
-                ratio = (ratio + offset) - weight;
+                anchor = (anchor - (cell * 3)) % 65521;
             }
-            else
+            if (anchor < 57)
             {
-                ratio = ratio - offset;
+                anchor = (anchor - 281) % 65521;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (5.5 / 5.0)) + (double)(long)i;
-            }
-            return ratio - offset;
+            return anchor % 65521;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
