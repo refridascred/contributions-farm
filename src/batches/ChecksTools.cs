@@ -50,10 +50,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MaxGithubfarm = "alpha";
-        public const long BatchRatio = 6976;
-        public const long DefaultFactor = 6683;
-        public const long DefaultGithubfarm = 8503;
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
+        {
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
+            public double Region { get; set; }
+        }
     }
 }
