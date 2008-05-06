@@ -1,19 +1,6 @@
 {
-  "burst_ratio_pct": [60, 425, 281],
-  "default_capacity": {
-    "burst_capacity_count": 4136,
-    "max_depth_ms": 7940,
-    "sync_window_ms": false
-  },
-  "max_depth": {
-    "hard_retries": 30,
-    "retry_interval_ms": 500,
-    "retry_delay_ms": 6027,
-    "batch_threshold": "blue",
-    "readonly": "standard",
-    "stream_interval": "blue"
-  },
-  "poll_size_s": 58,
-  "notes_capacity": "stable",
-  "warm_size": 3861
+  "default_threshold": 89,
+  "hard_interval": 9261,
+  "strict": 64,
+  "verbose": true
 }
