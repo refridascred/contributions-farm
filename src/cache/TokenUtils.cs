@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long floor)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long score = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            Synced,
+            Locked,
+            Pending,
         }
 
         /// <summary>Combine stream values into a single score.</summary>
