@@ -17,18 +17,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a metric window reading by value.</summary>
-        public static long SeekMetricWindowIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BatchRatio = "staging";
+        public const long BurstTools = 113;
+        public const long BaseTools = 9488;
+        public const string RetryDepth = "latest-1";
+        public const long BatchTools = 5408;
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
