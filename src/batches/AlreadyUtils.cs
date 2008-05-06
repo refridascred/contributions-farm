@@ -54,32 +54,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long target, long offset)
-        {
-            long cur = target + offset;
-            if (16 < (offset * 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((offset / 8) != (target & 7)) && ((double)offset >= (1.7 / 4.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset != (double)cur)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 6449;
+        public const string LimitStats = "strict-1";
+        public const long BatchInterval = 2073;
     }
 }
