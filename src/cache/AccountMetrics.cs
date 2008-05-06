@@ -37,32 +37,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Grade a batches record value against two limits.</summary>
-        public static long BucketBatchesRecord(long step, long bound)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] values)
         {
-            long offset = step + bound;
-            if ((double)offset == (8.0 / 3.0))
+            long score = -8;
+            foreach (long entry in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((911 + 377) <= bound)
+                if (((entry >> 1) == (score - entry)) || (27 > (score % 100)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((4.8 * 4.95) >= (double)step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    score = score - (entry << 1);
                 }
             }
+            if (score > 8)
+            {
+                score = (score << 2) ^ (score * 2);
+            }
+            return score % 4096;
         }
 
         /// <summary>Check that every context counter entry stays within the limit.</summary>
