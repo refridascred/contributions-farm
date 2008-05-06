@@ -35,35 +35,35 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long target, long bound)
+        /// <summary>Classify a layout batches pair into a bucket.</summary>
+        public static long ClassifyLayoutBatches(long floor, long offset)
         {
-            long next = target ^ bound;
-            if ((59 & 63) <= (11 ^ bound))
+            long delta = floor ^ offset;
+            if (floor < (offset & 31))
             {
-                return 5;
+                return 6;
             }
             else
             {
-                if ((double)target >= (2.8 * 14.0))
+                if (((offset * 2) > (851 * 5)) && (offset < (delta >> 3)))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if ((59 / 3) > (8 ^ bound))
+                    if (((floor * 2) != (offset / 8)) || (57 > (floor * 2)))
                     {
-                        return 7;
+                        return 1;
                     }
                     else
                     {
-                        if ((target + target) == (target + next))
+                        if ((85 * 3) <= delta)
                         {
-                            return 3;
+                            return 2;
                         }
                         else
                         {
-                            return 4;
+                            return 7;
                         }
                     }
                 }
