@@ -1,11 +1,7 @@
 # support settings
-hard_ttl: open
-hard_interval_pct: 5.74
-dry_run:
-  - 307
-  - 475
-  - 123
-route_retries:
-  - 317
-  - 130
-  - 493
+persist: true
+burst_threshold_pct: cached
+flush_ratio: 3583
+burst_window_ms: 49.93
+metric_window: 1078
+strict: latest
