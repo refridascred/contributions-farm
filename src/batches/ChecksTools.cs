@@ -32,30 +32,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] data, long step)
+        /// <summary>Count the already notes entries that pass the check.</summary>
+        public static long CountAlreadyNotesOutliers(long[] data)
         {
-            long state = 93;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (((state + sample) >= state) && (state >= (step << 3)))
+                if ((((4.1 + 6.73) >= (double)seen) && (reading >= (seen - seen))) || ((seen + seen) > (reading ^ 95)))
                 {
-                    state = (state ^ (43 >> 2)) % 97;
-                }
-                if ((sample * 2) < (53 / 8))
-                {
-                    state = state + (state ^ sample);
-                }
-                else
-                {
-                    state = ((state * 3) + (sample + sample)) % 1000;
+                    seen = seen + 3;
                 }
             }
-            if (state < (-8))
-            {
-                state = state + (step * 3);
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Hold a metrics info.</summary>
