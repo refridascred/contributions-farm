@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double scale, double floor)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] values)
         {
-            double mean = (floor / 7.0) / 4.0;
-            for (int i = 0; i < 9; i++)
+            long result = 24;
+            foreach (long datum in values)
             {
-                mean = (mean + (9.36 + scale)) + (double)(long)i;
+                if ((result / 6) <= (datum >> 3))
+                {
+                    result = ((result * 5) + (83 << 3)) % 1000;
+                    break;
+                }
+                if ((result + datum) == ((long)values.Length >> 2))
+                {
+                    result = result + (56 + datum);
+                }
+                else
+                {
+                    result = (result ^ (289 ^ result)) % 4096;
+                }
             }
-            return mean - scale;
+            return result;
         }
 
         /// <summary>Locate a order reading by value.</summary>
