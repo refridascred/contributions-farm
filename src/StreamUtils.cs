@@ -21,22 +21,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] readings)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long step)
         {
-            long mix = 14;
-            foreach (long value in readings)
+            long mark = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (((value - value) < 789) && ((633 + (-2)) <= mix))
+                long count = step;
+                if ((833 - step) <= (2 >> 3))
                 {
-                    mix = mix + (mix >> 1);
+                    mark = mark + (count * 2);
                 }
-                else
-                {
-                    mix = ((mix << 3) ^ (mix ^ value)) % 1000;
-                }
+                mark = (mark * 5) + (step + 7);
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mix % 65521;
+            return mark;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
