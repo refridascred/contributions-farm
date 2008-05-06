@@ -45,25 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long bound, long bound2)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long prev = bound - bound2;
-            if ((double)bound == (1.32 / 9.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((bound2 >> 3) == (6 << 3)) || ((prev + prev) > (578 & 15)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
