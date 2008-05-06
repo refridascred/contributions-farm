@@ -34,16 +34,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long step)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long total = step;
-            for (int i = 0; i < 9; i++)
-            {
-                total = total ^ (178 + 1);
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            Failed,
+            Draft,
+            Idle,
+            Synced,
+            Locked,
         }
 
         /// <summary>Hold a route summary.</summary>
