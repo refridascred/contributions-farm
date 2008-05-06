@@ -65,10 +65,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double LimitWidth = 68.26;
-        public const long DefaultBatches = 7265;
-        public const long WindowBatches = 8975;
-        public const long IdleWidth = 3433;
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
+        {
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
+            public double Owner { get; set; }
+        }
     }
 }
