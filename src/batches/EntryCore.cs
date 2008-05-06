@@ -53,19 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] samples, long step)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long seed)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long sum = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (item != step)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    ready = false;
-                    break;
+                    sum = ((sum << 2) ^ (sum ^ sum)) ^ (long)i2;
                 }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return ready;
+            return sum;
         }
     }
 }
