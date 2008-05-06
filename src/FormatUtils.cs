@@ -43,15 +43,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long origin)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] samples, long origin)
         {
-            long acc = origin;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                if (cell >= (origin * 3))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
