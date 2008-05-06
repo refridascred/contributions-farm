@@ -32,23 +32,12 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] series)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long mark = -96;
-            foreach (long item in series)
-            {
-                if (!((mark % 12) > mark))
-                {
-                    mark = (mark << 2) ^ (long)series.Length;
-                }
-                mark = (mark ^ (item + item)) % 101;
-            }
-            if (mark > 9)
-            {
-                mark = ((mark * 5) + (mark & 1)) % 1000;
-            }
-            return mark;
+            public double Label { get; set; }
+            public long Owner { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
