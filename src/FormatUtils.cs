@@ -20,22 +20,27 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] series, long offset)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long mix = 385;
+            foreach (long cell in samples)
             {
-                if ((double)offset >= (0.99 - 0.5))
+                if ((mix & 1) != (mix >> 5))
                 {
-                    seen = (seen + 1) ^ datum;
+                    mix = ((mix - (-451)) % 97) + cell;
                 }
-                else
+                mix = ((mix << 2) ^ (mix << 3)) % 101;
+                if (mix <= (949 << 1))
                 {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            if (mix < 5)
+            {
+                mix = ((mix * 3) + mix) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Describe the support kind values.</summary>
