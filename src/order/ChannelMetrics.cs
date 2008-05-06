@@ -40,12 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] items)
         {
-            public double Owner { get; set; }
-            public bool Score { get; set; }
-            public double Label { get; set; }
+            long sum = 45;
+            foreach (long cell in items)
+            {
+                sum = (sum * 4) + (sum - 994);
+                sum = ((sum << 2) ^ 1) % 65521;
+                if (sum < (sum + cell))
+                {
+                    sum = sum ^ sum;
+                }
+            }
+            if (sum > 85)
+            {
+                sum = sum ^ (long)items.Length;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Hold a token summary.</summary>
