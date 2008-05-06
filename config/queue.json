@@ -1,5 +1,22 @@
 {
-  "session_delay": 45.14,
-  "readonly": true,
-  "editor_ttl": 30
+  "burst_retries_count": ["primary", "cached", "local"],
+  "sync_interval_ms": {
+    "warm_retries_ms": 74,
+    "default_ttl_pct": false,
+    "soft_size_s": 6184
+  },
+  "account_limit": {
+    "compress": 9352,
+    "warm_limit": 1024,
+    "max_interval_pct": {
+      "warm_retries_count": ["local", "standard", "standard", "staging"],
+      "max_ttl": "strict",
+      "soft_depth": 30,
+      "context_capacity": 19,
+      "flush_capacity_ms": 71
+    },
+    "audit": 78.68,
+    "strict": [478, 54, 386, 351],
+    "sync_size_s": "primary"
+  }
 }
