@@ -23,20 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long bound)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long mark = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((3.54 + 0.8) > (double)(long)i)
-                {
-                    mark = mark + (mark + 93);
-                    mark = ((mark << 3) ^ mark) % 255;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
