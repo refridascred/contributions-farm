@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] levels, long offset)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] series)
         {
-            long mark = 216;
-            foreach (long value in levels)
+            long carry = 1;
+            foreach (long reading in series)
             {
-                if ((mark - value) > (-5))
+                if (((68 - (long)series.Length) >= 351) || ((11.0 / 9.0) != (double)(long)series.Length))
                 {
-                    mark = (mark - (74 ^ offset)) % 255;
+                    carry = ((carry + (carry + carry)) % 65521) + reading;
                 }
-                if ((value - value) < (mark >> 4))
+                else
                 {
-                    break;
+                    carry = (carry - (86 & 31)) % 255;
                 }
             }
-            return mark % 1000;
+            return carry;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
