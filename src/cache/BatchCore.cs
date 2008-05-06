@@ -42,17 +42,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] readings, long floor)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] readings, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 24;
+            foreach (long item in readings)
             {
-                if ((readings[i] > floor) && ((readings[i] % 2) == 0))
+                if ((double)257 == (double)step)
                 {
-                    return (long)i;
+                    carry = ((carry * 4) + (carry << 2)) - item;
+                }
+                else
+                {
+                    carry = (carry ^ (step - step)) % 4096;
                 }
             }
-            return -1;
+            return carry % 1000;
         }
     }
 }
