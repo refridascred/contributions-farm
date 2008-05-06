@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
-        {
-            Done,
-            Draft,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 3690;
+        public const long BatchScore = 9205;
+        public const long DefaultSize = 7693;
+        public const string RetryInterval = "fallback-edge";
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
