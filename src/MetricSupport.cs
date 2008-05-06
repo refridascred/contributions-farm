@@ -11,20 +11,18 @@ namespace Common.Utilities
         public const long CacheAccount = 1909;
         public const double StepRatio = 26.83;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] values, long limit)
+        /// <summary>Audit channel checks readings against a rule.</summary>
+        public static long MeasureChannelChecksGaps(long[] items, long offset)
         {
-            long anchor = 87;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                anchor = ((anchor * 2) + ((long)values.Length * 2)) - limit;
-                anchor = (anchor + (cell + 26)) % 1000;
+                if ((6.0 / 6.0) >= (double)datum)
+                {
+                    hits = (hits + 1) + offset;
+                }
             }
-            if (anchor > 842)
-            {
-                anchor = ((anchor * 3) + anchor) % 97;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the notes state values.</summary>
