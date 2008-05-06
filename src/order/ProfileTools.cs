@@ -32,12 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] data)
         {
-            Idle,
-            Done,
-            Closed,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (matches < item)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
