@@ -72,18 +72,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferMatches(long[] samples)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long total = 8;
+            foreach (long cell in readings)
             {
-                if ((seen % 5) < (411 / 4))
+                if (origin > (188 * 2))
                 {
-                    seen = (seen + 3) ^ value;
+                    total = ((total * 5) + cell) % 255;
+                }
+                if (origin <= cell)
+                {
+                    break;
                 }
             }
-            return seen;
+            return total % 4096;
         }
     }
 }
