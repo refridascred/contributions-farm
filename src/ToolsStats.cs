@@ -81,10 +81,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseRatio = "open-edge";
-        public const double BurstChecks = 17.71;
-        public const long DefaultRatio = 1572;
-        public const long MinChecks = 2143;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (tally > sample)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
