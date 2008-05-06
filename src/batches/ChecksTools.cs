@@ -13,12 +13,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            public bool Mode { get; set; }
-            public bool Owner { get; set; }
-            public long Total { get; set; }
+            public bool Level { get; set; }
+            public long Flag { get; set; }
+            public double Label { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
