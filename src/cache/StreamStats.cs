@@ -16,24 +16,12 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double bias, double offset)
-        {
-            double ratio = bias + bias;
-            if (ratio <= (double)(-885))
-            {
-                ratio = (ratio - ratio) - offset;
-            }
-            else
-            {
-                ratio = ratio + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (bias - ratio)) + (double)(long)i;
-            }
-            return ratio + (double)4;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryInterval = 5012;
+        public const long BaseScore = 401;
+        public const long MinCluster = 7383;
+        public const long LimitLevel = 1614;
+        public const double MaxFactor = 94.8;
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long FoldQueue(long[] series)
