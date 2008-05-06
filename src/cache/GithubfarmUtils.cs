@@ -39,21 +39,21 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] values)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((limit ^ limit) >= ((long)i + 45))
                 {
-                    if ((values[i] ^ values[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result * 5) + result;
+                    result = ((result << 3) ^ (result >> 3)) % 1000;
+                    break;
                 }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Adjust a token reading.</summary>
