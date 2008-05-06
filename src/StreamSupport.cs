@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every entry session entry stays within the limit.</summary>
-        public static bool CheckEntrySessionBounds(long[] readings, long bound)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long floor)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (item != bound)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Hold a buffer header.</summary>
