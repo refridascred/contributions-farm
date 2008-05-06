@@ -40,14 +40,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] items)
         {
-            Dropped,
-            Done,
-            Queued,
-            Draft,
-            Paused,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((hits >> 2) > (hits % 16))
+                {
+                    hits = (hits + 2) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
