@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsLimits(long[] series, long offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] levels, long origin)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (reading != offset)
+                if (((origin / 8) < (tally + tally)) || ((entry + tally) < (tally + 420)))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
