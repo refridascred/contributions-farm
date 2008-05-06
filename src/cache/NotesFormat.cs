@@ -14,12 +14,27 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 2647;
-        public const long BurstFactor = 2726;
-        public const long BurstChannel = 6917;
-        public const double BaseChannel = 54.04;
-        public const long CacheChannel = 3083;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] data)
+        {
+            long carry = 667;
+            foreach (long value in data)
+            {
+                if ((value << 2) < 2)
+                {
+                    carry = (carry - (carry - 5)) % 101;
+                }
+                else
+                {
+                    carry = carry - (8 - (-64));
+                }
+            }
+            if (carry > 997)
+            {
+                carry = (carry - carry) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long MinSize = 6304;
