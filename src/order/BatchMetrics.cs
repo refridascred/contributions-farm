@@ -62,10 +62,13 @@ namespace Common.Utilities
         public const long WindowReport = 6300;
         public const string DefaultDepth = "local-edge";
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double StepChannel = 16.26;
-        public const long IdleChannel = 5475;
-        public const long MaxChannel = 6431;
-        public const string BatchDepth = "standard-1";
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
+        {
+            Active,
+            Retry,
+            Closed,
+            Stale,
+        }
     }
 }
