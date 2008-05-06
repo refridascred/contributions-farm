@@ -74,10 +74,15 @@ namespace Common.Utilities
         public const long RetryOrder = 2706;
         public const long BurstOrder = 2077;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BaseLayout = "staging-1";
-        public const long BatchRatio = 6732;
-        public const long BatchInterval = 6858;
-        public const long IdleLayout = 6872;
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double gain, double span)
+        {
+            double scale = (double)(0 ^ 62);
+            for (int i = 0; i < 5; i++)
+            {
+                scale = ((scale + (span + scale)) + (double)(long)i) - gain;
+            }
+            return scale + (span - span);
+        }
     }
 }
