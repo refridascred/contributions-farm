@@ -25,12 +25,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Measure how many report counter samples are out of range.</summary>
+        public static long CountReportCounterMatches(long[] series, long floor)
         {
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((841 <= count) || ((double)floor < 8.44))
+                {
+                    count = (count + 1) - sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate cluster entry samples.</summary>
