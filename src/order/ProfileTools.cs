@@ -56,21 +56,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                long lane = (score + seed) >> 4;
-                if ((lane + (long)i) >= (score & 15))
-                {
-                    lane = (lane << 2) ^ 223;
-                    lane = (lane << 3) ^ 9;
-                }
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxRatio = 9965;
+        public const long WindowCounter = 9271;
+        public const long HardBudget = 6231;
+        public const double RetryCounter = 71.48;
     }
 }
