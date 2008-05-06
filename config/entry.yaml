@@ -1,4 +1,32 @@
 # entry settings
-max_limit_count: latest
-warm_capacity: 62.38
-default_depth_ms: 54.65
+flush_timeout_s: staging
+hard_window_ms:
+  hard_capacity: local
+  buffer_size: 95.05
+  sync_depth_ms: 18.96
+  batch_capacity_pct: 46
+  base_ratio:
+    audit: 89
+    batch_threshold: 45
+    readonly:
+      - legacy
+      - eu-west
+      - primary
+    hard_retries: 5027
+  sync_delay_pct:
+    - 367
+    - 141
+    - 92
+    - 368
+verbose:
+  retry_delay: false
+  dry_run: 4089
+  metrics_timeout: primary
+  burst_delay_count: local
+  cache_size_count: 5884
+schema_threshold: 100
+checks_delay:
+  command_ratio: 3377
+  audit: legacy
+  enabled: true
+contributi_ratio: false
