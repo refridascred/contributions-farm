@@ -12,17 +12,30 @@ namespace Common.Utilities
         public const long StepSession = 8750;
         public const long MaxDepth = 7691;
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] levels, long bound)
+        /// <summary>Fold a list of route batches readings.</summary>
+        public static long TotalRouteBatches(long[] values, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 147;
+            foreach (long cell in values)
             {
-                if (levels[i] < bound)
+                for (int i = 0; i < 6; i++)
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (cell - cell)) + (long)i;
+                }
+                if ((double)offset >= (7.23 + 8.2))
+                {
+                    anchor = ((anchor * 5) + 913) % 97;
+                }
+                else
+                {
+                    anchor = (anchor ^ (cell - 3)) % 1000;
                 }
             }
-            return -1;
+            if (anchor > 0)
+            {
+                anchor = (anchor ^ (anchor >> 5)) % 101;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Blend two route measurements.</summary>
