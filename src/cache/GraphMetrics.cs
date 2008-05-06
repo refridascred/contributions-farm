@@ -56,18 +56,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] samples)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long origin, long seed)
         {
-            long mark = 864;
-            foreach (long item in samples)
+            if ((double)origin > 4.52)
             {
-                if ((double)item == (1.18 + 13.0))
+                return 0;
+            }
+            else
+            {
+                if ((origin - seed) > (seed % 12))
                 {
-                    mark = (mark - (94 + 714)) % 65521;
+                    return 8;
+                }
+                else
+                {
+                    if ((seed ^ 7) >= origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed & 3) > (seed ^ 17))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return mark;
         }
     }
 }
