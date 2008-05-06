@@ -1,5 +1,17 @@
 {
-  "cache_ratio_ms": 18.66,
-  "schema_ttl": false,
-  "cache_ratio": "cached"
+  "sync_retries": {
+    "cache_size_s": 43,
+    "enabled": {
+      "base_timeout_pct": false,
+      "cache_ttl": 79.66,
+      "soft_capacity": "latest",
+      "batch_timeout_count": 73.42
+    },
+    "dry_run": 9
+  },
+  "min_depth": 3331,
+  "retry_depth_ms": 60,
+  "retry_depth": 25,
+  "persist": ["fallback", "local"],
+  "default_retries": 31
 }
