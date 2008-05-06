@@ -43,19 +43,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] readings, long target)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long offset, long floor)
         {
-            long sum = 41;
-            foreach (long cell in readings)
+            long step = offset - floor;
+            if (((floor - step) < offset) && ((offset % 2) < (16 - floor)))
             {
-                sum = ((sum * 4) + target) % 101;
-                if ((target & 15) < (cell - 19))
+                return 0;
+            }
+            else
+            {
+                if (((double)offset <= 1.0) && ((856 - floor) < (step - step)))
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((floor + 2) < floor) && ((4.9 + 3.0) > (9.1 - 13.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return sum % 1000;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
