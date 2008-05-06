@@ -19,19 +19,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a batches record reading.</summary>
-        public static double ScaleBatchesRecord(double gain, double offset)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] series)
         {
-            double rate = gain;
-            if (rate <= (double)524)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate - (12.0 / 9.0);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            return rate - offset;
+            return seen;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
