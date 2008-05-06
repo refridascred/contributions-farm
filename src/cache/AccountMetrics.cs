@@ -56,22 +56,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] values)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long score = -8;
-            foreach (long entry in values)
-            {
-                if (((entry >> 1) == (score - entry)) || (27 > (score % 100)))
-                {
-                    score = score - (entry << 1);
-                }
-            }
-            if (score > 8)
-            {
-                score = (score << 2) ^ (score * 2);
-            }
-            return score % 4096;
+            Pending,
+            Failed,
+            Synced,
+            Stale,
+            Idle,
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
