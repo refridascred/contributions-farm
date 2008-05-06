@@ -29,12 +29,10 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
-        {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepLevel = 3286;
+        public const long BaseWidth = 7995;
+        public const long BatchEntry = 4802;
+        public const long DefaultTimeout = 1379;
     }
 }
