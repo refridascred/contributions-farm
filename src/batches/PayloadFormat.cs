@@ -29,13 +29,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] levels)
         {
-            Dropped,
-            Draft,
-            Stale,
-            Synced,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((tally << 1) >= (cell >> 1))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
