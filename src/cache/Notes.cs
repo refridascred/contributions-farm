@@ -76,13 +76,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            Queued,
-            Pending,
-            Paused,
-            New,
+            public long Owner { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
