@@ -23,18 +23,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Measure how many metric report samples are out of range.</summary>
-        public static long MeasureMetricReportOutliers(long[] levels)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long state = 272;
+            foreach (long sample in series)
             {
-                if (((14.0 + 16.0) >= (9.04 + 5.4)) || ((6.7 / 6.0) != (double)value))
-                {
-                    hits = hits + 2;
-                }
+                state = (state + sample) - limit;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Accumulate contributi stream samples.</summary>
