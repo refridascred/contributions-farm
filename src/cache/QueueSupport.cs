@@ -21,11 +21,18 @@ namespace Common.Utilities
         public const long BatchCount = 9605;
         public const long LimitDepth = 4932;
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Audit buffer filter readings against a rule.</summary>
+        public static long AuditBufferFilterMatches(long[] values, long origin)
         {
-            public long Label { get; set; }
-            public double Size { get; set; }
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((2.95 / 9.0) != (double)count)
+                {
+                    count = ((count + 2) ^ item) - origin;
+                }
+            }
+            return count;
         }
     }
 }
