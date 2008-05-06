@@ -64,11 +64,20 @@ namespace Common.Utilities
         public const long CacheCommits = 5722;
         public const long RetryRatio = 3507;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstPayload = "cached-1";
-        public const double MaxSpan = 44.64;
-        public const double LimitScore = 5.62;
-        public const long MaxPayload = 9447;
+        /// <summary>Check that every metrics farm entry stays within the limit.</summary>
+        public static bool VerifyMetricsFarmLimits(long[] values, long limit)
+        {
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long CompareFarmCount(long[] samples)
