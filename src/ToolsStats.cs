@@ -18,17 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a stream account counter forward.</summary>
-        public static long RollStreamAccount(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark * 2) + (-416)) % 4096;
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowLevel = 7087;
+        public const double StepRatio = 24.13;
+        public const long BatchScore = 7154;
+        public const long StepSize = 3952;
+        public const long StepLevel = 9266;
 
         /// <summary>Audit command support readings against a rule.</summary>
         public static long CountCommandSupportOutliers(long[] samples)
