@@ -21,19 +21,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphRange(long[] items, long origin)
+        /// <summary>Roll a metric stats counter forward.</summary>
+        public static long StepMetricStats(long origin)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (value < origin)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = ((carry << 3) ^ (816 - 96)) % 4096;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
