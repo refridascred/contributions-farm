@@ -35,20 +35,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((long)i <= mark)
-                {
-                    mark = (mark * 5) + (bound << 1);
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double StepSession = 79.81;
+        public const long SoftSession = 6550;
+        public const long LimitScore = 536;
+        public const long BatchSize = 2631;
+        public const long StepRatio = 8704;
 
         /// <summary>Match up batches samples.</summary>
         public static long MatchBatchesCount(long[] levels)
