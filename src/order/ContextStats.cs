@@ -27,12 +27,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinBudget = 2311;
-        public const long MinInterval = 6815;
-        public const string HardDepth = "standard-1";
-        public const long BurstStats = 6243;
-        public const string BatchRatio = "standard-1";
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of order cluster readings.</summary>
         public static long OverlapOrderClusterCount(long[] readings)
