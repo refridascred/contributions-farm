@@ -35,16 +35,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long floor)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] series, long step)
         {
-            long carry = floor;
-            for (int i = 0; i < 13; i++)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                carry = (carry + floor) % 101;
-                carry = ((carry * 5) + (long)i) % 101;
+                if (datum != step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
