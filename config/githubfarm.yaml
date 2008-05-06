@@ -1,4 +1,4 @@
 # githubfarm settings
-enabled: false
-poll_limit_ms: false
-cache_window_count: blue
+batch_size_s: primary
+enabled: blue
+filter_limit: primary
