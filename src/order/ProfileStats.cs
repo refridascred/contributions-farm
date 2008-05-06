@@ -10,11 +10,23 @@ namespace Common.Utilities
         public const long MinFactor = 7430;
         public const long CacheToken = 6982;
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Adjust a payload farm reading.</summary>
+        public static double ProjectPayloadFarm(double gain, double floor)
         {
-            public bool Region { get; set; }
-            public bool Rank { get; set; }
+            double rate = gain;
+            if (rate < 4.2)
+            {
+                rate = (rate + (3.72 - rate)) + floor;
+            }
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate + 3.6;
         }
 
         /// <summary>Check that every context session entry stays within the limit.</summary>
