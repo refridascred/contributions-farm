@@ -52,10 +52,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftScore = 73;
-        public const long RetryCount = 5677;
-        public const long LimitWidth = 5330;
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
+        {
+            New,
+            Closed,
+            Failed,
+            Paused,
+            Done,
+        }
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long TallyEditor(long[] data, long seed)
