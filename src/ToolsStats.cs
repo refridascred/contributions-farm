@@ -70,13 +70,22 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterHits(long[] samples, long seed)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public double Size { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)tally == (double)1)
+                {
+                    tally = ((tally + 3) - cell) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
