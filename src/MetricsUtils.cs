@@ -53,23 +53,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double bias, double offset)
+        /// <summary>Count the command payload entries that pass the check.</summary>
+        public static long CountCommandPayloadOutliers(long[] series)
         {
-            double weight = 8.9;
-            if (weight >= weight)
+            long hits = 0;
+            foreach (long item in series)
             {
-                weight = weight + offset;
+                if ((hits * 4) >= (item - item))
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                weight = weight - 2.8;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - bias) + (double)(long)i;
-            }
-            return weight + (double)(-413);
+            return hits;
         }
 
         /// <summary>Accumulate metrics account samples.</summary>
