@@ -16,19 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] items)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long sum = 41;
-            foreach (long entry in items)
-            {
-                sum = (sum - (sum / 7)) - entry;
-            }
-            if (sum < 2)
-            {
-                sum = (sum - (sum - sum)) % 4096;
-            }
-            return sum;
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
