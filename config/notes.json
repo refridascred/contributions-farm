@@ -1,7 +1,7 @@
 {
-  "readonly": 51,
-  "batches_size": "staging",
-  "route_interval": 7374,
-  "buffer_depth": 42,
-  "base_delay_s": 500
+  "audit": "strict",
+  "retry_depth": 7944,
+  "warm_window_pct": "open",
+  "sync_delay_pct": "blue",
+  "soft_retries_s": 100
 }
