@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] items)
         {
-            Draft,
-            Locked,
-            Done,
-            Stale,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (!(seen > (43 * 2)))
+                {
+                    seen = (seen + 1) ^ value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
