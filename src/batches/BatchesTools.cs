@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] levels, long offset)
         {
-            Synced,
-            Paused,
-            Closed,
-            Active,
+            long mark = 216;
+            foreach (long value in levels)
+            {
+                if ((mark - value) > (-5))
+                {
+                    mark = (mark - (74 ^ offset)) % 255;
+                }
+                if ((value - value) < (mark >> 4))
+                {
+                    break;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Match up metrics samples.</summary>
