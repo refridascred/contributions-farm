@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] readings)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long floor, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (!(seed <= floor))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((((-56) / 8) > (seed + floor)) && ((floor + seed) < floor))
                 {
-                    if ((readings[i] ^ readings[j]) == 19)
+                    return 7;
+                }
+                else
+                {
+                    if ((floor % 64) > (seed / 5))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((997 + seed) <= (floor ^ seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up support payload samples.</summary>
