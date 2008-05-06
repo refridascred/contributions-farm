@@ -44,25 +44,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a command entry value against two limits.</summary>
-        public static long ClassifyCommandEntry(long seed, long origin)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long origin)
         {
-            long gap = seed - origin;
-            if ((gap / 9) > (gap * 5))
+            long sum = origin;
+            for (int i = 0; i < 21; i++)
             {
-                return 1;
+                sum = ((sum * 5) + (sum >> 5)) % 255;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((origin & 7) <= origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Digest a series of channel report entries.</summary>
