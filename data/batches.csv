@@ -1,6 +1,6 @@
-id,weight,active,token,region
-1,primary,0.81,958,36.74
-2,edge,867,41.87,924
-3,333,41.56,eu-west,471
-4,83.48,665,214,43.7
-5,403,331,27,3.19
+id,count,ratio,score,active
+1,strict,718,15.71,staging
+2,legacy,staging,269,primary
+3,standard,strict,813,26.8
+4,32.58,70.12,582,local
+5,43.81,262,112,62.17
