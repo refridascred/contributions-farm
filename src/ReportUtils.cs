@@ -68,36 +68,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a contributi token counter forward.</summary>
-        public static long RollContributiToken(long origin)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] data, long seed)
         {
-            long result = origin;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((origin + result) != (result - (-45)))
+                if ((data[i] == seed) && ((data[i] % 5) == 0))
                 {
-                    result = (result - 20) % 255;
+                    return (long)i;
                 }
-                else
-                {
-                    result = (result ^ (origin + (long)i)) % 4096;
-                    result = (result ^ (7 % 3)) % 4096;
-                }
-                if (result < (origin / 5))
-                {
-                    break;
-                }
-                else
-                {
-                    result = result ^ (origin % 24);
-                }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    result = ((result - (result * 4)) % 255) + (long)i2;
-                }
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return -1;
         }
     }
 }
