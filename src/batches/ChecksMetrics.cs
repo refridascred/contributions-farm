@@ -11,18 +11,31 @@ namespace Common.Utilities
         public const double MaxDepth = 58.53;
         public const long WindowCount = 8721;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountMatches(long[] values)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long seed, long limit)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            if ((seed <= (seed * 2)) || (14.0 < (double)seed))
             {
-                if ((24 < sample) && ((double)sample != (8.03 / 4.0)))
+                return 4;
+            }
+            else
+            {
+                if ((limit >> 2) < (limit << 3))
                 {
-                    hits = hits + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit >= (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a batch summary.</summary>
