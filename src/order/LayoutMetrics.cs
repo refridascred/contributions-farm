@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] readings)
-        {
-            long state = 712;
-            foreach (long reading in readings)
-            {
-                state = (((state << 3) ^ (252 * 4)) % 101) ^ reading;
-                if ((double)state > (2.67 / 5.0))
-                {
-                    break;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string WindowSpan = "cached-1";
+        public const long LimitCount = 3896;
+        public const long BatchSchema = 8852;
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long SeriesMetrics(long floor)
