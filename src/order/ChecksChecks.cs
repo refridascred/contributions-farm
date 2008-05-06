@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
-        {
-            public bool Mode { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardScore = 3398;
+        public const double WindowSupport = 24.86;
+        public const string CacheSupport = "stable-v2";
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long PairGraphCount(long[] data)
